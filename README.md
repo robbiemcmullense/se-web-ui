@@ -15,9 +15,7 @@ This project uses [StencilJs](https://stenciljs.com) to generate web component f
 
 ### Demo with NO Framework
 
-```
-yarn demo:vanilla
-```
+Open `www/index.html` in your browser.
 
 This demo shows how the app can be used without any framework.
 
