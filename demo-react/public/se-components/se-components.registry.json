@@ -1,0 +1,72 @@
+{
+  "namespace": "SeComponents",
+  "fsNamespace": "se-components",
+  "loader": "../se-components.js",
+  "core": "se-components.ttbdasdj.js",
+  "corePolyfilled": "se-components.hpcgrdg5.js",
+  "components": {
+    "se-app": {
+      "bundleIds": {
+        "$": "d3k3yix3"
+      }
+    },
+    "se-button": {
+      "bundleIds": {
+        "$": "avg1aonh"
+      },
+      "encapsulation": "shadow"
+    },
+    "se-header": {
+      "bundleIds": {
+        "$": "qowxtols"
+      }
+    },
+    "se-icon-ecostruxure": {
+      "bundleIds": {
+        "$": "qowxtols"
+      },
+      "encapsulation": "shadow"
+    },
+    "se-icon-schneider": {
+      "bundleIds": {
+        "$": "qowxtols"
+      },
+      "encapsulation": "shadow"
+    },
+    "se-navbar": {
+      "bundleIds": {
+        "$": "ccohjx5l"
+      }
+    },
+    "se-widget": {
+      "bundleIds": {
+        "$": "bpoj3aq6"
+      },
+      "encapsulation": "shadow"
+    },
+    "se-widget-container": {
+      "bundleIds": {
+        "$": "hdfw2wcb"
+      },
+      "encapsulation": "shadow"
+    },
+    "se-widget-content": {
+      "bundleIds": {
+        "$": "r8gpsjoz"
+      },
+      "encapsulation": "shadow"
+    },
+    "se-widget-footer": {
+      "bundleIds": {
+        "$": "q6jpfr0n"
+      },
+      "encapsulation": "shadow"
+    },
+    "se-widget-header": {
+      "bundleIds": {
+        "$": "0k8qhzcq"
+      },
+      "encapsulation": "shadow"
+    }
+  }
+}

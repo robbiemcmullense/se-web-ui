@@ -1,0 +1,25 @@
+@import "../../theme/theme-variables";
+
+button {
+  @include custom-property($primary, 'background-color');
+  @include custom-property($primary-contrast, 'color');
+
+  font-size: 14px;
+  border-radius: 1px;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 64px;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 4px;
+  overflow: visible;
+}

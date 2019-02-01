@@ -1,0 +1,9 @@
+@import "../../theme/theme-variables";
+
+:host{
+  padding: ($widget-inner-padding - 1) $widget-inner-padding 3px;
+  border-bottom: 2px solid $widget-header-border-color;
+  font-size: 20px;
+  min-height: 32px;
+  position: relative;
+}

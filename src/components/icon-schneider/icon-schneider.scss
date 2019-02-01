@@ -1,0 +1,16 @@
+@import "../../theme/theme-variables";
+
+:host {
+  margin-right: 5px;
+
+	svg {
+    margin-bottom: -12px;
+    padding-left: 2px;
+    height: 58px;
+    margin-top: -10px;
+  }
+  .schneider-electric-logo{
+    fill: $se-logo-green;
+
+  }
+}

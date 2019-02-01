@@ -1,0 +1,133 @@
+$prefix: "--"; //Prefix string for custom CSS properties
+
+//Merges a variable name with $prefix
+@function custom-property-name($name) {
+    @return $prefix + $name;
+}
+
+// Defines a custom property
+@mixin define-custom-property($name, $value) {
+    #{custom-property-name($name)}: $value;
+}
+
+@mixin custom-property($color, $property-name: color) {
+  #{$property-name}: $color;
+}
+
+
+@mixin display-flex(){
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+@mixin flex-flow($values: (row nowrap)) {
+  // No Webkit Box fallback.
+  -webkit-flex-flow: $values;
+  -moz-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so let's grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == 'list' {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box-flex: $fg-boxflex;
+  -webkit-flex: $fg $fs $fb;
+  -moz-box-flex: $fg-boxflex;
+  -moz-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  align-items: $value;
+}
+
+@mixin justify-content($value: center){
+  -webkit-justify-content: $value;
+  -ms-flex-pack: $value;
+  justify-content: $value;
+}
+
+@mixin border-radius($value: 4){
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value px;
+}
+
+@mixin linearGradient($top, $bottom) {
+  background: #{$top}; /* Old browsers */
+  background:    -moz-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* FF3.6+ */
+  background:        -webkit-gradient(linear, left top, left bottom, color-stop(0%, #{$top}), color-stop(100%, #{$bottom})); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* Chrome10+,Safari5.1+ */
+  background:      -o-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* Opera 11.10+ */
+  background:     -ms-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* IE10+ */
+  background:         linear-gradient(to bottom, #{$top} 0%, #{$bottom} 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$top}', endColorstr='#{$bottom}', GradientType=0 ); /* IE6-9 */
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+@mixin box-shadow($shadow){
+  -moz-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}

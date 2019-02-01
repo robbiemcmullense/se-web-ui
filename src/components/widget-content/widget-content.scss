@@ -1,0 +1,7 @@
+@import "../../theme/theme-variables";
+
+:host {
+  overflow: auto;
+  position: relative;
+  @include flex(1);
+}

@@ -1,0 +1,10 @@
+@import "../../theme/theme-variables";
+
+:host {
+  position: relative;
+  padding: ($widget-inner-padding - 1) $widget-inner-padding $widget-inner-padding;
+  border-top: 2px solid $widget-footer-border-color;
+  &.buttons{
+    text-align: right; // right align buttons
+  }
+}

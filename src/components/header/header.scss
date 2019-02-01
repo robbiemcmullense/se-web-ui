@@ -1,0 +1,136 @@
+
+@import "../../theme/theme-variables";
+
+:host  {
+
+  box-sizing: border-box;
+  height: auto;
+  padding: 0;
+  width: 100%;
+  min-height: 56px;
+  max-height: 61px;
+}
+.header-container{
+  @include display-flex();
+  @include flex-direction(row);
+  justify-content: space-between;
+  padding: 0 16px;
+
+  // Flexbox Vertical Alignment
+  flex-direction: row;
+  align-items: center;
+
+  // Per Material specs a toolbar cannot have multiple lines inside of a single row.
+  // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
+  white-space: nowrap;
+  background-color: white;
+}
+.fill-space {
+  @include flex(1);
+}
+.d-flex {
+  justify-content: center;
+  align-items: center;
+
+  @include display-flex();
+  @include flex-direction(row);
+}
+
+
+.d-flex-column {
+  justify-content: center;
+  align-items: center;
+
+  @include display-flex();
+  @include flex-direction(column);
+}
+
+
+.header-menu-button{
+  margin-left: 6px;
+  .mat-icon {
+    font-size: 35px;
+  }
+}
+
+.header-title, .header-title-type {
+  color: $primary;
+  color: var(--primary, $primary);
+  padding-left: 18px;
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  margin-top: -1px;
+}
+.header-title-type {
+  line-height: 24px;
+}
+
+.mat-toolbar-single-row {
+  padding: 0;
+}
+
+.user-icon-wrapper {
+  button {
+    background: transparent;
+  }
+}
+.font-lighter{
+  font-weight: 100;
+}
+.user-icon{
+  color: $primary;
+  color: var(--primary, $primary);
+  z-index: 1;
+  font-size: 24px;
+  padding-right: 5px;
+  padding-right: 0;
+  &.se-icon {
+    margin-right: -24px;
+    top: -1px;
+  }
+}
+se-icon-schneider {
+  width: 140px;
+  padding-left: 0px !important;
+  margin-top: 5px;
+}
+.padding-container {
+  // margin-right: 13px;
+  &.link-container {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 599px) {
+  se-icon-schneider {
+    display: none;
+  }
+  .mat-toolbar-single-row {
+    height: 64px;
+  }
+}
+
+::ng-deep {
+  [header-user], header-user {
+    margin-right: 10px;
+    .mat-button-wrapper{
+      color: $se-dark-grey;
+      padding: 0 13px;
+      font-weight: 100;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $se-dark-grey;
+      }
+    }
+  }
+}

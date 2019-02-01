@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <script src="./build/se-components.js"></script>
+  <style>
+    .mycoolstyle {
+      color: red;
+    }
+    .flex {
+      flex: 1
+    }
+    .d-flex {
+      display: flex;
+    }
+
+  </style>
+</head>
+<body>
+
+  <se-app>
+    <se-header app-title="Test Advisor"></se-header>
+    <se-navbar color="primary">
+      <nav slot="start">
+        Tenant: <a class="dropdown"> test </a>
+      </nav>
+      <nav>
+        <a class="active">Home</a> <a>Components</a> <a>Icons</a>
+      </nav>
+    </se-navbar>
+
+    <se-widget-container>
+      <se-widget style="width: 300px" >
+        <se-widget-header>Filter</se-widget-header>
+
+        <se-widget-content>
+            <div class="mycoolstyle">my content</div>
+            <ul>
+              ...
+            </ul>
+        </se-widget-content>
+        <se-widget-footer>
+          <se-button>Apply</se-button>
+        </se-widget-footer>
+      </se-widget>
+      <se-widget class="flex">
+          <se-widget-header>Filter</se-widget-header>
+          <se-widget-content>
+            <div class="mycoolstyle">my content</div>
+            <ul>
+              ...
+            </ul>
+          </se-widget-content>
+          <se-widget-footer>
+            <se-button>Apply</se-button>
+          </se-widget-footer>
+        </se-widget>
+    </se-widget-container>
+  </se-app>
+</body>
+</html>
