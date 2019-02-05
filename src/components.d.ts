@@ -44,6 +44,16 @@ export namespace Components {
     'color'?: 'primary' | 'secondary' | 'tab';
   }
 
+  interface SeSwitchOnOff {
+    'active': string;
+    'inactive': string;
+  }
+  interface SeSwitchOnOffAttributes extends StencilHTMLAttributes {
+    'active'?: string;
+    'inactive'?: string;
+    'onHasChanged'?: (event: CustomEvent<any>) => void;
+  }
+
   interface SeWidgetContainer {}
   interface SeWidgetContainerAttributes extends StencilHTMLAttributes {}
 
@@ -68,6 +78,7 @@ declare global {
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeNavbar': Components.SeNavbar;
+    'SeSwitchOnOff': Components.SeSwitchOnOff;
     'SeWidgetContainer': Components.SeWidgetContainer;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
@@ -82,6 +93,7 @@ declare global {
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-navbar': Components.SeNavbarAttributes;
+    'se-switch-on-off': Components.SeSwitchOnOffAttributes;
     'se-widget-container': Components.SeWidgetContainerAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
@@ -126,6 +138,12 @@ declare global {
     new (): HTMLSeNavbarElement;
   };
 
+  interface HTMLSeSwitchOnOffElement extends Components.SeSwitchOnOff, HTMLStencilElement {}
+  var HTMLSeSwitchOnOffElement: {
+    prototype: HTMLSeSwitchOnOffElement;
+    new (): HTMLSeSwitchOnOffElement;
+  };
+
   interface HTMLSeWidgetContainerElement extends Components.SeWidgetContainer, HTMLStencilElement {}
   var HTMLSeWidgetContainerElement: {
     prototype: HTMLSeWidgetContainerElement;
@@ -163,6 +181,7 @@ declare global {
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-navbar': HTMLSeNavbarElement
+    'se-switch-on-off': HTMLSeSwitchOnOffElement
     'se-widget-container': HTMLSeWidgetContainerElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
@@ -177,6 +196,7 @@ declare global {
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-navbar': HTMLSeNavbarElement;
+    'se-switch-on-off': HTMLSeSwitchOnOffElement;
     'se-widget-container': HTMLSeWidgetContainerElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
