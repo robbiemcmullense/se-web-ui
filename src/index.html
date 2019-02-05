@@ -30,6 +30,9 @@
       <nav>
         <a class="active">Home</a> <a>Components</a> <a>Icons</a>
       </nav>
+      <nav slot="end">
+        <a>End</a>
+      </nav>
     </se-navbar>
 
     <se-widget-container>
@@ -41,6 +44,7 @@
             <ul>
               ...
             </ul>
+            <se-switch-on-off id="switch" active="on" inactive="off" />
         </se-widget-content>
         <se-widget-footer>
           <se-button>Apply</se-button>
@@ -60,5 +64,11 @@
         </se-widget>
     </se-widget-container>
   </se-app>
+
+  <script>
+    document.addEventListener('hasChanged', function(event) {
+      alert('you have clicked the button: ' + event.detail.innerText);
+    });
+  </script>
 </body>
 </html>
