@@ -51,6 +51,12 @@ This project uses [StencilJs](https://stenciljs.com) to generate web component f
 | [ ]  | Datepicker       |                                                                                                               | `datetime`, `change()`                                                                   |
 | [ ]  | Tooltips         | Design only                                                                                                   | `title`, `message`                                                                       |
 
+## Test it in your app
+
+```
+npm install @se/ui-web-components
+```
+
 ## Getting started
 
 1. Install [NodeJs](https://nodejs.org/en/) if it's not already done.
