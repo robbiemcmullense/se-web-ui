@@ -7,17 +7,18 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type     | Default     |
-| ---------- | ---------- | ----------- | -------- | ----------- |
-| `active`   | `active`   |             | `string` | `undefined` |
-| `inactive` | `inactive` |             | `string` | `undefined` |
+| Property     | Attribute     | Description | Type      | Default     |
+| ------------ | ------------- | ----------- | --------- | ----------- |
+| `isDisabled` | `is-disabled` |             | `boolean` | `false`     |
+| `textOff`    | `text-off`    |             | `string`  | `undefined` |
+| `textOn`     | `text-on`     |             | `string`  | `undefined` |
 
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `hasChanged` |             | `CustomEvent<any>` |
+| Event    | Description | Type               |
+| -------- | ----------- | ------------------ |
+| `change` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------
