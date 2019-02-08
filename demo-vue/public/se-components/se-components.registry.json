@@ -2,8 +2,8 @@
   "namespace": "SeComponents",
   "fsNamespace": "se-components",
   "loader": "../se-components.js",
-  "core": "se-components.ttbdasdj.js",
-  "corePolyfilled": "se-components.hpcgrdg5.js",
+  "core": "se-components.n6uahrxs.js",
+  "corePolyfilled": "se-components.egfts8sm.js",
   "components": {
     "se-app": {
       "bundleIds": {
@@ -12,30 +12,35 @@
     },
     "se-button": {
       "bundleIds": {
-        "$": "avg1aonh"
+        "$": "qy0wvbot"
       },
       "encapsulation": "shadow"
     },
     "se-header": {
       "bundleIds": {
-        "$": "qowxtols"
+        "$": "0amn1dbk"
       }
     },
     "se-icon-ecostruxure": {
       "bundleIds": {
-        "$": "qowxtols"
+        "$": "0amn1dbk"
       },
       "encapsulation": "shadow"
     },
     "se-icon-schneider": {
       "bundleIds": {
-        "$": "qowxtols"
+        "$": "0amn1dbk"
       },
       "encapsulation": "shadow"
     },
     "se-navbar": {
       "bundleIds": {
         "$": "ccohjx5l"
+      }
+    },
+    "se-switch-on-off": {
+      "bundleIds": {
+        "$": "vtuivm1f"
       }
     },
     "se-widget": {

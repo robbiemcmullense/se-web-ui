@@ -1,17 +1,40 @@
 @import "../../theme/theme-variables";
 
 button {
-  font-size: 14px;
-  border-radius: 1px;
-  line-height: 24px;
-  padding: 0 16px;
-  color: white;
-  vertical-align: baseline;
-  text-align: center;
-  &.active {
-    background-color: green;
+  @include color-property($se-anthracite-grey, '');
+  height: 24px;
+  width: 48px;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-size: 11px;
+  font-family: Nunito, Roboto, monospace;
+  line-height: 13px;
+  font-weight: 300;
+  cursor: pointer;
+  &.active.selected {
+    @include color-property($se-white, '');
+    @include background-color-property($primary, 'primary');
   }
-  &.inactive {
-    background-color: red;
+  &.inactive.selected {
+    @include color-property($se-white, '');
+    @include background-color-property($error, 'error');
+  }
+}
+
+.se-switch-on-off {
+  button:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  button:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+  &.disabled {
+    opacity: 0.26;
+    button {
+      cursor: default;
+    }
   }
 }
