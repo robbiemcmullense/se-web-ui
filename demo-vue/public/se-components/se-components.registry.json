@@ -2,8 +2,8 @@
   "namespace": "SeComponents",
   "fsNamespace": "se-components",
   "loader": "../se-components.js",
-  "core": "se-components.iq41idve.js",
-  "corePolyfilled": "se-components.svfee91f.js",
+  "core": "se-components.n6uahrxs.js",
+  "corePolyfilled": "se-components.egfts8sm.js",
   "components": {
     "se-app": {
       "bundleIds": {
@@ -12,7 +12,7 @@
     },
     "se-button": {
       "bundleIds": {
-        "$": "z1wsaw8c"
+        "$": "qy0wvbot"
       },
       "encapsulation": "shadow"
     },
@@ -40,7 +40,7 @@
     },
     "se-switch-on-off": {
       "bundleIds": {
-        "$": "np0nb57n"
+        "$": "vtuivm1f"
       }
     },
     "se-widget": {

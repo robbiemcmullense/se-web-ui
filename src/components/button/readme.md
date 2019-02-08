@@ -14,6 +14,13 @@
 | `isDisabled` | `is-disabled` |             | `boolean`                                             | `false`     |
 
 
+## Events
+
+| Event    | Description | Type               |
+| -------- | ----------- | ------------------ |
+| `change` |             | `CustomEvent<any>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
