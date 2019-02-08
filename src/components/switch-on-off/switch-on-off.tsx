@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
 import {  } from 'events';
 
 @Component({
@@ -8,21 +8,25 @@ import {  } from 'events';
 })
 export class SwitchOnOffComponent {
 
-  @Prop() active: string;
-  @Prop() inactive: string;
-  @Event() hasChanged: EventEmitter<any>;
-  @Element() el: HTMLElement;
+  @Prop() textOn: string;
+  @Prop() textOff: string;
+  @Prop() isDisabled: boolean = false;
+  @State() selected: boolean;
+  @Event() change: EventEmitter<any>;
 
   render() {
     return (
-      <div>
-        <button class="active" onClick={(event: UIEvent) => this.toggleActive(event)}>{this.active}</button>
-        <button class="inactive" onClick={(event: UIEvent) => this.toggleActive(event)}>{this.inactive}</button>
+      <div class={'se-switch-on-off' + (this.isDisabled ? ' disabled' : '')}>
+        <button class={'active' + (this.selected ? ' selected' : '')} onClick={(event: UIEvent) => this.toggleActive(event)}>{this.textOn}</button>
+        <button class={'inactive' + (!this.selected ? ' selected' : '')} onClick={(event: UIEvent) => this.toggleActive(event)}>{this.textOff}</button>
       </div>
     );
   }
 
-  toggleActive(event) { 
-    this.hasChanged.emit(event.target);
+  toggleActive(event) {
+    if (!this.isDisabled) {
+      this.selected = !this.selected;
+      this.change.emit(event.target);
+    }
   }
 }

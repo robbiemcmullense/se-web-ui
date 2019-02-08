@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-button',
@@ -7,12 +7,22 @@ import { Component } from '@stencil/core';
 })
 export class ButtonComponent {
 
+  @Prop() appearance: 'flat' | 'raised' | 'text' | 'login' | 'signup';
+  @Prop() color: 'primary' | 'accent' | 'warn' | 'error';
+  @Prop() isDisabled: boolean = false;
+  @Element() el: HTMLElement;
+  @Event() change: EventEmitter<any>;
+
   render() {
     return (
-      <button type="button">
+      <button data-appearance={this.appearance} color={this.color} disabled={this.isDisabled} onClick={() => this.emitEvent()}>
         <slot></slot>
       </button>
     )
+  }
+
+  emitEvent() {
+    this.change.emit(this.el);
   }
 }
 
