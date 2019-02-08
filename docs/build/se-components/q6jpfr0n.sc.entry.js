@@ -1,1 +1,0 @@
-const e=window.SeComponents.h;class t{render(){return e("slot",null)}static get is(){return"se-widget-footer"}static get encapsulation(){return"shadow"}static get style(){return".sc-se-widget-footer-h{position:relative;padding:11px 12px 12px;border-top:2px solid #e5e5e5}.buttons.sc-se-widget-footer-h{text-align:right}"}}export{t as SeWidgetFooter};

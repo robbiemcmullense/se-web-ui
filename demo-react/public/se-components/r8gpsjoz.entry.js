@@ -1,1 +1,0 @@
-const t=window.SeComponents.h;class e{render(){return t("slot",null)}static get is(){return"se-widget-content"}static get encapsulation(){return"shadow"}static get style(){return":host{overflow:auto;position:relative;-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-moz-flex:1;-ms-flex:1;flex:1}"}}export{e as SeWidgetContent};

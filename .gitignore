@@ -1,6 +1,9 @@
 dist/
 !www/favicon.ico
 www/
+docs/build/
+demo-react/public/build/
+demo-vue/public/build/
 
 *~
 *.sw[mnpcod]

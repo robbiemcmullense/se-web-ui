@@ -15,8 +15,17 @@ export namespace Components {
   interface SeApp {}
   interface SeAppAttributes extends StencilHTMLAttributes {}
 
-  interface SeButton {}
-  interface SeButtonAttributes extends StencilHTMLAttributes {}
+  interface SeButton {
+    'appearance': 'flat' | 'raised' | 'text' | 'login' | 'signup';
+    'color': 'primary' | 'accent' | 'warn' | 'error';
+    'isDisabled': boolean;
+  }
+  interface SeButtonAttributes extends StencilHTMLAttributes {
+    'appearance'?: 'flat' | 'raised' | 'text' | 'login' | 'signup';
+    'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    'isDisabled'?: boolean;
+    'onChange'?: (event: CustomEvent<any>) => void;
+  }
 
   interface SeHeader {
     /**
@@ -45,13 +54,15 @@ export namespace Components {
   }
 
   interface SeSwitchOnOff {
-    'active': string;
-    'inactive': string;
+    'isDisabled': boolean;
+    'textOff': string;
+    'textOn': string;
   }
   interface SeSwitchOnOffAttributes extends StencilHTMLAttributes {
-    'active'?: string;
-    'inactive'?: string;
-    'onSwitched'?: (event: CustomEvent<any>) => void;
+    'isDisabled'?: boolean;
+    'onChange'?: (event: CustomEvent<any>) => void;
+    'textOff'?: string;
+    'textOn'?: string;
   }
 
   interface SeWidgetContainer {}

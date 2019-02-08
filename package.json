@@ -1,5 +1,5 @@
 {
-  "name": "@se/ui-component",
+  "name": "@se/ui-web-components",
   "version": "0.0.1",
   "description": "This project is a POC to create HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
   "module": "dist/esm/index.js",
@@ -15,14 +15,15 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "build:library": "stencil build --docs",
-    "copy:react": "cpx \"www/build/**/*\" demo-react/public",
-    "copy:vue": "cpx \"www/build/**/*\" demo-vue/public",
+    "copy:react": "cpx \"www/build/**/*\" demo-react/public/build",
+    "copy:vue": "cpx \"www/build/**/*\" demo-vue/public/build",
     "copy:docs": "cpx \"www/**/*\" docs",
     "demo:react": "cd demo-react && yarn start",
     "demo:vue": "cd demo-vue && yarn start",
-    "install:all": "npm-run-all install:*",
+    "install": "npm-run-all install:*",
     "install:react": "cd demo-react && yarn",
-    "install:vue": "cd demo-vue && yarn"
+    "install:vue": "cd demo-vue && yarn",
+    "install:build": "yarn build"
   },
   "dependencies": {
     "@stencil/core": "^0.17.1",
