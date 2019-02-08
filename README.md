@@ -1,26 +1,68 @@
 # SE Custom Element Library
 
-This project is a POC to create HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.
+This project is to create a common ui library that will help any developer to quickly design Schneider electric design element thanks to native [custom element](https://developers.google.com/web/fundamentals/web-components/customelements). Custom element can be used with any framework and library like pure javascript, jquery, React, Vue or angular.
 
-Component realized in this way can be as complex as holding a full independent widget with route and such that can be configure from the outside (parameter) and work in any application already created. Like in [this example](https://scotch.io/tutorials/build-a-reusable-component-with-angular-elements), the developer could integrate an authentication component that could be shared with other project.
+Component realized in this way can be as complex as holding a full independent widget with route and such that can be configure from the outside (parameter) and work in any application already created. Like in [this example](https://auth0.com/blog/creating-web-components-with-stencil/), the developer could integrate an authentication component that could be shared with other project.
 
-This project uses [StencilJs](https://stenciljs.com) to generate web component from the code. Stencil generate compact web-components that are compatible across browser. Stencil authomatically takes care of the polyfills if the browser requires is and is based on web-component standard that make it future proof.
+This project uses [StencilJs](https://stenciljs.com) to generate web component from the code. StencilJs generate compact web-components that that follow 100% of the web standards and takes care of the polyfills if the browser does not support them natively. StencilJs utilize [TypeScript](https://www.typescriptlang.org/) to follow best coding practices.
 
-## Getting started with the demo
+## list of components
+
+| Done | Component        | Info                                                                                                          | Params                                                                                   |
+| ---- | ---------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [x]  | App layout style | define a wrapper for the design/style/css variable and insure that the content of the app takes the full page | mode="light/dark" maybe?                                                                 |
+| [x]  | NavBar           | Called Tab bar in the guideline. Use or regular `nav` tag for nab item                                        | mode="primary/secondary/light"                                                           |
+| [x]  | Header           | Header of an se app. does not include navigation.                                                             | `title`, `domain="ecostruxture"` as default, `schneiderLogo="true"`, slot="center/right" |
+| [x]  | widget-container | container of widgets. Adds a margin for better widget alignment                                               | `layout`="flex/grid", `cols`, `rowHeight` ... not quite sure                             |
+| [x]  | widget           | Body of a widget. the widget itself should be defined as flex                                                 | `mode`="default/light"                                                                   |
+| [x]  | widget-header    | Top part of the widget.                                                                                       |                                                                                          |
+| [x]  | widget-content   | Middle par of the widget. should take the full space (flex:1)                                                 |                                                                                          |
+| [x]  | widget-footer    | Bottom part of a widget.                                                                                      | `align`="left/middle/right"                                                              |
+| [ ]  | Input            | Text input. Should also handle error?                                                                         | `errorstyle`?                                                                            |
+| [ ]  | Select           | Dropdown that takes the selected choice                                                                       | `mode`, `value`, `disabled`, `change()`                                                  |
+| [ ]  | Select-item      | Element of a select element                                                                                   | `value`, `disabled`                                                                      |
+| [ ]  | Buttons          | known as split in guideline, Should bind the buttons together, nothing more                                   |                                                                                          |
+| [x]  | Button           |                                                                                                               | `type`="submit", `mode`="primary/accent/...", `value`, `disabled`, `change()`            |
+| [ ]  | Radio            |                                                                                                               | `value`, `disabled`, `change()`                                                          |
+| [ ]  | Radio-item       |                                                                                                               | `value`, `disabled`                                                                      |
+| [ ]  | Radio-on-off     |                                                                                                               | `mode`="default/header", `value`, `change()`, `disabled`                                 |
+| [ ]  | Switch           |                                                                                                               | `value`, `change()`, `disabled`                                                          |
+| [ ]  | Checkbox         |                                                                                                               | `type`="square/round", `mode`="primary/accent"                                           |
+| [ ]  | Chip             |                                                                                                               | `value`, `closed()`, `disabled`                                                          |
+| [ ]  | Dropdown         | menu in guideline, a button with a list                                                                       | `mode`="primary/default/ ...", `change()`                                                |
+| [ ]  | Dropdown-item    | menu in guideline, a button with a list                                                                       | `disabled`                                                                               |
+| [ ]  | Progressbar      |                                                                                                               | `value`                                                                                  |
+| [ ]  | Dialog           | design of the Modal, Does not includ how to manipulate it (open, clode)                                       | `mode`="primary/light", `title`                                                          |
+| [ ]  | Dialog-header    |                                                                                                               |                                                                                          |
+| [ ]  | Dialog-content   |                                                                                                               |                                                                                          |
+| [ ]  | Dialog-footer    |                                                                                                               |                                                                                          |
+| [ ]  | Menu             | ( fly from left. should open at the `se-app` level with css animation                                         |                                                                                          |
+| [ ]  | Menu-item        | selection of the left element with it's content (slot)                                                        | `title`, `selected`                                                                      |
+| [ ]  | List             | classic                                                                                                       |                                                                                          |
+| [ ]  | List-item        | list with slot (start/center/end)                                                                             |                                                                                          |
+| [ ]  | Tree             |                                                                                                               |                                                                                          |
+| [ ]  | Tree-item        |                                                                                                               | text, selected, hasChild                                                                 |
+| [ ]  | Tab              |                                                                                                               |                                                                                          |
+| [ ]  | Tab-item         |                                                                                                               |                                                                                          |
+| [ ]  | Brand            | Authentication page with a slot as content                                                                    |                                                                                          |
+| [ ]  | About            | About page that will be used in the menu section                                                              |                                                                                          |
+| [ ]  | Snackbar         | Design only. No info about how to show it from service yet                                                    | `mode`="primary/warning/error"                                                           |
+| [ ]  | Pagination       |                                                                                                               |                                                                                          |
+| [ ]  | Datepicker       |                                                                                                               | `datetime`, `change()`                                                                   |
+| [ ]  | Tooltips         | Design only                                                                                                   | `title`, `message`                                                                       |
+
+## Getting started
 
 1. Install [NodeJs](https://nodejs.org/en/) if it's not already done.
-2. Install [yarn](https://yarnpkg.com/en/) for better caching.
+2. Install [yarn](https://yarnpkg.com/en/) for better caching. `npm` can be used as well of course.
 3. Run `yarn` to install dependencies of the project and each demo in this repository.
 
-
-### Demo with NO Framework
+**Demo with NO Framework**
 
 Open `www/index.html` in your browser.
-
 This demo shows how the app can be used without any framework.
 
-
-### Demo with REACT
+**Demo with REACT**
 
 ```
 yarn demo:react
@@ -28,50 +70,30 @@ yarn demo:react
 
 This demo uses a `Widget` react component as a list to loop through the `se-widget` with different content.
 
-
-### Demo with VUE
+**Demo with VUE**
 
 ```
 yarn demo:vue
 ```
 
-This demo shows a simple interacting with vue framework.
+This demo shows a simple interaction with vue framework.
 
+## Capabilities
 
-
-## Findings and limitations 
-
-My current recommendation would be to create only pure design element. Then for each framework, add a set of services like modal and popup that cannot be generalized as web components
-
-A list of element that can be done :
-
-- Navigation 
-- Tab bar
-- Header
-- Button
-- Input
-- Notification
-- Snackbar
-- Checkbox
-- Radio button 
-- Date picker
-- Dropdown
-- Authentication page
-
-More complex elements like tabs can be done as well without issue.
+List of design aspect of this implementation:
 
 **CSS Variable**
 
 Even if not accepted in most browser, it's easy to get a fallback to a regular css parameter. This works exceptionally well with Shadow DOM which give us a powerful way to customize the style for the whole application from one css variable.
 
 ```scss
-.se-button{
+.se-button {
   color: $primary;
   color: var(--primary, $primary);
 }
 ```
-Changing `--primary` in one css element, will automatically update all the primary color in the application.
 
+Changing `--primary` in one css element, will automatically update all the primary color in the application.
 
 ## Contribution
 
@@ -97,6 +119,6 @@ Look for a project's contribution instructions. If there are any, follow them.
 - …
 - If the maintainer requests further changes just push them to your branch. The PR will be updated automatically.
 - Once the pull request is approved and merged you can pull the changes from `upstream` to your local repo and delete
-your extra branch(es).
+  your extra branch(es).
 
 And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.

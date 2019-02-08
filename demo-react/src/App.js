@@ -26,24 +26,24 @@ class App extends Component {
   render() {
     const filters = [
       {
-          'name': 'react filter 1'
+          name: 'react filter 1'
       },
       {
-          'name': 'reactFilet 2',
+          name: 'reactFilet 2'
       },
       {
-          'name': 'Filter 3 from react',
+          name: 'Filter 3 from react'
       },
       {
-          'name': 'Last filter!'
+          name: 'Last filter!'
       },
       {
-          'name': 'Last filter!'
+          name: 'Last filter!'
       }
     ];
     const rows = filters.map((row, index) => {
         return (
-           <Widget name={row.name}/>
+           <Widget name={row.name} key={index}/>
         );
     });
     return (
@@ -51,10 +51,10 @@ class App extends Component {
         <se-header ref="header" appTitle="title"></se-header>
         <se-navbar color="primary">
           <nav slot="start">
-            Tenant: <a class="dropdown"> test </a>
+            Tenant: <a className="dropdown"> test </a>
           </nav>
           <nav>
-            <a class="active">Home</a> <a>Components</a> <a>Icons</a>
+            <a className="active">Home</a> <a>Components</a> <a>Icons</a>
           </nav>
         </se-navbar>
 

@@ -51,7 +51,7 @@ export namespace Components {
   interface SeSwitchOnOffAttributes extends StencilHTMLAttributes {
     'active'?: string;
     'inactive'?: string;
-    'onHasChanged'?: (event: CustomEvent<any>) => void;
+    'onSwitched'?: (event: CustomEvent<any>) => void;
   }
 
   interface SeWidgetContainer {}

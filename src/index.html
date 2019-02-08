@@ -22,7 +22,7 @@
 <body>
 
   <se-app>
-    <se-header app-title="Test Advisor"></se-header>
+    <se-header app-title="Test Advisor" ></se-header>
     <se-navbar color="primary">
       <nav slot="start">
         Tenant: <a class="dropdown"> test </a>
@@ -47,7 +47,7 @@
             <se-switch-on-off id="switch" active="on" inactive="off" />
         </se-widget-content>
         <se-widget-footer>
-          <se-button>Apply</se-button>
+          <se-button id="button1">Apply</se-button>
         </se-widget-footer>
       </se-widget>
       <se-widget class="flex">
@@ -59,16 +59,25 @@
             </ul>
           </se-widget-content>
           <se-widget-footer>
-            <se-button>Apply</se-button>
+            <se-button id="button2">Apply</se-button>
           </se-widget-footer>
         </se-widget>
     </se-widget-container>
   </se-app>
-
   <script>
-    document.addEventListener('hasChanged', function(event) {
-      alert('you have clicked the button: ' + event.detail.innerText);
+    document.getElementById("button2").addEventListener("click", function() {
+      alert('Clicked')
+    });
+    document.getElementById("button1").addEventListener("click", function() {
+      alert('Clicked')
+    });
+
+    document.addEventListener('switched', function(ev) {
+      alert('you have clicked the button: ' + ev.detail.active);
     });
   </script>
+  <script src="build/se-components.js"></script>
+
 </body>
 </html>
+

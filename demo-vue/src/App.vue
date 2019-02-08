@@ -7,11 +7,12 @@
       </se-navbar>
       <se-widget-container>
         <se-widget>
-          <se-widget-header>Filter</se-widget-header>
+          <se-widget-header>Filter from VUE</se-widget-header>
           <se-widget-content>
               <div class="mycoolstyle">my content</div>
               <ul>
-                ...
+                <se-switch-on-off v-on:switched="checkboxChagned" active="on" inactive="off" />
+                <se-switch-on-off v-on:switched="checkbox2Chagned" active="on" inactive="off" />
               </ul>
           </se-widget-content>
           <se-widget-footer>
@@ -29,7 +30,15 @@ export default {
     return {
       appInformation: "Test Advisor"
     };
-  }
+  },
+  methods: {
+    checkboxChagned(val) {
+      alert(`switch event: ${val.detail.active}`)
+    },
+    checkbox2Chagned(val) {
+      alert(`switch 2 event: ${val.detail.active}`)
+    }
+  },
 };
 </script>
 <style>
