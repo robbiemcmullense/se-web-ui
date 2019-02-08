@@ -43,10 +43,12 @@
             <ul>
               ...
             </ul>
-            <se-switch-on-off id="switch" active="on" inactive="off" />
+            <se-switch-on-off id="switch" text-on="ON" text-off="OFF" />
+            <span id="switch-state"></span>
         </se-widget-content>
         <se-widget-footer>
-          <se-button>Apply</se-button>
+          <se-button appearance="standard">Apply</se-button>
+          <se-button appearance="raised">Apply</se-button>
         </se-widget-footer>
       </se-widget>
       <se-widget class="flex">
@@ -56,17 +58,25 @@
             <ul>
               ...
             </ul>
+            <se-button appearance="flat" color="warning">Warning</se-button>
+            <se-button appearance="login">Login</se-button>
+            <se-button appearance="signup">Sign Up</se-button>
+            <span id="button-info"></span>
           </se-widget-content>
-          <se-widget-footer>
-            <se-button>Apply</se-button>
+          <se-widget-footer fxLayoutAlign="row">
+            <se-button appearance="flat" color="primary">Flat</se-button>
+            <se-button appearance="raised" color="primary">Raised</se-button>
+            <se-button appearance="text">Text</se-button>
+            <se-button appearance="text" color="primary">Text</se-button>
           </se-widget-footer>
         </se-widget>
     </se-widget-container>
   </se-app>
 
   <script>
-    document.addEventListener('hasChanged', function(event) {
-      alert('you have clicked the button: ' + event.detail.innerText);
+    document.addEventListener('change', function(event) {
+      document.getElementById('switch-state').innerText = 'you have clicked the button: ' + event.detail.innerText;
+      document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText;
     });
   </script>
 </body>

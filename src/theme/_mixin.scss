@@ -10,10 +10,29 @@ $prefix: "--"; //Prefix string for custom CSS properties
     #{custom-property-name($name)}: $value;
 }
 
-@mixin custom-property($color, $property-name: color) {
-  #{$property-name}: $color;
+@mixin color-property($color, $variable) {
+  color: $color;
+  color: var(#{custom-property-name($variable)}, $color);
 }
 
+@mixin background-color-property($color, $variable) {
+  background-color: $color;
+  background-color: var(#{custom-property-name($variable)}, $color);
+}
+
+
+
+@mixin button-hover-active-properties($bg-hover-color, $bg-active-color, $text-active-color) {
+  &:not([disabled]) {
+    &:hover {
+      background-color: $bg-hover-color;
+    }
+    &:active {
+      background-color: $bg-active-color;
+      color: $text-active-color;
+    }
+  }
+}
 
 @mixin display-flex(){
   display: -ms-flexbox;
