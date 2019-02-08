@@ -10,13 +10,13 @@ export class SwitchOnOffComponent {
 
   @Prop() textOn: string;
   @Prop() textOff: string;
-  @Prop() isDisabled: boolean;
+  @Prop() isDisabled: boolean = false;
   @State() selected: boolean;
   @Event() change: EventEmitter<any>;
 
   render() {
     return (
-      <div class="se-switch-on-off">
+      <div class={'se-switch-on-off' + (this.isDisabled ? ' disabled' : '')}>
         <button class={'active' + (this.selected ? ' selected' : '')} onClick={(event: UIEvent) => this.toggleActive(event)}>{this.textOn}</button>
         <button class={'inactive' + (!this.selected ? ' selected' : '')} onClick={(event: UIEvent) => this.toggleActive(event)}>{this.textOff}</button>
       </div>
@@ -24,7 +24,9 @@ export class SwitchOnOffComponent {
   }
 
   toggleActive(event) {
-    this.selected = !this.selected;
-    this.change.emit(event.target);
+    if (!this.isDisabled) {
+      this.selected = !this.selected;
+      this.change.emit(event.target);
+    }
   }
 }

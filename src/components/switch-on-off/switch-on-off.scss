@@ -1,7 +1,7 @@
 @import "../../theme/theme-variables";
 
 button {
-  @include color-property($se-white, '');
+  @include color-property($se-anthracite-grey, '');
   height: 24px;
   width: 48px;
   padding: 0;
@@ -13,14 +13,16 @@ button {
   font-weight: 300;
   cursor: pointer;
   &.active.selected {
-    background-color: $primary;
+    @include color-property($se-white, '');
+    @include background-color-property($primary, 'primary');
   }
   &.inactive.selected {
-    background-color: $error;
+    @include color-property($se-white, '');
+    @include background-color-property($error, 'error');
   }
 }
 
-.switch-on-off {
+.se-switch-on-off {
   button:first-child {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -28,5 +30,11 @@ button {
   button:last-child {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+  }
+  &.disabled {
+    opacity: 0.26;
+    button {
+      cursor: default;
+    }
   }
 }
