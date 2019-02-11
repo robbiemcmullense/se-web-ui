@@ -17,14 +17,18 @@ export namespace Components {
 
   interface SeButton {
     'color': 'primary' | 'accent' | 'warn' | 'error';
+    'icon': string;
     'isDisabled': boolean;
     'mode': 'flat' | 'raised' | 'text' | 'login' | 'signup';
+    'value': string;
   }
   interface SeButtonAttributes extends StencilHTMLAttributes {
     'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    'icon'?: string;
     'isDisabled'?: boolean;
     'mode'?: 'flat' | 'raised' | 'text' | 'login' | 'signup';
-    'onChange'?: (event: CustomEvent<any>) => void;
+    'onButtonClicked'?: (event: CustomEvent<any>) => void;
+    'value'?: string;
   }
 
   interface SeHeader {

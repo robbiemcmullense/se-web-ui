@@ -9,19 +9,22 @@ export class ButtonComponent {
 
   @Prop() mode: 'flat' | 'raised' | 'text' | 'login' | 'signup';
   @Prop() color: 'primary' | 'accent' | 'warn' | 'error';
+  @Prop() value: string;
+  @Prop() icon: string;
   @Prop() isDisabled: boolean = false;
   @Element() el: HTMLElement;
-  @Event() change: EventEmitter<any>;
+  @Event() buttonClicked: EventEmitter<any>;
 
   render() {
     return (
       <button data-mode={this.mode} color={this.color} disabled={this.isDisabled} onClick={() => this.emitEvent()}>
+        {this.icon ? <i class={this.icon}></i> : ''}
         <slot></slot>
       </button>
     )
   }
 
   emitEvent() {
-    this.change.emit(this.el);
+    this.buttonClicked.emit(this.el);
   }
 }

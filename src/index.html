@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
@@ -10,15 +11,17 @@
     .mycoolstyle {
       color: red;
     }
+
     .flex {
       flex: 1
     }
+
     .d-flex {
       display: flex;
     }
-
   </style>
 </head>
+
 <body>
 
   <se-app>
@@ -36,16 +39,16 @@
     </se-navbar>
 
     <se-widget-container>
-      <se-widget style="width: 300px" >
+      <se-widget style="width: 300px">
         <se-widget-header>Filter</se-widget-header>
 
         <se-widget-content>
-            <div class="mycoolstyle">my content</div>
-            <ul>
-              ...
-            </ul>
-            <se-radio-on-off id="switch-el"  />
-            <span id="switch-message"></span>
+          <div class="mycoolstyle">my content</div>
+          <ul>
+            ...
+          </ul>
+          <se-radio-on-off id="switch-el" />
+          <span id="switch-message"></span>
         </se-widget-content>
         <se-widget-footer>
           <se-button mode="standard">Apply</se-button>
@@ -53,34 +56,35 @@
         </se-widget-footer>
       </se-widget>
       <se-widget class="flex">
-          <se-widget-header>Filter</se-widget-header>
-          <se-widget-content>
-            <div class="mycoolstyle">my content</div>
-            <ul>
-              ...
-            </ul>
-            <se-button id="flatBtn1" mode="flat" color="warning">Warning</se-button>
-            <se-button id="loginBtn" mode="login">Login</se-button>
-            <se-button id="signupBtn" mode="signup">Sign Up</se-button>
-            <span id="button-info"></span>
-          </se-widget-content>
-          <se-widget-footer fxLayoutAlign="row">
-            <se-button id="flatBtn2" mode="flat" color="primary">Flat</se-button>
-            <se-button id="raisedBtn" mode="raised" color="primary">Raised</se-button>
-            <se-button id="textBtn1" mode="text">Text</se-button>
-            <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
-          </se-widget-footer>
-        </se-widget>
+        <se-widget-header>Filter</se-widget-header>
+        <se-widget-content>
+          <div class="mycoolstyle">my content</div>
+          <ul>
+            ...
+          </ul>
+          <se-button id="flatBtn1" mode="flat" color="warning">Warning</se-button>
+          <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
+          <se-button id="signupBtn" mode="signup">Sign Up</se-button>
+          <span id="button-info"></span>
+        </se-widget-content>
+        <se-widget-footer fxLayoutAlign="row">
+          <se-button id="flatBtn2" mode="flat" color="primary">Flat</se-button>
+          <se-button id="raisedBtn" mode="raised" color="primary">Raised</se-button>
+          <se-button id="textBtn1" mode="text">Text</se-button>
+          <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
+        </se-widget-footer>
+      </se-widget>
     </se-widget-container>
   </se-app>
 
   <script>
-    document.getElementById('loginBtn').addEventListener('change', function(event) {
-      document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText;
+    document.getElementById('loginBtn').addEventListener('buttonClicked', function (event) {
+      document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText + ', which has an internal value of: ' + event.detail.value;
     });
-    document.getElementById('switch-el').addEventListener('change', function(event) {
+    document.getElementById('switch-el').addEventListener('change', function (event) {
       document.getElementById('switch-message').innerText = 'the selected state is: ' + event.detail.selected;
     });
   </script>
 </body>
+
 </html>

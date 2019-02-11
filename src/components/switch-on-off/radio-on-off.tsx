@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
-import {  } from 'events';
+import { } from 'events';
 
 @Component({
   tag: 'se-radio-on-off',
@@ -27,7 +27,7 @@ export class SwitchOnOffComponent {
   toggleActive() {
     if (!this.isDisabled) {
       this.selected = !this.selected;
-      this.change.emit({selected: this.selected});
+      this.change.emit({ selected: this.selected });
     }
   }
 }
