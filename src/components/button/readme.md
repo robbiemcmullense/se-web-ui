@@ -9,9 +9,9 @@
 
 | Property     | Attribute     | Description | Type                                                  | Default     |
 | ------------ | ------------- | ----------- | ----------------------------------------------------- | ----------- |
-| `appearance` | `appearance`  |             | `"flat" \| "login" \| "raised" \| "signup" \| "text"` | `undefined` |
 | `color`      | `color`       |             | `"accent" \| "error" \| "primary" \| "warn"`          | `undefined` |
 | `isDisabled` | `is-disabled` |             | `boolean`                                             | `false`     |
+| `mode`       | `mode`        |             | `"flat" \| "login" \| "raised" \| "signup" \| "text"` | `undefined` |
 
 
 ## Events

@@ -7,7 +7,7 @@ import { Component, Element, Event, EventEmitter, Prop } from '@stencil/core';
 })
 export class ButtonComponent {
 
-  @Prop() appearance: 'flat' | 'raised' | 'text' | 'login' | 'signup';
+  @Prop() mode: 'flat' | 'raised' | 'text' | 'login' | 'signup';
   @Prop() color: 'primary' | 'accent' | 'warn' | 'error';
   @Prop() isDisabled: boolean = false;
   @Element() el: HTMLElement;
@@ -15,7 +15,7 @@ export class ButtonComponent {
 
   render() {
     return (
-      <button data-appearance={this.appearance} color={this.color} disabled={this.isDisabled} onClick={() => this.emitEvent()}>
+      <button data-mode={this.mode} color={this.color} disabled={this.isDisabled} onClick={() => this.emitEvent()}>
         <slot></slot>
       </button>
     )
@@ -25,6 +25,3 @@ export class ButtonComponent {
     this.change.emit(this.el);
   }
 }
-
-
-

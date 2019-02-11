@@ -28,16 +28,16 @@ button {
     @include button-hover-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
   }
 
-  &[data-appearance="raised"] {
+  &[data-mode="raised"] {
     box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.3);
   }
 
-  &[data-appearance="text"] {
+  &[data-mode="text"] {
     @include background-color-property($se-white, '');
     @include button-hover-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
   }
 
-  &[data-appearance="text"][color="primary"] {
+  &[data-mode="text"][color="primary"] {
     @include color-property($primary, 'primary');
     @include button-hover-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
   }
@@ -47,7 +47,7 @@ button {
     opacity: 0.26;
   }
 
-  &[data-appearance="login"] {
+  &[data-mode="login"] {
     width: 144px;
     font-size: 18px;
     line-height: 22px;
@@ -56,7 +56,7 @@ button {
     @include button-hover-active-properties($se-medium-green, $se-dark-grey, $se-white);
   }
 
-  &[data-appearance="signup"] {
+  &[data-mode="signup"] {
     width: 144px;
     font-size: 18px;
     line-height: 22px;

@@ -16,14 +16,14 @@ export namespace Components {
   interface SeAppAttributes extends StencilHTMLAttributes {}
 
   interface SeButton {
-    'appearance': 'flat' | 'raised' | 'text' | 'login' | 'signup';
     'color': 'primary' | 'accent' | 'warn' | 'error';
     'isDisabled': boolean;
+    'mode': 'flat' | 'raised' | 'text' | 'login' | 'signup';
   }
   interface SeButtonAttributes extends StencilHTMLAttributes {
-    'appearance'?: 'flat' | 'raised' | 'text' | 'login' | 'signup';
     'color'?: 'primary' | 'accent' | 'warn' | 'error';
     'isDisabled'?: boolean;
+    'mode'?: 'flat' | 'raised' | 'text' | 'login' | 'signup';
     'onChange'?: (event: CustomEvent<any>) => void;
   }
 
@@ -53,13 +53,15 @@ export namespace Components {
     'color'?: 'primary' | 'secondary' | 'tab';
   }
 
-  interface SeSwitchOnOff {
+  interface SeRadioOnOff {
     'isDisabled': boolean;
+    'mode': 'default' | 'header';
     'textOff': string;
     'textOn': string;
   }
-  interface SeSwitchOnOffAttributes extends StencilHTMLAttributes {
+  interface SeRadioOnOffAttributes extends StencilHTMLAttributes {
     'isDisabled'?: boolean;
+    'mode'?: 'default' | 'header';
     'onChange'?: (event: CustomEvent<any>) => void;
     'textOff'?: string;
     'textOn'?: string;
@@ -89,7 +91,7 @@ declare global {
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeNavbar': Components.SeNavbar;
-    'SeSwitchOnOff': Components.SeSwitchOnOff;
+    'SeRadioOnOff': Components.SeRadioOnOff;
     'SeWidgetContainer': Components.SeWidgetContainer;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
@@ -104,7 +106,7 @@ declare global {
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-navbar': Components.SeNavbarAttributes;
-    'se-switch-on-off': Components.SeSwitchOnOffAttributes;
+    'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-widget-container': Components.SeWidgetContainerAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
@@ -149,10 +151,10 @@ declare global {
     new (): HTMLSeNavbarElement;
   };
 
-  interface HTMLSeSwitchOnOffElement extends Components.SeSwitchOnOff, HTMLStencilElement {}
-  var HTMLSeSwitchOnOffElement: {
-    prototype: HTMLSeSwitchOnOffElement;
-    new (): HTMLSeSwitchOnOffElement;
+  interface HTMLSeRadioOnOffElement extends Components.SeRadioOnOff, HTMLStencilElement {}
+  var HTMLSeRadioOnOffElement: {
+    prototype: HTMLSeRadioOnOffElement;
+    new (): HTMLSeRadioOnOffElement;
   };
 
   interface HTMLSeWidgetContainerElement extends Components.SeWidgetContainer, HTMLStencilElement {}
@@ -192,7 +194,7 @@ declare global {
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-navbar': HTMLSeNavbarElement
-    'se-switch-on-off': HTMLSeSwitchOnOffElement
+    'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-widget-container': HTMLSeWidgetContainerElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
@@ -207,7 +209,7 @@ declare global {
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-navbar': HTMLSeNavbarElement;
-    'se-switch-on-off': HTMLSeSwitchOnOffElement;
+    'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-widget-container': HTMLSeWidgetContainerElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;

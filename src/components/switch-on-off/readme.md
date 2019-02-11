@@ -1,4 +1,4 @@
-# se-switch-on-off
+# se-radio-on-off
 
 
 
@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type      | Default     |
-| ------------ | ------------- | ----------- | --------- | ----------- |
-| `isDisabled` | `is-disabled` |             | `boolean` | `false`     |
-| `textOff`    | `text-off`    |             | `string`  | `undefined` |
-| `textOn`     | `text-on`     |             | `string`  | `undefined` |
+| Property     | Attribute     | Description | Type                    | Default     |
+| ------------ | ------------- | ----------- | ----------------------- | ----------- |
+| `isDisabled` | `is-disabled` |             | `boolean`               | `false`     |
+| `mode`       | `mode`        |             | `"default" \| "header"` | `'default'` |
+| `textOff`    | `text-off`    |             | `string`                | `'OFF'`     |
+| `textOn`     | `text-on`     |             | `string`                | `'ON'`      |
 
 
 ## Events
