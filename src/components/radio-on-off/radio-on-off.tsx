@@ -6,7 +6,7 @@ import { } from 'events';
   styleUrl: 'radio-on-off.scss',
   shadow: false
 })
-export class SwitchOnOffComponent {
+export class RadioOnOffComponent {
 
   @Prop() mode: 'default' | 'header' = 'default';
   @Prop() textOn: string = 'ON';
@@ -17,7 +17,7 @@ export class SwitchOnOffComponent {
 
   render() {
     return (
-      <div data-mode={this.mode} class={'se-switch-on-off' + (this.isDisabled ? ' disabled' : '')}>
+      <div data-mode={this.mode} class={'se-radio-on-off' + (this.isDisabled ? ' disabled' : '')}>
         <button class={'active' + (this.selected ? ' selected' : '')} onClick={() => this.toggleActive()}>{this.textOn}</button>
         <button class={'inactive' + (!this.selected ? ' selected' : '')} onClick={() => this.toggleActive()}>{this.textOff}</button>
       </div>
