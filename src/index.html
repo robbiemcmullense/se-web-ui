@@ -6,6 +6,8 @@
   <title>Stencil Component Starter</title>
   <script src="build/se-components.js"></script>
 
+  <link rel="stylesheet" href="fonts/css/styles.css"></link>
+  <link rel="stylesheet" href="icons/css/styles.css"></link>
   <style>
     .mycoolstyle {
       color: red;
@@ -16,7 +18,6 @@
     .d-flex {
       display: flex;
     }
-
   </style>
 </head>
 <body>
@@ -28,6 +29,7 @@
         Tenant: <a class="dropdown"> test </a>
       </nav>
       <nav>
+
         <a class="active">Home</a> <a>Components</a> <a>Icons</a>
       </nav>
       <nav slot="end">
@@ -42,7 +44,7 @@
         <se-widget-content>
             <div class="mycoolstyle">my content</div>
             <ul>
-              ...
+              ... <a class="se-icon">3d_convertor</a>
             </ul>
             <se-switch-on-off id="switch" text-on="ON" text-off="OFF" />
             <span id="switch-state"></span>
@@ -89,8 +91,6 @@
     //   document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText;
     // });
   </script>
-  <script src="build/se-components.js"></script>
-
 </body>
 </html>
 

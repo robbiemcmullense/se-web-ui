@@ -51,38 +51,16 @@ This project uses [StencilJs](https://stenciljs.com) to generate web component f
 | [ ]  | Datepicker       |                                                                                                               | `datetime`, `change()`                                                                   |
 | [ ]  | Tooltips         | Design only                                                                                                   | `title`, `message`                                                                       |
 
-## Test it in your app
+## Test it in your app (in progress)
 
-```
+
+```shell
+# With npm
 npm install @se/ui-web-components
+
+# with yarn
+yarn add @se/ui-web-components
 ```
-
-## Getting started
-
-1. Install [NodeJs](https://nodejs.org/en/) if it's not already done.
-2. Install [yarn](https://yarnpkg.com/en/) for better caching. `npm` can be used as well of course.
-3. Run `yarn` to install dependencies of the project and each demo in this repository.
-
-**Demo with NO Framework**
-
-Open `www/index.html` in your browser.
-This demo shows how the app can be used without any framework.
-
-**Demo with REACT**
-
-```
-yarn demo:react
-```
-
-This demo uses a `Widget` react component as a list to loop through the `se-widget` with different content.
-
-**Demo with VUE**
-
-```
-yarn demo:vue
-```
-
-This demo shows a simple interaction with vue framework.
 
 ## Capabilities
 
@@ -104,6 +82,50 @@ Changing `--primary` in one css element, will automatically update all the prima
 ## Contribution
 
 If you want to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more about social coding on Github, new technologies and and their ecosystems and how to make constructive, helpful bug reports, feature requests and the noblest of all contributions: a good, clean pull request.
+
+Each demo has been built around real case, deployment ready, senario. This insure that the component library does not impact any performance or encounter any issue regarding to leazy loading module and such.
+
+### Set up your env
+
+1. Install [NodeJs](https://nodejs.org/en/) if it's not already done.
+2. Install [yarn](https://yarnpkg.com/en/) for better caching. `npm` can be used as well of course.
+3. Run `yarn` to install dependencies of the project and each demo in this repository.
+
+**Demo with NO Framework**
+
+Open `www/index.html` in your browser.
+This demo shows how the app can be used without any framework.
+
+**Demo with REACT**
+
+The React project built based React reference app.
+
+```
+yarn demo:react
+```
+
+This demo uses a `Widget` react component as a list to loop through the `se-widget` with different content.
+
+**Demo with VUE**
+
+The Vue project built based Vue reference app.
+
+```
+yarn demo:vue
+```
+
+This demo shows a simple interaction with vue framework.
+
+
+**Demo with Angular**
+
+Created using [Angular](https://angular.io) framework based on the generated architecture with [EcoStruxure App DSK](https://seappsdk.dev.struxurewarecloud.com) and trying to match with current implementation of the web-framework
+
+```
+yarn demo:vue
+```
+
+This demo shows a simple interaction with vue framework.
 
 ### How to make a clean pull request
 

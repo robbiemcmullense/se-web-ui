@@ -1,0 +1,25 @@
+<se-widget  >
+  <se-widget-header>Widget 1 - {{id}}</se-widget-header>
+  <se-widget-content>
+    <div class="mycoolstyle">my content</div>
+    <ul>
+      ...
+    </ul>
+    <se-switch-on-off id="switch" text-on="ON" text-off="OFF"></se-switch-on-off>
+  </se-widget-content>
+  <se-widget-footer>
+    <se-button appearance="standard">Apply</se-button>
+    <se-button appearance="raised">Apply</se-button>
+  </se-widget-footer>
+  <!-- <header fxLayoutAlign="space-between start">
+    <div fxFlex>
+      Widget 1 - {{id}}
+    </div>
+    <div  fxLayout="row" style="margin-top: -11px;">
+      <button mat-icon-button (click)="toggleSize()">
+        <mat-icon *ngIf="toggleable && !enlarged" aria-label="increase widget size">fullscreen</mat-icon>
+        <mat-icon *ngIf="toggleable && enlarged" aria-label="decrease widget size">fullscreen_exit</mat-icon>
+      </button>
+    </div>
+  </header> -->
+</se-widget>

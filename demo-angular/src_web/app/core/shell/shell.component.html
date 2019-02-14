@@ -1,0 +1,24 @@
+<se-app>
+
+  <app-header></app-header>
+
+  <se-navbar color='primary'>
+    <nav slot="start">
+      Tenant:
+      <a class="dropdown">
+        test
+      </a>
+    </nav>
+    <nav>
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/docs" routerLinkActive="active">Docs</a>
+    </nav>
+    <nav slot="end">
+      <a href="">End</a>
+    </nav>
+  </se-navbar>
+  <se-widget-container>
+        <router-outlet></router-outlet>
+  </se-widget-container>
+</se-app>
