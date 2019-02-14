@@ -16,19 +16,101 @@ export namespace Components {
   interface SeAppAttributes extends StencilHTMLAttributes {}
 
   interface SeButton {
+    /**
+    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
     'color': 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Optional property that determines if your button includes an icon.
+    */
     'icon': string;
-    'isDisabled': boolean;
-    'mode': 'flat' | 'raised' | 'text' | 'login' | 'signup';
+    /**
+    * Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `text` mode has no border or background color. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application.
+    */
+    'mode': 'flat' | 'raised' | 'outline' | 'text' | 'login' | 'signup';
+    /**
+    * Set a selected button from the parent component.
+    */
+    'setActive': (val: boolean) => void;
+    /**
+    * Set a color for your button from the parent component.
+    */
+    'setColor': (val: "primary" | "accent" | "warn" | "error") => void;
+    /**
+    * Set the disabled property for your button from the parent component.
+    */
+    'setDisabled': (val: boolean) => void;
+    /**
+    * Indicate if the button is part of a group of buttons within the `se-buttons` component.
+    */
+    'setGrouped': () => void;
+    /**
+    * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
+    */
     'value': string;
   }
   interface SeButtonAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
     'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Optional property that determines if your button includes an icon.
+    */
     'icon'?: string;
-    'isDisabled'?: boolean;
-    'mode'?: 'flat' | 'raised' | 'text' | 'login' | 'signup';
-    'onButtonClicked'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `text` mode has no border or background color. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application.
+    */
+    'mode'?: 'flat' | 'raised' | 'outline' | 'text' | 'login' | 'signup';
+    /**
+    * Passes button data to the parent component on a click.
+    */
+    'onClicked'?: (event: CustomEvent<any>) => void;
+    /**
+    * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
+    */
     'value'?: string;
+  }
+
+  interface SeButtons {
+    /**
+    * Optional property that defines the background color of each button in the group. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color': 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` mode indicates that only one button in the group can be selected at a time.
+    */
+    'mode': 'checkbox' | 'radio';
+  }
+  interface SeButtonsAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines the background color of each button in the group. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` mode indicates that only one button in the group can be selected at a time.
+    */
+    'mode'?: 'checkbox' | 'radio';
+    /**
+    * Passes the selected button value to the parent component when clicking on a button in the group.
+    */
+    'onChange'?: (event: CustomEvent) => void;
   }
 
   interface SeHeader {
@@ -58,16 +140,43 @@ export namespace Components {
   }
 
   interface SeRadioOnOff {
-    'isDisabled': boolean;
+    /**
+    * Optional property that defines if the radio on/off switch is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the visual appearance of the on/off radio switch. `default` is the default mode. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
+    */
     'mode': 'default' | 'header';
+    /**
+    * Defines the text the user will see for the "off" or "inactive" part of the radio switch.
+    */
     'textOff': string;
+    /**
+    * Defines the text the user will see for the "on" or "active" part of the radio switch.
+    */
     'textOn': string;
   }
   interface SeRadioOnOffAttributes extends StencilHTMLAttributes {
-    'isDisabled'?: boolean;
+    /**
+    * Optional property that defines if the radio on/off switch is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Defines the visual appearance of the on/off radio switch. `default` is the default mode. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
+    */
     'mode'?: 'default' | 'header';
+    /**
+    * Passes the current state (true or false) to the parent component when clicking on a button in the group.
+    */
     'onChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the text the user will see for the "off" or "inactive" part of the radio switch.
+    */
     'textOff'?: string;
+    /**
+    * Defines the text the user will see for the "on" or "active" part of the radio switch.
+    */
     'textOn'?: string;
   }
 
@@ -91,6 +200,7 @@ declare global {
   interface StencilElementInterfaces {
     'SeApp': Components.SeApp;
     'SeButton': Components.SeButton;
+    'SeButtons': Components.SeButtons;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
@@ -106,6 +216,7 @@ declare global {
   interface StencilIntrinsicElements {
     'se-app': Components.SeAppAttributes;
     'se-button': Components.SeButtonAttributes;
+    'se-buttons': Components.SeButtonsAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
@@ -129,6 +240,12 @@ declare global {
   var HTMLSeButtonElement: {
     prototype: HTMLSeButtonElement;
     new (): HTMLSeButtonElement;
+  };
+
+  interface HTMLSeButtonsElement extends Components.SeButtons, HTMLStencilElement {}
+  var HTMLSeButtonsElement: {
+    prototype: HTMLSeButtonsElement;
+    new (): HTMLSeButtonsElement;
   };
 
   interface HTMLSeHeaderElement extends Components.SeHeader, HTMLStencilElement {}
@@ -194,6 +311,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'se-app': HTMLSeAppElement
     'se-button': HTMLSeButtonElement
+    'se-buttons': HTMLSeButtonsElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
@@ -209,6 +327,7 @@ declare global {
   interface ElementTagNameMap {
     'se-app': HTMLSeAppElement;
     'se-button': HTMLSeButtonElement;
+    'se-buttons': HTMLSeButtonsElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;

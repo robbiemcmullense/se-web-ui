@@ -22,9 +22,9 @@ $prefix: "--"; //Prefix string for custom CSS properties
 
 
 
-@mixin button-hover-active-properties($bg-hover-color, $bg-active-color, $text-active-color) {
+@mixin button-active-properties($bg-hover-color, $bg-active-color, $text-active-color) {
   &:not([disabled]) {
-    &:hover {
+    &:hover, &:focus {
       background-color: $bg-hover-color;
     }
     &:active {

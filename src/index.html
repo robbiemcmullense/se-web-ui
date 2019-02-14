@@ -45,14 +45,26 @@
         <se-widget-content>
           <div class="mycoolstyle">my content</div>
           <ul>
-            ...
+            <li id="switch-message">the selected state of the on/off switch is: <span></span></li>  
           </ul>
-          <se-radio-on-off id="switch-el" />
-          <span id="switch-message"></span>
+          <se-radio-on-off id="switch-el"></se-radio-on-off>
+          <ul>
+            <li id="radio-message">selected radio button: <span></span></li>
+          </ul>
+          <se-buttons id="RadioGroup1" mode="radio">
+            <se-button value="left">Radio1</se-button>
+            <se-button value="right">Radio2</se-button>
+          </se-buttons>
         </se-widget-content>
         <se-widget-footer>
-          <se-button mode="standard">Apply</se-button>
-          <se-button mode="raised">Apply</se-button>
+          <ul>
+            <li id="checkbox-message">selected checkbox buttons: <span>none</span></li>
+          </ul>
+          <se-buttons id="btnGroup1" mode="checkbox" color="accent">
+            <se-button value="first">Check1</se-button>
+            <se-button value="second">Check2</se-button>
+            <se-button value="third">Check3</se-button>
+          </se-buttons>
         </se-widget-footer>
       </se-widget>
       <se-widget class="flex">
@@ -62,14 +74,17 @@
           <ul>
             ...
           </ul>
-          <se-button id="flatBtn1" mode="flat" color="warning">Warning</se-button>
+          <se-button id="flatBtn1" mode="flat" color="error" >Warning</se-button>
           <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
+          <se-button mode="outline">Outline</se-button>
           <span id="button-info"></span>
         </se-widget-content>
         <se-widget-footer fxLayoutAlign="row">
-          <se-button id="flatBtn2" mode="flat" color="primary">Flat</se-button>
-          <se-button id="raisedBtn" mode="raised" color="primary">Raised</se-button>
+            <se-button mode="flat">Flat</se-button>
+          <se-button mode="flat" color="primary">FlatGreen</se-button>
+          <se-button id="raisedBtn" mode="raised">Raised</se-button>
+          <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
           <se-button id="textBtn1" mode="text">Text</se-button>
           <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
         </se-widget-footer>
@@ -78,12 +93,26 @@
   </se-app>
 
   <script>
-    document.getElementById('loginBtn').addEventListener('buttonClicked', function (event) {
+    document.getElementById('loginBtn').addEventListener('clicked', function (event) {
       document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText + ', which has an internal value of: ' + event.detail.value;
     });
     document.getElementById('switch-el').addEventListener('change', function (event) {
-      document.getElementById('switch-message').innerText = 'the selected state is: ' + event.detail.selected;
+      document.getElementById('switch-message').firstElementChild.innerText = event.detail.selected;
     });
+    document.getElementById('RadioGroup1').addEventListener('change', function (event) {
+      document.getElementById('radio-message').firstElementChild.innerText = event.detail;
+    });
+    document.getElementById('btnGroup1').addEventListener('change', function (event) {
+      let checkboxMsg = document.getElementById('checkbox-message');
+      checkboxMsg.firstElementChild.innerText = '';
+      event.detail.forEach(function(item) {
+        checkboxMsg.firstElementChild.innerText += ' ' + item;
+      });
+      if (!event.detail.length) {
+        checkboxMsg.firstElementChild.innerText = 'none';
+      }
+    });
+    
   </script>
 </body>
 

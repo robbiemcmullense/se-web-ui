@@ -1,67 +1,170 @@
 @import "../../theme/theme-variables";
 
-button {
-  @include color-property($se-anthracite-grey, '');
-  @include background-color-property($se-ultra-light-grey-1, '');
-  height: 32px;
-  width: 96px;
-  padding: 0;
-  border: none;
-  border-radius: $border-radius;
-  outline: none;
-  font-size: 14px;
-  font-family: Nunito, Roboto, monospace;
-  line-height: 17px;
-  font-weight: 300;
-  cursor: pointer;
-  @include button-hover-active-properties($background, $se-dark-grey, $se-white);
+:host {
+  button {
+    @include color-property($se-anthracite-grey, '');
+    @include background-color-property($se-ultra-light-grey-1, '');
+    padding: 6px 34px;
+    border: none;
+    border-radius: $border-radius;
+    outline: none;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 300;
+    cursor: pointer;
+    @include button-active-properties($background, $se-dark-grey, $se-white);
+    
+    &[color="primary"] {
+      @include background-color-property($primary, 'primary');
+      @include color-property($se-white, '');
+      @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
+    }
   
-  &[color="primary"] {
-    @include background-color-property($primary, 'primary');
+    &[color="error"] {
+      @include background-color-property($error, 'error');
+      @include color-property($se-white, '');
+      @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
+    }
+  
+    &[data-mode="raised"] {
+      box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.3);
+    }
+
+    &[data-mode="outline"] {
+      @include background-color-property($se-white, '');
+      @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
+      border: 1px solid $se-anthracite-grey;
+    }
+  
+    &[data-mode="text"] {
+      @include background-color-property($se-white, '');
+      @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
+    }
+  
+    &[data-mode="text"][color="primary"] {
+      @include color-property($primary, 'primary');
+      @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
+    }
+  
+    &[disabled] {
+      cursor: default;
+      opacity: 0.26;
+    }
+  
+    &[data-mode="login"] {
+      padding: 4px 50px;
+      font-size: 18px;
+      line-height: 22px;
+      @include background-color-property($primary, 'primary');
+      @include color-property($se-white, '');
+      @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
+    }
+  
+    &[data-mode="signup"] {
+      padding: 4px 40px;
+      font-size: 18px;
+      line-height: 22px;
+      @include background-color-property($accent, 'accent');
+      @include color-property($se-white, '');
+      @include button-active-properties($se-dark-sky-blue, $se-dark-grey, $se-white);
+    }
+  }
+}
+  
+:host(.grouped) {
+  button {
+    padding: 4px 14px;
+    font-size: 11px;
+    line-height: 13px;
+    border-left: 1px solid $se-anthracite-grey;
+  }
+}
+
+:host(.grouped.active) {
+  button {
     @include color-property($se-white, '');
-    @include button-hover-active-properties($se-medium-green, $se-dark-grey, $se-white);
+    @include background-color-property($se-dark-grey, '');
   }
+}
 
-  &[color="warning"] {
-    @include background-color-property($error, 'error');
-    @include color-property($se-white, '');
-    @include button-hover-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
+:host(.grouped:first-child) {
+  button {
+    border-left: none;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
   }
+}
 
-  &[data-mode="raised"] {
-    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.3);
+:host(.grouped:last-child) {
+  button {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
   }
+}
 
-  &[data-mode="text"] {
-    @include background-color-property($se-white, '');
-    @include button-hover-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-  }
-
-  &[data-mode="text"][color="primary"] {
-    @include color-property($primary, 'primary');
-    @include button-hover-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-  }
-
-  &[disabled] {
+:host(.disabled) {
+  button {
     cursor: default;
     opacity: 0.26;
+    &:hover, &:focus {
+      background-color: $se-ultra-light-grey-1;
+      color: inherit;
+    }
   }
+}
 
-  &[data-mode="login"] {
-    width: 144px;
-    font-size: 18px;
-    line-height: 22px;
+:host(.primary) {
+  button {
     @include background-color-property($primary, 'primary');
     @include color-property($se-white, '');
-    @include button-hover-active-properties($se-medium-green, $se-dark-grey, $se-white);
+	  @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
   }
+}
 
-  &[data-mode="signup"] {
-    width: 144px;
-    font-size: 18px;
-    line-height: 22px;
+:host(.primary.active) {
+  button, button:focus {
+    @include background-color-property($se-dark-green, '');
+  }
+}
+
+:host(.accent) {
+  button {
     @include background-color-property($accent, 'accent');
     @include color-property($se-white, '');
-    @include button-hover-active-properties($se-dark-sky-blue, $se-dark-grey, $se-white);
+	  @include button-active-properties($se-dark-sky-blue, $se-dark-grey, $se-white);
+  }
+}
+
+:host(.accent.active) {
+  button, button:focus {
+    @include background-color-property($se-dark-sky-blue, '');
+  }
+}
+
+:host(.warn) {
+  button {
+    @include background-color-property($warn, 'warn');
+    @include color-property($se-white, '');
+	  @include button-active-properties($se-sunflower-yellow, $se-dark-grey, $se-white);
+  }
+}
+
+:host(.warn.active) {
+  button, button:focus {
+    @include background-color-property($se-sunflower-yellow, '');
+  }
+}
+
+:host(.error) {
+  button {
+    @include background-color-property($error, 'error');
+    @include color-property($se-white, '');
+	  @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
+  }
+}
+
+:host(.error.active) {
+  button, button:focus {
+    @include background-color-property($se-fuchsia-red, '');
   }
 }
