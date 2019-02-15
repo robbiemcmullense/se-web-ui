@@ -1,0 +1,13 @@
+<se-modal [title]="data.title">
+  <div fxFlex>
+    <se-table
+      [rows]="rows"
+      [columns]="columns"
+      [scrollable]="false">
+    </se-table>
+  </div>
+  <footer>
+    <se-button *ngIf="!data.alert">{{data.cancelButton}}</se-button>
+    <se-button >{{data.okButton}}</se-button>
+  </footer>
+</se-modal>

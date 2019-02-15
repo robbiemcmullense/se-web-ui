@@ -1,0 +1,27 @@
+<!-- <se-widget-container></se-widget-container> -->
+<div fxLayout="row" fxFill>
+  <se-widget fxFlex="300px">
+    <se-widget-header>sites</se-widget-header>
+    <se-widget-content>
+      <mat-list class="has-scroll" fxFlex>
+        <mat-list-item *ngFor="let site of sites" (click)="changeSite(site.id)" class="clickable" [class.selected]="site.id === selectedSite">
+          <mat-icon mat-list-icon>business</mat-icon>
+          <h4 mat-line>{{site.name}} </h4>
+          <p mat-line> ID :  {{site.id}}  </p>
+        </mat-list-item>
+      </mat-list>
+    </se-widget-content>
+  </se-widget>
+  <se-widget-container >
+    <div fxFlex class="gridAnimation">
+      <mat-grid-list [cols]="nbCols" rowHeight="300px" >
+          <mat-grid-tile
+              *ngFor="let tile of tiles"
+              [colspan]="tile.cols"
+              [rowspan]="tile.cols">
+              <ng-container dynamicWidget [type]="tile.widgetType" [siteId]="selectedSite" [enlarged]="tile.cols === 2" [toggleable]="nbCols !== 1" (toggle)="toggleSize($event, tile)"></ng-container>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+  </se-widget-container>
+</div>

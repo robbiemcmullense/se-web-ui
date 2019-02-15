@@ -10,6 +10,6 @@ export class IconSchneiderComponent {
 
   render() {
     // return <div innerHTML={svgContent}></div>;
-    return <span>schneider</span>
+    return <span>schneider Logo</span>
   }
 }
