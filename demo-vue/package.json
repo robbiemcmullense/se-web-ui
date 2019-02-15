@@ -5,14 +5,15 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "upgrade:web": "yarn upgrade @se/ui-web-components"
   },
   "dependencies": {
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.0.4",
-    "@se/ui-web-components": "file:../core"
+    "@se/ui-web-components": "file:../core",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
@@ -27,7 +28,9 @@
     "lintOnSave": true
   },
   "babel": {
-    "presets": ["@vue/app"]
+    "presets": [
+      "@vue/app"
+    ]
   },
   "eslintConfig": {
     "root": true,
@@ -51,5 +54,9 @@
       "autoprefixer": {}
     }
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 9"]
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 9"
+  ]
 }

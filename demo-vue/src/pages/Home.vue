@@ -4,16 +4,16 @@
       <se-widget-header>Filter</se-widget-header>
 
       <se-widget-content>
-        <div class="mycoolstyle">my content</div>
-        <ul>
-          ...
-        </ul>
-        <se-switch-on-off id="switch" text-on="ON" text-off="OFF" />
-        <span id="switch-state"></span>
+        <se-radio-on-off id="switch-el"></se-radio-on-off>
+        <se-button id="flatBtn1" mode="flat" color="error">Warning</se-button>
+        <se-button mode="login" value="myLoginValue">Login</se-button>
+        <se-button mode="signup">Sign Up</se-button>
       </se-widget-content>
       <se-widget-footer>
-        <se-button appearance="standard">Apply</se-button>
-        <se-button appearance="raised">Apply</se-button>
+        <se-buttons id="RadioGroup1" mode="radio">
+          <se-button value="left">Radio1</se-button>
+          <se-button value="right">Radio2</se-button>
+        </se-buttons>
       </se-widget-footer>
     </se-widget>
     <se-widget class="flex">
@@ -23,20 +23,37 @@
         <ul>
           ...
         </ul>
-        <se-button appearance="flat" color="warning">Warning</se-button>
-        <se-button appearance="login">Login</se-button>
-        <se-button appearance="signup">Sign Up</se-button>
-        <span id="button-info"></span>
+        <div class="button-row">
+          <se-button mode="flat" color="error">Warning</se-button>
+          <se-button mode="login" value="myLoginValue">Login</se-button>
+          <se-button mode="signup">Sign Up</se-button>
+          <se-button mode="outline">Outline</se-button>
+        </div>
+        <div class="button-row">
+          <se-button mode="flat">Flat</se-button>
+          <se-button mode="flat" color="primary">FlatGreen</se-button>
+          <se-button mode="raised">Raised</se-button>
+          <se-button mode="raised" color="primary"
+            >RaisedGreen</se-button
+          >
+          <se-button mode="text">Text</se-button>
+          <se-button mode="text" color="primary"
+            >Primary</se-button
+          >
+        </div>
       </se-widget-content>
-      <se-widget-footer fxLayoutAlign="row">
-        <se-button appearance="flat" color="primary">Flat</se-button>
-        <se-button appearance="raised" color="primary">Raised</se-button>
-        <se-button appearance="text">Text</se-button>
-        <se-button appearance="text" color="primary">Text</se-button>
-      </se-widget-footer>
+      <se-widget-footer> </se-widget-footer>
     </se-widget>
   </se-widget-container>
 </template>
+<style lang="scss">
+.button-row {
+  padding: 10px;
+  se-button {
+    margin: 4px;
+  }
+}
+</style>
 
 <script>
 import Api from "@/Api";

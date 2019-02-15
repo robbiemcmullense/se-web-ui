@@ -9,12 +9,11 @@
           ...
         </ul>
         <se-switch-on-off id="switch" text-on="ON" text-off="OFF" />
-        <span id="switch-state"></span>
       </se-widget-content>
-      <se-widget-footer>
-        <se-button appearance="standard">Apply</se-button>
-        <se-button appearance="raised">Apply</se-button>
-      </se-widget-footer>
+      <se-buttons id="RadioGroup1" mode="radio">
+        <se-button value="left">Radio1</se-button>
+        <se-button value="right">Radio2</se-button>
+      </se-buttons>
     </se-widget>
   </se-widget-container>
 </template>

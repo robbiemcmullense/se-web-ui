@@ -39,12 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           {widgetType : 'widget1', cols: 1},
           {widgetType : 'widget3', cols: 1},
           {widgetType : 'widget4', cols: 1},
-          {widgetType : 'widget5', cols: 1},
-          {widgetType : 'widget7', cols: 1},
-          {widgetType : 'widget8', cols: 1},
-          {widgetType : 'widget6', cols: 1},
-          {widgetType : 'widget9', cols: 1},
-          {widgetType : 'widget10', cols: 1}
+          {widgetType : 'widget5', cols: 1}
       ];
 
   sites: ISite[] = [

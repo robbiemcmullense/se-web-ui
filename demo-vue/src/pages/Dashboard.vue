@@ -7,12 +7,12 @@
         <ul>
           ...
         </ul>
-        <se-switch-on-off id="switch" text-on="ON" text-off="OFF" />
-        <span id="switch-state"></span>
+        <se-radio-on-off id="switch-el"></se-radio-on-off>
       </se-widget-content>
       <se-widget-footer>
-        <se-button appearance="standard">Apply</se-button>
-        <se-button appearance="raised">Apply</se-button>
+        <se-button mode="flat" color="error">Warning</se-button>
+        <se-button mode="login" value="myLoginValue">Login</se-button>
+        <se-button mode="signup">Sign Up</se-button>
       </se-widget-footer>
     </se-widget>
   </se-widget-container>

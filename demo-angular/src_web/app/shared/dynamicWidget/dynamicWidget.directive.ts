@@ -6,22 +6,12 @@ import { Widget1Component } from './widget1/widget1.component';
 import { Widget3Component } from './widget3/widget3.component';
 import { Widget4Component } from './widget4/widget4.component';
 import { Widget5Component } from './widget5/widget5.component';
-import { Widget7Component } from './widget7/widget7.component';
-import { Widget8Component } from './widget8/widget8.component';
-import { Widget6Component } from './widget6/widget6.component';
-import { Widget9Component } from './widget9/widget9.component';
-import { Widget10Component } from './widget10/widget10.component';
 
 const components: { [type: string]: Type<any> } = {
   widget1: Widget1Component,
   widget3: Widget3Component,
   widget4: Widget4Component,
-  widget5: Widget5Component,
-  widget7: Widget7Component,
-  widget8: Widget8Component,
-  widget6: Widget6Component,
-  widget9: Widget9Component,
-  widget10: Widget10Component,
+  widget5: Widget5Component
 };
 
 export interface IWidget {

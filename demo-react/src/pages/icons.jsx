@@ -16,12 +16,17 @@ class Icons extends Component {
             <ul>
               ...
             </ul>
-            <se-switch-on-off id="switch" text-on="ON" text-off="OFF" />
-            <span id="switch-state"></span>
+            <se-radio-on-off ref={this._handleRef}></se-radio-on-off>
           </se-widget-content>
           <se-widget-footer>
-            <se-button appearance="standard">Apply</se-button>
-            <se-button appearance="raised">Apply</se-button>
+          <se-button mode="raised">Raised</se-button>
+            <se-button mode="raised" color="primary">
+              RaisedGreen
+            </se-button>
+            <se-button mode="text">Text</se-button>
+            <se-button mode="text" color="primary">
+              Primary
+            </se-button>
           </se-widget-footer>
         </se-widget>
       </se-widget-container>
