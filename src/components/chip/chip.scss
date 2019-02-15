@@ -5,7 +5,9 @@
 		display: flex;
 		justify-content: space-between;
 		width: 126px;
-		padding: 6px 12px;
+		height: 32px;
+		padding-left: 12px;
+		padding-right: 2px;
 		font-size: 14px;
 		line-height: 17px;
 		text-align: left;
@@ -15,8 +17,13 @@
 		@include color-property($se-anthracite-grey, '');
 		@include background-color-property($se-super-light-grey, '');
 		@include button-active-properties($background, $se-dark-grey, $se-white);
+		.value {
+			padding-top: 8px;
+		}
 		.close {
 			cursor: pointer;
+			font-size: 24px;
+			padding-top: 4px;
 		}
 	}
 }

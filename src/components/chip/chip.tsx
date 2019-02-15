@@ -26,7 +26,7 @@ export class ChipComponent {
     return (
       <div class="se-chip">
         <div class="value">{this.value}</div>
-        <div class="close icon" onClick={() => this.closeChip()}>x</div>
+        <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div>
       </div>
     );
   }
