@@ -113,6 +113,56 @@ export namespace Components {
     'onChange'?: (event: CustomEvent) => void;
   }
 
+  interface SeCheckbox {
+    /**
+    * Defines the background color of the button. `primary` is a green color and is the default value. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color': 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value': string;
+  }
+  interface SeCheckboxAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the background color of the button. `primary` is a green color and is the default value. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Send the checkbox value to the parent component when clicking on the checkbox.
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value'?: string;
+  }
+
+  interface SeChip {
+    /**
+    * The text you want to display in your chip.
+    */
+    'value': string;
+  }
+  interface SeChipAttributes extends StencilHTMLAttributes {
+    /**
+    * Send the chip value to the parent component when clicking the close button of a chip.
+    */
+    'onClicked'?: (event: CustomEvent) => void;
+    /**
+    * The text you want to display in your chip.
+    */
+    'value'?: string;
+  }
+
   interface SeHeader {
     /**
     * Title of the application
@@ -201,6 +251,8 @@ declare global {
     'SeApp': Components.SeApp;
     'SeButton': Components.SeButton;
     'SeButtons': Components.SeButtons;
+    'SeCheckbox': Components.SeCheckbox;
+    'SeChip': Components.SeChip;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
@@ -217,6 +269,8 @@ declare global {
     'se-app': Components.SeAppAttributes;
     'se-button': Components.SeButtonAttributes;
     'se-buttons': Components.SeButtonsAttributes;
+    'se-checkbox': Components.SeCheckboxAttributes;
+    'se-chip': Components.SeChipAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
@@ -246,6 +300,18 @@ declare global {
   var HTMLSeButtonsElement: {
     prototype: HTMLSeButtonsElement;
     new (): HTMLSeButtonsElement;
+  };
+
+  interface HTMLSeCheckboxElement extends Components.SeCheckbox, HTMLStencilElement {}
+  var HTMLSeCheckboxElement: {
+    prototype: HTMLSeCheckboxElement;
+    new (): HTMLSeCheckboxElement;
+  };
+
+  interface HTMLSeChipElement extends Components.SeChip, HTMLStencilElement {}
+  var HTMLSeChipElement: {
+    prototype: HTMLSeChipElement;
+    new (): HTMLSeChipElement;
   };
 
   interface HTMLSeHeaderElement extends Components.SeHeader, HTMLStencilElement {}
@@ -312,6 +378,8 @@ declare global {
     'se-app': HTMLSeAppElement
     'se-button': HTMLSeButtonElement
     'se-buttons': HTMLSeButtonsElement
+    'se-checkbox': HTMLSeCheckboxElement
+    'se-chip': HTMLSeChipElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
@@ -328,6 +396,8 @@ declare global {
     'se-app': HTMLSeAppElement;
     'se-button': HTMLSeButtonElement;
     'se-buttons': HTMLSeButtonsElement;
+    'se-checkbox': HTMLSeCheckboxElement;
+    'se-chip': HTMLSeChipElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;

@@ -50,17 +50,24 @@
           <se-radio-on-off id="switch-el"></se-radio-on-off>
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
+            <li id="checkbox-value">error checkbox value: <span></span></li>
+            <li id="checkbox-message">is error checkbox checked: <span></span></li>
           </ul>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left">Radio1</se-button>
             <se-button value="right">Radio2</se-button>
           </se-buttons>
+          <br />
+          <se-checkbox id="checkbox-primary" value="primary">Primary</se-checkbox>
+          <se-checkbox id="checkbox-accent" value="accent" color="accent">Accent</se-checkbox>
+          <se-checkbox id="checkbox-warn" value="warn" color="warn">Warn</se-checkbox>
+          <se-checkbox id="checkbox-error" value="error" color="error">Error</se-checkbox>
         </se-widget-content>
         <se-widget-footer>
           <ul>
-            <li id="checkbox-message">selected checkbox buttons: <span>none</span></li>
+            <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
           </ul>
-          <se-buttons id="btnGroup1" mode="checkbox" color="accent">
+          <se-buttons id="btnGroup1" mode="checkbox">
             <se-button value="first">Check1</se-button>
             <se-button value="second">Check2</se-button>
             <se-button value="third">Check3</se-button>
@@ -72,13 +79,14 @@
         <se-widget-content>
           <div class="mycoolstyle">my content</div>
           <ul>
-            ...
+            <li id="button-info"></li>
+            <li id="chip-info"></li>
           </ul>
           <se-button id="flatBtn1" mode="flat" color="error" >Warning</se-button>
           <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
           <se-button mode="outline">Outline</se-button>
-          <span id="button-info"></span>
+          <se-chip id="seChip" value="My Chip"></se-chip>
         </se-widget-content>
         <se-widget-footer fxLayoutAlign="row">
             <se-button mode="flat">Flat</se-button>
@@ -96,14 +104,21 @@
     document.getElementById('loginBtn').addEventListener('clicked', function (event) {
       document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText + ', which has an internal value of: ' + event.detail.value;
     });
+    document.getElementById('seChip').addEventListener('clicked', function (event) {
+      document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
+    });
     document.getElementById('switch-el').addEventListener('change', function (event) {
       document.getElementById('switch-message').firstElementChild.innerText = event.detail.selected;
     });
     document.getElementById('RadioGroup1').addEventListener('change', function (event) {
       document.getElementById('radio-message').firstElementChild.innerText = event.detail;
     });
+    document.getElementById('checkbox-error').addEventListener('change', function (event) {
+      document.getElementById('checkbox-message').firstElementChild.innerText = event.detail.selected;
+      document.getElementById('checkbox-value').firstElementChild.innerText = event.detail.value;
+    });
     document.getElementById('btnGroup1').addEventListener('change', function (event) {
-      let checkboxMsg = document.getElementById('checkbox-message');
+      let checkboxMsg = document.getElementById('checkbox-button-message');
       checkboxMsg.firstElementChild.innerText = '';
       event.detail.forEach(function(item) {
         checkboxMsg.firstElementChild.innerText += ' ' + item;

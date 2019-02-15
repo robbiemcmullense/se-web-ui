@@ -1,0 +1,22 @@
+@import "../../theme/theme-variables";
+
+:host {
+	div.se-chip {
+		display: flex;
+		justify-content: space-between;
+		width: 126px;
+		padding: 6px 12px;
+		font-size: 14px;
+		line-height: 17px;
+		text-align: left;
+		outline: none;
+		border: none;
+		border-radius: 16px;
+		@include color-property($se-anthracite-grey, '');
+		@include background-color-property($se-super-light-grey, '');
+		@include button-active-properties($background, $se-dark-grey, $se-white);
+		.close {
+			cursor: pointer;
+		}
+	}
+}
