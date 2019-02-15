@@ -2,9 +2,11 @@ dist/
 !www/favicon.ico
 www/
 docs/build/
-demo-react/public/build/
-demo-vue/public/build/
+!core/package.json
+core/
 
+.nuxt/
+.next/
 *~
 *.sw[mnpcod]
 *.log

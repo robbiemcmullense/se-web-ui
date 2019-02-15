@@ -7,6 +7,8 @@
   <title>Stencil Component Starter</title>
   <script src="build/se-components.js"></script>
 
+  <link rel="stylesheet" href="fonts/css/styles.css"></link>
+  <link rel="stylesheet" href="icons/css/styles.css"></link>
   <style>
     .mycoolstyle {
       color: red;
@@ -31,6 +33,7 @@
         Tenant: <a class="dropdown"> test </a>
       </nav>
       <nav>
+
         <a class="active">Home</a> <a>Components</a> <a>Icons</a>
       </nav>
       <nav slot="end">
@@ -45,7 +48,7 @@
         <se-widget-content>
           <div class="mycoolstyle">my content</div>
           <ul>
-            <li id="switch-message">the selected state of the on/off switch is: <span></span></li>  
+            <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
           </ul>
           <se-radio-on-off id="switch-el"></se-radio-on-off>
           <ul>
@@ -112,7 +115,7 @@
         checkboxMsg.firstElementChild.innerText = 'none';
       }
     });
-    
+
   </script>
 </body>
 
