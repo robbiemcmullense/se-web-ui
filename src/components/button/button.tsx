@@ -89,9 +89,13 @@ export class ButtonComponent {
   }
 
   render() {
+    if (this.icon) {
+      this.el.classList.add('hasIcon');
+    }
+
     return (
       <button data-mode={this.mode} color={this.color} disabled={this.disabled} onClick={() => this.emitEvent()}>
-        {this.icon ? <i class={this.icon}></i> : ''}
+        {this.icon ? <i class="se-icon">{this.icon}</i> : ''}
         <slot></slot>
       </button>
     )
