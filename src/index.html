@@ -27,13 +27,24 @@
 <body>
 
   <se-app>
-    <se-header app-title="Test Advisor"></se-header>
+    <se-header app-title="Test Advisor">
+      <se-sidenav>
+        <se-sidenav-item title="sidenav 1">
+            my first element
+        </se-sidenav-item>
+        <se-sidenav-item title="sidenav 2">
+            my second element
+        </se-sidenav-item>
+        <se-sidenav-item title="sidenav 3">
+            my last element
+        </se-sidenav-item>
+      </se-sidenav>
+    </se-header>
     <se-navbar color="primary">
       <nav slot="start">
         Tenant: <a class="dropdown"> test </a>
       </nav>
       <nav>
-
         <a class="active">Home</a> <a>Components</a> <a>Icons</a>
       </nav>
       <nav slot="end">
