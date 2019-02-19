@@ -1,5 +1,5 @@
 <template>
-  <se-widget-container>
+  <se-container mode="widget">
     <se-widget style="width: 300px">
       <se-widget-header>Icons</se-widget-header>
 
@@ -15,5 +15,5 @@
         <se-button value="right">Radio2</se-button>
       </se-buttons>
     </se-widget>
-  </se-widget-container>
+  </se-container>
 </template>

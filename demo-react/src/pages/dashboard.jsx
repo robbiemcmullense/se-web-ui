@@ -7,7 +7,7 @@ const widgetStyle = {
 class Dashboard extends Component {
   render() {
     return (
-      <se-widget-container>
+      <se-container mode="widget">
         <se-widget style={widgetStyle}>
           <se-widget-header>Filter</se-widget-header>
           <se-widget-content>
@@ -40,7 +40,7 @@ class Dashboard extends Component {
             <se-button mode="raised">Apply</se-button>
           </se-widget-footer>
         </se-widget>
-      </se-widget-container>
+      </se-container>
     );
   }
 }

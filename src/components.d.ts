@@ -113,6 +113,27 @@ export namespace Components {
     'onChange'?: (event: CustomEvent) => void;
   }
 
+  interface SeContainer {
+    /**
+    * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `full` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    */
+    'mode': 'widget' | 'full' | 'centered';
+    /**
+    * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
+    */
+    'position': 'relative' | 'absolute';
+  }
+  interface SeContainerAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `full` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    */
+    'mode'?: 'widget' | 'full' | 'centered';
+    /**
+    * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
+    */
+    'position'?: 'relative' | 'absolute';
+  }
+
   interface SeHeader {
     /**
     * Title of the application
@@ -180,9 +201,6 @@ export namespace Components {
     'textOn'?: string;
   }
 
-  interface SeWidgetContainer {}
-  interface SeWidgetContainerAttributes extends StencilHTMLAttributes {}
-
   interface SeWidgetContent {}
   interface SeWidgetContentAttributes extends StencilHTMLAttributes {}
 
@@ -201,12 +219,12 @@ declare global {
     'SeApp': Components.SeApp;
     'SeButton': Components.SeButton;
     'SeButtons': Components.SeButtons;
+    'SeContainer': Components.SeContainer;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
-    'SeWidgetContainer': Components.SeWidgetContainer;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -217,12 +235,12 @@ declare global {
     'se-app': Components.SeAppAttributes;
     'se-button': Components.SeButtonAttributes;
     'se-buttons': Components.SeButtonsAttributes;
+    'se-container': Components.SeContainerAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
-    'se-widget-container': Components.SeWidgetContainerAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -246,6 +264,12 @@ declare global {
   var HTMLSeButtonsElement: {
     prototype: HTMLSeButtonsElement;
     new (): HTMLSeButtonsElement;
+  };
+
+  interface HTMLSeContainerElement extends Components.SeContainer, HTMLStencilElement {}
+  var HTMLSeContainerElement: {
+    prototype: HTMLSeContainerElement;
+    new (): HTMLSeContainerElement;
   };
 
   interface HTMLSeHeaderElement extends Components.SeHeader, HTMLStencilElement {}
@@ -278,12 +302,6 @@ declare global {
     new (): HTMLSeRadioOnOffElement;
   };
 
-  interface HTMLSeWidgetContainerElement extends Components.SeWidgetContainer, HTMLStencilElement {}
-  var HTMLSeWidgetContainerElement: {
-    prototype: HTMLSeWidgetContainerElement;
-    new (): HTMLSeWidgetContainerElement;
-  };
-
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
   var HTMLSeWidgetContentElement: {
     prototype: HTMLSeWidgetContentElement;
@@ -312,12 +330,12 @@ declare global {
     'se-app': HTMLSeAppElement
     'se-button': HTMLSeButtonElement
     'se-buttons': HTMLSeButtonsElement
+    'se-container': HTMLSeContainerElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
-    'se-widget-container': HTMLSeWidgetContainerElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -328,12 +346,12 @@ declare global {
     'se-app': HTMLSeAppElement;
     'se-button': HTMLSeButtonElement;
     'se-buttons': HTMLSeButtonsElement;
+    'se-container': HTMLSeContainerElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
-    'se-widget-container': HTMLSeWidgetContainerElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;
