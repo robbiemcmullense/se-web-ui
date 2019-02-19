@@ -9,10 +9,10 @@ export class ContainerComponent {
   /**
    * Defines the inner apparance of a container.
    * `widget` Add a small spacing all around the container so all widgets are spaced with the same distance.
-   * `full` Default. Take the full space of the container.
+   * `fill` Default. Take the full space of the container.
    * `centered` center the container so the content does no exceed a max width.
    */
-  @Prop() mode: 'widget' | 'full' | 'centered' = 'full';
+  @Prop() mode: 'widget' | 'fill' | 'centered' = 'fill';
  /**
    * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box.
    * `relative` Default. Perfect to use with flex content.
@@ -24,7 +24,7 @@ export class ContainerComponent {
     return {
       'class': {
         'widget-content': this.mode === 'widget',
-        'full-content': this.mode === 'full',
+        'full-content': this.mode === 'fill',
         'centered-content': this.mode === 'centered',
         'relative': this.position === 'relative',
         'absolute': this.position === 'absolute'
