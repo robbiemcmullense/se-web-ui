@@ -1,8 +1,6 @@
-
 @import "../../theme/theme-variables";
 
 :host  {
-
   box-sizing: border-box;
   height: auto;
   padding: 0;
@@ -14,7 +12,6 @@
   @include display-flex();
   @include flex-direction(row);
   justify-content: space-between;
-  padding: 0 16px;
 
   // Flexbox Vertical Alignment
   flex-direction: row;
@@ -23,7 +20,7 @@
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   white-space: nowrap;
-  background-color: white;
+  @include background-color-property($se-white, '');
 }
 .fill-space {
   @include flex(1);
@@ -36,15 +33,13 @@
   @include flex-direction(row);
 }
 
-
 .d-flex-column {
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
 
   @include display-flex();
   @include flex-direction(column);
 }
-
 
 .header-menu-button{
   margin-left: 6px;
@@ -54,16 +49,18 @@
 }
 
 .header-title, .header-title-type {
-  color: $primary;
-  color: var(--primary, $primary);
+  @include color-property($primary, 'primary');
   padding-left: 18px;
   font-size: 20px;
   line-height: 20px;
   margin-bottom: 8px;
-  margin-top: -1px;
+  margin-top: -8px;
 }
-.header-title-type {
+.header-title-type.se-icon {
+  font-size: 88px;
   line-height: 24px;
+  margin-top: 10px;
+  padding-left: 19px;
 }
 
 .mat-toolbar-single-row {
@@ -79,8 +76,7 @@
   font-weight: 100;
 }
 .user-icon{
-  color: $primary;
-  color: var(--primary, $primary);
+  @include color-property($primary, 'primary');
   z-index: 1;
   font-size: 24px;
   padding-right: 5px;
@@ -115,7 +111,7 @@ se-icon-schneider {
   [header-user], header-user {
     margin-right: 10px;
     .mat-button-wrapper{
-      color: $se-dark-grey;
+      @include color-property($se-dark-grey, '');
       padding: 0 13px;
       font-weight: 100;
 

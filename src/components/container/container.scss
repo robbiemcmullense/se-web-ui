@@ -1,0 +1,51 @@
+@import "../../theme/theme-variables";
+
+
+:host{
+  @include flex();
+  @include display-flex();
+  @include flex-direction(row);
+  overflow: auto;
+}
+:host(.absolute){
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+:host(.relative){
+  position: relative;
+  height: 100%;
+}
+
+
+:host(.widget-content){
+  margin: 0.25rem;
+}
+
+:host(.full-content){
+  margin: 0;
+}
+
+:host(.centered-content){
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  :host(.centered-content) {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  :host(.centered-content) {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  :host(.centered-content) {
+    width: 1170px;
+  }
+}

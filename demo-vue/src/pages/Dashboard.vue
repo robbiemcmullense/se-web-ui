@@ -1,5 +1,5 @@
 <template>
-  <se-widget-container>
+  <se-container mode="widget">
     <se-widget style="width: 300px">
       <se-widget-header>Filter</se-widget-header>
       <se-widget-content>
@@ -15,5 +15,5 @@
         <se-button mode="signup">Sign Up</se-button>
       </se-widget-footer>
     </se-widget>
-  </se-widget-container>
+  </se-container>
 </template>
