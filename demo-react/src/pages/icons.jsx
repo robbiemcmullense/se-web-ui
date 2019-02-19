@@ -7,7 +7,7 @@ const widgetStyle = {
 class Icons extends Component {
   render() {
     return (
-      <se-widget-container>
+      <se-container mode="widget">
         <se-widget style={widgetStyle}>
           <se-widget-header>Icons</se-widget-header>
 
@@ -29,7 +29,7 @@ class Icons extends Component {
             </se-button>
           </se-widget-footer>
         </se-widget>
-      </se-widget-container>
+      </se-container>
     );
   }
 }

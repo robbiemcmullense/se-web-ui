@@ -1,5 +1,5 @@
 <template>
-  <se-widget-container>
+  <se-container mode="widget">
     <se-widget style="width: 300px">
       <se-widget-header>Filter</se-widget-header>
 
@@ -44,7 +44,7 @@
       </se-widget-content>
       <se-widget-footer> </se-widget-footer>
     </se-widget>
-  </se-widget-container>
+  </se-container>
 </template>
 <style lang="scss">
 .button-row {

@@ -39,6 +39,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
           {widgetType : 'widget1', cols: 1},
           {widgetType : 'widget3', cols: 1},
           {widgetType : 'widget4', cols: 1},
+          {widgetType : 'widget5', cols: 1},
+          {widgetType : 'widget1', cols: 1},
+          {widgetType : 'widget1', cols: 1},
+          {widgetType : 'widget3', cols: 1},
+          {widgetType : 'widget4', cols: 1},
           {widgetType : 'widget5', cols: 1}
       ];
 
