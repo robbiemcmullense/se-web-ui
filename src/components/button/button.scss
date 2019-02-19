@@ -13,6 +13,11 @@
     font-weight: 300;
     cursor: pointer;
     @include button-active-properties($background, $se-dark-grey, $se-white);
+
+    .se-icon {
+      font-family: 'se-icon';
+      font-style: normal;
+    }
     
     &[color="primary"] {
       @include background-color-property($primary, 'primary');
@@ -166,5 +171,14 @@
 :host(.error.active) {
   button, button:focus {
     @include background-color-property($se-fuchsia-red, '');
+  }
+}
+
+:host(.hasIcon) {
+  button {
+    font-size: 24px;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
   }
 }
