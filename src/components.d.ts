@@ -198,6 +198,20 @@ export namespace Components {
     'textOn'?: string;
   }
 
+  interface SeSidenavItem {
+    'title': string;
+  }
+  interface SeSidenavItemAttributes extends StencilHTMLAttributes {
+    'title'?: string;
+  }
+
+  interface SeSidenav {
+    'open': boolean;
+  }
+  interface SeSidenavAttributes extends StencilHTMLAttributes {
+    'open'?: boolean;
+  }
+
   interface SeWidgetContent {}
   interface SeWidgetContentAttributes extends StencilHTMLAttributes {}
 
@@ -221,6 +235,8 @@ declare global {
     'SeIconSchneider': Components.SeIconSchneider;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
+    'SeSidenavItem': Components.SeSidenavItem;
+    'SeSidenav': Components.SeSidenav;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -236,6 +252,8 @@ declare global {
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
+    'se-sidenav-item': Components.SeSidenavItemAttributes;
+    'se-sidenav': Components.SeSidenavAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -291,6 +309,18 @@ declare global {
     new (): HTMLSeRadioOnOffElement;
   };
 
+  interface HTMLSeSidenavItemElement extends Components.SeSidenavItem, HTMLStencilElement {}
+  var HTMLSeSidenavItemElement: {
+    prototype: HTMLSeSidenavItemElement;
+    new (): HTMLSeSidenavItemElement;
+  };
+
+  interface HTMLSeSidenavElement extends Components.SeSidenav, HTMLStencilElement {}
+  var HTMLSeSidenavElement: {
+    prototype: HTMLSeSidenavElement;
+    new (): HTMLSeSidenavElement;
+  };
+
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
   var HTMLSeWidgetContentElement: {
     prototype: HTMLSeWidgetContentElement;
@@ -324,6 +354,8 @@ declare global {
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
+    'se-sidenav-item': HTMLSeSidenavItemElement
+    'se-sidenav': HTMLSeSidenavElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -339,6 +371,8 @@ declare global {
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
+    'se-sidenav-item': HTMLSeSidenavItemElement;
+    'se-sidenav': HTMLSeSidenavElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;

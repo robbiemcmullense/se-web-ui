@@ -1,10 +1,10 @@
-import { Component, Method, Element, Prop, Listen } from '@stencil/core';
+import { Component, Element, Prop } from '@stencil/core';
 import { } from 'events';
 
 
 const SHOW_MENU = 'show-menu';
 const SHOW_BACKDROP = 'show-backdrop';
-const MENU_CONTENT_OPEN = 'menu-content-open';
+// const MENU_CONTENT_OPEN = 'menu-content-open';
 
 @Component({
   tag: 'se-sidenav',
@@ -33,7 +33,7 @@ export class SidenavComponent {
   //   }
   // }
 
-  private beforeAnimation(shouldOpen: boolean) {
+  private beforeAnimation() {
     this.el.classList.add(SHOW_MENU);
     this.backdropEl.classList.add(SHOW_BACKDROP);
     if (this.open) {
@@ -54,6 +54,7 @@ export class SidenavComponent {
   }
 
   render() {
+    this.beforeAnimation();
     return [
       <div class="sidenav-scrim"  ref={el => this.backdropEl = el}></div>,
       <div class="sidenav-content" ref={el => this.menuInnerEl = el}>
