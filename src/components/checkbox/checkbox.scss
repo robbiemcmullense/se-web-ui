@@ -64,9 +64,3 @@
 		}
 	}
 }
-
-:host([color="accent"]) {
-	input:checked ~ checkmark {
-		@include background-color-property($accent, 'accent');
-	}
-}
