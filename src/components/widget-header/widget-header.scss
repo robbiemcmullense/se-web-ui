@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host{
   padding: $spacing;
@@ -8,5 +8,8 @@
   position: relative;
 
   @include display-flex();
-  @include align-items(center)
+  @include align-items(center);
+  .flex{
+    @include flex();
+  }
 }

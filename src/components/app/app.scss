@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :root {
   @include define-custom-property("primary", $primary);

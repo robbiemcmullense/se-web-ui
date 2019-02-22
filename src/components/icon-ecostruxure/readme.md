@@ -1,21 +1,8 @@
-# se-sidenav
+# se-icon-ecostruxure
 
 
 
 <!-- Auto Generated Below -->
-
-
-## Methods
-
-### `toggle() => void`
-
-
-
-#### Returns
-
-Type: `void`
-
-
 
 
 ----------------------------------------------

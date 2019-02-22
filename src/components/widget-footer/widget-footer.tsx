@@ -7,8 +7,9 @@ import { Component } from "@stencil/core";
 })
 export class WidgetFooter {
   render() {
-    return (
-      <slot />
-    );
+    return [
+      <div class="flex"><slot /></div>,
+      <slot name="end"/>
+    ];
   }
 }

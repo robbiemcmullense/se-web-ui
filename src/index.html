@@ -21,22 +21,45 @@
     .d-flex {
       display: flex;
     }
+
+    .se-link-container {
+      margin: 5px;
+    }
   </style>
 </head>
 
 <body>
-
   <se-app>
     <se-header app-title="Test Advisor">
       <se-sidenav>
-        <se-sidenav-item title="sidenav 1">
-            my first element
+        <se-sidenav-item nav-title="sidenav 1">
+          <se-widget mode="fill">
+            <se-widget-header>some title</se-widget-header>
+            <se-widget-content>
+              <se-chip id="se-chip" value="Chip 01"></se-chip>
+            </se-widget-content>
+            <se-widget-footer>
+              <div slot="end">
+                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+              </div>
+            </se-widget-footer>
+          </se-widget>
         </se-sidenav-item>
-        <se-sidenav-item title="sidenav 2">
-            my second element
+        <se-sidenav-item nav-title="sidenav 2">
+          <se-widget mode="fill">
+            <se-widget-header>some widget design</se-widget-header>
+            <se-widget-content>
+              <se-chip id="se-chip" value="Chip 01"></se-chip>
+            </se-widget-content>
+            <se-widget-footer>
+              <div slot="end">
+                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+              </div>
+            </se-widget-footer>
+          </se-widget>
         </se-sidenav-item>
-        <se-sidenav-item title="sidenav 3">
-            my last element
+        <se-sidenav-item nav-title="sidenav 3">
+            <div>A simple div</div>
         </se-sidenav-item>
       </se-sidenav>
     </se-header>
@@ -51,9 +74,8 @@
         <a>End</a>
       </nav>
     </se-navbar>
-
     <se-container mode="widget">
-      <se-widget style="width: 300px">
+      <se-widget>
         <se-widget-header>Filter</se-widget-header>
 
         <se-widget-content>
@@ -64,16 +86,22 @@
           <se-radio-on-off id="switch-el"></se-radio-on-off>
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
+            <li id="checkbox-value">error checkbox value: <span></span></li>
+            <li id="checkbox-message">is error checkbox checked: <span></span></li>
           </ul>
           <se-divider></se-divider>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left" icon="arrow2_left"></se-button>
             <se-button value="right"icon="arrow2_right"></se-button>
           </se-buttons>
+          <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary">Primary</se-checkbox>
+          <se-checkbox id="checkbox-accent" value="accent" color="accent">Accent</se-checkbox>
+          <se-checkbox id="checkbox-warn" value="warn" color="warn">Warn</se-checkbox>
+          <se-checkbox id="checkbox-error" value="error" color="error">Error</se-checkbox>
         </se-widget-content>
         <se-widget-footer>
           <ul>
-            <li id="checkbox-message">selected checkbox buttons: <span>none</span></li>
+            <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
           </ul>
           <se-buttons id="btnGroup1" mode="checkbox">
             <se-button value="first">Check1</se-button>
@@ -82,12 +110,13 @@
           </se-buttons>
         </se-widget-footer>
       </se-widget>
-      <se-widget class="flex">
+      <se-widget>
         <se-widget-header>Filter</se-widget-header>
         <se-widget-content>
           <div class="mycoolstyle">my content</div>
           <ul>
-            ...
+            <li id="button-info"></li>
+            <li id="chip-info"></li>
           </ul>
           <se-button id="flatBtn1" mode="flat" color="error" >Warning</se-button>
           <se-divider mode="vertical"></se-divider>
@@ -96,15 +125,31 @@
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
           <se-button mode="outline">Outline</se-button>
           <se-button icon="action_resize" value="resize"></se-button>
-          <span id="button-info"></span>
-        </se-widget-content>
-        <se-widget-footer fxLayoutAlign="row">
-            <se-button mode="flat">Flat</se-button>
+          <se-chip id="se-chip" value="Chip 01"></se-chip>
+          <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="Link to Google"></se-link>
+          </div>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
+          </div>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="Link to Google" disabled="true"></se-link>
+          </div>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="External Link to Google" type="external" disabled="true"></se-link>
+          </div>
+          <se-button mode="flat">Flat</se-button>
           <se-button mode="flat" color="primary">FlatGreen</se-button>
           <se-button id="raisedBtn" mode="raised">Raised</se-button>
           <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
           <se-button id="textBtn1" mode="text">Text</se-button>
           <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
+        </se-widget-content>
+        <se-widget-footer>
+          <div slot="end">
+              <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
+          </div>
         </se-widget-footer>
       </se-widget>
     </se-container>
@@ -114,14 +159,21 @@
     document.getElementById('loginBtn').addEventListener('clicked', function (event) {
       document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText + ', which has an internal value of: ' + event.detail.value;
     });
+    document.getElementById('se-chip').addEventListener('close', function (event) {
+      document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
+    });
     document.getElementById('switch-el').addEventListener('change', function (event) {
       document.getElementById('switch-message').firstElementChild.innerText = event.detail.selected;
     });
     document.getElementById('RadioGroup1').addEventListener('change', function (event) {
       document.getElementById('radio-message').firstElementChild.innerText = event.detail;
     });
+    document.getElementById('checkbox-error').addEventListener('change', function (event) {
+      document.getElementById('checkbox-message').firstElementChild.innerText = event.detail.selected;
+      document.getElementById('checkbox-value').firstElementChild.innerText = event.detail.value;
+    });
     document.getElementById('btnGroup1').addEventListener('change', function (event) {
-      let checkboxMsg = document.getElementById('checkbox-message');
+      let checkboxMsg = document.getElementById('checkbox-button-message');
       checkboxMsg.firstElementChild.innerText = '';
       event.detail.forEach(function(item) {
         checkboxMsg.firstElementChild.innerText += ' ' + item;
@@ -130,7 +182,6 @@
         checkboxMsg.firstElementChild.innerText = 'none';
       }
     });
-
   </script>
 </body>
 

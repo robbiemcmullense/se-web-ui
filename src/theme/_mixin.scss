@@ -28,6 +28,16 @@ $prefix: "--"; //Prefix string for custom CSS properties
   right: $right;
 }
 
+@mixin animated($speed: ''){
+  @if $speed == 'slow' {
+    animation-duration: 1s;
+  } @else {
+    animation-duration: .2s;
+  }
+  animation-duration: .2s;
+  animation-fill-mode: both;
+}
+
 @mixin button-active-properties($bg-hover-color, $bg-active-color, $text-active-color) {
   &:not([disabled]) {
     &:hover, &:focus {

@@ -1,1 +1,6 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
+
+:host(.navitem-hidden) {
+  /* stylelint-disable-next-line declaration-no-important */
+  display: none !important;
+}

@@ -7,9 +7,23 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `title`  | `title`   |             | `string` | `'default'` |
+| Property   | Attribute   | Description                          | Type      | Default     |
+| ---------- | ----------- | ------------------------------------ | --------- | ----------- |
+| `active`   | `active`    | Defines if the tab is active or not. | `boolean` | `false`     |
+| `navTitle` | `nav-title` | Define the title of the tab          | `string`  | `undefined` |
+
+
+## Methods
+
+### `setActive() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------

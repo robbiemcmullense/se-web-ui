@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host {
   position: relative;
@@ -6,7 +6,9 @@
   border-top: 2px solid $widget-footer-border-color;
   // @include display-flex();
   @include align-items(center);
-  &.buttons{
-    text-align: right; // right align buttons
+  @include display-flex();
+
+  .flex{
+    @include flex();
   }
 }

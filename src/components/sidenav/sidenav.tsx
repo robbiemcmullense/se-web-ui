@@ -15,14 +15,13 @@ export class SidenavComponent {
   @Element() el: HTMLElement;
 
   @State() open: boolean = false;
+  @State() items: HTMLElement[] = [];
+  @State() selectedItem?: HTMLElement;
 
   @Method()
   toggle(): void {
     console.log('toggle')
     this.open = !this.open;
-  }
-
-  async componentDidUpdate() {
     if (this.open) {
       // Add css classes
       this.el.classList.add(SHOW_MENU);
@@ -34,6 +33,33 @@ export class SidenavComponent {
       });
 
     }
+  }
+
+  async componentWillLoad() {
+    this.items = Array.from(this.el.querySelectorAll('se-sidenav-item'));
+  }
+
+  componentDidLoad() {
+    this.initSelect();
+  }
+
+  componentDidUnload() {
+    this.items.length = 0;
+    this.selectedItem = undefined;
+  }
+
+  private async initSelect(): Promise<void> {
+    if(!this.selectedItem) {
+      this.setActive(this.items[0]);
+    }
+  }
+
+  private setActive(item: any): void {
+    this.items.forEach((item: any) => {
+      item.active = false;
+    })
+    item.active = true;
+    this.selectedItem = item;
   }
 
   private addAnimation(callback) {
@@ -56,11 +82,41 @@ export class SidenavComponent {
     }, 500);
   }
 
+  renderList() {
+    return this.items.map((item: any) => {
+      return [
+        <div onClick={() => this.setActive(item)} class={item.active ? 'navItem selected' : 'navItem'}> {item.navTitle} </div>,
+        <se-divider></se-divider>
+      ]
+    })
+  }
+
   render() {
     return [
       <div class="menu-background animated" onClick={() => this.toggle()}  ref={el => this.backdropEl = el}></div>,
-      <div class="actual-menu animated" ref={el => this.menuInnerEl = el}>
-        <slot />
+      <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
+          <div class="d-flex">
+            <div class="d-flex flex">
+              <i class="se-icon menu-sidenav" onClick={() => this.toggle()}>burger_menu</i>
+              <h3 class="header-title">Menu</h3>
+            </div>
+            <se-chip color="primary" can-close="false">
+              <se-link url="https://schneider-electric.com" link="Schneider-electric.com" type="external"></se-link>
+            </se-chip>
+          </div>
+          <se-divider></se-divider>
+          <div class="d-flex flex">
+            <div class="listNavItems">
+              <div>
+              {this.renderList()}
+              </div>
+              <img class="image-logo" alt="Schneider electric logo"/>
+            </div>
+            <se-divider mode="vertical"></se-divider>
+            <div class="flex">
+                <slot />
+            </div>
+          </div>
       </div>
     ]
   }

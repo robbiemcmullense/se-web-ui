@@ -1,4 +1,5 @@
-@import "../../theme/animations";
+@import "../../theme/animation";
+@import "../../theme/theme";
 
 
 :host {
@@ -11,13 +12,16 @@
   z-index: 20;
   background-color: transparent !important;
 
+  .full-content{
+    @include position();
+  }
 
   .actual-menu {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 250px;
-    min-height: 100%;
+    width: 80%;
+    height: 100%;
     background-color: white;
     z-index: 30;
     &.show-menu {
@@ -35,8 +39,7 @@
   }
 
   .animated {
-    animation-duration: .2s;
-    animation-fill-mode: both;
+    @include animated()
   }
 
   .menu-background {
@@ -54,7 +57,41 @@
       animation-name: fadeOut;
     }
   }
+  .se-icon {
+    font-family: 'se-icon';
+    font-style: normal;
+  }
+  .menu-sidenav {
+    @include color-property($primary, "primary");
+    cursor: pointer;
+    font-size: 63px !important;
+    margin-right: -17px;
+  }
 
+  .flex {
+    @include flex(1);
+  }
+  .d-flex {
+
+    @include display-flex();
+    @include flex-direction(row);
+  }
+
+  .d-flex-column {
+    @include align-items(left);
+    @include display-flex();
+    @include flex-direction(column);
+  }
+
+  .listNavItems{
+    width: 250px;
+  }
+  .navItem {
+    padding: 20px;
+    &.selected {
+      color: green;
+    }
+  }
 
 }
 :host(.show-menu){

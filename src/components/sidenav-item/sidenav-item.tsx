@@ -1,5 +1,4 @@
-import { Component, Prop } from '@stencil/core';
-import { } from 'events';
+import { Component, Prop, Method } from '@stencil/core';
 
 @Component({
   tag: 'se-sidenav-item',
@@ -7,11 +6,34 @@ import { } from 'events';
   shadow: true
 })
 export class SidenavItemComponent {
-  @Prop() itemTitle: string = 'default';
+  /**
+   * Define the title of the tab
+   */
+  @Prop() navTitle: string;
 
+  /**
+   * Defines if the tab is active or not.
+   */
+  @Prop({ mutable: true }) active = false;
+
+  @Method()
+  async setActive(): Promise<void> {
+    this.active = true;
+  }
+
+  hostData() {
+    const { active } = this;
+    return {
+      'role': 'sidenavpanel',
+      'aria-hidden': !active ? 'true' : null,
+      'class': {
+        'navitem-hidden': !active
+      }
+    };
+  }
   render() {
     return (
-      <div>{this.itemTitle} <slot></slot></div>
+      <slot></slot>
     );
   }
 }
