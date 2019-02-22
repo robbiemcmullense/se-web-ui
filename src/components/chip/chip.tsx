@@ -15,11 +15,10 @@ export class ChipComponent {
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
    */
-  @Event() clicked: EventEmitter;
+  @Event() close: EventEmitter;
 
   closeChip() {
-    this.el.parentElement.removeChild(this.el);
-    this.clicked.emit(this.value);
+    this.close.emit(this.value);
   }
 
   render() {

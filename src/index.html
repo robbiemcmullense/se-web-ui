@@ -90,7 +90,7 @@
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
           <se-button mode="outline">Outline</se-button>
           <se-button icon="action_resize" value="resize"></se-button>
-          <se-chip id="seChip" value="My Chip"></se-chip>
+          <se-chip id="se-chip" value="My Chip"></se-chip>
           <div class="se-link-container">
             <se-link url="http://google.com" link="Link to Google"></se-link>
           </div>
@@ -120,7 +120,7 @@
     document.getElementById('loginBtn').addEventListener('clicked', function (event) {
       document.getElementById('button-info').innerText = 'you have clicked the button: ' + event.detail.innerText + ', which has an internal value of: ' + event.detail.value;
     });
-    document.getElementById('seChip').addEventListener('clicked', function (event) {
+    document.getElementById('se-chip').addEventListener('close', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
     });
     document.getElementById('switch-el').addEventListener('change', function (event) {
@@ -142,20 +142,6 @@
       if (!event.detail.length) {
         checkboxMsg.firstElementChild.innerText = 'none';
       }
-    });
-    document.getElementById('checkbox-form').addEventListener('submit', function(event) {
-      document.getElementById('form-field-message').firstElementChild.innerText = 'checkbox, ' + event.detail;
-    });
-    document.getElementById('input-form').addEventListener('submit', function(event) {
-      document.getElementById('form-field-message').firstElementChild.innerText = 'input, ' + event.detail;
-      if (event.detail == 'Kyle') {
-        document.getElementById('input-form').setError();
-      } else {
-        document.getElementById('input-form').removeError();
-      }
-    });
-    document.getElementById('select-form').addEventListener('submit', function(event) {
-      document.getElementById('form-field-message').firstElementChild.innerText = 'select, ' + event.detail;
     });
   </script>
 </body>

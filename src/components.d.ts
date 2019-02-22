@@ -156,7 +156,7 @@ export namespace Components {
     /**
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
-    'onClicked'?: (event: CustomEvent) => void;
+    'onClose'?: (event: CustomEvent) => void;
     /**
     * The text you want to display in your chip.
     */
@@ -231,7 +231,7 @@ export namespace Components {
     */
     'link': string;
     /**
-    * Set to `internal` (default setting) if the url is within your application. Set to `external` if the url is outside your application, adding an underline to the link.
+    * Default setting is `internal`. Set to `external` adds an underline to the link, and opens the link in a new web browser tab.
     */
     'type': 'internal' | 'external';
     /**
@@ -249,7 +249,7 @@ export namespace Components {
     */
     'link'?: string;
     /**
-    * Set to `internal` (default setting) if the url is within your application. Set to `external` if the url is outside your application, adding an underline to the link.
+    * Default setting is `internal`. Set to `external` adds an underline to the link, and opens the link in a new web browser tab.
     */
     'type'?: 'internal' | 'external';
     /**

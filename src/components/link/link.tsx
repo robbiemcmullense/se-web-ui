@@ -17,16 +17,19 @@ export class LabelComponent {
   /**
    * Determines whether or not the link is disabled.
    */
-  @Prop({mutable: true}) disabled: boolean;
+  @Prop() disabled: boolean;
   /**
-   * Set to `internal` (default setting) if the url is within your application.
-   * Set to `external` if the url is outside your application, adding an underline to the link.
+   * Default setting is `internal`.
+   * Set to `external` adds an underline to the link, and opens the link in a new web browser tab.
    */
   @Prop() type: 'internal' | 'external' = 'internal';
 
   render() {
     return (
-      <a href={this.url} data-disabled={this.disabled} class={this.type == 'external' ? 'external' : ''}>{this.link}</a>
+      <a href={this.url}
+        data-disabled={this.disabled}
+        class={this.type == 'external' ? 'external' : ''}
+        target={this.type == 'external' ? '_blank' : ''}>{this.link}</a>
     )
   }
 }
