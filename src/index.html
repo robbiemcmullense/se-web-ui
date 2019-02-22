@@ -21,11 +21,14 @@
     .d-flex {
       display: flex;
     }
+
+    .se-link-container {
+      margin: 5px;
+    }
   </style>
 </head>
 
 <body>
-
   <se-app>
     <se-header app-title="Test Advisor"></se-header>
     <se-navbar color="primary">
@@ -33,14 +36,12 @@
         Tenant: <a class="dropdown"> test </a>
       </nav>
       <nav>
-
         <a class="active">Home</a> <a>Components</a> <a>Icons</a>
       </nav>
       <nav slot="end">
         <a>End</a>
       </nav>
     </se-navbar>
-
     <se-container mode="widget">
       <se-widget style="width: 300px">
         <se-widget-header>Filter</se-widget-header>
@@ -54,13 +55,13 @@
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
             <li id="checkbox-value">error checkbox value: <span></span></li>
-            <li id="checkbox-message">is error checkbox checked: <span></span></li>
+            <li id="checkbox-message">is error checkbox checked: <span></span></li>   
           </ul>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left" icon="arrow2_left"></se-button>
             <se-button value="right"icon="arrow2_right"></se-button>
           </se-buttons>
-          <se-checkbox id="checkbox-primary" value="primary">Primary</se-checkbox>
+          <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary">Primary</se-checkbox>
           <se-checkbox id="checkbox-accent" value="accent" color="accent">Accent</se-checkbox>
           <se-checkbox id="checkbox-warn" value="warn" color="warn">Warn</se-checkbox>
           <se-checkbox id="checkbox-error" value="error" color="error">Error</se-checkbox>
@@ -90,6 +91,18 @@
           <se-button mode="outline">Outline</se-button>
           <se-button icon="action_resize" value="resize"></se-button>
           <se-chip id="seChip" value="My Chip"></se-chip>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="Link to Google"></se-link>
+          </div>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
+          </div>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="Link to Google" disabled="true"></se-link>
+          </div>
+          <div class="se-link-container">
+            <se-link url="http://google.com" link="External Link to Google" type="external" disabled="true"></se-link>
+          </div>
         </se-widget-content>
         <se-widget-footer fxLayoutAlign="row">
             <se-button mode="flat">Flat</se-button>
@@ -130,7 +143,20 @@
         checkboxMsg.firstElementChild.innerText = 'none';
       }
     });
-
+    document.getElementById('checkbox-form').addEventListener('submit', function(event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'checkbox, ' + event.detail;
+    });
+    document.getElementById('input-form').addEventListener('submit', function(event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'input, ' + event.detail;
+      if (event.detail == 'Kyle') {
+        document.getElementById('input-form').setError();
+      } else {
+        document.getElementById('input-form').removeError();
+      }
+    });
+    document.getElementById('select-form').addEventListener('submit', function(event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'select, ' + event.detail;
+    });
   </script>
 </body>
 

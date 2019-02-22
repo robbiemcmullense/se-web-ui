@@ -162,7 +162,7 @@ export namespace Components {
     */
     'value'?: string;
   }
-  
+
   interface SeContainer {
     /**
     * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
@@ -199,6 +199,64 @@ export namespace Components {
 
   interface SeIconSchneider {}
   interface SeIconSchneiderAttributes extends StencilHTMLAttributes {}
+
+  interface SeLabel {
+    /**
+    * When the label is part of a form field, this attribute defines if the input is required, adding a red asterisk next to the label.
+    */
+    'required': boolean;
+    /**
+    * Defines the text that you want your label to display.
+    */
+    'value': string;
+  }
+  interface SeLabelAttributes extends StencilHTMLAttributes {
+    /**
+    * When the label is part of a form field, this attribute defines if the input is required, adding a red asterisk next to the label.
+    */
+    'required'?: boolean;
+    /**
+    * Defines the text that you want your label to display.
+    */
+    'value'?: string;
+  }
+
+  interface SeLink {
+    /**
+    * Determines whether or not the link is disabled.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the text to be displayed in your link.
+    */
+    'link': string;
+    /**
+    * Set to `internal` (default setting) if the url is within your application. Set to `external` if the url is outside your application, adding an underline to the link.
+    */
+    'type': 'internal' | 'external';
+    /**
+    * Defines the url the user should get redirected to when clicking on the link.
+    */
+    'url': string;
+  }
+  interface SeLinkAttributes extends StencilHTMLAttributes {
+    /**
+    * Determines whether or not the link is disabled.
+    */
+    'disabled'?: boolean;
+    /**
+    * Defines the text to be displayed in your link.
+    */
+    'link'?: string;
+    /**
+    * Set to `internal` (default setting) if the url is within your application. Set to `external` if the url is outside your application, adding an underline to the link.
+    */
+    'type'?: 'internal' | 'external';
+    /**
+    * Defines the url the user should get redirected to when clicking on the link.
+    */
+    'url'?: string;
+  }
 
   interface SeNavbar {
     'color': 'primary' | 'secondary' | 'tab';
@@ -271,6 +329,8 @@ declare global {
     'SeContainer': Components.SeContainer;
     'SeHeader': Components.SeHeader;
     'SeIconSchneider': Components.SeIconSchneider;
+    'SeLabel': Components.SeLabel;
+    'SeLink': Components.SeLink;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeWidgetContent': Components.SeWidgetContent;
@@ -288,6 +348,8 @@ declare global {
     'se-container': Components.SeContainerAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
+    'se-label': Components.SeLabelAttributes;
+    'se-link': Components.SeLinkAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
@@ -326,7 +388,7 @@ declare global {
     prototype: HTMLSeChipElement;
     new (): HTMLSeChipElement;
   };
-  
+
   interface HTMLSeContainerElement extends Components.SeContainer, HTMLStencilElement {}
   var HTMLSeContainerElement: {
     prototype: HTMLSeContainerElement;
@@ -343,6 +405,18 @@ declare global {
   var HTMLSeIconSchneiderElement: {
     prototype: HTMLSeIconSchneiderElement;
     new (): HTMLSeIconSchneiderElement;
+  };
+
+  interface HTMLSeLabelElement extends Components.SeLabel, HTMLStencilElement {}
+  var HTMLSeLabelElement: {
+    prototype: HTMLSeLabelElement;
+    new (): HTMLSeLabelElement;
+  };
+
+  interface HTMLSeLinkElement extends Components.SeLink, HTMLStencilElement {}
+  var HTMLSeLinkElement: {
+    prototype: HTMLSeLinkElement;
+    new (): HTMLSeLinkElement;
   };
 
   interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
@@ -390,6 +464,8 @@ declare global {
     'se-container': HTMLSeContainerElement
     'se-header': HTMLSeHeaderElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
+    'se-label': HTMLSeLabelElement
+    'se-link': HTMLSeLinkElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-widget-content': HTMLSeWidgetContentElement
@@ -407,6 +483,8 @@ declare global {
     'se-container': HTMLSeContainerElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
+    'se-label': HTMLSeLabelElement;
+    'se-link': HTMLSeLinkElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-widget-content': HTMLSeWidgetContentElement;
