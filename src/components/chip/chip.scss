@@ -20,11 +20,14 @@
 		.value {
 			padding-top: 8px;
 		}
-		.close {
+		.se-icon {
 			cursor: pointer;
 			font-size: 24px;
 			padding-top: 8px;
 			font-family: 'se-icon';
+			&[data-hide] {
+				display: none;
+			}
 		}
 	}
 }

@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                | Type     | Default     |
-| -------- | --------- | ------------------------------------------ | -------- | ----------- |
-| `value`  | `value`   | The text you want to display in your chip. | `string` | `undefined` |
+| Property   | Attribute   | Description                                                                      | Type      | Default     |
+| ---------- | ----------- | -------------------------------------------------------------------------------- | --------- | ----------- |
+| `canClose` | `can-close` | Indicates whether or not the chip has a close button.  Set to `true` by default. | `boolean` | `true`      |
+| `value`    | `value`     | The text you want to display in your chip.                                       | `string`  | `undefined` |
 
 
 ## Events
