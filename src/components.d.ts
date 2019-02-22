@@ -147,6 +147,9 @@ export namespace Components {
     'appTitle'?: string;
   }
 
+  interface SeIconEcostruxure {}
+  interface SeIconEcostruxureAttributes extends StencilHTMLAttributes {}
+
   interface SeIconSchneider {}
   interface SeIconSchneiderAttributes extends StencilHTMLAttributes {}
 
@@ -218,6 +221,7 @@ declare global {
     'SeButtons': Components.SeButtons;
     'SeContainer': Components.SeContainer;
     'SeHeader': Components.SeHeader;
+    'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
@@ -233,6 +237,7 @@ declare global {
     'se-buttons': Components.SeButtonsAttributes;
     'se-container': Components.SeContainerAttributes;
     'se-header': Components.SeHeaderAttributes;
+    'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
@@ -271,6 +276,12 @@ declare global {
   var HTMLSeHeaderElement: {
     prototype: HTMLSeHeaderElement;
     new (): HTMLSeHeaderElement;
+  };
+
+  interface HTMLSeIconEcostruxureElement extends Components.SeIconEcostruxure, HTMLStencilElement {}
+  var HTMLSeIconEcostruxureElement: {
+    prototype: HTMLSeIconEcostruxureElement;
+    new (): HTMLSeIconEcostruxureElement;
   };
 
   interface HTMLSeIconSchneiderElement extends Components.SeIconSchneider, HTMLStencilElement {}
@@ -321,6 +332,7 @@ declare global {
     'se-buttons': HTMLSeButtonsElement
     'se-container': HTMLSeContainerElement
     'se-header': HTMLSeHeaderElement
+    'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
@@ -336,6 +348,7 @@ declare global {
     'se-buttons': HTMLSeButtonsElement;
     'se-container': HTMLSeContainerElement;
     'se-header': HTMLSeHeaderElement;
+    'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
