@@ -21,7 +21,7 @@
   overflow: hidden;
 
   background: white;
-  margin: 5px;
+  margin: $spacing-small;
   @include flex(1);
   @include display-flex();
   @include flex-direction(column);

@@ -2,8 +2,10 @@
 
 :host {
   position: relative;
-  padding: ($widget-inner-padding - 1) $widget-inner-padding $widget-inner-padding;
+  padding: $spacing;
   border-top: 2px solid $widget-footer-border-color;
+  // @include display-flex();
+  @include align-items(center);
   &.buttons{
     text-align: right; // right align buttons
   }

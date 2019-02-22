@@ -8,21 +8,24 @@
   overflow: auto;
 }
 :host(.absolute){
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  @include position();
 }
 :host(.relative){
   position: relative;
   height: 100%;
 }
 
-
 :host(.widget-content){
-  margin: 0.25rem;
+
+  margin: $spacing-small;
+  background-color: $se-super-light-grey;
 }
+
+:host(.card-content){
+  margin: $spacing-small;
+  background-color: $se-white;
+}
+
 
 :host(.full-content){
   margin: 0;

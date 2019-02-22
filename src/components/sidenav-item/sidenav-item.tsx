@@ -7,11 +7,11 @@ import { } from 'events';
   shadow: true
 })
 export class SidenavItemComponent {
-  @Prop() title: string = 'default';
+  @Prop() itemTitle: string = 'default';
 
   render() {
     return (
-      <div>{this.title}</div>
+      <div>{this.itemTitle} <slot></slot></div>
     );
   }
 }

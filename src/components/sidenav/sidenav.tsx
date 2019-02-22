@@ -1,10 +1,8 @@
-import { Component, Element, Prop } from '@stencil/core';
-import { } from 'events';
+import { Component, Method, Element, State } from '@stencil/core';
 
 
 const SHOW_MENU = 'show-menu';
-const SHOW_BACKDROP = 'show-backdrop';
-// const MENU_CONTENT_OPEN = 'menu-content-open';
+const HIDE_MENU = 'hide-menu';
 
 @Component({
   tag: 'se-sidenav',
@@ -16,50 +14,54 @@ export class SidenavComponent {
   menuInnerEl?: HTMLElement;
   @Element() el: HTMLElement;
 
-  @Prop({mutable: true}) open: boolean = false;
+  @State() open: boolean = false;
 
-  // @Listen('click', { enabled: false, capture: true })
-  // onBackdropClick(ev: any) {
-  //   if (this.lastOnEnd < ev.timeStamp - 100) {
-  //     const shouldClose = (ev.composedPath)
-  //       ? !ev.composedPath().includes(this.menuInnerEl)
-  //       : false;
+  @Method()
+  toggle(): void {
+    console.log('toggle')
+    this.open = !this.open;
+  }
 
-  //     if (shouldClose) {
-  //       ev.preventDefault();
-  //       ev.stopPropagation();
-  //       this.close();
-  //     }
-  //   }
-  // }
-
-  private beforeAnimation() {
-    this.el.classList.add(SHOW_MENU);
-    this.backdropEl.classList.add(SHOW_BACKDROP);
+  async componentDidUpdate() {
     if (this.open) {
-      // add css class
-      // if (this.contentEl) {
-      //   this.contentEl.classList.add(MENU_CONTENT_OPEN);
-      // }
+      // Add css classes
+      this.el.classList.add(SHOW_MENU);
+      this.addAnimation(null);
     } else {
-      // remove css classes
-      this.el.classList.remove(SHOW_MENU);
-      // if (this.contentEl) {
-      //   this.contentEl.classList.remove(MENU_CONTENT_OPEN);
-      // }
-      if (this.backdropEl) {
-        this.backdropEl.classList.remove(SHOW_BACKDROP);
-      }
+      // Remove css classes
+      this.removeAnimation(() => {
+        this.el.classList.remove(SHOW_MENU);
+      });
+
     }
   }
 
+  private addAnimation(callback) {
+    this.menuInnerEl.classList.add(SHOW_MENU);
+    this.backdropEl.classList.add(SHOW_MENU);
+    setTimeout(() => {
+      this.menuInnerEl.classList.remove(SHOW_MENU);
+      this.backdropEl.classList.remove(SHOW_MENU);
+      callback && callback();
+    }, 500);
+  }
+
+  private removeAnimation(callback) {
+    this.menuInnerEl.classList.add(HIDE_MENU);
+    this.backdropEl.classList.add(HIDE_MENU);
+    setTimeout(() => {
+      this.menuInnerEl.classList.remove(HIDE_MENU);
+      this.backdropEl.classList.remove(HIDE_MENU);
+      callback && callback();
+    }, 500);
+  }
+
   render() {
-    this.beforeAnimation();
     return [
-      <div class="sidenav-scrim"  ref={el => this.backdropEl = el}></div>,
-      <div class="sidenav-content" ref={el => this.menuInnerEl = el}>
-        <slot></slot>
+      <div class="menu-background animated" onClick={() => this.toggle()}  ref={el => this.backdropEl = el}></div>,
+      <div class="actual-menu animated" ref={el => this.menuInnerEl = el}>
+        <slot />
       </div>
-    ];
+    ]
   }
 }

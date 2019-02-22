@@ -28,7 +28,7 @@
 
   <se-app>
     <se-header app-title="Test Advisor">
-      <se-sidenav open="false">
+      <se-sidenav>
         <se-sidenav-item title="sidenav 1">
             my first element
         </se-sidenav-item>
@@ -65,6 +65,7 @@
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
           </ul>
+          <se-divider></se-divider>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left" icon="arrow2_left"></se-button>
             <se-button value="right"icon="arrow2_right"></se-button>
@@ -89,6 +90,8 @@
             ...
           </ul>
           <se-button id="flatBtn1" mode="flat" color="error" >Warning</se-button>
+          <se-divider mode="vertical"></se-divider>
+
           <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
           <se-button mode="outline">Outline</se-button>

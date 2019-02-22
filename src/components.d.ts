@@ -117,7 +117,7 @@ export namespace Components {
     /**
     * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
     */
-    'mode': 'widget' | 'fill' | 'centered';
+    'mode': 'widget' | 'fill' | 'centered' | 'card';
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
@@ -127,11 +127,18 @@ export namespace Components {
     /**
     * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
     */
-    'mode'?: 'widget' | 'fill' | 'centered';
+    'mode'?: 'widget' | 'fill' | 'centered' | 'card';
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position'?: 'relative' | 'absolute';
+  }
+
+  interface SeDivider {
+    'mode': "horizontal" | "vertical" | "inset";
+  }
+  interface SeDividerAttributes extends StencilHTMLAttributes {
+    'mode'?: "horizontal" | "vertical" | "inset";
   }
 
   interface SeHeader {
@@ -199,21 +206,23 @@ export namespace Components {
   }
 
   interface SeSidenavItem {
-    'title': string;
+    'itemTitle': string;
   }
   interface SeSidenavItemAttributes extends StencilHTMLAttributes {
-    'title'?: string;
+    'itemTitle'?: string;
   }
 
   interface SeSidenav {
-    'open': boolean;
+    'toggle': () => void;
   }
-  interface SeSidenavAttributes extends StencilHTMLAttributes {
-    'open'?: boolean;
-  }
+  interface SeSidenavAttributes extends StencilHTMLAttributes {}
 
-  interface SeWidgetContent {}
-  interface SeWidgetContentAttributes extends StencilHTMLAttributes {}
+  interface SeWidgetContent {
+    'mode': 'fill';
+  }
+  interface SeWidgetContentAttributes extends StencilHTMLAttributes {
+    'mode'?: 'fill';
+  }
 
   interface SeWidgetFooter {}
   interface SeWidgetFooterAttributes extends StencilHTMLAttributes {}
@@ -231,6 +240,7 @@ declare global {
     'SeButton': Components.SeButton;
     'SeButtons': Components.SeButtons;
     'SeContainer': Components.SeContainer;
+    'SeDivider': Components.SeDivider;
     'SeHeader': Components.SeHeader;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeNavbar': Components.SeNavbar;
@@ -248,6 +258,7 @@ declare global {
     'se-button': Components.SeButtonAttributes;
     'se-buttons': Components.SeButtonsAttributes;
     'se-container': Components.SeContainerAttributes;
+    'se-divider': Components.SeDividerAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-navbar': Components.SeNavbarAttributes;
@@ -283,6 +294,12 @@ declare global {
   var HTMLSeContainerElement: {
     prototype: HTMLSeContainerElement;
     new (): HTMLSeContainerElement;
+  };
+
+  interface HTMLSeDividerElement extends Components.SeDivider, HTMLStencilElement {}
+  var HTMLSeDividerElement: {
+    prototype: HTMLSeDividerElement;
+    new (): HTMLSeDividerElement;
   };
 
   interface HTMLSeHeaderElement extends Components.SeHeader, HTMLStencilElement {}
@@ -350,6 +367,7 @@ declare global {
     'se-button': HTMLSeButtonElement
     'se-buttons': HTMLSeButtonsElement
     'se-container': HTMLSeContainerElement
+    'se-divider': HTMLSeDividerElement
     'se-header': HTMLSeHeaderElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-navbar': HTMLSeNavbarElement
@@ -367,6 +385,7 @@ declare global {
     'se-button': HTMLSeButtonElement;
     'se-buttons': HTMLSeButtonsElement;
     'se-container': HTMLSeContainerElement;
+    'se-divider': HTMLSeDividerElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-navbar': HTMLSeNavbarElement;

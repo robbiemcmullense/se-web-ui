@@ -2,6 +2,13 @@
 
 :host {
   overflow: auto;
+  padding: $spacing;
   position: relative;
   @include flex(1);
 }
+
+:host(.full-content){
+  padding: none;
+  overflow: none
+}
+

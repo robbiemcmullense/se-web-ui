@@ -20,7 +20,13 @@ $prefix: "--"; //Prefix string for custom CSS properties
   background-color: var(#{custom-property-name($variable)}, $color);
 }
 
-
+@mixin position($top:0, $right: 0, $bottom: 0, $left: 0){
+  position: absolute;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+}
 
 @mixin button-active-properties($bg-hover-color, $bg-active-color, $text-active-color) {
   &:not([disabled]) {
