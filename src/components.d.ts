@@ -113,6 +113,64 @@ export namespace Components {
     'onChange'?: (event: CustomEvent) => void;
   }
 
+  interface SeCheckbox {
+    /**
+    * Defines the background color of the button. `primary` is a green color and is the default value. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color': 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value': string;
+  }
+  interface SeCheckboxAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the background color of the button. `primary` is a green color and is the default value. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Send the checkbox value to the parent component when clicking on the checkbox.
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value'?: string;
+  }
+
+  interface SeChip {
+    /**
+    * Indicates whether or not the chip has a close button.  Set to `true` by default.
+    */
+    'canClose': boolean;
+    /**
+    * The text you want to display in your chip.
+    */
+    'value': string;
+  }
+  interface SeChipAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates whether or not the chip has a close button.  Set to `true` by default.
+    */
+    'canClose'?: boolean;
+    /**
+    * Send the chip value to the parent component when clicking the close button of a chip.
+    */
+    'onClose'?: (event: CustomEvent) => void;
+    /**
+    * The text you want to display in your chip.
+    */
+    'value'?: string;
+  }
+
   interface SeContainer {
     /**
     * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
@@ -152,6 +210,64 @@ export namespace Components {
 
   interface SeIconSchneider {}
   interface SeIconSchneiderAttributes extends StencilHTMLAttributes {}
+
+  interface SeLabel {
+    /**
+    * When the label is part of a form field, this attribute defines if the input is required, adding a red asterisk next to the label.
+    */
+    'required': boolean;
+    /**
+    * Defines the text that you want your label to display.
+    */
+    'value': string;
+  }
+  interface SeLabelAttributes extends StencilHTMLAttributes {
+    /**
+    * When the label is part of a form field, this attribute defines if the input is required, adding a red asterisk next to the label.
+    */
+    'required'?: boolean;
+    /**
+    * Defines the text that you want your label to display.
+    */
+    'value'?: string;
+  }
+
+  interface SeLink {
+    /**
+    * Determines whether or not the link is disabled.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the text to be displayed in your link.
+    */
+    'link': string;
+    /**
+    * Default setting is `internal`. Set to `external` adds an underline to the link, and opens the link in a new web browser tab.
+    */
+    'type': 'internal' | 'external';
+    /**
+    * Defines the url the user should get redirected to when clicking on the link.
+    */
+    'url': string;
+  }
+  interface SeLinkAttributes extends StencilHTMLAttributes {
+    /**
+    * Determines whether or not the link is disabled.
+    */
+    'disabled'?: boolean;
+    /**
+    * Defines the text to be displayed in your link.
+    */
+    'link'?: string;
+    /**
+    * Default setting is `internal`. Set to `external` adds an underline to the link, and opens the link in a new web browser tab.
+    */
+    'type'?: 'internal' | 'external';
+    /**
+    * Defines the url the user should get redirected to when clicking on the link.
+    */
+    'url'?: string;
+  }
 
   interface SeNavbar {
     'color': 'primary' | 'secondary' | 'tab';
@@ -219,10 +335,14 @@ declare global {
     'SeApp': Components.SeApp;
     'SeButton': Components.SeButton;
     'SeButtons': Components.SeButtons;
+    'SeCheckbox': Components.SeCheckbox;
+    'SeChip': Components.SeChip;
     'SeContainer': Components.SeContainer;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
+    'SeLabel': Components.SeLabel;
+    'SeLink': Components.SeLink;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeWidgetContent': Components.SeWidgetContent;
@@ -235,10 +355,14 @@ declare global {
     'se-app': Components.SeAppAttributes;
     'se-button': Components.SeButtonAttributes;
     'se-buttons': Components.SeButtonsAttributes;
+    'se-checkbox': Components.SeCheckboxAttributes;
+    'se-chip': Components.SeChipAttributes;
     'se-container': Components.SeContainerAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
+    'se-label': Components.SeLabelAttributes;
+    'se-link': Components.SeLinkAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
@@ -266,6 +390,18 @@ declare global {
     new (): HTMLSeButtonsElement;
   };
 
+  interface HTMLSeCheckboxElement extends Components.SeCheckbox, HTMLStencilElement {}
+  var HTMLSeCheckboxElement: {
+    prototype: HTMLSeCheckboxElement;
+    new (): HTMLSeCheckboxElement;
+  };
+
+  interface HTMLSeChipElement extends Components.SeChip, HTMLStencilElement {}
+  var HTMLSeChipElement: {
+    prototype: HTMLSeChipElement;
+    new (): HTMLSeChipElement;
+  };
+
   interface HTMLSeContainerElement extends Components.SeContainer, HTMLStencilElement {}
   var HTMLSeContainerElement: {
     prototype: HTMLSeContainerElement;
@@ -288,6 +424,18 @@ declare global {
   var HTMLSeIconSchneiderElement: {
     prototype: HTMLSeIconSchneiderElement;
     new (): HTMLSeIconSchneiderElement;
+  };
+
+  interface HTMLSeLabelElement extends Components.SeLabel, HTMLStencilElement {}
+  var HTMLSeLabelElement: {
+    prototype: HTMLSeLabelElement;
+    new (): HTMLSeLabelElement;
+  };
+
+  interface HTMLSeLinkElement extends Components.SeLink, HTMLStencilElement {}
+  var HTMLSeLinkElement: {
+    prototype: HTMLSeLinkElement;
+    new (): HTMLSeLinkElement;
   };
 
   interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
@@ -330,10 +478,14 @@ declare global {
     'se-app': HTMLSeAppElement
     'se-button': HTMLSeButtonElement
     'se-buttons': HTMLSeButtonsElement
+    'se-checkbox': HTMLSeCheckboxElement
+    'se-chip': HTMLSeChipElement
     'se-container': HTMLSeContainerElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
+    'se-label': HTMLSeLabelElement
+    'se-link': HTMLSeLinkElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-widget-content': HTMLSeWidgetContentElement
@@ -346,10 +498,14 @@ declare global {
     'se-app': HTMLSeAppElement;
     'se-button': HTMLSeButtonElement;
     'se-buttons': HTMLSeButtonsElement;
+    'se-checkbox': HTMLSeCheckboxElement;
+    'se-chip': HTMLSeChipElement;
     'se-container': HTMLSeContainerElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
+    'se-label': HTMLSeLabelElement;
+    'se-link': HTMLSeLinkElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-widget-content': HTMLSeWidgetContentElement;

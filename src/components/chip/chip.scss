@@ -1,0 +1,33 @@
+@import "../../theme/theme-variables";
+
+:host {
+	div.se-chip {
+		display: flex;
+		justify-content: space-between;
+		width: 126px;
+		height: 32px;
+		padding-left: 12px;
+		padding-right: 2px;
+		font-size: 14px;
+		line-height: 17px;
+		text-align: left;
+		outline: none;
+		border: none;
+		border-radius: 16px;
+		@include color-property($se-anthracite-grey, '');
+		@include background-color-property($se-super-light-grey, '');
+		@include button-active-properties($background, $se-dark-grey, $se-white);
+		.value {
+			padding-top: 8px;
+		}
+		.se-icon {
+			cursor: pointer;
+			font-size: 24px;
+			padding-top: 8px;
+			font-family: 'se-icon';
+			&[data-hide] {
+				display: none;
+			}
+		}
+	}
+}

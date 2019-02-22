@@ -1,0 +1,66 @@
+@import "../../theme/theme-variables";
+
+:host {
+	.checkbox-container {
+		position: relative;
+		padding-left: 20px;
+		font-size: 18px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		&[data-disabled] {
+			opacity: 0.26;
+		}
+		input {
+			position: absolute;
+			height: 0;
+			width: 0;
+			opacity: 0;
+			&:checked ~ .checkmark {
+				&[data-color="primary"] {
+					@include background-color-property($primary, 'primary');
+					border: 1px solid $primary;
+				}
+				&[data-color="accent"] {
+					@include background-color-property($accent, 'accent');
+					border: 1px solid $accent;
+				}
+				&[data-color="warn"] {
+					@include background-color-property($warn, 'warn');
+					border: 1px solid $warn;
+				}
+				&[data-color="error"] {
+					@include background-color-property($error, 'error');
+					border: 1px solid $error;
+				}
+				&:after {
+					display: block;
+				}
+			}
+		}
+		.checkmark {
+			position: absolute;
+			top: 5px;
+			left: 0;
+			height: 12px;
+			width: 12px;
+			background-color: $se-white;
+			border: 1px solid $se-light-grey;
+			&:after {
+				content: "";
+				position: absolute;
+				display: none;
+				bottom: 3px;
+				left: 4px;
+				width: 3px;
+				height: 7px;
+				border: solid $se-white;
+				border-width: 0 1px 1px 0;
+				-webkit-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
