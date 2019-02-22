@@ -26,7 +26,7 @@ export class HeaderComponent {
     return (
       <header class="header-container">
         <div class="d-flex-column">
-          <i class="header-title-type se-icon">logo_Ecostruxure</i>
+          <se-icon-ecostruxure class="header-title-type"></se-icon-ecostruxure>
           <h1 class="header-title">
             <span class="font-regular">{first}</span>
             <span class="font-lighter">&nbsp;{last}</span>

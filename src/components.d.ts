@@ -197,6 +197,9 @@ export namespace Components {
     'appTitle'?: string;
   }
 
+  interface SeIconEcostruxure {}
+  interface SeIconEcostruxureAttributes extends StencilHTMLAttributes {}
+
   interface SeIconSchneider {}
   interface SeIconSchneiderAttributes extends StencilHTMLAttributes {}
 
@@ -328,6 +331,7 @@ declare global {
     'SeChip': Components.SeChip;
     'SeContainer': Components.SeContainer;
     'SeHeader': Components.SeHeader;
+    'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeLabel': Components.SeLabel;
     'SeLink': Components.SeLink;
@@ -347,6 +351,7 @@ declare global {
     'se-chip': Components.SeChipAttributes;
     'se-container': Components.SeContainerAttributes;
     'se-header': Components.SeHeaderAttributes;
+    'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-label': Components.SeLabelAttributes;
     'se-link': Components.SeLinkAttributes;
@@ -399,6 +404,12 @@ declare global {
   var HTMLSeHeaderElement: {
     prototype: HTMLSeHeaderElement;
     new (): HTMLSeHeaderElement;
+  };
+
+  interface HTMLSeIconEcostruxureElement extends Components.SeIconEcostruxure, HTMLStencilElement {}
+  var HTMLSeIconEcostruxureElement: {
+    prototype: HTMLSeIconEcostruxureElement;
+    new (): HTMLSeIconEcostruxureElement;
   };
 
   interface HTMLSeIconSchneiderElement extends Components.SeIconSchneider, HTMLStencilElement {}
@@ -463,6 +474,7 @@ declare global {
     'se-chip': HTMLSeChipElement
     'se-container': HTMLSeContainerElement
     'se-header': HTMLSeHeaderElement
+    'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-label': HTMLSeLabelElement
     'se-link': HTMLSeLinkElement
@@ -482,6 +494,7 @@ declare global {
     'se-chip': HTMLSeChipElement;
     'se-container': HTMLSeContainerElement;
     'se-header': HTMLSeHeaderElement;
+    'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-label': HTMLSeLabelElement;
     'se-link': HTMLSeLinkElement;
