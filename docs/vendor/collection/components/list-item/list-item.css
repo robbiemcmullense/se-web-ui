@@ -1,0 +1,67 @@
+/*
+ * Application global variables.
+ */
+:host {
+  position: relative;
+  display: block;
+  margin: 0;
+  font-weight: lighter;
+  font-size: 20px;
+  width: 100%;
+  height: 50px; }
+  :host .se-icon {
+    font-family: 'se-icon';
+    font-style: normal;
+    font-size: 40px; }
+  :host button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: transparent;
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
+    text-align: start; }
+    :host button .selectedBar {
+      display: none; }
+    :host button .nav-text {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -moz-box-flex: 1;
+      -moz-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      padding-left: 20px; }
+
+:host(.nav.selected) {
+  color: mat-color(#3DCD58);
+  color: var(--primary, mat-color(#3DCD58)); }
+  :host(.nav.selected) .selectedBar {
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    width: 5px;
+    background-color: #3DCD58;
+    background-color: var(----primary, #3DCD58); }

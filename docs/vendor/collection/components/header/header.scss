@@ -1,0 +1,158 @@
+@import "../../theme/theme";
+@import "../../theme/animation";
+
+:host {
+  box-sizing: border-box;
+  height: auto;
+  padding: 0;
+  width: 100%;
+  min-height: 56px;
+  max-height: 61px;
+  @include animated("slow");
+  animation-name: fadeIn;
+}
+
+.header-container {
+  @include display-flex();
+  @include flex-direction(row);
+  justify-content: space-between;
+
+  // Flexbox Vertical Alignment
+  flex-direction: row;
+  align-items: center;
+
+  // Per Material specs a toolbar cannot have multiple lines inside of a single row.
+  // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
+  white-space: nowrap;
+  @include background-color-property($se-white, "");
+}
+.fill-space {
+  @include flex(1);
+}
+.d-flex {
+  justify-content: center;
+  align-items: center;
+
+  @include display-flex();
+  @include flex-direction(row);
+}
+
+.d-flex-column {
+  @include align-items(left);
+  @include display-flex();
+  @include flex-direction(column);
+}
+
+.line {
+  border: 1px solid #333333;
+  width: 0px;
+  height: 32px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.project-section {
+  color: #333333;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+.header-menu-button {
+  margin-left: 6px;
+  .mat-icon {
+    font-size: 35px;
+  }
+}
+.menu-sidenav {
+  @include color-property($primary, "primary");
+  cursor: pointer;
+  font-size: 63px !important;
+  margin-right: -17px;
+}
+.header-title{
+  @include color-property($primary, "primary");
+  padding-left: 18px;
+  font-size: 20px;
+  line-height: 20px;
+  margin: 0;
+}
+.header-title-type {
+  @include color-property($primary, "primary");
+  line-height: 24px;
+  padding-left: 18px;
+  font-size: 12px;
+  margin: 1px 0 0 0;
+}
+
+.mat-toolbar-single-row {
+  padding: 0;
+}
+
+.user-icon-wrapper {
+  button {
+    background: transparent;
+  }
+}
+.font-lighter {
+  font-weight: 100;
+}
+.user-icon {
+  @include color-property($primary, "primary");
+  z-index: 1;
+  font-size: 24px;
+  padding-right: 5px;
+  padding-right: 0;
+  &.se-icon {
+    margin-right: -24px;
+    top: -1px;
+  }
+}
+se-icon-schneider {
+  width: 140px;
+  padding-left: 9px !important;
+  margin-top: 5px;
+}
+se-icon-ecostruxure {
+  margin-bottom: -5px;
+}
+.padding-container {
+  // margin-right: 13px;
+  &.link-container {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 599px) {
+  se-icon-schneider {
+    display: none;
+  }
+  .mat-toolbar-single-row {
+    height: 64px;
+  }
+}
+
+::ng-deep {
+  [header-user],
+  header-user {
+    margin-right: 10px;
+    .mat-button-wrapper {
+      @include color-property($se-dark-grey, "");
+      padding: 0 13px;
+      font-weight: 100;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $se-dark-grey;
+      }
+    }
+  }
+}

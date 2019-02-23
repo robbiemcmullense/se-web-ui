@@ -6,7 +6,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "postbuild": "cpx \"build/**/*\" \"../docs\"",
+    "postbuild": "cpx \"build/**/*\" \"../docs\" && cpx \"../core/**/*\" \"../docs/vendor\"",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
     "lint": "react-app-rewired run lint",

@@ -1,0 +1,31 @@
+import { h } from '../se-components.core.js';
+
+class DividerComponent {
+    constructor() {
+        this.mode = "horizontal";
+        this.color = "light";
+    }
+    hostData() {
+        return {
+            class: [this.mode, this.color].join(' ')
+        };
+    }
+    render() {
+        return "";
+    }
+    static get is() { return "se-divider"; }
+    static get encapsulation() { return "shadow"; }
+    static get properties() { return {
+        "color": {
+            "type": String,
+            "attr": "color"
+        },
+        "mode": {
+            "type": String,
+            "attr": "mode"
+        }
+    }; }
+    static get style() { return ":host{display:block;margin:0;border-color:#e5e5e5}:host(.horizontal){border-top-width:1px;border-top-style:solid}:host(.inset),:host(.vertical){border-right-width:1px;border-right-style:solid}:host(.inset){border-color:#333}"; }
+}
+
+export { DividerComponent as SeDivider };

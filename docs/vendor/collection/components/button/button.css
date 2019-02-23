@@ -1,0 +1,196 @@
+/*
+ * Application global variables.
+ */
+:host button {
+  color: #333333;
+  color: var(--, #333333);
+  background-color: #EDEDED;
+  background-color: var(--, #EDEDED);
+  padding: 6px 34px;
+  margin: 8px;
+  border: none;
+  border-radius: 1px;
+  outline: none;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 300;
+  cursor: pointer; }
+  :host button:not([disabled]):hover, :host button:not([disabled]):focus {
+    background-color: #CBCBCB; }
+  :host button:not([disabled]):active {
+    background-color: #626469;
+    color: #FFFFFF; }
+  :host button .se-icon {
+    font-family: 'se-icon';
+    font-style: normal; }
+  :host button[color="primary"] {
+    background-color: #3DCD58;
+    background-color: var(--primary, #3DCD58);
+    color: #FFFFFF;
+    color: var(--, #FFFFFF); }
+    :host button[color="primary"]:not([disabled]):hover, :host button[color="primary"]:not([disabled]):focus {
+      background-color: #32AD3C; }
+    :host button[color="primary"]:not([disabled]):active {
+      background-color: #626469;
+      color: #FFFFFF; }
+  :host button[color="error"] {
+    background-color: #DC0A0A;
+    background-color: var(--error, #DC0A0A);
+    color: #FFFFFF;
+    color: var(--, #FFFFFF); }
+    :host button[color="error"]:not([disabled]):hover, :host button[color="error"]:not([disabled]):focus {
+      background-color: #B10043; }
+    :host button[color="error"]:not([disabled]):active {
+      background-color: #626469;
+      color: #FFFFFF; }
+  :host button[data-mode="raised"] {
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3); }
+  :host button[data-mode="outline"] {
+    background-color: #FFFFFF;
+    background-color: var(--, #FFFFFF);
+    border: 1px solid #333333; }
+    :host button[data-mode="outline"]:not([disabled]):hover, :host button[data-mode="outline"]:not([disabled]):focus {
+      background-color: #F7F7F7; }
+    :host button[data-mode="outline"]:not([disabled]):active {
+      background-color: #626469;
+      color: #FFFFFF; }
+  :host button[data-mode="text"] {
+    background-color: #FFFFFF;
+    background-color: var(--, #FFFFFF); }
+    :host button[data-mode="text"]:not([disabled]):hover, :host button[data-mode="text"]:not([disabled]):focus {
+      background-color: #F7F7F7; }
+    :host button[data-mode="text"]:not([disabled]):active {
+      background-color: #626469;
+      color: #FFFFFF; }
+  :host button[data-mode="text"][color="primary"] {
+    color: #3DCD58;
+    color: var(--primary, #3DCD58); }
+    :host button[data-mode="text"][color="primary"]:not([disabled]):hover, :host button[data-mode="text"][color="primary"]:not([disabled]):focus {
+      background-color: #F7F7F7; }
+    :host button[data-mode="text"][color="primary"]:not([disabled]):active {
+      background-color: #626469;
+      color: #FFFFFF; }
+  :host button[disabled] {
+    cursor: default;
+    opacity: 0.26; }
+  :host button[data-mode="login"] {
+    padding: 4px 50px;
+    font-size: 18px;
+    line-height: 22px;
+    background-color: #3DCD58;
+    background-color: var(--primary, #3DCD58);
+    color: #FFFFFF;
+    color: var(--, #FFFFFF); }
+    :host button[data-mode="login"]:not([disabled]):hover, :host button[data-mode="login"]:not([disabled]):focus {
+      background-color: #32AD3C; }
+    :host button[data-mode="login"]:not([disabled]):active {
+      background-color: #626469;
+      color: #FFFFFF; }
+  :host button[data-mode="signup"] {
+    padding: 4px 40px;
+    font-size: 18px;
+    line-height: 22px;
+    background-color: #219BFD;
+    background-color: var(--accent, #219BFD);
+    color: #FFFFFF;
+    color: var(--, #FFFFFF); }
+    :host button[data-mode="signup"]:not([disabled]):hover, :host button[data-mode="signup"]:not([disabled]):focus {
+      background-color: #0087CD; }
+    :host button[data-mode="signup"]:not([disabled]):active {
+      background-color: #626469;
+      color: #FFFFFF; }
+
+:host(.grouped) button {
+  margin: 8px 0;
+  padding: 4px 14px;
+  font-size: 11px;
+  line-height: 13px;
+  border-left: 1px solid #333333; }
+
+:host(.grouped.active) button {
+  color: #FFFFFF;
+  color: var(--, #FFFFFF);
+  background-color: #626469;
+  background-color: var(--, #626469); }
+
+:host(.grouped:first-child) button {
+  border-left: none;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px; }
+
+:host(.grouped:last-child) button {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px; }
+
+:host(.disabled) button {
+  cursor: default;
+  opacity: 0.26; }
+  :host(.disabled) button:hover, :host(.disabled) button:focus {
+    background-color: #EDEDED;
+    color: inherit; }
+
+:host(.primary) button {
+  background-color: #3DCD58;
+  background-color: var(--primary, #3DCD58);
+  color: #FFFFFF;
+  color: var(--, #FFFFFF); }
+  :host(.primary) button:not([disabled]):hover, :host(.primary) button:not([disabled]):focus {
+    background-color: #32AD3C; }
+  :host(.primary) button:not([disabled]):active {
+    background-color: #626469;
+    color: #FFFFFF; }
+
+:host(.primary.active) button, :host(.primary.active) button:focus {
+  background-color: #007626;
+  background-color: var(--, #007626); }
+
+:host(.accent) button {
+  background-color: #219BFD;
+  background-color: var(--accent, #219BFD);
+  color: #FFFFFF;
+  color: var(--, #FFFFFF); }
+  :host(.accent) button:not([disabled]):hover, :host(.accent) button:not([disabled]):focus {
+    background-color: #0087CD; }
+  :host(.accent) button:not([disabled]):active {
+    background-color: #626469;
+    color: #FFFFFF; }
+
+:host(.accent.active) button, :host(.accent.active) button:focus {
+  background-color: #0087CD;
+  background-color: var(--, #0087CD); }
+
+:host(.warn) button {
+  background-color: #E47F00;
+  background-color: var(--warn, #E47F00);
+  color: #FFFFFF;
+  color: var(--, #FFFFFF); }
+  :host(.warn) button:not([disabled]):hover, :host(.warn) button:not([disabled]):focus {
+    background-color: #FFD100; }
+  :host(.warn) button:not([disabled]):active {
+    background-color: #626469;
+    color: #FFFFFF; }
+
+:host(.warn.active) button, :host(.warn.active) button:focus {
+  background-color: #FFD100;
+  background-color: var(--, #FFD100); }
+
+:host(.error) button {
+  background-color: #DC0A0A;
+  background-color: var(--error, #DC0A0A);
+  color: #FFFFFF;
+  color: var(--, #FFFFFF); }
+  :host(.error) button:not([disabled]):hover, :host(.error) button:not([disabled]):focus {
+    background-color: #B10043; }
+  :host(.error) button:not([disabled]):active {
+    background-color: #626469;
+    color: #FFFFFF; }
+
+:host(.error.active) button, :host(.error.active) button:focus {
+  background-color: #B10043;
+  background-color: var(--, #B10043); }
+
+:host(.hasIcon) button {
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  width: 32px; }

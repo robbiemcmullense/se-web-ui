@@ -1,0 +1,48 @@
+import { h } from '../se-components.core.js';
+
+class CheckboxComponent {
+    constructor() {
+        this.color = 'primary';
+        this.disabled = false;
+    }
+    emitEvent() {
+        this.checked = !this.checked;
+        let checkboxObject = { value: this.value, selected: this.checked };
+        this.change.emit(checkboxObject);
+    }
+    render() {
+        return (h("label", { class: "checkbox-container", "data-disabled": this.disabled },
+            h("slot", null),
+            h("input", { type: "checkbox", disabled: this.disabled }),
+            h("span", { class: "checkmark", "data-color": this.color, onClick: () => this.emitEvent() })));
+    }
+    static get is() { return "se-checkbox"; }
+    static get encapsulation() { return "shadow"; }
+    static get properties() { return {
+        "checked": {
+            "state": true
+        },
+        "color": {
+            "type": String,
+            "attr": "color"
+        },
+        "disabled": {
+            "type": Boolean,
+            "attr": "disabled"
+        },
+        "value": {
+            "type": String,
+            "attr": "value"
+        }
+    }; }
+    static get events() { return [{
+            "name": "change",
+            "method": "change",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true
+        }]; }
+    static get style() { return ":host .checkbox-container{position:relative;padding-left:20px;font-size:18px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}:host .checkbox-container[data-disabled]{opacity:.26}:host .checkbox-container input{position:absolute;height:0;width:0;opacity:0}:host .checkbox-container input:checked~.checkmark[data-color=primary]{background-color:#3dcd58;background-color:var(--primary,#3dcd58);border:1px solid #3dcd58}:host .checkbox-container input:checked~.checkmark[data-color=accent]{background-color:#219bfd;background-color:var(--accent,#219bfd);border:1px solid #219bfd}:host .checkbox-container input:checked~.checkmark[data-color=warn]{background-color:#e47f00;background-color:var(--warn,#e47f00);border:1px solid #e47f00}:host .checkbox-container input:checked~.checkmark[data-color=error]{background-color:#dc0a0a;background-color:var(--error,#dc0a0a);border:1px solid #dc0a0a}:host .checkbox-container input:checked~.checkmark:after{display:block}:host .checkbox-container .checkmark{position:absolute;top:5px;left:0;height:12px;width:12px;background-color:#fff;border:1px solid #cbcbcb}:host .checkbox-container .checkmark:after{content:\"\";position:absolute;display:none;bottom:3px;left:4px;width:3px;height:7px;border:solid #fff;border-width:0 1px 1px 0;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}"; }
+}
+
+export { CheckboxComponent as SeCheckbox };

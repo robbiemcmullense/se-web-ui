@@ -1,0 +1,20 @@
+@import "../../theme/theme";
+
+:host {
+	a {
+		font-size: 14px;
+		line-height: 17px;
+		@include color-property($accent, 'accent');
+		text-decoration: none;
+		&.external {
+			text-decoration: underline;
+			&:before {
+				content: '>';
+			}
+		}
+		&[data-disabled] {
+			pointer-events: none;
+			@include color-property($se-ultra-light-grey-1, '');
+		}
+	}
+}

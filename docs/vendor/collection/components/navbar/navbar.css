@@ -1,0 +1,138 @@
+/*
+ * Application global variables.
+ */
+:host {
+  display: flex;
+  box-sizing: border-box;
+  height: auto;
+  padding: 0;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap; }
+
+.d-flex-main {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%; }
+
+.fill-space {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-height: 12px; }
+
+.nav-left-wrapper {
+  background-color: rgba(0, 0, 0, 0.25); }
+  .nav-left-wrapper > *:first-child {
+    padding-left: 20px; }
+
+nav.primary {
+  background-color: #3DCD58;
+  background-color: var(--primary, #3DCD58);
+  box-shadow: inset 0 7px 3px -7px rgba(0, 0, 0, 0.5);
+  color: #FFFFFF; }
+  nav.primary nav > a {
+    color: #FFFFFF; }
+    nav.primary nav > a:hover {
+      color: #FFFFFF;
+      text-decoration: none;
+      background-color: transparent; }
+      nav.primary nav > a:hover:before {
+        content: "";
+        position: absolute;
+        height: 1px;
+        cursor: default;
+        background-color: #FFFFFF;
+        bottom: 0;
+        left: 0;
+        width: 100%; }
+    nav.primary nav > a.active:before {
+      content: "";
+      position: absolute;
+      height: 3px;
+      cursor: default;
+      background-color: #FFFFFF;
+      width: 100%;
+      bottom: 0; }
+    nav.primary nav > a.dropdown:after {
+      border-top: 5px solid #FFFFFF; }
+    nav.primary nav > a.disabled, nav.primary nav > a.disabled:hover, nav.primary nav > a.disabled:focus {
+      color: #EDEDED;
+      opacity: 0.5; }
+
+nav.secondary {
+  background-color: white; }
+  nav.secondary nav > a {
+    color: #333333; }
+    nav.secondary nav > a:hover {
+      color: #3DCD58;
+      color: var(--primary, #3DCD58);
+      text-decoration: none;
+      background-color: transparent; }
+    nav.secondary nav > a.dropdown:after {
+      border-top: 5px solid #3DCD58;
+      border-top: 5px solid var(--primary, #3DCD58); }
+    nav.secondary nav > a.active {
+      color: #3DCD58;
+      color: var(--primary, #3DCD58); }
+      nav.secondary nav > a.active:before {
+        content: "";
+        position: absolute;
+        height: 3px;
+        cursor: default;
+        background-color: #3DCD58;
+        background-color: var(--primary, #3DCD58);
+        width: 100%;
+        bottom: 0; }
+    nav.secondary nav > a.disabled, nav.secondary nav > a.disabled:hover, nav.secondary nav > a.disabled:focus {
+      color: #3DCD58;
+      color: var(--primary, #3DCD58);
+      opacity: 0.5; }
+
+nav.primary nav > a,
+nav.secondary nav > a {
+  position: relative;
+  margin: 0 20px;
+  font-weight: 100;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  padding-right: 0;
+  padding-left: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-top: 4px;
+  line-height: 36px; }
+  nav.primary nav > a:focus,
+  nav.secondary nav > a:focus {
+    background-color: transparent; }
+  nav.primary nav > a.label,
+  nav.secondary nav > a.label {
+    opacity: 0.8;
+    padding: 0.1em 0.4em 0.2em;
+    margin-bottom: 2px; }
+  nav.primary nav > a.dropdown,
+  nav.secondary nav > a.dropdown {
+    padding-right: 33px; }
+    nav.primary nav > a.dropdown:after,
+    nav.secondary nav > a.dropdown:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent; }

@@ -1,0 +1,22 @@
+/*
+ * Application global variables.
+ */
+:host {
+  display: block;
+  margin: 0;
+  border-color: #e5e5e5; }
+
+:host(.horizontal) {
+  border-top-width: 1px;
+  border-top-style: solid; }
+
+:host(.vertical) {
+  border-right-width: 1px;
+  border-right-style: solid; }
+
+:host(.inset) {
+  border-right-width: 1px;
+  border-right-style: solid; }
+
+:host(.inset) {
+  border-color: #333333; }

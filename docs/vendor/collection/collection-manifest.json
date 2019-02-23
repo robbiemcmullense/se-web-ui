@@ -1,0 +1,683 @@
+{
+  "components": [
+    {
+      "tag": "se-app",
+      "dependencies": [],
+      "componentClass": "AppComponent",
+      "componentPath": "components/app/app.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/app/app.scss"
+          ]
+        }
+      }
+    },
+    {
+      "tag": "se-button",
+      "dependencies": [],
+      "componentClass": "ButtonComponent",
+      "componentPath": "components/button/button.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/button/button.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "String",
+          "attr": "color"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "attr": "disabled"
+        },
+        {
+          "name": "icon",
+          "type": "String",
+          "attr": "icon"
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "attr": "value"
+        }
+      ],
+      "states": [
+        {
+          "name": "selected"
+        }
+      ],
+      "methods": [
+        {
+          "name": "setActive"
+        },
+        {
+          "name": "setColor"
+        },
+        {
+          "name": "setDisabled"
+        },
+        {
+          "name": "setGrouped"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "clicked"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-buttons",
+      "dependencies": [],
+      "componentClass": "ButtonsComponent",
+      "componentPath": "components/buttons/buttons.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/buttons/buttons.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "String",
+          "attr": "color"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "mutable": true,
+          "attr": "disabled"
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        }
+      ],
+      "states": [
+        {
+          "name": "value"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "clicked",
+          "method": "buttonClickedHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "change"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-checkbox",
+      "dependencies": [],
+      "componentClass": "CheckboxComponent",
+      "componentPath": "components/checkbox/checkbox.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/checkbox/checkbox.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "String",
+          "attr": "color"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "attr": "disabled"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "attr": "value"
+        }
+      ],
+      "states": [
+        {
+          "name": "checked"
+        }
+      ],
+      "events": [
+        {
+          "event": "change"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-chip",
+      "dependencies": [],
+      "componentClass": "ChipComponent",
+      "componentPath": "components/chip/chip.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/chip/chip.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "canClose",
+          "type": "Boolean",
+          "attr": "can-close"
+        },
+        {
+          "name": "color",
+          "type": "String",
+          "attr": "color"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "attr": "value"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "close"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-container",
+      "dependencies": [],
+      "componentClass": "ContainerComponent",
+      "componentPath": "components/container/container.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/container/container.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        },
+        {
+          "name": "position",
+          "type": "String",
+          "attr": "position"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-divider",
+      "dependencies": [],
+      "componentClass": "DividerComponent",
+      "componentPath": "components/divider/divider.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/divider/divider.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "String",
+          "attr": "color"
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-header",
+      "dependencies": [
+        "se-icon-ecostruxure",
+        "se-icon-schneider"
+      ],
+      "componentClass": "HeaderComponent",
+      "componentPath": "components/header/header.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/header/header.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "appTitle",
+          "type": "String",
+          "attr": "app-title"
+        },
+        {
+          "name": "domain",
+          "type": "String",
+          "attr": "domain"
+        },
+        {
+          "name": "project",
+          "type": "String",
+          "attr": "project"
+        }
+      ],
+      "states": [
+        {
+          "name": "hasMenu"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
+      "tag": "se-icon-ecostruxure",
+      "dependencies": [],
+      "componentClass": "IconEcostruxureComponent",
+      "componentPath": "components/icon-ecostruxure/icon-ecostruxure.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/icon-ecostruxure/icon-ecostruxure.scss"
+          ]
+        }
+      },
+      "shadow": true
+    },
+    {
+      "tag": "se-icon-schneider",
+      "dependencies": [],
+      "componentClass": "IconSchneiderComponent",
+      "componentPath": "components/icon-schneider/icon-schneider.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/icon-schneider/icon-schneider.scss"
+          ]
+        }
+      },
+      "shadow": true
+    },
+    {
+      "tag": "se-label",
+      "dependencies": [],
+      "componentClass": "LabelComponent",
+      "componentPath": "components/label/label.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/label/label.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "required",
+          "type": "Boolean",
+          "attr": "required"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "attr": "value"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "se-link",
+      "dependencies": [],
+      "componentClass": "LabelComponent",
+      "componentPath": "components/link/link.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/link/link.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "attr": "disabled"
+        },
+        {
+          "name": "link",
+          "type": "String",
+          "attr": "link"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "attr": "type"
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "attr": "url"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-list",
+      "dependencies": [],
+      "componentClass": "ListComponent",
+      "componentPath": "components/list/list.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/list/list.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode",
+          "watch": [
+            "PropDidChange"
+          ]
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "se-list-item",
+      "dependencies": [
+        "se-divider"
+      ],
+      "componentClass": "ListItemComponent",
+      "componentPath": "components/list-item/list-item.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/list-item/list-item.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "itemTitle",
+          "type": "String",
+          "attr": "item-title"
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        },
+        {
+          "name": "selected",
+          "type": "Boolean",
+          "attr": "selected"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-navbar",
+      "dependencies": [],
+      "componentClass": "NavbarComponent",
+      "componentPath": "components/navbar/navbar.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/navbar/navbar.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "String",
+          "attr": "color"
+        }
+      ]
+    },
+    {
+      "tag": "se-radio-on-off",
+      "dependencies": [],
+      "componentClass": "RadioOnOffComponent",
+      "componentPath": "components/radio-on-off/radio-on-off.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/radio-on-off/radio-on-off.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "mutable": true,
+          "attr": "disabled"
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        },
+        {
+          "name": "textOff",
+          "type": "String",
+          "attr": "text-off"
+        },
+        {
+          "name": "textOn",
+          "type": "String",
+          "attr": "text-on"
+        }
+      ],
+      "states": [
+        {
+          "name": "selected"
+        }
+      ],
+      "events": [
+        {
+          "event": "change"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-sidenav",
+      "dependencies": [
+        "se-chip",
+        "se-divider",
+        "se-list",
+        "se-list-item"
+      ],
+      "componentClass": "SidenavComponent",
+      "componentPath": "components/sidenav/sidenav.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/sidenav/sidenav.scss"
+          ]
+        }
+      },
+      "states": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "open"
+        },
+        {
+          "name": "selectedItem"
+        }
+      ],
+      "methods": [
+        {
+          "name": "toggle"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "se-sidenav-item",
+      "dependencies": [],
+      "componentClass": "SidenavItemComponent",
+      "componentPath": "components/sidenav-item/sidenav-item.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/sidenav-item/sidenav-item.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "active",
+          "type": "Boolean",
+          "mutable": true,
+          "attr": "active"
+        },
+        {
+          "name": "itemTitle",
+          "type": "String",
+          "attr": "item-title"
+        }
+      ],
+      "methods": [
+        {
+          "name": "setActive"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-widget",
+      "dependencies": [],
+      "componentClass": "WidgetComponent",
+      "componentPath": "components/widget/widget.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/widget/widget.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        },
+        {
+          "name": "width",
+          "type": "String",
+          "attr": "width"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-widget-content",
+      "dependencies": [],
+      "componentClass": "WidgetContent",
+      "componentPath": "components/widget-content/widget-content.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/widget-content/widget-content.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "mode",
+          "type": "String",
+          "attr": "mode"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "se-widget-footer",
+      "dependencies": [],
+      "componentClass": "WidgetFooter",
+      "componentPath": "components/widget-footer/widget-footer.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/widget-footer/widget-footer.scss"
+          ]
+        }
+      },
+      "shadow": true
+    },
+    {
+      "tag": "se-widget-header",
+      "dependencies": [],
+      "componentClass": "WidgetHeader",
+      "componentPath": "components/widget-header/widget-header.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/widget-header/widget-header.scss"
+          ]
+        }
+      },
+      "shadow": true
+    }
+  ],
+  "collections": [],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.17.2",
+    "typescriptVersion": "3.2.2"
+  },
+  "bundles": []
+}

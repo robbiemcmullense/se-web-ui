@@ -1,0 +1,17 @@
+/*
+ * Application global variables.
+ */
+:host {
+  overflow: auto;
+  padding: 8px;
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
+:host(.full-content) {
+  padding: 0;
+  overflow: hidden; }

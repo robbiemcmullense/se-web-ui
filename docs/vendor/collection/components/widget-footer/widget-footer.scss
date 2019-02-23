@@ -1,0 +1,14 @@
+@import "../../theme/theme";
+
+:host {
+  position: relative;
+  padding: $spacing;
+  border-top: 2px solid $widget-footer-border-color;
+  // @include display-flex();
+  @include align-items(center);
+  @include display-flex();
+
+  .flex{
+    @include flex();
+  }
+}
