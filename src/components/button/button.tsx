@@ -22,7 +22,7 @@ export class ButtonComponent {
    * `warn` is an orange color.
    * `error` is a red color.
    */
-  @Prop({mutable: true}) color: 'primary' | 'accent' | 'warn' | 'error';
+  @Prop() color: 'primary' | 'accent' | 'warn' | 'error';
   /**
    * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
    */
@@ -34,7 +34,7 @@ export class ButtonComponent {
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
-  @Prop({mutable: true}) disabled: boolean = false;
+  @Prop() disabled: boolean = false;
   @State() selected: boolean;
   @Element() el: HTMLElement;
   /**
@@ -74,12 +74,12 @@ export class ButtonComponent {
   setGrouped() {
     this.el.classList.add('grouped');
   }
-  
+
   emitEvent() {
     if (!this.disabled) {
       this.selected = !this.selected;
       this.clicked.emit(this.el);
-    } 
+    }
   }
 
   hostData() {

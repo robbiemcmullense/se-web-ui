@@ -30,7 +30,42 @@
 
 <body>
   <se-app>
-    <se-header app-title="Test Advisor"></se-header>
+    <se-header app-title="Test Advisor">
+      <div slot="end">
+          <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
+      </div>
+      <se-sidenav>
+        <se-sidenav-item item-title="sidenav  long title">
+          <se-widget mode="fill">
+            <se-widget-header>some title</se-widget-header>
+            <se-widget-content>
+              <se-chip id="se-chip" value="Chip 01"></se-chip>
+            </se-widget-content>
+            <se-widget-footer>
+              <div slot="end">
+                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+              </div>
+            </se-widget-footer>
+          </se-widget>
+        </se-sidenav-item>
+        <se-sidenav-item item-title="sidenav 2">
+          <se-widget mode="fill">
+            <se-widget-header>some widget design</se-widget-header>
+            <se-widget-content>
+              <se-chip id="se-chip" value="Chip 01"></se-chip>
+            </se-widget-content>
+            <se-widget-footer>
+              <div slot="end">
+                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+              </div>
+            </se-widget-footer>
+          </se-widget>
+        </se-sidenav-item>
+        <se-sidenav-item item-title="sidenav 3">
+            <div>A simple div</div>
+        </se-sidenav-item>
+      </se-sidenav>
+    </se-header>
     <se-navbar color="primary">
       <nav slot="start">
         Tenant: <a class="dropdown"> test </a>
@@ -43,7 +78,7 @@
       </nav>
     </se-navbar>
     <se-container mode="widget">
-      <se-widget style="width: 300px">
+      <se-widget>
         <se-widget-header>Filter</se-widget-header>
 
         <se-widget-content>
@@ -55,8 +90,9 @@
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
             <li id="checkbox-value">error checkbox value: <span></span></li>
-            <li id="checkbox-message">is error checkbox checked: <span></span></li>   
+            <li id="checkbox-message">is error checkbox checked: <span></span></li>
           </ul>
+          <se-divider></se-divider>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left" icon="arrow2_left"></se-button>
             <se-button value="right"icon="arrow2_right"></se-button>
@@ -77,7 +113,7 @@
           </se-buttons>
         </se-widget-footer>
       </se-widget>
-      <se-widget class="flex">
+      <se-widget>
         <se-widget-header>Filter</se-widget-header>
         <se-widget-content>
           <div class="mycoolstyle">my content</div>
@@ -86,12 +122,14 @@
             <li id="chip-info"></li>
           </ul>
           <se-button id="flatBtn1" mode="flat" color="error" >Warning</se-button>
+          <se-divider mode="vertical"></se-divider>
+
           <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
           <se-button mode="outline">Outline</se-button>
           <se-button icon="action_resize" value="resize"></se-button>
           <se-chip id="se-chip" value="Chip 01"></se-chip>
-          <se-chip value="Chip 02" can-close="false"></se-chip>
+          <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
           <div class="se-link-container">
             <se-link url="http://google.com" link="Link to Google"></se-link>
           </div>
@@ -104,14 +142,17 @@
           <div class="se-link-container">
             <se-link url="http://google.com" link="External Link to Google" type="external" disabled="true"></se-link>
           </div>
-        </se-widget-content>
-        <se-widget-footer fxLayoutAlign="row">
-            <se-button mode="flat">Flat</se-button>
+          <se-button mode="flat">Flat</se-button>
           <se-button mode="flat" color="primary">FlatGreen</se-button>
           <se-button id="raisedBtn" mode="raised">Raised</se-button>
           <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
           <se-button id="textBtn1" mode="text">Text</se-button>
           <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
+        </se-widget-content>
+        <se-widget-footer>
+          <div slot="end">
+              <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
+          </div>
         </se-widget-footer>
       </se-widget>
     </se-container>

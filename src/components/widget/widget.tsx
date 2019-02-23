@@ -1,4 +1,4 @@
-import { Component } from "@stencil/core";
+import { Component, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-widget",
@@ -6,6 +6,16 @@ import { Component } from "@stencil/core";
   shadow: true
 })
 export class WidgetComponent {
+
+  @Prop() mode: 'fill';
+
+  @Prop() width: string;
+
+  hostData() {
+    return {
+      'class': this.mode
+    };
+  }
   render() {
     return (
       <div class="widget-body">

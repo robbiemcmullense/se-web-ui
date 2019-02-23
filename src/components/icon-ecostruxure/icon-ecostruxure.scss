@@ -1,12 +1,12 @@
-@import "../../theme/theme-variables";	
+@import "../../theme/theme";
 
- :host {	
-	color: $primary;	
-	color: var(--primary, $primary);	
-  height: auto;	
+ :host {
+	color: $primary;
+	color: var(--primary, $primary);
+  height: auto;
   font-size: 12px !important;
 
- 	::ng-deep svg {	
-		padding-left: 2px;	
-	}	
+ 	::ng-deep svg {
+		padding-left: 2px;
+	}
 }

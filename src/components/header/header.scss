@@ -1,14 +1,18 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
+@import "../../theme/animation";
 
-:host  {
+:host {
   box-sizing: border-box;
   height: auto;
   padding: 0;
   width: 100%;
   min-height: 56px;
   max-height: 61px;
+  @include animated("slow");
+  animation-name: fadeIn;
 }
-.header-container{
+
+.header-container {
   @include display-flex();
   @include flex-direction(row);
   justify-content: space-between;
@@ -20,7 +24,7 @@
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   white-space: nowrap;
-  @include background-color-property($se-white, '');
+  @include background-color-property($se-white, "");
 }
 .fill-space {
   @include flex(1);
@@ -34,31 +38,51 @@
 }
 
 .d-flex-column {
-  justify-content: left;
-  align-items: left;
-
+  @include align-items(left);
   @include display-flex();
   @include flex-direction(column);
 }
 
-.header-menu-button{
+.line {
+  border: 1px solid #333333;
+  width: 0px;
+  height: 32px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.project-section {
+  color: #333333;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+.header-menu-button {
   margin-left: 6px;
   .mat-icon {
     font-size: 35px;
   }
 }
-
-.header-title, .header-title-type {
-  @include color-property($primary, 'primary');
+.menu-sidenav {
+  @include color-property($primary, "primary");
+  cursor: pointer;
+  font-size: 63px !important;
+  margin-right: -17px;
+}
+.header-title{
+  @include color-property($primary, "primary");
   padding-left: 18px;
   font-size: 20px;
   line-height: 20px;
-  margin: 0 0 8px 0;
+  margin: 0;
 }
 .header-title-type {
+  @include color-property($primary, "primary");
   line-height: 24px;
-  margin: 10px 0 0 0;
-  padding-left: 19px;
+  padding-left: 18px;
+  font-size: 12px;
+  margin: 1px 0 0 0;
 }
 
 .mat-toolbar-single-row {
@@ -70,11 +94,11 @@
     background: transparent;
   }
 }
-.font-lighter{
+.font-lighter {
   font-weight: 100;
 }
-.user-icon{
-  @include color-property($primary, 'primary');
+.user-icon {
+  @include color-property($primary, "primary");
   z-index: 1;
   font-size: 24px;
   padding-right: 5px;
@@ -86,8 +110,11 @@
 }
 se-icon-schneider {
   width: 140px;
-  padding-left: 0px !important;
+  padding-left: 9px !important;
   margin-top: 5px;
+}
+se-icon-ecostruxure {
+  margin-bottom: -5px;
 }
 .padding-container {
   // margin-right: 13px;
@@ -106,15 +133,16 @@ se-icon-schneider {
 }
 
 ::ng-deep {
-  [header-user], header-user {
+  [header-user],
+  header-user {
     margin-right: 10px;
-    .mat-button-wrapper{
-      @include color-property($se-dark-grey, '');
+    .mat-button-wrapper {
+      @include color-property($se-dark-grey, "");
       padding: 0 13px;
       font-weight: 100;
 
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         right: 10px;

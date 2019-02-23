@@ -1,6 +1,9 @@
 {
   "name": "@se/ui-web-components",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publishConfig": {
+    "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
+  },
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
   "module": "core/esm/index.js",
   "main": "core/index.js",

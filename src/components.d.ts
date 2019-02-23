@@ -152,6 +152,10 @@ export namespace Components {
     */
     'canClose': boolean;
     /**
+    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.
+    */
+    'color': 'primary' | 'accent' | 'warn' | 'error';
+    /**
     * The text you want to display in your chip.
     */
     'value': string;
@@ -161,6 +165,10 @@ export namespace Components {
     * Indicates whether or not the chip has a close button.  Set to `true` by default.
     */
     'canClose'?: boolean;
+    /**
+    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.
+    */
+    'color'?: 'primary' | 'accent' | 'warn' | 'error';
     /**
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
@@ -175,7 +183,7 @@ export namespace Components {
     /**
     * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
     */
-    'mode': 'widget' | 'fill' | 'centered';
+    'mode': 'widget' | 'fill' | 'centered' | 'card';
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
@@ -185,11 +193,20 @@ export namespace Components {
     /**
     * Defines the inner apparance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
     */
-    'mode'?: 'widget' | 'fill' | 'centered';
+    'mode'?: 'widget' | 'fill' | 'centered' | 'card';
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position'?: 'relative' | 'absolute';
+  }
+
+  interface SeDivider {
+    'color': "dark" | "light";
+    'mode': "horizontal" | "vertical" | "inset";
+  }
+  interface SeDividerAttributes extends StencilHTMLAttributes {
+    'color'?: "dark" | "light";
+    'mode'?: "horizontal" | "vertical" | "inset";
   }
 
   interface SeHeader {
@@ -197,12 +214,28 @@ export namespace Components {
     * Title of the application
     */
     'appTitle': string;
+    /**
+    * domain define the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed
+    */
+    'domain': string;
+    /**
+    * domain define project name (usefull for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+    */
+    'project': string;
   }
   interface SeHeaderAttributes extends StencilHTMLAttributes {
     /**
     * Title of the application
     */
     'appTitle'?: string;
+    /**
+    * domain define the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed
+    */
+    'domain'?: string;
+    /**
+    * domain define project name (usefull for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+    */
+    'project'?: string;
   }
 
   interface SeIconEcostruxure {}
@@ -269,6 +302,48 @@ export namespace Components {
     'url'?: string;
   }
 
+  interface SeListItem {
+    /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle': string;
+    /**
+    * Define the them of the list. This them will be handled and modified by the parent element
+    */
+    'mode': "nav" | "classic" | "checkbox" | "expander";
+    /**
+    * Define if the list element should be selected or not
+    */
+    'selected': boolean;
+  }
+  interface SeListItemAttributes extends StencilHTMLAttributes {
+    /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle'?: string;
+    /**
+    * Define the them of the list. This them will be handled and modified by the parent element
+    */
+    'mode'?: "nav" | "classic" | "checkbox" | "expander";
+    /**
+    * Define if the list element should be selected or not
+    */
+    'selected'?: boolean;
+  }
+
+  interface SeList {
+    /**
+    * Define the style of the list
+    */
+    'mode': "nav" | "classic" | "checkbox" | "expander";
+  }
+  interface SeListAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the style of the list
+    */
+    'mode'?: "nav" | "classic" | "checkbox" | "expander";
+  }
+
   interface SeNavbar {
     'color': 'primary' | 'secondary' | 'tab';
   }
@@ -317,8 +392,39 @@ export namespace Components {
     'textOn'?: string;
   }
 
-  interface SeWidgetContent {}
-  interface SeWidgetContentAttributes extends StencilHTMLAttributes {}
+  interface SeSidenavItem {
+    /**
+    * Defines if the tab is active or not.
+    */
+    'active': boolean;
+    /**
+    * Define the title of the tab
+    */
+    'itemTitle': string;
+    'setActive': () => Promise<void>;
+  }
+  interface SeSidenavItemAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines if the tab is active or not.
+    */
+    'active'?: boolean;
+    /**
+    * Define the title of the tab
+    */
+    'itemTitle'?: string;
+  }
+
+  interface SeSidenav {
+    'toggle': () => void;
+  }
+  interface SeSidenavAttributes extends StencilHTMLAttributes {}
+
+  interface SeWidgetContent {
+    'mode': 'fill';
+  }
+  interface SeWidgetContentAttributes extends StencilHTMLAttributes {
+    'mode'?: 'fill';
+  }
 
   interface SeWidgetFooter {}
   interface SeWidgetFooterAttributes extends StencilHTMLAttributes {}
@@ -326,8 +432,14 @@ export namespace Components {
   interface SeWidgetHeader {}
   interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {}
 
-  interface SeWidget {}
-  interface SeWidgetAttributes extends StencilHTMLAttributes {}
+  interface SeWidget {
+    'mode': 'fill';
+    'width': string;
+  }
+  interface SeWidgetAttributes extends StencilHTMLAttributes {
+    'mode'?: 'fill';
+    'width'?: string;
+  }
 }
 
 declare global {
@@ -338,13 +450,18 @@ declare global {
     'SeCheckbox': Components.SeCheckbox;
     'SeChip': Components.SeChip;
     'SeContainer': Components.SeContainer;
+    'SeDivider': Components.SeDivider;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeLabel': Components.SeLabel;
     'SeLink': Components.SeLink;
+    'SeListItem': Components.SeListItem;
+    'SeList': Components.SeList;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
+    'SeSidenavItem': Components.SeSidenavItem;
+    'SeSidenav': Components.SeSidenav;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -358,13 +475,18 @@ declare global {
     'se-checkbox': Components.SeCheckboxAttributes;
     'se-chip': Components.SeChipAttributes;
     'se-container': Components.SeContainerAttributes;
+    'se-divider': Components.SeDividerAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-label': Components.SeLabelAttributes;
     'se-link': Components.SeLinkAttributes;
+    'se-list-item': Components.SeListItemAttributes;
+    'se-list': Components.SeListAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
+    'se-sidenav-item': Components.SeSidenavItemAttributes;
+    'se-sidenav': Components.SeSidenavAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -408,6 +530,12 @@ declare global {
     new (): HTMLSeContainerElement;
   };
 
+  interface HTMLSeDividerElement extends Components.SeDivider, HTMLStencilElement {}
+  var HTMLSeDividerElement: {
+    prototype: HTMLSeDividerElement;
+    new (): HTMLSeDividerElement;
+  };
+
   interface HTMLSeHeaderElement extends Components.SeHeader, HTMLStencilElement {}
   var HTMLSeHeaderElement: {
     prototype: HTMLSeHeaderElement;
@@ -438,6 +566,18 @@ declare global {
     new (): HTMLSeLinkElement;
   };
 
+  interface HTMLSeListItemElement extends Components.SeListItem, HTMLStencilElement {}
+  var HTMLSeListItemElement: {
+    prototype: HTMLSeListItemElement;
+    new (): HTMLSeListItemElement;
+  };
+
+  interface HTMLSeListElement extends Components.SeList, HTMLStencilElement {}
+  var HTMLSeListElement: {
+    prototype: HTMLSeListElement;
+    new (): HTMLSeListElement;
+  };
+
   interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
   var HTMLSeNavbarElement: {
     prototype: HTMLSeNavbarElement;
@@ -448,6 +588,18 @@ declare global {
   var HTMLSeRadioOnOffElement: {
     prototype: HTMLSeRadioOnOffElement;
     new (): HTMLSeRadioOnOffElement;
+  };
+
+  interface HTMLSeSidenavItemElement extends Components.SeSidenavItem, HTMLStencilElement {}
+  var HTMLSeSidenavItemElement: {
+    prototype: HTMLSeSidenavItemElement;
+    new (): HTMLSeSidenavItemElement;
+  };
+
+  interface HTMLSeSidenavElement extends Components.SeSidenav, HTMLStencilElement {}
+  var HTMLSeSidenavElement: {
+    prototype: HTMLSeSidenavElement;
+    new (): HTMLSeSidenavElement;
   };
 
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
@@ -481,13 +633,18 @@ declare global {
     'se-checkbox': HTMLSeCheckboxElement
     'se-chip': HTMLSeChipElement
     'se-container': HTMLSeContainerElement
+    'se-divider': HTMLSeDividerElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-label': HTMLSeLabelElement
     'se-link': HTMLSeLinkElement
+    'se-list-item': HTMLSeListItemElement
+    'se-list': HTMLSeListElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
+    'se-sidenav-item': HTMLSeSidenavItemElement
+    'se-sidenav': HTMLSeSidenavElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -501,13 +658,18 @@ declare global {
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
     'se-container': HTMLSeContainerElement;
+    'se-divider': HTMLSeDividerElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-label': HTMLSeLabelElement;
     'se-link': HTMLSeLinkElement;
+    'se-list-item': HTMLSeListItemElement;
+    'se-list': HTMLSeListElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
+    'se-sidenav-item': HTMLSeSidenavItemElement;
+    'se-sidenav': HTMLSeSidenavElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;

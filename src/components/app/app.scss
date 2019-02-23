@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :root {
   @include define-custom-property("primary", $primary);
@@ -9,6 +9,9 @@
   @include define-custom-property("warn-contrast", $warn-contrast);
   @include define-custom-property("error", $error);
   @include define-custom-property("error-contrast", $error-contrast);
+}
+:host{
+  width: 100%;
 }
 .se-app-body {
   overflow: hidden;
