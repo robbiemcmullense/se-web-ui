@@ -43,6 +43,21 @@
   @include flex-direction(column);
 }
 
+.line {
+  border: 1px solid #333333;
+  width: 0px;
+  height: 32px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.project-section {
+  color: #333333;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
 .header-menu-button {
   margin-left: 6px;
   .mat-icon {
@@ -95,8 +110,11 @@
 }
 se-icon-schneider {
   width: 140px;
-  padding-left: 0px !important;
+  padding-left: 9px !important;
   margin-top: 5px;
+}
+se-icon-ecostruxure {
+  margin-bottom: -5px;
 }
 .padding-container {
   // margin-right: 13px;

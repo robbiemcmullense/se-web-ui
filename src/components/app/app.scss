@@ -10,6 +10,9 @@
   @include define-custom-property("error", $error);
   @include define-custom-property("error-contrast", $error-contrast);
 }
+:host{
+  width: 100%;
+}
 .se-app-body {
   overflow: hidden;
   background-color: #e6e6e6;

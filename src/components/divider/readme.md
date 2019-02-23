@@ -9,6 +9,7 @@
 
 | Property | Attribute | Description | Type                                    | Default        |
 | -------- | --------- | ----------- | --------------------------------------- | -------------- |
+| `color`  | `color`   |             | `"dark" \| "light"`                     | `"light"`      |
 | `mode`   | `mode`    |             | `"horizontal" \| "inset" \| "vertical"` | `"horizontal"` |
 
 

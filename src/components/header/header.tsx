@@ -15,6 +15,11 @@ export class HeaderComponent {
    */
   @Prop() domain: string = "ecostruxure";
 
+  /**
+   * domain define project name (usefull for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+   */
+  @Prop() project: string;
+
   @Element() el: HTMLElement;
   @State() hasMenu: boolean;
   elLeftNav;
@@ -60,7 +65,11 @@ export class HeaderComponent {
               <span class="font-regular">{first}</span>
               <span class="font-lighter">&nbsp;{last}</span>
             </h1>
-          </div>{" "}
+          </div>
+          {this.project && [
+              <span class="line"></span>,
+              <span class="project-section">{this.project}</span>
+            ]}
         </div>
 
         <div id="fill-space center-header-container">
@@ -69,7 +78,7 @@ export class HeaderComponent {
         <div class="padding-container user-icon-wrapper">
           <slot name="user" />
         </div>
-        <div class="padding-container link-container">
+        <div class="padding-container d-flex">
           <slot name="end" />
           <se-icon-schneider class="header-title-type" />
         </div>

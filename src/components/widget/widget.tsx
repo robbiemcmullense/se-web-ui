@@ -9,6 +9,8 @@ export class WidgetComponent {
 
   @Prop() mode: 'fill';
 
+  @Prop() width: string;
+
   hostData() {
     return {
       'class': this.mode
@@ -16,7 +18,9 @@ export class WidgetComponent {
   }
   render() {
     return (
-      <slot />
+      <div class="widget-body">
+          <slot />
+      </div>
     );
   }
 }

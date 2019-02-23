@@ -201,9 +201,11 @@ export namespace Components {
   }
 
   interface SeDivider {
+    'color': "dark" | "light";
     'mode': "horizontal" | "vertical" | "inset";
   }
   interface SeDividerAttributes extends StencilHTMLAttributes {
+    'color'?: "dark" | "light";
     'mode'?: "horizontal" | "vertical" | "inset";
   }
 
@@ -216,6 +218,10 @@ export namespace Components {
     * domain define the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed
     */
     'domain': string;
+    /**
+    * domain define project name (usefull for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+    */
+    'project': string;
   }
   interface SeHeaderAttributes extends StencilHTMLAttributes {
     /**
@@ -226,6 +232,10 @@ export namespace Components {
     * domain define the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed
     */
     'domain'?: string;
+    /**
+    * domain define project name (usefull for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+    */
+    'project'?: string;
   }
 
   interface SeIconEcostruxure {}
@@ -292,6 +302,48 @@ export namespace Components {
     'url'?: string;
   }
 
+  interface SeListItem {
+    /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle': string;
+    /**
+    * Define the them of the list. This them will be handled and modified by the parent element
+    */
+    'mode': "nav" | "classic" | "checkbox" | "expander";
+    /**
+    * Define if the list element should be selected or not
+    */
+    'selected': boolean;
+  }
+  interface SeListItemAttributes extends StencilHTMLAttributes {
+    /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle'?: string;
+    /**
+    * Define the them of the list. This them will be handled and modified by the parent element
+    */
+    'mode'?: "nav" | "classic" | "checkbox" | "expander";
+    /**
+    * Define if the list element should be selected or not
+    */
+    'selected'?: boolean;
+  }
+
+  interface SeList {
+    /**
+    * Define the style of the list
+    */
+    'mode': "nav" | "classic" | "checkbox" | "expander";
+  }
+  interface SeListAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the style of the list
+    */
+    'mode'?: "nav" | "classic" | "checkbox" | "expander";
+  }
+
   interface SeNavbar {
     'color': 'primary' | 'secondary' | 'tab';
   }
@@ -348,7 +400,7 @@ export namespace Components {
     /**
     * Define the title of the tab
     */
-    'navTitle': string;
+    'itemTitle': string;
     'setActive': () => Promise<void>;
   }
   interface SeSidenavItemAttributes extends StencilHTMLAttributes {
@@ -359,7 +411,7 @@ export namespace Components {
     /**
     * Define the title of the tab
     */
-    'navTitle'?: string;
+    'itemTitle'?: string;
   }
 
   interface SeSidenav {
@@ -382,9 +434,11 @@ export namespace Components {
 
   interface SeWidget {
     'mode': 'fill';
+    'width': string;
   }
   interface SeWidgetAttributes extends StencilHTMLAttributes {
     'mode'?: 'fill';
+    'width'?: string;
   }
 }
 
@@ -402,6 +456,8 @@ declare global {
     'SeIconSchneider': Components.SeIconSchneider;
     'SeLabel': Components.SeLabel;
     'SeLink': Components.SeLink;
+    'SeListItem': Components.SeListItem;
+    'SeList': Components.SeList;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeSidenavItem': Components.SeSidenavItem;
@@ -425,6 +481,8 @@ declare global {
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-label': Components.SeLabelAttributes;
     'se-link': Components.SeLinkAttributes;
+    'se-list-item': Components.SeListItemAttributes;
+    'se-list': Components.SeListAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-sidenav-item': Components.SeSidenavItemAttributes;
@@ -508,6 +566,18 @@ declare global {
     new (): HTMLSeLinkElement;
   };
 
+  interface HTMLSeListItemElement extends Components.SeListItem, HTMLStencilElement {}
+  var HTMLSeListItemElement: {
+    prototype: HTMLSeListItemElement;
+    new (): HTMLSeListItemElement;
+  };
+
+  interface HTMLSeListElement extends Components.SeList, HTMLStencilElement {}
+  var HTMLSeListElement: {
+    prototype: HTMLSeListElement;
+    new (): HTMLSeListElement;
+  };
+
   interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
   var HTMLSeNavbarElement: {
     prototype: HTMLSeNavbarElement;
@@ -569,6 +639,8 @@ declare global {
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-label': HTMLSeLabelElement
     'se-link': HTMLSeLinkElement
+    'se-list-item': HTMLSeListItemElement
+    'se-list': HTMLSeListElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-sidenav-item': HTMLSeSidenavItemElement
@@ -592,6 +664,8 @@ declare global {
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-label': HTMLSeLabelElement;
     'se-link': HTMLSeLinkElement;
+    'se-list-item': HTMLSeListItemElement;
+    'se-list': HTMLSeListElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-sidenav-item': HTMLSeSidenavItemElement;

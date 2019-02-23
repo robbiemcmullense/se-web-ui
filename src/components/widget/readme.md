@@ -10,6 +10,7 @@
 | Property | Attribute | Description | Type     | Default     |
 | -------- | --------- | ----------- | -------- | ----------- |
 | `mode`   | `mode`    |             | `"fill"` | `undefined` |
+| `width`  | `width`   |             | `string` | `undefined` |
 
 
 ----------------------------------------------

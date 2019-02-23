@@ -10,15 +10,18 @@
   @include display-flex();
   @include flex(1);
 
-  overflow: hidden;
-
-  background: white;
-  margin: $spacing-small;
-  @include flex(1);
-  @include display-flex();
-  @include flex-direction(column);
-
+  .widget-body {
+    overflow: hidden;
+    background: white;
+    margin: 5px;
+    @include flex(1);
+    @include display-flex();
+    @include flex-direction(column);
+  }
 }
+
 :host(.fill){
-  margin: 0;
+  .widget-body {
+    margin: 0;
+  }
 }

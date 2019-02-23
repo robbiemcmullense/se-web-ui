@@ -42,6 +42,10 @@
     @include animated()
   }
 
+  .image-logo{
+    height: 45px;
+    margin: 0 auto;
+  }
   .menu-background {
     position: absolute;
     background-color: rgba(38,38,38, 0.2);
@@ -72,25 +76,37 @@
     @include flex(1);
   }
   .d-flex {
-
     @include display-flex();
+    @include align-items(left);
+    @include flex-direction(row);
+  }
+  .d-flex-center {
+    @include display-flex();
+    @include align-items(center);
     @include flex-direction(row);
   }
 
   .d-flex-column {
-    @include align-items(left);
     @include display-flex();
+    @include align-items(left);
     @include flex-direction(column);
   }
 
   .listNavItems{
     width: 250px;
+    @include display-flex();
+    @include flex-direction(column);
+    @include justify-content(space-between);
+
   }
-  .navItem {
-    padding: 20px;
-    &.selected {
-      color: green;
-    }
+
+  .header-title{
+    color: $se-anthracite-grey;
+    padding-left: 18px;
+    font-size: 30px;
+    line-height: 20px;
+    font-weight: lighter;
+    margin: 0;
   }
 
 }

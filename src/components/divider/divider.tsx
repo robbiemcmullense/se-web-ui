@@ -5,16 +5,13 @@ import { Component, Prop } from "@stencil/core";
   styleUrl: "divider.scss",
   shadow: true
 })
-export class Divider {
+export class DividerComponent {
   @Prop() mode: "horizontal" | "vertical" | "inset" = "horizontal";
+  @Prop() color: "dark" | "light" = "light";
 
   hostData() {
     return {
-      class: {
-        horizontal: this.mode === "horizontal",
-        vertical: this.mode === "vertical",
-        inset: this.mode === "inset"
-      }
+      class: [this.mode, this.color].join(' ')
     };
   }
 

@@ -21,3 +21,7 @@ $divider-inset-margin: 80px;
   border-right-width: $divider-width;
   border-right-style: solid;
 }
+
+:host(.inset) {
+  border-color: $se-anthracite-grey;
+}

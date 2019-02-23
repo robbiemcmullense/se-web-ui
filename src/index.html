@@ -31,8 +31,11 @@
 <body>
   <se-app>
     <se-header app-title="Test Advisor">
+      <div slot="end">
+          <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
+      </div>
       <se-sidenav>
-        <se-sidenav-item nav-title="sidenav 1">
+        <se-sidenav-item item-title="sidenav  long title">
           <se-widget mode="fill">
             <se-widget-header>some title</se-widget-header>
             <se-widget-content>
@@ -45,7 +48,7 @@
             </se-widget-footer>
           </se-widget>
         </se-sidenav-item>
-        <se-sidenav-item nav-title="sidenav 2">
+        <se-sidenav-item item-title="sidenav 2">
           <se-widget mode="fill">
             <se-widget-header>some widget design</se-widget-header>
             <se-widget-content>
@@ -58,7 +61,7 @@
             </se-widget-footer>
           </se-widget>
         </se-sidenav-item>
-        <se-sidenav-item nav-title="sidenav 3">
+        <se-sidenav-item item-title="sidenav 3">
             <div>A simple div</div>
         </se-sidenav-item>
       </se-sidenav>

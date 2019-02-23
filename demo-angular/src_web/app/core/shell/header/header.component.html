@@ -1,47 +1,33 @@
-<se-header app-title="React Advisor"></se-header>
-
-<!-- <se-header [title]="appInfo.title"> -->
-
-  <!-- <se-sidenav headerNav="Menu" [appInfo]="appInfo">
-
-    <se-sidenav-item title="About">
-      <se-about [appInfo]="appInfo"></se-about>
-    </se-sidenav-item>
-
-    <se-sidenav-item divider="true" title="section 3">
-      <help-menu></help-menu>
-    </se-sidenav-item>
-
-    <se-sidenav-item  title="section 3-a">
-      <se-widget no-margin>
-        <header>
-          List
-        </header>
-        <se-table
-          [rows]="rows"
-          [columns]="columns">
-        </se-table>
-        <footer fxLayoutAlign="flex-end">
-          <button mat-flat-button color="primary">Apply</button>
-        </footer>
-      </se-widget>
-    </se-sidenav-item>
-
-    <se-sidenav-item  title="section 3-b">
-      <h3>Cool section 3-b</h3>
-      <mat-divider></mat-divider>
-    </se-sidenav-item>
-  </se-sidenav> -->
-
-  <!-- <div header-user>
-    <button mat-button [matMenuTriggerFor]="appMenu">
-      {{user.username || user.email || 'test user'}}
-    </button>
-    <mat-menu #appMenu="matMenu" overlapTrigger="false">
-      <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
-  </div>
-  <div header-right>
-    <a class="link" (click)="settings()">settings</a>
-  </div> -->
-<!-- </se-header> -->
+<se-header app-title="React Advisor">
+    <se-sidenav>
+        <se-sidenav-item item-title="sidenav  long title">
+          <se-widget mode="fill">
+            <se-widget-header>some title</se-widget-header>
+            <se-widget-content>
+              <se-chip id="se-chip" value="Chip 01"></se-chip>
+            </se-widget-content>
+            <se-widget-footer>
+              <div slot="end">
+                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+              </div>
+            </se-widget-footer>
+          </se-widget>
+        </se-sidenav-item>
+        <se-sidenav-item item-title="sidenav 2">
+          <se-widget mode="fill">
+            <se-widget-header>some widget design</se-widget-header>
+            <se-widget-content>
+              <se-chip id="se-chip" value="Chip 01"></se-chip>
+            </se-widget-content>
+            <se-widget-footer>
+              <div slot="end">
+                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+              </div>
+            </se-widget-footer>
+          </se-widget>
+        </se-sidenav-item>
+        <se-sidenav-item item-title="sidenav 3">
+            <div>A simple div</div>
+        </se-sidenav-item>
+      </se-sidenav>
+</se-header>

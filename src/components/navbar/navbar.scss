@@ -28,8 +28,10 @@
 }
 
 .nav-left-wrapper {
-  padding-left: 20px;
   background-color: rgba(black, 0.25);
+  &>*:first-child{
+    padding-left: 20px;
+  }
 }
 
 nav.primary {

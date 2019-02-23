@@ -20,7 +20,6 @@ export class SidenavComponent {
 
   @Method()
   toggle(): void {
-    console.log('toggle')
     this.open = !this.open;
     if (this.open) {
       // Add css classes
@@ -85,8 +84,7 @@ export class SidenavComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <div onClick={() => this.setActive(item)} class={item.active ? 'navItem selected' : 'navItem'}> {item.navTitle} </div>,
-        <se-divider></se-divider>
+        <se-list-item onClick={() => this.setActive(item)} selected={item.active} item-title={item.itemTitle}></se-list-item>,
       ]
     })
   }
@@ -95,21 +93,20 @@ export class SidenavComponent {
     return [
       <div class="menu-background animated" onClick={() => this.toggle()}  ref={el => this.backdropEl = el}></div>,
       <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
-          <div class="d-flex">
-            <div class="d-flex flex">
-              <i class="se-icon menu-sidenav" onClick={() => this.toggle()}>burger_menu</i>
+          <div class="d-flex-center">
+            <div class="d-flex-center flex">
+              <i class="se-icon menu-sidenav" onClick={() => this.toggle()}>test_results_nok</i>
               <h3 class="header-title">Menu</h3>
             </div>
-            <se-chip color="primary" can-close="false">
-              <se-link url="https://schneider-electric.com" link="Schneider-electric.com" type="external"></se-link>
+            <se-chip color="primary" can-close="false" value="https://schneider-electric.com">
             </se-chip>
           </div>
           <se-divider></se-divider>
           <div class="d-flex flex">
             <div class="listNavItems">
-              <div>
-              {this.renderList()}
-              </div>
+              <se-list mode="nav">
+                {this.renderList()}
+              </se-list>
               <img class="image-logo" alt="Schneider electric logo"/>
             </div>
             <se-divider mode="vertical"></se-divider>
