@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/IoT/ui-web-components/precache-manifest.a2b5bffd5bfc2b6c11fe0e80fa43ee34.js"
+  "/IoT/ui-web-components/precache-manifest.46711275c754362cc221e4ad445d4eb4.js"
 );
 
 workbox.clientsClaim();
