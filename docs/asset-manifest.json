@@ -1,7 +1,7 @@
 {
   "main.css": "/IoT/ui-web-components/static/css/main.eda008ae.chunk.css",
-  "main.js": "/IoT/ui-web-components/static/js/main.1c6f4f39.chunk.js",
-  "main.js.map": "/IoT/ui-web-components/static/js/main.1c6f4f39.chunk.js.map",
+  "main.js": "/IoT/ui-web-components/static/js/main.36d77689.chunk.js",
+  "main.js.map": "/IoT/ui-web-components/static/js/main.36d77689.chunk.js.map",
   "static/js/1.a783422b.chunk.js": "/IoT/ui-web-components/static/js/1.a783422b.chunk.js",
   "static/js/1.a783422b.chunk.js.map": "/IoT/ui-web-components/static/js/1.a783422b.chunk.js.map",
   "static/js/2.96d42746.chunk.js": "/IoT/ui-web-components/static/js/2.96d42746.chunk.js",
@@ -101,6 +101,6 @@
   "static/css/main.eda008ae.chunk.css.map": "/IoT/ui-web-components/static/css/main.eda008ae.chunk.css.map",
   "static/css/43.4a816ae0.chunk.css.map": "/IoT/ui-web-components/static/css/43.4a816ae0.chunk.css.map",
   "index.html": "/IoT/ui-web-components/index.html",
-  "precache-manifest.46711275c754362cc221e4ad445d4eb4.js": "/IoT/ui-web-components/precache-manifest.46711275c754362cc221e4ad445d4eb4.js",
+  "precache-manifest.323c0471ee775278e68c5a7238ce8dbc.js": "/IoT/ui-web-components/precache-manifest.323c0471ee775278e68c5a7238ce8dbc.js",
   "service-worker.js": "/IoT/ui-web-components/service-worker.js"
 }

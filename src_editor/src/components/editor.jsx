@@ -46,7 +46,7 @@ class Editor extends Component {
     this.props.handleCode(this.state.code);
     setTimeout(() => {
       this.editor.getAction('editor.action.formatDocument').run()
-    }, 200);
+    }, 1000);
   }
 
   render() {

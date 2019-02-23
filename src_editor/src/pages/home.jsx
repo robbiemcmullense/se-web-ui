@@ -17,7 +17,7 @@ class Home extends Component {
 
     setTimeout(() => {
       this.resizedLayout();
-    }, 500);
+    }, 1000);
   }
 
   componentWillUnmount() {
