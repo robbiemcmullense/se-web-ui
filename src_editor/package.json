@@ -2,6 +2,7 @@
   "name": "react-angular-elements",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://pages.github.schneider-electric.com/IoT/ui-web-components",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",

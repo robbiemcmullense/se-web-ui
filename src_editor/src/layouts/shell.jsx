@@ -5,7 +5,7 @@ class ShellLayout extends Component {
   render() {
     return (
       <span className="se-app-body">
-        <se-header app-title="Template Editor" domain="none"></se-header>
+        <se-header app-title="Template Editor" domain="none" project="Version 1.0.0"></se-header>
         <se-navbar></se-navbar>
         {this.props.children}
       </span>
