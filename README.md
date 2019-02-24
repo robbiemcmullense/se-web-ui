@@ -25,9 +25,10 @@ This project uses [StencilJs](https://stenciljs.com) to generate web component f
 | [x]  | Buttons        | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Button         | standard button                                                                                                            |
 | [x]  | Radio-on-off   | toggle switch that can indicate "on" or "off", "active" or "inactive", etc.                                                |
-| [ ]  | Switch         |                                                                                                                            |
+| [x]  | Switch         |                                                                                                                            |
 | [x]  | Checkbox       | checkbox to check or uncheck a value                                                                                       |
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
+| [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
 | [ ]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Dropdown-item  | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Progressbar    |                                                                                                                            |
@@ -37,12 +38,11 @@ This project uses [StencilJs](https://stenciljs.com) to generate web component f
 | [ ]  | Dialog-footer  |                                                                                                                            |
 | [x]  | sidenav        | ( fly from left. should open at the `se-app` level with css animation                                                      |
 | [x]  | sidenav-item   | selection of the left element with it's content (slot)                                                                     |
-| [ ]  | List           | classic                                                                                                                    |
-| [ ]  | List-item      | list with slot (start/center/end)                                                                                          |
+| [x]  | List           | classic                                                                                                                    |
+| [x]  | List-group     | to display a collapsible list groups                                                                                       |
+| [x]  | List-item      | list with slot (start/center/end)                                                                                          |
 | [x]  | Label          | label to be displayed next to an input field or checkbox                                                                   |
 | [x]  | Link           | anchor element that redirects a user to another web page                                                                   |
-| [ ]  | Tree           |                                                                                                                            |
-| [ ]  | Tree-item      |                                                                                                                            |
 | [ ]  | Tab            |                                                                                                                            |
 | [ ]  | Tab-item       |                                                                                                                            |
 | [ ]  | Brand          | Authentication page with a slot as content                                                                                 |
