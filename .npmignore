@@ -5,3 +5,4 @@ demo-angular/
 demo-react/
 demo-vue/
 src/
+!style/
