@@ -32,7 +32,10 @@ This project uses [StencilJs](https://stenciljs.com) to generate web component f
 | [ ]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Dropdown-item  | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Progressbar    |                                                                                                                            |
-| [ ]  | Dialog         | design of the Modal, Does not includ how to manipulate it (open, clode)                                                    |
+| [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
+| [ ]  | Card-header    |                                                                                                                            |
+| [ ]  | Card-content   |                                                                                                                            |
+| [ ]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
 | [ ]  | Dialog-header  |                                                                                                                            |
 | [ ]  | Dialog-content |                                                                                                                            |
 | [ ]  | Dialog-footer  |                                                                                                                            |
