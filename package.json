@@ -1,6 +1,6 @@
 {
   "name": "@se/ui-web-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },
@@ -22,12 +22,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "demo.react": "cd demo-react && yarn start",
     "demo.vue": "cd demo-vue && yarn start",
-    "demo.angular": "cd demo-angular && yarn start",
-    "install": "npm-run-all install.*",
-    "install.react": "cd demo-react && yarn",
-    "install.vue": "cd demo-vue && yarn",
-    "install.angular": "cd demo-angular && yarn",
-    "install.build": "yarn build"
+    "demo.angular": "cd demo-angular && yarn start"
   },
   "dependencies": {
     "@stencil/core": "^0.17.1",
