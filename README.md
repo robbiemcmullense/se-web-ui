@@ -6,6 +6,9 @@ Component realized in this way can be as complex as holding a full independent w
 
 This project uses [StencilJs](https://stenciljs.com) to generate web component from the code. StencilJs generate compact web-components that that follow 100% of the web standards and takes care of the polyfills if the browser does not support them natively. StencilJs utilize [TypeScript](https://www.typescriptlang.org/) to follow best coding practices.
 
+
+You can test all those components with this [Online Template Editor](https://pages.github.schneider-electric.com/IoT/web-template-editor/).
+
 ## list of components
 
 | Done | Component      | Info                                                                                                                       |
