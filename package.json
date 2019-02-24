@@ -33,6 +33,10 @@
     "@stencil/core": "^0.17.1",
     "@stencil/sass": "^0.1.1"
   },
+  "peerDependencies": {
+    "@se/fonts": "^1.0.0",
+    "@se/icons": "^3.2.0"
+  },
   "devDependencies": {
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.2.0",
