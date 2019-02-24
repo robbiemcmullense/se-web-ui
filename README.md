@@ -29,6 +29,7 @@ This project uses [StencilJs](https://stenciljs.com) to generate web component f
 | [x]  | Checkbox       | checkbox to check or uncheck a value                                                                                       |
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
 | [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
+| [ ]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
 | [ ]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Dropdown-item  | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Progressbar    |                                                                                                                            |
