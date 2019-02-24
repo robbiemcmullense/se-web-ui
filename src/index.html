@@ -78,51 +78,73 @@
       </nav>
     </se-navbar>
     <se-container mode="widget">
-      <se-widget>
-        <se-widget-header>Filter</se-widget-header>
-
-        <se-widget-content>
-          <div class="mycoolstyle">my content</div>
-          <ul>
-            <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
-          </ul>
-          <se-radio-on-off id="switch-el"></se-radio-on-off>
-          <ul>
-            <li id="radio-message">selected radio button: <span></span></li>
-            <li id="checkbox-value">error checkbox value: <span></span></li>
-            <li id="checkbox-message">is error checkbox checked: <span></span></li>
-          </ul>
-          <se-divider></se-divider>
-          <se-buttons id="RadioGroup1" mode="radio">
-            <se-button value="left" icon="arrow2_left"></se-button>
-            <se-button value="right"icon="arrow2_right"></se-button>
-          </se-buttons>
-          <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary">Primary</se-checkbox>
-          <se-checkbox id="checkbox-accent" value="accent" color="accent">Accent</se-checkbox>
-          <se-checkbox id="checkbox-warn" value="warn" color="warn">Warn</se-checkbox>
-          <se-checkbox id="checkbox-error" value="error" color="error">Error</se-checkbox>
+      <se-widget width="300px">
+        <se-widget-header>List Nav</se-widget-header>
+        <se-widget-content mode="fill">
+          <se-list mode="nav">
+              <se-list-item  item-title="I'm selected" selected="true" icon="user_standard" icon-color="primary" description="And I have an icon">
+              </se-list-item>
+              <se-list-item  item-title="my item 2 no description  with a long text" icon="user_standard" icon-color="primary">
+              </se-list-item>
+              <se-list-item  item-title="my item 3 no icon" description="I'm here too">
+              </se-list-item>
+              <se-list-item  item-title="I'm the selected one!" selected="true">
+              </se-list-item>
+              <se-list-item  item-title="Basic Item">
+              </se-list-item>
+          </se-list>
         </se-widget-content>
-        <se-widget-footer>
-          <ul>
-            <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
-          </ul>
-          <se-buttons id="btnGroup1" mode="checkbox">
-            <se-button value="first">Check1</se-button>
-            <se-button value="second">Check2</se-button>
-            <se-button value="third">Check3</se-button>
-          </se-buttons>
-        </se-widget-footer>
+      </se-widget>
+      <se-widget width="300px" >
+        <se-widget-header>List classic with expender</se-widget-header>
+        <se-widget-content mode="fill">
+            <se-list>
+                <se-list-item  item-title="my item 1" selected="false" icon="user_standard" icon-color="primary" description="I have a description">
+                </se-list-item>
+                <se-list-item  item-title="my item 2 no description with a long text" icon="user_standard" icon-color="primary">
+                </se-list-item>
+                <se-list-item  item-title="my item 3 no icon" description="I'm here too">
+                </se-list-item>
+                <se-list-item  item-title="I'm the selected one!" selected="false">
+                </se-list-item>
+                <se-list-item  item-title="Basic Item">
+                </se-list-item>
+                <se-list-group item-title="my group 1" selected="true" icon="action_settings2" icon-color="primary" description="I'm selected">
+                    <se-list-item  item-title="my item 1" selected="false" icon="action_settings2" icon-color="primary" description="I have a description">
+                    </se-list-item>
+                    <se-list-item  item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
+                    </se-list-item>
+                    <se-list-item  item-title="my item 3 no icon" description="I'm here too">
+                    </se-list-item>
+                    <se-list-item  item-title="I'm the selected one!" selected="true">
+                    </se-list-item>
+                    <se-list-item  item-title="Basic Item">
+                    </se-list-item>
+                </se-list-group>
+                <se-list-group item-title="simple collapse" >
+                    <se-list-item  item-title="No icon, not selected" selected="false">
+                    </se-list-item>
+                    <se-list-item  item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
+                    </se-list-item>
+                    <se-list-item  item-title="my item 3 no icon" description="I'm here too">
+                    </se-list-item>
+                    </se-list-item>
+                    <se-list-item  item-title="Basic Item">
+                    </se-list-item>
+                </se-list-group>
+            </se-list>
+        </se-widget-content>
       </se-widget>
       <se-widget>
-        <se-widget-header>Filter</se-widget-header>
+        <se-widget-header>Buttons and Form</se-widget-header>
         <se-widget-content>
           <div class="mycoolstyle">my content</div>
           <ul>
             <li id="button-info"></li>
             <li id="chip-info"></li>
           </ul>
-          <se-button id="flatBtn1" mode="flat" color="error" >Warning</se-button>
-          <se-divider mode="vertical"></se-divider>
+          <se-button id="flatBtn1" mode="flat" color="warn" >Warning</se-button>
+          <se-button id="flatBtn1" mode="flat" color="error" >Error</se-button>
 
           <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
@@ -148,6 +170,38 @@
           <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
           <se-button id="textBtn1" mode="text">Text</se-button>
           <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
+          <se-divider></se-divider>
+          <ul>
+            <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
+          </ul>
+          <se-radio-on-off id="switch-el"></se-radio-on-off>
+          <ul>
+            <li id="radio-message">selected radio button: <span></span></li>
+            <li id="checkbox-value">error checkbox value: <span></span></li>
+            <li id="checkbox-message">is error checkbox checked: <span></span></li>
+          </ul>
+          <se-divider></se-divider>
+          <se-buttons id="RadioGroup1" mode="radio">
+            <se-button value="left" icon="arrow2_left"></se-button>
+            <se-button value="right"icon="arrow2_right"></se-button>
+          </se-buttons>
+          <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary">Primary</se-checkbox>
+          <se-checkbox id="checkbox-accent" value="accent" color="accent">Accent</se-checkbox>
+          <se-checkbox id="checkbox-warn" value="warn" color="warn">Warn</se-checkbox>
+          <se-checkbox id="checkbox-error" value="error" color="error">Error</se-checkbox>
+          <ul>
+            <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
+          </ul>
+          <se-buttons id="btnGroup1" mode="checkbox">
+            <se-button value="first">Check1</se-button>
+            <se-button value="second">Check2</se-button>
+            <se-button value="third">Check3</se-button>
+          </se-buttons>
+          <se-buttons mode="checkbox" color="primary">
+              <se-button value="first">Check1</se-button>
+              <se-button value="second">Check2</se-button>
+              <se-button value="third">Check3</se-button>
+            </se-buttons>
         </se-widget-content>
         <se-widget-footer>
           <div slot="end">

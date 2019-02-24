@@ -1,20 +1,22 @@
 @import "../../theme/theme";
 
 button {
-  @include color-property($se-anthracite-grey, '');
+  color: $se-anthracite-grey;
+  background-color: $se-ultra-light-grey-1;
   padding: 4px 16px;
   border: none;
   outline: none;
+  margin: $spacing;
   font-size: 11px;
   line-height: 13px;
   font-weight: 300;
   cursor: pointer;
   &.active.selected {
-    @include color-property($se-white, '');
+    color: $se-white;
     @include background-color-property($primary, 'primary');
   }
   &.inactive.selected {
-    @include color-property($se-white, '');
+    color: $se-white;
     @include background-color-property($error, 'error');
   }
 }
@@ -23,10 +25,12 @@ button {
   button:first-child {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
+    margin-right: 0;
   }
   button:last-child {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+    margin-left: 0;
   }
   &.disabled {
     opacity: 0.26;

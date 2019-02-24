@@ -6,9 +6,7 @@
   z-index: 0;
   position: relative;
   @include flex-direction(column);
-
   @include display-flex();
-  @include flex(1);
 
   .widget-body {
     overflow: hidden;
@@ -25,3 +23,8 @@
     margin: 0;
   }
 }
+
+:host(.flex){
+  @include flex();
+}
+

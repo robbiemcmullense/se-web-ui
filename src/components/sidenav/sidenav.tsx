@@ -95,11 +95,12 @@ export class SidenavComponent {
       <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
           <div class="d-flex-center">
             <div class="d-flex-center flex">
-              <i class="se-icon menu-sidenav" onClick={() => this.toggle()}>test_results_nok</i>
+              <span class="menu-sidenav" onClick={() => this.toggle()}>
+                <se-icon size="large" color="primary">test_results_nok</se-icon>
+              </span>
               <h3 class="header-title">Menu</h3>
             </div>
-            <se-chip color="primary" can-close="false" value="https://schneider-electric.com">
-            </se-chip>
+            <se-chip color="primary" can-close="false" value="https://schneider-electric.com"></se-chip>
           </div>
           <se-divider></se-divider>
           <div class="d-flex flex">

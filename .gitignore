@@ -4,7 +4,7 @@ www/
 docs/build/
 !core/package.json
 core/
-
+style/
 .nuxt/
 .next/
 *~

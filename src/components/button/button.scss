@@ -1,79 +1,100 @@
 @import "../../theme/theme";
 
-:host {
-  button {
-    @include color-property($se-anthracite-grey, '');
-    @include background-color-property($se-ultra-light-grey-1, '');
-    padding: 6px 34px;
-    margin: $spacing;
-    border: none;
-    border-radius: $border-radius;
-    outline: none;
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: 300;
-    cursor: pointer;
-    @include button-active-properties($background, $se-dark-grey, $se-white);
+:host(.active) {
+  button[color="primary"], button[color="primary"]:focus {
+    background-color: $se-dark-green;
+  }
+  button[color="accent"], button[color="accent"]:focus {
+    background-color: $se-dark-sky-blue;
+  }
+  button[color="warn"], button[color="warn"]:focus {
+    background-color: darken($warn, 10);
+  }
+  button[color="error"], button[color="error"]:focus {
+    background-color: $se-fuchsia-red;
+  }
+  button[color="light"], button[color="light"]:focus {
+    color: $se-white;
+    background-color: $se-dark-grey;
+  }
+}
 
-    .se-icon {
-      font-family: 'se-icon';
-      font-style: normal;
-    }
+button {
+  color: $se-anthracite-grey;
+  background-color: $se-ultra-light-grey-1;
+  padding: 6px 34px;
+  margin: $spacing;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 300;
+  cursor: pointer;
+  @include button-active-properties($background, $se-dark-grey, $se-white);
 
-    &[color="primary"] {
-      @include background-color-property($primary, 'primary');
-      @include color-property($se-white, '');
-      @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
-    }
+  &[color="primary"] {
+    @include color-property($primary-contrast, 'primary-contrast');
+    @include background-color-property($primary, 'primary');
+    @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
+  }
+  &[color="error"] {
+    @include color-property($warn-contrast, 'warn-contrast');
+    @include background-color-property($error, 'error');
+    @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
+  }
+  &[color="accent"] {
+    @include color-property($accent-contrast, 'accent-contrast');
+    @include background-color-property($accent, 'error');
+    @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
+  }
+  &[color="warn"] {
+    @include color-property($warn-contrast, 'warn-contrast');
+    @include background-color-property($warn, 'warn');
+    @include button-active-properties($se-sunflower-yellow, $se-dark-grey, $se-white);
+  }
 
-    &[color="error"] {
-      @include background-color-property($error, 'error');
-      @include color-property($se-white, '');
-      @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
-    }
+  &[data-mode="raised"] {
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.3);
+  }
 
-    &[data-mode="raised"] {
-      box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.3);
-    }
+  &[data-mode="outline"] {
+    background-color: transparent;
+    @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
+    border: 1px solid $se-anthracite-grey;
+  }
 
-    &[data-mode="outline"] {
-      @include background-color-property($se-white, '');
-      @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-      border: 1px solid $se-anthracite-grey;
-    }
+  &[data-mode="text"] {
+    background-color: transparent;
+    @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
+  }
 
-    &[data-mode="text"] {
-      @include background-color-property($se-white, '');
-      @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-    }
+  &[data-mode="text"][color="primary"] {
+    @include color-property($primary, 'primary');
+    @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
+  }
 
-    &[data-mode="text"][color="primary"] {
-      @include color-property($primary, 'primary');
-      @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-    }
+  &[data-mode="login"] {
+    padding: 4px 50px;
+    font-size: 18px;
+    line-height: 22px;
+    color: $se-white;
+    @include background-color-property($primary, 'primary');
+    @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
+  }
 
-    &[disabled] {
-      cursor: default;
-      opacity: 0.26;
-    }
+  &[data-mode="signup"] {
+    padding: 4px 40px;
+    font-size: 18px;
+    line-height: 22px;
+    color: $se-white;
+    @include background-color-property($accent, 'accent');
+    @include button-active-properties($se-dark-sky-blue, $se-dark-grey, $se-white);
+  }
 
-    &[data-mode="login"] {
-      padding: 4px 50px;
-      font-size: 18px;
-      line-height: 22px;
-      @include background-color-property($primary, 'primary');
-      @include color-property($se-white, '');
-      @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
-    }
-
-    &[data-mode="signup"] {
-      padding: 4px 40px;
-      font-size: 18px;
-      line-height: 22px;
-      @include background-color-property($accent, 'accent');
-      @include color-property($se-white, '');
-      @include button-active-properties($se-dark-sky-blue, $se-dark-grey, $se-white);
-    }
+  &[disabled] {
+    cursor: default;
+    opacity: 0.26;
   }
 }
 
@@ -87,15 +108,9 @@
   }
 }
 
-:host(.grouped.active) {
-  button {
-    @include color-property($se-white, '');
-    @include background-color-property($se-dark-grey, '');
-  }
-}
-
 :host(.grouped:first-child) {
   button {
+    margin-left: $spacing;
     border-left: none;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -104,6 +119,7 @@
 
 :host(.grouped:last-child) {
   button {
+    margin-right: $spacing;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
   }
@@ -117,62 +133,6 @@
       background-color: $se-ultra-light-grey-1;
       color: inherit;
     }
-  }
-}
-
-:host(.primary) {
-  button {
-    @include background-color-property($primary, 'primary');
-    @include color-property($se-white, '');
-	  @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
-  }
-}
-
-:host(.primary.active) {
-  button, button:focus {
-    @include background-color-property($se-dark-green, '');
-  }
-}
-
-:host(.accent) {
-  button {
-    @include background-color-property($accent, 'accent');
-    @include color-property($se-white, '');
-	  @include button-active-properties($se-dark-sky-blue, $se-dark-grey, $se-white);
-  }
-}
-
-:host(.accent.active) {
-  button, button:focus {
-    @include background-color-property($se-dark-sky-blue, '');
-  }
-}
-
-:host(.warn) {
-  button {
-    @include background-color-property($warn, 'warn');
-    @include color-property($se-white, '');
-	  @include button-active-properties($se-sunflower-yellow, $se-dark-grey, $se-white);
-  }
-}
-
-:host(.warn.active) {
-  button, button:focus {
-    @include background-color-property($se-sunflower-yellow, '');
-  }
-}
-
-:host(.error) {
-  button {
-    @include background-color-property($error, 'error');
-    @include color-property($se-white, '');
-	  @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
-  }
-}
-
-:host(.error.active) {
-  button, button:focus {
-    @include background-color-property($se-fuchsia-red, '');
   }
 }
 

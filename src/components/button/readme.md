@@ -9,7 +9,7 @@
 
 | Property   | Attribute  | Description                                                                                                                                                                                                                                                                                                                               | Type                                                               | Default     |
 | ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
-| `color`    | `color`    | Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.                                                                                                                                                               | `"accent" \| "error" \| "primary" \| "warn"`                       | `undefined` |
+| `color`    | `color`    | Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.                                                                                                                                      | `"accent" \| "error" \| "light" \| "primary" \| "warn"`            | `undefined` |
 | `disabled` | `disabled` | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                                                                                                                                                                     | `boolean`                                                          | `false`     |
 | `icon`     | `icon`     | Optional property that determines if your button includes an icon.                                                                                                                                                                                                                                                                        | `string`                                                           | `undefined` |
 | `mode`     | `mode`     | Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `text` mode has no border or background color. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application. | `"flat" \| "login" \| "outline" \| "raised" \| "signup" \| "text"` | `'flat'`    |
@@ -41,15 +41,15 @@ Type: `void`
 
 
 
-### `setColor(val: "primary" | "accent" | "warn" | "error") => void`
+### `setColor(val: "primary" | "accent" | "warn" | "error" | "light") => void`
 
 Set a color for your button from the parent component.
 
 #### Parameters
 
-| Name  | Type                                         | Description                                                                                           |
-| ----- | -------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `val` | `"accent" \| "error" \| "primary" \| "warn"` | set to `primary`, `accent`, `warn`, or `error`.  See the color property description for color values. |
+| Name  | Type                                                    | Description                                                                                                   |
+| ----- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `val` | `"accent" \| "error" \| "light" \| "primary" \| "warn"` | set to `primary`, `accent`, `warn`, `error` or `light`.  See the color property description for color values. |
 
 #### Returns
 

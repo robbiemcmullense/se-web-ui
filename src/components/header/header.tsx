@@ -2,7 +2,8 @@ import { Component, Prop, Element, State } from "@stencil/core";
 
 @Component({
   tag: "se-header",
-  styleUrl: "header.scss"
+  styleUrl: "header.scss",
+  shadow: true
 })
 export class HeaderComponent {
   /**
@@ -55,9 +56,9 @@ export class HeaderComponent {
       <header class="header-container">
         <div class="d-flex">
           {this.hasMenu && (
-            <i class="se-icon menu-sidenav" onClick={() => this.onClickMenu()}>
-              burger_menu
-            </i>
+            <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
+              <se-icon size="large" color="primary">burger_menu</se-icon>
+            </span>
           )}
           <div class="d-flex-column">
             {domain}

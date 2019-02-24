@@ -5,10 +5,8 @@
   height: 100%;
   z-index: 0;
   position: relative;
-  // @include flex-direction(column);
 
-  // @include display-flex();
-  // @include flex(1);
-
-  overflow: hidden;
+  overflow: auto;
+  @include display-flex();
+  @include flex-direction(row);
 }

@@ -17,9 +17,9 @@ export namespace Components {
 
   interface SeButton {
     /**
-    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.
     */
-    'color': 'primary' | 'accent' | 'warn' | 'error';
+    'color': 'primary' | 'accent' | 'warn' | 'error' | 'light';
     /**
     * Optional property that defines if the button is disabled.  Set to `false` by default.
     */
@@ -39,7 +39,7 @@ export namespace Components {
     /**
     * Set a color for your button from the parent component.
     */
-    'setColor': (val: "primary" | "accent" | "warn" | "error") => void;
+    'setColor': (val: "primary" | "accent" | "warn" | "error" | "light") => void;
     /**
     * Set the disabled property for your button from the parent component.
     */
@@ -55,9 +55,9 @@ export namespace Components {
   }
   interface SeButtonAttributes extends StencilHTMLAttributes {
     /**
-    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    * Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.
     */
-    'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    'color'?: 'primary' | 'accent' | 'warn' | 'error' | 'light';
     /**
     * Optional property that defines if the button is disabled.  Set to `false` by default.
     */
@@ -82,9 +82,9 @@ export namespace Components {
 
   interface SeButtons {
     /**
-    * Optional property that defines the background color of each button in the group. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    * Optional property that defines the background color of each button in the group. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.
     */
-    'color': 'primary' | 'accent' | 'warn' | 'error';
+    'color': 'primary' | 'accent' | 'warn' | 'error' | 'light';
     /**
     * Optional property that defines if the button is disabled.  Set to `false` by default.
     */
@@ -93,12 +93,16 @@ export namespace Components {
     * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` mode indicates that only one button in the group can be selected at a time.
     */
     'mode': 'checkbox' | 'radio';
+    /**
+    * Define the selected values of the array.
+    */
+    'value': Array<any>;
   }
   interface SeButtonsAttributes extends StencilHTMLAttributes {
     /**
-    * Optional property that defines the background color of each button in the group. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    * Optional property that defines the background color of each button in the group. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.
     */
-    'color'?: 'primary' | 'accent' | 'warn' | 'error';
+    'color'?: 'primary' | 'accent' | 'warn' | 'error' | 'light';
     /**
     * Optional property that defines if the button is disabled.  Set to `false` by default.
     */
@@ -111,6 +115,10 @@ export namespace Components {
     * Passes the selected button value to the parent component when clicking on a button in the group.
     */
     'onChange'?: (event: CustomEvent) => void;
+    /**
+    * Define the selected values of the array.
+    */
+    'value'?: Array<any>;
   }
 
   interface SeCheckbox {
@@ -244,6 +252,27 @@ export namespace Components {
   interface SeIconSchneider {}
   interface SeIconSchneiderAttributes extends StencilHTMLAttributes {}
 
+  interface SeIcon {
+    /**
+    * Optional property that defines the background color of the button. The default color will be inherited from its parent. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color': "primary" | "accent" | "warn" | "error";
+    /**
+    * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
+    */
+    'size': "small" | "medium" | "large";
+  }
+  interface SeIconAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines the background color of the button. The default color will be inherited from its parent. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'color'?: "primary" | "accent" | "warn" | "error";
+    /**
+    * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
+    */
+    'size'?: "small" | "medium" | "large";
+  }
+
   interface SeLabel {
     /**
     * When the label is part of a form field, this attribute defines if the input is required, adding a red asterisk next to the label.
@@ -302,7 +331,27 @@ export namespace Components {
     'url'?: string;
   }
 
-  interface SeListItem {
+  interface SeListGroup {
+    /**
+    * Define if item group is collapsed/closed.
+    */
+    'collapsed': boolean;
+    /**
+    * Define description of the item. placed under the title of the item.
+    */
+    'description': string;
+    /**
+    * Place an icon on the left side of the item list.
+    */
+    'icon': string;
+    /**
+    * Optional property to define the color of the icon. The default color will be inherited from it's parent. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'iconColor': "primary" | "accent" | "warn" | "error";
+    /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation': number;
     /**
     * Define if the list element should be selected or not
     */
@@ -310,13 +359,33 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic" | "checkbox" | "expander";
+    'mode': "nav" | "classic";
     /**
     * Define if the list element should be selected or not
     */
     'selected': boolean;
   }
-  interface SeListItemAttributes extends StencilHTMLAttributes {
+  interface SeListGroupAttributes extends StencilHTMLAttributes {
+    /**
+    * Define if item group is collapsed/closed.
+    */
+    'collapsed'?: boolean;
+    /**
+    * Define description of the item. placed under the title of the item.
+    */
+    'description'?: string;
+    /**
+    * Place an icon on the left side of the item list.
+    */
+    'icon'?: string;
+    /**
+    * Optional property to define the color of the icon. The default color will be inherited from it's parent. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'iconColor'?: "primary" | "accent" | "warn" | "error";
+    /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation'?: number;
     /**
     * Define if the list element should be selected or not
     */
@@ -324,7 +393,84 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic" | "checkbox" | "expander";
+    'mode'?: "nav" | "classic";
+    /**
+    * Define if the list element should be selected or not
+    */
+    'selected'?: boolean;
+  }
+
+  interface SeListItem {
+    /**
+    * Define if item group is collapsed/closed. update the icon to change from `up` to `down`. Used by `se-item-group`.
+    */
+    'collapsed': boolean;
+    /**
+    * Define if the item should behave as a an collapsible (used by `se-item-group`)
+    */
+    'collapsible': boolean;
+    /**
+    * Define description of the item. placed under the title of the item.
+    */
+    'description': string;
+    /**
+    * Place an icon on the left side of the item list.
+    */
+    'icon': string;
+    /**
+    * Optional property to define the color of the icon. The default color will be inherited from it's parent. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'iconColor': 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation': number;
+    /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle': string;
+    /**
+    * Define the them of the list. This them will be handled and modified by the parent element
+    */
+    'mode': 'nav' | 'classic';
+    /**
+    * Define if the list element should be selected or not
+    */
+    'selected': boolean;
+  }
+  interface SeListItemAttributes extends StencilHTMLAttributes {
+    /**
+    * Define if item group is collapsed/closed. update the icon to change from `up` to `down`. Used by `se-item-group`.
+    */
+    'collapsed'?: boolean;
+    /**
+    * Define if the item should behave as a an collapsible (used by `se-item-group`)
+    */
+    'collapsible'?: boolean;
+    /**
+    * Define description of the item. placed under the title of the item.
+    */
+    'description'?: string;
+    /**
+    * Place an icon on the left side of the item list.
+    */
+    'icon'?: string;
+    /**
+    * Optional property to define the color of the icon. The default color will be inherited from it's parent. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color.
+    */
+    'iconColor'?: 'primary' | 'accent' | 'warn' | 'error';
+    /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation'?: number;
+    /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle'?: string;
+    /**
+    * Define the them of the list. This them will be handled and modified by the parent element
+    */
+    'mode'?: 'nav' | 'classic';
     /**
     * Define if the list element should be selected or not
     */
@@ -335,13 +481,13 @@ export namespace Components {
     /**
     * Define the style of the list
     */
-    'mode': "nav" | "classic" | "checkbox" | "expander";
+    'mode': "nav" | "classic";
   }
   interface SeListAttributes extends StencilHTMLAttributes {
     /**
     * Define the style of the list
     */
-    'mode'?: "nav" | "classic" | "checkbox" | "expander";
+    'mode'?: "nav" | "classic";
   }
 
   interface SeNavbar {
@@ -433,11 +579,31 @@ export namespace Components {
   interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {}
 
   interface SeWidget {
-    'mode': 'fill';
+    /**
+    * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
+    */
+    'height': string;
+    /**
+    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    */
+    'mode': "fill";
+    /**
+    * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
+    */
     'width': string;
   }
   interface SeWidgetAttributes extends StencilHTMLAttributes {
-    'mode'?: 'fill';
+    /**
+    * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
+    */
+    'height'?: string;
+    /**
+    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    */
+    'mode'?: "fill";
+    /**
+    * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
+    */
     'width'?: string;
   }
 }
@@ -454,8 +620,10 @@ declare global {
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
+    'SeIcon': Components.SeIcon;
     'SeLabel': Components.SeLabel;
     'SeLink': Components.SeLink;
+    'SeListGroup': Components.SeListGroup;
     'SeListItem': Components.SeListItem;
     'SeList': Components.SeList;
     'SeNavbar': Components.SeNavbar;
@@ -479,8 +647,10 @@ declare global {
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
+    'se-icon': Components.SeIconAttributes;
     'se-label': Components.SeLabelAttributes;
     'se-link': Components.SeLinkAttributes;
+    'se-list-group': Components.SeListGroupAttributes;
     'se-list-item': Components.SeListItemAttributes;
     'se-list': Components.SeListAttributes;
     'se-navbar': Components.SeNavbarAttributes;
@@ -554,6 +724,12 @@ declare global {
     new (): HTMLSeIconSchneiderElement;
   };
 
+  interface HTMLSeIconElement extends Components.SeIcon, HTMLStencilElement {}
+  var HTMLSeIconElement: {
+    prototype: HTMLSeIconElement;
+    new (): HTMLSeIconElement;
+  };
+
   interface HTMLSeLabelElement extends Components.SeLabel, HTMLStencilElement {}
   var HTMLSeLabelElement: {
     prototype: HTMLSeLabelElement;
@@ -564,6 +740,12 @@ declare global {
   var HTMLSeLinkElement: {
     prototype: HTMLSeLinkElement;
     new (): HTMLSeLinkElement;
+  };
+
+  interface HTMLSeListGroupElement extends Components.SeListGroup, HTMLStencilElement {}
+  var HTMLSeListGroupElement: {
+    prototype: HTMLSeListGroupElement;
+    new (): HTMLSeListGroupElement;
   };
 
   interface HTMLSeListItemElement extends Components.SeListItem, HTMLStencilElement {}
@@ -637,8 +819,10 @@ declare global {
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
+    'se-icon': HTMLSeIconElement
     'se-label': HTMLSeLabelElement
     'se-link': HTMLSeLinkElement
+    'se-list-group': HTMLSeListGroupElement
     'se-list-item': HTMLSeListItemElement
     'se-list': HTMLSeListElement
     'se-navbar': HTMLSeNavbarElement
@@ -662,8 +846,10 @@ declare global {
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
+    'se-icon': HTMLSeIconElement;
     'se-label': HTMLSeLabelElement;
     'se-link': HTMLSeLinkElement;
+    'se-list-group': HTMLSeListGroupElement;
     'se-list-item': HTMLSeListItemElement;
     'se-list': HTMLSeListElement;
     'se-navbar': HTMLSeNavbarElement;

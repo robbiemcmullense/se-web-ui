@@ -11,7 +11,7 @@ export class ListComponent {
   /**
    * Define the style of the list
    */
-  @Prop() mode: "nav" | "classic" | "checkbox" | "expander" = "classic";
+  @Prop() mode: "nav" | "classic" = "classic";
   @Watch('mode') PropDidChange() {
     this.updateItemMode()
   }
@@ -21,8 +21,11 @@ export class ListComponent {
   }
 
   private updateItemMode(){
-    let items = this.el.querySelectorAll('se-list-item');
-    items.forEach((item) => {
+    const items: any = this.el.querySelectorAll("se-list-item");
+    const groups: any = this.el.querySelectorAll("se-list-group");
+    const allItems: any[] = [ ...items, ...groups];
+
+    allItems.forEach(item => {
       item.mode = this.mode;
     });
   }

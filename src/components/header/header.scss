@@ -10,6 +10,7 @@
   max-height: 61px;
   @include animated("slow");
   animation-name: fadeIn;
+  z-index: 10;
 }
 
 .header-container {
@@ -65,9 +66,7 @@
   }
 }
 .menu-sidenav {
-  @include color-property($primary, "primary");
   cursor: pointer;
-  font-size: 63px !important;
   margin-right: -17px;
 }
 .header-title{
@@ -98,15 +97,9 @@
   font-weight: 100;
 }
 .user-icon {
-  @include color-property($primary, "primary");
-  z-index: 1;
-  font-size: 24px;
   padding-right: 5px;
   padding-right: 0;
-  &.se-icon {
-    margin-right: -24px;
-    top: -1px;
-  }
+
 }
 se-icon-schneider {
   width: 140px;

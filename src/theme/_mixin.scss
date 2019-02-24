@@ -38,6 +38,12 @@ $prefix: "--"; //Prefix string for custom CSS properties
   animation-fill-mode: both;
 }
 
+@mixin ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @mixin button-active-properties($bg-hover-color, $bg-active-color, $text-active-color) {
   &:not([disabled]) {
     &:hover, &:focus {

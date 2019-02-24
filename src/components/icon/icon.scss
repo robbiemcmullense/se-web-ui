@@ -1,0 +1,52 @@
+@import "../../theme/theme";
+
+:host {
+  font-family: 'se-icon';
+  speak: none;
+  font-style: normal;
+  line-height: 1;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  font-stretch: normal;
+  text-transform: none;
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  font-smoothing: antialiased;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+  font-display: block;
+}
+:host(.small) {
+  font-size: 24px;
+}
+:host(.medium) {
+  font-size: 36px;
+}
+:host(.large) {
+  font-size: 63px;
+}
+
+:host(.primary) {
+  @include color-property($primary, "primary");
+}
+
+:host(.accent) {
+  @include color-property($accent, "accent");
+}
+
+:host(.warn) {
+  @include color-property($warn, "warn");
+}
+
+:host(.error) {
+  @include color-property($error, "error");
+}

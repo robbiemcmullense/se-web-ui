@@ -1,7 +1,7 @@
 @import "../../theme/theme";
 
 :host {
-  overflow: auto;
+  overflow-x: hidden;
   padding: $spacing;
   position: relative;
   @include flex(1);
@@ -9,6 +9,5 @@
 
 :host(.full-content){
   padding: 0;
-  overflow: hidden
 }
 
