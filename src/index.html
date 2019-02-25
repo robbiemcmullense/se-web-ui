@@ -7,8 +7,10 @@
   <title>Stencil Component Starter</title>
   <script src="build/se-components.js"></script>
 
-  <link rel="stylesheet" href="fonts/css/styles.css"></link>
-  <link rel="stylesheet" href="icons/css/styles.css"></link>
+  <link rel="stylesheet" href="fonts/css/styles.css">
+  </link>
+  <link rel="stylesheet" href="icons/css/styles.css">
+  </link>
   <style>
     .mycoolstyle {
       color: red;
@@ -32,10 +34,10 @@
   <se-app>
     <se-header app-title="Test Advisor">
       <div slot="end">
-          <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
+        <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
       </div>
       <se-sidenav>
-        <se-sidenav-item item-title="sidenav  long title">
+        <se-sidenav-item item-title="sidenav long title">
           <se-widget mode="fill">
             <se-widget-header>some title</se-widget-header>
             <se-widget-content>
@@ -43,7 +45,7 @@
             </se-widget-content>
             <se-widget-footer>
               <div slot="end">
-                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+                <se-button mode="raised" color="primary">RaisedGreen</se-button>
               </div>
             </se-widget-footer>
           </se-widget>
@@ -56,13 +58,13 @@
             </se-widget-content>
             <se-widget-footer>
               <div slot="end">
-                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
+                <se-button mode="raised" color="primary">RaisedGreen</se-button>
               </div>
             </se-widget-footer>
           </se-widget>
         </se-sidenav-item>
         <se-sidenav-item item-title="sidenav 3">
-            <div>A simple div</div>
+          <div>A simple div</div>
         </se-sidenav-item>
       </se-sidenav>
     </se-header>
@@ -82,57 +84,63 @@
         <se-widget-header>List Nav</se-widget-header>
         <se-widget-content mode="fill">
           <se-list mode="nav">
-              <se-list-item  item-title="I'm selected" selected="true" icon="user_standard" icon-color="primary" description="And I have an icon">
-              </se-list-item>
-              <se-list-item  item-title="my item 2 no description  with a long text" icon="user_standard" icon-color="primary">
-              </se-list-item>
-              <se-list-item  item-title="my item 3 no icon" description="I'm here too">
-              </se-list-item>
-              <se-list-item  item-title="I'm the selected one!" selected="true">
-              </se-list-item>
-              <se-list-item  item-title="Basic Item">
-              </se-list-item>
+            <se-list-item item-title="I'm selected" selected="true" icon="user_standard" icon-color="primary"
+              description="And I have an icon">
+            </se-list-item>
+            <se-list-item item-title="my item 2 no description  with a long text" icon="user_standard"
+              icon-color="primary">
+            </se-list-item>
+            <se-list-item item-title="my item 3 no icon" description="I'm here too">
+            </se-list-item>
+            <se-list-item item-title="I'm the selected one!" selected="true">
+            </se-list-item>
+            <se-list-item item-title="Basic Item">
+            </se-list-item>
           </se-list>
         </se-widget-content>
       </se-widget>
-      <se-widget width="300px" >
+      <se-widget width="300px">
         <se-widget-header>List classic with expender</se-widget-header>
         <se-widget-content mode="fill">
-            <se-list>
-                <se-list-item  item-title="my item 1" selected="false" icon="user_standard" icon-color="primary" description="I have a description">
-                </se-list-item>
-                <se-list-item  item-title="my item 2 no description with a long text" icon="user_standard" icon-color="primary">
-                </se-list-item>
-                <se-list-item  item-title="my item 3 no icon" description="I'm here too">
-                </se-list-item>
-                <se-list-item  item-title="I'm the selected one!" selected="false">
-                </se-list-item>
-                <se-list-item  item-title="Basic Item">
-                </se-list-item>
-                <se-list-group item-title="my group 1" selected="true" icon="action_settings2" icon-color="primary" description="I'm selected">
-                    <se-list-item  item-title="my item 1" selected="false" icon="action_settings2" icon-color="primary" description="I have a description">
-                    </se-list-item>
-                    <se-list-item  item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
-                    </se-list-item>
-                    <se-list-item  item-title="my item 3 no icon" description="I'm here too">
-                    </se-list-item>
-                    <se-list-item  item-title="I'm the selected one!" selected="true">
-                    </se-list-item>
-                    <se-list-item  item-title="Basic Item">
-                    </se-list-item>
-                </se-list-group>
-                <se-list-group item-title="simple collapse" >
-                    <se-list-item  item-title="No icon, not selected" selected="false">
-                    </se-list-item>
-                    <se-list-item  item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
-                    </se-list-item>
-                    <se-list-item  item-title="my item 3 no icon" description="I'm here too">
-                    </se-list-item>
-                    </se-list-item>
-                    <se-list-item  item-title="Basic Item">
-                    </se-list-item>
-                </se-list-group>
-            </se-list>
+          <se-list>
+            <se-list-item item-title="my item 1" selected="false" icon="user_standard" icon-color="primary"
+              description="I have a description">
+            </se-list-item>
+            <se-list-item item-title="my item 2 no description with a long text" icon="user_standard"
+              icon-color="primary">
+            </se-list-item>
+            <se-list-item item-title="my item 3 no icon" description="I'm here too">
+            </se-list-item>
+            <se-list-item item-title="I'm the selected one!" selected="false">
+            </se-list-item>
+            <se-list-item item-title="Basic Item">
+            </se-list-item>
+            <se-list-group item-title="my group 1" selected="true" icon="action_settings2" icon-color="primary"
+              description="I'm selected">
+              <se-list-item item-title="my item 1" selected="false" icon="action_settings2" icon-color="primary"
+                description="I have a description">
+              </se-list-item>
+              <se-list-item item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
+              </se-list-item>
+              <se-list-item item-title="my item 3 no icon" description="I'm here too">
+              </se-list-item>
+              <se-list-item item-title="I'm the selected one!" selected="true">
+              </se-list-item>
+              <se-list-item item-title="Basic Item">
+              </se-list-item>
+            </se-list-group>
+            <se-list-group item-title="simple collapse">
+              <se-list-item item-title="No icon, not selected" selected="false">
+              </se-list-item>
+              <se-list-item item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
+              </se-list-item>
+              <se-list-item item-title="my item 3 no icon" description="I'm here too">
+              </se-list-item>
+              </se-list-item>
+              <se-list-item item-title="Basic Item">
+              </se-list-item>
+            </se-list-group>
+          </se-list>
         </se-widget-content>
       </se-widget>
       <se-widget>
@@ -143,9 +151,8 @@
             <li id="button-info"></li>
             <li id="chip-info"></li>
           </ul>
-          <se-button id="flatBtn1" mode="flat" color="warn" >Warning</se-button>
-          <se-button id="flatBtn1" mode="flat" color="error" >Error</se-button>
-
+          <se-button id="flatBtn1" mode="flat" color="warn">Warning</se-button>
+          <se-button id="flatBtn1" mode="flat" color="error">Error</se-button>
           <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
           <se-button mode="outline">Outline</se-button>
@@ -175,22 +182,24 @@
             <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
           </ul>
           <se-radio-on-off id="switch-el"></se-radio-on-off>
+          <se-divider></se-divider>
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
             <li id="checkbox-value">error checkbox value: <span></span></li>
             <li id="checkbox-message">is error checkbox checked: <span></span></li>
           </ul>
-          <se-divider></se-divider>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left" icon="arrow2_left"></se-button>
-            <se-button value="right"icon="arrow2_right"></se-button>
+            <se-button value="right" icon="arrow2_right"></se-button>
           </se-buttons>
           <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary">Primary</se-checkbox>
           <se-checkbox id="checkbox-accent" value="accent" color="accent">Accent</se-checkbox>
           <se-checkbox id="checkbox-warn" value="warn" color="warn">Warn</se-checkbox>
           <se-checkbox id="checkbox-error" value="error" color="error">Error</se-checkbox>
+          <se-divider></se-divider>
           <ul>
             <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
+            <li id="form-field-message">form field value: <span></span></li>
           </ul>
           <se-buttons id="btnGroup1" mode="checkbox">
             <se-button value="first">Check1</se-button>
@@ -198,14 +207,39 @@
             <se-button value="third">Check3</se-button>
           </se-buttons>
           <se-buttons mode="checkbox" color="primary">
-              <se-button value="first">Check1</se-button>
-              <se-button value="second">Check2</se-button>
-              <se-button value="third">Check3</se-button>
-            </se-buttons>
+            <se-button value="first">Check1</se-button>
+            <se-button value="second">Check2</se-button>
+            <se-button value="third">Check3</se-button>
+          </se-buttons>
+          <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
+            required="true">
+            <se-checkbox value="checkbox-value"></se-checkbox>
+          </se-form-field>
+          <se-form-field id="input-form" label="Input" required="true">
+            <input type="text" />
+          </se-form-field>
+          <se-form-field id="input-stacked-form" label="Input" required="true" mode="stacked">
+            <input type="text" />
+          </se-form-field>
+          <se-form-field id="select-form" label="Select" required="true" type="select">
+            <select>
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </se-form-field>
+          <se-form-field id="select-form" label="Select" required="true" type="select" mode="stacked">
+            <select>
+              <option>Stacked Option 1</option>
+              <option>Stacked Option 2</option>
+              <option>Stacked Option 3</option>
+            </select>
+          </se-form-field>
+          
         </se-widget-content>
         <se-widget-footer>
           <div slot="end">
-              <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
+            <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
           </div>
         </se-widget-footer>
       </se-widget>
@@ -232,12 +266,26 @@
     document.getElementById('btnGroup1').addEventListener('change', function (event) {
       let checkboxMsg = document.getElementById('checkbox-button-message');
       checkboxMsg.firstElementChild.innerText = '';
-      event.detail.forEach(function(item) {
+      event.detail.forEach(function (item) {
         checkboxMsg.firstElementChild.innerText += ' ' + item;
       });
       if (!event.detail.length) {
         checkboxMsg.firstElementChild.innerText = 'none';
       }
+    });
+    document.getElementById('checkbox-form').addEventListener('submit', function (event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'checkbox, ' + event.detail;
+    });
+    document.getElementById('input-form').addEventListener('submit', function (event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'input, ' + event.detail;
+      if (event.detail == 'error') {
+        document.getElementById('input-form').setError();
+      } else {
+        document.getElementById('input-form').removeError();
+      }
+    });
+    document.getElementById('select-form').addEventListener('submit', function (event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'select, ' + event.detail;
     });
   </script>
 </body>

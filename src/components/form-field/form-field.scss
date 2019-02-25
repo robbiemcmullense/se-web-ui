@@ -1,0 +1,87 @@
+@import "../../theme/theme";
+
+:host {
+	.se-form-field {
+		@include display-flex();
+		padding: 16px;
+		&[data-disabled] {
+			opacity: 0.26;
+		}
+	}
+
+	se-label {
+		max-width: 40%;
+		padding-top: 4px;
+	}
+
+	::slotted(se-checkbox) {
+		padding-top: 6px;
+	}
+	
+	::slotted(input) {
+		height: 28px;
+		width: 60%;
+		max-width: 290px;
+		border: 1px solid $se-super-light-grey;
+		font-size: 14px;
+		font-family: Nunito, Roboto, monospace;
+		padding-left: 7px;
+	}
+
+	::slotted(input[disabled]) {
+		@include background-color-property($se-white, '');
+	}
+	
+	::slotted(input:focus) {
+		outline: none;
+		border: 1px solid $primary;
+	}
+	
+	::slotted(select) {
+		height: 32px;
+		width: 60%;
+		max-width: 299px;
+		border: 1px solid $se-super-light-grey;
+		font-size: 14px;
+		font-family: Nunito, Roboto, monospace;
+		padding-left: 4px;
+	}
+	
+}
+
+:host(.checkbox) {
+	.se-form-field {
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+	}
+
+	se-label {
+		max-width: 90%;
+		padding-top: 7px;
+	}
+}
+
+:host(.stacked) {
+	.se-form-field {
+		flex-direction: column;
+	}
+
+	se-label {
+		padding: 4px 8px;
+		text-align: left;
+	}
+
+	::slotted(input) {
+		width: 97%;
+	}
+
+	::slotted(select) {
+		width: 100%;
+	}
+}
+
+:host(.hasError) {
+	::slotted(input) {
+		border: 1px solid $error;
+	}
+}
