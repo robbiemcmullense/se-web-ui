@@ -1,6 +1,6 @@
 import { LinkComponent } from "./link";
 
-describe('linkComponent', () => {
+describe('LinkComponent', () => {
 	let link;
 
 	beforeEach(() => {
