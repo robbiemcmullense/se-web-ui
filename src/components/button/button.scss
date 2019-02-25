@@ -17,22 +17,28 @@
     color: $se-white;
     background-color: $se-dark-grey;
   }
+
+
 }
 
 button {
   color: $se-anthracite-grey;
   background-color: $se-ultra-light-grey-1;
-  padding: 6px 34px;
+  padding: 0 34px;
+  height: 32px;
   margin: $spacing;
   border: none;
+  font-size: 14px;
   border-radius: $border-radius;
   outline: none;
-  font-size: 14px;
   line-height: 17px;
   font-weight: 300;
+  @include align-items(center);
   cursor: pointer;
   @include button-active-properties($background, $se-dark-grey, $se-white);
-
+  se-icon {
+    margin: 0 5px;
+  }
   &[color="primary"] {
     @include color-property($primary-contrast, 'primary-contrast');
     @include background-color-property($primary, 'primary');
@@ -75,7 +81,8 @@ button {
   }
 
   &[data-mode="login"] {
-    padding: 4px 50px;
+    height: 32px;
+    padding: 0 50px;
     font-size: 18px;
     line-height: 22px;
     color: $se-white;
@@ -84,7 +91,8 @@ button {
   }
 
   &[data-mode="signup"] {
-    padding: 4px 40px;
+    height: 32px;
+    padding: 0 40px;
     font-size: 18px;
     line-height: 22px;
     color: $se-white;
@@ -97,14 +105,19 @@ button {
     opacity: 0.26;
   }
 }
-
 :host(.grouped) {
   button {
     margin: $spacing 0;
-    padding: 4px 14px;
+    height: 24px;
+    padding: 0 14px ;
     font-size: 11px;
     line-height: 13px;
     border-left: 1px solid $se-anthracite-grey;
+  }
+}
+:host(.grouped.hasChild) {
+  button {
+    padding: 0 14px !important;
   }
 }
 
@@ -137,10 +150,15 @@ button {
 }
 
 :host(.hasIcon) {
+  top: 3px;
+  position: relative;
   button {
-    font-size: 24px;
-    line-height: 1;
+    font-size: 20px;
     padding: 0;
-    width: 32px;
+  }
+}
+:host(.hasChild) {
+  button {
+     padding: 0px 34px;
   }
 }

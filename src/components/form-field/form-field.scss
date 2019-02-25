@@ -2,68 +2,74 @@
 
 :host {
 	.se-form-field {
-		@include display-flex();
-		padding: 16px;
+    @include display-flex();
+		padding: $spacing;
 		&[data-disabled] {
 			opacity: 0.26;
-		}
-	}
+    }
+    @include align-items(center);
+  }
+}
+::slotted(se-checkbox) {
+  padding-top: 6px;
+}
 
-	se-label {
-		max-width: 40%;
-		padding-top: 4px;
-	}
+::slotted(input) {
+  height: 28px;
+  width: 60%;
+  max-width: 290px;
+  border: 1px solid $se-super-light-grey;
+  font-size: 14px;
+  padding-left: 7px;
+}
 
-	::slotted(se-checkbox) {
-		padding-top: 6px;
-	}
-	
-	::slotted(input) {
-		height: 28px;
-		width: 60%;
-		max-width: 290px;
-		border: 1px solid $se-super-light-grey;
-		font-size: 14px;
-		font-family: Nunito, Roboto, monospace;
-		padding-left: 7px;
-	}
+::slotted(input[disabled]) {
+  background-color: $se-white;
+}
 
-	::slotted(input[disabled]) {
-		@include background-color-property($se-white, '');
-	}
-	
-	::slotted(input:focus) {
-		outline: none;
-		border: 1px solid $primary;
-	}
-	
-	::slotted(select) {
-		height: 32px;
-		width: 60%;
-		max-width: 299px;
-		border: 1px solid $se-super-light-grey;
-		font-size: 14px;
-		font-family: Nunito, Roboto, monospace;
-		padding-left: 4px;
-	}
-	
+::slotted(input:focus) {
+  outline: none;
+  border: 1px solid $primary;
+}
+
+::slotted(select) {
+  height: 32px;
+  width: 60%;
+  border-radius: 0;
+  max-width: 299px;
+  border: 1px solid $se-super-light-grey;
+  background-color: transparent;
+  font-size: 14px;
+  padding-left: 4px;
+}
+
+
+se-label {
+  width: 30%;
+  padding-top: 4px;
+  text-align: right;
 }
 
 :host([type="checkbox"]) {
+
 	.se-form-field {
 		flex-direction: row-reverse;
-		justify-content: flex-end;
+    justify-content: flex-end;
 	}
 
 	se-label {
-		max-width: 90%;
+    text-align: left;
+		width: 100% ;
 		padding-top: 7px;
 	}
 }
 
+
 :host([mode="stacked"]) {
 	.se-form-field {
-		flex-direction: column;
+    flex-direction: column;
+    @include align-items(start);
+
 	}
 
 	se-label {

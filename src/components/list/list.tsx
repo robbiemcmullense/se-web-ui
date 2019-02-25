@@ -21,11 +21,7 @@ export class ListComponent {
   }
 
   private updateItemMode(){
-    const items: any = this.el.querySelectorAll("se-list-item");
-    const groups: any = this.el.querySelectorAll("se-list-group");
-    const allItems: any[] = [ ...items, ...groups];
-
-    allItems.forEach(item => {
+    Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
       item.mode = this.mode;
     });
   }

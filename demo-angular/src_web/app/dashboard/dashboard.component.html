@@ -1,25 +1,32 @@
-<!-- <se-widget-container></se-widget-container> -->
 <se-container position="absolute">
-  <div fxLayout="row" fxFill>
-    <se-widget fxFlex="300px" mode="fill">
-      <se-widget-header>sites</se-widget-header>
-      <se-widget-content mode="fill">
-        <se-list mode="nav">
-            <se-list-item *ngFor="let site of sites" (click)="changeSite(site.id)" [selected]="site.id === selectedSite" [itemTitle]="site.name"></se-list-item>,
-        </se-list>
-      </se-widget-content>
-    </se-widget>
-    <se-container mode="widget">
-      <div fxFlex class="gridAnimation">
-        <mat-grid-list [cols]="nbCols" rowHeight="300px" >
-            <mat-grid-tile
-                *ngFor="let tile of tiles"
-                [colspan]="tile.cols"
-                [rowspan]="tile.cols">
-                <ng-container dynamicWidget [type]="tile.widgetType" [siteId]="selectedSite" [enlarged]="tile.cols === 2" [toggleable]="nbCols !== 1" (toggle)="toggleSize($event, tile)"></ng-container>
-            </mat-grid-tile>
-          </mat-grid-list>
-      </div>
-    </se-container>
-  </div>
+  <se-widget width="300px" mode="fill">
+    <se-widget-header>sites</se-widget-header>
+    <se-widget-content mode="fill">
+      <se-list>
+        <se-list-item
+          *ngFor="let site of sites"
+          (click)="changeSite(site.id)"
+          [selected]="site.id === selectedSite"
+          [itemTitle]="site.name"
+        ></se-list-item
+        >,
+      </se-list>
+    </se-widget-content>
+  </se-widget>
+  <se-container mode="widget">
+    <div fxFlex class="gridAnimation">
+      <mat-grid-list [cols]="nbCols" rowHeight="300px">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.cols">
+          <ng-container
+            dynamicWidget
+            [type]="tile.widgetType"
+            [siteId]="selectedSite"
+            [enlarged]="tile.cols === 2"
+            [toggleable]="nbCols !== 1"
+            (toggle)="toggleSize($event, tile)"
+          ></ng-container>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </se-container>
 </se-container>

@@ -22,16 +22,13 @@ export class ContainerComponent {
 
   hostData() {
     return {
-      'class': {
-        'widget-content': this.mode === 'widget',
-        'full-content': this.mode === 'fill',
-        'card-content': this.mode === 'card',
-        'centered-content': this.mode === 'centered',
-        'relative': this.position === 'relative',
-        'absolute': this.position === 'absolute'
-      }
-    };
-  }
+      'class': [
+          `${this.mode}-content`,
+          this.position
+        ].join(' ')
+    }
+  };
+
   render() {
     return <slot />;
   }

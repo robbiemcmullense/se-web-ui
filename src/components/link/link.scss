@@ -2,8 +2,10 @@
 
 :host {
 	a {
-		font-size: 14px;
-		line-height: 17px;
+    font-size: 14px;
+    margin: $spacing;
+    line-height: 17px;
+    display: inline-block;
 		@include color-property($accent, 'accent');
 		text-decoration: none;
 		&.external {

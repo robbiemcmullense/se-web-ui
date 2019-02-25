@@ -70,12 +70,8 @@ export class FormFieldComponent {
 
 	initLabel() {
 		Array.from(this.el.querySelectorAll('input, select, se-checkbox')).forEach((item: any) => {
-			if (this.disabled) {
-				item.setAttributeNode(document.createAttribute('disabled'));
-			}
-			if (this.type == 'input') {
-				this.el.querySelector('input').setAttribute('placeholder', this.value);
-			}
+      item.disabled = this.disabled;
+      item.placeholder = this.value;
 		});
 	}
 

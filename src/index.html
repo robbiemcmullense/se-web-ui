@@ -152,25 +152,18 @@
             <li id="chip-info"></li>
           </ul>
           <se-button id="flatBtn1" mode="flat" color="warn">Warning</se-button>
+          <se-button icon="action_resize">Resize</se-button>
           <se-button id="flatBtn1" mode="flat" color="error">Error</se-button>
           <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
           <se-button id="signupBtn" mode="signup">Sign Up</se-button>
           <se-button mode="outline">Outline</se-button>
-          <se-button icon="action_resize" value="resize"></se-button>
+          <se-button icon="action_resize"></se-button>
           <se-chip id="se-chip" value="Chip 01"></se-chip>
           <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
-          <div class="se-link-container">
-            <se-link url="http://google.com" link="Link to Google"></se-link>
-          </div>
-          <div class="se-link-container">
-            <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
-          </div>
-          <div class="se-link-container">
-            <se-link url="http://google.com" link="Link to Google" disabled="true"></se-link>
-          </div>
-          <div class="se-link-container">
-            <se-link url="http://google.com" link="External Link to Google" type="external" disabled="true"></se-link>
-          </div>
+          <se-link url="http://google.com" link="Link to Google"></se-link>
+          <se-link url="http://google.com" link="External Link to Google" type="external"></se-link>
+          <se-link url="http://google.com" link="Link to Google" disabled="true"></se-link>
+          <se-link url="http://google.com" link="External Link to Google" type="external" disabled="true"></se-link>
           <se-button mode="flat">Flat</se-button>
           <se-button mode="flat" color="primary">FlatGreen</se-button>
           <se-button id="raisedBtn" mode="raised">Raised</se-button>
@@ -218,15 +211,16 @@
           <se-form-field id="input-form" label="Input" required="true">
             <input type="text" />
           </se-form-field>
-          <se-form-field id="input-stacked-form" label="Input" required="true" mode="stacked">
-            <input type="text" />
-          </se-form-field>
+
           <se-form-field id="select-form" label="Select" required="true" type="select">
             <select>
               <option>Option 1</option>
               <option>Option 2</option>
               <option>Option 3</option>
             </select>
+          </se-form-field>
+          <se-form-field id="input-stacked-form" label="Input" required="true" mode="stacked">
+            <input type="text" />
           </se-form-field>
           <se-form-field id="select-form" label="Select" required="true" type="select" mode="stacked">
             <select>
@@ -235,7 +229,7 @@
               <option>Stacked Option 3</option>
             </select>
           </se-form-field>
-          
+
         </se-widget-content>
         <se-widget-footer>
           <div slot="end">

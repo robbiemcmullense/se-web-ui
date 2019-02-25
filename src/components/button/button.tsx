@@ -81,17 +81,23 @@ export class ButtonComponent {
     }
   }
 
+  @State() hasChild: boolean;
+
+  componentWillLoad() {
+    this.hasChild = Array.from(this.el.children).length > 0 || this.el.innerText.length > 0;
+  }
+
   hostData() {
     return {
-      'class': { 'active': this.selected }
+      'class': {
+        'active': this.selected,
+        'hasIcon': !!this.icon,
+        'hasChild': this.hasChild
+      }
     };
   }
 
   render() {
-    if (this.icon) {
-      this.el.classList.add('hasIcon');
-    }
-
     return (
       <button data-mode={this.mode} color={this.color} disabled={this.disabled} onClick={() => this.emitEvent()}>
         {this.icon ? <se-icon>{this.icon}</se-icon> : ''}
