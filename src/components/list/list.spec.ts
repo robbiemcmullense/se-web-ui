@@ -1,9 +1,11 @@
 import { TestWindow } from '@stencil/core/testing';
-import { List } from './list';
+import { ListComponent } from './list';
 
 describe('list', () => {
+  let list;
   it('should build', () => {
-    expect(new List()).toBeTruthy();
+    list = new ListComponent();
+    expect(list).toBeTruthy();
   });
 
   describe('rendering', () => {
@@ -16,9 +18,5 @@ describe('list', () => {
         html: '<se-list></se-list>'
       });
     });
-
-    // See https://stenciljs.com/docs/unit-testing
-    {cursor}
-
   });
 });
