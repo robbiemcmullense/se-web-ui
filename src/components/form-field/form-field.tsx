@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Method, Listen } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Listen, Watch } from '@stencil/core';
 
 @Component({
 	tag: 'se-form-field',
@@ -45,22 +45,6 @@ export class FormFieldComponent {
    * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
    */
 	@Event() submit: EventEmitter;
-	/**
-	 * Set a red (error) border to the form input field when the input is invalid.
-	 */
-	@Method()
-	setBorderProperty(prop: 'error' | 'warning' | 'success') {
-		this.status = prop;
-		this.el.classList.add(this.status);
-	}
-	/**
-	 * Remove a red (error) border to the form input field when an invalid input is corrected.
-	 */
-	@Method()
-	removeBorderProperty(prop: 'error' | 'warning' | 'success') {
-		this.status = prop;
-		this.el.classList.remove(this.status);
-	}
 
 	@Listen('change')
 	checkboxListenerHandler(event) {
@@ -68,25 +52,36 @@ export class FormFieldComponent {
 		this.submit.emit(this.value);
 	}
 
-	hostData() {
-		return {
-      class: this.status
-    };
+	@Watch('disabled')
+	disabledDidChange() {
+		this.initLabel();
 	}
 
-	render() {
-		if (this.mode == 'stacked' && this.type !== 'checkbox') {
-			this.el.classList.add('stacked');
-		}
-		if (this.type == 'checkbox') {
-			this.el.classList.add('checkbox');
+	@Watch('type')
+	typeDidChange() {
+		this.initLabel();
+	}
+
+	componentDidLoad() {
+		this.initLabel();
+	}
+
+	initLabel() {
+		if (this.disabled) {
+			this.el.children.item(0).setAttributeNode(document.createAttribute('disabled'));
 		}
 		if (this.type == 'input') {
 			this.el.children.item(0).setAttribute('placeholder', this.value);
 		}
-		if (this.disabled) {
-			this.el.children.item(0).setAttributeNode(document.createAttribute('disabled'));
-		}
+	}
+
+	hostData() {
+		return {
+			class: this.status
+		};
+	}
+
+	render() {
 		return (
 			<div class="se-form-field" data-disabled={this.disabled}>
 				<se-label value={this.label} required={this.required}></se-label>

@@ -279,19 +279,15 @@
     document.getElementById('input-form').addEventListener('submit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'input, ' + event.detail;
       if (event.detail == 'error') {
-        document.getElementById('input-form').setBorderProperty('error');
-      } else {
-        document.getElementById('input-form').removeBorderProperty('error');
+        document.getElementById('input-form').status = 'error';
       }
-      if (event.detail == 'warning') {
-        document.getElementById('input-form').setBorderProperty('warning');
-      } else {
-        document.getElementById('input-form').removeBorderProperty('warning');
+      else if (event.detail == 'warning') {
+        document.getElementById('input-form').status = 'warning';
       }
-      if (event.detail == 'success') {
-        document.getElementById('input-form').setBorderProperty('success');
+      else if (event.detail == 'success') {
+        document.getElementById('input-form').status = 'success';
       } else {
-        document.getElementById('input-form').removeBorderProperty('success');
+        document.getElementById('input-form').status = '';
       }
     });
     document.getElementById('select-form').addEventListener('submit', function (event) {

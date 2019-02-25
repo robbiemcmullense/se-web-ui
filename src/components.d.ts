@@ -231,17 +231,9 @@ export namespace Components {
     */
     'mode': 'inline' | 'stacked';
     /**
-    * Remove a red (error) border to the form input field when an invalid input is corrected.
-    */
-    'removeBorderProperty': (prop: "error" | "warning" | "success") => void;
-    /**
     * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
     */
     'required': boolean;
-    /**
-    * Set a red (error) border to the form input field when the input is invalid.
-    */
-    'setBorderProperty': (prop: "error" | "warning" | "success") => void;
     /**
     * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
     */

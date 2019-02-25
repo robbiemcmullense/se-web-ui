@@ -25,41 +25,6 @@
 | `submit` | Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus. | `CustomEvent<void>` |
 
 
-## Methods
-
-### `removeBorderProperty(prop: "error" | "warning" | "success") => void`
-
-Remove a red (error) border to the form input field when an invalid input is corrected.
-
-#### Parameters
-
-| Name   | Type                                | Description |
-| ------ | ----------------------------------- | ----------- |
-| `prop` | `"error" \| "success" \| "warning"` |             |
-
-#### Returns
-
-Type: `void`
-
-
-
-### `setBorderProperty(prop: "error" | "warning" | "success") => void`
-
-Set a red (error) border to the form input field when the input is invalid.
-
-#### Parameters
-
-| Name   | Type                                | Description |
-| ------ | ----------------------------------- | ----------- |
-| `prop` | `"error" \| "success" \| "warning"` |             |
-
-#### Returns
-
-Type: `void`
-
-
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
