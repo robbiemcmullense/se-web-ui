@@ -48,8 +48,10 @@ export class FormFieldComponent {
 
 	@Listen('change')
 	checkboxListenerHandler(event) {
-		this.value = event.detail ? event.detail.selected : event.target.value;
-		this.submit.emit(this.value);
+		if (!this.disabled) {
+			this.value = event.detail ? event.detail.selected : event.target.value;
+			this.submit.emit(this.value);
+		}
 	}
 
 	@Watch('disabled')
@@ -67,12 +69,14 @@ export class FormFieldComponent {
 	}
 
 	initLabel() {
-		if (this.disabled) {
-			this.el.children.item(0).setAttributeNode(document.createAttribute('disabled'));
-		}
-		if (this.type == 'input') {
-			this.el.children.item(0).setAttribute('placeholder', this.value);
-		}
+		Array.from(this.el.querySelectorAll('input, select, se-checkbox')).forEach((item: any) => {
+			if (this.disabled) {
+				item.setAttributeNode(document.createAttribute('disabled'));
+			}
+			if (this.type == 'input') {
+				this.el.querySelector('input').setAttribute('placeholder', this.value);
+			}
+		});
 	}
 
 	hostData() {

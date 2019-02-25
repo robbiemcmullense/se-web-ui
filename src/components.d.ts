@@ -39,7 +39,7 @@ export namespace Components {
     /**
     * Set a color for your button from the parent component.
     */
-    'setColor': (val: "primary" | "accent" | "warn" | "error" | "light") => void;
+    'setColor': (val: "light" | "primary" | "accent" | "warn" | "error") => void;
     /**
     * Set the disabled property for your button from the parent component.
     */
