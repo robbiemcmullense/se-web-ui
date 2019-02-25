@@ -17,9 +17,10 @@
     "build": "npm-run-all build.*",
     "build.core": "stencil build --docs",
     "build.localRef": "cpx \"src/package.json\" core",
-    "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
-    "test": "stencil test --spec --e2e",
+    "test": "stencil test --spec",
+    "test.e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
+    "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
     "demo.react": "cd demo-react && yarn start",
     "demo.vue": "cd demo-vue && yarn start",
     "demo.angular": "cd demo-angular && yarn start"

@@ -1,9 +1,11 @@
 import { TestWindow } from '@stencil/core/testing';
-import { Icon } from './icon';
+import { IconComponent } from './icon';
 
 describe('se-icon', () => {
+  let icon;
   it('should build', () => {
-    expect(new Icon()).toBeTruthy();
+    icon = new IconComponent();
+    expect(icon).toBeTruthy();
   });
 
   describe('rendering', () => {
@@ -12,13 +14,9 @@ describe('se-icon', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [Icon],
+        components: [IconComponent],
         html: '<se-icon></se-icon>'
       });
     });
-
-    // See https://stenciljs.com/docs/unit-testing
-    {cursor}
-
   });
 });

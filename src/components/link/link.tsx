@@ -5,7 +5,7 @@ import { Component, Prop } from '@stencil/core';
   styleUrl: 'link.scss',
   shadow: true
 })
-export class LabelComponent {
+export class LinkComponent {
   /**
    * Defines the url the user should get redirected to when clicking on the link.
    */

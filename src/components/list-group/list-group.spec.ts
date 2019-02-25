@@ -1,9 +1,11 @@
 import { TestWindow } from '@stencil/core/testing';
-import { ListGroup } from './list-group';
+import { ListGroupComponent } from './list-group';
 
 describe('list-group', () => {
+  let listGroup;
   it('should build', () => {
-    expect(new ListGroup()).toBeTruthy();
+    listGroup = new ListGroupComponent();
+    expect(listGroup).toBeTruthy();
   });
 
   describe('rendering', () => {
@@ -12,13 +14,9 @@ describe('list-group', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [ListGroup],
+        components: [ListGroupComponent],
         html: '<list-group></list-group>'
       });
     });
-
-    // See https://stenciljs.com/docs/unit-testing
-    {cursor}
-
   });
 });

@@ -1,9 +1,11 @@
 import { TestWindow } from '@stencil/core/testing';
-import { Divider } from './divider';
+import { DividerComponent } from './divider';
 
 describe('divider', () => {
+  let divider;
   it('should build', () => {
-    expect(new Divider()).toBeTruthy();
+    divider = new DividerComponent();
+    expect(divider).toBeTruthy();
   });
 
   describe('rendering', () => {
@@ -12,13 +14,9 @@ describe('divider', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [Divider],
+        components: [DividerComponent],
         html: '<divider></divider>'
       });
     });
-
-    // See https://stenciljs.com/docs/unit-testing
-    {cursor}
-
   });
 });
