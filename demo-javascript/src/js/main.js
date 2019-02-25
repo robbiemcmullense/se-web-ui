@@ -1,4 +1,4 @@
-import { defineCustomElements } from '/se/core/loader/index.js';
+import { defineCustomElements } from '/se/ui-web-components/core/loader/index.js';
 defineCustomElements(window);
 
 const myApp = {};

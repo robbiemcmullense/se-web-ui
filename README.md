@@ -22,14 +22,15 @@ You can test all those components with this [Online Template Editor](https://pag
 | [x]  | widget-header  | Top part of the widget.                                                                                                    |
 | [x]  | widget-content | Middle par of the widget. should take the full space (flex:1)                                                              |
 | [x]  | widget-footer  | Bottom part of a widget.                                                                                                   |
+| [x]  | Checkbox       | checkbox to check or uncheck a value                                                                                       |
 | [ ]  | Input          | Text input. Should also handle error?                                                                                      |
 | [ ]  | Select         | Dropdown that takes the selected choice                                                                                    |
 | [ ]  | Select-item    | Element of a select element                                                                                                |
+| [x]  | Form-Field     | container for a submittable form.  Accepts checkboxes, input fields, and select dropdowns                                  |
 | [x]  | Buttons        | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Button         | standard button                                                                                                            |
 | [x]  | Radio-on-off   | toggle switch that can indicate "on" or "off", "active" or "inactive", etc.                                                |
 | [x]  | Switch         |                                                                                                                            |
-| [x]  | Checkbox       | checkbox to check or uncheck a value                                                                                       |
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
 | [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
 | [ ]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |

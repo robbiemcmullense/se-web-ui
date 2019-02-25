@@ -39,7 +39,7 @@ export namespace Components {
     /**
     * Set a color for your button from the parent component.
     */
-    'setColor': (val: "primary" | "accent" | "warn" | "error" | "light") => void;
+    'setColor': (val: "light" | "primary" | "accent" | "warn" | "error") => void;
     /**
     * Set the disabled property for your button from the parent component.
     */
@@ -215,6 +215,71 @@ export namespace Components {
   interface SeDividerAttributes extends StencilHTMLAttributes {
     'color'?: "dark" | "light";
     'mode'?: "horizontal" | "vertical" | "inset";
+  }
+
+  interface SeFormField {
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the text value of the label in your form field.
+    */
+    'label': string;
+    /**
+    * Defines the layout of your form field. `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` mode will render the input or select field below the label.
+    */
+    'mode': 'inline' | 'stacked';
+    /**
+    * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
+    */
+    'required': boolean;
+    /**
+    * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
+    */
+    'status': 'error' | 'warning' | 'success';
+    /**
+    * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
+    */
+    'type': 'input' | 'checkbox' | 'select';
+    /**
+    * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
+    */
+    'value': string;
+  }
+  interface SeFormFieldAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Defines the text value of the label in your form field.
+    */
+    'label'?: string;
+    /**
+    * Defines the layout of your form field. `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` mode will render the input or select field below the label.
+    */
+    'mode'?: 'inline' | 'stacked';
+    /**
+    * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
+    */
+    'onSubmit'?: (event: CustomEvent) => void;
+    /**
+    * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
+    */
+    'required'?: boolean;
+    /**
+    * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
+    */
+    'status'?: 'error' | 'warning' | 'success';
+    /**
+    * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
+    */
+    'type'?: 'input' | 'checkbox' | 'select';
+    /**
+    * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
+    */
+    'value'?: string;
   }
 
   interface SeHeader {
@@ -617,6 +682,7 @@ declare global {
     'SeChip': Components.SeChip;
     'SeContainer': Components.SeContainer;
     'SeDivider': Components.SeDivider;
+    'SeFormField': Components.SeFormField;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
@@ -644,6 +710,7 @@ declare global {
     'se-chip': Components.SeChipAttributes;
     'se-container': Components.SeContainerAttributes;
     'se-divider': Components.SeDividerAttributes;
+    'se-form-field': Components.SeFormFieldAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
@@ -704,6 +771,12 @@ declare global {
   var HTMLSeDividerElement: {
     prototype: HTMLSeDividerElement;
     new (): HTMLSeDividerElement;
+  };
+
+  interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {}
+  var HTMLSeFormFieldElement: {
+    prototype: HTMLSeFormFieldElement;
+    new (): HTMLSeFormFieldElement;
   };
 
   interface HTMLSeHeaderElement extends Components.SeHeader, HTMLStencilElement {}
@@ -816,6 +889,7 @@ declare global {
     'se-chip': HTMLSeChipElement
     'se-container': HTMLSeContainerElement
     'se-divider': HTMLSeDividerElement
+    'se-form-field': HTMLSeFormFieldElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
@@ -843,6 +917,7 @@ declare global {
     'se-chip': HTMLSeChipElement;
     'se-container': HTMLSeContainerElement;
     'se-divider': HTMLSeDividerElement;
+    'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
