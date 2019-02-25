@@ -14,7 +14,7 @@ describe('se-icon', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [Icon],
+        components: [IconComponent],
         html: '<se-icon></se-icon>'
       });
     });

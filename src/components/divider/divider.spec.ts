@@ -14,7 +14,7 @@ describe('divider', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [Divider],
+        components: [DividerComponent],
         html: '<divider></divider>'
       });
     });

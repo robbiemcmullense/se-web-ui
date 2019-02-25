@@ -14,7 +14,7 @@ describe('list', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [List],
+        components: [ListComponent],
         html: '<se-list></se-list>'
       });
     });

@@ -14,7 +14,7 @@ describe('list-group', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [ListGroup],
+        components: [ListGroupComponent],
         html: '<list-group></list-group>'
       });
     });

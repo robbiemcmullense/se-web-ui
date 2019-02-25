@@ -39,7 +39,7 @@ export class FormFieldComponent {
 	/**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
-	@Prop() disabled: boolean = false;;
+	@Prop() disabled: boolean = false;
 	@Element() el: HTMLElement;
 	/**
    * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
