@@ -13,6 +13,7 @@
 | `label`    | `label`    | Defines the text value of the label in your form field.                                                                                                                                                                                                       | `string`                            | `undefined` |
 | `mode`     | `mode`     | Defines the layout of your form field. `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` mode will render the input or select field below the label. | `"inline" \| "stacked"`             | `'inline'`  |
 | `required` | `required` | Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.                                                                                                | `boolean`                           | `false`     |
+| `status`   | `status`   | Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.                                                                                                                     | `"error" \| "success" \| "warning"` | `undefined` |
 | `type`     | `type`     | Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.                                                                                                              | `"checkbox" \| "input" \| "select"` | `'input'`   |
 | `value`    | `value`    | Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.                                                                                  | `string`                            | `'Text'`    |
 
@@ -26,9 +27,15 @@
 
 ## Methods
 
-### `removeError() => void`
+### `removeBorderProperty(prop: "error" | "warning" | "success") => void`
 
 Remove a red (error) border to the form input field when an invalid input is corrected.
+
+#### Parameters
+
+| Name   | Type                                | Description |
+| ------ | ----------------------------------- | ----------- |
+| `prop` | `"error" \| "success" \| "warning"` |             |
 
 #### Returns
 
@@ -36,9 +43,15 @@ Type: `void`
 
 
 
-### `setError() => void`
+### `setBorderProperty(prop: "error" | "warning" | "success") => void`
 
 Set a red (error) border to the form input field when the input is invalid.
+
+#### Parameters
+
+| Name   | Type                                | Description |
+| ------ | ----------------------------------- | ----------- |
+| `prop` | `"error" \| "success" \| "warning"` |             |
 
 #### Returns
 

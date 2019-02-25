@@ -233,7 +233,7 @@ export namespace Components {
     /**
     * Remove a red (error) border to the form input field when an invalid input is corrected.
     */
-    'removeError': () => void;
+    'removeBorderProperty': (prop: "error" | "warning" | "success") => void;
     /**
     * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
     */
@@ -241,7 +241,11 @@ export namespace Components {
     /**
     * Set a red (error) border to the form input field when the input is invalid.
     */
-    'setError': () => void;
+    'setBorderProperty': (prop: "error" | "warning" | "success") => void;
+    /**
+    * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
+    */
+    'status': 'error' | 'warning' | 'success';
     /**
     * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
     */
@@ -272,6 +276,10 @@ export namespace Components {
     * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
     */
     'required'?: boolean;
+    /**
+    * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
+    */
+    'status'?: 'error' | 'warning' | 'success';
     /**
     * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
     */

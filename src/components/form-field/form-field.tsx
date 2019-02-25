@@ -18,6 +18,10 @@ export class FormFieldComponent {
 	 */
 	@Prop() type: 'input' | 'checkbox' | 'select' = 'input';
 	/**
+	 * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
+	 */
+	@Prop({ mutable: true }) status: 'error' | 'warning' | 'success';
+	/**
 	 * Defines the text value of the label in your form field.
 	 */
 	@Prop() label: string;
@@ -25,7 +29,7 @@ export class FormFieldComponent {
 	 * Defines the value of your form field to get passed to the parent component.
 	 * When the type is set to "input", this value will be the default placeholder in your input field.
 	 */
-	@Prop({mutable: true}) value: string = 'Text';
+	@Prop({ mutable: true }) value: string = 'Text';
 	/**
 	 * Determines if the input is required by the application.
 	 * Set to `false` by default.
@@ -45,15 +49,17 @@ export class FormFieldComponent {
 	 * Set a red (error) border to the form input field when the input is invalid.
 	 */
 	@Method()
-	setError() {
-		this.el.classList.add('hasError');
+	setBorderProperty(prop: 'error' | 'warning' | 'success') {
+		this.status = prop;
+		this.el.classList.add(this.status);
 	}
 	/**
 	 * Remove a red (error) border to the form input field when an invalid input is corrected.
 	 */
 	@Method()
-	removeError() {
-		this.el.classList.remove('hasError');
+	removeBorderProperty(prop: 'error' | 'warning' | 'success') {
+		this.status = prop;
+		this.el.classList.remove(this.status);
 	}
 
 	@Listen('change')
@@ -62,9 +68,15 @@ export class FormFieldComponent {
 		this.submit.emit(this.value);
 	}
 
+	hostData() {
+		return {
+      class: this.status
+    };
+	}
+
 	render() {
 		if (this.mode == 'stacked' && this.type !== 'checkbox') {
-      this.el.classList.add('stacked');
+			this.el.classList.add('stacked');
 		}
 		if (this.type == 'checkbox') {
 			this.el.classList.add('checkbox');

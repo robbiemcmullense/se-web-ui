@@ -279,9 +279,19 @@
     document.getElementById('input-form').addEventListener('submit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'input, ' + event.detail;
       if (event.detail == 'error') {
-        document.getElementById('input-form').setError();
+        document.getElementById('input-form').setBorderProperty('error');
       } else {
-        document.getElementById('input-form').removeError();
+        document.getElementById('input-form').removeBorderProperty('error');
+      }
+      if (event.detail == 'warning') {
+        document.getElementById('input-form').setBorderProperty('warning');
+      } else {
+        document.getElementById('input-form').removeBorderProperty('warning');
+      }
+      if (event.detail == 'success') {
+        document.getElementById('input-form').setBorderProperty('success');
+      } else {
+        document.getElementById('input-form').removeBorderProperty('success');
       }
     });
     document.getElementById('select-form').addEventListener('submit', function (event) {
