@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host {
   margin-right: 5px;
@@ -7,7 +7,6 @@
     margin-bottom: -12px;
     padding-left: 2px;
     height: 58px;
-    margin-top: -10px;
   }
   .schneider-electric-logo{
     fill: $se-logo-green;

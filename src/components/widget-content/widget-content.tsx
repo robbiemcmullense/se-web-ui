@@ -1,4 +1,4 @@
-import { Component } from "@stencil/core";
+import { Component,Prop } from "@stencil/core";
 
 @Component({
   tag: "se-widget-content",
@@ -6,6 +6,13 @@ import { Component } from "@stencil/core";
   shadow: true
 })
 export class WidgetContent {
+  @Prop() mode: 'fill';
+
+  hostData() {
+    return {
+      'class': { 'full-content': this.mode === 'fill' }
+    };
+  }
   render() {
     return (
       <slot />

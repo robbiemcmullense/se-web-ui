@@ -1,10 +1,12 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host {
 	.checkbox-container {
 		position: relative;
 		padding-left: 20px;
-		font-size: 18px;
+    font-size: 18px;
+    margin: $spacing;
+
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;

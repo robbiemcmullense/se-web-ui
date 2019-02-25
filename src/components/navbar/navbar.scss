@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host  {
   display: flex;
@@ -28,8 +28,10 @@
 }
 
 .nav-left-wrapper {
-  padding-left: 20px;
   background-color: rgba(black, 0.25);
+  &>*:first-child{
+    padding-left: 20px;
+  }
 }
 
 nav.primary {

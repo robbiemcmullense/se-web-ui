@@ -1,0 +1,21 @@
+@import "../../theme/theme";
+// @import "../../theme/animation";
+
+:host {
+
+  .group-item{
+    overflow: hidden;
+    padding-bottom: 1px;
+    // @include animated('fast');
+    // &.collapsed {
+    //   transform-origin: left top;
+    //   animation-name: slideCollapseDown;
+    // }
+    // &.expended {
+    //   transform-origin: left top;
+    //   animation-name: slideCollapseUp;
+    // }
+  }
+
+}
+

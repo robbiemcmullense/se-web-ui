@@ -1,9 +1,15 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host{
-  padding: ($widget-inner-padding - 1) $widget-inner-padding 3px;
+  padding: $spacing;
   border-bottom: 2px solid $widget-header-border-color;
   font-size: 20px;
   min-height: 32px;
   position: relative;
+
+  @include display-flex();
+  @include align-items(center);
+  .flex{
+    @include flex();
+  }
 }

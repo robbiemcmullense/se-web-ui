@@ -1,19 +1,15 @@
 <!-- <se-widget-container></se-widget-container> -->
 <se-container position="absolute">
   <div fxLayout="row" fxFill>
-    <se-widget fxFlex="300px">
+    <se-widget fxFlex="300px" mode="fill">
       <se-widget-header>sites</se-widget-header>
-      <se-widget-content>
-        <mat-list class="has-scroll" fxFlex>
-          <mat-list-item *ngFor="let site of sites" (click)="changeSite(site.id)" class="clickable" [class.selected]="site.id === selectedSite">
-            <mat-icon mat-list-icon>business</mat-icon>
-            <h4 mat-line>{{site.name}} </h4>
-            <p mat-line> ID :  {{site.id}}  </p>
-          </mat-list-item>
-        </mat-list>
+      <se-widget-content mode="fill">
+        <se-list mode="nav">
+            <se-list-item *ngFor="let site of sites" (click)="changeSite(site.id)" [selected]="site.id === selectedSite" [itemTitle]="site.name"></se-list-item>,
+        </se-list>
       </se-widget-content>
     </se-widget>
-    <se-container>
+    <se-container mode="widget">
       <div fxFlex class="gridAnimation">
         <mat-grid-list [cols]="nbCols" rowHeight="300px" >
             <mat-grid-tile

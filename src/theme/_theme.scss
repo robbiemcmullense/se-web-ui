@@ -5,8 +5,11 @@
  @import "./se-variable";
 
 
-// Global
+// Spacing element
 // ==========================================================================
+$spacing: 8px !default;
+$spacing-small: 4px !default;
+$spacing-large: 16px !default;
 
 // Media Query Ranges
 $small-screen-up: 601px !default;

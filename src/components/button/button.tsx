@@ -21,8 +21,9 @@ export class ButtonComponent {
    * `accent` is a blue color.
    * `warn` is an orange color.
    * `error` is a red color.
+   * `light` is a gray color.
    */
-  @Prop({mutable: true}) color: 'primary' | 'accent' | 'warn' | 'error';
+  @Prop({mutable: true}) color: 'primary' | 'accent' | 'warn' | 'error' | 'light';
   /**
    * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
    */
@@ -34,7 +35,7 @@ export class ButtonComponent {
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
-  @Prop({mutable: true}) disabled: boolean = false;
+  @Prop() disabled: boolean = false;
   @State() selected: boolean;
   @Element() el: HTMLElement;
   /**
@@ -51,12 +52,11 @@ export class ButtonComponent {
   }
   /**
    * Set a color for your button from the parent component.
-   * @param val set to `primary`, `accent`, `warn`, or `error`.  See the color property description for color values.
+   * @param val set to `primary`, `accent`, `warn`, `error` or `light`.  See the color property description for color values.
    */
   @Method()
-  setColor(val: 'primary' | 'accent' | 'warn' | 'error'): void {
+  setColor(val: 'primary' | 'accent' | 'warn' | 'error' | 'light'): void {
     this.color = val;
-    this.el.classList.add(this.color);
   }
   /**
    * Set the disabled property for your button from the parent component.
@@ -65,7 +65,6 @@ export class ButtonComponent {
   @Method()
   setDisabled(val: boolean): void {
     this.disabled = val;
-    this.el.classList.add('disabled');
   }
   /**
    * Indicate if the button is part of a group of buttons within the `se-buttons` component.
@@ -74,12 +73,12 @@ export class ButtonComponent {
   setGrouped() {
     this.el.classList.add('grouped');
   }
-  
+
   emitEvent() {
     if (!this.disabled) {
       this.selected = !this.selected;
       this.clicked.emit(this.el);
-    } 
+    }
   }
 
   hostData() {
@@ -95,7 +94,7 @@ export class ButtonComponent {
 
     return (
       <button data-mode={this.mode} color={this.color} disabled={this.disabled} onClick={() => this.emitEvent()}>
-        {this.icon ? <i class="se-icon">{this.icon}</i> : ''}
+        {this.icon ? <se-icon>{this.icon}</se-icon> : ''}
         <slot></slot>
       </button>
     )

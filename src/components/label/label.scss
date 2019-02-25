@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host {
 	label {
@@ -9,7 +9,7 @@
 			font-size: 14px;
 			@include color-property($error, 'error');
 			padding-left: 3px;
-			
+
 		}
 	}
 }

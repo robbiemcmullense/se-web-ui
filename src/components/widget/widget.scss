@@ -1,4 +1,4 @@
-@import "../../theme/theme-variables";
+@import "../../theme/theme";
 
 :host {
   width: 100%;
@@ -6,24 +6,25 @@
   z-index: 0;
   position: relative;
   @include flex-direction(column);
-
   @include display-flex();
-  @include flex(1);
 
-  &[no-margin]{
-    .widget-body{
-      margin: 0;
-    }
+  .widget-body {
+    overflow: hidden;
+    background: white;
+    margin: 5px;
+    @include flex(1);
+    @include display-flex();
+    @include flex-direction(column);
   }
 }
 
-.widget-body {
-  overflow: hidden;
-
-  background: white;
-  margin: 5px;
-  @include flex(1);
-  @include display-flex();
-  @include flex-direction(column);
-
+:host(.fill){
+  .widget-body {
+    margin: 0;
+  }
 }
+
+:host(.flex){
+  @include flex();
+}
+

@@ -1,0 +1,91 @@
+@import "../../theme/theme";
+
+:host {
+  position: relative;
+  display: block;
+  margin: 0;
+  font-weight: lighter;
+  font-size: 20px;
+  width: 100%;
+  height: 50px;
+
+  button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    outline: none;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+
+    @include display-flex();
+    @include align-items(center);
+    // @include flex-direction(raw);
+
+    // @include justify-content(space-between);
+    text-align: start;
+
+    &:hover, &:focus{
+      background-color: $se-ultra-light-grey-1;
+      color: inherit;
+    }
+  }
+}
+.selectedBar {
+  display: none;
+}
+.nav-icon {
+  margin-right: -12px;
+  margin-left: 8px;
+}
+.nav-content{
+  min-width: 0;
+  padding-left: 18px;
+
+  @include flex();
+  div {
+    @include ellipsis();
+    margin-right: $spacing
+  }
+}
+.nav-description {
+  font-size: 14px;
+}
+:host(.nav.selected) {
+  color: mat-color($primary);
+  color: var(--primary, mat-color($primary));
+  .selectedBar {
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    width: 5px;
+    @include background-color-property($primary, "--primary");
+  }
+
+}
+
+:host(.classic.selected) {
+  color: white;
+  background-color: $se-dark-grey;
+  button {
+    &:hover, &:focus{
+      background-color: $se-ultra-dark-grey;
+    }
+  }
+}
