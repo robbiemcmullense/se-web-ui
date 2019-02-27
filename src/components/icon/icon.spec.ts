@@ -1,4 +1,3 @@
-import { TestWindow } from '@stencil/core/testing';
 import { IconComponent } from './icon';
 
 describe('se-icon', () => {

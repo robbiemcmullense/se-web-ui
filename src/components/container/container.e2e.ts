@@ -1,27 +1,28 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('ContainerComponent', () => {
-  it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<se-container></se-container>');
+  let page, element;
 
-    const element = await page.find('se-container');
-    expect(element).toHaveClass('hydrated');
+  beforeEach(async() => {
+    page = await newE2EPage();
+    await page.setContent('<se-container></se-container>');
+    element = await page.find('se-container');
   });
 
-  it('renders the "fill-content" and "relative" classes by default', async () => {	
-    const page = await newE2EPage();
-    await page.setContent('<se-container></se-container>');
-    
-    const element = await page.find('se-container');	
-    expect(element).toHaveClasses(['fill-content', 'relative']);	
+  it('renders', async() => {
+    expect(element).toBeTruthy();
   });
 
-  it('renders the "centered" and "absolute-content" classes when these properties are specified in the DOM', async () => {	
-    const page = await newE2EPage();
-    await page.setContent('<se-container mode="centered" position="absolute"></se-container>');
-    
-    const element = await page.find('se-container');	
+  it('renders the "fill-content", "relative", and "hydrated" classes by default', async() => {		
+    expect(element).toHaveClasses(['fill-content', 'relative', 'hydrated']);	
+  });
+
+  it('renders the "centered" and "absolute-content" classes when these properties are specified in the DOM', async() => {	
+    await page.$eval('se-container', (elm: any) => {
+      elm.mode = 'centered';
+      elm.position = 'absolute';
+    });
+    await page.waitForChanges();	
     expect(element).toHaveClasses(['centered-content', 'absolute']);
   });
 });
