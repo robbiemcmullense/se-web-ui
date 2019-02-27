@@ -67,9 +67,9 @@ export class ListItemComponent {
     let iconToRender: any = '';
     if(this.collapsible){
       if (!this.collapsed) {
-        iconToRender = <se-icon  size="medium">arrow2_up</se-icon>
+        iconToRender = <se-icon size="medium">arrow2_up</se-icon>
       } else {
-        iconToRender = <se-icon  size="medium">arrow2_down</se-icon>
+        iconToRender = <se-icon size="medium">arrow2_down</se-icon>
       }
     } else if( this.mode=== 'nav'){
       iconToRender = <se-icon size="medium">arrow2_right</se-icon>
