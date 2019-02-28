@@ -8,7 +8,7 @@ import { newE2EPage } from '@stencil/core/testing';
 		await page.setContent('<se-list-item></se-list-item>');
 	});
 
-  it('renders with ', async () => {	
+  it('renders', async () => {	
 		const element = await page.find('se-list-item');	
     expect(element).toBeTruthy();
   });
