@@ -44,12 +44,11 @@ describe('ButtonsComponent', () => {
     await page.setContent('<se-buttons><se-button id="first">Primary</se-button><se-button id="second">Secondary</se-button></se-buttons>');
     const firstButtonElement = await page.find('se-buttons se-button#first');
     const secondButtonElement = await page.find('se-buttons se-button#second');
-    firstButtonElement.click();
-    await page.waitForChanges();
+    
+    await firstButtonElement.click();
     expect(firstButtonElement).toHaveClass('active');
 
-    secondButtonElement.click();
-    await page.waitForChanges();
+    await secondButtonElement.click();
     expect(secondButtonElement).toHaveClass('active');
   });
 
@@ -57,12 +56,11 @@ describe('ButtonsComponent', () => {
     await page.setContent('<se-buttons mode="radio"><se-button id="first">Primary</se-button><se-button id="second">Secondary</se-button></se-buttons>');
     const firstButtonElement = await page.find('se-buttons se-button#first');
     const secondButtonElement = await page.find('se-buttons se-button#second');
-    firstButtonElement.click();
-    await page.waitForChanges();
+    
+    await firstButtonElement.click();
     expect(firstButtonElement).toHaveClass('active');
 
-    secondButtonElement.click();
-    await page.waitForChanges();
+    await secondButtonElement.click();
     expect(secondButtonElement).toHaveClass('active');
     expect(firstButtonElement).not.toHaveClass('active');
   });

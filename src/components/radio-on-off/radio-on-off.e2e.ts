@@ -1,6 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('RadioOnOffComponent', () => {
+describe.only('RadioOnOffComponent', () => {
   let page;
 
   beforeEach(async() => {
@@ -34,16 +34,16 @@ describe('RadioOnOffComponent', () => {
   });
 
   it('sets an active class to the "ON" button when clicked', async() => {
-    const onElement = await page.find('se-radio-on-off >>> .active');
-    const offElement = await page.find('se-radio-on-off >>> .inactive');
+    const eventSpy = await page.spyOnEvent('change');
+    const activeElement = await page.find('se-radio-on-off >>> .active');
+    const inactiveElement = await page.find('se-radio-on-off >>> .inactive');
     
-    onElement.click();
-    await page.waitForChanges();
-    expect(onElement).toHaveClass('selected');
+    await activeElement.click();
+    expect(eventSpy).toHaveReceivedEvent();
+    expect(activeElement).toHaveClass('selected');
 
-    offElement.click();
-    await page.waitForChanges();
-    expect(offElement).toHaveClass('selected');
-    expect(onElement).not.toHaveClass('selected');
+    await inactiveElement.click();
+    expect(inactiveElement).toHaveClass('selected');
+    expect(activeElement).not.toHaveClass('selected');
   });
 });
