@@ -66,11 +66,12 @@ describe('ButtonsComponent', () => {
     expect(firstButtonElement).not.toHaveClass('active');
   });
 
-  it('sends an event when a button is clicked on', async() => {   
+  it('sends an event with an array object when a button is clicked on', async() => {   
     await page.setContent('<se-buttons mode="radio"><se-button id="first" value="Primary">Primary</se-button><se-button id="second" value="Secondary">Secondary</se-button></se-buttons>');
     const eventSpy = await page.spyOnEvent('change');
     const element = await page.find('se-buttons se-button');
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail(['Primary']);
   });
 });

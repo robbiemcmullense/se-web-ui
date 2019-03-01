@@ -5,7 +5,7 @@ describe('CheckboxComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-checkbox></se-checkbox>');
+    await page.setContent('<se-checkbox value="my value"></se-checkbox>');
     element = await page.find('se-checkbox');
   });
 
@@ -37,5 +37,9 @@ describe('CheckboxComponent', () => {
     console.log('checkbox element: ' + checkbox);
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail({
+      value: 'my value',
+      selected: true
+    })
   });
 });

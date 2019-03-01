@@ -27,7 +27,7 @@ describe('FormFieldComponent with Checkbox type', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-form-field type="checkbox" label="checkbox label"><se-checkbox value="my checkboxvalue"></se-checkbox></se-form-field>');  
+    await page.setContent('<se-form-field type="checkbox" label="checkbox label"><se-checkbox value="my checkbox value"></se-checkbox></se-form-field>');  
   });
 
   it('renders with a label with its value equal to the given label property', async() => {
@@ -37,11 +37,12 @@ describe('FormFieldComponent with Checkbox type', () => {
     expect(checkboxElm.shadowRoot).toEqualHtml('<label class="checkbox-container"><slot></slot><input type="checkbox"/><span class="checkmark" data-color="primary"></span></label>');
   });
 
-  it('emits an event when the checkbox is clicked', async() => {
+  it('emits an event with the value "true" when the checkbox is clicked', async() => {
     element = await page.find('se-form-field se-checkbox');
     const eventSpy = await page.spyOnEvent('submit');
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail(true);
   });
 });
 
