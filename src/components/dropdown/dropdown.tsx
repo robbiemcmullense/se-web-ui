@@ -13,7 +13,7 @@ interface Item {
   styleUrl: "dropdown.scss",
   shadow: true
 })
-export class Dropdown {
+export class DropdownComponent {
   @Element() el;
 
   @State() active: boolean = false;

@@ -73,15 +73,11 @@ export class ButtonComponent {
   }
 
   toggle() {
-    if( this.disabled) return;
+    if(this.disabled) return;
 
-    this.selected = !this.selected;
     if (this.grouped) {
+      this.selected = !this.selected;
       this.clicked.emit({selected: this.selected, value: this.value});
-    } else {
-      setTimeout(()=>{
-        this.selected = !this.selected;
-      }, 10)
     }
   }
 

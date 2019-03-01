@@ -1,23 +1,14 @@
-import { TestWindow } from '@stencil/core/testing';
-import { Dropdown } from './dropdown';
+import { DropdownComponent } from './dropdown';
 
-describe('dropdown', () => {
+describe('DropdownComponent', () => {
+  let divider;
+
+  beforeEach(() => {
+    divider = new DropdownComponent();
+  });
+
   it('should build', () => {
-    expect(new Dropdown()).toBeTruthy();
+    expect(divider).toBeTruthy();
   });
 
-  describe('rendering', () => {
-    let element: HTMLDropdownElement;
-    let testWindow: TestWindow;
-    beforeEach(async () => {
-      testWindow = new TestWindow();
-      element = await testWindow.load({
-        components: [Dropdown],
-        html: '<se-dropdown></se-dropdown>'
-      });
-    });
-
-    // See https://stenciljs.com/docs/unit-testing
-
-  });
 });

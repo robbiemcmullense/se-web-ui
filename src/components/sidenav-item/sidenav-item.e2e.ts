@@ -22,7 +22,7 @@ describe('SidenavItemComponent', () => {
   it('removes the navitem-hidden class when it is set to active', async () => {
     await page.setContent('<se-sidenav-item></se-sidenav-item>');
     const element = await page.find('se-sidenav-item');
-    await element.callMethod('setActive', true);
+    element.active = true;
     await page.waitForChanges();
     expect(element).not.toHaveClass('navitem-hidden');
   });

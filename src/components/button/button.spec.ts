@@ -20,7 +20,7 @@ describe('ButtonComponent', () => {
 	});
 
 	it('should set the selected state to true after calling the setActive method', () => {
-		button.setActive(true);
+    button.selected = true;
 		expect(button.selected).toBeTruthy();
 	});
 });

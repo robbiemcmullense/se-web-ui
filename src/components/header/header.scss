@@ -61,9 +61,6 @@
 
 .header-menu-button {
   margin-left: 6px;
-  .mat-icon {
-    font-size: 35px;
-  }
 }
 .menu-sidenav {
   cursor: pointer;
@@ -76,6 +73,9 @@
   font-size: 20px;
   line-height: 20px;
   margin: 0;
+  .light {
+    font-weight: 300;
+  }
 }
 
 .header-title-type {

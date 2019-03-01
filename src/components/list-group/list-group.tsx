@@ -51,8 +51,6 @@ export class ListGroupComponent {
     }
   }
 
-
-
   /**
    * Define the group indentation to add paddings to the list item (used when multiple list group)
    */

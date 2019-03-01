@@ -53,8 +53,8 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | Link           | anchor element that redirects a user to another web page                                                                   |
 | [ ]  | Tab            |                                                                                                                            |
 | [ ]  | Tab-item       |                                                                                                                            |
-| [ ]  | Brand          | Authentication page with a slot as content                                                                                 |
-| [ ]  | About          | About page that will be used in the menu section                                                                           |
+| [x]  | Brand          | Authentication page with a slot as content                                                                                 |
+| [x]  | About          | About page that will be used in the menu section                                                                           |
 | [ ]  | Snackbar       | Design only. No info about how to show it from service yet                                                                 |
 | [ ]  | Pagination     |                                                                                                                            |
 | [ ]  | Datepicker     |                                                                                                                            |
