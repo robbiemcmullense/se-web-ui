@@ -1,22 +1,17 @@
-import { TestWindow } from '@stencil/core/testing';
 import { ListComponent } from './list';
 
-describe('list', () => {
+describe('list-group', () => {
   let list;
-  it('should build', () => {
+
+  beforeEach(() => {
     list = new ListComponent();
+  });
+  
+  it('should build', () => {
     expect(list).toBeTruthy();
   });
 
-  describe('rendering', () => {
-    let element: HTMLListElement;
-    let testWindow: TestWindow;
-    beforeEach(async () => {
-      testWindow = new TestWindow();
-      element = await testWindow.load({
-        components: [ListComponent],
-        html: '<se-list></se-list>'
-      });
-    });
+  it('should be in classic mode by default', () => {
+    expect(list.mode).toEqual('classic');
   });
 });
