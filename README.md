@@ -1,15 +1,15 @@
 # SE UI Web Components Library
 
-This project is to create a common ui library that will help any developer to quickly design Schneider electric design element thanks to native [custom element](https://developers.google.com/web/fundamentals/web-components/customelements). Custom element can be used with any framework and library like pure javascript, jquery, React, Vue or angular.
+The purpose of this project is to create a common UI Library that will assist any developer in quickly developing Schneider Electric design elements thanks to native [custom elements](https://developers.google.com/web/fundamentals/web-components/customelements). Custom elements can be used with any coding framework including pure JavaScript, jQuery, React, Vue or Angular.
 
-Component realized in this way can be as complex as holding a full independent widget with route and such that can be configure from the outside (parameter) and work in any application already created. Like in [this example](https://auth0.com/blog/creating-web-components-with-stencil/), the developer could integrate an authentication component that could be shared with other project.
+Components developed in this way can be as complex as holding a full independent widget with routes, and thus they can be configured from the outside (parameter) and work in any already created application. Like in [this example](https://auth0.com/blog/creating-web-components-with-stencil/), the developer could integrate an authentication component that could be shared with other projects.
 
-This project uses [StencilJs](https://stenciljs.com) to generate web component from the code. StencilJs generate compact web-components that that follow 100% of the web standards and takes care of the polyfills if the browser does not support them natively. StencilJs utilize [TypeScript](https://www.typescriptlang.org/) to follow best coding practices.
+This project uses [StencilJS](https://stenciljs.com) to generate web components from the source code. StencilJS generates compact web-components that follow 100% of the web standards, taking care of the polyfills if the browser does not support them natively. StencilJS utilizes [TypeScript](https://www.typescriptlang.org/) to follow best coding practices.
 
 
-You can test all those components with this [Online Template Editor](https://pages.github.schneider-electric.com/IoT/web-template-editor/).
+You can test all of these components with this [Online Template Editor](https://pages.github.schneider-electric.com/IoT/web-template-editor/).
 
-## list of components
+## List of Components
 
 | Done | Component      | Info                                                                                                                       |
 | ---- | -------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -60,7 +60,7 @@ You can test all those components with this [Online Template Editor](https://pag
 | [ ]  | Datepicker     |                                                                                                                            |
 | [ ]  | Tooltips       | Design only                                                                                                                |
 
-## Test it in your app (in progress)
+## Testing in your App (in progress)
 
 ```shell
 # With npm
@@ -76,7 +76,7 @@ List of design aspect of this implementation:
 
 **CSS Variable**
 
-Even if not accepted in most browser, it's easy to get a fallback to a regular css parameter. This works exceptionally well with Shadow DOM which give us a powerful way to customize the style for the whole application from one css variable.
+Even if not accepted in most browser, it's easy to get a fallback to a regular css parameter. This works exceptionally well with Shadow DOM, which give us a powerful way to customize the style for the whole application from one css variable.
 
 ```scss
 .se-button {
@@ -91,7 +91,7 @@ Changing `--primary` in one css element, will automatically update all the prima
 
 If you want to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more about social coding on Github, new technologies and and their ecosystems and how to make constructive, helpful bug reports, feature requests and the noblest of all contributions: a good, clean pull request.
 
-Each demo has been built around real case, deployment ready, senario. This insure that the component library does not impact any performance or encounter any issue regarding to leazy loading module and such.
+Each demo has been built around real case, deployment ready, scenarios. This insures that the component library does not impact any performance or encountesr any issues regarding lazy loading modules and such.
 
 ### Set up your env
 
@@ -142,18 +142,66 @@ Look for a project's contribution instructions. If there are any, follow them.
 - Clone the fork on your local machine. Your remote repo on Github is called `origin`.
 - Add the original repository as a remote called `upstream`.
 - If you created your fork a while ago be sure to pull upstream changes into your local repository.
-- Create a new branch to work on! Branch from `develop` if it exists, else from `master`.
+- Create a new branch to work on! Branch from `develop` if it exists, otherwise branch from `master`.
 - Implement/fix your feature, comment your code.
 - Follow the code style of the project, including indentation.
-- If the project has tests run them!
+- If the project has tests run them!  (See the section "Writing Unit Tests for your Components" to learn more information.)
 - Write or adapt tests as needed.
 - Add or change the documentation as needed.
 - Squash your commits into a single commit with git's [interactive rebase](https://help.github.com/articles/interactive-rebase). Create a new branch if necessary.
 - Push your branch to your fork on Github, the remote `origin`.
-- From your fork open a pull request in the correct branch. Target the project's `develop` branch if there is one, else go for `master`!
-- …
+- From your fork open a pull request in the correct branch. Target the project's `develop` branch if there is one, otherwise target the `master` branch!
 - If the maintainer requests further changes just push them to your branch. The PR will be updated automatically.
 - Once the pull request is approved and merged you can pull the changes from `upstream` to your local repo and delete
   your extra branch(es).
 
 And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
+
+### Writing Unit Tests for your Components
+
+The purpose of unit tests are to validate individual portions of your source code to ensure that it is functioning correctly.  You will want to test the instantiation of your component, as well as its default property settings and its methods.
+
+**Example Unit Test**
+
+```typescript
+import { MyComponent } from './my-component';
+
+it('should build MyComponent', () => {
+  const component = new MyComponent();
+  expect(component).toBeTruthy();
+});
+```
+
+To run the unit tests in your project, simply run the following command:
+
+```shell
+yarn test
+```
+
+This will run all `.spec` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.
+
+### Writing End-to-End (E2E) Tests for your Components
+
+The purpose of e2e tests are to validate the "full" end-to-end functionality of the various web components to ensure its proper rendering an behavior.  You will want to validate a component's inner HTML, as well as any attributes/classes added to the host element in its component's `hostData` function.
+
+**Example E2E Test**
+
+```typescript
+import { newE2EPage } from '@stencil/core/testing';
+
+it('renders', async () => {
+  const page = await newE2EPage();
+  await page.setContent('<my-component></my-component>');
+  
+  const element = await page.find('my-component');
+  expect(element).toHaveClass('hydrated');
+});
+```
+
+StencilJS adds the "hydrated" class to each generated component, so it is a good measure to ensure your component is rendering propertly.  To run the e2e tests in your project, simply run the following command:
+
+```shell
+yarn e2e
+```
+
+This will run all `.e2e.ts` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.

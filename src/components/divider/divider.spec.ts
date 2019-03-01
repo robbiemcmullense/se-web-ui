@@ -1,22 +1,21 @@
-import { TestWindow } from '@stencil/core/testing';
 import { DividerComponent } from './divider';
 
 describe('divider', () => {
   let divider;
-  it('should build', () => {
+
+  beforeEach(() => {
     divider = new DividerComponent();
+  });
+
+  it('should build', () => {
     expect(divider).toBeTruthy();
   });
 
-  describe('rendering', () => {
-    let element: HTMLDividerElement;
-    let testWindow: TestWindow;
-    beforeEach(async () => {
-      testWindow = new TestWindow();
-      element = await testWindow.load({
-        components: [DividerComponent],
-        html: '<divider></divider>'
-      });
-    });
+  it('should be in horizontal mode by default', () => {
+    expect(divider.mode).toEqual('horizontal');
+  });
+
+  it('should be a light color by default', () => {
+    expect(divider.color).toEqual('light');
   });
 });

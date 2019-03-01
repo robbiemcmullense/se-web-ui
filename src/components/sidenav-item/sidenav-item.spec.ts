@@ -1,6 +1,6 @@
 import { SidenavItemComponent } from "./sidenav-item";
 
-describe('NavbarComponent', () => {
+describe('SidenavItemComponent', () => {
 	let sidenavItem;
 
 	beforeEach(() => {

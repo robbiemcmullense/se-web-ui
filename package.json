@@ -20,9 +20,8 @@
     "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
     "build.exportDocs": "cpx \"src/**/*.md\" core/docs",
     "test": "stencil test --spec",
-    "test.e2e": "stencil test --e2e",
+    "e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
     "demo.react": "cd demo-react && yarn start",
     "demo.vue": "cd demo-vue && yarn start",
     "demo.angular": "cd demo-angular && yarn start"

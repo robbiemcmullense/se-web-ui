@@ -1,22 +1,25 @@
-import { TestWindow } from '@stencil/core/testing';
 import { ListGroupComponent } from './list-group';
 
 describe('list-group', () => {
   let listGroup;
-  it('should build', () => {
+
+  beforeEach(() => {
     listGroup = new ListGroupComponent();
+  });
+  
+  it('should build', () => {
     expect(listGroup).toBeTruthy();
   });
 
-  describe('rendering', () => {
-    let element: HTMLListGroupElement;
-    let testWindow: TestWindow;
-    beforeEach(async () => {
-      testWindow = new TestWindow();
-      element = await testWindow.load({
-        components: [ListGroupComponent],
-        html: '<list-group></list-group>'
-      });
-    });
+  it('should have an indentation value of 0 by default', () => {
+    expect(listGroup.indentation).toEqual(0);
+  });
+
+  it('should have a collapsible property set to false by default', () => {
+    expect(listGroup.collapsible).toBeFalsy();
+  });
+
+  it('should be in classic mode by default', () => {
+    expect(listGroup.mode).toEqual('classic');
   });
 });
