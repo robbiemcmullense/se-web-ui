@@ -10,10 +10,7 @@ export class LinkComponent {
    * Defines the url the user should get redirected to when clicking on the link.
    */
   @Prop() url: string;
-  /**
-   * Defines the text to be displayed in your link.
-   */
-  @Prop() link: string;
+
   /**
    * Determines whether or not the link is disabled.
    */
@@ -29,7 +26,7 @@ export class LinkComponent {
       <a href={this.url}
         data-disabled={this.disabled}
         class={this.type == 'external' ? 'external' : ''}
-        target={this.type == 'external' ? '_blank' : ''}>{this.link}</a>
+        target={this.type == 'external' ? '_blank' : ''}><slot/></a>
     )
   }
 }

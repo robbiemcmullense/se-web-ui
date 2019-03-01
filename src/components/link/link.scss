@@ -6,7 +6,7 @@
     margin: $spacing;
     line-height: 17px;
     display: inline-block;
-		@include color-property($accent, 'accent');
+		@include color('secondary');
 		text-decoration: none;
 		&.external {
 			text-decoration: underline;
@@ -16,7 +16,7 @@
 		}
 		&[data-disabled] {
 			pointer-events: none;
-			@include color-property($se-ultra-light-grey-1, '');
+			color: $se-ultra-light-grey-1;
 		}
 	}
 }

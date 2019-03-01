@@ -1,0 +1,11 @@
+@import "../../theme/theme";
+.dropdown-item {
+   padding: $spacing
+}
+se-dropdown:focus {
+  outline: none;
+}
+
+se-dropdown .ui.dropdown {
+  z-index: 9;
+}

@@ -1,4 +1,6 @@
 import { Component, Prop, Element, State } from "@stencil/core";
+import { getFullTitle } from "../../utils/utils"
+import { AppInfo } from "../appInfo";
 
 @Component({
   tag: "se-header",
@@ -14,7 +16,7 @@ export class HeaderComponent {
   /**
    * domain define the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed
    */
-  @Prop() domain: string = "ecostruxure";
+  @Prop() domain: string = AppInfo.domain;
 
   /**
    * domain define project name (usefull for small project) that can be used for versioning as well. It will be placed at the right side of the title.
@@ -34,18 +36,8 @@ export class HeaderComponent {
     this.elLeftNav.toggle();
   }
 
-  getFullTitle() {
-    const titleArray = this.appTitle.split(" ");
-    const last = titleArray.pop();
-    const first = titleArray.join(" ");
-    return {
-      first,
-      last
-    };
-  }
-
   render() {
-    const { first, last } = this.getFullTitle();
+    const title = getFullTitle(this.appTitle);
     let domain;
     if ( this.domain.toLowerCase() === `ecostruxure`) {
       domain = <se-icon-ecostruxure class="header-title-type" />
@@ -62,9 +54,9 @@ export class HeaderComponent {
           )}
           <div class="d-flex-column">
             {domain}
-            <h1 class="header-title">
-              <span class="font-regular">{first}</span>
-              <span class="font-lighter">&nbsp;{last}</span>
+            <h1 class="header-title no-margin">
+              <span>{title.first}</span>
+              <span class="light">&nbsp;{title.last}</span>
             </h1>
           </div>
           {this.project && [

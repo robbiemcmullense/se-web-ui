@@ -19,13 +19,8 @@ export class ButtonsComponent {
   }
   /**
    * Optional property that defines the background color of each button in the group.
-   * `primary` is a green color.
-   * `accent` is a blue color.
-   * `warn` is an orange color.
-   * `error` is a red color.
-   * `light` is a gray color.
    */
-  @Prop() color: 'primary' | 'accent' | 'warn' | 'error' | 'light' = 'light';
+  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
@@ -46,20 +41,23 @@ export class ButtonsComponent {
   @Listen('clicked')
   buttonClickedHandler(event: CustomEvent) {
     let buttonInfo = event.detail;
-    let isChecked = this.value.indexOf(buttonInfo.value) > -1;
+    let isChecked = buttonInfo.selected;
     if (this.mode === 'radio') {
       this.value = [];
       this.value = [...this.value, buttonInfo.value];
       let buttons = this.el.querySelectorAll('se-button');
-      buttons.forEach((button) => {
-        button.setActive(false);
+      buttons.forEach((button: any) => {
+        if(button.value !== buttonInfo.value){
+          button.selected = false;
+        }
       });
-      buttonInfo.setActive(true);
     }
-    else if (this.mode === 'checkbox' && !isChecked) {
-      this.value = [...this.value, buttonInfo.value];
-    } else {
-      this.value.splice(this.value.indexOf(buttonInfo.value), 1);
+    if (this.mode === 'checkbox') {
+      if(isChecked){
+        this.value = [...this.value, buttonInfo.value];
+      } else {
+        this.value.splice(this.value.indexOf(buttonInfo.value), 1);
+      }
     }
     this.change.emit(this.value);
   }
@@ -71,12 +69,11 @@ export class ButtonsComponent {
   private updateItemMode(){
     let buttons = this.el.querySelectorAll('se-button');
     buttons.forEach((button: any) => {
-      button.mode = this.mode;
       button.setGrouped();
       if (this.disabled) {
-        button.setDisabled(true);
+        button.disabled = true;
       }
-      button.setColor(this.color);
+      button.color = this.color;
     });
   }
 

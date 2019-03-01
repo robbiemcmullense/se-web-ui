@@ -14,13 +14,8 @@ export class ChipComponent {
 
   /**
    * Optional property that defines the background color of the button.
-   * `primary` is a green color.
-   * `accent` is a blue color.
-   * `warn` is an orange color.
-   * `error` is a red color.
-   * `light` is a gray color.
    */
-  @Prop() color: 'primary' | 'accent' | 'warn' | 'error';
+  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
 
   /**
    * Indicates whether or not the chip has a close button.  Set to `true` by default.

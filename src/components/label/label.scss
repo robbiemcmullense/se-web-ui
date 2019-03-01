@@ -7,7 +7,7 @@
 		padding-right: 7px;
 		span {
 			font-size: 14px;
-			@include color-property($error, 'error');
+		  color: $se-red;
 			padding-left: 3px;
 
 		}

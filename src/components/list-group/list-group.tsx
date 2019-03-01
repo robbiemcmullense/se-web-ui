@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element } from "@stencil/core";
+import { Component, Prop, Watch, Element, State, Method } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -11,17 +11,7 @@ export class ListGroupComponent {
   /**
    * Define if the list element should be selected or not
    */
-  @Prop() itemTitle: string;
-
-  /**
-   * Define if the list element should be selected or not
-   */
-  @Prop() selected: boolean;
-
-  /**
-   * Define if item group is collapsed/closed.
-   */
-  @Prop({mutable: true}) collapsed: boolean;
+  @Prop() text: string;
 
   /**
    * Place an icon on the left side of the item list.
@@ -35,18 +25,47 @@ export class ListGroupComponent {
 
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
-   * `primary` is a green color.
-   * `accent` is a blue color.
-   * `warn` is an orange color.
-   * `error` is a red color.
    */
-  @Prop() iconColor: "primary" | "accent" | "warn" | "error";
+  @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
+
+  /**
+   * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
+   */
+  @Prop({mutable: true}) selected: boolean;
+
+  /**
+   * Define if item group is collapsed/closed. a `se-list-group` cannot be selected from the outside
+   */
+  @Prop({mutable: true}) collapsed: boolean;
+  @Watch('collapsed') collapsedChanged(){
+    if(!this.collapsed){
+      this.selected = false;
+    } else {
+      let hasSelectedChild = false;
+      Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
+        if(item.selected){
+          hasSelectedChild = true;
+        }
+      });
+      this.selected = hasSelectedChild
+    }
+  }
+
+
 
   /**
    * Define the group indentation to add paddings to the list item (used when multiple list group)
    */
-  @Prop() indentation: number = 0;
+  @State() indentation: number = 0;
 
+  /**
+   * Indicate if the button is part of a group of buttons within the `se-buttons` component.
+   */
+  @Method()
+  setIndentation(indentation: number) {
+    this.indentation = indentation;
+    this.updateItemMode();
+  }
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
@@ -62,31 +81,30 @@ export class ListGroupComponent {
   private updateItemMode(){
     Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
       item.mode = this.mode;
-      item.indentation = this.indentation + 1;
+      item.setIndentation(this.indentation + 1);
     });
   }
 
   private toggleCollapse() {
-    console.log('collapse toggle')
     this.collapsed = !this.collapsed;
   }
 
+  private collapsible: boolean = true;
+
   render() {
-    const collapsible = true;
     return [
       <se-list-item
-        item-title={this.itemTitle}
+        text={this.text}
         selected={this.selected}
         icon={this.icon}
         icon-color={this.iconColor}
         mode={this.mode}
         description={this.description}
-        indentation={this.indentation}
-        collapsible={collapsible}
+        collapsible={this.collapsible}
         collapsed={this.collapsed}
         onClick={() => this.toggleCollapse()}
       />,
-      <div class={['group-item'].join(' ')}>
+      <div class='group-item'>
         {!this.collapsed && <slot />}
       </div>
     ];

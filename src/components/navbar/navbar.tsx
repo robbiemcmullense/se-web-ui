@@ -6,7 +6,7 @@ import { Component, Prop } from '@stencil/core';
   shadow: false
 })
 export class NavbarComponent {
-  @Prop() color: 'primary' | 'secondary' | 'tab' = 'primary';
+  @Prop() color: 'primary' | 'alternative' = 'primary';
 
   render() {
     return (

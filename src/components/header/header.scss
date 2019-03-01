@@ -8,8 +8,8 @@
   width: 100%;
   min-height: 56px;
   max-height: 61px;
-  @include animated("slow");
-  animation-name: fadeIn;
+  // @include animated("slow");
+  // animation-name: fadeIn;
   z-index: 10;
 }
 
@@ -25,7 +25,7 @@
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   white-space: nowrap;
-  @include background-color-property($se-white, "");
+  @include background-color("alternative");
 }
 .fill-space {
   @include flex(1);
@@ -69,15 +69,17 @@
   cursor: pointer;
   margin-right: -17px;
 }
+
 .header-title{
-  @include color-property($primary, "primary");
+  @include color("primary");
   padding-left: 18px;
   font-size: 20px;
   line-height: 20px;
   margin: 0;
 }
+
 .header-title-type {
-  @include color-property($primary, "primary");
+  @include color("primary");
   line-height: 24px;
   padding-left: 18px;
   font-size: 12px;
@@ -125,27 +127,27 @@ se-icon-ecostruxure {
   }
 }
 
-::ng-deep {
-  [header-user],
-  header-user {
-    margin-right: 10px;
-    .mat-button-wrapper {
-      @include color-property($se-dark-grey, "");
-      padding: 0 13px;
-      font-weight: 100;
+// ::ng-deep {
+//   [header-user],
+//   header-user {
+//     margin-right: 10px;
+//     .mat-button-wrapper {
+//       color : $se-dark-grey;
+//       padding: 0 13px;
+//       font-weight: 100;
 
-      &:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid $se-dark-grey;
-      }
-    }
-  }
-}
+//       &:after {
+//         content: "";
+//         position: absolute;
+//         top: 50%;
+//         right: 10px;
+//         transform: translateY(-50%);
+//         width: 0;
+//         height: 0;
+//         border-left: 5px solid transparent;
+//         border-right: 5px solid transparent;
+//         border-top: 5px solid $se-dark-grey;
+//       }
+//     }
+//   }
+// }

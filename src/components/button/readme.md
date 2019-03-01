@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                                                                                                                                                               | Type                                                               | Default     |
-| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------- |
-| `color`    | `color`    | Optional property that defines the background color of the button. `primary` is a green color. `accent` is a blue color. `warn` is an orange color. `error` is a red color. `light` is a gray color.                                                                                                                                      | `"accent" \| "error" \| "light" \| "primary" \| "warn"`            | `undefined` |
-| `disabled` | `disabled` | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                                                                                                                                                                     | `boolean`                                                          | `false`     |
-| `icon`     | `icon`     | Optional property that determines if your button includes an icon.                                                                                                                                                                                                                                                                        | `string`                                                           | `undefined` |
-| `mode`     | `mode`     | Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `text` mode has no border or background color. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application. | `"flat" \| "login" \| "outline" \| "raised" \| "signup" \| "text"` | `'flat'`    |
-| `value`    | `value`    | Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.                                                                                                                                                                                                              | `string`                                                           | `undefined` |
+| Property   | Attribute  | Description                                                                                                                                                                                                                                                                                | Type                                                                  | Default      |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- | ------------ |
+| `color`    | `color`    | Optional property that defines the background color of the button. Default is standard.                                                                                                                                                                                                    | `"alternative" \| "primary" \| "secondary" \| "standard"`             | `'standard'` |
+| `disabled` | `disabled` | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                                                                                                                      | `boolean`                                                             | `false`      |
+| `icon`     | `icon`     | Optional property that determines if your button includes an icon.                                                                                                                                                                                                                         | `string`                                                              | `undefined`  |
+| `mode`     | `mode`     | Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application. | `"flat" \| "inherit" \| "login" \| "outline" \| "raised" \| "signup"` | `'flat'`     |
+| `selected` | `selected` | Optional property that define if the button should be shown as selected. Used with `se-buttons`                                                                                                                                                                                            | `boolean`                                                             | `undefined`  |
+| `value`    | `value`    | Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.                                                                                                                                                               | `string`                                                              | `undefined`  |
 
 
 ## Events
@@ -24,38 +25,6 @@
 
 
 ## Methods
-
-### `setActive(val: boolean) => void`
-
-Set a selected button from the parent component.
-
-#### Parameters
-
-| Name  | Type      | Description               |
-| ----- | --------- | ------------------------- |
-| `val` | `boolean` | set to `true` or `false`. |
-
-#### Returns
-
-Type: `void`
-
-
-
-### `setColor(val: "primary" | "accent" | "warn" | "error" | "light") => void`
-
-Set a color for your button from the parent component.
-
-#### Parameters
-
-| Name  | Type                                                    | Description                                                                                                   |
-| ----- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `val` | `"accent" \| "error" \| "light" \| "primary" \| "warn"` | set to `primary`, `accent`, `warn`, `error` or `light`.  See the color property description for color values. |
-
-#### Returns
-
-Type: `void`
-
-
 
 ### `setDisabled(val: boolean) => void`
 

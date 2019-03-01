@@ -71,20 +71,22 @@ export class FormFieldComponent {
 	initLabel() {
 		Array.from(this.el.querySelectorAll('input, select, se-checkbox')).forEach((item: any) => {
       item.disabled = this.disabled;
-      item.placeholder = this.value;
+      if(this.type === "checkbox"){
+        item.label = this.label
+      }
 		});
 	}
 
 	hostData() {
 		return {
-			class: this.status
+			class: [this.status, this.mode, this.type].join(' ')
 		};
 	}
 
 	render() {
 		return (
 			<div class="se-form-field" data-disabled={this.disabled}>
-				<se-label value={this.label} required={this.required}></se-label>
+        {this.type !== 'checkbox' && <se-label value={this.label} required={this.required}></se-label>}
 				<slot></slot>
 			</div>
 		)

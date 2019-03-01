@@ -7,7 +7,7 @@ import { Component, Prop } from "@stencil/core";
 })
 export class DividerComponent {
   @Prop() mode: "horizontal" | "vertical" | "inset" = "horizontal";
-  @Prop() color: "dark" | "light" = "light";
+  @Prop() color: "standard" | "alternative" = "standard";
 
   hostData() {
     return {

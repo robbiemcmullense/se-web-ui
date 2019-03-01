@@ -21,8 +21,10 @@
   left: 0px;
   width: 80%;
   height: 100%;
-  background-color: white;
+  @include background-color('alternative');
+  @include color('alternative-contrast');
   z-index: 30;
+
   &.show-menu {
     animation-name: slideInLeft;
   }
@@ -47,7 +49,7 @@
 }
 .menu-background {
   position: absolute;
-  background-color: rgba(38, 38, 38, 0.2);
+  background-color: rgba(gray, .6);
   top: 0px;
   left: 0px;
   width: 100%;

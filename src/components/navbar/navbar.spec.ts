@@ -12,6 +12,6 @@ describe('NavbarComponent', () => {
 	});
 
 	it('should have a primary color by default', () => {
-		expect(navbar.color).toEqual('primary');
+		expect(navbar.mode).toEqual('primary');
 	});
 });

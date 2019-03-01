@@ -1,4 +1,4 @@
-import { Component, Prop, Method } from '@stencil/core';
+import { Component, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-sidenav-item',
@@ -7,19 +7,14 @@ import { Component, Prop, Method } from '@stencil/core';
 })
 export class SidenavItemComponent {
   /**
-   * Define the title of the tab
+   * Define the text of the tab
    */
-  @Prop() itemTitle: string;
+  @Prop() text: string;
 
   /**
    * Defines if the tab is active or not.
    */
   @Prop({ mutable: true }) active = false;
-
-  @Method()
-  async setActive(): Promise<void> {
-    this.active = true;
-  }
 
   hostData() {
     const { active } = this;

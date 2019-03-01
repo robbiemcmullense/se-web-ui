@@ -1,55 +1,62 @@
 @import "../../theme/theme";
 
-
-:host{
+:host {
   @include flex();
   @include display-flex();
-  @include flex-direction(row);
   overflow: auto;
 }
-:host(.absolute){
+:host(.column) {
+  @include flex-direction(column);
+}
+
+:host(.row) {
+  @include flex-direction(row);
+}
+
+:host(.absolute) {
   @include position();
 }
-:host(.relative){
+:host(.relative) {
   position: relative;
   height: 100%;
 }
-
-:host(.widget-content){
-
+:host(.widget-content) {
   margin: $spacing-small;
-  background-color: $se-super-light-grey;
+  @include background-color("standard");
 }
-
-:host(.card-content){
+:host(.card-content) {
   margin: $spacing-small;
-  background-color: $se-white;
+  @include background-color("alternative");
 }
-
-
-:host(.fill-content){
+:host(.fill-content) {
   margin: 0;
   overflow: hidden;
 }
 
-:host(.centered-content){
+:host(.centered-content) {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
-@media (min-width: 768px) {
-  :host(.centered-content) {
+
+:host(.standard) {
+  @include color("standard-contrast");
+  @include background-color("standard");
+}
+:host(.alternative) {
+  @include color("standard-contrast");
+  @include background-color("standard");
+}
+
+:host(.centered-content) {
+  @media (min-width: 768px) {
     width: 750px;
   }
-}
-@media (min-width: 992px) {
-  :host(.centered-content) {
+  @media (min-width: 992px) {
     width: 970px;
   }
-}
-@media (min-width: 1200px) {
-  :host(.centered-content) {
+  @media (min-width: 1200px) {
     width: 1170px;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Prop, State, Method } from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -10,7 +10,7 @@ export class ListItemComponent {
   /**
    * Define if the list element should be selected or not
    */
-  @Prop() itemTitle : string;
+  @Prop() text : string;
 
   /**
    * Define if the list element should be selected or not
@@ -24,12 +24,8 @@ export class ListItemComponent {
 
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
-   * `primary` is a green color.
-   * `accent` is a blue color.
-   * `warn` is an orange color.
-   * `error` is a red color.
    */
-  @Prop() iconColor : 'primary' | 'accent' | 'warn' | 'error';
+  @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
 
   /**
    * Define if the item should behave as a an collapsible (used by `se-item-group`)
@@ -50,7 +46,15 @@ export class ListItemComponent {
   /**
    * Define the group indentation to add paddings to the list item (used when multiple list group)
    */
-  @Prop() indentation: number = 0;
+  @State() indentation: number = 0;
+
+  /**
+   * Indicate if the button is part of a group of buttons within the `se-buttons` component.
+   */
+  @Method()
+  setIndentation(indentation: number) {
+    this.indentation = indentation;
+  }
 
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
@@ -81,10 +85,10 @@ export class ListItemComponent {
     return [
       <button style={{'paddingLeft': `${20 * this.indentation}px`}}>
         <div class="selectedBar"></div>
-        {!!this.icon && <div class="nav-icon"><se-icon size="medium">{this.icon}</se-icon></div>}
+        {!!this.icon && <div class="nav-icon"><se-icon size="small" color={this.iconColor}>{this.icon}</se-icon></div>}
         <div class="nav-content">
-          <div class="nav-text">{this.itemTitle}</div>
-          <div class="nav-description">{this.description}</div>
+          <div>{this.text}</div>
+          <small> {this.description}</small>
         </div>
         {this.renderIcon()}
       </button>,

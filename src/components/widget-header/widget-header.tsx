@@ -8,7 +8,7 @@ import { Component } from "@stencil/core";
 export class WidgetHeader {
   render() {
     return [
-      <div class="flex"><slot /></div>,
+      <h3 class="flex"><slot /></h3>,
       <slot name="end"/>
     ];
   }
