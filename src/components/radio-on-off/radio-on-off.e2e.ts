@@ -21,7 +21,7 @@ describe.only('RadioOnOffComponent', () => {
     expect(offElement.innerText).toEqual('OFF');
   });
 
-  it('has open and close text when the properties are changed', async() => {
+  it('has open and close text values when the properties are changed', async() => {
     await page.$eval('se-radio-on-off', (elm: any) => {
       elm.textOn = 'open';
       elm.textOff = 'close'
@@ -45,5 +45,16 @@ describe.only('RadioOnOffComponent', () => {
     await inactiveElement.click();
     expect(inactiveElement).toHaveClass('selected');
     expect(activeElement).not.toHaveClass('selected');
+  });
+
+  it('sets emits an event with the selected:true value when the "on" button is clicked', async() => {
+    const eventSpy = await page.spyOnEvent('change');
+    const activeElement = await page.find('se-radio-on-off >>> .active');
+    
+    await activeElement.click();
+    expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail({
+      selected: true
+    });
   });
 });

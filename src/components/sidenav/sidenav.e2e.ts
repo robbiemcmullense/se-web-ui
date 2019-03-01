@@ -24,4 +24,12 @@ describe('SidenavComponent', () => {
     expect(secondSidenavElement).not.toHaveClass('selected');
     expect(secondSidenavElement).toEqualHtml('<se-list-item class="hydrated nav false" item-title="two"></se-list-item>');
   });
+
+  it('should open the sidenav when the toggle method is called', async() => {
+    await page.setContent('<se-sidenav></se-sidenav>');
+    const element = await page.find('se-sidenav');
+    await element.callMethod('toggle');
+    await page.waitForChanges();
+    expect(element).toHaveClass('show-menu');
+  });
 });

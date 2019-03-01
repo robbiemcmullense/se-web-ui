@@ -27,7 +27,15 @@ describe('CheckboxComponent', () => {
       elm.disabled = true;
     });
     await page.waitForChanges();
-    const input = element.shadowRoot.querySelector('input');
-    expect(input.disabled).toBeTruthy();
+    const inputElm = element.shadowRoot.querySelector('input');
+    expect(inputElm.disabled).toBeTruthy();
+  });
+
+  it('emits an event when clicked on', async() => {
+    const eventSpy = await page.spyOnEvent('change');
+    const checkbox = element.shadowRoot.querySelector('.checkmark');
+    console.log('checkbox element: ' + checkbox);
+    await element.click();
+    expect(eventSpy).toHaveReceivedEvent();
   });
 });
