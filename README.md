@@ -40,10 +40,10 @@ You can test all of these components with this [Online Template Editor](https://
 | [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
 | [ ]  | Card-header    |                                                                                                                            |
 | [ ]  | Card-content   |                                                                                                                            |
-| [ ]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
-| [ ]  | Dialog-header  |                                                                                                                            |
-| [ ]  | Dialog-content |                                                                                                                            |
-| [ ]  | Dialog-footer  |                                                                                                                            |
+| [x]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
+| [x]  | Dialog-header  |                                                                                                                            |
+| [x]  | Dialog-content |                                                                                                                            |
+| [x]  | Dialog-footer  |                                                                                                                            |
 | [x]  | sidenav        | ( fly from left. should open at the `se-app` level with css animation                                                      |
 | [x]  | sidenav-item   | selection of the left element with it's content (slot)                                                                     |
 | [x]  | List           | classic                                                                                                                    |
