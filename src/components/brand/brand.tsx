@@ -48,7 +48,7 @@ export class BrandComponent {
         </main>
 
         <div class="login-container">
-          <div class="panel information">
+          <div class="information">
             {domain}
             <h1 class="header-title">
               <span>{title.first}</span>
@@ -56,7 +56,7 @@ export class BrandComponent {
             </h1>
             <p class="version">version {this.version}</p>
           </div>
-          <div class="panel form">
+          <div class="form">
             <slot />
           </div>
         </div>

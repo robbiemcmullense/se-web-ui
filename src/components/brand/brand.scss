@@ -25,7 +25,7 @@
 @media only screen and (min-width: 600px) {
   .content-wrapper{
     margin: 18px auto;
-    width: 960px;
+    max-width: 960px;
     height: 600px;
   }
 }
@@ -93,14 +93,8 @@ main {
     opacity: .5;
   }
 }
-.form{
-  padding: 0 60px;
-  @include align-content(center);
-  @include justify-content(center);
-  max-width: 300px;
 
-}
-.panel {
+.information, .form {
   background: #fff;
   overflow: hidden;
   z-index: 2;
@@ -108,8 +102,15 @@ main {
   @include flex-direction(column);
   @include display-flex();
 }
+.form{
+  padding: 0 60px;
+  @include align-content(center);
+  @include justify-content(center);
+  max-width: 300px;
+}
 .information{
   padding: 60px;
+  padding-right: 0;
   @include justify-content(flex-end);
 
   @include color('primary');
