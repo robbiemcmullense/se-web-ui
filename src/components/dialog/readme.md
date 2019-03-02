@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                            | Type                            | Default   |
-| -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | --------- |
-| `open`   | `open`    |                                                                                                                                        | `boolean`                       | `false`   |
-| `size`   | `size`    | Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen | `"fill" \| "medium" \| "small"` | `"small"` |
+| Property | Attribute | Description                                                                                                                                   | Type                                       | Default     |
+| -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ----------- |
+| `color`  | `color`   | Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema. | `"alternative" \| "primary"`               | `'primary'` |
+| `open`   | `open`    |                                                                                                                                               | `boolean`                                  | `false`     |
+| `size`   | `size`    | Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen        | `"fill" \| "large" \| "medium" \| "small"` | `"medium"`  |
 
 
 ## Events

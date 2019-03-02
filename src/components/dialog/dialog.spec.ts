@@ -1,13 +1,13 @@
 import { DialogComponent} from "./dialog";
 
-describe('WidgetContent', () => {
-	let widgetContent;
+describe('DialogComponent', () => {
+	let dialogComponent;
 
 	beforeEach(() => {
-		widgetContent = new WidgetContent();
+		dialogComponent = new DialogComponent();
 	});
 
 	it('should build', () => {
-		expect(widgetContent).toBeTruthy();
+		expect(dialogComponent).toBeTruthy();
 	});
 });

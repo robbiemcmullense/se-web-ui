@@ -18,8 +18,4 @@ describe('FormFieldComponent', () => {
 	it('should have a default type equal to input', () => {
 		expect(formField.type).toEqual('input');
 	});
-
-	it('should have a default value equal to Text', () => {
-		expect(formField.value).toEqual('');
-	});
 });

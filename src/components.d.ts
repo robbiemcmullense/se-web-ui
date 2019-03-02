@@ -346,31 +346,6 @@ export namespace Components {
     'mode'?: "horizontal" | "vertical" | "inset";
   }
 
-  interface SeDropdownItem {
-    'active': boolean;
-    'value': any;
-  }
-  interface SeDropdownItemAttributes extends StencilHTMLAttributes {
-    'active'?: boolean;
-    'value'?: any;
-  }
-
-  interface SeDropdown {
-    'name': string;
-    'openOnFocus': boolean;
-    'selection': boolean;
-    'text': string;
-    'value': any;
-  }
-  interface SeDropdownAttributes extends StencilHTMLAttributes {
-    'name'?: string;
-    'onInput'?: (event: CustomEvent) => void;
-    'openOnFocus'?: boolean;
-    'selection'?: boolean;
-    'text'?: string;
-    'value'?: any;
-  }
-
   interface SeFormField {
     /**
     * Optional property that defines if the button is disabled.  Set to `false` by default.
@@ -845,8 +820,6 @@ declare global {
     'SeDialogHeader': Components.SeDialogHeader;
     'SeDialog': Components.SeDialog;
     'SeDivider': Components.SeDivider;
-    'SeDropdownItem': Components.SeDropdownItem;
-    'SeDropdown': Components.SeDropdown;
     'SeFormField': Components.SeFormField;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
@@ -881,8 +854,6 @@ declare global {
     'se-dialog-header': Components.SeDialogHeaderAttributes;
     'se-dialog': Components.SeDialogAttributes;
     'se-divider': Components.SeDividerAttributes;
-    'se-dropdown-item': Components.SeDropdownItemAttributes;
-    'se-dropdown': Components.SeDropdownAttributes;
     'se-form-field': Components.SeFormFieldAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
@@ -980,18 +951,6 @@ declare global {
   var HTMLSeDividerElement: {
     prototype: HTMLSeDividerElement;
     new (): HTMLSeDividerElement;
-  };
-
-  interface HTMLSeDropdownItemElement extends Components.SeDropdownItem, HTMLStencilElement {}
-  var HTMLSeDropdownItemElement: {
-    prototype: HTMLSeDropdownItemElement;
-    new (): HTMLSeDropdownItemElement;
-  };
-
-  interface HTMLSeDropdownElement extends Components.SeDropdown, HTMLStencilElement {}
-  var HTMLSeDropdownElement: {
-    prototype: HTMLSeDropdownElement;
-    new (): HTMLSeDropdownElement;
   };
 
   interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {}
@@ -1116,8 +1075,6 @@ declare global {
     'se-dialog-header': HTMLSeDialogHeaderElement
     'se-dialog': HTMLSeDialogElement
     'se-divider': HTMLSeDividerElement
-    'se-dropdown-item': HTMLSeDropdownItemElement
-    'se-dropdown': HTMLSeDropdownElement
     'se-form-field': HTMLSeFormFieldElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
@@ -1152,8 +1109,6 @@ declare global {
     'se-dialog-header': HTMLSeDialogHeaderElement;
     'se-dialog': HTMLSeDialogElement;
     'se-divider': HTMLSeDividerElement;
-    'se-dropdown-item': HTMLSeDropdownItemElement;
-    'se-dropdown': HTMLSeDropdownElement;
     'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
