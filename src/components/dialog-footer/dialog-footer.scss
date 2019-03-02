@@ -1,0 +1,25 @@
+@import "../../theme/theme";
+
+:host {
+  position: relative;
+  padding: $spacing;
+  font-size: 20px;
+  min-height: 40px;
+  // @include display-flex();
+  @include align-items(center);
+  @include display-flex();
+
+  .flex{
+    @include flex();
+  }
+}
+
+:host(.alternative){
+  @include background-color('alternative');
+  @include color('primary');
+}
+
+:host(.primary){
+  @include background-color('primary');
+  @include color('primary-contrast');
+}

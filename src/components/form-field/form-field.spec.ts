@@ -20,6 +20,6 @@ describe('FormFieldComponent', () => {
 	});
 
 	it('should have a default value equal to Text', () => {
-		expect(formField.value).toEqual('Text');
+		expect(formField.value).toEqual('');
 	});
 });

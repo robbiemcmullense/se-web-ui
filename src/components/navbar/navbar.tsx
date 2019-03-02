@@ -11,13 +11,13 @@ export class NavbarComponent {
   render() {
     return (
       <nav class={[this.color, "d-flex-main"].join(' ')}>
-        <div class="nav-left-wrapper">
+        <div class="nav-left-wrapper centered">
           <slot name="start" />
         </div>
         <div class="fill-space nav-center-wrapper">
           <slot />
         </div>
-        <div class="nav-right-wrapper">
+        <div class="centered">
           <slot name="end" />
         </div>
       </nav>

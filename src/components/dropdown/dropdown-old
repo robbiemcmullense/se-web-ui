@@ -43,7 +43,6 @@ export class DropdownComponent {
   @Prop({ mutable: true }) disabled: boolean = false;
 
   private toggleCollapse() {
-    console.log("collapse toggle");
     this.collapsed = !this.collapsed;
   }
 

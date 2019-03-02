@@ -24,22 +24,15 @@
           ...
         </ul>
         <div class="button-row">
-          <se-button mode="flat" color="error">Warning</se-button>
-          <se-button mode="login" value="myLoginValue">Login</se-button>
-          <se-button mode="signup">Sign Up</se-button>
-          <se-button mode="outline">Outline</se-button>
+          <se-button mode="outline">outline</se-button>
+          <se-button mode="outline" color="primary">outline primary</se-button>
+          <se-button mode="raised" color="secondary">Raised secondary</se-button>
         </div>
         <div class="button-row">
-          <se-button mode="flat">Flat</se-button>
-          <se-button mode="flat" color="primary">FlatGreen</se-button>
           <se-button mode="raised">Raised</se-button>
-          <se-button mode="raised" color="primary"
-            >RaisedGreen</se-button
-          >
+          <se-button mode="raised" color="primary">RaisedGreen</se-button>
           <se-button mode="text">Text</se-button>
-          <se-button mode="text" color="primary"
-            >Primary</se-button
-          >
+          <se-button mode="text" color="primary">Primary</se-button>
         </div>
       </se-widget-content>
       <se-widget-footer> </se-widget-footer>

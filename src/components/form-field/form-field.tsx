@@ -29,7 +29,7 @@ export class FormFieldComponent {
 	 * Defines the value of your form field to get passed to the parent component.
 	 * When the type is set to "input", this value will be the default placeholder in your input field.
 	 */
-	@Prop({ mutable: true }) value: string = 'Text';
+	@Prop({ mutable: true }) value: string;
 	/**
 	 * Determines if the input is required by the application.
 	 * Set to `false` by default.

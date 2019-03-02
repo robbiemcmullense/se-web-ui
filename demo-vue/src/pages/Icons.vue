@@ -1,18 +1,20 @@
 <template>
   <se-container mode="widget">
     <se-widget style="width: 300px">
-      <se-widget-header>Icons</se-widget-header>
+      <se-widget-header>
+        Icons
+        <div slot="end">
+          <se-icon mode="button" color="alternative">favourites_addto</se-icon>
+          <se-icon mode="button" color="alternative">other_vertical</se-icon>
+        </div>
+      </se-widget-header>
 
       <se-widget-content>
-        <div class="mycoolstyle">my content</div>
-        <ul>
-          ...
-        </ul>
-        <se-switch-on-off id="switch" text-on="ON" text-off="OFF" />
+        <se-switch-on-off />
       </se-widget-content>
       <se-buttons id="RadioGroup1" mode="radio">
-        <se-button value="left">Radio1</se-button>
-        <se-button value="right">Radio2</se-button>
+        <se-button icon="resize"></se-button>
+        <se-button icon="resize">resize</se-button>
       </se-buttons>
     </se-widget>
   </se-container>

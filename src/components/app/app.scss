@@ -13,8 +13,8 @@
   overflow: hidden;
   margin: 0 !important;
   padding: 0;
-  line-height: 16px;
-  @include position(0,0,0,0);
+  @include typology('p');
+  @include absolute(0,0,0,0);
   @include display-flex();
   @include flex-direction(column);
   @include background-color("standard");

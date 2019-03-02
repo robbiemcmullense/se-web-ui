@@ -14,7 +14,7 @@
 }
 
 :host(.absolute) {
-  @include position();
+  @include absolute();
 }
 :host(.relative) {
   position: relative;

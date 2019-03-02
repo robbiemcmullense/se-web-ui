@@ -84,7 +84,7 @@ export class SidenavComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item onClick={() => this.setActive(item)} selected={item.active} text={item.text}></se-list-item>,
+        <se-list-item onClick={() => this.setActive(item)} selected={item.active} item-title={item.itemTitle}></se-list-item>,
       ]
     })
   }

@@ -31,7 +31,7 @@ export class RadioOnOffComponent {
   /**
    * Optional property that defines if the radio on/off switch is disabled.  Set to `false` by default.
    */
-  @Prop({mutable: true}) disabled: boolean = false;
+  @Prop() disabled: boolean = false;
   @State() selected: boolean;
   /**
    * Passes the current state (true or false) to the parent component when clicking on a button in the group.

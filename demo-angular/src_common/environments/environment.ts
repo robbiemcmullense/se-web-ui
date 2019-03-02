@@ -12,7 +12,7 @@ export const environment = {
     'en-US',
     'fr-FR'
   ],
-  title: 'Cool Advisor',
+  title: 'Angular Advisor',
   icon: 'se-icon-cloud',
   productDomain: 'EcoStruxure',
   logo: 'assets/schneider_LIO_Life-Green_RGB.png',

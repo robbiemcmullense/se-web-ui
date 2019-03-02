@@ -1,19 +1,16 @@
 @import "../../theme/theme";
 
 :host  {
-  display: flex;
   box-sizing: border-box;
   height: auto;
   padding: 0;
   width: 100%;
-
-  // Flexbox Vertical Alignment
-  flex-direction: row;
-  align-items: center;
-
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   white-space: nowrap;
+  @include display-flex();
+  @include flex-direction('row');
+  @include align-items(center);
 }
 
 .d-flex-main{
@@ -26,11 +23,17 @@
   @include flex(1);
   min-height: 12px;
 }
-
+.centered{
+  @include display-flex();
+  @include align-items(center);
+}
 .nav-left-wrapper {
   background-color: rgba(black, 0.25);
   &>*:first-child{
-    padding-left: 20px;
+    padding-left: $spacing;
+  }
+  &>*:last-child{
+    padding-right: $spacing-large;
   }
 }
 
@@ -43,6 +46,7 @@ nav.primary {
     &:hover {
       &:before {
         @include background-color('primary-contrast');
+        height: 1px;;
       }
     }
     &.active:before {
@@ -71,7 +75,13 @@ nav.alternative {
 }
 
 nav.primary,
-nav.secondary {
+nav.alternative {
+  font-size: 16px;
+  nav {
+    height: 100%;
+    @include display-flex();
+    @include align-items(center);
+  }
   nav > a {
 
     position: relative;
@@ -84,9 +94,8 @@ nav.secondary {
     padding-left: 0;
     // padding-bottom: 0.3rem;
     text-decoration: none;
-    font-size: 1rem;
-    margin-top: 4px;
-    line-height: 36px;
+    line-height: 40px;
+    height: 100%;
 
     &:focus {
       background-color: transparent;
@@ -95,16 +104,20 @@ nav.secondary {
       text-decoration: none;
       background-color: transparent;
     }
-    &.active:before {
+    &.active:before, &:hover:before {
       content: "";
       position: absolute;
-      height: 3px;
       cursor: default;
-      background-color: $se-white;
       width: 100%;
       bottom: 0;
     }
 
+    &:hover:before {
+      height: 1px;
+    }
+    &.active:before{
+      height: 3px;
+    }
     &.label {
       opacity: 0.8;
       padding: 0.1em 0.4em 0.2em;

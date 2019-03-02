@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, State, Method, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, Method, Watch, Listen } from '@stencil/core';
 
 @Component({
   tag: 'se-button',
@@ -7,6 +7,7 @@ import { Component, Element, Event, EventEmitter, Prop, State, Method, Watch } f
 })
 export class ButtonComponent {
   @Element() el: HTMLElement;
+  @Prop({ context: 'window' }) win!: Window;
 
   /**
    * Defines the visual appearance of the button.
@@ -39,6 +40,13 @@ export class ButtonComponent {
    */
   @Prop() icon: string;
 
+   /**
+   * Optional type property of the button.
+   * `button`	The button is a clickable button (default)
+   * `submit`	The button is a submit button (submits form-data)
+   * `reset`	The button is a reset button (resets the form-data to its initial values)
+   */
+  @Prop() type: 'button'|'submit'|'reset' = 'button';
 
    /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
@@ -81,6 +89,28 @@ export class ButtonComponent {
     }
   }
 
+
+  @Listen('click')
+  onClick(ev: Event) {
+    if (this.type !== 'button') {
+      // this button wants to specifically submit a form
+      // climb up the dom to see if we're in a <form>
+      // and if so, then use JS to submit it
+      // https://github.com/ionic-team/ionic/blob/master/core/src/components/button/button.tsx
+      const form = this.el.closest('form');
+      if (form) {
+        ev.preventDefault();
+
+        const fakeButton = this.win.document.createElement('button');
+        fakeButton.type = this.type;
+        fakeButton.style.display = 'none';
+        form.appendChild(fakeButton);
+        fakeButton.click();
+        fakeButton.remove();
+      }
+    }
+  }
+
   @State() hasChild: boolean;
 
   componentWillLoad() {
@@ -90,7 +120,6 @@ export class ButtonComponent {
   componentDidLoad() {
     this.modeDidChange();
   }
-
 
   hostData() {
     return {
@@ -104,7 +133,7 @@ export class ButtonComponent {
 
   render() {
     return (
-      <button disabled={this.disabled} class={[this.color, this.mode, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
+      <button disabled={this.disabled} type={this.type} class={[this.color, this.mode, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
         {this.icon ? <se-icon>{this.icon}</se-icon> : ''}
         <span class="text"><slot></slot></span>
       </button>

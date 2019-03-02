@@ -1,15 +1,11 @@
 <form [formGroup]="loginForm" (submit)="login($event)" id="loginForm" fxFlex>
-  <div>
-    <label for="example-text-input">{{ 'Username' | translate}}</label>
-        <input type="text" name="username" id="username"
+  <se-form-field [label]="'Username' | translate" required="true" mode="stacked">
+      <input type="text" name="username" id="username"
           formControlName="username">
-    </div>
-  <div>
-    <label for="example-search-input">{{ 'Password' | translate}}</label>
+    </se-form-field>
+    <se-form-field [label]="'Password' | translate" required="true" mode="stacked">
         <input type="password" name="password" id="password" id="password"
-          formControlName="password">
-  </div>
-  <div>
-    <button appearance="login" type="submit">Login</button>
-  </div>
+        formControlName="password">
+    </se-form-field>
+    <se-button mode="login" type="submit">Login</se-button>
 </form>

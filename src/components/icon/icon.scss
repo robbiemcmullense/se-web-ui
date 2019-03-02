@@ -4,9 +4,8 @@
   font-family: 'se-icon';
   speak: none;
   font-style: normal;
-  line-height: 1;
   position: relative;
-  top: 1px;
+  top: 0;
   display: inline-block;
   font-size: 24px;
   font-weight: normal;
@@ -30,9 +29,13 @@
 }
 :host(.medium) {
   font-size: 36px;
+  margin-bottom: -5px;
+  margin-top: -5px;
 }
 :host(.large) {
   font-size: 63px;
+  margin-top: -15px;
+  margin-bottom: -15px;
 }
 :host(.button) {
   cursor: pointer;

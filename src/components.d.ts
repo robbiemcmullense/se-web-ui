@@ -83,6 +83,10 @@ export namespace Components {
     */
     'setGrouped': () => void;
     /**
+    * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
+    */
+    'type': 'button'|'submit'|'reset';
+    /**
     * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
     */
     'value': string;
@@ -112,6 +116,10 @@ export namespace Components {
     * Optional property that define if the button should be shown as selected. Used with `se-buttons`
     */
     'selected'?: boolean;
+    /**
+    * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
+    */
+    'type'?: 'button'|'submit'|'reset';
     /**
     * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
     */
@@ -268,6 +276,65 @@ export namespace Components {
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position'?: 'relative' | 'absolute';
+  }
+
+  interface SeDialogContent {
+    'icon': string;
+    'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'mode': 'fill';
+  }
+  interface SeDialogContentAttributes extends StencilHTMLAttributes {
+    'icon'?: string;
+    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'mode'?: 'fill';
+  }
+
+  interface SeDialogFooter {}
+  interface SeDialogFooterAttributes extends StencilHTMLAttributes {}
+
+  interface SeDialogHeader {
+    /**
+    * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
+    */
+    'color': 'alternative' | 'primary';
+  }
+  interface SeDialogHeaderAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
+    */
+    'color'?: 'alternative' | 'primary';
+  }
+
+  interface SeDialog {
+    'backdropClicked': () => void;
+    /**
+    * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
+    */
+    'color': 'alternative' | 'primary';
+    'open': boolean;
+    /**
+    * Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen
+    */
+    'size': "small" | "medium" | "large" | "fill";
+  }
+  interface SeDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
+    */
+    'color'?: 'alternative' | 'primary';
+    /**
+    * event emitted after the animation of closing is done. The modal can be safely removed from the DOM
+    */
+    'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * event emitted when the backdrop is clicked.
+    */
+    'onOnBackdrop'?: (event: CustomEvent<any>) => void;
+    'open'?: boolean;
+    /**
+    * Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen
+    */
+    'size'?: "small" | "medium" | "large" | "fill";
   }
 
   interface SeDivider {
@@ -505,6 +572,10 @@ export namespace Components {
     */
     'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle': string;
+    /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
     'mode': "nav" | "classic";
@@ -516,10 +587,6 @@ export namespace Components {
     * Indicate if the button is part of a group of buttons within the `se-buttons` component.
     */
     'setIndentation': (indentation: number) => void;
-    /**
-    * Define if the list element should be selected or not
-    */
-    'text': string;
   }
   interface SeListGroupAttributes extends StencilHTMLAttributes {
     /**
@@ -539,6 +606,10 @@ export namespace Components {
     */
     'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
+    * Define if the list element should be selected or not
+    */
+    'itemTitle'?: string;
+    /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
     'mode'?: "nav" | "classic";
@@ -546,10 +617,6 @@ export namespace Components {
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
     'selected'?: boolean;
-    /**
-    * Define if the list element should be selected or not
-    */
-    'text'?: string;
   }
 
   interface SeListItem {
@@ -574,6 +641,10 @@ export namespace Components {
     */
     'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
+    * Define the title of the item
+    */
+    'itemTitle': string;
+    /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
     'mode': 'nav' | 'classic';
@@ -585,10 +656,6 @@ export namespace Components {
     * Indicate if the button is part of a group of buttons within the `se-buttons` component.
     */
     'setIndentation': (indentation: number) => void;
-    /**
-    * Define if the list element should be selected or not
-    */
-    'text': string;
   }
   interface SeListItemAttributes extends StencilHTMLAttributes {
     /**
@@ -612,6 +679,10 @@ export namespace Components {
     */
     'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
+    * Define the title of the item
+    */
+    'itemTitle'?: string;
+    /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
     'mode'?: 'nav' | 'classic';
@@ -619,10 +690,6 @@ export namespace Components {
     * Define if the list element should be selected or not
     */
     'selected'?: boolean;
-    /**
-    * Define if the list element should be selected or not
-    */
-    'text'?: string;
   }
 
   interface SeList {
@@ -700,9 +767,9 @@ export namespace Components {
     */
     'active': boolean;
     /**
-    * Define the text of the tab
+    * Define the title of the tab
     */
-    'text': string;
+    'itemTitle': string;
   }
   interface SeSidenavItemAttributes extends StencilHTMLAttributes {
     /**
@@ -710,9 +777,9 @@ export namespace Components {
     */
     'active'?: boolean;
     /**
-    * Define the text of the tab
+    * Define the title of the tab
     */
-    'text'?: string;
+    'itemTitle'?: string;
   }
 
   interface SeSidenav {
@@ -773,6 +840,10 @@ declare global {
     'SeCheckbox': Components.SeCheckbox;
     'SeChip': Components.SeChip;
     'SeContainer': Components.SeContainer;
+    'SeDialogContent': Components.SeDialogContent;
+    'SeDialogFooter': Components.SeDialogFooter;
+    'SeDialogHeader': Components.SeDialogHeader;
+    'SeDialog': Components.SeDialog;
     'SeDivider': Components.SeDivider;
     'SeDropdownItem': Components.SeDropdownItem;
     'SeDropdown': Components.SeDropdown;
@@ -805,6 +876,10 @@ declare global {
     'se-checkbox': Components.SeCheckboxAttributes;
     'se-chip': Components.SeChipAttributes;
     'se-container': Components.SeContainerAttributes;
+    'se-dialog-content': Components.SeDialogContentAttributes;
+    'se-dialog-footer': Components.SeDialogFooterAttributes;
+    'se-dialog-header': Components.SeDialogHeaderAttributes;
+    'se-dialog': Components.SeDialogAttributes;
     'se-divider': Components.SeDividerAttributes;
     'se-dropdown-item': Components.SeDropdownItemAttributes;
     'se-dropdown': Components.SeDropdownAttributes;
@@ -875,6 +950,30 @@ declare global {
   var HTMLSeContainerElement: {
     prototype: HTMLSeContainerElement;
     new (): HTMLSeContainerElement;
+  };
+
+  interface HTMLSeDialogContentElement extends Components.SeDialogContent, HTMLStencilElement {}
+  var HTMLSeDialogContentElement: {
+    prototype: HTMLSeDialogContentElement;
+    new (): HTMLSeDialogContentElement;
+  };
+
+  interface HTMLSeDialogFooterElement extends Components.SeDialogFooter, HTMLStencilElement {}
+  var HTMLSeDialogFooterElement: {
+    prototype: HTMLSeDialogFooterElement;
+    new (): HTMLSeDialogFooterElement;
+  };
+
+  interface HTMLSeDialogHeaderElement extends Components.SeDialogHeader, HTMLStencilElement {}
+  var HTMLSeDialogHeaderElement: {
+    prototype: HTMLSeDialogHeaderElement;
+    new (): HTMLSeDialogHeaderElement;
+  };
+
+  interface HTMLSeDialogElement extends Components.SeDialog, HTMLStencilElement {}
+  var HTMLSeDialogElement: {
+    prototype: HTMLSeDialogElement;
+    new (): HTMLSeDialogElement;
   };
 
   interface HTMLSeDividerElement extends Components.SeDivider, HTMLStencilElement {}
@@ -1012,6 +1111,10 @@ declare global {
     'se-checkbox': HTMLSeCheckboxElement
     'se-chip': HTMLSeChipElement
     'se-container': HTMLSeContainerElement
+    'se-dialog-content': HTMLSeDialogContentElement
+    'se-dialog-footer': HTMLSeDialogFooterElement
+    'se-dialog-header': HTMLSeDialogHeaderElement
+    'se-dialog': HTMLSeDialogElement
     'se-divider': HTMLSeDividerElement
     'se-dropdown-item': HTMLSeDropdownItemElement
     'se-dropdown': HTMLSeDropdownElement
@@ -1044,6 +1147,10 @@ declare global {
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
     'se-container': HTMLSeContainerElement;
+    'se-dialog-content': HTMLSeDialogContentElement;
+    'se-dialog-footer': HTMLSeDialogFooterElement;
+    'se-dialog-header': HTMLSeDialogHeaderElement;
+    'se-dialog': HTMLSeDialogElement;
     'se-divider': HTMLSeDividerElement;
     'se-dropdown-item': HTMLSeDropdownItemElement;
     'se-dropdown': HTMLSeDropdownElement;

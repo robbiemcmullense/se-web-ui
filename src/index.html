@@ -11,23 +11,6 @@
   </link>
   <link rel="stylesheet" href="icons/css/styles.css">
   </link>
-  <style>
-    .mycoolstyle {
-      color: red;
-    }
-
-    .flex {
-      flex: 1
-    }
-
-    .d-flex {
-      display: flex;
-    }
-
-    .se-link-container {
-      margin: 5px;
-    }
-  </style>
 </head>
 
 <body>
@@ -39,49 +22,43 @@
       <se-form-field label="Password" required="true" mode="stacked">
         <input type="password" />
       </se-form-field>
-      <se-button id="loginBtn" mode="login" value="myLoginValue">Login</se-button>
+      <se-button onclick="closeLogin()" mode="login" value="myLoginValue">Login</se-button>
     </se-brand>
-    <se-header app-title="Test Advisor" >
+    <se-header app-title="Test Advisor" project="Project name">
       <div slot="end">
         <se-link url="http://google.com" type="external">External Link to Google</se-link>
       </div>
       <se-sidenav>
-        <se-sidenav-item text="About">
+        <se-sidenav-item item-title="About">
           <se-about app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)"></se-about>
         </se-sidenav-item>
-        <se-sidenav-item text="Sidenav 2">
+        <se-sidenav-item item-title="Sidenav 2">
           <se-widget mode="fill">
             <se-widget-header>some widget design</se-widget-header>
             <se-widget-content>
               <se-chip id="se-chip" value="Chip 01"></se-chip>
             </se-widget-content>
             <se-widget-footer>
-              <div slot="end">
                 <se-button mode="raised" color="primary">RaisedGreen</se-button>
-              </div>
             </se-widget-footer>
           </se-widget>
         </se-sidenav-item>
-        <se-sidenav-item text="Sidenav 3">
+        <se-sidenav-item item-title="Sidenav 3">
           <div>A simple div</div>
         </se-sidenav-item>
       </se-sidenav>
     </se-header>
     <se-navbar color="primary">
-      <!-- <nav slot="start">
-        Tenant:
-        <se-dropdown text="My City" mode="inherit">
-          <se-dropdown-item>cool 1 </se-dropdown-item>
-          <se-dropdown-item>cool 2 </se-dropdown-item>
-          <se-dropdown-item>cool 3 </se-dropdown-item>
-          <se-dropdown-item>cool 4 </se-dropdown-item>
-        </se-dropdown>
-      </nav> -->
+      <nav slot="start">
+        <se-icon color="alternative" size="medium">arrow2_left</se-icon>
+        Back button
+      </nav>
       <nav>
-        <a class="active">Home</a> <a>Components</a> <a>Icons</a>
+        <a class="active">Home</a>
+        <a >Another</a>
       </nav>
       <nav slot="end">
-        <a>End</a>
+        <se-button color="alternative" mode="outline" > alternative </se-button>
       </nav>
     </se-navbar>
     <se-container mode="widget">
@@ -89,17 +66,17 @@
         <se-widget-header>List Nav</se-widget-header>
         <se-widget-content mode="fill">
           <se-list mode="nav">
-            <se-list-item text="I'm selected" selected="true" icon="user_standard" icon-color="primary"
+            <se-list-item item-title="I'm selected" selected="true" icon="user_standard" icon-color="primary"
               description="And I have an icon">
             </se-list-item>
-            <se-list-item text="my item 2 no description  with a long text" icon="user_standard"
+            <se-list-item item-title="my item 2 no description  with a long text" icon="user_standard"
               icon-color="primary">
             </se-list-item>
-            <se-list-item text="my item 3 no icon" description="I'm here too">
+            <se-list-item item-title="my item 3 no icon" description="I'm here too">
             </se-list-item>
-            <se-list-item text="I'm the selected one!" selected="true">
+            <se-list-item item-title="I'm the selected one!" selected="true">
             </se-list-item>
-            <se-list-item text="Basic Item">
+            <se-list-item item-title="Basic Item">
             </se-list-item>
           </se-list>
         </se-widget-content>
@@ -108,41 +85,40 @@
         <se-widget-header>List classic with expender</se-widget-header>
         <se-widget-content mode="fill">
           <se-list>
-            <se-list-item text="my item 1" selected="false" icon="user_standard" icon-color="primary"
+            <se-list-item item-title="my item 1" selected="false" icon="user_standard" icon-color="primary"
               description="I have a description">
             </se-list-item>
-            <se-list-item text="my item 2 no description with a long text" icon="user_standard"
+            <se-list-item item-title="my item 2 no description with a long text" icon="user_standard"
               icon-color="primary">
             </se-list-item>
-            <se-list-item text="my item 3 no icon" description="I'm here too">
+            <se-list-item item-title="my item 3 no icon" description="I'm here too">
             </se-list-item>
-            <se-list-item text="I'm the selected one!" selected="false">
+            <se-list-item item-title="I'm the selected one!" selected="false">
             </se-list-item>
-            <se-list-item text="Basic Item" icon="action_settings2" >
+            <se-list-item item-title="Basic Item" icon="action_settings2" >
             </se-list-item>
-            <se-list-group text="I have a selected child" icon="action_settings2" icon-color="primary"
+            <se-list-group item-title="I have a selected child" icon="action_settings2" icon-color="primary"
               description="I'm selected if collapsed">
-              <se-list-item text="my item 1" selected="false" icon="action_settings2" icon-color="primary"
+              <se-list-item item-title="my item 1" selected="false" icon="action_settings2" icon-color="primary"
                 description="I have a description">
               </se-list-item>
-              <se-list-item text="my item 2 no description" icon="action_settings2" icon-color="primary">
+              <se-list-item item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
               </se-list-item>
-              <se-list-item text="my item 3 no icon" icon="action_settings2"  description="I'm here too">
+              <se-list-item item-title="my item 3 no icon" icon="action_settings2"  description="I'm here too">
               </se-list-item>
-              <se-list-item text="I'm the selected one!" icon="action_settings2"  selected="false">
+              <se-list-item item-title="I'm the selected one!" icon="action_settings2"  selected="false">
               </se-list-item>
-              <se-list-item text="Basic Item" icon="action_settings2"  selected="true">
+              <se-list-item item-title="Basic Item" icon="action_settings2"  selected="true">
               </se-list-item>
             </se-list-group>
-            <se-list-group text="simple collapse">
-              <se-list-item text="No icon, not selected" selected="false">
+            <se-list-group item-title="simple collapse">
+              <se-list-item item-title="No icon, not selected" selected="false">
               </se-list-item>
-              <se-list-item text="my item 2 no description" icon="action_settings2" icon-color="primary">
+              <se-list-item item-title="my item 2 no description" icon="action_settings2" icon-color="primary">
               </se-list-item>
-              <se-list-item text="my item 3 no icon" description="I'm here too">
+              <se-list-item item-title="my item 3 no icon" description="I'm here too">
               </se-list-item>
-              </se-list-item>
-              <se-list-item text="Basic Item">
+              <se-list-item item-title="Basic Item">
               </se-list-item>
             </se-list-group>
           </se-list>
@@ -157,7 +133,7 @@
           </div>
         </se-widget-header>
         <se-widget-content>
-          <h1>My h1 string with a divider (App title)</h1>
+          <h1>My h1 string with a divider</h1>
           <se-divider></se-divider>
           <h2>My h2 string with a divider </h2>
           <se-divider></se-divider>
@@ -257,19 +233,46 @@
 
         </se-widget-content>
         <se-widget-footer>
-          <div slot="end">
-            <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
-          </div>
+          <se-button onclick="openDialog('dialog-simple-notitle')" mode="raised" >Open Dialog simple</se-button>
+          <se-button onclick="openDialog('dialog-simple-title')" mode="raised" >Open Dialog title & icon</se-button>
+          <se-button onclick="openDialog('dialog-complex')" mode="raised" >Open Dialog complex</se-button>
         </se-widget-footer>
       </se-widget>
     </se-container>
+    <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
+      <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
+      <se-dialog-footer><se-button onclick="closeDialog('dialog-simple-notitle')" mode="alternative">cancel</se-button><se-button onclick="closeDialog('dialog-simple-notitle')" >OK</se-button></se-dialog-footer>
+    </se-dialog>
+    <se-dialog id="dialog-simple-title" color="alternative">
+      <se-dialog-header>My awesome title</se-dialog-header>
+      <se-dialog-content icon="help_wired_flat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
+      <se-dialog-footer><se-button onclick="closeDialog('dialog-simple-title')" mode="alternative">cancel</se-button><se-button onclick="closeDialog('dialog-simple-title')" >OK</se-button></se-dialog-footer>
+    </se-dialog>
+    <se-dialog id="dialog-complex">
+      <se-dialog-header>My awesome title</se-dialog-header>
+      <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
+      <se-dialog-footer><se-button onclick="closeDialog('dialog-complex')" mode="alternative">cancel</se-button><se-button onclick="closeDialog('dialog-complex')">OK</se-button></se-dialog-footer>
+    </se-dialog>
   </se-app>
 
   <script>
 
-    document.getElementById('loginBtn').addEventListener('click', function (event) {
+    // Dialog
+    function openDialog(id) {
+      console.log('open Dialog', id)
+      document.getElementById(id).open = true;
+    }
+    function closeDialog(id) {
+      console.log('close Dialog', id)
+      document.getElementById(id).open = false;
+    }
+
+    // Login page
+    function closeLogin(){
       document.getElementById('se-brand').hide = true;
-    });
+    }
+
+    // buttons
     document.getElementById('se-chip').addEventListener('close', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
     });

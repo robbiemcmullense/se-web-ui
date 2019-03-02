@@ -23,7 +23,13 @@ class Widget extends Component {
 
     return (
       <se-widget>
-        <se-widget-header>{name}</se-widget-header>
+        <se-widget-header>
+        {name}
+          <div slot="end">
+              <se-icon mode="button" color="alternative">favourites_addto</se-icon>
+              <se-icon mode="button" color="alternative">other_vertical</se-icon>
+          </div>
+        </se-widget-header>
         <se-widget-content>
           <div className="mycoolstyle">my content</div>
           <ul>

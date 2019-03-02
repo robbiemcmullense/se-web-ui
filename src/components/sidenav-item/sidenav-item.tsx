@@ -7,9 +7,9 @@ import { Component, Prop } from '@stencil/core';
 })
 export class SidenavItemComponent {
   /**
-   * Define the text of the tab
+   * Define the title of the tab
    */
-  @Prop() text: string;
+  @Prop() itemTitle: string;
 
   /**
    * Defines if the tab is active or not.

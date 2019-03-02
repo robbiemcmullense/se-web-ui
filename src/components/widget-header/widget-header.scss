@@ -3,7 +3,6 @@
 :host{
   position: relative;
   padding: $spacing-small $spacing-small 2px $spacing; // 2px to compensate with border bottom
-  padding-right: $spacing-small;
   font-size: 20px;
   min-height: 40px;
   border-bottom: 2px solid $widget-footer-border-color;

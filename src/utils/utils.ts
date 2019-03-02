@@ -2,7 +2,7 @@
 export function getFullTitle(appTitle: string): any {
   let last = '';
   let first = '';
-  if(appTitle.length) {
+  if(appTitle && appTitle.length) {
     const titleArray = appTitle.split(" ");
     if(titleArray.length > 1){
       last = titleArray.pop();

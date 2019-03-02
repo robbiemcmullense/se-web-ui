@@ -8,9 +8,9 @@ import { Component, Prop, State, Method } from "@stencil/core";
 export class ListItemComponent {
 
   /**
-   * Define if the list element should be selected or not
+   * Define the title of the item
    */
-  @Prop() text : string;
+  @Prop() itemTitle : string;
 
   /**
    * Define if the list element should be selected or not
@@ -87,7 +87,7 @@ export class ListItemComponent {
         <div class="selectedBar"></div>
         {!!this.icon && <div class="nav-icon"><se-icon size="small" color={this.iconColor}>{this.icon}</se-icon></div>}
         <div class="nav-content">
-          <div>{this.text}</div>
+          <div>{this.itemTitle}</div>
           <small> {this.description}</small>
         </div>
         {this.renderIcon()}

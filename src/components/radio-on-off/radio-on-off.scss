@@ -1,7 +1,7 @@
 @import "../../theme/theme";
 
-:host{
-    button:first-child {
+:host {
+  button:first-child {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     margin-right: 0;
@@ -17,23 +17,25 @@
       cursor: default;
     }
   }
-  &[data-mode="header"] button {
+}
+:host(.header){
+  button {
     height: 16px;
   }
 }
-:host(.standard){
-  @include background-color('standard');
-  @include color('standard-contrast');
+:host(.standard) {
+  @include background-color("standard");
+  @include color("standard-contrast");
 }
-:host(.standard.active.selected){
+:host(.standard.active.selected) {
   color: $se-white;
   background-color: $se-life-green;
 }
-:host(.alternative){
-  @include background-color('alternative');
-  @include color('alternative-contrast');
+:host(.alternative) {
+  @include background-color("alternative");
+  @include color("alternative-contrast");
 }
-:host(.alternative.active.selected){
+:host(.alternative.active.selected) {
   color: $se-white;
   background-color: $se-red;
 }

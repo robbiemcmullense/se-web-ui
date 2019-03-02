@@ -6,7 +6,8 @@ $max-width-input: 320px;
 :host {
 	.se-form-field {
     @include display-flex();
-		padding: $spacing;
+    padding: $spacing;
+
 		&[data-disabled] {
 			opacity: 0.26;
     }
@@ -40,7 +41,7 @@ $max-width-input: 320px;
   height: 32px;
   width: 60%;
   border-radius: 0;
-  max-width: $max-width-input;
+  max-width: $max-width-input + 10;
   border: 1px solid $se-super-light-grey;
   background-color: transparent;
   font-size: 14px;

@@ -14,9 +14,9 @@
 | `description` | `description` | Define description of the item. placed under the title of the item.                                               | `string`                                                  | `undefined` |
 | `icon`        | `icon`        | Place an icon on the left side of the item list.                                                                  | `string`                                                  | `undefined` |
 | `iconColor`   | `icon-color`  | Optional property to define the color of the icon. The default color will be inherited from it's parent.          | `"alternative" \| "primary" \| "secondary" \| "standard"` | `undefined` |
+| `itemTitle`   | `item-title`  | Define the title of the item                                                                                      | `string`                                                  | `undefined` |
 | `mode`        | `mode`        | Define the them of the list. This them will be handled and modified by the parent element                         | `"classic" \| "nav"`                                      | `'classic'` |
 | `selected`    | `selected`    | Define if the list element should be selected or not                                                              | `boolean`                                                 | `undefined` |
-| `text`        | `text`        | Define if the list element should be selected or not                                                              | `string`                                                  | `undefined` |
 
 
 ## Methods

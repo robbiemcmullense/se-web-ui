@@ -1,19 +1,27 @@
 @import "../../theme/theme";
 
+:host{
+  min-width: 0;
+  display: inline-flex;
+
+}
 button {
   padding: 0 16px;
   height: 32px;
   margin: $spacing-small;
   border: none;
-
   border-radius: $border-radius;
   outline: none;
-  @include align-items(center);
   cursor: pointer;
+
+  @include display-flex();
+  @include align-items(center);
+  @include ellipsis();
+  @include justify-content(center);
+
   .text {
-    font-size: 14px;
-    line-height: 14px;
     font-weight: 300;
+    @include typology('p')
   }
   se-icon {
     margin: 0 5px;
@@ -130,7 +138,6 @@ button {
     line-height: 22px;
     width: 100%;
     margin-top: $spacing;
-    margin-left: 0px;
   }
 
   // &:focus{
@@ -146,6 +153,7 @@ button {
     padding: 0 14px;
     font-size: 11px;
     line-height: 13px;
+    border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;
   }
 }
@@ -159,16 +167,16 @@ button {
   button {
     margin-left: $spacing-small;
     border-left: none;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
   }
 }
 
 :host(.grouped:last-child) {
   button {
     margin-right: $spacing-small;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
   }
 }
 
@@ -177,7 +185,7 @@ button {
   position: relative;
   button {
     se-icon {
-      font-size: 20px;
+      font-size: 22px;
     }
     padding: 0;
   }

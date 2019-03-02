@@ -11,7 +11,7 @@ export class ListGroupComponent {
   /**
    * Define if the list element should be selected or not
    */
-  @Prop() text: string;
+  @Prop() itemTitle: string;
 
   /**
    * Place an icon on the left side of the item list.
@@ -92,7 +92,7 @@ export class ListGroupComponent {
   render() {
     return [
       <se-list-item
-        text={this.text}
+        item-title={this.itemTitle}
         selected={this.selected}
         icon={this.icon}
         icon-color={this.iconColor}
