@@ -111,9 +111,9 @@ export class SidenavComponent {
               <img class="image-logo" alt="Schneider electric logo"/>
             </div>
             <se-divider mode="vertical"></se-divider>
-            <div class="flex">
-                <slot />
-            </div>
+            <se-widget mode="fill">
+              <slot />
+            </se-widget>
           </div>
       </div>
     ]

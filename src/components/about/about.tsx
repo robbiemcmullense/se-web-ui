@@ -23,33 +23,29 @@ export class AboutComponent {
     } else if (this.domain.toLowerCase() !== "none") {
       domain = <span class="header-title-type">{this.domain}</span>;
     }
-    return (
-      <se-widget mode="fill">
-        <se-widget-container mode="fill">
-          <div class="about-wrapper">
-            <div class="image-container">
-              <img class="image-background" style={{'backgroundImage': this.imageUrl}} />
-
-            </div>
-            <div class="about-section-wrapper">
-              <div class="information">
-                {domain}
-                <h1 class="header-title">
-                  <span>{title.first}</span>
-                  <span class="light">&nbsp;{title.last}</span>
-                </h1>
-                <p class="version">version {this.version}</p>
-              </div>
-              <div class="more-information">
-                <div class="background-light" />
-                <div class="content-info">
-                  <span>{this.copyright}</span>
-                </div>
-              </div>
-            </div>
+    return [
+      <div class="image-container">
+        <img
+          class="image-background"
+          style={{ backgroundImage: this.imageUrl }}
+        />
+      </div>,
+      <div class="about-section-wrapper">
+        <div class="information">
+          {domain}
+          <h1 class="header-title">
+            <span>{title.first}</span>
+            <span class="light">&nbsp;{title.last}</span>
+          </h1>
+          <p class="version">version {this.version}</p>
+        </div>
+        <div class="more-information">
+          <div class="background-light" />
+          <div class="content-info">
+            <span>{this.copyright}</span>
           </div>
-        </se-widget-container>
-      </se-widget>
-    );
+        </div>
+      </div>
+    ];
   }
 }

@@ -1,10 +1,7 @@
 @import "../../theme/theme";
 
-.about-wrapper{
+:host{
   @include absolute();
-  // position: relative;
-  // width: 100%;
-  // height: 100%;
 }
 
 .about-section-wrapper{
