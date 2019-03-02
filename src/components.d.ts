@@ -777,6 +777,10 @@ export namespace Components {
 
   interface SeWidget {
     /**
+    * Optional property that defines the background color of the widget. default is alternative (white)
+    */
+    'color': 'standard' | 'alternative';
+    /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
     'height': string;
@@ -790,6 +794,10 @@ export namespace Components {
     'width': string;
   }
   interface SeWidgetAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines the background color of the widget. default is alternative (white)
+    */
+    'color'?: 'standard' | 'alternative';
     /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */

@@ -21,6 +21,13 @@ export class WidgetComponent {
     this.updateSize();
   }
 
+
+  /**
+   * Optional property that defines the background color of the widget. default is alternative (white)
+   */
+  @Prop() color: 'standard' | 'alternative' = 'alternative'
+
+
   /**
    * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
    */
@@ -44,7 +51,7 @@ export class WidgetComponent {
 
   hostData() {
     return {
-      class: [this.mode, (!this.width && !this.height) ? 'flex' : ''].join(' ')
+      class: [this.mode, this.color, (!this.width && !this.height) ? 'flex' : ''].join(' ')
     };
   }
   render() {
