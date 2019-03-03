@@ -1,52 +1,61 @@
 @import "../../theme/theme";
 
 :host {
-  position: relative;
-  display: block;
+  z-index: 0;
   margin: 0;
   font-weight: lighter;
   font-size: 20px;
+  @include display-flex();
+
+}
+
+.se-icon {
+  margin: 0;
+  display: inline-block;
+  font-family: "se-icon";
+  font-size: 24px;
+  font-display: block;
+  &.primary {
+    @include color("primary");
+  }
+  &.secondary {
+    @include color("secondary");
+  }
+  &.medium {
+    font-size: 36px;
+    margin-bottom: -5px;
+    margin-top: -5px;
+  }
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  position: relative;
+  outline: none;
+  background: transparent;
   width: 100%;
   height: 47px;
-
-  button {
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    outline: none;
-    background: transparent;
-
-    /* inherit font & color from ancestor */
-    color: inherit;
-    font: inherit;
-
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
-
-    /* Corrects font smoothing for webkit */
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-
-    /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
-
-    @include display-flex();
-    @include align-items(center);
-    // @include flex-direction(raw);
-
-    // @include justify-content(space-between);
-    text-align: start;
-
-    &:hover, &:focus{
-      background-color: $se-ultra-light-grey-1;
-    }
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  @include display-flex();
+  @include align-items(center);
+  @include flex();
+  text-align: start;
+  border-bottom: 1px solid $widget-footer-border-color;
+  &:hover, &:focus{
+    background-color: $se-ultra-light-grey-1;
   }
 }
 .selectedBar {
-  display: none;
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  width: 5px;
+  @include background-color("primary");
 }
 .nav-icon {
   margin-right: -12px;
@@ -70,15 +79,6 @@
 }
 :host(.nav.selected) {
   @include color('primary');
-  .selectedBar {
-    display: block;
-    position: absolute;
-    top: 0px;
-    bottom: 0;
-    width: 5px;
-    @include background-color("primary");
-  }
-
 }
 
 :host(.classic.selected) {

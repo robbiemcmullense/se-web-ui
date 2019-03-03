@@ -86,7 +86,7 @@ export class FormFieldComponent {
 	render() {
 		return (
 			<div class="se-form-field" data-disabled={this.disabled}>
-        {this.type !== 'checkbox' && <se-label value={this.label} required={this.required}></se-label>}
+        {this.type !== 'checkbox' &&  <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label>}
 				<slot></slot>
 			</div>
 		)

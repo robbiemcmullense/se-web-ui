@@ -114,10 +114,8 @@ export class ButtonComponent {
   @State() hasChild: boolean;
 
   componentWillLoad() {
-    this.hasChild = Array.from(this.el.children).length > 0 || this.el.innerText.length > 0;
-  }
-
-  componentDidLoad() {
+    // console.log('Slot: ', this.el.innerHTML)
+    this.hasChild = this.el.innerHTML && this.el.innerHTML.length > 0;
     this.modeDidChange();
   }
 
@@ -126,7 +124,8 @@ export class ButtonComponent {
       'class': [
         !!this.icon && 'hasIcon',
         this.hasChild && 'hasChild',
-        this.grouped && 'grouped'
+        this.grouped && 'grouped',
+        this.mode
       ].join(' ')
     };
   }
@@ -134,8 +133,8 @@ export class ButtonComponent {
   render() {
     return (
       <button disabled={this.disabled} type={this.type} class={[this.color, this.mode, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
-        {this.icon ? <se-icon>{this.icon}</se-icon> : ''}
-        <span class="text"><slot></slot></span>
+        {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
+        { this.hasChild && <span class="text"><slot></slot></span>}
       </button>
     )
   }

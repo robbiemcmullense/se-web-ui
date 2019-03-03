@@ -1,6 +1,11 @@
 <se-container mode="widget" position="absolute">
   <se-widget style="width: 300px">
-    <se-widget-header>Filter</se-widget-header>
+    <se-widget-header>Filter
+      <div slot="end">
+          <se-icon mode="button" color="alternative">favourites_addto</se-icon>
+          <se-icon mode="button" color="alternative">other_vertical</se-icon>
+      </div>
+    </se-widget-header>
 
     <se-widget-content>
       <div class="mycoolstyle">my content</div>
@@ -22,10 +27,19 @@
       <ul>
         ...
       </ul>
-      <se-button mode="flat" color="error">Warning</se-button>
-      <se-button mode="login">Login</se-button>
-      <se-button mode="signup">Sign Up</se-button>
-      <span id="button-info"></span>
+      <se-divider></se-divider>
+      <se-button mode="flat">standard</se-button>
+          <se-button id="flatBtn1" mode="flat" color="alternative">alternative</se-button>
+          <se-button mode="flat" color="primary">primary</se-button>
+          <se-button mode="flat" color="secondary">secondary</se-button>
+
+          <se-button icon="action_resize">Resize</se-button>
+          <se-button mode="outline">Outline</se-button>
+          <se-button mode="outline" color="alternative">Outline alternative</se-button>
+          <se-button mode="outline" color="primary">Outline primary</se-button>
+          <se-button mode="outline" color="secondary">Outline secondary</se-button>
+
+      <se-divider></se-divider>
     </se-widget-content>
     <se-widget-footer fxLayoutAlign="row">
       <se-button mode="flat" color="primary">Flat</se-button>

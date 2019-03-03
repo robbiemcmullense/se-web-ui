@@ -479,27 +479,6 @@ export namespace Components {
     'size'?: "small" | "medium" | "large";
   }
 
-  interface SeLabel {
-    /**
-    * When the label is part of a form field, this attribute defines if the input is required, adding a red asterisk next to the label.
-    */
-    'required': boolean;
-    /**
-    * Defines the text that you want your label to display.
-    */
-    'value': string;
-  }
-  interface SeLabelAttributes extends StencilHTMLAttributes {
-    /**
-    * When the label is part of a form field, this attribute defines if the input is required, adding a red asterisk next to the label.
-    */
-    'required'?: boolean;
-    /**
-    * Defines the text that you want your label to display.
-    */
-    'value'?: string;
-  }
-
   interface SeLink {
     /**
     * Determines whether or not the link is disabled.
@@ -545,11 +524,11 @@ export namespace Components {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor': "primary" | "secondary";
     /**
-    * Define if the list element should be selected or not
+    * Define the title of the item
     */
-    'itemTitle': string;
+    'item': string;
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
@@ -579,11 +558,11 @@ export namespace Components {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor'?: "primary" | "secondary";
     /**
-    * Define if the list element should be selected or not
+    * Define the title of the item
     */
-    'itemTitle'?: string;
+    'item'?: string;
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
@@ -596,14 +575,6 @@ export namespace Components {
 
   interface SeListItem {
     /**
-    * Define if item group is collapsed/closed. update the icon to change from `up` to `down`. Used by `se-item-group`.
-    */
-    'collapsed': boolean;
-    /**
-    * Define if the item should behave as a an collapsible (used by `se-item-group`)
-    */
-    'collapsible': boolean;
-    /**
     * Define description of the item. placed under the title of the item.
     */
     'description': string;
@@ -614,15 +585,15 @@ export namespace Components {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor': "primary" | "secondary";
     /**
     * Define the title of the item
     */
-    'itemTitle': string;
+    'item': string;
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': 'nav' | 'classic';
+    'mode': "nav" | "classic";
     /**
     * Define if the list element should be selected or not
     */
@@ -634,14 +605,6 @@ export namespace Components {
   }
   interface SeListItemAttributes extends StencilHTMLAttributes {
     /**
-    * Define if item group is collapsed/closed. update the icon to change from `up` to `down`. Used by `se-item-group`.
-    */
-    'collapsed'?: boolean;
-    /**
-    * Define if the item should behave as a an collapsible (used by `se-item-group`)
-    */
-    'collapsible'?: boolean;
-    /**
     * Define description of the item. placed under the title of the item.
     */
     'description'?: string;
@@ -652,15 +615,15 @@ export namespace Components {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor'?: "primary" | "secondary";
     /**
     * Define the title of the item
     */
-    'itemTitle'?: string;
+    'item'?: string;
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: 'nav' | 'classic';
+    'mode'?: "nav" | "classic";
     /**
     * Define if the list element should be selected or not
     */
@@ -744,7 +707,7 @@ export namespace Components {
     /**
     * Define the title of the tab
     */
-    'itemTitle': string;
+    'item': string;
   }
   interface SeSidenavItemAttributes extends StencilHTMLAttributes {
     /**
@@ -754,7 +717,7 @@ export namespace Components {
     /**
     * Define the title of the tab
     */
-    'itemTitle'?: string;
+    'item'?: string;
   }
 
   interface SeSidenav {
@@ -833,7 +796,6 @@ declare global {
     'SeIconEcostruxure': Components.SeIconEcostruxure;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeIcon': Components.SeIcon;
-    'SeLabel': Components.SeLabel;
     'SeLink': Components.SeLink;
     'SeListGroup': Components.SeListGroup;
     'SeListItem': Components.SeListItem;
@@ -867,7 +829,6 @@ declare global {
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-icon': Components.SeIconAttributes;
-    'se-label': Components.SeLabelAttributes;
     'se-link': Components.SeLinkAttributes;
     'se-list-group': Components.SeListGroupAttributes;
     'se-list-item': Components.SeListItemAttributes;
@@ -991,12 +952,6 @@ declare global {
     new (): HTMLSeIconElement;
   };
 
-  interface HTMLSeLabelElement extends Components.SeLabel, HTMLStencilElement {}
-  var HTMLSeLabelElement: {
-    prototype: HTMLSeLabelElement;
-    new (): HTMLSeLabelElement;
-  };
-
   interface HTMLSeLinkElement extends Components.SeLink, HTMLStencilElement {}
   var HTMLSeLinkElement: {
     prototype: HTMLSeLinkElement;
@@ -1088,7 +1043,6 @@ declare global {
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-icon': HTMLSeIconElement
-    'se-label': HTMLSeLabelElement
     'se-link': HTMLSeLinkElement
     'se-list-group': HTMLSeListGroupElement
     'se-list-item': HTMLSeListItemElement
@@ -1122,7 +1076,6 @@ declare global {
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-icon': HTMLSeIconElement;
-    'se-label': HTMLSeLabelElement;
     'se-link': HTMLSeLinkElement;
     'se-list-group': HTMLSeListGroupElement;
     'se-list-item': HTMLSeListItemElement;

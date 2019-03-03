@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                          | Type      | Default     |
-| ----------- | ------------ | ------------------------------------ | --------- | ----------- |
-| `active`    | `active`     | Defines if the tab is active or not. | `boolean` | `false`     |
-| `itemTitle` | `item-title` | Define the title of the tab          | `string`  | `undefined` |
+| Property | Attribute | Description                          | Type      | Default     |
+| -------- | --------- | ------------------------------------ | --------- | ----------- |
+| `active` | `active`  | Defines if the tab is active or not. | `boolean` | `false`     |
+| `item`   | `item`    | Define the title of the tab          | `string`  | `undefined` |
 
 
 ----------------------------------------------

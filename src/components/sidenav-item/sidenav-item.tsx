@@ -9,7 +9,7 @@ export class SidenavItemComponent {
   /**
    * Define the title of the tab
    */
-  @Prop() itemTitle: string;
+  @Prop() item: string;
 
   /**
    * Defines if the tab is active or not.

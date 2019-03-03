@@ -1,9 +1,9 @@
 <se-header [appTitle]="appInfo.title">
   <se-sidenav>
-    <se-sidenav-item itemTitle="About">
+    <se-sidenav-item item="About">
       <se-about [appTitle]="appInfo.title" [version]="appInfo.version" [imageUrl]="appInfo.image"></se-about>
     </se-sidenav-item>
-    <se-sidenav-item itemTitle="Sidenav 2">
+    <se-sidenav-item item="Sidenav 2">
       <se-widget mode="fill">
         <se-widget-header>some widget design</se-widget-header>
         <se-widget-content>
@@ -16,7 +16,7 @@
         </se-widget-footer>
       </se-widget>
     </se-sidenav-item>
-    <se-sidenav-item itemTitle="Sidenav 3">
+    <se-sidenav-item [item]="'Sidenav 3'">
       <div>A simple div</div>
     </se-sidenav-item>
   </se-sidenav>

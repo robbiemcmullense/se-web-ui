@@ -36,7 +36,7 @@ export class WidgetComponent {
     this.updateSize();
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.updateSize();
   }
 

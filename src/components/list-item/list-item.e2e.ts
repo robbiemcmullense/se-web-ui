@@ -8,20 +8,20 @@ import { newE2EPage } from '@stencil/core/testing';
 		await page.setContent('<se-list-item></se-list-item>');
 	});
 
-  it('renders', async () => {	
-		const element = await page.find('se-list-item');	
+  it('renders', async () => {
+		const element = await page.find('se-list-item');
     expect(element).toBeTruthy();
   });
 
   it('should have hyrdated and classic classes by default', async () => {
-    const element = await page.find('se-list-item');	
+    const element = await page.find('se-list-item');
     expect(element).toHaveClasses(['classic', 'hydrated']);
   });
 
   it('should render a title and description when provided', async () => {
 		await page.$eval('se-list-item', (elm: any) => {
 
-			elm.itemTitle = 'My List Item';
+			elm.item = 'My List Item';
 			elm.description = 'sample list item';
 		});
 		await page.waitForChanges();

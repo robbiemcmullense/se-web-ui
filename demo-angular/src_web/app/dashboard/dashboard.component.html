@@ -1,17 +1,17 @@
 <se-container position="absolute">
   <se-widget width="250px" mode="fill">
-    <se-widget-header>sites</se-widget-header>
-    <se-widget-content mode="fill">
       <se-list>
         <se-list-item
           *ngFor="let site of sites"
           (click)="changeSite(site.id)"
           [selected]="site.id === selectedSite"
-          [itemTitle]="site.name"
+          item="{{site.name}} ealkjaf adlkjdf adkjaflkj adlfkjadflkj "
+          icon="user_add"
         ></se-list-item
         >,
+        <!-- <se-list-item item-title="Basic Item">
+          </se-list-item> -->
       </se-list>
-    </se-widget-content>
   </se-widget>
   <se-container mode="widget">
     <div fxFlex class="gridAnimation">

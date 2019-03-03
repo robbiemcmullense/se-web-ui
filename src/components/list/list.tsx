@@ -18,6 +18,12 @@ export class ListComponent {
 
   componentDidLoad() {
     this.updateItemMode();
+    // Set first indentation for all list group
+    Array.from(this.el.querySelectorAll(":scope > se-list-group")).forEach(
+      (item: any) => {
+        item.setIndentation(0);
+      }
+    );
   }
 
   private updateItemMode(){

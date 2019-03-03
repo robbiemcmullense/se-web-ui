@@ -14,6 +14,18 @@ $max-width-input: 320px;
     @include align-items(center);
   }
 }
+
+label {
+  width: 30%;
+  padding-top: 4px;
+  text-align: right;
+  @include typology('p-small');
+  padding-right: 7px;
+  span {
+    color: $se-red;
+    padding-left: 3px;
+  }
+}
 ::slotted(se-checkbox) {
   padding-top: 6px;
 }
@@ -48,11 +60,6 @@ $max-width-input: 320px;
   padding-left: 4px;
 }
 
-se-label {
-  width: 30%;
-  padding-top: 4px;
-  text-align: right;
-}
 
 :host([type="checkbox"]) {
 
@@ -61,7 +68,7 @@ se-label {
     justify-content: flex-end;
 	}
 
-	se-label {
+	label {
     text-align: left;
 		width: 100% ;
 		padding-top: 7px;
@@ -76,7 +83,7 @@ se-label {
 
 	}
 
-	se-label {
+	label {
     padding: 0 8px 4px;
     text-align: left;
     line-height: 12px;

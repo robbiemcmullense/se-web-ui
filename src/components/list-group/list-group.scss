@@ -1,21 +1,11 @@
 @import "../../theme/theme";
-// @import "../../theme/animation";
+@import "../list-item/list-item";
 
 :host {
-
+  @include flex-direction(column);
   .group-item{
     overflow: hidden;
     padding-bottom: 1px;
-    // @include animated('fast');
-    // &.collapsed {
-    //   transform-origin: left top;
-    //   animation-name: slideCollapseDown;
-    // }
-    // &.expended {
-    //   transform-origin: left top;
-    //   animation-name: slideCollapseUp;
-    // }
   }
 
 }
-

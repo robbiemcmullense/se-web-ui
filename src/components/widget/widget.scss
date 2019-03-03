@@ -7,11 +7,12 @@
   position: relative;
   @include flex-direction(column);
   @include display-flex();
+  // @include flex();
 
   .widget-body {
     overflow: auto;
     margin: 5px;
-    @include flex(1);
+    @include flex();
     @include display-flex();
     @include flex-direction(column);
   }

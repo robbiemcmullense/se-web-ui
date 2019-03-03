@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Prop, Element } from "@stencil/core";
 
 @Component({
   tag: "se-icon",
@@ -6,6 +6,7 @@ import { Component, Prop } from "@stencil/core";
   shadow: true
 })
 export class IconComponent {
+  @Element() el: HTMLElement;
 
   /**
    * Optional property to define if the icon should act as a button (clickable).
@@ -22,9 +23,13 @@ export class IconComponent {
    */
   @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary';
 
+  componentWillLoad() {
+    this.el.classList.add(this.size);
+  }
+
   hostData() {
     return {
-      class: [this.size, this.color, this.mode].join(" ")
+      class: [this.color, this.mode].join(" ")
     };
   }
 

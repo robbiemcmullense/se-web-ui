@@ -6,7 +6,7 @@
 
 }
 button {
-  padding: 0 16px;
+  padding: 0 $spacing;
   height: 32px;
   margin: $spacing-small;
   border: none;
@@ -18,14 +18,6 @@ button {
   @include align-items(center);
   @include ellipsis();
   @include justify-content(center);
-
-  .text {
-    font-weight: 300;
-    @include typology('p')
-  }
-  se-icon {
-    margin: 0 5px;
-  }
   &[disabled] {
     cursor: default;
     opacity: 0.26;
@@ -130,14 +122,19 @@ button {
     }
   }
 
-  &.login, &.signup{
-    height: 32px;
-    font-size: 18px;
-    // padding: 0 50px;
-    font-size: 18px;
-    line-height: 22px;
-    width: 100%;
-    margin-top: $spacing;
+
+
+  .text {
+    font-weight: 300;
+    @include typology('p');
+    padding: 0 $spacing;
+  }
+  .se-icon {
+    margin: 0;
+    display: inline-block;
+    font-family: "se-icon";
+    font-size: 22px;
+    font-display: block;
   }
 
   // &:focus{
@@ -145,24 +142,32 @@ button {
   //   @include background-color("selected");
   // }
 }
+:host(.login, .logout){
+  @include display-flex();
+  button.login, button.signup{
+    height: 32px;
+    font-size: 18px;
+    // padding: 0 50px;
+    font-size: 18px;
+    line-height: 22px;
+    width: 100%;
+    margin-top: $spacing;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 
 :host(.grouped) {
   button {
     margin: $spacing-small 0;
     height: 24px;
-    padding: 0 14px;
+    padding: 0 $spacing;
     font-size: 11px;
     line-height: 13px;
     border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;
   }
 }
-:host(.grouped.hasChild) {
-  button {
-    padding: 0 14px !important;
-  }
-}
-
 :host(.grouped:first-child) {
   button {
     margin-left: $spacing-small;
@@ -183,15 +188,4 @@ button {
 :host(.hasIcon) {
   top: 3px;
   position: relative;
-  button {
-    se-icon {
-      font-size: 22px;
-    }
-    padding: 0;
-  }
-}
-:host(.hasIcon.hasChild) {
-  .text {
-    padding-right: 16px;
-  }
 }
