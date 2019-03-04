@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element, Method, State } from "@stencil/core";
+import { Component, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -54,25 +54,21 @@ export class ListGroupComponent {
   /**
    * Define the group indentation to add paddings to the list item (used when multiple list group)
    */
-  @State() indentation: number = 0;
+  @Prop() indentation: number = 0;
 
-  /**
-   * Indicate if the button is part of a group of buttons within the `se-buttons` component.
-   */
-  @Method()
-  setIndentation(indentation: number) {
-    this.indentation = indentation;
-    // Only impact the direct child.
-    Array.from(
-      this.el.querySelectorAll(":scope > se-list-item, :scope > se-list-group")
-    ).forEach((item: any) => {
-      item.setIndentation(indentation + 1);
-    });
-  }
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
   @Prop() mode: "nav" | "classic" = "classic";
+
+
+  componentWillLoad() {
+    Array.from(
+      this.el.querySelectorAll(":scope > se-list-item, :scope > se-list-group")
+    ).forEach((item: any) => {
+      item.indentation = this.indentation + 1;
+    });
+  }
 
   private toggleCollapse() {
     this.collapsed = !this.collapsed;

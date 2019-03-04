@@ -526,6 +526,10 @@ export namespace Components {
     */
     'iconColor': "primary" | "secondary";
     /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation': number;
+    /**
     * Define the title of the item
     */
     'item': string;
@@ -537,10 +541,6 @@ export namespace Components {
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
     'selected': boolean;
-    /**
-    * Indicate if the button is part of a group of buttons within the `se-buttons` component.
-    */
-    'setIndentation': (indentation: number) => void;
   }
   interface SeListGroupAttributes extends StencilHTMLAttributes {
     /**
@@ -559,6 +559,10 @@ export namespace Components {
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
     'iconColor'?: "primary" | "secondary";
+    /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation'?: number;
     /**
     * Define the title of the item
     */
@@ -587,6 +591,10 @@ export namespace Components {
     */
     'iconColor': "primary" | "secondary";
     /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation': number;
+    /**
     * Define the title of the item
     */
     'item': string;
@@ -598,10 +606,6 @@ export namespace Components {
     * Define if the list element should be selected or not
     */
     'selected': boolean;
-    /**
-    * Indicate if the button is part of a group of buttons within the `se-buttons` component.
-    */
-    'setIndentation': (indentation: number) => void;
   }
   interface SeListItemAttributes extends StencilHTMLAttributes {
     /**
@@ -616,6 +620,10 @@ export namespace Components {
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
     'iconColor'?: "primary" | "secondary";
+    /**
+    * Define the group indentation to add paddings to the list item (used when multiple list group)
+    */
+    'indentation'?: number;
     /**
     * Define the title of the item
     */

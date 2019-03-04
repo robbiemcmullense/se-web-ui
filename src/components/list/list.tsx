@@ -16,16 +16,6 @@ export class ListComponent {
     this.updateItemMode()
   }
 
-  componentDidLoad() {
-    this.updateItemMode();
-    // Set first indentation for all list group
-    Array.from(this.el.querySelectorAll(":scope > se-list-group")).forEach(
-      (item: any) => {
-        item.setIndentation(0);
-      }
-    );
-  }
-
   private updateItemMode(){
     Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
       item.mode = this.mode;

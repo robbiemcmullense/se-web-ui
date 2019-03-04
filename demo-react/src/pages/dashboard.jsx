@@ -13,69 +13,69 @@ class Dashboard extends Component {
           <se-widget-content mode="fill">
             <se-list>
               <se-list-item
-                item-title="my item 1"
+                item="my item 1"
                 selected="false"
                 icon="user_standard"
                 icon-color="primary"
                 description="I have a description"
               />
               <se-list-item
-                item-title="my item 2 no description with a long item-title"
+                item="my item 2 no description with a long item"
                 icon="user_standard"
                 icon-color="primary"
               />
               <se-list-item
-                item-title="my item 3 no icon"
+                item="my item 3 no icon"
                 description="I'm here too"
               />
-              <se-list-item item-title="I'm the selected one!" selected="false" />
-              <se-list-item item-title="Basic Item" icon="action_settings2" />
+              <se-list-item item="I'm the selected one!" selected="false" />
+              <se-list-item item="Basic Item" icon="action_settings2" />
               <se-list-group
-                item-title="I have a selected child"
+                item="I have a selected child"
                 icon="action_settings2"
                 icon-color="primary"
                 description="I'm selected if collapsed"
               >
                 <se-list-item
-                  item-title="my item 1"
+                  item="my item 1"
                   selected="false"
                   icon="action_settings2"
                   icon-color="primary"
                   description="I have a description"
                 />
                 <se-list-item
-                  item-title="my item 2 no description"
+                  item="my item 2 no description"
                   icon="action_settings2"
                   icon-color="primary"
                 />
                 <se-list-item
-                  item-title="my item 3 no icon"
+                  item="my item 3 no icon"
                   icon="action_settings2"
                   description="I'm here too"
                 />
                 <se-list-item
-                  item-title="I'm the selected one!"
+                  item="I'm the selected one!"
                   icon="action_settings2"
                   selected="false"
                 />
                 <se-list-item
-                  item-title="Basic Item"
+                  item="Basic Item"
                   icon="action_settings2"
                   selected="true"
                 />
               </se-list-group>
-              <se-list-group item-title="simple collapse">
-                <se-list-item item-title="No icon, not selected" selected="false" />
+              <se-list-group item="simple collapse">
+                <se-list-item item="No icon, not selected" selected="false" />
                 <se-list-item
-                  item-title="my item 2 no description"
+                  item="my item 2 no description"
                   icon="action_settings2"
                   icon-color="primary"
                 />
                 <se-list-item
-                  item-title="my item 3 no icon"
+                  item="my item 3 no icon"
                   description="I'm here too"
                 />
-                <se-list-item item-title="Basic Item" />
+                <se-list-item item="Basic Item" />
               </se-list-group>
             </se-list>
           </se-widget-content>
