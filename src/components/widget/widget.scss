@@ -7,17 +7,27 @@
   position: relative;
   @include flex-direction(column);
   @include display-flex();
+  // @include flex();
 
   .widget-body {
-    overflow: hidden;
-    background: white;
+    overflow: auto;
     margin: 5px;
-    @include flex(1);
+    @include flex();
     @include display-flex();
     @include flex-direction(column);
   }
 }
 
+:host(.alternative){
+  .widget-body {
+    @include background-color('alternative')
+  }
+}
+:host(.standard){
+  .widget-body {
+    @include background-color('standard')
+  }
+}
 :host(.fill){
   .widget-body {
     margin: 0;

@@ -1,4 +1,6 @@
 import { Component, Prop, Element, State } from "@stencil/core";
+import { getFullTitle } from "../../utils/utils";
+import { AppInfo } from "../appInfo";
 
 @Component({
   tag: "se-header",
@@ -9,12 +11,12 @@ export class HeaderComponent {
   /**
    * Title of the application
    */
-  @Prop() appTitle: string;
+  @Prop() appTitle: string = "";
 
   /**
    * domain define the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed
    */
-  @Prop() domain: string = "ecostruxure";
+  @Prop() domain: string = AppInfo.domain;
 
   /**
    * domain define project name (usefull for small project) that can be used for versioning as well. It will be placed at the right side of the title.
@@ -34,56 +36,42 @@ export class HeaderComponent {
     this.elLeftNav.toggle();
   }
 
-  getFullTitle() {
-    const titleArray = this.appTitle.split(" ");
-    const last = titleArray.pop();
-    const first = titleArray.join(" ");
-    return {
-      first,
-      last
-    };
-  }
-
   render() {
-    const { first, last } = this.getFullTitle();
+    const title = getFullTitle(this.appTitle);
     let domain;
-    if ( this.domain.toLowerCase() === `ecostruxure`) {
-      domain = <se-icon-ecostruxure class="header-title-type" />
-    } else if (this.domain.toLowerCase() !== 'none') {
-      domain = <span class="header-title-type">{this.domain}</span>
+    if (this.domain.toLowerCase() === `ecostruxure`) {
+      domain = <se-icon-ecostruxure class="header-title-type" />;
+    } else if (this.domain.toLowerCase() !== "none") {
+      domain = <span class="header-title-type">{this.domain}</span>;
     }
-    return (
-      <header class="header-container">
-        <div class="d-flex">
-          {this.hasMenu && (
-            <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
-              <se-icon size="large" color="primary">burger_menu</se-icon>
-            </span>
-          )}
-          <div class="d-flex-column">
-            {domain}
-            <h1 class="header-title">
-              <span class="font-regular">{first}</span>
-              <span class="font-lighter">&nbsp;{last}</span>
-            </h1>
-          </div>
-          {this.project && [
-              <span class="line"></span>,
-              <span class="project-section">{this.project}</span>
-            ]}
+    return [
+      <div class="d-flex">
+        {this.hasMenu && (
+          <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
+            <se-icon size="large" color="primary">
+              burger_menu
+            </se-icon>
+          </span>
+        )}
+        <div class="d-flex-column header-title-wrapper">
+          {domain}
+          <h1 class="header-title no-margin">
+            <span>{title.first}</span>
+            <span class="light">&nbsp;{title.last}</span>
+          </h1>
         </div>
-
-        <div id="fill-space center-header-container">
-          <slot />
-        </div>
-        <div class="padding-container user-icon-wrapper">
-          <slot name="user" />
-        </div>
-        <div class="padding-container d-flex">
-          <slot name="end" />
-          <se-icon-schneider class="header-title-type" />
-        </div>
-      </header>
-    );
+        {this.project && <span class="project-section">{this.project}</span>}
+      </div>,
+      <div id="fill-space center-header-container">
+        <slot />
+      </div>,
+      <div class="padding-container user-icon-wrapper">
+        <slot name="user" />
+      </div>,
+      <div class="padding-container d-flex">
+        <slot name="end" />
+        <se-icon-schneider class="header-title-type" />
+      </div>
+    ];
   }
 }

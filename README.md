@@ -1,4 +1,4 @@
-# SE UI Web Components Library
+# SE WEB-UI library
 
 The purpose of this project is to create a common UI Library that will assist any developer in quickly developing Schneider Electric design elements thanks to native [custom elements](https://developers.google.com/web/fundamentals/web-components/customelements). Custom elements can be used with any coding framework including pure JavaScript, jQuery, React, Vue or Angular.
 
@@ -40,10 +40,10 @@ You can test all of these components with this [Online Template Editor](https://
 | [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
 | [ ]  | Card-header    |                                                                                                                            |
 | [ ]  | Card-content   |                                                                                                                            |
-| [ ]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
-| [ ]  | Dialog-header  |                                                                                                                            |
-| [ ]  | Dialog-content |                                                                                                                            |
-| [ ]  | Dialog-footer  |                                                                                                                            |
+| [x]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
+| [x]  | Dialog-header  |                                                                                                                            |
+| [x]  | Dialog-content |                                                                                                                            |
+| [x]  | Dialog-footer  |                                                                                                                            |
 | [x]  | sidenav        | ( fly from left. should open at the `se-app` level with css animation                                                      |
 | [x]  | sidenav-item   | selection of the left element with it's content (slot)                                                                     |
 | [x]  | List           | classic                                                                                                                    |
@@ -53,8 +53,8 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | Link           | anchor element that redirects a user to another web page                                                                   |
 | [ ]  | Tab            |                                                                                                                            |
 | [ ]  | Tab-item       |                                                                                                                            |
-| [ ]  | Brand          | Authentication page with a slot as content                                                                                 |
-| [ ]  | About          | About page that will be used in the menu section                                                                           |
+| [x]  | Brand          | Authentication page with a slot as content                                                                                 |
+| [x]  | About          | About page that will be used in the menu section                                                                           |
 | [ ]  | Snackbar       | Design only. No info about how to show it from service yet                                                                 |
 | [ ]  | Pagination     |                                                                                                                            |
 | [ ]  | Datepicker     |                                                                                                                            |
@@ -64,10 +64,10 @@ You can test all of these components with this [Online Template Editor](https://
 
 ```shell
 # With npm
-npm install @se/ui-web-components
+npm install @se/web-ui
 
 # with yarn
-yarn add @se/ui-web-components
+yarn add @se/web-ui
 ```
 
 ## Capabilities

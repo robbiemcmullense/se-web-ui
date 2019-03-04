@@ -5,10 +5,10 @@ describe('LinkComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-link link="test link" url="testURL"></se-link>');
+    await page.setContent('<se-link url="testURL">test link</se-link>');
     element = await page.find('se-link');
   });
-  
+
   it('renders', async() => {
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
@@ -30,7 +30,7 @@ describe('LinkComponent', () => {
 describe('LinkComponent internal DOM', () => {
   it('renders with text equal to the link property', async() => {
     const page = await newE2EPage();
-    await page.setContent('<se-link link="test link"></se-link>');   
+    await page.setContent('<se-link>test link</se-link>');
     const element = await page.find('se-link >>> a');
     expect(element.innerText).toEqual('test link');
   });

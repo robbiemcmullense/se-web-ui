@@ -1,5 +1,5 @@
 {
-  "name": "@se/ui-web-components",
+  "name": "@se/web-ui",
   "version": "0.0.2",
   "description": "a fake package.json for local reference use only",
   "module": "esm/index.js",

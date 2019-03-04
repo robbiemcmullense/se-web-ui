@@ -1,33 +1,23 @@
-<se-header app-title="React Advisor">
-    <se-sidenav>
-        <se-sidenav-item item-title="sidenav  long title">
-          <se-widget mode="fill">
-            <se-widget-header>some title</se-widget-header>
-            <se-widget-content>
-              <se-chip id="se-chip" value="Chip 01"></se-chip>
-            </se-widget-content>
-            <se-widget-footer>
-              <div slot="end">
-                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
-              </div>
-            </se-widget-footer>
-          </se-widget>
-        </se-sidenav-item>
-        <se-sidenav-item item-title="sidenav 2">
-          <se-widget mode="fill">
-            <se-widget-header>some widget design</se-widget-header>
-            <se-widget-content>
-              <se-chip id="se-chip" value="Chip 01"></se-chip>
-            </se-widget-content>
-            <se-widget-footer>
-              <div slot="end">
-                  <se-button mode="raised" color="primary">RaisedGreen</se-button>
-              </div>
-            </se-widget-footer>
-          </se-widget>
-        </se-sidenav-item>
-        <se-sidenav-item item-title="sidenav 3">
-            <div>A simple div</div>
-        </se-sidenav-item>
-      </se-sidenav>
+<se-header [appTitle]="appInfo.title">
+  <se-sidenav>
+    <se-sidenav-item item="About">
+      <se-about [appTitle]="appInfo.title" [version]="appInfo.version" [imageUrl]="appInfo.image"></se-about>
+    </se-sidenav-item>
+    <se-sidenav-item item="Sidenav 2">
+      <se-widget mode="fill">
+        <se-widget-header>some widget design</se-widget-header>
+        <se-widget-content>
+          <se-chip id="se-chip" value="Chip 01"></se-chip>
+        </se-widget-content>
+        <se-widget-footer>
+          <div slot="end">
+            <se-button mode="raised" color="primary">RaisedGreen</se-button>
+          </div>
+        </se-widget-footer>
+      </se-widget>
+    </se-sidenav-item>
+    <se-sidenav-item [item]="'Sidenav 3'">
+      <div>A simple div</div>
+    </se-sidenav-item>
+  </se-sidenav>
 </se-header>

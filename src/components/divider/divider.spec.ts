@@ -16,6 +16,6 @@ describe('divider', () => {
   });
 
   it('should be a light color by default', () => {
-    expect(divider.color).toEqual('light');
+    expect(divider.color).toEqual('standard');
   });
 });

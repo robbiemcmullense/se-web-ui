@@ -6,7 +6,7 @@
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { defineCustomElements as defineSeComponent } from '@se/ui-web-components/loader'; // "@se/ui-web-components/core/loader"
+import { defineCustomElements as defineSeComponent } from '@se/web-ui/loader'; // "@se/web-ui/core/loader"
 
 import { AppModule } from './app/app.module';
 import { environment } from '@env/environment';

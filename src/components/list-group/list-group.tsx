@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element } from "@stencil/core";
+import { Component, Prop, Watch, Element, Method, State } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -9,19 +9,18 @@ export class ListGroupComponent {
   @Element() el: HTMLElement;
 
   /**
-   * Define if the list element should be selected or not
+   * Define the title of the item
    */
-  @Prop() itemTitle: string;
+  @Prop() item: string;
+  /**
+   * Define description of the item. placed under the title of the item.
+   */
+  @Prop() description: string;
 
   /**
-   * Define if the list element should be selected or not
+   * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
    */
-  @Prop() selected: boolean;
-
-  /**
-   * Define if item group is collapsed/closed.
-   */
-  @Prop({mutable: true}) collapsed: boolean;
+  @Prop({ mutable: true }) selected: boolean;
 
   /**
    * Place an icon on the left side of the item list.
@@ -29,66 +28,90 @@ export class ListGroupComponent {
   @Prop() icon: string;
 
   /**
-   * Define description of the item. placed under the title of the item.
+   * Optional property to define the color of the icon. The default color will be inherited from it's parent.
    */
-  @Prop() description: string;
+  @Prop() iconColor: "primary" | "secondary";
 
   /**
-   * Optional property to define the color of the icon. The default color will be inherited from it's parent.
-   * `primary` is a green color.
-   * `accent` is a blue color.
-   * `warn` is an orange color.
-   * `error` is a red color.
+   * Define if item group is collapsed/closed. a `se-list-group` cannot be selected from the outside
    */
-  @Prop() iconColor: "primary" | "accent" | "warn" | "error";
-
+  @Prop({ mutable: true }) collapsed: boolean = false;
+  @Watch("collapsed") collapsedChanged() {
+    if (!this.collapsed) {
+      this.selected = false;
+    } else {
+      let hasSelectedChild = false;
+      Array.from(
+        this.el.querySelectorAll("se-list-item, se-list-group")
+      ).forEach((item: any) => {
+        if (item.selected) {
+          hasSelectedChild = true;
+        }
+      });
+      this.selected = hasSelectedChild;
+    }
+  }
   /**
    * Define the group indentation to add paddings to the list item (used when multiple list group)
    */
-  @Prop() indentation: number = 0;
+  @State() indentation: number = 0;
 
+  /**
+   * Indicate if the button is part of a group of buttons within the `se-buttons` component.
+   */
+  @Method()
+  setIndentation(indentation: number) {
+    this.indentation = indentation;
+    // Only impact the direct child.
+    Array.from(
+      this.el.querySelectorAll(":scope > se-list-item, :scope > se-list-group")
+    ).forEach((item: any) => {
+      item.setIndentation(indentation + 1);
+    });
+  }
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
   @Prop() mode: "nav" | "classic" = "classic";
-  @Watch("mode") PropDidChange() {
-    this.updateItemMode();
-  }
-
-  componentDidLoad() {
-    this.updateItemMode();
-  }
-
-  private updateItemMode(){
-    Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
-      item.mode = this.mode;
-      item.indentation = this.indentation + 1;
-    });
-  }
 
   private toggleCollapse() {
-    console.log('collapse toggle')
     this.collapsed = !this.collapsed;
   }
 
+  hostData() {
+    return {
+      class: [this.selected && "selected", this.mode].join(" ")
+    };
+  }
+
   render() {
-    const collapsible = true;
+    // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return [
-      <se-list-item
-        item-title={this.itemTitle}
-        selected={this.selected}
-        icon={this.icon}
-        icon-color={this.iconColor}
-        mode={this.mode}
-        description={this.description}
-        indentation={this.indentation}
-        collapsible={collapsible}
-        collapsed={this.collapsed}
+      <button
+        style={{ paddingLeft: `${20 * this.indentation}px` }}
         onClick={() => this.toggleCollapse()}
-      />,
-      <div class={['group-item'].join(' ')}>
-        {!this.collapsed && <slot />}
-      </div>
+      >
+        {this.mode === "nav" && this.selected && <div class="selectedBar" />}
+        {!!this.icon && (
+          <div class="nav-icon">
+            <span class={["se-icon", this.iconColor].join(" ")}>
+              {this.icon}
+            </span>
+          </div>
+        )}
+        <div class="nav-content">
+          <div>{this.item}</div>
+          <small> {this.description}</small>
+        </div>
+        <span class="se-icon medium">
+          {this.collapsed ? "arrow2_down" : "arrow2_up"}
+        </span>
+      </button>,
+      !this.collapsed && (
+        <div class="group-item">
+          <slot />
+        </div>
+      )
     ];
   }
 }

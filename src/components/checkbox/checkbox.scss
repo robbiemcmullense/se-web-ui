@@ -1,10 +1,11 @@
 @import "../../theme/theme";
 
 :host {
+  @include align-items(center);
 	.checkbox-container {
 		position: relative;
 		padding-left: 20px;
-    font-size: 18px;
+    @include typology('p-small');
     margin: $spacing;
 
 		-webkit-user-select: none;
@@ -15,26 +16,19 @@
 			opacity: 0.26;
 		}
 		input {
-			position: absolute;
 			height: 0;
 			width: 0;
 			opacity: 0;
 			&:checked ~ .checkmark {
 				&[data-color="primary"] {
-					@include background-color-property($primary, 'primary');
-					border: 1px solid $primary;
+					@include background-color('primary');
+          border: 1px solid;
+          @include border-color('primary')
 				}
-				&[data-color="accent"] {
-					@include background-color-property($accent, 'accent');
-					border: 1px solid $accent;
-				}
-				&[data-color="warn"] {
-					@include background-color-property($warn, 'warn');
-					border: 1px solid $warn;
-				}
-				&[data-color="error"] {
-					@include background-color-property($error, 'error');
-					border: 1px solid $error;
+				&[data-color="secondary"] {
+					@include background-color('secondary');
+          border: 1px solid;
+          @include border-color('primary')
 				}
 				&:after {
 					display: block;
@@ -43,7 +37,7 @@
 		}
 		.checkmark {
 			position: absolute;
-			top: 5px;
+			top: 0;
 			left: 0;
 			height: 12px;
 			width: 12px;

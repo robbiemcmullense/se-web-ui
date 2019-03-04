@@ -1,164 +1,191 @@
 @import "../../theme/theme";
 
-:host(.active) {
-  button[color="primary"], button[color="primary"]:focus {
-    background-color: $se-dark-green;
-  }
-  button[color="accent"], button[color="accent"]:focus {
-    background-color: $se-dark-sky-blue;
-  }
-  button[color="warn"], button[color="warn"]:focus {
-    background-color: darken($warn, 10);
-  }
-  button[color="error"], button[color="error"]:focus {
-    background-color: $se-fuchsia-red;
-  }
-  button[color="light"], button[color="light"]:focus {
-    color: $se-white;
-    background-color: $se-dark-grey;
-  }
-
+:host{
+  min-width: 0;
+  display: inline-flex;
 
 }
-
 button {
-  color: $se-anthracite-grey;
-  background-color: $se-ultra-light-grey-1;
-  padding: 0 34px;
+  padding: 0 $spacing;
   height: 32px;
-  margin: $spacing;
+  margin: $spacing-small;
   border: none;
-  font-size: 14px;
   border-radius: $border-radius;
   outline: none;
-  line-height: 17px;
-  font-weight: 300;
-  @include align-items(center);
   cursor: pointer;
-  @include button-active-properties($background, $se-dark-grey, $se-white);
-  se-icon {
-    margin: 0 5px;
-  }
-  &[color="primary"] {
-    @include color-property($primary-contrast, 'primary-contrast');
-    @include background-color-property($primary, 'primary');
-    @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
-  }
-  &[color="error"] {
-    @include color-property($warn-contrast, 'warn-contrast');
-    @include background-color-property($error, 'error');
-    @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
-  }
-  &[color="accent"] {
-    @include color-property($accent-contrast, 'accent-contrast');
-    @include background-color-property($accent, 'error');
-    @include button-active-properties($se-fuchsia-red, $se-dark-grey, $se-white);
-  }
-  &[color="warn"] {
-    @include color-property($warn-contrast, 'warn-contrast');
-    @include background-color-property($warn, 'warn');
-    @include button-active-properties($se-sunflower-yellow, $se-dark-grey, $se-white);
-  }
 
-  &[data-mode="raised"] {
-    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.3);
-  }
-
-  &[data-mode="outline"] {
-    background-color: transparent;
-    @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-    border: 1px solid $se-anthracite-grey;
-  }
-
-  &[data-mode="text"] {
-    background-color: transparent;
-    @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-  }
-
-  &[data-mode="text"][color="primary"] {
-    @include color-property($primary, 'primary');
-    @include button-active-properties($se-ultra-light-grey-2, $se-dark-grey, $se-white);
-  }
-
-  &[data-mode="login"] {
-    height: 32px;
-    padding: 0 50px;
-    font-size: 18px;
-    line-height: 22px;
-    color: $se-white;
-    @include background-color-property($primary, 'primary');
-    @include button-active-properties($se-medium-green, $se-dark-grey, $se-white);
-  }
-
-  &[data-mode="signup"] {
-    height: 32px;
-    padding: 0 40px;
-    font-size: 18px;
-    line-height: 22px;
-    color: $se-white;
-    @include background-color-property($accent, 'accent');
-    @include button-active-properties($se-dark-sky-blue, $se-dark-grey, $se-white);
-  }
-
+  @include display-flex();
+  @include align-items(center);
+  @include ellipsis();
+  @include justify-content(center);
   &[disabled] {
     cursor: default;
     opacity: 0.26;
   }
-}
-:host(.grouped) {
-  button {
-    margin: $spacing 0;
-    height: 24px;
-    padding: 0 14px ;
-    font-size: 11px;
-    line-height: 13px;
-    border-left: 1px solid $se-anthracite-grey;
+
+  &.raised {
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
   }
+  &.inherit {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  &.standard {
+    @include color("standard-contrast");
+    @include background-color("standard");
+    &:hover {
+      @include color("hover-standard-contrast");
+      @include background-color("hover-standard");
+    }
+    &.outline {
+      border: 1px solid;
+      @include border-color("standard-contrast");
+      background-color: transparent;
+      &:hover {
+        @include background-color("standard", 0.2);
+
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+
+
+  &.alternative {
+    @include color("alternative-contrast");
+    @include background-color("alternative");
+    &:hover {
+      @include color("hover-alternative-contrast");
+      @include background-color("hover-alternative");
+    }
+    &.outline {
+      border: 1px solid;
+      background-color: transparent;
+      @include color('alternative');
+      @include border-color("alternative");
+      &:hover {
+        @include background-color("alternative-contrast", 0.2);
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+
+
+  &.primary {
+    @include color("primary-contrast");
+    @include background-color("primary");
+
+    &:hover {
+      @include color("hover-primary-contrast");
+      @include background-color("hover-primary");
+    }
+    &.outline {
+      border: 1px solid;
+      background-color: transparent;
+      @include color("primary");
+      @include border-color("primary");
+      &:hover {
+        @include background-color("primary", 0.2);
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+  &.secondary {
+    @include color("secondary-contrast");
+    @include background-color("secondary");
+
+    &:hover {
+      @include color("hover-secondary-contrast");
+      @include background-color("hover-secondary");
+    }
+    &.outline {
+      background-color: transparent;
+      border: 1px solid;
+      @include color("secondary");
+      @include border-color("secondary");
+      &:hover {
+        @include background-color("secondary", 0.2);
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+
+
+
+  .text {
+    font-weight: 300;
+    @include typology('p');
+    padding: 0 $spacing;
+  }
+  .se-icon {
+    margin: 0;
+    display: inline-block;
+    font-family: "se-icon";
+    font-size: 22px;
+    font-display: block;
+  }
+
+  // &:focus{
+  //   @include color("selected-contrast");
+  //   @include background-color("selected");
+  // }
 }
-:host(.grouped.hasChild) {
-  button {
-    padding: 0 14px !important;
+:host(.login, .logout){
+  @include display-flex();
+  button.login, button.signup{
+    height: 32px;
+    font-size: 18px;
+    // padding: 0 50px;
+    font-size: 18px;
+    line-height: 22px;
+    width: 100%;
+    margin-top: $spacing;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
+:host(.grouped) {
+  button {
+    margin: $spacing-small 0;
+    height: 24px;
+    padding: 0 $spacing;
+    font-size: 11px;
+    line-height: 13px;
+    border-radius: 0;
+    border-left: 1px solid $se-anthracite-grey;
+  }
+}
 :host(.grouped:first-child) {
   button {
-    margin-left: $spacing;
+    margin-left: $spacing-small;
     border-left: none;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
   }
 }
 
 :host(.grouped:last-child) {
   button {
-    margin-right: $spacing;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
-}
-
-:host(.disabled) {
-  button {
-    cursor: default;
-    opacity: 0.26;
-    &:hover, &:focus {
-      background-color: $se-ultra-light-grey-1;
-      color: inherit;
-    }
+    margin-right: $spacing-small;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
   }
 }
 
 :host(.hasIcon) {
   top: 3px;
   position: relative;
-  button {
-    font-size: 20px;
-    padding: 0;
-  }
-}
-:host(.hasChild) {
-  button {
-     padding: 0px 34px;
-  }
 }

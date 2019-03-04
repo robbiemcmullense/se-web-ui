@@ -11,10 +11,6 @@ describe('list-item', () => {
     expect(listItem).toBeTruthy();
   });
 
-  it('should have an indentation value of 0 by default', () => {
-    expect(listItem.indentation).toEqual(0);
-  });
-
   it('should have a collapsible property set to false by default', () => {
     expect(listItem.collapsible).toBeFalsy();
   });

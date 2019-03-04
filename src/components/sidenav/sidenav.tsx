@@ -84,7 +84,7 @@ export class SidenavComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item onClick={() => this.setActive(item)} selected={item.active} item-title={item.itemTitle}></se-list-item>,
+        <se-list-item onClick={() => this.setActive(item)} selected={item.active} item={item.item}></se-list-item>,
       ]
     })
   }
@@ -111,9 +111,9 @@ export class SidenavComponent {
               <img class="image-logo" alt="Schneider electric logo"/>
             </div>
             <se-divider mode="vertical"></se-divider>
-            <div class="flex">
-                <slot />
-            </div>
+            <se-widget mode="fill">
+              <slot />
+            </se-widget>
           </div>
       </div>
     ]

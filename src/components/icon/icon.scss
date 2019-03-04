@@ -1,13 +1,12 @@
 @import "../../theme/theme";
 
 :host {
-  font-family: 'se-icon';
+  display: inline-block;
+  font-family: "se-icon";
   speak: none;
   font-style: normal;
-  line-height: 1;
   position: relative;
-  top: 1px;
-  display: inline-block;
+  top: 0;
   font-size: 24px;
   font-weight: normal;
   font-variant: normal;
@@ -30,23 +29,72 @@
 }
 :host(.medium) {
   font-size: 36px;
+  margin-bottom: -5px;
+  margin-top: -5px;
 }
 :host(.large) {
   font-size: 63px;
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+:host(.button) {
+  cursor: pointer;
+  border-radius: $border-radius;
 }
 
+:host(.button.selected) {
+  @include color("selected-contrast");
+  @include background-color("selected");
+}
+
+// Standard color
+:host(.standard) {
+  @include color("standard");
+}
+:host(.standard.button) {
+  @include color("standard-contrast");
+  @include background-color("standard");
+}
+:host(.standard.button:hover) {
+  @include color("hover-standard-contrast");
+  @include background-color("hover-standard");
+}
+
+// Alternative color
+:host(.alternative) {
+  @include color("alternative");
+}
+:host(.alternative.button) {
+  @include color("alternative-contrast");
+  @include background-color("alternative");
+}
+:host(.alternative.button:hover) {
+  @include color("hover-alternative-contrast");
+  @include background-color("hover-alternative");
+}
+
+// Primary color
 :host(.primary) {
-  @include color-property($primary, "primary");
+  @include color("primary");
+}
+:host(.primary.button) {
+  @include color("primary-contrast");
+  @include background-color("primary");
+}
+:host(.primary.button:hover) {
+  @include color("hover-primary-contrast");
+  @include background-color("hover-primary");
 }
 
-:host(.accent) {
-  @include color-property($accent, "accent");
+// Secondary color
+:host(.secondary) {
+  @include color("secondary");
 }
-
-:host(.warn) {
-  @include color-property($warn, "warn");
+:host(.secondary.button) {
+  @include color("secondary-contrast");
+  @include background-color("secondary");
 }
-
-:host(.error) {
-  @include color-property($error, "error");
+:host(.secondary.button:hover) {
+  @include color("hover-secondary-contrast");
+  @include background-color("hover-secondary");
 }

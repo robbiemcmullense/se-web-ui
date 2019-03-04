@@ -8,12 +8,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "react-scripts run lint",
-    "upgrade:web": "yarn upgrade @se/ui-web-components"
+    "upgrade:web": "yarn upgrade @se/web-ui"
   },
   "dependencies": {
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.0.4",
-    "@se/ui-web-components": "file:../core",
+    "@se/web-ui": "file:../core",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-router-dom": "^4.3.1",

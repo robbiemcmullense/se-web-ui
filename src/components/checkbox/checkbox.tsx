@@ -12,13 +12,13 @@ export class CheckboxComponent {
    */
   @Prop() value: string;
   /**
-   * Defines the background color of the button.
-   * `primary` is a green color and is the default value.
-   * `accent` is a blue color.
-   * `warn` is an orange color.
-   * `error` is a red color.
+   * The label of the checkbox that will be attached to the box
    */
-  @Prop() color: 'primary' | 'accent' | 'warn' | 'error' = 'primary';
+  @Prop() label: string;
+  /**
+   * Defines the color of the checkbox.
+   */
+  @Prop() color: 'primary' | 'secondary' = 'primary';
   /**
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
@@ -38,7 +38,7 @@ export class CheckboxComponent {
   render() {
     return (
       <label class="checkbox-container" data-disabled={this.disabled}>
-        <slot></slot>
+        {this.label}
         <input type="checkbox" disabled={this.disabled}/>
         <span class="checkmark" data-color={this.color} onClick={() => this.emitEvent()}></span>
       </label>

@@ -1,12 +1,18 @@
 @import "../../theme/theme";
 
  :host {
-	color: $primary;
-	color: var(--primary, $primary);
   height: auto;
   font-size: 12px !important;
+  color: inherit;
+  fill: currentColor;
 
- 	::ng-deep svg {
-		padding-left: 2px;
-	}
+ 	// ::ng-deep svg {
+	// 	padding-left: 2px;
+	// }
+}
+:host(.medium) {
+  svg {
+    width: 144px;
+    height: 27px;
+  }
 }

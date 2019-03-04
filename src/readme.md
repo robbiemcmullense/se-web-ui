@@ -12,24 +12,33 @@ The style of the app is owned by the `se-app` component. this insure that we can
 
 CSS variables will let any developer update programmatically control the theme of the app after the app has been built. It's important that each component created follow and use the same variable convention
 
-- `--primary` : default: $primary, the main color of the app (green)
-- `--primary-contrast` : default: $primary-contrast, the contrast color of the main color (white), if the `--primary` color is to light, then a darker color need to be used a contrast.
-- `--accent` : default: $accent, the accent color of the app (blue)
-- `--accent-contrast` : default: $accent-contrast, contrast color of the `--accent` color
-- `--warn` : default: $warn, the warning color (orange)
-- `--warn-contrast` : default: $warn-contrast, contrast color of the `--accent` color
-- `--error` : default: $error, the error color (red)
-- `--error-contrast` : default: $error-contrast, contrast color of the `--accent` color
+- `--standard` : default: $se-ultra-light-grey-1. The default action and background of the app
+- `--standard-contrast` : default: $se-black. To contrast the standard color
+- `--alternative` : default: $se-white. In contrast of the background
+- `--alternative-contrast` : default: $se-black. To contrast the alternative color
+- `--primary` : default: $se-life-green. The main action and smart color of the app
+- `--primary-contrast` : default: $se-white. To contrast the primary color
+- `--critical` : default: $se-red. To alert the user on critical action
+- `--critical-contrast` : default: $se-white. To contrast the critical color
 
 
 to simplify the use of css variable, you can use the following `scss` mixin like:
 ```scss
 @import "../../theme/theme-variables";
+// $standard: $se-ultra-light-grey-1 !default;
+// $alternative: white !default;
+// $primary: $se-life-green !default;
+// $critical: $se-red !default;
+
+// $standard-contrast: $se-black !default;
+// $alternative-contrast: $se-black !default;
+// $primary-contrast: $se-white !default;
+// $critical-contrast: $se-white !default;
 
 :host {
   .myElement {
-    @include background-color-property($primary, 'primary');
-    @include color-property($primary-contrast, 'primary-contrast');
+    @include background-color-property($standard, 'standard');
+    @include color-property($standard-contrast, 'standard-contrast');
   }
 }
 

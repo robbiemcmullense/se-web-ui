@@ -18,7 +18,7 @@ export class IconSchneiderComponent {
 const ICON_SVG =
   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsxlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
   viewBox="0 0 1015 472" style="enable-background:new 0 0 1015 472;" xmlspace="preserve">
-    <g class="schneider-electric-logo">
+    <g>
       <path d="M210.1,155c-17.6-7.8-28.1-10.8-38.5-10.8c-10.9,0-17.9,3.9-17.9,10c0,18.3,61.9,13.1,61.9,55.4
         c0,23.3-19.5,36.8-46.7,36.8c-21.3,0-31.8-5.5-43.9-11.7v-26.1c17.4,11.5,28.1,15.6,41.5,15.6c11.7,0,17.9-4.1,17.9-11.2
         c0-19.9-61.9-12.6-61.9-56.1c0-21,18.1-34.9,46.3-34.9c13.6,0,25.9,2.9,41.2,9.4V155"/>

@@ -2,7 +2,9 @@
 
 :host {
   position: relative;
-  padding: $spacing;
+  padding: $spacing-small;
+  font-size: 20px;
+  min-height: 40px;
   border-top: 2px solid $widget-footer-border-color;
   // @include display-flex();
   @include align-items(center);

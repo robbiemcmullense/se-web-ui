@@ -13,6 +13,13 @@ export class RadioOnOffComponent {
    * Use `header` if the on/off radio switch is within a header element to reduce its visual height.
    */
   @Prop() mode: 'default' | 'header' = 'default';
+
+ /**
+   * Optional property that defines the background color of the button. Default is standard.
+   */
+  @Prop() color: 'standard' | 'alternative' = 'standard';
+
+
   /**
    * Defines the text the user will see for the "on" or "active" part of the radio switch.
    */
@@ -24,21 +31,12 @@ export class RadioOnOffComponent {
   /**
    * Optional property that defines if the radio on/off switch is disabled.  Set to `false` by default.
    */
-  @Prop({mutable: true}) disabled: boolean = false;
+  @Prop() disabled: boolean = false;
   @State() selected: boolean;
   /**
    * Passes the current state (true or false) to the parent component when clicking on a button in the group.
    */
   @Event() change: EventEmitter<any>;
-
-  render() {
-    return (
-      <div data-mode={this.mode} class={'se-radio-on-off' + (this.disabled ? ' disabled' : '')}>
-        <button class={'active' + (this.selected ? ' selected' : '')} onClick={() => this.toggleActive()}>{this.textOn}</button>
-        <button class={'inactive' + (!this.selected ? ' selected' : '')} onClick={() => this.toggleActive()}>{this.textOff}</button>
-      </div>
-    );
-  }
 
   toggleActive() {
     if (!this.disabled) {
@@ -46,4 +44,21 @@ export class RadioOnOffComponent {
       this.change.emit({ selected: this.selected });
     }
   }
+
+  hostData() {
+    return {
+      'class': [
+        this.mode,
+        this.disabled ? 'disabled': ''
+      ].join(' ')
+    };
+  }
+
+  render() {
+    return [
+        <button class={['active', this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOn}</button>,
+        <button class={['inactive', !this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOff}</button>
+    ];
+  }
+
 }

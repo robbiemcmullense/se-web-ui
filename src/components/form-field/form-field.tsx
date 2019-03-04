@@ -29,7 +29,7 @@ export class FormFieldComponent {
 	 * Defines the value of your form field to get passed to the parent component.
 	 * When the type is set to "input", this value will be the default placeholder in your input field.
 	 */
-	@Prop({ mutable: true }) value: string = 'Text';
+	@Prop({ mutable: true }) value: string;
 	/**
 	 * Determines if the input is required by the application.
 	 * Set to `false` by default.
@@ -71,20 +71,22 @@ export class FormFieldComponent {
 	initLabel() {
 		Array.from(this.el.querySelectorAll('input, select, se-checkbox')).forEach((item: any) => {
       item.disabled = this.disabled;
-      item.placeholder = this.value;
+      if(this.type === "checkbox"){
+        item.label = this.label
+      }
 		});
 	}
 
 	hostData() {
 		return {
-			class: this.status
+			class: [this.status, this.mode, this.type].join(' ')
 		};
 	}
 
 	render() {
 		return (
 			<div class="se-form-field" data-disabled={this.disabled}>
-				<se-label value={this.label} required={this.required}></se-label>
+        {this.type !== 'checkbox' &&  <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label>}
 				<slot></slot>
 			</div>
 		)

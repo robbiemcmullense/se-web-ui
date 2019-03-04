@@ -10,6 +10,7 @@
 $spacing: 8px !default;
 $spacing-small: 4px !default;
 $spacing-large: 16px !default;
+$spacing-xlarge: 32px !default;
 
 // Media Query Ranges
 $small-screen-up: 601px !default;
@@ -33,12 +34,15 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 
 $off-black: rgba(0, 0, 0, 0.87) !default;
 // Header Styles
-$h1-fontsize: 4.2rem !default;
-$h2-fontsize: 3.56rem !default;
-$h3-fontsize: 2.92rem !default;
-$h4-fontsize: 2.28rem !default;
-$h5-fontsize: 1.64rem !default;
-$h6-fontsize: 1.15rem !default;
+$h1-fontsize: 18px !default;
+$h2-fontsize: 16px !default;
+$h3-fontsize: 14px !default;
+$h4-fontsize: 14px !default;
+$h5-fontsize: 14px !default;
+$h6-fontsize: 14px !default;
+$p-fontsize: 14px !default;
+$small-fontsize: 12px !default;
+
 
 // Flow Text
 // ==========================================================================
@@ -48,43 +52,13 @@ $intervals: 20 !default;
 $interval-size: $range / $intervals !default;
 
 
-
-
-
-$border-radius: 1px !default;
+$border-radius: 2px !default;
 $line-height-sm: 1.2 !default;
 
 $inner-shadow-top: inset 0 7px 3px -7px rgba(0, 0, 0, 0.5);
 
 //== widget
-
-//** Padding applied to the widget body
-$widget-inner-padding: 12px; //20px
-
-//** Padding applied to the widget title
-$widget-title-padding: 0 0 0 15px;
-//** widget title line-height
-$widget-title-line-height: $line-height-sm;
-
-$widget-header-border-top: none;
-
-//** Background color of widget content area
-$widget-content-bg: #fff;
-//** widget content border color
-$widget-content-border-color: rgba(0, 0, 0, 0.2);
-//** widget content border color <strong>for IE8</strong>
-$widget-content-fallback-border-color: #999;
-
-//** widget backdrop background color
-$widget-backdrop-bg: #000;
-//** widget backdrop opacity
-$widget-backdrop-opacity: 0.85;
 //** widget header border color
 $widget-header-border-color: #e5e5e5;
 //** widget footer border color
 $widget-footer-border-color: $widget-header-border-color;
-//override default height for mat-toolbar on desktop
-$se-navbar-height: 36px;
-//font size, weight for header text
-$se-header-font-size: 28px;
-$se-header-font-weight: 300;

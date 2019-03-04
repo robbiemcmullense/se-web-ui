@@ -6,17 +6,13 @@ describe('list-group', () => {
   beforeEach(() => {
     listGroup = new ListGroupComponent();
   });
-  
+
   it('should build', () => {
     expect(listGroup).toBeTruthy();
   });
 
-  it('should have an indentation value of 0 by default', () => {
-    expect(listGroup.indentation).toEqual(0);
-  });
-
   it('should have a collapsible property set to false by default', () => {
-    expect(listGroup.collapsible).toBeFalsy();
+    expect(listGroup.collapsed).toBeFalsy();
   });
 
   it('should be in classic mode by default', () => {

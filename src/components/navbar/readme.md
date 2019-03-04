@@ -11,9 +11,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                | Default     |
-| -------- | --------- | ----------- | ----------------------------------- | ----------- |
-| `color`  | `color`   |             | `"primary" \| "secondary" \| "tab"` | `'primary'` |
+| Property | Attribute | Description | Type                         | Default     |
+| -------- | --------- | ----------- | ---------------------------- | ----------- |
+| `color`  | `color`   |             | `"alternative" \| "primary"` | `'primary'` |
 
 
 ----------------------------------------------

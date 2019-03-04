@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Prop, Element } from "@stencil/core";
 
 @Component({
   tag: "se-icon",
@@ -6,6 +6,13 @@ import { Component, Prop } from "@stencil/core";
   shadow: true
 })
 export class IconComponent {
+  @Element() el: HTMLElement;
+
+  /**
+   * Optional property to define if the icon should act as a button (clickable).
+   */
+  @Prop() mode: 'button';
+
   /**
    * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
    */
@@ -13,16 +20,16 @@ export class IconComponent {
   /**
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
-   * `primary` is a green color.
-   * `accent` is a blue color.
-   * `warn` is an orange color.
-   * `error` is a red color.
    */
-  @Prop() color: "primary" | "accent" | "warn" | "error";
+  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary';
+
+  componentWillLoad() {
+    this.el.classList.add(this.size);
+  }
 
   hostData() {
     return {
-      class: [this.size, this.color].join(" ")
+      class: [this.color, this.mode].join(" ")
     };
   }
 

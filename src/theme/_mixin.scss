@@ -1,26 +1,57 @@
+@import "./se-variable";
+
 $prefix: "--"; //Prefix string for custom CSS properties
 
 //Merges a variable name with $prefix
 @function custom-property-name($name) {
-    @return $prefix + $name;
+  @return $prefix + $name;
 }
 
 // Defines a custom property
 @mixin define-custom-property($name, $value) {
-    #{custom-property-name($name)}: $value;
+  #{custom-property-name($name)}: $value;
 }
 
-@mixin color-property($color, $variable) {
-  color: $color;
-  color: var(#{custom-property-name($variable)}, $color);
+// define color variable based on $seTheme
+@mixin color($colorTheme, $transparencies: "none") {
+  $color: map-get($seTheme, $colorTheme);
+  @if $transparencies == "none" {
+    color: $color;
+    color: var(#{custom-property-name($colorTheme)}, $color);
+  } @else {
+    color: rgba($color, $transparencies);
+    color: rgba(
+      var(#{custom-property-name($colorTheme)}, $color),
+      $transparencies
+    );
+  }
 }
 
-@mixin background-color-property($color, $variable) {
-  background-color: $color;
-  background-color: var(#{custom-property-name($variable)}, $color);
+@mixin background-color($colorTheme, $transparencies: "none") {
+  $color: map-get($seTheme, $colorTheme);
+  @if $transparencies == "none" {
+    background-color: $color;
+    background-color: var(#{custom-property-name($colorTheme)}, $color);
+  } @else {
+    background-color: rgba($color, $transparencies);
+  }
 }
 
-@mixin position($top:0, $right: 0, $bottom: 0, $left: 0){
+@mixin border-color($colorTheme, $transparencies: "none") {
+  $color: map-get($seTheme, $colorTheme);
+  @if $transparencies == "none" {
+    border-color: $color;
+    border-color: var(#{custom-property-name($colorTheme)}, $color);
+  } @else {
+    border-color: rgba($color, $transparencies);
+    border-color: rgba(
+      var(#{custom-property-name($colorTheme)}, $color),
+      $transparencies
+    );
+  }
+}
+
+@mixin absolute($top: 0, $right: 0, $bottom: 0, $left: 0) {
   position: absolute;
   top: $top;
   bottom: $bottom;
@@ -28,35 +59,61 @@ $prefix: "--"; //Prefix string for custom CSS properties
   right: $right;
 }
 
-@mixin animated($speed: ''){
-  @if $speed == 'slow' {
-    animation-duration: 1s;
-  } @else {
-    animation-duration: .2s;
+@mixin typology($value) {
+  font-weight: 300;
+  line-height: 1.3 !important;
+  @if $value == "h1" {
+    margin: ($h1-fontsize / 1.5) 0 ($h1-fontsize / 2.5) 0;
+    font-size: $h1-fontsize;
+  } @else if $value == "h2" {
+    margin: ($h1-fontsize / 1.5) 0 ($h1-fontsize / 2.5) 0;
+    font-size: $h2-fontsize;
+  } @else if $value == "h3" {
+    margin: ($h1-fontsize / 1.5) 0 ($h1-fontsize / 2.5) 0;
+    font-size: $h3-fontsize;
+    font-weight: 500;
+    text-transform: uppercase;
+  } @else if $value == "h4" {
+    margin: ($h1-fontsize / 1.5) 0 ($h1-fontsize / 2.5) 0;
+    font-size: $h4-fontsize;
+  } @else if $value == "h5" {
+    margin: ($h1-fontsize / 1.5) 0 ($h1-fontsize / 2.5) 0;
+    font-size: $h5-fontsize;
+  } @else if $value == "h6" {
+    margin: ($h1-fontsize / 1.5) 0 ($h1-fontsize / 2.5) 0;
+    font-size: $h6-fontsize;
+  } @else if $value == "p" {
+    font-size: $p-fontsize;
+    strong,
+    .bold {
+      font-weight: 500;
+    }
+    small {
+      line-height: $line-height-sm !important;
+      font-size: $small-fontsize;
+    }
+  } @else if $value == "p-small" {
+    line-height: $line-height-sm !important;
+    font-size: $small-fontsize;
   }
-  animation-duration: .2s;
-  animation-fill-mode: both;
 }
-
 @mixin ellipsis() {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-@mixin button-active-properties($bg-hover-color, $bg-active-color, $text-active-color) {
-  &:not([disabled]) {
-    &:hover, &:focus {
-      background-color: $bg-hover-color;
-    }
-    &:active {
-      background-color: $bg-active-color;
-      color: $text-active-color;
-    }
+@mixin animated($speed: "") {
+  @if $speed == "slow" {
+    animation-duration: 1s;
+  } @else {
+    animation-duration: 0.2s;
   }
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
 }
 
-@mixin display-flex(){
+@mixin display-flex() {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -94,7 +151,11 @@ $prefix: "--"; //Prefix string for custom CSS properties
   flex-direction: $value;
 }
 
-@mixin flex-flow($values: (row nowrap)) {
+@mixin flex-flow(
+  $values: (
+    row nowrap
+  )
+) {
   // No Webkit Box fallback.
   -webkit-flex-flow: $values;
   -moz-flex-flow: $values;
@@ -103,13 +164,12 @@ $prefix: "--"; //Prefix string for custom CSS properties
 }
 
 @mixin flex($fg: 1, $fs: null, $fb: null) {
-
   // Set a variable to be used by box-flex properties
   $fg-boxflex: $fg;
 
   // Box-Flex only supports a flex-grow value so let's grab the
   // first item in the list and just return that.
-  @if type-of($fg) == 'list' {
+  @if type-of($fg) == "list" {
     $fg-boxflex: nth($fg, 1);
   }
 
@@ -137,13 +197,43 @@ $prefix: "--"; //Prefix string for custom CSS properties
   align-items: $value;
 }
 
-@mixin justify-content($value: center){
+@mixin justify-content($value: center) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
   -webkit-justify-content: $value;
-  -ms-flex-pack: $value;
   justify-content: $value;
 }
 
-@mixin border-radius($value: 4){
+@mixin align-content($value: stretch) {
+  // No Webkit Box Fallback.
+  -webkit-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+  align-content: $value;
+}
+@mixin border-radius($value: 4) {
   -webkit-border-radius: $value;
   -moz-border-radius: $value;
   border-radius: $value px;
@@ -151,12 +241,30 @@ $prefix: "--"; //Prefix string for custom CSS properties
 
 @mixin linearGradient($top, $bottom) {
   background: #{$top}; /* Old browsers */
-  background:    -moz-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* FF3.6+ */
-  background:        -webkit-gradient(linear, left top, left bottom, color-stop(0%, #{$top}), color-stop(100%, #{$bottom})); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* Chrome10+,Safari5.1+ */
-  background:      -o-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* Opera 11.10+ */
-  background:     -ms-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* IE10+ */
-  background:         linear-gradient(to bottom, #{$top} 0%, #{$bottom} 100%); /* W3C */
+  background: -moz-linear-gradient(
+    top,
+    #{$top} 0%,
+    #{$bottom} 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #{$top}),
+    color-stop(100%, #{$bottom})
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    top,
+    #{$top} 0%,
+    #{$bottom} 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    top,
+    #{$top} 0%,
+    #{$bottom} 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #{$top} 0%, #{$bottom} 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$top}', endColorstr='#{$bottom}', GradientType=0 ); /* IE6-9 */
 }
 
@@ -166,8 +274,7 @@ $prefix: "--"; //Prefix string for custom CSS properties
   filter: alpha(opacity=$opacity-ie); //IE8
 }
 
-
-@mixin box-shadow($shadow){
+@mixin box-shadow($shadow) {
   -moz-box-shadow: $shadow;
   -webkit-box-shadow: $shadow;
   box-shadow: $shadow;

@@ -1,5 +1,5 @@
 <template>
-  <div class="se-app-body">
+  <se-app>
     <se-header app-title="Test Advisor"></se-header>
     <se-navbar color="primary">
       <nav slot="start">Tenant: <a class="dropdown"> test </a></nav>
@@ -31,5 +31,5 @@
       </nav>
     </se-navbar>
     <slot />
-  </div>
+  </se-app>
 </template>

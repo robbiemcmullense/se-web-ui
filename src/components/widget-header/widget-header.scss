@@ -1,15 +1,20 @@
 @import "../../theme/theme";
 
 :host{
-  padding: $spacing;
-  border-bottom: 2px solid $widget-header-border-color;
-  font-size: 20px;
-  min-height: 32px;
   position: relative;
-
-  @include display-flex();
+  padding: $spacing-small $spacing-small 2px $spacing; // 2px to compensate with border bottom
+  font-size: 20px;
+  min-height: 40px;
+  border-bottom: 2px solid $widget-footer-border-color;
+  // @include display-flex();
   @include align-items(center);
+  @include display-flex();
+
   .flex{
     @include flex();
+  }
+
+  h3 {
+    @include typology('h3')
   }
 }
