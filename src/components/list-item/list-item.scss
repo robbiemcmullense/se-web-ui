@@ -82,8 +82,8 @@ button {
 }
 
 :host(.classic.selected) {
-  color: white;
-  background-color: $se-dark-grey;
+  @include color('selected-contrast');
+  @include background-color('selected');
   button {
     &:hover, &:focus{
       background-color: $se-ultra-dark-grey;

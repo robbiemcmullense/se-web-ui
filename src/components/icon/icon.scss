@@ -39,6 +39,7 @@
 }
 :host(.button) {
   cursor: pointer;
+  border-radius: $border-radius;
 }
 
 :host(.button.selected) {

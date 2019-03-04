@@ -1,4 +1,4 @@
-# SE UI Web Components Library
+# SE WEB-UI library
 
 The purpose of this project is to create a common UI Library that will assist any developer in quickly developing Schneider Electric design elements thanks to native [custom elements](https://developers.google.com/web/fundamentals/web-components/customelements). Custom elements can be used with any coding framework including pure JavaScript, jQuery, React, Vue or Angular.
 
@@ -64,10 +64,10 @@ You can test all of these components with this [Online Template Editor](https://
 
 ```shell
 # With npm
-npm install @se/ui-web-components
+npm install @se/web-ui
 
 # with yarn
-yarn add @se/ui-web-components
+yarn add @se/web-ui
 ```
 
 ## Capabilities

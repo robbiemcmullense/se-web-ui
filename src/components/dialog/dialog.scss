@@ -61,7 +61,7 @@
 .dialog-background {
   @include absolute();
   @include animated();
-  background-color: rgba(gray, 0.6);
+  background-color: rgba(white, 0.6);
   z-index: 120;
   &.show-dialog {
     animation-name: fadeIn;
