@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { defineCustomElements as defineSeComponent } from "@se/ui-web-components/loader"; // "@se/ui-web-components/core/loader"
+import { defineCustomElements as defineSeComponent } from "@se/web-ui/loader"; // "@se/web-ui/core/loader"
 import Default from "./layouts/Default.vue";
 import Shell from "./layouts/Shell.vue";
 
