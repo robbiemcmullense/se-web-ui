@@ -16,6 +16,10 @@ export class ListComponent {
     this.updateItemMode()
   }
 
+  componentWillLoad() {
+    this.updateItemMode();
+  }
+
   private updateItemMode(){
     Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
       item.mode = this.mode;
