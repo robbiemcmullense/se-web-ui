@@ -5,11 +5,12 @@ describe('ButtonsComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
+    await page.setContent('<se-buttons color="primary"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-buttons>');
+    await page.waitForChanges();
   });
 
   it('renders', async() => {
     const renderedHTML = '<slot></slot>'
-    await page.setContent('<se-buttons></se-buttons>');
     const element = await page.find('se-buttons');
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
@@ -17,9 +18,8 @@ describe('ButtonsComponent', () => {
   });
 
   it('renders with two se-button components each with a grouped class', async() => {
-    await page.setContent('<se-buttons><se-button id="first">Primary</se-button><se-button id="second">Secondary</se-button></se-buttons>');
     const firstButtonElement = await page.find('se-buttons se-button#first');
-    const lastButtonElement = await page.find('se-buttons se-button#second');
+    const lastButtonElement = await page.find('se-buttons se-button#second'); 
 
     expect(firstButtonElement).toHaveClass('grouped');
     expect(firstButtonElement.innerText).toEqual('Primary');
@@ -28,50 +28,43 @@ describe('ButtonsComponent', () => {
   });
 
   it('renders with two se-button components each with a primary color and the second button disabled', async() => {
-    const firstRenderedHTML = '<button class="flat primary">'
-      + '<slot></slot></button>';
-    const secondRenderedHTML = '<button class="flat primary" disabled>'
-      + '<slot></slot></button>';
-    await page.setContent('<se-buttons color="primary"><se-button id="first">Primary</se-button><se-button id="second" disabled="true">Disabled</se-button></se-buttons>');
+    await page.$eval('se-button#second', (elm: any) => {
+      elm.disabled = true;
+    });
     await page.waitForChanges();
-    const firstButtonElement = await page.find('se-buttons se-button#first');
-    const secondButtonElement = await page.find('se-buttons se-button#second');
+    const firstButtonElement = await page.find('se-buttons se-button#first >>> button');
+    const secondButtonElement = await page.find('se-buttons se-button#second >>> button');
 
-    expect(firstButtonElement.shadowRoot).toEqualHtml(firstRenderedHTML);
-    expect(secondButtonElement.shadowRoot).toEqualHtml(secondRenderedHTML);
+    expect(firstButtonElement).toHaveClasses(['flat', 'primary'])
+    expect(secondButtonElement.getProperty('disabled')).toBeTruthy();
   });
 
   it('can select multiple buttons by default because its default mode is checkbox', async() => {
-    await page.setContent('<se-buttons><se-button id="first">Primary</se-button><se-button id="second">Secondary</se-button></se-buttons>');
-    const firstButtonElement = await page.find('se-buttons se-button#first');
-    const secondButtonElement = await page.find('se-buttons se-button#second');
+    const firstButtonElement = await page.find('se-buttons se-button#first >>> button');
+    const secondButtonElement = await page.find('se-buttons se-button#second >>> button');
 
     await firstButtonElement.click();
-    expect(firstButtonElement).toHaveClass('active');
+    expect(firstButtonElement).toHaveClass('selected');
 
     await secondButtonElement.click();
-    expect(secondButtonElement).toHaveClass('active');
+    expect(secondButtonElement).toHaveClass('selected');
   });
 
-  it('can only select one button at a time because its mode is set to radio', async() => {
-    await page.setContent('<se-buttons mode="radio"><se-button id="first">Primary</se-button><se-button id="second">Secondary</se-button></se-buttons>');
-    const firstButtonElement = await page.find('se-buttons se-button#first');
-    const secondButtonElement = await page.find('se-buttons se-button#second');
-
-    await firstButtonElement.click();
-    expect(firstButtonElement).toHaveClass('active');
-
-    await secondButtonElement.click();
-    expect(secondButtonElement).toHaveClass('active');
-    expect(firstButtonElement).not.toHaveClass('active');
-  });
 
   it('sends an event with an array object when a button is clicked on', async() => {
-    await page.setContent('<se-buttons mode="radio"><se-button id="first" value="Primary">Primary</se-button><se-button id="second" value="Secondary">Secondary</se-button></se-buttons>');
-    const eventSpy = await page.spyOnEvent('change');
-    const element = await page.find('se-buttons se-button');
-    await element.click();
-    expect(eventSpy).toHaveReceivedEvent();
-    expect(eventSpy).toHaveReceivedEventDetail(['Primary']);
+    await page.$eval('se-buttons', (elm: any) => {
+      elm.mode = 'radio';
+    });
+    await page.waitForChanges();
+    const firstButtonElement = await page.find('se-buttons se-button#first >>> button');
+    const secondButtonElement = await page.find('se-buttons se-button#second >>> button');
+
+    await firstButtonElement.click();
+    expect(firstButtonElement).toHaveClass('selected');
+    expect(secondButtonElement).toHaveClass('false');
+
+    await secondButtonElement.click();
+    expect(firstButtonElement).toHaveClass('false');
+    expect(secondButtonElement).toHaveClass('selected');
   });
 });

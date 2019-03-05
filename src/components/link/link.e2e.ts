@@ -15,7 +15,7 @@ describe('LinkComponent', () => {
   });
 
   it('renders with an href equal to the url property', async() => {
-    expect(element.shadowRoot).toEqualHtml('<a href="testURL" target="">test link</a>')
+    expect(element.shadowRoot).toEqualHtml('<a href="testURL" target=""><slot></slot></a>')
   });
 
   it('renders with a blank target attribute when the type is set to external', async() => {
@@ -23,15 +23,14 @@ describe('LinkComponent', () => {
       elm.type = 'external';
     });
     await page.waitForChanges();
-    expect(element.shadowRoot).toEqualHtml('<a class="external" href="testURL" target="_blank">test link</a>')
+    expect(element.shadowRoot).toEqualHtml('<a class="external" href="testURL" target="_blank"><slot></slot></a>')
   });
-});
 
-describe('LinkComponent internal DOM', () => {
-  it('renders with text equal to the link property', async() => {
-    const page = await newE2EPage();
-    await page.setContent('<se-link>test link</se-link>');
-    const element = await page.find('se-link >>> a');
-    expect(element.innerText).toEqual('test link');
+  it('renders with a data-disabled attribute when the disabled property is set to true', async() => {
+    await page.$eval('se-link', (elm: any) => {
+      elm.disabled = true;
+    });
+    await page.waitForChanges();
+    expect(element.shadowRoot).toEqualHtml('<a data-disabled href="testURL" target="" data-disabled><slot></slot></a>')
   });
 });

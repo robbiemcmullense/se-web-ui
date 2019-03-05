@@ -1,9 +1,0 @@
-dist/
-www/
-node_modules/
-demo-angular/
-demo-javascript/
-demo-react/
-demo-vue/
-src/
-!style/
