@@ -113,6 +113,17 @@ $prefix: "--"; //Prefix string for custom CSS properties
   animation-fill-mode: both;
 }
 
+@mixin loader() {
+  -webkit-animation: clockwiseSpin 1s infinite;
+  animation: clockwiseSpin 1s infinite;
+  animation-timing-function: cubic-bezier(.17,.67,.83,.67);
+  opacity: 0.5;
+  @keyframes clockwiseSpin {
+    0%  {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);transform: rotate(360deg);}
+  }
+}
+
 @mixin display-flex() {
   display: -ms-flexbox;
   display: -webkit-flex;

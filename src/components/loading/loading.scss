@@ -1,0 +1,26 @@
+@import "../../theme/theme";
+
+:host {
+ display: none;
+ z-index: 100;
+ @include background-color('primary-contrast', 0.6);
+ @include absolute();
+}
+
+:host(.show) {
+	display: block;
+}
+
+.se-loading {
+	display: inline-block;
+	@include loader();
+	@include color('primary');
+	@include absolute();
+	@include display-flex();
+	@include align-items(center);
+	@include justify-content(center);
+}
+.se-icon {
+	font-family: 'se-icon';
+	font-size: 128px;
+}

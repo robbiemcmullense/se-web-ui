@@ -651,6 +651,19 @@ export namespace Components {
     'mode'?: "nav" | "classic";
   }
 
+  interface SeLoading {
+    /**
+    * Displays the loading icon on screen when set to `true`.
+    */
+    'loading': boolean;
+  }
+  interface SeLoadingAttributes extends StencilHTMLAttributes {
+    /**
+    * Displays the loading icon on screen when set to `true`.
+    */
+    'loading'?: boolean;
+  }
+
   interface SeNavbar {
     'color': 'primary' | 'alternative';
   }
@@ -808,6 +821,7 @@ declare global {
     'SeListGroup': Components.SeListGroup;
     'SeListItem': Components.SeListItem;
     'SeList': Components.SeList;
+    'SeLoading': Components.SeLoading;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeSidenavItem': Components.SeSidenavItem;
@@ -841,6 +855,7 @@ declare global {
     'se-list-group': Components.SeListGroupAttributes;
     'se-list-item': Components.SeListItemAttributes;
     'se-list': Components.SeListAttributes;
+    'se-loading': Components.SeLoadingAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-sidenav-item': Components.SeSidenavItemAttributes;
@@ -984,6 +999,12 @@ declare global {
     new (): HTMLSeListElement;
   };
 
+  interface HTMLSeLoadingElement extends Components.SeLoading, HTMLStencilElement {}
+  var HTMLSeLoadingElement: {
+    prototype: HTMLSeLoadingElement;
+    new (): HTMLSeLoadingElement;
+  };
+
   interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
   var HTMLSeNavbarElement: {
     prototype: HTMLSeNavbarElement;
@@ -1055,6 +1076,7 @@ declare global {
     'se-list-group': HTMLSeListGroupElement
     'se-list-item': HTMLSeListItemElement
     'se-list': HTMLSeListElement
+    'se-loading': HTMLSeLoadingElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-sidenav-item': HTMLSeSidenavItemElement
@@ -1088,6 +1110,7 @@ declare global {
     'se-list-group': HTMLSeListGroupElement;
     'se-list-item': HTMLSeListItemElement;
     'se-list': HTMLSeListElement;
+    'se-loading': HTMLSeLoadingElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-sidenav-item': HTMLSeSidenavItemElement;

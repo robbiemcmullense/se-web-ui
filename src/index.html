@@ -195,8 +195,6 @@
           <se-divider></se-divider>
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
-            <li id="checkbox-value">error checkbox value: <span></span></li>
-            <li id="checkbox-message">is error checkbox checked: <span></span></li>
           </ul>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left" icon="arrow2_left"></se-button>
@@ -244,7 +242,6 @@
               <option>Stacked Option 3</option>
             </select>
           </se-form-field>
-
         </se-widget-content>
         <se-widget-footer>
           <se-button onclick="openDialog('dialog-simple-notitle')" mode="raised" >Open Dialog simple</se-button>
@@ -295,10 +292,6 @@
     });
     document.getElementById('RadioGroup1').addEventListener('change', function (event) {
       document.getElementById('radio-message').firstElementChild.innerText = event.detail;
-    });
-    document.getElementById('checkbox-error').addEventListener('change', function (event) {
-      document.getElementById('checkbox-message').firstElementChild.innerText = event.detail.selected;
-      document.getElementById('checkbox-value').firstElementChild.innerText = event.detail.value;
     });
     document.getElementById('btnGroup1').addEventListener('change', function (event) {
       let checkboxMsg = document.getElementById('checkbox-button-message');
