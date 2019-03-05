@@ -2,6 +2,7 @@
 
 :host {
  display: none;
+ overflow: hidden;
  z-index: 100;
  @include background-color('primary-contrast', 0.6);
  @include absolute();

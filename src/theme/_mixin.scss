@@ -116,7 +116,7 @@ $prefix: "--"; //Prefix string for custom CSS properties
 @mixin loader() {
   -webkit-animation: clockwiseSpin 1s infinite;
   animation: clockwiseSpin 1s infinite;
-  animation-timing-function: cubic-bezier(.17,.67,.83,.67);
+  animation-timing-function: cubic-bezier(.21,.63,.79,.61);
   opacity: 0.5;
   @keyframes clockwiseSpin {
     0%  {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
