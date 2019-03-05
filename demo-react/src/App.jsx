@@ -24,8 +24,8 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <AppRoute exact path="/" layout={ShellLayout} component={Home} />
-            <AppRoute exact path="/dashboard" layout={ShellLayout} component={Dashboard} />
-            <AppRoute exact path="/icons" layout={ShellLayout} component={Icons} />
+            <AppRoute path="/dashboard" layout={ShellLayout} component={Dashboard} />
+            <AppRoute path="/icons" layout={ShellLayout} component={Icons} />
             <AppRoute path="/*" layout={DefaultLayout} component={NoPage} />
           </Switch>
         </BrowserRouter>
