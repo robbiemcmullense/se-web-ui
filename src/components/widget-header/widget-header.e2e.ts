@@ -15,7 +15,7 @@ describe('WidgetHeaderComponent', () => {
   });
 
   it('renders with two slot element', async() => {
-    const renderedHTML = '<div class="flex"><slot></slot></div><slot name="end"></slot>';
+    const renderedHTML = '<h3 class="flex"><slot></slot></h3><slot name="end"></slot>';
     expect(element.shadowRoot).toEqualHtml(renderedHTML);
   });
 });
