@@ -1,12 +1,12 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('WidgetFooterComponent', () => {
+describe('DialogFooterComponent', () => {
   let page, element;
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-widget-footer></se-widget-footer>');
-    element = await page.find('se-widget-footer');
+    await page.setContent('<se-dialog-footer></se-dialog-footer>');
+    element = await page.find('se-dialog-footer');
   });
 
   it('renders', async() => {
@@ -14,8 +14,8 @@ describe('WidgetFooterComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with two slot element', async() => {
-    const renderedHTML = '<div class="flex"><slot></slot></div><slot name="end"></slot>';
+  it('renders with two slot elements', async() => {
+    const renderedHTML = '<div class="flex"><slot name="start"></slot></div><slot></slot>';
     expect(element.shadowRoot).toEqualHtml(renderedHTML);
   });
 });

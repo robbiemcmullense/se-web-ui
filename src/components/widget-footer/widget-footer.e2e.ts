@@ -14,8 +14,8 @@ describe('WidgetFooterComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with two slot element', async() => {
-    const renderedHTML = '<div class="flex"><slot></slot></div><slot name="end"></slot>';
+  it('renders with two slot elements', async() => {
+    const renderedHTML = '<div class="flex"><slot name="start"></slot></div><slot></slot>';
     expect(element.shadowRoot).toEqualHtml(renderedHTML);
   });
 });

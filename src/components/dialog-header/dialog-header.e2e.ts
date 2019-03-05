@@ -14,8 +14,8 @@ describe('DialogHeaderComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with two slot element', async() => {
-    const renderedHTML = '<div class="flex"><slot name="start"><slot></slot></div></slot>';
+  it('renders with two slot elements', async() => {
+    const renderedHTML = '<h3 class="flex"><slot></slot></h3><slot name="end"></slot>';
     expect(element.shadowRoot).toEqualHtml(renderedHTML);
   });
 });
