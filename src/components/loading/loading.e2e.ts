@@ -18,7 +18,7 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(element.loader).toBeFalsy();
 	});
 
-	it('renders a list group', async() => {
+	it('displays on screen when the loading property is set to true', async() => {
 		await page.$eval('se-loading', (elm: any) => {
 			elm.loading = true;
 		});

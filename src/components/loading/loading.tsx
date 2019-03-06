@@ -18,8 +18,13 @@ export class LoadingComponent {
   }
 
   render() {
-    return (
-      <span class="se-loading se-icon">spinner</span>
-    );
+    return [
+      <div class="loading-wrapper">
+        <div class="se-loading">
+          <div class="se-icon">spinner</div>
+        </div>
+      </div>,
+      <div class="loading-background"></div>
+    ];
   }
 }
