@@ -65,7 +65,7 @@ export class ContainerComponent {
 
   render() {
     return this.mode === "centered" ? (
-      <div class="container">
+      <div class="wrapper-center">
         <slot />
       </div>
     ) : (
