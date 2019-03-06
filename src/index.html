@@ -138,7 +138,7 @@
           </se-list>
         </se-widget-content>
       </se-widget>
-      <se-widget>
+      <se-widget id="loading-widget">
         <se-widget-header>
           H3 Buttons and Form
           <div slot="end">
@@ -169,7 +169,7 @@
           <se-button mode="flat" color="secondary">secondary</se-button>
 
           <se-button icon="action_resize">Resize</se-button>
-          <se-button mode="outline">Outline</se-button>
+          <se-button mode="outline" id="trigger-loader">Outline</se-button>
           <se-button mode="outline" color="alternative">Outline alternative</se-button>
           <se-button mode="outline" color="primary">Outline primary</se-button>
           <se-button mode="outline" color="secondary">Outline secondary</se-button>
@@ -284,6 +284,13 @@
     }
 
     // buttons
+    document.getElementById('trigger-loader').addEventListener('click', function(event) {
+      let loadingWidget = document.getElementById('loading-widget');
+      loadingWidget.loading = true;
+      setTimeout(function() {
+        loadingWidget.loading = false;
+      }, 10000);
+    });
     document.getElementById('se-chip').addEventListener('close', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
     });

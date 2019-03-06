@@ -306,11 +306,17 @@ export namespace Components {
   }
 
   interface SeDialog {
+    /**
+    * Emit the `onBackdrop` event from the dialog's parent component.
+    */
     'backdropClicked': () => void;
     /**
     * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
     */
     'color': 'alternative' | 'primary';
+    /**
+    * Indicates whether or not the dialog is open (`true`) or closed (`false`).
+    */
     'open': boolean;
     /**
     * Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen
@@ -330,6 +336,9 @@ export namespace Components {
     * event emitted when the backdrop is clicked.
     */
     'onOnBackdrop'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether or not the dialog is open (`true`) or closed (`false`).
+    */
     'open'?: boolean;
     /**
     * Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen
@@ -769,6 +778,10 @@ export namespace Components {
     */
     'height': string;
     /**
+    * Display the loading icon if set to `true`.
+    */
+    'loading': boolean;
+    /**
     * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
     */
     'mode': "fill";
@@ -786,6 +799,10 @@ export namespace Components {
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
     'height'?: string;
+    /**
+    * Display the loading icon if set to `true`.
+    */
+    'loading'?: boolean;
     /**
     * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
     */
