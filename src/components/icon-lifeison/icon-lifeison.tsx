@@ -11,11 +11,11 @@ export class IconLifeisonComponent {
    * `standard`: Default. show a light green / dark green conventional SE logo.
    * `inherited`: `take the color from it's parent.
    */
-  @Prop() mode: "standard" | "inherited" = "standard";
+  @Prop() color: "standard" | "inherited" = "inherited";
 
   hostData() {
     return {
-      class: this.mode
+      class: this.color
     };
   }
 

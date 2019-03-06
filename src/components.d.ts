@@ -460,13 +460,13 @@ export namespace Components {
     /**
     * Define the color of the logo. `standard`: Default. show a light green / dark green conventional SE logo. `inherited`: `take the color from it's parent.    *
     */
-    'mode': "standard" | "inherited";
+    'color': "standard" | "inherited";
   }
   interface SeIconLifeisonAttributes extends StencilHTMLAttributes {
     /**
     * Define the color of the logo. `standard`: Default. show a light green / dark green conventional SE logo. `inherited`: `take the color from it's parent.    *
     */
-    'mode'?: "standard" | "inherited";
+    'color'?: "standard" | "inherited";
   }
 
   interface SeIconSchneider {}
