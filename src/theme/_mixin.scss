@@ -122,6 +122,15 @@ $prefix: "--"; //Prefix string for custom CSS properties
   animation-fill-mode: both;
 }
 
+@mixin loader() {
+  -webkit-animation: clockwiseSpin 1.5s infinite linear;
+  animation: clockwiseSpin 1.5s infinite linear;
+  @keyframes clockwiseSpin {
+    0%  {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);transform: rotate(360deg);}
+  }
+}
+
 @mixin display-flex() {
   display: -ms-flexbox;
   display: -webkit-flex;
