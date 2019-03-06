@@ -9,12 +9,33 @@ const SHOW_SNACKBAR = 'show';
 })
 
 export class SnackbarComponent {
-
+  /**
+   * Indicates the background color of your snackbar.
+   * `success`: green
+   * `warning`: orange
+   * `error`: red
+   * `information`: dark grey
+   */
   @Prop() type: 'success' | 'error' | 'warning' | 'information' = 'information';
+  /**
+   * The name of the icon you wish to display.  Optional.
+   */
   @Prop() icon: string;
+  /**
+   * The content of the message you want the snackbar to display.
+   */
   @Prop() message: string;
+  /**
+   * Display a close "button".
+   */
   @Prop() canClose: boolean;
+  /**
+   * Defines the text you want your "close button" to read.
+   */
   @Prop() closeText: string;
+  /**
+   * Indicates if the snackbar is open.
+   */
   @Prop({mutable: true}) open: boolean = false;
   @Watch('open') openDidChange() {
     if (this.open) {
@@ -24,6 +45,9 @@ export class SnackbarComponent {
     }
   }
   @Element() el: HTMLElement;
+  /**
+   * Send information to the parent component when closing the snackbar.
+   */
   @Event() close: EventEmitter;
 
   closeSnackbar() {

@@ -777,20 +777,59 @@ export namespace Components {
   interface SeSidenavAttributes extends StencilHTMLAttributes {}
 
   interface SeSnackbar {
+    /**
+    * Display a close "button".
+    */
     'canClose': boolean;
+    /**
+    * Defines the text you want your "close button" to read.
+    */
     'closeText': string;
+    /**
+    * The name of the icon you wish to display.  Optional.
+    */
     'icon': string;
+    /**
+    * The content of the message you want the snackbar to display.
+    */
     'message': string;
+    /**
+    * Indicates if the snackbar is open.
+    */
     'open': boolean;
+    /**
+    * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey
+    */
     'type': 'success' | 'error' | 'warning' | 'information';
   }
   interface SeSnackbarAttributes extends StencilHTMLAttributes {
+    /**
+    * Display a close "button".
+    */
     'canClose'?: boolean;
+    /**
+    * Defines the text you want your "close button" to read.
+    */
     'closeText'?: string;
+    /**
+    * The name of the icon you wish to display.  Optional.
+    */
     'icon'?: string;
+    /**
+    * The content of the message you want the snackbar to display.
+    */
     'message'?: string;
+    /**
+    * Send information to the parent component when closing the snackbar.
+    */
     'onClose'?: (event: CustomEvent) => void;
+    /**
+    * Indicates if the snackbar is open.
+    */
     'open'?: boolean;
+    /**
+    * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey
+    */
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
 
