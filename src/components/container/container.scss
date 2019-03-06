@@ -1,8 +1,6 @@
 @import "../../theme/theme";
 
 :host {
-  @include flex();
-  @include display-flex();
   overflow: auto;
 }
 :host(.column) {
@@ -12,32 +10,36 @@
 :host(.row) {
   @include flex-direction(row);
 }
-
+:host(.flex){
+  flex-wrap: nowrap;
+  height: 100%;
+  @include flex();
+  @include display-flex();
+}
+:host(.block){
+  display: block !important;
+}
 :host(.absolute) {
   @include absolute();
 }
 :host(.relative) {
   position: relative;
-  height: 100%;
 }
 :host(.widget-content) {
   margin: $spacing-small;
-  @include background-color("standard");
-}
-:host(.card-content) {
-  margin: $spacing-small;
-  @include background-color("alternative");
 }
 :host(.fill-content) {
   margin: 0;
-  overflow: hidden;
+  height: 100%;
 }
 
 :host(.centered-content) {
-  padding-right: 15px;
-  padding-left: 15px;
+  // .container{
   margin-right: auto;
   margin-left: auto;
+  // }
+  // @include align-items(center);
+  // @include justify-content(center);
 }
 
 :host(.standard) {
@@ -45,22 +47,22 @@
   @include background-color("standard");
 }
 :host(.alternative) {
-  @include color("standard-contrast");
-  @include background-color("standard");
+  @include color("alternative-contrast");
+  @include background-color("alternative");
 }
 
 @media (min-width: 768px) {
   :host(.centered-content) {
-    width: 750px;
+      width: 750px;
   }
 }
 @media (min-width: 992px) {
   :host(.centered-content) {
-    width: 970px;
+      width: 970px;
   }
 }
 @media (min-width: 1200px) {
   :host(.centered-content) {
-    width: 1170px;
+      width: 1170px;
   }
 }

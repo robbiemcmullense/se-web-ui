@@ -15,7 +15,7 @@
 
 <body>
   <se-app>
-    <se-brand id="se-brand" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
+    <!-- <se-brand id="se-brand" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
       <se-form-field label="Username" required="true" mode="stacked">
         <input type="text"/>
       </se-form-field>
@@ -23,7 +23,7 @@
         <input type="password" />
       </se-form-field>
       <se-button onclick="closeLogin()" mode="login" value="myLoginValue">Login</se-button>
-    </se-brand>
+    </se-brand> -->
     <se-header app-title="Test Advisor" project="Project name">
       <div slot="end">
         <se-link url="http://google.com" type="external">External Link to Google</se-link>
@@ -63,30 +63,29 @@
     </se-navbar>
     <se-container mode="widget">
       <se-widget width="250px">
-
-          <se-list mode="nav">
-            <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
-              description="And I have an icon">
-            </se-list-item>
-            <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
-              icon-color="primary">
-            </se-list-item>
-            <se-list-item item="my item 3 no icon" description="I'm here too">
-            </se-list-item>
-            <se-list-item item="I'm the selected one!" selected="true">
-            </se-list-item>
-            <se-list-item item="Basic Item">
-            </se-list-item>
-            <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
-              description="And I have an icon">
-            </se-list-item>
-            <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
-              icon-color="primary">
-            </se-list-item>
-          </se-list>
+        <se-list mode="nav">
+          <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
+            description="And I have an icon">
+          </se-list-item>
+          <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
+            icon-color="primary">
+          </se-list-item>
+          <se-list-item item="my item 3 no icon" description="I'm here too">
+          </se-list-item>
+          <se-list-item item="I'm the selected one!" selected="true">
+          </se-list-item>
+          <se-list-item item="Basic Item">
+          </se-list-item>
+          <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
+            description="And I have an icon">
+          </se-list-item>
+          <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
+            icon-color="primary">
+          </se-list-item>
+        </se-list>
       </se-widget>
       <se-widget width="250px">
-        <se-widget-header>List classic with expender</se-widget-header>
+        <se-widget-header>Title of my classic list</se-widget-header>
         <se-widget-content mode="fill">
           <se-list>
             <se-list-item item="my item 1" selected="false" icon="user_standard" icon-color="primary"
