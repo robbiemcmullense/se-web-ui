@@ -67,7 +67,7 @@ export class BrandComponent {
           </div>
 
           <div class="footer-logo align-end">
-            <img src={this.logo} alt="Schneider electric logo" />
+            <se-icon-lifeison></se-icon-lifeison>
           </div>
         </footer>
       </div>

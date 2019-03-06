@@ -1,13 +1,13 @@
 import { AboutComponent } from './about';
 
 describe('AboutComponent', () => {
-	let app;
+	let component;
 
 	beforeEach(() => {
-		app = new AboutComponent();
+		component = new AboutComponent();
 	});
 
 	it('should build', () => {
-		expect(app).toBeTruthy();
+		expect(component).toBeTruthy();
 	});
 });

@@ -14,21 +14,15 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(element).toHaveClass('hydrated');
 	});
 
-	it('renders a list item with its title and description', async() => {
-		const itemHTML = '<button style="padding-left: 0px"><div class="selectedBar"></div>'
-		+ '<div class="nav-content"><div class="nav-text">list title</div><div class="nav-description">my description</div></div>'
-		+ '</button><se-divider class="horizontal hydrated light"></se-divider>';
-
+	it('renders a list item passing the "classic" mode by default', async() => {
 		await page.setContent('<se-list><se-list-item item="list title" description="my description"></se-list-item></se-list>');
 		const element = await page.find('se-list se-list-item');
-		expect(element.shadowRoot).toEqualHtml(itemHTML);
+		expect(element).toHaveClass('classic');
 	});
 
-	it('renders a list group', async() => {
-		const groupHTML = '<se-list-item class="classic hydrated" item="group title"></se-list-item><div class="group-item"><slot></slot></div>';
-
-		await page.setContent('<se-list><se-list-group item="group title"></se-list-group></se-list>');
+	it('renders a list group passing the "nav" mode from its parent', async() => {
+		await page.setContent('<se-list mode="nav"><se-list-group item="group title"></se-list-group></se-list>');
 		const element = await page.find('se-list se-list-group');
-		expect(element.shadowRoot).toEqualHtml(groupHTML);
+		expect(element).toHaveClass('nav');
 	});
 });

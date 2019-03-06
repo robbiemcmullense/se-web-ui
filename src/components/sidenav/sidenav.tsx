@@ -108,7 +108,7 @@ export class SidenavComponent {
               <se-list mode="nav">
                 {this.renderList()}
               </se-list>
-              <img class="image-logo" alt="Schneider electric logo"/>
+              <se-icon-lifeison color="standard"></se-icon-lifeison>
             </div>
             <se-divider mode="vertical"></se-divider>
             <se-widget mode="fill">

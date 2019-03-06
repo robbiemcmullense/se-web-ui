@@ -16,7 +16,6 @@ describe('CheckboxComponent', () => {
 
   it('renders with a primary color by default', async() => {
     const renderedHTML = '<label class="checkbox-container">'
-    + '<slot></slot>'
     + '<input type="checkbox" />'
     + '<span class="checkmark" data-color="primary"></span></label>';
     expect(element.shadowRoot).toEqualHtml(renderedHTML);
@@ -33,7 +32,6 @@ describe('CheckboxComponent', () => {
 
   it('emits an event when clicked on', async() => {
     const eventSpy = await page.spyOnEvent('change');
-    const checkbox = element.shadowRoot.querySelector('.checkmark');
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail({

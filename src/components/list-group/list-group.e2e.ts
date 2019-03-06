@@ -5,34 +5,47 @@ import { newE2EPage } from '@stencil/core/testing';
 
 	beforeEach(async() => {
 		page = await newE2EPage();
+		await page.setContent('<se-list-group></se-list-group>');
 	});
 
   it('renders', async() => {
-		await page.setContent('<se-list-group></se-list-group>');
     const element = await page.find('se-list-group');
 		expect(element).toBeTruthy();
-		expect(element).toHaveClass('hydrated');
 	});
 
-	it('renders with an se-list-item element by default, passing its text property', async() => {
-		await page.setContent('<se-list-group item="Item Group"></se-list-group>');
-		const element = await page.find('se-list-group >>> se-list-item');
-		expect(element).toEqualHtml('<se-list-item class="classic hydrated" item="Item Group"></se-list-item>');
-	});
-
-	it('renders with a div element', async() => {
-		await page.setContent('<se-list-group></se-list-group>');
-		const element = await page.find('se-list-group >>> div');
-		expect(element).toEqualHtml('<div class="group-item"><slot /></div>');
-	});
-
-	it('renders with 3 child list items', async() => {
-		const secondItemHTML = '<button style="padding-left: 20px"><div class="selectedBar"></div>'
-			+ '<div class="nav-content"><div class="nav-text">two</div><div class="nav-description"></div></div>'
-			+ '</button><se-divider class="horizontal hydrated light"></se-divider>';
-
-		await page.setContent('<se-list-group item="Item Group"><se-list-item item="one"></se-list-item><se-list-item item="two"></se-list-item><se-list-item item="three"></se-list-item></se-list-group>');
-		const element = await page.find('se-list-group se-list-item:nth-child(2)');
-		expect(element.shadowRoot).toEqualHtml(secondItemHTML);
+	it('should have hyrdated and classic classes by default', async () => {
+    const element = await page.find('se-list-group');
+    expect(element).toHaveClasses(['classic', 'hydrated']);
   });
+
+	it('renders an arrow2_up icon by default, along with an element with the group-item class', async() => {
+		const iconElm = await page.find('se-list-group >>> .se-icon.medium');
+		const groupItemElm = await page.find('se-list-group >>> .group-item');
+		expect(iconElm).toEqualText('arrow2_up');
+		expect(groupItemElm).toBeTruthy();
+	});
+
+	it('renders an arrow2_down icon when collapsed', async() => {
+		await page.$eval('se-list-group', (elm: any) => {
+			elm.collapsed = true;
+		});
+		await page.waitForChanges();
+		const iconElm = await page.find('se-list-group >>> .se-icon.medium');
+		const groupItemElm = await page.find('se-list-group >>> .group-item');
+		expect(iconElm).toEqualText('arrow2_down');
+		expect(groupItemElm).not.toBeTruthy();
+	});
+
+	it('renders an icon element when the mode is set to nav', async() => {
+		await page.$eval('se-list-group', (elm: any) => {
+			elm.mode = 'nav';
+			elm.icon = 'my group test icon';
+		});
+		await page.waitForChanges();
+		const parentElm = await page.find('se-list-group');
+		expect(parentElm).toHaveClass('nav');
+		const iconElm = await page.find('se-list-group >>> .nav-icon span');
+		expect(iconElm).toBeTruthy();
+		expect(iconElm).toEqualText('my group test icon');
+	});
 });

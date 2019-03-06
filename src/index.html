@@ -63,26 +63,26 @@
     </se-navbar>
     <se-container mode="widget">
       <se-widget width="250px">
-        <se-list mode="nav">
-          <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
-            description="And I have an icon">
-          </se-list-item>
-          <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
-            icon-color="primary">
-          </se-list-item>
-          <se-list-item item="my item 3 no icon" description="I'm here too">
-          </se-list-item>
-          <se-list-item item="I'm the selected one!" selected="true">
-          </se-list-item>
-          <se-list-item item="Basic Item">
-          </se-list-item>
-          <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
-            description="And I have an icon">
-          </se-list-item>
-          <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
-            icon-color="primary">
-          </se-list-item>
-        </se-list>
+          <se-list mode="nav">
+            <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
+              description="And I have an icon">
+            </se-list-item>
+            <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
+              icon-color="primary">
+            </se-list-item>
+            <se-list-item item="my item 3 no icon" description="I'm here too">
+            </se-list-item>
+            <se-list-item item="I'm the selected one!" selected="true">
+            </se-list-item>
+            <se-list-item item="Basic Item">
+            </se-list-item>
+            <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
+              description="And I have an icon">
+            </se-list-item>
+            <se-list-item item="my item 2 no description  with a long text" icon="user_standard"
+              icon-color="primary">
+            </se-list-item>
+          </se-list>
       </se-widget>
       <se-widget width="250px">
         <se-widget-header>Title of my classic list</se-widget-header>
@@ -137,8 +137,9 @@
           </se-list>
         </se-widget-content>
       </se-widget>
-      <se-widget >
-          <se-widget-header>
+      <se-widget id="loading-widget">
+        <se-widget-header>
+
           H3 Buttons and Form
           <div slot="end">
               <se-icon mode="button" color="alternative">favourites_addto</se-icon>
@@ -168,7 +169,7 @@
           <se-button mode="flat" color="secondary">secondary</se-button>
 
           <se-button icon="action_resize">Resize</se-button>
-          <se-button mode="outline">Outline</se-button>
+          <se-button mode="outline" id="trigger-loader">Outline</se-button>
           <se-button mode="outline" color="alternative">Outline alternative</se-button>
           <se-button mode="outline" color="primary">Outline primary</se-button>
           <se-button mode="outline" color="secondary">Outline secondary</se-button>
@@ -194,8 +195,6 @@
           <se-divider></se-divider>
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
-            <li id="checkbox-value">error checkbox value: <span></span></li>
-            <li id="checkbox-message">is error checkbox checked: <span></span></li>
           </ul>
           <se-buttons id="RadioGroup1" mode="radio">
             <se-button value="left" icon="arrow2_left"></se-button>
@@ -243,7 +242,6 @@
               <option>Stacked Option 3</option>
             </select>
           </se-form-field>
-
         </se-widget-content>
         <se-widget-footer>
           <se-button onclick="openDialog('dialog-simple-notitle')" mode="raised" >Open Dialog simple</se-button>
@@ -286,6 +284,13 @@
     }
 
     // buttons
+    document.getElementById('trigger-loader').addEventListener('click', function(event) {
+      let loadingWidget = document.getElementById('loading-widget');
+      loadingWidget.loading = true;
+      setTimeout(function() {
+        loadingWidget.loading = false;
+      }, 3000);
+    });
     document.getElementById('se-chip').addEventListener('close', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
     });
@@ -294,10 +299,6 @@
     });
     document.getElementById('RadioGroup1').addEventListener('change', function (event) {
       document.getElementById('radio-message').firstElementChild.innerText = event.detail;
-    });
-    document.getElementById('checkbox-error').addEventListener('change', function (event) {
-      document.getElementById('checkbox-message').firstElementChild.innerText = event.detail.selected;
-      document.getElementById('checkbox-value').firstElementChild.innerText = event.detail.value;
     });
     document.getElementById('btnGroup1').addEventListener('change', function (event) {
       let checkboxMsg = document.getElementById('checkbox-button-message');

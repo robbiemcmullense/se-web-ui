@@ -26,10 +26,10 @@ import { newE2EPage } from '@stencil/core/testing';
 		});
 		await page.waitForChanges();
 
-    const titleElm = await page.find('se-list-item >>> .nav-text');
-    const description = await page.find('se-list-item >>> .nav-description');
+    const titleElm = await page.find('se-list-item >>> .nav-content div');
+    const description = await page.find('se-list-item >>> .nav-content small');
     expect(titleElm.innerText).toEqual('My List Item');
-    expect(description.innerText).toEqual('sample list item');
+    expect(description.innerText).toEqual(' sample list item');
   });
 
   it('should render an icon with arrow2_right when the mode is set to nav', async () => {
@@ -38,31 +38,35 @@ import { newE2EPage } from '@stencil/core/testing';
 		});
 		await page.waitForChanges();
 
-    const iconElm = await page.find('se-list-item >>> se-icon');
+    const iconElm = await page.find('se-list-item >>> .se-icon');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('arrow2_right');
   });
 
-  it('should render an icon with arrow2_up when collapsible is set to true', async () => {
+  it('should render the icon equal to the icon property when provided', async() => {
     await page.$eval('se-list-item', (elm: any) => {
-			elm.collapsible = true;
+      elm.mode = 'nav';
+      elm.selected = true;
+      elm.icon = 'my test icon';
 		});
-		await page.waitForChanges();
-
-    const iconElm = await page.find('se-list-item >>> se-icon');
+    await page.waitForChanges();
+    
+    const iconElm = await page.find('se-list-item >>> .nav-icon span');
     expect(iconElm).toBeTruthy();
-    expect(iconElm.innerText).toEqual('arrow2_up');
+    expect(iconElm.innerText).toEqual('my test icon');
   });
 
-  it('should render an icon with arrow2_down when collapsible and collapsed are both set to true', async () => {
+  it('should render a color class when selected', async() => {
     await page.$eval('se-list-item', (elm: any) => {
-			elm.collapsible = true;
-			elm.collapsed = true;
+      elm.mode = 'nav';
+      elm.selected = true;
+      elm.iconColor = 'secondary';
+      elm.icon = 'my test icon';
 		});
-		await page.waitForChanges();
-
-    const iconElm = await page.find('se-list-item >>> se-icon');
+    await page.waitForChanges();
+    
+    const iconElm = await page.find('se-list-item >>> .nav-icon span');
     expect(iconElm).toBeTruthy();
-    expect(iconElm.innerText).toEqual('arrow2_down');
+    expect(iconElm).toHaveClasses(['se-icon', 'secondary']);
   });
 });
