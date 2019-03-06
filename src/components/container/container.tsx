@@ -13,9 +13,9 @@ export class ContainerComponent {
    * `centered` center the container so the content does no exceed a max width.
    */
   @Prop() mode: "widget" | "fill" | "centered" | "card" = "fill";
-  @Watch('mode') modeDidChange() {
-    if(this.mode === 'widget'){
-      this.color = 'standard'
+  @Watch("mode") modeDidChange() {
+    if (this.mode === "widget") {
+      this.color = "standard";
     }
   }
 
@@ -45,8 +45,7 @@ export class ContainerComponent {
    * `standard` Default. Light grey.
    * `alternative` white background.
    */
-  @Prop({mutable: true}) color: "standard" | "alternative" = "alternative";
-
+  @Prop({ mutable: true }) color: "standard" | "alternative" = "alternative";
 
   componentWillLoad() {
     this.modeDidChange();
@@ -65,6 +64,12 @@ export class ContainerComponent {
   }
 
   render() {
-    return <slot />
+    return this.mode === "centered" ? (
+      <div class="container">
+        <slot />
+      </div>
+    ) : (
+      <slot />
+    );
   }
 }

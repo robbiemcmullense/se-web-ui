@@ -34,10 +34,10 @@
 }
 
 :host(.centered-content) {
-  // .container{
+  .container{
   margin-right: auto;
   margin-left: auto;
-  // }
+  }
   // @include align-items(center);
   // @include justify-content(center);
 }
@@ -53,16 +53,22 @@
 
 @media (min-width: 768px) {
   :host(.centered-content) {
+    .container{
       width: 750px;
+    }
   }
 }
 @media (min-width: 992px) {
   :host(.centered-content) {
+    .container{
       width: 970px;
+    }
   }
 }
 @media (min-width: 1200px) {
   :host(.centered-content) {
+    .container{
       width: 1170px;
+    }
   }
 }
