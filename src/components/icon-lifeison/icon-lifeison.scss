@@ -15,3 +15,11 @@
     color: $se-logo-green;
   }
 }
+:host(.inherited) {
+  .cls-1{
+    color: inherit;
+  }
+  .cls-2{
+    color: inherit;
+  }
+}

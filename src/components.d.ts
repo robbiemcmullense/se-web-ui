@@ -245,37 +245,45 @@ export namespace Components {
     /**
     * Define the color of the background of the container. The default is light gray. `standard` Default. Light grey. `alternative` white background.
     */
-    'color': 'standard' | 'alternative';
+    'color': "standard" | "alternative";
     /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
-    'direction': 'column' | 'row';
+    'direction': "column" | "row";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display': "flex" | "block";
     /**
     * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
     */
-    'mode': 'widget' | 'fill' | 'centered' | 'card';
+    'mode': "widget" | "fill" | "centered" | "card";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
-    'position': 'relative' | 'absolute';
+    'position': "relative" | "absolute";
   }
   interface SeContainerAttributes extends StencilHTMLAttributes {
     /**
     * Define the color of the background of the container. The default is light gray. `standard` Default. Light grey. `alternative` white background.
     */
-    'color'?: 'standard' | 'alternative';
+    'color'?: "standard" | "alternative";
     /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
-    'direction'?: 'column' | 'row';
+    'direction'?: "column" | "row";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display'?: "flex" | "block";
     /**
     * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
     */
-    'mode'?: 'widget' | 'fill' | 'centered' | 'card';
+    'mode'?: "widget" | "fill" | "centered" | "card";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
-    'position'?: 'relative' | 'absolute';
+    'position'?: "relative" | "absolute";
   }
 
   interface SeDialogContent {
@@ -460,13 +468,13 @@ export namespace Components {
     /**
     * Define the color of the logo. `standard`: Default. show a light green / dark green conventional SE logo. `inherited`: `take the color from it's parent.    *
     */
-    'mode': "standard" | "inherited";
+    'color': "standard" | "inherited";
   }
   interface SeIconLifeisonAttributes extends StencilHTMLAttributes {
     /**
     * Define the color of the logo. `standard`: Default. show a light green / dark green conventional SE logo. `inherited`: `take the color from it's parent.    *
     */
-    'mode'?: "standard" | "inherited";
+    'color'?: "standard" | "inherited";
   }
 
   interface SeIconSchneider {}

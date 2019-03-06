@@ -108,7 +108,7 @@ export class SidenavComponent {
               <se-list mode="nav">
                 {this.renderList()}
               </se-list>
-              <se-icon-lifeison></se-icon-lifeison>
+              <se-icon-lifeison color="standard"></se-icon-lifeison>
             </div>
             <se-divider mode="vertical"></se-divider>
             <se-widget mode="fill">

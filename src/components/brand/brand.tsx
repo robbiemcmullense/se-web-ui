@@ -67,7 +67,7 @@ export class BrandComponent {
           </div>
 
           <div class="footer-logo align-end">
-            <se-icon-lifeison color="alternative"></se-icon-lifeison>
+            <se-icon-lifeison></se-icon-lifeison>
           </div>
         </footer>
       </div>
