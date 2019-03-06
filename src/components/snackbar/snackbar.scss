@@ -1,1 +1,13 @@
 @import "../../theme/theme";
+
+.snackbar {
+    height: 32px;
+    background-color: $se-anthracite-grey;
+    color: $se-white;
+    position: fixed;
+    bottom: 20px;
+}
+
+.se-icon {
+	font-family: 'se-icon';
+}

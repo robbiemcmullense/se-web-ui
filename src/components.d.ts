@@ -733,6 +733,19 @@ export namespace Components {
   }
   interface SeSidenavAttributes extends StencilHTMLAttributes {}
 
+  interface SeSnackbar {
+    'canClose': boolean;
+    'color': 'success' | 'error' | 'warning' | 'information';
+    'icon': string;
+    'message': string;
+  }
+  interface SeSnackbarAttributes extends StencilHTMLAttributes {
+    'canClose'?: boolean;
+    'color'?: 'success' | 'error' | 'warning' | 'information';
+    'icon'?: string;
+    'message'?: string;
+  }
+
   interface SeWidgetContent {
     'mode': 'fill';
   }
@@ -812,6 +825,7 @@ declare global {
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeSidenavItem': Components.SeSidenavItem;
     'SeSidenav': Components.SeSidenav;
+    'SeSnackbar': Components.SeSnackbar;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -845,6 +859,7 @@ declare global {
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-sidenav-item': Components.SeSidenavItemAttributes;
     'se-sidenav': Components.SeSidenavAttributes;
+    'se-snackbar': Components.SeSnackbarAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -1008,6 +1023,12 @@ declare global {
     new (): HTMLSeSidenavElement;
   };
 
+  interface HTMLSeSnackbarElement extends Components.SeSnackbar, HTMLStencilElement {}
+  var HTMLSeSnackbarElement: {
+    prototype: HTMLSeSnackbarElement;
+    new (): HTMLSeSnackbarElement;
+  };
+
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
   var HTMLSeWidgetContentElement: {
     prototype: HTMLSeWidgetContentElement;
@@ -1059,6 +1080,7 @@ declare global {
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-sidenav-item': HTMLSeSidenavItemElement
     'se-sidenav': HTMLSeSidenavElement
+    'se-snackbar': HTMLSeSnackbarElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -1092,6 +1114,7 @@ declare global {
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-sidenav-item': HTMLSeSidenavItemElement;
     'se-sidenav': HTMLSeSidenavElement;
+    'se-snackbar': HTMLSeSnackbarElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;
