@@ -748,15 +748,19 @@ export namespace Components {
 
   interface SeSnackbar {
     'canClose': boolean;
-    'color': 'success' | 'error' | 'warning' | 'information';
+    'closeText': string;
     'icon': string;
     'message': string;
+    'open': boolean;
+    'type': 'success' | 'error' | 'warning' | 'information';
   }
   interface SeSnackbarAttributes extends StencilHTMLAttributes {
     'canClose'?: boolean;
-    'color'?: 'success' | 'error' | 'warning' | 'information';
+    'closeText'?: string;
     'icon'?: string;
     'message'?: string;
+    'open'?: boolean;
+    'type'?: 'success' | 'error' | 'warning' | 'information';
   }
 
   interface SeWidgetContent {
