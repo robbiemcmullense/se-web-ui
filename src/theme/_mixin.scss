@@ -114,11 +114,10 @@ $prefix: "--"; //Prefix string for custom CSS properties
 }
 
 @mixin loader() {
-  -webkit-animation: clockwiseSpin 1s infinite;
-  animation: clockwiseSpin 1s infinite;
+  -webkit-animation: clockwiseSpin 1.5s infinite linear;
+  animation: clockwiseSpin 1.5s infinite linear;
   @keyframes clockwiseSpin {
     0%  {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
-    50% {-webkit-transform: rotate(180deg);transform: rotate(180deg);}
     100% {-webkit-transform: rotate(360deg);transform: rotate(360deg);}
   }
 }
