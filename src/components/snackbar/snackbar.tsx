@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Prop, Watch } from "@stencil/core";
 
 const SHOW_SNACKBAR = 'show';
 
@@ -15,22 +15,20 @@ export class SnackbarComponent {
   @Prop() message: string;
   @Prop() canClose: boolean;
   @Prop() closeText: string;
-  @Prop() open: boolean = false;
+  @Prop({mutable: true}) open: boolean = false;
   @Watch('open') openDidChange() {
     if (this.open) {
-      this.addAnimation();
+      this.el.classList.add(SHOW_SNACKBAR);
     } else {
-      this.removeAnimation();
+      this.el.classList.remove(SHOW_SNACKBAR);
     }
   }
   @Element() el: HTMLElement;
+  @Event() close: EventEmitter;
 
-  private addAnimation() {
-    this.el.classList.add(SHOW_SNACKBAR);
-  }
-
-  private removeAnimation() {
-    this.el.classList.remove(SHOW_SNACKBAR);
+  closeSnackbar() {
+    this.open = false;
+    this.close.emit();
   }
 
   hostData() {
@@ -44,7 +42,7 @@ export class SnackbarComponent {
       <div class="snackbar">
         {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
         <span class="message">{this.message}</span>
-        {this.canClose ? <span class="close">{this.closeText}</span> : ''}
+        {this.canClose ? <span class="close" onClick={() => this.closeSnackbar()}>{this.closeText}</span> : ''}
       </div>
     ];
   }

@@ -781,6 +781,7 @@ export namespace Components {
     'closeText'?: string;
     'icon'?: string;
     'message'?: string;
+    'onClose'?: (event: CustomEvent) => void;
     'open'?: boolean;
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
