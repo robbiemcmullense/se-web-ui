@@ -61,7 +61,7 @@ nav.alternative {
   nav > a {
     @include color('alternative-contrast');
     &:hover {
-      @include color('primary-contrast');
+      @include color('primary');
     }
     &.active {
       @include color('primary');
