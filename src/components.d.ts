@@ -447,6 +447,19 @@ export namespace Components {
     'size'?: "small" | "medium";
   }
 
+  interface SeIconLifeison {
+    /**
+    * Define the color of the logo. `standard`: Default. show a light green / dark green conventional SE logo. `inherited`: `take the color from it's parent.    *
+    */
+    'mode': "standard" | "inherited";
+  }
+  interface SeIconLifeisonAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the color of the logo. `standard`: Default. show a light green / dark green conventional SE logo. `inherited`: `take the color from it's parent.    *
+    */
+    'mode'?: "standard" | "inherited";
+  }
+
   interface SeIconSchneider {}
   interface SeIconSchneiderAttributes extends StencilHTMLAttributes {}
 
@@ -815,6 +828,7 @@ declare global {
     'SeFormField': Components.SeFormField;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
+    'SeIconLifeison': Components.SeIconLifeison;
     'SeIconSchneider': Components.SeIconSchneider;
     'SeIcon': Components.SeIcon;
     'SeLink': Components.SeLink;
@@ -849,6 +863,7 @@ declare global {
     'se-form-field': Components.SeFormFieldAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
+    'se-icon-lifeison': Components.SeIconLifeisonAttributes;
     'se-icon-schneider': Components.SeIconSchneiderAttributes;
     'se-icon': Components.SeIconAttributes;
     'se-link': Components.SeLinkAttributes;
@@ -963,6 +978,12 @@ declare global {
     new (): HTMLSeIconEcostruxureElement;
   };
 
+  interface HTMLSeIconLifeisonElement extends Components.SeIconLifeison, HTMLStencilElement {}
+  var HTMLSeIconLifeisonElement: {
+    prototype: HTMLSeIconLifeisonElement;
+    new (): HTMLSeIconLifeisonElement;
+  };
+
   interface HTMLSeIconSchneiderElement extends Components.SeIconSchneider, HTMLStencilElement {}
   var HTMLSeIconSchneiderElement: {
     prototype: HTMLSeIconSchneiderElement;
@@ -1070,6 +1091,7 @@ declare global {
     'se-form-field': HTMLSeFormFieldElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
+    'se-icon-lifeison': HTMLSeIconLifeisonElement
     'se-icon-schneider': HTMLSeIconSchneiderElement
     'se-icon': HTMLSeIconElement
     'se-link': HTMLSeLinkElement
@@ -1104,6 +1126,7 @@ declare global {
     'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
+    'se-icon-lifeison': HTMLSeIconLifeisonElement;
     'se-icon-schneider': HTMLSeIconSchneiderElement;
     'se-icon': HTMLSeIconElement;
     'se-link': HTMLSeLinkElement;
