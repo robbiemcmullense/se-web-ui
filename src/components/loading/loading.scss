@@ -1,0 +1,44 @@
+@import "../../theme/theme";
+
+:host {
+	display: none;
+	overflow: hidden;
+	z-index: 100;
+}
+
+:host(.show) {
+	display: block;
+}
+
+.loading-wrapper {
+  @include absolute();
+  @include display-flex();
+  @include align-items(center);
+	@include justify-content(center);
+}
+
+.se-loading {
+	position: relative;
+	width: 128px;
+	height: 128px;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+	@include animated();
+  @include background-color("alternative");
+  @include color("primary");
+  @include display-flex();
+  @include flex-direction(column);
+}
+
+.loading-background {
+  @include absolute();
+  @include animated();
+	z-index: 120;
+}
+
+.se-icon {
+	position: relative;
+	bottom: 18px;
+	font-family: 'se-icon';
+	font-size: 128px;
+	@include loader();
+}

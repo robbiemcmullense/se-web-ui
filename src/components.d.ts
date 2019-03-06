@@ -306,11 +306,17 @@ export namespace Components {
   }
 
   interface SeDialog {
+    /**
+    * Emit the `onBackdrop` event from the dialog's parent component.
+    */
     'backdropClicked': () => void;
     /**
     * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
     */
     'color': 'alternative' | 'primary';
+    /**
+    * Indicates whether or not the dialog is open (`true`) or closed (`false`).
+    */
     'open': boolean;
     /**
     * Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen
@@ -330,6 +336,9 @@ export namespace Components {
     * event emitted when the backdrop is clicked.
     */
     'onOnBackdrop'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether or not the dialog is open (`true`) or closed (`false`).
+    */
     'open'?: boolean;
     /**
     * Define the size of the modal. `small`: used by alert and message `medium`: used by other app `fill`: take the full space of the screen
@@ -664,6 +673,19 @@ export namespace Components {
     'mode'?: "nav" | "classic";
   }
 
+  interface SeLoading {
+    /**
+    * Displays the loading icon on screen when set to `true`.
+    */
+    'loading': boolean;
+  }
+  interface SeLoadingAttributes extends StencilHTMLAttributes {
+    /**
+    * Displays the loading icon on screen when set to `true`.
+    */
+    'loading'?: boolean;
+  }
+
   interface SeNavbar {
     'color': 'primary' | 'alternative';
   }
@@ -769,6 +791,10 @@ export namespace Components {
     */
     'height': string;
     /**
+    * Display the loading icon if set to `true`.
+    */
+    'loading': boolean;
+    /**
     * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
     */
     'mode': "fill";
@@ -786,6 +812,10 @@ export namespace Components {
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
     'height'?: string;
+    /**
+    * Display the loading icon if set to `true`.
+    */
+    'loading'?: boolean;
     /**
     * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
     */
@@ -822,6 +852,7 @@ declare global {
     'SeListGroup': Components.SeListGroup;
     'SeListItem': Components.SeListItem;
     'SeList': Components.SeList;
+    'SeLoading': Components.SeLoading;
     'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeSidenavItem': Components.SeSidenavItem;
@@ -856,6 +887,7 @@ declare global {
     'se-list-group': Components.SeListGroupAttributes;
     'se-list-item': Components.SeListItemAttributes;
     'se-list': Components.SeListAttributes;
+    'se-loading': Components.SeLoadingAttributes;
     'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-sidenav-item': Components.SeSidenavItemAttributes;
@@ -1005,6 +1037,12 @@ declare global {
     new (): HTMLSeListElement;
   };
 
+  interface HTMLSeLoadingElement extends Components.SeLoading, HTMLStencilElement {}
+  var HTMLSeLoadingElement: {
+    prototype: HTMLSeLoadingElement;
+    new (): HTMLSeLoadingElement;
+  };
+
   interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
   var HTMLSeNavbarElement: {
     prototype: HTMLSeNavbarElement;
@@ -1077,6 +1115,7 @@ declare global {
     'se-list-group': HTMLSeListGroupElement
     'se-list-item': HTMLSeListItemElement
     'se-list': HTMLSeListElement
+    'se-loading': HTMLSeLoadingElement
     'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-sidenav-item': HTMLSeSidenavItemElement
@@ -1111,6 +1150,7 @@ declare global {
     'se-list-group': HTMLSeListGroupElement;
     'se-list-item': HTMLSeListItemElement;
     'se-list': HTMLSeListElement;
+    'se-loading': HTMLSeLoadingElement;
     'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-sidenav-item': HTMLSeSidenavItemElement;

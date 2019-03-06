@@ -51,7 +51,7 @@ describe('ButtonsComponent', () => {
   });
 
 
-  it('sends an event with an array object when a button is clicked on', async() => {
+  it('selects only one button at a time when the mode is set to radio', async() => {
     await page.$eval('se-buttons', (elm: any) => {
       elm.mode = 'radio';
     });

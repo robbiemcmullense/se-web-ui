@@ -36,7 +36,6 @@
 
 .dialog-wrapper {
   @include absolute();
-
   @include display-flex();
   @include align-items(center);
   @include justify-content(center);

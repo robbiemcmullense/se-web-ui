@@ -27,13 +27,17 @@ export class DialogComponent {
    * `primary`: Primary color schema.
    */
   @Prop() color: 'alternative' | 'primary' = 'primary'
+  /**
+   * Indicates whether or not the dialog is open (`true`) or closed (`false`).
+   */
+  @Prop() open: boolean = false;
+
   @Watch('color') colorDidChange(){
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach((item: any) => {
       item.color = this.color;
     });
   }
-
-  @Prop() open: boolean = false;
+  
   @Watch('open') openDidChange(){
     if(this.open){
       this.addAnimation(null);
@@ -43,17 +47,17 @@ export class DialogComponent {
       });
     }
   }
-
   /**
-   * event emitted when the backdrop is clicked.
+   * Emit the `onBackdrop` event from the dialog's parent component.
    */
-  @Event() onBackdrop: EventEmitter<any>;
-
   @Method()
   backdropClicked(): void {
     this.onBackdrop.emit();
   }
-
+  /**
+   * event emitted when the backdrop is clicked.
+   */
+  @Event() onBackdrop: EventEmitter<any>;
   /**
    * event emitted after the animation of closing is done. The modal can be safely removed from the DOM
    */
@@ -80,18 +84,17 @@ export class DialogComponent {
       callback && callback();
     }, 500);
   }
+
   componentDidLoad() {
     this.colorDidChange();
   }
+
   hostData() {
     return {
       class: [this.size].join(" ")
     };
   }
 
-  // renderDialog() {
-  //   return
-  // }
   render(){
     return [
       <div class="dialog-wrapper" >
