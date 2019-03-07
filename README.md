@@ -55,7 +55,7 @@ You can test all of these components with this [Online Template Editor](https://
 | [ ]  | Tab-item       |                                                                                                                            |
 | [x]  | Brand          | Authentication page with a slot as content                                                                                 |
 | [x]  | About          | About page that will be used in the menu section                                                                           |
-| [ ]  | Snackbar       | Design only. No info about how to show it from service yet                                                                 |
+| [x]  | Snackbar       | Design only. No info about how to show it from service yet                                                                 |
 | [ ]  | Pagination     |                                                                                                                            |
 | [ ]  | Datepicker     |                                                                                                                            |
 | [ ]  | Tooltips       | Design only                                                                                                                |

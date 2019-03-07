@@ -247,6 +247,7 @@
           <se-button onclick="openDialog('dialog-simple-notitle')" mode="raised" >Open Dialog simple</se-button>
           <se-button onclick="openDialog('dialog-simple-title')" mode="raised" >Open Dialog title & icon</se-button>
           <se-button onclick="openDialog('dialog-complex')" mode="raised" >Open Dialog complex</se-button>
+          <se-button onclick="openSnackbar()" mode="raised">Open Snackbar</se-button>
         </se-widget-footer>
       </se-widget>
     </se-container>
@@ -264,6 +265,7 @@
       <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
       <se-dialog-footer><se-button onclick="closeDialog('dialog-complex')" mode="alternative">cancel</se-button><se-button onclick="closeDialog('dialog-complex')">OK</se-button></se-dialog-footer>
     </se-dialog>
+    <se-snackbar id="snackbar" type="warning" icon="information_stroke" message="my message" can-close="true" close-text="Dismiss"></se-snackbar>
   </se-app>
 
   <script>
@@ -276,6 +278,10 @@
     function closeDialog(id) {
       console.log('close Dialog', id)
       document.getElementById(id).open = false;
+    }
+
+    function openSnackbar() {
+      document.getElementById('snackbar').open = true;
     }
 
     // Login page

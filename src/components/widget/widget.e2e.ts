@@ -13,7 +13,7 @@ describe('WidgetComponent', () => {
     expect(element).toBeTruthy();
   });
 
-  it('renders with flex class due to no specified with, along with the default alternative color class', () => {
+  it('renders with flex class due to no specified with, along with the default alternative color class', async() => {
     expect(element).toHaveClasses(['alternative', 'flex', 'hydrated']);
   });
 
@@ -31,19 +31,5 @@ describe('WidgetComponent', () => {
     });
     await page.waitForChanges();
     expect(element).toHaveClass('standard');
-  });
-});
-
-describe('Widget Component with a loader', () => {
-  let page, loaderElm;
-
-  beforeEach(async() => {
-    page = await newE2EPage();
-    await page.setContent('<se-widget loading="true"></se-widget>');
-    loaderElm = await page.find('se-widget >>> se-loading');
-  });
-
-  it('does not have the se-loading element when loader is set to false', async() => {
-    expect(loaderElm).toBeTruthy();
   });
 });

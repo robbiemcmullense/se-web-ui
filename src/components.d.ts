@@ -776,6 +776,63 @@ export namespace Components {
   }
   interface SeSidenavAttributes extends StencilHTMLAttributes {}
 
+  interface SeSnackbar {
+    /**
+    * Display a close "button".
+    */
+    'canClose': boolean;
+    /**
+    * Defines the text you want your "close button" to read.
+    */
+    'closeText': string;
+    /**
+    * The name of the icon you wish to display.  Optional.
+    */
+    'icon': string;
+    /**
+    * The content of the message you want the snackbar to display.
+    */
+    'message': string;
+    /**
+    * Indicates if the snackbar is open.
+    */
+    'open': boolean;
+    /**
+    * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey
+    */
+    'type': 'success' | 'error' | 'warning' | 'information';
+  }
+  interface SeSnackbarAttributes extends StencilHTMLAttributes {
+    /**
+    * Display a close "button".
+    */
+    'canClose'?: boolean;
+    /**
+    * Defines the text you want your "close button" to read.
+    */
+    'closeText'?: string;
+    /**
+    * The name of the icon you wish to display.  Optional.
+    */
+    'icon'?: string;
+    /**
+    * The content of the message you want the snackbar to display.
+    */
+    'message'?: string;
+    /**
+    * Send information to the parent component when closing the snackbar.
+    */
+    'onClose'?: (event: CustomEvent) => void;
+    /**
+    * Indicates if the snackbar is open.
+    */
+    'open'?: boolean;
+    /**
+    * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey
+    */
+    'type'?: 'success' | 'error' | 'warning' | 'information';
+  }
+
   interface SeWidgetContent {
     'mode': 'fill';
   }
@@ -865,6 +922,7 @@ declare global {
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeSidenavItem': Components.SeSidenavItem;
     'SeSidenav': Components.SeSidenav;
+    'SeSnackbar': Components.SeSnackbar;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -900,6 +958,7 @@ declare global {
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-sidenav-item': Components.SeSidenavItemAttributes;
     'se-sidenav': Components.SeSidenavAttributes;
+    'se-snackbar': Components.SeSnackbarAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -1075,6 +1134,12 @@ declare global {
     new (): HTMLSeSidenavElement;
   };
 
+  interface HTMLSeSnackbarElement extends Components.SeSnackbar, HTMLStencilElement {}
+  var HTMLSeSnackbarElement: {
+    prototype: HTMLSeSnackbarElement;
+    new (): HTMLSeSnackbarElement;
+  };
+
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
   var HTMLSeWidgetContentElement: {
     prototype: HTMLSeWidgetContentElement;
@@ -1128,6 +1193,7 @@ declare global {
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-sidenav-item': HTMLSeSidenavItemElement
     'se-sidenav': HTMLSeSidenavElement
+    'se-snackbar': HTMLSeSnackbarElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -1163,6 +1229,7 @@ declare global {
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-sidenav-item': HTMLSeSidenavItemElement;
     'se-sidenav': HTMLSeSidenavElement;
+    'se-snackbar': HTMLSeSnackbarElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;
