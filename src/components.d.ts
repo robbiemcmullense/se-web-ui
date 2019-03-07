@@ -833,6 +833,14 @@ export namespace Components {
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
 
+  interface SeSwitch {}
+  interface SeSwitchAttributes extends StencilHTMLAttributes {
+    /**
+    * Send the state of the switch (true/false) to the parent component when it is toggled.
+    */
+    'onChange'?: (event: CustomEvent) => void;
+  }
+
   interface SeWidgetContent {
     'mode': 'fill';
   }
@@ -923,6 +931,7 @@ declare global {
     'SeSidenavItem': Components.SeSidenavItem;
     'SeSidenav': Components.SeSidenav;
     'SeSnackbar': Components.SeSnackbar;
+    'SeSwitch': Components.SeSwitch;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -959,6 +968,7 @@ declare global {
     'se-sidenav-item': Components.SeSidenavItemAttributes;
     'se-sidenav': Components.SeSidenavAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
+    'se-switch': Components.SeSwitchAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -1140,6 +1150,12 @@ declare global {
     new (): HTMLSeSnackbarElement;
   };
 
+  interface HTMLSeSwitchElement extends Components.SeSwitch, HTMLStencilElement {}
+  var HTMLSeSwitchElement: {
+    prototype: HTMLSeSwitchElement;
+    new (): HTMLSeSwitchElement;
+  };
+
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
   var HTMLSeWidgetContentElement: {
     prototype: HTMLSeWidgetContentElement;
@@ -1194,6 +1210,7 @@ declare global {
     'se-sidenav-item': HTMLSeSidenavItemElement
     'se-sidenav': HTMLSeSidenavElement
     'se-snackbar': HTMLSeSnackbarElement
+    'se-switch': HTMLSeSwitchElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -1230,6 +1247,7 @@ declare global {
     'se-sidenav-item': HTMLSeSidenavItemElement;
     'se-sidenav': HTMLSeSidenavElement;
     'se-snackbar': HTMLSeSnackbarElement;
+    'se-switch': HTMLSeSwitchElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;

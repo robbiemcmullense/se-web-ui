@@ -1,11 +1,11 @@
 import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
-import { } from 'events';
 
 @Component({
   tag: 'se-radio-on-off',
   styleUrl: 'radio-on-off.scss',
   shadow: true
 })
+
 export class RadioOnOffComponent {
   /**
    * Defines the visual appearance of the on/off radio switch.
