@@ -49,6 +49,7 @@ export class RadioOnOffComponent {
     return {
       'class': [
         this.mode,
+        this.color,
         this.disabled ? 'disabled': ''
       ].join(' ')
     };

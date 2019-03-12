@@ -1,52 +1,65 @@
 @import "../../theme/theme";
 
 :host {
-  button:first-child {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-    margin-right: 0;
-  }
-  button:last-child {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    margin-left: 0;
-  }
-  &.disabled {
-    opacity: 0.26;
-    button {
-      cursor: default;
+  button {
+    padding: 4px 14px;
+    border: none;
+    outline: none;
+    height: 24px;
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 300;
+    cursor: pointer;
+
+    &.active {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      margin-right: 0;
+      &.selected {
+        color: $se-white;
+        background-color: $se-life-green;
+      }
+    }
+    
+    &.inactive {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      margin-left: 0;
+      &.selected {
+        color: $se-ultra-light-grey-1;
+        background-color: $se-red;
+      }
     }
   }
 }
+
 :host(.header){
   button {
     height: 16px;
+    padding: 2px 14px;
   }
 }
-:host(.standard) {
-  @include background-color("standard");
-  @include color("standard-contrast");
-}
-:host(.standard.active.selected) {
-  color: $se-white;
-  background-color: $se-life-green;
-}
-:host(.alternative) {
-  @include background-color("alternative");
-  @include color("alternative-contrast");
-}
-:host(.alternative.active.selected) {
-  color: $se-white;
-  background-color: $se-red;
+
+:host(.disabled) {
+  opacity: 0.26;
+  button {
+    cursor: default;
+    &.inactive.selected {
+      background-color: $se-anthracite-grey;
+    }
+  }
 }
 
-button {
-  padding: 4px 16px;
-  border: none;
-  outline: none;
-  margin: $spacing;
-  font-size: 11px;
-  line-height: 13px;
-  font-weight: 300;
-  cursor: pointer;
+:host(.standard) {
+  button {
+    @include background-color("standard");
+    @include color("standard-contrast");
+  }
+}
+
+:host(.alternative) {
+  button {
+    @include background-color("alternative");
+    @include color("alternative-contrast");
+  }
 }
