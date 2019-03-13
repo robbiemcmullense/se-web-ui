@@ -42,13 +42,17 @@ export class VisualLinearComponent {
 			<div class="se-visual-linear">
 				<svg width="100%" height="8">
 					<rect class="progress-bar-wrapper" width="100%" height="8" />
-					<rect class="progress-bar" width={this.percentage + '%'} height="8" style={{'fill': this.secolor}} />
+					<rect class="progress-bar" width={this.percentage + '%'} height="8" style={{ 'fill': this.secolor }} />
 					Sorry, your browser does not support inline SVG.
 				</svg>
-				<div class="visual-linear-data">
+				<text>
+					{this.value && <tspan class="linear-value">{this.value}</tspan>}
+					<tspan x="100%"class="linear-label">{this.label}</tspan>
+				</text>
+				{/* <div class="visual-linear-data">
 					{this.value && <value>{this.value}</value>}
 					<label>&nbsp;{this.label}</label>
-				</div>
+				</div> */}
 			</div>
 		];
 	}

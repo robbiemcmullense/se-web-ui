@@ -21,15 +21,15 @@
 		fill: $se-life-green;
 	}
 
-	value {
+	.linear-value {
 		font-weight: 600;
 	}
 
-	label {
+	.linear-label {
 		font-size: 12px;
 	}
 
-	value + label {
+	.linear-value + .linear-label {
 		font-size: 14px;
 	}
 }
@@ -44,23 +44,17 @@
 	svg {
 		margin-right: $spacing-large;
 	}
+
+	.linear-value {
+		margin-right: $spacing-small;
+	}
 }
 
 :host(.stacked) {
 	.se-visual-linear {
 		flex-direction: column-reverse;
 	}
-
-	.visual-linear-data {
-		value {
-			width: 50%;
-			display: inline-block;
-			text-align: left;
-		}
-		label {
-			width: 50%;
-			display: inline-block;
-			text-align: right;
-		}
+	.linear-value + .linear-label {
+		float: right;
 	}
 }

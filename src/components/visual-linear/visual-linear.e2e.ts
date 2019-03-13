@@ -5,7 +5,7 @@ describe('VisualLinearComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-visual-linear></se-visual-linear>');
+    await page.setContent('<se-visual-linear percentage="50"></se-visual-linear>');
     element = await page.find('se-visual-linear');
   });
 
@@ -41,8 +41,8 @@ describe('VisualLinearComponent', () => {
     });
     await page.waitForChanges();
 
-    let label = await page.find('se-visual-linear >>> label');
-    let value = await page.find('se-visual-linear >>> value');
+    let label = await page.find('se-visual-linear >>> .linear-label');
+    let value = await page.find('se-visual-linear >>> .linear-value');
     expect(label).toEqualText('test label');
     expect(value).toEqualText('13');
   });

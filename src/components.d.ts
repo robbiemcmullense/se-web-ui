@@ -929,6 +929,10 @@ export namespace Components {
     */
     'secolor': string;
     /**
+    * Determines the visual size of your circular progress bar.
+    */
+    'size': 'small' | 'large';
+    /**
     * Defines the value of your component.
     */
     'value': string;
@@ -946,6 +950,10 @@ export namespace Components {
     * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
     */
     'secolor'?: string;
+    /**
+    * Determines the visual size of your circular progress bar.
+    */
+    'size'?: 'small' | 'large';
     /**
     * Defines the value of your component.
     */
