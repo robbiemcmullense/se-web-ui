@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from "@stencil/core";
+import { Component, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
   tag: "se-container",
@@ -6,16 +6,26 @@ import { Component, Prop, Watch } from "@stencil/core";
   shadow: true
 })
 export class ContainerComponent {
+  @Element() el: HTMLElement;
+
   /**
    * Defines the inner appearance of a container.
    * `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray)
    * `fill` Default. Take the full space of the container.
    * `centered` center the container so the content does no exceed a max width.
+   *  `card` Add a larger spacing and use alternative (white) background.
    */
-  @Prop() mode: "widget" | "fill" | "centered" | "card" = "fill";
+  @Prop() mode: "fill" | "widget" | "card" | "centered"  = "fill";
   @Watch("mode") modeDidChange() {
     if (this.mode === "widget") {
       this.color = "standard";
+    }
+    if(this.mode === "card"){
+      Array.from(this.el.querySelectorAll(":scope > se-widget")).forEach(
+        (item: any) => {
+          item.mode = this.mode;
+        }
+      );
     }
   }
 
@@ -36,9 +46,17 @@ export class ContainerComponent {
   /**
    * Defines how to display the element.
    * `flex` Default. Will make all element fitting in the .
-   * `block` Help in specific cases. Make sure you know that you are doing.
+   * `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
    */
-  @Prop() display: "flex" | "block" = "flex";
+  @Prop() display: "flex" | "block" | "grid" = "flex";
+  @Watch("display") displayDidChange() {
+    // Only direct child will be impacted by the display property
+    Array.from(this.el.querySelectorAll(":scope > se-widget")).forEach(
+      (item: any) => {
+        item.display = this.display;
+      }
+    );
+  }
 
   /**
    * Define the color of the background of the container. The default is light gray.
@@ -49,6 +67,7 @@ export class ContainerComponent {
 
   componentWillLoad() {
     this.modeDidChange();
+    this.displayDidChange();
   }
 
   hostData() {

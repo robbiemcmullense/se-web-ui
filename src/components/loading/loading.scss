@@ -14,7 +14,8 @@
   @include absolute();
   @include display-flex();
   @include align-items(center);
-	@include justify-content(center);
+  @include justify-content(center);
+  background-color: rgba(white, 0.6);
 }
 
 .se-loading {

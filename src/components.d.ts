@@ -251,13 +251,13 @@ export namespace Components {
     */
     'direction': "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
     */
-    'display': "flex" | "block";
+    'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode': "widget" | "fill" | "centered" | "card";
+    'mode': "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
@@ -273,13 +273,13 @@ export namespace Components {
     */
     'direction'?: "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
     */
-    'display'?: "flex" | "block";
+    'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode'?: "widget" | "fill" | "centered" | "card";
+    'mode'?: "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
@@ -361,6 +361,35 @@ export namespace Components {
   interface SeDividerAttributes extends StencilHTMLAttributes {
     'color'?: "standard" | "alternative";
     'mode'?: "horizontal" | "vertical" | "inset";
+  }
+
+  interface SeDropdown {
+    /**
+    * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element `right`: Position the container regarding to the right side of the trigger element
+    */
+    'alignment': 'left'|'right';
+    /**
+    * Method to close the dropdown from the outside.
+    */
+    'close': () => void;
+    /**
+    * Method to open the dropdown from the outside.
+    */
+    'open': () => void;
+  }
+  interface SeDropdownAttributes extends StencilHTMLAttributes {
+    /**
+    * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element `right`: Position the container regarding to the right side of the trigger element
+    */
+    'alignment'?: 'left'|'right';
+    /**
+    * Event emitted when the dropdown has been closed.
+    */
+    'onOnClose'?: (event: CustomEvent) => void;
+    /**
+    * Event emitted when the dropdown has been opened.
+    */
+    'onOnOpen'?: (event: CustomEvent) => void;
   }
 
   interface SeFormField {
@@ -566,7 +595,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic";
+    'mode': "nav" | "classic" | "dropdown";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -600,7 +629,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic";
+    'mode'?: "nav" | "classic" | "dropdown";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -631,7 +660,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic";
+    'mode': "nav" | "classic" | "dropdown";
     /**
     * Define if the list element should be selected or not
     */
@@ -661,7 +690,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic";
+    'mode'?: "nav" | "classic" | "dropdown";
     /**
     * Define if the list element should be selected or not
     */
@@ -672,13 +701,13 @@ export namespace Components {
     /**
     * Define the style of the list
     */
-    'mode': "nav" | "classic";
+    'mode': "nav" | "classic" | "dropdown";
   }
   interface SeListAttributes extends StencilHTMLAttributes {
     /**
     * Define the style of the list
     */
-    'mode'?: "nav" | "classic";
+    'mode'?: "nav" | "classic" | "dropdown";
   }
 
   interface SeLoading {
@@ -833,6 +862,14 @@ export namespace Components {
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
 
+  interface SeSwitch {}
+  interface SeSwitchAttributes extends StencilHTMLAttributes {
+    /**
+    * Send the state of the switch (true/false) to the parent component when it is toggled.
+    */
+    'onChange'?: (event: CustomEvent) => void;
+  }
+
   interface SeWidgetContent {
     'mode': 'fill';
   }
@@ -870,7 +907,15 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the widget. default is alternative (white)
     */
-    'color': 'standard' | 'alternative';
+    'color': "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display': "flex" | "block" | "grid";
+    /**
+    * When on Grid mode, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    */
+    'enlarged': boolean;
     /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -892,7 +937,15 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the widget. default is alternative (white)
     */
-    'color'?: 'standard' | 'alternative';
+    'color'?: "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display'?: "flex" | "block" | "grid";
+    /**
+    * When on Grid mode, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    */
+    'enlarged'?: boolean;
     /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -927,6 +980,7 @@ declare global {
     'SeDialogHeader': Components.SeDialogHeader;
     'SeDialog': Components.SeDialog;
     'SeDivider': Components.SeDivider;
+    'SeDropdown': Components.SeDropdown;
     'SeFormField': Components.SeFormField;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
@@ -943,6 +997,7 @@ declare global {
     'SeSidenavItem': Components.SeSidenavItem;
     'SeSidenav': Components.SeSidenav;
     'SeSnackbar': Components.SeSnackbar;
+    'SeSwitch': Components.SeSwitch;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -963,6 +1018,7 @@ declare global {
     'se-dialog-header': Components.SeDialogHeaderAttributes;
     'se-dialog': Components.SeDialogAttributes;
     'se-divider': Components.SeDividerAttributes;
+    'se-dropdown': Components.SeDropdownAttributes;
     'se-form-field': Components.SeFormFieldAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
@@ -979,6 +1035,7 @@ declare global {
     'se-sidenav-item': Components.SeSidenavItemAttributes;
     'se-sidenav': Components.SeSidenavAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
+    'se-switch': Components.SeSwitchAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -1062,6 +1119,12 @@ declare global {
   var HTMLSeDividerElement: {
     prototype: HTMLSeDividerElement;
     new (): HTMLSeDividerElement;
+  };
+
+  interface HTMLSeDropdownElement extends Components.SeDropdown, HTMLStencilElement {}
+  var HTMLSeDropdownElement: {
+    prototype: HTMLSeDropdownElement;
+    new (): HTMLSeDropdownElement;
   };
 
   interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {}
@@ -1160,6 +1223,12 @@ declare global {
     new (): HTMLSeSnackbarElement;
   };
 
+  interface HTMLSeSwitchElement extends Components.SeSwitch, HTMLStencilElement {}
+  var HTMLSeSwitchElement: {
+    prototype: HTMLSeSwitchElement;
+    new (): HTMLSeSwitchElement;
+  };
+
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
   var HTMLSeWidgetContentElement: {
     prototype: HTMLSeWidgetContentElement;
@@ -1198,6 +1267,7 @@ declare global {
     'se-dialog-header': HTMLSeDialogHeaderElement
     'se-dialog': HTMLSeDialogElement
     'se-divider': HTMLSeDividerElement
+    'se-dropdown': HTMLSeDropdownElement
     'se-form-field': HTMLSeFormFieldElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
@@ -1214,6 +1284,7 @@ declare global {
     'se-sidenav-item': HTMLSeSidenavItemElement
     'se-sidenav': HTMLSeSidenavElement
     'se-snackbar': HTMLSeSnackbarElement
+    'se-switch': HTMLSeSwitchElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -1234,6 +1305,7 @@ declare global {
     'se-dialog-header': HTMLSeDialogHeaderElement;
     'se-dialog': HTMLSeDialogElement;
     'se-divider': HTMLSeDividerElement;
+    'se-dropdown': HTMLSeDropdownElement;
     'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
@@ -1250,6 +1322,7 @@ declare global {
     'se-sidenav-item': HTMLSeSidenavItemElement;
     'se-sidenav': HTMLSeSidenavElement;
     'se-snackbar': HTMLSeSnackbarElement;
+    'se-switch': HTMLSeSwitchElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;

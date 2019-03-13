@@ -29,13 +29,12 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | Form-Field     | container for a submittable form.  Accepts checkboxes, input fields, and select dropdowns                                  |
 | [x]  | Buttons        | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Button         | standard button                                                                                                            |
-| [x]  | Radio-on-off   | toggle switch that can indicate "on" or "off", "active" or "inactive", etc.                                                |
-| [x]  | Switch         |                                                                                                                            |
+| [x]  | Radio-on-off   | toggle switch with text that can indicate "on" or "off", "active" or "inactive", etc.                                      |
+| [x]  | Switch         | toggle switch without text that can indicate "on" or "off", "active" or "inactive", etc.                                   |
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
 | [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
 | [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
-| [ ]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
-| [ ]  | Dropdown-item  | menu in guideline, a button with a list                                                                                    |
+| [x]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Progressbar    |                                                                                                                            |
 | [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
 | [ ]  | Card-header    |                                                                                                                            |

@@ -40,7 +40,7 @@ export class ListItemComponent {
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
-  @Prop() mode: "nav" | "classic" = "classic";
+  @Prop() mode: "nav" | "classic" | "dropdown" = "classic";
 
   hostData() {
     return {
