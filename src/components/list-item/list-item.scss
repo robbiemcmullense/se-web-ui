@@ -37,9 +37,9 @@ button {
   outline: none;
   background: transparent;
   width: 100%;
-  height: 47px;
   /* inherit font & color from ancestor */
   color: inherit;
+  cursor: pointer;
   font: inherit;
   @include display-flex();
   @include align-items(center);
@@ -88,5 +88,25 @@ button {
     &:hover, &:focus{
       background-color: $se-ultra-dark-grey;
     }
+  }
+}
+:host(.nav) {
+  button {
+    height: 47px;
+  }
+}
+:host(.classic) {
+  button {
+    height: 47px;
+  }
+}
+
+:host(.dropdown) {
+  button {
+    min-height: 40px;
+    border-bottom: none;
+  }
+  .nav-content{
+    padding-left: 10px;
   }
 }
