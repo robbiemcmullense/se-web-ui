@@ -1,0 +1,66 @@
+@import "../../theme/theme";
+
+:host {
+	margin: $spacing-small;
+
+	.se-visual-linear {
+		display: flex;
+	}
+
+	svg {
+		margin-top: $spacing-small;
+		margin-bottom: $spacing-small;
+	}
+
+	.progress-bar-wrapper {
+		fill: $se-ultra-light-grey-2;
+		width: 100%;
+	}
+	
+	.progress-bar {
+		fill: $se-life-green;
+	}
+
+	value {
+		font-weight: 600;
+	}
+
+	label {
+		font-size: 12px;
+	}
+
+	value + label {
+		font-size: 14px;
+	}
+}
+
+:host(.inline) {
+	.se-visual-linear {
+		flex-direction: row;
+		justify-content: center;
+		@include align-items(start);
+	}
+
+	svg {
+		margin-right: $spacing-large;
+	}
+}
+
+:host(.stacked) {
+	.se-visual-linear {
+		flex-direction: column-reverse;
+	}
+
+	.visual-linear-data {
+		value {
+			width: 50%;
+			display: inline-block;
+			text-align: left;
+		}
+		label {
+			width: 50%;
+			display: inline-block;
+			text-align: right;
+		}
+	}
+}
