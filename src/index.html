@@ -190,8 +190,10 @@
           <se-divider></se-divider>
           <ul>
             <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
+            <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
           </ul>
           <se-radio-on-off id="switch-el"></se-radio-on-off>
+          <se-switch id="toggle-switch-el"></se-switch>
           <se-divider></se-divider>
           <ul>
             <li id="radio-message">selected radio button: <span></span></li>
@@ -306,6 +308,9 @@
     });
     document.getElementById('switch-el').addEventListener('change', function (event) {
       document.getElementById('switch-message').firstElementChild.innerText = event.detail.selected;
+    });
+    document.getElementById('toggle-switch-el').addEventListener('change', function (event) {
+      document.getElementById('toggle-switch-message').firstElementChild.innerText = event.detail.selected;
     });
     document.getElementById('RadioGroup1').addEventListener('change', function (event) {
       document.getElementById('radio-message').firstElementChild.innerText = event.detail;
