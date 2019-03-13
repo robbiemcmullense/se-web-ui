@@ -11,7 +11,7 @@ export class ListComponent {
   /**
    * Define the style of the list
    */
-  @Prop() mode: "nav" | "classic" = "classic";
+  @Prop() mode: "nav" | "classic" | "dropdown" = "classic";
   @Watch('mode') PropDidChange() {
     this.updateItemMode()
   }

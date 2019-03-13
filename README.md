@@ -34,10 +34,9 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
 | [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
 | [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
-| [ ]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
-| [ ]  | Dropdown-item  | menu in guideline, a button with a list                                                                                    |
 | [x]  | Visual-Linear  | linear progress bar                                                                                                        |
 | [x]  | Visual-Raidal  | circular progress bar                                                                                                      |
+| [x]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
 | [ ]  | Card-header    |                                                                                                                            |
 | [ ]  | Card-content   |                                                                                                                            |

@@ -61,8 +61,8 @@
         <se-button color="alternative" mode="outline" > alternative </se-button>
       </nav>
     </se-navbar>
-    <se-container mode="centered">
-      <se-widget >
+    <se-container mode="widget">
+      <se-widget width="250px">
           <se-list mode="nav">
             <se-list-item item="I'm selected" selected="true" icon="user_standard" icon-color="primary"
               description="And I have an icon">
@@ -84,7 +84,7 @@
             </se-list-item>
           </se-list>
       </se-widget>
-      <se-widget >
+      <se-widget width="250px">
         <se-widget-header>Title of my classic list</se-widget-header>
         <se-widget-content mode="fill">
           <se-list>
@@ -142,8 +142,15 @@
 
           H3 Buttons and Form
           <div slot="end">
-              <se-icon mode="button" color="alternative">favourites_addto</se-icon>
-              <se-icon mode="button" color="alternative">other_vertical</se-icon>
+            <se-icon mode="button" color="alternative">favourites_addto</se-icon>
+            <se-dropdown alignment="right">
+              <se-icon slot="trigger" mode="button" color="alternative">other_vertical</se-icon>
+              <se-list mode="dropdown">
+                <se-list-item item="I'm selected"></se-list-item>
+                <se-list-item item="my item 2 no description  with a long text"></se-list-item>
+                <se-list-item item="my item 3 no icon"></se-list-item>
+              </se-list>
+            </se-dropdown>
           </div>
         </se-widget-header>
         <se-widget-content>
@@ -168,8 +175,21 @@
           <se-button mode="flat" color="primary">primary</se-button>
           <se-button mode="flat" color="secondary">secondary</se-button>
 
+          <se-dropdown alignment="left">
+            <se-button slot="trigger" mode="flat">Dropdown</se-button>
+            <se-list mode="dropdown">
+              <se-list-item item="Click to load" onclick="loader()"></se-list-item>
+              <se-list-item item="my item 3 no icon"></se-list-item>
+              <se-list-item item="I'm the selected one!"></se-list-item>
+              <se-list-item item="Basic Item"></se-list-item>
+              <se-list-item item="I'm here"></se-list-item>
+              <se-list-item item="my item 2 no description  with a long text"></se-list-item>
+            </se-list>
+          </se-dropdown>
+
+
           <se-button icon="action_resize">Resize</se-button>
-          <se-button mode="outline" id="trigger-loader">Outline</se-button>
+          <se-button mode="outline" onclick="loader()" >Outline</se-button>
           <se-button mode="outline" color="alternative">Outline alternative</se-button>
           <se-button mode="outline" color="primary">Outline primary</se-button>
           <se-button mode="outline" color="secondary">Outline secondary</se-button>
@@ -295,14 +315,16 @@
       document.getElementById('se-brand').hide = true;
     }
 
-    // buttons
-    document.getElementById('trigger-loader').addEventListener('click', function(event) {
+    // Loader
+    function loader(){
       let loadingWidget = document.getElementById('loading-widget');
       loadingWidget.loading = true;
       setTimeout(function() {
         loadingWidget.loading = false;
       }, 3000);
-    });
+    }
+
+
     document.getElementById('se-chip').addEventListener('close', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
     });
