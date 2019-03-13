@@ -841,6 +841,88 @@ export namespace Components {
     'onChange'?: (event: CustomEvent) => void;
   }
 
+  interface SeVisualLinear {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label': string;
+    /**
+    * Defines the layout of your component. `inline` is the default mode.  This sets the "progress bar" adjacent to the label. `stacked` mode will render the "progress bar" below the label.
+    */
+    'mode': 'inline' | 'stacked';
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage': number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor': string;
+    /**
+    * Defines the value of your component.
+    */
+    'value': string;
+  }
+  interface SeVisualLinearAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label'?: string;
+    /**
+    * Defines the layout of your component. `inline` is the default mode.  This sets the "progress bar" adjacent to the label. `stacked` mode will render the "progress bar" below the label.
+    */
+    'mode'?: 'inline' | 'stacked';
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage'?: number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor'?: string;
+    /**
+    * Defines the value of your component.
+    */
+    'value'?: string;
+  }
+
+  interface SeVisualRadial {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label': string;
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage': number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor': string;
+    /**
+    * Defines the value of your component.
+    */
+    'value': string;
+  }
+  interface SeVisualRadialAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label'?: string;
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage'?: number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor'?: string;
+    /**
+    * Defines the value of your component.
+    */
+    'value'?: string;
+  }
+
   interface SeWidgetContent {
     'mode': 'fill';
   }
@@ -932,6 +1014,8 @@ declare global {
     'SeSidenav': Components.SeSidenav;
     'SeSnackbar': Components.SeSnackbar;
     'SeSwitch': Components.SeSwitch;
+    'SeVisualLinear': Components.SeVisualLinear;
+    'SeVisualRadial': Components.SeVisualRadial;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -969,6 +1053,8 @@ declare global {
     'se-sidenav': Components.SeSidenavAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
     'se-switch': Components.SeSwitchAttributes;
+    'se-visual-linear': Components.SeVisualLinearAttributes;
+    'se-visual-radial': Components.SeVisualRadialAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -1156,6 +1242,18 @@ declare global {
     new (): HTMLSeSwitchElement;
   };
 
+  interface HTMLSeVisualLinearElement extends Components.SeVisualLinear, HTMLStencilElement {}
+  var HTMLSeVisualLinearElement: {
+    prototype: HTMLSeVisualLinearElement;
+    new (): HTMLSeVisualLinearElement;
+  };
+
+  interface HTMLSeVisualRadialElement extends Components.SeVisualRadial, HTMLStencilElement {}
+  var HTMLSeVisualRadialElement: {
+    prototype: HTMLSeVisualRadialElement;
+    new (): HTMLSeVisualRadialElement;
+  };
+
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
   var HTMLSeWidgetContentElement: {
     prototype: HTMLSeWidgetContentElement;
@@ -1211,6 +1309,8 @@ declare global {
     'se-sidenav': HTMLSeSidenavElement
     'se-snackbar': HTMLSeSnackbarElement
     'se-switch': HTMLSeSwitchElement
+    'se-visual-linear': HTMLSeVisualLinearElement
+    'se-visual-radial': HTMLSeVisualRadialElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -1248,6 +1348,8 @@ declare global {
     'se-sidenav': HTMLSeSidenavElement;
     'se-snackbar': HTMLSeSnackbarElement;
     'se-switch': HTMLSeSwitchElement;
+    'se-visual-linear': HTMLSeVisualLinearElement;
+    'se-visual-radial': HTMLSeVisualRadialElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;

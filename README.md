@@ -36,7 +36,8 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
 | [ ]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Dropdown-item  | menu in guideline, a button with a list                                                                                    |
-| [ ]  | Progressbar    |                                                                                                                            |
+| [x]  | Visual-Linear  | linear progress bar                                                                                                        |
+| [x]  | Visual-Raidal  | circular progress bar                                                                                                      |
 | [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
 | [ ]  | Card-header    |                                                                                                                            |
 | [ ]  | Card-content   |                                                                                                                            |
