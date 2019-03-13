@@ -6,10 +6,14 @@ import { Component, Prop, Watch, Element } from "@stencil/core";
   shadow: true
 })
 export class WidgetComponent {
+  @Element() el: HTMLElement;
+
   /**
-   * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+   * Define the mode of a widget. The default widget gives a small padding of the widget.
+   * `fill` will remove any spacing.
+   * `card` will create a card look and fell with shadow and rounded corner
    */
-  @Prop() mode: "fill";
+  @Prop() mode: "fill" | "card";
   /**
    * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
    */
@@ -24,11 +28,10 @@ export class WidgetComponent {
    */
   @Prop() height: string;
   /**
-   * Display the loading icon if set to `true`.  
+   * Display the loading icon if set to `true`.
    */
   @Prop({mutable: true}) loading: boolean = false;
 
-  @Element() el: HTMLElement;
 
   @Watch("height") heighDidChange() {
     this.updateSize();
@@ -39,6 +42,15 @@ export class WidgetComponent {
 
   componentWillLoad() {
     this.updateSize();
+    this.updateItemMode();
+  }
+
+  private updateItemMode(){
+    if(this.mode === 'card'){
+      Array.from(this.el.querySelectorAll('se-widget-header, se-widget-footer')).forEach((item: any) => {
+        item.mode = this.mode;
+      });
+    }
   }
 
   private updateSize() {

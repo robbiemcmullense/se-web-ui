@@ -12,7 +12,6 @@
 }
 :host(.flex) {
   flex-wrap: nowrap;
-  height: 100%;
   @include flex();
   @include display-flex();
 }
@@ -26,11 +25,14 @@
   position: relative;
 }
 :host(.widget-content) {
-  margin: $spacing-small;
+  padding: $spacing-small;
 }
 :host(.fill-content) {
-  margin: 0;
+  padding: 0;
   height: 100%;
+}
+:host(.card-content) {
+  padding: $spacing;
 }
 
 :host(.centered-content) {

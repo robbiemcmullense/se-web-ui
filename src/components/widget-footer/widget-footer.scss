@@ -14,3 +14,6 @@
     @include flex();
   }
 }
+:host(.card){
+  border-top: none;
+}

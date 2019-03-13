@@ -840,11 +840,31 @@ export namespace Components {
     'mode'?: 'fill';
   }
 
-  interface SeWidgetFooter {}
-  interface SeWidgetFooterAttributes extends StencilHTMLAttributes {}
+  interface SeWidgetFooter {
+    /**
+    * Define the mode of a footer. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the footer regarding to the card design
+    */
+    'mode': "card";
+  }
+  interface SeWidgetFooterAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the mode of a footer. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the footer regarding to the card design
+    */
+    'mode'?: "card";
+  }
 
-  interface SeWidgetHeader {}
-  interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {}
+  interface SeWidgetHeader {
+    /**
+    * Define the mode of a header. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the header regarding to the card design
+    */
+    'mode': "card";
+  }
+  interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the mode of a header. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the header regarding to the card design
+    */
+    'mode'?: "card";
+  }
 
   interface SeWidget {
     /**
@@ -860,9 +880,9 @@ export namespace Components {
     */
     'loading': boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode': "fill";
+    'mode': "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -882,9 +902,9 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode'?: "fill";
+    'mode'?: "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
