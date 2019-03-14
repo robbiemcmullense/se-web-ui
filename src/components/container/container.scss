@@ -21,9 +21,9 @@
   display: grid;
   width: 100%;
   // @include animated();
-  transition: all .7s;
-  grid-auto-rows: 300px;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Where the magic happens */
+  // transition: all .7s;
+  // grid-auto-rows: 300px;
+  // grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Where the magic happens */
 }
 :host(.absolute) {
   @include absolute();
