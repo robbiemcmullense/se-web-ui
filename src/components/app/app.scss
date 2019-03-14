@@ -20,6 +20,15 @@
   @include background-color("standard");
 }
 
+// Create all classes to use colors as classes
+@each $element in ('primary', 'secondary', 'standard', 'alternative', 'standard-contrast','alternative-contrast','primary-contrast','secondary-contrast','critical-contrast') {
+  .color-#{$element}{
+    @include color($element);
+  }
+  .bg-#{$element}{
+    @include background-color($element);
+  }
+}
 
 
 /* http://meyerweb.com/eric/tools/css/reset/
