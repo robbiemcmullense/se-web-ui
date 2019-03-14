@@ -49,6 +49,7 @@ button {
     background-color: $se-ultra-light-grey-1;
   }
 }
+
 .selectedBar {
   position: absolute;
   top: 0px;
@@ -56,16 +57,17 @@ button {
   width: 5px;
   @include background-color("primary");
 }
+
 .nav-icon {
   margin-right: -12px;
   margin-left: 8px;
 }
+
 .nav-content{
   min-width: 0;
   padding-left: 18px;
   margin: 0;
   @include typology('p');
-
   @include flex();
   @include display-flex();
   @include flex-direction(column);
@@ -76,8 +78,11 @@ button {
     margin-right: $spacing
   }
 }
-:host(.nav.selected) {
-  @include color('primary');
+
+:host(.classic) {
+  button {
+    height: 47px;
+  }
 }
 
 :host(.classic.selected) {
@@ -89,15 +94,15 @@ button {
     }
   }
 }
+
 :host(.nav) {
   button {
     height: 47px;
   }
 }
-:host(.classic) {
-  button {
-    height: 47px;
-  }
+
+:host(.nav.selected) {
+  @include color('primary');
 }
 
 :host(.treeview) {
@@ -112,10 +117,14 @@ button {
 :host(.treeview.selected) {
   @include color('selected-contrast');
   @include background-color('selected');
+  button {
+    &:hover, &:focus{
+      background-color: $se-ultra-dark-grey;
+    }
+  }
 }
 
 :host(.dropdown) {
-
   button {
     min-height: 40px;
     border-bottom: none;
