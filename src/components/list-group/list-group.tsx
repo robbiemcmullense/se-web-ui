@@ -83,10 +83,7 @@ export class ListGroupComponent {
   render() {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return [
-      <button
-        style={{ paddingLeft: `${20 * this.indentation}px` }}
-        onClick={() => this.toggleCollapse()}
-      >
+      <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()}>
         {this.mode === "nav" && this.selected && <div class="selectedBar" />}
         {!!this.icon && (
           <div class="nav-icon">
