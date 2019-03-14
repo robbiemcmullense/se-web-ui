@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                  | Type                 | Default     |
-| -------- | --------- | ---------------------------- | -------------------- | ----------- |
-| `mode`   | `mode`    | Define the style of the list | `"classic" \| "nav"` | `"classic"` |
+| Property | Attribute | Description                  | Type                               | Default     |
+| -------- | --------- | ---------------------------- | ---------------------------------- | ----------- |
+| `mode`   | `mode`    | Define the style of the list | `"classic" \| "dropdown" \| "nav"` | `"classic"` |
 
 
 ----------------------------------------------
