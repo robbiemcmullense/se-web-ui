@@ -6,18 +6,24 @@
 :host(.column) {
   @include flex-direction(column);
 }
-
 :host(.row) {
   @include flex-direction(row);
 }
 :host(.flex) {
   flex-wrap: nowrap;
-  height: 100%;
   @include flex();
   @include display-flex();
 }
 :host(.block) {
   display: block !important;
+}
+:host(.grid) {
+  display: grid;
+  width: 100%;
+  // @include animated();
+  // transition: all .7s;
+  // grid-auto-rows: 300px;
+  // grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Where the magic happens */
 }
 :host(.absolute) {
   @include absolute();
@@ -26,11 +32,14 @@
   position: relative;
 }
 :host(.widget-content) {
-  margin: $spacing-small;
+  padding: $spacing-small;
 }
 :host(.fill-content) {
-  margin: 0;
+  padding: 0;
   height: 100%;
+}
+:host(.card-content) {
+  padding: $spacing;
 }
 
 :host(.centered-content) {

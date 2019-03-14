@@ -247,21 +247,29 @@ export namespace Components {
     */
     'color': "standard" | "alternative";
     /**
+    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
+    */
+    'columnSize': string;
+    /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
     'direction': "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
     */
-    'display': "flex" | "block";
+    'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode': "widget" | "fill" | "centered" | "card";
+    'mode': "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position': "relative" | "absolute";
+    /**
+    * When in `display="grid"`, defines the height of each widgets.
+    */
+    'rowSize': string;
   }
   interface SeContainerAttributes extends StencilHTMLAttributes {
     /**
@@ -269,21 +277,29 @@ export namespace Components {
     */
     'color'?: "standard" | "alternative";
     /**
+    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
+    */
+    'columnSize'?: string;
+    /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
     'direction'?: "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
     */
-    'display'?: "flex" | "block";
+    'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode'?: "widget" | "fill" | "centered" | "card";
+    'mode'?: "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position'?: "relative" | "absolute";
+    /**
+    * When in `display="grid"`, defines the height of each widgets.
+    */
+    'rowSize'?: string;
   }
 
   interface SeDialogContent {
@@ -967,17 +983,45 @@ export namespace Components {
     'mode'?: 'fill';
   }
 
-  interface SeWidgetFooter {}
-  interface SeWidgetFooterAttributes extends StencilHTMLAttributes {}
+  interface SeWidgetFooter {
+    /**
+    * Define the mode of a footer. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the footer regarding to the card design
+    */
+    'mode': "card";
+  }
+  interface SeWidgetFooterAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the mode of a footer. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the footer regarding to the card design
+    */
+    'mode'?: "card";
+  }
 
-  interface SeWidgetHeader {}
-  interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {}
+  interface SeWidgetHeader {
+    /**
+    * Define the mode of a header. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the header regarding to the card design
+    */
+    'mode': "card";
+  }
+  interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the mode of a header. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the header regarding to the card design
+    */
+    'mode'?: "card";
+  }
 
   interface SeWidget {
     /**
     * Optional property that defines the background color of the widget. default is alternative (white)
     */
-    'color': 'standard' | 'alternative';
+    'color': "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display': "flex" | "block" | "grid";
+    /**
+    * When on Grid mode, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    */
+    'enlarged': boolean;
     /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -987,9 +1031,9 @@ export namespace Components {
     */
     'loading': boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode': "fill";
+    'mode': "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -999,7 +1043,15 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the widget. default is alternative (white)
     */
-    'color'?: 'standard' | 'alternative';
+    'color'?: "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display'?: "flex" | "block" | "grid";
+    /**
+    * When on Grid mode, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    */
+    'enlarged'?: boolean;
     /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -1009,9 +1061,9 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode'?: "fill";
+    'mode'?: "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
