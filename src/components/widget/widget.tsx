@@ -38,7 +38,7 @@ export class WidgetComponent {
    * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
    */
   @Prop() height: string;
-  @Watch("height") heighDidChange() {
+  @Watch("height") heightDidChange() {
     this.updateSize();
   }
 
