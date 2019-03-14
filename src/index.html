@@ -296,7 +296,18 @@
               Widget 4
               <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon></div>
             </se-widget-header>
-            <se-widget-content>test</se-widget-content>
+            <se-widget-content>
+              <se-list mode="treeview">
+                <se-list-group item="Treeview Example">
+                  <se-list-item item="First treeview child"></se-list-item>
+                  <se-list-group mode="treeview" item="Second treeview child">
+                    <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                    <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
+                  </se-list-group>
+                  <se-list-item item="Third treeview child"></se-list-item>
+                </se-list-group>
+              </se-list>
+            </se-widget-content>
           </se-widget>
           <se-widget id="widget5">
             <se-widget-header>
