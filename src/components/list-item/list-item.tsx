@@ -1,4 +1,4 @@
-import { Component, Prop, Element} from "@stencil/core";
+import { Component, Prop, Element, State} from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -6,8 +6,8 @@ import { Component, Prop, Element} from "@stencil/core";
   shadow: true
 })
 export class ListItemComponent {
+  
   @Element() el: HTMLElement;
-
   /**
    * Define the title of the item
    */
@@ -40,7 +40,9 @@ export class ListItemComponent {
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
-  @Prop() mode: "nav" | "classic" | "dropdown" = "classic";
+  @Prop() mode: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+
+  @State() padding: number;
 
   hostData() {
     return {
@@ -48,9 +50,16 @@ export class ListItemComponent {
     };
   }
 
+  componentDidLoad() {
+    this.padding = 20 * this.indentation;
+    if (this.mode === "treeview") {
+      this.padding += 24;
+    }
+  }
+
   render() {
     return (
-      <button style={{ paddingLeft: `${20 * this.indentation}px` }}>
+      <button style={{ paddingLeft: this.padding + `px` }}>
         {this.mode === "nav" && this.selected && <div class="selectedBar" />}
         {!!this.icon && (
           <div class="nav-icon">

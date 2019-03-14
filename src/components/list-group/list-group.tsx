@@ -59,7 +59,7 @@ export class ListGroupComponent {
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
-  @Prop() mode: "nav" | "classic" | "dropdown" = "classic";
+  @Prop() mode: "nav" | "classic" | "dropdown" | "treeview" = "classic";
 
 
   componentWillLoad() {
@@ -99,9 +99,16 @@ export class ListGroupComponent {
           <div>{this.item}</div>
           <small> {this.description}</small>
         </div>
-        <span class="se-icon medium">
+        {this.mode !== "treeview" && (
+          <span class="se-icon medium">
           {this.collapsed ? "arrow2_down" : "arrow2_up"}
-        </span>
+          </span>
+        )}
+        {this.mode == "treeview" && (
+          <span class="se-icon">
+          arrow2_right
+          </span>
+        )}
       </button>,
       !this.collapsed && (
         <div class="group-item">
