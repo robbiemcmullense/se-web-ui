@@ -59,6 +59,28 @@ export class ContainerComponent {
   }
 
   /**
+   * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there.
+   * Default is `350px`
+   */
+  @Prop() columnSize: string = '350px';
+  @Watch("columnSize") columnSizeDidChange() {
+    if(this.display === 'grid'){
+      this.el.style.gridTemplateColumns = `repeat(auto-fit, minmax(${this.columnSize}, 1fr))`;
+    }
+  }
+
+  /**
+   * When in `display="grid"`, defines the height of each widgets.
+   */
+  @Prop() rowSize: string = '300px';
+  @Watch("rowSize") rowSizeDidChange() {
+    if(this.display === 'grid'){
+      this.el.style.gridAutoRows = this.rowSize;
+    }
+  }
+
+
+  /**
    * Define the color of the background of the container. The default is light gray.
    * `standard` Default. Light grey.
    * `alternative` white background.
@@ -68,6 +90,8 @@ export class ContainerComponent {
   componentWillLoad() {
     this.modeDidChange();
     this.displayDidChange();
+    this.columnSizeDidChange();
+    this.rowSizeDidChange();
   }
 
   hostData() {

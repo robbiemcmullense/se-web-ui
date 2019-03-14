@@ -36,9 +36,9 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
 | [x]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [ ]  | Progressbar    |                                                                                                                            |
-| [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
-| [ ]  | Card-header    |                                                                                                                            |
-| [ ]  | Card-content   |                                                                                                                            |
+| [x]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
+| [x]  | Card-header    |                                                                                                                            |
+| [x]  | Card-content   |                                                                                                                            |
 | [x]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
 | [x]  | Dialog-header  |                                                                                                                            |
 | [x]  | Dialog-content |                                                                                                                            |

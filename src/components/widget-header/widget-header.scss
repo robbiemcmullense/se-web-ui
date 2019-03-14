@@ -21,4 +21,7 @@
 :host(.card){
   border-bottom: none;
   padding-bottom: $spacing-small;
+  h3 {
+    @include color('primary');
+  }
 }

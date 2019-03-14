@@ -247,6 +247,10 @@ export namespace Components {
     */
     'color': "standard" | "alternative";
     /**
+    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
+    */
+    'columnSize': string;
+    /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
     'direction': "column" | "row";
@@ -262,12 +266,20 @@ export namespace Components {
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position': "relative" | "absolute";
+    /**
+    * When in `display="grid"`, defines the height of each widgets.
+    */
+    'rowSize': string;
   }
   interface SeContainerAttributes extends StencilHTMLAttributes {
     /**
     * Define the color of the background of the container. The default is light gray. `standard` Default. Light grey. `alternative` white background.
     */
     'color'?: "standard" | "alternative";
+    /**
+    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
+    */
+    'columnSize'?: string;
     /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
@@ -284,6 +296,10 @@ export namespace Components {
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position'?: "relative" | "absolute";
+    /**
+    * When in `display="grid"`, defines the height of each widgets.
+    */
+    'rowSize'?: string;
   }
 
   interface SeDialogContent {

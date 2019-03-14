@@ -29,9 +29,6 @@
         <se-link url="http://google.com" type="external">External Link to Google</se-link>
       </div>
       <se-sidenav>
-        <se-sidenav-item item="About">
-          <se-about app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)"></se-about>
-        </se-sidenav-item>
         <se-sidenav-item item="Project">
           <se-widget mode="fill">
             <se-widget-header>some widget design</se-widget-header>
@@ -57,6 +54,9 @@
                 <se-button mode="raised" color="primary">RaisedGreen</se-button>
             </se-widget-footer>
           </se-widget>
+        </se-sidenav-item>
+        <se-sidenav-item item="About">
+          <se-about app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)"></se-about>
         </se-sidenav-item>
       </se-sidenav>
     </se-header>
@@ -256,7 +256,7 @@
           </se-widget-footer>
         </se-widget> -->
         <se-divider mode="vertical"></se-divider>
-        <se-container mode="card" display="grid">
+        <se-container mode="card" display="grid" column-size="300px" row-size="120px">
           <se-widget id="widget1">
             <se-widget-header>
               Widget 1

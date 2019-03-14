@@ -78,33 +78,45 @@ Use the dropdown on a button (this will automatically add a caret on the button)
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property    | Attribute   | Description | Type     | Default  |
-| ----------- | ----------- | ----------- | -------- | -------- |
-| `alignment` | `alignment` |             | `string` | `'left'` |
+| Property    | Attribute   | Description                                                                                                                                                                                                     | Type                | Default  |
+| ----------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
+| `alignment` | `alignment` | Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element `right`: Position the container regarding to the right side of the trigger element | `"left" \| "right"` | `'left'` |
+
 
 ## Events
 
-| Event     | Description | Type                |
-| --------- | ----------- | ------------------- |
-| `onClose` |             | `CustomEvent<void>` |
-| `onOpen`  |             | `CustomEvent<void>` |
+| Event     | Description                                      | Type                |
+| --------- | ------------------------------------------------ | ------------------- |
+| `onClose` | Event emitted when the dropdown has been closed. | `CustomEvent<void>` |
+| `onOpen`  | Event emitted when the dropdown has been opened. | `CustomEvent<void>` |
+
 
 ## Methods
 
 ### `close() => void`
 
+Method to close the dropdown from the outside.
+
 #### Returns
 
 Type: `void`
+
+
 
 ### `open() => void`
 
+Method to open the dropdown from the outside.
+
 #### Returns
 
 Type: `void`
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
