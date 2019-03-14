@@ -49,6 +49,7 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | List           | classic                                                                                                                    |
 | [x]  | List-group     | to display a collapsible list groups                                                                                       |
 | [x]  | List-item      | list with slot (start/center/end)                                                                                          |
+| [x]  | Treeview       | use to nest a list within a list, can have multiple treeviews within a treeview                                            |
 | [x]  | Label          | label to be displayed next to an input field or checkbox                                                                   |
 | [x]  | Link           | anchor element that redirects a user to another web page                                                                   |
 | [ ]  | Tab            |                                                                                                                            |
