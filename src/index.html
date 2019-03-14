@@ -51,7 +51,7 @@
               </se-container>
             </se-widget-content>
             <se-widget-footer>
-                <se-button mode="raised" color="primary">RaisedGreen</se-button>
+              <se-button mode="raised" color="primary">RaisedGreen</se-button>
             </se-widget-footer>
           </se-widget>
         </se-sidenav-item>
@@ -67,10 +67,10 @@
       </nav>
       <nav>
         <a class="active">Home</a>
-        <a >Another</a>
+        <a>Another</a>
       </nav>
       <nav slot="end">
-        <se-button color="alternative" mode="outline" > alternative </se-button>
+        <se-button color="alternative" mode="outline"> alternative </se-button>
       </nav>
     </se-navbar>
     <se-container>
@@ -296,7 +296,18 @@
               Widget 4
               <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon></div>
             </se-widget-header>
-            <se-widget-content>test</se-widget-content>
+            <se-widget-content>
+              <se-list mode="treeview">
+                <se-list-group item="Treeview Example">
+                  <se-list-item item="First treeview child"></se-list-item>
+                  <se-list-group mode="treeview" item="Second treeview child">
+                    <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                    <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
+                  </se-list-group>
+                  <se-list-item item="Third treeview child"></se-list-item>
+                </se-list-group>
+              </se-list>
+            </se-widget-content>
           </se-widget>
           <se-widget id="widget5">
             <se-widget-header>
@@ -315,18 +326,30 @@
         </se-container>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
-      <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
-      <se-dialog-footer><se-button onclick="closeDialog('dialog-simple-notitle')" mode="alternative">cancel</se-button><se-button onclick="closeDialog('dialog-simple-notitle')" >OK</se-button></se-dialog-footer>
+      <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua.</se-dialog-content>
+      <se-dialog-footer>
+        <se-button onclick="closeDialog('dialog-simple-notitle')" mode="alternative">cancel</se-button>
+        <se-button onclick="closeDialog('dialog-simple-notitle')">OK</se-button>
+      </se-dialog-footer>
     </se-dialog>
     <se-dialog id="dialog-simple-title" color="alternative">
       <se-dialog-header>My awesome title</se-dialog-header>
-      <se-dialog-content icon="help_wired_flat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
-      <se-dialog-footer><se-button onclick="closeDialog('dialog-simple-title')" mode="alternative">cancel</se-button><se-button onclick="closeDialog('dialog-simple-title')" >OK</se-button></se-dialog-footer>
+      <se-dialog-content icon="help_wired_flat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
+      <se-dialog-footer>
+        <se-button onclick="closeDialog('dialog-simple-title')" mode="alternative">cancel</se-button>
+        <se-button onclick="closeDialog('dialog-simple-title')">OK</se-button>
+      </se-dialog-footer>
     </se-dialog>
     <se-dialog id="dialog-complex">
       <se-dialog-header>My awesome title</se-dialog-header>
-      <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</se-dialog-content>
-      <se-dialog-footer><se-button onclick="closeDialog('dialog-complex')" mode="alternative">cancel</se-button><se-button onclick="closeDialog('dialog-complex')">OK</se-button></se-dialog-footer>
+      <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua.</se-dialog-content>
+      <se-dialog-footer>
+        <se-button onclick="closeDialog('dialog-complex')" mode="alternative">cancel</se-button>
+        <se-button onclick="closeDialog('dialog-complex')">OK</se-button>
+      </se-dialog-footer>
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" icon="information_stroke" message="my message" can-close="true" close-text="Dismiss"></se-snackbar>
   </se-app>
@@ -348,7 +371,7 @@
     }
 
     // Login page
-    function closeLogin(){
+    function closeLogin() {
       document.getElementById('se-brand').hide = true;
     }
 
@@ -356,7 +379,7 @@
     function loader(){
       let loadingWidget = document.getElementById('widget0');
       loadingWidget.loading = true;
-      setTimeout(function() {
+      setTimeout(function () {
         loadingWidget.loading = false;
       }, 3000);
     }

@@ -611,7 +611,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic" | "dropdown";
+    'mode': "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -645,7 +645,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic" | "dropdown";
+    'mode'?: "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -676,7 +676,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic" | "dropdown";
+    'mode': "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list element should be selected or not
     */
@@ -706,7 +706,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic" | "dropdown";
+    'mode'?: "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list element should be selected or not
     */
@@ -717,13 +717,13 @@ export namespace Components {
     /**
     * Define the style of the list
     */
-    'mode': "nav" | "classic" | "dropdown";
+    'mode': "nav" | "classic" | "dropdown" | "treeview";
   }
   interface SeListAttributes extends StencilHTMLAttributes {
     /**
     * Define the style of the list
     */
-    'mode'?: "nav" | "classic" | "dropdown";
+    'mode'?: "nav" | "classic" | "dropdown" | "treeview";
   }
 
   interface SeLoading {

@@ -25,7 +25,7 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(groupItemElm).toBeTruthy();
 	});
 
-	it('renders an arrow2_down icon when collapsed', async() => {
+	it('renders an arrow2_down icon when collapsed, and does not render an element with the group-item class', async() => {
 		await page.$eval('se-list-group', (elm: any) => {
 			elm.collapsed = true;
 		});
@@ -34,6 +34,15 @@ import { newE2EPage } from '@stencil/core/testing';
 		const groupItemElm = await page.find('se-list-group >>> .group-item');
 		expect(iconElm).toEqualText('arrow2_down');
 		expect(groupItemElm).not.toBeTruthy();
+	});
+
+	it('renders an arrow2_right icon when the mode is set to treeview', async() => {
+		await page.$eval('se-list-group', (elm: any) => {
+			elm.mode = 'treeview';
+		});
+		await page.waitForChanges();
+		const iconElm = await page.find('se-list-group >>> .se-icon');
+		expect(iconElm).toEqualText('arrow2_right');
 	});
 
 	it('renders an icon element when the mode is set to nav', async() => {

@@ -17,19 +17,21 @@ describe('WidgetComponent', () => {
     expect(element).toHaveClasses(['alternative', 'flex', 'hydrated']);
   });
 
-  it('renders without a flex class because there is a specified width', async() => {
-    await page.$eval('se-widget', (elm: any) => {
-      elm.width = '300px';
-    });
-    await page.waitForChanges();
-    expect(element).not.toHaveClass('flex');
-  });
-
   it('renders a standard class when the color property is set to standard', async() => {
     await page.$eval('se-widget', (elm: any) => {
       elm.color = 'standard';
     });
     await page.waitForChanges();
     expect(element).toHaveClass('standard');
+  });
+
+  it('renders a loading element when the loading property is true', async() => {
+    await page.$eval('se-widget', (elm: any) => {
+      elm.loading = true;
+    });
+    await page.waitForChanges();
+
+    const loader = await page.find('se-widget >>> se-loading')
+    expect(loader).toBeTruthy();
   });
 });

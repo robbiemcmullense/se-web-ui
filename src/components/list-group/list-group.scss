@@ -7,5 +7,10 @@
     overflow: hidden;
     padding-bottom: 1px;
   }
+}
 
+:host(.treeview) {
+  button {
+    flex-direction: row-reverse;
+  }
 }

@@ -100,6 +100,20 @@ button {
   }
 }
 
+:host(.treeview) {
+  button {
+    height: 32px;
+  }
+  .nav-content {
+    padding-left: 0;
+  }
+}
+
+:host(.treeview.selected) {
+  @include color('selected-contrast');
+  @include background-color('selected');
+}
+
 :host(.dropdown) {
   button {
     min-height: 40px;
