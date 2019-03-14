@@ -124,11 +124,12 @@
           </se-list-group>
         </se-list>
       </se-widget>
-        <!-- <se-widget id="loading-widget">
+      <se-divider mode="vertical"></se-divider>
+      <se-container mode="card" display="grid">
+        <se-widget id="widget0">
           <se-widget-header>
-          H3 Buttons and Form
+          Typography
           <div slot="end">
-            <se-icon mode="button" color="alternative">favourites_addto</se-icon>
             <se-dropdown alignment="right">
               <se-icon slot="trigger" mode="button" color="alternative">other_vertical</se-icon>
               <se-list mode="dropdown">
@@ -137,6 +138,7 @@
                 <se-list-item item="my item 3 no icon"></se-list-item>
               </se-list>
             </se-dropdown>
+            <se-icon mode="button" color="alternative" onclick="toggle(0)">presentation_mode</se-icon>
           </div>
         </se-widget-header>
         <se-widget-content>
@@ -152,77 +154,104 @@
           <se-divider></se-divider>
           <h6>My h6 string with a divider </h6>
           <se-divider></se-divider>
-          <ul>
-            <li id="button-info"></li>
-            <li id="chip-info"></li>
-          </ul>
-          <se-button mode="flat">standard</se-button>
-          <se-button id="flatBtn1" mode="flat" color="alternative">alternative</se-button>
-          <se-button mode="flat" color="primary">primary</se-button>
-          <se-button mode="flat" color="secondary">secondary</se-button>
-          <se-dropdown alignment="left">
-            <se-button slot="trigger" mode="flat">Dropdown</se-button>
-            <se-list mode="dropdown">
-              <se-list-item item="Click to load" onclick="loader()"></se-list-item>
-              <se-list-item item="my item 3 no icon"></se-list-item>
-              <se-list-item item="I'm the selected one!"></se-list-item>
-              <se-list-item item="Basic Item"></se-list-item>
-              <se-list-item item="I'm here"></se-list-item>
-              <se-list-item item="my item 2 no description  with a long text"></se-list-item>
-            </se-list>
-          </se-dropdown>
-          <se-button icon="action_resize">Resize</se-button>
-          <se-button mode="outline" onclick="loader()" >Outline</se-button>
-          <se-button mode="outline" color="alternative">Outline alternative</se-button>
-          <se-button mode="outline" color="primary">Outline primary</se-button>
-          <se-button mode="outline" color="secondary">Outline secondary</se-button>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          </se-widget-content>
+          <se-widget-footer>
+            <se-button onclick="openSnackbar()" mode="raised">Open Snackbar</se-button>
+          </se-widget-footer>
+        </se-widget>
 
-          <se-button icon="action_resize"></se-button>
-          <se-chip id="se-chip" value="Chip 01"></se-chip>
-          <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
-          <se-link url="http://google.com">Link to Google</se-link>
-          <se-link url="http://google.com" type="external">External Link to Google</se-link>
-          <se-link url="http://google.com" disabled="true">Link to Google</se-link>
-          <se-link url="http://google.com" type="external" disabled="true">External Link to Google</se-link>
-          <se-button mode="flat">Flat</se-button>
-          <se-button mode="flat" color="primary">FlatGreen</se-button>
-          <se-button id="raisedBtn" mode="raised">Raised</se-button>
-          <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
-          <se-button id="textBtn1" mode="text">Text</se-button>
-          <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
-          <se-divider></se-divider>
-          <ul>
-            <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
-            <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
-          </ul>
-          <se-radio-on-off id="switch-el"></se-radio-on-off>
-          <se-switch id="toggle-switch-el"></se-switch>
-          <se-divider></se-divider>
-          <ul>
-            <li id="radio-message">selected radio button: <span></span></li>
-          </ul>
-          <se-buttons id="RadioGroup1" mode="radio">
-            <se-button value="left" icon="arrow2_left"></se-button>
-            <se-button value="right" icon="arrow2_right"></se-button>
-          </se-buttons>
-          <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary" label="Primary"></se-checkbox>
-          <se-checkbox id="checkbox-warn" value="warn" color="secondary" label="Secondary"></se-checkbox>
-          <se-divider></se-divider>
-          <ul>
-            <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
-            <li id="form-field-message">form field value: <span></span></li>
-          </ul>
-          <se-buttons id="btnGroup1" mode="radio">
-            <se-button value="first">Check1</se-button>
-            <se-button value="second">Check2</se-button>
-            <se-button value="third">Check3</se-button>
-          </se-buttons>
-          <se-buttons mode="checkbox" color="primary">
-            <se-button value="first">Check1</se-button>
-            <se-button value="second">Check2</se-button>
-            <se-button value="third">Check3</se-button>
-          </se-buttons>
-          <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
+          <se-widget id="widget1">
+            <se-widget-header>
+              Buttons
+              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(1)">presentation_mode</se-icon></div>
+            </se-widget-header>
+            <se-widget-content>
+              <ul>
+                <li id="button-info"></li>
+                <li id="chip-info"></li>
+              </ul>
+              <se-button mode="flat">standard</se-button>
+              <se-button id="flatBtn1" mode="flat" color="alternative">alternative</se-button>
+              <se-button mode="flat" color="primary">primary</se-button>
+              <se-button mode="flat" color="secondary">secondary</se-button>
+              <se-dropdown alignment="left">
+                <se-button slot="trigger" mode="flat">Dropdown</se-button>
+                <se-list mode="dropdown">
+                  <se-list-item item="Click to load" onclick="loader()"></se-list-item>
+                  <se-list-item item="my item 3 no icon"></se-list-item>
+                  <se-list-item item="I'm the selected one!"></se-list-item>
+                  <se-list-item item="Basic Item"></se-list-item>
+                  <se-list-item item="I'm here"></se-list-item>
+                  <se-list-item item="my item 2 no description  with a long text"></se-list-item>
+                </se-list>
+              </se-dropdown>
+              <se-button icon="action_resize">Resize</se-button>
+              <se-button mode="outline" onclick="loader()" >Outline</se-button>
+              <se-button mode="outline" color="alternative">Outline alternative</se-button>
+              <se-button mode="outline" color="primary">Outline primary</se-button>
+              <se-button mode="outline" color="secondary">Outline secondary</se-button>
+
+              <se-button icon="action_resize"></se-button>
+              <se-chip id="se-chip" value="Chip 01"></se-chip>
+              <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
+              <se-link url="http://google.com">Link to Google</se-link>
+              <se-link url="http://google.com" type="external">External Link to Google</se-link>
+              <se-link url="http://google.com" disabled="true">Link to Google</se-link>
+              <se-link url="http://google.com" type="external" disabled="true">External Link to Google</se-link>
+              <se-button mode="flat">Flat</se-button>
+              <se-button mode="flat" color="primary">FlatGreen</se-button>
+              <se-button id="raisedBtn" mode="raised">Raised</se-button>
+              <se-button id="raisedBtn2" mode="raised" color="primary">RaisedGreen</se-button>
+              <se-button id="textBtn1" mode="text">Text</se-button>
+              <se-button id="textBtn2" mode="text" color="primary">Primary</se-button>
+              <se-divider></se-divider>
+              <ul>
+                <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
+                <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
+              </ul>
+              <se-radio-on-off id="switch-el"></se-radio-on-off>
+              <se-switch id="toggle-switch-el"></se-switch>
+              <se-divider></se-divider>
+              <ul>
+                <li id="radio-message">selected radio button: <span></span></li>
+              </ul>
+              <se-buttons id="RadioGroup1" mode="radio">
+                <se-button value="left" icon="arrow2_left"></se-button>
+                <se-button value="right" icon="arrow2_right"></se-button>
+              </se-buttons>
+              <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary" label="Primary"></se-checkbox>
+              <se-checkbox id="checkbox-warn" value="warn" color="secondary" label="Secondary"></se-checkbox>
+              <se-divider></se-divider>
+              <ul>
+                <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
+                <li id="form-field-message">form field value: <span></span></li>
+              </ul>
+              <se-buttons id="btnGroup1" mode="radio">
+                <se-button value="first">Check1</se-button>
+                <se-button value="second">Check2</se-button>
+                <se-button value="third">Check3</se-button>
+              </se-buttons>
+              <se-divider></se-divider>
+
+              <se-buttons mode="checkbox" color="primary">
+                <se-button value="first">Check1</se-button>
+                <se-button value="second">Check2</se-button>
+                <se-button value="third">Check3</se-button>
+              </se-buttons>
+            </se-widget-content>
+          </se-widget>
+          <se-widget id="widget2">
+            <se-widget-header>
+              Forms
+              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(2)">presentation_mode</se-icon></div>
+            </se-widget-header>
+            <se-widget-content>
+                <h4>Inlined </h4>
+
+              <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
             required="true">
             <se-checkbox value="checkbox-value"></se-checkbox>
           </se-form-field>
@@ -237,6 +266,8 @@
                 <option>Option 3</option>
               </select>
             </se-form-field>
+            <h4>Stacked </h4>
+
             <se-form-field id="input-stacked-form" label="Input" required="true" mode="stacked">
               <input type="text" />
             </se-form-field>
@@ -247,55 +278,37 @@
                 <option>Stacked Option 3</option>
               </select>
             </se-form-field>
-          </se-widget-content>
-          <se-widget-footer>
-            <se-button onclick="openDialog('dialog-simple-notitle')" mode="raised" >Open Dialog simple</se-button>
-            <se-button onclick="openDialog('dialog-simple-title')" mode="raised" >Open Dialog title & icon</se-button>
-            <se-button onclick="openDialog('dialog-complex')" mode="raised" >Open Dialog complex</se-button>
-            <se-button onclick="openSnackbar()" mode="raised">Open Snackbar</se-button>
-          </se-widget-footer>
-        </se-widget> -->
-        <se-divider mode="vertical"></se-divider>
-        <se-container mode="card" display="grid" column-size="300px" row-size="120px">
-          <se-widget id="widget1">
-            <se-widget-header>
-              Widget 1
-              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(1)">other_vertical</se-icon></div>
-            </se-widget-header>
-            <se-widget-content>test</se-widget-content>
-          </se-widget>
-          <se-widget id="widget2">
-            <se-widget-header>
-              Widget 2
-              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(2)">other_vertical</se-icon></div>
-            </se-widget-header>
-            <se-widget-content>test</se-widget-content>
+            </se-widget-content>
           </se-widget>
           <se-widget id="widget3">
             <se-widget-header>
-              Widget 3
-              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(3)">other_vertical</se-icon></div>
+              Modals
+              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(3)">presentation_mode</se-icon></div>
             </se-widget-header>
-            <se-widget-content>test</se-widget-content>
+            <se-widget-content>
+              <se-button onclick="openDialog('dialog-simple-notitle')" mode="raised" >Open Dialog simple</se-button>
+              <se-button onclick="openDialog('dialog-simple-title')" mode="raised" >Open Dialog title & icon</se-button>
+              <se-button onclick="openDialog('dialog-complex')" mode="raised" >Open Dialog complex</se-button>
+            </se-widget-content>
           </se-widget>
           <se-widget id="widget4">
             <se-widget-header>
               Widget 4
-              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(4)">other_vertical</se-icon></div>
+              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon></div>
             </se-widget-header>
             <se-widget-content>test</se-widget-content>
           </se-widget>
           <se-widget id="widget5">
             <se-widget-header>
               Widget 5
-              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(5)">other_vertical</se-icon></div>
+              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon></div>
             </se-widget-header>
             <se-widget-content>test</se-widget-content>
           </se-widget>
           <se-widget id="widget6">
             <se-widget-header>
               Widget 6
-              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(6)">other_vertical</se-icon></div>
+              <div slot="end"><se-icon mode="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon></div>
             </se-widget-header>
             <se-widget-content>test</se-widget-content>
           </se-widget>
@@ -341,7 +354,7 @@
 
     // Loader
     function loader(){
-      let loadingWidget = document.getElementById('loading-widget');
+      let loadingWidget = document.getElementById('widget0');
       loadingWidget.loading = true;
       setTimeout(function() {
         loadingWidget.loading = false;
