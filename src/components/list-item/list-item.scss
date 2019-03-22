@@ -43,6 +43,7 @@ button {
   @include display-flex();
   @include align-items(center);
   @include flex();
+  text-align: left; // MS Edge does not support "start"
   text-align: start;
   border-bottom: 1px solid $widget-footer-border-color;
   &:hover, &:focus{

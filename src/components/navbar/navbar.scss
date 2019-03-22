@@ -14,7 +14,7 @@
 }
 
 .d-flex-main{
-  @include display-flex();
+  display: flex;
   @include flex-direction(row);
   width: 100%;
 }
@@ -46,7 +46,7 @@ nav.primary {
     &:hover {
       &:before {
         @include background-color('primary-contrast');
-        height: 1px;;
+        height: 1px;
       }
     }
     &.active:before {
@@ -65,10 +65,8 @@ nav.alternative {
     }
     &.active {
       @include color('primary');
-
       &:before {
         @include background-color('primary');
-
       }
     }
   }
@@ -83,7 +81,6 @@ nav.alternative {
     @include align-items(center);
   }
   nav > a {
-
     position: relative;
     margin: 0 $spacing-large;
     font-weight: 100;
@@ -96,7 +93,6 @@ nav.alternative {
     text-decoration: none;
     line-height: 40px;
     height: 100%;
-
     &:focus {
       background-color: transparent;
     }
@@ -111,7 +107,6 @@ nav.alternative {
       width: 100%;
       bottom: 0;
     }
-
     &:hover:before {
       height: 1px;
     }

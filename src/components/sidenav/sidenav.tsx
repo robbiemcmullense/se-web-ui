@@ -48,7 +48,7 @@ export class SidenavComponent {
   }
 
   private async initSelect(): Promise<void> {
-    if(!this.selectedItem) {
+    if (!this.selectedItem) {
       this.setActive(this.items[0]);
     }
   }
@@ -91,30 +91,30 @@ export class SidenavComponent {
 
   render() {
     return [
-      <div class="menu-background animated" onClick={() => this.toggle()}  ref={el => this.backdropEl = el}></div>,
+      <div class="menu-background animated" onClick={() => this.toggle()} ref={el => this.backdropEl = el}></div>,
       <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
-          <div class="d-flex-center">
-            <div class="d-flex-center flex">
-              <span class="menu-sidenav" onClick={() => this.toggle()}>
-                <se-icon size="large" color="primary">test_results_nok</se-icon>
-              </span>
-              <h3 class="header-title">Menu</h3>
-            </div>
-            <se-chip color="primary" can-close="false" value="https://schneider-electric.com"></se-chip>
+        <div class="d-flex-center">
+          <div class="d-flex-center flex">
+            <span class="menu-sidenav" onClick={() => this.toggle()}>
+              <se-icon size="large" color="primary">test_results_nok</se-icon>
+            </span>
+            <h3 class="header-title">Menu</h3>
           </div>
-          <se-divider></se-divider>
-          <div class="d-flex flex">
-            <div class="listNavItems">
-              <se-list option="nav">
-                {this.renderList()}
-              </se-list>
-              <se-icon-lifeison color="standard"></se-icon-lifeison>
-            </div>
-            <se-divider option="vertical"></se-divider>
-            <se-widget option="fill">
-              <slot />
-            </se-widget>
+          <se-chip color="primary" can-close="false" value="https://schneider-electric.com"></se-chip>
+        </div>
+        <se-divider></se-divider>
+        <div class="d-flex flex">
+          <div class="listNavItems">
+            <se-list option="nav">
+              {this.renderList()}
+            </se-list>
+            <se-icon-lifeison color="standard"></se-icon-lifeison>
           </div>
+          <se-divider option="vertical"></se-divider>
+          <se-widget option="fill">
+            <slot />
+          </se-widget>
+        </div>
       </div>
     ]
   }
