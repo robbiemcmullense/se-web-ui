@@ -9,6 +9,12 @@
   }
 }
 
+:host(.collapsed) {
+  .group-item {
+    display: none;
+  }
+}
+
 :host(.treeview) {
   button {
     flex-direction: row-reverse;

@@ -76,7 +76,7 @@ export class ListGroupComponent {
 
   hostData() {
     return {
-      class: [this.selected && "selected", this.option].join(" ")
+      class: [this.selected && "selected", this.collapsed && "collapsed", this.option].join(" ")
     };
   }
 
@@ -107,11 +107,9 @@ export class ListGroupComponent {
           </span>
         )}
       </button>,
-      !this.collapsed && (
-        <div class="group-item">
-          <slot />
-        </div>
-      )
+      <div class="group-item">
+        <slot />
+      </div>
     ];
   }
 }
