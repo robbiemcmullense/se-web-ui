@@ -1,11 +1,11 @@
 import { Component, Watch, Element, Event, EventEmitter, Prop, Listen } from '@stencil/core';
 
 @Component({
-  tag: 'se-buttons',
-  styleUrl: 'buttons.scss',
+  tag: 'se-radio',
+  styleUrl: 'radio.scss',
   shadow: true
 })
-export class ButtonsComponent {
+export class RadioComponent {
   @Element() el: HTMLElement;
 
   /**

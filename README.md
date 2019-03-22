@@ -27,8 +27,8 @@ You can test all of these components with this [Online Template Editor](https://
 | [ ]  | Select         | Dropdown that takes the selected choice                                                                                    |
 | [ ]  | Select-item    | Element of a select element                                                                                                |
 | [x]  | Form-Field     | container for a submittable form.  Accepts checkboxes, input fields, and select dropdowns                                  |
-| [x]  | Buttons        | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Button         | standard button                                                                                                            |
+| [x]  | Radio          | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Radio-on-off   | toggle switch with text that can indicate "on" or "off", "active" or "inactive", etc.                                      |
 | [x]  | Radio-Switch   | toggle switch without text that can indicate "on" or "off", "active" or "inactive", etc.                                   |
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |

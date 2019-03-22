@@ -126,47 +126,6 @@ export namespace Components {
     'value'?: string;
   }
 
-  interface SeButtons {
-    /**
-    * Optional property that defines the background color of each button in the group.
-    */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled': boolean;
-    /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
-    */
-    'option': 'checkbox' | 'radio';
-    /**
-    * Define the selected values of the array.
-    */
-    'value': Array<any>;
-  }
-  interface SeButtonsAttributes extends StencilHTMLAttributes {
-    /**
-    * Optional property that defines the background color of each button in the group.
-    */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Passes the selected button value to the parent component when clicking on a button in the group.
-    */
-    'onChange'?: (event: CustomEvent) => void;
-    /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
-    */
-    'option'?: 'checkbox' | 'radio';
-    /**
-    * Define the selected values of the array.
-    */
-    'value'?: Array<any>;
-  }
-
   interface SeCheckbox {
     /**
     * Defines the color of the checkbox.
@@ -805,6 +764,47 @@ export namespace Components {
     'onChange'?: (event: CustomEvent) => void;
   }
 
+  interface SeRadio {
+    /**
+    * Optional property that defines the background color of each button in the group.
+    */
+    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option': 'checkbox' | 'radio';
+    /**
+    * Define the selected values of the array.
+    */
+    'value': Array<any>;
+  }
+  interface SeRadioAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines the background color of each button in the group.
+    */
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Passes the selected button value to the parent component when clicking on a button in the group.
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option'?: 'checkbox' | 'radio';
+    /**
+    * Define the selected values of the array.
+    */
+    'value'?: Array<any>;
+  }
+
   interface SeSidenavItem {
     /**
     * Defines if the tab is active or not.
@@ -1086,7 +1086,6 @@ declare global {
     'SeApp': Components.SeApp;
     'SeBrand': Components.SeBrand;
     'SeButton': Components.SeButton;
-    'SeButtons': Components.SeButtons;
     'SeCheckbox': Components.SeCheckbox;
     'SeChip': Components.SeChip;
     'SeContainer': Components.SeContainer;
@@ -1109,6 +1108,7 @@ declare global {
     'SeLoading': Components.SeLoading;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeRadioSwitch': Components.SeRadioSwitch;
+    'SeRadio': Components.SeRadio;
     'SeSidenavItem': Components.SeSidenavItem;
     'SeSidenav': Components.SeSidenav;
     'SeSnackbar': Components.SeSnackbar;
@@ -1126,7 +1126,6 @@ declare global {
     'se-app': Components.SeAppAttributes;
     'se-brand': Components.SeBrandAttributes;
     'se-button': Components.SeButtonAttributes;
-    'se-buttons': Components.SeButtonsAttributes;
     'se-checkbox': Components.SeCheckboxAttributes;
     'se-chip': Components.SeChipAttributes;
     'se-container': Components.SeContainerAttributes;
@@ -1149,6 +1148,7 @@ declare global {
     'se-loading': Components.SeLoadingAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-radio-switch': Components.SeRadioSwitchAttributes;
+    'se-radio': Components.SeRadioAttributes;
     'se-sidenav-item': Components.SeSidenavItemAttributes;
     'se-sidenav': Components.SeSidenavAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
@@ -1184,12 +1184,6 @@ declare global {
   var HTMLSeButtonElement: {
     prototype: HTMLSeButtonElement;
     new (): HTMLSeButtonElement;
-  };
-
-  interface HTMLSeButtonsElement extends Components.SeButtons, HTMLStencilElement {}
-  var HTMLSeButtonsElement: {
-    prototype: HTMLSeButtonsElement;
-    new (): HTMLSeButtonsElement;
   };
 
   interface HTMLSeCheckboxElement extends Components.SeCheckbox, HTMLStencilElement {}
@@ -1324,6 +1318,12 @@ declare global {
     new (): HTMLSeRadioSwitchElement;
   };
 
+  interface HTMLSeRadioElement extends Components.SeRadio, HTMLStencilElement {}
+  var HTMLSeRadioElement: {
+    prototype: HTMLSeRadioElement;
+    new (): HTMLSeRadioElement;
+  };
+
   interface HTMLSeSidenavItemElement extends Components.SeSidenavItem, HTMLStencilElement {}
   var HTMLSeSidenavItemElement: {
     prototype: HTMLSeSidenavItemElement;
@@ -1389,7 +1389,6 @@ declare global {
     'se-app': HTMLSeAppElement
     'se-brand': HTMLSeBrandElement
     'se-button': HTMLSeButtonElement
-    'se-buttons': HTMLSeButtonsElement
     'se-checkbox': HTMLSeCheckboxElement
     'se-chip': HTMLSeChipElement
     'se-container': HTMLSeContainerElement
@@ -1412,6 +1411,7 @@ declare global {
     'se-loading': HTMLSeLoadingElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-radio-switch': HTMLSeRadioSwitchElement
+    'se-radio': HTMLSeRadioElement
     'se-sidenav-item': HTMLSeSidenavItemElement
     'se-sidenav': HTMLSeSidenavElement
     'se-snackbar': HTMLSeSnackbarElement
@@ -1429,7 +1429,6 @@ declare global {
     'se-app': HTMLSeAppElement;
     'se-brand': HTMLSeBrandElement;
     'se-button': HTMLSeButtonElement;
-    'se-buttons': HTMLSeButtonsElement;
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
     'se-container': HTMLSeContainerElement;
@@ -1452,6 +1451,7 @@ declare global {
     'se-loading': HTMLSeLoadingElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-radio-switch': HTMLSeRadioSwitchElement;
+    'se-radio': HTMLSeRadioElement;
     'se-sidenav-item': HTMLSeSidenavItemElement;
     'se-sidenav': HTMLSeSidenavElement;
     'se-snackbar': HTMLSeSnackbarElement;

@@ -76,11 +76,13 @@
   @include flex(1);
 }
 .d-flex {
+  width: 100%;
   @include display-flex();
   @include align-items(left);
   @include flex-direction(row);
 }
 .d-flex-center {
+  width: 100%;
   @include display-flex();
   @include align-items(center);
   @include flex-direction(row);
@@ -94,6 +96,7 @@
 
 .listNavItems {
   width: 250px;
+  height: 100%;
   @include display-flex();
   @include flex-direction(column);
   @include justify-content(space-between);
