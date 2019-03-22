@@ -40,7 +40,7 @@ export class VisualLinearComponent {
 	render() {
 		return [
 			<div class="se-visual-linear">
-				<svg width="100%" height="8">
+				<svg height="8">
 					<rect class="progress-bar-wrapper" width="100%" height="8" />
 					<rect class="progress-bar" width={this.percentage + '%'} height="8" style={{ 'fill': this.secolor }} />
 					Sorry, your browser does not support inline SVG.

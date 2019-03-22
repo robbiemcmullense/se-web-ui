@@ -1,22 +1,22 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('NavbarComponent', () => {
+describe('TabbarComponent', () => {
   let page, element;
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-navbar></se-navbar>');
+    await page.setContent('<se-tabbar></se-tabbar>');
     
   });
 
   it('renders', async() => {
-    element = await page.find('se-navbar');
+    element = await page.find('se-tabbar');
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
   });
 
   it('renders with a primary color by default', async() => {
-    element = await page.find('se-navbar nav');
+    element = await page.find('se-tabbar nav');
     expect(element).toHaveClass('primary');
   });
 });
@@ -24,8 +24,8 @@ describe('NavbarComponent', () => {
 describe('NavbarComponent with Alternative Color', () => {
   it('renders with a class equal to alternative', async() => {
     const page = await newE2EPage();
-    await page.setContent('<se-navbar color="alternative"></se-navbar>');
-    const element = await page.find('se-navbar nav');
+    await page.setContent('<se-tabbar color="alternative"></se-tabbar>');
+    const element = await page.find('se-tabbar nav');
     expect(element).toHaveClass('alternative');
   });
 });

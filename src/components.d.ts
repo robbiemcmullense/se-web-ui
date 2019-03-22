@@ -739,13 +739,6 @@ export namespace Components {
     'loading'?: boolean;
   }
 
-  interface SeNavbar {
-    'color': 'primary' | 'alternative';
-  }
-  interface SeNavbarAttributes extends StencilHTMLAttributes {
-    'color'?: 'primary' | 'alternative';
-  }
-
   interface SeRadioOnOff {
     /**
     * Optional property that defines the background color of the button. Default is standard.
@@ -793,6 +786,23 @@ export namespace Components {
     * Defines the text the user will see for the "on" or "active" part of the radio switch.
     */
     'textOn'?: string;
+  }
+
+  interface SeRadioSwitch {
+    /**
+    * Optional property that defines if the switch is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+  }
+  interface SeRadioSwitchAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines if the switch is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Send the state of the switch (true/false) to the parent component when it is toggled.
+    */
+    'onChange'?: (event: CustomEvent) => void;
   }
 
   interface SeSidenavItem {
@@ -878,12 +888,11 @@ export namespace Components {
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
 
-  interface SeSwitch {}
-  interface SeSwitchAttributes extends StencilHTMLAttributes {
-    /**
-    * Send the state of the switch (true/false) to the parent component when it is toggled.
-    */
-    'onChange'?: (event: CustomEvent) => void;
+  interface SeTabbar {
+    'color': 'primary' | 'alternative';
+  }
+  interface SeTabbarAttributes extends StencilHTMLAttributes {
+    'color'?: 'primary' | 'alternative';
   }
 
   interface SeVisualLinear {
@@ -1098,12 +1107,12 @@ declare global {
     'SeListItem': Components.SeListItem;
     'SeList': Components.SeList;
     'SeLoading': Components.SeLoading;
-    'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
+    'SeRadioSwitch': Components.SeRadioSwitch;
     'SeSidenavItem': Components.SeSidenavItem;
     'SeSidenav': Components.SeSidenav;
     'SeSnackbar': Components.SeSnackbar;
-    'SeSwitch': Components.SeSwitch;
+    'SeTabbar': Components.SeTabbar;
     'SeVisualLinear': Components.SeVisualLinear;
     'SeVisualRadial': Components.SeVisualRadial;
     'SeWidgetContent': Components.SeWidgetContent;
@@ -1138,12 +1147,12 @@ declare global {
     'se-list-item': Components.SeListItemAttributes;
     'se-list': Components.SeListAttributes;
     'se-loading': Components.SeLoadingAttributes;
-    'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
+    'se-radio-switch': Components.SeRadioSwitchAttributes;
     'se-sidenav-item': Components.SeSidenavItemAttributes;
     'se-sidenav': Components.SeSidenavAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
-    'se-switch': Components.SeSwitchAttributes;
+    'se-tabbar': Components.SeTabbarAttributes;
     'se-visual-linear': Components.SeVisualLinearAttributes;
     'se-visual-radial': Components.SeVisualRadialAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
@@ -1303,16 +1312,16 @@ declare global {
     new (): HTMLSeLoadingElement;
   };
 
-  interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
-  var HTMLSeNavbarElement: {
-    prototype: HTMLSeNavbarElement;
-    new (): HTMLSeNavbarElement;
-  };
-
   interface HTMLSeRadioOnOffElement extends Components.SeRadioOnOff, HTMLStencilElement {}
   var HTMLSeRadioOnOffElement: {
     prototype: HTMLSeRadioOnOffElement;
     new (): HTMLSeRadioOnOffElement;
+  };
+
+  interface HTMLSeRadioSwitchElement extends Components.SeRadioSwitch, HTMLStencilElement {}
+  var HTMLSeRadioSwitchElement: {
+    prototype: HTMLSeRadioSwitchElement;
+    new (): HTMLSeRadioSwitchElement;
   };
 
   interface HTMLSeSidenavItemElement extends Components.SeSidenavItem, HTMLStencilElement {}
@@ -1333,10 +1342,10 @@ declare global {
     new (): HTMLSeSnackbarElement;
   };
 
-  interface HTMLSeSwitchElement extends Components.SeSwitch, HTMLStencilElement {}
-  var HTMLSeSwitchElement: {
-    prototype: HTMLSeSwitchElement;
-    new (): HTMLSeSwitchElement;
+  interface HTMLSeTabbarElement extends Components.SeTabbar, HTMLStencilElement {}
+  var HTMLSeTabbarElement: {
+    prototype: HTMLSeTabbarElement;
+    new (): HTMLSeTabbarElement;
   };
 
   interface HTMLSeVisualLinearElement extends Components.SeVisualLinear, HTMLStencilElement {}
@@ -1401,12 +1410,12 @@ declare global {
     'se-list-item': HTMLSeListItemElement
     'se-list': HTMLSeListElement
     'se-loading': HTMLSeLoadingElement
-    'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
+    'se-radio-switch': HTMLSeRadioSwitchElement
     'se-sidenav-item': HTMLSeSidenavItemElement
     'se-sidenav': HTMLSeSidenavElement
     'se-snackbar': HTMLSeSnackbarElement
-    'se-switch': HTMLSeSwitchElement
+    'se-tabbar': HTMLSeTabbarElement
     'se-visual-linear': HTMLSeVisualLinearElement
     'se-visual-radial': HTMLSeVisualRadialElement
     'se-widget-content': HTMLSeWidgetContentElement
@@ -1441,12 +1450,12 @@ declare global {
     'se-list-item': HTMLSeListItemElement;
     'se-list': HTMLSeListElement;
     'se-loading': HTMLSeLoadingElement;
-    'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
+    'se-radio-switch': HTMLSeRadioSwitchElement;
     'se-sidenav-item': HTMLSeSidenavItemElement;
     'se-sidenav': HTMLSeSidenavElement;
     'se-snackbar': HTMLSeSnackbarElement;
-    'se-switch': HTMLSeSwitchElement;
+    'se-tabbar': HTMLSeTabbarElement;
     'se-visual-linear': HTMLSeVisualLinearElement;
     'se-visual-radial': HTMLSeVisualRadialElement;
     'se-widget-content': HTMLSeWidgetContentElement;

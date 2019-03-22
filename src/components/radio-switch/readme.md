@@ -1,8 +1,15 @@
-# se-switch
+# se-radio-switch
 
 
 
 <!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property   | Attribute  | Description                                                                           | Type      | Default |
+| ---------- | ---------- | ------------------------------------------------------------------------------------- | --------- | ------- |
+| `disabled` | `disabled` | Optional property that defines if the switch is disabled.  Set to `false` by default. | `boolean` | `false` |
 
 
 ## Events

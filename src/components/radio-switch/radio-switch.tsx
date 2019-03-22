@@ -1,11 +1,11 @@
 import { Component, Element, Event, EventEmitter, Prop, State } from '@stencil/core';
 
 @Component({
-  tag: 'se-switch',
-  styleUrl: 'switch.scss',
+  tag: 'se-radio-switch',
+  styleUrl: 'radio-switch.scss',
   shadow: true
 })
-export class SwitchComponent {
+export class RadioSwitchComponent {
 	/**
    * Optional property that defines if the switch is disabled.  Set to `false` by default.
    */
