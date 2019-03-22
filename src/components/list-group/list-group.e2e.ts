@@ -18,22 +18,18 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(element).toHaveClasses(['classic', 'hydrated']);
   });
 
-	it('renders an arrow2_up icon by default, along with an element with the group-item class', async() => {
+	it('renders an arrow2_up icon by default', async() => {
 		const iconElm = await page.find('se-list-group >>> .se-icon.medium');
-		const groupItemElm = await page.find('se-list-group >>> .group-item');
 		expect(iconElm).toEqualText('arrow2_up');
-		expect(groupItemElm).toBeTruthy();
 	});
 
-	it('renders an arrow2_down icon when collapsed, and does not render an element with the group-item class', async() => {
+	it('renders an arrow2_down icon when collapsed', async() => {
 		await page.$eval('se-list-group', (elm: any) => {
 			elm.collapsed = true;
 		});
 		await page.waitForChanges();
 		const iconElm = await page.find('se-list-group >>> .se-icon.medium');
-		const groupItemElm = await page.find('se-list-group >>> .group-item');
 		expect(iconElm).toEqualText('arrow2_down');
-		expect(groupItemElm).not.toBeTruthy();
 	});
 
 	it('renders an arrow2_right icon when the option is set to treeview', async() => {
