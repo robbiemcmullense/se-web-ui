@@ -8,5 +8,5 @@
 
   overflow: auto;
   @include display-flex();
-  @include flex-direction(row);
+  @include flex-direction(column);
 }

@@ -36,18 +36,18 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(groupItemElm).not.toBeTruthy();
 	});
 
-	it('renders an arrow2_right icon when the mode is set to treeview', async() => {
+	it('renders an arrow2_right icon when the option is set to treeview', async() => {
 		await page.$eval('se-list-group', (elm: any) => {
-			elm.mode = 'treeview';
+			elm.option = 'treeview';
 		});
 		await page.waitForChanges();
 		const iconElm = await page.find('se-list-group >>> .se-icon');
 		expect(iconElm).toEqualText('arrow2_right');
 	});
 
-	it('renders an icon element when the mode is set to nav', async() => {
+	it('renders an icon element when the option is set to nav', async() => {
 		await page.$eval('se-list-group', (elm: any) => {
-			elm.mode = 'nav';
+			elm.option = 'nav';
 			elm.icon = 'my group test icon';
 		});
 		await page.waitForChanges();

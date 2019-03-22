@@ -11,7 +11,7 @@ export class IconComponent {
   /**
    * Optional property to define if the icon should act as a button (clickable).
    */
-  @Prop() mode: 'button';
+  @Prop() option: 'button';
 
   /**
    * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
@@ -29,7 +29,7 @@ export class IconComponent {
 
   hostData() {
     return {
-      class: [this.color, this.mode].join(" ")
+      class: [this.color, this.option].join(" ")
     };
   }
 

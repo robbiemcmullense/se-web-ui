@@ -15,15 +15,15 @@ export class ContainerComponent {
    * `centered` center the container so the content does no exceed a max width.
    *  `card` Add a larger spacing and use alternative (white) background.
    */
-  @Prop() mode: "fill" | "widget" | "card" | "centered"  = "fill";
-  @Watch("mode") modeDidChange() {
-    if (this.mode === "widget") {
+  @Prop() option: "fill" | "widget" | "card" | "centered"  = "fill";
+  @Watch("option") optionDidChange() {
+    if (this.option === "widget") {
       this.color = "standard";
     }
-    if(this.mode === "card"){
-      Array.from(this.el.querySelectorAll(":scope > se-widget")).forEach(
+    if(this.option === "card"){
+      Array.from(this.el.querySelectorAll("se-container > se-widget")).forEach(
         (item: any) => {
-          item.mode = this.mode;
+          item.option = this.option;
         }
       );
     }
@@ -45,13 +45,13 @@ export class ContainerComponent {
 
   /**
    * Defines how to display the element.
-   * `flex` Default. Will make all element fitting in the .
-   * `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
+   * `flex` is the default display.
+   * `block`: each widget will be as large and high as it's content. Selecting block, will automatically configure each child widget in display block as well.
    */
   @Prop() display: "flex" | "block" | "grid" = "flex";
   @Watch("display") displayDidChange() {
     // Only direct child will be impacted by the display property
-    Array.from(this.el.querySelectorAll(":scope > se-widget")).forEach(
+    Array.from(this.el.querySelectorAll("se-container > se-widget")).forEach(
       (item: any) => {
         item.display = this.display;
       }
@@ -88,7 +88,7 @@ export class ContainerComponent {
   @Prop({ mutable: true }) color: "standard" | "alternative" = "alternative";
 
   componentWillLoad() {
-    this.modeDidChange();
+    this.optionDidChange();
     this.displayDidChange();
     this.columnSizeDidChange();
     this.rowSizeDidChange();
@@ -97,7 +97,7 @@ export class ContainerComponent {
   hostData() {
     return {
       class: [
-        `${this.mode}-content`,
+        `${this.option}-content`,
         this.position,
         this.color,
         this.direction,
@@ -107,7 +107,7 @@ export class ContainerComponent {
   }
 
   render() {
-    return this.mode === "centered" ? (
+    return this.option === "centered" ? (
       <div class="wrapper-center">
         <slot />
       </div>

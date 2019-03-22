@@ -19,7 +19,7 @@ describe('RadioOnOffComponent', () => {
 
   it('should render header and alternative classes when these properties are set', async() => {
     await page.$eval('se-radio-on-off', (elm: any) => {
-      elm.mode = 'header';
+      elm.option = 'header';
       elm.color = 'alternative'
     });
     await page.waitForChanges();

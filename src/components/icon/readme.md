@@ -10,7 +10,7 @@
 | Property | Attribute | Description                                                                                                             | Type                                                      | Default     |
 | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
 | `color`  | `color`   | Optional property that defines the background color of the button. The default color will be inherited from its parent. | `"alternative" \| "primary" \| "secondary" \| "standard"` | `undefined` |
-| `mode`   | `mode`    | Optional property to define if the icon should act as a button (clickable).                                             | `"button"`                                                | `undefined` |
+| `option` | `option`  | Optional property to define if the icon should act as a button (clickable).                                             | `"button"`                                                | `undefined` |
 | `size`   | `size`    | Define the size of an icon. default small (24px). medium is 40px and large is 63px.                                     | `"large" \| "medium" \| "small"`                          | `"small"`   |
 
 

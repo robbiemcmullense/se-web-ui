@@ -40,19 +40,19 @@ export class ListItemComponent {
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
-  @Prop() mode: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
 
   @State() padding: number;
 
   hostData() {
     return {
-      class: [this.selected && "selected", this.mode].join(" ")
+      class: [this.selected && "selected", this.option].join(" ")
     };
   }
 
   componentDidLoad() {
     this.padding = 20 * this.indentation;
-    if (this.mode === "treeview") {
+    if (this.option === "treeview") {
       this.padding += 24;
     }
   }
@@ -60,7 +60,7 @@ export class ListItemComponent {
   render() {
     return (
       <button style={{ paddingLeft: this.padding + `px` }}>
-        {this.mode === "nav" && this.selected && <div class="selectedBar" />}
+        {this.option === "nav" && this.selected && <div class="selectedBar" />}
         {!!this.icon && (
           <div class="nav-icon">
             <span class={["se-icon", this.iconColor].join(" ")}>
@@ -72,7 +72,7 @@ export class ListItemComponent {
           <div>{this.item}</div>
           <small> {this.description}</small>
         </div>
-        {this.mode === "nav" && (
+        {this.option === "nav" && (
           <span class="se-icon medium">arrow2_right</span>
         )}
       </button>

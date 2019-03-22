@@ -22,13 +22,13 @@ describe('VisualLinearComponent', () => {
     expect(rectTwo).toBeTruthy();
   });
 
-  it('renders with inline class as that is the default mode', async() => {
+  it('renders with inline class as that is the default option', async() => {
     expect(element).toHaveClasses(['hydrated', 'inline']);
   });
 
   it('renders without a flex class because there is a specified width', async() => {
     await page.$eval('se-visual-linear', (elm: any) => {
-      elm.mode = 'stacked';
+      elm.option = 'stacked';
     });
     await page.waitForChanges();
     expect(element).toHaveClass('stacked');

@@ -14,7 +14,7 @@ describe('ButtonComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with a flat mode and an icon with standard mode', async() => {
+  it('renders with a flat option and an icon with standard option', async() => {
     await page.$eval('se-button', (elm: any) => {
       elm.icon = 'close';
     });
@@ -27,7 +27,7 @@ describe('ButtonComponent', () => {
 });
 
 describe('Button with Preset Text', () => {
-  it('renders with a flat mode and text equal to My Button', async() => {
+  it('renders with a flat option and text equal to My Button', async() => {
     const page = await newE2EPage();
     await page.setContent('<se-button>My Button</se-button>');
 

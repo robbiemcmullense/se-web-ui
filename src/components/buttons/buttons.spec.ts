@@ -11,8 +11,8 @@ describe('ButtonComponent', () => {
 		expect(buttons).toBeTruthy();
 	});
 	
-	it('should be in "checkbox" mode by default', () => {
-		expect(buttons.mode).toEqual('checkbox');
+	it('should be in "checkbox" option by default', () => {
+		expect(buttons.option).toEqual('checkbox');
 	});
 
 	it('should not be disabled by default', () => {

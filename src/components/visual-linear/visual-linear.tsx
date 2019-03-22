@@ -8,10 +8,10 @@ import { Component, Prop } from "@stencil/core";
 export class VisualLinearComponent {
 	/**
 	 * Defines the layout of your component.
-	 * `inline` is the default mode.  This sets the "progress bar" adjacent to the label.
-	 * `stacked` mode will render the "progress bar" below the label.
+	 * `inline` is the default option.  This sets the "progress bar" adjacent to the label.
+	 * `stacked` option will render the "progress bar" below the label.
 	 */
-	@Prop() mode: 'inline' | 'stacked' = 'inline';
+	@Prop() option: 'inline' | 'stacked' = 'inline';
 	/**
 	 * Defines the text value of the label in your component.
 	 */
@@ -33,7 +33,7 @@ export class VisualLinearComponent {
 
 	hostData() {
 		return {
-			class: [this.mode].join(' ')
+			class: [this.option].join(' ')
 		}
 	}
 

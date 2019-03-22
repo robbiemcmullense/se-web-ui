@@ -39,7 +39,7 @@ describe('ButtonsComponent', () => {
     expect(secondButtonElement.getProperty('disabled')).toBeTruthy();
   });
 
-  it('can select multiple buttons by default because its default mode is checkbox', async() => {
+  it('can select multiple buttons by default because its default option is checkbox', async() => {
     const firstButtonElement = await page.find('se-buttons se-button#first >>> button');
     const secondButtonElement = await page.find('se-buttons se-button#second >>> button');
 
@@ -51,9 +51,9 @@ describe('ButtonsComponent', () => {
   });
 
 
-  it('selects only one button at a time when the mode is set to radio', async() => {
+  it('selects only one button at a time when the option is set to radio', async() => {
     await page.$eval('se-buttons', (elm: any) => {
-      elm.mode = 'radio';
+      elm.option = 'radio';
     });
     await page.waitForChanges();
     const firstButtonElement = await page.find('se-buttons se-button#first >>> button');

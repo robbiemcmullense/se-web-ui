@@ -67,9 +67,9 @@ export namespace Components {
     */
     'icon': string;
     /**
-    * Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application.
+    * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
-    'mode': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
+    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
     /**
     * Optional property that define if the button should be shown as selected. Used with `se-buttons`
     */
@@ -105,13 +105,13 @@ export namespace Components {
     */
     'icon'?: string;
     /**
-    * Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application.
-    */
-    'mode'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
-    /**
     * Passes button data to the parent component on a click.
     */
     'onClicked'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
+    */
+    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
     /**
     * Optional property that define if the button should be shown as selected. Used with `se-buttons`
     */
@@ -136,9 +136,9 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` mode indicates that only one button in the group can be selected at a time.
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
     */
-    'mode': 'checkbox' | 'radio';
+    'option': 'checkbox' | 'radio';
     /**
     * Define the selected values of the array.
     */
@@ -154,13 +154,13 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` mode indicates that only one button in the group can be selected at a time.
-    */
-    'mode'?: 'checkbox' | 'radio';
-    /**
     * Passes the selected button value to the parent component when clicking on a button in the group.
     */
     'onChange'?: (event: CustomEvent) => void;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option'?: 'checkbox' | 'radio';
     /**
     * Define the selected values of the array.
     */
@@ -255,13 +255,13 @@ export namespace Components {
     */
     'direction': "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
+    * Defines how to display the element. `flex` is the default display. `block`: each widget will be as large and high as it's content. Selecting block, will automatically configure each child widget in display block as well.
     */
     'display': "flex" | "block" | "grid";
     /**
     * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode': "fill" | "widget" | "card" | "centered";
+    'option': "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
@@ -285,13 +285,13 @@ export namespace Components {
     */
     'direction'?: "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Each widget will be has large and high as it's content. Selecting block, will automatically configure each child widget in mode block as well.
+    * Defines how to display the element. `flex` is the default display. `block`: each widget will be as large and high as it's content. Selecting block, will automatically configure each child widget in display block as well.
     */
     'display'?: "flex" | "block" | "grid";
     /**
     * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode'?: "fill" | "widget" | "card" | "centered";
+    'option'?: "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
@@ -305,12 +305,12 @@ export namespace Components {
   interface SeDialogContent {
     'icon': string;
     'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
-    'mode': 'fill';
+    'option': 'fill';
   }
   interface SeDialogContentAttributes extends StencilHTMLAttributes {
     'icon'?: string;
     'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    'mode'?: 'fill';
+    'option'?: 'fill';
   }
 
   interface SeDialogFooter {}
@@ -372,11 +372,11 @@ export namespace Components {
 
   interface SeDivider {
     'color': "standard" | "alternative";
-    'mode': "horizontal" | "vertical" | "inset";
+    'option': "horizontal" | "vertical" | "inset";
   }
   interface SeDividerAttributes extends StencilHTMLAttributes {
     'color'?: "standard" | "alternative";
-    'mode'?: "horizontal" | "vertical" | "inset";
+    'option'?: "horizontal" | "vertical" | "inset";
   }
 
   interface SeDropdown {
@@ -418,9 +418,9 @@ export namespace Components {
     */
     'label': string;
     /**
-    * Defines the layout of your form field. `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` mode will render the input or select field below the label.
+    * Defines the layout of your form field. `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
     */
-    'mode': 'inline' | 'stacked';
+    'option': 'inline' | 'stacked';
     /**
     * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
     */
@@ -448,13 +448,13 @@ export namespace Components {
     */
     'label'?: string;
     /**
-    * Defines the layout of your form field. `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` mode will render the input or select field below the label.
-    */
-    'mode'?: 'inline' | 'stacked';
-    /**
     * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
     */
     'onSubmit'?: (event: CustomEvent) => void;
+    /**
+    * Defines the layout of your form field. `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
+    */
+    'option'?: 'inline' | 'stacked';
     /**
     * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
     */
@@ -533,7 +533,7 @@ export namespace Components {
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
-    'mode': 'button';
+    'option': 'button';
     /**
     * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
     */
@@ -547,7 +547,7 @@ export namespace Components {
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
-    'mode'?: 'button';
+    'option'?: 'button';
     /**
     * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
     */
@@ -611,7 +611,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -645,7 +645,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -676,7 +676,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list element should be selected or not
     */
@@ -706,7 +706,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list element should be selected or not
     */
@@ -717,13 +717,13 @@ export namespace Components {
     /**
     * Define the style of the list
     */
-    'mode': "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview";
   }
   interface SeListAttributes extends StencilHTMLAttributes {
     /**
     * Define the style of the list
     */
-    'mode'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
   }
 
   interface SeLoading {
@@ -756,9 +756,9 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Defines the visual appearance of the on/off radio switch. `default` is the default mode. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
+    * Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
     */
-    'mode': 'default' | 'header';
+    'option': 'default' | 'header';
     /**
     * Defines the text the user will see for the "off" or "inactive" part of the radio switch.
     */
@@ -778,13 +778,13 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * Defines the visual appearance of the on/off radio switch. `default` is the default mode. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
-    */
-    'mode'?: 'default' | 'header';
-    /**
     * Passes the current state (true or false) to the parent component when clicking on a button in the group.
     */
     'onChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
+    */
+    'option'?: 'default' | 'header';
     /**
     * Defines the text the user will see for the "off" or "inactive" part of the radio switch.
     */
@@ -892,9 +892,9 @@ export namespace Components {
     */
     'label': string;
     /**
-    * Defines the layout of your component. `inline` is the default mode.  This sets the "progress bar" adjacent to the label. `stacked` mode will render the "progress bar" below the label.
+    * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
     */
-    'mode': 'inline' | 'stacked';
+    'option': 'inline' | 'stacked';
     /**
     * Set the percentage of the "progress bar" to be "filled".
     */
@@ -914,9 +914,9 @@ export namespace Components {
     */
     'label'?: string;
     /**
-    * Defines the layout of your component. `inline` is the default mode.  This sets the "progress bar" adjacent to the label. `stacked` mode will render the "progress bar" below the label.
+    * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
     */
-    'mode'?: 'inline' | 'stacked';
+    'option'?: 'inline' | 'stacked';
     /**
     * Set the percentage of the "progress bar" to be "filled".
     */
@@ -977,36 +977,36 @@ export namespace Components {
   }
 
   interface SeWidgetContent {
-    'mode': 'fill';
+    'option': 'fill';
   }
   interface SeWidgetContentAttributes extends StencilHTMLAttributes {
-    'mode'?: 'fill';
+    'option'?: 'fill';
   }
 
   interface SeWidgetFooter {
     /**
-    * Define the mode of a footer. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the footer regarding to the card design
+    * Define the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer regarding to the card design
     */
-    'mode': "card";
+    'option': "card";
   }
   interface SeWidgetFooterAttributes extends StencilHTMLAttributes {
     /**
-    * Define the mode of a footer. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the footer regarding to the card design
+    * Define the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer regarding to the card design
     */
-    'mode'?: "card";
+    'option'?: "card";
   }
 
   interface SeWidgetHeader {
     /**
-    * Define the mode of a header. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the header regarding to the card design
+    * Define the visual appearance of a header. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the header regarding to the card design
     */
-    'mode': "card";
+    'option': "card";
   }
   interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {
     /**
-    * Define the mode of a header. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the header regarding to the card design
+    * Define the visual appearance of a header. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the header regarding to the card design
     */
-    'mode'?: "card";
+    'option'?: "card";
   }
 
   interface SeWidget {
@@ -1019,7 +1019,7 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * When on Grid mode, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    * When on Grid display, define if the widget should be a 2/2 instead of a small 1/1 grid item.
     */
     'enlarged': boolean;
     /**
@@ -1031,9 +1031,9 @@ export namespace Components {
     */
     'loading': boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
+    * Define the visual appearance of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode': "fill" | "card";
+    'option': "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -1049,7 +1049,7 @@ export namespace Components {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * When on Grid mode, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    * When on Grid display, define if the widget should be a 2/2 instead of a small 1/1 grid item.
     */
     'enlarged'?: boolean;
     /**
@@ -1061,9 +1061,9 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
+    * Define the visual appearance of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode'?: "fill" | "card";
+    'option'?: "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */

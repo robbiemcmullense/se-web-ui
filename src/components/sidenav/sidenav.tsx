@@ -105,13 +105,13 @@ export class SidenavComponent {
           <se-divider></se-divider>
           <div class="d-flex flex">
             <div class="listNavItems">
-              <se-list mode="nav">
+              <se-list option="nav">
                 {this.renderList()}
               </se-list>
               <se-icon-lifeison color="standard"></se-icon-lifeison>
             </div>
-            <se-divider mode="vertical"></se-divider>
-            <se-widget mode="fill">
+            <se-divider option="vertical"></se-divider>
+            <se-widget option="fill">
               <slot />
             </se-widget>
           </div>

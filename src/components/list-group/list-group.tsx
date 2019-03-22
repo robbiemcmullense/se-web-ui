@@ -59,12 +59,12 @@ export class ListGroupComponent {
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
-  @Prop() mode: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
 
 
   componentWillLoad() {
     Array.from(
-      this.el.querySelectorAll(":scope > se-list-item, :scope > se-list-group")
+      this.el.querySelectorAll("se-list-group > se-list-item, se-list-group > se-list-group")
     ).forEach((item: any) => {
       item.indentation = this.indentation + 1;
     });
@@ -76,7 +76,7 @@ export class ListGroupComponent {
 
   hostData() {
     return {
-      class: [this.selected && "selected", this.mode].join(" ")
+      class: [this.selected && "selected", this.option].join(" ")
     };
   }
 
@@ -84,7 +84,7 @@ export class ListGroupComponent {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return [
       <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()}>
-        {this.mode === "nav" && this.selected && <div class="selectedBar" />}
+        {this.option === "nav" && this.selected && <div class="selectedBar" />}
         {!!this.icon && (
           <div class="nav-icon">
             <span class={["se-icon", this.iconColor].join(" ")}>
@@ -96,12 +96,12 @@ export class ListGroupComponent {
           <div>{this.item}</div>
           <small> {this.description}</small>
         </div>
-        {this.mode !== "treeview" && (
+        {this.option !== "treeview" && (
           <span class="se-icon medium">
           {this.collapsed ? "arrow2_down" : "arrow2_up"}
           </span>
         )}
-        {this.mode == "treeview" && (
+        {this.option == "treeview" && (
           <span class="se-icon">
           arrow2_right
           </span>

@@ -14,9 +14,9 @@ describe('WidgetContentComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with the mode class whenever the mode is set to fill', async() => {
+  it('renders with the full-content class whenever the option is set to fill', async() => {
     await page.$eval('se-widget-content', (elm: any) => {
-      elm.mode = 'fill';
+      elm.option = 'fill';
     });
     await page.waitForChanges();
     expect(element).toHaveClass('full-content');
