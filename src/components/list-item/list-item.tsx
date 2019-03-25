@@ -75,7 +75,7 @@ export class ListItemComponent {
         {this.option === "nav" && (
           <span class="se-icon medium">arrow2_right</span>
         )}
-        {this.mode === 'classic' && (<slot></slot>)}
+        {this.option === 'classic' && (<slot></slot>)}
       </button>
     );
   }
