@@ -35,7 +35,7 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
 | [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
 | [x]  | Visual-Linear  | linear progress bar                                                                                                        |
-| [x]  | Visual-Raidal  | circular progress bar                                                                                                      |
+| [x]  | Visual-Radial  | circular progress bar                                                                                                      |
 | [x]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
 | [x]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
 | [x]  | Card-header    |                                                                                                                            |
@@ -158,51 +158,3 @@ Look for a project's contribution instructions. If there are any, follow them.
 
 And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
 
-### Writing Unit Tests for your Components
-
-The purpose of unit tests are to validate individual portions of your source code to ensure that it is functioning correctly.  You will want to test the instantiation of your component, as well as its default property settings and its methods.
-
-**Example Unit Test**
-
-```typescript
-import { MyComponent } from './my-component';
-
-it('should build MyComponent', () => {
-  const component = new MyComponent();
-  expect(component).toBeTruthy();
-});
-```
-
-To run the unit tests in your project, simply run the following command:
-
-```shell
-yarn test
-```
-
-This will run all `.spec` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.
-
-### Writing End-to-End (E2E) Tests for your Components
-
-The purpose of e2e tests are to validate the "full" end-to-end functionality of the various web components to ensure its proper rendering an behavior.  You will want to validate a component's inner HTML, as well as any attributes/classes added to the host element in its component's `hostData` function.
-
-**Example E2E Test**
-
-```typescript
-import { newE2EPage } from '@stencil/core/testing';
-
-it('renders', async () => {
-  const page = await newE2EPage();
-  await page.setContent('<my-component></my-component>');
-  
-  const element = await page.find('my-component');
-  expect(element).toHaveClass('hydrated');
-});
-```
-
-StencilJS adds the "hydrated" class to each generated component, so it is a good measure to ensure your component is rendering propertly.  To run the e2e tests in your project, simply run the following command:
-
-```shell
-yarn e2e
-```
-
-This will run all `.e2e.ts` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.

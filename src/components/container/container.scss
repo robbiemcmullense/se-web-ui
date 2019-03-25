@@ -19,7 +19,7 @@
 }
 :host(.grid) {
   display: grid;
-  width: 100%;
+  width: auto;
   // @include animated();
   // transition: all .7s;
   // grid-auto-rows: 300px;

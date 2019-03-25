@@ -70,8 +70,50 @@ TODO: Define common best practice of events
 Each element should be under `:host{}` to insure that only the 
 
 ### Specs
-TODO: Define common best practice of creating a `.spec.ts` file
 
+The purpose of unit tests are to validate individual portions of your source code to ensure that it is functioning correctly.  You will want to test the instantiation of your component, as well as its default property settings and its methods.
 
-### E2E
-TODO: Define common best practice of creating a `.e2e.ts` file
+**Example Unit Test**
+
+```typescript
+import { MyComponent } from './my-component';
+
+it('should build MyComponent', () => {
+  const component = new MyComponent();
+  expect(component).toBeTruthy();
+});
+```
+
+To run the unit tests in your project, simply run the following command:
+
+```shell
+yarn test
+```
+
+This will run all `.spec` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.
+
+### End-to-End (E2E)
+
+The purpose of e2e tests are to validate the "full" end-to-end functionality of the various web components to ensure its proper rendering an behavior.  You will want to validate a component's inner HTML, as well as any attributes/classes added to the host element in its component's `hostData` function.
+
+**Example E2E Test**
+
+```typescript
+import { newE2EPage } from '@stencil/core/testing';
+
+it('renders', async () => {
+  const page = await newE2EPage();
+  await page.setContent('<my-component></my-component>');
+  
+  const element = await page.find('my-component');
+  expect(element).toHaveClass('hydrated');
+});
+```
+
+StencilJS adds the "hydrated" class to each generated component, so it is a good measure to ensure your component is rendering propertly.  To run the e2e tests in your project, simply run the following command:
+
+```shell
+yarn e2e
+```
+
+This will run all `.e2e.ts` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.

@@ -6,7 +6,7 @@ $divider-inset-margin: 80px;
 :host {
   display: block;
   margin: 0;
-  border-color: $widget-footer-border-color;
+  border-color: $divider-color;
 }
 :host(.horizontal){
   border-top-width: $divider-width;
