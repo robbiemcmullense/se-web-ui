@@ -11,7 +11,7 @@ describe('VisualLinearComponent', () => {
 		expect(linearProgBar).toBeTruthy();
 	});
 
-	it('should have an inline mode by default', () => {
-		expect(linearProgBar.mode).toEqual('inline');
+	it('should have an inline option by default', () => {
+		expect(linearProgBar.option).toEqual('inline');
 	});
 });

@@ -47,9 +47,9 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(description.innerText).toEqual(' sample list item');
   });
 
-  it('should render an icon with arrow2_right when the mode is set to nav', async () => {
+  it('should render an icon with arrow2_right when the option is set to nav', async () => {
 		await page.$eval('se-list-item', (elm: any) => {
-			elm.mode = 'nav';
+			elm.option = 'nav';
 		});
 		await page.waitForChanges();
 
@@ -60,7 +60,7 @@ import { newE2EPage } from '@stencil/core/testing';
 
   it('should render the icon equal to the icon property when provided', async() => {
     await page.$eval('se-list-item', (elm: any) => {
-      elm.mode = 'nav';
+      elm.option = 'nav';
       elm.selected = true;
       elm.icon = 'my test icon';
 		});
@@ -73,7 +73,7 @@ import { newE2EPage } from '@stencil/core/testing';
 
   it('should render a color class when selected', async() => {
     await page.$eval('se-list-item', (elm: any) => {
-      elm.mode = 'nav';
+      elm.option = 'nav';
       elm.selected = true;
       elm.iconColor = 'secondary';
       elm.icon = 'my test icon';

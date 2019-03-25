@@ -1,20 +1,20 @@
 import { Component, Watch, Element, Event, EventEmitter, Prop, Listen } from '@stencil/core';
 
 @Component({
-  tag: 'se-buttons',
-  styleUrl: 'buttons.scss',
+  tag: 'se-radio',
+  styleUrl: 'radio.scss',
   shadow: true
 })
-export class ButtonsComponent {
+export class RadioComponent {
   @Element() el: HTMLElement;
 
   /**
    * Defines the functionality of your button group.
    * `checkbox` is the default option, where all buttons in the group can be selected.
-   * `radio` mode indicates that only one button in the group can be selected at a time.
+   * `radio` option indicates that only one button in the group can be selected at a time.
    */
-  @Prop() mode: 'checkbox' | 'radio' = 'checkbox';
-  @Watch('mode') modeDidChange() {
+  @Prop() option: 'checkbox' | 'radio' = 'checkbox';
+  @Watch('option') optionDidChange() {
     this.updateItemMode()
   }
   /**
@@ -42,7 +42,7 @@ export class ButtonsComponent {
   buttonClickedHandler(event: CustomEvent) {
     let buttonInfo = event.detail;
     let isChecked = buttonInfo.selected;
-    if (this.mode === 'radio') {
+    if (this.option === 'radio') {
       this.value = [];
       this.value = [...this.value, buttonInfo.value];
       let buttons = this.el.querySelectorAll('se-button');
@@ -52,7 +52,7 @@ export class ButtonsComponent {
         }
       });
     }
-    if (this.mode === 'checkbox') {
+    if (this.option === 'checkbox') {
       if(isChecked){
         this.value = [...this.value, buttonInfo.value];
       } else {

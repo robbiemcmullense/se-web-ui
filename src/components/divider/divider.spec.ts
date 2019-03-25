@@ -12,7 +12,7 @@ describe('divider', () => {
   });
 
   it('should be in horizontal mode by default', () => {
-    expect(divider.mode).toEqual('horizontal');
+    expect(divider.option).toEqual('horizontal');
   });
 
   it('should be a light color by default', () => {

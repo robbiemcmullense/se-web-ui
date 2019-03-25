@@ -9,11 +9,11 @@ export class WidgetComponent {
   @Element() el: HTMLElement;
 
   /**
-   * Define the mode of a widget. The default widget gives a small padding of the widget.
+   * Define the visual appearance of a widget. The default widget gives a small padding of the widget.
    * `fill` will remove any spacing.
    * `card` will create a card look and fell with shadow and rounded corner
    */
-  @Prop() mode: "fill" | "card";
+  @Prop() option: "fill" | "card";
 
   /**
    * Defines how to display the element.
@@ -43,7 +43,7 @@ export class WidgetComponent {
   }
 
   /**
-   * When on Grid mode, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+   * When on Grid display, define if the widget should be a 2/2 instead of a small 1/1 grid item.
    */
   @Prop({mutable: true}) enlarged: boolean = false;
 
@@ -58,11 +58,11 @@ export class WidgetComponent {
   }
 
   private updateItemMode() {
-    if (this.mode === "card") {
+    if (this.option === "card") {
       Array.from(
         this.el.querySelectorAll("se-widget-header, se-widget-footer")
       ).forEach((item: any) => {
-        item.mode = this.mode;
+        item.option = this.option;
       });
     }
   }
@@ -79,7 +79,7 @@ export class WidgetComponent {
   hostData() {
     return {
       class: [
-        this.mode,
+        this.option,
         this.color,
         this.display,
         this.enlarged && this.display === 'grid' ? 'grid-large' : ''

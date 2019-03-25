@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description | Type     | Default     |
 | -------- | --------- | ----------- | -------- | ----------- |
-| `mode`   | `mode`    |             | `"fill"` | `undefined` |
+| `option` | `option`  |             | `"fill"` | `undefined` |
 
 
 ----------------------------------------------

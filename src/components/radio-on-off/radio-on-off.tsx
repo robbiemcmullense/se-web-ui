@@ -9,10 +9,10 @@ import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
 export class RadioOnOffComponent {
   /**
    * Defines the visual appearance of the on/off radio switch.
-   * `default` is the default mode.
+   * `default` is the default option.
    * Use `header` if the on/off radio switch is within a header element to reduce its visual height.
    */
-  @Prop() mode: 'default' | 'header' = 'default';
+  @Prop() option: 'default' | 'header' = 'default';
 
  /**
    * Optional property that defines the background color of the button. Default is standard.
@@ -48,7 +48,7 @@ export class RadioOnOffComponent {
   hostData() {
     return {
       'class': [
-        this.mode,
+        this.option,
         this.color,
         this.disabled ? 'disabled': ''
       ].join(' ')

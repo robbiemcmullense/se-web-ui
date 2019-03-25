@@ -1,11 +1,11 @@
 import { Component, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'se-navbar',
-  styleUrl: 'navbar.scss',
+  tag: 'se-tabbar',
+  styleUrl: 'tabbar.scss',
   shadow: false
 })
-export class NavbarComponent {
+export class TabbarComponent {
   @Prop() color: 'primary' | 'alternative' = 'primary';
 
   render() {

@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description                  | Type                                             | Default     |
 | -------- | --------- | ---------------------------- | ------------------------------------------------ | ----------- |
-| `mode`   | `mode`    | Define the style of the list | `"classic" \| "dropdown" \| "nav" \| "treeview"` | `"classic"` |
+| `option` | `option`  | Define the style of the list | `"classic" \| "dropdown" \| "nav" \| "treeview"` | `"classic"` |
 
 
 ----------------------------------------------

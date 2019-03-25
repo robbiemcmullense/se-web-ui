@@ -7,14 +7,14 @@ import { Component, Prop } from "@stencil/core";
 })
 export class WidgetHeader {
    /**
-   * Define the mode of a header. Updated automatically by the `se-widget` component when on card mode.
+   * Define the visual appearance of a header. Updated automatically by the `se-widget` component when on card option.
    * `card` will update the design of the header regarding to the card design
    */
-  @Prop() mode: "card";
+  @Prop() option: "card";
 
   hostData() {
     return {
-      class: this.mode
+      class: this.option
     };
   }
 

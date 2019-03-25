@@ -11,8 +11,8 @@ describe('ContainerComponent', () => {
 		expect(container).toBeTruthy();
 	});
 
-	it('should have a default mode equal to fill', () => {
-		expect(container.mode).toEqual('fill');
+	it('should have a default option equal to fill', () => {
+		expect(container.option).toEqual('fill');
 	});
 
 	it('should have a default position equal to relative', () => {

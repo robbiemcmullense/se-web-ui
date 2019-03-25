@@ -14,7 +14,7 @@ You can test all of these components with this [Online Template Editor](https://
 | Done | Component      | Info                                                                                                                       |
 | ---- | -------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | [x]  | App            | define a wrapper for the design/style/css variable and insure that the content of the app takes the full page              |
-| [x]  | NavBar         | Called Tab bar in the guideline. Use or regular `nav` tag for nab item                                                     |
+| [x]  | TabBar         | Called Tab bar in the guideline. Use or regular `nav` tag for nab item                                                     |
 | [x]  | Header         | Header of an se app. does not include navigation.                                                                          |
 | [x]  | container      | page container. Can be used to add a margin for better widget alignment. Default will make the use of the full flex space. |
 | [x]  | divider        | used to add a line to divide element between each others.                                                                  |
@@ -27,10 +27,10 @@ You can test all of these components with this [Online Template Editor](https://
 | [ ]  | Select         | Dropdown that takes the selected choice                                                                                    |
 | [ ]  | Select-item    | Element of a select element                                                                                                |
 | [x]  | Form-Field     | container for a submittable form.  Accepts checkboxes, input fields, and select dropdowns                                  |
-| [x]  | Buttons        | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Button         | standard button                                                                                                            |
+| [x]  | Radio          | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Radio-on-off   | toggle switch with text that can indicate "on" or "off", "active" or "inactive", etc.                                      |
-| [x]  | Switch         | toggle switch without text that can indicate "on" or "off", "active" or "inactive", etc.                                   |
+| [x]  | Radio-Switch   | toggle switch without text that can indicate "on" or "off", "active" or "inactive", etc.                                   |
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
 | [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
 | [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |

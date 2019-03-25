@@ -6,12 +6,12 @@ import { Component, Prop } from "@stencil/core";
   shadow: true
 })
 export class DividerComponent {
-  @Prop() mode: "horizontal" | "vertical" | "inset" = "horizontal";
+  @Prop() option: "horizontal" | "vertical" | "inset" = "horizontal";
   @Prop() color: "standard" | "alternative" = "standard";
 
   hostData() {
     return {
-      class: [this.mode, this.color].join(' ')
+      class: [this.option, this.color].join(' ')
     };
   }
 

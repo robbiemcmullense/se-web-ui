@@ -10,9 +10,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                                                                 | Type     | Default     |
-| -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| `mode`   | `mode`    | Define the mode of a footer. Updated automatically by the `se-widget` component when on card mode. `card` will update the design of the footer regarding to the card design | `"card"` | `undefined` |
+| Property | Attribute | Description                                                                                                                                                                                | Type     | Default     |
+| -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
+| `option` | `option`  | Define the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer regarding to the card design | `"card"` | `undefined` |
 
 
 ----------------------------------------------

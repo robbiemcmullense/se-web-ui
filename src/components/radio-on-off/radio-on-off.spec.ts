@@ -16,9 +16,9 @@ describe('RadioOnOffComponent', () => {
 		expect(toggleSwitch.textOff).toEqual('OFF');
 	});
 
-	it('be set to default mode and standard color', () => {
+	it('be set to default option and standard color', () => {
 		expect(toggleSwitch.color).toEqual('standard');
-		expect(toggleSwitch.mode).toEqual('default');
+		expect(toggleSwitch.option).toEqual('default');
 	});
 
 	it('should not be disabled by default', () => {

@@ -11,7 +11,7 @@
 | ----------- | ------------ | ----------- | --------------------------------------------------------- | ----------- |
 | `icon`      | `icon`       |             | `string`                                                  | `undefined` |
 | `iconColor` | `icon-color` |             | `"alternative" \| "primary" \| "secondary" \| "standard"` | `undefined` |
-| `mode`      | `mode`       |             | `"fill"`                                                  | `undefined` |
+| `option`    | `option`     |             | `"fill"`                                                  | `undefined` |
 
 
 ----------------------------------------------

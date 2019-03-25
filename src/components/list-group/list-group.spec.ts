@@ -19,7 +19,7 @@ describe('list-group', () => {
     expect(listGroup.collapsed).toBeFalsy();
   });
 
-  it('should be in classic mode by default', () => {
-    expect(listGroup.mode).toEqual('classic');
+  it('should be in classic option by default', () => {
+    expect(listGroup.option).toEqual('classic');
   });
 });

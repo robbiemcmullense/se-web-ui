@@ -1,25 +1,25 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('ButtonsComponent', () => {
+describe('RadioComponent', () => {
   let page;
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-buttons color="primary"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-buttons>');
+    await page.setContent('<se-radio color="primary"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio>');
     await page.waitForChanges();
   });
 
   it('renders', async() => {
     const renderedHTML = '<slot></slot>'
-    const element = await page.find('se-buttons');
+    const element = await page.find('se-radio');
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
     expect(element.shadowRoot).toEqualHtml(renderedHTML);
   });
 
   it('renders with two se-button components each with a grouped class', async() => {
-    const firstButtonElement = await page.find('se-buttons se-button#first');
-    const lastButtonElement = await page.find('se-buttons se-button#second'); 
+    const firstButtonElement = await page.find('se-radio se-button#first');
+    const lastButtonElement = await page.find('se-radio se-button#second'); 
 
     expect(firstButtonElement).toHaveClass('grouped');
     expect(firstButtonElement.innerText).toEqual('Primary');
@@ -32,16 +32,16 @@ describe('ButtonsComponent', () => {
       elm.disabled = true;
     });
     await page.waitForChanges();
-    const firstButtonElement = await page.find('se-buttons se-button#first >>> button');
-    const secondButtonElement = await page.find('se-buttons se-button#second >>> button');
+    const firstButtonElement = await page.find('se-radio se-button#first >>> button');
+    const secondButtonElement = await page.find('se-radio se-button#second >>> button');
 
     expect(firstButtonElement).toHaveClasses(['flat', 'primary'])
     expect(secondButtonElement.getProperty('disabled')).toBeTruthy();
   });
 
-  it('can select multiple buttons by default because its default mode is checkbox', async() => {
-    const firstButtonElement = await page.find('se-buttons se-button#first >>> button');
-    const secondButtonElement = await page.find('se-buttons se-button#second >>> button');
+  it('can select multiple buttons by default because its default option is checkbox', async() => {
+    const firstButtonElement = await page.find('se-radio se-button#first >>> button');
+    const secondButtonElement = await page.find('se-radio se-button#second >>> button');
 
     await firstButtonElement.click();
     expect(firstButtonElement).toHaveClass('selected');
@@ -51,13 +51,13 @@ describe('ButtonsComponent', () => {
   });
 
 
-  it('selects only one button at a time when the mode is set to radio', async() => {
-    await page.$eval('se-buttons', (elm: any) => {
-      elm.mode = 'radio';
+  it('selects only one button at a time when the option is set to radio', async() => {
+    await page.$eval('se-radio', (elm: any) => {
+      elm.option = 'radio';
     });
     await page.waitForChanges();
-    const firstButtonElement = await page.find('se-buttons se-button#first >>> button');
-    const secondButtonElement = await page.find('se-buttons se-button#second >>> button');
+    const firstButtonElement = await page.find('se-radio se-button#first >>> button');
+    const secondButtonElement = await page.find('se-radio se-button#second >>> button');
 
     await firstButtonElement.click();
     expect(firstButtonElement).toHaveClass('selected');

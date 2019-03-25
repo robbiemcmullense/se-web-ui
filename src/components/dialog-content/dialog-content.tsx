@@ -6,13 +6,13 @@ import { Component,Prop } from "@stencil/core";
   shadow: true
 })
 export class DialogContentComponent {
-  @Prop() mode: 'fill';
+  @Prop() option: 'fill';
   @Prop() icon: string;
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
 
   hostData() {
     return {
-      'class': { 'full-content': this.mode === 'fill' }
+      'class': { 'full-content': this.option === 'fill' }
     };
   }
   render() {

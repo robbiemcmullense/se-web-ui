@@ -8,10 +8,10 @@ import { Component, Element, Event, EventEmitter, Prop, Listen, Watch } from '@s
 export class FormFieldComponent {
 	/**
 	 * Defines the layout of your form field.
-	 * `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label.
-	 * `stacked` mode will render the input or select field below the label.
+	 * `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label.
+	 * `stacked` option will render the input or select field below the label.
 	 */
-	@Prop() mode: 'inline' | 'stacked' = 'inline';
+	@Prop() option: 'inline' | 'stacked' = 'inline';
 	/**
 	 * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select).
 	 * `input` is the default type.
@@ -79,7 +79,7 @@ export class FormFieldComponent {
 
 	hostData() {
 		return {
-			class: [this.status, this.mode, this.type].join(' ')
+			class: [this.status, this.option, this.type].join(' ')
 		};
 	}
 

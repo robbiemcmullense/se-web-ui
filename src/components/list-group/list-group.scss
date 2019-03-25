@@ -9,6 +9,18 @@
   }
 }
 
+:host(.classic), :host(.nav) {
+  button {
+    min-height: 47px;
+  }
+}
+
+:host(.collapsed) {
+  .group-item {
+    display: none;
+  }
+}
+
 :host(.treeview) {
   button {
     flex-direction: row-reverse;
