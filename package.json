@@ -1,6 +1,6 @@
 {
   "name": "@se/web-ui",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },

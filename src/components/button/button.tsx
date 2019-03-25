@@ -40,6 +40,11 @@ export class ButtonComponent {
    */
   @Prop() icon: string;
 
+  /**
+   * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
+   */
+  @Prop() iconColor: 'standard'|'alternative'|'primary'|'secondary';
+
    /**
    * Optional type property of the button.
    * `button`	The button is a clickable button (default)
@@ -133,7 +138,7 @@ export class ButtonComponent {
   render() {
     return (
       <button disabled={this.disabled} type={this.type} class={[this.color, this.option, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
-        {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
+        {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
         { this.hasChild && <span class="text"><slot></slot></span>}
       </button>
     )

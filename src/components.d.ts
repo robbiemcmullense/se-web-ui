@@ -67,6 +67,10 @@ export namespace Components {
     */
     'icon': string;
     /**
+    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
+    */
+    'iconColor': 'standard'|'alternative'|'primary'|'secondary';
+    /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
     'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
@@ -104,6 +108,10 @@ export namespace Components {
     * Optional property that determines if your button includes an icon.
     */
     'icon'?: string;
+    /**
+    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
+    */
+    'iconColor'?: 'standard'|'alternative'|'primary'|'secondary';
     /**
     * Passes button data to the parent component on a click.
     */
