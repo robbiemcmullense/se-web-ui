@@ -23,9 +23,9 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(slotElm).toBeTruthy();
   });
 
-  it('should not render a slot element when not in classic mode', async() => {
+  it('should not render a slot element when the option is not set to classic', async() => {
     await page.$eval('se-list-item', (elm: any) => {
-			elm.mode = 'dropdown';
+			elm.option = 'dropdown';
 		});
     await page.waitForChanges();
     
