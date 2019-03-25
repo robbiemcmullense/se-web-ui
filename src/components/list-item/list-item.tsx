@@ -75,6 +75,7 @@ export class ListItemComponent {
         {this.mode === "nav" && (
           <span class="se-icon medium">arrow2_right</span>
         )}
+        {this.mode === 'classic' && (<slot></slot>)}
       </button>
     );
   }
