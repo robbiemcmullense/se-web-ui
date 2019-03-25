@@ -5,7 +5,7 @@
   padding: $spacing-small $spacing-small 2px $spacing; // 2px to compensate with border bottom
   font-size: 20px;
   min-height: 40px;
-  border-bottom: 2px solid $widget-footer-border-color;
+  border-bottom: 1px solid $divider-color;
   // @include display-flex();
   @include align-items(center);
   @include display-flex();
