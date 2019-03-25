@@ -18,6 +18,21 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(element).toHaveClasses(['classic', 'hydrated']);
   });
 
+  it('should render a slot element by default', async() => {
+    const slotElm = await page.find('se-list-item >>> slot');
+    expect(slotElm).toBeTruthy();
+  });
+
+  it('should not render a slot element when not in classic mode', async() => {
+    await page.$eval('se-list-item', (elm: any) => {
+			elm.mode = 'dropdown';
+		});
+    await page.waitForChanges();
+    
+    const slotElm = await page.find('se-list-item >>> slot');
+    expect(slotElm).not.toBeTruthy();
+  });
+
   it('should render a title and description when provided', async () => {
 		await page.$eval('se-list-item', (elm: any) => {
 
