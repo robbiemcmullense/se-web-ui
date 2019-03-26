@@ -32,7 +32,7 @@ export namespace Components {
   interface SeApp {}
   interface SeAppAttributes extends StencilHTMLAttributes {}
 
-  interface SeBrand {
+  interface SeAuthentication {
     'appTitle': string;
     'copyright': string;
     'domain': string;
@@ -42,7 +42,7 @@ export namespace Components {
     'logo': string;
     'version': string;
   }
-  interface SeBrandAttributes extends StencilHTMLAttributes {
+  interface SeAuthenticationAttributes extends StencilHTMLAttributes {
     'appTitle'?: string;
     'copyright'?: string;
     'domain'?: string;
@@ -805,7 +805,7 @@ export namespace Components {
     'value'?: Array<any>;
   }
 
-  interface SeSidenavItem {
+  interface SeSidemenuItem {
     /**
     * Defines if the tab is active or not.
     */
@@ -815,7 +815,7 @@ export namespace Components {
     */
     'item': string;
   }
-  interface SeSidenavItemAttributes extends StencilHTMLAttributes {
+  interface SeSidemenuItemAttributes extends StencilHTMLAttributes {
     /**
     * Defines if the tab is active or not.
     */
@@ -826,10 +826,10 @@ export namespace Components {
     'item'?: string;
   }
 
-  interface SeSidenav {
+  interface SeSidemenu {
     'toggle': () => void;
   }
-  interface SeSidenavAttributes extends StencilHTMLAttributes {}
+  interface SeSidemenuAttributes extends StencilHTMLAttributes {}
 
   interface SeSnackbar {
     /**
@@ -1084,7 +1084,7 @@ declare global {
   interface StencilElementInterfaces {
     'SeAbout': Components.SeAbout;
     'SeApp': Components.SeApp;
-    'SeBrand': Components.SeBrand;
+    'SeAuthentication': Components.SeAuthentication;
     'SeButton': Components.SeButton;
     'SeCheckbox': Components.SeCheckbox;
     'SeChip': Components.SeChip;
@@ -1109,8 +1109,8 @@ declare global {
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeRadioSwitch': Components.SeRadioSwitch;
     'SeRadio': Components.SeRadio;
-    'SeSidenavItem': Components.SeSidenavItem;
-    'SeSidenav': Components.SeSidenav;
+    'SeSidemenuItem': Components.SeSidemenuItem;
+    'SeSidemenu': Components.SeSidemenu;
     'SeSnackbar': Components.SeSnackbar;
     'SeTabbar': Components.SeTabbar;
     'SeVisualLinear': Components.SeVisualLinear;
@@ -1124,7 +1124,7 @@ declare global {
   interface StencilIntrinsicElements {
     'se-about': Components.SeAboutAttributes;
     'se-app': Components.SeAppAttributes;
-    'se-brand': Components.SeBrandAttributes;
+    'se-authentication': Components.SeAuthenticationAttributes;
     'se-button': Components.SeButtonAttributes;
     'se-checkbox': Components.SeCheckboxAttributes;
     'se-chip': Components.SeChipAttributes;
@@ -1149,8 +1149,8 @@ declare global {
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-radio-switch': Components.SeRadioSwitchAttributes;
     'se-radio': Components.SeRadioAttributes;
-    'se-sidenav-item': Components.SeSidenavItemAttributes;
-    'se-sidenav': Components.SeSidenavAttributes;
+    'se-sidemenu-item': Components.SeSidemenuItemAttributes;
+    'se-sidemenu': Components.SeSidemenuAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
     'se-tabbar': Components.SeTabbarAttributes;
     'se-visual-linear': Components.SeVisualLinearAttributes;
@@ -1174,10 +1174,10 @@ declare global {
     new (): HTMLSeAppElement;
   };
 
-  interface HTMLSeBrandElement extends Components.SeBrand, HTMLStencilElement {}
-  var HTMLSeBrandElement: {
-    prototype: HTMLSeBrandElement;
-    new (): HTMLSeBrandElement;
+  interface HTMLSeAuthenticationElement extends Components.SeAuthentication, HTMLStencilElement {}
+  var HTMLSeAuthenticationElement: {
+    prototype: HTMLSeAuthenticationElement;
+    new (): HTMLSeAuthenticationElement;
   };
 
   interface HTMLSeButtonElement extends Components.SeButton, HTMLStencilElement {}
@@ -1324,16 +1324,16 @@ declare global {
     new (): HTMLSeRadioElement;
   };
 
-  interface HTMLSeSidenavItemElement extends Components.SeSidenavItem, HTMLStencilElement {}
-  var HTMLSeSidenavItemElement: {
-    prototype: HTMLSeSidenavItemElement;
-    new (): HTMLSeSidenavItemElement;
+  interface HTMLSeSidemenuItemElement extends Components.SeSidemenuItem, HTMLStencilElement {}
+  var HTMLSeSidemenuItemElement: {
+    prototype: HTMLSeSidemenuItemElement;
+    new (): HTMLSeSidemenuItemElement;
   };
 
-  interface HTMLSeSidenavElement extends Components.SeSidenav, HTMLStencilElement {}
-  var HTMLSeSidenavElement: {
-    prototype: HTMLSeSidenavElement;
-    new (): HTMLSeSidenavElement;
+  interface HTMLSeSidemenuElement extends Components.SeSidemenu, HTMLStencilElement {}
+  var HTMLSeSidemenuElement: {
+    prototype: HTMLSeSidemenuElement;
+    new (): HTMLSeSidemenuElement;
   };
 
   interface HTMLSeSnackbarElement extends Components.SeSnackbar, HTMLStencilElement {}
@@ -1387,7 +1387,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'se-about': HTMLSeAboutElement
     'se-app': HTMLSeAppElement
-    'se-brand': HTMLSeBrandElement
+    'se-authentication': HTMLSeAuthenticationElement
     'se-button': HTMLSeButtonElement
     'se-checkbox': HTMLSeCheckboxElement
     'se-chip': HTMLSeChipElement
@@ -1412,8 +1412,8 @@ declare global {
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-radio-switch': HTMLSeRadioSwitchElement
     'se-radio': HTMLSeRadioElement
-    'se-sidenav-item': HTMLSeSidenavItemElement
-    'se-sidenav': HTMLSeSidenavElement
+    'se-sidemenu-item': HTMLSeSidemenuItemElement
+    'se-sidemenu': HTMLSeSidemenuElement
     'se-snackbar': HTMLSeSnackbarElement
     'se-tabbar': HTMLSeTabbarElement
     'se-visual-linear': HTMLSeVisualLinearElement
@@ -1427,7 +1427,7 @@ declare global {
   interface ElementTagNameMap {
     'se-about': HTMLSeAboutElement;
     'se-app': HTMLSeAppElement;
-    'se-brand': HTMLSeBrandElement;
+    'se-authentication': HTMLSeAuthenticationElement;
     'se-button': HTMLSeButtonElement;
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
@@ -1452,8 +1452,8 @@ declare global {
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-radio-switch': HTMLSeRadioSwitchElement;
     'se-radio': HTMLSeRadioElement;
-    'se-sidenav-item': HTMLSeSidenavItemElement;
-    'se-sidenav': HTMLSeSidenavElement;
+    'se-sidemenu-item': HTMLSeSidemenuItemElement;
+    'se-sidemenu': HTMLSeSidemenuElement;
     'se-snackbar': HTMLSeSnackbarElement;
     'se-tabbar': HTMLSeTabbarElement;
     'se-visual-linear': HTMLSeVisualLinearElement;

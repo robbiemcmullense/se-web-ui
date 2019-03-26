@@ -3,11 +3,11 @@ import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
 
 @Component({
-  tag: "se-brand",
-  styleUrl: "brand.scss",
+  tag: "se-authentication",
+  styleUrl: "authentication.scss",
   shadow: true
 })
-export class BrandComponent {
+export class AuthenticationComponent {
   @Prop() appTitle: string;
   @Prop() version: string;
   @Prop() link: string = AppInfo.link;
@@ -26,7 +26,7 @@ export class BrandComponent {
   }
 
   //[style.backgroundImage]="imageUrl"
-  renderBrand() {
+  renderAuthentication() {
     var title = getFullTitle(this.appTitle);
     let domain;
     if ( this.domain.toLowerCase() === `ecostruxure`) {
@@ -75,6 +75,6 @@ export class BrandComponent {
   }
 
   render(){
-    return !this.hide && this.renderBrand()
+    return !this.hide && this.renderAuthentication()
   }
 }

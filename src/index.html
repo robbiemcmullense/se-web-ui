@@ -15,7 +15,7 @@
 
 <body>
   <se-app>
-    <!-- <se-brand id="se-brand" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
+    <!-- <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
       <se-form-field label="Username" required="true" option="stacked">
         <input type="text"/>
       </se-form-field>
@@ -23,13 +23,13 @@
         <input type="password" />
       </se-form-field>
       <se-button onclick="closeLogin()" option="login" value="myLoginValue">Login</se-button>
-    </se-brand> -->
+    </se-authentication> -->
     <se-header app-title="Test Advisor" project="Project name">
       <div slot="end">
         <se-link url="http://google.com" type="external">External Link to Google</se-link>
       </div>
-      <se-sidenav>
-        <se-sidenav-item item="Project">
+      <se-sidemenu>
+        <se-sidemenu-item item="Project">
           <se-widget option="fill">
             <se-widget-header>some widget design</se-widget-header>
             <se-widget-content>
@@ -58,13 +58,13 @@
               <se-button option="raised" color="primary">RaisedGreen</se-button>
             </se-widget-footer>
           </se-widget>
-        </se-sidenav-item>
-        <se-sidenav-item item="About">
+        </se-sidemenu-item>
+        <se-sidemenu-item item="About">
           <se-about app-title="Test Advisor" version="1.2.3"
             image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
           </se-about>
-        </se-sidenav-item>
-      </se-sidenav>
+        </se-sidemenu-item>
+      </se-sidemenu>
     </se-header>
     <se-tabbar color="primary">
       <nav slot="start">
@@ -410,7 +410,7 @@
 
     // Login page
     function closeLogin() {
-      document.getElementById('se-brand').hide = true;
+      document.getElementById('se-authentication').hide = true;
     }
 
     // Loader

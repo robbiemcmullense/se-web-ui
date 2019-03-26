@@ -28,7 +28,7 @@ export class HeaderComponent {
   elLeftNav;
 
   async componentDidLoad() {
-    this.elLeftNav = this.el.querySelector("se-sidenav");
+    this.elLeftNav = this.el.querySelector("se-sidemenu");
     this.hasMenu = !!this.elLeftNav;
   }
 
