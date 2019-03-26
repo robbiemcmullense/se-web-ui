@@ -76,13 +76,14 @@ button {
 
   div, small {
     @include ellipsis();
-    margin-right: $spacing
+    margin-right: $spacing;
   }
 }
 
 :host(.classic) {
   button {
     height: 47px;
+    max-width: 100%;
   }
 }
 
@@ -99,6 +100,7 @@ button {
 :host(.nav) {
   button {
     height: 47px;
+    max-width: 100%;
   }
 }
 
@@ -128,6 +130,7 @@ button {
 :host(.dropdown) {
   button {
     min-height: 40px;
+    max-width: 100%;
     border-bottom: none;
   }
   .nav-content{
