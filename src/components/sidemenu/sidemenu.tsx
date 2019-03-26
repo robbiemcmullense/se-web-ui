@@ -5,11 +5,11 @@ const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
 
 @Component({
-  tag: 'se-sidenav',
-  styleUrl: 'sidenav.scss',
+  tag: 'se-sidemenu',
+  styleUrl: 'sidemenu.scss',
   shadow: true
 })
-export class SidenavComponent {
+export class SidemenuComponent {
   backdropEl?: HTMLElement;
   menuInnerEl?: HTMLElement;
   @Element() el: HTMLElement;
@@ -35,7 +35,7 @@ export class SidenavComponent {
   }
 
   async componentWillLoad() {
-    this.items = Array.from(this.el.querySelectorAll('se-sidenav-item'));
+    this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
   }
 
   componentDidLoad() {

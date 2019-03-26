@@ -1,11 +1,11 @@
 import { Component, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'se-sidenav-item',
-  styleUrl: 'sidenav-item.scss',
+  tag: 'se-sidemenu-item',
+  styleUrl: 'sidemenu-item.scss',
   shadow: true
 })
-export class SidenavItemComponent {
+export class SidemenuItemComponent {
   /**
    * Define the title of the tab
    */
