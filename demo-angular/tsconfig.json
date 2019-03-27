@@ -19,7 +19,9 @@
     ],
     "paths": {
       "@core/*": ["../src_common/core/*"],
-      "@env/*": ["../src_common/environments/*"]
+      "@env/*": ["../src_common/environments/*"],
+      "@angular/*": ["./node_modules/@angular/*"],
+      "@se/*": ["./node_modules/@se/*"]
     }
   },
   "angularCompilerOptions": {
