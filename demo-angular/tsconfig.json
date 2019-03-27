@@ -20,7 +20,9 @@
     "paths": {
       "@core/*": ["../src_common/core/*"],
       "@env/*": ["../src_common/environments/*"],
-      "@se/web-ui/*": ["../node_module/@se/web-ui/*"]
+      // When using yarn link
+      "@se/*": ["../node_modules/@se/*"],
+      "@angular/*": ["../node_modules/@angular/*"],
     }
   },
   "angularCompilerOptions": {

@@ -21,7 +21,7 @@
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,scss}\"",
     "postinstall": "npm run prettier -s",
     "generate": "ng generate",
-    "start": "ng serve --aot --proxy-config proxy.conf.js -o"
+    "start": "ng serve --proxy-config proxy.conf.js -o"
   },
   "dependencies": {
     "@angular/animations": "^7.2.0",
