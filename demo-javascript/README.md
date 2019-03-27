@@ -6,8 +6,12 @@ This is an example app to illustrate the use of SE Elements in a Javascript app.
 
 ### Install dependencies
 
-`yarn install`
+```sh
+yarn install
+```
 
 ### Start the server
 
-`yarn run start`
+```sh
+yarn start
+```
