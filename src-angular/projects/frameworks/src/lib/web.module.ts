@@ -1,15 +1,31 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {defineCustomElements as defineSeComponent} from '@se/web-ui/loader';
+import {
+  APP_INITIALIZER,
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ModuleWithProviders
+} from "@angular/core";
+import { CommonModule, DOCUMENT } from "@angular/common";
+import { appInitialize } from "./initialize";
 
 @NgModule({
-    declarations: [],
-    imports: [],
-    providers: [],
-    entryComponents: [],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  imports: [CommonModule],
+  declarations: [],
+  providers: [],
+  entryComponents: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SeWebModule {
-    ngDoBootstrap() {
-        defineSeComponent(window);
-    }
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SeWebModule,
+      providers: [
+        {
+          provide: APP_INITIALIZER,
+          useFactory: appInitialize,
+          multi: true,
+          deps: [DOCUMENT]
+        }
+      ]
+    };
+  }
 }

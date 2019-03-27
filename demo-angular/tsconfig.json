@@ -20,8 +20,7 @@
     "paths": {
       "@core/*": ["../src_common/core/*"],
       "@env/*": ["../src_common/environments/*"],
-      "@angular/*": ["./node_modules/@angular/*"],
-      "@se/*": ["./node_modules/@se/*"]
+      "@se/web-ui/*": ["../node_module/@se/web-ui/*"]
     }
   },
   "angularCompilerOptions": {

@@ -19,7 +19,7 @@
     "build.localRef": "cpx \"src/package.json\" core",
     "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
     "build.exportDocs": "cpx \"src/**/*.md\" core/docs",
-    "build.src-angular": "cd src-angular && npm run build:package",
+    "build.src-angular": "cd src-angular && npm run build",
     "test": "stencil test --spec",
     "e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
