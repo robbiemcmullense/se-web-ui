@@ -22,12 +22,12 @@ class Widget extends Component {
     const { name, match } = this.props;
 
     return (
-      <se-widget mode="fill">
+      <se-widget>
         <se-widget-header>
         {name || match.params.id}
           <div slot="end">
-              <se-icon mode="button" color="alternative">favourites_addto</se-icon>
-              <se-icon mode="button" color="alternative">other_vertical</se-icon>
+              <se-icon option="button" color="alternative">favourites_addto</se-icon>
+              <se-icon option="button" color="alternative">other_vertical</se-icon>
           </div>
         </se-widget-header>
         <se-widget-content>

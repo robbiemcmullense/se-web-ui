@@ -13,10 +13,10 @@ class Dashboard  extends Component {
   render() {
     console.log('ID', this.props)
     return (
-      <se-container mode="widget">
+      <se-container option="widget">
         <se-widget width="250px">
           <se-widget-header>List classic with expender</se-widget-header>
-          <se-widget-content mode="fill">
+          <se-widget-content option="fill">
             <se-list>
             {[1,2,3,4,5,6,7].map( id => {
               return(
