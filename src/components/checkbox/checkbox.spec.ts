@@ -18,4 +18,8 @@ describe('CheckboxComponent', () => {
 	it('should not be disabled by default', () => {
 		expect(checkbox.disabled).toBeFalsy();
 	});
+
+	it('should not be checked by default', () => {
+		expect(checkbox.checked).toBeFalsy();
+	});
 });

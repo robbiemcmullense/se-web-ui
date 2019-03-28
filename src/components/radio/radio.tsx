@@ -7,7 +7,6 @@ import { Component, Watch, Element, Event, EventEmitter, Prop, Listen } from '@s
 })
 export class RadioComponent {
   @Element() el: HTMLElement;
-
   /**
    * Defines the functionality of your button group.
    * `checkbox` is the default option, where all buttons in the group can be selected.
@@ -31,39 +30,59 @@ export class RadioComponent {
   /**
    * Define the selected values of the array.
    */
-
-  @Prop({mutable: true}) value: Array<any> = [];
+  @Prop({mutable: true}) value: string | string[];
   /**
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */
-  @Event() change: EventEmitter;
-
-  @Listen('clicked')
+  @Event() onChange: EventEmitter;
+  @Listen('onClick')
   buttonClickedHandler(event: CustomEvent) {
     let buttonInfo = event.detail;
     let isChecked = buttonInfo.selected;
     if (this.option === 'radio') {
-      this.value = [];
-      this.value = [...this.value, buttonInfo.value];
-      let buttons = this.el.querySelectorAll('se-button');
+      this.value = buttonInfo.value;
+      const buttons = this.el.querySelectorAll('se-button');
       buttons.forEach((button: any) => {
-        if(button.value !== buttonInfo.value){
-          button.selected = false;
-        }
+        button.selected = button.value === buttonInfo.value;
       });
     }
     if (this.option === 'checkbox') {
-      if(isChecked){
+      if (isChecked) {
         this.value = [...this.value, buttonInfo.value];
       } else {
-        this.value.splice(this.value.indexOf(buttonInfo.value), 1);
+        const list:string[] = this.value as string[];
+        list.splice(this.value.indexOf(buttonInfo.value), 1);
+        this.value = list;
       }
     }
-    this.change.emit(this.value);
+    this.onChange.emit(this.value);
   }
 
   componentDidLoad() {
     this.updateItemMode();
+    const buttons = this.el.querySelectorAll('se-button');
+    if (this.option === 'radio') {
+      try {
+        buttons.forEach((button: any) => {
+          button.selected = button.value === this.value;
+        });
+      } catch (e) {
+        console.log('in radio mode, the button value needs to be a string, ' + e);
+      }
+    } else if (this.option === 'checkbox') {
+      try {
+        const list = this.value as string[];
+        list.forEach((value: any) => {
+          buttons.forEach((button: any) => {
+            if (button.value === value) {
+              button.selected = true;
+            }
+          });
+        });       
+      } catch (e) {
+        console.log('in checkbox mode, the button value needs to be an array of objects, ' + e);
+      }
+    }
   }
 
   private updateItemMode(){

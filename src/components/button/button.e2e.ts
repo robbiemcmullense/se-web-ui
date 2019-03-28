@@ -63,7 +63,7 @@ describe('ButtonComponent Event', () => {
   });
 
   it('sends button data when clicked and has the grouped property', async() => {
-    const eventSpy = await page.spyOnEvent('clicked');
+    const eventSpy = await page.spyOnEvent('onClick');
     await element.callMethod('setGrouped');
     await page.waitForChanges();
     await element.click();

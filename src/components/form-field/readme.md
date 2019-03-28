@@ -20,9 +20,9 @@
 
 ## Events
 
-| Event    | Description                                                                                                                | Type                |
-| -------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `submit` | Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus. | `CustomEvent<void>` |
+| Event      | Description                                                                                                                | Type                |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `onSubmit` | Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus. | `CustomEvent<void>` |
 
 
 ----------------------------------------------

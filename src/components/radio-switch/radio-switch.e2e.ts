@@ -24,7 +24,7 @@ describe('RadioSwitchComponent', () => {
   });
 	
 	it('sends an event with the selected state on a click', async() => {
-		const eventSpy = await page.spyOnEvent('change');
+		const eventSpy = await page.spyOnEvent('onChange');
 		await element.click();
 		expect(eventSpy).toHaveReceivedEvent();
 		expect(eventSpy).toHaveReceivedEventDetail({

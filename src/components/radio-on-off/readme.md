@@ -14,13 +14,14 @@
 | `option`   | `option`   | Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height. | `"default" \| "header"`       | `'default'`  |
 | `textOff`  | `text-off` | Defines the text the user will see for the "off" or "inactive" part of the radio switch.                                                                                                   | `string`                      | `'OFF'`      |
 | `textOn`   | `text-on`  | Defines the text the user will see for the "on" or "active" part of the radio switch.                                                                                                      | `string`                      | `'ON'`       |
+| `value`    | `value`    | Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.                                                              | `boolean`                     | `undefined`  |
 
 
 ## Events
 
-| Event    | Description                                                                                              | Type               |
-| -------- | -------------------------------------------------------------------------------------------------------- | ------------------ |
-| `change` | Passes the current state (true or false) to the parent component when clicking on a button in the group. | `CustomEvent<any>` |
+| Event      | Description                                                                                              | Type               |
+| ---------- | -------------------------------------------------------------------------------------------------------- | ------------------ |
+| `onChange` | Passes the current state (true or false) to the parent component when clicking on a button in the group. | `CustomEvent<any>` |
 
 
 ----------------------------------------------

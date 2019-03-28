@@ -54,7 +54,7 @@ describe('RadioOnOff Button Tests', () => {
   });
 
   it('sets an active class selected button, and emits either a true or false value', async() => {
-    const eventSpy = await page.spyOnEvent('change');
+    const eventSpy = await page.spyOnEvent('onChange');
     
     await activeElm.click();
     expect(eventSpy).toHaveReceivedEvent();

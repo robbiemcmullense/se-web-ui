@@ -115,7 +115,7 @@ export namespace Components {
     /**
     * Passes button data to the parent component on a click.
     */
-    'onClicked'?: (event: CustomEvent<any>) => void;
+    'onOnClick'?: (event: CustomEvent<any>) => void;
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
@@ -148,6 +148,10 @@ export namespace Components {
     */
     'label': string;
     /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected': boolean;
+    /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
     'value': string;
@@ -168,7 +172,11 @@ export namespace Components {
     /**
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
-    'onChange'?: (event: CustomEvent) => void;
+    'onOnChange'?: (event: CustomEvent) => void;
+    /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected'?: boolean;
     /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
@@ -201,7 +209,7 @@ export namespace Components {
     /**
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
-    'onClose'?: (event: CustomEvent) => void;
+    'onOnClose'?: (event: CustomEvent) => void;
     /**
     * The text you want to display in your chip.
     */
@@ -417,7 +425,7 @@ export namespace Components {
     /**
     * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
     */
-    'onSubmit'?: (event: CustomEvent) => void;
+    'onOnSubmit'?: (event: CustomEvent) => void;
     /**
     * Defines the layout of your form field. `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
     */
@@ -727,6 +735,10 @@ export namespace Components {
     * Defines the text the user will see for the "on" or "active" part of the radio switch.
     */
     'textOn': string;
+    /**
+    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
+    */
+    'value': boolean;
   }
   interface SeRadioOnOffAttributes extends StencilHTMLAttributes {
     /**
@@ -740,7 +752,7 @@ export namespace Components {
     /**
     * Passes the current state (true or false) to the parent component when clicking on a button in the group.
     */
-    'onChange'?: (event: CustomEvent<any>) => void;
+    'onOnChange'?: (event: CustomEvent<any>) => void;
     /**
     * Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
     */
@@ -753,6 +765,10 @@ export namespace Components {
     * Defines the text the user will see for the "on" or "active" part of the radio switch.
     */
     'textOn'?: string;
+    /**
+    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
+    */
+    'value'?: boolean;
   }
 
   interface SeRadioSwitch {
@@ -760,6 +776,10 @@ export namespace Components {
     * Optional property that defines if the switch is disabled.  Set to `false` by default.
     */
     'disabled': boolean;
+    /**
+    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
+    */
+    'value': boolean;
   }
   interface SeRadioSwitchAttributes extends StencilHTMLAttributes {
     /**
@@ -769,7 +789,11 @@ export namespace Components {
     /**
     * Send the state of the switch (true/false) to the parent component when it is toggled.
     */
-    'onChange'?: (event: CustomEvent) => void;
+    'onOnChange'?: (event: CustomEvent) => void;
+    /**
+    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
+    */
+    'value'?: boolean;
   }
 
   interface SeRadio {
@@ -788,7 +812,7 @@ export namespace Components {
     /**
     * Define the selected values of the array.
     */
-    'value': Array<any>;
+    'value': string | string[];
   }
   interface SeRadioAttributes extends StencilHTMLAttributes {
     /**
@@ -802,7 +826,7 @@ export namespace Components {
     /**
     * Passes the selected button value to the parent component when clicking on a button in the group.
     */
-    'onChange'?: (event: CustomEvent) => void;
+    'onOnChange'?: (event: CustomEvent) => void;
     /**
     * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
     */
@@ -810,7 +834,7 @@ export namespace Components {
     /**
     * Define the selected values of the array.
     */
-    'value'?: Array<any>;
+    'value'?: string | string[];
   }
 
   interface SeSidemenuItem {
@@ -885,7 +909,7 @@ export namespace Components {
     /**
     * Send information to the parent component when closing the snackbar.
     */
-    'onClose'?: (event: CustomEvent) => void;
+    'onOnClose'?: (event: CustomEvent) => void;
     /**
     * Indicates if the snackbar is open.
     */

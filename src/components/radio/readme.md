@@ -12,14 +12,14 @@
 | `color`    | `color`    | Optional property that defines the background color of each button in the group.                                                                                                                                        | `"alternative" \| "primary" \| "secondary" \| "standard"` | `'standard'` |
 | `disabled` | `disabled` | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                                                   | `boolean`                                                 | `false`      |
 | `option`   | `option`   | Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time. | `"checkbox" \| "radio"`                                   | `'checkbox'` |
-| `value`    | --         | Define the selected values of the array.                                                                                                                                                                                | `any[]`                                                   | `[]`         |
+| `value`    | `value`    | Define the selected values of the array.                                                                                                                                                                                | `string \| string[]`                                      | `undefined`  |
 
 
 ## Events
 
-| Event    | Description                                                                                      | Type                |
-| -------- | ------------------------------------------------------------------------------------------------ | ------------------- |
-| `change` | Passes the selected button value to the parent component when clicking on a button in the group. | `CustomEvent<void>` |
+| Event      | Description                                                                                      | Type                |
+| ---------- | ------------------------------------------------------------------------------------------------ | ------------------- |
+| `onChange` | Passes the selected button value to the parent component when clicking on a button in the group. | `CustomEvent<void>` |
 
 
 ----------------------------------------------
