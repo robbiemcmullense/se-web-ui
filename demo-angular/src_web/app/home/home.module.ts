@@ -6,7 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 import { ModalTableComponent } from './modal-table/modal-table.component';
-import { SeWebModule } from '@se/web-ui/angular';
+import { SeWebModule } from '@se/web-ui-angular';
 
 @NgModule({
   imports: [

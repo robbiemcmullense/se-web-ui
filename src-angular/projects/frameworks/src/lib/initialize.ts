@@ -1,4 +1,4 @@
-import { defineCustomElements } from '@se/web-ui/core/loader';
+import { defineCustomElements } from '@se/web-ui/loader';
 
 export function appInitialize(doc: Document) {
   return (): any => {

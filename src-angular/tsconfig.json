@@ -24,9 +24,6 @@
       ],
       "frameworks/*": [
         "dist/frameworks/*"
-      ],
-      "@se/web-ui/core/*": [
-        "../core/*"
       ]
     }
   }

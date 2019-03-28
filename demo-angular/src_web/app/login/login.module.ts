@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { SigninComponent } from './signin/signin.component';
-import { SeWebModule } from '@se/web-ui/angular';
+import { SeWebModule } from '@se/web-ui-angular';
 
 @NgModule({
   imports: [

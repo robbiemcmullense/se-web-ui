@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './shell/header/header.component';
 import { CommonCoreModule } from '@core/core.module';
-import { SeWebModule } from '@se/web-ui/angular';
+import { SeWebModule } from '@se/web-ui-angular';
 
 @NgModule({
   imports: [

@@ -10,7 +10,7 @@ import { CoreModule } from './core';
 import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
-import { SeWebModule } from '@se/web-ui/angular';
+import { SeWebModule } from '@se/web-ui-angular';
 
 @NgModule({
   imports: [

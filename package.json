@@ -1,17 +1,8 @@
 {
   "name": "@se/web-ui",
   "version": "1.3.8",
-  "publishConfig": {
-    "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
-  },
+  "private": true,
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
-  "module": "core/esm/index.js",
-  "main": "core/index.js",
-  "types": "core/types/components.d.ts",
-  "collection": "core/collection/collection-manifest.json",
-  "files": [
-    "core/"
-  ],
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
     "build": "npm-run-all build.*",
@@ -30,15 +21,11 @@
   },
   "dependencies": {
     "@stencil/core": "^0.17.1",
-    "@stencil/sass": "^0.1.1"
-  },
-  "peerDependencies": {
+    "@stencil/sass": "^0.1.1",
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.2.0"
   },
   "devDependencies": {
-    "@se/fonts": "^1.0.0",
-    "@se/icons": "^3.2.0",
     "@types/jest": "~23.3.1",
     "@types/puppeteer": "^1.11.1",
     "cpx": "^1.5.0",
