@@ -32,7 +32,7 @@ export namespace Components {
   interface SeApp {}
   interface SeAppAttributes extends StencilHTMLAttributes {}
 
-  interface SeBrand {
+  interface SeAuthentication {
     'appTitle': string;
     'copyright': string;
     'domain': string;
@@ -42,7 +42,7 @@ export namespace Components {
     'logo': string;
     'version': string;
   }
-  interface SeBrandAttributes extends StencilHTMLAttributes {
+  interface SeAuthenticationAttributes extends StencilHTMLAttributes {
     'appTitle'?: string;
     'copyright'?: string;
     'domain'?: string;
@@ -67,9 +67,13 @@ export namespace Components {
     */
     'icon': string;
     /**
-    * Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application.
+    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
     */
-    'mode': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
+    'iconColor': 'standard'|'alternative'|'primary'|'secondary';
+    /**
+    * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
+    */
+    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
     /**
     * Optional property that define if the button should be shown as selected. Used with `se-buttons`
     */
@@ -105,13 +109,17 @@ export namespace Components {
     */
     'icon'?: string;
     /**
-    * Defines the visual appearance of the button. `flat` is the default mode, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application.
+    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
     */
-    'mode'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
+    'iconColor'?: 'standard'|'alternative'|'primary'|'secondary';
     /**
     * Passes button data to the parent component on a click.
     */
     'onClicked'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
+    */
+    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
     /**
     * Optional property that define if the button should be shown as selected. Used with `se-buttons`
     */
@@ -124,47 +132,6 @@ export namespace Components {
     * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
     */
     'value'?: string;
-  }
-
-  interface SeButtons {
-    /**
-    * Optional property that defines the background color of each button in the group.
-    */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled': boolean;
-    /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` mode indicates that only one button in the group can be selected at a time.
-    */
-    'mode': 'checkbox' | 'radio';
-    /**
-    * Define the selected values of the array.
-    */
-    'value': Array<any>;
-  }
-  interface SeButtonsAttributes extends StencilHTMLAttributes {
-    /**
-    * Optional property that defines the background color of each button in the group.
-    */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` mode indicates that only one button in the group can be selected at a time.
-    */
-    'mode'?: 'checkbox' | 'radio';
-    /**
-    * Passes the selected button value to the parent component when clicking on a button in the group.
-    */
-    'onChange'?: (event: CustomEvent) => void;
-    /**
-    * Define the selected values of the array.
-    */
-    'value'?: Array<any>;
   }
 
   interface SeCheckbox {
@@ -247,21 +214,29 @@ export namespace Components {
     */
     'color': "standard" | "alternative";
     /**
+    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
+    */
+    'columnSize': string;
+    /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
     'direction': "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    * Defines how to display the element. `flex` is the default display. `block`: each widget will be as large and high as it's content. Selecting block, will automatically configure each child widget in display block as well.
     */
-    'display': "flex" | "block";
+    'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode': "widget" | "fill" | "centered" | "card";
+    'option': "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position': "relative" | "absolute";
+    /**
+    * When in `display="grid"`, defines the height of each widgets.
+    */
+    'rowSize': string;
   }
   interface SeContainerAttributes extends StencilHTMLAttributes {
     /**
@@ -269,32 +244,40 @@ export namespace Components {
     */
     'color'?: "standard" | "alternative";
     /**
+    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
+    */
+    'columnSize'?: string;
+    /**
     * Defines the direction of the flex element `column` Default. Perfect to use with flex content. `row` Help in specific cases. Make sure you know that you are doing.
     */
     'direction'?: "column" | "row";
     /**
-    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    * Defines how to display the element. `flex` is the default display. `block`: each widget will be as large and high as it's content. Selecting block, will automatically configure each child widget in display block as well.
     */
-    'display'?: "flex" | "block";
+    'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.
+    * Defines the inner appearance of a container. `widget` Add a small spacing all around the container so all widgets are spaced with the same distance. Widget automatically set color property to `standard` (gray) `fill` Default. Take the full space of the container. `centered` center the container so the content does no exceed a max width.   `card` Add a larger spacing and use alternative (white) background.
     */
-    'mode'?: "widget" | "fill" | "centered" | "card";
+    'option'?: "fill" | "widget" | "card" | "centered";
     /**
     * In specific case, it can be necessary to define the container with an absolute position (inside an angular router-container ). Most of the time, the default position will work perfectly with flex box. `relative` Default. Perfect to use with flex content. `absolute` Help in specific cases. Make sure you know that you are doing.
     */
     'position'?: "relative" | "absolute";
+    /**
+    * When in `display="grid"`, defines the height of each widgets.
+    */
+    'rowSize'?: string;
   }
 
   interface SeDialogContent {
     'icon': string;
     'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
-    'mode': 'fill';
+    'option': 'fill';
   }
   interface SeDialogContentAttributes extends StencilHTMLAttributes {
     'icon'?: string;
     'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    'mode'?: 'fill';
+    'option'?: 'fill';
   }
 
   interface SeDialogFooter {}
@@ -356,11 +339,40 @@ export namespace Components {
 
   interface SeDivider {
     'color': "standard" | "alternative";
-    'mode': "horizontal" | "vertical" | "inset";
+    'option': "horizontal" | "vertical" | "inset";
   }
   interface SeDividerAttributes extends StencilHTMLAttributes {
     'color'?: "standard" | "alternative";
-    'mode'?: "horizontal" | "vertical" | "inset";
+    'option'?: "horizontal" | "vertical" | "inset";
+  }
+
+  interface SeDropdown {
+    /**
+    * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element `right`: Position the container regarding to the right side of the trigger element
+    */
+    'alignment': 'left'|'right';
+    /**
+    * Method to close the dropdown from the outside.
+    */
+    'close': () => void;
+    /**
+    * Method to open the dropdown from the outside.
+    */
+    'open': () => void;
+  }
+  interface SeDropdownAttributes extends StencilHTMLAttributes {
+    /**
+    * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element `right`: Position the container regarding to the right side of the trigger element
+    */
+    'alignment'?: 'left'|'right';
+    /**
+    * Event emitted when the dropdown has been closed.
+    */
+    'onOnClose'?: (event: CustomEvent) => void;
+    /**
+    * Event emitted when the dropdown has been opened.
+    */
+    'onOnOpen'?: (event: CustomEvent) => void;
   }
 
   interface SeFormField {
@@ -373,9 +385,9 @@ export namespace Components {
     */
     'label': string;
     /**
-    * Defines the layout of your form field. `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` mode will render the input or select field below the label.
+    * Defines the layout of your form field. `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
     */
-    'mode': 'inline' | 'stacked';
+    'option': 'inline' | 'stacked';
     /**
     * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
     */
@@ -403,13 +415,13 @@ export namespace Components {
     */
     'label'?: string;
     /**
-    * Defines the layout of your form field. `inline` is the default mode and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` mode will render the input or select field below the label.
-    */
-    'mode'?: 'inline' | 'stacked';
-    /**
     * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
     */
     'onSubmit'?: (event: CustomEvent) => void;
+    /**
+    * Defines the layout of your form field. `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
+    */
+    'option'?: 'inline' | 'stacked';
     /**
     * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
     */
@@ -488,7 +500,7 @@ export namespace Components {
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
-    'mode': 'button';
+    'option': 'button';
     /**
     * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
     */
@@ -502,7 +514,7 @@ export namespace Components {
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
-    'mode'?: 'button';
+    'option'?: 'button';
     /**
     * Define the size of an icon. default small (24px). medium is 40px and large is 63px.
     */
@@ -566,7 +578,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic";
+    'option': "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -600,7 +612,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
     */
@@ -631,7 +643,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode': "nav" | "classic";
+    'option': "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list element should be selected or not
     */
@@ -661,7 +673,7 @@ export namespace Components {
     /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
-    'mode'?: "nav" | "classic";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
     /**
     * Define if the list element should be selected or not
     */
@@ -672,13 +684,13 @@ export namespace Components {
     /**
     * Define the style of the list
     */
-    'mode': "nav" | "classic";
+    'option': "nav" | "classic" | "dropdown" | "treeview";
   }
   interface SeListAttributes extends StencilHTMLAttributes {
     /**
     * Define the style of the list
     */
-    'mode'?: "nav" | "classic";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
   }
 
   interface SeLoading {
@@ -694,13 +706,6 @@ export namespace Components {
     'loading'?: boolean;
   }
 
-  interface SeNavbar {
-    'color': 'primary' | 'alternative';
-  }
-  interface SeNavbarAttributes extends StencilHTMLAttributes {
-    'color'?: 'primary' | 'alternative';
-  }
-
   interface SeRadioOnOff {
     /**
     * Optional property that defines the background color of the button. Default is standard.
@@ -711,9 +716,9 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Defines the visual appearance of the on/off radio switch. `default` is the default mode. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
+    * Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
     */
-    'mode': 'default' | 'header';
+    'option': 'default' | 'header';
     /**
     * Defines the text the user will see for the "off" or "inactive" part of the radio switch.
     */
@@ -733,13 +738,13 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * Defines the visual appearance of the on/off radio switch. `default` is the default mode. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
-    */
-    'mode'?: 'default' | 'header';
-    /**
     * Passes the current state (true or false) to the parent component when clicking on a button in the group.
     */
     'onChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
+    */
+    'option'?: 'default' | 'header';
     /**
     * Defines the text the user will see for the "off" or "inactive" part of the radio switch.
     */
@@ -750,7 +755,65 @@ export namespace Components {
     'textOn'?: string;
   }
 
-  interface SeSidenavItem {
+  interface SeRadioSwitch {
+    /**
+    * Optional property that defines if the switch is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+  }
+  interface SeRadioSwitchAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines if the switch is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Send the state of the switch (true/false) to the parent component when it is toggled.
+    */
+    'onChange'?: (event: CustomEvent) => void;
+  }
+
+  interface SeRadio {
+    /**
+    * Optional property that defines the background color of each button in the group.
+    */
+    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option': 'checkbox' | 'radio';
+    /**
+    * Define the selected values of the array.
+    */
+    'value': Array<any>;
+  }
+  interface SeRadioAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines the background color of each button in the group.
+    */
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Passes the selected button value to the parent component when clicking on a button in the group.
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option'?: 'checkbox' | 'radio';
+    /**
+    * Define the selected values of the array.
+    */
+    'value'?: Array<any>;
+  }
+
+  interface SeSidemenuItem {
     /**
     * Defines if the tab is active or not.
     */
@@ -760,7 +823,7 @@ export namespace Components {
     */
     'item': string;
   }
-  interface SeSidenavItemAttributes extends StencilHTMLAttributes {
+  interface SeSidemenuItemAttributes extends StencilHTMLAttributes {
     /**
     * Defines if the tab is active or not.
     */
@@ -771,10 +834,10 @@ export namespace Components {
     'item'?: string;
   }
 
-  interface SeSidenav {
+  interface SeSidemenu {
     'toggle': () => void;
   }
-  interface SeSidenavAttributes extends StencilHTMLAttributes {}
+  interface SeSidemenuAttributes extends StencilHTMLAttributes {}
 
   interface SeSnackbar {
     /**
@@ -833,24 +896,149 @@ export namespace Components {
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
 
+  interface SeTabbar {
+    'color': 'primary' | 'alternative';
+  }
+  interface SeTabbarAttributes extends StencilHTMLAttributes {
+    'color'?: 'primary' | 'alternative';
+  }
+
+  interface SeVisualLinear {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label': string;
+    /**
+    * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
+    */
+    'option': 'inline' | 'stacked';
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage': number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor': string;
+    /**
+    * Defines the value of your component.
+    */
+    'value': string;
+  }
+  interface SeVisualLinearAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label'?: string;
+    /**
+    * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
+    */
+    'option'?: 'inline' | 'stacked';
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage'?: number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor'?: string;
+    /**
+    * Defines the value of your component.
+    */
+    'value'?: string;
+  }
+
+  interface SeVisualRadial {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label': string;
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage': number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor': string;
+    /**
+    * Determines the visual size of your circular progress bar.
+    */
+    'size': 'small' | 'large';
+    /**
+    * Defines the value of your component.
+    */
+    'value': string;
+  }
+  interface SeVisualRadialAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label'?: string;
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage'?: number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor'?: string;
+    /**
+    * Determines the visual size of your circular progress bar.
+    */
+    'size'?: 'small' | 'large';
+    /**
+    * Defines the value of your component.
+    */
+    'value'?: string;
+  }
+
   interface SeWidgetContent {
-    'mode': 'fill';
+    'option': 'fill';
   }
   interface SeWidgetContentAttributes extends StencilHTMLAttributes {
-    'mode'?: 'fill';
+    'option'?: 'fill';
   }
 
-  interface SeWidgetFooter {}
-  interface SeWidgetFooterAttributes extends StencilHTMLAttributes {}
+  interface SeWidgetFooter {
+    /**
+    * Define the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer regarding to the card design
+    */
+    'option': "card";
+  }
+  interface SeWidgetFooterAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer regarding to the card design
+    */
+    'option'?: "card";
+  }
 
-  interface SeWidgetHeader {}
-  interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {}
+  interface SeWidgetHeader {
+    /**
+    * Define the visual appearance of a header. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the header regarding to the card design
+    */
+    'option': "card";
+  }
+  interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {
+    /**
+    * Define the visual appearance of a header. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the header regarding to the card design
+    */
+    'option'?: "card";
+  }
 
   interface SeWidget {
     /**
     * Optional property that defines the background color of the widget. default is alternative (white)
     */
-    'color': 'standard' | 'alternative';
+    'color': "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display': "flex" | "block" | "grid";
+    /**
+    * When on Grid display, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    */
+    'enlarged': boolean;
     /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -860,9 +1048,9 @@ export namespace Components {
     */
     'loading': boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    * Define the visual appearance of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode': "fill";
+    'option': "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -872,7 +1060,15 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the widget. default is alternative (white)
     */
-    'color'?: 'standard' | 'alternative';
+    'color'?: "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` Default. Will make all element fitting in the . `block` Help in specific cases. Make sure you know that you are doing.
+    */
+    'display'?: "flex" | "block" | "grid";
+    /**
+    * When on Grid display, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+    */
+    'enlarged'?: boolean;
     /**
     * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -882,9 +1078,9 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
-    * Define the mode of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing.
+    * Define the visual appearance of a widget. The default widget gives a small padding of the widget. `fill` will remove any spacing. `card` will create a card look and fell with shadow and rounded corner
     */
-    'mode'?: "fill";
+    'option'?: "fill" | "card";
     /**
     * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
     */
@@ -896,9 +1092,8 @@ declare global {
   interface StencilElementInterfaces {
     'SeAbout': Components.SeAbout;
     'SeApp': Components.SeApp;
-    'SeBrand': Components.SeBrand;
+    'SeAuthentication': Components.SeAuthentication;
     'SeButton': Components.SeButton;
-    'SeButtons': Components.SeButtons;
     'SeCheckbox': Components.SeCheckbox;
     'SeChip': Components.SeChip;
     'SeContainer': Components.SeContainer;
@@ -907,6 +1102,7 @@ declare global {
     'SeDialogHeader': Components.SeDialogHeader;
     'SeDialog': Components.SeDialog;
     'SeDivider': Components.SeDivider;
+    'SeDropdown': Components.SeDropdown;
     'SeFormField': Components.SeFormField;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
@@ -918,11 +1114,15 @@ declare global {
     'SeListItem': Components.SeListItem;
     'SeList': Components.SeList;
     'SeLoading': Components.SeLoading;
-    'SeNavbar': Components.SeNavbar;
     'SeRadioOnOff': Components.SeRadioOnOff;
-    'SeSidenavItem': Components.SeSidenavItem;
-    'SeSidenav': Components.SeSidenav;
+    'SeRadioSwitch': Components.SeRadioSwitch;
+    'SeRadio': Components.SeRadio;
+    'SeSidemenuItem': Components.SeSidemenuItem;
+    'SeSidemenu': Components.SeSidemenu;
     'SeSnackbar': Components.SeSnackbar;
+    'SeTabbar': Components.SeTabbar;
+    'SeVisualLinear': Components.SeVisualLinear;
+    'SeVisualRadial': Components.SeVisualRadial;
     'SeWidgetContent': Components.SeWidgetContent;
     'SeWidgetFooter': Components.SeWidgetFooter;
     'SeWidgetHeader': Components.SeWidgetHeader;
@@ -932,9 +1132,8 @@ declare global {
   interface StencilIntrinsicElements {
     'se-about': Components.SeAboutAttributes;
     'se-app': Components.SeAppAttributes;
-    'se-brand': Components.SeBrandAttributes;
+    'se-authentication': Components.SeAuthenticationAttributes;
     'se-button': Components.SeButtonAttributes;
-    'se-buttons': Components.SeButtonsAttributes;
     'se-checkbox': Components.SeCheckboxAttributes;
     'se-chip': Components.SeChipAttributes;
     'se-container': Components.SeContainerAttributes;
@@ -943,6 +1142,7 @@ declare global {
     'se-dialog-header': Components.SeDialogHeaderAttributes;
     'se-dialog': Components.SeDialogAttributes;
     'se-divider': Components.SeDividerAttributes;
+    'se-dropdown': Components.SeDropdownAttributes;
     'se-form-field': Components.SeFormFieldAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
@@ -954,11 +1154,15 @@ declare global {
     'se-list-item': Components.SeListItemAttributes;
     'se-list': Components.SeListAttributes;
     'se-loading': Components.SeLoadingAttributes;
-    'se-navbar': Components.SeNavbarAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
-    'se-sidenav-item': Components.SeSidenavItemAttributes;
-    'se-sidenav': Components.SeSidenavAttributes;
+    'se-radio-switch': Components.SeRadioSwitchAttributes;
+    'se-radio': Components.SeRadioAttributes;
+    'se-sidemenu-item': Components.SeSidemenuItemAttributes;
+    'se-sidemenu': Components.SeSidemenuAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
+    'se-tabbar': Components.SeTabbarAttributes;
+    'se-visual-linear': Components.SeVisualLinearAttributes;
+    'se-visual-radial': Components.SeVisualRadialAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
     'se-widget-footer': Components.SeWidgetFooterAttributes;
     'se-widget-header': Components.SeWidgetHeaderAttributes;
@@ -978,22 +1182,16 @@ declare global {
     new (): HTMLSeAppElement;
   };
 
-  interface HTMLSeBrandElement extends Components.SeBrand, HTMLStencilElement {}
-  var HTMLSeBrandElement: {
-    prototype: HTMLSeBrandElement;
-    new (): HTMLSeBrandElement;
+  interface HTMLSeAuthenticationElement extends Components.SeAuthentication, HTMLStencilElement {}
+  var HTMLSeAuthenticationElement: {
+    prototype: HTMLSeAuthenticationElement;
+    new (): HTMLSeAuthenticationElement;
   };
 
   interface HTMLSeButtonElement extends Components.SeButton, HTMLStencilElement {}
   var HTMLSeButtonElement: {
     prototype: HTMLSeButtonElement;
     new (): HTMLSeButtonElement;
-  };
-
-  interface HTMLSeButtonsElement extends Components.SeButtons, HTMLStencilElement {}
-  var HTMLSeButtonsElement: {
-    prototype: HTMLSeButtonsElement;
-    new (): HTMLSeButtonsElement;
   };
 
   interface HTMLSeCheckboxElement extends Components.SeCheckbox, HTMLStencilElement {}
@@ -1042,6 +1240,12 @@ declare global {
   var HTMLSeDividerElement: {
     prototype: HTMLSeDividerElement;
     new (): HTMLSeDividerElement;
+  };
+
+  interface HTMLSeDropdownElement extends Components.SeDropdown, HTMLStencilElement {}
+  var HTMLSeDropdownElement: {
+    prototype: HTMLSeDropdownElement;
+    new (): HTMLSeDropdownElement;
   };
 
   interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {}
@@ -1110,34 +1314,58 @@ declare global {
     new (): HTMLSeLoadingElement;
   };
 
-  interface HTMLSeNavbarElement extends Components.SeNavbar, HTMLStencilElement {}
-  var HTMLSeNavbarElement: {
-    prototype: HTMLSeNavbarElement;
-    new (): HTMLSeNavbarElement;
-  };
-
   interface HTMLSeRadioOnOffElement extends Components.SeRadioOnOff, HTMLStencilElement {}
   var HTMLSeRadioOnOffElement: {
     prototype: HTMLSeRadioOnOffElement;
     new (): HTMLSeRadioOnOffElement;
   };
 
-  interface HTMLSeSidenavItemElement extends Components.SeSidenavItem, HTMLStencilElement {}
-  var HTMLSeSidenavItemElement: {
-    prototype: HTMLSeSidenavItemElement;
-    new (): HTMLSeSidenavItemElement;
+  interface HTMLSeRadioSwitchElement extends Components.SeRadioSwitch, HTMLStencilElement {}
+  var HTMLSeRadioSwitchElement: {
+    prototype: HTMLSeRadioSwitchElement;
+    new (): HTMLSeRadioSwitchElement;
   };
 
-  interface HTMLSeSidenavElement extends Components.SeSidenav, HTMLStencilElement {}
-  var HTMLSeSidenavElement: {
-    prototype: HTMLSeSidenavElement;
-    new (): HTMLSeSidenavElement;
+  interface HTMLSeRadioElement extends Components.SeRadio, HTMLStencilElement {}
+  var HTMLSeRadioElement: {
+    prototype: HTMLSeRadioElement;
+    new (): HTMLSeRadioElement;
+  };
+
+  interface HTMLSeSidemenuItemElement extends Components.SeSidemenuItem, HTMLStencilElement {}
+  var HTMLSeSidemenuItemElement: {
+    prototype: HTMLSeSidemenuItemElement;
+    new (): HTMLSeSidemenuItemElement;
+  };
+
+  interface HTMLSeSidemenuElement extends Components.SeSidemenu, HTMLStencilElement {}
+  var HTMLSeSidemenuElement: {
+    prototype: HTMLSeSidemenuElement;
+    new (): HTMLSeSidemenuElement;
   };
 
   interface HTMLSeSnackbarElement extends Components.SeSnackbar, HTMLStencilElement {}
   var HTMLSeSnackbarElement: {
     prototype: HTMLSeSnackbarElement;
     new (): HTMLSeSnackbarElement;
+  };
+
+  interface HTMLSeTabbarElement extends Components.SeTabbar, HTMLStencilElement {}
+  var HTMLSeTabbarElement: {
+    prototype: HTMLSeTabbarElement;
+    new (): HTMLSeTabbarElement;
+  };
+
+  interface HTMLSeVisualLinearElement extends Components.SeVisualLinear, HTMLStencilElement {}
+  var HTMLSeVisualLinearElement: {
+    prototype: HTMLSeVisualLinearElement;
+    new (): HTMLSeVisualLinearElement;
+  };
+
+  interface HTMLSeVisualRadialElement extends Components.SeVisualRadial, HTMLStencilElement {}
+  var HTMLSeVisualRadialElement: {
+    prototype: HTMLSeVisualRadialElement;
+    new (): HTMLSeVisualRadialElement;
   };
 
   interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
@@ -1167,9 +1395,8 @@ declare global {
   interface HTMLElementTagNameMap {
     'se-about': HTMLSeAboutElement
     'se-app': HTMLSeAppElement
-    'se-brand': HTMLSeBrandElement
+    'se-authentication': HTMLSeAuthenticationElement
     'se-button': HTMLSeButtonElement
-    'se-buttons': HTMLSeButtonsElement
     'se-checkbox': HTMLSeCheckboxElement
     'se-chip': HTMLSeChipElement
     'se-container': HTMLSeContainerElement
@@ -1178,6 +1405,7 @@ declare global {
     'se-dialog-header': HTMLSeDialogHeaderElement
     'se-dialog': HTMLSeDialogElement
     'se-divider': HTMLSeDividerElement
+    'se-dropdown': HTMLSeDropdownElement
     'se-form-field': HTMLSeFormFieldElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
@@ -1189,11 +1417,15 @@ declare global {
     'se-list-item': HTMLSeListItemElement
     'se-list': HTMLSeListElement
     'se-loading': HTMLSeLoadingElement
-    'se-navbar': HTMLSeNavbarElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
-    'se-sidenav-item': HTMLSeSidenavItemElement
-    'se-sidenav': HTMLSeSidenavElement
+    'se-radio-switch': HTMLSeRadioSwitchElement
+    'se-radio': HTMLSeRadioElement
+    'se-sidemenu-item': HTMLSeSidemenuItemElement
+    'se-sidemenu': HTMLSeSidemenuElement
     'se-snackbar': HTMLSeSnackbarElement
+    'se-tabbar': HTMLSeTabbarElement
+    'se-visual-linear': HTMLSeVisualLinearElement
+    'se-visual-radial': HTMLSeVisualRadialElement
     'se-widget-content': HTMLSeWidgetContentElement
     'se-widget-footer': HTMLSeWidgetFooterElement
     'se-widget-header': HTMLSeWidgetHeaderElement
@@ -1203,9 +1435,8 @@ declare global {
   interface ElementTagNameMap {
     'se-about': HTMLSeAboutElement;
     'se-app': HTMLSeAppElement;
-    'se-brand': HTMLSeBrandElement;
+    'se-authentication': HTMLSeAuthenticationElement;
     'se-button': HTMLSeButtonElement;
-    'se-buttons': HTMLSeButtonsElement;
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
     'se-container': HTMLSeContainerElement;
@@ -1214,6 +1445,7 @@ declare global {
     'se-dialog-header': HTMLSeDialogHeaderElement;
     'se-dialog': HTMLSeDialogElement;
     'se-divider': HTMLSeDividerElement;
+    'se-dropdown': HTMLSeDropdownElement;
     'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;
@@ -1225,11 +1457,15 @@ declare global {
     'se-list-item': HTMLSeListItemElement;
     'se-list': HTMLSeListElement;
     'se-loading': HTMLSeLoadingElement;
-    'se-navbar': HTMLSeNavbarElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
-    'se-sidenav-item': HTMLSeSidenavItemElement;
-    'se-sidenav': HTMLSeSidenavElement;
+    'se-radio-switch': HTMLSeRadioSwitchElement;
+    'se-radio': HTMLSeRadioElement;
+    'se-sidemenu-item': HTMLSeSidemenuItemElement;
+    'se-sidemenu': HTMLSeSidemenuElement;
     'se-snackbar': HTMLSeSnackbarElement;
+    'se-tabbar': HTMLSeTabbarElement;
+    'se-visual-linear': HTMLSeVisualLinearElement;
+    'se-visual-radial': HTMLSeVisualRadialElement;
     'se-widget-content': HTMLSeWidgetContentElement;
     'se-widget-footer': HTMLSeWidgetFooterElement;
     'se-widget-header': HTMLSeWidgetHeaderElement;

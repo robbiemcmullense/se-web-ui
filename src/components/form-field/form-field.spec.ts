@@ -11,8 +11,8 @@ describe('FormFieldComponent', () => {
 		expect(formField).toBeTruthy();
 	});
 
-	it('should have a default mode equal to inline', () => {
-		expect(formField.mode).toEqual('inline');
+	it('should have a default option equal to inline', () => {
+		expect(formField.option).toEqual('inline');
 	});
 
 	it('should have a default type equal to input', () => {

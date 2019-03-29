@@ -7,7 +7,7 @@ const widgetStyle = {
 class Icons extends Component {
   render() {
     return (
-      <se-container mode="widget">
+      <se-container option="widget">
         <se-widget style={widgetStyle}>
           <se-widget-header>Icons</se-widget-header>
 
@@ -19,12 +19,12 @@ class Icons extends Component {
             <se-radio-on-off ref={this._handleRef}></se-radio-on-off>
           </se-widget-content>
           <se-widget-footer>
-          <se-button mode="raised">Raised</se-button>
-            <se-button mode="raised" color="primary">
+          <se-button option="raised">Raised</se-button>
+            <se-button option="raised" color="primary">
               RaisedGreen
             </se-button>
-            <se-button mode="text">Text</se-button>
-            <se-button mode="text" color="primary">
+            <se-button option="text">Text</se-button>
+            <se-button option="text" color="primary">
               Primary
             </se-button>
           </se-widget-footer>

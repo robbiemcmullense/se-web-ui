@@ -28,7 +28,7 @@ export class HeaderComponent {
   elLeftNav;
 
   async componentDidLoad() {
-    this.elLeftNav = this.el.querySelector("se-sidenav");
+    this.elLeftNav = this.el.querySelector("se-sidemenu");
     this.hasMenu = !!this.elLeftNav;
   }
 
@@ -62,11 +62,11 @@ export class HeaderComponent {
         </div>
         {this.project && <span class="project-section">{this.project}</span>}
       </div>,
-      <div id="fill-space center-header-container">
-        <slot />
+      <div class="padding-container d-flex">
+        <slot name="start" />
       </div>,
-      <div class="padding-container user-icon-wrapper">
-        <slot name="user" />
+      <div class="fill-space center-header-container">
+        <slot />
       </div>,
       <div class="padding-container d-flex">
         <slot name="end" />

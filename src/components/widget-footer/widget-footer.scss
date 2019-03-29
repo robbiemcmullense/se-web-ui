@@ -5,7 +5,7 @@
   padding: $spacing-small;
   font-size: 20px;
   min-height: 40px;
-  border-top: 2px solid $widget-footer-border-color;
+  border-top: 1px solid $divider-color;
   // @include display-flex();
   @include align-items(center);
   @include display-flex();
@@ -13,4 +13,7 @@
   .flex{
     @include flex();
   }
+}
+:host(.card){
+  border-top: none;
 }

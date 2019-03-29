@@ -7,5 +7,23 @@
     overflow: hidden;
     padding-bottom: 1px;
   }
+}
 
+:host(.classic), :host(.nav) {
+  button {
+    min-height: 47px;
+    max-width: 100%;
+  }
+}
+
+:host(.collapsed) {
+  .group-item {
+    display: none;
+  }
+}
+
+:host(.treeview) {
+  button {
+    flex-direction: row-reverse;
+  }
 }

@@ -11,17 +11,17 @@ export class ButtonComponent {
 
   /**
    * Defines the visual appearance of the button.
-   * `flat` is the default mode, which includes a gray background.
+   * `flat` is the default option, which includes a gray background.
    * `raised` adds a box shadow to the button.
    * `outline` adds a border to the button.
-   * `login` and `signup` modes are specific for "Login" and "Sign Up" buttons in your application.
+   * `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
    */
-  @Prop() mode: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' = 'flat';
-  @Watch('mode') modeDidChange() {
-    if(this.mode === 'login'){
+  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' = 'flat';
+  @Watch('option') optionDidChange() {
+    if(this.option === 'login'){
       this.color = 'primary'
     }
-    if(this.mode === 'signup'){
+    if(this.option === 'signup'){
       this.color = 'secondary'
     }
   }
@@ -39,6 +39,11 @@ export class ButtonComponent {
    * Optional property that determines if your button includes an icon.
    */
   @Prop() icon: string;
+
+  /**
+   * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
+   */
+  @Prop() iconColor: 'standard'|'alternative'|'primary'|'secondary';
 
    /**
    * Optional type property of the button.
@@ -116,7 +121,7 @@ export class ButtonComponent {
   componentWillLoad() {
     // console.log('Slot: ', this.el.innerHTML)
     this.hasChild = this.el.innerHTML && this.el.innerHTML.length > 0;
-    this.modeDidChange();
+    this.optionDidChange();
   }
 
   hostData() {
@@ -125,15 +130,15 @@ export class ButtonComponent {
         !!this.icon && 'hasIcon',
         this.hasChild && 'hasChild',
         this.grouped && 'grouped',
-        this.mode
+        this.option
       ].join(' ')
     };
   }
 
   render() {
     return (
-      <button disabled={this.disabled} type={this.type} class={[this.color, this.mode, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
-        {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
+      <button disabled={this.disabled} type={this.type} class={[this.color, this.option, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
+        {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
         { this.hasChild && <span class="text"><slot></slot></span>}
       </button>
     )

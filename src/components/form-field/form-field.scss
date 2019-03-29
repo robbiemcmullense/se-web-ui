@@ -60,39 +60,20 @@ label {
   padding-left: 4px;
 }
 
-
-:host([type="checkbox"]) {
-
-	.se-form-field {
-		flex-direction: row-reverse;
-    justify-content: flex-end;
-	}
-
-	label {
-    text-align: left;
-		width: 100% ;
-		padding-top: 7px;
-	}
-}
-
-
 :host([mode="stacked"]) {
 	.se-form-field {
     flex-direction: column;
     @include align-items(start);
 
 	}
-
 	label {
     padding: 0 8px 4px;
     text-align: left;
     line-height: 12px;
 	}
-
 	::slotted(input) {
 		width: 97%;
 	}
-
 	::slotted(select) {
 		width: 100%;
 	}
@@ -116,68 +97,3 @@ label {
 
 	}
 }
-
-
-// ::slotted(input[type='checkbox']) {
-//   position: relative !important;
-//   margin: 0 1rem 0 0;
-//   cursor: pointer;
-//   outline:none;
-
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     left: 0;
-//     z-index: 1;
-//     width: 1rem;
-//     height: 1rem;
-//     border: 2px solid transparent;
-//     border-color: transparent;
-//   }
-
-//   &:indeterminate{
-//     &:before {
-//       box-sizing: border-box;
-//       position: absolute;
-//       top: 50%;
-//       left: 50%;
-//       -webkit-transform: translate(-50%, -50%);
-//       transform: translate(-50%, -50%);
-//       display: table;
-//       width: 10px;
-//       height: 2px;
-//       border-width: 2px;
-//       border-style: solid;
-//       border-top: 0;
-//       border-left: 0;
-//       border-color: #a7a7a7;
-//       z-index: 1;
-//       content: "";
-//       margin-left: 1px;
-//       margin-top: 1px;
-//     }
-
-//   }
-//   &:checked:not(:indeterminate):before {
-//     -webkit-transform: rotate(-45deg);
-//     -moz-transform: rotate(-45deg);
-//     -ms-transform: rotate(-45deg);
-//     transform: rotate(-45deg);
-//     height: .5rem;
-//     @include border-color('primary');
-//     border-top-style: none;
-//     border-right-style: none;
-//   }
-
-//   &:after {
-//     content: "";
-//     position: absolute;
-//     top: -1px;
-//     left: 0;
-//     width: 1rem;
-//     height: 1rem;
-//     background: #fff;
-//     border: 2px solid #dedcdc;
-//     cursor: pointer;
-//   }
-// }

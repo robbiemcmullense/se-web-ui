@@ -1,6 +1,10 @@
 # se-header
 
-
+| Slot    | Description                                                                                   |
+| ------- | --------------------------------------------------------------------------------------------- |
+| `start` | Positions to the `left` of the content. Can be used po place a project dropdown if necessary  |
+| none    | Position the content in the middle of the header (centered)                                   |
+| `end`   | Positions to the `right` of the content. Can be used for the user dorpdown, external links... |
 
 <!-- Auto Generated Below -->
 

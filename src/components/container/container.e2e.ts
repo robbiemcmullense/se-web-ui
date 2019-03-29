@@ -19,7 +19,7 @@ describe('ContainerComponent', () => {
 
   it('renders the "centered" and "absolute-content" classes when these properties are specified in the DOM', async() => {	
     await page.$eval('se-container', (elm: any) => {
-      elm.mode = 'centered';
+      elm.option = 'centered';
       elm.position = 'absolute';
     });
     await page.waitForChanges();	

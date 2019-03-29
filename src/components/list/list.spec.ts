@@ -11,7 +11,7 @@ describe('list-group', () => {
     expect(list).toBeTruthy();
   });
 
-  it('should be in classic mode by default', () => {
-    expect(list.mode).toEqual('classic');
+  it('should be in classic option by default', () => {
+    expect(list.option).toEqual('classic');
   });
 });

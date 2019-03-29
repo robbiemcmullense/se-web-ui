@@ -10,7 +10,7 @@
 | Property | Attribute | Description | Type                                    | Default        |
 | -------- | --------- | ----------- | --------------------------------------- | -------------- |
 | `color`  | `color`   |             | `"alternative" \| "standard"`           | `"standard"`   |
-| `mode`   | `mode`    |             | `"horizontal" \| "inset" \| "vertical"` | `"horizontal"` |
+| `option` | `option`  |             | `"horizontal" \| "inset" \| "vertical"` | `"horizontal"` |
 
 
 ----------------------------------------------

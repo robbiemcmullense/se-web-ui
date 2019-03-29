@@ -1,5 +1,5 @@
 <se-container position="absolute">
-  <se-widget width="250px" mode="fill">
+  <se-widget width="250px" option="fill">
       <se-list>
         <se-list-item
           *ngFor="let site of sites"
@@ -13,7 +13,7 @@
           </se-list-item> -->
       </se-list>
   </se-widget>
-  <se-container mode="widget">
+  <se-container option="widget">
     <div fxFlex class="gridAnimation">
       <mat-grid-list [cols]="nbCols" rowHeight="300px">
         <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.cols">

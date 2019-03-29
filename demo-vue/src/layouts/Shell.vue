@@ -1,7 +1,7 @@
 <template>
-  <se-app>
+  <span class="se-app-body">
     <se-header app-title="Test Advisor"></se-header>
-    <se-navbar color="primary">
+    <se-tabbar color="primary">
       <nav slot="start">Tenant: <a class="dropdown"> test </a></nav>
       <nav>
         <router-link
@@ -29,7 +29,7 @@
       <nav slot="end">
         <a>End</a>
       </nav>
-    </se-navbar>
+    </se-tabbar>
     <slot />
-  </se-app>
+  </span>
 </template>

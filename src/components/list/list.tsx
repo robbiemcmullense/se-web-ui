@@ -11,19 +11,15 @@ export class ListComponent {
   /**
    * Define the style of the list
    */
-  @Prop() mode: "nav" | "classic" = "classic";
-  @Watch('mode') PropDidChange() {
-    this.updateItemMode()
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+  @Watch('option') PropDidChange() {
+    Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
+      item.option = this.option;
+    });
   }
 
   componentWillLoad() {
-    this.updateItemMode();
-  }
-
-  private updateItemMode(){
-    Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
-      item.mode = this.mode;
-    });
+    this.PropDidChange();
   }
 
   render() {

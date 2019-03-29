@@ -1,4 +1,4 @@
-import { Component, Prop, Element} from "@stencil/core";
+import { Component, Prop, Element, State} from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -6,8 +6,8 @@ import { Component, Prop, Element} from "@stencil/core";
   shadow: true
 })
 export class ListItemComponent {
-  @Element() el: HTMLElement;
 
+  @Element() el: HTMLElement;
   /**
    * Define the title of the item
    */
@@ -40,18 +40,27 @@ export class ListItemComponent {
   /**
    * Define the them of the list. This them will be handled and modified by the parent element
    */
-  @Prop() mode: "nav" | "classic" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+
+  @State() padding: number;
 
   hostData() {
     return {
-      class: [this.selected && "selected", this.mode].join(" ")
+      class: [this.selected && "selected", this.option].join(" ")
     };
+  }
+
+  componentDidLoad() {
+    this.padding = 20 * this.indentation;
+    if (this.option === "treeview") {
+      this.padding += 24;
+    }
   }
 
   render() {
     return (
-      <button style={{ paddingLeft: `${20 * this.indentation}px` }}>
-        {this.mode === "nav" && this.selected && <div class="selectedBar" />}
+      <button style={{ paddingLeft: this.padding + `px` }}>
+        {this.option === "nav" && this.selected && <div class="selectedBar" />}
         {!!this.icon && (
           <div class="nav-icon">
             <span class={["se-icon", this.iconColor].join(" ")}>
@@ -63,9 +72,10 @@ export class ListItemComponent {
           <div>{this.item}</div>
           <small> {this.description}</small>
         </div>
-        {this.mode === "nav" && (
+        {this.option === "nav" && (
           <span class="se-icon medium">arrow2_right</span>
         )}
+        {this.option === 'classic' && (<slot></slot>)}
       </button>
     );
   }

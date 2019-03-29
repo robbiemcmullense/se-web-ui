@@ -6,11 +6,11 @@ import { Component,Prop } from "@stencil/core";
   shadow: true
 })
 export class WidgetContent {
-  @Prop() mode: 'fill';
+  @Prop() option: 'fill';
 
   hostData() {
     return {
-      'class': { 'full-content': this.mode === 'fill' }
+      'class': { 'full-content': this.option === 'fill' }
     };
   }
   render() {

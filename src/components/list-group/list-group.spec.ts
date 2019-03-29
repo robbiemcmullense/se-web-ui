@@ -11,11 +11,15 @@ describe('list-group', () => {
     expect(listGroup).toBeTruthy();
   });
 
+  it('should have no indentation by default', () => {
+    expect(listGroup.indentation).toEqual(0);
+  });
+
   it('should have a collapsible property set to false by default', () => {
     expect(listGroup.collapsed).toBeFalsy();
   });
 
-  it('should be in classic mode by default', () => {
-    expect(listGroup.mode).toEqual('classic');
+  it('should be in classic option by default', () => {
+    expect(listGroup.option).toEqual('classic');
   });
 });

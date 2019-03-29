@@ -11,8 +11,8 @@ describe('ButtonComponent', () => {
 		expect(button).toBeTruthy();
 	});
 
-	it('should have a "flat" mode by default', () => {
-		expect(button.mode).toEqual('flat');
+	it('should have a "flat" option by default', () => {
+		expect(button.option).toEqual('flat');
 	});
 
 	it('should not have a defined selected state initially', () => {

@@ -16,7 +16,7 @@ import { newE2EPage } from '@stencil/core/testing';
 
   it('renders a class based on the provided mode and color', async() => {	
     await page.$eval('se-divider', (elm: any) => {
-      elm.mode = 'horizontal';
+      elm.option = 'horizontal';
       elm.color = 'light';
     });
     await page.waitForChanges();	
