@@ -37,11 +37,7 @@ export class ListGroupComponent {
    */
   @Prop({ mutable: true }) collapsed: boolean = false;
   @Watch("collapsed") collapsedChanged() {
-    if (!this.collapsed) {
-      this.selected = false;
-    } else {
-      this.checkSelected();
-    }
+    this.checkSelected();
   }
   /**
    * Define the group indentation to add paddings to the list item (used when multiple list group)
@@ -59,15 +55,19 @@ export class ListGroupComponent {
   }
 
   checkSelected(){
-    let hasSelectedChild = false;
-    Array.from(
-      this.el.querySelectorAll("se-list-item, se-list-group")
-    ).forEach((item: any) => {
-      if (item.selected) {
-        hasSelectedChild = true;
-      }
-    });
-    this.selected = hasSelectedChild;
+    if (!this.collapsed) {
+      this.selected = false;
+    } else {
+      let hasSelectedChild = false;
+      Array.from(
+        this.el.querySelectorAll("se-list-item, se-list-group")
+      ).forEach((item: any) => {
+        if (item.selected) {
+          hasSelectedChild = true;
+        }
+      });
+      this.selected = hasSelectedChild;
+    }
   }
 
   componentWillLoad() {
