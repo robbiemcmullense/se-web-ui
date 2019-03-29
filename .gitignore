@@ -2,9 +2,9 @@ dist/
 !www/favicon.ico
 www/
 docs/build/
-!core/package.json
 core/
 angular/
+
 .nuxt/
 .next/
 *~
@@ -16,6 +16,8 @@ angular/
 log.txt
 *.sublime-project
 *.sublime-workspace
+.package-lock.json
+.yarn.lock
 
 .stencil/
 .idea/
@@ -29,3 +31,5 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+.npmrc
