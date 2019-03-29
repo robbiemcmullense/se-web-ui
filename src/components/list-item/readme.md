@@ -18,6 +18,13 @@
 | `selected`    | `selected`    | Define if the list element should be selected or not                                                     | `boolean`                                        | `undefined` |
 
 
+## Events
+
+| Event               | Description                                                               | Type                |
+| ------------------- | ------------------------------------------------------------------------- | ------------------- |
+| `didSelectedChange` | Event emitted to notify the item-group that the state of selected changed | `CustomEvent<void>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

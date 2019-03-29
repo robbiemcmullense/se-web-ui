@@ -9,6 +9,24 @@ This project uses [StencilJS](https://stenciljs.com) to generate web components 
 
 You can test all of these components with this [Online Template Editor](https://pages.github.schneider-electric.com/IoT/web-template-editor/).
 
+## 🧐 What's inside?
+
+A quick look at the top-level files and directories you'll see in this repository.
+
+    .
+    ├── angular             // `@se/web-ui-angular`
+    ├── core                // `@se/web-ui`
+    ├── demo-*              // demos folder
+    ├── node_modules
+    ├── src-angular         // Src angular module
+    ├── src-core            // Src core stencil library
+    ├── LICENSE
+    ├── package.json
+    ├── release.js          // Release libraries with the same version
+    └── README.md
+
+**Note :** Any library (core, angular..) will be generated with the same version number defined in `package.json`.
+
 ## List of Components
 
 | Done | Component      | Info                                                                                                                       |

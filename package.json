@@ -5,13 +5,6 @@
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
-  "module": "core/esm/index.js",
-  "main": "core/index.js",
-  "types": "core/types/components.d.ts",
-  "collection": "core/collection/collection-manifest.json",
-  "files": [
-    "core/"
-  ],
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
     "build": "npm-run-all build.*",
@@ -19,6 +12,7 @@
     "build.localRef": "cpx \"src/package.json\" core",
     "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
     "build.exportDocs": "cpx \"src/**/*.md\" core/docs",
+    "build.src-angular": "cd src-angular && npm run build",
     "test": "stencil test --spec",
     "e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
@@ -29,17 +23,13 @@
   },
   "dependencies": {
     "@stencil/core": "^0.17.1",
-    "@stencil/sass": "^0.1.1"
-  },
-  "peerDependencies": {
+    "@stencil/sass": "^0.1.1",
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.2.0"
   },
   "devDependencies": {
-    "@se/fonts": "^1.0.0",
-    "@se/icons": "^3.3.0",
-    "@types/jest": "~24.0.11",
-    "@types/puppeteer": "^1.12.3",
+    "@types/jest": "~23.3.1",
+    "@types/puppeteer": "^1.11.1",
     "cpx": "^1.5.0",
     "http-server": "^0.11.1",
     "jest": "~24.5.0",
