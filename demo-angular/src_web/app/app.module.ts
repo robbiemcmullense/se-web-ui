@@ -10,18 +10,20 @@ import { CoreModule } from './core';
 import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
+import { SeWebModule } from '@se/web-ui-angular';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    SeWebModule.forRoot(),
     TranslateModule.forRoot(),
     CoreModule,
     SharedModule,
     HomeModule,
     LoginModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [AppComponent],
   providers: [],

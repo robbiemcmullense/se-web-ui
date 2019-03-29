@@ -14,8 +14,10 @@ version 4.0.0
  ```sh
  yarn install
  ```
-
-3. Launch development server, and open `localhost:4200` in your browser:
+3. Link  `@se/web-ui` to current folder (file reference does not work)
+  - At the root of `web-ui` folder, run `yarn link`
+  - In the folder `web-ui/demo-angular`, run `yarn link @se/web-ui` 
+4. Launch development server, and open `localhost:4200` in your browser:
  ```sh
  yarn start
  ```
