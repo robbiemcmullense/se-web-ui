@@ -1,45 +1,20 @@
 {
   "name": "@se/web-ui",
   "version": "2.0.0",
-  "publishConfig": {
-    "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
-  },
+  "private": true,
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
+    "postinstall": "npm-run-all install.*",
+    "install.core": "cd src-core && yarn",
+    "install.angular": "cd src-angular && yarn",
     "build": "npm-run-all build.*",
-    "build.core": "stencil build --docs",
-    "build.localRef": "cpx \"src/package.json\" core",
-    "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
-    "build.exportDocs": "cpx \"src/**/*.md\" core/docs",
-    "build.src-angular": "cd src-angular && npm run build",
-    "test": "stencil test --spec",
-    "e2e": "stencil test --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "demo.react": "cd demo-react && yarn start",
-    "demo.vue": "cd demo-vue && yarn start",
-    "demo.angular": "cd demo-angular && yarn start",
+    "build.core": "cd src-core && yarn build",
+    "build.angular": "cd src-angular && yarn build",
     "prepublish": "yarn build"
   },
-  "dependencies": {
-    "@stencil/core": "^0.17.1",
-    "@stencil/sass": "^0.1.1",
-    "@se/fonts": "^1.0.0",
-    "@se/icons": "^3.2.0"
-  },
   "devDependencies": {
-    "@types/jest": "~23.3.1",
-    "@types/puppeteer": "^1.11.1",
-    "cpx": "^1.5.0",
-    "http-server": "^0.11.1",
-    "jest": "~24.5.0",
-    "jest-cli": "~24.5.0",
-    "nodecat": "^2.0.0",
-    "npm-run-all": "^4.1.5",
-    "pixelmatch": "4.0.2",
-    "puppeteer": "~1.13.0",
-    "rimraf": "^2.6.3",
-    "workbox-build": "~4.1.1"
+    "npm-run-all": "^4.1.5"
   },
   "license": "MIT"
 }
