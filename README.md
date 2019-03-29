@@ -79,7 +79,7 @@ A quick look at the top-level files and directories you'll see in this repositor
 | [ ]  | Datepicker     |                                                                                                                            |
 | [ ]  | Tooltips       | Design only                                                                                                                |
 
-## Testing in your App (in progress)
+## Testing in your App
 
 ```shell
 # With npm
@@ -128,7 +128,9 @@ This demo shows how the app can be used without any framework.
 The React project built based React reference app.
 
 ```
-yarn demo:react
+cd demo-react
+yarn install
+yarn start
 ```
 
 This demo uses a `Widget` react component as a list to loop through the `se-widget` with different content.
@@ -138,7 +140,9 @@ This demo uses a `Widget` react component as a list to loop through the `se-widg
 The Vue project built based Vue reference app.
 
 ```
-yarn demo:vue
+cd demo-vue
+yarn install
+yarn start
 ```
 
 This demo shows a simple interaction with vue framework.
@@ -148,7 +152,9 @@ This demo shows a simple interaction with vue framework.
 Created using [Angular](https://angular.io) framework based on the generated architecture with [EcoStruxure App DSK](https://seappsdk.dev.struxurewarecloud.com) and trying to match with current implementation of the web-framework
 
 ```
-yarn demo:vue
+cd demo-angular
+yarn install
+yarn start
 ```
 
 This demo shows a simple interaction with vue framework.
