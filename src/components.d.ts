@@ -671,6 +671,10 @@ export namespace Components {
     */
     'item'?: string;
     /**
+    * Event emitted to notify the item-group that the state of selected changed
+    */
+    'onDidSelectedChange'?: (event: CustomEvent<void>) => void;
+    /**
     * Define the them of the list. This them will be handled and modified by the parent element
     */
     'option'?: "nav" | "classic" | "dropdown" | "treeview";
