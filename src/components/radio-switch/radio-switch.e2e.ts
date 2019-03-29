@@ -32,3 +32,12 @@ describe('RadioSwitchComponent', () => {
 		});
 	});
 });
+
+describe('RadioSwitchComponent with initialized value', () => {
+  it('renders in the "on" position when value is set to true', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-radio-switch value="true"></se-radio-switch>');
+    const element = await page.find('se-radio-switch');
+    expect(element).toHaveClass('selected');
+  });
+});

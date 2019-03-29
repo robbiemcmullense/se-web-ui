@@ -22,4 +22,10 @@ describe('CheckboxComponent', () => {
 	it('should not be checked by default', () => {
 		expect(checkbox.checked).toBeFalsy();
 	});
+
+	it('should be checked when selected is set to true', () => {
+		checkbox.selected = true;
+		checkbox.componentDidLoad();
+		expect(checkbox.checked).toBeTruthy();
+	});
 });
