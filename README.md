@@ -22,7 +22,7 @@ A quick look at the top-level files and directories you'll see in this repositor
     ├── src-core            // Src core stencil library
     ├── LICENSE
     ├── package.json
-    ├── release.js          // Release libraries with the same version
+    ├── publish.js          // Publish libraries with the same version
     └── README.md
 
 **Note :** Any library (core, angular..) will be generated with the same version number defined in `package.json`.
