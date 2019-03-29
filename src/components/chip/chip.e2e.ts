@@ -36,7 +36,7 @@ describe('ChipComponent', () => {
       elm.value = 'My Value';
     });
     await page.waitForChanges();
-    const eventSpy = await page.spyOnEvent('onClose');
+    const eventSpy = await page.spyOnEvent('didClose');
     const element = await page.find('se-chip >>> div.close');
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();

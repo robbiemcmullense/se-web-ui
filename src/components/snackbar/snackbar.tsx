@@ -48,11 +48,11 @@ export class SnackbarComponent {
   /**
    * Send information to the parent component when closing the snackbar.
    */
-  @Event() onClose: EventEmitter;
+  @Event() didClose: EventEmitter;
 
   closeSnackbar() {
     this.open = false;
-    this.onClose.emit();
+    this.didClose.emit();
   }
 
   hostData() {

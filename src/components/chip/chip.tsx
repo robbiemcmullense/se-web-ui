@@ -25,10 +25,10 @@ export class ChipComponent {
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
    */
-  @Event() onClose: EventEmitter;
+  @Event() didClose: EventEmitter;
 
   closeChip() {
-    this.onClose.emit(this.value);
+    this.didClose.emit(this.value);
   }
 
   hostData() {

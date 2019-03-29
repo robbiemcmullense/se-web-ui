@@ -34,8 +34,8 @@ export class RadioComponent {
   /**
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */
-  @Event() onChange: EventEmitter;
-  @Listen('onClick')
+  @Event() didChange: EventEmitter;
+  @Listen('didClick')
   buttonClickedHandler(event: CustomEvent) {
     let buttonInfo = event.detail;
     let isChecked = buttonInfo.selected;
@@ -55,7 +55,7 @@ export class RadioComponent {
         this.value = list;
       }
     }
-    this.onChange.emit(this.value);
+    this.didChange.emit(this.value);
   }
 
   componentDidLoad() {

@@ -31,7 +31,7 @@ describe('CheckboxComponent', () => {
   });
 
   it('emits an event when clicked on', async() => {
-    const eventSpy = await page.spyOnEvent('onChange');
+    const eventSpy = await page.spyOnEvent('didCheck');
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail({

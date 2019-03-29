@@ -20,7 +20,7 @@
 
 | Event      | Description                                                                    | Type                |
 | ---------- | ------------------------------------------------------------------------------ | ------------------- |
-| `onChange` | Send the checkbox value to the parent component when clicking on the checkbox. | `CustomEvent<void>` |
+| `didCheck` | Send the checkbox value to the parent component when clicking on the checkbox. | `CustomEvent<void>` |
 
 
 ----------------------------------------------

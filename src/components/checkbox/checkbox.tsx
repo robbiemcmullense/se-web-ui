@@ -31,12 +31,12 @@ export class CheckboxComponent {
   /**
    * Send the checkbox value to the parent component when clicking on the checkbox.
    */
-  @Event() onChange: EventEmitter;
+  @Event() didCheck: EventEmitter;
 
   emitEvent() {
     this.checked = !this.checked;
     let checkboxObject = {value: this.value, selected: this.checked}
-    this.onChange.emit(checkboxObject);
+    this.didCheck.emit(checkboxObject);
   }
 
   componentDidLoad() {

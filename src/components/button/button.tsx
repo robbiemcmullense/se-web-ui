@@ -65,7 +65,7 @@ export class ButtonComponent {
   /**
    * Passes button data to the parent component on a click.
    */
-  @Event() onClick: EventEmitter<any>;
+  @Event() didClick: EventEmitter<any>;
 
   /**
    * Set the disabled property for your button from the parent component.
@@ -90,7 +90,7 @@ export class ButtonComponent {
 
     if (this.grouped) {
       this.selected = !this.selected;
-      this.onClick.emit({selected: this.selected, value: this.value});
+      this.didClick.emit({selected: this.selected, value: this.value});
     }
   }
 

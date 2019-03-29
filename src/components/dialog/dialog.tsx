@@ -48,16 +48,16 @@ export class DialogComponent {
     }
   }
   /**
-   * Emit the `onBackdrop` event from the dialog's parent component.
+   * Emit the `backdrop` event from the dialog's parent component.
    */
   @Method()
   backdropClicked(): void {
-    this.onBackdrop.emit();
+    this.backdrop.emit();
   }
   /**
    * event emitted when the backdrop is clicked.
    */
-  @Event() onBackdrop: EventEmitter<any>;
+  @Event() backdrop: EventEmitter<any>;
   /**
    * event emitted after the animation of closing is done. The modal can be safely removed from the DOM
    */

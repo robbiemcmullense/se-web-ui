@@ -19,7 +19,7 @@ export class RadioSwitchComponent {
 	/**
 	 * Send the state of the switch (true/false) to the parent component when it is toggled.
 	 */
-	@Event() onChange: EventEmitter;
+	@Event() didChange: EventEmitter;
 
 	@Element() el: HTMLElement;
 	
@@ -33,7 +33,7 @@ export class RadioSwitchComponent {
 					this.el.classList.remove('selected');
 				}, 200)
 			}
-			this.onChange.emit({selected: this.selected});
+			this.didChange.emit({selected: this.selected});
 		}
 	}
 

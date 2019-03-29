@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event     | Description                                            | Type               |
-| --------- | ------------------------------------------------------ | ------------------ |
-| `onClick` | Passes button data to the parent component on a click. | `CustomEvent<any>` |
+| Event      | Description                                            | Type               |
+| ---------- | ------------------------------------------------------ | ------------------ |
+| `didClick` | Passes button data to the parent component on a click. | `CustomEvent<any>` |
 
 
 ## Methods

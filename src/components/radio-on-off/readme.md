@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event      | Description                                                                                              | Type               |
-| ---------- | -------------------------------------------------------------------------------------------------------- | ------------------ |
-| `onChange` | Passes the current state (true or false) to the parent component when clicking on a button in the group. | `CustomEvent<any>` |
+| Event       | Description                                                                                              | Type               |
+| ----------- | -------------------------------------------------------------------------------------------------------- | ------------------ |
+| `didChange` | Passes the current state (true or false) to the parent component when clicking on a button in the group. | `CustomEvent<any>` |
 
 
 ----------------------------------------------

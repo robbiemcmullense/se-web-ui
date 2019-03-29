@@ -7,33 +7,22 @@ import { Component, Prop, State, Method, Element, Event, EventEmitter, Listen } 
   shadow: true
 })
 export class DropdownComponent {
-
-  @Element()
-  el: HTMLElement;
-
+  @Element() el: HTMLElement;
   /**
    * Event emitted when the dropdown has been opened.
    */
-  @Event()
-  onOpen: EventEmitter;
-
+  @Event() didOpen: EventEmitter;
   /**
    * Event emitted when the dropdown has been closed.
    */
-  @Event()
-  onClose: EventEmitter;
-
+  @Event() didClose: EventEmitter;
   /**
    * Define how to align the dropdown container.
    * `left`: Position the container regarding to the left side of the trigger element
    * `right`: Position the container regarding to the right side of the trigger element
    */
-  @Prop()
-  alignment: 'left'|'right' = 'left';
-
-  @State()
-  opened: boolean = false;
-
+  @Prop() alignment: 'left'|'right' = 'left';
+  @State() opened: boolean = false;
   @Listen('window:click')
   handleClick(ev) {
     if(this.opened){
@@ -68,10 +57,10 @@ export class DropdownComponent {
     ev.stopPropagation()
     if(this.opened){
       this.close();
-      this.onClose.emit();
+      this.didClose.emit();
     } else {
       this.open();
-      this.onOpen.emit();
+      this.didOpen.emit();
     }
   }
 

@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event     | Description                                                         | Type                |
-| --------- | ------------------------------------------------------------------- | ------------------- |
-| `onClose` | Send information to the parent component when closing the snackbar. | `CustomEvent<void>` |
+| Event      | Description                                                         | Type                |
+| ---------- | ------------------------------------------------------------------- | ------------------- |
+| `didClose` | Send information to the parent component when closing the snackbar. | `CustomEvent<void>` |
 
 
 ----------------------------------------------

@@ -41,12 +41,12 @@ export class RadioOnOffComponent {
   /**
    * Passes the current state (true or false) to the parent component when clicking on a button in the group.
    */
-  @Event() onChange: EventEmitter<any>;
+  @Event() didChange: EventEmitter<any>;
 
   toggleActive() {
     if (!this.disabled) {
       this.selected = !this.selected;
-      this.onChange.emit({ selected: this.selected });
+      this.didChange.emit({ selected: this.selected });
     }
   }
 

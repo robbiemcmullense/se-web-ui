@@ -17,27 +17,13 @@ describe('SnackbarComponent', () => {
     expect(element).toHaveClasses(['hydrated', 'information']);
   });
 
-  it('should not have an icon or a close element by default', async() => {
-    const iconElm = await page.find('se-snackbar >>> .se-icon');
-    const closeElm = await page.find('se-snackbar >>> .close');
-    expect(iconElm).not.toBeTruthy();
-    expect(closeElm).not.toBeTruthy();
-  });
-
-  it('should not have an icon or a close element by default', async() => {
-    await page.$eval('se-snackbar', (elm: any) => {
-      elm.icon = 'info';
-      elm.canClose = true;
-      elm.closeText = 'close text';
-    });
-    await page.waitForChanges();
-
+  it('should have an icon and a close element by default', async() => {
     const iconElm = await page.find('se-snackbar >>> .se-icon');
     const closeElm = await page.find('se-snackbar >>> .close');
     expect(iconElm).toBeTruthy();
-    expect(iconElm).toEqualText('info');
+    expect(iconElm).toEqualText('information_circle');
     expect(closeElm).toBeTruthy();
-    expect(closeElm).toEqualText('close text');
+    expect(closeElm).toEqualText('dismiss');
   });
 
   it('should have an error class when the type is set to error', async() => {
@@ -56,5 +42,17 @@ describe('SnackbarComponent', () => {
     await page.waitForChanges();
 
     expect(element).toHaveClass('show');
+  });
+
+  it('emits the didClose event when dismissing the snackbar', async() => {
+    const eventSpy = await page.spyOnEvent('didClose');
+    await page.$eval('se-snackbar', (elm: any) => {
+      elm.open = true;
+    });
+    await page.waitForChanges();
+
+    const closeElm = await page.find('se-snackbar >>> .close');
+    await closeElm.click();
+    expect(eventSpy).toHaveReceivedEvent();
   });
 });

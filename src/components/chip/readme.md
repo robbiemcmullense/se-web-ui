@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event     | Description                                                                           | Type                |
-| --------- | ------------------------------------------------------------------------------------- | ------------------- |
-| `onClose` | Send the chip value to the parent component when clicking the close button of a chip. | `CustomEvent<void>` |
+| Event      | Description                                                                           | Type                |
+| ---------- | ------------------------------------------------------------------------------------- | ------------------- |
+| `didClose` | Send the chip value to the parent component when clicking the close button of a chip. | `CustomEvent<void>` |
 
 
 ----------------------------------------------
