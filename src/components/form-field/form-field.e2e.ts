@@ -25,7 +25,7 @@ describe('FormFieldComponent with Checkbox type', () => {
 
   it('emits an event with the value "true" when the checkbox is clicked', async() => {
     element = await page.find('se-form-field se-checkbox >>> span');
-    const eventSpy = await page.spyOnEvent('submit');
+    const eventSpy = await page.spyOnEvent('didSubmit');
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail(true);

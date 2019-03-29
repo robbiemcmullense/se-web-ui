@@ -54,7 +54,7 @@ describe('RadioOnOff Button Tests', () => {
   });
 
   it('sets an active class selected button, and emits either a true or false value', async() => {
-    const eventSpy = await page.spyOnEvent('change');
+    const eventSpy = await page.spyOnEvent('didChange');
     
     await activeElm.click();
     expect(eventSpy).toHaveReceivedEvent();
@@ -69,5 +69,16 @@ describe('RadioOnOff Button Tests', () => {
     expect(eventSpy).toHaveReceivedEventDetail({
       selected: false
     });
+  });
+});
+
+describe('RadioOnOffComponent with initialized value', () => {
+  it('renders in the "on" position when value is set to true', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-radio-on-off value="true"></se-radio-on-off>');
+    const activeElm = await page.find('se-radio-on-off >>> .active');
+    const inactiveElm = await page.find('se-radio-on-off >>> .inactive');
+    expect(activeElm).toHaveClass('selected');
+    expect(inactiveElm).not.toHaveClass('selected');
   });
 });

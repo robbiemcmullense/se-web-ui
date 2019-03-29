@@ -20,7 +20,7 @@ export class SnackbarComponent {
   /**
    * The name of the icon you wish to display.  Optional.
    */
-  @Prop() icon: string;
+  @Prop() icon: string = 'information_circle';
   /**
    * The content of the message you want the snackbar to display.
    */
@@ -28,11 +28,11 @@ export class SnackbarComponent {
   /**
    * Display a close "button".
    */
-  @Prop() canClose: boolean;
+  @Prop() canClose: boolean = true;
   /**
    * Defines the text you want your "close button" to read.
    */
-  @Prop() closeText: string;
+  @Prop() closeText: string = 'dismiss';
   /**
    * Indicates if the snackbar is open.
    */
@@ -48,11 +48,11 @@ export class SnackbarComponent {
   /**
    * Send information to the parent component when closing the snackbar.
    */
-  @Event() close: EventEmitter;
+  @Event() didClose: EventEmitter;
 
   closeSnackbar() {
     this.open = false;
-    this.close.emit();
+    this.didClose.emit();
   }
 
   hostData() {

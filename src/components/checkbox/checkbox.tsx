@@ -23,23 +23,33 @@ export class CheckboxComponent {
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
   @Prop() disabled: boolean = false;
+  /**
+	 * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+	 */
+  @Prop({mutable: true}) selected: boolean = false;
   @State() checked: boolean;
   /**
    * Send the checkbox value to the parent component when clicking on the checkbox.
    */
-  @Event() change: EventEmitter;
+  @Event() didCheck: EventEmitter;
 
   emitEvent() {
     this.checked = !this.checked;
     let checkboxObject = {value: this.value, selected: this.checked}
-    this.change.emit(checkboxObject);
+    this.didCheck.emit(checkboxObject);
+  }
+
+  componentDidLoad() {
+    if (this.selected) {
+      this.checked = this.selected;
+    }
   }
 
   render() {
     return (
       <label class="checkbox-container" data-disabled={this.disabled}>
         {this.label}
-        <input type="checkbox" disabled={this.disabled}/>
+        <input type="checkbox" checked={this.checked} disabled={this.disabled}/>
         <span class="checkmark" data-color={this.color} onClick={() => this.emitEvent()}></span>
       </label>
     );

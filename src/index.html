@@ -230,8 +230,10 @@
               <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
               <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
             </ul>
-            <se-radio-on-off id="switch-el"></se-radio-on-off>
+            <se-radio-on-off id="on-off-switch-el"></se-radio-on-off>
+            <se-radio-on-off text-on="active" text-off="inactive" value="true"></se-radio-on-off>
             <se-radio-switch id="toggle-switch-el"></se-radio-switch>
+            <se-radio-switch value="true"></se-radio-switch>   
             <se-divider></se-divider>
             <ul>
               <li id="radio-message">selected radio button: <span></span></li>
@@ -241,18 +243,18 @@
               <se-button value="right" icon="arrow2_right"></se-button>
             </se-radio>
             <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary" label="Primary"></se-checkbox>
-            <se-checkbox id="checkbox-warn" value="warn" color="secondary" label="Secondary"></se-checkbox>
+            <se-checkbox id="checkbox-warn" value="warn" selected="true" color="secondary" label="Secondary"></se-checkbox>
             <se-divider></se-divider>
             <ul>
               <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
             </ul>
-            <se-radio id="btnGroup1" option="radio">
+            <se-radio id="btnGroup1" option="radio" value="second">
               <se-button value="first">Check1</se-button>
               <se-button value="second">Check2</se-button>
               <se-button value="third">Check3</se-button>
             </se-radio>
             <se-divider></se-divider>
-            <se-radio option="checkbox" color="primary">
+            <se-radio id="checkbox-button-group" option="checkbox" color="primary">
               <se-button value="first">Check1</se-button>
               <se-button value="second">Check2</se-button>
               <se-button value="third">Check3</se-button>
@@ -274,7 +276,7 @@
 
             <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
               required="true">
-              <se-checkbox value="checkbox-value"></se-checkbox>
+              <se-checkbox></se-checkbox>
             </se-form-field>
             <se-form-field id="input-form" label="Input" required="true">
               <input type="text" />
@@ -388,8 +390,7 @@
         <se-button onclick="closeDialog('dialog-complex')">OK</se-button>
       </se-dialog-footer>
     </se-dialog>
-    <se-snackbar id="snackbar" type="warning" icon="information_stroke" message="my message" can-close="true"
-      close-text="Dismiss"></se-snackbar>
+    <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
   </se-app>
 
   <script>
@@ -429,32 +430,27 @@
     }
 
 
-    document.getElementById('se-chip').addEventListener('close', function (event) {
+    document.getElementById('se-chip').addEventListener('didClose', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
     });
-    document.getElementById('switch-el').addEventListener('change', function (event) {
+    document.getElementById('on-off-switch-el').addEventListener('didChange', function (event) {
       document.getElementById('switch-message').firstElementChild.innerText = event.detail.selected;
     });
-    document.getElementById('toggle-switch-el').addEventListener('change', function (event) {
+    document.getElementById('toggle-switch-el').addEventListener('didChange', function (event) {
       document.getElementById('toggle-switch-message').firstElementChild.innerText = event.detail.selected;
     });
-    document.getElementById('RadioGroup1').addEventListener('change', function (event) {
+    document.getElementById('RadioGroup1').addEventListener('didChange', function (event) {
       document.getElementById('radio-message').firstElementChild.innerText = event.detail;
     });
-    document.getElementById('btnGroup1').addEventListener('change', function (event) {
+    document.getElementById('btnGroup1').addEventListener('didChange', function (event) {
       let checkboxMsg = document.getElementById('checkbox-button-message');
-      checkboxMsg.firstElementChild.innerText = '';
-      event.detail.forEach(function (item) {
-        checkboxMsg.firstElementChild.innerText += ' ' + item;
-      });
-      if (!event.detail.length) {
-        checkboxMsg.firstElementChild.innerText = 'none';
-      }
+      checkboxMsg.firstElementChild.innerText = event.detail;
     });
-    document.getElementById('checkbox-form').addEventListener('submit', function (event) {
+    document.getElementById('checkbox-button-group').value = ['first', 'third'];
+    document.getElementById('checkbox-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'checkbox, ' + event.detail;
     });
-    document.getElementById('input-form').addEventListener('submit', function (event) {
+    document.getElementById('input-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'input, ' + event.detail;
       if (event.detail == 'warning') {
         document.getElementById('input-form').status = 'warning';
@@ -465,7 +461,7 @@
         document.getElementById('input-form').status = '';
       }
     });
-    document.getElementById('select-form').addEventListener('submit', function (event) {
+    document.getElementById('select-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'select, ' + event.detail;
     });
   </script>

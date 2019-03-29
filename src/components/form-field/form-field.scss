@@ -60,7 +60,7 @@ label {
   padding-left: 4px;
 }
 
-:host([mode="stacked"]) {
+:host([option="stacked"]) {
 	.se-form-field {
     flex-direction: column;
     @include align-items(start);

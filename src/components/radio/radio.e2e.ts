@@ -44,9 +44,11 @@ describe('RadioComponent', () => {
     const secondButtonElement = await page.find('se-radio se-button#second >>> button');
 
     await firstButtonElement.click();
+    await page.waitForChanges();
     expect(firstButtonElement).toHaveClass('selected');
 
     await secondButtonElement.click();
+    await page.waitForChanges();
     expect(secondButtonElement).toHaveClass('selected');
   });
 
@@ -67,4 +69,20 @@ describe('RadioComponent', () => {
     expect(firstButtonElement).toHaveClass('false');
     expect(secondButtonElement).toHaveClass('selected');
   });
+});
+
+describe('RadioComponent with an initialized value', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+    await page.setContent('<se-radio option="radio" value="first"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio>');
+    await page.waitForChanges();
+  });
+
+  it('should mark the first button as selected', async() => {
+    const buttonElement = await page.find('se-radio se-button#first >>> button');
+    expect(buttonElement).toHaveClass('selected');
+  });
+
 });

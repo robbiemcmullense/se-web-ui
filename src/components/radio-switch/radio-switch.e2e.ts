@@ -24,11 +24,20 @@ describe('RadioSwitchComponent', () => {
   });
 	
 	it('sends an event with the selected state on a click', async() => {
-		const eventSpy = await page.spyOnEvent('change');
+		const eventSpy = await page.spyOnEvent('didChange');
 		await element.click();
 		expect(eventSpy).toHaveReceivedEvent();
 		expect(eventSpy).toHaveReceivedEventDetail({
 			selected: true
 		});
 	});
+});
+
+describe('RadioSwitchComponent with initialized value', () => {
+  it('renders in the "on" position when value is set to true', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-radio-switch value="true"></se-radio-switch>');
+    const element = await page.find('se-radio-switch');
+    expect(element).toHaveClass('selected');
+  });
 });

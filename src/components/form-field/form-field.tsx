@@ -44,14 +44,16 @@ export class FormFieldComponent {
 	/**
    * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
    */
-	@Event() submit: EventEmitter;
+	@Event() didSubmit: EventEmitter;
 
 	@Listen('change')
+	inputSelectListenerHandler(event) {
+		this.handleEvent(event);
+	}
+
+	@Listen('didCheck')
 	checkboxListenerHandler(event) {
-		if (!this.disabled) {
-			this.value = event.detail ? event.detail.selected : event.target.value;
-			this.submit.emit(this.value);
-		}
+		this.handleEvent(event);
 	}
 
 	@Watch('disabled')
@@ -75,6 +77,13 @@ export class FormFieldComponent {
         item.label = this.label
       }
 		});
+	}
+
+	handleEvent(event: any) {
+		if (!this.disabled) {
+			this.value = event.detail ? event.detail.selected : event.target.value;
+			this.didSubmit.emit(this.value);
+		}
 	}
 
 	hostData() {

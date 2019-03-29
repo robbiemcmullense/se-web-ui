@@ -17,10 +17,10 @@
 
 ## Events
 
-| Event     | Description                                      | Type                |
-| --------- | ------------------------------------------------ | ------------------- |
-| `onClose` | Event emitted when the dropdown has been closed. | `CustomEvent<void>` |
-| `onOpen`  | Event emitted when the dropdown has been opened. | `CustomEvent<void>` |
+| Event      | Description                                      | Type                |
+| ---------- | ------------------------------------------------ | ------------------- |
+| `didClose` | Event emitted when the dropdown has been closed. | `CustomEvent<void>` |
+| `didOpen`  | Event emitted when the dropdown has been opened. | `CustomEvent<void>` |
 
 
 ## Methods

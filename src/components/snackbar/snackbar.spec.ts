@@ -12,10 +12,18 @@ describe('SnackbarComponent', () => {
 	});
 
 	it('should have a type of information by default', () => {
-		expect(snackbar.type).toBe('information');
+		expect(snackbar.type).toEqual('information');
+	});
+
+	it('should have an information circle icon by default', () => {
+		expect(snackbar.icon).toEqual('information_circle');
 	});
 
 	it('should not be open by default', () => {
 		expect(snackbar.open).toBe(false);
+	});
+
+	it('should be closeable by default', () => {
+		expect(snackbar.canClose).toBe(true);
 	});
 });

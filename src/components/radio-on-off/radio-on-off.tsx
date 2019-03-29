@@ -32,18 +32,29 @@ export class RadioOnOffComponent {
    * Optional property that defines if the radio on/off switch is disabled.  Set to `false` by default.
    */
   @Prop() disabled: boolean = false;
+  /**
+	 * Determines whether or not the switch is "on" or "off" when you initialize it.
+	 * Sets the switch to the "on" position if `true`.
+	 */
+  @Prop({mutable: true}) value: boolean;
   @State() selected: boolean;
   /**
    * Passes the current state (true or false) to the parent component when clicking on a button in the group.
    */
-  @Event() change: EventEmitter<any>;
+  @Event() didChange: EventEmitter<any>;
 
   toggleActive() {
     if (!this.disabled) {
       this.selected = !this.selected;
-      this.change.emit({ selected: this.selected });
+      this.didChange.emit({ selected: this.selected });
     }
   }
+
+  componentDidLoad() {
+		if (this.value) {
+			this.selected = this.value;
+		}
+	}
 
   hostData() {
     return {

@@ -16,17 +16,17 @@
 
 ## Events
 
-| Event        | Description                                                                                        | Type               |
-| ------------ | -------------------------------------------------------------------------------------------------- | ------------------ |
-| `didClose`   | event emitted after the animation of closing is done. The modal can be safely removed from the DOM | `CustomEvent<any>` |
-| `onBackdrop` | event emitted when the backdrop is clicked.                                                        | `CustomEvent<any>` |
+| Event      | Description                                                                                        | Type               |
+| ---------- | -------------------------------------------------------------------------------------------------- | ------------------ |
+| `backdrop` | event emitted when the backdrop is clicked.                                                        | `CustomEvent<any>` |
+| `didClose` | event emitted after the animation of closing is done. The modal can be safely removed from the DOM | `CustomEvent<any>` |
 
 
 ## Methods
 
 ### `backdropClicked() => void`
 
-Emit the `onBackdrop` event from the dialog's parent component.
+Emit the `backdrop` event from the dialog's parent component.
 
 #### Returns
 

@@ -24,4 +24,10 @@ describe('RadioOnOffComponent', () => {
 	it('should not be disabled by default', () => {
 		expect(toggleSwitch.disabled).toBeFalsy();
 	});
+
+	it('should set selected to true when value is set to true', () => {
+		toggleSwitch.value = true;
+		toggleSwitch.componentDidLoad();
+		expect(toggleSwitch.selected).toBeTruthy();
+	});
 });

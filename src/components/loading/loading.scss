@@ -20,8 +20,7 @@
 
 .se-loading {
 	position: relative;
-	width: 128px;
-	height: 128px;
+	line-height: 128px;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
 	@include animated();
   @include background-color("alternative");
@@ -38,7 +37,6 @@
 
 .se-icon {
 	position: relative;
-	bottom: 18px;
 	font-family: 'se-icon';
 	font-size: 128px;
 	@include loader();

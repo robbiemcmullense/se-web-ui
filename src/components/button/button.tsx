@@ -65,7 +65,7 @@ export class ButtonComponent {
   /**
    * Passes button data to the parent component on a click.
    */
-  @Event() clicked: EventEmitter<any>;
+  @Event() didClick: EventEmitter<any>;
 
   /**
    * Set the disabled property for your button from the parent component.
@@ -90,13 +90,13 @@ export class ButtonComponent {
 
     if (this.grouped) {
       this.selected = !this.selected;
-      this.clicked.emit({selected: this.selected, value: this.value});
+      this.didClick.emit({selected: this.selected, value: this.value});
     }
   }
 
 
   @Listen('click')
-  onClick(ev: Event) {
+  buttonClickedHandler(ev: Event) {
     if (this.type !== 'button') {
       // this button wants to specifically submit a form
       // climb up the dom to see if we're in a <form>
