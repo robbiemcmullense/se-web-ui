@@ -14,13 +14,15 @@
 <body>
   <se-app>
     <!-- <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
-      <se-form-field label="Username" required="true" option="stacked">
-        <input type="text"/>
-      </se-form-field>
-      <se-form-field label="Password" required="true" option="stacked">
-        <input type="password" />
-      </se-form-field>
-      <se-button onclick="closeLogin()" option="login" value="myLoginValue">Login</se-button>
+      <form onsubmit="closeLogin()">
+        <se-form-field label="Username" required="true" option="stacked">
+          <input type="text"/>
+        </se-form-field>
+        <se-form-field label="Password" required="true" option="stacked">
+          <input type="password" />
+        </se-form-field>
+        <se-button type="submit" option="login" value="myLoginValue">Login</se-button>
+      </form>
     </se-authentication> -->
     <se-header app-title="Test Advisor" project="Project name">
       <div slot="end">

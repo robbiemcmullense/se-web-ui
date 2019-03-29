@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element } from "@stencil/core";
+import { Component, Prop, Watch, Element, Listen } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -40,15 +40,7 @@ export class ListGroupComponent {
     if (!this.collapsed) {
       this.selected = false;
     } else {
-      let hasSelectedChild = false;
-      Array.from(
-        this.el.querySelectorAll("se-list-item, se-list-group")
-      ).forEach((item: any) => {
-        if (item.selected) {
-          hasSelectedChild = true;
-        }
-      });
-      this.selected = hasSelectedChild;
+      this.checkSelected();
     }
   }
   /**
@@ -61,6 +53,22 @@ export class ListGroupComponent {
    */
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
 
+
+  @Listen('didSelectedChange') ChildUpdated() {
+    this.checkSelected();
+  }
+
+  checkSelected(){
+    let hasSelectedChild = false;
+    Array.from(
+      this.el.querySelectorAll("se-list-item, se-list-group")
+    ).forEach((item: any) => {
+      if (item.selected) {
+        hasSelectedChild = true;
+      }
+    });
+    this.selected = hasSelectedChild;
+  }
 
   componentWillLoad() {
     Array.from(

@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State} from "@stencil/core";
+import { Component, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -20,7 +20,11 @@ export class ListItemComponent {
   /**
    * Define if the list element should be selected or not
    */
+
   @Prop() selected: boolean;
+  @Watch('selected') SelectedDidChange(){
+    this.didSelectedChange.emit()
+  }
 
   /**
    * Place an icon on the left side of the item list.
@@ -41,6 +45,12 @@ export class ListItemComponent {
    * Define the them of the list. This them will be handled and modified by the parent element
    */
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+
+  /**
+   * Event emitted to notify the item-group that the state of selected changed
+   */
+  @Event() didSelectedChange: EventEmitter<void>;
+
 
   @State() padding: number;
 
