@@ -1,6 +1,7 @@
 {
   "name": "@se/web-ui-angular",
   "version": "0.0.1-PLACEHOLDER",
+  "license": "MIT",
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },
