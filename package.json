@@ -11,10 +11,18 @@
     "build": "npm-run-all build.*",
     "build.core": "cd src-core && yarn build",
     "build.angular": "cd src-angular && yarn build",
-    "prepublish": "yarn build"
+    "release": "npm-run-all release.*",
+    "release.build": "yarn build",
+    "release.publish": "node publish.js"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "execa": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "listr": "^0.14.3",
+    "turbocolor": "^2.6.1"
+  }
 }
