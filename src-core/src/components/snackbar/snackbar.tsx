@@ -61,6 +61,10 @@ export class SnackbarComponent {
     }
   }
   
+  componentDidLoad() {
+    this.openDidChange();
+  }
+
   render() {
     return [
       <div class="snackbar">
