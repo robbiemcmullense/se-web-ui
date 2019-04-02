@@ -87,6 +87,7 @@ export class DialogComponent {
 
   componentDidLoad() {
     this.colorDidChange();
+    this.openDidChange();
   }
 
   hostData() {

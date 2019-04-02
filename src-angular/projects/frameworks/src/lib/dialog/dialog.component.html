@@ -1,0 +1,11 @@
+  <se-dialog [open]="dialog.open" [color]="dialog.color" [size]="dialog.size" (didClose)="closeDialog()" (backdrop)="backdropClick()">
+   <se-dialog-header *ngIf="dialog.title">{{dialog.title}}</se-dialog-header>
+    <se-dialog-content [icon]="dialog.icon" [iconColor]="dialog.iconColor" [option]="dialog.option">{{dialog.message}}</se-dialog-content>
+    <se-dialog-footer>
+      <se-button (click)="closeDialog()" color="alternative" *ngIf="dialog.textCancel">{{dialog.textCancel}}</se-button>
+      <se-button (click)="confirmDialog()" *ngIf="dialog.textCancel">{{dialog.textOK}}</se-button>
+      <se-button (click)="closeDialog()" *ngIf="!dialog.textCancel">{{dialog.textOK}}</se-button>
+    </se-dialog-footer>
+  </se-dialog>
+
+  
