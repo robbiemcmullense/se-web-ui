@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   public loader = false;
   public loaderTable = false;
   
-  constructor(private snackbarSvc:SnackbarService) {}
+  constructor(private snackbarService:SnackbarService) {}
 
   modalAlert(type: 'success' | 'warning' | 'error'): void {
      log.debug('modalAlert type', type);
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   showSnackbar(): void {
-    const snackbar=  this.snackbarSvc.open({
+    const snackbar=  this.snackbarService.open({
       open:true,
       message: 'This is info',
       canClose:true,
