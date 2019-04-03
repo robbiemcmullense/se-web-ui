@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService} from '@se/web-ui-angular';
+import {Logger} from '../../../../src_common/core/logger.service';
+const log = new Logger('ModalExampleComponent');
 
 @Component({
   selector: 'app-modal-example',
@@ -13,11 +15,11 @@ export class ModalExampleComponent implements OnInit {
 
   }
   closeModal() {
-    console.log("close modal by calling service method");
+    log.debug("close modal by calling service method");
     this.dialog.close();
   }
   submitModal(){
-    console.log("submit modal form");
+    log.debug("submit modal form");
     this.dialog.close();
   }
 }

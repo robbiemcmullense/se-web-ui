@@ -4,7 +4,7 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
 import { ModalTableComponent } from './modal-table/modal-table.component';
 import { DialogService} from '@se/web-ui-angular';
 const log = new Logger('HomeComponent');
-
+const logModal = new Logger('ModalExampleComponent');
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
   public loader = false;
   public loaderTable = false;
 
-  constructor(public dialogSvc:DialogService) {}
-
+  constructor(public dialogService:DialogService) {}
+  showDialogMessage:string;
   modalAlert(type: 'success' | 'warning' | 'error'): void {
     log.debug('modalAlert type', type);
 
@@ -49,8 +49,9 @@ export class HomeComponent implements OnInit {
 
   }
   //calling dialog alert service
-  showDialog(){
-    const alert = this.dialogSvc.alert({
+  showDialog():void{
+    this.showDialogMessage='';  
+    const alert = this.dialogService.alert({
      open:true, 
      size:'small',
      message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
@@ -58,13 +59,13 @@ export class HomeComponent implements OnInit {
     });
     
     alert.instance.didClose.subscribe((data:any)=>{
-     console.log('Alert Dialog closed & sent callback',data);
      this.closeAlertCallback();
    });
   }
   //calling dialog alert service with icon
-  showTitle(){
-    const title = this.dialogSvc.alert({
+  showTitle():void{
+    this.showDialogMessage='';  
+    const title = this.dialogService.alert({
      open:true, 
      size:'medium',
      color:'alternative',
@@ -75,14 +76,14 @@ export class HomeComponent implements OnInit {
      textOK:'Yes',
     });
     title.instance.didClose.subscribe((data:any)=>{
-     console.log('Confirm Dialog closed & sent callback',data);
-     this.closeAlertCallback();
+     this.closeAlertTitleCallback();
    });
    }
  
  //calling dialog confirm service
-  showConfirm(){
-  const confirm = this.dialogSvc.confirm({
+  showConfirm():void{
+  this.showDialogMessage='';  
+  const confirm = this.dialogService.confirm({
    open:true, 
    size:'medium',
    color:'alternative',
@@ -92,38 +93,47 @@ export class HomeComponent implements OnInit {
    textCancel:'No'
   });
   confirm.instance.didClose.subscribe((data:any)=>{
-   console.log('Confirm Dialog closed & sent callback',data);
    this.closeConfirmCallback();
  });
  confirm.instance.backdrop.subscribe((data:any)=>{
-   console.log('Alert Dialog backdrop click& sent callback',data);
-   this.closeConfirmCallback();
+   this.backdropCallback();
  });
  confirm.instance.didConfirm.subscribe((data:any)=>{
-   console.log('Alert Dialog backdrop click& sent callback',data);
    this.okConfirmCallback();
  });
  }
 
- closeAlertCallback(){
-   console.log("close alert call back function");
+ closeAlertCallback():void{
+  this.showDialogMessage ="Alert Dialog closed & callback function called"; 
  }
-
- closeConfirmCallback(){
-   console.log("close confirm call back function");
+ closeAlertTitleCallback():void{
+  this.showDialogMessage ="Alert Dialog with title,icon closed & callback function called"; 
  }
- okConfirmCallback(){
-   console.log("ok confirm call back function");
+ closeConfirmCallback():void{
+  this.showDialogMessage ="Confirm Dialog closed & callback function called"; 
+ }
+ okConfirmCallback():void{
+  this.showDialogMessage ="Confirm Dialog closed & callback function called"; 
+ }
+ backdropCallback():void{
+  this.showDialogMessage ="Confirm Dialog backdrop closed & callback function called"; 
  }
 
 //calling modal service
- showModal(){
-    this.dialogSvc.modal(ModalExampleComponent,{
+ showModal():void{
+    this.showDialogMessage='';  
+    const modal = this.dialogService.modal(ModalExampleComponent,{
       open:true, 
       size:'small',
       color:'alternative'
     }      
    ); 
+   modal.instance.backdrop.subscribe((data:any)=>{
+    this.closeBackdropCallback();
+  });
+    this.showDialogMessage ="Modal Dialog";
   }
-  
+  closeBackdropCallback():void{
+    this.showDialogMessage ="Modal Dialog backdrop click & callback function called"; 
+  }
 }
