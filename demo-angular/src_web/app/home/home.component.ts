@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- import { Logger } from '@core/logger.service';
-
+ import { Logger } from '../../../src_common/core/logger.service';
  import {SnackbarService} from '@se/web-ui-angular';
 
  const log = new Logger('HomeComponent');
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
   public selectable = true;
   public loader = false;
   public loaderTable = false;
-
+  
   constructor(private snackbarSvc:SnackbarService) {}
 
   modalAlert(type: 'success' | 'warning' | 'error'): void {
@@ -56,7 +55,7 @@ export class HomeComponent implements OnInit {
     });
   }
   confirmclick(){
-    console.log('closed');
+    log.debug('closed');
   }
   ngOnInit() {
 
