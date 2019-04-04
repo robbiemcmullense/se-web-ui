@@ -7,12 +7,12 @@ import { Component, Prop } from '@stencil/core';
 })
 export class SidemenuItemComponent {
   /**
-   * Define the title of the tab
+   * Defines the title of the menu item.
    */
   @Prop() item: string;
 
   /**
-   * Defines if the tab is active or not.
+   * Defines if the menu item is active or not.
    */
   @Prop({ mutable: true }) active = false;
 
@@ -26,6 +26,7 @@ export class SidemenuItemComponent {
       }
     };
   }
+
   render() {
     return (
       <slot></slot>

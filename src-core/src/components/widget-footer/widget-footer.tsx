@@ -7,8 +7,8 @@ import { Component, Prop } from "@stencil/core";
 })
 export class WidgetFooter {
   /**
-   * Define the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option.
-   * `card` will update the design of the footer regarding to the card design
+   * Defines the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option.
+   * `card` will update the design of the footer with respect to the card design.
    */
   @Prop() option: "card";
 

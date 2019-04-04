@@ -7,9 +7,8 @@ import { Component, Prop, Watch, Element } from "@stencil/core";
 })
 export class ListComponent {
   @Element() el: HTMLElement;
-
   /**
-   * Define the style of the list
+   * Defines the style of the list.  The default setting is `classic`.
    */
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
   @Watch('option') PropDidChange() {

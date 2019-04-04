@@ -8,13 +8,37 @@ import { AppInfo } from "../appInfo";
   shadow: true
 })
 export class AuthenticationComponent {
+  /**
+   * The title of your authentication screen.
+   */
   @Prop() appTitle: string;
+  /**
+   * The version number you want to display.
+   */
   @Prop() version: string;
+  /**
+   * An external link you would like to provide.
+   */
   @Prop() link: string = AppInfo.link;
+  /**
+   * A logo that you wish to display.
+   */
   @Prop() logo: string;
+  /**
+   * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
+   */
   @Prop() domain: string = AppInfo.domain;
+  /**
+   * The copyright you would like to display.
+   */
   @Prop() copyright: string = AppInfo.copyright;
+  /**
+   * Sets the background image for your authentication screen.
+   */
   @Prop() imageUrl: string;
+  /**
+   * If set to `true`, hides the authentication screen.
+   */
   @Prop() hide: boolean = false;
 
   hostData() {
@@ -25,7 +49,6 @@ export class AuthenticationComponent {
     };
   }
 
-  //[style.backgroundImage]="imageUrl"
   renderAuthentication() {
     var title = getFullTitle(this.appTitle);
     let domain;

@@ -12,7 +12,7 @@ export class CheckboxComponent {
    */
   @Prop() value: string;
   /**
-   * The label of the checkbox that will be attached to the box
+   * The label of the checkbox that will be attached to the box.
    */
   @Prop() label: string;
   /**

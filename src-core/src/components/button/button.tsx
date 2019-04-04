@@ -25,10 +25,8 @@ export class ButtonComponent {
       this.color = 'secondary'
     }
   }
-
-
   /**
-   * Optional property that defines the background color of the button. Default is standard.
+   * Optional property that defines the background color of the button. The default setting is `standard`.
    */
   @Prop({mutable: true}) color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard'
   /**
@@ -39,12 +37,10 @@ export class ButtonComponent {
    * Optional property that determines if your button includes an icon.
    */
   @Prop() icon: string;
-
   /**
    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
    */
   @Prop() iconColor: 'standard'|'alternative'|'primary'|'secondary';
-
    /**
    * Optional type property of the button.
    * `button`	The button is a clickable button (default)
@@ -52,48 +48,35 @@ export class ButtonComponent {
    * `reset`	The button is a reset button (resets the form-data to its initial values)
    */
   @Prop() type: 'button'|'submit'|'reset' = 'button';
-
    /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
   @Prop() disabled: boolean = false;
-
   /**
-   * Optional property that define if the button should be shown as selected. Used with `se-buttons`
+   * Optional property that defines if the button should be shown as selected. Used with `se-radio`
    */
   @Prop({mutable: true}) selected: boolean;
   /**
    * Passes button data to the parent component on a click.
    */
+  @State() grouped: boolean;
+  @State() hasChild: boolean;
   @Event() didClick: EventEmitter<any>;
-
   /**
-   * Set the disabled property for your button from the parent component.
+   * Setd the disabled property for your button from the parent component.
    * @param val set to `true` or `false`.
    */
   @Method()
   setDisabled(val: boolean): void {
     this.disabled = val;
   }
-
-  @State() grouped: boolean;
   /**
-   * Indicate if the button is part of a group of buttons within the `se-buttons` component.
+   * Indicates if the button is part of a group of buttons within the `se-radio` component.
    */
   @Method()
   setGrouped() {
     this.grouped = true
   }
-
-  toggle() {
-    if(this.disabled) return;
-
-    if (this.grouped) {
-      this.selected = !this.selected;
-      this.didClick.emit({selected: this.selected, value: this.value});
-    }
-  }
-
 
   @Listen('click')
   buttonClickedHandler(ev: Event) {
@@ -116,10 +99,16 @@ export class ButtonComponent {
     }
   }
 
-  @State() hasChild: boolean;
+  toggle() {
+    if(this.disabled) return;
+
+    if (this.grouped) {
+      this.selected = !this.selected;
+      this.didClick.emit({selected: this.selected, value: this.value});
+    }
+  }
 
   componentWillLoad() {
-    // console.log('Slot: ', this.el.innerHTML)
     this.hasChild = this.el.innerHTML && this.el.innerHTML.length > 0;
     this.optionDidChange();
   }
