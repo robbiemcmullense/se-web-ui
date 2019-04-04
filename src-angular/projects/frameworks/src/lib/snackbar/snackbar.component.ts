@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 import {SnackbarConfig} from './snackbar-config';
 
 @Component({
@@ -6,7 +6,7 @@ import {SnackbarConfig} from './snackbar-config';
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.scss']
 })
-export class SnackbarComponent implements OnInit {
+export class SnackbarComponent{
   /**
    * @description on close even emitter 
    */
@@ -15,10 +15,6 @@ export class SnackbarComponent implements OnInit {
 
   constructor(public config:SnackbarConfig) { }
  
-  ngOnInit() {
-   
-  }
-
   /**
    * @name closeEvent
    * @description event emitter on closing of snackbar from angular component

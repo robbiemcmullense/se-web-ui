@@ -28,7 +28,7 @@ export class SnackbarComponent {
   /**
    * Display a close "button".
    */
-  @Prop() canClose: boolean = true;
+  @Prop() canClose: boolean = false;
   /**
    * Defines the text you want your "close button" to read.
    */

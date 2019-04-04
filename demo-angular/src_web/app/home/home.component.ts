@@ -42,12 +42,7 @@ export class HomeComponent implements OnInit {
 
   showSnackbar(): void {
     const snackbar=  this.snackbarService.open({
-      open:true,
-      message: 'This is info',
-      canClose:true,
-      closeText:'Dismiss',
-      icon:'information_stroke',
-     // duration:800
+      message: 'This is info'
     })
     snackbar.instance.didClose.subscribe((data:any) => {
       // do something

@@ -2,10 +2,7 @@
  * @description Configuration for opening snackbar with the SnackbarService.
  */
 export class SnackbarConfig {
-    /**
-   * @description open property to open snackbar.
-   */
-    open: boolean=false;
+
     /**
      * @description type of snackbar :'success' | 'error' | 'warning' | 'information'
      */
@@ -24,7 +21,7 @@ export class SnackbarConfig {
     /**
     * @description canClose boolean flag to set whether close button is required in snackbar component.
     */
-    canClose: boolean;
+    canClose?: boolean;
 
     /**
     * @description closeText passed to displayed on close button in snackbar component.

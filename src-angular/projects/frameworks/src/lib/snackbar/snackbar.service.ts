@@ -76,11 +76,13 @@ export class SnackbarService {
    * @param canClose 
    */
   autoDismiss(canClose: boolean,duration:number) {
+    let delay=duration?duration:5000;
     if (!canClose) {
       setTimeout(() => {
         this.removeSnackBarComponent();
-      }, duration);
+      }, delay);
     }
   }
+  
 
 }

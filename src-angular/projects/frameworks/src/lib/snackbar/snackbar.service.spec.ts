@@ -30,7 +30,6 @@ describe('SnackbarService', () => {
   it('should call append Snackbar Component To Body',()=>{
     const service: SnackbarService = TestBed.get(SnackbarService);
     const config:SnackbarConfig={
-      open: true,
       type: 'success',
       message: 'This is info',
       canClose: true,
@@ -47,7 +46,6 @@ describe('SnackbarService', () => {
   it('should set open property true', () => {
     const service: SnackbarService = TestBed.get(SnackbarService);
     const item = service.open({
-      open: true,
       type: 'success',
       message: 'This is info',
       canClose: true,
@@ -61,7 +59,6 @@ describe('SnackbarService', () => {
   it('should remove snackbar', () => {
     const service: SnackbarService = TestBed.get(SnackbarService);
     service.open({
-      open: true,
       type: 'success',
       message: 'This is info',
       canClose: true,
@@ -77,7 +74,6 @@ describe('SnackbarService', () => {
     jasmine.clock().install();
     const service: SnackbarService = TestBed.get(SnackbarService);
     service.open({
-      open: true,
       type: 'success',
       message: 'This is info',
       canClose: false,
