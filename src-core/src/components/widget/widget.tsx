@@ -52,7 +52,7 @@ export class WidgetComponent {
    */
   @Prop({ mutable: true }) loading: boolean = false;
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.updateSize();
     this.updateItemMode();
   }
