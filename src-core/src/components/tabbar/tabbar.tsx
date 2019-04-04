@@ -6,6 +6,11 @@ import { Component, Prop } from '@stencil/core';
   shadow: false
 })
 export class TabbarComponent {
+  /**
+   * Indicates the color of your tab bar.
+   * Default setting is `primary`, rendering a green background.
+   * The `alternative` setting renders a white background.
+   */
   @Prop() color: 'primary' | 'alternative' = 'primary';
 
   render() {

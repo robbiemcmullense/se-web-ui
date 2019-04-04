@@ -18,8 +18,8 @@ export class DropdownComponent {
   @Event() didClose: EventEmitter;
   /**
    * Define how to align the dropdown container.
-   * `left`: Position the container regarding to the left side of the trigger element
-   * `right`: Position the container regarding to the right side of the trigger element
+   * `left`: Position the container regarding to the left side of the trigger element.
+   * `right`: Position the container regarding to the right side of the trigger element.
    */
   @Prop() alignment: 'left'|'right' = 'left';
   @State() opened: boolean = false;

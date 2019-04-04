@@ -6,6 +6,9 @@ import { Component, Prop } from "@stencil/core";
   shadow: true
 })
 export class IconEcostruxureComponent {
+  /**
+   * Sets the size of the EcoStruxure icon.  The default setting is `small`.
+   */
   @Prop() size: "small" | "medium" = "small";
 
   hostData() {

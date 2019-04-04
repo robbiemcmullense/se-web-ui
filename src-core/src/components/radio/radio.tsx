@@ -17,7 +17,7 @@ export class RadioComponent {
     this.updateItemMode()
   }
   /**
-   * Optional property that defines the background color of each button in the group.
+   * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
    */
   @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
   /**
@@ -28,13 +28,14 @@ export class RadioComponent {
     this.updateItemMode()
   }
   /**
-   * Define the selected values of the array.
+   * Defines the selected values of the array.
    */
   @Prop({mutable: true}) value: string | string[];
   /**
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */
   @Event() didChange: EventEmitter;
+  
   @Listen('didClick')
   buttonClickedHandler(event: CustomEvent) {
     let buttonInfo = event.detail;

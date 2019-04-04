@@ -12,23 +12,21 @@ export class DialogComponent {
   backdropEl?: HTMLElement;
   menuInnerEl?: HTMLElement;
   @Element() el: HTMLElement;
-
   /**
-   * Define the size of the modal.
-   * `small`: used by alert and message
-   * `medium`: used by other app
-   * `fill`: take the full space of the screen
+   * Defines the size of the modal.
+   * `small`: used in alerts and messages
+   * `medium`: default setting, used by other apps
+   * `fill`: takes the full space of the screen
    */
   @Prop() size: "small" | "medium" | "large" | "fill" = "medium";
-
   /**
-   * Define the color of the dialog header.
+   * Defines the color of the dialog header.
    * `alternative`: Alternative background with primary color for the text
-   * `primary`: Primary color schema.
+   * `primary`: Primary color schema and default setting.
    */
   @Prop() color: 'alternative' | 'primary' = 'primary'
   /**
-   * Indicates whether or not the dialog is open (`true`) or closed (`false`).
+   * Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.
    */
   @Prop() open: boolean = false;
 
@@ -55,11 +53,12 @@ export class DialogComponent {
     this.backdrop.emit();
   }
   /**
-   * event emitted when the backdrop is clicked.
+   * Send data to the parent component when the backdrop is clicked.
    */
   @Event() backdrop: EventEmitter<any>;
   /**
-   * event emitted after the animation of closing is done. The modal can be safely removed from the DOM
+   * Send data to the parent component when clicking an element within the dialog to close it.
+   * The modal can be safely removed from the DOM.
    */
   @Event() didClose: EventEmitter<any>;
 

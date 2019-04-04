@@ -8,11 +8,29 @@ import { AppInfo } from "../appInfo";
   shadow: true
 })
 export class AboutComponent {
+  /**
+   * The title of your about screen.
+   */
   @Prop() appTitle: string;
+  /**
+   * The version number you want to display.
+   */
   @Prop() version: string;
+  /**
+   * An external link you would like to provide.
+   */
   @Prop() link: string = AppInfo.link;
+  /**
+   * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
+   */
   @Prop() domain: string = AppInfo.domain;
+  /**
+   * The copyright you would like to display.
+   */
   @Prop() copyright: string = AppInfo.copyright;
+  /**
+   * Sets the background image for your about page.
+   */
   @Prop() imageUrl: string;
 
   render() {
