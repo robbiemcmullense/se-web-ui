@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
- import { Logger } from '../../../src_common/core/logger.service';
- import {SnackbarService} from '@se/web-ui-angular';
+import { Logger } from '@core/logger.service';
+import {SnackbarService} from '@se/web-ui-angular';
 
- const log = new Logger('HomeComponent');
+const log = new Logger('HomeComponent');
 
 @Component({
   selector: 'app-home',
@@ -21,16 +21,16 @@ export class HomeComponent implements OnInit {
   public selectable = true;
   public loader = false;
   public loaderTable = false;
-  
+
   constructor(private snackbarService:SnackbarService) {}
 
   modalAlert(type: 'success' | 'warning' | 'error'): void {
-     log.debug('modalAlert type', type);
+    log.debug('modalAlert type', type);
 
   }
 
   modalConfirm(type: 'success' | 'warning' | 'error'): void {
-     log.debug('modalConfirm type', type);
+    log.debug('modalConfirm type', type);
   }
 
   modalExample(): void {
@@ -41,15 +41,16 @@ export class HomeComponent implements OnInit {
   }
 
   showSnackbar(): void {
-    const snackbar=  this.snackbarService.open({
-      message: 'This is info'
+    const snackbar = this.snackbarService.open({
+      message: 'This is info',
+      canClose:true
     })
-    snackbar.instance.didClose.subscribe((data:any) => {
+    snackbar.instance.didClose.subscribe((data: any) => {
       // do something
       this.confirmclick();
     });
   }
-  confirmclick(){
+  confirmclick() {
     log.debug('closed');
   }
   ngOnInit() {
