@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { ModalExampleComponent } from './modal-example.component';
-import { MatDialogRef } from '@angular/material/dialog';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ModalExampleComponent', () => {
   let component: ModalExampleComponent;
@@ -8,10 +9,12 @@ describe('ModalExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ModalExampleComponent],
-      imports: [],
-      providers: [{ provide: MatDialogRef }]
-    }).compileComponents();
+      declarations: [ ModalExampleComponent ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {

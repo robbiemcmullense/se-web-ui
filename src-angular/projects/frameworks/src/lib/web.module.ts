@@ -1,3 +1,4 @@
+import { DialogService } from './dialog/dialog.service';
 import {
   APP_INITIALIZER,
   NgModule,
@@ -6,9 +7,10 @@ import {
 } from "@angular/core";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { appInitialize } from "./initialize";
-
+import { DialogModule} from "./dialog/dialog.module";
+export { DialogService} from "./dialog/dialog.service";
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule,DialogModule],
   declarations: [],
   providers: [],
   entryComponents: [],

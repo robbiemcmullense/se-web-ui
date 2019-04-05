@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { DialogService} from '@se/web-ui-angular';
+import {Logger} from '../../../../src_common/core/logger.service';
+const log = new Logger('ModalExampleComponent');
 
 @Component({
-  selector: 'modal-example',
+  selector: 'app-modal-example',
   templateUrl: './modal-example.component.html',
   styleUrls: ['./modal-example.component.scss']
 })
 export class ModalExampleComponent implements OnInit {
-  public title: string;
-
-  constructor(public dialogRef: MatDialogRef<ModalExampleComponent>) {}
+  constructor(private dialog:DialogService) { }
 
   ngOnInit() {
-    this.title = 'Modal Header';
-  }
 
-  closeDialog(): void {
-    this.dialogRef.close();
+  }
+  closeModal() {
+    log.debug("close modal by calling service method");
+    this.dialog.close();
+  }
+  submitModal(){
+    log.debug("submit modal form");
+    this.dialog.close();
   }
 }
