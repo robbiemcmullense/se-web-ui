@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                  | Default   |
-| -------- | --------- | ----------- | --------------------- | --------- |
-| `size`   | `size`    |             | `"medium" \| "small"` | `"small"` |
+| Property | Attribute | Description                                                             | Type                  | Default   |
+| -------- | --------- | ----------------------------------------------------------------------- | --------------------- | --------- |
+| `size`   | `size`    | Sets the size of the EcoStruxure icon.  The default setting is `small`. | `"medium" \| "small"` | `"small"` |
 
 
 ----------------------------------------------

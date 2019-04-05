@@ -11,12 +11,10 @@ export class ChipComponent {
    * The text you want to display in your chip.
    */
   @Prop() value: string;
-
   /**
-   * Optional property that defines the background color of the button.
+   * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
   @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
-
   /**
    * Indicates whether or not the chip has a close button.  Set to `true` by default.
    */

@@ -13,19 +13,16 @@ export class RadioOnOffComponent {
    * Use `header` if the on/off radio switch is within a header element to reduce its visual height.
    */
   @Prop() option: 'default' | 'header' = 'default';
-
- /**
-   * Optional property that defines the background color of the button. Default is standard.
+  /**
+   * Defines the background color of the button. Default is `standard`, rendering a light gray background color.
    */
   @Prop() color: 'standard' | 'alternative' = 'standard';
-
-
   /**
-   * Defines the text the user will see for the "on" or "active" part of the radio switch.
+   * Defines the text the user will see for the "on" or "active" part of the radio switch.  Set to `ON` by default.
    */
   @Prop() textOn: string = 'ON';
   /**
-   * Defines the text the user will see for the "off" or "inactive" part of the radio switch.
+   * Defines the text the user will see for the "off" or "inactive" part of the radio switch.  Set to `OFF` by default.
    */
   @Prop() textOff: string = 'OFF';
   /**
@@ -72,5 +69,4 @@ export class RadioOnOffComponent {
         <button class={['inactive', !this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOff}</button>
     ];
   }
-
 }

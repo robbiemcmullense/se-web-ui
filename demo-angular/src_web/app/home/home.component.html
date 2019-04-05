@@ -41,7 +41,12 @@
 
       <se-divider></se-divider>
       <se-button option="flat" color="primary" (click)="showSnackbar()">Show Snackbar</se-button>
-    </se-widget-content> 
+      <se-button option="flat" color="primary" (click)="showDialog()">Dialog Simple</se-button>
+      <se-button option="flat" color="primary" (click)="showTitle()">Dialog With Title & Icon</se-button>
+      <se-button option="flat" color="primary" (click)="showConfirm()">Dialog Complex</se-button>
+      <se-button option="flat" color="primary" (click)="showModal()">Dialog Modal</se-button>
+      <p>{{showDialogMessage}}</p>
+    </se-widget-content>
     <se-widget-footer fxLayoutAlign="row">
       <se-button option="flat" color="primary">Flat</se-button>
       <se-button option="raised" color="primary">Raised</se-button>

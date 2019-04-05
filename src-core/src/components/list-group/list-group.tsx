@@ -7,48 +7,41 @@ import { Component, Prop, Watch, Element, Listen } from "@stencil/core";
 })
 export class ListGroupComponent {
   @Element() el: HTMLElement;
-
   /**
-   * Define the title of the item
+   * Defines the title of the item.
    */
   @Prop() item: string;
   /**
-   * Define description of the item. placed under the title of the item.
+   * Defines the description of the item, placed under its title.
    */
   @Prop() description: string;
-
   /**
-   * Define if the list group should be displayed as selected (if one of its child is selected when collapsed)
+   * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
    */
   @Prop({ mutable: true }) selected: boolean;
-
   /**
-   * Place an icon on the left side of the item list.
+   * Places an icon on the left side of the item list.
    */
   @Prop() icon: string;
-
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
    */
   @Prop() iconColor: "primary" | "secondary";
-
   /**
-   * Define if item group is collapsed/closed. a `se-list-group` cannot be selected from the outside
+   * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
    */
   @Prop({ mutable: true }) collapsed: boolean = false;
   @Watch("collapsed") collapsedChanged() {
     this.checkSelected();
   }
   /**
-   * Define the group indentation to add paddings to the list item (used when multiple list group)
+   * Define the group indentation to add paddings to the list item (used with multiple list groups).
    */
   @Prop() indentation: number = 0;
-
   /**
-   * Define the them of the list. This them will be handled and modified by the parent element
+   * Defines the theme of the list. This them will be handled and modified by the parent element.
    */
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
-
 
   @Listen('didSelectedChange') ChildUpdated() {
     this.checkSelected();

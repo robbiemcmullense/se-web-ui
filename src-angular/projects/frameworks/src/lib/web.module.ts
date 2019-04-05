@@ -6,15 +6,25 @@ import {
 } from "@angular/core";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { appInitialize } from "./initialize";
-import {SnackbarModule} from './snackbar/snackbar.module';
+import { SnackbarModule } from './snackbar/snackbar.module';
+import { DialogModule } from "./dialog/dialog.module";
+
 export * from './snackbar/snackbar.service';
+export * from './dialog/dialog.service';
 
 @NgModule({
-  imports: [CommonModule,SnackbarModule],
+  imports: [
+    CommonModule,
+    DialogModule,
+    SnackbarModule
+  ],
   declarations: [],
   providers: [],
   entryComponents: [],
-  exports:[SnackbarModule],
+  exports:[
+    SnackbarModule,
+    DialogModule
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SeWebModule {

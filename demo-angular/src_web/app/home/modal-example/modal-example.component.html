@@ -1,8 +1,10 @@
-<se-modal [title]="title">
-  <div>
-    This is an example Modal using Angular Material.
-  </div>
-  <footer>
-    <button mat-flat-button (click)="closeDialog()">OK</button>
-  </footer>
-</se-modal>
+<se-dialog-header>Login</se-dialog-header>
+<se-dialog-content>
+    <se-form-field id="input-form" label="Input" required="true">
+        <input type="text" />
+    </se-form-field>
+    <se-form-field id="input-form1" label="Password" required="true">
+            <input type="password" />
+    </se-form-field>
+</se-dialog-content>
+<se-dialog-footer><se-button (click)="closeModal()" color="alternative">Cancel</se-button><se-button (click)="submitModal()">Submit</se-button></se-dialog-footer>

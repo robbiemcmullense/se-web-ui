@@ -20,7 +20,6 @@ export class RadioSwitchComponent {
 	 * Send the state of the switch (true/false) to the parent component when it is toggled.
 	 */
 	@Event() didChange: EventEmitter;
-
 	@Element() el: HTMLElement;
 	
 	emitEvent() {

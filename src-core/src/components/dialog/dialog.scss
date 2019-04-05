@@ -5,6 +5,7 @@
   display: none !important;
   z-index: 100;
   background-color: transparent !important;
+  line-height:1.4;
 }
 :host(.show-dialog) {
   display: block !important;

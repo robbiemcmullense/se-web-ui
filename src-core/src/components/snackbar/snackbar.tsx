@@ -14,11 +14,11 @@ export class SnackbarComponent {
    * `success`: green
    * `warning`: orange
    * `error`: red
-   * `information`: dark grey
+   * `information`: dark grey, default setting
    */
   @Prop() type: 'success' | 'error' | 'warning' | 'information' = 'information';
   /**
-   * The name of the icon you wish to display.  Optional.
+   * The name of the icon you wish to display.  The default icon is an information circle.
    */
   @Prop() icon: string = 'information_circle';
   /**
@@ -26,15 +26,15 @@ export class SnackbarComponent {
    */
   @Prop() message: string;
   /**
-   * Display a close "button".
+   * Display a close "button".  Visible by default.
    */
   @Prop() canClose: boolean = false;
   /**
-   * Defines the text you want your "close button" to read.
+   * Defines the text you want your "close button" to read.  Default text is `dismiss`.
    */
   @Prop() closeText: string = 'dismiss';
   /**
-   * Indicates if the snackbar is open.
+   * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
   @Prop({mutable: true}) open: boolean = false;
   @Watch('open') openDidChange() {

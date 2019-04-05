@@ -7,52 +7,48 @@ import { Component, Prop, Watch, Element } from "@stencil/core";
 })
 export class WidgetComponent {
   @Element() el: HTMLElement;
-
   /**
-   * Define the visual appearance of a widget. The default widget gives a small padding of the widget.
+   * Defines the visual appearance of a widget.
    * `fill` will remove any spacing.
-   * `card` will create a card look and fell with shadow and rounded corner
+   * `card` will create a card look and feel with shadow and rounded corner
    */
   @Prop() option: "fill" | "card";
-
   /**
    * Defines how to display the element.
-   * `flex` Default. Will make all element fitting in the .
-   * `block` Help in specific cases. Make sure you know that you are doing.
+   * `flex` is the default display.
+   * `block` helps in specific cases. Make sure you know what you are doing.
    */
   @Prop() display: "flex" | "block" | "grid" = "flex";
-
   /**
-   * Optional property that defines the background color of the widget. default is alternative (white)
+   * Optional property that defines the background color of the widget. Default setting is `alternative` (white).
    */
   @Prop() color: "standard" | "alternative" = "alternative";
   /**
-   * Define a specific width of a widget. useful to create easy layout under `se-container` which use `flex` by default.
+   * Defines a specific width of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
    */
   @Prop() width: string;
   @Watch("width") widthDidChange() {
     this.updateSize();
   }
-
   /**
-   * Define a specific height of a widget. useful to create easy layout under `se-container` which use `flex` by default.
+   * Defines a specific height of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
    */
   @Prop() height: string;
   @Watch("height") heightDidChange() {
     this.updateSize();
   }
-
   /**
-   * When on Grid display, define if the widget should be a 2/2 instead of a small 1/1 grid item.
+   * When on Grid display, determines if the widget should be a 2/2 instead of a small 1/1 grid item.
+   * Default setting is `false` (1/1).
    */
   @Prop({mutable: true}) enlarged: boolean = false;
 
   /**
-   * Display the loading icon if set to `true`.
+   * Display the loading icon if set to `true`.  Default setting is `false`.
    */
   @Prop({ mutable: true }) loading: boolean = false;
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.updateSize();
     this.updateItemMode();
   }

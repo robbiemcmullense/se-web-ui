@@ -8,8 +8,8 @@ import { Component, Prop } from "@stencil/core";
 export class IconLifeisonComponent {
    /**
    * Define the color of the logo.
-   * `standard`: Default. show a light green / dark green conventional SE logo.
-   * `inherited`: `take the color from it's parent.
+   * `standard`: displays a light green / dark green conventional SE logo.
+   * `inherited`: default option, which takes the color from it's parent.
    */
   @Prop() color: "standard" | "inherited" = "inherited";
 

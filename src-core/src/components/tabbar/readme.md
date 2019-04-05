@@ -11,9 +11,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                         | Default     |
-| -------- | --------- | ----------- | ---------------------------- | ----------- |
-| `color`  | `color`   |             | `"alternative" \| "primary"` | `'primary'` |
+| Property | Attribute | Description                                                                                                                                            | Type                         | Default     |
+| -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- | ----------- |
+| `color`  | `color`   | Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background. | `"alternative" \| "primary"` | `'primary'` |
 
 
 ----------------------------------------------
