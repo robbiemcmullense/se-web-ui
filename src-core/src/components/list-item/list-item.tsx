@@ -9,55 +9,42 @@ export class ListItemComponent {
 
   @Element() el: HTMLElement;
   /**
-   * Define the title of the item
+   * Defines the title of the item.
    */
   @Prop() item: string;
   /**
-   * Define description of the item. placed under the title of the item.
+   * Defines the description of the item. placed under its title.
    */
   @Prop() description: string;
-
   /**
-   * Define if the list element should be selected or not
+   * Defines if the list element should be selected or not.
    */
-
   @Prop() selected: boolean;
-  @Watch('selected') SelectedDidChange(){
-    this.didSelectedChange.emit()
-  }
 
   /**
-   * Place an icon on the left side of the item list.
+   * Places an icon on the left side of the item list.
    */
   @Prop() icon: string;
-
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
    */
   @Prop() iconColor: "primary" | "secondary";
-
   /**
-   * Define the group indentation to add paddings to the list item (used when multiple list group)
+   * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
   @Prop() indentation: number = 0;
-
   /**
-   * Define the them of the list. This them will be handled and modified by the parent element
+   * Define the theme of the list. This them will be handled and modified by the parent element.
    */
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
-
+  @State() padding: number;
   /**
-   * Event emitted to notify the item-group that the state of selected changed
+   * Event emitted to notify the item-group that the selected state has changed.
    */
   @Event() didSelectedChange: EventEmitter<void>;
 
-
-  @State() padding: number;
-
-  hostData() {
-    return {
-      class: [this.selected && "selected", this.option].join(" ")
-    };
+  @Watch('selected') SelectedDidChange(){
+    this.didSelectedChange.emit()
   }
 
   componentDidLoad() {
@@ -65,6 +52,12 @@ export class ListItemComponent {
     if (this.option === "treeview") {
       this.padding += 24;
     }
+  }
+
+  hostData() {
+    return {
+      class: [this.selected && "selected", this.option].join(" ")
+    };
   }
 
   render() {

@@ -10,14 +10,13 @@ export class LinkComponent {
    * Defines the url the user should get redirected to when clicking on the link.
    */
   @Prop() url: string;
-
   /**
    * Determines whether or not the link is disabled.
    */
   @Prop() disabled: boolean;
   /**
    * Default setting is `internal`.
-   * Set to `external` adds an underline to the link, and opens the link in a new web browser tab.
+   * The `external` setting adds an underline to the link, and opens the link in a new web browser tab.
    */
   @Prop() type: 'internal' | 'external' = 'internal';
 

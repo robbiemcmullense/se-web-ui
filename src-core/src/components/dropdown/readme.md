@@ -10,9 +10,9 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                                                                                                                                                                                     | Type                | Default  |
-| ----------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
-| `alignment` | `alignment` | Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element `right`: Position the container regarding to the right side of the trigger element | `"left" \| "right"` | `'left'` |
+| Property    | Attribute   | Description                                                                                                                                                                                                       | Type                | Default  |
+| ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
+| `alignment` | `alignment` | Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element. | `"left" \| "right"` | `'left'` |
 
 
 ## Events

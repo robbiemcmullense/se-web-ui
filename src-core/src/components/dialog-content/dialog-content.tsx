@@ -6,8 +6,17 @@ import { Component,Prop } from "@stencil/core";
   shadow: true
 })
 export class DialogContentComponent {
+  /**
+   * When set to `fill`, content will fill the whole space of the dialog.
+   */
   @Prop() option: 'fill';
+  /**
+   * Indicates an icon you want to display in your dialog.
+   */
   @Prop() icon: string;
+  /**
+   * Indicates what color schema you want to render in your dialog.
+   */
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
 
   hostData() {

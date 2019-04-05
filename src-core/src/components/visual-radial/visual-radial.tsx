@@ -7,7 +7,7 @@ import { Component, Prop, State, Watch } from "@stencil/core";
 })
 export class VisualRadialComponent {
   /**
-   * Determines the visual size of your circular progress bar.
+   * Determines the visual size of your circular progress bar.  Default setting is `large`.
    */
   @Prop() size: 'small' | 'large' = 'large';
 	/**
