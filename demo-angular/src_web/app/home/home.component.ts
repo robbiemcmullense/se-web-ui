@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Logger } from '@core/logger.service';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 import { ModalTableComponent } from './modal-table/modal-table.component';
-import { DialogService} from '@se/web-ui-angular';
+import { DialogService, SnackbarService} from '@se/web-ui-angular';
 const log = new Logger('HomeComponent');
 const logModal = new Logger('ModalExampleComponent');
 @Component({
@@ -22,9 +22,10 @@ export class HomeComponent implements OnInit {
   public selectable = true;
   public loader = false;
   public loaderTable = false;
+  public showDialogMessage:string;
 
-  constructor(public dialogService:DialogService) {}
-  showDialogMessage:string;
+  constructor(public dialogService:DialogService, private snackbarService:SnackbarService) {}
+  
   modalAlert(type: 'success' | 'warning' | 'error'): void {
     log.debug('modalAlert type', type);
 
@@ -41,10 +42,19 @@ export class HomeComponent implements OnInit {
 
   }
 
-  showSnackbar(type: 'info' | 'success' | 'warning' | 'error', showIcon: boolean, message: string): void {
-
+  showSnackbar(): void {
+    const snackbar = this.snackbarService.open({
+      message: 'This is info',
+      canClose:true
+    })
+    snackbar.instance.didClose.subscribe((data: any) => {
+      // do something
+      this.confirmclick();
+    });
   }
-
+  confirmclick() {
+    log.debug('closed');
+  }
   ngOnInit() {
 
   }

@@ -1,4 +1,3 @@
-import { DialogService } from './dialog/dialog.service';
 import {
   APP_INITIALIZER,
   NgModule,
@@ -7,13 +6,25 @@ import {
 } from "@angular/core";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { appInitialize } from "./initialize";
-import { DialogModule} from "./dialog/dialog.module";
-export { DialogService} from "./dialog/dialog.service";
+import { SnackbarModule } from './snackbar/snackbar.module';
+import { DialogModule } from "./dialog/dialog.module";
+
+export * from './snackbar/snackbar.service';
+export * from './dialog/dialog.service';
+
 @NgModule({
-  imports: [CommonModule,DialogModule],
+  imports: [
+    CommonModule,
+    DialogModule,
+    SnackbarModule
+  ],
   declarations: [],
   providers: [],
   entryComponents: [],
+  exports:[
+    SnackbarModule,
+    DialogModule
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SeWebModule {

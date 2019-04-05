@@ -28,7 +28,7 @@ export class SnackbarComponent {
   /**
    * Display a close "button".  Visible by default.
    */
-  @Prop() canClose: boolean = true;
+  @Prop() canClose: boolean = false;
   /**
    * Defines the text you want your "close button" to read.  Default text is `dismiss`.
    */
@@ -61,6 +61,10 @@ export class SnackbarComponent {
     }
   }
   
+  componentDidLoad() {
+    this.openDidChange();
+  }
+
   render() {
     return [
       <div class="snackbar">
