@@ -35,6 +35,8 @@ describe('DialogComponent', () => {
   it('should emit closedialog',()=>{
     spyOn(component.didClose, 'emit');
     // trigger the click
+    fixture.componentInstance.type='confirm';
+    fixture.detectChanges();
     const nativeElement = fixture.nativeElement;
     const button = nativeElement.querySelector('se-button');
     button.dispatchEvent(new Event('click'));

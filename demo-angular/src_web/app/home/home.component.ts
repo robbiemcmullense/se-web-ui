@@ -50,12 +50,8 @@ export class HomeComponent implements OnInit {
   }
   //calling dialog alert service
   showDialog():void{
-    this.showDialogMessage='';  
     const alert = this.dialogService.alert({
-     open:true, 
-     size:'small',
      message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-     textOK:'Ok'
     });
     
     alert.instance.didClose.subscribe((data:any)=>{
@@ -64,16 +60,10 @@ export class HomeComponent implements OnInit {
   }
   //calling dialog alert service with icon
   showTitle():void{
-    this.showDialogMessage='';  
     const title = this.dialogService.alert({
-     open:true, 
-     size:'medium',
-     color:'alternative',
      title:'Dialog With Title & Icon',
      message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
      icon:'help_wired_flat',
-     iconColor:'primary',
-     textOK:'Yes',
     });
     title.instance.didClose.subscribe((data:any)=>{
      this.closeAlertTitleCallback();
@@ -82,15 +72,9 @@ export class HomeComponent implements OnInit {
  
  //calling dialog confirm service
   showConfirm():void{
-  this.showDialogMessage='';  
   const confirm = this.dialogService.confirm({
-   open:true, 
-   size:'medium',
-   color:'alternative',
    title:'Dialog Confirm',
    message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-   textOK:'Yes',
-   textCancel:'No'
   });
   confirm.instance.didClose.subscribe((data:any)=>{
    this.closeConfirmCallback();
@@ -121,14 +105,8 @@ export class HomeComponent implements OnInit {
 
 //calling modal service
  showModal():void{
-    this.showDialogMessage='';  
-    const modal = this.dialogService.modal(ModalExampleComponent,{
-      open:true, 
-      size:'small',
-      color:'alternative'
-    }      
-   ); 
-   modal.instance.backdrop.subscribe((data:any)=>{
+    const modal = this.dialogService.modal(ModalExampleComponent);     
+    modal.instance.backdrop.subscribe((data:any)=>{
     this.closeBackdropCallback();
   });
     this.showDialogMessage ="Modal Dialog";

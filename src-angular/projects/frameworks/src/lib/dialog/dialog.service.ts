@@ -25,7 +25,7 @@ export class DialogService {
    * @param config
    * @description method to create dialog component dynamically
    */
-  public createDialogComponent(componentType: Type<any>,config:DialogConfig){
+  public createDialogComponent(componentType: Type<any>,config?:DialogConfig){
      const map = new WeakMap();
      map.set(DialogConfig, config);      
     this.componentRef = this.componentFactoryResolver.resolveComponentFactory(componentType)
@@ -44,6 +44,7 @@ export class DialogService {
 
   public alert(config:DialogConfig){
     let alertDialogRef = this.createDialogComponent(DialogComponent,config);
+    alertDialogRef.instance.type ='alert';
     alertDialogRef.instance.didClose.subscribe(() => {
       this.close();
     });
@@ -59,6 +60,7 @@ export class DialogService {
    */
   public confirm(config:DialogConfig){
     let confirmDialogRef = this.createDialogComponent(DialogComponent,config);
+    confirmDialogRef.instance.type ='confirm';
     confirmDialogRef.instance.didClose.subscribe(() => {
       this.close();
     });
@@ -74,7 +76,7 @@ export class DialogService {
    * @description method to open modal dialog
    */ 
  
-  public modal(componentType: Type<any>,config:DialogConfig){
+  public modal(componentType: Type<any>,config?:DialogConfig){
     let modalDialogRef = this.createDialogComponent(DialogModalComponent,config);
     this.componentRef.instance.childComponentType = componentType;
     return modalDialogRef;

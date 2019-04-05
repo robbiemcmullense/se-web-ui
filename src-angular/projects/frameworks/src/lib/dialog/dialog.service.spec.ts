@@ -30,7 +30,6 @@ describe('DialogService', () => {
   it('should call create component',()=>{
     const service: DialogService = TestBed.get(DialogService);
     const config ={
-      open:true, 
       title:'Dialog title',
       message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       textOK:'Ok'
@@ -41,21 +40,18 @@ describe('DialogService', () => {
   it('should call alert',()=>{
     const service: DialogService = TestBed.get(DialogService);
     const config ={
-      open:true, 
       title:'Dialog title',
       message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      textOK:'Ok'
+      textOK:'Yes'
     }
     const result = service.alert(config);
     expect(result.instance.dialog.title).toBe('Dialog title');
-    expect(result.instance.dialog.open).toBe(true);
     expect(result.instance.dialog.message).toBe('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
-    expect(result.instance.dialog.textOK).toBe('Ok');
+    expect(result.instance.dialog.textOK).toBe('Yes');
   });
   it('should call confirm',()=>{
     const service: DialogService = TestBed.get(DialogService);
     const config ={
-      open:true, 
       title:'Dialog title',
       message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       textOK:'Yes',
@@ -63,7 +59,6 @@ describe('DialogService', () => {
     }
     const result = service.confirm(config);
     expect(result.instance.dialog.title).toBe('Dialog title');
-    expect(result.instance.dialog.open).toBe(true);
     expect(result.instance.dialog.message).toBe('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
     expect(result.instance.dialog.textOK).toBe('Yes');
     expect(result.instance.dialog.textCancel).toBe('No');
@@ -71,13 +66,32 @@ describe('DialogService', () => {
   it('should call modal',()=>{
     const service: DialogService = TestBed.get(DialogService);
     const config ={
-      open:true, 
       size:'small',
       color:'alternative'
     }
     const result = service.modal(DialogModalComponent,config);
     expect(result.instance.modal.size).toBe('small');
     expect(result.instance.modal.color).toBe('alternative');
+  });
+  it('should close dialog',()=>{
+    const service: DialogService = TestBed.get(DialogService);
+    const config ={
+      size:'small',
+      color:'alternative'
+    }
+    service.alert(config);
+    service.close(); 
+    expect(service.componentRef.hostView.destroyed).toBeTruthy();
+  });
+  it('should cancel dialog',()=>{
+    const service: DialogService = TestBed.get(DialogService);
+    const config ={
+      size:'small',
+      color:'alternative'
+    }
+    service.alert(config);
+    service.cancel(); 
+    expect(service.componentRef.hostView.destroyed).toBeTruthy();
   });
   
 });

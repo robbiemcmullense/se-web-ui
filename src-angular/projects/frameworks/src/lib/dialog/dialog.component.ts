@@ -1,4 +1,4 @@
-import { Component,ViewChild,ComponentRef,OnDestroy,Output, EventEmitter,Type,ComponentFactoryResolver,AfterViewInit,ChangeDetectorRef} from '@angular/core';
+import { Component,ViewChild,ComponentRef,OnDestroy,Output, EventEmitter,Type,ComponentFactoryResolver,AfterViewInit,ChangeDetectorRef, Input,Optional} from '@angular/core';
 import { DialogConfig} from './dialog-config';
 import { DialogDirective} from './dialog.directive';
 @Component({
@@ -11,7 +11,7 @@ export class DialogComponent{
  @Output() backdrop = new EventEmitter();
  @Output() didConfirm = new EventEmitter();
   constructor(public dialog:DialogConfig) { }
-
+  @Input() type:string;
   closeDialog(){
     this.didClose.emit(event);
   }
@@ -35,8 +35,7 @@ export class DialogModalComponent implements AfterViewInit,OnDestroy{
   @ViewChild(DialogDirective) insertionPoint: DialogDirective;
   childComponentType: Type<any>;
   componentRef: ComponentRef<any>;
-  constructor(public modal:DialogConfig,private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef) { }
-
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef,@Optional() public modal:DialogConfig) {}
   closeDialog(){
     this.didClose.emit(event);
   }
