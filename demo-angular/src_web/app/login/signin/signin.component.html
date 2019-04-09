@@ -1,11 +1,11 @@
 <form [formGroup]="loginForm" (submit)="login($event)" id="loginForm" fxFlex>
-  <se-form-field [label]="'Username' | translate" required="true" mode="stacked">
+  <se-form-field [label]="'Username' | translate" required="true" option="stacked">
       <input type="text" name="username" id="username"
           formControlName="username">
     </se-form-field>
-    <se-form-field [label]="'Password' | translate" required="true" mode="stacked">
+    <se-form-field [label]="'Password' | translate" required="true" option="stacked">
         <input type="password" name="password" id="password" id="password"
         formControlName="password">
     </se-form-field>
-    <se-button mode="login" type="submit">Login</se-button>
+    <se-button option="login" type="submit">Login</se-button>
 </form>

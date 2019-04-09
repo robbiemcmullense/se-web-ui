@@ -1,0 +1,39 @@
+{
+  "name": "@se/web-ui",
+  "version": "0.0.1-PLACEHOLDER",
+  "private": true,
+  "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
+  "scripts": {
+    "start": "stencil build --dev --watch --serve --port 3344",
+    "build": "npm-run-all build.*",
+    "build.core": "stencil build --docs",
+    "build.localRef": "cpx \"src/package.json\" core",
+    "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
+    "build.exportDocs": "cpx \"src/**/*.md\" core/docs",
+    "build.moveCore": "cpx \"core/**/*\" \"../core\" && rimraf \"./core\"",
+    "test": "stencil test --spec",
+    "e2e": "stencil test --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "dependencies": {
+    "@stencil/core": "^0.17.1",
+    "@stencil/sass": "^0.1.1",
+    "@se/fonts": "^1.0.0",
+    "@se/icons": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "~23.3.1",
+    "@types/puppeteer": "^1.11.1",
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1",
+    "jest": "~24.5.0",
+    "jest-cli": "~24.5.0",
+    "nodecat": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "pixelmatch": "4.0.2",
+    "puppeteer": "~1.13.0",
+    "rimraf": "^2.6.3",
+    "workbox-build": "~4.1.1"
+  },
+  "license": "MIT"
+}

@@ -27,7 +27,7 @@ class Home extends Component {
         );
     });
     return (
-      <se-container mode="widget">
+      <se-container option="widget">
         {rows}
       </se-container>
     );

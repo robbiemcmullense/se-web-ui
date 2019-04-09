@@ -1,0 +1,17 @@
+{
+  "name": "@se/web-ui",
+  "version": "0.0.1-PLACEHOLDER",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
+  },
+  "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
+  "module": "esm/index.js",
+  "main": "index.js",
+  "types": "types/components.d.ts",
+  "collection": "collection/collection-manifest.json",
+  "peerDependencies": {
+    "@se/fonts": "^1.0.0",
+    "@se/icons": "^3.2.0"
+  }
+}

@@ -1,0 +1,216 @@
+@import "../../theme/theme";
+
+:host {
+  min-width: 0;
+  display: inline-flex;
+}
+button {
+  padding: 0 $spacing;
+  height: 32px;
+  margin: $spacing-small;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  cursor: pointer;
+
+  @include display-flex();
+  @include align-items(center);
+  @include ellipsis();
+  @include justify-content(center);
+  &[disabled] {
+    cursor: default;
+    opacity: 0.26;
+  }
+
+  &.raised {
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+  }
+  &.inherit {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  &.standard {
+    @include color("standard-contrast");
+    @include background-color("standard");
+    &:hover {
+      @include color("hover-standard-contrast");
+      @include background-color("hover-standard");
+    }
+    &.outline {
+      border: 1px solid;
+      @include border-color("standard-contrast");
+      background-color: transparent;
+      &:hover {
+        @include background-color("standard", 0.2);
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+
+  &.alternative {
+    @include color("alternative-contrast");
+    @include background-color("alternative");
+    &:hover {
+      @include color("hover-alternative-contrast");
+      @include background-color("hover-alternative");
+    }
+    &.outline {
+      border: 1px solid;
+      background-color: transparent;
+      @include color("alternative");
+      @include border-color("alternative");
+      &:hover {
+        @include background-color("alternative-contrast", 0.2);
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+
+  &.primary {
+    @include color("primary-contrast");
+    @include background-color("primary");
+
+    &:hover {
+      @include color("hover-primary-contrast");
+      @include background-color("hover-primary");
+    }
+    &.outline {
+      border: 1px solid;
+      background-color: transparent;
+      @include color("primary");
+      @include border-color("primary");
+      &:hover {
+        @include background-color("primary", 0.2);
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+  &.secondary {
+    @include color("secondary-contrast");
+    @include background-color("secondary");
+
+    &:hover {
+      @include color("hover-secondary-contrast");
+      @include background-color("hover-secondary");
+    }
+    &.outline {
+      background-color: transparent;
+      border: 1px solid;
+      @include color("secondary");
+      @include border-color("secondary");
+      &:hover {
+        @include background-color("secondary", 0.2);
+      }
+    }
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+  }
+
+  .text {
+    font-weight: 300;
+    @include typology("p");
+    padding: 0 $spacing;
+  }
+  .se-icon {
+    margin: 0;
+    display: inline-block;
+    font-family: "se-icon";
+    font-size: 22px;
+    font-display: block;
+    &.standard {
+      @include color("standard");
+    }
+    &.alternative {
+      @include color("alternative");
+    }
+    &.primary {
+      @include color("primary");
+    }
+    &.secondary {
+      @include color("secondary");
+    }
+  }
+
+  // &:focus{
+  //   @include color("selected-contrast");
+  //   @include background-color("selected");
+  // }
+}
+:host(.login, .logout) {
+  @include display-flex();
+  button.login,
+  button.signup {
+    height: 32px;
+    font-size: 18px;
+    // padding: 0 50px;
+    font-size: 18px;
+    line-height: 22px;
+    width: 100%;
+    margin-top: $spacing;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+:host(.grouped) {
+  button {
+    margin: $spacing-small 0;
+    height: 24px;
+    padding: 0 $spacing;
+    font-size: 11px;
+    line-height: 13px;
+    border-radius: 0;
+    border-left: 1px solid $se-anthracite-grey;
+  }
+}
+:host(.grouped:first-child) {
+  button {
+    margin-left: $spacing-small;
+    border-left: none;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+}
+
+:host(.grouped:last-child) {
+  button {
+    margin-right: $spacing-small;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+}
+
+:host(.hasIcon) {
+  top: 3px;
+  position: relative;
+}
+
+:host([slot="trigger"]) {
+  button {
+    padding-right: 22px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid;
+    }
+  }
+}

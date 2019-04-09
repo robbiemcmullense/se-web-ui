@@ -1,19 +1,18 @@
 <template>
-  <se-container mode="widget">
+  <se-container option="widget">
     <se-widget style="width: 300px">
       <se-widget-header>Filter</se-widget-header>
-
       <se-widget-content>
         <se-radio-on-off id="switch-el"></se-radio-on-off>
-        <se-button id="flatBtn1" mode="flat" color="error">Warning</se-button>
-        <se-button mode="login" value="myLoginValue">Login</se-button>
-        <se-button mode="signup">Sign Up</se-button>
+        <se-button id="flatBtn1" option="flat" color="error">Warning</se-button>
+        <se-button option="login" value="myLoginValue">Login</se-button>
+        <se-button option="signup">Sign Up</se-button>
       </se-widget-content>
       <se-widget-footer>
-        <se-buttons id="RadioGroup1" mode="radio">
+        <se-radio option="radio">
           <se-button value="left">Radio1</se-button>
           <se-button value="right">Radio2</se-button>
-        </se-buttons>
+        </se-radio>
       </se-widget-footer>
     </se-widget>
     <se-widget class="flex">
@@ -24,15 +23,19 @@
           ...
         </ul>
         <div class="button-row">
-          <se-button mode="outline">outline</se-button>
-          <se-button mode="outline" color="primary">outline primary</se-button>
-          <se-button mode="raised" color="secondary">Raised secondary</se-button>
+          <se-button option="outline">outline</se-button>
+          <se-button option="outline" color="primary"
+            >outline primary</se-button
+          >
+          <se-button option="raised" color="secondary"
+            >Raised secondary</se-button
+          >
         </div>
         <div class="button-row">
-          <se-button mode="raised">Raised</se-button>
-          <se-button mode="raised" color="primary">RaisedGreen</se-button>
-          <se-button mode="text">Text</se-button>
-          <se-button mode="text" color="primary">Primary</se-button>
+          <se-button option="raised">Raised</se-button>
+          <se-button option="raised" color="primary">RaisedGreen</se-button>
+          <se-button option="text">Text</se-button>
+          <se-button option="text" color="primary">Primary</se-button>
         </div>
       </se-widget-content>
       <se-widget-footer> </se-widget-footer>

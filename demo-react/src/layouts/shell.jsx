@@ -6,7 +6,7 @@ class ShellLayout extends Component {
     return (
       <span className="se-app-body">
         <se-header app-title="React Advisor"></se-header>
-        <se-navbar color="primary">
+        <se-tabbar color="primary">
           <nav slot="start">Tenant: <a className="dropdown" href=""> test </a></nav>
           <nav>
             <NavLink to="/" exact={true} activeClassName='active'>Home</NavLink>
@@ -16,7 +16,7 @@ class ShellLayout extends Component {
           <nav slot="end">
             <a href="">End</a>
           </nav>
-        </se-navbar>
+        </se-tabbar>
         {this.props.children}
       </span>
     );

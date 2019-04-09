@@ -1,0 +1,99 @@
+@import "../../theme/theme";
+
+$max-width-input: 320px;
+
+
+:host {
+	.se-form-field {
+    @include display-flex();
+    padding: $spacing;
+
+		&[data-disabled] {
+			opacity: 0.26;
+    }
+    @include align-items(center);
+  }
+}
+
+label {
+  width: 30%;
+  padding-top: 4px;
+  text-align: right;
+  @include typology('p-small');
+  padding-right: 7px;
+  span {
+    color: $se-red;
+    padding-left: 3px;
+  }
+}
+::slotted(se-checkbox) {
+  padding-top: 6px;
+}
+
+::slotted(input) {
+  height: 28px;
+  width: 60%;
+  max-width: $max-width-input;
+  border: 1px solid $se-super-light-grey;
+  font-size: 14px;
+  padding-left: 7px;
+}
+
+::slotted(input[disabled]) {
+  background-color: $se-white;
+}
+
+::slotted(input:focus) {
+  outline: none;
+  border: 1px solid;
+  @include border-color('primary')
+}
+
+::slotted(select) {
+  height: 32px;
+  width: 60%;
+  border-radius: 0;
+  max-width: $max-width-input + 10;
+  border: 1px solid $se-super-light-grey;
+  background-color: transparent;
+  font-size: 14px;
+  padding-left: 4px;
+}
+
+:host([option="stacked"]) {
+	.se-form-field {
+    flex-direction: column;
+    @include align-items(start);
+
+	}
+	label {
+    padding: 0 8px 4px;
+    text-align: left;
+    line-height: 12px;
+	}
+	::slotted(input) {
+		width: 97%;
+	}
+	::slotted(select) {
+		width: 100%;
+	}
+}
+
+:host(.error) {
+	::slotted(input) {
+		border: 1px solid $error;
+	}
+}
+
+:host(.warning) {
+	::slotted(input) {
+		border: 1px solid $warning;
+	}
+}
+
+:host(.success) {
+	::slotted(input) {
+    border: 1px solid $success;
+
+	}
+}

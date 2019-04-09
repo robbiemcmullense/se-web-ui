@@ -1,0 +1,116 @@
+@import "../../theme/animation";
+@import "../../theme/theme";
+
+:host {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+  background-color: transparent !important;
+}
+.full-content {
+  @include absolute();
+}
+
+.actual-menu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 80%;
+  height: 100%;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+  @include background-color('alternative');
+  @include color('alternative-contrast');
+  z-index: 30;
+
+  &.show-menu {
+    animation-name: slideInLeft;
+  }
+  &.hide-menu {
+    animation-name: slideOutLeft;
+  }
+}
+
+
+.animated {
+  @include animated();
+}
+
+.menu-background {
+  position: absolute;
+  background-color: rgba(white, 0.6);
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  min-height: 100%;
+  z-index: 5;
+  &.show-menu {
+    animation-name: fadeIn;
+  }
+  &.hide-menu {
+    animation-name: fadeOut;
+  }
+}
+
+.menu-button {
+  width: 100%;
+  margin: 0px;
+  padding: 10px;
+}
+
+
+.image-logo {
+  height: 45px;
+  margin: 0 auto;
+}
+
+.menu-sidenav {
+  cursor: pointer;
+  margin-right: -17px;
+}
+
+.flex {
+  @include flex(1);
+}
+.d-flex {
+  width: 100%;
+  @include display-flex();
+  @include align-items(left);
+  @include flex-direction(row);
+}
+.d-flex-center {
+  width: 100%;
+  @include display-flex();
+  @include align-items(center);
+  @include flex-direction(row);
+}
+
+.d-flex-column {
+  @include display-flex();
+  @include align-items(left);
+  @include flex-direction(column);
+}
+
+.listNavItems {
+  width: 250px;
+  height: 100%;
+  @include display-flex();
+  @include flex-direction(column);
+  @include justify-content(space-between);
+}
+
+.header-title {
+  color: $se-anthracite-grey;
+  padding-left: 18px;
+  font-size: 30px;
+  line-height: 20px;
+  font-weight: lighter;
+  margin: 0;
+}
+
+:host(.show-menu) {
+  display: block;
+}

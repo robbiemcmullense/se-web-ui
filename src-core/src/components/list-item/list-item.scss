@@ -1,0 +1,139 @@
+@import "../../theme/theme";
+
+:host {
+  z-index: 0;
+  margin: 0;
+  font-weight: lighter;
+  font-size: 20px;
+  @include display-flex();
+
+}
+
+.se-icon {
+  margin: 0;
+  display: inline-block;
+  font-family: "se-icon";
+  font-size: 24px;
+  font-display: block;
+  &.primary {
+    @include color("primary");
+  }
+  &.secondary {
+    @include color("secondary");
+  }
+  &.medium {
+    font-size: 36px;
+    line-height: 30px;
+  }
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  position: relative;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  @include display-flex();
+  @include align-items(center);
+  @include flex();
+  text-align: left; // MS Edge does not support "start"
+  text-align: start;
+  border-bottom: 1px solid $divider-color;
+  &:hover, &:focus{
+    background-color: $se-ultra-light-grey-1;
+  }
+}
+
+.selectedBar {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  width: 5px;
+  @include background-color("primary");
+}
+
+.nav-icon {
+  margin-right: -12px;
+  margin-left: 8px;
+}
+
+.nav-content{
+  min-width: 0;
+  padding-left: 18px;
+  margin: 0;
+  @include typology('p');
+  @include flex();
+  @include display-flex();
+  @include flex-direction(column);
+  @include align-items(start center);
+
+  div, small {
+    @include ellipsis();
+    margin-right: $spacing;
+  }
+}
+
+:host(.classic) {
+  button {
+    height: 47px;
+    max-width: 100%;
+  }
+}
+
+:host(.classic.selected) {
+  @include color('selected-contrast');
+  @include background-color('selected');
+  button {
+    &:hover, &:focus{
+      background-color: $se-ultra-dark-grey;
+    }
+  }
+}
+
+:host(.nav) {
+  button {
+    height: 47px;
+    max-width: 100%;
+  }
+}
+
+:host(.nav.selected) {
+  @include color('primary');
+}
+
+:host(.treeview) {
+  button {
+    height: 32px;
+  }
+  .nav-content {
+    padding-left: 0;
+  }
+}
+
+:host(.treeview.selected) {
+  @include color('selected-contrast');
+  @include background-color('selected');
+  button {
+    &:hover, &:focus{
+      background-color: $se-ultra-dark-grey;
+    }
+  }
+}
+
+:host(.dropdown) {
+  button {
+    min-height: 40px;
+    max-width: 100%;
+    border-bottom: none;
+  }
+  .nav-content{
+    padding-left: 10px;
+  }
+}

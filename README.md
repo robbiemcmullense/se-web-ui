@@ -9,12 +9,30 @@ This project uses [StencilJS](https://stenciljs.com) to generate web components 
 
 You can test all of these components with this [Online Template Editor](https://pages.github.schneider-electric.com/IoT/web-template-editor/).
 
+## 🧐 What's inside?
+
+A quick look at the top-level files and directories you'll see in this repository.
+
+    .
+    ├── angular             // `@se/web-ui-angular`
+    ├── core                // `@se/web-ui`
+    ├── demo-*              // demos folder
+    ├── node_modules
+    ├── src-angular         // Src angular module
+    ├── src-core            // Src core stencil library
+    ├── LICENSE
+    ├── package.json
+    ├── publish.js          // Publish libraries with the same version
+    └── README.md
+
+**Note :** Any library (core, angular..) will be generated with the same version number defined in `package.json`.
+
 ## List of Components
 
 | Done | Component      | Info                                                                                                                       |
 | ---- | -------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | [x]  | App            | define a wrapper for the design/style/css variable and insure that the content of the app takes the full page              |
-| [x]  | NavBar         | Called Tab bar in the guideline. Use or regular `nav` tag for nab item                                                     |
+| [x]  | TabBar         | Called Tab bar in the guideline. Use or regular `nav` tag for nab item                                                     |
 | [x]  | Header         | Header of an se app. does not include navigation.                                                                          |
 | [x]  | container      | page container. Can be used to add a margin for better widget alignment. Default will make the use of the full flex space. |
 | [x]  | divider        | used to add a line to divide element between each others.                                                                  |
@@ -27,19 +45,19 @@ You can test all of these components with this [Online Template Editor](https://
 | [ ]  | Select         | Dropdown that takes the selected choice                                                                                    |
 | [ ]  | Select-item    | Element of a select element                                                                                                |
 | [x]  | Form-Field     | container for a submittable form.  Accepts checkboxes, input fields, and select dropdowns                                  |
-| [x]  | Buttons        | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Button         | standard button                                                                                                            |
-| [x]  | Radio-on-off   | toggle switch that can indicate "on" or "off", "active" or "inactive", etc.                                                |
-| [x]  | Switch         |                                                                                                                            |
+| [x]  | Radio          | known as split in guideline, Should bind the buttons together, nothing more                                                |
+| [x]  | Radio-on-off   | toggle switch with text that can indicate "on" or "off", "active" or "inactive", etc.                                      |
+| [x]  | Radio-Switch   | toggle switch without text that can indicate "on" or "off", "active" or "inactive", etc.                                   |
 | [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
 | [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
 | [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
-| [ ]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
-| [ ]  | Dropdown-item  | menu in guideline, a button with a list                                                                                    |
-| [ ]  | Progressbar    |                                                                                                                            |
-| [ ]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
-| [ ]  | Card-header    |                                                                                                                            |
-| [ ]  | Card-content   |                                                                                                                            |
+| [x]  | Visual-Linear  | linear progress bar                                                                                                        |
+| [x]  | Visual-Radial  | circular progress bar                                                                                                      |
+| [x]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
+| [x]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
+| [x]  | Card-header    |                                                                                                                            |
+| [x]  | Card-content   |                                                                                                                            |
 | [x]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
 | [x]  | Dialog-header  |                                                                                                                            |
 | [x]  | Dialog-content |                                                                                                                            |
@@ -49,6 +67,7 @@ You can test all of these components with this [Online Template Editor](https://
 | [x]  | List           | classic                                                                                                                    |
 | [x]  | List-group     | to display a collapsible list groups                                                                                       |
 | [x]  | List-item      | list with slot (start/center/end)                                                                                          |
+| [x]  | Treeview       | use to nest a list within a list, can have multiple treeviews within a treeview                                            |
 | [x]  | Label          | label to be displayed next to an input field or checkbox                                                                   |
 | [x]  | Link           | anchor element that redirects a user to another web page                                                                   |
 | [ ]  | Tab            |                                                                                                                            |
@@ -60,7 +79,7 @@ You can test all of these components with this [Online Template Editor](https://
 | [ ]  | Datepicker     |                                                                                                                            |
 | [ ]  | Tooltips       | Design only                                                                                                                |
 
-## Testing in your App (in progress)
+## Testing in your App
 
 ```shell
 # With npm
@@ -109,7 +128,9 @@ This demo shows how the app can be used without any framework.
 The React project built based React reference app.
 
 ```
-yarn demo:react
+cd demo-react
+yarn install
+yarn start
 ```
 
 This demo uses a `Widget` react component as a list to loop through the `se-widget` with different content.
@@ -119,7 +140,9 @@ This demo uses a `Widget` react component as a list to loop through the `se-widg
 The Vue project built based Vue reference app.
 
 ```
-yarn demo:vue
+cd demo-vue
+yarn install
+yarn start
 ```
 
 This demo shows a simple interaction with vue framework.
@@ -129,7 +152,9 @@ This demo shows a simple interaction with vue framework.
 Created using [Angular](https://angular.io) framework based on the generated architecture with [EcoStruxure App DSK](https://seappsdk.dev.struxurewarecloud.com) and trying to match with current implementation of the web-framework
 
 ```
-yarn demo:vue
+cd demo-angular
+yarn install
+yarn start
 ```
 
 This demo shows a simple interaction with vue framework.
@@ -157,51 +182,3 @@ Look for a project's contribution instructions. If there are any, follow them.
 
 And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
 
-### Writing Unit Tests for your Components
-
-The purpose of unit tests are to validate individual portions of your source code to ensure that it is functioning correctly.  You will want to test the instantiation of your component, as well as its default property settings and its methods.
-
-**Example Unit Test**
-
-```typescript
-import { MyComponent } from './my-component';
-
-it('should build MyComponent', () => {
-  const component = new MyComponent();
-  expect(component).toBeTruthy();
-});
-```
-
-To run the unit tests in your project, simply run the following command:
-
-```shell
-yarn test
-```
-
-This will run all `.spec` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.
-
-### Writing End-to-End (E2E) Tests for your Components
-
-The purpose of e2e tests are to validate the "full" end-to-end functionality of the various web components to ensure its proper rendering an behavior.  You will want to validate a component's inner HTML, as well as any attributes/classes added to the host element in its component's `hostData` function.
-
-**Example E2E Test**
-
-```typescript
-import { newE2EPage } from '@stencil/core/testing';
-
-it('renders', async () => {
-  const page = await newE2EPage();
-  await page.setContent('<my-component></my-component>');
-  
-  const element = await page.find('my-component');
-  expect(element).toHaveClass('hydrated');
-});
-```
-
-StencilJS adds the "hydrated" class to each generated component, so it is a good measure to ensure your component is rendering propertly.  To run the e2e tests in your project, simply run the following command:
-
-```shell
-yarn e2e
-```
-
-This will run all `.e2e.ts` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.

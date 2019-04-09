@@ -1,0 +1,54 @@
+@import "../../theme/theme";
+
+:host {
+	position: fixed;
+	bottom: 20px;
+	display: none;
+	align-self: center;
+}
+
+:host(.show) {
+	display: block;
+	@include slideUp();
+}
+
+:host(.information) {
+	@include background-color('focus');
+}
+
+:host(.success) {
+	@include background-color('primary');
+}
+
+:host(.warning) {
+	background-color: $se-honeysuckle-orange;
+}
+
+:host(.error) {
+	background-color: $se-red;
+}
+
+.snackbar {
+	height: 28px;
+	line-height: 24px;
+	margin-left: 7px;
+	margin-top: 4px;
+	@include display-flex();
+	@include color('primary-contrast');
+}
+
+.se-icon {
+	font-size: 20px;
+	font-family: 'se-icon';
+	padding-right: 5px;
+}
+
+.message {
+	font-size: 12px;
+	padding-right: 34px;
+}
+
+.close {
+	cursor: pointer;
+	padding-right: 34px;
+}

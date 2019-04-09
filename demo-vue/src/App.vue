@@ -32,5 +32,5 @@ export default {
 $se-icon-folder: "~@se/icons/fonts";
 @import "~@se/icons/scss/styles";
 $se-fonts-path: "~@se/fonts/fonts";
-@import "~@se/fonts/scss/styles.scss";
+@import "~@se/fonts/scss/styles";
 </style>

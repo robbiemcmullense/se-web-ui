@@ -1,0 +1,29 @@
+@import "../../theme/theme";
+@import "../list-item/list-item";
+
+:host {
+  @include flex-direction(column);
+  .group-item{
+    overflow: hidden;
+    padding-bottom: 1px;
+  }
+}
+
+:host(.classic), :host(.nav) {
+  button {
+    min-height: 47px;
+    max-width: 100%;
+  }
+}
+
+:host(.collapsed) {
+  .group-item {
+    display: none;
+  }
+}
+
+:host(.treeview) {
+  button {
+    flex-direction: row-reverse;
+  }
+}
