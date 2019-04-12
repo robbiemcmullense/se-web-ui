@@ -6,7 +6,7 @@ import { Injectable,Injector,
 
 import { DialogComponent,DialogModalComponent} from "../dialog/dialog.component";
 import { DialogConfig} from '../dialog/dialog-config';
-import { DialogInjector} from '../dialog/dialog-injector';
+import {ComponentInjector} from '../shared/component-injector';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class DialogService {
      const map = new WeakMap();
      map.set(DialogConfig, config);      
     this.componentRef = this.componentFactoryResolver.resolveComponentFactory(componentType)
-    .create(new DialogInjector(this.injector,map));
+    .create(new ComponentInjector(this.injector,map));
     this.appRef.attachView(this.componentRef.hostView);
     const domElem = (this.componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement; 
     document.body.appendChild(domElem);

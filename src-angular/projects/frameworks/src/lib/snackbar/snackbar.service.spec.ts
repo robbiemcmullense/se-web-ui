@@ -3,12 +3,10 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SnackbarService } from './snackbar.service';
 import { SnackbarComponent } from './snackbar.component';
 import { SnackbarConfig } from './snackbar-config';
-import { SnackbarInjector } from './snackbar-injector';
 import { SnackbarModule } from './snackbar.module';
 
 describe('SnackbarService', () => {
   let config: SnackbarConfig;
-  let inject: SnackbarInjector;
   let component: SnackbarComponent;
   let fixture: ComponentFixture<SnackbarComponent>;
 
