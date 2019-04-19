@@ -12,8 +12,10 @@
     @include flex();
   }
 
-  h3 {
-    @include typology('h2')
+  h4 {
+    @include typology('h5');
+    text-transform: uppercase;
+    margin: 8px;
   }
 }
 

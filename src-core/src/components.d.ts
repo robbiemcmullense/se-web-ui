@@ -200,9 +200,9 @@ export namespace Components {
     */
     'loading': boolean;
     /**
-    * Defines the visual appearance of a block. `basic` will remove any spacing. `card` will create a card look and feel with shadow and rounded corners.
+    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with shadow and rounded corners.
     */
-    'option': "basic" | "card";
+    'option': "basic" | "card" | "widget";
     /**
     * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
     */
@@ -230,9 +230,9 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
-    * Defines the visual appearance of a block. `basic` will remove any spacing. `card` will create a card look and feel with shadow and rounded corners.
+    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with shadow and rounded corners.
     */
-    'option'?: "basic" | "card";
+    'option'?: "basic" | "card" | "widget";
     /**
     * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
     */

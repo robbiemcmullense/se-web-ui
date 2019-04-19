@@ -101,7 +101,7 @@ export class ContainerComponent {
         `${this.option}-content`,
         this.position,
         this.color,
-        this.direction,
+        `${this.direction}-dir`, //"row" conflicted with bootstrap class
         this.display
       ].join(" ")
     };

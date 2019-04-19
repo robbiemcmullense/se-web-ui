@@ -10,10 +10,11 @@ export class BlockComponent {
   /**
    * Defines the visual appearance of a block.
    * `basic` will remove any spacing.
+   * `widget` will create a flat widget look and feel with a small margin around it.
    * `card` will create a card look and feel with shadow and rounded corners.
    */
-  @Prop() option: "basic" | "card" = "basic";
-  @Watch('option') optionDidChange() {
+  @Prop() option: "basic" | "card" | "widget" = "basic";
+  @Watch("option") optionDidChange() {
     this.updateItemMode();
   }
   /**
@@ -44,7 +45,7 @@ export class BlockComponent {
    * When on Grid display, determines if the block should be a 2/2 instead of a small 1/1 grid item.
    * Default setting is `false` (1/1).
    */
-  @Prop({mutable: true}) enlarged: boolean = false;
+  @Prop({ mutable: true }) enlarged: boolean = false;
 
   /**
    * Display the loading icon if set to `true`.  Default setting is `false`.
@@ -57,7 +58,10 @@ export class BlockComponent {
   }
 
   private updateItemMode() {
-    let childElms = this.option === 'card' ? 'se-block-header, se-block-content, se-block-footer' : 'se-block-content';
+    let childElms =
+      this.option === "card"
+        ? "se-block-header, se-block-content, se-block-footer"
+        : "se-block-content";
     this.setChildOption(childElms);
   }
 
@@ -71,9 +75,7 @@ export class BlockComponent {
   }
 
   private setChildOption(childElms: string) {
-    Array.from(
-      this.el.querySelectorAll(childElms)
-    ).forEach((item: any) => {
+    Array.from(this.el.querySelectorAll(childElms)).forEach((item: any) => {
       item.option = this.option;
     });
   }
@@ -84,7 +86,7 @@ export class BlockComponent {
         this.option,
         this.color,
         this.display,
-        this.enlarged && this.display === 'grid' ? 'grid-large' : ''
+        this.enlarged && this.display === "grid" ? "grid-large" : ""
       ].join(" ")
     };
   }

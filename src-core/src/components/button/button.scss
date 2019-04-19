@@ -246,11 +246,11 @@ button {
         @include background-color("standard");
       }
     }
-    
-  
+
+
   .text {
     font-weight: 300;
-    @include typology("p");
+    @include typology("base");
     padding: 0 $spacing;
   }
   .se-icon {
@@ -280,6 +280,7 @@ button {
   button {
     height: 32px;
     font-size: 18px;
+    // padding: 0 50px;
     line-height: 22px;
     width: 100%;
     margin-top: $spacing;
@@ -293,7 +294,7 @@ button {
     margin: $spacing-small 0;
     height: 24px;
     padding: 0 $spacing;
-    font-size: 11px;
+    @include typology("nano");
     line-height: 13px;
     border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;

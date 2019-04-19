@@ -34,17 +34,18 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 
 $off-black: rgba(0, 0, 0, 0.87) !default;
 // Header Styles
-$h1-fontsize: 18px !default;
-$h2-fontsize: 16px !default;
-$h3-fontsize: 14px !default;
-$h4-fontsize: 14px !default;
-$h5-fontsize: 14px !default;
+$h1-fontsize: 42px !default;
+$h2-fontsize: 37px !default;
+$h3-fontsize: 30px !default;
+$h4-fontsize: 22px !default;
+$h5-fontsize: 16px !default;
 $h6-fontsize: 14px !default;
-$p-fontsize: 14px !default;
+$p-fontsize: 16px !default;
+$base-fontsize: 14px !default;
 $small-fontsize: 12px !default;
 $medium-fontsize: 16px !default;
 $large-fontsize: 18px !default;
-
+$h-margin: 16px !default;
 
 // Flow Text
 // ==========================================================================

@@ -13,7 +13,6 @@
   overflow: hidden;
   margin: 0 !important;
   padding: 0;
-  @include typology('p');
   @include absolute(0,0,0,0);
   @include display-flex();
   @include flex-direction(column);
@@ -62,7 +61,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1.4;
 }
 ol, ul {
 	list-style: none;
@@ -85,20 +84,8 @@ a {
 }
 
 html{
-  line-height: 1.5;
-
-  @media only screen and (min-width: 0) {
-    font-size: 14px;
-  }
-
-  @media only screen and (min-width: $medium-screen) {
-    font-size: 14.5px;
-  }
-
-  @media only screen and (min-width: $large-screen) {
-    font-size: 15px;
-  }
-
+  line-height: 1.4;
+  @include typology('base');
   font-weight: normal;
   color: $off-black;
 }

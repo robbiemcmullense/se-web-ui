@@ -5,7 +5,7 @@
 	.checkbox-container {
 		position: relative;
 		padding-left: 20px;
-    @include typology('p-small');
+    @include typology('small');
     margin: $spacing;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -81,9 +81,9 @@
 }
 
 :host(.switch) {
-	.checkbox-container {  
+	.checkbox-container {
 		text-align: left;
-		vertical-align: middle;
+    vertical-align: middle;
 		width: 44px;
 		height: 26px;
 		border-radius: 13px;
@@ -92,12 +92,12 @@
 		display: inline-block;
 		position: relative;
 		cursor: pointer;
-		
+
 		.checkmark {
 			display: block;
 			width: 100%;
 			height: 100%;
-			border-radius: 100%;    
+			border-radius: 100%;
 			&:before, &:after {
 				content: "";
 				cursor: pointer;
@@ -126,7 +126,7 @@
 				box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
 			}
 		}
-	
+
 		input {
 			opacity: 0;
 			display: none;
@@ -189,7 +189,7 @@
         background-color: $se-life-green;
       }
     }
-    
+
     &.inactive {
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;

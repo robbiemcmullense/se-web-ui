@@ -14,12 +14,16 @@
     @include flex();
   }
 
-  h3 {
-    @include typology('h3');
-    @include color('primary');
+  h4 {
+    @include typology('h5');
+    text-transform: uppercase;
+    margin: 8px;
   }
 }
 :host(.card) {
   border-bottom: none;
   padding-bottom: $spacing-small;
+  h3, h4, h5 {
+    @include color('primary');
+  }
 }

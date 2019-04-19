@@ -3,10 +3,10 @@
 :host {
   overflow: auto;
 }
-:host(.column) {
+:host(.column-dir) {
   @include flex-direction(column);
 }
-:host(.row) {
+:host(.row-dir) {
   @include flex-direction(row);
 }
 :host(.flex) {

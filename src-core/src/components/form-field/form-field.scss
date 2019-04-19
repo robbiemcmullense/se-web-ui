@@ -15,7 +15,7 @@ label {
   width: 30%;
   padding-top: 4px;
   text-align: right;
-  @include typology('p-small');
+  @include typology('small');
   padding-right: 7px;
   span {
     color: $se-red;

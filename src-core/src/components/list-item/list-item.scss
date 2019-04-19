@@ -68,7 +68,7 @@ button {
   min-width: 0;
   padding-left: 18px;
   margin: 0;
-  @include typology('p');
+  @include typology('base');
   @include flex();
   @include display-flex();
   @include flex-direction(column);

@@ -161,6 +161,9 @@
       <se-container option="card" display="grid" column-size="400px" row-size="400px">
         <se-block id="block0">
           <se-block-header>
+            <div slot="start">
+                <se-icon color="primary">airconditioner_hot_heating</se-icon>
+            </div>
             Typography
             <div slot="end">
               <se-dropdown alignment="right">
@@ -201,7 +204,7 @@
         <se-block id="block1">
           <se-block-header>
             <div slot="start">
-              <se-icon>connection_bluetooth</se-icon>
+              <se-icon color="primary">connection_bluetooth</se-icon>
             </div>
             Buttons
             <div slot="end">
@@ -397,7 +400,7 @@
             </div>
           </se-block-header>
           <se-block-content option="fill">
-            <se-radio-group id="radio-button-dot-group" option="radio">
+            <se-radio-group id="radio-button-dot-group">
               <se-radio value="one radio" label="First Radio Button"></se-radio>
               <se-radio value="two radio" label="Second Radio Button"></se-radio>
               <se-radio value="three radio" label="Third Radio Button"></se-radio>

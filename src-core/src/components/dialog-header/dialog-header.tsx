@@ -20,7 +20,7 @@ export class DialogHeaderComponent {
   }
   render() {
     return [
-      <h3 class="flex"><slot /></h3>,
+      <h4 class="flex"><slot /></h4>,
       <slot name="end"/>
     ];
   }
