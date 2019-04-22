@@ -16,10 +16,10 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
-    "@stencil/core": "^0.17.1",
-    "@stencil/sass": "^0.1.1",
     "@se/fonts": "^1.0.0",
-    "@se/icons": "^3.2.0"
+    "@se/icons": "^3.2.0",
+    "@stencil/core": "^0.17.1",
+    "@stencil/sass": "^0.1.1"
   },
   "devDependencies": {
     "@types/jest": "~23.3.1",

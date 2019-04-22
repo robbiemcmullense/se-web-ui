@@ -428,7 +428,9 @@
     // grid widget
     function toggle(id) {
       let widget = document.getElementById(`widget${id}`);
+      let icon = widget.querySelector('div[slot="end"] > se-icon');
       widget.enlarged = !widget.enlarged;
+      icon.innerText = widget.enlarged ? 'exit_presentation' : 'presentation_mode';
     }
 
 
