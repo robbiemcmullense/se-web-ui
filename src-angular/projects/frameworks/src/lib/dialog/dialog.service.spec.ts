@@ -3,12 +3,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DialogService } from './dialog.service';
 import { DialogComponent,DialogModalComponent} from './dialog.component';
 import { DialogConfig} from './dialog-config';
-import { DialogInjector} from './dialog-injector';
 import { DialogModule} from './dialog.module';
 
 describe('DialogService', () => {
   let config:DialogConfig;
-  let inject:DialogInjector;
   let component: DialogComponent;
   let fixture: ComponentFixture<DialogComponent>;
   let modalcomponent :DialogModalComponent;

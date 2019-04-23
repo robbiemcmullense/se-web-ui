@@ -1,7 +1,7 @@
 import { Injectable,ComponentFactoryResolver, ApplicationRef, Injector, EmbeddedViewRef, ComponentRef} from '@angular/core';
 import {SnackbarComponent} from './snackbar.component';
 import {SnackbarConfig} from './snackbar-config';
-import {SnackbarInjector} from './snackbar-injector';
+import {ComponentInjector} from '../shared/component-injector';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class SnackbarService {
     map.set(SnackbarConfig, config);
 
     const componentFactory=this.componentFactoryResolver.resolveComponentFactory(SnackbarComponent);
-    const componentRef = componentFactory.create(new SnackbarInjector(this.injector, map));
+    const componentRef = componentFactory.create(new ComponentInjector(this.injector, map));
     this.appRef.attachView(componentRef.hostView);
     const domElem=(componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
