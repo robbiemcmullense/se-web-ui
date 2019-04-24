@@ -8,22 +8,26 @@ import { CommonModule, DOCUMENT } from "@angular/common";
 import { appInitialize } from "./initialize";
 import { SnackbarModule } from './snackbar/snackbar.module';
 import { DialogModule } from "./dialog/dialog.module";
+import { PageLoaderModule } from './page-loader/page-loader.module';
 
 export * from './snackbar/snackbar.service';
 export * from './dialog/dialog.service';
+export * from './page-loader/page-loader.service';
 
 @NgModule({
   imports: [
     CommonModule,
     DialogModule,
-    SnackbarModule
+    SnackbarModule,
+    PageLoaderModule
   ],
   declarations: [],
   providers: [],
   entryComponents: [],
-  exports:[
+  exports: [
     SnackbarModule,
-    DialogModule
+    DialogModule,
+    PageLoaderModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
