@@ -1,11 +1,11 @@
 import { Component, Watch, Element, Event, EventEmitter, Prop, Listen } from '@stencil/core';
 
 @Component({
-  tag: 'se-radio',
-  styleUrl: 'radio.scss',
+  tag: 'se-radio-group',
+  styleUrl: 'radio-group.scss',
   shadow: true
 })
-export class RadioComponent {
+export class RadioGroupComponent {
   @Element() el: HTMLElement;
   /**
    * Defines the functionality of your button group.
