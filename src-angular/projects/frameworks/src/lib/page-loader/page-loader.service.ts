@@ -11,7 +11,7 @@ export class PageLoaderService {
               private applicationRef: ApplicationRef,
               private injector: Injector) {}
 
-  showLoader() {
+  public showLoader() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(PageLoaderComponent);
     const componentRef = componentFactory.create(new ComponentInjector(this.injector, new WeakMap()));
     this.applicationRef.attachView(componentRef.hostView);
@@ -20,7 +20,7 @@ export class PageLoaderService {
     this.pageLoaderComponentRef = componentRef;
   }
 
-  hideLoader() {
+  public hideLoader() {
     this.applicationRef.detachView(this.pageLoaderComponentRef.hostView);
     this.pageLoaderComponentRef.destroy();
   }
