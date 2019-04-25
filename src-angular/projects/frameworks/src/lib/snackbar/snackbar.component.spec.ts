@@ -15,7 +15,7 @@ describe('SnackbarComponent', () => {
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ],
-      providers:[SnackbarConfig]
+      providers: [SnackbarConfig]
     })
     .compileComponents();
   }));
@@ -32,6 +32,6 @@ describe('SnackbarComponent', () => {
   it('should call closeEvent',()=>{
     spyOn(component.didClose, 'emit');
     component.closeEvent();
-    expect(component.didClose.emit).toHaveBeenCalled(); 
+    expect(component.didClose.emit).toHaveBeenCalled();
   })
 });

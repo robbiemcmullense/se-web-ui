@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Logger } from '@core/logger.service';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 import { ModalTableComponent } from './modal-table/modal-table.component';
-import { DialogService, SnackbarService} from '@se/web-ui-angular';
+import { DialogService, SnackbarService, PageLoaderService} from '@se/web-ui-angular';
 const log = new Logger('HomeComponent');
 const logModal = new Logger('ModalExampleComponent');
 @Component({
@@ -22,10 +22,12 @@ export class HomeComponent implements OnInit {
   public selectable = true;
   public loader = false;
   public loaderTable = false;
-  public showDialogMessage:string;
+  public showDialogMessage: string;
 
-  constructor(public dialogService:DialogService, private snackbarService:SnackbarService) {}
-  
+  constructor(public dialogService: DialogService,
+              private snackbarService: SnackbarService,
+              private pageLoaderService: PageLoaderService) {}
+
   modalAlert(type: 'success' | 'warning' | 'error'): void {
     log.debug('modalAlert type', type);
 
@@ -87,7 +89,7 @@ export class HomeComponent implements OnInit {
       log.debug(err);
     });
    }
- 
+
  //calling dialog confirm service
   showConfirm():void{
   const confirm = this.dialogService.confirm({
@@ -104,15 +106,16 @@ export class HomeComponent implements OnInit {
  }
 
  closeAlertCallback():void{
-  this.showDialogMessage ="Alert Dialog closed & callback function called"; 
+  this.showDialogMessage ="Alert Dialog closed & callback function called";
  }
  closeAlertTitleCallback():void{
-  this.showDialogMessage ="Alert Dialog with title,icon closed & callback function called"; 
+  this.showDialogMessage ="Alert Dialog with title,icon closed & callback function called";
  }
 
  okConfirmCallback():void{
-  this.showDialogMessage ="Confirm Dialog closed & callback function called"; 
+  this.showDialogMessage ="Confirm Dialog closed & callback function called";
  }
+
  
 
 //calling modal service
