@@ -7,7 +7,6 @@
 		padding-left: 20px;
     @include typology('p-small');
     margin: $spacing;
-
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
@@ -23,12 +22,12 @@
 				&[data-color="primary"] {
 					@include background-color('primary');
           border: 1px solid;
-          @include border-color('primary')
+          @include border-color('primary');
 				}
 				&[data-color="secondary"] {
 					@include background-color('secondary');
           border: 1px solid;
-          @include border-color('primary')
+          @include border-color('secondary');
 				}
 				&:after {
 					display: block;
