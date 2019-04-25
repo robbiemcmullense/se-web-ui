@@ -29,6 +29,10 @@ export class DialogComponent {
    * Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.
    */
   @Prop() open: boolean = false;
+  /**
+   * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+   */
+  @Prop() canBackdrop:boolean = true;
 
   @Watch('color') colorDidChange(){
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach((item: any) => {
@@ -50,7 +54,9 @@ export class DialogComponent {
    */
   @Method()
   backdropClicked(): void {
+    if(this.canBackdrop){
     this.backdrop.emit();
+    }
   }
   /**
    * Send data to the parent component when the backdrop is clicked.
