@@ -35,7 +35,7 @@ export class CheckboxComponent {
 
   emitEvent() {
     this.checked = !this.checked;
-    let checkboxObject = {value: this.value, selected: this.checked}
+    let checkboxObject = {value: this.value, selected: this.checked};
     this.didCheck.emit(checkboxObject);
   }
 
@@ -49,8 +49,8 @@ export class CheckboxComponent {
     return (
       <label class="checkbox-container" data-disabled={this.disabled}>
         {this.label}
-        <input type="checkbox" checked={this.checked} disabled={this.disabled}/>
-        <span class="checkmark" data-color={this.color} onClick={() => this.emitEvent()}></span>
+        <input type="checkbox" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()}/>
+        <span class="checkmark" data-color={this.color}></span>
       </label>
     );
   }

@@ -835,6 +835,47 @@ export namespace Components {
     'loading'?: boolean;
   }
 
+  interface SeRadioGroup {
+    /**
+    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+    */
+    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option': 'checkbox' | 'radio';
+    /**
+    * Defines the selected values of the array.
+    */
+    'value': string | string[];
+  }
+  interface SeRadioGroupAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+    */
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Passes the selected button value to the parent component when clicking on a button in the group.
+    */
+    'onDidChange'?: (event: CustomEvent) => void;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option'?: 'checkbox' | 'radio';
+    /**
+    * Defines the selected values of the array.
+    */
+    'value'?: string | string[];
+  }
+
   interface SeRadioOnOff {
     /**
     * Defines the background color of the button. Default is `standard`, rendering a light gray background color.
@@ -915,47 +956,6 @@ export namespace Components {
     * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
     */
     'value'?: boolean;
-  }
-
-  interface SeRadio {
-    /**
-    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
-    */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled': boolean;
-    /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
-    */
-    'option': 'checkbox' | 'radio';
-    /**
-    * Defines the selected values of the array.
-    */
-    'value': string | string[];
-  }
-  interface SeRadioAttributes extends StencilHTMLAttributes {
-    /**
-    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
-    */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Passes the selected button value to the parent component when clicking on a button in the group.
-    */
-    'onDidChange'?: (event: CustomEvent) => void;
-    /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
-    */
-    'option'?: 'checkbox' | 'radio';
-    /**
-    * Defines the selected values of the array.
-    */
-    'value'?: string | string[];
   }
 
   interface SeSidemenuItem {
@@ -1271,9 +1271,9 @@ declare global {
     'SeListItem': Components.SeListItem;
     'SeList': Components.SeList;
     'SeLoading': Components.SeLoading;
+    'SeRadioGroup': Components.SeRadioGroup;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeRadioSwitch': Components.SeRadioSwitch;
-    'SeRadio': Components.SeRadio;
     'SeSidemenuItem': Components.SeSidemenuItem;
     'SeSidemenu': Components.SeSidemenu;
     'SeSnackbar': Components.SeSnackbar;
@@ -1311,9 +1311,9 @@ declare global {
     'se-list-item': Components.SeListItemAttributes;
     'se-list': Components.SeListAttributes;
     'se-loading': Components.SeLoadingAttributes;
+    'se-radio-group': Components.SeRadioGroupAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-radio-switch': Components.SeRadioSwitchAttributes;
-    'se-radio': Components.SeRadioAttributes;
     'se-sidemenu-item': Components.SeSidemenuItemAttributes;
     'se-sidemenu': Components.SeSidemenuAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
@@ -1471,6 +1471,12 @@ declare global {
     new (): HTMLSeLoadingElement;
   };
 
+  interface HTMLSeRadioGroupElement extends Components.SeRadioGroup, HTMLStencilElement {}
+  var HTMLSeRadioGroupElement: {
+    prototype: HTMLSeRadioGroupElement;
+    new (): HTMLSeRadioGroupElement;
+  };
+
   interface HTMLSeRadioOnOffElement extends Components.SeRadioOnOff, HTMLStencilElement {}
   var HTMLSeRadioOnOffElement: {
     prototype: HTMLSeRadioOnOffElement;
@@ -1481,12 +1487,6 @@ declare global {
   var HTMLSeRadioSwitchElement: {
     prototype: HTMLSeRadioSwitchElement;
     new (): HTMLSeRadioSwitchElement;
-  };
-
-  interface HTMLSeRadioElement extends Components.SeRadio, HTMLStencilElement {}
-  var HTMLSeRadioElement: {
-    prototype: HTMLSeRadioElement;
-    new (): HTMLSeRadioElement;
   };
 
   interface HTMLSeSidemenuItemElement extends Components.SeSidemenuItem, HTMLStencilElement {}
@@ -1574,9 +1574,9 @@ declare global {
     'se-list-item': HTMLSeListItemElement
     'se-list': HTMLSeListElement
     'se-loading': HTMLSeLoadingElement
+    'se-radio-group': HTMLSeRadioGroupElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-radio-switch': HTMLSeRadioSwitchElement
-    'se-radio': HTMLSeRadioElement
     'se-sidemenu-item': HTMLSeSidemenuItemElement
     'se-sidemenu': HTMLSeSidemenuElement
     'se-snackbar': HTMLSeSnackbarElement
@@ -1614,9 +1614,9 @@ declare global {
     'se-list-item': HTMLSeListItemElement;
     'se-list': HTMLSeListElement;
     'se-loading': HTMLSeLoadingElement;
+    'se-radio-group': HTMLSeRadioGroupElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-radio-switch': HTMLSeRadioSwitchElement;
-    'se-radio': HTMLSeRadioElement;
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
     'se-sidemenu': HTMLSeSidemenuElement;
     'se-snackbar': HTMLSeSnackbarElement;

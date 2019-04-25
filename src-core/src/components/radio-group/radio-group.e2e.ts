@@ -1,25 +1,25 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('RadioComponent', () => {
+describe('RadioGroupComponent', () => {
   let page;
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-radio color="primary"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio>');
+    await page.setContent('<se-radio-group color="primary"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio-group>');
     await page.waitForChanges();
   });
 
   it('renders', async() => {
     const renderedHTML = '<slot></slot>'
-    const element = await page.find('se-radio');
+    const element = await page.find('se-radio-group');
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
     expect(element.shadowRoot).toEqualHtml(renderedHTML);
   });
 
   it('renders with two se-button components each with a grouped class', async() => {
-    const firstButtonElement = await page.find('se-radio se-button#first');
-    const lastButtonElement = await page.find('se-radio se-button#second'); 
+    const firstButtonElement = await page.find('se-radio-group se-button#first');
+    const lastButtonElement = await page.find('se-radio-group se-button#second'); 
 
     expect(firstButtonElement).toHaveClass('grouped');
     expect(firstButtonElement.innerText).toEqual('Primary');
@@ -32,16 +32,16 @@ describe('RadioComponent', () => {
       elm.disabled = true;
     });
     await page.waitForChanges();
-    const firstButtonElement = await page.find('se-radio se-button#first >>> button');
-    const secondButtonElement = await page.find('se-radio se-button#second >>> button');
+    const firstButtonElement = await page.find('se-radio-group se-button#first >>> button');
+    const secondButtonElement = await page.find('se-radio-group se-button#second >>> button');
 
     expect(firstButtonElement).toHaveClasses(['flat', 'primary'])
     expect(secondButtonElement.getProperty('disabled')).toBeTruthy();
   });
 
   it('can select multiple buttons by default because its default option is checkbox', async() => {
-    const firstButtonElement = await page.find('se-radio se-button#first >>> button');
-    const secondButtonElement = await page.find('se-radio se-button#second >>> button');
+    const firstButtonElement = await page.find('se-radio-group se-button#first >>> button');
+    const secondButtonElement = await page.find('se-radio-group se-button#second >>> button');
 
     await firstButtonElement.click();
     await page.waitForChanges();
@@ -58,8 +58,8 @@ describe('RadioComponent', () => {
       elm.option = 'radio';
     });
     await page.waitForChanges();
-    const firstButtonElement = await page.find('se-radio se-button#first >>> button');
-    const secondButtonElement = await page.find('se-radio se-button#second >>> button');
+    const firstButtonElement = await page.find('se-radio-group se-button#first >>> button');
+    const secondButtonElement = await page.find('se-radio-group se-button#second >>> button');
 
     await firstButtonElement.click();
     expect(firstButtonElement).toHaveClass('selected');
@@ -76,12 +76,12 @@ describe('RadioComponent with an initialized value', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-radio option="radio" value="first"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio>');
+    await page.setContent('<se-radio-group option="radio" value="first"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio>');
     await page.waitForChanges();
   });
 
   it('should mark the first button as selected', async() => {
-    const buttonElement = await page.find('se-radio se-button#first >>> button');
+    const buttonElement = await page.find('se-radio-group se-button#first >>> button');
     expect(buttonElement).toHaveClass('selected');
   });
 
