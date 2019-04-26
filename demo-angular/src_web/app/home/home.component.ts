@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Logger } from '@core/logger.service';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 import { ModalTableComponent } from './modal-table/modal-table.component';
-import { DialogService, SnackbarService, PageLoaderService} from '@se/web-ui-angular';
+import { DialogService, SnackbarService, PageLoaderService } from '@se/web-ui-angular';
 const log = new Logger('HomeComponent');
 const logModal = new Logger('ModalExampleComponent');
 @Component({
@@ -24,31 +24,29 @@ export class HomeComponent implements OnInit {
   public loaderTable = false;
   public showDialogMessage: string;
 
-  constructor(public dialogService: DialogService,
-              private snackbarService: SnackbarService,
-              private pageLoaderService: PageLoaderService) {}
+  constructor(
+    public dialogService: DialogService,
+    private snackbarService: SnackbarService,
+    private pageLoaderService: PageLoaderService
+  ) {}
 
   modalAlert(type: 'success' | 'warning' | 'error'): void {
     log.debug('modalAlert type', type);
-
   }
 
   modalConfirm(type: 'success' | 'warning' | 'error'): void {
     log.debug('modalConfirm type', type);
   }
 
-  modalExample(): void {
-  }
+  modalExample(): void {}
 
-  modalTable(): void {
-
-  }
+  modalTable(): void {}
 
   showSnackbar(): void {
     const snackbar = this.snackbarService.open({
       message: 'This is info',
-      canClose:true
-    })
+      canClose: true
+    });
     snackbar.instance.didClose.subscribe((data: any) => {
       // do something
       this.confirmclick();
@@ -57,84 +55,96 @@ export class HomeComponent implements OnInit {
   confirmclick() {
     log.debug('closed');
   }
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   //calling dialog alert service
-  showDialog():void{
+  showDialog(): void {
     const alert = this.dialogService.alert({
-     message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+      message:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
     });
-    
-    alert.instance.afterClosed.subscribe((data: any) => {
-      // called when clicked on OK
-      this.closeAlertCallback();
-    },(err: any) => {
-      // called when clicked on cancel or backdrop click 
-      log.debug(err);
-    });
+
+    alert.instance.afterClosed.subscribe(
+      (data: any) => {
+        // called when clicked on OK
+        this.closeAlertCallback();
+      },
+      (err: any) => {
+        // called when clicked on cancel or backdrop click
+        log.debug(err);
+      }
+    );
   }
   //calling dialog alert service with icon
-  showTitle():void{
+  showTitle(): void {
     const title = this.dialogService.alert({
-     title:'Dialog With Title & Icon',
-     message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-     icon:'help_wired_flat',
+      title: 'Dialog With Title & Icon',
+      message:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+      icon: 'help_wired_flat'
     });
-    title.instance.afterClosed.subscribe((data: any) => {
-      // called when clicked on OK
-      this.closeAlertTitleCallback();
-    },(err: any) => {
-      // called when clicked on cancel or backdrop click 
-      log.debug(err);
-    });
-   }
-
- //calling dialog confirm service
-  showConfirm():void{
-  const confirm = this.dialogService.confirm({
-   title:'Dialog Confirm',
-   message:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-  });
-  confirm.instance.afterClosed.subscribe((data: any) => {
-    // called when clicked on OK
-    this.okConfirmCallback();
-  },(err: any) => {
-    // called when clicked on cancel or backdrop click 
-    log.debug(err);
-  });
- }
-
- closeAlertCallback():void{
-  this.showDialogMessage ="Alert Dialog closed & callback function called";
- }
- closeAlertTitleCallback():void{
-  this.showDialogMessage ="Alert Dialog with title,icon closed & callback function called";
- }
-
- okConfirmCallback():void{
-  this.showDialogMessage ="Confirm Dialog closed & callback function called";
- }
-
- 
-
-//calling modal service
- showModal():void{
-    const modal = this.dialogService.modal(ModalExampleComponent);     
-    modal.instance.afterClosed.subscribe((data:any)=>{
-    this.closeModalCallback();
-  },(err: any) => {
-    // called when clicked on cancel or backdrop click 
-    log.debug(err);
-  });
-    this.showDialogMessage ="Modal Dialog";
+    title.instance.afterClosed.subscribe(
+      (data: any) => {
+        // called when clicked on OK
+        this.closeAlertTitleCallback();
+      },
+      (err: any) => {
+        // called when clicked on cancel or backdrop click
+        log.debug(err);
+      }
+    );
   }
-  closeModalCallback():void{
-    this.showDialogMessage ="Modal Dialog backdrop click & callback function called"; 
+
+  //calling dialog confirm service
+  showConfirm(): void {
+    const confirm = this.dialogService.confirm({
+      title: 'Dialog Confirm',
+      message:
+        `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua`
+    });
+    confirm.instance.afterClosed.subscribe(
+      (data: any) => {
+        // called when clicked on OK
+        this.okConfirmCallback();
+      },
+      (err: any) => {
+        // called when clicked on cancel or backdrop click
+        log.debug(err);
+      }
+    );
+  }
+
+  closeAlertCallback(): void {
+    this.showDialogMessage = 'Alert Dialog closed & callback function called';
+  }
+  closeAlertTitleCallback(): void {
+    this.showDialogMessage = 'Alert Dialog with title,icon closed & callback function called';
+  }
+
+  okConfirmCallback(): void {
+    this.showDialogMessage = 'Confirm Dialog closed & callback function called';
+  }
+
+  //calling modal service
+  showModal(): void {
+    const modal = this.dialogService.modal(ModalExampleComponent);
+    modal.instance.afterClosed.subscribe(
+      (data: any) => {
+        this.closeModalCallback();
+      },
+      (err: any) => {
+        // called when clicked on cancel or backdrop click
+        log.debug(err);
+      }
+    );
+    this.showDialogMessage = 'Modal Dialog';
+  }
+  closeModalCallback(): void {
+    this.showDialogMessage = 'Modal Dialog backdrop click & callback function called';
   }
 
   showPageLoader(): void {
     this.pageLoaderService.show();
-    setTimeout(() =>  this.pageLoaderService.hide(), 5000);
+    setTimeout(() => this.pageLoaderService.hide(), 5000);
   }
 }

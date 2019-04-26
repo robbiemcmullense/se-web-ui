@@ -4,15 +4,14 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "upgrade:web": "yarn upgrade @se/web-ui"
+    "start": "node server.js"
   },
   "author": "sesa481467",
   "license": "",
   "dependencies": {
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.0.4",
-    "@se/web-ui": "file:../core",
+    "@se/web-ui": "link:../core",
     "express": "^4.16.3",
     "serve-static": "^1.13.2"
   }

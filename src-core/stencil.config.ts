@@ -17,8 +17,10 @@ export const config: Config = {
     }
   ],
   copy: [
-    { src: '../node_modules/@se/fonts', dest: 'fonts' },
-    { src: '../node_modules/@se/icons', dest: 'icons' },
+    { src: '../node_modules/@se/fonts/css', dest: 'fonts/css' },
+    { src: '../node_modules/@se/fonts/fonts', dest: 'fonts/fonts' },
+    { src: '../node_modules/@se/icons/css', dest: 'icons/css' },
+    { src: '../node_modules/@se/icons/fonts', dest: 'icons/fonts' },
   ],
   plugins: [
     sass()
