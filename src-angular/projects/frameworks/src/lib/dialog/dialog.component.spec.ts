@@ -32,8 +32,8 @@ describe('DialogComponent', () => {
   it('should create dialog component', () => {
     expect(component).toBeTruthy();
   });
-  it('should emit closedialog',()=>{
-    spyOn(component.didClose, 'emit');
+  it('should emit confirmdialog',()=>{
+    spyOn(component.afterClosed, 'emit');
     // trigger the click
     fixture.componentInstance.type='confirm';
     fixture.detectChanges();
@@ -41,18 +41,19 @@ describe('DialogComponent', () => {
     const button = nativeElement.querySelector('se-button');
     button.dispatchEvent(new Event('click'));
     fixture.detectChanges();
-    expect(component.didClose.emit).toHaveBeenCalled(); 
+    component.closeDialog();
+    expect(component.afterClosed.emit).toHaveBeenCalled(); 
   });
 
-  it('should emit confirmdialog',()=>{
-    spyOn(component.didConfirm, 'emit');
-    component.confirmDialog();
-    expect(component.didConfirm.emit).toHaveBeenCalled();
-  });
   it('should emit backdropclick',()=>{
-    spyOn(component.backdrop, 'emit');
+    spyOn(component.afterClosed, 'error');
     component.backdropClick();
-    expect(component.backdrop.emit).toHaveBeenCalled();
+    expect(component.afterClosed.error).toHaveBeenCalled();
+  });
+  it('should emit cancelclick',()=>{
+    spyOn(component.afterClosed, 'error');
+    component.cancelDialog();
+    expect(component.afterClosed.error).toHaveBeenCalled();
   });
 
 //modal dialog test cases
@@ -60,14 +61,14 @@ it('should create modal component', () => {
   expect(modalcomponent).toBeTruthy();
 });
 it('should emit close modal dialog',()=>{
-  spyOn(modalcomponent.didClose , 'emit');
+  spyOn(modalcomponent.afterClosed , 'emit');
   modalcomponent.closeDialog();
-  expect(modalcomponent.didClose.emit).toHaveBeenCalled();
+  expect(modalcomponent.afterClosed.emit).toHaveBeenCalled();
 });
 it('should emit close backdropclick',()=>{
-  spyOn(modalcomponent.backdrop , 'emit');
+  spyOn(modalcomponent.afterClosed , 'error');
   modalcomponent.backdropClick();
-  expect(modalcomponent.backdrop.emit).toHaveBeenCalled();
+  expect(modalcomponent.afterClosed.error).toHaveBeenCalled();
 });
 it('should load child component',()=>{
   modalcomponent.loadChildComponent(DialogModalComponent);
