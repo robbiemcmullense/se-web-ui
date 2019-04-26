@@ -119,7 +119,7 @@ Each demo has been built around real case, deployment ready, scenarios. This ins
 3. Run `yarn install` to install dependencies of the project and each demo in this repository.
 4. Run `yarn build` to create a local build version that will be locally used by each demo
 
-**Note: ** Each demo use the hard link to connect to the `/core` and `/angular` folder that are the local version of what will be deployed as `@se/web-ui` and `@se/web-ui-angular`. This let developer create/update component that, once built, will be automatically linked to the demo. It keeps all dependencies aligned. (Links only works with `yarn`) 
+**Note :** Each demo use the hard link to connect to the `/core` and `/angular` folder that are the local version of what will be deployed as `@se/web-ui` and `@se/web-ui-angular`. This let developer create/update component that, once built, will be automatically linked to the demo. It keeps all dependencies aligned. (Links only works with `yarn`) 
 
 **Demo with NO Framework**
 
