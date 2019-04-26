@@ -2,7 +2,7 @@
 
 :host {
   @include align-items(center);
-	.checkbox-container {
+	.radio-container {
 		position: relative;
 		padding-left: 20px;
     @include typology('p-small');
@@ -25,14 +25,12 @@
 			height: 0;
 			width: 0;
 			opacity: 0;
-			&:checked ~ .checkmark {
+			&:checked ~ .checkdot {
 				&[data-color="primary"] {
-					@include background-color('primary');
           border: 1px solid;
           @include border-color('primary');
 				}
 				&[data-color="secondary"] {
-					@include background-color('secondary');
           border: 1px solid;
           @include border-color('secondary');
 				}
@@ -42,28 +40,36 @@
 			}
 		}
 
-		.checkmark {
+		.checkdot {
 			position: absolute;
 			top: 0;
 			left: 0;
 			height: 12px;
 			width: 12px;
-			background-color: $se-white;
-			border: 1px solid $se-light-grey;
+      background-color: $se-white;
+      border: 1px solid $se-light-grey;
+			border-radius: 50%;
 			&:after {
 				content: "";
 				position: absolute;
 				display: none;
-				bottom: 3px;
-				left: 4px;
-				width: 3px;
-				height: 7px;
-				border: solid $se-white;
-				border-width: 0 1px 1px 0;
-				-webkit-transform: rotate(45deg);
-				-ms-transform: rotate(45deg);
-				transform: rotate(45deg);
-			}
+        top: 3px;
+        left: 3px;
+				width: 6px;
+        height: 6px;
+        @include background-color('primary');
+        border-radius: 50%;
+      }
+      &[data-color="primary"] {
+        &:after {
+          @include background-color('primary');
+        }
+      }
+      &[data-color="secondary"] {
+        &:after {
+          @include background-color('secondary');
+        }
+      }
 		}
 	}
 }

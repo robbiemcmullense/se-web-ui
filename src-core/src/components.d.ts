@@ -229,9 +229,17 @@ export namespace Components {
     */
     'label': string;
     /**
+    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
+    */
+    'required': boolean;
+    /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
     'selected': boolean;
+    /**
+    * Set the required property on the checkbox element.
+    */
+    'setRequired': () => void;
     /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
@@ -254,6 +262,10 @@ export namespace Components {
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
     'onDidCheck'?: (event: CustomEvent) => void;
+    /**
+    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
+    */
+    'required'?: boolean;
     /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
@@ -518,7 +530,7 @@ export namespace Components {
     /**
     * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
     */
-    'type': 'input' | 'checkbox' | 'select';
+    'type': 'input' | 'checkbox' | 'radio' | 'select';
     /**
     * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
     */
@@ -552,7 +564,7 @@ export namespace Components {
     /**
     * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
     */
-    'type'?: 'input' | 'checkbox' | 'select';
+    'type'?: 'input' | 'checkbox' | 'radio' | 'select';
     /**
     * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
     */
@@ -958,6 +970,67 @@ export namespace Components {
     'value'?: boolean;
   }
 
+  interface SeRadio {
+    /**
+    * Defines the color of the checkbox.
+    */
+    'color': 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * The label of the checkbox that will be attached to the box.
+    */
+    'label': string;
+    /**
+    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+    */
+    'required': boolean;
+    /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected': boolean;
+    /**
+    * Set the required property on the radio button element.
+    */
+    'setRequired': () => void;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value': string;
+  }
+  interface SeRadioAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the color of the checkbox.
+    */
+    'color'?: 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * The label of the checkbox that will be attached to the box.
+    */
+    'label'?: string;
+    /**
+    * Send the checkbox value to the parent component when clicking on the checkbox.
+    */
+    'onDidCheck'?: (event: CustomEvent) => void;
+    /**
+    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+    */
+    'required'?: boolean;
+    /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected'?: boolean;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value'?: string;
+  }
+
   interface SeSidemenuItem {
     /**
     * Defines if the menu item is active or not.
@@ -1274,6 +1347,7 @@ declare global {
     'SeRadioGroup': Components.SeRadioGroup;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeRadioSwitch': Components.SeRadioSwitch;
+    'SeRadio': Components.SeRadio;
     'SeSidemenuItem': Components.SeSidemenuItem;
     'SeSidemenu': Components.SeSidemenu;
     'SeSnackbar': Components.SeSnackbar;
@@ -1314,6 +1388,7 @@ declare global {
     'se-radio-group': Components.SeRadioGroupAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-radio-switch': Components.SeRadioSwitchAttributes;
+    'se-radio': Components.SeRadioAttributes;
     'se-sidemenu-item': Components.SeSidemenuItemAttributes;
     'se-sidemenu': Components.SeSidemenuAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
@@ -1489,6 +1564,12 @@ declare global {
     new (): HTMLSeRadioSwitchElement;
   };
 
+  interface HTMLSeRadioElement extends Components.SeRadio, HTMLStencilElement {}
+  var HTMLSeRadioElement: {
+    prototype: HTMLSeRadioElement;
+    new (): HTMLSeRadioElement;
+  };
+
   interface HTMLSeSidemenuItemElement extends Components.SeSidemenuItem, HTMLStencilElement {}
   var HTMLSeSidemenuItemElement: {
     prototype: HTMLSeSidemenuItemElement;
@@ -1577,6 +1658,7 @@ declare global {
     'se-radio-group': HTMLSeRadioGroupElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-radio-switch': HTMLSeRadioSwitchElement
+    'se-radio': HTMLSeRadioElement
     'se-sidemenu-item': HTMLSeSidemenuItemElement
     'se-sidemenu': HTMLSeSidemenuElement
     'se-snackbar': HTMLSeSnackbarElement
@@ -1617,6 +1699,7 @@ declare global {
     'se-radio-group': HTMLSeRadioGroupElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-radio-switch': HTMLSeRadioSwitchElement;
+    'se-radio': HTMLSeRadioElement;
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
     'se-sidemenu': HTMLSeSidemenuElement;
     'se-snackbar': HTMLSeSnackbarElement;
