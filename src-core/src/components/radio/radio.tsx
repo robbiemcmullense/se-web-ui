@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State, Watch } from "@stencil/core";
+import { Component, Event, EventEmitter, Method, Prop, State, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-radio",
@@ -16,6 +16,10 @@ export class RadioComponent {
    */
   @Prop() label: string;
   /**
+   * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+   */
+  @Prop() required: boolean = false;
+  /**
    * Defines the color of the checkbox.
    */
   @Prop() color: 'primary' | 'secondary' = 'primary';
@@ -28,6 +32,13 @@ export class RadioComponent {
 	 */
   @Prop({mutable: true}) selected: boolean = false;
   @State() checked: boolean;
+  /**
+   * Set the required property on the radio button element.
+   */
+  @Method()
+  setRequired() {
+    this.required = true;
+  }
   /**
    * Send the checkbox value to the parent component when clicking on the checkbox.
    */
@@ -53,6 +64,7 @@ export class RadioComponent {
     return (
       <label class="radio-container" data-disabled={this.disabled}>
         {this.label}
+        {this.required ? <span class="required">*</span> : ''}
         <input type="radio" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()}/>
         <span class="checkdot" data-color={this.color}></span>
       </label>

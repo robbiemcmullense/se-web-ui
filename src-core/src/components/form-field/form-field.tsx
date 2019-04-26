@@ -74,7 +74,8 @@ export class FormFieldComponent {
 		Array.from(this.el.querySelectorAll('input, select, se-checkbox, se-radio')).forEach((item: any) => {
       item.disabled = this.disabled;
       if (this.type === "checkbox" || this.type === "radio") {
-        item.label = this.label;
+				item.label = this.label;
+				item.required = this.required;
       }
 		});
 	}

@@ -229,9 +229,17 @@ export namespace Components {
     */
     'label': string;
     /**
+    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
+    */
+    'required': boolean;
+    /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
     'selected': boolean;
+    /**
+    * Set the required property on the checkbox element.
+    */
+    'setRequired': () => void;
     /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
@@ -254,6 +262,10 @@ export namespace Components {
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
     'onDidCheck'?: (event: CustomEvent) => void;
+    /**
+    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
+    */
+    'required'?: boolean;
     /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
@@ -972,9 +984,17 @@ export namespace Components {
     */
     'label': string;
     /**
+    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+    */
+    'required': boolean;
+    /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
     'selected': boolean;
+    /**
+    * Set the required property on the radio button element.
+    */
+    'setRequired': () => void;
     /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
@@ -997,6 +1017,10 @@ export namespace Components {
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
     'onDidCheck'?: (event: CustomEvent) => void;
+    /**
+    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+    */
+    'required'?: boolean;
     /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */

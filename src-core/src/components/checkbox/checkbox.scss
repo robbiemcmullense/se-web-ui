@@ -11,9 +11,16 @@
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+
 		&[data-disabled] {
 			opacity: 0.26;
 		}
+
+		.required {
+			color: $se-red;
+			padding-left: 3px;
+		}
+
 		input {
 			height: 0;
 			width: 0;
@@ -34,6 +41,7 @@
 				}
 			}
 		}
+
 		.checkmark {
 			position: absolute;
 			top: 0;

@@ -391,11 +391,6 @@
                 <se-radio value="two radio" label="Second Radio Button"></se-radio>
                 <se-radio value="three radio" label="Third Radio Button"></se-radio>
               </se-radio-group>
-              <se-radio-group id="checkbox-radio-group" option="checkbox" color="secondary">
-                <se-radio value="one radio check" label="First Radio Check"></se-radio>
-                <se-radio value="two radio check" label="Second Radio Check"></se-radio>
-                <se-radio value="three radio check" label="Third Radio Check"></se-radio>
-              </se-radio-group>
             </se-widget-content>
           </se-widget>
 
@@ -487,7 +482,6 @@
       checkboxMsg.firstElementChild.innerText = event.detail;
     });
     document.getElementById('checkbox-button-group').value = ['first', 'third'];
-    document.getElementById('checkbox-radio-group').value = ['one radio check'];
     document.getElementById('checkbox-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'checkbox, ' + event.detail;
     });
