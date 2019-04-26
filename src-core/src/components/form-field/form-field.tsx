@@ -16,7 +16,7 @@ export class FormFieldComponent {
 	 * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select).
 	 * `input` is the default type.
 	 */
-	@Prop() type: 'input' | 'checkbox' | 'select' = 'input';
+	@Prop() type: 'input' | 'checkbox' | 'radio' | 'select' = 'input';
 	/**
 	 * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
 	 */
@@ -71,10 +71,11 @@ export class FormFieldComponent {
 	}
 
 	initLabel() {
-		Array.from(this.el.querySelectorAll('input, select, se-checkbox')).forEach((item: any) => {
+		Array.from(this.el.querySelectorAll('input, select, se-checkbox, se-radio')).forEach((item: any) => {
       item.disabled = this.disabled;
-      if(this.type === "checkbox"){
-        item.label = this.label
+      if (this.type === "checkbox" || this.type === "radio") {
+				item.label = this.label;
+				item.required = this.required;
       }
 		});
 	}
@@ -95,7 +96,7 @@ export class FormFieldComponent {
 	render() {
 		return (
 			<div class="se-form-field" data-disabled={this.disabled}>
-        {this.type !== 'checkbox' &&  <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label>}
+        {(this.type === 'input' || this.type === 'select') &&  <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label>}
 				<slot></slot>
 			</div>
 		)

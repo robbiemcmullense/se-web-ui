@@ -9,7 +9,7 @@
 
 | Property    | Attribute    | Description                                                                                                                                | Type                                                 | Default                |
 | ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ---------------------- |
-| `canClose`  | `can-close`  | Display a close "button".  Visible by default.                                                                                             | `boolean`                                            | `true`                 |
+| `canClose`  | `can-close`  | Display a close "button".  Visible by default.                                                                                             | `boolean`                                            | `false`                |
 | `closeText` | `close-text` | Defines the text you want your "close button" to read.  Default text is `dismiss`.                                                         | `string`                                             | `'dismiss'`            |
 | `icon`      | `icon`       | The name of the icon you wish to display.  The default icon is an information circle.                                                      | `string`                                             | `'information_circle'` |
 | `message`   | `message`    | The content of the message you want the snackbar to display.                                                                               | `string`                                             | `undefined`            |

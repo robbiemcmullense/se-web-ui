@@ -38,4 +38,8 @@ export class DialogConfig {
    * @description option for the dialog by removing the padding&margin before and after the content
    */
   option?: string;
+  /**
+   * @description option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+   */
+  canBackdrop?: boolean;
 }

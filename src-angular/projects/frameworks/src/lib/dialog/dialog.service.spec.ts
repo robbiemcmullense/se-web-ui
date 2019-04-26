@@ -3,12 +3,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DialogService } from './dialog.service';
 import { DialogComponent,DialogModalComponent} from './dialog.component';
 import { DialogConfig} from './dialog-config';
-import { DialogInjector} from './dialog-injector';
 import { DialogModule} from './dialog.module';
 
 describe('DialogService', () => {
   let config:DialogConfig;
-  let inject:DialogInjector;
   let component: DialogComponent;
   let fixture: ComponentFixture<DialogComponent>;
   let modalcomponent :DialogModalComponent;
@@ -19,6 +17,7 @@ describe('DialogService', () => {
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA
     ],
+    providers:[DialogConfig]
   }));
   beforeEach(()=>{
     config = new DialogConfig();
@@ -71,7 +70,11 @@ describe('DialogService', () => {
     }
     const result = service.modal(DialogModalComponent,config);
     expect(result.instance.modal.size).toBe('small');
-    expect(result.instance.modal.color).toBe('alternative');
+  });
+  it('should call modal without config',()=>{
+    const service: DialogService = TestBed.get(DialogService);
+    const result = service.modal(DialogModalComponent);
+    expect(result.instance).toBeTruthy();
   });
   it('should close dialog',()=>{
     const service: DialogService = TestBed.get(DialogService);

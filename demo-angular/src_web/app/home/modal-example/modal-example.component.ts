@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService} from '@se/web-ui-angular';
-import {Logger} from '../../../../src_common/core/logger.service';
+import {Logger} from '@core/logger.service';
 const log = new Logger('ModalExampleComponent');
 
 @Component({

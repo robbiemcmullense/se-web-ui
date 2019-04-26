@@ -7,19 +7,34 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                                             | Type                                                      | Default      |
-| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------ |
-| `color`    | `color`    | Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.                                                                                        | `"alternative" \| "primary" \| "secondary" \| "standard"` | `'standard'` |
-| `disabled` | `disabled` | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                                                   | `boolean`                                                 | `false`      |
-| `option`   | `option`   | Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time. | `"checkbox" \| "radio"`                                   | `'checkbox'` |
-| `value`    | `value`    | Defines the selected values of the array.                                                                                                                                                                               | `string \| string[]`                                      | `undefined`  |
+| Property   | Attribute  | Description                                                                                         | Type                       | Default     |
+| ---------- | ---------- | --------------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
+| `color`    | `color`    | Defines the color of the checkbox.                                                                  | `"primary" \| "secondary"` | `'primary'` |
+| `disabled` | `disabled` | Optional property that defines if the checkbox is disabled.  Set to `false` by default.             | `boolean`                  | `false`     |
+| `label`    | `label`    | The label of the checkbox that will be attached to the box.                                         | `string`                   | `undefined` |
+| `required` | `required` | Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`. | `boolean`                  | `false`     |
+| `selected` | `selected` | Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.       | `boolean`                  | `false`     |
+| `value`    | `value`    | The value you want to pass to the parent component when the checkbox is checked.                    | `string`                   | `undefined` |
 
 
 ## Events
 
-| Event       | Description                                                                                      | Type                |
-| ----------- | ------------------------------------------------------------------------------------------------ | ------------------- |
-| `didChange` | Passes the selected button value to the parent component when clicking on a button in the group. | `CustomEvent<void>` |
+| Event      | Description                                                                    | Type                |
+| ---------- | ------------------------------------------------------------------------------ | ------------------- |
+| `didCheck` | Send the checkbox value to the parent component when clicking on the checkbox. | `CustomEvent<void>` |
+
+
+## Methods
+
+### `setRequired() => void`
+
+Set the required property on the radio button element.
+
+#### Returns
+
+Type: `void`
+
+
 
 
 ----------------------------------------------

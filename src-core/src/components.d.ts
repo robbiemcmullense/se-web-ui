@@ -229,9 +229,17 @@ export namespace Components {
     */
     'label': string;
     /**
+    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
+    */
+    'required': boolean;
+    /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
     'selected': boolean;
+    /**
+    * Set the required property on the checkbox element.
+    */
+    'setRequired': () => void;
     /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
@@ -254,6 +262,10 @@ export namespace Components {
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
     'onDidCheck'?: (event: CustomEvent) => void;
+    /**
+    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
+    */
+    'required'?: boolean;
     /**
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
@@ -409,6 +421,10 @@ export namespace Components {
     */
     'backdropClicked': () => void;
     /**
+    * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+    */
+    'canBackdrop': boolean;
+    /**
     * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
     */
     'color': 'alternative' | 'primary';
@@ -422,6 +438,10 @@ export namespace Components {
     'size': "small" | "medium" | "large" | "fill";
   }
   interface SeDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+    */
+    'canBackdrop'?: boolean;
     /**
     * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
     */
@@ -518,7 +538,7 @@ export namespace Components {
     /**
     * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
     */
-    'type': 'input' | 'checkbox' | 'select';
+    'type': 'input' | 'checkbox' | 'radio' | 'select';
     /**
     * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
     */
@@ -552,7 +572,7 @@ export namespace Components {
     /**
     * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
     */
-    'type'?: 'input' | 'checkbox' | 'select';
+    'type'?: 'input' | 'checkbox' | 'radio' | 'select';
     /**
     * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
     */
@@ -835,6 +855,47 @@ export namespace Components {
     'loading'?: boolean;
   }
 
+  interface SeRadioGroup {
+    /**
+    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+    */
+    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option': 'checkbox' | 'radio';
+    /**
+    * Defines the selected values of the array.
+    */
+    'value': string | string[];
+  }
+  interface SeRadioGroupAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+    */
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Passes the selected button value to the parent component when clicking on a button in the group.
+    */
+    'onDidChange'?: (event: CustomEvent) => void;
+    /**
+    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    */
+    'option'?: 'checkbox' | 'radio';
+    /**
+    * Defines the selected values of the array.
+    */
+    'value'?: string | string[];
+  }
+
   interface SeRadioOnOff {
     /**
     * Defines the background color of the button. Default is `standard`, rendering a light gray background color.
@@ -919,43 +980,63 @@ export namespace Components {
 
   interface SeRadio {
     /**
-    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+    * Defines the color of the checkbox.
     */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color': 'primary' | 'secondary';
     /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
     */
     'disabled': boolean;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    * The label of the checkbox that will be attached to the box.
     */
-    'option': 'checkbox' | 'radio';
+    'label': string;
     /**
-    * Defines the selected values of the array.
+    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
     */
-    'value': string | string[];
+    'required': boolean;
+    /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected': boolean;
+    /**
+    * Set the required property on the radio button element.
+    */
+    'setRequired': () => void;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value': string;
   }
   interface SeRadioAttributes extends StencilHTMLAttributes {
     /**
-    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+    * Defines the color of the checkbox.
     */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color'?: 'primary' | 'secondary';
     /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
     */
     'disabled'?: boolean;
     /**
-    * Passes the selected button value to the parent component when clicking on a button in the group.
+    * The label of the checkbox that will be attached to the box.
     */
-    'onDidChange'?: (event: CustomEvent) => void;
+    'label'?: string;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    * Send the checkbox value to the parent component when clicking on the checkbox.
     */
-    'option'?: 'checkbox' | 'radio';
+    'onDidCheck'?: (event: CustomEvent) => void;
     /**
-    * Defines the selected values of the array.
+    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
     */
-    'value'?: string | string[];
+    'required'?: boolean;
+    /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected'?: boolean;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value'?: string;
   }
 
   interface SeSidemenuItem {
@@ -1271,6 +1352,7 @@ declare global {
     'SeListItem': Components.SeListItem;
     'SeList': Components.SeList;
     'SeLoading': Components.SeLoading;
+    'SeRadioGroup': Components.SeRadioGroup;
     'SeRadioOnOff': Components.SeRadioOnOff;
     'SeRadioSwitch': Components.SeRadioSwitch;
     'SeRadio': Components.SeRadio;
@@ -1311,6 +1393,7 @@ declare global {
     'se-list-item': Components.SeListItemAttributes;
     'se-list': Components.SeListAttributes;
     'se-loading': Components.SeLoadingAttributes;
+    'se-radio-group': Components.SeRadioGroupAttributes;
     'se-radio-on-off': Components.SeRadioOnOffAttributes;
     'se-radio-switch': Components.SeRadioSwitchAttributes;
     'se-radio': Components.SeRadioAttributes;
@@ -1471,6 +1554,12 @@ declare global {
     new (): HTMLSeLoadingElement;
   };
 
+  interface HTMLSeRadioGroupElement extends Components.SeRadioGroup, HTMLStencilElement {}
+  var HTMLSeRadioGroupElement: {
+    prototype: HTMLSeRadioGroupElement;
+    new (): HTMLSeRadioGroupElement;
+  };
+
   interface HTMLSeRadioOnOffElement extends Components.SeRadioOnOff, HTMLStencilElement {}
   var HTMLSeRadioOnOffElement: {
     prototype: HTMLSeRadioOnOffElement;
@@ -1574,6 +1663,7 @@ declare global {
     'se-list-item': HTMLSeListItemElement
     'se-list': HTMLSeListElement
     'se-loading': HTMLSeLoadingElement
+    'se-radio-group': HTMLSeRadioGroupElement
     'se-radio-on-off': HTMLSeRadioOnOffElement
     'se-radio-switch': HTMLSeRadioSwitchElement
     'se-radio': HTMLSeRadioElement
@@ -1614,6 +1704,7 @@ declare global {
     'se-list-item': HTMLSeListItemElement;
     'se-list': HTMLSeListElement;
     'se-loading': HTMLSeLoadingElement;
+    'se-radio-group': HTMLSeRadioGroupElement;
     'se-radio-on-off': HTMLSeRadioOnOffElement;
     'se-radio-switch': HTMLSeRadioSwitchElement;
     'se-radio': HTMLSeRadioElement;

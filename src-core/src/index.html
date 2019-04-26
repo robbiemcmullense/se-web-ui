@@ -237,29 +237,38 @@
             <se-radio-switch value="true"></se-radio-switch>
             <se-divider></se-divider>
             <ul>
-              <li id="radio-message">selected radio button: <span></span></li>
+              <li id="radio-message">selected radio icon button: <span></span></li>
             </ul>
-            <se-radio id="RadioGroup1" option="radio">
+            <se-radio-group id="RadioGroup1" option="radio">
               <se-button value="left" icon="arrow2_left"></se-button>
               <se-button value="right" icon="arrow2_right"></se-button>
-            </se-radio>
-            <se-checkbox style="margin-left:20px;" id="checkbox-primary" value="primary" label="Primary"></se-checkbox>
-            <se-checkbox id="checkbox-warn" value="warn" selected="true" color="secondary" label="Secondary"></se-checkbox>
+            </se-radio-group>
             <se-divider></se-divider>
             <ul>
-              <li id="checkbox-button-message">selected button checkbox buttons: <span>none</span></li>
+              <li>Example Checkbox and Radio components:</li>
             </ul>
-            <se-radio id="btnGroup1" option="radio" value="second">
-              <se-button value="first">Check1</se-button>
-              <se-button value="second">Check2</se-button>
-              <se-button value="third">Check3</se-button>
-            </se-radio>
+            <se-checkbox value="primary" label="Checkbox Primary"></se-checkbox>
+            <se-checkbox value="warn" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
+            <se-radio value="radio-primary" label="Radio Primary" selected="true"></se-radio>
+            <se-radio value="radio-secondary" label="Radio Secondary" color="secondary"></se-radio>
             <se-divider></se-divider>
-            <se-radio id="checkbox-button-group" option="checkbox" color="primary">
+            <ul>
+              <li id="checkbox-button-message">selected radio buttons: <span>none</span></li>
+            </ul>
+            <se-radio-group id="btnGroup1" option="radio" value="second">
               <se-button value="first">Check1</se-button>
               <se-button value="second">Check2</se-button>
               <se-button value="third">Check3</se-button>
-            </se-radio>
+            </se-radio-group>
+            <se-divider></se-divider>
+            <ul>
+             <li>Example Buttons within Radio Group in checkbox mode:</li>
+            </ul>
+            <se-radio-group id="checkbox-button-group" option="checkbox" color="primary">
+              <se-button value="first">Check1</se-button>
+              <se-button value="second">Check2</se-button>
+              <se-button value="third">Check3</se-button>
+            </se-radio-group>
           </se-widget-content>
         </se-widget>
         <se-widget id="widget2">
@@ -272,13 +281,18 @@
           <se-widget-content>
             <h4>Inlined </h4>
             <ul>
-              <li id="form-field-message">form field value: <span></span></li>
+              <li id="form-field-message">last submitted form field value: <span></span></li>
             </ul>
-
             <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
               required="true">
               <se-checkbox></se-checkbox>
             </se-form-field>
+
+            <se-form-field id="radio-form" label="This is my custom Radio Button.  It is unique." type="radio"
+              required="true">
+              <se-radio></se-radio>
+            </se-form-field>
+
             <se-form-field id="input-form" label="Input" required="true">
               <input type="text" />
             </se-form-field>
@@ -363,6 +377,23 @@
             </se-list>
           </se-widget-content>
         </se-widget>
+
+        <se-widget id="widget7">
+            <se-widget-header>
+              Group of Radio Buttons
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
+              </div>
+            </se-widget-header>
+            <se-widget-content option="fill">
+              <se-radio-group option="radio">
+                <se-radio value="one radio" label="First Radio Button"></se-radio>
+                <se-radio value="two radio" label="Second Radio Button"></se-radio>
+                <se-radio value="three radio" label="Third Radio Button"></se-radio>
+              </se-radio-group>
+            </se-widget-content>
+          </se-widget>
+
       </se-container>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
@@ -428,7 +459,9 @@
     // grid widget
     function toggle(id) {
       let widget = document.getElementById(`widget${id}`);
+      let icon = widget.querySelector('div[slot="end"] > se-icon');
       widget.enlarged = !widget.enlarged;
+      icon.innerText = widget.enlarged ? 'exit_presentation' : 'presentation_mode';
     }
 
 
@@ -451,6 +484,9 @@
     document.getElementById('checkbox-button-group').value = ['first', 'third'];
     document.getElementById('checkbox-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'checkbox, ' + event.detail;
+    });
+    document.getElementById('radio-form').addEventListener('didSubmit', function (event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'radio, ' + event.detail;
     });
     document.getElementById('input-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'input, ' + event.detail;

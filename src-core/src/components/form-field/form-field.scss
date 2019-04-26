@@ -7,10 +7,6 @@ $max-width-input: 320px;
 	.se-form-field {
     @include display-flex();
     padding: $spacing;
-
-		&[data-disabled] {
-			opacity: 0.26;
-    }
     @include align-items(center);
   }
 }
@@ -96,4 +92,16 @@ label {
     border: 1px solid $success;
 
 	}
+}
+
+:host(.input) {
+  .se-form-field[data-disabled] {
+    opacity: 0.26;
+  }
+}
+
+:host(.select) {
+  .se-form-field[data-disabled] {
+    opacity: 0.26;
+  }
 }

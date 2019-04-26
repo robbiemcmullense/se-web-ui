@@ -7,14 +7,20 @@
 		padding-left: 20px;
     @include typology('p-small');
     margin: $spacing;
-
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+
 		&[data-disabled] {
 			opacity: 0.26;
 		}
+
+		.required {
+			color: $se-red;
+			padding-left: 3px;
+		}
+
 		input {
 			height: 0;
 			width: 0;
@@ -23,18 +29,19 @@
 				&[data-color="primary"] {
 					@include background-color('primary');
           border: 1px solid;
-          @include border-color('primary')
+          @include border-color('primary');
 				}
 				&[data-color="secondary"] {
 					@include background-color('secondary');
           border: 1px solid;
-          @include border-color('primary')
+          @include border-color('secondary');
 				}
 				&:after {
 					display: block;
 				}
 			}
 		}
+
 		.checkmark {
 			position: absolute;
 			top: 0;

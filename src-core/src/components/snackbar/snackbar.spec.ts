@@ -23,7 +23,7 @@ describe('SnackbarComponent', () => {
 		expect(snackbar.open).toBe(false);
 	});
 
-	it('should be closeable by default', () => {
-		expect(snackbar.canClose).toBe(true);
+	it('should not be closeable by default', () => {
+		expect(snackbar.canClose).toBe(false);
 	});
 });

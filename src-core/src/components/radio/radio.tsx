@@ -1,105 +1,73 @@
-import { Component, Watch, Element, Event, EventEmitter, Prop, Listen } from '@stencil/core';
+import { Component, Event, EventEmitter, Method, Prop, State, Watch } from "@stencil/core";
 
 @Component({
-  tag: 'se-radio',
-  styleUrl: 'radio.scss',
+  tag: "se-radio",
+  styleUrl: "radio.scss",
   shadow: true
 })
+
 export class RadioComponent {
-  @Element() el: HTMLElement;
   /**
-   * Defines the functionality of your button group.
-   * `checkbox` is the default option, where all buttons in the group can be selected.
-   * `radio` option indicates that only one button in the group can be selected at a time.
+   * The value you want to pass to the parent component when the checkbox is checked.
    */
-  @Prop() option: 'checkbox' | 'radio' = 'checkbox';
-  @Watch('option') optionDidChange() {
-    this.updateItemMode()
+  @Prop() value: string;
+  /**
+   * The label of the checkbox that will be attached to the box.
+   */
+  @Prop() label: string;
+  /**
+   * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+   */
+  @Prop() required: boolean = false;
+  /**
+   * Defines the color of the checkbox.
+   */
+  @Prop() color: 'primary' | 'secondary' = 'primary';
+  /**
+   * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+   */
+  @Prop() disabled: boolean = false;
+  /**
+	 * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+	 */
+  @Prop({mutable: true}) selected: boolean = false;
+  @State() checked: boolean;
+  /**
+   * Set the required property on the radio button element.
+   */
+  @Method()
+  setRequired() {
+    this.required = true;
   }
   /**
-   * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+   * Send the checkbox value to the parent component when clicking on the checkbox.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
-  /**
-   * Optional property that defines if the button is disabled.  Set to `false` by default.
-   */
-  @Prop({mutable: true}) disabled: boolean = false;
-  @Watch('disabled') disabledDidChange() {
-    this.updateItemMode()
+  @Event() didCheck: EventEmitter;
+  @Watch('selected')
+  selectedDidChange() {
+    this.checked = this.selected;
   }
-  /**
-   * Defines the selected values of the array.
-   */
-  @Prop({mutable: true}) value: string | string[];
-  /**
-   * Passes the selected button value to the parent component when clicking on a button in the group.
-   */
-  @Event() didChange: EventEmitter;
-  
-  @Listen('didClick')
-  buttonClickedHandler(event: CustomEvent) {
-    let buttonInfo = event.detail;
-    let isChecked = buttonInfo.selected;
-    if (this.option === 'radio') {
-      this.value = buttonInfo.value;
-      const buttons = this.el.querySelectorAll('se-button');
-      buttons.forEach((button: any) => {
-        button.selected = button.value === buttonInfo.value;
-      });
-    }
-    if (this.option === 'checkbox') {
-      if (isChecked) {
-        this.value = [...this.value, buttonInfo.value];
-      } else {
-        const list:string[] = this.value as string[];
-        list.splice(this.value.indexOf(buttonInfo.value), 1);
-        this.value = list;
-      }
-    }
-    this.didChange.emit(this.value);
+
+  emitEvent() {
+    this.checked = !this.checked;
+    let checkboxObject = {value: this.value, selected: this.checked};
+    this.didCheck.emit(checkboxObject);
   }
 
   componentDidLoad() {
-    this.updateItemMode();
-    const buttons = this.el.querySelectorAll('se-button');
-    if (this.option === 'radio') {
-      try {
-        buttons.forEach((button: any) => {
-          button.selected = button.value === this.value;
-        });
-      } catch (e) {
-        console.log('in radio mode, the button value needs to be a string, ' + e);
-      }
-    } else if (this.option === 'checkbox') {
-      try {
-        const list = this.value as string[];
-        list.forEach((value: any) => {
-          buttons.forEach((button: any) => {
-            if (button.value === value) {
-              button.selected = true;
-            }
-          });
-        });       
-      } catch (e) {
-        console.log('in checkbox mode, the button value needs to be an array of objects, ' + e);
-      }
+    if (this.selected) {
+      this.checked = this.selected;
     }
-  }
-
-  private updateItemMode(){
-    let buttons = this.el.querySelectorAll('se-button');
-    buttons.forEach((button: any) => {
-      button.setGrouped();
-      if (this.disabled) {
-        button.disabled = true;
-      }
-      button.color = this.color;
-    });
   }
 
   render() {
     return (
-      <slot></slot>
-    )
+      <label class="radio-container" data-disabled={this.disabled}>
+        {this.label}
+        {this.required ? <span class="required">*</span> : ''}
+        <input type="radio" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()}/>
+        <span class="checkdot" data-color={this.color}></span>
+      </label>
+    );
   }
 }
