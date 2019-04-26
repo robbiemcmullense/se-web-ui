@@ -132,4 +132,9 @@ export class HomeComponent implements OnInit {
   closeModalCallback():void{
     this.showDialogMessage ="Modal Dialog backdrop click & callback function called"; 
   }
+
+  showPageLoader(): void {
+    this.pageLoaderService.show();
+    setTimeout(() =>  this.pageLoaderService.hide(), 5000);
+  }
 }

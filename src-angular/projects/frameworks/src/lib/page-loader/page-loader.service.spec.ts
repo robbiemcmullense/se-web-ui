@@ -20,7 +20,7 @@ describe('PageLoaderComponentService', () => {
 
   it('should append PageLoader to the Body', () => {
     const service: PageLoaderService = TestBed.get(PageLoaderService);
-    service.showLoader();
+    service.show();
     expect(service.pageLoaderComponentRef.instance).toBeTruthy();
     expect(service.pageLoaderComponentRef.componentType.name).toEqual('PageLoaderComponent');
     expect(service.pageLoaderComponentRef.hostView.destroyed).toBeFalsy();
@@ -28,8 +28,8 @@ describe('PageLoaderComponentService', () => {
 
   it('should remove PageLoader from body', () => {
     const service: PageLoaderService = TestBed.get(PageLoaderService);
-    service.showLoader();
-    service.hideLoader();
+    service.show();
+    service.hide();
     expect(service.pageLoaderComponentRef.hostView.destroyed).toBeTruthy();
   });
 
