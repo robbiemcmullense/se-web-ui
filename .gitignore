@@ -5,6 +5,11 @@ docs/build/
 core/
 angular/
 
+src-dash/
+src-react/
+
+
+
 .nuxt/
 .next/
 *~

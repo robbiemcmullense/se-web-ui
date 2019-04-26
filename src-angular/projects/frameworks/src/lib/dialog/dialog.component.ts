@@ -7,21 +7,18 @@ import { DialogDirective} from './dialog.directive';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent{
- @Output() didClose = new EventEmitter();
- @Output() backdrop = new EventEmitter();
- @Output() didConfirm = new EventEmitter();
+  @Output() afterClosed = new EventEmitter();
   constructor(public dialog:DialogConfig) { }
   @Input() type:string;
   closeDialog(){
-    this.didClose.emit(event);
+    this.afterClosed.emit(event);
   }
   backdropClick(){
-    this.backdrop.emit(event);
+    this.afterClosed.error('dialogclosed');
   }
-  confirmDialog(){
-    this.didConfirm.emit(event);
+  cancelDialog(){
+    this.afterClosed.error('dialogclosed');
   }
-
 }
 
 @Component({
@@ -29,20 +26,18 @@ export class DialogComponent{
   templateUrl: './dialog-modal.component.html',
 })
 export class DialogModalComponent implements AfterViewInit,OnDestroy{
-  @Output() didClose = new EventEmitter();
-  @Output() backdrop = new EventEmitter();
-
+  @Output() afterClosed = new EventEmitter();
   @ViewChild(DialogDirective) insertionPoint: DialogDirective;
   childComponentType: Type<any>;
   componentRef: ComponentRef<any>;
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef,@Optional() public modal:DialogConfig) {}
   closeDialog(){
-    this.didClose.emit(event);
+    this.afterClosed.emit(event);
   }
   backdropClick(){
-    this.backdrop.emit(event);
+    this.afterClosed.error('modalclosed');
   }
-  
+    
   ngAfterViewInit() { 
     if(this.childComponentType){
     this.loadChildComponent(this.childComponentType);

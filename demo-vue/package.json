@@ -5,13 +5,12 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "upgrade:web": "yarn upgrade @se/web-ui"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.3.0",
-    "@se/web-ui": "file:../core",
+    "@se/web-ui": "link:../core",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1"
   },

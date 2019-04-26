@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                                                        | Type                                       | Default     |
-| -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ | ----------- |
-| `color`  | `color`   | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting. | `"alternative" \| "primary"`               | `'primary'` |
-| `open`   | `open`    | Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.                                                             | `boolean`                                  | `false`     |
-| `size`   | `size`    | Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen       | `"fill" \| "large" \| "medium" \| "small"` | `"medium"`  |
+| Property      | Attribute      | Description                                                                                                                                                        | Type                                       | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ | ----------- |
+| `canBackdrop` | `can-backdrop` | option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.                                                                              | `boolean`                                  | `true`      |
+| `color`       | `color`        | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting. | `"alternative" \| "primary"`               | `'primary'` |
+| `open`        | `open`         | Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.                                                             | `boolean`                                  | `false`     |
+| `size`        | `size`         | Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen       | `"fill" \| "large" \| "medium" \| "small"` | `"medium"`  |
 
 
 ## Events

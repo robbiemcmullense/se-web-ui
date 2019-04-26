@@ -421,6 +421,10 @@ export namespace Components {
     */
     'backdropClicked': () => void;
     /**
+    * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+    */
+    'canBackdrop': boolean;
+    /**
     * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
     */
     'color': 'alternative' | 'primary';
@@ -434,6 +438,10 @@ export namespace Components {
     'size': "small" | "medium" | "large" | "fill";
   }
   interface SeDialogAttributes extends StencilHTMLAttributes {
+    /**
+    * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+    */
+    'canBackdrop'?: boolean;
     /**
     * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
     */

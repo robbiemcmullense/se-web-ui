@@ -27,7 +27,7 @@ export class DialogService {
    */
   public createDialogComponent(componentType: Type<any>,config?:DialogConfig){
      const map = new WeakMap();
-     map.set(DialogConfig, config);      
+     map.set(DialogConfig, config?config:{});      
     this.componentRef = this.componentFactoryResolver.resolveComponentFactory(componentType)
     .create(new ComponentInjector(this.injector,map));
     this.appRef.attachView(this.componentRef.hostView);
@@ -45,10 +45,9 @@ export class DialogService {
   public alert(config:DialogConfig){
     let alertDialogRef = this.createDialogComponent(DialogComponent,config);
     alertDialogRef.instance.type ='alert';
-    alertDialogRef.instance.didClose.subscribe(() => {
+    alertDialogRef.instance.afterClosed.subscribe((data:any)=>{
       this.close();
-    });
-    alertDialogRef.instance.backdrop.subscribe((data:any)=>{
+    },(err: any) => {
       this.close();
     });
     return alertDialogRef;
@@ -61,10 +60,9 @@ export class DialogService {
   public confirm(config:DialogConfig){
     let confirmDialogRef = this.createDialogComponent(DialogComponent,config);
     confirmDialogRef.instance.type ='confirm';
-    confirmDialogRef.instance.didClose.subscribe(() => {
+    confirmDialogRef.instance.afterClosed.subscribe(()=>{
       this.close();
-    });
-    confirmDialogRef.instance.didConfirm.subscribe(() => {
+    },(err: any) => {
       this.close();
     });
     return confirmDialogRef;
@@ -79,6 +77,11 @@ export class DialogService {
   public modal(componentType: Type<any>,config?:DialogConfig){
     let modalDialogRef = this.createDialogComponent(DialogModalComponent,config);
     this.componentRef.instance.childComponentType = componentType;
+    modalDialogRef.instance.afterClosed.subscribe(()=>{
+      this.close();
+    },(err: any) => {
+      this.close();
+    });
     return modalDialogRef;
   }
 
