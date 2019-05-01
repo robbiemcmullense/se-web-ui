@@ -84,5 +84,4 @@ describe('RadioComponent with an initialized value', () => {
     const buttonElement = await page.find('se-radio-group se-button#first >>> button');
     expect(buttonElement).toHaveClass('selected');
   });
-
 });

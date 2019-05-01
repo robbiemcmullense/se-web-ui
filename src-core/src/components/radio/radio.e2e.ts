@@ -32,5 +32,4 @@ describe('RadioComponent', () => {
       selected: true
     })
   });
-
 });
