@@ -10,4 +10,8 @@ describe('se-icon', () => {
   it('should build', () => {  
     expect(icon).toBeTruthy();
   });
+
+  it('should be a small size by default', () => {
+    expect(icon.size).toEqual('small');
+  });
 });

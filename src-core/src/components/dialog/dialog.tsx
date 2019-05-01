@@ -32,7 +32,7 @@ export class DialogComponent {
   /**
    * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
    */
-  @Prop() canBackdrop:boolean = true;
+  @Prop() canBackdrop: boolean = true;
 
   @Watch('color') colorDidChange(){
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach((item: any) => {

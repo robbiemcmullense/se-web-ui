@@ -10,4 +10,8 @@ describe('DialogHeaderComponent', () => {
 	it('should build', () => {
 		expect(dialogHeaderComponent).toBeTruthy();
 	});
+
+	it('should be primary color by default', () => {
+		expect(dialogHeaderComponent.color).toEqual('primary');
+	});
 });
