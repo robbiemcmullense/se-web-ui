@@ -9,10 +9,10 @@ export class RadioGroupComponent {
   @Element() el: HTMLElement;
   /**
    * Defines the functionality of your button group.
-   * `checkbox` is the default option, where all buttons in the group can be selected.
-   * `radio` option indicates that only one button in the group can be selected at a time.
+   * `checkbox` option allows all buttons in the group to be selected.
+   * `radio` option (default) indicates that only one button in the group can be selected at a time.
    */
-  @Prop() option: 'checkbox' | 'radio' = 'checkbox';
+  @Prop() option: 'checkbox' | 'radio' = 'radio';
   @Watch('option') optionDidChange() {
     this.updateItemMode()
   }

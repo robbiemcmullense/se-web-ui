@@ -865,7 +865,7 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    * Defines the functionality of your button group. `checkbox` option allows all buttons in the group to be selected. `radio` option (default) indicates that only one button in the group can be selected at a time.
     */
     'option': 'checkbox' | 'radio';
     /**
@@ -887,7 +887,7 @@ export namespace Components {
     */
     'onDidChange'?: (event: CustomEvent) => void;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    * Defines the functionality of your button group. `checkbox` option allows all buttons in the group to be selected. `radio` option (default) indicates that only one button in the group can be selected at a time.
     */
     'option'?: 'checkbox' | 'radio';
     /**
