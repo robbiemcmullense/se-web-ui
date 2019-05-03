@@ -14,8 +14,20 @@ describe('WidgetFooterComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with two slot elements', async() => {
-    const renderedHTML = '<div class="flex"><slot name="start"></slot></div><slot></slot>';
-    expect(element.shadowRoot).toEqualHtml(renderedHTML);
+  it('should render with the card class when option is set to card', async() => {
+    await page.$eval('se-widget-footer', (elm: any) => {
+      elm.option = 'card';
+    });
+    await page.waitForChanges();
+    expect(element).toHaveClass('card');
+  });
+
+  it('renders with an h3 element with a flex class and a slot element with the "start" attribute', async() => {
+    const divElm = await page.find('se-widget-footer >>> div');
+    expect(divElm).toBeTruthy();
+    expect(divElm).toHaveClass('flex');
+
+    const slotElm = await page.find ('se-widget-footer >>> slot[name="start"]');
+    expect(slotElm).toBeTruthy();
   });
 });

@@ -20,4 +20,19 @@ describe('HeaderComponent', () => {
     expect(titleFirstName.innerText).toEqual('Test');
     expect(titleLastName.innerHTML).toEqual('&nbsp;Application');
   });
+
+  it('should render a se-icon-ecostruxure element because the domain is ecostruxure by default', async() => {
+    const iconElm = await page.find('se-header >>> se-icon-ecostruxure');
+    expect(iconElm).toBeTruthy();
+  });
+});
+
+describe('Header Component with Sidenav Child', () => {
+  it('should render a se-icon element with the burger_menu text', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-header><se-sidemenu><se-sidemenu-item></se-sidemenu-item></se-sidemenu></se-header>');
+    const element = await page.find('se-header >>> se-icon');
+    expect(element).toBeTruthy();
+    expect(element.innerText).toEqual('burger_menu');
+  });
 });
