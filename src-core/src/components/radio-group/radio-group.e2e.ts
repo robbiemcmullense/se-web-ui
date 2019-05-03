@@ -19,7 +19,7 @@ describe('RadioGroupComponent', () => {
 
   it('renders with two se-button components each with a grouped class', async() => {
     const firstButtonElement = await page.find('se-radio-group se-button#first');
-    const lastButtonElement = await page.find('se-radio-group se-button#second'); 
+    const lastButtonElement = await page.find('se-radio-group se-button#second');
 
     expect(firstButtonElement).toHaveClass('grouped');
     expect(firstButtonElement.innerText).toEqual('Primary');
@@ -39,23 +39,25 @@ describe('RadioGroupComponent', () => {
     expect(secondButtonElement.getProperty('disabled')).toBeTruthy();
   });
 
-  it('can select multiple buttons by default because its default option is checkbox', async() => {
+  it('can select multiple buttons by default because its default option is radio', async() => {
     const firstButtonElement = await page.find('se-radio-group se-button#first >>> button');
     const secondButtonElement = await page.find('se-radio-group se-button#second >>> button');
 
     await firstButtonElement.click();
     await page.waitForChanges();
     expect(firstButtonElement).toHaveClass('selected');
+    expect(secondButtonElement).not.toHaveClass('selected');
 
     await secondButtonElement.click();
     await page.waitForChanges();
+    expect(firstButtonElement).not.toHaveClass('selected');
     expect(secondButtonElement).toHaveClass('selected');
   });
 
 
-  it('selects only one button at a time when the option is set to radio', async() => {
+  it('selects only one button at a time when the option is set to checkbox', async() => {
     await page.$eval('se-radio-group', (elm: any) => {
-      elm.option = 'radio';
+      elm.option = 'checkbox';
     });
     await page.waitForChanges();
     const firstButtonElement = await page.find('se-radio-group se-button#first >>> button');
@@ -63,10 +65,10 @@ describe('RadioGroupComponent', () => {
 
     await firstButtonElement.click();
     expect(firstButtonElement).toHaveClass('selected');
-    expect(secondButtonElement).toHaveClass('false');
+    expect(secondButtonElement).not.toHaveClass('selected');
 
     await secondButtonElement.click();
-    expect(firstButtonElement).toHaveClass('false');
+    expect(firstButtonElement).toHaveClass('selected');
     expect(secondButtonElement).toHaveClass('selected');
   });
 });

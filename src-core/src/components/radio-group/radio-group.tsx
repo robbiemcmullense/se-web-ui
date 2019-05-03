@@ -35,7 +35,7 @@ export class RadioGroupComponent {
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */
   @Event() didChange: EventEmitter;
-  
+
   @Listen('didClick')
   buttonClickedHandler(event: CustomEvent) {
     this.handleEventChange(event, 'se-button');
@@ -60,13 +60,13 @@ export class RadioGroupComponent {
     } else if (this.option === 'checkbox') {
       try {
         const list = this.value as string[];
-        list.forEach((value: any) => {
+        list.length && list.forEach((value: any) => {
           buttons.forEach((button: any) => {
             if (button.value === value) {
               button.selected = true;
             }
           });
-        });       
+        });
       } catch (e) {
         console.log('in checkbox mode, the button value needs to be an array of objects, ' + e);
       }
@@ -100,9 +100,14 @@ export class RadioGroupComponent {
       if (isChecked) {
         this.value = [...this.value, buttonInfo.value];
       } else {
-        const list:string[] = this.value as string[];
-        list.splice(this.value.indexOf(buttonInfo.value), 1);
-        this.value = list;
+        try {
+          const list:string[] = this.value as string[];
+          list.splice(this.value.indexOf(buttonInfo.value), 1);
+          this.value = list;
+        } catch (e) {
+          this.value = [];
+        }
+
       }
     }
     this.didChange.emit(this.value);
