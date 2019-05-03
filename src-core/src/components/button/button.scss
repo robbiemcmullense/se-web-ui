@@ -149,13 +149,12 @@ button {
   //   @include background-color("selected");
   // }
 }
-:host(.login, .logout) {
+:host(.login),
+:host(.signup) {
   @include display-flex();
-  button.login,
-  button.signup {
+  button {
     height: 32px;
     font-size: 18px;
-    // padding: 0 50px;
     line-height: 22px;
     width: 100%;
     margin-top: $spacing;

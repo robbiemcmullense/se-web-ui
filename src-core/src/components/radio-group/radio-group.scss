@@ -3,3 +3,8 @@
 :host {
 	font-size: 0;
 }
+
+::slotted(se-radio) {
+	display: block;
+	padding: $spacing-small 0;
+}

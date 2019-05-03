@@ -1,6 +1,6 @@
 {
   "name": "@se/web-ui",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "private": true,
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
   "scripts": {

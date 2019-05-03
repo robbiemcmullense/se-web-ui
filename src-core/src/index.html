@@ -386,11 +386,12 @@
               </div>
             </se-widget-header>
             <se-widget-content option="fill">
-              <se-radio-group option="radio">
+              <se-radio-group id="radio-button-dot-group" option="radio">
                 <se-radio value="one radio" label="First Radio Button"></se-radio>
                 <se-radio value="two radio" label="Second Radio Button"></se-radio>
                 <se-radio value="three radio" label="Third Radio Button"></se-radio>
               </se-radio-group>
+              <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-widget-content>
           </se-widget>
 
@@ -501,6 +502,9 @@
     });
     document.getElementById('select-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'select, ' + event.detail;
+    });
+    document.getElementById('radio-button-dot-group').addEventListener('didCheck', function (event) {
+      document.getElementById('se-radio-value').innerText = event.detail.value;
     });
   </script>
 </body>

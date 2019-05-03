@@ -39,8 +39,8 @@ export class ContainerComponent {
 
   /**
    * Defines the direction of the flex element.
-   * `column` is the default direction. This is perfect to use with flex content.
-   * `row` is useful in specific cases. Make sure you know what you are doing.
+   * `row` is the default direction. This is perfect to use with flex content.
+   * `column` is useful in specific cases. Make sure you know what you are doing.
    */
   @Prop() direction: "column" | "row" = "row";
 
@@ -82,11 +82,11 @@ export class ContainerComponent {
 
 
   /**
-   * Defines the color of the background of the container. The default is light gray.
-   * `standard` is the default color, a light gray.
+   * Defines the color of the background of the container. The default is transparent, reflecting the parent element's color.
+   * `standard` is a light gray.
    * `alternative` is a white background.
    */
-  @Prop({ mutable: true }) color: "standard" | "alternative" = "alternative";
+  @Prop({ mutable: true }) color: "standard" | "alternative";
 
   componentWillLoad() {
     this.optionDidChange();
