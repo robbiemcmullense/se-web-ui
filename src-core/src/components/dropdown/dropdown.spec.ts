@@ -18,4 +18,9 @@ describe('DropdownComponent', () => {
   it('should not be open when loaded', () => {
     expect(dropdown.opened).toBeFalsy();
   });
+
+  it('should set opened to true when calling the open method', () => {
+    dropdown.open();
+    expect(dropdown.opened).toBeTruthy();
+  });
 });

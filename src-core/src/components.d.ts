@@ -489,7 +489,7 @@ export namespace Components {
     /**
     * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element.
     */
-    'alignment': 'left'|'right';
+    'alignment': 'left' | 'right';
     /**
     * Method to close the dropdown from the outside.
     */
@@ -503,7 +503,7 @@ export namespace Components {
     /**
     * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element.
     */
-    'alignment'?: 'left'|'right';
+    'alignment'?: 'left' | 'right';
     /**
     * Event emitted when the dropdown has been closed.
     */
