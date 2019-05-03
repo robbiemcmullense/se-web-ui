@@ -17,13 +17,10 @@ describe('SnackbarComponent', () => {
     expect(element).toHaveClasses(['hydrated', 'information']);
   });
 
-  it('should have an icon and a close element by default', async() => {
+  it('should have an icon element by default', async() => {
     const iconElm = await page.find('se-snackbar >>> .se-icon');
-    const closeElm = await page.find('se-snackbar >>> .close');
     expect(iconElm).toBeTruthy();
     expect(iconElm).toEqualText('information_circle');
-    expect(closeElm).toBeTruthy();
-    expect(closeElm).toEqualText('dismiss');
   });
 
   it('should have an error class when the type is set to error', async() => {
@@ -48,6 +45,7 @@ describe('SnackbarComponent', () => {
     const eventSpy = await page.spyOnEvent('didClose');
     await page.$eval('se-snackbar', (elm: any) => {
       elm.open = true;
+      elm.canClose = true;
     });
     await page.waitForChanges();
 

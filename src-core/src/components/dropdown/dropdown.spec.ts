@@ -11,4 +11,11 @@ describe('DropdownComponent', () => {
     expect(dropdown).toBeTruthy();
   });
 
+  it('should be left aligned by default', () => {
+    expect(dropdown.alignment).toEqual('left');
+  });
+
+  it('should not be open when loaded', () => {
+    expect(dropdown.opened).toBeFalsy();
+  });
 });

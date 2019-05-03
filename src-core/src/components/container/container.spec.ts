@@ -26,8 +26,4 @@ describe('ContainerComponent', () => {
 	it('should have a default display equal to flex', () => {
 		expect(container.display).toEqual('flex');
 	});
-
-	it('should have a default color property set to alternative', () => {
-		expect(container.color).toEqual('alternative');
-	});
 });

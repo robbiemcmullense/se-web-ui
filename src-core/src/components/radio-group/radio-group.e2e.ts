@@ -54,7 +54,7 @@ describe('RadioGroupComponent', () => {
 
 
   it('selects only one button at a time when the option is set to radio', async() => {
-    await page.$eval('se-radio', (elm: any) => {
+    await page.$eval('se-radio-group', (elm: any) => {
       elm.option = 'radio';
     });
     await page.waitForChanges();
@@ -84,5 +84,4 @@ describe('RadioComponent with an initialized value', () => {
     const buttonElement = await page.find('se-radio-group se-button#first >>> button');
     expect(buttonElement).toHaveClass('selected');
   });
-
 });

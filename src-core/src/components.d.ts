@@ -351,7 +351,7 @@ export namespace Components {
 
   interface SeContainer {
     /**
-    * Defines the color of the background of the container. The default is light gray. `standard` is the default color, a light gray. `alternative` is a white background.
+    * Defines the color of the background of the container. The default is transparent, reflecting the parent element's color. `standard` is a light gray. `alternative` is a white background.
     */
     'color': "standard" | "alternative";
     /**
@@ -359,7 +359,7 @@ export namespace Components {
     */
     'columnSize': string;
     /**
-    * Defines the direction of the flex element. `column` is the default direction. This is perfect to use with flex content. `row` is useful in specific cases. Make sure you know what you are doing.
+    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction': "column" | "row";
     /**
@@ -381,7 +381,7 @@ export namespace Components {
   }
   interface SeContainerAttributes extends StencilHTMLAttributes {
     /**
-    * Defines the color of the background of the container. The default is light gray. `standard` is the default color, a light gray. `alternative` is a white background.
+    * Defines the color of the background of the container. The default is transparent, reflecting the parent element's color. `standard` is a light gray. `alternative` is a white background.
     */
     'color'?: "standard" | "alternative";
     /**
@@ -389,7 +389,7 @@ export namespace Components {
     */
     'columnSize'?: string;
     /**
-    * Defines the direction of the flex element. `column` is the default direction. This is perfect to use with flex content. `row` is useful in specific cases. Make sure you know what you are doing.
+    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction'?: "column" | "row";
     /**
@@ -905,7 +905,7 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    * Defines the functionality of your button group. `checkbox` option allows all buttons in the group to be selected. `radio` option (default) indicates that only one button in the group can be selected at a time.
     */
     'option': 'checkbox' | 'radio';
     /**
@@ -927,7 +927,7 @@ export namespace Components {
     */
     'onDidChange'?: (event: CustomEvent) => void;
     /**
-    * Defines the functionality of your button group. `checkbox` is the default option, where all buttons in the group can be selected. `radio` option indicates that only one button in the group can be selected at a time.
+    * Defines the functionality of your button group. `checkbox` option allows all buttons in the group to be selected. `radio` option (default) indicates that only one button in the group can be selected at a time.
     */
     'option'?: 'checkbox' | 'radio';
     /**
