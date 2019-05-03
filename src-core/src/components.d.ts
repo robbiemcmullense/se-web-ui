@@ -217,7 +217,7 @@ export namespace Components {
 
   interface SeCheckbox {
     /**
-    * Defines the color of the checkbox.
+    * Defines the color of the checkbox for checkbox and switch options. The default value is `primary`.
     */
     'color': 'primary' | 'secondary';
     /**
@@ -225,9 +225,21 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Reduce the visual height of the checkbox when the option is set to 'onoff'.
+    */
+    'header': boolean;
+    /**
     * The label of the checkbox that will be attached to the box.
     */
     'label': string;
+    /**
+    * Defines the color of the checkbox for onoff option. The default value is `standard`.
+    */
+    'onOffColor': 'standard' | 'alternative';
+    /**
+    * Determines the visual appearance of the component. `checkbox` is the default option and the component renders like a standard HTML checkbox. `switch` renders the component like a toggle switch.
+    */
+    'option': 'checkbox' | 'onoff' | 'switch';
     /**
     * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
     */
@@ -237,9 +249,17 @@ export namespace Components {
     */
     'selected': boolean;
     /**
-    * Set the required property on the checkbox element.
+    * Set the required property on the checkbox element.  Used when the checkbox is within a form field.
     */
     'setRequired': () => void;
+    /**
+    * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+    */
+    'textOff': string;
+    /**
+    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+    */
+    'textOn': string;
     /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
@@ -247,7 +267,7 @@ export namespace Components {
   }
   interface SeCheckboxAttributes extends StencilHTMLAttributes {
     /**
-    * Defines the color of the checkbox.
+    * Defines the color of the checkbox for checkbox and switch options. The default value is `primary`.
     */
     'color'?: 'primary' | 'secondary';
     /**
@@ -255,13 +275,25 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
+    * Reduce the visual height of the checkbox when the option is set to 'onoff'.
+    */
+    'header'?: boolean;
+    /**
     * The label of the checkbox that will be attached to the box.
     */
     'label'?: string;
     /**
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
-    'onDidCheck'?: (event: CustomEvent) => void;
+    'onDidChange'?: (event: CustomEvent) => void;
+    /**
+    * Defines the color of the checkbox for onoff option. The default value is `standard`.
+    */
+    'onOffColor'?: 'standard' | 'alternative';
+    /**
+    * Determines the visual appearance of the component. `checkbox` is the default option and the component renders like a standard HTML checkbox. `switch` renders the component like a toggle switch.
+    */
+    'option'?: 'checkbox' | 'onoff' | 'switch';
     /**
     * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
     */
@@ -270,6 +302,14 @@ export namespace Components {
     * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
     */
     'selected'?: boolean;
+    /**
+    * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+    */
+    'textOff'?: string;
+    /**
+    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+    */
+    'textOn'?: string;
     /**
     * The value you want to pass to the parent component when the checkbox is checked.
     */
@@ -896,88 +936,6 @@ export namespace Components {
     'value'?: string | string[];
   }
 
-  interface SeRadioOnOff {
-    /**
-    * Defines the background color of the button. Default is `standard`, rendering a light gray background color.
-    */
-    'color': 'standard' | 'alternative';
-    /**
-    * Optional property that defines if the radio on/off switch is disabled.  Set to `false` by default.
-    */
-    'disabled': boolean;
-    /**
-    * Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
-    */
-    'option': 'default' | 'header';
-    /**
-    * Defines the text the user will see for the "off" or "inactive" part of the radio switch.  Set to `OFF` by default.
-    */
-    'textOff': string;
-    /**
-    * Defines the text the user will see for the "on" or "active" part of the radio switch.  Set to `ON` by default.
-    */
-    'textOn': string;
-    /**
-    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
-    */
-    'value': boolean;
-  }
-  interface SeRadioOnOffAttributes extends StencilHTMLAttributes {
-    /**
-    * Defines the background color of the button. Default is `standard`, rendering a light gray background color.
-    */
-    'color'?: 'standard' | 'alternative';
-    /**
-    * Optional property that defines if the radio on/off switch is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Passes the current state (true or false) to the parent component when clicking on a button in the group.
-    */
-    'onDidChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * Defines the visual appearance of the on/off radio switch. `default` is the default option. Use `header` if the on/off radio switch is within a header element to reduce its visual height.
-    */
-    'option'?: 'default' | 'header';
-    /**
-    * Defines the text the user will see for the "off" or "inactive" part of the radio switch.  Set to `OFF` by default.
-    */
-    'textOff'?: string;
-    /**
-    * Defines the text the user will see for the "on" or "active" part of the radio switch.  Set to `ON` by default.
-    */
-    'textOn'?: string;
-    /**
-    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
-    */
-    'value'?: boolean;
-  }
-
-  interface SeRadioSwitch {
-    /**
-    * Optional property that defines if the switch is disabled.  Set to `false` by default.
-    */
-    'disabled': boolean;
-    /**
-    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
-    */
-    'value': boolean;
-  }
-  interface SeRadioSwitchAttributes extends StencilHTMLAttributes {
-    /**
-    * Optional property that defines if the switch is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Send the state of the switch (true/false) to the parent component when it is toggled.
-    */
-    'onDidChange'?: (event: CustomEvent) => void;
-    /**
-    * Determines whether or not the switch is "on" or "off" when you initialize it. Sets the switch to the "on" position if `true`.
-    */
-    'value'?: boolean;
-  }
-
   interface SeRadio {
     /**
     * Defines the color of the checkbox.
@@ -1353,8 +1311,6 @@ declare global {
     'SeList': Components.SeList;
     'SeLoading': Components.SeLoading;
     'SeRadioGroup': Components.SeRadioGroup;
-    'SeRadioOnOff': Components.SeRadioOnOff;
-    'SeRadioSwitch': Components.SeRadioSwitch;
     'SeRadio': Components.SeRadio;
     'SeSidemenuItem': Components.SeSidemenuItem;
     'SeSidemenu': Components.SeSidemenu;
@@ -1394,8 +1350,6 @@ declare global {
     'se-list': Components.SeListAttributes;
     'se-loading': Components.SeLoadingAttributes;
     'se-radio-group': Components.SeRadioGroupAttributes;
-    'se-radio-on-off': Components.SeRadioOnOffAttributes;
-    'se-radio-switch': Components.SeRadioSwitchAttributes;
     'se-radio': Components.SeRadioAttributes;
     'se-sidemenu-item': Components.SeSidemenuItemAttributes;
     'se-sidemenu': Components.SeSidemenuAttributes;
@@ -1560,18 +1514,6 @@ declare global {
     new (): HTMLSeRadioGroupElement;
   };
 
-  interface HTMLSeRadioOnOffElement extends Components.SeRadioOnOff, HTMLStencilElement {}
-  var HTMLSeRadioOnOffElement: {
-    prototype: HTMLSeRadioOnOffElement;
-    new (): HTMLSeRadioOnOffElement;
-  };
-
-  interface HTMLSeRadioSwitchElement extends Components.SeRadioSwitch, HTMLStencilElement {}
-  var HTMLSeRadioSwitchElement: {
-    prototype: HTMLSeRadioSwitchElement;
-    new (): HTMLSeRadioSwitchElement;
-  };
-
   interface HTMLSeRadioElement extends Components.SeRadio, HTMLStencilElement {}
   var HTMLSeRadioElement: {
     prototype: HTMLSeRadioElement;
@@ -1664,8 +1606,6 @@ declare global {
     'se-list': HTMLSeListElement
     'se-loading': HTMLSeLoadingElement
     'se-radio-group': HTMLSeRadioGroupElement
-    'se-radio-on-off': HTMLSeRadioOnOffElement
-    'se-radio-switch': HTMLSeRadioSwitchElement
     'se-radio': HTMLSeRadioElement
     'se-sidemenu-item': HTMLSeSidemenuItemElement
     'se-sidemenu': HTMLSeSidemenuElement
@@ -1705,8 +1645,6 @@ declare global {
     'se-list': HTMLSeListElement;
     'se-loading': HTMLSeLoadingElement;
     'se-radio-group': HTMLSeRadioGroupElement;
-    'se-radio-on-off': HTMLSeRadioOnOffElement;
-    'se-radio-switch': HTMLSeRadioSwitchElement;
     'se-radio': HTMLSeRadioElement;
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
     'se-sidemenu': HTMLSeSidemenuElement;

@@ -231,10 +231,10 @@
               <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
               <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
             </ul>
-            <se-radio-on-off id="on-off-switch-el"></se-radio-on-off>
-            <se-radio-on-off text-on="active" text-off="inactive" value="true"></se-radio-on-off>
-            <se-radio-switch id="toggle-switch-el"></se-radio-switch>
-            <se-radio-switch value="true"></se-radio-switch>
+            <se-checkbox option="onoff" id="on-off-switch-el"></se-checkbox>
+            <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true"></se-checkbox>
+            <se-checkbox id="toggle-switch-el" option="switch"></se-checkbox>
+            <se-checkbox selected="true" option="switch"></se-checkbox>
             <se-divider></se-divider>
             <ul>
               <li id="radio-message">selected radio icon button: <span></span></li>

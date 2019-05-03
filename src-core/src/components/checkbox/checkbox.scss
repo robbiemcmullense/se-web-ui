@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
-:host {
+:host(.checkbox) {
   @include align-items(center);
 	.checkbox-container {
 		position: relative;
@@ -11,10 +11,6 @@
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-
-		&[data-disabled] {
-			opacity: 0.26;
-		}
 
 		.required {
 			color: $se-red;
@@ -66,4 +62,148 @@
 			}
 		}
 	}
+}
+
+:host(.switch) {
+	.checkbox-container {  
+		text-align: left;
+		vertical-align: middle;
+		width: 42px;
+		height: 24px;
+		border-radius: 13px;
+		border: none;
+		background-color: $se-white;
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+
+		&[data-disabled] {
+			cursor: default;
+			.checkmark:before,
+			.checkmark:after {
+				cursor: default;
+			}
+		}
+		
+		.checkmark {
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 100%;    
+			&:before, &:after {
+				content: "";
+				cursor: pointer;
+				position: absolute;
+			}
+			&:before {
+				width: 100%;
+				height: 100%;
+				border: 1px solid $se-super-light-grey;
+				background-color: $se-white;
+				border-radius: 60px;
+				transition: opacity .2s ease-out .1s, transform .2s ease-out .1s;
+				transform: scale(1);
+				opacity: 1;
+			}
+			&:after {
+				top: 50%;
+				z-index: 3;
+				transition: transform .1s linear;
+				width: 24px;
+				height: 24px;
+				transform: translate3d(0, -50%, 0);
+				background-color: #fff;
+				border-radius: 100%;
+				box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+			}
+		}
+	
+		input {
+			opacity: 0;
+			display: none;
+			&:checked ~ span {
+				&:before {
+					transform: scale(0);
+					opacity: .7;
+				}
+				&:after {
+					transform: translate3d(75%, -50%, 0);
+				}
+			}
+		}
+	}
+}
+
+:host(.selected) {
+	.checkbox-container {
+		background-color: $se-life-green;
+	}
+}
+
+:host(.onoff) {
+  button {
+    padding: 4px 14px;
+    border: none;
+    outline: none;
+    height: 24px;
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 300;
+    cursor: pointer;
+
+    &.active {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      margin-right: 0;
+      &.selected {
+        color: $se-white;
+        background-color: $se-life-green;
+      }
+    }
+    
+    &.inactive {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      margin-left: 0;
+      &.selected {
+        color: $se-ultra-light-grey-1;
+        background-color: $se-red;
+      }
+    }
+	}
+}
+
+:host(.header){
+  button {
+    height: 16px;
+    padding: 2px 14px;
+  }
+}
+
+:host(.disabled) {
+  opacity: 0.5;
+  button {
+    cursor: default;
+    &.inactive.selected {
+      background-color: $se-anthracite-grey;
+    }
+  }
+}
+
+:host(.onoff.disabled) {
+	opacity:0.26;
+}
+
+:host(.standard) {
+  button {
+    @include background-color("standard");
+    @include color("standard-contrast");
+  }
+}
+
+:host(.alternative) {
+  button {
+    @include background-color("alternative");
+    @include color("alternative-contrast");
+  }
 }

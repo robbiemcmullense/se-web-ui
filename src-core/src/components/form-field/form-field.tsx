@@ -51,8 +51,13 @@ export class FormFieldComponent {
 		this.handleEvent(event);
 	}
 
-	@Listen('didCheck')
+	@Listen('didChange')
 	checkboxListenerHandler(event) {
+		this.handleEvent(event);
+	}
+
+	@Listen('didCheck')
+	radioListenerHandler(event) {
 		this.handleEvent(event);
 	}
 
