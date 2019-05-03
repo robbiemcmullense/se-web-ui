@@ -1,61 +1,80 @@
-import { Component,ViewChild,ComponentRef,OnDestroy,Output, EventEmitter,Type,ComponentFactoryResolver,AfterViewInit,ChangeDetectorRef, Input,Optional} from '@angular/core';
-import { DialogConfig} from './dialog-config';
-import { DialogDirective} from './dialog.directive';
+import {
+  Component,
+  ViewChild,
+  ComponentRef,
+  OnDestroy,
+  Output,
+  EventEmitter,
+  Type,
+  ComponentFactoryResolver,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Input,
+  Optional
+} from '@angular/core';
+import { DialogConfig } from './dialog-config';
+import { DialogDirective } from './dialog.directive';
+
 @Component({
-  selector: 'app-dialog',
+  selector: 'se-app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class DialogComponent{
+export class DialogComponent {
   @Output() afterClosed = new EventEmitter();
-  constructor(public dialog:DialogConfig) { }
-  @Input() type:string;
-  closeDialog(){
-    this.afterClosed.emit(event);
+  constructor(public dialog: DialogConfig) {}
+  @Input() type: string;
+  closeDialog() {
+    this.afterClosed.emit();
   }
-  backdropClick(){
+  backdropClick() {
     this.afterClosed.error('dialogclosed');
   }
-  cancelDialog(){
+  cancelDialog() {
     this.afterClosed.error('dialogclosed');
   }
 }
 
 @Component({
-  selector: 'app-dialog-modal',
-  templateUrl: './dialog-modal.component.html',
+  selector: 'se-app-dialog-modal',
+  templateUrl: './dialog-modal.component.html'
 })
-export class DialogModalComponent implements AfterViewInit,OnDestroy{
+export class DialogModalComponent implements AfterViewInit, OnDestroy {
   @Output() afterClosed = new EventEmitter();
   @ViewChild(DialogDirective) insertionPoint: DialogDirective;
   childComponentType: Type<any>;
   componentRef: ComponentRef<any>;
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef,@Optional() public modal:DialogConfig) {}
-  closeDialog(){
-    this.afterClosed.emit(event);
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private cd: ChangeDetectorRef,
+    @Optional() public modal: DialogConfig
+  ) {}
+  closeDialog() {
+    this.afterClosed.emit();
   }
-  backdropClick(){
+  backdropClick() {
     this.afterClosed.error('modalclosed');
   }
-    
-  ngAfterViewInit() { 
-    if(this.childComponentType){
-    this.loadChildComponent(this.childComponentType);
-    this.cd.detectChanges();
+
+  ngAfterViewInit() {
+    if (this.childComponentType) {
+      this.loadChildComponent(this.childComponentType);
+      this.cd.detectChanges();
     }
   }
-  
+
   loadChildComponent(componentType: Type<any>) {
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
-    let viewContainerRef = this.insertionPoint.viewContainerRef;
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      componentType
+    );
+    const viewContainerRef = this.insertionPoint.viewContainerRef;
     viewContainerRef.clear();
     this.componentRef = viewContainerRef.createComponent(componentFactory);
   }
 
-  ngOnDestroy(){
-    if(this.componentRef){
+  ngOnDestroy() {
+    if (this.componentRef) {
       this.componentRef.destroy();
     }
   }
-
 }

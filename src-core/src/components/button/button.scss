@@ -12,6 +12,7 @@ button {
   border-radius: $border-radius;
   outline: none;
   cursor: pointer;
+  font: inherit;
 
   @include display-flex();
   @include align-items(center);
@@ -148,13 +149,11 @@ button {
   //   @include background-color("selected");
   // }
 }
-:host(.login, .logout) {
+:host(.login),
+:host(.signup) {
   @include display-flex();
-  button.login,
-  button.signup {
+  button {
     height: 32px;
-    font-size: 18px;
-    // padding: 0 50px;
     font-size: 18px;
     line-height: 22px;
     width: 100%;
