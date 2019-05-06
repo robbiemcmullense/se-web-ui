@@ -8,15 +8,6 @@ import { Component, Watch, Element, Event, EventEmitter, Prop, Listen } from '@s
 export class RadioGroupComponent {
   @Element() el: HTMLElement;
   /**
-   * Defines the functionality of your button group.
-   * `checkbox` option allows all buttons in the group to be selected.
-   * `radio` option (default) indicates that only one button in the group can be selected at a time.
-   */
-  @Prop() option: 'checkbox' | 'radio' = 'radio';
-  @Watch('option') optionDidChange() {
-    this.updateItemMode()
-  }
-  /**
    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
    */
   @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
@@ -49,28 +40,9 @@ export class RadioGroupComponent {
   componentDidLoad() {
     this.updateItemMode();
     const buttons = this.el.querySelectorAll('se-button, se-radio');
-    if (this.option === 'radio') {
-      try {
-        buttons.forEach((button: any) => {
-          button.selected = button.value === this.value;
-        });
-      } catch (e) {
-        console.log('in radio mode, the button value needs to be a string, ' + e);
-      }
-    } else if (this.option === 'checkbox') {
-      try {
-        const list = this.value as string[];
-        list.length && list.forEach((value: any) => {
-          buttons.forEach((button: any) => {
-            if (button.value === value) {
-              button.selected = true;
-            }
-          });
-        });
-      } catch (e) {
-        console.log('in checkbox mode, the button value needs to be an array of objects, ' + e);
-      }
-    }
+    buttons.forEach((button: any) => {
+      button.selected = button.value === this.value;
+    });
   }
 
   private updateItemMode(){
@@ -88,28 +60,11 @@ export class RadioGroupComponent {
 
   private handleEventChange(event: CustomEvent, elementName: string) {
     let buttonInfo = event.detail;
-    let isChecked = buttonInfo.selected;
-    if (this.option === 'radio') {
-      this.value = buttonInfo.value;
-      const buttons = this.el.querySelectorAll(elementName);
-      buttons.forEach((button: any) => {
-        button.selected = button.value === buttonInfo.value;
-      });
-    }
-    if (this.option === 'checkbox') {
-      if (isChecked) {
-        this.value = [...this.value, buttonInfo.value];
-      } else {
-        try {
-          const list:string[] = this.value as string[];
-          list.splice(this.value.indexOf(buttonInfo.value), 1);
-          this.value = list;
-        } catch (e) {
-          this.value = [];
-        }
-
-      }
-    }
+    this.value = buttonInfo.value;
+    const buttons = this.el.querySelectorAll(elementName);
+    buttons.forEach((button: any) => {
+      button.selected = button.value === buttonInfo.value;
+    });
     this.didChange.emit(this.value);
   }
 

@@ -905,10 +905,6 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Defines the functionality of your button group. `checkbox` option allows all buttons in the group to be selected. `radio` option (default) indicates that only one button in the group can be selected at a time.
-    */
-    'option': 'checkbox' | 'radio';
-    /**
     * Defines the selected values of the array.
     */
     'value': string | string[];
@@ -926,10 +922,6 @@ export namespace Components {
     * Passes the selected button value to the parent component when clicking on a button in the group.
     */
     'onDidChange'?: (event: CustomEvent) => void;
-    /**
-    * Defines the functionality of your button group. `checkbox` option allows all buttons in the group to be selected. `radio` option (default) indicates that only one button in the group can be selected at a time.
-    */
-    'option'?: 'checkbox' | 'radio';
     /**
     * Defines the selected values of the array.
     */
