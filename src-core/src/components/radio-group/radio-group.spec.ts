@@ -11,7 +11,7 @@ describe('RadioGroupComponent', () => {
 		expect(radioGroup).toBeTruthy();
 	});
 
-	it('should be in "checkbox" option by default', () => {
+	it('should be in "radio" option by default', () => {
 		expect(radioGroup.option).toEqual('radio');
 	});
 

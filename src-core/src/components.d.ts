@@ -153,7 +153,7 @@ export namespace Components {
     /**
     * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
     */
-    'iconColor': 'standard'|'alternative'|'primary'|'secondary';
+    'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
@@ -173,7 +173,7 @@ export namespace Components {
     /**
     * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
     */
-    'type': 'button'|'submit'|'reset';
+    'type': 'button' |'submit' |'reset';
     /**
     * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
     */
@@ -195,7 +195,7 @@ export namespace Components {
     /**
     * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
     */
-    'iconColor'?: 'standard'|'alternative'|'primary'|'secondary';
+    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
     'onDidClick'?: (event: CustomEvent<any>) => void;
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
@@ -208,7 +208,7 @@ export namespace Components {
     /**
     * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
     */
-    'type'?: 'button'|'submit'|'reset';
+    'type'?: 'button' |'submit' |'reset';
     /**
     * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
     */
@@ -489,7 +489,7 @@ export namespace Components {
     /**
     * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element.
     */
-    'alignment': 'left'|'right';
+    'alignment': 'left' | 'right';
     /**
     * Method to close the dropdown from the outside.
     */
@@ -503,7 +503,7 @@ export namespace Components {
     /**
     * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element.
     */
-    'alignment'?: 'left'|'right';
+    'alignment'?: 'left' | 'right';
     /**
     * Event emitted when the dropdown has been closed.
     */
