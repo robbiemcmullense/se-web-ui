@@ -12,10 +12,6 @@
 		-ms-user-select: none;
 		user-select: none;
 
-		&[data-disabled] {
-			opacity: 0.5;
-		}
-
 		.required {
 			color: $se-red;
 			padding-left: 3px;
@@ -36,6 +32,17 @@
 				}
 				&:after {
 					display: block;
+				}
+			}
+			
+			&[disabled] {
+				&:checked ~ .checkdot {
+					&[data-color="primary"] {
+						border: 1px solid #8ce599;
+					}
+					&[data-color="secondary"] {
+						border: 1px solid $se-sky-blue;
+					}
 				}
 			}
 		}
@@ -70,6 +77,22 @@
           @include background-color('secondary');
         }
       }
+		}
+
+		&[data-disabled] {
+			.checkdot {
+				border: 1px solid $se-ultra-light-grey-2;
+				&[data-color="primary"] {
+					&:after {
+						background-color: #8ce599;
+					}
+				}
+				&[data-color="secondary"] {
+					&:after {
+						background-color: $se-sky-blue;
+					}
+				}
+			}
 		}
 	}
 }

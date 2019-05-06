@@ -232,9 +232,9 @@
               <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
             </ul>
             <se-checkbox option="onoff" id="on-off-switch-el"></se-checkbox>
-            <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true"></se-checkbox>
+            <se-checkbox option="onoff" text-on="active" text-off="inactive" selected="true"></se-checkbox>
             <se-checkbox id="toggle-switch-el" option="switch"></se-checkbox>
-            <se-checkbox selected="true" disabled="true" option="switch"></se-checkbox>
+            <se-checkbox selected="true" option="switch"></se-checkbox>
             <se-divider></se-divider>
             <ul>
               <li id="radio-message">selected radio icon button: <span></span></li>
@@ -287,8 +287,16 @@
               required="true">
               <se-checkbox></se-checkbox>
             </se-form-field>
+            <se-form-field disabled="true" label="This is my custom Checkbox.  It is unique." type="checkbox"
+              required="true">
+              <se-checkbox></se-checkbox>
+            </se-form-field>
 
             <se-form-field id="radio-form" label="This is my custom Radio Button.  It is unique." type="radio"
+              required="true">
+              <se-radio></se-radio>
+            </se-form-field>
+            <se-form-field disabled="true" label="This is my custom Radio Button.  It is unique." type="radio"
               required="true">
               <se-radio></se-radio>
             </se-form-field>
@@ -392,6 +400,49 @@
                 <se-radio value="three radio" label="Third Radio Button"></se-radio>
               </se-radio-group>
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
+
+              <div style="padding:20px;">
+                <se-checkbox option="onoff" selected="true"></se-checkbox>
+                <se-checkbox option="onoff"></se-checkbox>
+                <se-checkbox header="true" option="onoff"></se-checkbox>
+                <se-checkbox header="true" option="onoff" selected="true"></se-checkbox>
+              </div>
+
+              <div style="padding:20px; background-color:#eee;">
+                <se-checkbox option="onoff" background="alternative" selected="true"></se-checkbox>
+                <se-checkbox option="onoff" background="alternative"></se-checkbox>
+                <se-checkbox header="true" option="onoff" background="alternative"></se-checkbox>    
+                <se-checkbox header="true" option="onoff" selected="true" background="alternative"></se-checkbox>
+              </div>
+
+              <div style="padding:20px;">
+                <se-checkbox option="onoff" disabled="true" selected="true"></se-checkbox>
+                <se-checkbox option="onoff" disabled="true"></se-checkbox>               
+                <se-checkbox option="onoff" header="true" disabled="true" selected="true"></se-checkbox>
+                <se-checkbox option="onoff" header="true" disabled="true"></se-checkbox>
+              </div>
+              
+              <div style="padding:20px;background:#eee;">
+                <se-checkbox option="onoff" disabled="true" selected="true" background="alternative"></se-checkbox>
+                <se-checkbox option="onoff" disabled="true" background="alternative"></se-checkbox>
+                <se-checkbox option="onoff" header="true" disabled="true" selected="true" background="alternative"></se-checkbox>
+                <se-checkbox option="onoff" header="true" disabled="true" background="alternative"></se-checkbox>  
+              </div>
+
+              <div style="padding:20px;">
+                <se-checkbox disabled="true" label="my label"></se-checkbox>
+                <se-checkbox disabled="true" selected="true" label="primary label"></se-checkbox>
+                <se-checkbox disabled="true" selected="true" color="secondary" label="secondary label"></se-checkbox>
+              </div>
+              <div style="padding:20px;">
+                <se-radio disabled="true" label="my label"></se-radio>
+                <se-radio disabled="true" selected="true" label="primary label"></se-radio>
+                <se-radio disabled="true" selected="true" color="secondary" label="secondary label"></se-radio>
+              </div>
+              <div style="padding:20px;">
+                <se-checkbox option="switch" disabled="true"></se-checkbox>
+                <se-checkbox option="switch" disabled="true" selected="true"></se-checkbox>
+              </div>
             </se-widget-content>
           </se-widget>
 

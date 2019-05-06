@@ -36,6 +36,16 @@
 					display: block;
 				}
 			}
+			&[disabled]:checked ~ .checkmark {
+				&[data-color="primary"] {
+					background-color: #8ce599;
+					border-color: #8ce599;
+				}
+				&[data-color="secondary"] {
+					background-color: $se-sky-blue;
+					border-color: $se-sky-blue;
+				}
+			}
 		}
 
 		.checkmark {
@@ -61,6 +71,12 @@
 				transform: rotate(45deg);
 			}
 		}
+
+		&[data-disabled] {
+			.checkmark {
+				border: 1px solid $se-ultra-light-grey-2;
+			}
+		}
 	}
 }
 
@@ -68,22 +84,14 @@
 	.checkbox-container {  
 		text-align: left;
 		vertical-align: middle;
-		width: 42px;
-		height: 24px;
+		width: 44px;
+		height: 26px;
 		border-radius: 13px;
 		border: none;
 		background-color: $se-white;
 		display: inline-block;
 		position: relative;
 		cursor: pointer;
-
-		&[data-disabled] {
-			cursor: default;
-			.checkmark:before,
-			.checkmark:after {
-				cursor: default;
-			}
-		}
 		
 		.checkmark {
 			display: block;
@@ -107,6 +115,7 @@
 			}
 			&:after {
 				top: 50%;
+				left: 1px;
 				z-index: 3;
 				transition: transform .1s linear;
 				width: 24px;
@@ -131,22 +140,42 @@
 				}
 			}
 		}
+
+		&[data-disabled] {
+			.checkmark {
+				cursor: default;
+				&:before {
+					border: 1px solid $se-ultra-light-grey-2;
+					cursor: default;
+				}
+				&:after {
+					cursor: default;
+				}
+			}
+		}
 	}
 }
 
 :host(.selected) {
 	.checkbox-container {
 		background-color: $se-life-green;
+		&[data-disabled] {
+			background-color: #8ce599;
+		}
 	}
 }
 
 :host(.onoff) {
+	.on-off-wrapper {
+		display: inline-flex;
+	}
   button {
-    padding: 4px 14px;
+    padding: 4px 16px;
     border: none;
     outline: none;
     height: 24px;
-    font-size: 11px;
+		font-size: 11px;
+		font-family: inherit;
     line-height: 13px;
     font-weight: 300;
     cursor: pointer;
@@ -166,7 +195,7 @@
       border-bottom-right-radius: 2px;
       margin-left: 0;
       &.selected {
-        color: $se-ultra-light-grey-1;
+        color: $se-super-light-grey;
         background-color: $se-red;
       }
     }
@@ -176,29 +205,21 @@
 :host(.header){
   button {
     height: 16px;
-    padding: 2px 14px;
+    padding: 2px 16px;
   }
-}
-
-:host(.disabled) {
-  opacity: 0.5;
-  button {
-    cursor: default;
-    &.inactive.selected {
-      background-color: $se-anthracite-grey;
-    }
-  }
-}
-
-:host(.onoff.disabled) {
-	opacity: 0.26;
 }
 
 :host(.standard) {
   button {
     @include background-color("standard");
-    @include color("standard-contrast");
+    @include color("focus");
   }
+}
+
+:host(.onoff.standard) {
+	.on-off-wrapper {
+		vertical-align: -moz-middle-with-baseline;
+	}
 }
 
 :host(.alternative) {
@@ -206,4 +227,25 @@
     @include background-color("alternative");
     @include color("alternative-contrast");
   }
+}
+
+:host(.disabled) {
+  button {
+		cursor: default;
+		color: $se-light-grey;
+		&.active.selected {
+			background-color: #8ce599;
+			color: $se-white;
+		}
+    &.inactive.selected {
+			background-color: $se-light-grey;
+			color: $se-white;
+    }
+  }
+}
+
+:host(.disabled.standard) {
+	button {
+		background-color: $se-ultra-light-grey-2;
+	}
 }

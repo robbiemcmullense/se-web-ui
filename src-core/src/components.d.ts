@@ -217,6 +217,10 @@ export namespace Components {
 
   interface SeCheckbox {
     /**
+    * Defines the color of the checkbox for onoff option. The default value is `standard`.
+    */
+    'background': 'standard' | 'alternative';
+    /**
     * Defines the color of the checkbox for checkbox and switch options. The default value is `primary`.
     */
     'color': 'primary' | 'secondary';
@@ -225,17 +229,13 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Reduce the visual height of the checkbox when the option is set to 'onoff'.
+    * Reduce the visual height of the checkbox when the option is set to 'onoff'. Useful if the on/off checkbox is within a header element.
     */
     'header': boolean;
     /**
     * The label of the checkbox that will be attached to the box.
     */
     'label': string;
-    /**
-    * Defines the color of the checkbox for onoff option. The default value is `standard`.
-    */
-    'onOffColor': 'standard' | 'alternative';
     /**
     * Determines the visual appearance of the component. `checkbox` is the default option and the component renders like a standard HTML checkbox. `switch` renders the component like a toggle switch.
     */
@@ -267,6 +267,10 @@ export namespace Components {
   }
   interface SeCheckboxAttributes extends StencilHTMLAttributes {
     /**
+    * Defines the color of the checkbox for onoff option. The default value is `standard`.
+    */
+    'background'?: 'standard' | 'alternative';
+    /**
     * Defines the color of the checkbox for checkbox and switch options. The default value is `primary`.
     */
     'color'?: 'primary' | 'secondary';
@@ -275,7 +279,7 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * Reduce the visual height of the checkbox when the option is set to 'onoff'.
+    * Reduce the visual height of the checkbox when the option is set to 'onoff'. Useful if the on/off checkbox is within a header element.
     */
     'header'?: boolean;
     /**
@@ -286,10 +290,6 @@ export namespace Components {
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
     'onDidChange'?: (event: CustomEvent) => void;
-    /**
-    * Defines the color of the checkbox for onoff option. The default value is `standard`.
-    */
-    'onOffColor'?: 'standard' | 'alternative';
     /**
     * Determines the visual appearance of the component. `checkbox` is the default option and the component renders like a standard HTML checkbox. `switch` renders the component like a toggle switch.
     */

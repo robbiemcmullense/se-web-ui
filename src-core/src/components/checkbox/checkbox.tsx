@@ -34,7 +34,7 @@ export class CheckboxComponent {
    * Defines the color of the checkbox for onoff option.
    * The default value is `standard`.
    */
-  @Prop() onOffColor: 'standard' | 'alternative' = 'standard';
+  @Prop() background: 'standard' | 'alternative' = 'standard';
   /**
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
@@ -53,6 +53,7 @@ export class CheckboxComponent {
   @Prop() textOff: string = 'OFF';
   /**
    * Reduce the visual height of the checkbox when the option is set to 'onoff'.
+   * Useful if the on/off checkbox is within a header element.
    */
   @Prop() header: boolean = false;
   @State() checked: boolean;
@@ -97,7 +98,7 @@ export class CheckboxComponent {
     return {
       'class': [
         this.option,
-        this.onOffColor,
+        this.background,
         this.header ? 'header' : '',
         this.disabled ? 'disabled': ''
       ].join(' ')
@@ -107,15 +108,21 @@ export class CheckboxComponent {
   render() {
     let markup;
     if (this.option === 'onoff') {
-      markup = [<button class={['active', this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOn}</button>,
-      <button class={['inactive', !this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOff}</button>];
+      markup = (
+        <div class="on-off-wrapper">
+          <button class={['active', this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOn}</button>
+          <button class={['inactive', !this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOff}</button>
+        </div>
+        )
     } else {
-      markup = (<label class="checkbox-container" data-disabled={this.disabled}>
-      {this.option === 'checkbox' ? this.label : ''}
-      {this.required ? <span class="required">*</span> : ''}
-      <input type="checkbox" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()}/>
-      <span class="checkmark" data-color={this.color}></span>
-    </label>)
+      markup = (
+        <label class="checkbox-container" data-disabled={this.disabled}>
+          {this.option === 'checkbox' ? this.label : ''}
+          {this.required ? <span class="required">*</span> : ''}
+          <input type="checkbox" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()}/>
+          <span class="checkmark" data-color={this.color}></span>
+        </label>
+        )
     }
     return markup;
   }
