@@ -40,14 +40,14 @@ export class ButtonComponent {
   /**
    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
    */
-  @Prop() iconColor: 'standard'|'alternative'|'primary'|'secondary';
+  @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
    /**
    * Optional type property of the button.
    * `button`	The button is a clickable button (default)
    * `submit`	The button is a submit button (submits form-data)
    * `reset`	The button is a reset button (resets the form-data to its initial values)
    */
-  @Prop() type: 'button'|'submit'|'reset' = 'button';
+  @Prop() type: 'button' |'submit' |'reset' = 'button';
    /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */

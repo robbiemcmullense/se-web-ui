@@ -48,13 +48,13 @@ export class SidemenuComponent {
   }
 
   private async initSelect(): Promise<void> {
-    if (!this.selectedItem) {
+    if (!this.selectedItem && this.items.length) {
       this.setActive(this.items[0]);
     }
   }
 
   private setActive(item: any): void {
-    this.items.forEach((item: any) => {
+    this.items && this.items.forEach((item: any) => {
       item.active = false;
     })
     item.active = true;

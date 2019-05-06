@@ -19,8 +19,17 @@ describe('ButtonComponent', () => {
 		expect(button.selected).toBeUndefined();
 	});
 
-	it('should set the selected state to true after calling the setActive method', () => {
-    button.selected = true;
-		expect(button.selected).toBeDefined();
+	it('should set the grouped property to true after calling the setGrouped method', () => {
+    button.setGrouped(true);
+		expect(button.grouped).toBeTruthy();
+	});
+
+	it('should not be disabled by default', () => {
+		expect(button.disabled).toBeFalsy();
+	});
+
+	it('should set the disabled property to true after calling the setDisabled method', () => {
+    button.setDisabled(true);
+		expect(button.disabled).toBeTruthy();
 	});
 });

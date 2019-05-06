@@ -14,8 +14,20 @@ describe('WidgetHeaderComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with two slot element', async() => {
-    const renderedHTML = '<h3 class="flex"><slot></slot></h3><slot name="end"></slot>';
-    expect(element.shadowRoot).toEqualHtml(renderedHTML);
+  it('should render with the card class when option is set to card', async() => {
+    await page.$eval('se-widget-header', (elm: any) => {
+      elm.option = 'card';
+    });
+    await page.waitForChanges();
+    expect(element).toHaveClass('card');
+  });
+
+  it('renders with an h3 element with a flex class and a slot element with the "end" attribute', async() => {
+    const headerElm = await page.find('se-widget-header >>> h3');
+    expect(headerElm).toBeTruthy();
+    expect(headerElm).toHaveClass('flex');
+
+    const slotElm = await page.find ('se-widget-header >>> slot[name="end"]');
+    expect(slotElm).toBeTruthy();
   });
 });

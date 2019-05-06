@@ -13,16 +13,25 @@ describe('ContainerComponent', () => {
     expect(element).toBeTruthy();
   });
 
-  it('renders the "fill-content", "relative", and "hydrated" classes by default', async() => {		
-    expect(element).toHaveClasses(['fill-content', 'relative', 'hydrated']);	
+  it('renders the "fill-content", "flex", "relative", and "row" classes based on default properties', async() => {		
+    expect(element).toHaveClasses(['fill-content', 'flex', 'relative', 'hydrated', 'row']);	
   });
 
-  it('renders the "centered" and "absolute-content" classes when these properties are specified in the DOM', async() => {	
+  it('renders the "centered" and "absolute-content" classes when the component has these properties for option and position', async() => {	
     await page.$eval('se-container', (elm: any) => {
       elm.option = 'centered';
       elm.position = 'absolute';
     });
     await page.waitForChanges();	
     expect(element).toHaveClasses(['centered-content', 'absolute']);
+  });
+
+  it('renders the "column" and "alternative" classes when the component has these properties for direction and color', async() => {	
+    await page.$eval('se-container', (elm: any) => {
+      elm.direction = 'column';
+      elm.color = 'alternative';
+    });
+    await page.waitForChanges();	
+    expect(element).toHaveClasses(['alternative', 'column']);
   });
 });

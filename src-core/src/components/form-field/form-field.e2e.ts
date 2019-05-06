@@ -37,7 +37,7 @@ describe('FormFieldComponent with Input type', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-form-field type="input" label="input label"><input type="text" />></se-form-field>');
+    await page.setContent('<se-form-field label="input label"><input type="text" />></se-form-field>');
   });
 
   it('renders a label with an inner text equal to the se-form-field label property', async() => {

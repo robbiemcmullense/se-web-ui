@@ -12,6 +12,6 @@ describe('SidemenuComponent', () => {
 	});
 
 	it('should be closed by default', () => {
-		expect(sidemenu.open).toBeFalsy()
+		expect(sidemenu.open).toBeFalsy();
 	});
 });
