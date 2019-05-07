@@ -21,7 +21,7 @@ export class RadioGroupComponent {
   /**
    * Defines the selected values of the array.
    */
-  @Prop({mutable: true}) value: string | string[];
+  @Prop({mutable: true}) value: string;
   /**
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */

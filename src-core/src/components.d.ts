@@ -907,7 +907,7 @@ export namespace Components {
     /**
     * Defines the selected values of the array.
     */
-    'value': string | string[];
+    'value': string;
   }
   interface SeRadioGroupAttributes extends StencilHTMLAttributes {
     /**
@@ -925,7 +925,7 @@ export namespace Components {
     /**
     * Defines the selected values of the array.
     */
-    'value'?: string | string[];
+    'value'?: string;
   }
 
   interface SeRadio {
