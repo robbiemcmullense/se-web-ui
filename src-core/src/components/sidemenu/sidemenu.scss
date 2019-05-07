@@ -4,8 +4,8 @@
 :host {
   display: none;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   z-index: 20;
@@ -17,8 +17,8 @@
 
 .actual-menu {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 80%;
   height: 100%;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
@@ -42,8 +42,8 @@
 .menu-background {
   position: absolute;
   background-color: rgba(white, 0.6);
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   min-height: 100%;
   z-index: 5;
@@ -57,7 +57,7 @@
 
 .menu-button {
   width: 100%;
-  margin: 0px;
+  margin: 0;
   padding: 10px;
 }
 
