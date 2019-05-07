@@ -101,7 +101,7 @@ export class SidemenuComponent {
         <div class="d-flex-center">
           <div class="d-flex-center flex">
             <span class="menu-sidenav" onClick={() => this.toggle()}>
-              <se-icon size="large" color="primary">test_results_nok</se-icon>
+              <se-icon size="large">test_results_nok</se-icon>
             </span>
             <h3 class="header-title">{this.label}</h3>
           </div>
