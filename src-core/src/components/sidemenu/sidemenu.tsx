@@ -1,4 +1,4 @@
-import { Component, Method, Element, State } from '@stencil/core';
+import {Component, Method, Element, State, Prop} from '@stencil/core';
 
 
 const SHOW_MENU = 'show-menu';
@@ -17,6 +17,11 @@ export class SidemenuComponent {
   @State() open: boolean = false;
   @State() items: HTMLElement[] = [];
   @State() selectedItem?: HTMLElement;
+
+  /**
+   * Overrides the default "Menu" label.
+   */
+  @Prop() label: string = 'Menu';
 
   @Method()
   toggle(): void {
@@ -98,7 +103,7 @@ export class SidemenuComponent {
             <span class="menu-sidenav" onClick={() => this.toggle()}>
               <se-icon size="large" color="primary">test_results_nok</se-icon>
             </span>
-            <h3 class="header-title">Menu</h3>
+            <h3 class="header-title">{this.label}</h3>
           </div>
           <se-chip color="primary" can-close="false" value="https://schneider-electric.com"></se-chip>
         </div>
