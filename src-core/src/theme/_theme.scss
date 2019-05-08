@@ -81,11 +81,11 @@ $scrollbar-side-padding: $spacing-small;
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #f7f7f7;
+	background-color: $se-ultra-light-grey-2;
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #CBCBCB;
+	background-color: $se-light-grey;
 	&:hover {
     @include background-color('selected');
 		border: $scrollbar-side-padding solid transparent;
