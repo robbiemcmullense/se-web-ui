@@ -40,11 +40,18 @@ button {
     }
     &.outline {
       border: 1px solid;
-      @include border-color("standard-contrast");
+      border-color: $se-anthracite-grey;
       background-color: transparent;
       &:hover {
-        @include background-color("standard", 0.2);
+        @include background-color("hover-standard", 0.2);
       }
+      &:active {
+        @include background-color("focus");
+      }
+    }
+    &:active {
+      @include color("focus-contrast");
+      @include background-color("focus");
     }
     &.selected {
       @include color("selected-contrast");
@@ -65,8 +72,15 @@ button {
       @include color("alternative");
       @include border-color("alternative");
       &:hover {
-        @include background-color("alternative-contrast", 0.2);
+        @include background-color("hover-alternative", 0.6);
       }
+      &:active {
+        @include background-color("focus");
+      }
+    }
+    &:active {
+      @include color("focus-contrast");
+      @include background-color("focus");
     }
     &.selected {
       @include color("selected-contrast");
@@ -77,7 +91,6 @@ button {
   &.primary {
     @include color("primary-contrast");
     @include background-color("primary");
-
     &:hover {
       @include color("hover-primary-contrast");
       @include background-color("hover-primary");
@@ -88,18 +101,26 @@ button {
       @include color("primary");
       @include border-color("primary");
       &:hover {
-        @include background-color("primary", 0.2);
+        @include background-color("primary", 0.3);
       }
+      &:active {
+        @include background-color("focus");
+        @include border-color("focus");
+      }
+    }
+    &:active {
+      @include color("focus-contrast");
+      @include background-color("focus");
     }
     &.selected {
       @include color("selected-contrast");
       @include background-color("selected");
     }
   }
+
   &.secondary {
     @include color("secondary-contrast");
     @include background-color("secondary");
-
     &:hover {
       @include color("hover-secondary-contrast");
       @include background-color("hover-secondary");
@@ -110,8 +131,16 @@ button {
       @include color("secondary");
       @include border-color("secondary");
       &:hover {
-        @include background-color("secondary", 0.2);
+        @include background-color("secondary", 0.3);
       }
+      &:active {
+        @include background-color("focus");
+        @include border-color("focus");
+      }
+    }
+    &:active {
+      @include color("focus-contrast");
+      @include background-color("focus");
     }
     &.selected {
       @include color("selected-contrast");
