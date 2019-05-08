@@ -170,7 +170,7 @@
 		display: inline-flex;
 	}
   button {
-    padding: 4px 16px;
+    padding: 6px 16px;
     border: none;
     outline: none;
     height: 24px;
@@ -214,12 +214,6 @@
     @include background-color("standard");
     @include color("focus");
   }
-}
-
-:host(.onoff.standard) {
-	.on-off-wrapper {
-		vertical-align: -moz-middle-with-baseline;
-	}
 }
 
 :host(.alternative) {
