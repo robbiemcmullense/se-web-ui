@@ -1,4 +1,4 @@
-import { Component, Method, Element, State } from '@stencil/core';
+import {Component, Method, Element, State, Prop} from '@stencil/core';
 
 
 const SHOW_MENU = 'show-menu';
@@ -17,6 +17,11 @@ export class SidemenuComponent {
   @State() open: boolean = false;
   @State() items: HTMLElement[] = [];
   @State() selectedItem?: HTMLElement;
+
+  /**
+   * Overrides the default "Menu" label.
+   */
+  @Prop() label: string = 'Menu';
 
   @Method()
   toggle(): void {
@@ -56,7 +61,7 @@ export class SidemenuComponent {
   private setActive(item: any): void {
     this.items && this.items.forEach((item: any) => {
       item.active = false;
-    })
+    });
     item.active = true;
     this.selectedItem = item;
   }
@@ -84,35 +89,35 @@ export class SidemenuComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item onClick={() => this.setActive(item)} selected={item.active} item={item.item}></se-list-item>,
+        <se-list-item onClick={() => this.setActive(item)} selected={item.active} item={item.item}/>,
       ]
     })
   }
 
   render() {
     return [
-      <div class="menu-background animated" onClick={() => this.toggle()} ref={el => this.backdropEl = el}></div>,
+      <div class="menu-background animated" onClick={() => this.toggle()} ref={el => this.backdropEl = el}/>,
       <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
         <div class="d-flex-center">
           <div class="d-flex-center flex">
             <span class="menu-sidenav" onClick={() => this.toggle()}>
-              <se-icon size="large" color="primary">test_results_nok</se-icon>
+              <se-icon size="large">test_results_nok</se-icon>
             </span>
-            <h3 class="header-title">Menu</h3>
+            <h3 class="header-title">{this.label}</h3>
           </div>
-          <se-chip color="primary" can-close="false" value="https://schneider-electric.com"></se-chip>
+          <se-chip color="primary" can-close="false" value="https://schneider-electric.com"/>
         </div>
-        <se-divider></se-divider>
+        <se-divider/>
         <div class="d-flex flex">
           <div class="listNavItems">
             <se-list option="nav">
               {this.renderList()}
             </se-list>
-            <se-icon-lifeison color="standard"></se-icon-lifeison>
+            <se-icon-lifeison color="standard"/>
           </div>
-          <se-divider option="vertical"></se-divider>
+          <se-divider option="vertical"/>
           <se-widget option="fill">
-            <slot />
+            <slot/>
           </se-widget>
         </div>
       </div>
