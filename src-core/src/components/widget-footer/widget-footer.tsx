@@ -12,9 +12,11 @@ export class WidgetFooter {
    */
   @Prop() option: "card";
 
+  @Prop() direction: "row" | "column" = "row";
+
   hostData() {
     return {
-      class: this.option
+      class: [this.option, this.direction].join(' ')
     };
   }
 

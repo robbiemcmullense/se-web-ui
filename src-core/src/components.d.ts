@@ -1239,12 +1239,14 @@ export namespace Components {
   }
 
   interface SeWidgetFooter {
+    'direction': "row" | "column";
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer with respect to the card design.
     */
     'option': "card";
   }
   interface SeWidgetFooterAttributes extends StencilHTMLAttributes {
+    'direction'?: "row" | "column";
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer with respect to the card design.
     */
