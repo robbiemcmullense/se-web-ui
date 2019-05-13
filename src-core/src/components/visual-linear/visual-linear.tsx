@@ -46,13 +46,9 @@ export class VisualLinearComponent {
 					Sorry, your browser does not support inline SVG.
 				</svg>
 				<text>
-					{this.value && <tspan class="linear-value">{this.value}</tspan>}
+					{this.value ? <tspan class="linear-value">{this.value}</tspan> : ''}
 					<tspan x="100%"class="linear-label">{this.label}</tspan>
 				</text>
-				{/* <div class="visual-linear-data">
-					{this.value && <value>{this.value}</value>}
-					<label>&nbsp;{this.label}</label>
-				</div> */}
 			</div>
 		];
 	}

@@ -26,7 +26,7 @@ export class DialogContentComponent {
   }
   render() {
     return [
-      this.icon && <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon>,
+      this.icon ? <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon> : '',
       <div class="inner-content"><slot /></div>
     ];
   }

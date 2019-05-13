@@ -116,19 +116,18 @@ export class ButtonComponent {
   hostData() {
     return {
       'class': [
-        !!this.icon && 'hasIcon',
-        this.hasChild && 'hasChild',
-        this.grouped && 'grouped',
-        this.option
-      ].join(' ')
+        !!this.icon ? 'hasIcon' : '',
+        this.hasChild ? 'hasChild' : '',
+        this.grouped ? 'grouped' : '',
+        this.option].join(' ')
     };
   }
 
   render() {
     return (
-      <button disabled={this.disabled} type={this.type} class={[this.color, this.option, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
+      <button disabled={this.disabled} type={this.type} class={[this.color, this.option, this.selected ? 'selected' : ''].join(' ')} onClick={() => this.toggle()}>
         {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
-        { this.hasChild && <span class="text"><slot></slot></span>}
+        {this.hasChild ? <span class="text"><slot></slot></span> : ''}
       </button>
     )
   }

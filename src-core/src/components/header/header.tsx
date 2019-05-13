@@ -46,13 +46,13 @@ export class HeaderComponent {
     }
     return [
       <div class="d-flex">
-        {this.hasMenu && (
+        {this.hasMenu ?
           <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
             <se-icon size="large" color="primary">
               burger_menu
             </se-icon>
           </span>
-        )}
+        : ''}
         <div class="d-flex-column header-title-wrapper">
           {domain}
           <h1 class="header-title no-margin">
@@ -60,7 +60,7 @@ export class HeaderComponent {
             <span class="light">&nbsp;{title.last}</span>
           </h1>
         </div>
-        {this.project && <span class="project-section">{this.project}</span>}
+        {this.project ? <span class="project-section">{this.project}</span> : ''}
       </div>,
       <div class="padding-container d-flex">
         <slot name="start" />

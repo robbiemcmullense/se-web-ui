@@ -38,7 +38,7 @@ export class ChipComponent {
   render() {
     return [
       <div class="value">{this.value}</div>,
-      this.canClose && <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div>
+      this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''
     ];
   }
 }

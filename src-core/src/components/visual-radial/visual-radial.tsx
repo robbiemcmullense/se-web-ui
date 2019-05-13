@@ -61,7 +61,7 @@ export class VisualRadialComponent {
         </svg>
         <svg height={this.svgSize} width={this.svgSize}>
           <text>
-          {this.value && <tspan class="radial-value" x="50%" y="50%" text-anchor="middle">{this.value}</tspan>}
+          {this.value ? <tspan class="radial-value" x="50%" y="50%" text-anchor="middle">{this.value}</tspan> : ''}
           <tspan class="radial-label" x="50%" y={this.value ? "70%" : "53%"} text-anchor="middle">{this.label}</tspan>
           </text>
         </svg>
