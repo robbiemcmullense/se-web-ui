@@ -15,6 +15,10 @@ describe('ButtonComponent', () => {
 		expect(button.option).toEqual('flat');
 	});
 
+	it('should have a small size by default', () => {
+		expect(button.size).toEqual('small');
+	});
+
 	it('should have a "standard" color property by default', () => {
 		expect(button.color).toEqual('standard');
 	});

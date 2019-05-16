@@ -95,6 +95,10 @@ $prefix: "--"; //Prefix string for custom CSS properties
   } @else if $value == "p-small" {
     line-height: $line-height-sm !important;
     font-size: $small-fontsize;
+  } @else if $value == "p-medium" {
+    font-size: $medium-fontsize;
+  } @else if $value == "p-large" {
+    font-size: $large-fontsize;
   }
 }
 @mixin ellipsis() {

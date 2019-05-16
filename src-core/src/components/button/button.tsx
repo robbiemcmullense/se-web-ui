@@ -26,7 +26,14 @@ export class ButtonComponent {
     }
   }
   /**
-   * Optional property that defines the background color of the button. The default setting is `standard`.
+   * Defines the size of the button.
+   * `small` is the default option, with a 14px font and a 32px height.
+   * `medium` sets the font to 16px and the height to 40px.
+   * `large` sets the font to 18px and the height to 48px.
+   */
+  @Prop() size: 'small' | 'medium' | 'large' = 'small';
+  /**
+   * Defines the background color of the button. The default setting is `standard`.
    */
   @Prop({mutable: true}) color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard'
   /**
@@ -126,7 +133,7 @@ export class ButtonComponent {
 
   render() {
     return (
-      <button disabled={this.disabled} type={this.type} class={[this.color, this.option, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
+      <button disabled={this.disabled} type={this.type} class={[this.color, this.size, this.option, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
         {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
         { this.hasChild && <span class="text"><slot></slot></span>}
       </button>

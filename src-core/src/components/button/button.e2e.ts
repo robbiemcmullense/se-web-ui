@@ -17,19 +17,19 @@ describe('ButtonComponent', () => {
     expect(element).toHaveClasses(['flat', 'hydrated']);
   });
 
-  it('renders the child button component with a flat and standard classes by default', async() => {
-    expect(element.shadowRoot.querySelector('button')).toHaveClass('standard');
-    expect(element.shadowRoot.querySelector('button')).toHaveClass('flat');
+  it('renders the child button component with flat, small, and standard classes by default reflecting its default option, size, and color', async() => {
+    expect(element.shadowRoot.querySelector('button')).toHaveClasses(['flat', 'small', 'standard']);
   });
 
-  it('renders the parent element with the raised class and the child element with the alternative class when the option and color are set to those values', async() => {
+  it('applies the raised, medium, and alternative classes to the parent and child button elements when the option, size, and color are set to those values', async() => {
     await page.$eval('se-button', (elm: any) => {
       elm.option = 'raised';
-      elm.color = 'alternative'
+      elm.size = 'medium';
+      elm.color = 'alternative';
     });
     await page.waitForChanges();
     expect(element).toHaveClass('raised');
-    expect(element.shadowRoot.querySelector('button')).toHaveClass('alternative');
+    expect(element.shadowRoot.querySelector('button')).toHaveClasses(['alternative', 'medium', 'raised']);
   });
 
   it('renders the hasIcon class when the element has an icon property', async() => {

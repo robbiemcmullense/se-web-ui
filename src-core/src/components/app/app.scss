@@ -17,7 +17,7 @@
   @include absolute(0,0,0,0);
   @include display-flex();
   @include flex-direction(column);
-  @include background-color("standard");
+  background-color: $se-ultra-light-grey-2;
 }
 
 // Create all classes to use colors as classes

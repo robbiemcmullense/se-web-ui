@@ -239,7 +239,7 @@ export namespace Components {
 
   interface SeButton {
     /**
-    * Optional property that defines the background color of the button. The default setting is `standard`.
+    * Defines the background color of the button. The default setting is `standard`.
     */
     'color': 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
@@ -271,6 +271,10 @@ export namespace Components {
     */
     'setGrouped': () => void;
     /**
+    * Defines the size of the button. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
+    */
+    'size': 'small' | 'medium' | 'large';
+    /**
     * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
     */
     'type': 'button' | 'submit' |'reset';
@@ -281,7 +285,7 @@ export namespace Components {
   }
   interface SeButtonAttributes extends StencilHTMLAttributes {
     /**
-    * Optional property that defines the background color of the button. The default setting is `standard`.
+    * Defines the background color of the button. The default setting is `standard`.
     */
     'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
@@ -305,6 +309,10 @@ export namespace Components {
     * Optional property that defines if the button should be shown as selected. Used with `se-radio`
     */
     'selected'?: boolean;
+    /**
+    * Defines the size of the button. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
+    */
+    'size'?: 'small' | 'medium' | 'large';
     /**
     * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
     */

@@ -20,7 +20,12 @@ button {
   @include justify-content(center);
   &[disabled] {
     cursor: default;
-    opacity: 0.26;
+  }
+
+  .text {
+    font-weight: 300;
+    @include typology("p");
+    padding: 0 $spacing;
   }
 
   &.raised {
@@ -29,6 +34,20 @@ button {
   &.inherit {
     background-color: transparent !important;
     color: inherit !important;
+  }
+
+  &.medium {
+    height: 40px;
+    .text {
+      @include typology("p-medium");
+    }
+  }
+
+  &.large {
+    height: 48px;
+    .text {
+      @include typology("p-large");
+    }
   }
 
   &.standard {
@@ -45,17 +64,27 @@ button {
       &:hover {
         @include background-color("hover-standard", 0.2);
       }
-      &:active {
+      &:focus {
+        @include color("focus-contrast");
         @include background-color("focus");
       }
+      &[disabled] {
+        color: $se-light-grey;
+        background-color: transparent;
+        border-color: $se-light-grey;
+      }
     }
-    &:active {
+    &:focus {
       @include color("focus-contrast");
       @include background-color("focus");
     }
     &.selected {
       @include color("selected-contrast");
       @include background-color("selected");
+    }
+    &[disabled] {
+      color: $se-light-grey;
+      background-color: $se-ultra-light-grey-2;
     }
   }
 
@@ -74,17 +103,27 @@ button {
       &:hover {
         @include background-color("hover-alternative", 0.6);
       }
-      &:active {
+      &:focus {
+        @include color("focus-contrast");
         @include background-color("focus");
       }
+      &[disabled] {
+        color: $se-light-grey;
+        background-color: transparent;
+        border-color: $se-light-grey;
+      }
     }
-    &:active {
+    &:focus {
       @include color("focus-contrast");
       @include background-color("focus");
     }
     &.selected {
       @include color("selected-contrast");
       @include background-color("selected");
+    }
+    &[disabled] {
+      color: $se-light-grey;
+      @include background-color('alternative');
     }
   }
 
@@ -103,18 +142,26 @@ button {
       &:hover {
         @include background-color("primary", 0.3);
       }
-      &:active {
+      &:focus {
         @include background-color("focus");
         @include border-color("focus");
       }
+      &[disabled] {
+        background-color: transparent;
+        color: #8ce599;
+        border-color: #8ce599;
+      }
     }
-    &:active {
+    &:focus {
       @include color("focus-contrast");
       @include background-color("focus");
     }
     &.selected {
       @include color("selected-contrast");
       @include background-color("selected");
+    }
+    &[disabled] {
+      background-color: #8ce599;
     }
   }
 
@@ -133,12 +180,17 @@ button {
       &:hover {
         @include background-color("secondary", 0.3);
       }
-      &:active {
+      &:focus {
         @include background-color("focus");
         @include border-color("focus");
       }
+      &[disabled] {
+        background-color: transparent;
+        color: $se-sky-blue;
+        border-color: $se-sky-blue;
+      }
     }
-    &:active {
+    &:focus {
       @include color("focus-contrast");
       @include background-color("focus");
     }
@@ -146,13 +198,12 @@ button {
       @include color("selected-contrast");
       @include background-color("selected");
     }
+    &[disabled] {
+      background-color: $se-sky-blue;
+    }
   }
 
-  .text {
-    font-weight: 300;
-    @include typology("p");
-    padding: 0 $spacing;
-  }
+  
   .se-icon {
     margin: 0;
     display: inline-block;
@@ -172,12 +223,8 @@ button {
       @include color("secondary");
     }
   }
-
-  // &:focus{
-  //   @include color("selected-contrast");
-  //   @include background-color("selected");
-  // }
 }
+
 :host(.login),
 :host(.signup) {
   @include display-flex();
@@ -232,7 +279,7 @@ button {
       content: "";
       position: absolute;
       top: 50%;
-      right: 15px;
+      right: 16px;
       transform: translateY(-50%);
       width: 0;
       height: 0;
