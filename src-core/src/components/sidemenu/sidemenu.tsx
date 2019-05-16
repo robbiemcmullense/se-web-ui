@@ -111,9 +111,9 @@ export class SidemenuComponent {
             <se-icon-lifeison color="standard"></se-icon-lifeison>
           </div>
           <se-divider option="vertical"></se-divider>
-          <se-widget option="fill">
+          <se-block>
             <slot />
-          </se-widget>
+          </se-block>
         </div>
       </div>
     ]

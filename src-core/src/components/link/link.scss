@@ -14,9 +14,12 @@
 				content: '>';
 			}
 		}
+		&:hover {
+			@include color('hover-secondary');
+		}
 		&[data-disabled] {
 			pointer-events: none;
-			color: $se-ultra-light-grey-1;
+			color: $se-light-grey;
 		}
 	}
 }

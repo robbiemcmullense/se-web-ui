@@ -5,7 +5,7 @@
   position: relative;
   @include display-flex();
 
-  .widget-body {
+  .block-body {
     overflow: auto;
     margin: $spacing;
     @include flex();
@@ -32,25 +32,25 @@
 }
 
 :host(.card){
-  .widget-body {
+  .block-body {
     box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
     border-radius: $border-radius-card;
     margin: $spacing-large;
   }
 }
 
-:host(.alternative){
-  .widget-body {
+:host(.alternative) {
+  .block-body {
     @include background-color('alternative')
   }
 }
-:host(.standard){
-  .widget-body {
+:host(.standard) {
+  .block-body {
     @include background-color('standard')
   }
 }
-:host(.fill){
-  .widget-body {
+:host(.fill) {
+  .block-body {
     margin: 0;
   }
 }

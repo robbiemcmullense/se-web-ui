@@ -14,11 +14,15 @@ export class ChipComponent {
   /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
+  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow' = 'standard';
   /**
    * Indicates whether or not the chip has a close button.  Set to `true` by default.
    */
   @Prop() canClose: boolean = true;
+  /**
+   * Indicates whether or not the chip is disabled.  Set to `false` by default.
+   */
+  @Prop() disabled: boolean = false;
   @Element() el: HTMLElement;
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
@@ -26,12 +30,16 @@ export class ChipComponent {
   @Event() didClose: EventEmitter;
 
   closeChip() {
-    this.didClose.emit(this.value);
+    console.log('close chip function entered');
+    if (!this.disabled) {
+      console.log('emitting didClose event');
+      this.didClose.emit(this.value);
+    }
   }
 
   hostData() {
     return {
-      'class': this.color
+      'class': [this.color, this.disabled ? 'disabled' : ''].join(' ')
     };
   }
 

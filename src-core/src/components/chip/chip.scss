@@ -27,30 +27,50 @@ $chip-height: 22px;
     }
   }
 }
-:host(.selected) {
-  @include color('selected-contrast');
-  @include background-color('selected');
-}
+
 
 :host(.standard) {
   @include color('standard-contrast');
   @include background-color('standard');
 }
-:host(.standard:hover) {
-  @include color('hover-standard-contrast');
-  @include background-color('hover-standard');
-}
-
 
 :host(.alternative) {
   @include color('alternative-contrast');
   @include background-color('alternative');
 }
+
+:host(.standard:hover),
 :host(.alternative:hover) {
-  @include color('hover-alternative-contrast');
-  @include background-color('hover-alternative');
+  @include color('hover-standard-contrast');
+  @include background-color('hover-standard');
+}
+:host(.standard:active),
+:host(.alternative:active),
+:host(.selected) {
+  @include color('selected-contrast');
+  @include background-color('selected');
+}
+:host(.standard:focus),
+:host(.alternative:focus) {
+  @include color('focus-contrast');
+  @include background-color('focus');
 }
 
+:host(.standard.disabled) {
+  color: $se-light-grey;
+  background-color: $se-ultra-light-grey-2;
+  .se-icon {
+    cursor: default;
+  }
+}
+
+:host(.alternative.disabled) {
+  color: $se-super-light-grey;
+  @include background-color('alternative');
+  .se-icon {
+    cursor: default;
+  }
+}
 
 :host(.primary) {
   @include color('primary-contrast');
@@ -70,3 +90,31 @@ $chip-height: 22px;
   @include background-color('hover-secondary');
 }
 
+:host(.red) {
+  @include color('primary-contrast');
+  background-color: $se-red;
+}
+:host(.fuchsia) {
+  @include color('primary-contrast');
+  background-color: $se-fuchsia-red;
+}
+:host(.skyBlue) {
+  @include color('primary-contrast');
+  background-color: $se-sky-blue;
+}
+:host(.darkBlue) {
+  @include color('primary-contrast');
+  background-color: $se-dark-sky-blue;
+}
+:host(.orange) {
+  @include color('primary-contrast');
+  background-color: $se-honeysuckle-orange;
+}
+:host(.yellow) {
+  @include color('primary-contrast');
+  background-color: $se-sunflower-yellow;
+}
+:host(.gray) {
+  @include color('primary-contrast');
+  background-color: $se-medium-grey;
+}

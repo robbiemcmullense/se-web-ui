@@ -1,18 +1,21 @@
 import { Component, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
-  tag: "se-widget",
-  styleUrl: "widget.scss",
+  tag: "se-block",
+  styleUrl: "block.scss",
   shadow: true
 })
-export class WidgetComponent {
+export class BlockComponent {
   @Element() el: HTMLElement;
   /**
-   * Defines the visual appearance of a widget.
-   * `fill` will remove any spacing.
-   * `card` will create a card look and feel with shadow and rounded corner
+   * Defines the visual appearance of a block.
+   * `basic` will remove any spacing.
+   * `card` will create a card look and feel with shadow and rounded corners.
    */
-  @Prop() option: "fill" | "card";
+  @Prop() option: "basic" | "card" = "basic";
+  @Watch('option') optionDidChange() {
+    this.updateItemMode();
+  }
   /**
    * Defines how to display the element.
    * `flex` is the default display.
@@ -20,25 +23,25 @@ export class WidgetComponent {
    */
   @Prop() display: "flex" | "block" | "grid" = "flex";
   /**
-   * Optional property that defines the background color of the widget. Default setting is `alternative` (white).
+   * Optional property that defines the background color of the block. Default setting is `alternative` (white).
    */
   @Prop() color: "standard" | "alternative" = "alternative";
   /**
-   * Defines a specific width of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
+   * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
    */
   @Prop() width: string;
   @Watch("width") widthDidChange() {
     this.updateSize();
   }
   /**
-   * Defines a specific height of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
+   * Defines a specific height of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
    */
   @Prop() height: string;
   @Watch("height") heightDidChange() {
     this.updateSize();
   }
   /**
-   * When on Grid display, determines if the widget should be a 2/2 instead of a small 1/1 grid item.
+   * When on Grid display, determines if the block should be a 2/2 instead of a small 1/1 grid item.
    * Default setting is `false` (1/1).
    */
   @Prop({mutable: true}) enlarged: boolean = false;
@@ -54,13 +57,8 @@ export class WidgetComponent {
   }
 
   private updateItemMode() {
-    if (this.option === "card") {
-      Array.from(
-        this.el.querySelectorAll("se-widget-header, se-widget-footer")
-      ).forEach((item: any) => {
-        item.option = this.option;
-      });
-    }
+    let childElms = this.option === 'card' ? 'se-block-header, se-block-content, se-block-footer' : 'se-block-content';
+    this.setChildOption(childElms);
   }
 
   private updateSize() {
@@ -70,6 +68,14 @@ export class WidgetComponent {
     if (this.height) {
       this.el.style.height = this.height;
     }
+  }
+
+  private setChildOption(childElms: string) {
+    Array.from(
+      this.el.querySelectorAll(childElms)
+    ).forEach((item: any) => {
+      item.option = this.option;
+    });
   }
 
   hostData() {
@@ -85,7 +91,7 @@ export class WidgetComponent {
 
   render() {
     return (
-      <div class="widget-body">
+      <div class="block-body">
         {this.loading ? <se-loading loading={this.loading} /> : ""}
         <slot />
       </div>

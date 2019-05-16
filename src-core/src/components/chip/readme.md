@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                                                                                                | Type                                                      | Default      |
-| ---------- | ----------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------ |
-| `canClose` | `can-close` | Indicates whether or not the chip has a close button.  Set to `true` by default.                           | `boolean`                                                 | `true`       |
-| `color`    | `color`     | Defines the background color of the chip.  The default setting is `standard`, which is a light gray color. | `"alternative" \| "primary" \| "secondary" \| "standard"` | `'standard'` |
-| `value`    | `value`     | The text you want to display in your chip.                                                                 | `string`                                                  | `undefined`  |
+| Property   | Attribute   | Description                                                                                                | Type                                                                                                                                                       | Default      |
+| ---------- | ----------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `canClose` | `can-close` | Indicates whether or not the chip has a close button.  Set to `true` by default.                           | `boolean`                                                                                                                                                  | `true`       |
+| `color`    | `color`     | Defines the background color of the chip.  The default setting is `standard`, which is a light gray color. | `"alternative" \| "darkBlue" \| "fuchsia" \| "gray" \| "orange" \| "primary" \| "red" \| "secondary" \| "selected" \| "skyBlue" \| "standard" \| "yellow"` | `'standard'` |
+| `disabled` | `disabled`  | Indicates whether or not the chip is disabled.  Set to `false` by default.                                 | `boolean`                                                                                                                                                  | `false`      |
+| `value`    | `value`     | The text you want to display in your chip.                                                                 | `string`                                                                                                                                                   | `undefined`  |
 
 
 ## Events

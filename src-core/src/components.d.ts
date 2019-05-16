@@ -137,6 +137,106 @@ export namespace Components {
     'version'?: string;
   }
 
+  interface SeBlockContent {
+    /**
+    * When set to `basic`, content will fill the whole space of the block.
+    */
+    'option': 'basic' | 'card';
+  }
+  interface SeBlockContentAttributes extends StencilHTMLAttributes {
+    /**
+    * When set to `basic`, content will fill the whole space of the block.
+    */
+    'option'?: 'basic' | 'card';
+  }
+
+  interface SeBlockFooter {
+    /**
+    * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option. `card` will update the design of the footer with respect to the card design.
+    */
+    'option': "card";
+  }
+  interface SeBlockFooterAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option. `card` will update the design of the footer with respect to the card design.
+    */
+    'option'?: "card";
+  }
+
+  interface SeBlockHeader {
+    /**
+    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design.
+    */
+    'option': "card";
+  }
+  interface SeBlockHeaderAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design.
+    */
+    'option'?: "card";
+  }
+
+  interface SeBlock {
+    /**
+    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+    */
+    'color': "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
+    */
+    'display': "flex" | "block" | "grid";
+    /**
+    * When on Grid display, determines if the block should be a 2/2 instead of a small 1/1 grid item. Default setting is `false` (1/1).
+    */
+    'enlarged': boolean;
+    /**
+    * Defines a specific height of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+    */
+    'height': string;
+    /**
+    * Display the loading icon if set to `true`.  Default setting is `false`.
+    */
+    'loading': boolean;
+    /**
+    * Defines the visual appearance of a block. `basic` will remove any spacing. `card` will create a card look and feel with shadow and rounded corners.
+    */
+    'option': "basic" | "card";
+    /**
+    * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+    */
+    'width': string;
+  }
+  interface SeBlockAttributes extends StencilHTMLAttributes {
+    /**
+    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+    */
+    'color'?: "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
+    */
+    'display'?: "flex" | "block" | "grid";
+    /**
+    * When on Grid display, determines if the block should be a 2/2 instead of a small 1/1 grid item. Default setting is `false` (1/1).
+    */
+    'enlarged'?: boolean;
+    /**
+    * Defines a specific height of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+    */
+    'height'?: string;
+    /**
+    * Display the loading icon if set to `true`.  Default setting is `false`.
+    */
+    'loading'?: boolean;
+    /**
+    * Defines the visual appearance of a block. `basic` will remove any spacing. `card` will create a card look and feel with shadow and rounded corners.
+    */
+    'option'?: "basic" | "card";
+    /**
+    * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+    */
+    'width'?: string;
+  }
+
   interface SeButton {
     /**
     * Optional property that defines the background color of the button. The default setting is `standard`.
@@ -324,7 +424,11 @@ export namespace Components {
     /**
     * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
     */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color': 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
+    /**
+    * Indicates whether or not the chip is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
     /**
     * The text you want to display in your chip.
     */
@@ -338,7 +442,11 @@ export namespace Components {
     /**
     * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
     */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
+    /**
+    * Indicates whether or not the chip is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
     /**
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
@@ -363,11 +471,11 @@ export namespace Components {
     */
     'direction': "column" | "row";
     /**
-    * Defines how to display the element. `flex` is the default display. `block` will set each widget to be as large and high as it's content. Selecting this display will automatically configure each child widget in "display: block" as well.
+    * Defines how to display the element. `flex` is the default display. `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element in "display: block" as well.
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all widgets are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white).
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white).
     */
     'option': "fill" | "widget" | "card" | "centered";
     /**
@@ -375,7 +483,7 @@ export namespace Components {
     */
     'position': "relative" | "absolute";
     /**
-    * When in `display="grid"`, defines the height of each widget.
+    * When in `display="grid"`, defines the height of each container.
     */
     'rowSize': string;
   }
@@ -393,11 +501,11 @@ export namespace Components {
     */
     'direction'?: "column" | "row";
     /**
-    * Defines how to display the element. `flex` is the default display. `block` will set each widget to be as large and high as it's content. Selecting this display will automatically configure each child widget in "display: block" as well.
+    * Defines how to display the element. `flex` is the default display. `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element in "display: block" as well.
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all widgets are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white).
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white).
     */
     'option'?: "fill" | "widget" | "card" | "centered";
     /**
@@ -405,7 +513,7 @@ export namespace Components {
     */
     'position'?: "relative" | "absolute";
     /**
-    * When in `display="grid"`, defines the height of each widget.
+    * When in `display="grid"`, defines the height of each container.
     */
     'rowSize'?: string;
   }
@@ -1174,106 +1282,6 @@ export namespace Components {
     */
     'value'?: string;
   }
-
-  interface SeWidgetContent {
-    /**
-    * When set to `fill`, content will fill the whole space of the widget.
-    */
-    'option': 'fill';
-  }
-  interface SeWidgetContentAttributes extends StencilHTMLAttributes {
-    /**
-    * When set to `fill`, content will fill the whole space of the widget.
-    */
-    'option'?: 'fill';
-  }
-
-  interface SeWidgetFooter {
-    /**
-    * Defines the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer with respect to the card design.
-    */
-    'option': "card";
-  }
-  interface SeWidgetFooterAttributes extends StencilHTMLAttributes {
-    /**
-    * Defines the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer with respect to the card design.
-    */
-    'option'?: "card";
-  }
-
-  interface SeWidgetHeader {
-    /**
-    * Defines the visual appearance of a header. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the header with respect to the card design.
-    */
-    'option': "card";
-  }
-  interface SeWidgetHeaderAttributes extends StencilHTMLAttributes {
-    /**
-    * Defines the visual appearance of a header. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the header with respect to the card design.
-    */
-    'option'?: "card";
-  }
-
-  interface SeWidget {
-    /**
-    * Optional property that defines the background color of the widget. Default setting is `alternative` (white).
-    */
-    'color': "standard" | "alternative";
-    /**
-    * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
-    */
-    'display': "flex" | "block" | "grid";
-    /**
-    * When on Grid display, determines if the widget should be a 2/2 instead of a small 1/1 grid item. Default setting is `false` (1/1).
-    */
-    'enlarged': boolean;
-    /**
-    * Defines a specific height of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
-    */
-    'height': string;
-    /**
-    * Display the loading icon if set to `true`.  Default setting is `false`.
-    */
-    'loading': boolean;
-    /**
-    * Defines the visual appearance of a widget. `fill` will remove any spacing. `card` will create a card look and feel with shadow and rounded corner
-    */
-    'option': "fill" | "card";
-    /**
-    * Defines a specific width of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
-    */
-    'width': string;
-  }
-  interface SeWidgetAttributes extends StencilHTMLAttributes {
-    /**
-    * Optional property that defines the background color of the widget. Default setting is `alternative` (white).
-    */
-    'color'?: "standard" | "alternative";
-    /**
-    * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
-    */
-    'display'?: "flex" | "block" | "grid";
-    /**
-    * When on Grid display, determines if the widget should be a 2/2 instead of a small 1/1 grid item. Default setting is `false` (1/1).
-    */
-    'enlarged'?: boolean;
-    /**
-    * Defines a specific height of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
-    */
-    'height'?: string;
-    /**
-    * Display the loading icon if set to `true`.  Default setting is `false`.
-    */
-    'loading'?: boolean;
-    /**
-    * Defines the visual appearance of a widget. `fill` will remove any spacing. `card` will create a card look and feel with shadow and rounded corner
-    */
-    'option'?: "fill" | "card";
-    /**
-    * Defines a specific width of a widget.  Useful to create easy layout under `se-container` which uses `flex` by default.
-    */
-    'width'?: string;
-  }
 }
 
 declare global {
@@ -1281,6 +1289,10 @@ declare global {
     'SeAbout': Components.SeAbout;
     'SeApp': Components.SeApp;
     'SeAuthentication': Components.SeAuthentication;
+    'SeBlockContent': Components.SeBlockContent;
+    'SeBlockFooter': Components.SeBlockFooter;
+    'SeBlockHeader': Components.SeBlockHeader;
+    'SeBlock': Components.SeBlock;
     'SeButton': Components.SeButton;
     'SeCheckbox': Components.SeCheckbox;
     'SeChip': Components.SeChip;
@@ -1310,16 +1322,16 @@ declare global {
     'SeTabbar': Components.SeTabbar;
     'SeVisualLinear': Components.SeVisualLinear;
     'SeVisualRadial': Components.SeVisualRadial;
-    'SeWidgetContent': Components.SeWidgetContent;
-    'SeWidgetFooter': Components.SeWidgetFooter;
-    'SeWidgetHeader': Components.SeWidgetHeader;
-    'SeWidget': Components.SeWidget;
   }
 
   interface StencilIntrinsicElements {
     'se-about': Components.SeAboutAttributes;
     'se-app': Components.SeAppAttributes;
     'se-authentication': Components.SeAuthenticationAttributes;
+    'se-block-content': Components.SeBlockContentAttributes;
+    'se-block-footer': Components.SeBlockFooterAttributes;
+    'se-block-header': Components.SeBlockHeaderAttributes;
+    'se-block': Components.SeBlockAttributes;
     'se-button': Components.SeButtonAttributes;
     'se-checkbox': Components.SeCheckboxAttributes;
     'se-chip': Components.SeChipAttributes;
@@ -1349,10 +1361,6 @@ declare global {
     'se-tabbar': Components.SeTabbarAttributes;
     'se-visual-linear': Components.SeVisualLinearAttributes;
     'se-visual-radial': Components.SeVisualRadialAttributes;
-    'se-widget-content': Components.SeWidgetContentAttributes;
-    'se-widget-footer': Components.SeWidgetFooterAttributes;
-    'se-widget-header': Components.SeWidgetHeaderAttributes;
-    'se-widget': Components.SeWidgetAttributes;
   }
 
 
@@ -1372,6 +1380,30 @@ declare global {
   var HTMLSeAuthenticationElement: {
     prototype: HTMLSeAuthenticationElement;
     new (): HTMLSeAuthenticationElement;
+  };
+
+  interface HTMLSeBlockContentElement extends Components.SeBlockContent, HTMLStencilElement {}
+  var HTMLSeBlockContentElement: {
+    prototype: HTMLSeBlockContentElement;
+    new (): HTMLSeBlockContentElement;
+  };
+
+  interface HTMLSeBlockFooterElement extends Components.SeBlockFooter, HTMLStencilElement {}
+  var HTMLSeBlockFooterElement: {
+    prototype: HTMLSeBlockFooterElement;
+    new (): HTMLSeBlockFooterElement;
+  };
+
+  interface HTMLSeBlockHeaderElement extends Components.SeBlockHeader, HTMLStencilElement {}
+  var HTMLSeBlockHeaderElement: {
+    prototype: HTMLSeBlockHeaderElement;
+    new (): HTMLSeBlockHeaderElement;
+  };
+
+  interface HTMLSeBlockElement extends Components.SeBlock, HTMLStencilElement {}
+  var HTMLSeBlockElement: {
+    prototype: HTMLSeBlockElement;
+    new (): HTMLSeBlockElement;
   };
 
   interface HTMLSeButtonElement extends Components.SeButton, HTMLStencilElement {}
@@ -1548,34 +1580,14 @@ declare global {
     new (): HTMLSeVisualRadialElement;
   };
 
-  interface HTMLSeWidgetContentElement extends Components.SeWidgetContent, HTMLStencilElement {}
-  var HTMLSeWidgetContentElement: {
-    prototype: HTMLSeWidgetContentElement;
-    new (): HTMLSeWidgetContentElement;
-  };
-
-  interface HTMLSeWidgetFooterElement extends Components.SeWidgetFooter, HTMLStencilElement {}
-  var HTMLSeWidgetFooterElement: {
-    prototype: HTMLSeWidgetFooterElement;
-    new (): HTMLSeWidgetFooterElement;
-  };
-
-  interface HTMLSeWidgetHeaderElement extends Components.SeWidgetHeader, HTMLStencilElement {}
-  var HTMLSeWidgetHeaderElement: {
-    prototype: HTMLSeWidgetHeaderElement;
-    new (): HTMLSeWidgetHeaderElement;
-  };
-
-  interface HTMLSeWidgetElement extends Components.SeWidget, HTMLStencilElement {}
-  var HTMLSeWidgetElement: {
-    prototype: HTMLSeWidgetElement;
-    new (): HTMLSeWidgetElement;
-  };
-
   interface HTMLElementTagNameMap {
     'se-about': HTMLSeAboutElement
     'se-app': HTMLSeAppElement
     'se-authentication': HTMLSeAuthenticationElement
+    'se-block-content': HTMLSeBlockContentElement
+    'se-block-footer': HTMLSeBlockFooterElement
+    'se-block-header': HTMLSeBlockHeaderElement
+    'se-block': HTMLSeBlockElement
     'se-button': HTMLSeButtonElement
     'se-checkbox': HTMLSeCheckboxElement
     'se-chip': HTMLSeChipElement
@@ -1605,16 +1617,16 @@ declare global {
     'se-tabbar': HTMLSeTabbarElement
     'se-visual-linear': HTMLSeVisualLinearElement
     'se-visual-radial': HTMLSeVisualRadialElement
-    'se-widget-content': HTMLSeWidgetContentElement
-    'se-widget-footer': HTMLSeWidgetFooterElement
-    'se-widget-header': HTMLSeWidgetHeaderElement
-    'se-widget': HTMLSeWidgetElement
   }
 
   interface ElementTagNameMap {
     'se-about': HTMLSeAboutElement;
     'se-app': HTMLSeAppElement;
     'se-authentication': HTMLSeAuthenticationElement;
+    'se-block-content': HTMLSeBlockContentElement;
+    'se-block-footer': HTMLSeBlockFooterElement;
+    'se-block-header': HTMLSeBlockHeaderElement;
+    'se-block': HTMLSeBlockElement;
     'se-button': HTMLSeButtonElement;
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
@@ -1644,10 +1656,6 @@ declare global {
     'se-tabbar': HTMLSeTabbarElement;
     'se-visual-linear': HTMLSeVisualLinearElement;
     'se-visual-radial': HTMLSeVisualRadialElement;
-    'se-widget-content': HTMLSeWidgetContentElement;
-    'se-widget-footer': HTMLSeWidgetFooterElement;
-    'se-widget-header': HTMLSeWidgetHeaderElement;
-    'se-widget': HTMLSeWidgetElement;
   }
 
 

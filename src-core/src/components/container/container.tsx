@@ -11,7 +11,7 @@ export class ContainerComponent {
   /**
    * Defines the inner appearance of a container.
    * `fill` is the default option, taking the full space of the container.
-   * `widget` adds a small spacing all around the container so that all widgets are spaced with the same distance. This option automatically sets the color property to `standard` (gray).
+   * `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray).
    * `centered` centers the container so the content does not exceed a maximum width.
    * `card` adds a larger spacing and sets the color property to `alternative` (white).
    */
@@ -22,7 +22,7 @@ export class ContainerComponent {
     }
     if (this.option === "card") {
       this.color = "alternative";
-      Array.from(this.el.querySelectorAll("se-container > se-widget")).forEach(
+      Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
         (item: any) => {
           item.option = this.option;
         }
@@ -47,12 +47,12 @@ export class ContainerComponent {
   /**
    * Defines how to display the element.
    * `flex` is the default display.
-   * `block` will set each widget to be as large and high as it's content. Selecting this display will automatically configure each child widget in "display: block" as well.
+   * `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element in "display: block" as well.
    */
   @Prop() display: "flex" | "block" | "grid" = "flex";
   @Watch("display") displayDidChange() {
     // Only direct children will be impacted by the display property
-    Array.from(this.el.querySelectorAll("se-container > se-widget")).forEach(
+    Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
       (item: any) => {
         item.display = this.display;
       }
@@ -71,7 +71,7 @@ export class ContainerComponent {
   }
 
   /**
-   * When in `display="grid"`, defines the height of each widget.
+   * When in `display="grid"`, defines the height of each container.
    */
   @Prop() rowSize: string = '300px';
   @Watch("rowSize") rowSizeDidChange() {

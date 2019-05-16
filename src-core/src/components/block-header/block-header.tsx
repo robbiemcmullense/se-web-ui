@@ -1,13 +1,13 @@
 import { Component, Prop } from "@stencil/core";
 
 @Component({
-  tag: "se-widget-header",
-  styleUrl: "widget-header.scss",
+  tag: "se-block-header",
+  styleUrl: "block-header.scss",
   shadow: true
 })
-export class WidgetHeader {
+export class BlockHeader {
    /**
-   * Defines the visual appearance of a header. Updated automatically by the `se-widget` component when on card option.
+   * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option.
    * `card` will update the design of the header with respect to the card design.
    */
   @Prop() option: "card";

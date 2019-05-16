@@ -1,12 +1,12 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('WidgetHeaderComponent', () => {
+describe('BlockHeaderComponent', () => {
   let page, element;
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-widget-header></se-widget-header>');
-    element = await page.find('se-widget-header');
+    await page.setContent('<se-block-header></se-block-header>');
+    element = await page.find('se-block-header');
   });
 
   it('renders', async() => {
@@ -15,7 +15,7 @@ describe('WidgetHeaderComponent', () => {
   });
 
   it('should render with the card class when option is set to card', async() => {
-    await page.$eval('se-widget-header', (elm: any) => {
+    await page.$eval('se-block-header', (elm: any) => {
       elm.option = 'card';
     });
     await page.waitForChanges();
@@ -23,11 +23,11 @@ describe('WidgetHeaderComponent', () => {
   });
 
   it('renders with an h3 element with a flex class and a slot element with the "end" attribute', async() => {
-    const headerElm = await page.find('se-widget-header >>> h3');
+    const headerElm = await page.find('se-block-header >>> h3');
     expect(headerElm).toBeTruthy();
     expect(headerElm).toHaveClass('flex');
 
-    const slotElm = await page.find ('se-widget-header >>> slot[name="end"]');
+    const slotElm = await page.find ('se-block-header >>> slot[name="end"]');
     expect(slotElm).toBeTruthy();
   });
 });

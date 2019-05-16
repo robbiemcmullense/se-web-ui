@@ -15,13 +15,11 @@
   }
 
   h3 {
-    @include typology('h3')
-  }
-}
-:host(.card){
-  border-bottom: none;
-  padding-bottom: $spacing-small;
-  h3 {
+    @include typology('h3');
     @include color('primary');
   }
+}
+:host(.card) {
+  border-bottom: none;
+  padding-bottom: $spacing-small;
 }

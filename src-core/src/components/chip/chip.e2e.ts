@@ -11,15 +11,18 @@ describe('ChipComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
-    expect(element).toHaveClass('hydrated');
   });
 
-  it('should have a class equal to the color value', async() => {
+  it('should have a class equal to standard to reflect its default color', () => {
+    expect(element).toHaveClass('standard');
+  });
+
+  it('should have a disabled class when the disabled property is set to true', async() => {
     await page.$eval('se-chip', (elm: any) => {
-      elm.color = 'accent';
+      elm.disabled = true;
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('accent');
+    expect(element).toHaveClass('disabled');
   });
 
   it('should render HTML with the passed value', async() => {
