@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element, Listen } from "@stencil/core";
+import { Component, h, Prop, Watch, Element, Listen } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",

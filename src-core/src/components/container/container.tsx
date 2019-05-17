@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element } from "@stencil/core";
+import { Component, h, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
   tag: "se-container",

@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Method, Event, EventEmitter, Watch } from "@stencil/core";
+import { Component, h, Prop, Element, Method, Event, EventEmitter, Watch } from "@stencil/core";
 
 const SHOW = "show-dialog";
 const HIDE = "hide-dialog";
@@ -53,7 +53,7 @@ export class DialogComponent {
    * Emit the `backdrop` event from the dialog's parent component.
    */
   @Method()
-  backdropClicked(): void {
+  async backdropClicked() {
     if(this.canBackdrop){
     this.backdrop.emit();
     }

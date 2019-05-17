@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
+import { Component, h, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
 
 @Component({
   tag: "se-list-item",

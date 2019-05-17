@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
 
