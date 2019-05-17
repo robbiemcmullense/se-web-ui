@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, State, Method, Watch, Listen } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop, State, Method, Watch, Listen } from '@stencil/core';
 
 @Component({
   tag: 'se-button',
@@ -7,8 +7,6 @@ import { Component, Element, Event, EventEmitter, Prop, State, Method, Watch, Li
 })
 export class ButtonComponent {
   @Element() el: HTMLElement;
-  @Prop({ context: 'window' }) win!: Window;
-
   /**
    * Defines the visual appearance of the button.
    * `flat` is the default option, which includes a gray background.
@@ -67,14 +65,14 @@ export class ButtonComponent {
    * @param val set to `true` or `false`.
    */
   @Method()
-  setDisabled(val: boolean): void {
+  async setDisabled(val: boolean) {
     this.disabled = val;
   }
   /**
    * Indicates if the button is part of a group of buttons within the `se-radio` component.
    */
   @Method()
-  setGrouped() {
+  async setGrouped() {
     this.grouped = true
   }
 
@@ -89,7 +87,7 @@ export class ButtonComponent {
       if (form) {
         ev.preventDefault();
 
-        const fakeButton = this.win.document.createElement('button');
+        const fakeButton = window.document.createElement('button');
         fakeButton.type = this.type;
         fakeButton.style.display = 'none';
         form.appendChild(fakeButton);

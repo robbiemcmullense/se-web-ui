@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
+import { Component, h, Event, EventEmitter, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'se-radio-on-off',

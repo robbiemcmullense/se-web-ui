@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Listen, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop, Listen, Watch } from '@stencil/core';
 
 @Component({
 	tag: 'se-form-field',

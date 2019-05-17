@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Method, Prop, State } from "@stencil/core";
 
 @Component({
   tag: "se-checkbox",
@@ -36,7 +36,7 @@ export class CheckboxComponent {
    * Set the required property on the checkbox element.
    */
   @Method()
-  setRequired() {
+  async setRequired() {
     this.required = true;
   }
   /**
