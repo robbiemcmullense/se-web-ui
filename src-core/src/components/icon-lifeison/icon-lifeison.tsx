@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-icon-lifeison",
@@ -13,14 +13,8 @@ export class IconLifeisonComponent {
    */
   @Prop() color: "standard" | "inherited" = "inherited";
 
-  hostData() {
-    return {
-      class: this.color
-    };
-  }
-
   render() {
-    return ICON_SVG;
+    return [<Host class={this.color}/>,ICON_SVG];
   }
 }
 
@@ -59,5 +53,5 @@ const ICON_SVG = (
     <path class="cls-2" d="M228.18,45.25a1,1,0,0,1-.53,1.09c-.43.25-.88.17-1-.18a1,1,0,0,1,.53-1.09c.43-.25.88-.17,1,.18"/>
     <path class="cls-2" d="M165.66,48.77l.43-1.56H170a6.11,6.11,0,0,0-1.27-5.73c-2.77-2.77-8.58-1.83-12.9,2.31a14.68,14.68,0,0,0-1.77,2.05h2.36l-.55,1.56h-2.81a11.84,11.84,0,0,0-.72,1.48h3.34l-.54,1.56h-3.28c-.56,2.38-.2,4.61,1.21,6,2.74,2.74,8.53,1.78,12.85-2.36a15.9,15.9,0,0,0,2-2.29h-3l.46-1.56h3.54a15,15,0,0,0,.69-1.48h-3.87m-.87-2.94c-.25,0-.35,0-.45.16a.34.34,0,0,0-.08.18L163,51c-.3,1.69-2.38,3.38-5.08,3.38h-3.76l.65-2.48h2.42a.78.78,0,0,0,.6-.27.56.56,0,0,0,.14-.29l1-4.21a4.71,4.71,0,0,1,4.78-3.55h3.85l-.49,2.27Z"/>
     <rect class="cls-3" x="107.7" y="10.9" width="0.82" height="47.63"/>
-</svg>
+  </svg>
 );

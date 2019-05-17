@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event       | Description                                                                           | Type                |
-| ----------- | ------------------------------------------------------------------------------------- | ------------------- |
-| `didChange` | Send the state of the switch (true/false) to the parent component when it is toggled. | `CustomEvent<void>` |
+| Event       | Description                                                                           | Type               |
+| ----------- | ------------------------------------------------------------------------------------- | ------------------ |
+| `didChange` | Send the state of the switch (true/false) to the parent component when it is toggled. | `CustomEvent<any>` |
 
 
 ----------------------------------------------

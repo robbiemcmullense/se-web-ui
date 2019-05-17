@@ -17,7 +17,7 @@ export const config: Config = {
       copy
     },
     {
-      type: 'docs'
+      type: 'docs-readme'
     },
     {
       type: 'www',

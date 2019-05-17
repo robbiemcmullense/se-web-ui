@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-widget-footer",
@@ -12,14 +12,9 @@ export class WidgetFooter {
    */
   @Prop() option: "card";
 
-  hostData() {
-    return {
-      class: this.option
-    };
-  }
-
   render() {
     return [
+      <Host class={this.option}/>,
       <div class="flex"><slot name="start"/></div>,
       <slot />
     ];

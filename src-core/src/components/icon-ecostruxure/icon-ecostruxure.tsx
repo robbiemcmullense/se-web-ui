@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-icon-ecostruxure",
@@ -11,14 +11,8 @@ export class IconEcostruxureComponent {
    */
   @Prop() size: "small" | "medium" = "small";
 
-  hostData() {
-    return {
-      class: this.size
-    };
-  }
-
   render() {
-    return ICON_SVG;
+    return [<Host class={this.size}/>,ICON_SVG];
   }
 }
 
@@ -27,14 +21,12 @@ const ICON_SVG = (
     version="1.1"
     id="Calque_1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlnsxlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
     width="88px"
     height="16px"
     viewBox="0 0 88 16"
     enable-background="new 0 0 88 16"
-    xmlspace="preserve"
   >
     <pattern
       width="20"
@@ -54,11 +46,7 @@ const ICON_SVG = (
     </pattern>
     <rect x="-1840" y="-2248.276" display="none" width="753.75" height="120" />
     <rect x="-1050.023" y="-2248.276" display="none" width="157" height="120" />
-    <pattern
-      id="SVGID_3_"
-      xlinkhref="#Unnamed_Pattern_3"
-      patternTransform="matrix(1 0 0 -1 3533.9766 7213.6719)"
-    />
+    <pattern id="SVGID_3_" patternTransform="matrix(1 0 0 -1 3533.9766 7213.6719)"></pattern>
     <rect x="-1847.023" y="-2058.327" display="none" width="954" height="350" />
     <path
       display="none"
@@ -150,10 +138,6 @@ const ICON_SVG = (
       c0.339,0.337,0.894,0.337,1.234,0l0.436-0.433c0.104-0.104,0.104-0.273,0-0.377L64.104,9.723z"
       />
     </g>
-    <polygon
-      display="none"
-      fill="#FFFFFF"
-      points="-1740,-1725 -1760,-1745 -1720,-1745 "
-    />
+    <polygon display="none" fill="#FFFFFF" points="-1740,-1725 -1760,-1745 -1720,-1745 "/>
   </svg>
 );

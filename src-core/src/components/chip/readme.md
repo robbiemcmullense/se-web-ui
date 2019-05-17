@@ -16,10 +16,23 @@
 
 ## Events
 
-| Event      | Description                                                                           | Type                |
-| ---------- | ------------------------------------------------------------------------------------- | ------------------- |
-| `didClose` | Send the chip value to the parent component when clicking the close button of a chip. | `CustomEvent<void>` |
+| Event      | Description                                                                           | Type               |
+| ---------- | ------------------------------------------------------------------------------------- | ------------------ |
+| `didClose` | Send the chip value to the parent component when clicking the close button of a chip. | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Used by
+
+ - [se-sidemenu](..\sidemenu)
+
+### Graph
+```mermaid
+graph TD;
+  se-sidemenu --> se-chip
+  style se-chip fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

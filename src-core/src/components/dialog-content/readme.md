@@ -14,6 +14,19 @@
 | `option`    | `option`     | When set to `fill`, content will fill the whole space of the dialog. | `"fill"`                                                  | `undefined` |
 
 
+## Dependencies
+
+### Depends on
+
+- [se-icon](..\icon)
+
+### Graph
+```mermaid
+graph TD;
+  se-dialog-content --> se-icon
+  style se-dialog-content fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

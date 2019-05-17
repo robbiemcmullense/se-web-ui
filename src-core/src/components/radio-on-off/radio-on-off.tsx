@@ -1,4 +1,4 @@
-import { Component, h, Event, EventEmitter, Prop, State } from '@stencil/core';
+import { Component, h, Host, Event, EventEmitter, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'se-radio-on-off',
@@ -53,20 +53,11 @@ export class RadioOnOffComponent {
 		}
 	}
 
-  hostData() {
-    return {
-      'class': [
-        this.option,
-        this.color,
-        this.disabled ? 'disabled': ''
-      ].join(' ')
-    };
-  }
-
   render() {
     return [
-        <button class={['active', this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOn}</button>,
-        <button class={['inactive', !this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOff}</button>
+      <Host class={[this.option, this.color, this.disabled ? 'disabled' : ''].join(' ')}/>,
+      <button class={['active', this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOn}</button>,
+      <button class={['inactive', !this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOff}</button>
     ];
   }
 }

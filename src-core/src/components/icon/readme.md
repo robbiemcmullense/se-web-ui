@@ -14,6 +14,23 @@
 | `size`   | `size`    | Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.                 | `"large" \| "medium" \| "small"`                          | `"small"`   |
 
 
+## Dependencies
+
+### Used by
+
+ - [se-dialog-content](..\dialog-content)
+ - [se-header](..\header)
+ - [se-sidemenu](..\sidemenu)
+
+### Graph
+```mermaid
+graph TD;
+  se-dialog-content --> se-icon
+  se-header --> se-icon
+  se-sidemenu --> se-icon
+  style se-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-widget-header",
@@ -12,14 +12,9 @@ export class WidgetHeader {
    */
   @Prop() option: "card";
 
-  hostData() {
-    return {
-      class: this.option
-    };
-  }
-
   render() {
     return [
+      <Host class={this.option}/>,
       <h3 class="flex"><slot /></h3>,
       <slot name="end"/>
     ];

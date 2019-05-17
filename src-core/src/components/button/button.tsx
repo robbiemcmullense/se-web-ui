@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop, State, Method, Watch, Listen } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Method, Watch, Listen } from '@stencil/core';
 
 @Component({
   tag: 'se-button',
@@ -111,22 +111,20 @@ export class ButtonComponent {
     this.optionDidChange();
   }
 
-  hostData() {
-    return {
-      'class': [
-        !!this.icon ? 'hasIcon' : '',
-        this.hasChild ? 'hasChild' : '',
-        this.grouped ? 'grouped' : '',
-        this.option].join(' ')
-    };
-  }
-
   render() {
-    return (
+    return [
+      <Host
+        class={
+          [!!this.icon ? 'hasIcon' : '',
+          this.hasChild ? 'hasChild' : '',
+          this.grouped ? 'grouped' : '',
+          this.option].join(' ')
+        }
+      />,
       <button disabled={this.disabled} type={this.type} class={[this.color, this.option, this.selected ? 'selected' : ''].join(' ')} onClick={() => this.toggle()}>
         {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
         {this.hasChild ? <span class="text"><slot></slot></span> : ''}
       </button>
-    )
+    ]
   }
 }

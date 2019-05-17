@@ -18,6 +18,23 @@
 | `project`  | `project`   | Defines the project name (useful for small project) that can be used for versioning as well. It will be placed at the right side of the title. | `string` | `undefined`      |
 
 
+## Dependencies
+
+### Depends on
+
+- [se-icon-ecostruxure](..\icon-ecostruxure)
+- [se-icon](..\icon)
+- [se-icon-schneider](..\icon-schneider)
+
+### Graph
+```mermaid
+graph TD;
+  se-header --> se-icon-ecostruxure
+  se-header --> se-icon
+  se-header --> se-icon-schneider
+  style se-header fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Watch } from "@stencil/core";
+import { Component, h, Host, Prop, State, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-visual-radial",
@@ -45,18 +45,13 @@ export class VisualRadialComponent {
     this.sizeDidChange();
   }
 
-  hostData() {
-    return {
-      class: this.size
-    }
-  }
-
   render() {
     return [
+      <Host class={this.size}/>,
       <div class="visual-radial-wrapper">
         <svg class="se-visual-radial" height={this.svgSize} width={this.svgSize}>
           <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke="#f7f7f7" stroke-width="8" fill="transparent" />
-          <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke={this.secolor ? this.secolor : '#3dcd58'} stroke-width="8" fill="transparent" style={{ strokeDashoffset: this.offset }} />
+          <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke={this.secolor ? this.secolor : '#3dcd58'} stroke-width="8" fill="transparent" style={{ strokeDashoffset: String(this.offset) }} />
           Sorry, your browser does not support inline SVG.
         </svg>
         <svg height={this.svgSize} width={this.svgSize}>

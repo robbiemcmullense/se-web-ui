@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method, Element, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, h, Host, Prop, State, Method, Element, Event, EventEmitter, Listen } from '@stencil/core';
 
 
 @Component({
@@ -64,20 +64,15 @@ export class DropdownComponent {
     }
   }
 
-  hostData() {
-    return {
-      class: [this.alignment].join(" ")
-    };
-  }
-
   render() {
     return [
-        <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
-          <slot name="trigger"></slot>
-        </div>,
-        <div class={`${this.opened? 'show': ''} dropdown-content`}>
-          <slot></slot>
-        </div>
+      <Host class={this.alignment}/>,
+      <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
+        <slot name="trigger"></slot>
+      </div>,
+      <div class={`${this.opened? 'show': ''} dropdown-content`}>
+        <slot></slot>
+      </div>
      ];
   }
 }

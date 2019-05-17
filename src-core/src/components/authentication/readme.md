@@ -19,6 +19,21 @@
 | `version`   | `version`   | The version number you want to display.                                                    | `string`  | `undefined`         |
 
 
+## Dependencies
+
+### Depends on
+
+- [se-icon-ecostruxure](..\icon-ecostruxure)
+- [se-icon-lifeison](..\icon-lifeison)
+
+### Graph
+```mermaid
+graph TD;
+  se-authentication --> se-icon-ecostruxure
+  se-authentication --> se-icon-lifeison
+  style se-authentication fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

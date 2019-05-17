@@ -5,18 +5,51 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description                         | Type     | Default  |
+| -------- | --------- | ----------------------------------- | -------- | -------- |
+| `label`  | `label`   | Overrides the default "Menu" label. | `string` | `'Menu'` |
+
+
 ## Methods
 
-### `toggle() => void`
+### `toggle() => Promise<void>`
 
 
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [se-list-item](..\list-item)
+- [se-icon](..\icon)
+- [se-chip](..\chip)
+- [se-divider](..\divider)
+- [se-list](..\list)
+- [se-icon-lifeison](..\icon-lifeison)
+- [se-widget](..\widget)
+
+### Graph
+```mermaid
+graph TD;
+  se-sidemenu --> se-list-item
+  se-sidemenu --> se-icon
+  se-sidemenu --> se-chip
+  se-sidemenu --> se-divider
+  se-sidemenu --> se-list
+  se-sidemenu --> se-icon-lifeison
+  se-sidemenu --> se-widget
+  se-widget --> se-loading
+  style se-sidemenu fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

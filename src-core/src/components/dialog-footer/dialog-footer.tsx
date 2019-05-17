@@ -6,6 +6,7 @@ import { Component, h } from "@stencil/core";
   shadow: true
 })
 export class DialogFooterComponent {
+
   render() {
     return [
       <div class="flex"><slot name="start"/></div>,

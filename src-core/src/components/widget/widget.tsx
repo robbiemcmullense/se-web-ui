@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, Element } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
   tag: "se-widget",
@@ -72,23 +72,13 @@ export class WidgetComponent {
     }
   }
 
-  hostData() {
-    return {
-      class: [
-        this.option,
-        this.color,
-        this.display,
-        this.enlarged && this.display === 'grid' ? 'grid-large' : ''
-      ].join(" ")
-    };
-  }
-
   render() {
-    return (
+    return [
+      <Host class={[this.option, this.color, this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}/>,
       <div class="widget-body">
-        {this.loading ? <se-loading loading={this.loading} /> : ""}
+        {this.loading ? <se-loading loading={this.loading} /> : ''}
         <slot />
       </div>
-    );
+    ];
   }
 }

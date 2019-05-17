@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Listen, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Listen, Watch } from '@stencil/core';
 
 @Component({
 	tag: 'se-form-field',
@@ -87,18 +87,13 @@ export class FormFieldComponent {
 		}
 	}
 
-	hostData() {
-		return {
-			class: [this.status, this.option, this.type].join(' ')
-		};
-	}
-
 	render() {
-		return (
+		return [
+			<Host class={[this.status, this.option, this.type].join(' ')}/>,
 			<div class="se-form-field" data-disabled={this.disabled}>
         {(this.type === 'input' || this.type === 'select') ? <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label> : ''}
 				<slot></slot>
 			</div>
-		)
+		]
 	}
 }

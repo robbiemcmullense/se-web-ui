@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from "@stencil/core";
+import { Component, h, Host, Prop, Element } from "@stencil/core";
 
 @Component({
   tag: "se-icon",
@@ -25,13 +25,7 @@ export class IconComponent {
     this.el.classList.add(this.size);
   }
 
-  hostData() {
-    return {
-      class: [this.color, this.option].join(" ")
-    };
-  }
-
   render() {
-    return <slot />;
+    return [<Host class={[this.color, this.option].join(' ')}/>,<slot />];
   }
 }

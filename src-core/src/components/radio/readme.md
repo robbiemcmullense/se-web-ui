@@ -19,20 +19,20 @@
 
 ## Events
 
-| Event      | Description                                                                    | Type                |
-| ---------- | ------------------------------------------------------------------------------ | ------------------- |
-| `didCheck` | Send the checkbox value to the parent component when clicking on the checkbox. | `CustomEvent<void>` |
+| Event      | Description                                                                    | Type               |
+| ---------- | ------------------------------------------------------------------------------ | ------------------ |
+| `didCheck` | Send the checkbox value to the parent component when clicking on the checkbox. | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `setRequired() => void`
+### `setRequired() => Promise<void>`
 
 Set the required property on the radio button element.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

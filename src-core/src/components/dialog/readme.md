@@ -25,13 +25,13 @@
 
 ## Methods
 
-### `backdropClicked() => void`
+### `backdropClicked() => Promise<void>`
 
 Emit the `backdrop` event from the dialog's parent component.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

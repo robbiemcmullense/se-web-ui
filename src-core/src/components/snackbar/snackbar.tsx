@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from "@stencil/core";
 
 const SHOW_SNACKBAR = 'show';
 
@@ -54,12 +54,6 @@ export class SnackbarComponent {
     this.open = false;
     this.didClose.emit();
   }
-
-  hostData() {
-    return {
-      class: this.type
-    }
-  }
   
   componentDidLoad() {
     this.openDidChange();
@@ -67,6 +61,7 @@ export class SnackbarComponent {
 
   render() {
     return [
+      <Host class={this.type}/>,
       <div class="snackbar">
         {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
         <span class="message">{this.message}</span>

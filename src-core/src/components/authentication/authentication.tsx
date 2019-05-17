@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
 
@@ -40,14 +40,6 @@ export class AuthenticationComponent {
    * If set to `true`, hides the authentication screen.
    */
   @Prop() hide: boolean = false;
-
-  hostData() {
-    return {
-      'class': {
-        'hide': this.hide
-      }
-    };
-  }
 
   renderAuthentication() {
     var title = getFullTitle(this.appTitle);
@@ -97,7 +89,7 @@ export class AuthenticationComponent {
     );
   }
 
-  render(){
-    return !this.hide && this.renderAuthentication()
+  render() {
+    return [<Host class={{'hide': this.hide}}/>, !this.hide ? this.renderAuthentication() : '']
   }
 }

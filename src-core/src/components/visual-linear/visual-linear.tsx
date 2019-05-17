@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
 	tag: "se-visual-linear",
@@ -31,14 +31,9 @@ export class VisualLinearComponent {
 	 */
 	@Prop({ mutable: true }) percentage: number;
 
-	hostData() {
-		return {
-			class: [this.option].join(' ')
-		}
-	}
-
 	render() {
 		return [
+			<Host class={this.option}/>,
 			<div class="se-visual-linear">
 				<svg height="8">
 					<rect class="progress-bar-wrapper" width="100%" height="8" />

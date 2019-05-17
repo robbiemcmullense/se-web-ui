@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, Element, Listen } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, Element, Listen } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -77,20 +77,15 @@ export class ListGroupComponent {
     this.collapsed = !this.collapsed;
   }
 
-  hostData() {
-    return {
-      class: [this.selected ? "selected" : '', this.collapsed ? "collapsed" : '', this.option].join(" ")
-    };
-  }
-
   render() {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return [
+      <Host class={[this.selected ? "selected" : '', this.collapsed ? "collapsed" : '', this.option].join(' ')}/>,
       <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()}>
         {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
         {!!this.icon ?
           <div class="nav-icon">
-            <span class={["se-icon", this.iconColor].join(" ")}>
+            <span class={["se-icon", this.iconColor].join(' ')}>
               {this.icon}
             </span>
           </div>
