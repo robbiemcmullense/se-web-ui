@@ -20,10 +20,11 @@ export class DialogContentComponent {
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
 
   render() {
-    return [
-      <Host class={{'full-content': this.option === 'fill'}}/>,
-      this.icon ? <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon> : '',
-      <div class="inner-content"><slot /></div>
-    ];
+    return (
+      <Host class={{'full-content': this.option === 'fill'}}>
+        {this.icon ? <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon> : ''}
+        <div class="inner-content"><slot></slot></div>
+      </Host>
+    )
   }
 }

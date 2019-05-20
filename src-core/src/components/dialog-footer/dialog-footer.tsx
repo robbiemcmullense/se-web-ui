@@ -9,8 +9,8 @@ export class DialogFooterComponent {
 
   render() {
     return [
-      <div class="flex"><slot name="start"/></div>,
-      <slot />
+      <div class="flex"><slot name="start"></slot></div>,
+      <slot></slot>
     ];
   }
 }

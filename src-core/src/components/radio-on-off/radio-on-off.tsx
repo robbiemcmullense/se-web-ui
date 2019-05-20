@@ -54,10 +54,11 @@ export class RadioOnOffComponent {
 	}
 
   render() {
-    return [
-      <Host class={[this.option, this.color, this.disabled ? 'disabled' : ''].join(' ')}/>,
-      <button class={['active', this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOn}</button>,
-      <button class={['inactive', !this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOff}</button>
-    ];
+    return (
+      <Host class={[this.option, this.color, this.disabled ? 'disabled' : ''].join(' ')}>
+        <button class={['active', this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOn}</button>
+        <button class={['inactive', !this.selected ? ' selected' : ''].join(' ')} onClick={() => this.toggleActive()}>{this.textOff}</button>
+      </Host>
+    )
   }
 }

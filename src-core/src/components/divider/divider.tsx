@@ -18,6 +18,6 @@ export class DividerComponent {
   @Prop() color: "standard" | "alternative" = "standard";
 
   render() {
-    return <Host class={[this.option, this.color].join(' ')}/>;
+    return <Host class={[this.option, this.color].join(' ')}></Host>;
   }
 }

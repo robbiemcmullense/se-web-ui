@@ -96,12 +96,13 @@ export class DialogComponent {
   }
 
   render(){
-    return [
-      <Host class={this.size}/>,
-      <div class="dialog-wrapper" >
-        <div class="dialog" ref={el => (this.menuInnerEl = el)}><slot /></div>
-      </div>,
-      <div class="dialog-background" onClick={() => this.backdropClicked()}  ref={el => this.backdropEl = el} />
-    ];
+    return (
+      <Host class={this.size}>
+        <div class="dialog-wrapper">
+          <div class="dialog" ref={el => (this.menuInnerEl = el)}><slot></slot></div>
+        </div>
+        <div class="dialog-background" onClick={() => this.backdropClicked()}  ref={el => this.backdropEl = el}></div>
+      </Host>
+    )
   }
 }

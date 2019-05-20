@@ -17,13 +17,13 @@ export class SidemenuItemComponent {
   @Prop({ mutable: true }) active = false;
 
   render() {
-    return [
+    return (
       <Host
         role={'sidenavpanel'}
         aria-hidden={{'true': !this}}
-        class={{'navitem-hidden': !this}}
-      />,
-      <slot></slot>
-    ];
+        class={{'navitem-hidden': !this}}>
+        <slot></slot>
+      </Host>
+    )
   }
 }

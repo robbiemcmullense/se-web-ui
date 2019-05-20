@@ -46,21 +46,22 @@ export class VisualRadialComponent {
   }
 
   render() {
-    return [
-      <Host class={this.size}/>,
-      <div class="visual-radial-wrapper">
-        <svg class="se-visual-radial" height={this.svgSize} width={this.svgSize}>
-          <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke="#f7f7f7" stroke-width="8" fill="transparent" />
-          <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke={this.secolor ? this.secolor : '#3dcd58'} stroke-width="8" fill="transparent" style={{ strokeDashoffset: String(this.offset) }} />
-          Sorry, your browser does not support inline SVG.
+    return (
+      <Host class={this.size}>
+        <div class="visual-radial-wrapper">
+          <svg class="se-visual-radial" height={this.svgSize} width={this.svgSize}>
+            <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke="#f7f7f7" stroke-width="8" fill="transparent"></circle>
+            <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke={this.secolor ? this.secolor : '#3dcd58'} stroke-width="8" fill="transparent" style={{ strokeDashoffset: String(this.offset) }}></circle>
+            Sorry, your browser does not support inline SVG.
         </svg>
-        <svg height={this.svgSize} width={this.svgSize}>
-          <text>
-          {this.value ? <tspan class="radial-value" x="50%" y="50%" text-anchor="middle">{this.value}</tspan> : ''}
-          <tspan class="radial-label" x="50%" y={this.value ? "70%" : "53%"} text-anchor="middle">{this.label}</tspan>
-          </text>
-        </svg>
-      </div>
-    ];
+          <svg height={this.svgSize} width={this.svgSize}>
+            <text>
+              {this.value ? <tspan class="radial-value" x="50%" y="50%" text-anchor="middle">{this.value}</tspan> : ''}
+              <tspan class="radial-label" x="50%" y={this.value ? "70%" : "53%"} text-anchor="middle">{this.label}</tspan>
+            </text>
+          </svg>
+        </div>
+      </Host>
+    )
   }
 }

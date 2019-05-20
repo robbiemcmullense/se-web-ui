@@ -37,16 +37,13 @@ export class AboutComponent {
     var title = getFullTitle(this.appTitle);
     let domain;
     if (this.domain.toLowerCase() === `ecostruxure`) {
-      domain = <se-icon-ecostruxure size="medium" />;
+      domain = <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>;
     } else if (this.domain.toLowerCase() !== "none") {
       domain = <span class="header-title-type">{this.domain}</span>;
     }
     return [
       <div class="image-container">
-        <img
-          class="image-background"
-          style={{ backgroundImage: this.imageUrl }}
-        />
+        <img class="image-background" style={{ backgroundImage: this.imageUrl }}></img>
       </div>,
       <div class="about-section-wrapper">
         <div class="information">
@@ -58,7 +55,7 @@ export class AboutComponent {
           <p class="version">version {this.version}</p>
         </div>
         <div class="more-information">
-          <div class="background-light" />
+          <div class="background-light"></div>
           <div class="content-info">
             <span>{this.copyright}</span>
           </div>

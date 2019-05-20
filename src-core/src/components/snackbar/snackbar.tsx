@@ -36,7 +36,7 @@ export class SnackbarComponent {
   /**
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
-  @Prop({mutable: true}) open: boolean = false;
+  @Prop({ mutable: true }) open: boolean = false;
   @Watch('open') openDidChange() {
     if (this.open) {
       this.el.classList.add(SHOW_SNACKBAR);
@@ -54,19 +54,20 @@ export class SnackbarComponent {
     this.open = false;
     this.didClose.emit();
   }
-  
+
   componentDidLoad() {
     this.openDidChange();
   }
 
   render() {
-    return [
-      <Host class={this.type}/>,
-      <div class="snackbar">
-        {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
-        <span class="message">{this.message}</span>
-        {this.canClose ? <span class="close" onClick={() => this.closeSnackbar()}>{this.closeText}</span> : ''}
-      </div>
-    ];
+    return (
+      <Host class={this.type}>
+        <div class="snackbar">
+          {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
+          <span class="message">{this.message}</span>
+          {this.canClose ? <span class="close" onClick={() => this.closeSnackbar()}>{this.closeText}</span> : ''}
+        </div>
+      </Host>
+    )
   }
 }

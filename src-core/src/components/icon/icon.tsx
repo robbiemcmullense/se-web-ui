@@ -26,6 +26,6 @@ export class IconComponent {
   }
 
   render() {
-    return [<Host class={[this.color, this.option].join(' ')}/>,<slot />];
+    return (<Host class={[this.color, this.option].join(' ')}><slot></slot></Host>);
   }
 }

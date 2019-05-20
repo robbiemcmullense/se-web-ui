@@ -23,16 +23,16 @@ export class DropdownComponent {
    */
   @Prop() alignment: 'left' | 'right' = 'left';
   @State() opened: boolean = false;
-  @Listen('click', {target: 'window'})
+  @Listen('click', { target: 'window' })
   handleClick(ev) {
-    if(this.opened){
+    if (this.opened) {
       this._toggle(ev);
     }
   }
 
-  @Listen('touchstart', {target: 'window'})
+  @Listen('touchstart', { target: 'window' })
   handleTouchstart(ev) {
-    if(this.opened){
+    if (this.opened) {
       this._toggle(ev);
     }
   }
@@ -55,7 +55,7 @@ export class DropdownComponent {
 
   _toggle(ev: Event) {
     ev.stopPropagation()
-    if(this.opened){
+    if (this.opened) {
       this.close();
       this.didClose.emit();
     } else {
@@ -65,14 +65,15 @@ export class DropdownComponent {
   }
 
   render() {
-    return [
-      <Host class={this.alignment}/>,
-      <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
-        <slot name="trigger"></slot>
-      </div>,
-      <div class={`${this.opened? 'show': ''} dropdown-content`}>
-        <slot></slot>
-      </div>
-     ];
+    return (
+      <Host class={this.alignment}>
+        <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
+          <slot name="trigger"></slot>
+        </div>
+        <div class={`${this.opened ? 'show' : ''} dropdown-content`}>
+          <slot></slot>
+        </div>
+      </Host>
+    )
   }
 }

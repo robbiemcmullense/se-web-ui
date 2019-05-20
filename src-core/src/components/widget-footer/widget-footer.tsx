@@ -13,10 +13,11 @@ export class WidgetFooter {
   @Prop() option: "card";
 
   render() {
-    return [
-      <Host class={this.option}/>,
-      <div class="flex"><slot name="start"/></div>,
-      <slot />
-    ];
+    return (
+      <Host class={this.option}>
+        <div class="flex"><slot name="start"></slot></div>
+        <slot></slot>
+      </Host>
+    )
   }
 }

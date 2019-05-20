@@ -12,14 +12,15 @@ export class LoadingComponent {
   @Prop() loading: boolean;
 
   render() {
-    return [
-      <Host class={{'show': this.loading}}/>,
-      <div class="loading-wrapper">
-        <div class="se-loading">
-          <div class="se-icon">spinner</div>
+    return (
+      <Host class={{'show': this.loading}}>
+        <div class="loading-wrapper">
+          <div class="se-loading">
+            <div class="se-icon">spinner</div>
+          </div>
         </div>
-      </div>,
-      <div class="loading-background"></div>
-    ];
+        <div class="loading-background"></div>
+      </Host>
+    )
   }
 }

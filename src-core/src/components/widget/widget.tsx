@@ -41,7 +41,7 @@ export class WidgetComponent {
    * When on Grid display, determines if the widget should be a 2/2 instead of a small 1/1 grid item.
    * Default setting is `false` (1/1).
    */
-  @Prop({mutable: true}) enlarged: boolean = false;
+  @Prop({ mutable: true }) enlarged: boolean = false;
 
   /**
    * Display the loading icon if set to `true`.  Default setting is `false`.
@@ -73,12 +73,13 @@ export class WidgetComponent {
   }
 
   render() {
-    return [
-      <Host class={[this.option, this.color, this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}/>,
-      <div class="widget-body">
-        {this.loading ? <se-loading loading={this.loading} /> : ''}
-        <slot />
-      </div>
-    ];
+    return (
+      <Host class={[this.option, this.color, this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}>
+        <div class="widget-body">
+          {this.loading ? <se-loading loading={this.loading} /> : ''}
+          <slot></slot>
+        </div>
+      </Host>
+    )
   }
 }

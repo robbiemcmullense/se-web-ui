@@ -12,9 +12,10 @@ export class WidgetContent {
   @Prop() option: 'fill';
 
   render() {
-    return [
-      <Host class={{'full-content': this.option === 'fill'}}/>,
-      <slot />
-    ];
+    return (
+      <Host class={{'full-content': this.option === 'fill'}}>
+        <slot></slot>
+      </Host>
+    )
   }
 }

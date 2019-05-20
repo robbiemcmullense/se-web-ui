@@ -30,10 +30,11 @@ export class ChipComponent {
   }
 
   render() {
-    return [
-      <Host class={this.color}/>,
-      <div class="value">{this.value}</div>,
-      this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''
-    ];
+    return (
+      <Host class={this.color}>
+        <div class="value">{this.value}</div>
+        {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
+      </Host>
+    );
   }
 }

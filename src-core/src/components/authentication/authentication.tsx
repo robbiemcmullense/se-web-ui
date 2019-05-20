@@ -45,23 +45,21 @@ export class AuthenticationComponent {
     var title = getFullTitle(this.appTitle);
     let domain;
     if ( this.domain.toLowerCase() === `ecostruxure`) {
-      domain = <se-icon-ecostruxure size="medium" />
+      domain = <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>
     } else if (this.domain.toLowerCase() !== 'none') {
       domain = <span class="header-title-type">{this.domain}</span>
     }
     return (
       <div class="content-wrapper">
         <div class="image-container">
-          <img class="image-background" style={{'backgroundImage': this.imageUrl}} />
+          <img class="image-background" style={{'backgroundImage': this.imageUrl}}></img>
         </div>
-
         <main>
           <div class="green-bars">
-            <div class="dark-green-bar" />
-            <div class="light-green-bar" />
+            <div class="dark-green-bar"></div>
+            <div class="light-green-bar"></div>
           </div>
         </main>
-
         <div class="login-container">
           <div class="information">
             {domain}
@@ -72,15 +70,13 @@ export class AuthenticationComponent {
             <p class="version">version {this.version}</p>
           </div>
           <div class="form">
-            <slot />
+            <slot></slot>
           </div>
         </div>
-
         <footer>
           <div class="copyright-note">
             <span>{this.copyright}</span>
           </div>
-
           <div class="footer-logo align-end">
             <se-icon-lifeison></se-icon-lifeison>
           </div>
@@ -90,6 +86,10 @@ export class AuthenticationComponent {
   }
 
   render() {
-    return [<Host class={{'hide': this.hide}}/>, !this.hide ? this.renderAuthentication() : '']
+    return (
+      <Host class={{'hide': this.hide}}>
+        {!this.hide ? this.renderAuthentication() : ''}
+      </Host>
+      )
   }
 }

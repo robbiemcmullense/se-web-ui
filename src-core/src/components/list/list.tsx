@@ -22,6 +22,6 @@ export class ListComponent {
   }
 
   render() {
-    return <slot />;
+    return <slot></slot>;
   }
 }
