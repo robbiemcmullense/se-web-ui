@@ -11,7 +11,10 @@ describe('WidgetFooterComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
-    expect(element).toHaveClass('hydrated');
+  });
+
+  it('should have the "row" class to reflect its default direction', () => {
+    expect(element).toHaveClasses(['hydrated', 'row']);
   });
 
   it('should render with the card class when option is set to card', async() => {

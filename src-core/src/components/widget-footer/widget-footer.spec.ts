@@ -10,4 +10,8 @@ describe('WidgetFooter', () => {
 	it('should build', () => {
 		expect(widgetFooter).toBeTruthy();
 	});
+
+	it('should have the "row" direction by default', () => {
+		expect(widgetFooter.direction).toEqual('row');
+	});
 });

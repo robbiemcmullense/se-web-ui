@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description                         | Type     | Default  |
+| -------- | --------- | ----------------------------------- | -------- | -------- |
+| `label`  | `label`   | Overrides the default "Menu" label. | `string` | `'Menu'` |
+
+
 ## Methods
 
 ### `toggle() => void`
