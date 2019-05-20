@@ -1127,9 +1127,18 @@ export namespace Components {
   }
 
   interface SeSidemenu {
+    /**
+    * Overrides the default "Menu" label.
+    */
+    'label': string;
     'toggle': () => void;
   }
-  interface SeSidemenuAttributes extends StencilHTMLAttributes {}
+  interface SeSidemenuAttributes extends StencilHTMLAttributes {
+    /**
+    * Overrides the default "Menu" label.
+    */
+    'label'?: string;
+  }
 
   interface SeSnackbar {
     /**
