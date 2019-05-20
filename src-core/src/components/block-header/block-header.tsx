@@ -20,6 +20,7 @@ export class BlockHeader {
 
   render() {
     return [
+      <slot name="start"/>,
       <h3 class="flex"><slot /></h3>,
       <slot name="end"/>
     ];
