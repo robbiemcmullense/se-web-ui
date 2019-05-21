@@ -300,11 +300,18 @@ $prefix: "--"; //Prefix string for custom CSS properties
 @mixin opacity($opacity) {
   opacity: $opacity;
   $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8
+  filter: alpha(opacity=$opacity-ie); //IE8;
 }
 
 @mixin box-shadow($shadow) {
   -moz-box-shadow: $shadow;
   -webkit-box-shadow: $shadow;
   box-shadow: $shadow;
+}
+@mixin transform($x,$y) {
+  transform: translateX($x) translateY($y);
+  -webkit-transform: translateX($x) translateY($y);
+  -moz-transform: translateX($x) translateY($y);
+  -ms-transform: translateX($x) translateY($y);
+  -o-transform: translateX($x) translateY($y);
 }
