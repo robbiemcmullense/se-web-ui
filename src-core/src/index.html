@@ -333,7 +333,7 @@
         </se-widget>
         <se-widget id="widget4">
           <se-widget-header>
-            Linear chart
+            Linear chart & Slider
             <div slot="end">
               <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
             </div>
@@ -342,7 +342,10 @@
             <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
             <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels">
             </se-visual-linear>
-
+            <se-slider></se-slider>
+            <ul>
+              <li id="slider-value"><span></span></li>
+            </ul>        
           </se-widget-content>
         </se-widget>
         <se-widget id="widget5">
@@ -464,7 +467,9 @@
       widget.enlarged = !widget.enlarged;
       icon.innerText = widget.enlarged ? 'exit_presentation' : 'presentation_mode';
     }
-
+    document.querySelector('se-slider').addEventListener('didChange', function (event) {
+      document.getElementById('slider-value').innerText = 'Slider Value: ' + event.detail.value;
+    });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;
