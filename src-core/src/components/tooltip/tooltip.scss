@@ -1,0 +1,102 @@
+@import "../../theme/theme";
+@mixin tooltip-transparent($x,$y) {
+  transform: translateX($x) translateY($y);
+  -webkit-transform: translateX($x) translateY($y);
+  -moz-transform: translateX($x) translateY($y);
+  -ms-transform: translateX($x) translateY($y);
+  -o-transform: translateX($x) translateY($y);
+}
+:host {
+  position: relative;
+  display: inline-block;
+}
+:host([hidden]) {
+  display: none;
+}
+:host(.top) {
+  .tooltip {
+    left:50%;
+    top:-88%;
+    margin-bottom:8px;
+    @include tooltip-transparent(-50%,0%);
+}
+  .tooltip::after {
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: $se-medium-blue transparent transparent transparent;
+  }
+}
+
+:host(.bottom) {
+  .tooltip {
+    margin-top: 8px;
+    top: 100%;
+    left:50%;
+    @include tooltip-transparent(-50%,0%);
+}
+  .tooltip::after {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: transparent transparent $se-medium-blue transparent;
+  }
+}
+:host(.left) {
+  .tooltip {
+    margin-left: -8px;
+    left: 0px;
+    top: 50%;
+    @include tooltip-transparent(-100%,-50%);
+}
+  .tooltip::after {
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-color: transparent transparent transparent $se-medium-blue;
+  }
+}
+:host(.right) {
+  .tooltip {
+    margin-left: 8px;
+    left:100%;
+    top: 50%;
+    @include tooltip-transparent(-0%,-50%);
+}
+  .tooltip::after {
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-color: transparent $se-medium-blue transparent transparent;
+  }
+}
+//_:-ms-lang(x), .tooltip { width:260px;}
+
+.tooltip {
+  @include color("alternative");
+  @include background-color("secondary");
+  max-width: 260px;
+  width: -moz-max-content;
+  width: -webkit-max-content;
+  width: max-content;
+  visibility: hidden;
+  @include absolute();
+  padding: $spacing $spacing;
+  font-size: 12px;
+  display:inline-table;
+  line-height: 14px;
+  z-index: -1;
+  @include border-radius($border-radius);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  border: 5px solid;
+}
+
+.tooltip.show {
+  visibility: visible;
+  z-index: 1;
+}

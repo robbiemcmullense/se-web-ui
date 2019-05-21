@@ -1144,6 +1144,72 @@ export namespace Components {
     'color'?: 'primary' | 'alternative';
   }
 
+  interface SeTooltipContent {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon': string;
+  }
+  interface SeTooltipContentAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
+  }
+
+  interface SeTooltipFooter {}
+  interface SeTooltipFooterAttributes extends StencilHTMLAttributes {}
+
+  interface SeTooltipHeader {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon': string;
+  }
+  interface SeTooltipHeaderAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
+  }
+
+  interface SeTooltip {
+    /**
+    * Indicates the action of your tooltip.
+    */
+    'action': "click" | "hover";
+    /**
+    * Method to close the tooltip from the outside.
+    */
+    'close': () => void;
+    /**
+    * Method to open the tooltip from the outside.
+    */
+    'open': () => void;
+    /**
+    * Indicates the position color of your tooltip.
+    */
+    'position': "top" | "bottom" | "left" | "right";
+  }
+  interface SeTooltipAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates the action of your tooltip.
+    */
+    'action'?: "click" | "hover";
+    /**
+    * Event emitted when the tooltip has been closed.
+    */
+    'onDidClose'?: (event: CustomEvent) => void;
+    /**
+    * Event emitted when the tooltip has been opened.
+    */
+    'onDidOpen'?: (event: CustomEvent) => void;
+    /**
+    * Indicates the position color of your tooltip.
+    */
+    'position'?: "top" | "bottom" | "left" | "right";
+  }
+
   interface SeVisualLinear {
     /**
     * Defines the text value of the label in your component.
@@ -1371,6 +1437,10 @@ declare global {
     'SeSidemenu': Components.SeSidemenu;
     'SeSnackbar': Components.SeSnackbar;
     'SeTabbar': Components.SeTabbar;
+    'SeTooltipContent': Components.SeTooltipContent;
+    'SeTooltipFooter': Components.SeTooltipFooter;
+    'SeTooltipHeader': Components.SeTooltipHeader;
+    'SeTooltip': Components.SeTooltip;
     'SeVisualLinear': Components.SeVisualLinear;
     'SeVisualRadial': Components.SeVisualRadial;
     'SeWidgetContent': Components.SeWidgetContent;
@@ -1412,6 +1482,10 @@ declare global {
     'se-sidemenu': Components.SeSidemenuAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
     'se-tabbar': Components.SeTabbarAttributes;
+    'se-tooltip-content': Components.SeTooltipContentAttributes;
+    'se-tooltip-footer': Components.SeTooltipFooterAttributes;
+    'se-tooltip-header': Components.SeTooltipHeaderAttributes;
+    'se-tooltip': Components.SeTooltipAttributes;
     'se-visual-linear': Components.SeVisualLinearAttributes;
     'se-visual-radial': Components.SeVisualRadialAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
@@ -1613,6 +1687,30 @@ declare global {
     new (): HTMLSeTabbarElement;
   };
 
+  interface HTMLSeTooltipContentElement extends Components.SeTooltipContent, HTMLStencilElement {}
+  var HTMLSeTooltipContentElement: {
+    prototype: HTMLSeTooltipContentElement;
+    new (): HTMLSeTooltipContentElement;
+  };
+
+  interface HTMLSeTooltipFooterElement extends Components.SeTooltipFooter, HTMLStencilElement {}
+  var HTMLSeTooltipFooterElement: {
+    prototype: HTMLSeTooltipFooterElement;
+    new (): HTMLSeTooltipFooterElement;
+  };
+
+  interface HTMLSeTooltipHeaderElement extends Components.SeTooltipHeader, HTMLStencilElement {}
+  var HTMLSeTooltipHeaderElement: {
+    prototype: HTMLSeTooltipHeaderElement;
+    new (): HTMLSeTooltipHeaderElement;
+  };
+
+  interface HTMLSeTooltipElement extends Components.SeTooltip, HTMLStencilElement {}
+  var HTMLSeTooltipElement: {
+    prototype: HTMLSeTooltipElement;
+    new (): HTMLSeTooltipElement;
+  };
+
   interface HTMLSeVisualLinearElement extends Components.SeVisualLinear, HTMLStencilElement {}
   var HTMLSeVisualLinearElement: {
     prototype: HTMLSeVisualLinearElement;
@@ -1682,6 +1780,10 @@ declare global {
     'se-sidemenu': HTMLSeSidemenuElement
     'se-snackbar': HTMLSeSnackbarElement
     'se-tabbar': HTMLSeTabbarElement
+    'se-tooltip-content': HTMLSeTooltipContentElement
+    'se-tooltip-footer': HTMLSeTooltipFooterElement
+    'se-tooltip-header': HTMLSeTooltipHeaderElement
+    'se-tooltip': HTMLSeTooltipElement
     'se-visual-linear': HTMLSeVisualLinearElement
     'se-visual-radial': HTMLSeVisualRadialElement
     'se-widget-content': HTMLSeWidgetContentElement
@@ -1723,6 +1825,10 @@ declare global {
     'se-sidemenu': HTMLSeSidemenuElement;
     'se-snackbar': HTMLSeSnackbarElement;
     'se-tabbar': HTMLSeTabbarElement;
+    'se-tooltip-content': HTMLSeTooltipContentElement;
+    'se-tooltip-footer': HTMLSeTooltipFooterElement;
+    'se-tooltip-header': HTMLSeTooltipHeaderElement;
+    'se-tooltip': HTMLSeTooltipElement;
     'se-visual-linear': HTMLSeVisualLinearElement;
     'se-visual-radial': HTMLSeVisualRadialElement;
     'se-widget-content': HTMLSeWidgetContentElement;
