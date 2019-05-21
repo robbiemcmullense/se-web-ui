@@ -7,12 +7,35 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                                                                                                                                                                     | Type                            | Default          |
-| ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------------- |
-| `color`     | `color`     | Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.                              | `"alternative" \| "primary"`    | `'primary'`      |
-| `direction` | `direction` | Property that determines direction of opening of action menu.   Default setting is `down`, rendering a action menu in downward direction. The `up` setting renders  FAB at top right corner.    | `"down" \| "up"`                | `'up'`           |
-| `icon`      | `icon`      | Property that determines  icon included in the main action button.                                                                                                                              | `string`                        | `undefined`      |
-| `position`  | `position`  | Property that determines position of main action button.   Default setting is `bottom-right`, rendering a FAB at bottom right corner. The `top-right` setting renders  FAB at top right corner. | `"bottom-right" \| "top-right"` | `'bottom-right'` |
+| Property   | Attribute  | Description                                                                                                                                                                         | Type                         | Default       |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------- |
+| `color`    | `color`    | Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.                  | `"alternative" \| "primary"` | `'primary'`   |
+| `icon`     | `icon`     | Property that determines  icon included in the main action button.                                                                                                                  | `string`                     | `undefined`   |
+| `option`   | `option`   | Property that determines  icon included in the main action button.                                                                                                                  | `"backtotop" \| "speeddial"` | `'speeddial'` |
+| `position` | `position` | Property that determines position of main action button.   Default setting is `bottom`, rendering a FAB at bottom right corner. The `top` setting renders  FAB at top right corner. | `"bottom" \| "top"`          | `'bottom'`    |
+
+
+## Methods
+
+### `getIcon() => any`
+
+
+
+#### Returns
+
+Type: `any`
+
+
+
+### `toggleAction() => void`
+
+Method to toggle(show/hide) the mini action buttons.
+
+#### Returns
+
+Type: `void`
+
+
 
 
 ----------------------------------------------

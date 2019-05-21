@@ -37,10 +37,12 @@
 }
 
 nav.primary {
-  height: 48px;
   @include background-color('primary');
   @include color('primary-contrast');
   box-shadow: $inner-shadow-top;
+  nav {
+    height: 48px;
+  }
   nav > a {
     line-height: 48px;
     @include color('primary-contrast');
@@ -57,9 +59,11 @@ nav.primary {
 }
 
 nav.alternative {
-  height: 40px;
   @include background-color('alternative');
   @include color('alternative-contrast');
+  nav {
+    height: 40px;
+  }
   nav > a {
     line-height: 40px;
     @include color('alternative-contrast');

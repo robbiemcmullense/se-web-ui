@@ -346,7 +346,7 @@
             <se-slider></se-slider>
             <ul>
               <li id="slider-value"><span></span></li>
-            </ul>        
+            </ul>
           </se-widget-content>
         </se-widget>
         <se-widget id="widget5">
@@ -405,7 +405,7 @@
                   <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
                 </div>
               </se-widget-header>
-              <se-widget-content>    
+              <se-widget-content>
                   <div style="padding-left:100px;"><h4>Tooltip OnClick</h4>
                   <se-tooltip action="click">
                     <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
@@ -428,7 +428,7 @@
                     <se-tooltip-header>Tooltip Complex</se-tooltip-header>
                     <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
                     <se-tooltip-footer>
-                          <se-button option="raised" color="secondary">Retry</se-button>                       
+                          <se-button option="raised" color="secondary">Retry</se-button>
                     </se-tooltip-footer>
                   </se-tooltip>
                 </div>
@@ -437,17 +437,17 @@
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
                       Tooltip Right
                   </se-tooltip>
-                
+
                   <se-tooltip position="bottom">
                     <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
                       Tooltip Bottom
                   </se-tooltip>
-  
+
                   <se-tooltip position="left">
                       <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
                       Tooltip Left
                   </se-tooltip>
-  
+
                   <se-tooltip position="top">
                     <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
                     Tooltip Top
@@ -455,8 +455,14 @@
                   </div>
               </se-widget-content>
         </se-widget>
-
       </se-container>
+      <se-fab icon="action_share" position="top">
+        <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')" icon="notification_critical_stroke"></se-button>
+        <se-button option='minifab' caption="New Task"  icon="notebook_paper"></se-button>
+        <se-button option='minifab'  caption="New User" icon="task"></se-button>
+        <se-button option='minifab'  caption="New Work Item"  icon="user_add"></se-button>
+        <se-button option='minifab'  caption="New Task List"  icon="notebook_paper"></se-button>
+      </se-fab>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
       <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -485,13 +491,7 @@
       </se-dialog-footer>
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
-    <se-fab icon="action_share" position="top">
-        <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')" icon="notification_critical_stroke"></se-button>
-        <se-button option='minifab' caption="New Task"  icon="notebook_paper"></se-button>
-        <se-button option='minifab'  caption="New User" icon="task"></se-button>
-        <se-button option='minifab'  caption="New Work Item"  icon="user_add"></se-button>
-        <se-button option='minifab'  caption="New Task List"  icon="notebook_paper"></se-button>
-    </se-fab>
+
     <se-fab option="backtotop" onclick="showfab('fab button clicked')"></se-fab>
     <!-- <se-button onclick="closeDialog('dialog-simple-notitle')" option="fab" icon="action_share"></se-button> -->
   </se-app>
