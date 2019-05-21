@@ -10,7 +10,6 @@ Components developed in this way can be as complex as holding a full independent
 
 This project uses [StencilJS](https://stenciljs.com) to generate web components from the source code. StencilJS generates compact web-components that follow 100% of the web standards, taking care of the polyfills if the browser does not support them natively. StencilJS utilizes [TypeScript](https://www.typescriptlang.org/) to follow best coding practices.
 
-
 You can test all of these components with this [Online Template Editor](https://pages.github.schneider-electric.com/IoT/web-template-editor/).
 
 ## 🧐 What's inside?
@@ -48,7 +47,7 @@ A quick look at the top-level files and directories you'll see in this repositor
 | [ ]  | Input          | Text input. Should also handle error?                                                                                      |
 | [ ]  | Select         | Dropdown that takes the selected choice                                                                                    |
 | [ ]  | Select-item    | Element of a select element                                                                                                |
-| [x]  | Form-Field     | container for a submittable form.  Accepts checkboxes, input fields, and select dropdowns                                  |
+| [x]  | Form-Field     | container for a submittable form. Accepts checkboxes, input fields, and select dropdowns                                   |
 | [x]  | Button         | standard button                                                                                                            |
 | [x]  | Radio          | known as split in guideline, Should bind the buttons together, nothing more                                                |
 | [x]  | Radio-on-off   | toggle switch with text that can indicate "on" or "off", "active" or "inactive", etc.                                      |
@@ -81,7 +80,8 @@ A quick look at the top-level files and directories you'll see in this repositor
 | [x]  | Snackbar       | Design only. No info about how to show it from service yet                                                                 |
 | [ ]  | Pagination     |                                                                                                                            |
 | [ ]  | Datepicker     |                                                                                                                            |
-| [ ]  | Tooltips       | Design only                                                                                                                |
+| [x]  | Tooltips       |                                                                                                                            |
+| [x]  | FAB            |                                                                                                                            |
 
 ## Testing in your App
 
@@ -123,7 +123,7 @@ Each demo has been built around real case, deployment ready, scenarios. This ins
 3. Run `yarn install` to install dependencies of the project and each demo in this repository.
 4. Run `yarn build` to create a local build version that will be locally used by each demo
 
-**Note :** Each demo use the hard link to connect to the `/core` and `/angular` folder that are the local version of what will be deployed as `@se/web-ui` and `@se/web-ui-angular`. This let developer create/update component that, once built, will be automatically linked to the demo. It keeps all dependencies aligned. (Links only works with `yarn`) 
+**Note :** Each demo use the hard link to connect to the `/core` and `/angular` folder that are the local version of what will be deployed as `@se/web-ui` and `@se/web-ui-angular`. This let developer create/update component that, once built, will be automatically linked to the demo. It keeps all dependencies aligned. (Links only works with `yarn`)
 
 **Demo with NO Framework**
 
@@ -177,7 +177,7 @@ Look for a project's contribution instructions. If there are any, follow them.
 - Create a new branch to work on! Branch from `develop` if it exists, otherwise branch from `master`.
 - Implement/fix your feature, comment your code.
 - Follow the code style of the project, including indentation.
-- If the project has tests run them!  (See the section "Writing Unit Tests for your Components" to learn more information.)
+- If the project has tests run them! (See the section "Writing Unit Tests for your Components" to learn more information.)
 - Write or adapt tests as needed.
 - Add or change the documentation as needed.
 - Squash your commits into a single commit with git's [interactive rebase](https://help.github.com/articles/interactive-rebase). Create a new branch if necessary.
@@ -188,4 +188,3 @@ Look for a project's contribution instructions. If there are any, follow them.
   your extra branch(es).
 
 And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
-
