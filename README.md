@@ -1,5 +1,9 @@
 # SE WEB-UI library
 
+> Follow the [design system](https://pages.github.schneider-electric.com/iot/design-system/) for in depth documentation.
+
+## Overview
+
 The purpose of this project is to create a common UI Library that will assist any developer in quickly developing Schneider Electric design elements thanks to native [custom elements](https://developers.google.com/web/fundamentals/web-components/customelements). Custom elements can be used with any coding framework including pure JavaScript, jQuery, React, Vue or Angular.
 
 Components developed in this way can be as complex as holding a full independent widget with routes, and thus they can be configured from the outside (parameter) and work in any already created application. Like in [this example](https://auth0.com/blog/creating-web-components-with-stencil/), the developer could integrate an authentication component that could be shared with other projects.
