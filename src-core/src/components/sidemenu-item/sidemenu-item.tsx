@@ -20,8 +20,8 @@ export class SidemenuItemComponent {
     return (
       <Host
         role={'sidenavpanel'}
-        aria-hidden={{'true': !this}}
-        class={{'navitem-hidden': !this}}>
+        aria-hidden={{'true': this.active}}
+        class={{'navitem-hidden': !this.active}}>
         <slot></slot>
       </Host>
     )

@@ -73,6 +73,10 @@ export namespace Components {
   }
   interface SeButton {
     /**
+    * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
+    */
+    'caption': string;
+    /**
     * Optional property that defines the background color of the button. The default setting is `standard`.
     */
     'color': 'standard' | 'alternative' | 'primary' | 'secondary';
@@ -91,7 +95,7 @@ export namespace Components {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
-    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
+    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
     /**
     * Optional property that defines if the button should be shown as selected. Used with `se-radio`
     */
@@ -253,6 +257,29 @@ export namespace Components {
     * Method to open the dropdown from the outside.
     */
     'open': () => Promise<void>;
+  }
+  interface SeFab {
+    /**
+    * Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    */
+    'color': 'primary' | 'alternative';
+    'getIcon': () => Promise<any>;
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'icon': string;
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'option': 'speeddial' | 'backtotop';
+    /**
+    * Property that determines position of main action button.   Default setting is `bottom`, rendering a FAB at bottom right corner. The `top` setting renders  FAB at top right corner.
+    */
+    'position': 'bottom' | 'top';
+    /**
+    * Method to toggle(show/hide) the mini action buttons.
+    */
+    'toggleAction': () => Promise<void>;
   }
   interface SeFormField {
     /**
@@ -516,6 +543,24 @@ export namespace Components {
     */
     'item': string;
   }
+  interface SeSlider {
+    /**
+    * Indicates the disabled property of your slider.
+    */
+    'disabled': boolean;
+    /**
+    * Indicates the maximum value of your slider.
+    */
+    'max': number;
+    /**
+    * Indicates the minimum value of your slider.
+    */
+    'min': number;
+    /**
+    * Set the disabled property for slider component.
+    */
+    'setDisabled': (val: boolean) => Promise<void>;
+  }
   interface SeSnackbar {
     /**
     * Display a close "button".  Visible by default.
@@ -547,6 +592,37 @@ export namespace Components {
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color': 'primary' | 'alternative';
+  }
+  interface SeTooltip {
+    /**
+    * Indicates the action of your tooltip.
+    */
+    'action': "click" | "hover";
+    /**
+    * Method to close the tooltip from the outside.
+    */
+    'close': () => Promise<void>;
+    /**
+    * Method to open the tooltip from the outside.
+    */
+    'open': () => Promise<void>;
+    /**
+    * Indicates the position color of your tooltip.
+    */
+    'position': "top" | "bottom" | "left" | "right";
+  }
+  interface SeTooltipContent {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon': string;
+  }
+  interface SeTooltipFooter {}
+  interface SeTooltipHeader {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon': string;
   }
   interface SeVisualLinear {
     /**
@@ -630,6 +706,10 @@ export namespace Components {
   }
   interface SeWidgetFooter {
     /**
+    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
+    */
+    'direction': "row" | "column";
+    /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer with respect to the card design.
     */
     'option': "card";
@@ -706,6 +786,10 @@ declare namespace LocalJSX {
   }
   interface SeButton extends JSXBase.HTMLAttributes {
     /**
+    * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
+    */
+    'caption'?: string;
+    /**
     * Optional property that defines the background color of the button. The default setting is `standard`.
     */
     'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
@@ -725,7 +809,7 @@ declare namespace LocalJSX {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
-    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
+    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
     /**
     * Optional property that defines if the button should be shown as selected. Used with `se-radio`
     */
@@ -887,6 +971,24 @@ declare namespace LocalJSX {
     * Event emitted when the dropdown has been opened.
     */
     'onDidOpen'?: (event: CustomEvent<any>) => void;
+  }
+  interface SeFab extends JSXBase.HTMLAttributes {
+    /**
+    * Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    */
+    'color'?: 'primary' | 'alternative';
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'icon'?: string;
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'option'?: 'speeddial' | 'backtotop';
+    /**
+    * Property that determines position of main action button.   Default setting is `bottom`, rendering a FAB at bottom right corner. The `top` setting renders  FAB at top right corner.
+    */
+    'position'?: 'bottom' | 'top';
   }
   interface SeFormField extends JSXBase.HTMLAttributes {
     /**
@@ -1169,6 +1271,24 @@ declare namespace LocalJSX {
     */
     'item'?: string;
   }
+  interface SeSlider extends JSXBase.HTMLAttributes {
+    /**
+    * Indicates the disabled property of your slider.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicates the maximum value of your slider.
+    */
+    'max'?: number;
+    /**
+    * Indicates the minimum value of your slider.
+    */
+    'min'?: number;
+    /**
+    * Event emitted when the slider has been changed.
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
+  }
   interface SeSnackbar extends JSXBase.HTMLAttributes {
     /**
     * Display a close "button".  Visible by default.
@@ -1204,6 +1324,37 @@ declare namespace LocalJSX {
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color'?: 'primary' | 'alternative';
+  }
+  interface SeTooltip extends JSXBase.HTMLAttributes {
+    /**
+    * Indicates the action of your tooltip.
+    */
+    'action'?: "click" | "hover";
+    /**
+    * Event emitted when the tooltip has been closed.
+    */
+    'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Event emitted when the tooltip has been opened.
+    */
+    'onDidOpen'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates the position color of your tooltip.
+    */
+    'position'?: "top" | "bottom" | "left" | "right";
+  }
+  interface SeTooltipContent extends JSXBase.HTMLAttributes {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
+  }
+  interface SeTooltipFooter extends JSXBase.HTMLAttributes {}
+  interface SeTooltipHeader extends JSXBase.HTMLAttributes {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
   }
   interface SeVisualLinear extends JSXBase.HTMLAttributes {
     /**
@@ -1287,6 +1438,10 @@ declare namespace LocalJSX {
   }
   interface SeWidgetFooter extends JSXBase.HTMLAttributes {
     /**
+    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
+    */
+    'direction'?: "row" | "column";
+    /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-widget` component when on card option. `card` will update the design of the footer with respect to the card design.
     */
     'option'?: "card";
@@ -1312,6 +1467,7 @@ declare namespace LocalJSX {
     'se-dialog-header': SeDialogHeader;
     'se-divider': SeDivider;
     'se-dropdown': SeDropdown;
+    'se-fab': SeFab;
     'se-form-field': SeFormField;
     'se-header': SeHeader;
     'se-icon': SeIcon;
@@ -1329,8 +1485,13 @@ declare namespace LocalJSX {
     'se-radio-switch': SeRadioSwitch;
     'se-sidemenu': SeSidemenu;
     'se-sidemenu-item': SeSidemenuItem;
+    'se-slider': SeSlider;
     'se-snackbar': SeSnackbar;
     'se-tabbar': SeTabbar;
+    'se-tooltip': SeTooltip;
+    'se-tooltip-content': SeTooltipContent;
+    'se-tooltip-footer': SeTooltipFooter;
+    'se-tooltip-header': SeTooltipHeader;
     'se-visual-linear': SeVisualLinear;
     'se-visual-radial': SeVisualRadial;
     'se-widget': SeWidget;
@@ -1430,6 +1591,12 @@ declare global {
   var HTMLSeDropdownElement: {
     prototype: HTMLSeDropdownElement;
     new (): HTMLSeDropdownElement;
+  };
+
+  interface HTMLSeFabElement extends Components.SeFab, HTMLStencilElement {}
+  var HTMLSeFabElement: {
+    prototype: HTMLSeFabElement;
+    new (): HTMLSeFabElement;
   };
 
   interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {}
@@ -1534,6 +1701,12 @@ declare global {
     new (): HTMLSeSidemenuItemElement;
   };
 
+  interface HTMLSeSliderElement extends Components.SeSlider, HTMLStencilElement {}
+  var HTMLSeSliderElement: {
+    prototype: HTMLSeSliderElement;
+    new (): HTMLSeSliderElement;
+  };
+
   interface HTMLSeSnackbarElement extends Components.SeSnackbar, HTMLStencilElement {}
   var HTMLSeSnackbarElement: {
     prototype: HTMLSeSnackbarElement;
@@ -1544,6 +1717,30 @@ declare global {
   var HTMLSeTabbarElement: {
     prototype: HTMLSeTabbarElement;
     new (): HTMLSeTabbarElement;
+  };
+
+  interface HTMLSeTooltipElement extends Components.SeTooltip, HTMLStencilElement {}
+  var HTMLSeTooltipElement: {
+    prototype: HTMLSeTooltipElement;
+    new (): HTMLSeTooltipElement;
+  };
+
+  interface HTMLSeTooltipContentElement extends Components.SeTooltipContent, HTMLStencilElement {}
+  var HTMLSeTooltipContentElement: {
+    prototype: HTMLSeTooltipContentElement;
+    new (): HTMLSeTooltipContentElement;
+  };
+
+  interface HTMLSeTooltipFooterElement extends Components.SeTooltipFooter, HTMLStencilElement {}
+  var HTMLSeTooltipFooterElement: {
+    prototype: HTMLSeTooltipFooterElement;
+    new (): HTMLSeTooltipFooterElement;
+  };
+
+  interface HTMLSeTooltipHeaderElement extends Components.SeTooltipHeader, HTMLStencilElement {}
+  var HTMLSeTooltipHeaderElement: {
+    prototype: HTMLSeTooltipHeaderElement;
+    new (): HTMLSeTooltipHeaderElement;
   };
 
   interface HTMLSeVisualLinearElement extends Components.SeVisualLinear, HTMLStencilElement {}
@@ -1596,6 +1793,7 @@ declare global {
     'se-dialog-header': HTMLSeDialogHeaderElement;
     'se-divider': HTMLSeDividerElement;
     'se-dropdown': HTMLSeDropdownElement;
+    'se-fab': HTMLSeFabElement;
     'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon': HTMLSeIconElement;
@@ -1613,8 +1811,13 @@ declare global {
     'se-radio-switch': HTMLSeRadioSwitchElement;
     'se-sidemenu': HTMLSeSidemenuElement;
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
+    'se-slider': HTMLSeSliderElement;
     'se-snackbar': HTMLSeSnackbarElement;
     'se-tabbar': HTMLSeTabbarElement;
+    'se-tooltip': HTMLSeTooltipElement;
+    'se-tooltip-content': HTMLSeTooltipContentElement;
+    'se-tooltip-footer': HTMLSeTooltipFooterElement;
+    'se-tooltip-header': HTMLSeTooltipHeaderElement;
     'se-visual-linear': HTMLSeVisualLinearElement;
     'se-visual-radial': HTMLSeVisualRadialElement;
     'se-widget': HTMLSeWidgetElement;

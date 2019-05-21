@@ -21,6 +21,8 @@
  - [se-dialog-content](..\dialog-content)
  - [se-header](..\header)
  - [se-sidemenu](..\sidemenu)
+ - [se-tooltip-content](..\tooltip-content)
+ - [se-tooltip-header](..\tooltip-header)
 
 ### Graph
 ```mermaid
@@ -28,6 +30,8 @@ graph TD;
   se-dialog-content --> se-icon
   se-header --> se-icon
   se-sidemenu --> se-icon
+  se-tooltip-content --> se-icon
+  se-tooltip-header --> se-icon
   style se-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
