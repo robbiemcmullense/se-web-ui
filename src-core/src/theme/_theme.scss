@@ -62,3 +62,9 @@ $inner-shadow-top: inset 0 7px 3px -7px rgba(0, 0, 0, 0.5);
 //== widget
 //** widget header border color
 $divider-color: $se-super-light-grey;
+
+// Scrollbar
+/* width */
+$scrollbar-width: 8px; // 6px for width and 8px for bottom
+$scrollbar-side-padding: $spacing-small;
+

@@ -11,11 +11,19 @@ describe('DialogHeaderComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
-    expect(element).toHaveClass('hydrated');
+    
   });
 
-  it('renders with two slot elements', async() => {
-    const renderedHTML = '<h3 class="flex"><slot></slot></h3><slot name="end"></slot>';
-    expect(element.shadowRoot).toEqualHtml(renderedHTML);
+  it('renders with the primary class to indicate the default primary color property', async() => {
+    expect(element).toHaveClasses(['hydrated', 'primary']);
+  });
+
+  it('renders with an h3 element with a flex class and a slot element with the "end" attribute', async() => {
+    const headerElm = await page.find('se-dialog-header >>> h3');
+    expect(headerElm).toBeTruthy();
+    expect(headerElm).toHaveClass('flex');
+
+    const slotElm = await page.find ('se-dialog-header >>> slot[name="end"]');
+    expect(slotElm).toBeTruthy();
   });
 });

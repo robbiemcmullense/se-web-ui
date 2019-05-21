@@ -21,7 +21,7 @@ export class DropdownComponent {
    * `left`: Position the container regarding to the left side of the trigger element.
    * `right`: Position the container regarding to the right side of the trigger element.
    */
-  @Prop() alignment: 'left'|'right' = 'left';
+  @Prop() alignment: 'left' | 'right' = 'left';
   @State() opened: boolean = false;
   @Listen('window:click')
   handleClick(ev) {

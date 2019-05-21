@@ -13,7 +13,7 @@ export class LoadingComponent {
 
   hostData() {
     return {
-      class: this.loading && 'show'
+      class: {'show': this.loading}
     }
   }
 
