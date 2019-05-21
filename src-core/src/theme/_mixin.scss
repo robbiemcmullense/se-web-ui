@@ -300,7 +300,7 @@ $prefix: "--"; //Prefix string for custom CSS properties
 @mixin opacity($opacity) {
   opacity: $opacity;
   $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8:;
+  filter: alpha(opacity=$opacity-ie); //IE8;
 }
 
 @mixin box-shadow($shadow) {
