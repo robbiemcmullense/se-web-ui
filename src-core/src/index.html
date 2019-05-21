@@ -334,7 +334,7 @@
         </se-widget>
         <se-widget id="widget4">
           <se-widget-header>
-            Linear chart
+            Linear chart & Slider
             <div slot="end">
               <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
             </div>
@@ -343,7 +343,10 @@
             <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
             <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels">
             </se-visual-linear>
-
+            <se-slider></se-slider>
+            <ul>
+              <li id="slider-value"><span></span></li>
+            </ul>        
           </se-widget-content>
         </se-widget>
         <se-widget id="widget5">
@@ -395,6 +398,63 @@
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-widget-content>
           </se-widget>
+          <se-widget id="widget8">
+            <se-widget-header>
+                Tooltips
+                <div slot="end">
+                  <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
+                </div>
+              </se-widget-header>
+              <se-widget-content>    
+                  <div style="padding-left:100px;"><h4>Tooltip OnClick</h4>
+                  <se-tooltip action="click">
+                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
+                    <se-tooltip-header>Tooltip Title</se-tooltip-header>
+                    <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                  </se-tooltip>
+                  <se-tooltip action="click">
+                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Icon & Message</se-button>
+                    <se-tooltip-header icon="information_circle">Tooltip With Icon</se-tooltip-header>
+                    <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
+                  </se-tooltip>
+                  </div>
+                  <div style="padding-left:100px;">
+                  <se-tooltip action="click">
+                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
+                    <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                  </se-tooltip>
+                  <se-tooltip action="click">
+                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Complex</se-button>
+                    <se-tooltip-header>Tooltip Complex</se-tooltip-header>
+                    <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                    <se-tooltip-footer>
+                          <se-button option="raised" color="secondary">Retry</se-button>                       
+                    </se-tooltip-footer>
+                  </se-tooltip>
+                </div>
+                <div style="padding-top:140px;padding-left: 100px;"><h4>Tooltip OnHover</h4>
+                <se-tooltip position="right">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
+                      Tooltip Right
+                  </se-tooltip>
+                
+                  <se-tooltip position="bottom">
+                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
+                      Tooltip Bottom
+                  </se-tooltip>
+  
+                  <se-tooltip position="left">
+                      <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
+                      Tooltip Left
+                  </se-tooltip>
+  
+                  <se-tooltip position="top">
+                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
+                    Tooltip Top
+                    </se-tooltip>
+                  </div>
+              </se-widget-content>
+        </se-widget>
 
       </se-container>
     </se-container>
@@ -477,7 +537,9 @@
       widget.enlarged = !widget.enlarged;
       icon.innerText = widget.enlarged ? 'exit_presentation' : 'presentation_mode';
     }
-
+    document.querySelector('se-slider').addEventListener('didChange', function (event) {
+      document.getElementById('slider-value').innerText = 'Slider Value: ' + event.detail.value;
+    });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;

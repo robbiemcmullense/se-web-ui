@@ -1124,6 +1124,43 @@ export namespace Components {
     'label'?: string;
   }
 
+  interface SeSlider {
+    /**
+    * Indicates the disabled property of your slider.
+    */
+    'disabled': boolean;
+    /**
+    * Indicates the maximum value of your slider.
+    */
+    'max': number;
+    /**
+    * Indicates the minimum value of your slider.
+    */
+    'min': number;
+    /**
+    * Set the disabled property for slider component.
+    */
+    'setDisabled': (val: boolean) => void;
+  }
+  interface SeSliderAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates the disabled property of your slider.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicates the maximum value of your slider.
+    */
+    'max'?: number;
+    /**
+    * Indicates the minimum value of your slider.
+    */
+    'min'?: number;
+    /**
+    * Event emitted when the slider has been changed.
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
+  }
+
   interface SeSnackbar {
     /**
     * Display a close "button".  Visible by default.
@@ -1192,6 +1229,72 @@ export namespace Components {
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color'?: 'primary' | 'alternative';
+  }
+
+  interface SeTooltipContent {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon': string;
+  }
+  interface SeTooltipContentAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
+  }
+
+  interface SeTooltipFooter {}
+  interface SeTooltipFooterAttributes extends StencilHTMLAttributes {}
+
+  interface SeTooltipHeader {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon': string;
+  }
+  interface SeTooltipHeaderAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
+  }
+
+  interface SeTooltip {
+    /**
+    * Indicates the action of your tooltip.
+    */
+    'action': "click" | "hover";
+    /**
+    * Method to close the tooltip from the outside.
+    */
+    'close': () => void;
+    /**
+    * Method to open the tooltip from the outside.
+    */
+    'open': () => void;
+    /**
+    * Indicates the position color of your tooltip.
+    */
+    'position': "top" | "bottom" | "left" | "right";
+  }
+  interface SeTooltipAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates the action of your tooltip.
+    */
+    'action'?: "click" | "hover";
+    /**
+    * Event emitted when the tooltip has been closed.
+    */
+    'onDidClose'?: (event: CustomEvent) => void;
+    /**
+    * Event emitted when the tooltip has been opened.
+    */
+    'onDidOpen'?: (event: CustomEvent) => void;
+    /**
+    * Indicates the position color of your tooltip.
+    */
+    'position'?: "top" | "bottom" | "left" | "right";
   }
 
   interface SeVisualLinear {
@@ -1420,8 +1523,13 @@ declare global {
     'SeRadio': Components.SeRadio;
     'SeSidemenuItem': Components.SeSidemenuItem;
     'SeSidemenu': Components.SeSidemenu;
+    'SeSlider': Components.SeSlider;
     'SeSnackbar': Components.SeSnackbar;
     'SeTabbar': Components.SeTabbar;
+    'SeTooltipContent': Components.SeTooltipContent;
+    'SeTooltipFooter': Components.SeTooltipFooter;
+    'SeTooltipHeader': Components.SeTooltipHeader;
+    'SeTooltip': Components.SeTooltip;
     'SeVisualLinear': Components.SeVisualLinear;
     'SeVisualRadial': Components.SeVisualRadial;
     'SeWidgetContent': Components.SeWidgetContent;
@@ -1462,8 +1570,13 @@ declare global {
     'se-radio': Components.SeRadioAttributes;
     'se-sidemenu-item': Components.SeSidemenuItemAttributes;
     'se-sidemenu': Components.SeSidemenuAttributes;
+    'se-slider': Components.SeSliderAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
     'se-tabbar': Components.SeTabbarAttributes;
+    'se-tooltip-content': Components.SeTooltipContentAttributes;
+    'se-tooltip-footer': Components.SeTooltipFooterAttributes;
+    'se-tooltip-header': Components.SeTooltipHeaderAttributes;
+    'se-tooltip': Components.SeTooltipAttributes;
     'se-visual-linear': Components.SeVisualLinearAttributes;
     'se-visual-radial': Components.SeVisualRadialAttributes;
     'se-widget-content': Components.SeWidgetContentAttributes;
@@ -1659,6 +1772,12 @@ declare global {
     new (): HTMLSeSidemenuElement;
   };
 
+  interface HTMLSeSliderElement extends Components.SeSlider, HTMLStencilElement {}
+  var HTMLSeSliderElement: {
+    prototype: HTMLSeSliderElement;
+    new (): HTMLSeSliderElement;
+  };
+
   interface HTMLSeSnackbarElement extends Components.SeSnackbar, HTMLStencilElement {}
   var HTMLSeSnackbarElement: {
     prototype: HTMLSeSnackbarElement;
@@ -1669,6 +1788,30 @@ declare global {
   var HTMLSeTabbarElement: {
     prototype: HTMLSeTabbarElement;
     new (): HTMLSeTabbarElement;
+  };
+
+  interface HTMLSeTooltipContentElement extends Components.SeTooltipContent, HTMLStencilElement {}
+  var HTMLSeTooltipContentElement: {
+    prototype: HTMLSeTooltipContentElement;
+    new (): HTMLSeTooltipContentElement;
+  };
+
+  interface HTMLSeTooltipFooterElement extends Components.SeTooltipFooter, HTMLStencilElement {}
+  var HTMLSeTooltipFooterElement: {
+    prototype: HTMLSeTooltipFooterElement;
+    new (): HTMLSeTooltipFooterElement;
+  };
+
+  interface HTMLSeTooltipHeaderElement extends Components.SeTooltipHeader, HTMLStencilElement {}
+  var HTMLSeTooltipHeaderElement: {
+    prototype: HTMLSeTooltipHeaderElement;
+    new (): HTMLSeTooltipHeaderElement;
+  };
+
+  interface HTMLSeTooltipElement extends Components.SeTooltip, HTMLStencilElement {}
+  var HTMLSeTooltipElement: {
+    prototype: HTMLSeTooltipElement;
+    new (): HTMLSeTooltipElement;
   };
 
   interface HTMLSeVisualLinearElement extends Components.SeVisualLinear, HTMLStencilElement {}
@@ -1739,8 +1882,13 @@ declare global {
     'se-radio': HTMLSeRadioElement
     'se-sidemenu-item': HTMLSeSidemenuItemElement
     'se-sidemenu': HTMLSeSidemenuElement
+    'se-slider': HTMLSeSliderElement
     'se-snackbar': HTMLSeSnackbarElement
     'se-tabbar': HTMLSeTabbarElement
+    'se-tooltip-content': HTMLSeTooltipContentElement
+    'se-tooltip-footer': HTMLSeTooltipFooterElement
+    'se-tooltip-header': HTMLSeTooltipHeaderElement
+    'se-tooltip': HTMLSeTooltipElement
     'se-visual-linear': HTMLSeVisualLinearElement
     'se-visual-radial': HTMLSeVisualRadialElement
     'se-widget-content': HTMLSeWidgetContentElement
@@ -1781,8 +1929,13 @@ declare global {
     'se-radio': HTMLSeRadioElement;
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
     'se-sidemenu': HTMLSeSidemenuElement;
+    'se-slider': HTMLSeSliderElement;
     'se-snackbar': HTMLSeSnackbarElement;
     'se-tabbar': HTMLSeTabbarElement;
+    'se-tooltip-content': HTMLSeTooltipContentElement;
+    'se-tooltip-footer': HTMLSeTooltipFooterElement;
+    'se-tooltip-header': HTMLSeTooltipHeaderElement;
+    'se-tooltip': HTMLSeTooltipElement;
     'se-visual-linear': HTMLSeVisualLinearElement;
     'se-visual-radial': HTMLSeVisualRadialElement;
     'se-widget-content': HTMLSeWidgetContentElement;
