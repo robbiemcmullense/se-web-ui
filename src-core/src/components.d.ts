@@ -1074,6 +1074,43 @@ export namespace Components {
     'label'?: string;
   }
 
+  interface SeSlider {
+    /**
+    * Indicates the disabled property of your slider.
+    */
+    'disabled': boolean;
+    /**
+    * Indicates the maximum value of your slider.
+    */
+    'max': number;
+    /**
+    * Indicates the minimum value of your slider.
+    */
+    'min': number;
+    /**
+    * Set the disabled property for slider component.
+    */
+    'setDisabled': (val: boolean) => void;
+  }
+  interface SeSliderAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates the disabled property of your slider.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicates the maximum value of your slider.
+    */
+    'max'?: number;
+    /**
+    * Indicates the minimum value of your slider.
+    */
+    'min'?: number;
+    /**
+    * Event emitted when the slider has been changed.
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
+  }
+
   interface SeSnackbar {
     /**
     * Display a close "button".  Visible by default.
@@ -1369,6 +1406,7 @@ declare global {
     'SeRadio': Components.SeRadio;
     'SeSidemenuItem': Components.SeSidemenuItem;
     'SeSidemenu': Components.SeSidemenu;
+    'SeSlider': Components.SeSlider;
     'SeSnackbar': Components.SeSnackbar;
     'SeTabbar': Components.SeTabbar;
     'SeVisualLinear': Components.SeVisualLinear;
@@ -1410,6 +1448,7 @@ declare global {
     'se-radio': Components.SeRadioAttributes;
     'se-sidemenu-item': Components.SeSidemenuItemAttributes;
     'se-sidemenu': Components.SeSidemenuAttributes;
+    'se-slider': Components.SeSliderAttributes;
     'se-snackbar': Components.SeSnackbarAttributes;
     'se-tabbar': Components.SeTabbarAttributes;
     'se-visual-linear': Components.SeVisualLinearAttributes;
@@ -1601,6 +1640,12 @@ declare global {
     new (): HTMLSeSidemenuElement;
   };
 
+  interface HTMLSeSliderElement extends Components.SeSlider, HTMLStencilElement {}
+  var HTMLSeSliderElement: {
+    prototype: HTMLSeSliderElement;
+    new (): HTMLSeSliderElement;
+  };
+
   interface HTMLSeSnackbarElement extends Components.SeSnackbar, HTMLStencilElement {}
   var HTMLSeSnackbarElement: {
     prototype: HTMLSeSnackbarElement;
@@ -1680,6 +1725,7 @@ declare global {
     'se-radio': HTMLSeRadioElement
     'se-sidemenu-item': HTMLSeSidemenuItemElement
     'se-sidemenu': HTMLSeSidemenuElement
+    'se-slider': HTMLSeSliderElement
     'se-snackbar': HTMLSeSnackbarElement
     'se-tabbar': HTMLSeTabbarElement
     'se-visual-linear': HTMLSeVisualLinearElement
@@ -1721,6 +1767,7 @@ declare global {
     'se-radio': HTMLSeRadioElement;
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
     'se-sidemenu': HTMLSeSidemenuElement;
+    'se-slider': HTMLSeSliderElement;
     'se-snackbar': HTMLSeSnackbarElement;
     'se-tabbar': HTMLSeTabbarElement;
     'se-visual-linear': HTMLSeVisualLinearElement;
