@@ -214,6 +214,7 @@
             <se-button option="outline" color="secondary">Outline secondary</se-button>
 
             <se-button icon="action_resize"></se-button>
+            <se-button option='fab'  icon="notebook_paper" color="primary"></se-button>
             <se-chip id="se-chip" value="Chip 01"></se-chip>
             <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
             <se-link url="http://google.com">Link to Google</se-link>
@@ -424,9 +425,21 @@
       </se-dialog-footer>
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
+    <se-fab icon="action_share" position="top">
+        <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')" icon="notification_critical_stroke"></se-button>
+        <se-button option='minifab' caption="New Task"  icon="notebook_paper"></se-button>
+        <se-button option='minifab'  caption="New User" icon="task"></se-button>
+        <se-button option='minifab'  caption="New Work Item"  icon="user_add"></se-button>
+        <se-button option='minifab'  caption="New Task List"  icon="notebook_paper"></se-button>
+    </se-fab>
+    <se-fab option="backtotop" onclick="showfab('fab button clicked')"></se-fab>
+    <!-- <se-button onclick="closeDialog('dialog-simple-notitle')" option="fab" icon="action_share"></se-button> -->
   </se-app>
 
   <script>
+    function showfab(text){
+      console.log(text);
+    }
 
     // Dialog
     function openDialog(id) {

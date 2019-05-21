@@ -139,6 +139,10 @@ export namespace Components {
 
   interface SeButton {
     /**
+    * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
+    */
+    'caption': string;
+    /**
     * Optional property that defines the background color of the button. The default setting is `standard`.
     */
     'color': 'standard' | 'alternative' | 'primary' | 'secondary';
@@ -157,7 +161,7 @@ export namespace Components {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
-    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
+    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
     /**
     * Optional property that defines if the button should be shown as selected. Used with `se-radio`
     */
@@ -181,6 +185,10 @@ export namespace Components {
   }
   interface SeButtonAttributes extends StencilHTMLAttributes {
     /**
+    * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
+    */
+    'caption'?: string;
+    /**
     * Optional property that defines the background color of the button. The default setting is `standard`.
     */
     'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
@@ -200,7 +208,7 @@ export namespace Components {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
-    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit';
+    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
     /**
     * Optional property that defines if the button should be shown as selected. Used with `se-radio`
     */
@@ -512,6 +520,48 @@ export namespace Components {
     * Event emitted when the dropdown has been opened.
     */
     'onDidOpen'?: (event: CustomEvent) => void;
+  }
+
+  interface SeFab {
+    /**
+    * Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    */
+    'color': 'primary' | 'alternative';
+    'getIcon': () => any;
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'icon': string;
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'option': 'speeddial' | 'backtotop';
+    /**
+    * Property that determines position of main action button.   Default setting is `bottom`, rendering a FAB at bottom right corner. The `top` setting renders  FAB at top right corner.
+    */
+    'position': 'bottom' | 'top';
+    /**
+    * Method to toggle(show/hide) the mini action buttons.
+    */
+    'toggleAction': () => void;
+  }
+  interface SeFabAttributes extends StencilHTMLAttributes {
+    /**
+    * Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    */
+    'color'?: 'primary' | 'alternative';
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'icon'?: string;
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'option'?: 'speeddial' | 'backtotop';
+    /**
+    * Property that determines position of main action button.   Default setting is `bottom`, rendering a FAB at bottom right corner. The `top` setting renders  FAB at top right corner.
+    */
+    'position'?: 'bottom' | 'top';
   }
 
   interface SeFormField {
@@ -1352,6 +1402,7 @@ declare global {
     'SeDialog': Components.SeDialog;
     'SeDivider': Components.SeDivider;
     'SeDropdown': Components.SeDropdown;
+    'SeFab': Components.SeFab;
     'SeFormField': Components.SeFormField;
     'SeHeader': Components.SeHeader;
     'SeIconEcostruxure': Components.SeIconEcostruxure;
@@ -1393,6 +1444,7 @@ declare global {
     'se-dialog': Components.SeDialogAttributes;
     'se-divider': Components.SeDividerAttributes;
     'se-dropdown': Components.SeDropdownAttributes;
+    'se-fab': Components.SeFabAttributes;
     'se-form-field': Components.SeFormFieldAttributes;
     'se-header': Components.SeHeaderAttributes;
     'se-icon-ecostruxure': Components.SeIconEcostruxureAttributes;
@@ -1497,6 +1549,12 @@ declare global {
   var HTMLSeDropdownElement: {
     prototype: HTMLSeDropdownElement;
     new (): HTMLSeDropdownElement;
+  };
+
+  interface HTMLSeFabElement extends Components.SeFab, HTMLStencilElement {}
+  var HTMLSeFabElement: {
+    prototype: HTMLSeFabElement;
+    new (): HTMLSeFabElement;
   };
 
   interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {}
@@ -1663,6 +1721,7 @@ declare global {
     'se-dialog': HTMLSeDialogElement
     'se-divider': HTMLSeDividerElement
     'se-dropdown': HTMLSeDropdownElement
+    'se-fab': HTMLSeFabElement
     'se-form-field': HTMLSeFormFieldElement
     'se-header': HTMLSeHeaderElement
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement
@@ -1704,6 +1763,7 @@ declare global {
     'se-dialog': HTMLSeDialogElement;
     'se-divider': HTMLSeDividerElement;
     'se-dropdown': HTMLSeDropdownElement;
+    'se-fab': HTMLSeFabElement;
     'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon-ecostruxure': HTMLSeIconEcostruxureElement;

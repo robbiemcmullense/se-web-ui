@@ -308,3 +308,6 @@ $prefix: "--"; //Prefix string for custom CSS properties
   -webkit-box-shadow: $shadow;
   box-shadow: $shadow;
 }
+@mixin circleShadow($vertical) {
+  @include  box-shadow((0 0 $vertical rgba(0,0,0,.14),0 $vertical $vertical*2 rgba(0,0,0,.28)))
+}
