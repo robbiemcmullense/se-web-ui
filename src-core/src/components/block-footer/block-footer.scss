@@ -17,3 +17,7 @@
 :host(.card) {
   border-top: none;
 }
+
+:host(.column) {
+  @include flex-direction(column);
+}

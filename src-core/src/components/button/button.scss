@@ -202,8 +202,57 @@ button {
       background-color: $se-sky-blue;
     }
   }
-
+  &.fab {
+      border-radius: 50%;
+      font-size: 24px;
+      width: 56px;
+      height: 56px;
+      cursor: pointer;
+      @include circleShadow(4px);
+      &:hover {
+        @include circleShadow(8px);
+      }
+      &.alternative{
+        @include background-color("alternative");
+        @include color('primary');
+      }
+    }
+    &.minifab{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin:0 20px 20px 0px;
+      padding: 0;
+      margin: 0 0 15px 0;
+      @include circleShadow(4px);
+      @include background-color("alternative");
+      @include color("alternative-contrast");
+      &:hover {
+        @include circleShadow(4px);
+        @include background-color("alternative");
+      }
+      &[data-tooltip]:before {
+        font-family: arial;
+        font-weight: 300;
+        border-radius: 23.27px;
+        content: attr(data-tooltip);
+        font-size: 12px;
+        padding: 5px 7px;
+        margin-right: 12px;
+        position: absolute;
+        right: 100%;
+        white-space: nowrap;
+        @include color("standard-contrast");
+        @include background-color("standard");
+      }
+    }
+    
   
+  .text {
+    font-weight: 300;
+    @include typology("p");
+    padding: 0 $spacing;
+  }
   .se-icon {
     margin: 0;
     display: inline-block;
@@ -270,6 +319,16 @@ button {
 :host(.hasIcon) {
   top: 3px;
   position: relative;
+}
+
+:host(.backtotop){
+  & button.fab{
+    @include color("alternative");
+    background-color:$se-anthracite-grey;
+    &:hover{
+      @include background-color("standard-contrast")
+    }
+  }
 }
 
 :host([slot="trigger"]) {

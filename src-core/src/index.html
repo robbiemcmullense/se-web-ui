@@ -7,8 +7,10 @@
   <title>Stencil Component Starter</title>
   <script src="build/se-components.js"></script>
 
-  <link rel="stylesheet" href="fonts/css/styles.css"></link>
-  <link rel="stylesheet" href="icons/css/styles.css"></link>
+  <link rel="stylesheet" href="fonts/css/styles.css">
+  </link>
+  <link rel="stylesheet" href="icons/css/styles.css">
+  </link>
 </head>
 
 <body>
@@ -237,6 +239,7 @@
             <se-button size="medium">medium size</se-button>
             <se-button size="large">large size</se-button>
             <se-divider></se-divider>
+            <se-button option='fab' icon="notebook_paper" color="primary"></se-button>
             <se-chip id="se-chip" value="Chip 01"></se-chip>
             <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
             <se-divider></se-divider>
@@ -249,7 +252,8 @@
               <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
             </ul>
             <se-checkbox option="onoff" id="on-off-switch-el"></se-checkbox>
-            <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true"></se-checkbox>
+            <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true">
+            </se-checkbox>
             <se-checkbox id="toggle-switch-el" option="switch"></se-checkbox>
             <se-checkbox selected="true" option="switch" disabled="true"></se-checkbox>
             <se-divider></se-divider>
@@ -337,7 +341,7 @@
         </se-block>
         <se-block id="block4">
           <se-block-header>
-            Linear chart
+            Linear chart & Slider
             <div slot="end">
               <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
             </div>
@@ -346,10 +350,13 @@
             <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
             <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels">
             </se-visual-linear>
-
+            <se-slider></se-slider>
+            <ul>
+              <li id="slider-value"><span></span></li>
+            </ul>
           </se-block-content>
         </se-block>
-        <se-block id="block5">
+        <se-block id="widget5">
           <se-block-header>
             Radial chart
             <div slot="end">
@@ -389,17 +396,76 @@
               <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
             </div>
           </se-block-header>
-          <se-block-content>
-            <se-radio-group id="radio-button-dot-group">
+          <se-block-content option="fill">
+            <se-radio-group id="radio-button-dot-group" option="radio">
               <se-radio value="one radio" label="First Radio Button"></se-radio>
               <se-radio value="two radio" label="Second Radio Button"></se-radio>
               <se-radio value="three radio" label="Third Radio Button"></se-radio>
             </se-radio-group>
             <div>Selected radio button value: <span id="se-radio-value"></span></div>
-            <se-button option="login">Login</se-button>
-            <se-button option="login" disabled="true">Login</se-button>
-            <se-button option="signup">Sign Up</se-button>
-            <se-button option="signup" disabled="true">Sign Up</se-button>
+          </se-block-content>
+        </se-block>
+        <se-block id="widget8">
+          <se-block-header>
+            Tooltips
+            <div slot="end">
+              <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
+            </div>
+          </se-block-header>
+          <se-block-content>
+            <div style="padding-left:100px;">
+              <h4>Tooltip OnClick</h4>
+              <se-tooltip action="click">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
+                <se-tooltip-header>Tooltip Title</se-tooltip-header>
+                <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+              </se-tooltip>
+              <se-tooltip action="click">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Icon & Message</se-button>
+                <se-tooltip-header icon="information_circle">Tooltip With Icon</se-tooltip-header>
+                <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
+              </se-tooltip>
+            </div>
+            <div style="padding-left:100px;">
+              <se-tooltip action="click">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
+                <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                </se-tooltip-content>
+              </se-tooltip>
+              <se-tooltip action="click">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Complex</se-button>
+                <se-tooltip-header>Tooltip Complex</se-tooltip-header>
+                <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                <se-tooltip-footer>
+                  <se-button option="raised" color="secondary">Retry</se-button>
+                </se-tooltip-footer>
+              </se-tooltip>
+            </div>
+            <div style="padding-top:140px;padding-left: 100px;">
+              <h4>Tooltip OnHover</h4>
+              <se-tooltip position="right">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
+                Tooltip Right
+              </se-tooltip>
+
+              <se-tooltip position="bottom">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
+                Tooltip Bottom
+              </se-tooltip>
+
+              <se-tooltip position="left">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
+                Tooltip Left
+              </se-tooltip>
+
+              <se-tooltip position="top">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
+                Tooltip Top
+              </se-tooltip>
+            </div>
           </se-block-content>
         </se-block>
 
@@ -432,9 +498,22 @@
       </se-dialog-footer>
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
+    <se-fab icon="action_share" position="top">
+      <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
+        icon="notification_critical_stroke"></se-button>
+      <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
+      <se-button option='minifab' caption="New User" icon="task"></se-button>
+      <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
+      <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
+    </se-fab>
+    <se-fab option="backtotop" onclick="showfab('fab button clicked')"></se-fab>
+    <!-- <se-button onclick="closeDialog('dialog-simple-notitle')" option="fab" icon="action_share"></se-button> -->
   </se-app>
 
   <script>
+    function showfab(text) {
+      console.log(text);
+    }
 
     // Dialog
     function openDialog(id) {
@@ -472,7 +551,9 @@
       block.enlarged = !block.enlarged;
       icon.innerText = block.enlarged ? 'exit_presentation' : 'presentation_mode';
     }
-
+    document.querySelector('se-slider').addEventListener('didChange', function (event) {
+      document.getElementById('slider-value').innerText = 'Slider Value: ' + event.detail.value;
+    });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {
       document.getElementById('chip-info').innerText = 'you have clicked the chip with value: ' + event.detail;

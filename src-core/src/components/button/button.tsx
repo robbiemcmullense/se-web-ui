@@ -16,7 +16,7 @@ export class ButtonComponent {
    * `outline` adds a border to the button.
    * `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
    */
-  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' = 'flat';
+  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab'= 'flat';
   @Watch('option') optionDidChange() {
     if(this.option === 'login'){
       this.color = 'primary'
@@ -63,6 +63,11 @@ export class ButtonComponent {
    * Optional property that defines if the button should be shown as selected. Used with `se-radio`
    */
   @Prop({mutable: true}) selected: boolean;
+
+   /**
+   * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
+   */
+  @Prop() caption: string;
   /**
    * Passes button data to the parent component on a click.
    */
@@ -133,7 +138,7 @@ export class ButtonComponent {
 
   render() {
     return (
-      <button disabled={this.disabled} type={this.type} class={[this.color, this.size, this.option, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
+      <button data-tooltip={this.caption} disabled={this.disabled} type={this.type} class={[this.color, this.size, this.option, this.selected && 'selected'].join(' ')} onClick={() => this.toggle()}>
         {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
         { this.hasChild && <span class="text"><slot></slot></span>}
       </button>

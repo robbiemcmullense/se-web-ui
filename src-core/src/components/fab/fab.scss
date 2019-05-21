@@ -1,0 +1,33 @@
+@import "../../theme/theme";
+
+.fab-container{
+	position: absolute;
+}
+.mini-action-button{
+	cursor: pointer;
+	position: absolute;
+	display: none;
+}
+.top{
+	top: 60px;
+	right: 32px;
+	& .mini-action-button{
+		top: 70px;
+    	left: 0;
+    	text-align: center;
+	}
+}
+
+.bottom{
+	bottom: 16px;
+	right: 32px;
+	& .mini-action-button{
+		bottom: 55px;
+		left: 0;
+    	text-align: center;
+	}
+}
+
+.show{
+	display: block;
+}
