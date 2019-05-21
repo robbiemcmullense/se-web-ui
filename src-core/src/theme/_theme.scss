@@ -70,26 +70,3 @@ $divider-color: $se-super-light-grey;
 $scrollbar-width: 8px; // 6px for width and 8px for bottom
 $scrollbar-side-padding: $spacing-small;
 
-::-webkit-scrollbar {
-  height: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
-  width: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
-}
-
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-thumb {
-	border: $scrollbar-side-padding solid transparent;
-  background-clip: padding-box;
-  border-radius: 16px;
-}
-
-::-webkit-scrollbar-track {
-	background-color: $se-ultra-light-grey-2;
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: $se-light-grey;
-	&:hover {
-    @include background-color('selected');
-		border: $scrollbar-side-padding solid transparent;
-	}
-}

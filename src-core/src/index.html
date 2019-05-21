@@ -356,7 +356,7 @@
             </ul>
           </se-block-content>
         </se-block>
-        <se-block id="widget5">
+        <se-block id="block5">
           <se-block-header>
             Radial chart
             <div slot="end">
@@ -405,7 +405,7 @@
             <div>Selected radio button value: <span id="se-radio-value"></span></div>
           </se-block-content>
         </se-block>
-        <se-block id="widget8">
+        <se-block id="block8">
           <se-block-header>
             Tooltips
             <div slot="end">
@@ -450,17 +450,14 @@
                 <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
                 Tooltip Right
               </se-tooltip>
-
               <se-tooltip position="bottom">
                 <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
                 Tooltip Bottom
               </se-tooltip>
-
               <se-tooltip position="left">
                 <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
                 Tooltip Left
               </se-tooltip>
-
               <se-tooltip position="top">
                 <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
                 Tooltip Top
@@ -468,8 +465,15 @@
             </div>
           </se-block-content>
         </se-block>
-
       </se-container>
+      <se-fab icon="action_share" position="top">
+        <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
+          icon="notification_critical_stroke"></se-button>
+        <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
+        <se-button option='minifab' caption="New User" icon="task"></se-button>
+        <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
+        <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
+      </se-fab>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
       <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
