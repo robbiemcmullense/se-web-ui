@@ -2,7 +2,6 @@
 
 :host  {
   box-sizing: border-box;
-  height: auto;
   padding: 0;
   width: 100%;
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
@@ -30,7 +29,7 @@
 .nav-left-wrapper {
   background-color: rgba(black, 0.25);
   &>*:first-child{
-    padding-left: $spacing;
+    padding-left: $spacing-large;
   }
   &>*:last-child{
     padding-right: $spacing-large;
@@ -38,10 +37,12 @@
 }
 
 nav.primary {
+  height: 48px;
   @include background-color('primary');
   @include color('primary-contrast');
   box-shadow: $inner-shadow-top;
   nav > a {
+    line-height: 48px;
     @include color('primary-contrast');
     &:hover {
       &:before {
@@ -56,9 +57,11 @@ nav.primary {
 }
 
 nav.alternative {
+  height: 40px;
   @include background-color('alternative');
   @include color('alternative-contrast');
   nav > a {
+    line-height: 40px;
     @include color('alternative-contrast');
     &:hover {
       @include color('primary');
@@ -77,6 +80,7 @@ nav.alternative {
   font-size: 16px;
   nav {
     height: 100%;
+    text-transform: uppercase;
     @include display-flex();
     @include align-items(center);
   }
@@ -84,14 +88,12 @@ nav.alternative {
     position: relative;
     margin: 0 $spacing-large;
     font-weight: 100;
-    text-transform: uppercase;
     cursor: pointer;
     display: inline-block;
     padding-right: 0;
     padding-left: 0;
     // padding-bottom: 0.3rem;
     text-decoration: none;
-    line-height: 40px;
     height: 100%;
     &:focus {
       background-color: transparent;
@@ -118,10 +120,13 @@ nav.alternative {
       padding: 0.1em 0.4em 0.2em;
       margin-bottom: 2px;
     }
-    &.disabled,
-    &.disabled:hover,
-    &.disabled:focus {
-      opacity: 0.5;
+    &[disabled] {
+      color: #8ce599;
+      cursor: default;
+      &:hover:before,
+      &:active:before {
+        height: 0;
+      }
     }
   }
 }
