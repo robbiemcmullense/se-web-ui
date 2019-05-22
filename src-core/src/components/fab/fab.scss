@@ -1,7 +1,7 @@
 @import "../../theme/theme";
 
 .fab-container{
-	position: absolute;
+	position: fixed;
 }
 .mini-action-button{
 	cursor: pointer;
@@ -9,7 +9,7 @@
 	display: none;
 }
 .top{
-	top: 60px;
+	top: 76px;
 	right: 32px;
 	& .mini-action-button{
 		top: 70px;

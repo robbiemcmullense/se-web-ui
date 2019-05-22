@@ -17,6 +17,29 @@
 
 ## Methods
 
+### `getIcon() => any`
+
+
+
+#### Returns
+
+Type: `any`
+
+
+
+### `toggleAction() => void`
+
+Method to toggle(show/hide) the mini action buttons.
+
+#### Returns
+
+Type: `void`
+
+
+
+
+## Methods
+
 ### `getIcon() => Promise<any>`
 
 
