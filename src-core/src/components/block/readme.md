@@ -18,6 +18,24 @@
 | `width`    | `width`    | Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.                                                                                                               | `string`                        | `undefined`     |
 
 
+## Dependencies
+
+### Used by
+
+ - [se-sidemenu](..\sidemenu)
+
+### Depends on
+
+- [se-loading](..\loading)
+
+### Graph
+```mermaid
+graph TD;
+  se-block --> se-loading
+  se-sidemenu --> se-block
+  style se-block fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -23,19 +23,13 @@
 
 ## Methods
 
-### `setDisabled(val: boolean) => void`
+### `setDisabled(val: boolean) => Promise<void>`
 
 Set the disabled property for slider component.
 
-#### Parameters
-
-| Name  | Type      | Description               |
-| ----- | --------- | ------------------------- |
-| `val` | `boolean` | set to `true` or `false`. |
-
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

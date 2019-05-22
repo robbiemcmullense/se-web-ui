@@ -17,26 +17,39 @@
 
 ## Methods
 
-### `getIcon() => any`
+### `getIcon() => Promise<any>`
 
 
 
 #### Returns
 
-Type: `any`
+Type: `Promise<any>`
 
 
 
-### `toggleAction() => void`
+### `toggleAction() => Promise<void>`
 
 Method to toggle(show/hide) the mini action buttons.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [se-button](..\button)
+
+### Graph
+```mermaid
+graph TD;
+  se-fab --> se-button
+  style se-fab fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

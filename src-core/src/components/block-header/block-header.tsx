@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-block-header",
@@ -12,17 +12,12 @@ export class BlockHeader {
    */
   @Prop() option: "card";
 
-  hostData() {
-    return {
-      class: this.option
-    };
-  }
-
   render() {
-    return [
-      <slot name="start"/>,
-      <h4 class="flex"><slot /></h4>,
-      <slot name="end"/>
-    ];
+    return (
+      <Host class={this.option}>
+        <h3 class="flex"><slot></slot></h3>
+        <slot name="end"></slot>
+      </Host>
+    )
   }
 }

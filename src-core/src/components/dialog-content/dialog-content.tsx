@@ -1,4 +1,4 @@
-import { Component,Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-dialog-content",
@@ -19,15 +19,12 @@ export class DialogContentComponent {
    */
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
 
-  hostData() {
-    return {
-      'class': { 'full-content': this.option === 'fill' }
-    };
-  }
   render() {
-    return [
-      this.icon && <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon>,
-      <div class="inner-content"><slot /></div>
-    ];
+    return (
+      <Host class={{'full-content': this.option === 'fill'}}>
+        {this.icon ? <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon> : ''}
+        <div class="inner-content"><slot></slot></div>
+      </Host>
+    )
   }
 }

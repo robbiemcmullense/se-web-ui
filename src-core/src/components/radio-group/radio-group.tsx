@@ -1,4 +1,4 @@
-import { Component, Watch, Element, Event, EventEmitter, Prop, Listen } from '@stencil/core';
+import { Component, h, Watch, Element, Event, EventEmitter, Prop, Listen } from '@stencil/core';
 
 @Component({
   tag: 'se-radio-group',

@@ -1,4 +1,4 @@
-import {Component, Method, Element, State, Prop} from '@stencil/core';
+import {Component, h, Method, Element, State, Prop} from '@stencil/core';
 
 
 const SHOW_MENU = 'show-menu';
@@ -24,7 +24,7 @@ export class SidemenuComponent {
   @Prop() label: string = 'Menu';
 
   @Method()
-  toggle(): void {
+  async toggle() {
     this.open = !this.open;
     if (this.open) {
       // Add css classes

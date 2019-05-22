@@ -1,4 +1,4 @@
-import {Component,State,Method,Event,Element,EventEmitter,Listen,Prop} from "@stencil/core";
+import {Component, h, Host, State, Method, Event, Element, EventEmitter, Listen, Prop} from "@stencil/core";
 @Component({
   tag: "se-tooltip",
   styleUrl: "tooltip.scss",
@@ -24,11 +24,11 @@ export class TooltipComponent {
    */
   @Event() didClose: EventEmitter;
   @State() opened: boolean = false;
-  @Listen("window:touchstart")
+  @Listen('touchstart', {target: 'window'})
   handleTouchstart(ev) {
     this._toggle(ev);
   }
-  @Listen("window:touchend")
+  @Listen('touchend', {target: 'window'})
   handleTouchEnd(ev) {
     this._toggle(ev);
   }
@@ -46,7 +46,7 @@ export class TooltipComponent {
     }
   }
 
-  @Listen("window:click")
+  @Listen('click', {target: 'window'})
   handleMouseClick(ev) {
     if (this.action === "click" && this.opened ) {
      this._toggle(ev);
@@ -68,7 +68,7 @@ export class TooltipComponent {
    * Method to open the tooltip from the outside.
    */
   @Method()
-  open() {
+  async open() {
     this.opened = true;    
   }
 
@@ -76,23 +76,20 @@ export class TooltipComponent {
    * Method to close the tooltip from the outside.
    */
   @Method()
-  close() {
+  async close() {
     this.opened =false;
-  }
-  hostData() {
-    return {
-      class: [this.position].join(" ")
-    };
   }
 
   render() {
-    return [
-      <div onClick={this.action == "click"? ev => {this._toggle(ev)}: () => {}}>
-        <slot name="tooltip" />
-      </div>,
-      <div class={`${this.opened ? "show" : ""} tooltip`}>
-        <slot />
-      </div>
-    ];
+    return (
+      <Host class={this.position}>
+        <div onClick={this.action == "click"? ev => {this._toggle(ev)}: () => {}}>
+          <slot name="tooltip" />
+        </div>,
+        <div class={`${this.opened ? "show" : ""} tooltip`}>
+          <slot />
+        </div>
+      </Host>
+    )
   }
 }

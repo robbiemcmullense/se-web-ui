@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
   tag: "se-block",
@@ -80,23 +80,14 @@ export class BlockComponent {
     });
   }
 
-  hostData() {
-    return {
-      class: [
-        this.option,
-        this.color,
-        this.display,
-        this.enlarged && this.display === "grid" ? "grid-large" : ""
-      ].join(" ")
-    };
-  }
-
   render() {
     return (
-      <div class="block-body">
-        {this.loading ? <se-loading loading={this.loading} /> : ""}
-        <slot />
-      </div>
-    );
+      <Host class={[this.option, this.color, this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}>
+        <div class="widget-body">
+          {this.loading ? <se-loading loading={this.loading} /> : ''}
+          <slot></slot>
+        </div>
+      </Host>
+    )
   }
 }

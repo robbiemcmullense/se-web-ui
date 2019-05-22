@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
 	tag: "se-visual-linear",
@@ -31,29 +31,21 @@ export class VisualLinearComponent {
 	 */
 	@Prop({ mutable: true }) percentage: number;
 
-	hostData() {
-		return {
-			class: [this.option].join(' ')
-		}
-	}
-
 	render() {
-		return [
-			<div class="se-visual-linear">
-				<svg height="8">
-					<rect class="progress-bar-wrapper" width="100%" height="8" />
-					<rect class="progress-bar" width={this.percentage + '%'} height="8" style={{ 'fill': this.secolor }} />
-					Sorry, your browser does not support inline SVG.
+		return (
+			<Host class={this.option}>
+				<div class="se-visual-linear">
+					<svg height="8">
+						<rect class="progress-bar-wrapper" width="100%" height="8"></rect>
+						<rect class="progress-bar" width={this.percentage + '%'} height="8" style={{ 'fill': this.secolor }}></rect>
+						Sorry, your browser does not support inline SVG.
 				</svg>
-				<text>
-					{this.value && <tspan class="linear-value">{this.value}</tspan>}
-					<tspan x="100%"class="linear-label">{this.label}</tspan>
-				</text>
-				{/* <div class="visual-linear-data">
-					{this.value && <value>{this.value}</value>}
-					<label>&nbsp;{this.label}</label>
-				</div> */}
-			</div>
-		];
+					<text>
+						{this.value ? <tspan class="linear-value">{this.value}</tspan> : ''}
+						<tspan x="100%" class="linear-label">{this.label}</tspan>
+					</text>
+				</div>
+			</Host>
+		)
 	}
 }

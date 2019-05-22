@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
   tag: "se-container",
@@ -95,25 +95,11 @@ export class ContainerComponent {
     this.rowSizeDidChange();
   }
 
-  hostData() {
-    return {
-      class: [
-        `${this.option}-content`,
-        this.position,
-        this.color,
-        `${this.direction}-dir`, //"row" conflicted with bootstrap class
-        this.display
-      ].join(" ")
-    };
-  }
-
   render() {
-    return this.option === "centered" ? (
-      <div class="wrapper-center">
-        <slot />
-      </div>
-    ) : (
-      <slot />
-    );
+    return (
+      <Host class={[`${this.option}-content`, this.position, this.color, this.direction, this.display].join(' ')}>
+        {this.option === "centered" ? <div class="wrapper-center"><slot></slot></div> : <slot></slot>}
+      </Host>
+    )
   }
 }

@@ -24,20 +24,20 @@
 
 ## Events
 
-| Event       | Description                                                                    | Type                |
-| ----------- | ------------------------------------------------------------------------------ | ------------------- |
-| `didChange` | Send the checkbox value to the parent component when clicking on the checkbox. | `CustomEvent<void>` |
+| Event       | Description                                                                    | Type               |
+| ----------- | ------------------------------------------------------------------------------ | ------------------ |
+| `didChange` | Send the checkbox value to the parent component when clicking on the checkbox. | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `setRequired() => void`
+### `setRequired() => Promise<void>`
 
 Set the required property on the checkbox element.  Used when the checkbox is within a form field.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

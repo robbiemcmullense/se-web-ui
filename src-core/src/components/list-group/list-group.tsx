@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element, Listen } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, Element, Listen } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -49,8 +49,10 @@ export class ListGroupComponent {
 
   checkSelected(){
     if (!this.collapsed) {
+      console.log('not collapsed');
       this.selected = false;
     } else {
+      console.log('collapsed!');
       let hasSelectedChild = false;
       Array.from(
         this.el.querySelectorAll("se-list-item, se-list-group")
@@ -75,42 +77,32 @@ export class ListGroupComponent {
     this.collapsed = !this.collapsed;
   }
 
-  hostData() {
-    return {
-      class: [this.selected && "selected", this.collapsed && "collapsed", this.option].join(" ")
-    };
-  }
-
   render() {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
-    return [
-      <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()}>
-        {this.option === "nav" && this.selected && <div class="selectedBar" />}
-        {!!this.icon && (
-          <div class="nav-icon">
-            <span class={["se-icon", this.iconColor].join(" ")}>
-              {this.icon}
-            </span>
+    return (
+      <Host class={[this.selected ? "selected" : '', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
+        <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()}>
+          {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
+          {!!this.icon ?
+            <div class="nav-icon">
+              <span class={["se-icon", this.iconColor].join(' ')}>
+                {this.icon}
+              </span>
+            </div>
+          : ''}
+          <div class="nav-content">
+            <div>{this.item}</div>
+            <small> {this.description}</small>
           </div>
-        )}
-        <div class="nav-content">
-          <div>{this.item}</div>
-          <small> {this.description}</small>
+          {this.option === "treeview"
+            ? <span class="se-icon">{this.collapsed ? "arrow2_down" : "arrow2_right"}</span>
+            : <span class="se-icon medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</span>
+          }      
+        </button>
+        <div class="group-item">
+          <slot></slot>
         </div>
-        {this.option !== "treeview" && (
-          <span class="se-icon medium">
-          {this.collapsed ? "arrow2_down" : "arrow2_up"}
-          </span>
-        )}
-        {this.option == "treeview" && (
-          <span class="se-icon">
-          arrow2_right
-          </span>
-        )}
-      </button>,
-      <div class="group-item">
-        <slot />
-      </div>
-    ];
+      </Host>
+    )
   }
 }

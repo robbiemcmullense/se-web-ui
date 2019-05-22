@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Listen, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Listen, Watch } from '@stencil/core';
 
 @Component({
 	tag: 'se-form-field',
@@ -77,11 +77,11 @@ export class FormFieldComponent {
 
 	initLabel() {
 		Array.from(this.el.querySelectorAll('input, select, se-checkbox, se-radio')).forEach((item: any) => {
-      item.disabled = this.disabled;
-      if (this.type === "checkbox" || this.type === "radio") {
+			item.disabled = this.disabled;
+			if (this.type === "checkbox" || this.type === "radio") {
 				item.label = this.label;
 				item.required = this.required;
-      }
+			}
 		});
 	}
 
@@ -92,18 +92,14 @@ export class FormFieldComponent {
 		}
 	}
 
-	hostData() {
-		return {
-			class: [this.status, this.option, this.type].join(' ')
-		};
-	}
-
 	render() {
 		return (
-			<div class="se-form-field" data-disabled={this.disabled}>
-        {(this.type === 'input' || this.type === 'select') &&  <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label>}
-				<slot></slot>
-			</div>
+			<Host class={[this.status, this.option, this.type].join(' ')}>
+				<div class="se-form-field" data-disabled={this.disabled}>
+					{(this.type === 'input' || this.type === 'select') ? <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label> : ''}
+					<slot></slot>
+				</div>
+			</Host>
 		)
 	}
 }

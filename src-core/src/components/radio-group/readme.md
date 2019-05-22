@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event       | Description                                                                                      | Type                |
-| ----------- | ------------------------------------------------------------------------------------------------ | ------------------- |
-| `didChange` | Passes the selected button value to the parent component when clicking on a button in the group. | `CustomEvent<void>` |
+| Event       | Description                                                                                      | Type               |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------------------ |
+| `didChange` | Passes the selected button value to the parent component when clicking on a button in the group. | `CustomEvent<any>` |
 
 
 ----------------------------------------------

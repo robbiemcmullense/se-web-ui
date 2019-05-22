@@ -25,6 +25,19 @@
 | `didSelectedChange` | Event emitted to notify the item-group that the selected state has changed. | `CustomEvent<void>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [se-sidemenu](..\sidemenu)
+
+### Graph
+```mermaid
+graph TD;
+  se-sidemenu --> se-list-item
+  style se-list-item fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
+import { Component, h, Host, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -54,32 +54,26 @@ export class ListItemComponent {
     }
   }
 
-  hostData() {
-    return {
-      class: [this.selected && "selected", this.option].join(" ")
-    };
-  }
-
   render() {
     return (
-      <button style={{ paddingLeft: this.padding + `px` }}>
-        {this.option === "nav" && this.selected && <div class="selectedBar" />}
-        {!!this.icon && (
-          <div class="nav-icon">
-            <span class={["se-icon", this.iconColor].join(" ")}>
-              {this.icon}
-            </span>
+      <Host class={[this.selected ? "selected" : '', this.option].join(' ')}>
+        <button style={{ paddingLeft: this.padding + `px` }}>
+          {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
+          {!!this.icon ?
+            <div class="nav-icon">
+              <span class={["se-icon", this.iconColor].join(' ')}>
+                {this.icon}
+              </span>
+            </div>
+          : ''}
+          <div class="nav-content">
+            <div>{this.item}</div>
+            <small> {this.description}</small>
           </div>
-        )}
-        <div class="nav-content">
-          <div>{this.item}</div>
-          <small> {this.description}</small>
-        </div>
-        {this.option === "nav" && (
-          <span class="se-icon medium">arrow2_right</span>
-        )}
-        {this.option === 'classic' && (<slot></slot>)}
-      </button>
-    );
+          {this.option === "nav" ? <span class="se-icon medium">arrow2_right</span> : ''}
+          {this.option === 'classic' ? <slot></slot> : ''}
+        </button>
+      </Host>
+    )
   }
 }

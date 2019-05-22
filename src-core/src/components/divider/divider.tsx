@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-divider",
@@ -17,13 +17,7 @@ export class DividerComponent {
    */
   @Prop() color: "standard" | "alternative" = "standard";
 
-  hostData() {
-    return {
-      class: [this.option, this.color].join(' ')
-    };
-  }
-
   render() {
-    return "";
+    return <Host class={[this.option, this.color].join(' ')}></Host>;
   }
 }

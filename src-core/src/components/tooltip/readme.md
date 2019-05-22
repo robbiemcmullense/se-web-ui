@@ -15,31 +15,31 @@
 
 ## Events
 
-| Event      | Description                                     | Type                |
-| ---------- | ----------------------------------------------- | ------------------- |
-| `didClose` | Event emitted when the tooltip has been closed. | `CustomEvent<void>` |
-| `didOpen`  | Event emitted when the tooltip has been opened. | `CustomEvent<void>` |
+| Event      | Description                                     | Type               |
+| ---------- | ----------------------------------------------- | ------------------ |
+| `didClose` | Event emitted when the tooltip has been closed. | `CustomEvent<any>` |
+| `didOpen`  | Event emitted when the tooltip has been opened. | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `close() => void`
+### `close() => Promise<void>`
 
 Method to close the tooltip from the outside.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
-### `open() => void`
+### `open() => Promise<void>`
 
 Method to open the tooltip from the outside.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

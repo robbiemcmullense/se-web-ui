@@ -1,4 +1,4 @@
-import { Component, Prop, State, Method, Element, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, h, Host, Prop, State, Method, Element, Event, EventEmitter, Listen } from '@stencil/core';
 
 
 @Component({
@@ -23,16 +23,16 @@ export class DropdownComponent {
    */
   @Prop() alignment: 'left' | 'right' = 'left';
   @State() opened: boolean = false;
-  @Listen('window:click')
+  @Listen('click', { target: 'window' })
   handleClick(ev) {
-    if(this.opened){
+    if (this.opened) {
       this._toggle(ev);
     }
   }
 
-  @Listen('window:touchstart')
+  @Listen('touchstart', { target: 'window' })
   handleTouchstart(ev) {
-    if(this.opened){
+    if (this.opened) {
       this._toggle(ev);
     }
   }
@@ -41,7 +41,7 @@ export class DropdownComponent {
    * Method to open the dropdown from the outside.
    */
   @Method()
-  open(){
+  async open() {
     this.opened = true;
   }
 
@@ -49,13 +49,13 @@ export class DropdownComponent {
    * Method to close the dropdown from the outside.
    */
   @Method()
-  close(){
+  async close() {
     this.opened = false;
   }
 
   _toggle(ev: Event) {
     ev.stopPropagation()
-    if(this.opened){
+    if (this.opened) {
       this.close();
       this.didClose.emit();
     } else {
@@ -64,20 +64,16 @@ export class DropdownComponent {
     }
   }
 
-  hostData() {
-    return {
-      class: [this.alignment].join(" ")
-    };
-  }
-
   render() {
-    return [
+    return (
+      <Host class={this.alignment}>
         <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
           <slot name="trigger"></slot>
-        </div>,
-        <div class={`${this.opened? 'show': ''} dropdown-content`}>
+        </div>
+        <div class={`${this.opened ? 'show' : ''} dropdown-content`}>
           <slot></slot>
         </div>
-     ];
+      </Host>
+    )
   }
 }

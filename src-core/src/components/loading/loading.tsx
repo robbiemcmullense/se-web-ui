@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-loading',
@@ -11,20 +11,16 @@ export class LoadingComponent {
    */
   @Prop() loading: boolean;
 
-  hostData() {
-    return {
-      class: {'show': this.loading}
-    }
-  }
-
   render() {
-    return [
-      <div class="loading-wrapper">
-        <div class="se-loading">
-          <div class="se-icon">spinner</div>
+    return (
+      <Host class={{'show': this.loading}}>
+        <div class="loading-wrapper">
+          <div class="se-loading">
+            <div class="se-icon">spinner</div>
+          </div>
         </div>
-      </div>,
-      <div class="loading-background"></div>
-    ];
+        <div class="loading-background"></div>
+      </Host>
+    )
   }
 }

@@ -1,4 +1,4 @@
-import { Component,Prop,Event,EventEmitter,Method } from '@stencil/core';
+import { Component,h, Prop,Event,EventEmitter,Method } from '@stencil/core';
 
 @Component({
   tag: 'se-slider',
@@ -30,7 +30,7 @@ value:number=0;
    * @param val set to `true` or `false`.
    */
 @Method()
-  setDisabled(val: boolean): void {
+async setDisabled(val: boolean) {
     this.disabled = val;
   }
 handleEvent() {  
@@ -47,8 +47,8 @@ componentDidLoad() {
 
   render() {
     return [
-      <div class="slider-container">
-      <input type="range" min={this.min} max={this.max} value={this.value} disabled={this.disabled} ref={el => this.sliderElement= el as HTMLInputElement}  onChange={()=>this.handleEvent()} ></input>
+      <div class="slider-container">,
+      <input type="range" min={this.min} max={this.max} value={this.value} disabled={this.disabled} ref={el => this.sliderElement= el as HTMLInputElement}  onChange={()=>this.handleEvent()} ></input>,
       </div>
     ];
   }
