@@ -5,7 +5,7 @@
 	.radio-container {
 		position: relative;
 		padding-left: 20px;
-    @include typology('p-small');
+    @include typology('small');
     margin: $spacing;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -49,7 +49,7 @@
 
 		.checkdot {
 			position: absolute;
-			top: 0;
+			top: 2px;
 			left: 0;
 			height: 12px;
 			width: 12px;
