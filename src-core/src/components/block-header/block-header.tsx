@@ -15,7 +15,8 @@ export class BlockHeader {
   render() {
     return (
       <Host class={this.option}>
-        <h3 class="flex"><slot></slot></h3>
+        <slot name="start"></slot>
+        <h4 class="flex"><slot></slot></h4>
         <slot name="end"></slot>
       </Host>
     )

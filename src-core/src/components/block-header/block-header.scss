@@ -6,7 +6,6 @@
   font-size: 20px;
   min-height: 40px;
   border-bottom: 1px solid $divider-color;
-  // @include display-flex();
   @include align-items(center);
   @include display-flex();
 

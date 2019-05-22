@@ -85,7 +85,7 @@ export class TooltipComponent {
       <Host class={this.position}>
         <div onClick={this.action == "click"? ev => {this._toggle(ev)}: () => {}}>
           <slot name="tooltip" />
-        </div>,
+        </div>
         <div class={`${this.opened ? "show" : ""} tooltip`}>
           <slot />
         </div>

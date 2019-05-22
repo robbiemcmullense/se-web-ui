@@ -83,7 +83,7 @@ export class BlockComponent {
   render() {
     return (
       <Host class={[this.option, this.color, this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}>
-        <div class="widget-body">
+        <div class="block-body">
           {this.loading ? <se-loading loading={this.loading} /> : ''}
           <slot></slot>
         </div>

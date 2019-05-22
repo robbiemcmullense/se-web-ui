@@ -131,7 +131,7 @@ export class ButtonComponent {
           this.hasChild ? 'hasChild' : '',
           this.grouped ? 'grouped' : '',
           this.option].join(' ')}>
-        <button disabled={this.disabled} type={this.type} class={[this.color, this.option, this.selected ? 'selected' : ''].join(' ')} onClick={() => this.toggle()}>
+        <button disabled={this.disabled} type={this.type} class={[this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')} onClick={() => this.toggle()}>
           {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
           {this.hasChild ? <span class="text"><slot></slot></span> : ''}
         </button>
