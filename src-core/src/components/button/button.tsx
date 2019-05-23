@@ -119,7 +119,7 @@ export class ButtonComponent {
   }
 
   componentWillLoad() {
-    this.hasChild = this.el.innerHTML && this.el.innerHTML.length > 0;
+    this.hasChild = this.el.innerHTML && this.el.innerHTML !== '<!---->'; // MS Edge still renders innerHTML for icon only buttons
     this.optionDidChange();
   }
 

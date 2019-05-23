@@ -50,8 +50,7 @@ export class FabComponent {
 		}
 	}
 
-	@Method()
-	async getIcon() {
+	getIcon() {
 		let icon: any;
 		switch (this.option) {
 			case 'speeddial':
@@ -65,19 +64,16 @@ export class FabComponent {
 		return icon;
 	}
 
-
 	render() {
-		this.getIcon().then((iconToDisplay) => {
-			return (
-				<div class={['fab-container', this.position].join(" ")}>
-					<se-button color={this.color} class={this.option == 'backtotop' ? 'backtotop' : ''} option='fab' onClick={() => this.toggleAction()} icon={iconToDisplay}></se-button>
-					{this.option == 'speeddial' ?
-						<div class={['mini-action-button', !this.toggleIcon ? SHOW_FAB : ''].join(' ')}>
-							<slot></slot>
-						</div> : ''
-					}
-				</div>
-			)
-		});
+		return (
+			<div class={['fab-container', this.position].join(" ")}>
+				<se-button color={this.color} class={this.option == 'backtotop' ? 'backtotop' : ''} option='fab' onClick={() => this.toggleAction()} icon={this.getIcon()}></se-button>
+				{this.option == 'speeddial' ?
+					<div class={['mini-action-button', !this.toggleIcon ? SHOW_FAB : ''].join(' ')}>
+						<slot></slot>
+					</div> : ''
+				}
+			</div>
+		)
 	}
 }
