@@ -14,8 +14,9 @@ export class ContainerComponent {
    * `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray).
    * `centered` centers the container so the content does not exceed a maximum width.
    * `card` adds a larger spacing and sets the color property to `alternative` (white).
+   * `inherited` will insure that no specific style is applied to the container.
    */
-  @Prop() option: "fill" | "widget" | "card" | "centered"  = "fill";
+  @Prop() option: "fill" | "widget" | "card" | "centered" | "inherited"  = "fill";
   @Watch("option") optionDidChange() {
     if (this.option === "widget") {
       this.color = "standard";

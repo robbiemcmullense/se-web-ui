@@ -10,10 +10,10 @@ $fill-color: #626469;
 @mixin track($fill: 0) {
 	box-sizing: border-box;
 	border: none;
-	width: $track-width; 
+	width: $track-width;
 	height: $track-height;
 	background: $track-color;
-	
+
 	@if $fill == 1 {
 	.slider-container & {
 		width: 100%;
@@ -54,17 +54,15 @@ input[type='range'] {
 	padding: 0;
 	width: $track-width; height: $thumb-dimension;
 	background: transparent;
-	font: 1em/1 arial, sans-serif;
-	
 	&::-webkit-slider-runnable-track {
 		@include track(1);
 	}
 	&::-moz-range-track { @include track }
 	&::-ms-track { @include track;}
-	
+
 	&::-moz-range-progress { @include fill }
 	&::-ms-fill-lower { @include fill; }
-	
+
 	&::-webkit-slider-thumb {
 		margin-top: .5*($track-height - $thumb-dimension);
 		@include thumb;
@@ -75,13 +73,13 @@ input[type='range'] {
 		margin-top: 0;
         @include thumb;
 	}
-	
+
 	&::-ms-tooltip { display: none }
-	::-ms-ticks-after { 
+	::-ms-ticks-after {
 			display: none;
 	}
-    
-	::-ms-ticks-before { 
-			display: none; 
+
+	::-ms-ticks-before {
+			display: none;
 	}
 }

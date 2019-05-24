@@ -18,14 +18,14 @@ export class LinkComponent {
    * Default setting is `internal`.
    * The `external` setting adds an underline to the link, and opens the link in a new web browser tab.
    */
-  @Prop() type: 'internal' | 'external' = 'internal';
+  @Prop() option: 'internal' | 'external' = 'internal';
 
   render() {
     return (
       <a href={this.url}
         data-disabled={this.disabled}
-        class={this.type == 'external' ? 'external' : ''}
-        target={this.type == 'external' ? '_blank' : ''}><slot/></a>
+        class={this.option == 'external' ? 'external' : ''}
+        target={this.option == 'external' ? '_blank' : ''}><slot/></a>
     )
   }
 }

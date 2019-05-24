@@ -42,7 +42,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [se-button](..\button)
+- [se-button](../button)
 
 ### Graph
 ```mermaid

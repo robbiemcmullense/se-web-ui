@@ -16,7 +16,7 @@
 
 ### Used by
 
- - [se-block](..\block)
+ - [se-block](../block)
 
 ### Graph
 ```mermaid

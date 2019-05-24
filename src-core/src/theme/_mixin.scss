@@ -60,12 +60,13 @@ $prefix: "--"; //Prefix string for custom CSS properties
 }
 
 @mixin typology($value) {
-  $margin: 15px 0 10px;
+  $margin: 16px 0 10px;
 
   font-weight: 300;
   line-height: 1.4 !important;
   @if $value == "h1" {
     margin: $margin;
+    margin-top: 32px;
     font-size: $h1-fontsize;
   } @else if $value == "h2" {
     margin: $margin;

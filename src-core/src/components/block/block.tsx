@@ -66,11 +66,18 @@ export class BlockComponent {
   }
 
   private updateSize() {
+    // reset all sizes first
+    this.el.style.width = 'auto';
+    this.el.style.minWidth = 'auto';
+    this.el.style.height = 'auto';
+    this.el.style.minHeight = 'auto';
     if (this.width) {
       this.el.style.width = this.width;
+      this.el.style.minWidth = this.width;
     }
     if (this.height) {
       this.el.style.height = this.height;
+      this.el.style.minHeight = this.width;
     }
   }
 

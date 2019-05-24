@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Host } from '@stencil/core';
 
 @Component({
   tag: 'se-tabbar',
@@ -13,19 +13,28 @@ export class TabbarComponent {
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
 
+  /**
+   * Defines the inner appearance of a tabbar.
+   * `fill` is the default option, taking the full space of the tabbar.
+   * `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+   */
+  @Prop() option: "fill" | "centered"  = "fill";
+
   render() {
     return (
-      <nav class={[this.color, "d-flex-main"].join(' ')}>
-        <div class="nav-left-wrapper centered">
-          <slot name="start" />
+      <Host class={`tab-${this.color}`}>
+        <div class={["d-flex-main", `opt-${this.option}`].join(' ')}>
+          <div class="nav-left-wrapper centered">
+            <slot name="start" />
+          </div>
+          <div class="fill-space nav-center-wrapper">
+            <slot />
+          </div>
+          <div class="centered">
+            <slot name="end" />
+          </div>
         </div>
-        <div class="fill-space nav-center-wrapper">
-          <slot />
-        </div>
-        <div class="centered">
-          <slot name="end" />
-        </div>
-      </nav>
+      </Host>
     );
   }
 }

@@ -18,11 +18,11 @@
 
 ### Used by
 
- - [se-dialog-content](..\dialog-content)
- - [se-header](..\header)
- - [se-sidemenu](..\sidemenu)
- - [se-tooltip-content](..\tooltip-content)
- - [se-tooltip-header](..\tooltip-header)
+ - [se-dialog-content](../dialog-content)
+ - [se-header](../header)
+ - [se-sidemenu](../sidemenu)
+ - [se-tooltip-content](../tooltip-content)
+ - [se-tooltip-header](../tooltip-header)
 
 ### Graph
 ```mermaid

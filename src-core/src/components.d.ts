@@ -258,9 +258,9 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white).
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
     */
-    'option': "fill" | "widget" | "card" | "centered";
+    'option': "fill" | "widget" | "card" | "centered" | "inherited";
     /**
     * In specific cases, it may be necessary to define the container with an absolute position (inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
     */
@@ -439,7 +439,7 @@ export namespace Components {
     /**
     * Default setting is `internal`. The `external` setting adds an underline to the link, and opens the link in a new web browser tab.
     */
-    'type': 'internal' | 'external';
+    'option': 'internal' | 'external';
     /**
     * Defines the url the user should get redirected to when clicking on the link.
     */
@@ -631,6 +631,10 @@ export namespace Components {
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color': 'primary' | 'alternative';
+    /**
+    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+    */
+    'option': "fill" | "centered";
   }
   interface SeTooltip {
     /**
@@ -956,9 +960,9 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white).
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
     */
-    'option'?: "fill" | "widget" | "card" | "centered";
+    'option'?: "fill" | "widget" | "card" | "centered" | "inherited";
     /**
     * In specific cases, it may be necessary to define the container with an absolute position (inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
     */
@@ -1140,7 +1144,7 @@ declare namespace LocalJSX {
     /**
     * Default setting is `internal`. The `external` setting adds an underline to the link, and opens the link in a new web browser tab.
     */
-    'type'?: 'internal' | 'external';
+    'option'?: 'internal' | 'external';
     /**
     * Defines the url the user should get redirected to when clicking on the link.
     */
@@ -1343,6 +1347,10 @@ declare namespace LocalJSX {
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color'?: 'primary' | 'alternative';
+    /**
+    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+    */
+    'option'?: "fill" | "centered";
   }
   interface SeTooltip extends JSXBase.HTMLAttributes {
     /**

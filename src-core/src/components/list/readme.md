@@ -16,7 +16,7 @@
 
 ### Used by
 
- - [se-sidemenu](..\sidemenu)
+ - [se-sidemenu](../sidemenu)
 
 ### Graph
 ```mermaid
