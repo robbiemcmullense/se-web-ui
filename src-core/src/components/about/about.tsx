@@ -43,7 +43,7 @@ export class AboutComponent {
     }
     return [
       <div class="image-container">
-        <img class="image-background" style={{ backgroundImage: this.imageUrl }}></img>
+        <img class="image-background" style={{ backgroundImage: this.imageUrl }}/>
       </div>,
       <div class="about-section-wrapper">
         <div class="information">

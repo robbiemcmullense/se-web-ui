@@ -17,16 +17,6 @@
 
 ## Methods
 
-### `getIcon() => Promise<any>`
-
-
-
-#### Returns
-
-Type: `Promise<any>`
-
-
-
 ### `toggleAction() => Promise<void>`
 
 Method to toggle(show/hide) the mini action buttons.

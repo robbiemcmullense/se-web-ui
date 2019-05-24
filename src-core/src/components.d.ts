@@ -342,7 +342,6 @@ export namespace Components {
     * Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color': 'primary' | 'alternative';
-    'getIcon': () => Promise<any>;
     /**
     * Property that determines  icon included in the main action button.
     */

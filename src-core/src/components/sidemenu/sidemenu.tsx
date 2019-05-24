@@ -1,6 +1,5 @@
 import {Component, h, Method, Element, State, Prop} from '@stencil/core';
 
-
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
 
@@ -62,8 +61,10 @@ export class SidemenuComponent {
     this.items && this.items.forEach((item: any) => {
       item.active = false;
     });
-    item.active = true;
-    this.selectedItem = item;
+    setTimeout(() => {
+      item.active = true;
+      this.selectedItem = item;
+    }, 100)
   }
 
   private addAnimation(callback) {
