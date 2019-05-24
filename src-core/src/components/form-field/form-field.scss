@@ -59,10 +59,11 @@ label {
 }
 
 ::slotted(textarea) {
-  width: 60%;
+  width: 62%;
   padding: 8px;
+  border: 1px solid $se-super-light-grey;
   font-family: inherit;
-  resize: none;
+  resize: vertical;
 }
 
 :host([option="stacked"]) {

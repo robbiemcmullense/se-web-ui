@@ -36,11 +36,11 @@
 :host(.block-content) {
   padding: $spacing-small;
 }
-:host(.fill-content) {
+:host(.fill-content:not(.block)) {
   padding: 0;
   height: 100%;
 }
-:host(.card-content) {
+:host(.card-content:not(.block)) {
   padding: $spacing;
 }
 

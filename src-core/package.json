@@ -33,6 +33,7 @@
     "pixelmatch": "4.0.2",
     "puppeteer": "1.11.0",
     "rimraf": "^2.6.3",
+    "stencil-inline-svg": "^0.0.2",
     "workbox-build": "~4.1.1"
   },
   "license": "MIT"
