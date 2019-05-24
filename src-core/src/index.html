@@ -163,7 +163,7 @@
         <se-block id="block0">
           <se-block-header>
             <div slot="start">
-                <se-icon color="primary">airconditioner_hot_heating</se-icon>
+              <se-icon color="primary">airconditioner_hot_heating</se-icon>
             </div>
             Typography
             <div slot="end">
@@ -225,16 +225,16 @@
             <se-dropdown alignment="left">
               <se-button slot="trigger" option="flat">Dropdown</se-button>
               <se-list option="dropdown">
-                <se-list-item item="Click to load" onclick="loader()"></se-list-item>
-                <se-list-item item="my item 3 no icon"></se-list-item>
-                <se-list-item item="I'm the selected one!"></se-list-item>
+                <se-list-item item="Item 1"></se-list-item>
+                <se-list-item item="Item 2"></se-list-item>
+                <se-list-item item="Item 3 longer description"></se-list-item>
                 <se-list-item item="Basic Item"></se-list-item>
                 <se-list-item item="I'm here"></se-list-item>
-                <se-list-item item="my item 2 no description  with a long text"></se-list-item>
+                <se-list-item item="My item with no description and a long text"></se-list-item>
               </se-list>
             </se-dropdown>
             <se-button icon="action_resize">Resize</se-button>
-            <se-button option="outline" onclick="loader()">Outline</se-button>
+            <se-button option="outline">Outline</se-button>
             <se-button option="outline" color="alternative">Outline alternative</se-button>
             <se-button option="outline" color="primary">Outline primary</se-button>
             <se-button option="outline" color="secondary">Outline secondary</se-button>
@@ -242,6 +242,9 @@
             <se-divider></se-divider>
             <se-button icon="action_resize" size="medium">medium size</se-button>
             <se-button icon="action_resize" size="large">large size</se-button>
+            <se-divider></se-divider>
+            <se-button onclick="standardLoader()">Standard Loader</se-button>
+            <se-button onclick="dialogLoader()">Dialog Loader</se-button>
             <se-divider></se-divider>
             <se-button option='fab' icon="notebook_paper" color="primary"></se-button>
             <se-chip id="se-chip" value="Chip 01"></se-chip>
@@ -288,6 +291,7 @@
           </se-block-content>
         </se-block>
         <se-block id="block2">
+          <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
           <se-block-header>
             Forms
             <div slot="end">
@@ -549,14 +553,24 @@
       document.getElementById('se-authentication').hide = true;
     }
 
-    // Loader
-    function loader() {
+    // Standard Loader
+    function standardLoader() {
       let loadingBlock = document.getElementById('block0');
       loadingBlock.loading = true;
       setTimeout(function () {
         loadingBlock.loading = false;
       }, 3000);
     }
+
+    // Dialog Loader
+    function dialogLoader() {
+      let loadingBlock = document.getElementById('dialog-loader');
+      loadingBlock.loading = true;
+      setTimeout(function () {
+        loadingBlock.loading = false;
+      }, 3000);
+    }
+
 
     // grid widget
     function toggle(id) {
