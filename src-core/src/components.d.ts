@@ -519,6 +519,10 @@ export namespace Components {
     * Displays the loading icon on screen when set to `true`.
     */
     'loading': boolean;
+    /**
+    * Define the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it's within a popup dialog box.
+    */
+    'option': 'standard' | 'dialog';
   }
   interface SeRadio {
     /**
@@ -1224,6 +1228,10 @@ declare namespace LocalJSX {
     * Displays the loading icon on screen when set to `true`.
     */
     'loading'?: boolean;
+    /**
+    * Define the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it's within a popup dialog box.
+    */
+    'option'?: 'standard' | 'dialog';
   }
   interface SeRadio extends JSXBase.HTMLAttributes {
     /**

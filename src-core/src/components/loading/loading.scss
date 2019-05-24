@@ -21,12 +21,14 @@
 .se-loading {
 	position: relative;
 	line-height: 128px;
-  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.3);
 	@include animated();
-  @include background-color("alternative");
   @include color("primary");
   @include display-flex();
   @include flex-direction(column);
+  &.dialog {
+    @include background-color("alternative");
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .loading-background {
