@@ -58,6 +58,13 @@ label {
   padding-left: 4px;
 }
 
+::slotted(textarea) {
+  width: 60%;
+  padding: 8px;
+  font-family: inherit;
+  resize: none;
+}
+
 :host([option="stacked"]) {
 	.se-form-field {
     flex-direction: column;
@@ -68,13 +75,17 @@ label {
     padding: 0 8px 4px;
     text-align: left;
     line-height: 12px;
+    width: auto;
 	}
 	::slotted(input) {
 		width: 97%;
 	}
 	::slotted(select) {
 		width: 100%;
-	}
+  }
+  ::slotted(textarea) {
+    width: 97%;
+  }
 }
 
 :host(.error) {
