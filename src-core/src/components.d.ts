@@ -230,7 +230,7 @@ export namespace Components {
     /**
     * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
     */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
+    'color': 'standard' | 'alternative';
     /**
     * Indicates whether or not the chip is disabled.  Set to `false` by default.
     */
@@ -300,7 +300,7 @@ export namespace Components {
     /**
     * Indicates what color schema you want to render in your dialog.
     */
-    'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor': 'anthracitegrey' | 'lightgrey' | 'white' | 'lifegreen' | 'lightgreen';
     /**
     * When set to `fill`, content will fill the whole space of the dialog.
     */
@@ -407,7 +407,7 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color': 'anthracitegrey' | 'lightgrey' | 'white' | 'lifegreen' | 'lightgreen';
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
@@ -415,7 +415,7 @@ export namespace Components {
     /**
     * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
     */
-    'size': "small" | "medium" | "large";
+    'size': "nano" | "small" | "medium" | "large" | "xtralarge";
   }
   interface SeIconEcostruxure {
     /**
@@ -931,7 +931,7 @@ declare namespace LocalJSX {
     /**
     * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
     */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
+    'color'?: 'standard' | 'alternative';
     /**
     * Indicates whether or not the chip is disabled.  Set to `false` by default.
     */
@@ -1009,7 +1009,7 @@ declare namespace LocalJSX {
     /**
     * Indicates what color schema you want to render in your dialog.
     */
-    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor'?: 'anthracitegrey' | 'lightgrey' | 'white' | 'lifegreen' | 'lightgreen';
     /**
     * When set to `fill`, content will fill the whole space of the dialog.
     */
@@ -1116,7 +1116,7 @@ declare namespace LocalJSX {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color'?: 'anthracitegrey' | 'lightgrey' | 'white' | 'lifegreen' | 'lightgreen';
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
@@ -1124,7 +1124,7 @@ declare namespace LocalJSX {
     /**
     * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
     */
-    'size'?: "small" | "medium" | "large";
+    'size'?: "nano" | "small" | "medium" | "large" | "xtralarge";
   }
   interface SeIconEcostruxure extends JSXBase.HTMLAttributes {
     /**

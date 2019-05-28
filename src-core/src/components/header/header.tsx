@@ -48,7 +48,7 @@ export class HeaderComponent {
       <div class="d-flex">
         {this.hasMenu ?
           <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
-            <se-icon size="large" color="primary">
+            <se-icon size="large" color="lifegreen">
               burger_menu
             </se-icon>
           </span>
