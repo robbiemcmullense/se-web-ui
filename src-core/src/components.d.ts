@@ -407,15 +407,15 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color': "standard" | "alternative" | "primary" | "secondary";
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
-    'option': 'button';
+    'option': "button";
     /**
     * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
     */
-    'size': "small" | "medium" | "large";
+    'size': "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure {
     /**
@@ -1116,15 +1116,15 @@ declare namespace LocalJSX {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'color'?: "standard" | "alternative" | "primary" | "secondary";
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
-    'option'?: 'button';
+    'option'?: "button";
     /**
     * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
     */
-    'size'?: "small" | "medium" | "large";
+    'size'?: "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure extends JSXBase.HTMLAttributes {
     /**

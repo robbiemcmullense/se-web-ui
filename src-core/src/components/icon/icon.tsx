@@ -10,22 +10,30 @@ export class IconComponent {
   /**
    * Optional property to define if the icon should act as a button (clickable).
    */
-  @Prop() option: 'button';
+  @Prop() option: "button";
   /**
    * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
    */
-  @Prop() size: "small" | "medium" | "large" = "small";
+  @Prop() size: "small" | "medium" | "large" | "xlarge" = "small";
   /**
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary';
+  @Prop() color: "standard" | "alternative" | "primary" | "secondary";
 
-  componentWillLoad() {
-    this.el.classList.add(this.size);
-  }
+  // componentWillLoad() {
+  //   this.el.classList.add(this.size);
+  // }
 
   render() {
-    return (<Host class={[this.color, this.option].join(' ')}><slot></slot></Host>);
+    return (
+      <Host
+        class={[`icon-${this.size}`, this.color, `icon-${this.option}`].join(
+          " "
+        )}
+      >
+        <slot />
+      </Host>
+    );
   }
 }
