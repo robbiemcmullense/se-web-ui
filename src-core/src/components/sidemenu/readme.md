@@ -29,13 +29,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [se-list-item](../list-item)
-- [se-icon](../icon)
-- [se-chip](../chip)
-- [se-divider](../divider)
-- [se-list](../list)
-- [se-icon-lifeison](../icon-lifeison)
-- [se-block](../block)
+- [se-list-item](..\list-item)
+- [se-icon](..\icon)
+- [se-chip](..\chip)
+- [se-divider](..\divider)
+- [se-list](..\list)
+- [se-icon-lifeison](..\icon-lifeison)
+- [se-block](..\block)
 
 ### Graph
 ```mermaid

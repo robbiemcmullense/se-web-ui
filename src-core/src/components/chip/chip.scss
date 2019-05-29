@@ -1,27 +1,25 @@
 @import "../../theme/theme";
 
-$chip-height: 22px;
+$chip-height: 32px;
 
 :host {
   display: inline-flex;
   margin: $spacing;
   height: $chip-height;
-  padding-left: $chip-height / 2;
-  padding-right: $chip-height / 2;
-  font-size: 14px;
-  line-height: 14px;
+  padding-left: $chip-height / 4;
+  padding-right: $chip-height / 4;
+  font-size: 16px;
+  line-height: 16px;
   text-align: left;
+  background: transparent;
   outline: none;
-  border: none;
-  cursor: pointer;
   border-radius: 16px;
   @include align-items(center);
 
   .se-icon {
     cursor: pointer;
-    font-size: 24px;
-    margin-left: 10px;
-    margin-right: -10px;
+    font-size: 32px;
+    margin-right: -6px;
     font-family: "se-icon";
     &[data-hide] {
       display: none;
@@ -31,25 +29,27 @@ $chip-height: 22px;
 
 
 :host(.standard) {
-  @include color('standard-contrast');
-  @include background-color('standard');
+  border: 1px solid $se-ultra-dark-grey;
+  color: $se-anthracite-grey;
 }
 
 :host(.alternative) {
-  @include color('alternative-contrast');
-  @include background-color('alternative');
+  border: 1px solid $se-white;
+  @include color('alternative');
 }
 
-:host(.standard:hover),
+:host(.standard:hover) {
+  background-color: rgba(203,203,203,0.2);
+}
 :host(.alternative:hover) {
-  @include color('hover-standard-contrast');
-  @include background-color('hover-standard');
+  background-color: rgba(203,203,203,0.6);
 }
 :host(.standard:active),
 :host(.alternative:active),
 :host(.selected) {
   @include color('selected-contrast');
   @include background-color('selected');
+  border: 1px solid $se-dark-grey;
 }
 :host(.standard:focus),
 :host(.alternative:focus) {
@@ -57,65 +57,10 @@ $chip-height: 22px;
   @include background-color('focus');
 }
 
-:host(.standard.disabled) {
+:host(.disabled) {
   color: $se-light-grey;
-  background-color: $se-ultra-light-grey-2;
+  border: 1px solid $se-light-grey;
   .se-icon {
     cursor: default;
   }
-}
-
-:host(.alternative.disabled) {
-  color: $se-super-light-grey;
-  @include background-color('alternative');
-  .se-icon {
-    cursor: default;
-  }
-}
-
-:host(.primary) {
-  @include color('primary-contrast');
-  @include background-color('primary');
-}
-:host(.primary:hover) {
-  @include color('hover-primary-contrast');
-  @include background-color('hover-primary');
-}
-
-:host(.secondary) {
-  @include color('secondary-contrast');
-  @include background-color('secondary');
-}
-:host(.secondary:hover) {
-  @include color('hover-secondary-contrast');
-  @include background-color('hover-secondary');
-}
-
-:host(.red) {
-  @include color('primary-contrast');
-  background-color: $se-red;
-}
-:host(.fuchsia) {
-  @include color('primary-contrast');
-  background-color: $se-fuchsia-red;
-}
-:host(.skyBlue) {
-  @include color('primary-contrast');
-  background-color: $se-sky-blue;
-}
-:host(.darkBlue) {
-  @include color('primary-contrast');
-  background-color: $se-dark-sky-blue;
-}
-:host(.orange) {
-  @include color('primary-contrast');
-  background-color: $se-honeysuckle-orange;
-}
-:host(.yellow) {
-  @include color('primary-contrast');
-  background-color: $se-sunflower-yellow;
-}
-:host(.gray) {
-  @include color('primary-contrast');
-  background-color: $se-medium-grey;
 }

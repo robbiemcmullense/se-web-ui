@@ -10,6 +10,9 @@
   width: 100%;
   z-index: 20;
   background-color: transparent !important;
+  se-link{
+    padding: 16px;
+  }
 }
 .full-content {
   @include absolute();

@@ -106,7 +106,7 @@ export class SidemenuComponent {
             </span>
             <h3 class="header-title">{this.label}</h3>
           </div>
-          <se-chip color="primary" can-close="false" value="https://schneider-electric.com"/>
+          <se-link url="https://schneider-electric.com" option="external">schneider-electric.com</se-link>
         </div>
         <se-divider/>
         <div class="d-flex flex">

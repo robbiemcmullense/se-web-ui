@@ -230,7 +230,7 @@ export namespace Components {
     /**
     * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
     */
-    'color': 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
+    'color': 'standard' | 'alternative';
     /**
     * Indicates whether or not the chip is disabled.  Set to `false` by default.
     */
@@ -300,7 +300,7 @@ export namespace Components {
     /**
     * Indicates what color schema you want to render in your dialog.
     */
-    'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor': "standard" | "alternative" | "primary" | "secondary";
     /**
     * When set to `fill`, content will fill the whole space of the dialog.
     */
@@ -1231,7 +1231,7 @@ declare namespace LocalJSX {
     /**
     * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
     */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
+    'color'?: 'standard' | 'alternative';
     /**
     * Indicates whether or not the chip is disabled.  Set to `false` by default.
     */
@@ -1309,7 +1309,7 @@ declare namespace LocalJSX {
     /**
     * Indicates what color schema you want to render in your dialog.
     */
-    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'iconColor'?: "standard" | "alternative" | "primary" | "secondary";
     /**
     * When set to `fill`, content will fill the whole space of the dialog.
     */

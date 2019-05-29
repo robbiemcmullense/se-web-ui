@@ -21,7 +21,7 @@
 
 ### Depends on
 
-- [se-icon-ecostruxure](../icon-ecostruxure)
+- [se-icon-ecostruxure](..\icon-ecostruxure)
 
 ### Graph
 ```mermaid

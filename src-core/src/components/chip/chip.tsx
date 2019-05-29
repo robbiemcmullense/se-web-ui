@@ -14,7 +14,7 @@ export class ChipComponent {
   /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow' = 'standard';
+  @Prop() color: 'standard' | 'alternative' = 'standard';
   /**
    * Indicates whether or not the chip has a close button.  Set to `false` by default.
    */
@@ -39,7 +39,7 @@ export class ChipComponent {
 
   render() {
     return (
-      <Host class={this.color}>
+      <Host class={[this.color, this.disabled ? 'disabled' : ''].join(' ')}>
         <div class="value">{this.value}</div>
         {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
       </Host>

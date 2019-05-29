@@ -45,30 +45,19 @@
                     </div>
                   </se-block-header>
                   <se-block-content>
-                    <se-chip color="orange" value="Orange Chip"></se-chip>
-                    <se-chip color="yellow" value="Yellow Chip"></se-chip>
-                    <se-chip color="gray" value="Gray Chip"></se-chip>
-                    <se-chip color="selected" value="Selected Chip"></se-chip>
-                  </se-block-content>
-                </se-block>
-                <se-block>
-                  <se-block-header>
-                    H3 Buttons and Form
-                    <div slot="end">
-                      <se-icon option="button" color="alternative">other_vertical</se-icon>
-                    </div>
-                  </se-block-header>
-                  <se-block-content>
                     <se-chip tabindex="0" color="standard" value="Std Chip"></se-chip>
                     <se-chip tabindex="0" color="standard" disabled="true" value="Std Chip"></se-chip>
-                    <se-chip tabindex="0" color="alternative" value="Alt Chip"></se-chip>
-                    <se-chip tabindex="0" color="alternative" disabled="true" value="Alt Chip"></se-chip>
+                    <span style="padding: 20px; background-color: #9fa0a4;">
+                      <se-chip tabindex="0" color="alternative" value="Alt Chip"></se-chip>
+                      <se-chip tabindex="0" color="alternative" disabled="true" value="Alt Chip"></se-chip>
+                    </span>
                   </se-block-content>
                   <se-block-content>
-                    <se-chip tabindex="0" color="red" value="Red Chip"></se-chip>
-                    <se-chip color="fuchsia" value="Fuchsia Chip"></se-chip>
-                    <se-chip color="skyBlue" value="Sky Chip"></se-chip>
-                    <se-chip color="darkBlue" value="DarkBlue Chip"></se-chip>
+                      <se-icon size="nano" color="anthracitegrey">airconditioner_hot_heating</se-icon>
+                      <se-icon size="small" color="lightgrey">airconditioner_hot_heating</se-icon>
+                      <se-icon size="medium" color="lifegreen">other_vertical</se-icon>
+                    <se-icon size="large" color="lifegreen">airconditioner_hot_heating</se-icon>
+                    <se-icon size="xtralarge" color="lightgreen">airconditioner_hot_heating</se-icon>
                   </se-block-content>
                 </se-block>
               </se-container>
@@ -253,8 +242,13 @@
             <se-icon size="xlarge">calendar</se-icon>
             <se-divider></se-divider>
             <se-button option='fab' icon="notebook_paper" color="primary"></se-button>
-            <se-chip id="se-chip" value="Chip 01"></se-chip>
-            <se-chip value="Chip 02" can-close="false" color="primary"></se-chip>
+            <se-divider></se-divider>
+            <se-chip id="se-chip" value="Chip Std"></se-chip>
+            <se-chip id="se-chip" disabled="true" value="Chip Std"></se-chip>
+            <div style="padding:8px; background-color:#9fa0a4;">
+              <se-chip value="Chip Alt" can-close="true" color="alternative"></se-chip>
+              <se-chip value="Chip Alt" can-close="true" disabled="true" color="alternative"></se-chip>
+            </div>
             <se-divider></se-divider>
             <se-link url="http://google.com">Link to Google</se-link>
             <se-link url="http://google.com" option="external">External Link to Google</se-link>
