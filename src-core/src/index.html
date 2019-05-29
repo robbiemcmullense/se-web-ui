@@ -180,6 +180,27 @@
           </se-widget-footer>
         </se-widget>
 
+        <se-widget id="widget9">
+          <se-widget-header>
+            Headline list with colored icons
+            <div slot="end">
+              <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
+            </div>
+          </se-widget-header>
+          <se-widget-content option="fill">
+            <se-list option="headline" can-collapse="false">
+              <se-list-group item="Headline Example">
+                <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
+                <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary"></se-list-item>
+                <se-list-item item="Disable color icon" icon="action_editor" icon-color="disable"></se-list-item>
+              </se-list-group>
+              <se-list-group item="Warning and error icon colors">
+                <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
+                <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error"></se-list-item>
+              </se-list-group>
+            </se-list>
+          </se-widget-content>
+        </se-widget>
         <se-widget id="widget1">
           <se-widget-header>
             Buttons
@@ -398,63 +419,63 @@
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-widget-content>
           </se-widget>
-          <se-widget id="widget8">
-            <se-widget-header>
-                Tooltips
-                <div slot="end">
-                  <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
+        <se-widget id="widget8">
+          <se-widget-header>
+              Tooltips
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
+              </div>
+            </se-widget-header>
+            <se-widget-content>
+                <div style="padding-left:100px;"><h4>Tooltip OnClick</h4>
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
+                  <se-tooltip-header>Tooltip Title</se-tooltip-header>
+                  <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                </se-tooltip>
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Icon & Message</se-button>
+                  <se-tooltip-header icon="information_circle">Tooltip With Icon</se-tooltip-header>
+                  <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
+                </se-tooltip>
                 </div>
-              </se-widget-header>
-              <se-widget-content>
-                  <div style="padding-left:100px;"><h4>Tooltip OnClick</h4>
-                  <se-tooltip action="click">
-                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
-                    <se-tooltip-header>Tooltip Title</se-tooltip-header>
-                    <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
-                  </se-tooltip>
-                  <se-tooltip action="click">
-                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Icon & Message</se-button>
-                    <se-tooltip-header icon="information_circle">Tooltip With Icon</se-tooltip-header>
-                    <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
-                  </se-tooltip>
-                  </div>
-                  <div style="padding-left:100px;">
-                  <se-tooltip action="click">
-                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
-                    <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
-                  </se-tooltip>
-                  <se-tooltip action="click">
-                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Complex</se-button>
-                    <se-tooltip-header>Tooltip Complex</se-tooltip-header>
-                    <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
-                    <se-tooltip-footer>
-                          <se-button option="raised" color="secondary">Retry</se-button>
-                    </se-tooltip-footer>
+                <div style="padding-left:100px;">
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
+                  <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                </se-tooltip>
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Complex</se-button>
+                  <se-tooltip-header>Tooltip Complex</se-tooltip-header>
+                  <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                  <se-tooltip-footer>
+                        <se-button option="raised" color="secondary">Retry</se-button>
+                  </se-tooltip-footer>
+                </se-tooltip>
+              </div>
+              <div style="padding-top:140px;padding-left: 100px;"><h4>Tooltip OnHover</h4>
+              <se-tooltip position="right">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
+                    Tooltip Right
+                </se-tooltip>
+
+                <se-tooltip position="bottom">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
+                    Tooltip Bottom
+                </se-tooltip>
+
+                <se-tooltip position="left">
+                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
+                    Tooltip Left
+                </se-tooltip>
+
+                <se-tooltip position="top">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
+                  Tooltip Top
                   </se-tooltip>
                 </div>
-                <div style="padding-top:140px;padding-left: 100px;"><h4>Tooltip OnHover</h4>
-                <se-tooltip position="right">
-                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
-                      Tooltip Right
-                  </se-tooltip>
-
-                  <se-tooltip position="bottom">
-                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
-                      Tooltip Bottom
-                  </se-tooltip>
-
-                  <se-tooltip position="left">
-                      <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
-                      Tooltip Left
-                  </se-tooltip>
-
-                  <se-tooltip position="top">
-                    <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
-                    Tooltip Top
-                    </se-tooltip>
-                  </div>
-              </se-widget-content>
-        </se-widget>
+            </se-widget-content>
+      </se-widget>
       </se-container>
       <se-fab icon="action_share" position="top">
         <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')" icon="notification_critical_stroke"></se-button>

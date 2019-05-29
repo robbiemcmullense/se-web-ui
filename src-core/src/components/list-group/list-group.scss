@@ -5,7 +5,7 @@
   @include flex-direction(column);
   .group-item{
     overflow: hidden;
-    padding-bottom: 1px;
+    padding-bottom: 0;
   }
 }
 
@@ -27,3 +27,14 @@
     flex-direction: row-reverse;
   }
 }
+
+:host(.headline) {
+  .nav-content {
+    font-size: 16px;
+  }
+  button{
+    height: 47px;
+    background-color: $se-ultra-light-grey-2;
+  }
+}
+

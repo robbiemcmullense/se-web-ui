@@ -747,6 +747,10 @@ export namespace Components {
 
   interface SeListGroup {
     /**
+    * Defines if list groups can be collapsed, true by default.
+    */
+    'canCollapse': boolean;
+    /**
     * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
     */
     'collapsed': boolean;
@@ -773,13 +777,17 @@ export namespace Components {
     /**
     * Defines the theme of the list. This them will be handled and modified by the parent element.
     */
-    'option': "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview" | "headline";
     /**
     * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
     */
     'selected': boolean;
   }
   interface SeListGroupAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines if list groups can be collapsed, true by default.
+    */
+    'canCollapse'?: boolean;
     /**
     * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
     */
@@ -807,7 +815,7 @@ export namespace Components {
     /**
     * Defines the theme of the list. This them will be handled and modified by the parent element.
     */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
     /**
     * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
     */
@@ -826,7 +834,7 @@ export namespace Components {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor': "primary" | "secondary";
+    'iconColor': "standard" | "disable" | "primary" | "warning" | "error";
     /**
     * Defines the group indentation to add paddings to the list item (used with multiple list groups).
     */
@@ -856,7 +864,7 @@ export namespace Components {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor'?: "primary" | "secondary";
+    'iconColor'?: "standard" | "disable" | "primary" | "warning" | "error";
     /**
     * Defines the group indentation to add paddings to the list item (used with multiple list groups).
     */
@@ -881,15 +889,23 @@ export namespace Components {
 
   interface SeList {
     /**
-    * Defines the style of the list.  The default setting is `classic`.
+    * Defines if list groups can be collapsed, true by default.
     */
-    'option': "nav" | "classic" | "dropdown" | "treeview";
-  }
-  interface SeListAttributes extends StencilHTMLAttributes {
+    'canCollapse': boolean;
     /**
     * Defines the style of the list.  The default setting is `classic`.
     */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview" | "headline";
+  }
+  interface SeListAttributes extends StencilHTMLAttributes {
+    /**
+    * Defines if list groups can be collapsed, true by default.
+    */
+    'canCollapse'?: boolean;
+    /**
+    * Defines the style of the list.  The default setting is `classic`.
+    */
+    'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
   }
 
   interface SeLoading {

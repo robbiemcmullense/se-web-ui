@@ -41,7 +41,11 @@ export class ListGroupComponent {
   /**
    * Defines the theme of the list. This them will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  /**
+   * Defines if list groups can be collapsed, true by default.
+   */
+  @Prop() canCollapse: boolean = true;
 
   @Listen('didSelectedChange') ChildUpdated() {
     this.checkSelected();
@@ -84,7 +88,11 @@ export class ListGroupComponent {
   render() {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return [
-      <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()}>
+      <button
+        style={{ paddingLeft: `${20 * this.indentation}px` }}
+        onClick={() => this.toggleCollapse()}
+        disabled={!this.canCollapse}
+      >
         {this.option === "nav" && this.selected && <div class="selectedBar" />}
         {!!this.icon && (
           <div class="nav-icon">
@@ -97,12 +105,12 @@ export class ListGroupComponent {
           <div>{this.item}</div>
           <small> {this.description}</small>
         </div>
-        {this.option !== "treeview" && (
+        {this.option !== "treeview" && this.canCollapse && (
           <span class="se-icon medium">
           {this.collapsed ? "arrow2_down" : "arrow2_up"}
           </span>
         )}
-        {this.option == "treeview" && (
+        {this.option == "treeview" && this.canCollapse && (
           <span class="se-icon">
           arrow2_right
           </span>

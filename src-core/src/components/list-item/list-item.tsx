@@ -28,7 +28,7 @@ export class ListItemComponent {
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
    */
-  @Prop() iconColor: "primary" | "secondary";
+  @Prop() iconColor: "standard" | "disable" | "primary" | "warning" | "error";
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */

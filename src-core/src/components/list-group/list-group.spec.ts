@@ -22,4 +22,9 @@ describe('list-group', () => {
   it('should be in classic option by default', () => {
     expect(listGroup.option).toEqual('classic');
   });
+
+  it('should be have canCollapse true by default', () => {
+    expect(listGroup.canCollapse).toBe(true);
+  });
+
 });
