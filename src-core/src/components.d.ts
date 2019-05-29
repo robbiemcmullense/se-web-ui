@@ -415,7 +415,7 @@ export namespace Components {
     /**
     * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
     */
-    'size': "small" | "medium" | "large" | "xlarge";
+    'size': "nano" | "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure {
     /**
@@ -716,783 +716,7 @@ export namespace Components {
   }
 }
 
-declare namespace LocalJSX {
-  interface SeAbout extends JSXBase.HTMLAttributes {
-    /**
-    * The title of your about screen.
-    */
-    'appTitle'?: string;
-    /**
-    * The copyright you would like to display.
-    */
-    'copyright'?: string;
-    /**
-    * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
-    */
-    'domain'?: string;
-    /**
-    * Sets the background image for your about page.
-    */
-    'imageUrl'?: string;
-    /**
-    * An external link you would like to provide.
-    */
-    'link'?: string;
-    /**
-    * The version number you want to display.
-    */
-    'version'?: string;
-  }
-  interface SeApp extends JSXBase.HTMLAttributes {}
-  interface SeAuthentication extends JSXBase.HTMLAttributes {
-    /**
-    * The title of your authentication screen.
-    */
-    'appTitle'?: string;
-    /**
-    * The copyright you would like to display.
-    */
-    'copyright'?: string;
-    /**
-    * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
-    */
-    'domain'?: string;
-    /**
-    * If set to `true`, hides the authentication screen.
-    */
-    'hide'?: boolean;
-    /**
-    * Sets the background image for your authentication screen.
-    */
-    'imageUrl'?: string;
-    /**
-    * An external link you would like to provide.
-    */
-    'link'?: string;
-    /**
-    * A logo that you wish to display.
-    */
-    'logo'?: string;
-    /**
-    * The version number you want to display.
-    */
-    'version'?: string;
-  }
-  interface SeBlock extends JSXBase.HTMLAttributes {
-    /**
-    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
-    */
-    'color'?: "standard" | "alternative";
-    /**
-    * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
-    */
-    'display'?: "flex" | "block" | "grid";
-    /**
-    * When on Grid display, determines if the block should be a 2/2 instead of a small 1/1 grid item. Default setting is `false` (1/1).
-    */
-    'enlarged'?: boolean;
-    /**
-    * Defines a specific height of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
-    */
-    'height'?: string;
-    /**
-    * Display the loading icon if set to `true`.  Default setting is `false`.
-    */
-    'loading'?: boolean;
-    /**
-    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with shadow and rounded corners.
-    */
-    'option'?: "basic" | "card" | "widget";
-    /**
-    * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
-    */
-    'width'?: string;
-  }
-  interface SeBlockContent extends JSXBase.HTMLAttributes {
-    /**
-    * When set to `basic`, content will fill the whole space of the block.
-    */
-    'option'?: 'basic' | 'card';
-  }
-  interface SeBlockFooter extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
-    */
-    'direction'?: "row" | "column";
-    /**
-    * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option. `card` will update the design of the footer with respect to the card design.
-    */
-    'option'?: "card";
-  }
-  interface SeBlockHeader extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design.
-    */
-    'option'?: "card";
-  }
-  interface SeButton extends JSXBase.HTMLAttributes {
-    /**
-    * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
-    */
-    'caption'?: string;
-    /**
-    * Defines the background color of the button. The default setting is `standard`.
-    */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Optional property that determines if your button includes an icon.
-    */
-    'icon'?: string;
-    /**
-    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
-    */
-    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    'onDidClick'?: (event: CustomEvent<any>) => void;
-    /**
-    * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
-    */
-    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
-    /**
-    * Optional property that defines if the button should be shown as selected. Used with `se-radio`
-    */
-    'selected'?: boolean;
-    /**
-    * Defines the size of the button. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
-    */
-    'size'?: 'small' | 'medium' | 'large';
-    /**
-    * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
-    */
-    'type'?: 'button' | 'submit' |'reset';
-    /**
-    * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
-    */
-    'value'?: string;
-  }
-  interface SeCheckbox extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the color of the checkbox for onoff option. The default value is `standard`.
-    */
-    'background'?: 'standard' | 'alternative';
-    /**
-    * Defines the color of the checkbox for checkbox and switch options. The default value is `primary`.
-    */
-    'color'?: 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Reduce the visual height of the checkbox when the option is set to 'onoff'. Useful if the on/off checkbox is within a header element.
-    */
-    'header'?: boolean;
-    /**
-    * The label of the checkbox that will be attached to the box.
-    */
-    'label'?: string;
-    /**
-    * Send the checkbox value to the parent component when clicking on the checkbox.
-    */
-    'onDidChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * Determines the visual appearance of the component. `checkbox` is the default option and the component renders like a standard HTML checkbox. `switch` renders the component like a toggle switch.
-    */
-    'option'?: 'checkbox' | 'onoff' | 'switch';
-    /**
-    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
-    */
-    'required'?: boolean;
-    /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
-    */
-    'selected'?: boolean;
-    /**
-    * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
-    */
-    'textOff'?: string;
-    /**
-    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
-    */
-    'textOn'?: string;
-    /**
-    * The value you want to pass to the parent component when the checkbox is checked.
-    */
-    'value'?: string;
-  }
-  interface SeChip extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates whether or not the chip has a close button.  Set to `false` by default.
-    */
-    'canClose'?: boolean;
-    /**
-    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
-    */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
-    /**
-    * Indicates whether or not the chip is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Send the chip value to the parent component when clicking the close button of a chip.
-    */
-    'onDidClose'?: (event: CustomEvent<any>) => void;
-    /**
-    * The text you want to display in your chip.
-    */
-    'value'?: string;
-  }
-  interface SeContainer extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the color of the background of the container. The default is transparent, reflecting the parent element's color. `standard` is a light gray. `alternative` is a white background.
-    */
-    'color'?: "standard" | "alternative";
-    /**
-    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
-    */
-    'columnSize'?: string;
-    /**
-    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
-    */
-    'direction'?: "column" | "row";
-    /**
-    * Defines how to display the element. `flex` is the default display. `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element in "display: block" as well.
-    */
-    'display'?: "flex" | "block" | "grid";
-    /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
-    */
-    'option'?: "fill" | "widget" | "card" | "centered" | "inherited";
-    /**
-    * In specific cases, it may be necessary to define the container with an absolute position (inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
-    */
-    'position'?: "relative" | "absolute";
-    /**
-    * When in `display="grid"`, defines the height of each container.
-    */
-    'rowSize'?: string;
-  }
-  interface SeDialog extends JSXBase.HTMLAttributes {
-    /**
-    * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
-    */
-    'canBackdrop'?: boolean;
-    /**
-    * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
-    */
-    'color'?: 'alternative' | 'primary';
-    /**
-    * Send data to the parent component when the backdrop is clicked.
-    */
-    'onBackdrop'?: (event: CustomEvent<any>) => void;
-    /**
-    * Send data to the parent component when clicking an element within the dialog to close it. The modal can be safely removed from the DOM.
-    */
-    'onDidClose'?: (event: CustomEvent<any>) => void;
-    /**
-    * Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.
-    */
-    'open'?: boolean;
-    /**
-    * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
-    */
-    'size'?: "small" | "medium" | "large" | "fill";
-  }
-  interface SeDialogContent extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates an icon you want to display in your dialog.
-    */
-    'icon'?: string;
-    /**
-    * Indicates what color schema you want to render in your dialog.
-    */
-    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * When set to `fill`, content will fill the whole space of the dialog.
-    */
-    'option'?: 'fill';
-  }
-  interface SeDialogFooter extends JSXBase.HTMLAttributes {}
-  interface SeDialogHeader extends JSXBase.HTMLAttributes {
-    /**
-    * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
-    */
-    'color'?: 'alternative' | 'primary';
-  }
-  interface SeDivider extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates the color schema of your divider line. Default setting is `standard`, rendering a light gray colored line. The `alternative` property sets a white colored divider line.
-    */
-    'color'?: "standard" | "alternative";
-    /**
-    * Indicates the visual appearance of your divider line.  Default setting is `horizontal`.
-    */
-    'option'?: "horizontal" | "vertical" | "inset";
-  }
-  interface SeDropdown extends JSXBase.HTMLAttributes {
-    /**
-    * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element.
-    */
-    'alignment'?: 'left' | 'right';
-    /**
-    * Event emitted when the dropdown has been closed.
-    */
-    'onDidClose'?: (event: CustomEvent<any>) => void;
-    /**
-    * Event emitted when the dropdown has been opened.
-    */
-    'onDidOpen'?: (event: CustomEvent<any>) => void;
-  }
-  interface SeFab extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
-    */
-    'color'?: 'primary' | 'alternative';
-    /**
-    * Property that determines  icon included in the main action button.
-    */
-    'icon'?: string;
-    /**
-    * Property that determines  icon included in the main action button.
-    */
-    'option'?: 'speeddial' | 'backtotop';
-    /**
-    * Property that determines position of main action button.   Default setting is `bottom`, rendering a FAB at bottom right corner. The `top` setting renders  FAB at top right corner.
-    */
-    'position'?: 'bottom' | 'top';
-  }
-  interface SeFormField extends JSXBase.HTMLAttributes {
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Defines the text value of the label in your form field.
-    */
-    'label'?: string;
-    /**
-    * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
-    */
-    'onDidSubmit'?: (event: CustomEvent<any>) => void;
-    /**
-    * Defines the layout of your form field. `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
-    */
-    'option'?: 'inline' | 'stacked';
-    /**
-    * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
-    */
-    'required'?: boolean;
-    /**
-    * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
-    */
-    'status'?: 'error' | 'warning' | 'success';
-    /**
-    * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
-    */
-    'type'?: 'input' | 'checkbox' | 'radio' | 'select';
-    /**
-    * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
-    */
-    'value'?: string;
-  }
-  interface SeHeader extends JSXBase.HTMLAttributes {
-    /**
-    * Sets the title of your application.
-    */
-    'appTitle'?: string;
-    /**
-    * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
-    */
-    'domain'?: string;
-    /**
-    * Defines the project name (useful for small project) that can be used for versioning as well. It will be placed at the right side of the title.
-    */
-    'project'?: string;
-  }
-  interface SeIcon extends JSXBase.HTMLAttributes {
-    /**
-    * Optional property that defines the background color of the button. The default color will be inherited from its parent.
-    */
-    'color'?: "standard" | "alternative" | "primary" | "secondary";
-    /**
-    * Optional property to define if the icon should act as a button (clickable).
-    */
-    'option'?: "button";
-    /**
-    * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
-    */
-    'size'?: "small" | "medium" | "large" | "xlarge";
-  }
-  interface SeIconEcostruxure extends JSXBase.HTMLAttributes {
-    /**
-    * Sets the size of the EcoStruxure icon.  The default setting is `small`.
-    */
-    'size'?: "small" | "medium";
-  }
-  interface SeIconLifeison extends JSXBase.HTMLAttributes {
-    /**
-    * Define the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
-    */
-    'color'?: "standard" | "inherited";
-  }
-  interface SeIconSchneider extends JSXBase.HTMLAttributes {}
-  interface SeLink extends JSXBase.HTMLAttributes {
-    /**
-    * Determines whether or not the link is disabled.
-    */
-    'disabled'?: boolean;
-    /**
-    * Default setting is `internal`. The `external` setting adds an underline to the link, and opens the link in a new web browser tab.
-    */
-    'option'?: 'internal' | 'external';
-    /**
-    * Defines the url the user should get redirected to when clicking on the link.
-    */
-    'url'?: string;
-  }
-  interface SeList extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the style of the list.  The default setting is `classic`.
-    */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
-  }
-  interface SeListGroup extends JSXBase.HTMLAttributes {
-    /**
-    * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
-    */
-    'collapsed'?: boolean;
-    /**
-    * Defines the description of the item, placed under its title.
-    */
-    'description'?: string;
-    /**
-    * Places an icon on the left side of the item list.
-    */
-    'icon'?: string;
-    /**
-    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
-    */
-    'iconColor'?: "primary" | "secondary";
-    /**
-    * Define the group indentation to add paddings to the list item (used with multiple list groups).
-    */
-    'indentation'?: number;
-    /**
-    * Defines the title of the item.
-    */
-    'item'?: string;
-    /**
-    * Defines the theme of the list. This them will be handled and modified by the parent element.
-    */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
-    /**
-    * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
-    */
-    'selected'?: boolean;
-  }
-  interface SeListItem extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the description of the item. placed under its title.
-    */
-    'description'?: string;
-    /**
-    * Places an icon on the left side of the item list.
-    */
-    'icon'?: string;
-    /**
-    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
-    */
-    'iconColor'?: "primary" | "secondary";
-    /**
-    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
-    */
-    'indentation'?: number;
-    /**
-    * Defines the title of the item.
-    */
-    'item'?: string;
-    /**
-    * Event emitted to notify the item-group that the selected state has changed.
-    */
-    'onDidSelectedChange'?: (event: CustomEvent<void>) => void;
-    /**
-    * Define the theme of the list. This them will be handled and modified by the parent element.
-    */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
-    /**
-    * Defines if the list element should be selected or not.
-    */
-    'selected'?: boolean;
-  }
-  interface SeLoading extends JSXBase.HTMLAttributes {
-    /**
-    * Displays the loading icon on screen when set to `true`.
-    */
-    'loading'?: boolean;
-    /**
-    * Define the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it's within a popup dialog box.
-    */
-    'option'?: 'standard' | 'dialog';
-  }
-  interface SeRadio extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the color of the checkbox.
-    */
-    'color'?: 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * The label of the checkbox that will be attached to the box.
-    */
-    'label'?: string;
-    /**
-    * Send the checkbox value to the parent component when clicking on the checkbox.
-    */
-    'onDidCheck'?: (event: CustomEvent<any>) => void;
-    /**
-    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
-    */
-    'required'?: boolean;
-    /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
-    */
-    'selected'?: boolean;
-    /**
-    * The value you want to pass to the parent component when the checkbox is checked.
-    */
-    'value'?: string;
-  }
-  interface SeRadioGroup extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
-    */
-    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
-    /**
-    * Optional property that defines if the button is disabled.  Set to `false` by default.
-    */
-    'disabled'?: boolean;
-    /**
-    * Passes the selected button value to the parent component when clicking on a button in the group.
-    */
-    'onDidChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * Defines the selected values of the array.
-    */
-    'value'?: string;
-  }
-  interface SeSidemenu extends JSXBase.HTMLAttributes {
-    /**
-    * Overrides the default "Menu" label.
-    */
-    'label'?: string;
-  }
-  interface SeSidemenuItem extends JSXBase.HTMLAttributes {
-    /**
-    * Defines if the menu item is active or not.
-    */
-    'active'?: boolean;
-    /**
-    * Defines the title of the menu item.
-    */
-    'item'?: string;
-  }
-  interface SeSlider extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates the disabled property of your slider.
-    */
-    'disabled'?: boolean;
-    /**
-    * Indicates the maximum value of your slider.
-    */
-    'max'?: number;
-    /**
-    * Indicates the minimum value of your slider.
-    */
-    'min'?: number;
-    /**
-    * Event emitted when the slider has been changed.
-    */
-    'onDidChange'?: (event: CustomEvent<any>) => void;
-  }
-  interface SeSnackbar extends JSXBase.HTMLAttributes {
-    /**
-    * Display a close "button".  Visible by default.
-    */
-    'canClose'?: boolean;
-    /**
-    * Defines the text you want your "close button" to read.  Default text is `dismiss`.
-    */
-    'closeText'?: string;
-    /**
-    * The name of the icon you wish to display.  The default icon is an information circle.
-    */
-    'icon'?: string;
-    /**
-    * The content of the message you want the snackbar to display.
-    */
-    'message'?: string;
-    /**
-    * Send information to the parent component when closing the snackbar.
-    */
-    'onDidClose'?: (event: CustomEvent<any>) => void;
-    /**
-    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
-    */
-    'open'?: boolean;
-    /**
-    * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting
-    */
-    'type'?: 'success' | 'error' | 'warning' | 'information';
-  }
-  interface SeTabbar extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
-    */
-    'color'?: 'primary' | 'alternative';
-    /**
-    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
-    */
-    'option'?: "fill" | "centered";
-  }
-  interface SeTooltip extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates the action of your tooltip.
-    */
-    'action'?: "click" | "hover";
-    /**
-    * Event emitted when the tooltip has been closed.
-    */
-    'onDidClose'?: (event: CustomEvent<any>) => void;
-    /**
-    * Event emitted when the tooltip has been opened.
-    */
-    'onDidOpen'?: (event: CustomEvent<any>) => void;
-    /**
-    * Indicates the position color of your tooltip.
-    */
-    'position'?: "top" | "bottom" | "left" | "right";
-  }
-  interface SeTooltipContent extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates an icon you want to display in your tooltip.
-    */
-    'icon'?: string;
-  }
-  interface SeTooltipFooter extends JSXBase.HTMLAttributes {}
-  interface SeTooltipHeader extends JSXBase.HTMLAttributes {
-    /**
-    * Indicates an icon you want to display in your tooltip.
-    */
-    'icon'?: string;
-  }
-  interface SeVisualLinear extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the text value of the label in your component.
-    */
-    'label'?: string;
-    /**
-    * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
-    */
-    'option'?: 'inline' | 'stacked';
-    /**
-    * Set the percentage of the "progress bar" to be "filled".
-    */
-    'percentage'?: number;
-    /**
-    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
-    */
-    'secolor'?: string;
-    /**
-    * Defines the value of your component.
-    */
-    'value'?: string;
-  }
-  interface SeVisualRadial extends JSXBase.HTMLAttributes {
-    /**
-    * Defines the text value of the label in your component.
-    */
-    'label'?: string;
-    /**
-    * Set the percentage of the "progress bar" to be "filled".
-    */
-    'percentage'?: number;
-    /**
-    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
-    */
-    'secolor'?: string;
-    /**
-    * Determines the visual size of your circular progress bar.  Default setting is `large`.
-    */
-    'size'?: 'small' | 'large';
-    /**
-    * Defines the value of your component.
-    */
-    'value'?: string;
-  }
-
-  interface IntrinsicElements {
-    'se-about': SeAbout;
-    'se-app': SeApp;
-    'se-authentication': SeAuthentication;
-    'se-block': SeBlock;
-    'se-block-content': SeBlockContent;
-    'se-block-footer': SeBlockFooter;
-    'se-block-header': SeBlockHeader;
-    'se-button': SeButton;
-    'se-checkbox': SeCheckbox;
-    'se-chip': SeChip;
-    'se-container': SeContainer;
-    'se-dialog': SeDialog;
-    'se-dialog-content': SeDialogContent;
-    'se-dialog-footer': SeDialogFooter;
-    'se-dialog-header': SeDialogHeader;
-    'se-divider': SeDivider;
-    'se-dropdown': SeDropdown;
-    'se-fab': SeFab;
-    'se-form-field': SeFormField;
-    'se-header': SeHeader;
-    'se-icon': SeIcon;
-    'se-icon-ecostruxure': SeIconEcostruxure;
-    'se-icon-lifeison': SeIconLifeison;
-    'se-icon-schneider': SeIconSchneider;
-    'se-link': SeLink;
-    'se-list': SeList;
-    'se-list-group': SeListGroup;
-    'se-list-item': SeListItem;
-    'se-loading': SeLoading;
-    'se-radio': SeRadio;
-    'se-radio-group': SeRadioGroup;
-    'se-sidemenu': SeSidemenu;
-    'se-sidemenu-item': SeSidemenuItem;
-    'se-slider': SeSlider;
-    'se-snackbar': SeSnackbar;
-    'se-tabbar': SeTabbar;
-    'se-tooltip': SeTooltip;
-    'se-tooltip-content': SeTooltipContent;
-    'se-tooltip-footer': SeTooltipFooter;
-    'se-tooltip-header': SeTooltipHeader;
-    'se-visual-linear': SeVisualLinear;
-    'se-visual-radial': SeVisualRadial;
-  }
-}
-
-export { LocalJSX as JSX };
-
-
-declare module "@stencil/core" {
-  export namespace JSX {
-    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
-  }
-}
-
-
 declare global {
-
 
 
   interface HTMLSeAboutElement extends Components.SeAbout, HTMLStencilElement {}
@@ -1746,7 +970,6 @@ declare global {
     prototype: HTMLSeVisualRadialElement;
     new (): HTMLSeVisualRadialElement;
   };
-
   interface HTMLElementTagNameMap {
     'se-about': HTMLSeAboutElement;
     'se-app': HTMLSeAppElement;
@@ -1791,7 +1014,780 @@ declare global {
     'se-visual-linear': HTMLSeVisualLinearElement;
     'se-visual-radial': HTMLSeVisualRadialElement;
   }
-
-  interface ElementTagNameMap extends HTMLElementTagNameMap {}
 }
+
+declare namespace LocalJSX {
+  interface SeAbout extends JSXBase.HTMLAttributes<HTMLSeAboutElement> {
+    /**
+    * The title of your about screen.
+    */
+    'appTitle'?: string;
+    /**
+    * The copyright you would like to display.
+    */
+    'copyright'?: string;
+    /**
+    * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
+    */
+    'domain'?: string;
+    /**
+    * Sets the background image for your about page.
+    */
+    'imageUrl'?: string;
+    /**
+    * An external link you would like to provide.
+    */
+    'link'?: string;
+    /**
+    * The version number you want to display.
+    */
+    'version'?: string;
+  }
+  interface SeApp extends JSXBase.HTMLAttributes<HTMLSeAppElement> {}
+  interface SeAuthentication extends JSXBase.HTMLAttributes<HTMLSeAuthenticationElement> {
+    /**
+    * The title of your authentication screen.
+    */
+    'appTitle'?: string;
+    /**
+    * The copyright you would like to display.
+    */
+    'copyright'?: string;
+    /**
+    * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
+    */
+    'domain'?: string;
+    /**
+    * If set to `true`, hides the authentication screen.
+    */
+    'hide'?: boolean;
+    /**
+    * Sets the background image for your authentication screen.
+    */
+    'imageUrl'?: string;
+    /**
+    * An external link you would like to provide.
+    */
+    'link'?: string;
+    /**
+    * A logo that you wish to display.
+    */
+    'logo'?: string;
+    /**
+    * The version number you want to display.
+    */
+    'version'?: string;
+  }
+  interface SeBlock extends JSXBase.HTMLAttributes<HTMLSeBlockElement> {
+    /**
+    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+    */
+    'color'?: "standard" | "alternative";
+    /**
+    * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
+    */
+    'display'?: "flex" | "block" | "grid";
+    /**
+    * When on Grid display, determines if the block should be a 2/2 instead of a small 1/1 grid item. Default setting is `false` (1/1).
+    */
+    'enlarged'?: boolean;
+    /**
+    * Defines a specific height of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+    */
+    'height'?: string;
+    /**
+    * Display the loading icon if set to `true`.  Default setting is `false`.
+    */
+    'loading'?: boolean;
+    /**
+    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with shadow and rounded corners.
+    */
+    'option'?: "basic" | "card" | "widget";
+    /**
+    * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+    */
+    'width'?: string;
+  }
+  interface SeBlockContent extends JSXBase.HTMLAttributes<HTMLSeBlockContentElement> {
+    /**
+    * When set to `basic`, content will fill the whole space of the block.
+    */
+    'option'?: 'basic' | 'card';
+  }
+  interface SeBlockFooter extends JSXBase.HTMLAttributes<HTMLSeBlockFooterElement> {
+    /**
+    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
+    */
+    'direction'?: "row" | "column";
+    /**
+    * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option. `card` will update the design of the footer with respect to the card design.
+    */
+    'option'?: "card";
+  }
+  interface SeBlockHeader extends JSXBase.HTMLAttributes<HTMLSeBlockHeaderElement> {
+    /**
+    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design.
+    */
+    'option'?: "card";
+  }
+  interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
+    /**
+    * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
+    */
+    'caption'?: string;
+    /**
+    * Defines the background color of the button. The default setting is `standard`.
+    */
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Optional property that determines if your button includes an icon.
+    */
+    'icon'?: string;
+    /**
+    * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
+    */
+    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    'onDidClick'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
+    */
+    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
+    /**
+    * Optional property that defines if the button should be shown as selected. Used with `se-radio`
+    */
+    'selected'?: boolean;
+    /**
+    * Defines the size of the button. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
+    */
+    'size'?: 'small' | 'medium' | 'large';
+    /**
+    * Optional type property of the button. `button`	The button is a clickable button (default) `submit`	The button is a submit button (submits form-data) `reset`	The button is a reset button (resets the form-data to its initial values)
+    */
+    'type'?: 'button' | 'submit' |'reset';
+    /**
+    * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
+    */
+    'value'?: string;
+  }
+  interface SeCheckbox extends JSXBase.HTMLAttributes<HTMLSeCheckboxElement> {
+    /**
+    * Defines the color of the checkbox for onoff option. The default value is `standard`.
+    */
+    'background'?: 'standard' | 'alternative';
+    /**
+    * Defines the color of the checkbox for checkbox and switch options. The default value is `primary`.
+    */
+    'color'?: 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Reduce the visual height of the checkbox when the option is set to 'onoff'. Useful if the on/off checkbox is within a header element.
+    */
+    'header'?: boolean;
+    /**
+    * The label of the checkbox that will be attached to the box.
+    */
+    'label'?: string;
+    /**
+    * Send the checkbox value to the parent component when clicking on the checkbox.
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Determines the visual appearance of the component. `checkbox` is the default option and the component renders like a standard HTML checkbox. `switch` renders the component like a toggle switch.
+    */
+    'option'?: 'checkbox' | 'onoff' | 'switch';
+    /**
+    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
+    */
+    'required'?: boolean;
+    /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected'?: boolean;
+    /**
+    * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+    */
+    'textOff'?: string;
+    /**
+    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+    */
+    'textOn'?: string;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value'?: string;
+  }
+  interface SeChip extends JSXBase.HTMLAttributes<HTMLSeChipElement> {
+    /**
+    * Indicates whether or not the chip has a close button.  Set to `false` by default.
+    */
+    'canClose'?: boolean;
+    /**
+    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
+    */
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow';
+    /**
+    * Indicates whether or not the chip is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Send the chip value to the parent component when clicking the close button of a chip.
+    */
+    'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * The text you want to display in your chip.
+    */
+    'value'?: string;
+  }
+  interface SeContainer extends JSXBase.HTMLAttributes<HTMLSeContainerElement> {
+    /**
+    * Defines the color of the background of the container. The default is transparent, reflecting the parent element's color. `standard` is a light gray. `alternative` is a white background.
+    */
+    'color'?: "standard" | "alternative";
+    /**
+    * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`
+    */
+    'columnSize'?: string;
+    /**
+    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
+    */
+    'direction'?: "column" | "row";
+    /**
+    * Defines how to display the element. `flex` is the default display. `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element in "display: block" as well.
+    */
+    'display'?: "flex" | "block" | "grid";
+    /**
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing and sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
+    */
+    'option'?: "fill" | "widget" | "card" | "centered" | "inherited";
+    /**
+    * In specific cases, it may be necessary to define the container with an absolute position (inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
+    */
+    'position'?: "relative" | "absolute";
+    /**
+    * When in `display="grid"`, defines the height of each container.
+    */
+    'rowSize'?: string;
+  }
+  interface SeDialog extends JSXBase.HTMLAttributes<HTMLSeDialogElement> {
+    /**
+    * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+    */
+    'canBackdrop'?: boolean;
+    /**
+    * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
+    */
+    'color'?: 'alternative' | 'primary';
+    /**
+    * Send data to the parent component when the backdrop is clicked.
+    */
+    'onBackdrop'?: (event: CustomEvent<any>) => void;
+    /**
+    * Send data to the parent component when clicking an element within the dialog to close it. The modal can be safely removed from the DOM.
+    */
+    'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.
+    */
+    'open'?: boolean;
+    /**
+    * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
+    */
+    'size'?: "small" | "medium" | "large" | "fill";
+  }
+  interface SeDialogContent extends JSXBase.HTMLAttributes<HTMLSeDialogContentElement> {
+    /**
+    * Indicates an icon you want to display in your dialog.
+    */
+    'icon'?: string;
+    /**
+    * Indicates what color schema you want to render in your dialog.
+    */
+    'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * When set to `fill`, content will fill the whole space of the dialog.
+    */
+    'option'?: 'fill';
+  }
+  interface SeDialogFooter extends JSXBase.HTMLAttributes<HTMLSeDialogFooterElement> {}
+  interface SeDialogHeader extends JSXBase.HTMLAttributes<HTMLSeDialogHeaderElement> {
+    /**
+    * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
+    */
+    'color'?: 'alternative' | 'primary';
+  }
+  interface SeDivider extends JSXBase.HTMLAttributes<HTMLSeDividerElement> {
+    /**
+    * Indicates the color schema of your divider line. Default setting is `standard`, rendering a light gray colored line. The `alternative` property sets a white colored divider line.
+    */
+    'color'?: "standard" | "alternative";
+    /**
+    * Indicates the visual appearance of your divider line.  Default setting is `horizontal`.
+    */
+    'option'?: "horizontal" | "vertical" | "inset";
+  }
+  interface SeDropdown extends JSXBase.HTMLAttributes<HTMLSeDropdownElement> {
+    /**
+    * Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element.
+    */
+    'alignment'?: 'left' | 'right';
+    /**
+    * Event emitted when the dropdown has been closed.
+    */
+    'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Event emitted when the dropdown has been opened.
+    */
+    'onDidOpen'?: (event: CustomEvent<any>) => void;
+  }
+  interface SeFab extends JSXBase.HTMLAttributes<HTMLSeFabElement> {
+    /**
+    * Indicates the color of your main action button . Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    */
+    'color'?: 'primary' | 'alternative';
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'icon'?: string;
+    /**
+    * Property that determines  icon included in the main action button.
+    */
+    'option'?: 'speeddial' | 'backtotop';
+    /**
+    * Property that determines position of main action button.   Default setting is `bottom`, rendering a FAB at bottom right corner. The `top` setting renders  FAB at top right corner.
+    */
+    'position'?: 'bottom' | 'top';
+  }
+  interface SeFormField extends JSXBase.HTMLAttributes<HTMLSeFormFieldElement> {
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Defines the text value of the label in your form field.
+    */
+    'label'?: string;
+    /**
+    * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
+    */
+    'onDidSubmit'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the layout of your form field. `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
+    */
+    'option'?: 'inline' | 'stacked';
+    /**
+    * Determines if the input is required by the application. Set to `false` by default. Setting this value to "true" will render a red asterisk next to your label.
+    */
+    'required'?: boolean;
+    /**
+    * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
+    */
+    'status'?: 'error' | 'warning' | 'success';
+    /**
+    * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select). `input` is the default type.
+    */
+    'type'?: 'input' | 'checkbox' | 'radio' | 'select';
+    /**
+    * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
+    */
+    'value'?: string;
+  }
+  interface SeHeader extends JSXBase.HTMLAttributes<HTMLSeHeaderElement> {
+    /**
+    * Sets the title of your application.
+    */
+    'appTitle'?: string;
+    /**
+    * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
+    */
+    'domain'?: string;
+    /**
+    * Defines the project name (useful for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+    */
+    'project'?: string;
+  }
+  interface SeIcon extends JSXBase.HTMLAttributes<HTMLSeIconElement> {
+    /**
+    * Optional property that defines the background color of the button. The default color will be inherited from its parent.
+    */
+    'color'?: "standard" | "alternative" | "primary" | "secondary";
+    /**
+    * Optional property to define if the icon should act as a button (clickable).
+    */
+    'option'?: "button";
+    /**
+    * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
+    */
+    'size'?: "nano" | "small" | "medium" | "large" | "xlarge";
+  }
+  interface SeIconEcostruxure extends JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement> {
+    /**
+    * Sets the size of the EcoStruxure icon.  The default setting is `small`.
+    */
+    'size'?: "small" | "medium";
+  }
+  interface SeIconLifeison extends JSXBase.HTMLAttributes<HTMLSeIconLifeisonElement> {
+    /**
+    * Define the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
+    */
+    'color'?: "standard" | "inherited";
+  }
+  interface SeIconSchneider extends JSXBase.HTMLAttributes<HTMLSeIconSchneiderElement> {}
+  interface SeLink extends JSXBase.HTMLAttributes<HTMLSeLinkElement> {
+    /**
+    * Determines whether or not the link is disabled.
+    */
+    'disabled'?: boolean;
+    /**
+    * Default setting is `internal`. The `external` setting adds an underline to the link, and opens the link in a new web browser tab.
+    */
+    'option'?: 'internal' | 'external';
+    /**
+    * Defines the url the user should get redirected to when clicking on the link.
+    */
+    'url'?: string;
+  }
+  interface SeList extends JSXBase.HTMLAttributes<HTMLSeListElement> {
+    /**
+    * Defines the style of the list.  The default setting is `classic`.
+    */
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+  }
+  interface SeListGroup extends JSXBase.HTMLAttributes<HTMLSeListGroupElement> {
+    /**
+    * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
+    */
+    'collapsed'?: boolean;
+    /**
+    * Defines the description of the item, placed under its title.
+    */
+    'description'?: string;
+    /**
+    * Places an icon on the left side of the item list.
+    */
+    'icon'?: string;
+    /**
+    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
+    */
+    'iconColor'?: "primary" | "secondary";
+    /**
+    * Define the group indentation to add paddings to the list item (used with multiple list groups).
+    */
+    'indentation'?: number;
+    /**
+    * Defines the title of the item.
+    */
+    'item'?: string;
+    /**
+    * Defines the theme of the list. This them will be handled and modified by the parent element.
+    */
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+    /**
+    * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
+    */
+    'selected'?: boolean;
+  }
+  interface SeListItem extends JSXBase.HTMLAttributes<HTMLSeListItemElement> {
+    /**
+    * Defines the description of the item. placed under its title.
+    */
+    'description'?: string;
+    /**
+    * Places an icon on the left side of the item list.
+    */
+    'icon'?: string;
+    /**
+    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
+    */
+    'iconColor'?: "primary" | "secondary";
+    /**
+    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
+    */
+    'indentation'?: number;
+    /**
+    * Defines the title of the item.
+    */
+    'item'?: string;
+    /**
+    * Event emitted to notify the item-group that the selected state has changed.
+    */
+    'onDidSelectedChange'?: (event: CustomEvent<void>) => void;
+    /**
+    * Define the theme of the list. This them will be handled and modified by the parent element.
+    */
+    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+    /**
+    * Defines if the list element should be selected or not.
+    */
+    'selected'?: boolean;
+  }
+  interface SeLoading extends JSXBase.HTMLAttributes<HTMLSeLoadingElement> {
+    /**
+    * Displays the loading icon on screen when set to `true`.
+    */
+    'loading'?: boolean;
+    /**
+    * Define the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it's within a popup dialog box.
+    */
+    'option'?: 'standard' | 'dialog';
+  }
+  interface SeRadio extends JSXBase.HTMLAttributes<HTMLSeRadioElement> {
+    /**
+    * Defines the color of the checkbox.
+    */
+    'color'?: 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * The label of the checkbox that will be attached to the box.
+    */
+    'label'?: string;
+    /**
+    * Send the checkbox value to the parent component when clicking on the checkbox.
+    */
+    'onDidCheck'?: (event: CustomEvent<any>) => void;
+    /**
+    * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+    */
+    'required'?: boolean;
+    /**
+    * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+    */
+    'selected'?: boolean;
+    /**
+    * The value you want to pass to the parent component when the checkbox is checked.
+    */
+    'value'?: string;
+  }
+  interface SeRadioGroup extends JSXBase.HTMLAttributes<HTMLSeRadioGroupElement> {
+    /**
+    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
+    */
+    'color'?: 'standard' | 'alternative' | 'primary' | 'secondary';
+    /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
+    * Passes the selected button value to the parent component when clicking on a button in the group.
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the selected values of the array.
+    */
+    'value'?: string;
+  }
+  interface SeSidemenu extends JSXBase.HTMLAttributes<HTMLSeSidemenuElement> {
+    /**
+    * Overrides the default "Menu" label.
+    */
+    'label'?: string;
+  }
+  interface SeSidemenuItem extends JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement> {
+    /**
+    * Defines if the menu item is active or not.
+    */
+    'active'?: boolean;
+    /**
+    * Defines the title of the menu item.
+    */
+    'item'?: string;
+  }
+  interface SeSlider extends JSXBase.HTMLAttributes<HTMLSeSliderElement> {
+    /**
+    * Indicates the disabled property of your slider.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicates the maximum value of your slider.
+    */
+    'max'?: number;
+    /**
+    * Indicates the minimum value of your slider.
+    */
+    'min'?: number;
+    /**
+    * Event emitted when the slider has been changed.
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
+  }
+  interface SeSnackbar extends JSXBase.HTMLAttributes<HTMLSeSnackbarElement> {
+    /**
+    * Display a close "button".  Visible by default.
+    */
+    'canClose'?: boolean;
+    /**
+    * Defines the text you want your "close button" to read.  Default text is `dismiss`.
+    */
+    'closeText'?: string;
+    /**
+    * The name of the icon you wish to display.  The default icon is an information circle.
+    */
+    'icon'?: string;
+    /**
+    * The content of the message you want the snackbar to display.
+    */
+    'message'?: string;
+    /**
+    * Send information to the parent component when closing the snackbar.
+    */
+    'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
+    */
+    'open'?: boolean;
+    /**
+    * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting
+    */
+    'type'?: 'success' | 'error' | 'warning' | 'information';
+  }
+  interface SeTabbar extends JSXBase.HTMLAttributes<HTMLSeTabbarElement> {
+    /**
+    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    */
+    'color'?: 'primary' | 'alternative';
+    /**
+    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+    */
+    'option'?: "fill" | "centered";
+  }
+  interface SeTooltip extends JSXBase.HTMLAttributes<HTMLSeTooltipElement> {
+    /**
+    * Indicates the action of your tooltip.
+    */
+    'action'?: "click" | "hover";
+    /**
+    * Event emitted when the tooltip has been closed.
+    */
+    'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Event emitted when the tooltip has been opened.
+    */
+    'onDidOpen'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates the position color of your tooltip.
+    */
+    'position'?: "top" | "bottom" | "left" | "right";
+  }
+  interface SeTooltipContent extends JSXBase.HTMLAttributes<HTMLSeTooltipContentElement> {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
+  }
+  interface SeTooltipFooter extends JSXBase.HTMLAttributes<HTMLSeTooltipFooterElement> {}
+  interface SeTooltipHeader extends JSXBase.HTMLAttributes<HTMLSeTooltipHeaderElement> {
+    /**
+    * Indicates an icon you want to display in your tooltip.
+    */
+    'icon'?: string;
+  }
+  interface SeVisualLinear extends JSXBase.HTMLAttributes<HTMLSeVisualLinearElement> {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label'?: string;
+    /**
+    * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
+    */
+    'option'?: 'inline' | 'stacked';
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage'?: number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor'?: string;
+    /**
+    * Defines the value of your component.
+    */
+    'value'?: string;
+  }
+  interface SeVisualRadial extends JSXBase.HTMLAttributes<HTMLSeVisualRadialElement> {
+    /**
+    * Defines the text value of the label in your component.
+    */
+    'label'?: string;
+    /**
+    * Set the percentage of the "progress bar" to be "filled".
+    */
+    'percentage'?: number;
+    /**
+    * Sets the color of the visual "progress bar". The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58). The default setting is `primary`, which gives the progress bar a green color.
+    */
+    'secolor'?: string;
+    /**
+    * Determines the visual size of your circular progress bar.  Default setting is `large`.
+    */
+    'size'?: 'small' | 'large';
+    /**
+    * Defines the value of your component.
+    */
+    'value'?: string;
+  }
+
+  interface IntrinsicElements {
+    'se-about': SeAbout;
+    'se-app': SeApp;
+    'se-authentication': SeAuthentication;
+    'se-block': SeBlock;
+    'se-block-content': SeBlockContent;
+    'se-block-footer': SeBlockFooter;
+    'se-block-header': SeBlockHeader;
+    'se-button': SeButton;
+    'se-checkbox': SeCheckbox;
+    'se-chip': SeChip;
+    'se-container': SeContainer;
+    'se-dialog': SeDialog;
+    'se-dialog-content': SeDialogContent;
+    'se-dialog-footer': SeDialogFooter;
+    'se-dialog-header': SeDialogHeader;
+    'se-divider': SeDivider;
+    'se-dropdown': SeDropdown;
+    'se-fab': SeFab;
+    'se-form-field': SeFormField;
+    'se-header': SeHeader;
+    'se-icon': SeIcon;
+    'se-icon-ecostruxure': SeIconEcostruxure;
+    'se-icon-lifeison': SeIconLifeison;
+    'se-icon-schneider': SeIconSchneider;
+    'se-link': SeLink;
+    'se-list': SeList;
+    'se-list-group': SeListGroup;
+    'se-list-item': SeListItem;
+    'se-loading': SeLoading;
+    'se-radio': SeRadio;
+    'se-radio-group': SeRadioGroup;
+    'se-sidemenu': SeSidemenu;
+    'se-sidemenu-item': SeSidemenuItem;
+    'se-slider': SeSlider;
+    'se-snackbar': SeSnackbar;
+    'se-tabbar': SeTabbar;
+    'se-tooltip': SeTooltip;
+    'se-tooltip-content': SeTooltipContent;
+    'se-tooltip-footer': SeTooltipFooter;
+    'se-tooltip-header': SeTooltipHeader;
+    'se-visual-linear': SeVisualLinear;
+    'se-visual-radial': SeVisualRadial;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
 

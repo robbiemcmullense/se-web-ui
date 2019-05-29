@@ -14,7 +14,7 @@ export class IconComponent {
   /**
    * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
    */
-  @Prop() size: "small" | "medium" | "large" | "xlarge" = "small";
+  @Prop() size: "nano" | "small" | "medium" | "large" | "xlarge" = "small";
   /**
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
