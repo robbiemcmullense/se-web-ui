@@ -3,7 +3,7 @@
 :host {
 	a {
     font-size: 14px;
-    margin: $spacing;
+    margin: $spacing-small;
     line-height: 17px;
     display: inline-block;
 		@include color('secondary');

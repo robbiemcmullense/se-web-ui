@@ -224,7 +224,7 @@ export namespace Components {
   }
   interface SeChip {
     /**
-    * Indicates whether or not the chip has a close button.  Set to `true` by default.
+    * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose': boolean;
     /**
@@ -925,7 +925,7 @@ declare namespace LocalJSX {
   }
   interface SeChip extends JSXBase.HTMLAttributes {
     /**
-    * Indicates whether or not the chip has a close button.  Set to `true` by default.
+    * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose'?: boolean;
     /**

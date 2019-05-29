@@ -16,9 +16,9 @@ export class ChipComponent {
    */
   @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' | 'skyBlue' | 'darkBlue' | 'red' | 'fuchsia' | 'orange' | 'gray' | 'selected' | 'yellow' = 'standard';
   /**
-   * Indicates whether or not the chip has a close button.  Set to `true` by default.
+   * Indicates whether or not the chip has a close button.  Set to `false` by default.
    */
-  @Prop() canClose: boolean = true;
+  @Prop() canClose: boolean = false;
   /**
    * Indicates whether or not the chip is disabled.  Set to `false` by default.
    */

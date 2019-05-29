@@ -105,11 +105,14 @@
 			}
 			&:before {
 				width: 100%;
-				height: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
 				border: 1px solid $se-super-light-grey;
 				background-color: $se-white;
 				border-radius: 60px;
-				transition: opacity .2s ease-out .1s, transform .2s ease-out .1s;
+				transition: all .2s ease-out .1s;
 				transform: scale(1);
 				opacity: 1;
 			}
