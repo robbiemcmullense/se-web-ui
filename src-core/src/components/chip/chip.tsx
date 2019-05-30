@@ -30,9 +30,7 @@ export class ChipComponent {
   @Event() didClose: EventEmitter;
 
   closeChip() {
-    console.log('close chip function entered');
     if (!this.disabled) {
-      console.log('emitting didClose event');
       this.didClose.emit(this.value);
     }
   }

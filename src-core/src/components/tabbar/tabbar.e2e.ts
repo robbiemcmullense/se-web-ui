@@ -16,8 +16,8 @@ describe('TabbarComponent', () => {
   });
 
   it('renders with a primary color by default', async() => {
-    element = await page.find('se-tabbar nav');
-    expect(element).toHaveClass('primary');
+    element = await page.find('se-tabbar');
+    expect(element).toHaveClass('tab-primary');
   });
 });
 
@@ -25,7 +25,7 @@ describe('NavbarComponent with Alternative Color', () => {
   it('renders with a class equal to alternative', async() => {
     const page = await newE2EPage();
     await page.setContent('<se-tabbar color="alternative"></se-tabbar>');
-    const element = await page.find('se-tabbar nav');
-    expect(element).toHaveClass('alternative');
+    const element = await page.find('se-tabbar');
+    expect(element).toHaveClass('tab-alternative');
   });
 });

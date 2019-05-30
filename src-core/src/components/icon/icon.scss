@@ -25,24 +25,24 @@
   font-display: block;
 }
 :host(.nano){
-  font-size: 16px;
-  line-height: 12px;
+  font-size: 14px;
+  line-height: 14px;
 }
 :host(.small) {
   font-size: 24px;
-  line-height: 20px;
+  line-height: 24px;
 }
 :host(.medium) {
   font-size: 32px;
-  line-height: 24px;
+  line-height: 32px;
 }
 :host(.large) {
   font-size: 52px;
-  line-height: 44px;
+  line-height: 52px;
 }
 :host(.xtralarge) {
   font-size: 64px;
-  line-height: 54px;
+  line-height: 64px;
 }
 :host(.button) {
   cursor: pointer;
@@ -50,12 +50,7 @@
   line-height: inherit;
 }
 
-:host(.button.selected) {
-  @include color("selected-contrast");
-  @include background-color("selected");
-}
-
-// Standard color
+// Anthracite Grey Color
 :host(.anthracitegrey) {
   color: $se-anthracite-grey;
 }
@@ -63,24 +58,20 @@
   color: $se-white;
   background-color: $se-anthracite-grey;
 }
-:host(.anthracitegrey.button:hover) {
-  @include color("hover-standard-contrast");
-  @include background-color("hover-standard");
-}
 
-// Alternative color
+// Light Grey Color
 :host(.lightgrey) {
  color: $se-light-grey;
+}
+:host(.lightgrey:hover) {
+  color: $se-black;
 }
 :host(.lightgrey.button) {
   color: $se-white;
   background-color: $se-light-grey;
 }
-:host(.lightgrey.button:hover) {
-  @include color("hover-alternative-contrast");
-  @include background-color("hover-alternative");
-}
 
+// White Color
 :host(.white) {
   color: $se-white;
 }
@@ -88,13 +79,8 @@
   color: $se-white;
   background-color: $se-light-grey;
 }
-:host(.white.button:hover) {
-  @include color("hover-alternative-contrast");
-  @include background-color("hover-alternative");
-}
 
-
-// Primary color
+// Life Green Color
 :host(.lifegreen) {
   @include color("primary");
 }
@@ -102,12 +88,8 @@
   @include color("primary-contrast");
   @include background-color("primary");
 }
-:host(.lifegreen.button:hover) {
-  @include color("hover-primary-contrast");
-  @include background-color("hover-primary");
-}
 
-// Secondary color
+// Light Green Color
 :host(.lightgreen) {
   color: $se-light-green;
 }
@@ -115,7 +97,43 @@
   color: $se-white;
   background-color: $se-light-green;
 }
+
+:host(:hover),
+:host(.button:hover) {
+  @include background-color("hover-standard");
+}
+
+:host(.lifegreen.button:hover),
 :host(.lightgreen.button:hover) {
   @include color("hover-primary-contrast");
   @include background-color("hover-primary");
+}
+
+:host(:active),
+:host(.anthracitegrey.button:active),
+:host(.lightgrey:active),
+:host(.lightgrey.button:active),
+:host(.white.button:active),
+:host(.lifegreen.button:active),
+:host(.lightgreen.button:active) {
+  @include color("selected-contrast");
+  @include background-color("selected");
+}
+:host(:focus),
+:host(.anthracitegrey.button:focus),
+:host(.lightgrey.button:focus),
+:host(.white.button:focus),
+:host(.lifegreen.button:focus),
+:host(.lightgreen.button:focus) {
+  @include color("focus-contrast");
+  @include background-color("focus");
+}
+
+:host(.disabled),
+:host(.button.disabled),
+:host(.disabled:hover),
+:host(.button.disabled:hover) {
+  color: $se-light-grey;
+  background-color: $se-ultra-light-grey-2;
+  cursor: default;
 }

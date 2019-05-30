@@ -20,12 +20,16 @@ export class IconComponent {
    * The default color will be inherited from its parent.
    */
   @Prop() color: 'anthracitegrey' | 'lightgrey' | 'white' | 'lifegreen' | 'lightgreen';
+  /**
+   * Indicates whether or not the icon is disabled.  Default is `false`.
+   */
+  @Prop() disabled: boolean = false;
 
   componentWillLoad() {
     this.el.classList.add(this.size);
   }
 
   render() {
-    return (<Host class={[this.color, this.option].join(' ')}><slot></slot></Host>);
+    return (<Host class={[this.color, this.option, this.disabled ? 'disabled' : ''].join(' ')}><slot></slot></Host>);
   }
 }

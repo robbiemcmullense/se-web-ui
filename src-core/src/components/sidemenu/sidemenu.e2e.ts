@@ -35,9 +35,10 @@ describe('SidemenuComponent', () => {
       <se-sidemenu-item></se-sidemenu-item>
       <se-sidemenu-item></se-sidemenu-item>
     `);
+    await page.waitForChanges();
     const listItems = await page.findAll('se-sidemenu >>> se-list-item');
-    expect(listItems[0]).toHaveClass( 'selected');
-    expect(listItems[1]).not.toHaveClass( 'selected');
+    expect(listItems[0]).toHaveClass('selected');
+    expect(listItems[1]).not.toHaveClass('selected');
   });
 
   it('should open the sidemenu when the toggle method is called', async () => {

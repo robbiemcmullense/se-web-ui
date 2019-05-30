@@ -14,9 +14,9 @@ describe('AppComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should render an "se-app-body" class and slot elements', async() => {
-    const renderedHTML = '<se-app class="hydrated"><div class="se-app-body"></div></se-app>'
-    expect(element).toEqualHtml(renderedHTML);
+  it('should render a div element with an "se-app-body" class', async() => {
+    let bodyElement = await page.find('div.se-app-body')
+    expect(bodyElement).toBeTruthy();
   });
 });
 

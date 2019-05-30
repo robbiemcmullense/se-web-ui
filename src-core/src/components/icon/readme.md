@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                             | Type                                                      | Default     |
-| -------- | --------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
-| `color`  | `color`   | Optional property that defines the background color of the button. The default color will be inherited from its parent. | `"alternative" \| "primary" \| "secondary" \| "standard"` | `undefined` |
-| `option` | `option`  | Optional property to define if the icon should act as a button (clickable).                                             | `"button"`                                                | `undefined` |
-| `size`   | `size`    | Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.                 | `"large" \| "medium" \| "small"`                          | `"small"`   |
+| Property   | Attribute  | Description                                                                                                             | Type                                                                        | Default     |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----------- |
+| `color`    | `color`    | Optional property that defines the background color of the button. The default color will be inherited from its parent. | `"anthracitegrey" \| "lifegreen" \| "lightgreen" \| "lightgrey" \| "white"` | `undefined` |
+| `disabled` | `disabled` | Indicates whether or not the icon is disabled.  Default is `false`.                                                     | `boolean`                                                                   | `false`     |
+| `option`   | `option`   | Optional property to define if the icon should act as a button (clickable).                                             | `"button"`                                                                  | `undefined` |
+| `size`     | `size`     | Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.                 | `"large" \| "medium" \| "nano" \| "small" \| "xtralarge"`                   | `"small"`   |
 
 
 ## Dependencies

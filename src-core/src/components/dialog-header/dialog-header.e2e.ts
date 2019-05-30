@@ -18,8 +18,8 @@ describe('DialogHeaderComponent', () => {
     expect(element).toHaveClasses(['hydrated', 'primary']);
   });
 
-  it('renders with an h3 element with a flex class and a slot element with the "end" attribute', async() => {
-    const headerElm = await page.find('se-dialog-header >>> h3');
+  it('renders with an h4 element with a flex class and a slot element with the "end" attribute', async() => {
+    const headerElm = await page.find('se-dialog-header >>> h4');
     expect(headerElm).toBeTruthy();
     expect(headerElm).toHaveClass('flex');
 
