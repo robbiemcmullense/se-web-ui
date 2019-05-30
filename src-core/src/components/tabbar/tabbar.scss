@@ -34,7 +34,7 @@
   @include align-items(center);
 }
 .nav-left-wrapper {
-  background-color: rgba(black, 0.25);
+  background-color: rgba(black, 0.4);
   &>*:first-child{
     text-transform: uppercase;
     padding-left: $spacing-large;
@@ -48,9 +48,12 @@
   @include background-color('primary');
   @include color('primary-contrast');
   box-shadow: $inner-shadow-top;
-  border-bottom: 4px solid rgba(black, 0.25);
   nav {
+    height: 48px;
+  }
+  nav:not([slot='start']){
     height: 44px;
+    border-bottom: 4px solid rgba(black, 0.25);
   }
   nav > a {
     line-height: 44px;
@@ -68,11 +71,14 @@
       bottom: -4px !important;
     }
   }
+
 }
 
 .tab-alternative {
   @include background-color('alternative');
   @include color('alternative-contrast');
+  border-bottom: 1px solid $divider-color;
+
   nav {
     height: 40px;
   }

@@ -24,89 +24,88 @@
   font-feature-settings: "liga";
   font-display: block;
 }
-:host(.nano){
+
+:host(.icon-nano) {
   font-size: 14px;
   line-height: 14px;
 }
-:host(.small) {
+:host(.icon-small) {
   font-size: 24px;
   line-height: 24px;
 }
-:host(.medium) {
+:host(.icon-medium) {
   font-size: 32px;
   line-height: 32px;
 }
-:host(.large) {
+:host(.icon-large) {
   font-size: 52px;
   line-height: 52px;
 }
-:host(.xtralarge) {
-  font-size: 64px;
-  line-height: 64px;
+:host(.icon-xlarge) {
+  font-size: 62px;
+  line-height: 62px;
 }
-:host(.button) {
+:host(.icon-button) {
   cursor: pointer;
   border-radius: $border-radius;
   line-height: inherit;
 }
 
-// Anthracite Grey Color
-:host(.anthracitegrey) {
-  color: $se-anthracite-grey;
-}
-:host(.anthracitegrey.button) {
-  color: $se-white;
-  background-color: $se-anthracite-grey;
+:host(.icon-button.selected) {
+  @include color("selected-contrast");
+  @include background-color("selected");
 }
 
-// Light Grey Color
-:host(.lightgrey) {
- color: $se-light-grey;
+// Standard color
+:host(.standard) {
+  @include color("standard");
 }
-:host(.lightgrey:hover) {
-  color: $se-black;
+:host(.standard.icon-button) {
+  @include color("standard-contrast");
+  @include background-color("standard");
 }
-:host(.lightgrey.button) {
-  color: $se-white;
-  background-color: $se-light-grey;
-}
-
-// White Color
-:host(.white) {
-  color: $se-white;
-}
-:host(.white.button) {
-  color: $se-white;
-  background-color: $se-light-grey;
-}
-
-// Life Green Color
-:host(.lifegreen) {
-  @include color("primary");
-}
-:host(.lifegreen.button) {
-  @include color("primary-contrast");
-  @include background-color("primary");
-}
-
-// Light Green Color
-:host(.lightgreen) {
-  color: $se-light-green;
-}
-:host(.lightgreen.button) {
-  color: $se-white;
-  background-color: $se-light-green;
-}
-
-:host(:hover),
-:host(.button:hover) {
+:host(.standard.icon-button:hover) {
+  @include color("hover-standard-contrast");
   @include background-color("hover-standard");
 }
 
-:host(.lifegreen.button:hover),
-:host(.lightgreen.button:hover) {
+// Alternative color
+:host(.alternative) {
+  @include color("alternative");
+}
+:host(.alternative.icon-button) {
+  @include color("alternative-contrast");
+  @include background-color("alternative");
+}
+:host(.alternative.icon-button:hover) {
+  @include color("hover-alternative-contrast");
+  @include background-color("hover-alternative");
+}
+
+// Primary color
+:host(.primary) {
+  @include color("primary");
+}
+:host(.primary.icon-button) {
+  @include color("primary-contrast");
+  @include background-color("primary");
+}
+:host(.primary.icon-button:hover) {
   @include color("hover-primary-contrast");
   @include background-color("hover-primary");
+}
+
+// Secondary color
+:host(.secondary) {
+  @include color("secondary");
+}
+:host(.secondary.icon-button) {
+  @include color("secondary-contrast");
+  @include background-color("secondary");
+}
+:host(.secondary.icon-button:hover) {
+  @include color("hover-secondary-contrast");
+  @include background-color("hover-secondary");
 }
 
 :host(:active),
