@@ -19,7 +19,8 @@
   max-width: $centered;
 }
 
-.d-flex-main{
+.d-flex-main {
+  background-color: inherit;
   display: flex;
   @include flex-direction(row);
   width: 100%;

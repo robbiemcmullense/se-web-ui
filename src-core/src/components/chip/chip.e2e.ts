@@ -37,6 +37,7 @@ describe('ChipComponent', () => {
   it('should emit a close event when the chip is clicked and the canClose property is true', async() => {
     await page.$eval('se-chip', (elm: any) => {
       elm.value = 'My Value';
+      elm.canClose = true;
     });
     await page.waitForChanges();
     const eventSpy = await page.spyOnEvent('didClose');

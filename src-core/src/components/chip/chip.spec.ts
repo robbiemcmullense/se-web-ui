@@ -23,7 +23,7 @@ describe('ChipComponent', () => {
 		expect(chip.value).toBeUndefined();
 	});
 
-	it('should have the ability to be closed by default', () => {
-		expect(chip.canClose).toBeTruthy();
+	it('should not have the ability to be closed by default', () => {
+		expect(chip.canClose).toBeFalsy();
 	});
 });

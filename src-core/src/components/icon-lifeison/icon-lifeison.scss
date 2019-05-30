@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
- :host {
+:host {
   height: auto;
   font-size: 12px !important;
   color: inherit;
@@ -8,18 +8,20 @@
   width: 100%;
 }
 .standard {
-  .cls-1{
+  .cls-1 {
     color: $se-life-green;
+    fill: $se-life-green;
   }
-  .cls-2{
+  .cls-2 {
     color: $se-logo-green;
   }
+  
 }
 .inherited {
-  .cls-1{
+  .cls-1 {
     color: inherit;
   }
-  .cls-2{
+  .cls-2 {
     color: inherit;
   }
 }

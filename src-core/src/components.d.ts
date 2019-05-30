@@ -409,10 +409,6 @@ export namespace Components {
     */
     'color': "standard" | "alternative" | "primary" | "secondary";
     /**
-    * Indicates whether or not the icon is disabled.  Default is `false`.
-    */
-    'disabled': boolean;
-    /**
     * Optional property to define if the icon should act as a button (clickable).
     */
     'option': "button";
@@ -1421,10 +1417,6 @@ declare namespace LocalJSX {
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
     'color'?: "standard" | "alternative" | "primary" | "secondary";
-    /**
-    * Indicates whether or not the icon is disabled.  Default is `false`.
-    */
-    'disabled'?: boolean;
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
