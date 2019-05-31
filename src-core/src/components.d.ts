@@ -104,7 +104,7 @@ export namespace Components {
     /**
     * When set to `basic`, content will fill the whole space of the block.
     */
-    'option': 'basic' | 'card';
+    'option': 'card' | 'widget' | 'basic';
   }
   interface SeBlockFooter {
     /**
@@ -114,13 +114,13 @@ export namespace Components {
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option. `card` will update the design of the footer with respect to the card design.
     */
-    'option': "card";
+    'option': 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader {
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design.
     */
-    'option': "card";
+    'option': 'card' | 'widget' | 'basic';
   }
   interface SeButton {
     /**
@@ -1112,7 +1112,7 @@ declare namespace LocalJSX {
     /**
     * When set to `basic`, content will fill the whole space of the block.
     */
-    'option'?: 'basic' | 'card';
+    'option'?: 'card' | 'widget' | 'basic';
   }
   interface SeBlockFooter extends JSXBase.HTMLAttributes<HTMLSeBlockFooterElement> {
     /**
@@ -1122,13 +1122,13 @@ declare namespace LocalJSX {
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option. `card` will update the design of the footer with respect to the card design.
     */
-    'option'?: "card";
+    'option'?: 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader extends JSXBase.HTMLAttributes<HTMLSeBlockHeaderElement> {
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design.
     */
-    'option'?: "card";
+    'option'?: 'card' | 'widget' | 'basic';
   }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
     /**

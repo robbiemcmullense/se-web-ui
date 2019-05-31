@@ -4,6 +4,7 @@ import { SnackbarService } from './snackbar.service';
 import { SnackbarComponent } from './snackbar.component';
 import { SnackbarConfig } from './snackbar-config';
 import { SnackbarModule } from './snackbar.module';
+import { ProxiesModule } from '../directives/proxies.module';
 
 describe('SnackbarService', () => {
   let config: SnackbarConfig;
@@ -11,10 +12,7 @@ describe('SnackbarService', () => {
   let fixture: ComponentFixture<SnackbarComponent>;
 
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [SnackbarModule],
-    schemas: [
-      CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA
-    ]
+    imports: [SnackbarModule, ProxiesModule]
   }));
   beforeEach(() => {
     config = new SnackbarConfig();
@@ -83,7 +81,7 @@ describe('SnackbarService', () => {
     jasmine.clock().tick(600);
     expect(service.snackbarComponentRef.hostView.destroyed).toBeTruthy();
     jasmine.clock().uninstall();
-     
+
   });
 
 });

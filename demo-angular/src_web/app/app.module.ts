@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
@@ -27,7 +27,6 @@ import { SeWebModule } from '@se/web-ui-angular';
   ],
   declarations: [AppComponent],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

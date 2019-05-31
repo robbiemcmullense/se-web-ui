@@ -21,27 +21,28 @@ class Widget extends Component {
   render() {
     const { name, match } = this.props;
 
-    return (
-      <se-widget>
-        <se-widget-header>
+    return [
+      <se-block>
+        <se-block-header>
         {name || match.params.id}
           <div slot="end">
               <se-icon option="button" color="alternative">favourites_addto</se-icon>
               <se-icon option="button" color="alternative">other_vertical</se-icon>
           </div>
-        </se-widget-header>
-        <se-widget-content>
+        </se-block-header>
+        <se-block-content>
           <div className="mycoolstyle">my content</div>
           <ul>
             <se-radio-on-off ref={this._handleRef} />
           </ul>
 
-        </se-widget-content>
-        <se-widget-footer>
+        </se-block-content>
+        <se-block-footer>
           <se-button>Apply</se-button>
-        </se-widget-footer>
-      </se-widget>
-    );
+        </se-block-footer>
+      </se-block>,
+      <se-divider option="vertical"></se-divider>
+    ];
   }
 }
 

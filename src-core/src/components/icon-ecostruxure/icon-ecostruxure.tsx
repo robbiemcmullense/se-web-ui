@@ -14,6 +14,6 @@ export class IconEcostruxureComponent {
 
   render() {
     console.log(IconEcostruxure)
-    return <div class={this.size} innerHTML={IconEcostruxure}/>;
+    return <div class={this.size} innerHTML={IconEcostruxure}></div>;
   }
 }

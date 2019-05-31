@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,7 +21,6 @@ import { SeWebModule } from '@se/web-ui-angular';
   ],
   declarations: [
     DashboardComponent
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  ]
 })
 export class DashboardModule { }

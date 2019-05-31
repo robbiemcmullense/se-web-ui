@@ -10,9 +10,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                                                                                    | Type     | Default     |
-| -------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| `option` | `option`  | Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design. | `"card"` | `undefined` |
+| Property | Attribute | Description                                                                                                                                                                                    | Type                            | Default     |
+| -------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------- |
+| `option` | `option`  | Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option. `card` will update the design of the header with respect to the card design. | `"basic" \| "card" \| "widget"` | `undefined` |
 
 
 ----------------------------------------------

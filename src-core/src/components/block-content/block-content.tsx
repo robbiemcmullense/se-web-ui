@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, Host } from "@stencil/core";
 
 @Component({
   tag: "se-block-content",
@@ -9,16 +9,13 @@ export class BlockContent {
   /**
    * When set to `basic`, content will fill the whole space of the block.
    */
-  @Prop() option: 'basic' | 'card';
+  @Prop() option: 'card' | 'widget' | 'basic' | 'fill';
 
-  hostData() {
-    return {
-      'class': { 'full-content': this.option === 'basic' }
-    };
-  }
   render() {
     return (
-      <slot />
+      <Host class={`${this.option}-content`}>
+        <slot />
+      </Host>
     );
   }
 }

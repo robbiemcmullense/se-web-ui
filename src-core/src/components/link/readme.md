@@ -13,6 +13,19 @@
 | `url`      | `url`      | Defines the url the user should get redirected to when clicking on the link.                                                      | `string`                   | `undefined`  |
 
 
+## Dependencies
+
+### Used by
+
+ - [se-sidemenu](../sidemenu)
+
+### Graph
+```mermaid
+graph TD;
+  se-sidemenu --> se-link
+  style se-link fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

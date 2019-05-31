@@ -10,7 +10,7 @@ export class BlockHeader {
    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when on card option.
    * `card` will update the design of the header with respect to the card design.
    */
-  @Prop() option: "card";
+  @Prop() option: 'card' | 'widget' | 'basic';
 
   render() {
     return (

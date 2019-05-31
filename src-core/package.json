@@ -3,6 +3,10 @@
   "version": "0.0.1-PLACEHOLDER",
   "private": true,
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
+  "module": "core/index.mjs",
+  "main": "core/index.js",
+  "types": "core/types/components.d.ts",
+  "collection": "core/collection/collection-manifest.json",
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
     "build": "npm-run-all build.*",

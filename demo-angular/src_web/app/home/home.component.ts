@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Logger } from '@core/logger.service';
 import { ModalExampleComponent } from './modal-example/modal-example.component';
 import { ModalTableComponent } from './modal-table/modal-table.component';
-<<<<<<< HEAD
 import { DialogService, SnackbarService, PageLoaderService } from '@se/web-ui-angular';
-=======
-import { DialogService, SnackbarService } from '@se/web-ui-angular';
->>>>>>> 52c94be... update fonts to align with the marketing guideline
 const log = new Logger('HomeComponent');
 const logModal = new Logger('ModalExampleComponent');
 @Component({
@@ -28,15 +24,11 @@ export class HomeComponent implements OnInit {
   public loaderTable = false;
   public showDialogMessage: string;
 
-<<<<<<< HEAD
   constructor(
     public dialogService: DialogService,
     private snackbarService: SnackbarService,
     private pageLoaderService: PageLoaderService
   ) {}
-=======
-  constructor(public dialogService: DialogService, private snackbarService: SnackbarService) {}
->>>>>>> 52c94be... update fonts to align with the marketing guideline
 
   modalAlert(type: 'success' | 'warning' | 'error'): void {
     log.debug('modalAlert type', type);
@@ -64,7 +56,6 @@ export class HomeComponent implements OnInit {
     log.debug('closed');
   }
   ngOnInit() {}
-<<<<<<< HEAD
   //calling dialog alert service
   showDialog(): void {
     const alert = this.dialogService.alert({
@@ -84,26 +75,10 @@ export class HomeComponent implements OnInit {
     );
   }
   //calling dialog alert service with icon
-=======
-  // calling dialog alert service
-  showDialog(): void {
-    const alert = this.dialogService.alert({
-      message:
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`
-    });
-
-    alert.instance.didClose.subscribe((data: any) => {
-      this.closeAlertCallback();
-    });
-  }
-  // calling dialog alert service with icon
->>>>>>> 52c94be... update fonts to align with the marketing guideline
   showTitle(): void {
     const title = this.dialogService.alert({
       title: 'Dialog With Title & Icon',
       message:
-<<<<<<< HEAD
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       icon: 'help_wired_flat'
     });
@@ -139,43 +114,12 @@ export class HomeComponent implements OnInit {
     );
   }
 
-=======
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`,
-      icon: 'help_wired_flat'
-    });
-    title.instance.didClose.subscribe((data: any) => {
-      this.closeAlertTitleCallback();
-    });
-  }
-
-  // calling dialog confirm service
-  showConfirm(): void {
-    const confirm = this.dialogService.confirm({
-      title: 'Dialog Confirm',
-      message:
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`
-    });
-    confirm.instance.didClose.subscribe((data: any) => {
-      this.closeConfirmCallback();
-    });
-    confirm.instance.backdrop.subscribe((data: any) => {
-      this.backdropCallback();
-    });
-    confirm.instance.didConfirm.subscribe((data: any) => {
-      this.okConfirmCallback();
-    });
-  }
-
->>>>>>> 52c94be... update fonts to align with the marketing guideline
   closeAlertCallback(): void {
     this.showDialogMessage = 'Alert Dialog closed & callback function called';
   }
   closeAlertTitleCallback(): void {
     this.showDialogMessage = 'Alert Dialog with title,icon closed & callback function called';
   }
-<<<<<<< HEAD
 
   okConfirmCallback(): void {
     this.showDialogMessage = 'Confirm Dialog closed & callback function called';
@@ -202,27 +146,5 @@ export class HomeComponent implements OnInit {
   showPageLoader(): void {
     this.pageLoaderService.show();
     setTimeout(() => this.pageLoaderService.hide(), 5000);
-=======
-  closeConfirmCallback(): void {
-    this.showDialogMessage = 'Confirm Dialog closed & callback function called';
-  }
-  okConfirmCallback(): void {
-    this.showDialogMessage = 'Confirm Dialog closed & callback function called';
-  }
-  backdropCallback(): void {
-    this.showDialogMessage = 'Confirm Dialog backdrop closed & callback function called';
-  }
-
-  // calling modal service
-  showModal(): void {
-    const modal = this.dialogService.modal(ModalExampleComponent);
-    modal.instance.backdrop.subscribe((data: any) => {
-      this.closeBackdropCallback();
-    });
-    this.showDialogMessage = 'Modal Dialog';
-  }
-  closeBackdropCallback(): void {
-    this.showDialogMessage = 'Modal Dialog backdrop click & callback function called';
->>>>>>> 52c94be... update fonts to align with the marketing guideline
   }
 }

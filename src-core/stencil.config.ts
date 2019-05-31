@@ -18,6 +18,17 @@ export const config: Config = {
       copy
     },
     {
+      type: 'stats',
+      file: 'stats.json'
+    },
+    {
+      type: 'angular',
+      componentCorePackage: '@se/web-ui',
+      directivesProxyFile: '../src-angular/projects/frameworks/src/lib/directives/proxies.ts',
+      directivesUtilsFile: '../src-angular/projects/frameworks/src/lib/directives/proxies-utils.ts',
+      directivesArrayFile: '../src-angular/projects/frameworks/src/lib/directives/proxies-list.ts',
+    },
+    {
       type: 'docs-readme'
     },
     {

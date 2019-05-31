@@ -10,7 +10,7 @@ export class BlockFooter {
    * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option.
    * `card` will update the design of the footer with respect to the card design.
    */
-  @Prop() option: "card";
+  @Prop() option: 'card' | 'widget' | 'basic';
   /**
    * Defines the direction of the flex element.
    * `row` is the default direction. This is perfect to use with flex content.

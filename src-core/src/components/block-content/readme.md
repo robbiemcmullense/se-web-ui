@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                          | Type                | Default     |
-| -------- | --------- | -------------------------------------------------------------------- | ------------------- | ----------- |
-| `option` | `option`  | When set to `basic`, content will fill the whole space of the block. | `"basic" \| "card"` | `undefined` |
+| Property | Attribute | Description                                                          | Type                            | Default     |
+| -------- | --------- | -------------------------------------------------------------------- | ------------------------------- | ----------- |
+| `option` | `option`  | When set to `basic`, content will fill the whole space of the block. | `"basic" \| "card" \| "widget"` | `undefined` |
 
 
 ----------------------------------------------

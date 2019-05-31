@@ -53,7 +53,7 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [se-fab](..\fab)
+ - [se-fab](../fab)
 
 ### Graph
 ```mermaid

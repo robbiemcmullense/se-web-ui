@@ -1,13 +1,15 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,   } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { Widget5Component } from './widget5.component';
+import { SeWebModule } from '@se/web-ui-angular';
 
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule
+    TranslateModule,
+    SeWebModule
   ],
   declarations: [
     Widget5Component
@@ -18,6 +20,6 @@ import { Widget5Component } from './widget5.component';
   exports: [
     Widget5Component
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [ ]
 })
 export class Widget5Module { }

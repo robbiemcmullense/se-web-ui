@@ -1,23 +1,23 @@
 <template>
   <se-container option="widget">
-    <se-widget style="width: 300px">
-      <se-widget-header>Filter</se-widget-header>
-      <se-widget-content>
+    <se-block style="width: 300px">
+      <se-block-header>Filter</se-block-header>
+      <se-block-content>
         <se-radio-on-off id="switch-el"></se-radio-on-off>
         <se-button id="flatBtn1" option="flat" color="error">Warning</se-button>
         <se-button option="login" value="myLoginValue">Login</se-button>
         <se-button option="signup">Sign Up</se-button>
-      </se-widget-content>
-      <se-widget-footer>
+      </se-block-content>
+      <se-block-footer>
         <se-radio option="radio">
           <se-button value="left">Radio1</se-button>
           <se-button value="right">Radio2</se-button>
         </se-radio>
-      </se-widget-footer>
-    </se-widget>
-    <se-widget class="flex">
-      <se-widget-header>Filter</se-widget-header>
-      <se-widget-content>
+      </se-block-footer>
+    </se-block>
+    <se-block class="flex">
+      <se-block-header>Filter</se-block-header>
+      <se-block-content>
         <div class="mycoolstyle">my content</div>
         <ul>
           ...
@@ -37,9 +37,9 @@
           <se-button option="text">Text</se-button>
           <se-button option="text" color="primary">Primary</se-button>
         </div>
-      </se-widget-content>
-      <se-widget-footer> </se-widget-footer>
-    </se-widget>
+      </se-block-content>
+      <se-block-footer> </se-block-footer>
+    </se-block>
   </se-container>
 </template>
 <style lang="scss">

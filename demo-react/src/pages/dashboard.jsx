@@ -14,9 +14,9 @@ class Dashboard  extends Component {
     console.log('ID', this.props)
     return (
       <se-container option="widget">
-        <se-widget width="250px">
-          <se-widget-header>List classic with expender</se-widget-header>
-          <se-widget-content option="fill">
+        <se-block width="250px">
+          <se-block-header>List classic with expender</se-block-header>
+          <se-block-content option="fill">
             <se-list>
             {[1,2,3,4,5,6,7].map( id => {
               return(
@@ -32,12 +32,12 @@ class Dashboard  extends Component {
               );
             })}
             </se-list>
-          </se-widget-content>
-        </se-widget>
-
-        <se-widget>
+          </se-block-content>
+        </se-block>
+        <se-divider option="vertical"></se-divider>
+        <se-block>
           <Route path={`/dashboard/:id`} component={Widget}/>
-        </se-widget>
+        </se-block>
       </se-container>
     );
   }
