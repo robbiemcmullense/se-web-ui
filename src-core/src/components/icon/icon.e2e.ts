@@ -14,12 +14,12 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(element).toHaveClass('hydrated');	
   });
 
-  it('renders a class based on the provided size and color', async() => {	
+  it('renders classes based on the provided size, color, and option', async() => {	
     await page.$eval('se-icon', (elm: any) => {
       elm.size = 'small';
       elm.color = 'warn';
     });
     await page.waitForChanges();	
-    expect(element).toHaveClasses(['small', 'warn']);	
+    expect(element).toHaveClasses(['hydrated', 'icon-small', 'warn', 'icon-undefined']);	
   });
 });

@@ -18,7 +18,7 @@ describe('HeaderComponent', () => {
     const titleFirstName = await page.find('se-header >>> h1 span:first-child');
     const titleLastName = await page.find('se-header >>> h1 span.light');
     expect(titleFirstName.innerText).toEqual('Test');
-    expect(titleLastName.innerHTML).toEqual('&nbsp;Application');
+    expect(titleLastName.innerHTML).toEqual(' Application');
   });
 
   it('should render a se-icon-ecostruxure element because the domain is ecostruxure by default', async() => {

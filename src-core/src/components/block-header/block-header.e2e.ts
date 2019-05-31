@@ -23,7 +23,7 @@ describe('BlockHeaderComponent', () => {
   });
 
   it('renders with an h3 element with a flex class and a slot element with the "end" attribute', async() => {
-    const headerElm = await page.find('se-block-header >>> h3');
+    const headerElm = await page.find('se-block-header >>> h4');
     expect(headerElm).toBeTruthy();
     expect(headerElm).toHaveClass('flex');
 

@@ -104,7 +104,7 @@ export namespace Components {
     /**
     * When set to `basic`, content will fill the whole space of the block.
     */
-    'option': 'card' | 'widget' | 'basic';
+    'option': 'card' | 'widget' | 'basic' | 'fill';
   }
   interface SeBlockFooter {
     /**
@@ -1112,7 +1112,7 @@ declare namespace LocalJSX {
     /**
     * When set to `basic`, content will fill the whole space of the block.
     */
-    'option'?: 'card' | 'widget' | 'basic';
+    'option'?: 'card' | 'widget' | 'basic' | 'fill';
   }
   interface SeBlockFooter extends JSXBase.HTMLAttributes<HTMLSeBlockFooterElement> {
     /**

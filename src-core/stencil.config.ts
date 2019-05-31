@@ -42,6 +42,9 @@ export const config: Config = {
     inlineSvg()
   ],
   testing: {
-    testPathIgnorePatterns: ['./demo-*']
+    testPathIgnorePatterns: ['./demo-*'],
+    transform: {
+      "^.+\\.svg$": "<rootDir>/svgTransform.js"
+    }
   }
 };

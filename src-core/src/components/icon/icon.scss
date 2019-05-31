@@ -107,3 +107,32 @@
   @include color("hover-secondary-contrast");
   @include background-color("hover-secondary");
 }
+
+:host(:active),
+:host(.anthracitegrey.button:active),
+:host(.lightgrey:active),
+:host(.lightgrey.button:active),
+:host(.white.button:active),
+:host(.lifegreen.button:active),
+:host(.lightgreen.button:active) {
+  @include color("selected-contrast");
+  @include background-color("selected");
+}
+:host(:focus),
+:host(.anthracitegrey.button:focus),
+:host(.lightgrey.button:focus),
+:host(.white.button:focus),
+:host(.lifegreen.button:focus),
+:host(.lightgreen.button:focus) {
+  @include color("focus-contrast");
+  @include background-color("focus");
+}
+
+:host(.disabled),
+:host(.button.disabled),
+:host(.disabled:hover),
+:host(.button.disabled:hover) {
+  color: $se-light-grey;
+  background-color: $se-ultra-light-grey-2;
+  cursor: default;
+}

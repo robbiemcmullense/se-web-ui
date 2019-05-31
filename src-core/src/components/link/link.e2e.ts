@@ -18,9 +18,9 @@ describe('LinkComponent', () => {
     expect(anchorElement.getAttribute('href')).toEqual('testURL');
   });
 
-  it('renders with a blank target attribute and an external class when the type is set to external', async() => {
+  it('renders with a blank target attribute and an external class when the option is set to external', async() => {
     await page.$eval('se-link', (elm: any) => {
-      elm.type = 'external';
+      elm.option = 'external';
     });
     await page.waitForChanges();
     expect(anchorElement).toHaveClass('external');
