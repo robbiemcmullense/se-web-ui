@@ -28,11 +28,7 @@ export class HomeComponent implements OnInit {
     public dialogService: DialogService,
     private snackbarService: SnackbarService,
     private pageLoaderService: PageLoaderService
-<<<<<<< HEAD
   ) {}
-=======
-    ) {}
->>>>>>> b78fe822c947f1904719648e01b7e7c2d25679b1
 
   modalAlert(type: 'success' | 'warning' | 'error'): void {
     log.debug('modalAlert type', type);
@@ -60,7 +56,6 @@ export class HomeComponent implements OnInit {
     log.debug('closed');
   }
   ngOnInit() {}
-<<<<<<< HEAD
   //calling dialog alert service
   showDialog(): void {
     const alert = this.dialogService.alert({
@@ -80,26 +75,10 @@ export class HomeComponent implements OnInit {
     );
   }
   //calling dialog alert service with icon
-=======
-  // calling dialog alert service
-  showDialog(): void {
-    const alert = this.dialogService.alert({
-      message:
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`
-    });
-
-    alert.instance.didClose.subscribe((data: any) => {
-      this.closeAlertCallback();
-    });
-  }
-  // calling dialog alert service with icon
->>>>>>> b78fe822c947f1904719648e01b7e7c2d25679b1
   showTitle(): void {
     const title = this.dialogService.alert({
       title: 'Dialog With Title & Icon',
       message:
-<<<<<<< HEAD
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       icon: 'help_wired_flat'
     });
@@ -116,23 +95,10 @@ export class HomeComponent implements OnInit {
   }
 
   //calling dialog confirm service
-=======
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`,
-      icon: 'help_wired_flat'
-    });
-    title.instance.didClose.subscribe((data: any) => {
-      this.closeAlertTitleCallback();
-    });
-  }
-
-  // calling dialog confirm service
->>>>>>> b78fe822c947f1904719648e01b7e7c2d25679b1
   showConfirm(): void {
     const confirm = this.dialogService.confirm({
       title: 'Dialog Confirm',
       message:
-<<<<<<< HEAD
         `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua`
     });
@@ -146,20 +112,6 @@ export class HomeComponent implements OnInit {
         log.debug(err);
       }
     );
-=======
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`
-    });
-    confirm.instance.didClose.subscribe((data: any) => {
-      this.closeConfirmCallback();
-    });
-    confirm.instance.backdrop.subscribe((data: any) => {
-      this.backdropCallback();
-    });
-    confirm.instance.didConfirm.subscribe((data: any) => {
-      this.okConfirmCallback();
-    });
->>>>>>> b78fe822c947f1904719648e01b7e7c2d25679b1
   }
 
   closeAlertCallback(): void {
@@ -168,7 +120,6 @@ export class HomeComponent implements OnInit {
   closeAlertTitleCallback(): void {
     this.showDialogMessage = 'Alert Dialog with title,icon closed & callback function called';
   }
-<<<<<<< HEAD
 
   okConfirmCallback(): void {
     this.showDialogMessage = 'Confirm Dialog closed & callback function called';
@@ -189,27 +140,6 @@ export class HomeComponent implements OnInit {
     this.showDialogMessage = 'Modal Dialog';
   }
   closeModalCallback(): void {
-=======
-  closeConfirmCallback(): void {
-    this.showDialogMessage = 'Confirm Dialog closed & callback function called';
-  }
-  okConfirmCallback(): void {
-    this.showDialogMessage = 'Confirm Dialog closed & callback function called';
-  }
-  backdropCallback(): void {
-    this.showDialogMessage = 'Confirm Dialog backdrop closed & callback function called';
-  }
-
-  // calling modal service
-  showModal(): void {
-    const modal = this.dialogService.modal(ModalExampleComponent);
-    modal.instance.backdrop.subscribe((data: any) => {
-      this.closeBackdropCallback();
-    });
-    this.showDialogMessage = 'Modal Dialog';
-  }
-  closeBackdropCallback(): void {
->>>>>>> b78fe822c947f1904719648e01b7e7c2d25679b1
     this.showDialogMessage = 'Modal Dialog backdrop click & callback function called';
   }
 

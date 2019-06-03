@@ -202,10 +202,6 @@
             </div>
           </se-block-header>
           <se-block-content>
-            <ul>
-              <li id="button-info"></li>
-              <li id="chip-info"></li>
-            </ul>
             <se-button option="flat">standard flat</se-button>
             <se-button id="raisedBtn" option="raised">standard raised</se-button>
             <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
@@ -243,8 +239,11 @@
             <se-divider></se-divider>
             <se-button option='fab' icon="notebook_paper" color="primary"></se-button>
             <se-divider></se-divider>
-            <se-chip id="se-chip" value="Chip Std"></se-chip>
-            <se-chip id="se-chip" disabled="true" value="Chip Std"></se-chip>
+            <ul>
+              <li id="chip-info"></li>
+            </ul>
+            <se-chip id="se-chip" can-close="true" value="Chip Std"></se-chip>
+            <se-chip id="se-chip" can-close="true" disabled="true" value="Chip Std"></se-chip>
             <div style="padding:8px; background-color:#9fa0a4;">
               <se-chip value="Chip Alt" can-close="true" color="alternative"></se-chip>
               <se-chip value="Chip Alt" can-close="true" disabled="true" color="alternative"></se-chip>

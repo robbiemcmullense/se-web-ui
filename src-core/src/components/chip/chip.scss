@@ -27,7 +27,6 @@ $chip-height: 32px;
   }
 }
 
-
 :host(.standard) {
   border: 1px solid $se-ultra-dark-grey;
   color: $se-anthracite-grey;
@@ -39,14 +38,16 @@ $chip-height: 32px;
 }
 
 :host(.standard:hover) {
+  border: 1px solid $se-anthracite-grey;
   background-color: rgba(203,203,203,0.2);
 }
+
 :host(.alternative:hover) {
   background-color: rgba(203,203,203,0.6);
 }
+
 :host(.standard:active),
-:host(.alternative:active),
-:host(.selected) {
+:host(.alternative:active) {
   @include color('selected-contrast');
   @include background-color('selected');
   border: 1px solid $se-dark-grey;
