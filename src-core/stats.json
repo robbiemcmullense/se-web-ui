@@ -1,7 +1,7 @@
 {
   "compiler": {
     "name": "@stencil/core",
-    "version": "1.0.0-beta.8"
+    "version": "1.0.0"
   },
   "app": {
     "namespace": "SeComponents",
@@ -301,7 +301,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/about/about.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/about/about.tsx"
       ],
       "modes": [
         "$"
@@ -321,7 +321,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/app/app.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/app/app.tsx"
       ],
       "modes": [
         "$"
@@ -344,7 +344,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/authentication/authentication.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/authentication/authentication.tsx"
       ],
       "modes": [
         "$"
@@ -368,7 +368,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/block/block.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block/block.tsx"
       ],
       "modes": [
         "$"
@@ -388,7 +388,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/block-content/block-content.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-content/block-content.tsx"
       ],
       "modes": [
         "$"
@@ -408,7 +408,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/block-footer/block-footer.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-footer/block-footer.tsx"
       ],
       "modes": [
         "$"
@@ -428,7 +428,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/block-header/block-header.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-header/block-header.tsx"
       ],
       "modes": [
         "$"
@@ -450,7 +450,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/button/button.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/button/button.tsx"
       ],
       "modes": [
         "$"
@@ -470,7 +470,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/checkbox/checkbox.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/checkbox/checkbox.tsx"
       ],
       "modes": [
         "$"
@@ -490,7 +490,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/chip/chip.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/chip/chip.tsx"
       ],
       "modes": [
         "$"
@@ -510,7 +510,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/container/container.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/container/container.tsx"
       ],
       "modes": [
         "$"
@@ -530,7 +530,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/dialog/dialog.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog/dialog.tsx"
       ],
       "modes": [
         "$"
@@ -552,7 +552,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/dialog-content/dialog-content.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-content/dialog-content.tsx"
       ],
       "modes": [
         "$"
@@ -572,7 +572,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/dialog-footer/dialog-footer.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-footer/dialog-footer.tsx"
       ],
       "modes": [
         "$"
@@ -592,7 +592,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/dialog-header/dialog-header.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-header/dialog-header.tsx"
       ],
       "modes": [
         "$"
@@ -614,7 +614,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/divider/divider.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/divider/divider.tsx"
       ],
       "modes": [
         "$"
@@ -634,7 +634,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/dropdown/dropdown.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dropdown/dropdown.tsx"
       ],
       "modes": [
         "$"
@@ -656,7 +656,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/fab/fab.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/fab/fab.tsx"
       ],
       "modes": [
         "$"
@@ -676,7 +676,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/form-field/form-field.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/form-field/form-field.tsx"
       ],
       "modes": [
         "$"
@@ -700,7 +700,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/header/header.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/header/header.tsx"
       ],
       "modes": [
         "$"
@@ -726,7 +726,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/icon/icon.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon/icon.tsx"
       ],
       "modes": [
         "$"
@@ -750,7 +750,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/icon-ecostruxure/icon-ecostruxure.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-ecostruxure/icon-ecostruxure.tsx"
       ],
       "modes": [
         "$"
@@ -773,7 +773,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/icon-lifeison/icon-lifeison.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-lifeison/icon-lifeison.tsx"
       ],
       "modes": [
         "$"
@@ -795,7 +795,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/icon-schneider/icon-schneider.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-schneider/icon-schneider.tsx"
       ],
       "modes": [
         "$"
@@ -817,7 +817,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/link/link.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/link/link.tsx"
       ],
       "modes": [
         "$"
@@ -839,7 +839,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/list/list.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list/list.tsx"
       ],
       "modes": [
         "$"
@@ -859,7 +859,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/list-group/list-group.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list-group/list-group.tsx"
       ],
       "modes": [
         "$"
@@ -881,7 +881,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/list-item/list-item.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list-item/list-item.tsx"
       ],
       "modes": [
         "$"
@@ -904,7 +904,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/loading/loading.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/loading/loading.tsx"
       ],
       "modes": [
         "$"
@@ -924,7 +924,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/radio/radio.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/radio/radio.tsx"
       ],
       "modes": [
         "$"
@@ -944,7 +944,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/radio-group/radio-group.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/radio-group/radio-group.tsx"
       ],
       "modes": [
         "$"
@@ -973,7 +973,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/sidemenu/sidemenu.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/sidemenu/sidemenu.tsx"
       ],
       "modes": [
         "$"
@@ -993,7 +993,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/sidemenu-item/sidemenu-item.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/sidemenu-item/sidemenu-item.tsx"
       ],
       "modes": [
         "$"
@@ -1013,7 +1013,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/slider/slider.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/slider/slider.tsx"
       ],
       "modes": [
         "$"
@@ -1033,7 +1033,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/snackbar/snackbar.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/snackbar/snackbar.tsx"
       ],
       "modes": [
         "$"
@@ -1053,7 +1053,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/tabbar/tabbar.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tabbar/tabbar.tsx"
       ],
       "modes": [
         "$"
@@ -1073,7 +1073,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/tooltip/tooltip.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip/tooltip.tsx"
       ],
       "modes": [
         "$"
@@ -1095,7 +1095,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/tooltip-content/tooltip-content.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-content/tooltip-content.tsx"
       ],
       "modes": [
         "$"
@@ -1115,7 +1115,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/tooltip-footer/tooltip-footer.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-footer/tooltip-footer.tsx"
       ],
       "modes": [
         "$"
@@ -1137,7 +1137,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/tooltip-header/tooltip-header.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-header/tooltip-header.tsx"
       ],
       "modes": [
         "$"
@@ -1157,7 +1157,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/visual-linear/visual-linear.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/visual-linear/visual-linear.tsx"
       ],
       "modes": [
         "$"
@@ -1177,7 +1177,7 @@
       ],
       "bundles": [],
       "inputs": [
-        "/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-core/src/components/visual-radial/visual-radial.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/visual-radial/visual-radial.tsx"
       ],
       "modes": [
         "$"
