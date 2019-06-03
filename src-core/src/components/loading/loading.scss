@@ -3,7 +3,6 @@
 :host {
 	display: none;
 	overflow: hidden;
-	z-index: 100;
 }
 
 :host(.show) {
@@ -19,7 +18,8 @@
 }
 
 .se-loading {
-	position: relative;
+  position: relative;
+  z-index: 100;
 	line-height: 128px;
 	@include animated();
   @include color("primary");
