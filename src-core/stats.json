@@ -7,15 +7,15 @@
     "namespace": "SeComponents",
     "fsNamespace": "se-components",
     "components": 42,
-    "entries": 42,
+    "entries": 2,
     "bundles": 0
   },
   "options": {
-    "minifyJs": false,
-    "minifyCss": false,
-    "hashFileNames": false,
+    "minifyJs": true,
+    "minifyCss": true,
+    "hashFileNames": true,
     "hashedFileNameLength": 8,
-    "buildEs5": false
+    "buildEs5": true
   },
   "components": [
     {
@@ -29,14 +29,6 @@
       "tag": "se-app",
       "dependencyOf": [],
       "dependencies": []
-    },
-    {
-      "tag": "se-authentication",
-      "dependencyOf": [],
-      "dependencies": [
-        "se-icon-ecostruxure",
-        "se-icon-lifeison"
-      ]
     },
     {
       "tag": "se-block",
@@ -285,11 +277,19 @@
       "tag": "se-visual-radial",
       "dependencyOf": [],
       "dependencies": []
+    },
+    {
+      "tag": "se-authentication",
+      "dependencyOf": [],
+      "dependencies": [
+        "se-icon-ecostruxure",
+        "se-icon-lifeison"
+      ]
     }
   ],
   "entries": [
     {
-      "entryId": "se-about.entry",
+      "entryId": "se-about.se-app.se-block.se-block-content.se-block-footer.se-block-header.se-button.se-checkbox.se-chip.se-container.se-dialog.se-dialog-content.se-dialog-footer.se-dialog-header.se-divider.se-dropdown.se-fab.se-form-field.se-header.se-icon.se-icon-ecostruxure.se-icon-lifeison.se-icon-schneider.se-link.se-list.se-list-group.se-list-item.se-loading.se-radio.se-radio-group.se-sidemenu.se-sidemenu-item.se-slider.se-snackbar.se-tabbar.se-tooltip.se-tooltip-content.se-tooltip-footer.se-tooltip-header.se-visual-linear.se-visual-radial.entry",
       "components": [
         {
           "tag": "se-about",
@@ -297,36 +297,310 @@
           "dependencies": [
             "se-icon-ecostruxure"
           ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/about/about.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-app.entry",
-      "components": [
+        },
         {
           "tag": "se-app",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-block",
+          "dependencyOf": [
+            "se-sidemenu"
+          ],
+          "dependencies": [
+            "se-loading"
+          ]
+        },
+        {
+          "tag": "se-block-content",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-block-footer",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-block-header",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-button",
+          "dependencyOf": [
+            "se-fab"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-checkbox",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-chip",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-container",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-dialog",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-dialog-content",
+          "dependencyOf": [],
+          "dependencies": [
+            "se-icon"
+          ]
+        },
+        {
+          "tag": "se-dialog-footer",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-dialog-header",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-divider",
+          "dependencyOf": [
+            "se-sidemenu"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-dropdown",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-fab",
+          "dependencyOf": [],
+          "dependencies": [
+            "se-button"
+          ]
+        },
+        {
+          "tag": "se-form-field",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-header",
+          "dependencyOf": [],
+          "dependencies": [
+            "se-icon",
+            "se-icon-ecostruxure",
+            "se-icon-schneider"
+          ]
+        },
+        {
+          "tag": "se-icon",
+          "dependencyOf": [
+            "se-dialog-content",
+            "se-header",
+            "se-sidemenu",
+            "se-tooltip-content",
+            "se-tooltip-header"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-icon-ecostruxure",
+          "dependencyOf": [
+            "se-about",
+            "se-authentication",
+            "se-header"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-icon-lifeison",
+          "dependencyOf": [
+            "se-authentication",
+            "se-sidemenu"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-icon-schneider",
+          "dependencyOf": [
+            "se-header"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-link",
+          "dependencyOf": [
+            "se-sidemenu"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-list",
+          "dependencyOf": [
+            "se-sidemenu"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-list-group",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-list-item",
+          "dependencyOf": [
+            "se-sidemenu"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-loading",
+          "dependencyOf": [
+            "se-block",
+            "se-sidemenu"
+          ],
+          "dependencies": []
+        },
+        {
+          "tag": "se-radio",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-radio-group",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-sidemenu",
+          "dependencyOf": [],
+          "dependencies": [
+            "se-block",
+            "se-divider",
+            "se-icon",
+            "se-icon-lifeison",
+            "se-link",
+            "se-list",
+            "se-list-item",
+            "se-loading"
+          ]
+        },
+        {
+          "tag": "se-sidemenu-item",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-slider",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-snackbar",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-tabbar",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-tooltip",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-tooltip-content",
+          "dependencyOf": [],
+          "dependencies": [
+            "se-icon"
+          ]
+        },
+        {
+          "tag": "se-tooltip-footer",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-tooltip-header",
+          "dependencyOf": [],
+          "dependencies": [
+            "se-icon"
+          ]
+        },
+        {
+          "tag": "se-visual-linear",
+          "dependencyOf": [],
+          "dependencies": []
+        },
+        {
+          "tag": "se-visual-radial",
           "dependencyOf": [],
           "dependencies": []
         }
       ],
       "bundles": [],
       "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/app/app.tsx"
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/about/about.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/app/app.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block/block.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-content/block-content.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-footer/block-footer.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-header/block-header.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/button/button.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/checkbox/checkbox.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/chip/chip.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/container/container.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog/dialog.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-content/dialog-content.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-footer/dialog-footer.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-header/dialog-header.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/divider/divider.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dropdown/dropdown.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/fab/fab.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/form-field/form-field.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/header/header.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon/icon.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-ecostruxure/icon-ecostruxure.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-lifeison/icon-lifeison.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-schneider/icon-schneider.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/link/link.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list/list.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list-group/list-group.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list-item/list-item.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/loading/loading.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/radio/radio.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/radio-group/radio-group.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/sidemenu/sidemenu.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/sidemenu-item/sidemenu-item.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/slider/slider.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/snackbar/snackbar.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tabbar/tabbar.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip/tooltip.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-content/tooltip-content.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-footer/tooltip-footer.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-header/tooltip-header.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/visual-linear/visual-linear.tsx",
+        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/visual-radial/visual-radial.tsx"
       ],
       "modes": [
         "$"
       ],
       "encapsulations": [
+        "shadow",
         "none"
       ]
     },
@@ -345,839 +619,6 @@
       "bundles": [],
       "inputs": [
         "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/authentication/authentication.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-block.entry",
-      "components": [
-        {
-          "tag": "se-block",
-          "dependencyOf": [
-            "se-sidemenu"
-          ],
-          "dependencies": [
-            "se-loading"
-          ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block/block.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-block-content.entry",
-      "components": [
-        {
-          "tag": "se-block-content",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-content/block-content.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-block-footer.entry",
-      "components": [
-        {
-          "tag": "se-block-footer",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-footer/block-footer.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-block-header.entry",
-      "components": [
-        {
-          "tag": "se-block-header",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/block-header/block-header.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-button.entry",
-      "components": [
-        {
-          "tag": "se-button",
-          "dependencyOf": [
-            "se-fab"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/button/button.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-checkbox.entry",
-      "components": [
-        {
-          "tag": "se-checkbox",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/checkbox/checkbox.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-chip.entry",
-      "components": [
-        {
-          "tag": "se-chip",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/chip/chip.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-container.entry",
-      "components": [
-        {
-          "tag": "se-container",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/container/container.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-dialog.entry",
-      "components": [
-        {
-          "tag": "se-dialog",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog/dialog.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-dialog-content.entry",
-      "components": [
-        {
-          "tag": "se-dialog-content",
-          "dependencyOf": [],
-          "dependencies": [
-            "se-icon"
-          ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-content/dialog-content.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-dialog-footer.entry",
-      "components": [
-        {
-          "tag": "se-dialog-footer",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-footer/dialog-footer.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-dialog-header.entry",
-      "components": [
-        {
-          "tag": "se-dialog-header",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dialog-header/dialog-header.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-divider.entry",
-      "components": [
-        {
-          "tag": "se-divider",
-          "dependencyOf": [
-            "se-sidemenu"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/divider/divider.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-dropdown.entry",
-      "components": [
-        {
-          "tag": "se-dropdown",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/dropdown/dropdown.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-fab.entry",
-      "components": [
-        {
-          "tag": "se-fab",
-          "dependencyOf": [],
-          "dependencies": [
-            "se-button"
-          ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/fab/fab.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-form-field.entry",
-      "components": [
-        {
-          "tag": "se-form-field",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/form-field/form-field.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-header.entry",
-      "components": [
-        {
-          "tag": "se-header",
-          "dependencyOf": [],
-          "dependencies": [
-            "se-icon",
-            "se-icon-ecostruxure",
-            "se-icon-schneider"
-          ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/header/header.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-icon.entry",
-      "components": [
-        {
-          "tag": "se-icon",
-          "dependencyOf": [
-            "se-dialog-content",
-            "se-header",
-            "se-sidemenu",
-            "se-tooltip-content",
-            "se-tooltip-header"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon/icon.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-icon-ecostruxure.entry",
-      "components": [
-        {
-          "tag": "se-icon-ecostruxure",
-          "dependencyOf": [
-            "se-about",
-            "se-authentication",
-            "se-header"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-ecostruxure/icon-ecostruxure.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-icon-lifeison.entry",
-      "components": [
-        {
-          "tag": "se-icon-lifeison",
-          "dependencyOf": [
-            "se-authentication",
-            "se-sidemenu"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-lifeison/icon-lifeison.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-icon-schneider.entry",
-      "components": [
-        {
-          "tag": "se-icon-schneider",
-          "dependencyOf": [
-            "se-header"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/icon-schneider/icon-schneider.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-link.entry",
-      "components": [
-        {
-          "tag": "se-link",
-          "dependencyOf": [
-            "se-sidemenu"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/link/link.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-list.entry",
-      "components": [
-        {
-          "tag": "se-list",
-          "dependencyOf": [
-            "se-sidemenu"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list/list.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-list-group.entry",
-      "components": [
-        {
-          "tag": "se-list-group",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list-group/list-group.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-list-item.entry",
-      "components": [
-        {
-          "tag": "se-list-item",
-          "dependencyOf": [
-            "se-sidemenu"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/list-item/list-item.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-loading.entry",
-      "components": [
-        {
-          "tag": "se-loading",
-          "dependencyOf": [
-            "se-block",
-            "se-sidemenu"
-          ],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/loading/loading.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-radio.entry",
-      "components": [
-        {
-          "tag": "se-radio",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/radio/radio.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-radio-group.entry",
-      "components": [
-        {
-          "tag": "se-radio-group",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/radio-group/radio-group.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-sidemenu.entry",
-      "components": [
-        {
-          "tag": "se-sidemenu",
-          "dependencyOf": [],
-          "dependencies": [
-            "se-block",
-            "se-divider",
-            "se-icon",
-            "se-icon-lifeison",
-            "se-link",
-            "se-list",
-            "se-list-item",
-            "se-loading"
-          ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/sidemenu/sidemenu.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-sidemenu-item.entry",
-      "components": [
-        {
-          "tag": "se-sidemenu-item",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/sidemenu-item/sidemenu-item.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-slider.entry",
-      "components": [
-        {
-          "tag": "se-slider",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/slider/slider.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-snackbar.entry",
-      "components": [
-        {
-          "tag": "se-snackbar",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/snackbar/snackbar.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-tabbar.entry",
-      "components": [
-        {
-          "tag": "se-tabbar",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tabbar/tabbar.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "none"
-      ]
-    },
-    {
-      "entryId": "se-tooltip.entry",
-      "components": [
-        {
-          "tag": "se-tooltip",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip/tooltip.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-tooltip-content.entry",
-      "components": [
-        {
-          "tag": "se-tooltip-content",
-          "dependencyOf": [],
-          "dependencies": [
-            "se-icon"
-          ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-content/tooltip-content.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-tooltip-footer.entry",
-      "components": [
-        {
-          "tag": "se-tooltip-footer",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-footer/tooltip-footer.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-tooltip-header.entry",
-      "components": [
-        {
-          "tag": "se-tooltip-header",
-          "dependencyOf": [],
-          "dependencies": [
-            "se-icon"
-          ]
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/tooltip-header/tooltip-header.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-visual-linear.entry",
-      "components": [
-        {
-          "tag": "se-visual-linear",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/visual-linear/visual-linear.tsx"
-      ],
-      "modes": [
-        "$"
-      ],
-      "encapsulations": [
-        "shadow"
-      ]
-    },
-    {
-      "entryId": "se-visual-radial.entry",
-      "components": [
-        {
-          "tag": "se-visual-radial",
-          "dependencyOf": [],
-          "dependencies": []
-        }
-      ],
-      "bundles": [],
-      "inputs": [
-        "C:/Users/SESA500245/GitHub/web-ui/src-core/src/components/visual-radial/visual-radial.tsx"
       ],
       "modes": [
         "$"
