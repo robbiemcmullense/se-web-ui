@@ -14,7 +14,7 @@ export class ButtonComponent {
    * `outline` adds a border to the button.
    * `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
    */
-  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab'= 'flat';
+  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab'= 'flat';
   @Watch('option') optionDidChange() {
     if(this.option === 'login'){
       this.color = 'primary'
@@ -109,6 +109,14 @@ export class ButtonComponent {
     }
   }
 
+  setButtonId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let button = this.el.shadowRoot.querySelector('button');
+      button.setAttribute('id', 'wc-' + id);
+    } 
+  }
+
   toggle() {
     if(this.disabled) return;
 
@@ -121,6 +129,10 @@ export class ButtonComponent {
   componentWillLoad() {
     this.hasChild = this.el.innerHTML && this.el.innerHTML !== '<!---->'; // MS Edge still renders innerHTML for icon only buttons
     this.optionDidChange();
+  }
+
+  componentDidLoad() {
+    this.setButtonId();
   }
 
   render() {

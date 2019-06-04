@@ -54,3 +54,14 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(iconElm).toEqualText('my group test icon');
 	});
 });
+
+describe('List Group with ID Element', () => {
+  it('renders the child button element with an id attribute beginning with the wc prefix', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-list-group id="my-id"></se-list-group>');
+
+    const element = await page.find('se-list-group');
+    expect(element.shadowRoot.querySelector('button')).toHaveAttribute('id');
+    expect(element.shadowRoot.querySelector('button').getAttribute('id')).toEqual('wc-my-id');
+  });
+});

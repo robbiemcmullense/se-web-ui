@@ -85,3 +85,14 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(iconElm).toHaveClasses(['se-icon', 'secondary']);
   });
 });
+
+describe('List Item with ID Element', () => {
+  it('renders the child button element with an id attribute beginning with the wc prefix', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-list-item id="my-id"></se-list-item>');
+
+    const element = await page.find('se-list-item');
+    expect(element.shadowRoot.querySelector('button')).toHaveAttribute('id');
+    expect(element.shadowRoot.querySelector('button').getAttribute('id')).toEqual('wc-my-id');
+  });
+});

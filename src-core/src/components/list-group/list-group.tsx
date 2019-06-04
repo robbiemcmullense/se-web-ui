@@ -65,6 +65,18 @@ export class ListGroupComponent {
     }
   }
 
+  private toggleCollapse() {
+    this.collapsed = !this.collapsed;
+  }
+
+  setButtonId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let button = this.el.shadowRoot.querySelector('button');
+      button.setAttribute('id', 'wc-' + id);
+    } 
+  }
+
   componentWillLoad() {
     Array.from(
       this.el.querySelectorAll("se-list-group > se-list-item, se-list-group > se-list-group")
@@ -73,8 +85,8 @@ export class ListGroupComponent {
     });
   }
 
-  private toggleCollapse() {
-    this.collapsed = !this.collapsed;
+  componentDidLoad() {
+    this.setButtonId();
   }
 
   render() {

@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Method, Prop, State, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-radio",
@@ -7,6 +7,7 @@ import { Component, Event, EventEmitter, h, Method, Prop, State, Watch } from "@
 })
 
 export class RadioComponent {
+  @Element() el: HTMLElement;
   /**
    * The value you want to pass to the parent component when the checkbox is checked.
    */
@@ -48,6 +49,14 @@ export class RadioComponent {
     this.checked = this.selected;
   }
 
+  setInputId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let input = this.el.shadowRoot.querySelector('input');
+      input.setAttribute('id', 'wc-' + id);
+    } 
+  }
+
   emitEvent() {
     this.checked = !this.checked;
     let checkboxObject = {value: this.value, selected: this.checked};
@@ -58,6 +67,7 @@ export class RadioComponent {
     if (this.selected) {
       this.checked = this.selected;
     }
+    this.setInputId();
   }
 
   render() {

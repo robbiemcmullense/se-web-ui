@@ -51,6 +51,17 @@ describe('Button with Preset Text', () => {
   });
 });
 
+describe('Button with ID Element', () => {
+  it('renders the child button element with an id attribute beginning with the wc prefix', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-button id="my-id">My Button</se-button>');
+
+    const element = await page.find('se-button');
+    expect(element.shadowRoot.querySelector('button')).toHaveAttribute('id');
+    expect(element.shadowRoot.querySelector('button').getAttribute('id')).toEqual('wc-my-id');
+  });
+});
+
 describe('ButtonComponent Methods and Events', () => {
   let page, element;
 

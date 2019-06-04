@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, Element, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
 
 @Component({
   tag: 'se-slider',
@@ -8,6 +8,7 @@ import { Component, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
 export class SliderComponent {
 
   private sliderElement?: HTMLInputElement;
+  @Element() el: HTMLElement;
   value: number = 0;    
     /**
     * Indicates the minimum value of your slider.
@@ -34,6 +35,14 @@ export class SliderComponent {
     this.disabled = val;
   }
 
+  setInputId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let input = this.el.shadowRoot.querySelector('input');
+      input.setAttribute('id', 'wc-' + id);
+    } 
+  }
+
   handleEvent() {  
     this.sliderElement.addEventListener('input',()=>{
     const rangeInterval = (Number(this.max) - Number(this.min));
@@ -44,6 +53,7 @@ export class SliderComponent {
   }
 
   componentDidLoad() {
+    this.setInputId();
     this.handleEvent();
   }
 

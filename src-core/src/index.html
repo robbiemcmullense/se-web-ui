@@ -123,14 +123,14 @@
             <se-list-item item="Click the button!" icon="action_settings2">
               <se-button>Select</se-button>
             </se-list-item>
-            <se-list-group item="simple collapse">
+            <se-list-group id="simple-collapse" item="simple collapse">
               <se-list-item item="No icon, not selected" selected="false">
               </se-list-item>
               <se-list-item item="my item 2 no description" icon="action_settings2" icon-color="primary">
               </se-list-item>
               <se-list-item item="my item 3 no icon" description="I'm here too">
               </se-list-item>
-              <se-list-item item="Basic Item" selected="true">
+              <se-list-item id="basic-item" item="Basic Item" selected="true">
               </se-list-item>
             </se-list-group>
           </se-list-group>
@@ -274,9 +274,9 @@
             <ul>
               <li>Example Checkbox and Radio components:</li>
             </ul>
-            <se-checkbox value="primary" label="Checkbox Primary"></se-checkbox>
+            <se-checkbox id="checkbox-primary" value="primary" label="Checkbox Primary"></se-checkbox>
             <se-checkbox value="warn" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
-            <se-radio value="radio-primary" label="Radio Primary" selected="true"></se-radio>
+            <se-radio id="radio-primary" value="radio-primary" label="Radio Primary" selected="true"></se-radio>
             <se-radio value="radio-secondary" label="Radio Secondary" color="secondary"></se-radio>
             <se-divider></se-divider>
             <ul>
@@ -363,7 +363,7 @@
             <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
             <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels">
             </se-visual-linear>
-            <se-slider></se-slider>
+            <se-slider id="sliderID"></se-slider>
             <ul>
               <li id="slider-value"><span></span></li>
             </ul>

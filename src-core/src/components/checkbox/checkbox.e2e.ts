@@ -5,7 +5,7 @@ describe('CheckboxComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-checkbox value="my value"></se-checkbox>');
+    await page.setContent('<se-checkbox id="my-checkbox" value="my value"></se-checkbox>');
     element = await page.find('se-checkbox');
   });
 
@@ -15,6 +15,12 @@ describe('CheckboxComponent', () => {
 
   it('should render with the checkbox and standard classes to reflect the default option and background properties', async() => {
     expect(element).toHaveClasses(['checkbox', 'hydrated', 'standard']);
+  });
+  
+  it('renders with an id on the input element with the wc prefix', async() => {
+    const inputElm = element.shadowRoot.querySelector('input');
+    expect(inputElm).toHaveAttribute('id');
+    expect(inputElm.getAttribute('id')).toEqual('wc-my-checkbox');
   });
 
   it('renders with a disabled class and a disabled input element when the parent element has disabled=true', async() => {
@@ -43,7 +49,7 @@ describe('CheckboxComponent in Switch Mode', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-checkbox option="switch" label="my label"></se-checkbox>');
+    await page.setContent('<se-checkbox id="my-switch" option="switch" label="my label"></se-checkbox>');
     element = await page.find('se-checkbox');
   });
 
@@ -53,6 +59,12 @@ describe('CheckboxComponent in Switch Mode', () => {
 
   it('should render with the switch class', async() => {
     expect(element).toHaveClass('switch');
+  });
+
+  it('renders with an id on the input element with the wc prefix', async() => {
+    const inputElm = element.shadowRoot.querySelector('input');
+    expect(inputElm).toHaveAttribute('id');
+    expect(inputElm.getAttribute('id')).toEqual('wc-my-switch');
   });
 
   it('should render a label element without inner text', async() => {
@@ -66,14 +78,14 @@ describe('CheckboxComponent in OnOff Mode', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-checkbox option="onoff" header="true"></se-checkbox>');
+    await page.setContent('<se-checkbox id="on-off-switch" option="onoff" header="true"></se-checkbox>');
     element = await page.find('se-checkbox');
   });
 
   it('renders', async() => {
     expect(element).toBeTruthy();
   });
-
+  
   it('should render with the onoff and header classes, based on the specified properties', async() => {
     expect(element).toHaveClass('onoff');
     expect(element).toHaveClass('header');
@@ -84,5 +96,12 @@ describe('CheckboxComponent in OnOff Mode', () => {
     let offButton = await page.find('se-checkbox >>> button.inactive');
     expect(onButton.innerText).toEqual('ON');
     expect(offButton.innerText).toEqual('OFF');
+  });
+
+  it('should render id attributes on the two button elements based on its parent id', async() => {
+    let onButton = await page.find('se-checkbox >>> button.active');
+    let offButton = await page.find('se-checkbox >>> button.inactive');
+    expect(onButton.getAttribute('id')).toEqual('wc-on-off-switch-active');
+    expect(offButton.getAttribute('id')).toEqual('wc-on-off-switch-inactive');
   });
 });

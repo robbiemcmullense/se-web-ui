@@ -146,7 +146,7 @@ export namespace Components {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
-    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
+    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
     /**
     * Optional property that defines if the button should be shown as selected. Used with `se-radio`
     */
@@ -1155,7 +1155,7 @@ declare namespace LocalJSX {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
     */
-    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'|'minifab';
+    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
     /**
     * Optional property that defines if the button should be shown as selected. Used with `se-radio`
     */

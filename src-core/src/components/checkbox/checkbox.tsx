@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from "@stencil/core";
 
 @Component({
   tag: "se-checkbox",
@@ -70,6 +70,19 @@ export class CheckboxComponent {
   @Event() didChange: EventEmitter;
   @Element() el: HTMLElement;
 
+  setElementId() {
+    let id = this.el.getAttribute('id');
+    if (id && this.option === 'onoff') {
+      let firstTarget = this.el.shadowRoot.querySelector('button.active');
+      let secondTarget = this.el.shadowRoot.querySelector('button.inactive');
+      firstTarget.setAttribute('id', 'wc-' + id + '-active');
+      secondTarget.setAttribute('id', 'wc-' + id + '-inactive');
+    } else if (id) {
+      let input = this.el.shadowRoot.querySelector('input');
+      input.setAttribute('id', 'wc-' + id);
+    }
+  }
+
   emitEvent() {
     if (!this.disabled) {
       this.checked = !this.checked;
@@ -86,6 +99,7 @@ export class CheckboxComponent {
   }
 
   componentDidLoad() {
+    this.setElementId();
     if (this.selected) {
       this.checked = this.selected;
       if (this.option === 'switch') {
@@ -94,19 +108,8 @@ export class CheckboxComponent {
     }
   }
 
-  hostData() {
-    return {
-      'class': [
-        this.option,
-        this.background,
-        this.header ? 'header' : '',
-        this.disabled ? 'disabled': ''
-      ].join(' ')
-    };
-  }
-
   render() {
-    let markup;
+    let markup: any;
     if (this.option === 'onoff') {
       markup = (
         <div class="on-off-wrapper">
@@ -124,6 +127,6 @@ export class CheckboxComponent {
         </label>
         )
     }
-    return markup;
+    return <Host class={[this.option, this.background, this.header ? 'header' : '', this.disabled ? 'disabled': ''].join(' ')}>{markup}</Host>;
   }
 }
