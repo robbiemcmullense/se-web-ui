@@ -15,11 +15,20 @@
   font-family: "se-icon";
   font-size: 24px;
   font-display: block;
-  &.primary {
-    @include color("primary");
+  &.standard {
+    @include color("icon-standard");
   }
-  &.secondary {
-    @include color("secondary");
+  &.disable {
+    @include color("icon-disable");
+  }
+  &.primary {
+    @include color("icon-primary");
+  }
+  &.warning {
+    @include color("icon-warning");
+  }
+  &.error {
+    @include color("icon-error");
   }
   &.medium {
     font-size: 36px;
@@ -38,7 +47,6 @@ button {
   width: 100%;
   /* inherit font & color from ancestor */
   color: inherit;
-  cursor: pointer;
   font: inherit;
   @include display-flex();
   @include align-items(center);
@@ -46,14 +54,17 @@ button {
   text-align: left; // MS Edge does not support "start"
   text-align: start;
   border-bottom: 1px solid $divider-color;
-  &:hover, &:focus{
-    background-color: $se-ultra-light-grey-1;
+  &:not([disabled]){
+    cursor: pointer;
+    &:hover, &:focus{
+      background-color: $se-ultra-light-grey-1;
+    }
   }
 }
 
 .selectedBar {
   position: absolute;
-  top: 0px;
+  top: 0;
   bottom: 0;
   width: 5px;
   @include background-color("primary");
@@ -135,5 +146,11 @@ button {
   }
   .nav-content{
     padding-left: 10px;
+  }
+}
+
+:host(.headline) {
+  button{
+    height: 42px;
   }
 }

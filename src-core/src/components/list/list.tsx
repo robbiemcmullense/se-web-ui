@@ -10,15 +10,26 @@ export class ListComponent {
   /**
    * Defines the style of the list.  The default setting is `classic`.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
-  @Watch('option') PropDidChange() {
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  @Watch('option') optionDidChange() {
     Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
       item.option = this.option;
     });
   }
 
+  /**
+   * Defines if list groups can be collapsed, true by default.
+   */
+  @Prop() canCollapse: boolean = true;
+  @Watch('canCollapse') canCollapseDidChange() {
+    Array.from(this.el.querySelectorAll('se-list-group')).forEach((item: any) => {
+      item.canCollapse = this.canCollapse;
+    });
+  }
+
   componentWillLoad() {
-    this.PropDidChange();
+    this.optionDidChange();
+    this.canCollapseDidChange();
   }
 
   render() {

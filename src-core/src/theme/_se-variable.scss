@@ -63,7 +63,13 @@ $seTheme: (
   'selected-contrast': $se-white,
 
   'focus': $se-anthracite-grey,
-  'focus-contrast': $se-white
+  'focus-contrast': $se-white,
+
+  'icon-standard': $se-anthracite-grey,
+  'icon-disable': $se-light-grey,
+  'icon-primary': $se-life-green,
+  'icon-warning': $se-honeysuckle-orange,
+  'icon-error': $se-red,
 
 ) !default;
 
