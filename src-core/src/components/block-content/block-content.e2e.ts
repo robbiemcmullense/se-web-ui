@@ -19,6 +19,6 @@ describe('BlockContentComponent', () => {
       elm.option = 'basic';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('full-content');
+    expect(element).toHaveClass('basic-content');
   });
 });

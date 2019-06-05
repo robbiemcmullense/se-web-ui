@@ -52,7 +52,8 @@ input[type='range'] {
 	--sx: 0;
 	margin: 0;
 	padding: 0;
-	width: $track-width; height: $thumb-dimension;
+	width: $track-width;
+	height: $thumb-dimension;
 	background: transparent;
 	&::-webkit-slider-runnable-track {
 		@include track(1);
@@ -81,5 +82,11 @@ input[type='range'] {
 
 	::-ms-ticks-before {
 			display: none;
+	}
+}
+
+@supports (-ms-ime-align:auto) {
+	input[type='range'] {
+		height: $ie_thumb-dimesion;
 	}
 }

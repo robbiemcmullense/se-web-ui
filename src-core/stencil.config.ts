@@ -17,10 +17,6 @@ export const config: Config = {
       copy
     },
     {
-      type: 'stats',
-      file: 'stats.json'
-    },
-    {
       type: 'angular',
       componentCorePackage: '@se/web-ui',
       directivesProxyFile: '../src-angular/projects/frameworks/src/lib/directives/proxies.ts',

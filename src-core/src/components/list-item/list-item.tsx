@@ -48,7 +48,16 @@ export class ListItemComponent {
     this.didSelectedChange.emit()
   }
 
+  setButtonId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let button = this.el.shadowRoot.querySelector('button');
+      button.setAttribute('id', 'wc-' + id);
+    } 
+  }
+
   componentDidLoad() {
+    this.setButtonId();
     this.padding = 20 * this.indentation;
     if (this.option === "treeview") {
       this.padding += 24;
