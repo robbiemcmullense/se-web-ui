@@ -40,7 +40,7 @@ $fill-color: #626469;
 	-ms-border-radius: 50%;
 	-o-border-radius: 50%;
 	&:hover {
-		@include background-color('se-selected');
+		@include background-color('selected');
 		border: $spacing-small solid transparent;
 	}
 }

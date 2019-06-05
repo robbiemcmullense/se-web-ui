@@ -60,11 +60,11 @@
 }
 
 :host(.standard) {
-  @include background-color('se-background');
+  @include background-color('background');
 }
 :host(.alternative) {
-  @include color("se-alternative-contrast");
-  @include background-color("se-alternative");
+  @include  color("alternative-contrast");
+  @include background-color("alternative");
 }
 
 

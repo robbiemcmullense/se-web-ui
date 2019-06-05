@@ -20,7 +20,7 @@
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   white-space: nowrap;
-  @include background-color("se-alternative");
+  @include background-color("alternative");
 }
 
 .fill-space {
@@ -70,7 +70,7 @@
 }
 
 .header-title{
-  @include color("se-primary");
+  @include  color("primary");
   padding-left: 18px;
   font-size: 20px;
   line-height: 20px;
@@ -81,7 +81,7 @@
 }
 
 .header-title-type {
-  @include color("se-primary");
+  @include  color("primary");
   line-height: 24px;
   padding-left: 18px;
   font-size: 12px;

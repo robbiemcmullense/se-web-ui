@@ -38,38 +38,38 @@ $background: $se-ultra-light-grey-2 !default;
 
 // Only the seTheme should be used to change the them of the app
 $seTheme: (
-  'se-standard': $se-ultra-light-grey-1,
-  'se-alternative': $se-white,
-  'se-primary': $se-life-green,
-  'se-secondary': $se-medium-blue,
-  'se-success': $se-life-green,
-  'se-warning': $se-honeysuckle-orange,
-  'se-error': $se-red,
+  'standard': $se-ultra-light-grey-1,
+  'alternative': $se-white,
+  'primary': $se-life-green,
+  'secondary': $se-medium-blue,
+  'success': $se-life-green,
+  'warning': $se-honeysuckle-orange,
+  'error': $se-red,
 
-  'se-standard-contrast': $se-black,
-  'se-alternative-contrast': $se-black,
-  'se-primary-contrast': $se-white,
-  'se-secondary-contrast': $se-white,
-  'se-success-contrast': $se-white,
-  'se-warning-contrast': $se-black,
-  'se-error-contrast': $se-white,
+  'standard-contrast': $se-black,
+  'alternative-contrast': $se-black,
+  'primary-contrast': $se-white,
+  'secondary-contrast': $se-white,
+  'success-contrast': $se-white,
+  'warning-contrast': $se-black,
+  'error-contrast': $se-white,
 
-  'se-hover-standard': $se-light-grey,
-  'se-hover-alternative': $se-light-grey,
-  'se-hover-primary': $se-medium-green,
-  'se-hover-secondary': $se-dark-sky-blue,
-  'se-hover-standard-contrast': $se-black,
-  'se-hover-alternative-contrast': $se-black,
-  'se-hover-primary-contrast': $se-white,
-  'se-hover-secondary-contrast': $se-white,
+  'hover-standard': $se-light-grey,
+  'hover-alternative': $se-light-grey,
+  'hover-primary': $se-medium-green,
+  'hover-secondary': $se-dark-sky-blue,
+  'hover-standard-contrast': $se-black,
+  'hover-alternative-contrast': $se-black,
+  'hover-primary-contrast': $se-white,
+  'hover-secondary-contrast': $se-white,
 
-  'se-selected': $se-dark-grey,
-  'se-selected-contrast': $se-white,
+  'selected': $se-dark-grey,
+  'selected-contrast': $se-white,
 
-  'se-focus': $se-anthracite-grey,
-  'se-focus-contrast': $se-white,
+  'focus': $se-anthracite-grey,
+  'focus-contrast': $se-white,
 
-  'se-background': $background
+  'background': $background
 ) !default;
 
 

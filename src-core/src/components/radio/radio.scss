@@ -25,10 +25,10 @@
         height: 6px;
         width: 6px;
         border: 5px solid;
-        @include border-color('se-primary');
+        @include border-color('primary');
 
 				&[data-color="secondary"] {
-          @include border-color('se-secondary');
+          @include border-color('secondary');
 				}
 				&:after {
 					display: block;

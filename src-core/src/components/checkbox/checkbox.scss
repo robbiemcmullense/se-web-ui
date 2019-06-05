@@ -24,14 +24,14 @@
 			&:checked ~ .checkmark {
 
 				&[data-color="primary"] {
-					@include background-color('se-primary');
+					@include background-color('primary');
           border: 1px solid;
-          @include border-color('se-primary');
+          @include border-color('primary');
 				}
 				&[data-color="secondary"] {
-					@include background-color('se-secondary');
+					@include background-color('secondary');
           border: 1px solid;
-          @include border-color('se-secondary');
+          @include border-color('secondary');
 				}
 				&:after {
 					display: block;
@@ -217,15 +217,15 @@
 
 :host(.standard) {
   button {
-    @include background-color("se-standard");
-    @include color("se-focus");
+    @include background-color("standard");
+    @include  color("focus");
   }
 }
 
 :host(.alternative) {
   button {
-    @include background-color("se-alternative");
-    @include color("se-alternative-contrast");
+    @include background-color("alternative");
+    @include  color("alternative-contrast");
   }
 }
 

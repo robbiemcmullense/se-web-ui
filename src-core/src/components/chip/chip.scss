@@ -34,7 +34,7 @@ $chip-height: 32px;
 
 :host(.alternative) {
   border: 1px solid $se-white;
-  @include color('se-alternative');
+  @include  color('alternative');
 }
 
 :host(.standard:hover) {
@@ -48,14 +48,14 @@ $chip-height: 32px;
 
 :host(.standard:active),
 :host(.alternative:active) {
-  @include color('se-selected-contrast');
-  @include background-color('se-selected');
+  @include  color('selected-contrast');
+  @include background-color('selected');
   border: 1px solid $se-dark-grey;
 }
 :host(.standard:focus),
 :host(.alternative:focus) {
-  @include color('se-focus-contrast');
-  @include background-color('se-focus');
+  @include  color('focus-contrast');
+  @include background-color('focus');
 }
 
 :host(.disabled) {

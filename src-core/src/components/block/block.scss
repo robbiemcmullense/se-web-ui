@@ -47,12 +47,12 @@
 
 :host(.alternative) {
   .block-body {
-    @include background-color('se-alternative')
+    @include background-color('alternative')
   }
 }
 :host(.standard) {
   .block-body {
-    @include background-color('se-standard')
+    @include background-color('standard')
   }
 }
 :host(.fill) {

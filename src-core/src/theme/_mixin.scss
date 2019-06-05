@@ -1,6 +1,6 @@
 @import "./se-variable";
 
-$prefix: "--"; //Prefix string for custom CSS properties
+$prefix: "--se-"; //Prefix string for custom CSS properties
 
 //Merges a variable name with $prefix
 @function custom-property-name($name) {

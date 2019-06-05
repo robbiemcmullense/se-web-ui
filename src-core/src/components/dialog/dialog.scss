@@ -47,8 +47,8 @@
   position: relative;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
   @include animated();
-  @include background-color("se-alternative");
-  @include color("se-alternative-contrast");
+  @include background-color("alternative");
+  @include  color("alternative-contrast");
   @include display-flex();
   @include flex-direction(column);
   &.show-dialog {

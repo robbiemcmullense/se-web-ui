@@ -16,13 +16,13 @@
 //   font-size: 24px;
 //   font-display: block;
 //   &.primary {
-//     @include color("se-primary");
+//     @include  color("primary");
 //   }
 //   &.warning {
-//     @include color("se-warning");
+//     @include  color("warning");
 //   }
 //   &.error {
-//     @include color("se-error");
+//     @include  color("error");
 //   }
 //   &.medium {
 //     font-size: 36px;
@@ -61,7 +61,7 @@ button {
   top: 0;
   bottom: 0;
   width: 5px;
-  @include background-color("se-primary");
+  @include background-color("primary");
 }
 
 .nav-icon {
@@ -93,8 +93,8 @@ button {
 }
 
 :host(.classic.selected) {
-  @include color('se-selected-contrast');
-  @include background-color('se-selected');
+  @include  color('selected-contrast');
+  @include background-color('selected');
   button {
     &:hover, &:focus{
       background-color: $se-ultra-dark-grey;
@@ -110,7 +110,7 @@ button {
 }
 
 :host(.nav.selected) {
-  @include color('se-primary');
+  @include  color('primary');
 }
 
 :host(.treeview) {
@@ -123,8 +123,8 @@ button {
 }
 
 :host(.treeview.selected) {
-  @include color('se-selected-contrast');
-  @include background-color('se-selected');
+  @include  color('selected-contrast');
+  @include background-color('selected');
   button {
     &:hover, &:focus{
       background-color: $se-ultra-dark-grey;

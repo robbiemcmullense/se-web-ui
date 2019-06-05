@@ -66,8 +66,8 @@
 //_:-ms-lang(x), .tooltip { width:260px;}
 
 .tooltip {
-  @include color("se-alternative");
-  @include background-color("se-secondary");
+  @include  color("alternative");
+  @include background-color("secondary");
   max-width: 260px;
   width: -moz-max-content;
   width: -webkit-max-content;
