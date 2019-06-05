@@ -17,7 +17,7 @@
     "build.moveCore": "cpx \"core/**/*\" \"../core\" && rimraf \"./core\"",
     "test": "stencil test --spec",
     "e2e": "stencil test --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {
     "@se/fonts": "^1.0.0",
