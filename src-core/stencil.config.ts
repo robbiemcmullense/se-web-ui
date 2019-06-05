@@ -1,6 +1,5 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import { inlineSvg } from 'stencil-inline-svg';
 
 const copy = [
   { src: '../node_modules/@se/fonts/css', dest: 'fonts/css' },
@@ -38,8 +37,7 @@ export const config: Config = {
     }
   ],
   plugins: [
-    sass(),
-    inlineSvg()
+    sass()
   ],
   testing: {
     testPathIgnorePatterns: ['./demo-*'],

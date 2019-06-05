@@ -8,20 +8,22 @@
   width: 100%;
 }
 .standard {
-  .cls-1 {
-    color: $se-life-green;
-    fill: $se-life-green;
-  }
-  .cls-2 {
-    color: $se-logo-green;
-  }
-  
+  // .cls-1 {
+  //   color: $se-life-green;
+  //   fill: $se-life-green;
+  // }
+  // .cls-2 {
+  //   color: $se-logo-green;
+  // }
+
 }
 .inherited {
-  .cls-1 {
-    color: inherit;
-  }
-  .cls-2 {
-    color: inherit;
-  }
+  filter: brightness(0) invert(1);
+
+  // .cls-1 {
+  //   color: inherit;
+  // }
+  // .cls-2 {
+  //   color: inherit;
+  // }
 }

@@ -9,6 +9,6 @@ import IconSchneider from './icon-schneider.svg';
 export class IconSchneiderComponent {
 
   render() {
-    return <div innerHTML={IconSchneider}></div>;
+    return <img src={IconSchneider}/>;
   }
 }

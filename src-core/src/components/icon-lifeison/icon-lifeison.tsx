@@ -15,6 +15,6 @@ export class IconLifeisonComponent {
   @Prop() color: "standard" | "inherited" = "inherited";
 
   render() {
-    return <div class={this.color} innerHTML={IconLifeison}/>;
+    return <img class={this.color} src={IconLifeison}/>;
   }
 }

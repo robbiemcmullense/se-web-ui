@@ -13,7 +13,6 @@ export class IconEcostruxureComponent {
   @Prop() size: "small" | "medium" = "small";
 
   render() {
-    console.log(IconEcostruxure)
-    return <div class={this.size} innerHTML={IconEcostruxure}></div>;
+    return <img class={this.size} src={IconEcostruxure}/>;
   }
 }
