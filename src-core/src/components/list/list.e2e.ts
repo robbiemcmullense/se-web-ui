@@ -25,4 +25,9 @@ import { newE2EPage } from '@stencil/core/testing';
 		const element = await page.find('se-list se-list-group');
 		expect(element).toHaveClass('nav');
 	});
+
+	it('renders a list group passing the "canCollapse" value from its parent', async() => {
+    // can't simulate click events to test it should not collapse its children with canCollapse="false"
+	});
+
 });

@@ -28,7 +28,8 @@ export class ListItemComponent {
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
    */
-  @Prop() iconColor: "primary" | "secondary";
+  @Prop() iconColor: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
@@ -36,7 +37,7 @@ export class ListItemComponent {
   /**
    * Define the theme of the list. This them will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
   @State() padding: number;
   /**
    * Event emitted to notify the item-group that the selected state has changed.
@@ -57,21 +58,21 @@ export class ListItemComponent {
   render() {
     return (
       <Host class={[this.selected ? "selected" : '', this.option].join(' ')}>
-        <button style={{ paddingLeft: this.padding + `px` }}>
+        <button style={{ paddingLeft: `${this.padding}px` }}>
           {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
           {!!this.icon ?
             <div class="nav-icon">
-              <span class={["se-icon", this.iconColor].join(' ')}>
+              <se-icon color={this.iconColor}>
                 {this.icon}
-              </span>
+              </se-icon>
             </div>
           : ''}
           <div class="nav-content">
             <div>{this.item}</div>
             <small> {this.description}</small>
           </div>
-          {this.option === "nav" ? <span class="se-icon medium">arrow2_right</span> : ''}
-          {this.option === 'classic' ? <slot></slot> : ''}
+          {this.option === "nav" && <se-icon  size="medium">arrow2_right</se-icon>}
+          {this.option === "classic" && <slot></slot>}
         </button>
       </Host>
     )

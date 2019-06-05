@@ -43,7 +43,7 @@ label {
 ::slotted(input:focus) {
   outline: none;
   border: 1px solid;
-  @include border-color('primary')
+  @include border-color('se-primary')
 }
 
 ::slotted(select) {
@@ -91,20 +91,23 @@ label {
 
 :host(.error) {
 	::slotted(input) {
-		border: 1px solid $error;
+    border: 1px solid;
+    @include border-color('se-error');
 	}
 }
 
 :host(.warning) {
 	::slotted(input) {
-		border: 1px solid $warning;
+    border: 1px solid;
+    @include border-color('se-warning');
+
 	}
 }
 
 :host(.success) {
 	::slotted(input) {
-    border: 1px solid $success;
-
+    border: 1px solid;
+    @include border-color('se-se-success')
 	}
 }
 

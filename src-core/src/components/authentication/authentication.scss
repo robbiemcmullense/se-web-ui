@@ -2,7 +2,7 @@
 
 :host {
   @include absolute(0, 0, 0, 0);
-  @include background-color("standard");
+  @include background-color("se-standard");
   z-index: 20;
 }
 :host(.hide) {
@@ -29,7 +29,7 @@
 }
 
 .header-title {
-  @include color("primary");
+  @include color("se-primary");
   padding-left: 18px;
   font-size: 20px;
   line-height: 20px;
@@ -81,7 +81,7 @@ main {
 
   .dark-green-bar,
   .light-green-bar {
-    @include background-color("primary");
+    @include background-color("se-primary");
     height: 40px;
     @include flex(1, 1, auto);
   }
@@ -111,7 +111,7 @@ main {
   padding-right: 0;
   @include justify-content(flex-end);
 
-  @include color("primary");
+  @include color("se-primary");
 
   .header-title {
     font-size: 40px;

@@ -23,8 +23,8 @@ $divider-inset-margin: 80px;
 }
 
 :host(.standard) {
-  @include border-color('standard');
+  @include border-color('se-standard');
 }
 :host(.alternative) {
-  @include border-color('alternative');
+  @include border-color('se-alternative');
 }

@@ -3,22 +3,28 @@
 :host {
   overflow: auto;
 }
+:host(.absolute) {
+  @include absolute();
+}
+:host(.relative) {
+  position: relative;
+}
 :host(.column-dir) {
   @include flex-direction(column);
 }
 :host(.row-dir) {
   @include flex-direction(row);
 }
-:host(.flex) {
+:host(.flex-display) {
   flex-wrap: nowrap;
   @include flex();
   @include display-flex();
 }
-:host(.block) {
+:host(.block-display) {
   display: block !important;
   width: 100%;
 }
-:host(.grid) {
+:host(.grid-display) {
   display: grid;
   width: 100%;
   width: -webkit-fill-available;
@@ -27,21 +33,18 @@
   // grid-auto-rows: 300px;
   // grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Where the magic happens */
 }
-:host(.absolute) {
-  @include absolute();
-}
-:host(.relative) {
-  position: relative;
-}
-:host(.block-content) {
-  padding: $spacing-small;
-}
-:host(.fill-content:not(.block)) {
+
+:host(.fill-content:not(.block-display)) {
   padding: 0;
   height: 100%;
 }
-:host(.card-content:not(.block)) {
+
+:host(.card-content:not(.block-display)) {
   padding: $spacing;
+}
+
+:host(.widget-content:not(.block-display)) {
+  padding: $spacing-small;
 }
 
 :host(.centered-content) {
@@ -57,11 +60,11 @@
 }
 
 :host(.standard) {
-  @include background-color('background');
+  @include background-color('se-background');
 }
 :host(.alternative) {
-  @include color("alternative-contrast");
-  @include background-color("alternative");
+  @include color("se-alternative-contrast");
+  @include background-color("se-alternative");
 }
 
 

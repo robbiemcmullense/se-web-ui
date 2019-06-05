@@ -22,11 +22,11 @@
 	position: relative;
 	line-height: 128px;
 	@include animated();
-  @include color("primary");
+  @include color("se-primary");
   @include display-flex();
   @include flex-direction(column);
   &.dialog {
-    @include background-color("alternative");
+    @include background-color("se-alternative");
     box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.3);
   }
 }

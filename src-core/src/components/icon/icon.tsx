@@ -19,7 +19,7 @@ export class IconComponent {
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
    */
-  @Prop() color: "standard" | "alternative" | "primary" | "secondary";
+  @Prop() color: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
 
   // componentWillLoad() {
   //   this.el.classList.add(this.size);
@@ -27,11 +27,7 @@ export class IconComponent {
 
   render() {
     return (
-      <Host
-        class={[`icon-${this.size}`, this.color, `icon-${this.option}`].join(
-          " "
-        )}
-      >
+      <Host class={[`icon-${this.size}`, this.color, `icon-${this.option}`].join(" ")}>
         <slot />
       </Host>
     );

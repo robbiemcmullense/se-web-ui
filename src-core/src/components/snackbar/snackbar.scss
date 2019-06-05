@@ -13,11 +13,11 @@
 }
 
 :host(.information) {
-	@include background-color('focus');
+	@include background-color('se-focus');
 }
 
 :host(.success) {
-	@include background-color('primary');
+	@include background-color('se-primary');
 }
 
 :host(.warning) {
@@ -33,7 +33,7 @@
 	line-height: 48px;
 	margin-left: 5px;
 	@include display-flex();
-	@include color('primary-contrast');
+	@include color('se-primary-contrast');
 }
 
 .se-icon {

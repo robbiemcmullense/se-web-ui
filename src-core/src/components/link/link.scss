@@ -6,16 +6,16 @@
     margin: $spacing-small;
     line-height: 17px;
     display: inline-block;
-		@include color('secondary');
+		@include color('se-secondary');
 		text-decoration: none;
 		&.external {
-			text-decoration: underline;
+			// text-decoration: underline;
 			&:before {
-				content: '>';
+				content: '> ';
 			}
 		}
 		&:hover {
-			@include color('hover-secondary');
+			@include color('se-hover-secondary');
 		}
 		&[data-disabled] {
 			pointer-events: none;

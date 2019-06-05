@@ -9,23 +9,26 @@
 
 }
 
-.se-icon {
-  margin: 0;
-  display: inline-block;
-  font-family: "se-icon";
-  font-size: 24px;
-  font-display: block;
-  &.primary {
-    @include color("primary");
-  }
-  &.secondary {
-    @include color("secondary");
-  }
-  &.medium {
-    font-size: 36px;
-    line-height: 30px;
-  }
-}
+// .se-icon {
+//   margin: 0;
+//   display: inline-block;
+//   font-family: "se-icon";
+//   font-size: 24px;
+//   font-display: block;
+//   &.primary {
+//     @include color("se-primary");
+//   }
+//   &.warning {
+//     @include color("se-warning");
+//   }
+//   &.error {
+//     @include color("se-error");
+//   }
+//   &.medium {
+//     font-size: 36px;
+//     line-height: 30px;
+//   }
+// }
 
 button {
   border: none;
@@ -38,7 +41,6 @@ button {
   width: 100%;
   /* inherit font & color from ancestor */
   color: inherit;
-  cursor: pointer;
   font: inherit;
   @include display-flex();
   @include align-items(center);
@@ -46,17 +48,20 @@ button {
   text-align: left; // MS Edge does not support "start"
   text-align: start;
   border-bottom: 1px solid $divider-color;
-  &:hover, &:focus{
-    background-color: $se-ultra-light-grey-1;
+  &:not([disabled]){
+    cursor: pointer;
+    &:hover, &:focus{
+      background-color: $se-ultra-light-grey-1;
+    }
   }
 }
 
 .selectedBar {
   position: absolute;
-  top: 0px;
+  top: 0;
   bottom: 0;
   width: 5px;
-  @include background-color("primary");
+  @include background-color("se-primary");
 }
 
 .nav-icon {
@@ -88,8 +93,8 @@ button {
 }
 
 :host(.classic.selected) {
-  @include color('selected-contrast');
-  @include background-color('selected');
+  @include color('se-selected-contrast');
+  @include background-color('se-selected');
   button {
     &:hover, &:focus{
       background-color: $se-ultra-dark-grey;
@@ -105,7 +110,7 @@ button {
 }
 
 :host(.nav.selected) {
-  @include color('primary');
+  @include color('se-primary');
 }
 
 :host(.treeview) {
@@ -118,8 +123,8 @@ button {
 }
 
 :host(.treeview.selected) {
-  @include color('selected-contrast');
-  @include background-color('selected');
+  @include color('se-selected-contrast');
+  @include background-color('se-selected');
   button {
     &:hover, &:focus{
       background-color: $se-ultra-dark-grey;
@@ -135,5 +140,11 @@ button {
   }
   .nav-content{
     padding-left: 10px;
+  }
+}
+
+:host(.headline) {
+  button{
+    height: 42px;
   }
 }

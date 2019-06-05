@@ -15,20 +15,14 @@
   </se-block>
   <se-divider option="vertical"></se-divider>
 
-  <se-container option="widget">
-    <div fxFlex class="gridAnimation">
-      <mat-grid-list [cols]="nbCols" rowHeight="300px">
-        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.cols">
-          <ng-container
-            dynamicWidget
-            [type]="tile.widgetType"
-            [siteId]="selectedSite"
-            [enlarged]="tile.cols === 2"
-            [toggleable]="nbCols !== 1"
-            (toggle)="toggleSize($event, tile)"
-          ></ng-container>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
+  <se-container display="grid" option="card">
+    <ng-container *ngFor="let tile of tiles"
+      dynamicWidget
+      [type]="tile.widgetType"
+      [siteId]="selectedSite"
+      [enlarged]="tile.cols === 2"
+      [toggleable]="nbCols !== 1"
+      (toggle)="toggleSize($event, tile)"
+    ></ng-container>
   </se-container>
 </se-container>

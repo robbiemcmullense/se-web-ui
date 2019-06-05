@@ -297,7 +297,7 @@ export class SeLink {
 proxyInputs(SeLink, ['disabled', 'option', 'url']);
 
 export declare interface SeList extends Components.SeList {}
-@Component({ selector: 'se-list', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option'] })
+@Component({ selector: 'se-list', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'option'] })
 export class SeList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -305,10 +305,10 @@ export class SeList {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeList, ['option']);
+proxyInputs(SeList, ['canCollapse', 'option']);
 
 export declare interface SeListGroup extends Components.SeListGroup {}
-@Component({ selector: 'se-list-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
+@Component({ selector: 'se-list-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
 export class SeListGroup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -316,7 +316,7 @@ export class SeListGroup {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeListGroup, ['collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected']);
+proxyInputs(SeListGroup, ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected']);
 
 export declare interface SeListItem extends Components.SeListItem {}
 @Component({ selector: 'se-list-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })

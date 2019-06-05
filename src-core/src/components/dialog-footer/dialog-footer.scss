@@ -15,11 +15,11 @@
 }
 
 :host(.alternative){
-  @include background-color('alternative');
-  @include color('primary');
+  @include background-color('se-alternative');
+  @include color('se-primary');
 }
 
 :host(.primary){
-  @include background-color('primary');
-  @include color('primary-contrast');
+  @include background-color('se-primary');
+  @include color('se-primary-contrast');
 }

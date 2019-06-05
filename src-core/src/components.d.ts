@@ -311,7 +311,7 @@ export namespace Components {
     /**
     * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
     */
-    'color': 'alternative' | 'primary';
+    'color': 'primary' | 'alternative';
   }
   interface SeDivider {
     /**
@@ -407,7 +407,7 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color': "standard" | "alternative" | "primary" | "secondary";
+    'color': "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
@@ -446,11 +446,19 @@ export namespace Components {
   }
   interface SeList {
     /**
+    * Defines if list groups can be collapsed, true by default.
+    */
+    'canCollapse': boolean;
+    /**
     * Defines the style of the list.  The default setting is `classic`.
     */
-    'option': "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview" | "headline";
   }
   interface SeListGroup {
+    /**
+    * Defines if list groups can be collapsed, true by default.
+    */
+    'canCollapse': boolean;
     /**
     * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
     */
@@ -478,7 +486,7 @@ export namespace Components {
     /**
     * Defines the theme of the list. This them will be handled and modified by the parent element.
     */
-    'option': "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview" | "headline";
     /**
     * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
     */
@@ -496,7 +504,7 @@ export namespace Components {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor': "primary" | "secondary";
+    'iconColor': "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
     * Defines the group indentation to add paddings to the list item (used with multiple list groups).
     */
@@ -508,7 +516,7 @@ export namespace Components {
     /**
     * Define the theme of the list. This them will be handled and modified by the parent element.
     */
-    'option': "nav" | "classic" | "dropdown" | "treeview";
+    'option': "nav" | "classic" | "dropdown" | "treeview" | "headline";
     /**
     * Defines if the list element should be selected or not.
     */
@@ -1320,7 +1328,7 @@ declare namespace LocalJSX {
     /**
     * Define the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema.
     */
-    'color'?: 'alternative' | 'primary';
+    'color'?: 'primary' | 'alternative';
   }
   interface SeDivider extends JSXBase.HTMLAttributes<HTMLSeDividerElement> {
     /**
@@ -1416,7 +1424,7 @@ declare namespace LocalJSX {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color'?: "standard" | "alternative" | "primary" | "secondary";
+    'color'?: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
@@ -1455,11 +1463,19 @@ declare namespace LocalJSX {
   }
   interface SeList extends JSXBase.HTMLAttributes<HTMLSeListElement> {
     /**
+    * Defines if list groups can be collapsed, true by default.
+    */
+    'canCollapse'?: boolean;
+    /**
     * Defines the style of the list.  The default setting is `classic`.
     */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
   }
   interface SeListGroup extends JSXBase.HTMLAttributes<HTMLSeListGroupElement> {
+    /**
+    * Defines if list groups can be collapsed, true by default.
+    */
+    'canCollapse'?: boolean;
     /**
     * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
     */
@@ -1487,7 +1503,7 @@ declare namespace LocalJSX {
     /**
     * Defines the theme of the list. This them will be handled and modified by the parent element.
     */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
     /**
     * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
     */
@@ -1505,7 +1521,7 @@ declare namespace LocalJSX {
     /**
     * Optional property to define the color of the icon. The default color will be inherited from it's parent.
     */
-    'iconColor'?: "primary" | "secondary";
+    'iconColor'?: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
     * Defines the group indentation to add paddings to the list item (used with multiple list groups).
     */
@@ -1521,7 +1537,7 @@ declare namespace LocalJSX {
     /**
     * Define the theme of the list. This them will be handled and modified by the parent element.
     */
-    'option'?: "nav" | "classic" | "dropdown" | "treeview";
+    'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
     /**
     * Defines if the list element should be selected or not.
     */

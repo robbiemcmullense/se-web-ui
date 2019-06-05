@@ -16,16 +16,16 @@
   @include absolute(0,0,0,0);
   @include display-flex();
   @include flex-direction(column);
-  @include background-color('background');
+  @include background-color('se-background');
 }
 
 // Create all classes to use colors as classes
 @each $element in ('primary', 'secondary', 'standard', 'alternative', 'standard-contrast','alternative-contrast','primary-contrast','secondary-contrast', 'background') {
   .color-#{$element}{
-    @include color($element);
+    @include color('se-' + $element);
   }
   .bg-#{$element}{
-    @include background-color($element);
+    @include background-color('se-' + $element);
   }
 }
 
@@ -157,7 +157,7 @@ body, html {
   ::-webkit-scrollbar-thumb {
     background-color: $se-light-grey;
     &:hover {
-      @include background-color('selected');
+      @include background-color('se-selected');
       border: $scrollbar-side-padding solid transparent;
     }
   }

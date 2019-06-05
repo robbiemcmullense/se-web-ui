@@ -16,7 +16,7 @@
 
 <body>
   <se-app>
-    <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
+    <!-- <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
       <div>
         <se-form-field label="Username" required="true" option="stacked">
           <input type="text"/>
@@ -26,7 +26,7 @@
         </se-form-field>
         <se-button onclick="closeLogin()" option="login" value="myLoginValue">Login</se-button>
       </div>
-    </se-authentication>
+    </se-authentication> -->
     <se-header app-title="Test Advisor" project="Project name">
       <div slot="end">
         <se-link url="http://google.com" option="external">External Link to Google</se-link>
@@ -196,7 +196,27 @@
             <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
           </se-block-footer>
         </se-block>
-
+        <se-block>
+          <se-block-header>
+            Headline list with colored icons
+            <div slot="end">
+              <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
+            </div>
+          </se-block-header>
+          <se-block-content option="fill">
+            <se-list option="headline" can-collapse="true">
+              <se-list-group item="Headline Example">
+                <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
+                <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary"></se-list-item>
+                <se-list-item item="Disable color icon" icon="action_editor" icon-color="disable"></se-list-item>
+              </se-list-group>
+              <se-list-group item="Warning and error icon colors">
+                <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
+                <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error"></se-list-item>
+              </se-list-group>
+            </se-list>
+          </se-block-content>
+        </se-block>
         <se-block id="block1">
           <se-block-header>
             <div slot="start">

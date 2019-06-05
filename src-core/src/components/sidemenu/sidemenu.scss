@@ -25,8 +25,8 @@
   width: 80%;
   height: 100%;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
-  @include background-color('alternative');
-  @include color('alternative-contrast');
+  @include background-color('se-alternative');
+  @include color('se-alternative-contrast');
   z-index: 30;
 
   &.show-menu {

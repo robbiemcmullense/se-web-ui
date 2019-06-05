@@ -11,14 +11,14 @@ export class DialogHeaderComponent {
    * `alternative`: Alternative background with primary color for the text
    * `primary`: Primary color schema.
    */
-  @Prop() color: 'alternative' | 'primary' = 'primary'
+  @Prop() color:  'primary' | 'alternative' = 'primary'
 
   render() {
     return (
       <Host class={this.color}>
         <h4 class="flex"><slot></slot></h4>
         <slot name="end"></slot>
-      </Host> 
+      </Host>
     )
   }
 }

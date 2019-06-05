@@ -47,6 +47,7 @@ graph TD;
   se-sidemenu --> se-list
   se-sidemenu --> se-icon-lifeison
   se-sidemenu --> se-block
+  se-list-item --> se-icon
   se-block --> se-loading
   style se-sidemenu fill:#f9f,stroke:#333,stroke-width:4px
 ```
