@@ -196,11 +196,11 @@
             <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
           </se-block-footer>
         </se-block>
-        <se-block>
+        <se-block id="block1">
           <se-block-header>
             Headline list with colored icons
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(1)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content option="fill">
@@ -217,14 +217,14 @@
             </se-list>
           </se-block-content>
         </se-block>
-        <se-block id="block1">
+        <se-block id="block2">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">connection_bluetooth</se-icon>
             </div>
             Buttons
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(1)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(2)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -315,12 +315,12 @@
             </se-radio-group>
           </se-block-content>
         </se-block>
-        <se-block id="block2">
+        <se-block id="block3">
           <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
           <se-block-header>
             Forms
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(2)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(3)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -346,7 +346,7 @@
                 <option>Option 3</option>
               </select>
             </se-form-field>
-            <se-form-field type="input" label="Multi-Line Input">
+            <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
               <textarea rows="5"></textarea>
             </se-form-field>
             <h4>Stacked </h4>
@@ -365,11 +365,11 @@
             </se-form-field>
           </se-block-content>
         </se-block>
-        <se-block id="block3">
+        <se-block id="block4">
           <se-block-header>
             Modals
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(3)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -378,11 +378,11 @@
             <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
           </se-block-content>
         </se-block>
-        <se-block id="block4">
+        <se-block id="block5">
           <se-block-header>
             Linear chart & Slider
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -395,11 +395,11 @@
             </ul>
           </se-block-content>
         </se-block>
-        <se-block id="block5">
+        <se-block id="block6">
           <se-block-header>
             Radial chart
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -407,11 +407,11 @@
             <se-visual-radial percentage="30" secolor="#ee0014" label="Label" value="8"></se-visual-radial>
           </se-block-content>
         </se-block>
-        <se-block id="block6">
+        <se-block id="block7">
           <se-block-header>
             Tree view
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -428,11 +428,11 @@
           </se-block-content>
         </se-block>
 
-        <se-block id="block7">
+        <se-block id="block8">
           <se-block-header>
             Group of Radio Buttons
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content option="fill">
@@ -444,11 +444,11 @@
             <div>Selected radio button value: <span id="se-radio-value"></span></div>
           </se-block-content>
         </se-block>
-        <se-block id="block8">
+        <se-block id="block9">
           <se-block-header>
             Tooltips
             <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
+              <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -635,7 +635,9 @@
       if (event.detail == 'warning') {
         document.getElementById('input-form').status = 'warning';
       }
-      else if (event.detail == 'success') {
+      else if (event.detail == 'error') {
+        document.getElementById('input-form').status = 'error';
+      } else if (event.detail == 'success') {
         document.getElementById('input-form').status = 'success';
       } else {
         document.getElementById('input-form').status = '';
@@ -643,6 +645,9 @@
     });
     document.getElementById('select-form').addEventListener('didSubmit', function (event) {
       document.getElementById('form-field-message').firstElementChild.innerText = 'select, ' + event.detail;
+    });
+    document.getElementById('textarea-form').addEventListener('didSubmit', function (event) {
+      document.getElementById('form-field-message').firstElementChild.innerText = 'textarea, ' + event.detail;
     });
     document.getElementById('radio-button-dot-group').addEventListener('didCheck', function (event) {
       document.getElementById('se-radio-value').innerText = event.detail.value;

@@ -107,7 +107,7 @@ label {
 :host(.success) {
 	::slotted(input) {
     border: 1px solid;
-    @include border-color('se-success')
+    @include border-color('success')
 	}
 }
 
