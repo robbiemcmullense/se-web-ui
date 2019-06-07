@@ -80,8 +80,8 @@ export class ListItemComponent {
             <div>{this.item}</div>
             <small> {this.description}</small>
           </div>
-          {this.option === "nav" && <se-icon  size="medium">arrow2_right</se-icon>}
-          {this.option === "classic" && <slot></slot>}
+          {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
+          {this.option === "classic" ? <slot></slot> : ''}
         </button>
       </Host>
     )

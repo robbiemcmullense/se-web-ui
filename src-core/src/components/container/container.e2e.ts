@@ -13,8 +13,8 @@ describe('ContainerComponent', () => {
     expect(element).toBeTruthy();
   });
 
-  it('renders the "fill-content", "flex", "relative", and "row" classes based on default properties', async() => {		
-    expect(element).toHaveClasses(['fill-content', 'flex', 'relative', 'hydrated', 'row']);	
+  it('renders the "fill-content", "flex-display", "relative", and "row" classes based on default properties', async() => {		
+    expect(element).toHaveClasses(['fill-content', 'flex-display', 'relative', 'hydrated', 'row']);	
   });
 
   it('renders the "centered" and "absolute-content" classes when the component has these properties for option and position', async() => {	

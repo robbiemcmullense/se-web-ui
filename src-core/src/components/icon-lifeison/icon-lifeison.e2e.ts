@@ -1,10 +1,21 @@
 import { newE2EPage } from '@stencil/core/testing';
 
- describe('IconLifeisonComponent', () => {
-  it('renders with an inherited class to indicate an inherited color', async() => {
-    const page = await newE2EPage();
+describe('IconLifeIsOnComponent', () => {
+  let page, element;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
     await page.setContent('<se-icon-lifeison></se-icon-lifeison>');
-    const element = await page.find('se-icon-lifeison >>> div');
-    expect(element).toHaveClass('inherited');
+    element = await page.find('se-icon-lifeison');
+  });
+
+  it('renders', async () => {
+    expect(element).toBeTruthy();
+  });
+
+  it('has an img element with the "inherited" class by default', async () => {
+    let imgElm = await page.find('se-icon-lifeison >>> img');
+    expect(imgElm).toBeTruthy();
+    expect(imgElm).toHaveClass('inherited');
   });
 });

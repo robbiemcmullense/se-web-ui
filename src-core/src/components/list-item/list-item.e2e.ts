@@ -53,7 +53,7 @@ import { newE2EPage } from '@stencil/core/testing';
 		});
 		await page.waitForChanges();
 
-    const iconElm = await page.find('se-list-item >>> .se-icon');
+    const iconElm = await page.find('se-list-item >>> se-icon');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('arrow2_right');
   });
@@ -66,23 +66,9 @@ import { newE2EPage } from '@stencil/core/testing';
 		});
     await page.waitForChanges();
     
-    const iconElm = await page.find('se-list-item >>> .nav-icon span');
+    const iconElm = await page.find('se-list-item >>> .nav-icon se-icon');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('my test icon');
-  });
-
-  it('should render a color class when selected', async() => {
-    await page.$eval('se-list-item', (elm: any) => {
-      elm.option = 'nav';
-      elm.selected = true;
-      elm.iconColor = 'secondary';
-      elm.icon = 'my test icon';
-		});
-    await page.waitForChanges();
-    
-    const iconElm = await page.find('se-list-item >>> .nav-icon span');
-    expect(iconElm).toBeTruthy();
-    expect(iconElm).toHaveClasses(['se-icon', 'secondary']);
   });
 });
 
