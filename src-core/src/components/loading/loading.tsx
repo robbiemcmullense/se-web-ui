@@ -11,9 +11,9 @@ export class LoadingComponent {
    */
   @Prop() loading: boolean;
   /**
-   * Define the visual display of the loader.
+   * Defines the visual display of the loader.
    * `standard` is the default option, and displays a spinning green circle.
-   * `dialog` gives the loading icon a look-and-feel that it's within a popup dialog box.
+   * `dialog` gives the loading icon a look-and-feel that it is within a popup dialog box.
    */
   @Prop() option: 'standard' | 'dialog' = 'standard';
 

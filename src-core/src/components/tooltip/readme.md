@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                   | Type                                     | Default    |
-| ---------- | ---------- | --------------------------------------------- | ---------------------------------------- | ---------- |
-| `action`   | `action`   | Indicates the action of your tooltip.         | `"click" \| "hover"`                     | `"hover"`  |
-| `position` | `position` | Indicates the position color of your tooltip. | `"bottom" \| "left" \| "right" \| "top"` | `"bottom"` |
+| Property   | Attribute  | Description                                                                                                                                                                                                       | Type                                     | Default    |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ---------- |
+| `action`   | `action`   | Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element. | `"click" \| "hover"`                     | `"hover"`  |
+| `position` | `position` | Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent.                                                                                                  | `"bottom" \| "left" \| "right" \| "top"` | `"bottom"` |
 
 
 ## Events
@@ -25,7 +25,7 @@
 
 ### `close() => Promise<void>`
 
-Method to close the tooltip from the outside.
+Method to close the tooltip separate from hovering or clicking the parent element.
 
 #### Returns
 
@@ -35,7 +35,7 @@ Type: `Promise<void>`
 
 ### `open() => Promise<void>`
 
-Method to open the tooltip from the outside.
+Method to open the tooltip separate from hovering or clicking the parent element.
 
 #### Returns
 

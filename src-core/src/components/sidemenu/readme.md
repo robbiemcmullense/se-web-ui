@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                         | Type     | Default  |
-| -------- | --------- | ----------------------------------- | -------- | -------- |
-| `label`  | `label`   | Overrides the default "Menu" label. | `string` | `'Menu'` |
+| Property | Attribute | Description                                                                            | Type     | Default  |
+| -------- | --------- | -------------------------------------------------------------------------------------- | -------- | -------- |
+| `label`  | `label`   | Defines the text displayed in the header of the Sidemenu. The default value is `Menu`. | `string` | `'Menu'` |
 
 
 ## Methods
@@ -29,13 +29,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [se-list-item](../list-item)
-- [se-icon](../icon)
-- [se-link](../link)
-- [se-divider](../divider)
-- [se-list](../list)
-- [se-icon-lifeison](../icon-lifeison)
-- [se-block](../block)
+- [se-list-item](..\list-item)
+- [se-icon](..\icon)
+- [se-link](..\link)
+- [se-divider](..\divider)
+- [se-list](..\list)
+- [se-icon-lifeison](..\icon-lifeison)
+- [se-block](..\block)
 
 ### Graph
 ```mermaid

@@ -26,11 +26,13 @@ export class SnackbarComponent {
    */
   @Prop() message: string;
   /**
-   * Display a close "button".  Visible by default.
+   * Displays a "button" to close the snackbar.
+   * The default setting is `false`.
+   * This will be visible if set to `true`.
    */
   @Prop() canClose: boolean = false;
   /**
-   * Defines the text you want your "close button" to read.  Default text is `dismiss`.
+   * Defines the text you want your "close button" to read.  The default text is `dismiss`.
    */
   @Prop() closeText: string = 'dismiss';
   /**
@@ -46,7 +48,7 @@ export class SnackbarComponent {
   }
   @Element() el: HTMLElement;
   /**
-   * Send information to the parent component when closing the snackbar.
+   * Sends information to the parent component when closing the snackbar.
    */
   @Event() didClose: EventEmitter;
 

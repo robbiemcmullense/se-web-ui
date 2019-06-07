@@ -7,8 +7,8 @@ import { Component, h, Host, Prop } from "@stencil/core";
 })
 export class BlockFooter {
   /**
-   * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when on card option.
-   * `card` will update the design of the footer with respect to the card design.
+   * Defines the visual appearance of a footer.
+   * Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
    */
   @Prop() option: 'card' | 'widget' | 'basic';
   /**

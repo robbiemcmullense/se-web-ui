@@ -25,7 +25,7 @@ export class AuthenticationComponent {
    */
   @Prop() logo: string;
   /**
-   * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
+   * The domain you want to display.  If set to `ecostruxure`, it renders an EcoStruxure icon.
    */
   @Prop() domain: string = AppInfo.domain;
   /**
@@ -37,7 +37,7 @@ export class AuthenticationComponent {
    */
   @Prop() imageUrl: string;
   /**
-   * If set to `true`, hides the authentication screen.
+   * If set to `true`, this will hide the authentication screen.
    */
   @Prop() hide: boolean = false;
 

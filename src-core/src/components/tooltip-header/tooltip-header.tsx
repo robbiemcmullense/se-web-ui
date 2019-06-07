@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'se-tooltip-header',
   styleUrl: 'tooltip-header.scss',
-  shadow:true
+  shadow: true
 })
 export class TooltipHeaderComponent {
   /**
@@ -12,8 +12,8 @@ export class TooltipHeaderComponent {
 
   render() {
     return [
-        <div class="tooltip-header">{this.icon && <se-icon class="se-icon" size="small" >{this.icon}</se-icon>}<slot /></div>,
-        <slot name="end"/>     
+      <div class="tooltip-header">{this.icon && <se-icon class="se-icon" size="small" >{this.icon}</se-icon>}<slot /></div>,
+      <slot name="end" />
     ];
   }
 }

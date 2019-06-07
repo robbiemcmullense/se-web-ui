@@ -12,7 +12,6 @@ export class TabbarComponent {
    * The `alternative` setting renders a white background.
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
-
   /**
    * Defines the inner appearance of a tabbar.
    * `fill` is the default option, taking the full space of the tabbar.

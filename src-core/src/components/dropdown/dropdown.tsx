@@ -17,9 +17,9 @@ export class DropdownComponent {
    */
   @Event() didClose: EventEmitter;
   /**
-   * Define how to align the dropdown container.
-   * `left`: Position the container regarding to the left side of the trigger element.
-   * `right`: Position the container regarding to the right side of the trigger element.
+   * Defines how to align the dropdown container.
+   * `left`: Position the container with respect to the left side of the trigger element.
+   * `right`: Position the container with respect to the right side of the trigger element.
    */
   @Prop() alignment: 'left' | 'right' = 'left';
   @State() opened: boolean = false;
@@ -38,7 +38,7 @@ export class DropdownComponent {
   }
 
   /**
-   * Method to open the dropdown from the outside.
+   * Method to open the dropdown from outside its parent element.
    */
   @Method()
   async open() {
@@ -46,7 +46,7 @@ export class DropdownComponent {
   }
 
   /**
-   * Method to close the dropdown from the outside.
+   * Method to close the dropdown from outside its parent element.
    */
   @Method()
   async close() {

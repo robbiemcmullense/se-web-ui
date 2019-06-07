@@ -12,14 +12,12 @@ export class HeaderComponent {
    * Sets the title of your application.
    */
   @Prop() appTitle: string = "";
-
   /**
    * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
    */
   @Prop() domain: string = AppInfo.domain;
-
   /**
-   * Defines the project name (useful for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+   * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
    */
   @Prop() project: string;
 

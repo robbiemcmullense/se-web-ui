@@ -11,7 +11,7 @@ export class BlockComponent {
    * Defines the visual appearance of a block.
    * `basic` will remove any spacing.
    * `widget` will create a flat widget look and feel with a small margin around it.
-   * `card` will create a card look and feel with shadow and rounded corners.
+   * `card` will create a card look and feel with a shadow and rounded corners.
    */
   @Prop() option: "basic" | "card" | "widget" = "basic";
   @Watch("option") optionDidChange() {
@@ -28,27 +28,27 @@ export class BlockComponent {
    */
   @Prop() color: "standard" | "alternative" = "alternative";
   /**
-   * Defines a specific width of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+   * Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
    */
   @Prop() width: string;
   @Watch("width") widthDidChange() {
     this.updateSize();
   }
   /**
-   * Defines a specific height of a block.  Useful to create easy layout under `se-container` which uses `flex` by default.
+   * Defines the specific height of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
    */
   @Prop() height: string;
   @Watch("height") heightDidChange() {
     this.updateSize();
   }
   /**
-   * When on Grid display, determines if the block should be a 2/2 instead of a small 1/1 grid item.
+   * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item.
    * Default setting is `false` (1/1).
    */
   @Prop({ mutable: true }) enlarged: boolean = false;
 
   /**
-   * Display the loading icon if set to `true`.  Default setting is `false`.
+   * Displays the loading icon if set to `true`.  Default setting is `false`.
    */
   @Prop({ mutable: true }) loading: boolean = false;
 

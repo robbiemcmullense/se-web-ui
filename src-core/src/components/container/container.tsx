@@ -11,9 +11,9 @@ export class ContainerComponent {
   /**
    * Defines the inner appearance of a container.
    * `fill` is the default option, taking the full space of the container.
-   * `widget` adds a small spacing all around the container so that all child elements are spaced with the same distance. This option automatically sets the color property to `standard` (gray).
+   * `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray).
    * `centered` centers the container so the content does not exceed a maximum width.
-   * `card` adds a larger spacing and sets the color property to `alternative` (white).
+   * `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white).
    * `inherited` will insure that no specific style is applied to the container.
    */
   @Prop() option: "fill" | "widget" | "card" | "centered" | "inherited"  = "fill";
@@ -32,23 +32,21 @@ export class ContainerComponent {
   }
 
   /**
-   * In specific cases, it may be necessary to define the container with an absolute position (inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box.
+   * In specific cases, it may be necessary to define the container with an absolute position (such as inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box.
    * `relative` is the default position. This is perfect to use with flex content.
    * `absolute` is useful in specific cases. Make sure you know what you are doing.
    */
   @Prop() position: "relative" | "absolute" = "relative";
-
   /**
    * Defines the direction of the flex element.
    * `row` is the default direction. This is perfect to use with flex content.
    * `column` is useful in specific cases. Make sure you know what you are doing.
    */
   @Prop() direction: "column" | "row" = "row";
-
   /**
    * Defines how to display the element.
    * `flex` is the default display.
-   * `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element in "display: block" as well.
+   * `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element to have "display: block".
    */
   @Prop() display: "flex" | "block" | "grid" = "flex";
   @Watch("display") displayDidChange() {
@@ -61,8 +59,8 @@ export class ContainerComponent {
   }
 
   /**
-   * When in `display="grid"`, defines the min width of a column. It automatically figures out the appropriate number of columns from there.
-   * Default is `350px`
+   * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there.
+   * Default is `350px`.
    */
   @Prop() columnSize: string = '350px';
   @Watch("columnSize") columnSizeDidChange() {
@@ -72,7 +70,7 @@ export class ContainerComponent {
   }
 
   /**
-   * When in `display="grid"`, defines the height of each container.
+   * When in `display="grid"`, defines the height of each container.  Default is `300px`.
    */
   @Prop() rowSize: string = '300px';
   @Watch("rowSize") rowSizeDidChange() {
@@ -81,9 +79,8 @@ export class ContainerComponent {
     }
   }
 
-
   /**
-   * Defines the color of the background of the container. The default is transparent, reflecting the parent element's color.
+   * Defines the background color of the container.
    * `standard` is a light gray.
    * `alternative` is a white background.
    */

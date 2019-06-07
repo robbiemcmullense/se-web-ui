@@ -16,7 +16,7 @@ export class ListGroupComponent {
    */
   @Prop() description: string;
   /**
-   * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
+   * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
    */
   @Prop({ mutable: true }) selected: boolean;
   /**
@@ -28,18 +28,18 @@ export class ListGroupComponent {
    */
   @Prop() iconColor: "primary" | "secondary";
   /**
-   * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
+   * Defines if the item group is collapsed/closed. The default setting is `false`.
    */
   @Prop({ mutable: true }) collapsed: boolean = false;
   @Watch("collapsed") collapsedChanged() {
     this.checkSelected();
   }
   /**
-   * Define the group indentation to add paddings to the list item (used with multiple list groups).
+   * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
   @Prop() indentation: number = 0;
   /**
-   * Defines the theme of the list. This them will be handled and modified by the parent element.
+   * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
   /**

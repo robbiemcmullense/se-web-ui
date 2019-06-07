@@ -18,7 +18,7 @@ export class ListComponent {
   }
 
   /**
-   * Defines if list groups can be collapsed, true by default.
+   * Defines if list groups can be collapsed.  The default setting is `true`.
    */
   @Prop() canCollapse: boolean = true;
   @Watch('canCollapse') canCollapseDidChange() {

@@ -8,7 +8,7 @@ import IconLifeison from './icon-lifeison.svg';
 })
 export class IconLifeisonComponent {
    /**
-   * Define the color of the logo.
+   * Defines the color of the logo.
    * `standard`: displays a light green / dark green conventional SE logo.
    * `inherited`: default option, which takes the color from it's parent.
    */

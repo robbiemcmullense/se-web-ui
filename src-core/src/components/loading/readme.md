@@ -7,17 +7,17 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                           | Type                     | Default      |
-| --------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------ |
-| `loading` | `loading` | Displays the loading icon on screen when set to `true`.                                                                                                                                               | `boolean`                | `undefined`  |
-| `option`  | `option`  | Define the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it's within a popup dialog box. | `"dialog" \| "standard"` | `'standard'` |
+| Property  | Attribute | Description                                                                                                                                                                                             | Type                     | Default      |
+| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------ |
+| `loading` | `loading` | Displays the loading icon on screen when set to `true`.                                                                                                                                                 | `boolean`                | `undefined`  |
+| `option`  | `option`  | Defines the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it is within a popup dialog box. | `"dialog" \| "standard"` | `'standard'` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [se-block](../block)
+ - [se-block](..\block)
 
 ### Graph
 ```mermaid

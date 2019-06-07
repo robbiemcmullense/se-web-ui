@@ -8,12 +8,12 @@ import { Component, Element, Event, EventEmitter, h, Host, Prop, Listen, Watch }
 export class FormFieldComponent {
 	/**
 	 * Defines the layout of your form field.
-	 * `inline` is the default option and is always applied if the type is set to "checkbox".  This sets the input or select field adjacent to the label.
+	 * `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label.
 	 * `stacked` option will render the input or select field below the label.
 	 */
 	@Prop() option: 'inline' | 'stacked' = 'inline';
 	/**
-	 * Defines whether the form field's input is a text field (input), a checkbox (checkbox), or a dropdown menu (select).
+	 * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`).
 	 * `input` is the default type.
 	 */
 	@Prop() type: 'input' | 'checkbox' | 'radio' | 'select' = 'input';
@@ -33,16 +33,16 @@ export class FormFieldComponent {
 	/**
 	 * Determines if the input is required by the application.
 	 * Set to `false` by default.
-	 * Setting this value to "true" will render a red asterisk next to your label.
+	 * Setting this value to `true` will render a red asterisk next to your label.
 	 */
 	@Prop() required: boolean = false;
 	/**
-   * Optional property that defines if the button is disabled.  Set to `false` by default.
+   * Optional property that defines if the form field is disabled.  Set to `false` by default.
    */
 	@Prop() disabled: boolean = false;
 	@Element() el: HTMLElement;
 	/**
-   * Passes form data to the parent component on a click (checkbox), menu change (select), or when the input field loses focus.
+   * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
    */
 	@Event() didSubmit: EventEmitter;
 

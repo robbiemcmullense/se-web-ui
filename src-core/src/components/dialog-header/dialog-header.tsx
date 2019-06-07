@@ -6,9 +6,9 @@ import { Component, h, Host, Prop } from "@stencil/core";
   shadow: true
 })
 export class DialogHeaderComponent {
-    /**
-   * Define the color of the dialog header.
-   * `alternative`: Alternative background with primary color for the text
+  /**
+   * Defines the color of the dialog header.
+   * `alternative`: Alternative background with primary color for the text.
    * `primary`: Primary color schema.
    */
   @Prop() color:  'primary' | 'alternative' = 'primary'

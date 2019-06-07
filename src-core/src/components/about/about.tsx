@@ -21,7 +21,7 @@ export class AboutComponent {
    */
   @Prop() link: string = AppInfo.link;
   /**
-   * The domain you want to display.  If set to `ecostruxture`, it renders an EcoStruxure icon.
+   * The domain you want to display.  If set to `ecostruxure`, it renders an EcoStruxure icon.
    */
   @Prop() domain: string = AppInfo.domain;
   /**

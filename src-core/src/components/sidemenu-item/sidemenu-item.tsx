@@ -10,9 +10,9 @@ export class SidemenuItemComponent {
    * Defines the title of the menu item.
    */
   @Prop() item: string;
-
   /**
    * Defines if the menu item is active or not.
+   * The default setting is `false`.
    */
   @Prop({ mutable: true }) active = false;
 

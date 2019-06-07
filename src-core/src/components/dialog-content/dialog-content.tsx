@@ -7,7 +7,7 @@ import { Component, h, Host, Prop } from "@stencil/core";
 })
 export class DialogContentComponent {
   /**
-   * When set to `fill`, content will fill the whole space of the dialog.
+   * When set to `fill`, the content will fill the whole space of the dialog.
    */
   @Prop() option: 'fill';
   /**

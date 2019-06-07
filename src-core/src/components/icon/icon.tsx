@@ -12,7 +12,12 @@ export class IconComponent {
    */
   @Prop() option: "button";
   /**
-   * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
+   * Defines the size of an icon.
+   * `nano` sets the size to 14px.
+   * `small` sets the size to 24px. (default setting)
+   * `medium` sets the size to 32px
+   * `large` sets the size to 52px.
+   * `xlarge` sets the size to 62px.
    */
   @Prop() size: "nano" | "small" | "medium" | "large" | "xlarge" = "small";
   /**

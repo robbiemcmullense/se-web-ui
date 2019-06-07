@@ -7,7 +7,7 @@ import { Component, h, Prop, Host } from "@stencil/core";
 })
 export class BlockContent {
   /**
-   * When set to `basic`, content will fill the whole space of the block.
+   * When set to `basic`, the content will fill the whole space of the block.
    */
   @Prop() option: 'card' | 'widget' | 'basic' | 'fill';
 

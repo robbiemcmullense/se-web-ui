@@ -18,6 +18,7 @@ export class RadioGroupComponent {
   @Watch('disabled') disabledDidChange() {
     this.updateItemMode()
   }
+  
   /**
    * Defines the selected values of the array.
    */

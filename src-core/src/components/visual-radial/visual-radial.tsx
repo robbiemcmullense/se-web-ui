@@ -7,7 +7,7 @@ import { Component, h, Host, Prop, State, Watch } from "@stencil/core";
 })
 export class VisualRadialComponent {
   /**
-   * Determines the visual size of your circular progress bar.  Default setting is `large`.
+   * Determines the visual size of your circular progress bar.  The default setting is `large`.
    */
   @Prop() size: 'small' | 'large' = 'large';
 	/**
@@ -21,7 +21,7 @@ export class VisualRadialComponent {
 	/**
 	 * Sets the color of the visual "progress bar".
 	 * The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
-	 * The default setting is `primary`, which gives the progress bar a green color.
+	 * By default, the progress bar will have a green color.
 	 */
   @Prop() secolor: string;
 	/**

@@ -8,11 +8,14 @@ export class TooltipComponent {
 
   @Element() el: HTMLElement;
   /**
-   * Indicates the position color of your tooltip.
+   * Indicates the position of your tooltip.
+   * The default setting is `bottom`, rendering the tooltip below its parent.
    */
   @Prop() position: "top" | "bottom" | "left" | "right" = "bottom";
   /**
    * Indicates the action of your tooltip.
+   * The default setting is `hover`, triggering the tooltip when hovering over the parent element.
+   * The `click` action triggers the tooltip when you click on the parent element.
    */
   @Prop() action: "click" | "hover" = "hover";
   /**
@@ -65,7 +68,7 @@ export class TooltipComponent {
   }
   
   /**
-   * Method to open the tooltip from the outside.
+   * Method to open the tooltip separate from hovering or clicking the parent element.
    */
   @Method()
   async open() {
@@ -73,7 +76,7 @@ export class TooltipComponent {
   }
 
   /**
-   * Method to close the tooltip from the outside.
+   * Method to close the tooltip separate from hovering or clicking the parent element.
    */
   @Method()
   async close() {

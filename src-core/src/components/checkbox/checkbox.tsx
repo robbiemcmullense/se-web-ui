@@ -9,8 +9,9 @@ import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State }
 export class CheckboxComponent {
   /**
    * Determines the visual appearance of the component.
-   * `checkbox` is the default option and the component renders like a standard HTML checkbox.
+   * `checkbox` is the default option, which will render the component like a standard HTML checkbox.
    * `switch` renders the component like a toggle switch.
+   * `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
    */
   @Prop() option: 'checkbox' | 'onoff' | 'switch' = 'checkbox';
   /**
@@ -26,12 +27,13 @@ export class CheckboxComponent {
    */
   @Prop() required: boolean = false;
   /**
-   * Defines the color of the checkbox for checkbox and switch options.
-   * The default value is `primary`.
+   * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`.
+   * The default value is `primary`, rendering a green color.
+   * The `secondary` setting renders a blue color.
    */
   @Prop() color: 'primary' | 'secondary' = 'primary';
   /**
-   * Defines the color of the checkbox for onoff option.
+   * Defines the color schema of the checkbox when the option is set to `onoff`.
    * The default value is `standard`.
    */
   @Prop() background: 'standard' | 'alternative' = 'standard';
@@ -40,25 +42,25 @@ export class CheckboxComponent {
    */
   @Prop() disabled: boolean = false;
   /**
-	 * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+	 * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
 	 */
   @Prop({mutable: true}) selected: boolean = false;
   /**
-   * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+   * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to `onoff`.  Set to `ON` by default.
    */
   @Prop() textOn: string = 'ON';
   /**
-   * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to 'onoff'.  Set to `OFF` by default.
+   * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to `onoff`.  Set to `OFF` by default.
    */
   @Prop() textOff: string = 'OFF';
   /**
-   * Reduce the visual height of the checkbox when the option is set to 'onoff'.
+   * Reduces the visual height of the checkbox when the option is set to `onoff`.
    * Useful if the on/off checkbox is within a header element.
    */
   @Prop() header: boolean = false;
   @State() checked: boolean;
   /**
-   * Set the required property on the checkbox element.  Used when the checkbox is within a form field.
+   * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
    */
   @Method()
   async setRequired() {

@@ -12,7 +12,7 @@ export class ButtonComponent {
    * `flat` is the default option, which includes a gray background.
    * `raised` adds a box shadow to the button.
    * `outline` adds a border to the button.
-   * `login` and `signup` options are specific for "Login" and "Sign Up" buttons in your application.
+   * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
    */
   @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab'= 'flat';
   @Watch('option') optionDidChange() {
@@ -43,14 +43,14 @@ export class ButtonComponent {
    */
   @Prop() icon: string;
   /**
-   * Optional property to change the color of the icon when needed. Used for the user dropdown in the header for example.
+   * Optional property to change the color of the icon when needed. For example, the user dropdown in the header component.
    */
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
    /**
-   * Optional type property of the button.
-   * `button`	The button is a clickable button (default)
-   * `submit`	The button is a submit button (submits form-data)
-   * `reset`	The button is a reset button (resets the form-data to its initial values)
+   * Optional property.
+   * `button`	is the default setting, creating a clickable button.
+   * `submit`	creates a "submit" button (useful to submit form-data).
+   * `reset`	creates a reset button (useful to reset form-data to its initial values).
    */
   @Prop() type: 'button' | 'submit' |'reset' = 'button';
    /**
@@ -58,22 +58,23 @@ export class ButtonComponent {
    */
   @Prop() disabled: boolean = false;
   /**
-   * Optional property that defines if the button should be shown as selected. Used with `se-radio`
+   * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
    */
   @Prop({mutable: true}) selected: boolean;
 
    /**
-   * Optional property that defines if the button has caption/tooltip text .Used with mini-fab
+   * Optional property that defines if the button has a caption or tooltip text.
    */
   @Prop() caption: string;
+  
+  @State() grouped: boolean;
+  @State() hasChild: boolean;
   /**
    * Passes button data to the parent component on a click.
    */
-  @State() grouped: boolean;
-  @State() hasChild: boolean;
   @Event() didClick: EventEmitter<any>;
   /**
-   * Setd the disabled property for your button from the parent component.
+   * Sets the disabled property for your button from the parent component.
    * @param val set to `true` or `false`.
    */
   @Method()
@@ -81,7 +82,7 @@ export class ButtonComponent {
     this.disabled = val;
   }
   /**
-   * Indicates if the button is part of a group of buttons within the `se-radio` component.
+   * Indicates if the button is part of a group of buttons within the `se-radio-group` component.
    */
   @Method()
   async setGrouped() {

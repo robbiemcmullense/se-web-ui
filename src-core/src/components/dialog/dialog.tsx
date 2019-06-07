@@ -26,11 +26,11 @@ export class DialogComponent {
    */
   @Prop() color: 'alternative' | 'primary' = 'primary'
   /**
-   * Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.
+   * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
    */
   @Prop() open: boolean = false;
   /**
-   * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+   * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
    */
   @Prop() canBackdrop: boolean = true;
 
@@ -64,7 +64,7 @@ export class DialogComponent {
   @Event() backdrop: EventEmitter<any>;
   /**
    * Send data to the parent component when clicking an element within the dialog to close it.
-   * The modal can be safely removed from the DOM.
+   * The modal can then be safely removed from the DOM.
    */
   @Event() didClose: EventEmitter<any>;
 

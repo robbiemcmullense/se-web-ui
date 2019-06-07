@@ -15,8 +15,9 @@ export class LinkComponent {
    */
   @Prop() disabled: boolean;
   /**
-   * Default setting is `internal`.
-   * The `external` setting adds an underline to the link, and opens the link in a new web browser tab.
+   * Adds visual and function properties to your link component.
+   * The default setting is `internal`, which redirects you to the specified URL in the same page.
+   * The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
    */
   @Prop() option: 'internal' | 'external' = 'internal';
 

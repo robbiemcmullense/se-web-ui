@@ -18,7 +18,8 @@ export class SidemenuComponent {
   @State() selectedItem?: HTMLElement;
 
   /**
-   * Overrides the default "Menu" label.
+   * Defines the text displayed in the header of the Sidemenu.
+   * The default value is `Menu`.
    */
   @Prop() label: string = 'Menu';
 
