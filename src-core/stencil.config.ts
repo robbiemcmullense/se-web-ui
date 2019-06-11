@@ -36,7 +36,6 @@ export const config: Config = {
     sass()
   ],
   testing: {
-    testPathIgnorePatterns: ['./demo-*'],
     transform: {
       "^.+\\.svg$": "<rootDir>/svgTransform.js"
     }

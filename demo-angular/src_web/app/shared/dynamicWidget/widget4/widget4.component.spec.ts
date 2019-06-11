@@ -1,7 +1,7 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Http, BaseRequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-
 import { Widget4Component } from './widget4.component';
 
 describe('Widget4Component', () => {
@@ -23,7 +23,8 @@ describe('Widget4Component', () => {
             },
             deps: [MockBackend, BaseRequestOptions]
           }
-        ]
+        ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA]
       })
       .compileComponents();
   }));

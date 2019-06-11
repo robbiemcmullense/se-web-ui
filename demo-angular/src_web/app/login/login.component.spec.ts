@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { DebugElement } from '@angular/core';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MockBackend } from '@angular/http/testing';
@@ -40,7 +40,8 @@ describe('LoginComponent', () => {
           public isLoggedIn = jasmine.createSpy('isLoggedIn');
           }
         }
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
