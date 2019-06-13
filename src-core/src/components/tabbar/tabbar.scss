@@ -48,9 +48,9 @@
 .tab-primary {
   @include background-color('primary');
   @include  color('primary-contrast');
-  box-shadow: $inner-shadow-top;
   nav {
     height: 48px;
+    box-shadow: $inner-shadow-top;
   }
   nav:not([slot='start']){
     height: 44px;
