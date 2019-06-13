@@ -4,8 +4,7 @@ import { MockBackend } from '@angular/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home.component';
-import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { SeWebModule } from '@se/web-ui-angular';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -14,7 +13,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule, BrowserAnimationsModule],
+      imports: [SharedModule, BrowserAnimationsModule, SeWebModule],
       declarations: [HomeComponent],
       providers: [
         MockBackend,
@@ -26,8 +25,7 @@ describe('HomeComponent', () => {
           },
           deps: [MockBackend, BaseRequestOptions]
         }
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      ]  
     }).compileComponents();
   }));
 

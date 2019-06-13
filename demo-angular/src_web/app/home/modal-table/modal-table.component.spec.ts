@@ -1,5 +1,5 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SeWebModule } from '@se/web-ui-angular';
 import { ModalTableComponent } from './modal-table.component';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -9,10 +9,9 @@ describe('ModalTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [SeWebModule],
       declarations: [ModalTableComponent],
-      providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }]
     }).compileComponents();
   }));
 

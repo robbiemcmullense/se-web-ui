@@ -1,11 +1,12 @@
 /* tslint:disable:no-unused-variable */
-import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MockBackend } from '@angular/http/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SeWebModule } from '@se/web-ui-angular';
 import { I18nService } from '@core/i18n.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '@core/authentication/authentication.service';
@@ -19,6 +20,7 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        SeWebModule,
         FormsModule,
         ReactiveFormsModule,
         RouterTestingModule
@@ -40,8 +42,7 @@ describe('LoginComponent', () => {
           public isLoggedIn = jasmine.createSpy('isLoggedIn');
           }
         }
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      ]
     })
     .compileComponents();
   }));

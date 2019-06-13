@@ -6,8 +6,8 @@ import { AuthenticationService } from '@core/authentication/authentication.servi
 import { MockAuthenticationService } from '@core/authentication/authentication.service.mock';
 import { I18nService } from '@core/i18n.service';
 import { HeaderComponent } from './header.component';
-import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { SeWebModule } from '@se/web-ui-angular';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -16,10 +16,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, BrowserAnimationsModule, TranslateModule.forRoot()],
+      imports: [RouterTestingModule, BrowserAnimationsModule, TranslateModule.forRoot(), SeWebModule],
       declarations: [HeaderComponent],
-      providers: [{ provide: AuthenticationService, useClass: MockAuthenticationService }, I18nService],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      providers: [{ provide: AuthenticationService, useClass: MockAuthenticationService }, I18nService]
     }).compileComponents();
   }));
 
