@@ -1,7 +1,7 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Http, BaseRequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+import { SeWebModule } from '@se/web-ui-angular';
 import { Widget3Component } from './widget3.component';
 
 describe('Widget3Component', () => {
@@ -10,8 +10,7 @@ describe('Widget3Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-        ],
+      imports: [SeWebModule],
         declarations: [Widget3Component],
         providers: [
           MockBackend,
@@ -23,8 +22,7 @@ describe('Widget3Component', () => {
             },
             deps: [MockBackend, BaseRequestOptions]
           }
-        ],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA]
+        ]
       })
       .compileComponents();
   }));

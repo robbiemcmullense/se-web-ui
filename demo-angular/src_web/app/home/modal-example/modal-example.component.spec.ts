@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SeWebModule } from '@se/web-ui-angular';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ModalExampleComponent } from './modal-example.component';
 
@@ -8,8 +8,8 @@ describe('ModalExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalExampleComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      imports: [SeWebModule],
+      declarations: [ModalExampleComponent]
     })
     .compileComponents();
   }));
