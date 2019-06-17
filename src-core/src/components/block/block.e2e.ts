@@ -39,3 +39,31 @@ describe('BlockComponent', () => {
     expect(loader).toBeTruthy();
   });
 });
+
+describe('BlockComponent with Container parents set to widget option', () => {
+  let page, element;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+    await page.setContent('<se-container option="widget"><se-block></se-block><se-container>');
+    element = await page.find('se-block');
+  });
+
+  it('should have the widget class, inherited from its container parent', async() => {
+    expect(element).toHaveClass('widget');
+  });
+});
+
+describe('BlockComponent with Container parents set to card option', () => {
+  let page, element;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+    await page.setContent('<se-container option="card"><se-block></se-block><se-container>');
+    element = await page.find('se-block');
+  });
+
+  it('should have the card class, inherited from its container parent', async() => {
+    expect(element).toHaveClass('card');
+  });
+});

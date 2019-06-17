@@ -20,14 +20,11 @@ export class ContainerComponent {
   @Watch("option") optionDidChange() {
     if (this.option === "widget") {
       this.color = "standard";
+      this.assignBlockClasses();
     }
     if (this.option === "card") {
       this.color = "alternative";
-      Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
-        (item: any) => {
-          item.option = this.option;
-        }
-      );
+      this.assignBlockClasses();
     }
   }
 
@@ -93,9 +90,17 @@ export class ContainerComponent {
     this.rowSizeDidChange();
   }
 
+  assignBlockClasses() {
+    Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
+      (item: any) => {
+        item.option = this.option;
+      }
+    );
+  }
+
   render() {
     return (
-      <Host class={[`${this.option}-content`, this.position, this.color, this.direction, `${this.display}-display`].join(' ')}>
+      <Host class={[`${this.option}-content`, this.position, this.color, `${this.direction}-dir`, `${this.display}-display`].join(' ')}>
         {this.option === "centered" ? <div class="wrapper-center"><slot></slot></div> : <slot></slot>}
       </Host>
     )
