@@ -1,4 +1,4 @@
-import { Component,Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-dialog-content",
@@ -7,7 +7,7 @@ import { Component,Prop } from "@stencil/core";
 })
 export class DialogContentComponent {
   /**
-   * When set to `fill`, content will fill the whole space of the dialog.
+   * When set to `fill`, the content will fill the whole space of the dialog.
    */
   @Prop() option: 'fill';
   /**
@@ -17,17 +17,14 @@ export class DialogContentComponent {
   /**
    * Indicates what color schema you want to render in your dialog.
    */
-  @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
+  @Prop() iconColor: "standard" | "alternative" | "primary" | "secondary";
 
-  hostData() {
-    return {
-      'class': { 'full-content': this.option === 'fill' }
-    };
-  }
   render() {
-    return [
-      this.icon && <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon>,
-      <div class="inner-content"><slot /></div>
-    ];
+    return (
+      <Host class={{'full-content': this.option === 'fill'}}>
+        {this.icon ? <se-icon size="large" color={this.iconColor}>{this.icon}</se-icon> : ''}
+        <div class="inner-content"><slot></slot></div>
+      </Host>
+    )
   }
 }

@@ -31,11 +31,10 @@ $se-white:                  #FFFFFF !default;
 
 
 // All SE app should follow the same warning color
-$success: $se-life-green !default;
-$error: $se-red !default;
-$warning: $se-honeysuckle-orange !default;
-$information: $se-super-dark-grey !default;
-
+// $success: $se-life-green !default;
+// $error: $se-red !default;
+// $warning: $se-honeysuckle-orange !default;
+$background: $se-ultra-light-grey-2 !default;
 
 // Only the seTheme should be used to change the them of the app
 $seTheme: (
@@ -43,21 +42,26 @@ $seTheme: (
   'alternative': $se-white,
   'primary': $se-life-green,
   'secondary': $se-medium-blue,
+  'success': $se-life-green,
+  'warning': $se-honeysuckle-orange,
+  'error': $se-red,
+
   'standard-contrast': $se-black,
   'alternative-contrast': $se-black,
   'primary-contrast': $se-white,
   'secondary-contrast': $se-white,
-  'critical-contrast': $se-white,
+  'success-contrast': $se-white,
+  'warning-contrast': $se-black,
+  'error-contrast': $se-white,
 
-  'hover-standard': $se-super-light-grey,
-  'hover-alternative': $se-super-light-grey,
+  'hover-standard': $se-light-grey,
+  'hover-alternative': $se-light-grey,
   'hover-primary': $se-medium-green,
   'hover-secondary': $se-dark-sky-blue,
   'hover-standard-contrast': $se-black,
   'hover-alternative-contrast': $se-black,
   'hover-primary-contrast': $se-white,
   'hover-secondary-contrast': $se-white,
-  'hover-critical-contrast': $se-white,
 
   'selected': $se-dark-grey,
   'selected-contrast': $se-white,
@@ -65,12 +69,7 @@ $seTheme: (
   'focus': $se-anthracite-grey,
   'focus-contrast': $se-white,
 
-  'icon-standard': $se-anthracite-grey,
-  'icon-disable': $se-light-grey,
-  'icon-primary': $se-life-green,
-  'icon-warning': $se-honeysuckle-orange,
-  'icon-error': $se-red,
-
+  'background': $background
 ) !default;
 
 

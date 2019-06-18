@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
+import { Component, h, Host, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -13,14 +13,13 @@ export class ListItemComponent {
    */
   @Prop() item: string;
   /**
-   * Defines the description of the item. placed under its title.
+   * Defines the description of the item, placed under its title.
    */
   @Prop() description: string;
   /**
    * Defines if the list element should be selected or not.
    */
   @Prop() selected: boolean;
-
   /**
    * Places an icon on the left side of the item list.
    */
@@ -28,18 +27,18 @@ export class ListItemComponent {
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
    */
-  @Prop() iconColor: "standard" | "disable" | "primary" | "warning" | "error";
+  @Prop() iconColor: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
   @Prop() indentation: number = 0;
   /**
-   * Define the theme of the list. This them will be handled and modified by the parent element.
+   * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
   @State() padding: number;
   /**
-   * Event emitted to notify the item-group that the selected state has changed.
+   * Event emitted to notify the list-group component that the selected state has changed.
    */
   @Event() didSelectedChange: EventEmitter<void>;
 
@@ -47,39 +46,42 @@ export class ListItemComponent {
     this.didSelectedChange.emit()
   }
 
+  setButtonId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let button = this.el.shadowRoot.querySelector('button');
+      button.setAttribute('id', 'wc-' + id);
+    } 
+  }
+
   componentDidLoad() {
+    this.setButtonId();
     this.padding = 20 * this.indentation;
     if (this.option === "treeview") {
       this.padding += 24;
     }
   }
 
-  hostData() {
-    return {
-      class: [this.selected && "selected", this.option].join(" ")
-    };
-  }
-
   render() {
     return (
-      <button style={{ paddingLeft: this.padding + `px` }}>
-        {this.option === "nav" && this.selected && <div class="selectedBar" />}
-        {!!this.icon && (
-          <div class="nav-icon">
-            <span class={["se-icon", this.iconColor].join(" ")}>
-              {this.icon}
-            </span>
+      <Host class={[this.selected ? "selected" : '', this.option].join(' ')}>
+        <button style={{ paddingLeft: `${this.padding}px` }}>
+          {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
+          {!!this.icon ?
+            <div class="nav-icon">
+              <se-icon color={this.iconColor}>
+                {this.icon}
+              </se-icon>
+            </div>
+          : ''}
+          <div class="nav-content">
+            <div>{this.item}</div>
+            <small> {this.description}</small>
           </div>
-        )}
-        <div class="nav-content">
-          <div>{this.item}</div>
-          <small> {this.description}</small>
-        </div>
-        {this.option === "nav" && (
-          <span class="se-icon medium">arrow2_right</span>
-        )}
-        {this.option === 'classic' && (<slot></slot>)}
-      </button>
-    );
+          {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
+          {this.option === "classic" ? <slot></slot> : ''}
+        </button>
+      </Host>
+    )
   }
 }

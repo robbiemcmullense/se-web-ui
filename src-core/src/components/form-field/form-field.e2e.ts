@@ -28,7 +28,7 @@ describe('FormFieldComponent with Checkbox type', () => {
     const eventSpy = await page.spyOnEvent('didSubmit');
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
-    expect(eventSpy).toHaveReceivedEventDetail(true);
+    expect(eventSpy).toHaveReceivedEventDetail('true');
   });
 });
 

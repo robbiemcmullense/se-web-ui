@@ -35,9 +35,10 @@ describe('SidemenuComponent', () => {
       <se-sidemenu-item></se-sidemenu-item>
       <se-sidemenu-item></se-sidemenu-item>
     `);
+    await page.waitForChanges();
     const listItems = await page.findAll('se-sidemenu >>> se-list-item');
-    expect(listItems[0]).toHaveClass( 'selected');
-    expect(listItems[1]).not.toHaveClass( 'selected');
+    expect(listItems[0]).toHaveClass('selected');
+    expect(listItems[1]).not.toHaveClass('selected');
   });
 
   it('should open the sidemenu when the toggle method is called', async () => {
@@ -48,8 +49,18 @@ describe('SidemenuComponent', () => {
     expect(element).toHaveClass('show-menu');
   });
 
-  it('should add "selected" class to the clicked se-list-item and remove it from other ones', async () => {
-    // can't simulate click events
-  });
+  // it('should remove an item from the list after sidemenu is removed', async () => {
+  //   page = await renderComponent(`
+  //     <se-sidemenu-item></se-sidemenu-item>
+  //     <se-sidemenu-item id="to-remove"></se-sidemenu-item>
+  //     <se-sidemenu-item></se-sidemenu-item>
+  //   `);
+  //   await page.waitForChanges();
+  //   var element = page.document.getElementById("to-remove");
+  //   page.document.parentNode.removeChild(element);
+  //   await page.waitForChanges();
+  //   const listItems = await page.findAll('se-sidemenu >>> se-list-item');
+  //   expect(listItems.length).toBe(2);
+  // });
 
 });

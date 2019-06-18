@@ -1,14 +1,10 @@
 @import "../../theme/theme";
 
-.fab-container{
+:host{
 	position: fixed;
 }
-.mini-action-button{
-	cursor: pointer;
-	position: absolute;
-	display: none;
-}
-.top{
+
+:host(.pos-top){
 	top: 76px;
 	right: 32px;
 	& .mini-action-button{
@@ -18,7 +14,7 @@
 	}
 }
 
-.bottom{
+:host(.pos-bottom){
 	bottom: 16px;
 	right: 32px;
 	& .mini-action-button{
@@ -27,7 +23,11 @@
     	text-align: center;
 	}
 }
-
+.mini-action-button{
+	cursor: pointer;
+	position: absolute;
+	display: none;
+}
 .show{
 	display: block;
 }

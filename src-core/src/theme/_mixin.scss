@@ -1,6 +1,6 @@
 @import "./se-variable";
 
-$prefix: "--"; //Prefix string for custom CSS properties
+$prefix: "--se-"; //Prefix string for custom CSS properties
 
 //Merges a variable name with $prefix
 @function custom-property-name($name) {
@@ -60,41 +60,60 @@ $prefix: "--"; //Prefix string for custom CSS properties
 }
 
 @mixin typology($value) {
+  $margin: 16px 0 10px;
+
   font-weight: 300;
   line-height: 1.4 !important;
   @if $value == "h1" {
-    margin: ($h2-fontsize / 1.2) 0 ($h2-fontsize / 1.5);
+    margin: $margin;
+    margin-top: 32px;
     font-size: $h1-fontsize;
   } @else if $value == "h2" {
-    margin: ($h2-fontsize / 1.2) 0 ($h2-fontsize / 1.5);
+    margin: $margin;
     font-size: $h2-fontsize;
   } @else if $value == "h3" {
-    margin: ($h3-fontsize / 1.2) 0 ($h3-fontsize / 1.5);
+    margin: $margin;
     font-size: $h3-fontsize;
     font-weight: 500;
-    text-transform: uppercase;
   } @else if $value == "h4" {
-    margin: ($h4-fontsize / 1.2) 0 ($h4-fontsize / 1.5);
+    margin: $margin;
     font-size: $h4-fontsize;
+    font-weight: 500;
   } @else if $value == "h5" {
-    margin: ($h5-fontsize / 1.2) 0 ($h5-fontsize / 1.5);
+    margin: $margin;
     font-size: $h5-fontsize;
+    font-weight: 500;
+
   } @else if $value == "h6" {
-    margin: ($h6-fontsize / 1.2) 0 ($h6-fontsize / 1.5);
+    margin: $margin;
     font-size: $h6-fontsize;
+    font-weight: 500;
+
   } @else if $value == "p" {
     font-size: $p-fontsize;
+    margin: 8px 0;
     strong,
     .bold {
       font-weight: 500;
     }
-    small {
+    &.small, small {
       line-height: $line-height-sm !important;
-      font-size: $small-fontsize;
+      font-size: $p-fontsize - 2;
     }
-  } @else if $value == "p-small" {
+    &.nano {
+      font-size: $p-fontsize - 4;
+    }
+    &.large {
+      font-size: $p-fontsize + 2;
+    }
+  } @else if $value == "small" {
     line-height: $line-height-sm !important;
-    font-size: $small-fontsize;
+    font-size: $p-fontsize - 2;
+  } @else if $value == "nano" {
+    line-height: $line-height-sm !important;
+    font-size: $p-fontsize - 4;
+  } @else if $value == "base" {
+    font-size: $base-fontsize;
   }
 }
 @mixin ellipsis() {

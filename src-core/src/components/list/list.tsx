@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element } from "@stencil/core";
+import { Component, h, Prop, Watch, Element } from "@stencil/core";
 
 @Component({
   tag: "se-list",
@@ -18,7 +18,7 @@ export class ListComponent {
   }
 
   /**
-   * Defines if list groups can be collapsed, true by default.
+   * Defines if list groups can be collapsed.  The default setting is `true`.
    */
   @Prop() canCollapse: boolean = true;
   @Watch('canCollapse') canCollapseDidChange() {
@@ -33,6 +33,6 @@ export class ListComponent {
   }
 
   render() {
-    return <slot />;
+    return <slot></slot>;
   }
 }

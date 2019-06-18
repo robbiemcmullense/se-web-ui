@@ -13,20 +13,19 @@
   overflow: hidden;
   margin: 0 !important;
   padding: 0;
-  @include typology('p');
   @include absolute(0,0,0,0);
   @include display-flex();
   @include flex-direction(column);
-  @include background-color("standard");
+  @include background-color('background');
 }
 
 // Create all classes to use colors as classes
-@each $element in ('primary', 'secondary', 'standard', 'alternative', 'standard-contrast','alternative-contrast','primary-contrast','secondary-contrast','critical-contrast') {
+@each $element in ('primary', 'secondary', 'standard', 'alternative', 'standard-contrast','alternative-contrast','primary-contrast','secondary-contrast', 'background') {
   .color-#{$element}{
-    @include color($element);
+    @include  color('' + $element);
   }
   .bg-#{$element}{
-    @include background-color($element);
+    @include background-color('' + $element);
   }
 }
 
@@ -53,7 +52,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	//font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -62,7 +61,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1.4;
 }
 ol, ul {
 	list-style: none;
@@ -85,20 +84,8 @@ a {
 }
 
 html{
-  line-height: 1.5;
-
-  @media only screen and (min-width: 0) {
-    font-size: 14px;
-  }
-
-  @media only screen and (min-width: $medium-screen) {
-    font-size: 14.5px;
-  }
-
-  @media only screen and (min-width: $large-screen) {
-    font-size: 15px;
-  }
-
+  line-height: 1.4;
+  @include typology('base');
   font-weight: normal;
   color: $off-black;
 }
@@ -150,27 +137,28 @@ small { font-size: 75%; }
     font-size: 1.2rem;
   }
 }
+body, html {
+  ::-webkit-scrollbar {
+    height: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
+    width: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
+  }
 
-::-webkit-scrollbar {
-  height: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
-  width: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
-}
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    border: $scrollbar-side-padding solid transparent;
+    background-clip: padding-box;
+    border-radius: 16px;
+  }
 
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-thumb {
-	border: $scrollbar-side-padding solid transparent;
-  background-clip: padding-box;
-  border-radius: 16px;
-}
+  ::-webkit-scrollbar-track {
+    background-color: $se-ultra-light-grey-2;
+  }
 
-::-webkit-scrollbar-track {
-	background-color: $se-ultra-light-grey-2;
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: $se-light-grey;
-	&:hover {
-    @include background-color('selected');
-		border: $scrollbar-side-padding solid transparent;
-	}
+  ::-webkit-scrollbar-thumb {
+    background-color: $se-light-grey;
+    &:hover {
+      @include background-color('selected');
+      border: $scrollbar-side-padding solid transparent;
+    }
+  }
 }

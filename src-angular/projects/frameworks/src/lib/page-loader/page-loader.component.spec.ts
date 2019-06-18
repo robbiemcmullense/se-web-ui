@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageLoaderComponent } from './page-loader.component';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ProxiesModule } from '../directives/proxies.module';
 
 describe('PageLoaderComponent', () => {
   let component: PageLoaderComponent;
@@ -9,11 +9,8 @@ describe('PageLoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageLoaderComponent ],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-        NO_ERRORS_SCHEMA
-      ]
+      imports: [ProxiesModule],
+      declarations: [ PageLoaderComponent ]
     })
     .compileComponents();
   }));

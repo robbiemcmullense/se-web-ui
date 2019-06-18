@@ -1,7 +1,7 @@
 <template>
   <se-container option="widget">
-    <se-widget width="300px">
-      <se-widget-header>
+    <se-block width="300px">
+      <se-block-header>
         Typography
         <div slot="end">
           <se-dropdown alignment="right">
@@ -17,8 +17,8 @@
             </se-list>
           </se-dropdown>
         </div>
-      </se-widget-header>
-      <se-widget-content>
+      </se-block-header>
+      <se-block-content>
         <h1>My h1 string with a divider</h1>
         <se-divider></se-divider>
         <h2>My h2 string with a divider</h2>
@@ -37,21 +37,21 @@
           ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.
         </p>
-      </se-widget-content>
-      <se-widget-footer>
+      </se-block-content>
+      <se-block-footer>
         <se-button option="raised">Somthing</se-button>
-      </se-widget-footer>
-    </se-widget>
-    <se-widget>
-      <se-widget-header>
+      </se-block-footer>
+    </se-block>
+    <se-block>
+      <se-block-header>
         Tree view
         <div slot="end">
           <se-icon option="button" color="alternative" onclick="toggle(6)"
             >presentation_mode</se-icon
           >
         </div>
-      </se-widget-header>
-      <se-widget-content option="fill">
+      </se-block-header>
+      <se-block-content option="fill">
         <se-list option="treeview">
           <se-list-group item="Treeview Example">
             <se-list-item item="First treeview child"></se-list-item>
@@ -67,7 +67,7 @@
             <se-list-item item="Third treeview child"></se-list-item>
           </se-list-group>
         </se-list>
-      </se-widget-content>
-    </se-widget>
+      </se-block-content>
+    </se-block>
   </se-container>
 </template>

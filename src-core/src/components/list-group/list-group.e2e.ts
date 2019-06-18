@@ -22,7 +22,7 @@ import { newE2EPage } from '@stencil/core/testing';
 
 	it('renders an arrow2_up icon by default', async() => {
     const page = await renderComponent();
-		const iconElm = await page.find('se-list-group >>> .se-icon.medium');
+		const iconElm = await page.find('se-list-group >>> se-icon');
 		expect(iconElm).toEqualText('arrow2_up');
 	});
 
@@ -32,7 +32,7 @@ import { newE2EPage } from '@stencil/core/testing';
 			elm.collapsed = true;
 		});
 		await page.waitForChanges();
-		const iconElm = await page.find('se-list-group >>> .se-icon.medium');
+		const iconElm = await page.find('se-list-group >>> se-icon');
 		expect(iconElm).toEqualText('arrow2_down');
 	});
 
@@ -42,7 +42,7 @@ import { newE2EPage } from '@stencil/core/testing';
 			elm.option = 'treeview';
 		});
 		await page.waitForChanges();
-		const iconElm = await page.find('se-list-group >>> .se-icon');
+		const iconElm = await page.find('se-list-group >>> se-icon');
 		expect(iconElm).toEqualText('arrow2_right');
 	});
 
@@ -55,21 +55,19 @@ import { newE2EPage } from '@stencil/core/testing';
 		await page.waitForChanges();
 		const parentElm = await page.find('se-list-group');
 		expect(parentElm).toHaveClass('nav');
-		const iconElm = await page.find('se-list-group >>> .nav-icon span');
+		const iconElm = await page.find('se-list-group >>> se-icon');
 		expect(iconElm).toBeTruthy();
 		expect(iconElm).toEqualText('my group test icon');
 	});
+});
 
-   it('should render button with "disabled" attribute when can-collapse is false', async () => {
-     const page = await renderComponent('can-collapse="false"');
-     const element = await page.find('se-list-group >>> button');
-     expect(element).toHaveAttribute('disabled');
-   });
+describe('List Group with ID Element', () => {
+  it('renders the child button element with an id attribute beginning with the wc prefix', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-list-group id="my-id"></se-list-group>');
 
-   it('should NOT render icon when can-collapse is false', async () => {
-     const page = await renderComponent('can-collapse="false"');
-     const element = await page.find('se-list-group >>> span.se-icon');
-     expect(element).toBeFalsy();
-   });
-
- });
+    const element = await page.find('se-list-group');
+    expect(element.shadowRoot.querySelector('button')).toHaveAttribute('id');
+    expect(element.shadowRoot.querySelector('button').getAttribute('id')).toEqual('wc-my-id');
+  });
+});

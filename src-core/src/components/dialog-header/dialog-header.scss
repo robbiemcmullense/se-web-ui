@@ -12,19 +12,21 @@
     @include flex();
   }
 
-  h3 {
-    @include typology('h2')
+  h4 {
+    @include typology('h5');
+    text-transform: uppercase;
+    margin: 8px;
   }
 }
 
 :host(.alternative){
   @include background-color('alternative');
-  @include color('primary');
+  @include  color('primary');
   margin-bottom: -$spacing-large;
 }
 
 :host(.primary){
   min-height: 44px;
   @include background-color('primary');
-  @include color('primary-contrast');
+  @include  color('primary-contrast');
 }

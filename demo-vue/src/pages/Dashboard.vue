@@ -1,6 +1,6 @@
 <template>
   <se-container>
-    <se-widget width="250px" option="fill">
+    <se-block width="250px" option="fill">
       <se-list>
         <se-list-item
           item="my item 1"
@@ -85,7 +85,7 @@
           <se-list-item item="Basic Item"> </se-list-item>
         </se-list-group>
       </se-list>
-    </se-widget>
+    </se-block>
     <se-divider option="vertical"></se-divider>
     <se-container
       option="card"
@@ -93,8 +93,8 @@
       column-size="400px"
       row-size="400px"
     >
-      <se-widget id="widget0">
-        <se-widget-header>
+      <se-block id="widget0">
+        <se-block-header>
           Typography
           <div slot="end">
             <se-dropdown alignment="right">
@@ -113,8 +113,8 @@
               >presentation_mode</se-icon
             >
           </div>
-        </se-widget-header>
-        <se-widget-content>
+        </se-block-header>
+        <se-block-content>
           <h1>My h1 string with a divider</h1>
           <se-divider></se-divider>
           <h2>My h2 string with a divider</h2>
@@ -133,24 +133,24 @@
             ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua.
           </p>
-        </se-widget-content>
-        <se-widget-footer>
+        </se-block-content>
+        <se-block-footer>
           <se-button onclick="openSnackbar()" option="raised"
             >Open Snackbar</se-button
           >
-        </se-widget-footer>
-      </se-widget>
+        </se-block-footer>
+      </se-block>
 
-      <se-widget id="widget1">
-        <se-widget-header>
+      <se-block id="widget1">
+        <se-block-header>
           Buttons
           <div slot="end">
             <se-icon option="button" color="alternative" onclick="toggle(1)"
               >presentation_mode</se-icon
             >
           </div>
-        </se-widget-header>
-        <se-widget-content>
+        </se-block-header>
+        <se-block-content>
           <ul>
             <li id="button-info"></li>
             <li id="chip-info"></li>
@@ -260,18 +260,18 @@
             <se-button value="second">Check2</se-button>
             <se-button value="third">Check3</se-button>
           </se-radio>
-        </se-widget-content>
-      </se-widget>
-      <se-widget id="widget2">
-        <se-widget-header>
+        </se-block-content>
+      </se-block>
+      <se-block id="widget2">
+        <se-block-header>
           Forms
           <div slot="end">
             <se-icon option="button" color="alternative" onclick="toggle(2)"
               >presentation_mode</se-icon
             >
           </div>
-        </se-widget-header>
-        <se-widget-content>
+        </se-block-header>
+        <se-block-content>
           <h4>Inlined</h4>
           <ul>
             <li id="form-field-message">form field value: <span></span></li>
@@ -324,18 +324,18 @@
               <option>Stacked Option 3</option>
             </select>
           </se-form-field>
-        </se-widget-content>
-      </se-widget>
-      <se-widget id="widget3">
-        <se-widget-header>
+        </se-block-content>
+      </se-block>
+      <se-block id="widget3">
+        <se-block-header>
           Modals
           <div slot="end">
             <se-icon option="button" color="alternative" onclick="toggle(3)"
               >presentation_mode</se-icon
             >
           </div>
-        </se-widget-header>
-        <se-widget-content>
+        </se-block-header>
+        <se-block-content>
           <se-button
             onclick="openDialog('dialog-simple-notitle')"
             option="raised"
@@ -347,18 +347,18 @@
           <se-button onclick="openDialog('dialog-complex')" option="raised"
             >Open Dialog complex</se-button
           >
-        </se-widget-content>
-      </se-widget>
-      <se-widget id="widget4">
-        <se-widget-header>
+        </se-block-content>
+      </se-block>
+      <se-block id="widget4">
+        <se-block-header>
           Linear chart
           <div slot="end">
             <se-icon option="button" color="alternative" onclick="toggle(4)"
               >presentation_mode</se-icon
             >
           </div>
-        </se-widget-header>
-        <se-widget-content>
+        </se-block-header>
+        <se-block-content>
           <se-visual-linear
             id="progBar"
             percentage="33"
@@ -373,18 +373,18 @@
             label="Labels"
           >
           </se-visual-linear>
-        </se-widget-content>
-      </se-widget>
-      <se-widget id="widget5">
-        <se-widget-header>
+        </se-block-content>
+      </se-block>
+      <se-block id="widget5">
+        <se-block-header>
           Radial chart
           <div slot="end">
             <se-icon option="button" color="alternative" onclick="toggle(5)"
               >presentation_mode</se-icon
             >
           </div>
-        </se-widget-header>
-        <se-widget-content>
+        </se-block-header>
+        <se-block-content>
           <se-visual-radial percentage="30" label="units"></se-visual-radial>
           <se-visual-radial
             percentage="30"
@@ -392,18 +392,18 @@
             label="Label"
             value="8"
           ></se-visual-radial>
-        </se-widget-content>
-      </se-widget>
-      <se-widget id="widget6">
-        <se-widget-header>
+        </se-block-content>
+      </se-block>
+      <se-block id="widget6">
+        <se-block-header>
           Tree view
           <div slot="end">
             <se-icon option="button" color="alternative" onclick="toggle(6)"
               >presentation_mode</se-icon
             >
           </div>
-        </se-widget-header>
-        <se-widget-content option="fill">
+        </se-block-header>
+        <se-block-content option="fill">
           <se-list option="treeview">
             <se-list-group item="Treeview Example">
               <se-list-item item="First treeview child"></se-list-item>
@@ -419,8 +419,8 @@
               <se-list-item item="Third treeview child"></se-list-item>
             </se-list-group>
           </se-list>
-        </se-widget-content>
-      </se-widget>
+        </se-block-content>
+      </se-block>
     </se-container>
   </se-container>
 </template>

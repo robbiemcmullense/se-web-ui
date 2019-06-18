@@ -1,5 +1,4 @@
-import {Component, Method, Element, State, Prop} from '@stencil/core';
-
+import {Component, h, Method, Element, State, Prop} from '@stencil/core';
 
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
@@ -19,12 +18,13 @@ export class SidemenuComponent {
   @State() selectedItem?: HTMLElement;
 
   /**
-   * Overrides the default "Menu" label.
+   * Defines the text displayed in the header of the Sidemenu.
+   * The default value is `Menu`.
    */
   @Prop() label: string = 'Menu';
 
   @Method()
-  toggle(): void {
+  async toggle() {
     this.open = !this.open;
     if (this.open) {
       // Add css classes
@@ -41,10 +41,17 @@ export class SidemenuComponent {
 
   async componentWillLoad() {
     this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
+    this.initSelect();
   }
 
-  componentDidLoad() {
+  async componentWillUpdate() {
+    this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
     this.initSelect();
+    // const tabBar = this.el.querySelector('ion-tab-bar');
+    // if (tabBar) {
+    //   const tab = this.selectedTab ? this.selectedTab.tab : undefined;
+    //   tabBar.selectedTab = tab;
+    // }
   }
 
   componentDidUnload() {
@@ -52,18 +59,26 @@ export class SidemenuComponent {
     this.selectedItem = undefined;
   }
 
+  noSelectedItem(){
+    return !this.items.find( x => x === this.selectedItem)
+  }
+
   private async initSelect(): Promise<void> {
-    if (!this.selectedItem && this.items.length) {
+    if (this.items.length && this.noSelectedItem()) {
       this.setActive(this.items[0]);
     }
   }
 
   private setActive(item: any): void {
-    this.items && this.items.forEach((item: any) => {
-      item.active = false;
-    });
-    item.active = true;
-    this.selectedItem = item;
+    if (this.items.length) {
+      this.items.forEach((item: any) => {
+        item.active = false;
+      });
+      setTimeout(() => {
+        item.active = true;
+        this.selectedItem = item;
+      }, 100)
+    }
   }
 
   private addAnimation(callback) {
@@ -105,7 +120,7 @@ export class SidemenuComponent {
             </span>
             <h3 class="header-title">{this.label}</h3>
           </div>
-          <se-chip color="primary" can-close="false" value="https://schneider-electric.com"/>
+          <se-link url="https://schneider-electric.com" option="external">schneider-electric.com</se-link>
         </div>
         <se-divider/>
         <div class="d-flex flex">
@@ -115,10 +130,10 @@ export class SidemenuComponent {
             </se-list>
             <se-icon-lifeison color="standard"/>
           </div>
-          <se-divider option="vertical"/>
-          <se-widget option="fill">
-            <slot/>
-          </se-widget>
+          <se-divider option="vertical"></se-divider>
+          <se-block>
+            <slot />
+          </se-block>
         </div>
       </div>
     ]

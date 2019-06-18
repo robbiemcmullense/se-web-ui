@@ -12,6 +12,6 @@ describe('LinkComponent', () => {
 	});
 
 	it('should be internal type by default', () => {
-		expect(link.type).toEqual('internal');
+		expect(link.option).toEqual('internal');
 	});
 });

@@ -10,6 +10,9 @@
   width: 100%;
   z-index: 20;
   background-color: transparent !important;
+  se-link{
+    padding: 16px;
+  }
 }
 .full-content {
   @include absolute();
@@ -23,7 +26,7 @@
   height: 100%;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
   @include background-color('alternative');
-  @include color('alternative-contrast');
+  @include  color('alternative-contrast');
   z-index: 30;
 
   &.show-menu {

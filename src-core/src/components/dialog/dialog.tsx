@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Method, Event, EventEmitter, Watch } from "@stencil/core";
+import { Component, h, Host, Prop, Element, Method, Event, EventEmitter, Watch } from "@stencil/core";
 
 const SHOW = "show-dialog";
 const HIDE = "hide-dialog";
@@ -26,11 +26,11 @@ export class DialogComponent {
    */
   @Prop() color: 'alternative' | 'primary' = 'primary'
   /**
-   * Indicates whether or not the dialog is open (`true`) or closed (`false`).  Default setting is `false`.
+   * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
    */
   @Prop() open: boolean = false;
   /**
-   * option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+   * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
    */
   @Prop() canBackdrop: boolean = true;
 
@@ -53,7 +53,7 @@ export class DialogComponent {
    * Emit the `backdrop` event from the dialog's parent component.
    */
   @Method()
-  backdropClicked(): void {
+  async backdropClicked() {
     if(this.canBackdrop){
     this.backdrop.emit();
     }
@@ -64,7 +64,7 @@ export class DialogComponent {
   @Event() backdrop: EventEmitter<any>;
   /**
    * Send data to the parent component when clicking an element within the dialog to close it.
-   * The modal can be safely removed from the DOM.
+   * The modal can then be safely removed from the DOM.
    */
   @Event() didClose: EventEmitter<any>;
 
@@ -95,18 +95,14 @@ export class DialogComponent {
     this.openDidChange();
   }
 
-  hostData() {
-    return {
-      class: [this.size].join(" ")
-    };
-  }
-
   render(){
-    return [
-      <div class="dialog-wrapper" >
-        <div class="dialog" ref={el => (this.menuInnerEl = el)}><slot /></div>
-      </div>,
-      <div class="dialog-background" onClick={() => this.backdropClicked()}  ref={el => this.backdropEl = el} />
-    ];
+    return (
+      <Host class={this.size}>
+        <div class="dialog-wrapper">
+          <div class="dialog" ref={el => (this.menuInnerEl = el)}><slot></slot></div>
+        </div>
+        <div class="dialog-background" onClick={() => this.backdropClicked()}  ref={el => this.backdropEl = el}></div>
+      </Host>
+    )
   }
 }

@@ -15,7 +15,7 @@ label {
   width: 30%;
   padding-top: 4px;
   text-align: right;
-  @include typology('p-small');
+  @include typology('small');
   padding-right: 7px;
   span {
     color: $se-red;
@@ -58,6 +58,14 @@ label {
   padding-left: 4px;
 }
 
+::slotted(textarea) {
+  width: 62%;
+  padding: 8px;
+  border: 1px solid $se-super-light-grey;
+  font-family: inherit;
+  resize: vertical;
+}
+
 :host([option="stacked"]) {
 	.se-form-field {
     flex-direction: column;
@@ -68,31 +76,38 @@ label {
     padding: 0 8px 4px;
     text-align: left;
     line-height: 12px;
+    width: auto;
 	}
 	::slotted(input) {
 		width: 97%;
 	}
 	::slotted(select) {
 		width: 100%;
-	}
+  }
+  ::slotted(textarea) {
+    width: 97%;
+  }
 }
 
 :host(.error) {
 	::slotted(input) {
-		border: 1px solid $error;
+    border: 1px solid;
+    @include border-color('error');
 	}
 }
 
 :host(.warning) {
 	::slotted(input) {
-		border: 1px solid $warning;
+    border: 1px solid;
+    @include border-color('warning');
+
 	}
 }
 
 :host(.success) {
 	::slotted(input) {
-    border: 1px solid $success;
-
+    border: 1px solid;
+    @include border-color('success')
 	}
 }
 

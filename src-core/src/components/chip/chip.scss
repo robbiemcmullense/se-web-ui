@@ -1,72 +1,67 @@
 @import "../../theme/theme";
 
-$chip-height: 22px;
+$chip-height: 32px;
 
 :host {
   display: inline-flex;
   margin: $spacing;
   height: $chip-height;
-  padding-left: $chip-height / 2;
-  padding-right: $chip-height / 2;
-  font-size: 14px;
-  line-height: 14px;
+  padding-left: $chip-height / 4;
+  padding-right: $chip-height / 4;
+  font-size: 16px;
+  line-height: 16px;
   text-align: left;
+  background: transparent;
   outline: none;
-  border: none;
   border-radius: 16px;
   @include align-items(center);
 
   .se-icon {
     cursor: pointer;
-    font-size: 24px;
-    margin-left: 10px;
-    margin-right: -10px;
+    font-size: 32px;
+    margin-right: -6px;
     font-family: "se-icon";
     &[data-hide] {
       display: none;
     }
   }
 }
-:host(.selected) {
-  @include color('selected-contrast');
-  @include background-color('selected');
-}
 
 :host(.standard) {
-  @include color('standard-contrast');
-  @include background-color('standard');
+  border: 1px solid $se-ultra-dark-grey;
+  color: $se-anthracite-grey;
 }
-:host(.standard:hover) {
-  @include color('hover-standard-contrast');
-  @include background-color('hover-standard');
-}
-
 
 :host(.alternative) {
-  @include color('alternative-contrast');
-  @include background-color('alternative');
+  border: 1px solid $se-white;
+  @include  color('alternative');
 }
+
+:host(.standard:hover) {
+  border: 1px solid $se-anthracite-grey;
+  background-color: rgba(203,203,203,0.2);
+}
+
 :host(.alternative:hover) {
-  @include color('hover-alternative-contrast');
-  @include background-color('hover-alternative');
+  background-color: rgba(203,203,203,0.6);
 }
 
-
-:host(.primary) {
-  @include color('primary-contrast');
-  @include background-color('primary');
+:host(.standard:active),
+:host(.alternative:active) {
+  @include  color('selected-contrast');
+  @include background-color('selected');
+  border: 1px solid $se-dark-grey;
 }
-:host(.primary:hover) {
-  @include color('hover-primary-contrast');
-  @include background-color('hover-primary');
-}
-
-:host(.secondary) {
-  @include color('secondary-contrast');
-  @include background-color('secondary');
-}
-:host(.secondary:hover) {
-  @include color('hover-secondary-contrast');
-  @include background-color('hover-secondary');
+:host(.standard:focus),
+:host(.alternative:focus) {
+  @include  color('focus-contrast');
+  @include background-color('focus');
 }
 
+:host(.disabled) {
+  color: $se-light-grey;
+  border: 1px solid $se-light-grey;
+  .se-icon {
+    cursor: default;
+  }
+}

@@ -3,6 +3,7 @@
 :host {
   display: inline-flex;
   position: relative;
+
 }
 :host([hidden]) {
   display: none;
@@ -23,7 +24,7 @@
 
 .dropdown-content {
   top: 40px;
-  @include color('alternative-contrast');
+  @include  color('alternative-contrast');
   @include background-color('alternative');
   max-width: 160px;
   min-width: 100px;

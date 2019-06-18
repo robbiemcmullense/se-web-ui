@@ -41,7 +41,7 @@ export class DialogComponent {
 })
 export class DialogModalComponent implements AfterViewInit, OnDestroy {
   @Output() afterClosed = new EventEmitter();
-  @ViewChild(DialogDirective) insertionPoint: DialogDirective;
+  @ViewChild(DialogDirective, {static: false}) insertionPoint: DialogDirective;
   childComponentType: Type<any>;
   componentRef: ComponentRef<any>;
   constructor(

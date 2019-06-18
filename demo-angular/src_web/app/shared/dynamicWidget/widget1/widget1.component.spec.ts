@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Http, BaseRequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-
+import { SeWebModule } from '@se/web-ui-angular';
 import { Widget1Component } from './widget1.component';
 
 describe('Widget1Component', () => {
@@ -10,8 +10,7 @@ describe('Widget1Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-        ],
+        imports: [SeWebModule],
         declarations: [Widget1Component],
         providers: [
           MockBackend,

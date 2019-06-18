@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-dialog-header",
@@ -6,22 +6,19 @@ import { Component, Prop } from "@stencil/core";
   shadow: true
 })
 export class DialogHeaderComponent {
-    /**
-   * Define the color of the dialog header.
-   * `alternative`: Alternative background with primary color for the text
+  /**
+   * Defines the color of the dialog header.
+   * `alternative`: Alternative background with primary color for the text.
    * `primary`: Primary color schema.
    */
-  @Prop() color: 'alternative' | 'primary' = 'primary'
+  @Prop() color:  'primary' | 'alternative' = 'primary'
 
-  hostData() {
-    return {
-      'class': this.color
-    };
-  }
   render() {
-    return [
-      <h3 class="flex"><slot /></h3>,
-      <slot name="end"/>
-    ];
+    return (
+      <Host class={this.color}>
+        <h4 class="flex"><slot></slot></h4>
+        <slot name="end"></slot>
+      </Host>
+    )
   }
 }

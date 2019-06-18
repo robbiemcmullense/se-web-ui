@@ -1,16 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { PageLoaderModule } from './page-loader.module';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ProxiesModule } from '../directives/proxies.module';
 import { PageLoaderService } from './page-loader.service';
 
 describe('PageLoaderComponentService', () => {
 
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [PageLoaderModule],
-    schemas: [
-      CUSTOM_ELEMENTS_SCHEMA,
-      NO_ERRORS_SCHEMA
-    ]
+    imports: [PageLoaderModule, ProxiesModule]
   }));
 
   it('should be created', () => {
