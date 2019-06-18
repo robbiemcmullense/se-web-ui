@@ -23,13 +23,13 @@ export class TabbarComponent {
     return (
       <Host class={`tab-${this.color}`}>
         <div class={["d-flex-main", `opt-${this.option}`].join(' ')}>
-          <div class="nav-left-wrapper centered">
+          <div class="nav-left-wrapper centered shadowed">
             <slot name="start" />
           </div>
-          <div class="fill-space nav-center-wrapper">
+          <div class="fill-space nav-center-wrapper shadowed">
             <slot />
           </div>
-          <div class="centered">
+          <div class="centered shadowed">
             <slot name="end" />
           </div>
         </div>

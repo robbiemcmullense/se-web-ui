@@ -51,9 +51,11 @@
   // box-shadow: $inner-shadow-top;
   // border-bottom: 4px solid rgba(black, 0.25);
 
+  .shadowed {
+    box-shadow: $inner-shadow-top;
+  }
   nav {
     height: 48px;
-    box-shadow: $inner-shadow-top;
   }
   nav:not([slot='start']){
     height: 44px;
@@ -106,6 +108,7 @@
   font-size: 16px;
   width: 100%;
   nav {
+    width: fit-content;
     min-width: 100%;
     height: 100%;
     text-transform: uppercase;
@@ -113,6 +116,7 @@
     @include align-items(center);
   }
   .nav-center-wrapper{
+    overflow-y: hidden;
     overflow-x: -moz-scrollbars-none;
     overflow-x: auto;
     -ms-overflow-style: none;

@@ -95,7 +95,7 @@ export class ContainerComponent {
 
   render() {
     return (
-      <Host class={[`${this.option}-content`, this.position, this.color, this.direction, `${this.display}-display`].join(' ')}>
+      <Host class={[`${this.option}-content`, this.position, this.color, `${this.direction}-dir`, `${this.display}-display`].join(' ')}>
         {this.option === "centered" ? <div class="wrapper-center"><slot></slot></div> : <slot></slot>}
       </Host>
     )
