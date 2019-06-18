@@ -72,9 +72,6 @@
             image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
           </se-about>
         </se-sidemenu-item>
-        <se-sidemenu-item item="Removed" id="sidemenu-item-to-remove">
-          something that should not exist
-        </se-sidemenu-item>
       </se-sidemenu>
     </se-header>
     <se-tabbar color="primary">
@@ -559,14 +556,6 @@
   </se-app>
 
   <script>
-
-    // remove sidemenu-item-to-remove
-    setTimeout(() => {
-      var elementId = "sidemenu-item-to-remove";
-      var element = document.getElementById(elementId);
-      element.parentNode.removeChild(element);
-    }, 10000);
-
     function showfab(text) {
       console.log(text);
     }
@@ -612,7 +601,7 @@
 
     // grid widget
     function toggle(id) {
-      let block = document.getElementById(`block${id}`);
+      let block = document.getElementById("block" + id);
       let icon = block.querySelector('div[slot="end"] > se-icon');
       block.enlarged = !block.enlarged;
       icon.innerText = block.enlarged ? 'exit_presentation' : 'presentation_mode';
@@ -667,5 +656,4 @@
     });
   </script>
 </body>
-
 </html>
