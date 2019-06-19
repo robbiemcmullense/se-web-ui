@@ -8,17 +8,17 @@ class Icons extends Component {
   render() {
     return (
       <se-container option="widget">
-        <se-widget style={widgetStyle}>
-          <se-widget-header>Icons</se-widget-header>
+        <se-block style={widgetStyle}>
+          <se-block-header>Icons</se-block-header>
 
-          <se-widget-content>
+          <se-block-content>
             <div className="mycoolstyle">my content</div>
             <ul>
               ...
             </ul>
             <se-radio-on-off ref={this._handleRef}></se-radio-on-off>
-          </se-widget-content>
-          <se-widget-footer>
+          </se-block-content>
+          <se-block-footer>
           <se-button option="raised">Raised</se-button>
             <se-button option="raised" color="primary">
               RaisedGreen
@@ -27,8 +27,8 @@ class Icons extends Component {
             <se-button option="text" color="primary">
               Primary
             </se-button>
-          </se-widget-footer>
-        </se-widget>
+          </se-block-footer>
+        </se-block>
       </se-container>
     );
   }

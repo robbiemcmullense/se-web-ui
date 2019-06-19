@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthenticationService } from '@core/authentication/authentication.service';
-import { MockAuthenticationService } from '@core/authentication/authentication.service.mock';
+
 import { AuthenticationGuard } from '@core/authentication/authentication.guard';
 import { ShellComponent } from './shell/shell.component';
 import { Route } from './route.service';
@@ -11,7 +11,7 @@ describe('Route', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthenticationGuard, { provide: AuthenticationService, useClass: MockAuthenticationService }, Route]
+      providers: [AuthenticationGuard, { provide: AuthenticationService }, Route]
     });
   });
 

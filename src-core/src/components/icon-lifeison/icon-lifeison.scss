@@ -1,25 +1,29 @@
 @import "../../theme/theme";
 
- :host {
+:host {
   height: auto;
   font-size: 12px !important;
   color: inherit;
   fill: currentColor;
   width: 100%;
 }
-:host(.standard) {
-  .cls-1{
-    color: $se-life-green;
-  }
-  .cls-2{
-    color: $se-logo-green;
-  }
+.standard {
+  // .cls-1 {
+  //   color: $se-life-green;
+  //   fill: $se-life-green;
+  // }
+  // .cls-2 {
+  //   color: $se-logo-green;
+  // }
+
 }
-:host(.inherited) {
-  .cls-1{
-    color: inherit;
-  }
-  .cls-2{
-    color: inherit;
-  }
+.inherited {
+  filter: brightness(0) invert(1);
+
+  // .cls-1 {
+  //   color: inherit;
+  // }
+  // .cls-2 {
+  //   color: inherit;
+  // }
 }

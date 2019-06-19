@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DialogComponent,DialogModalComponent } from './dialog.component';
 import { DialogConfig} from './dialog-config';
 import { DialogModule} from './dialog.module';
+import { ProxiesModule } from '../directives/proxies.module';
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
@@ -11,10 +11,7 @@ describe('DialogComponent', () => {
   let modalfixture : ComponentFixture<DialogModalComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DialogModule],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-      ],
+      imports: [DialogModule, ProxiesModule],
       providers:[DialogConfig]
     })
     .compileComponents();
@@ -42,7 +39,7 @@ describe('DialogComponent', () => {
     button.dispatchEvent(new Event('click'));
     fixture.detectChanges();
     component.closeDialog();
-    expect(component.afterClosed.emit).toHaveBeenCalled(); 
+    expect(component.afterClosed.emit).toHaveBeenCalled();
   });
 
   it('should emit backdropclick',()=>{

@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from "@stencil/core";
 
 const SHOW_SNACKBAR = 'show';
 
@@ -26,17 +26,19 @@ export class SnackbarComponent {
    */
   @Prop() message: string;
   /**
-   * Display a close "button".  Visible by default.
+   * Displays a "button" to close the snackbar.
+   * The default setting is `false`.
+   * This will be visible if set to `true`.
    */
   @Prop() canClose: boolean = false;
   /**
-   * Defines the text you want your "close button" to read.  Default text is `dismiss`.
+   * Defines the text you want your "close button" to read.  The default text is `dismiss`.
    */
   @Prop() closeText: string = 'dismiss';
   /**
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
-  @Prop({mutable: true}) open: boolean = false;
+  @Prop({ mutable: true }) open: boolean = false;
   @Watch('open') openDidChange() {
     if (this.open) {
       this.el.classList.add(SHOW_SNACKBAR);
@@ -46,7 +48,7 @@ export class SnackbarComponent {
   }
   @Element() el: HTMLElement;
   /**
-   * Send information to the parent component when closing the snackbar.
+   * Sends information to the parent component when closing the snackbar.
    */
   @Event() didClose: EventEmitter;
 
@@ -55,23 +57,19 @@ export class SnackbarComponent {
     this.didClose.emit();
   }
 
-  hostData() {
-    return {
-      class: this.type
-    }
-  }
-  
   componentDidLoad() {
     this.openDidChange();
   }
 
   render() {
-    return [
-      <div class="snackbar">
-        {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
-        <span class="message">{this.message}</span>
-        {this.canClose ? <span class="close" onClick={() => this.closeSnackbar()}>{this.closeText}</span> : ''}
-      </div>
-    ];
+    return (
+      <Host class={this.type}>
+        <div class="snackbar">
+          {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
+          <span class="message">{this.message}</span>
+          {this.canClose ? <span class="close" onClick={() => this.closeSnackbar()}>{this.closeText}</span> : ''}
+        </div>
+      </Host>
+    )
   }
 }

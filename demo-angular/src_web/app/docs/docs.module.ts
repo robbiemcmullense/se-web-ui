@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { SeWebModule } from '@se/web-ui-angular';
@@ -16,7 +16,6 @@ import { DocsComponent } from './docs.component';
   ],
   declarations: [
     DocsComponent
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  ]
 })
 export class DocsModule { }

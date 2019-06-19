@@ -1,12 +1,12 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { defineCustomElements as defineSeComponent } from "@se/web-ui/loader"; // "@se/web-ui/core/loader"
+import { defineCustomElements } from "@se/web-ui/loader"; // "@se/web-ui/core/loader"
 import Default from "./layouts/Default.vue";
 import Shell from "./layouts/Shell.vue";
 
 // Add custom element definition to the windows
-defineSeComponent(window);
+defineCustomElements(window);
 
 Vue.component("default-layout", Default);
 Vue.component("shell-layout", Shell);

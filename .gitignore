@@ -5,10 +5,8 @@ docs/build/
 core/
 angular/
 
-src-dash/
-src-react/
 
-
+package-lock.json
 
 .nuxt/
 .next/

@@ -11,11 +11,11 @@ describe('RadioGroupComponent', () => {
 		expect(radioGroup).toBeTruthy();
 	});
 
-	it('should be in "radio" option by default', () => {
-		expect(radioGroup.option).toEqual('radio');
-	});
-
 	it('should not be disabled by default', () => {
 		expect(radioGroup.disabled).toBeFalsy();
+	});
+
+	it('should be the standard color by default', () => {
+		expect(radioGroup.color).toEqual('standard');
 	});
 });

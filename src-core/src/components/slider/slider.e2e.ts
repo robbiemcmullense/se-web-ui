@@ -18,5 +18,15 @@ import { newE2EPage } from '@stencil/core/testing';
     const slider = await page.find('se-slider >>> div.slider-container');
     expect(slider).toHaveClasses(['slider-container']);
   });
-  
+});
+
+describe('Slider with ID Element', () => {
+  it('renders the child button element with an id attribute beginning with the wc prefix', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-slider id="my-id"></se-slider>');
+
+    const element = await page.find('se-slider');
+    expect(element.shadowRoot.querySelector('input')).toHaveAttribute('id');
+    expect(element.shadowRoot.querySelector('input').getAttribute('id')).toEqual('wc-my-id');
+  });
 });

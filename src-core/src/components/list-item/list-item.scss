@@ -9,23 +9,26 @@
 
 }
 
-.se-icon {
-  margin: 0;
-  display: inline-block;
-  font-family: "se-icon";
-  font-size: 24px;
-  font-display: block;
-  &.primary {
-    @include color("primary");
-  }
-  &.secondary {
-    @include color("secondary");
-  }
-  &.medium {
-    font-size: 36px;
-    line-height: 30px;
-  }
-}
+// .se-icon {
+//   margin: 0;
+//   display: inline-block;
+//   font-family: "se-icon";
+//   font-size: 24px;
+//   font-display: block;
+//   &.primary {
+//     @include  color("primary");
+//   }
+//   &.warning {
+//     @include  color("warning");
+//   }
+//   &.error {
+//     @include  color("error");
+//   }
+//   &.medium {
+//     font-size: 36px;
+//     line-height: 30px;
+//   }
+// }
 
 button {
   border: none;
@@ -38,7 +41,6 @@ button {
   width: 100%;
   /* inherit font & color from ancestor */
   color: inherit;
-  cursor: pointer;
   font: inherit;
   @include display-flex();
   @include align-items(center);
@@ -46,14 +48,17 @@ button {
   text-align: left; // MS Edge does not support "start"
   text-align: start;
   border-bottom: 1px solid $divider-color;
-  &:hover, &:focus{
-    background-color: $se-ultra-light-grey-1;
+  &:not([disabled]){
+    cursor: pointer;
+    &:hover, &:focus{
+      background-color: $se-ultra-light-grey-1;
+    }
   }
 }
 
 .selectedBar {
   position: absolute;
-  top: 0px;
+  top: 0;
   bottom: 0;
   width: 5px;
   @include background-color("primary");
@@ -68,7 +73,7 @@ button {
   min-width: 0;
   padding-left: 18px;
   margin: 0;
-  @include typology('p');
+  @include typology('base');
   @include flex();
   @include display-flex();
   @include flex-direction(column);
@@ -88,7 +93,7 @@ button {
 }
 
 :host(.classic.selected) {
-  @include color('selected-contrast');
+  @include  color('selected-contrast');
   @include background-color('selected');
   button {
     &:hover, &:focus{
@@ -105,7 +110,7 @@ button {
 }
 
 :host(.nav.selected) {
-  @include color('primary');
+  @include  color('primary');
 }
 
 :host(.treeview) {
@@ -118,7 +123,7 @@ button {
 }
 
 :host(.treeview.selected) {
-  @include color('selected-contrast');
+  @include  color('selected-contrast');
   @include background-color('selected');
   button {
     &:hover, &:focus{
@@ -135,5 +140,11 @@ button {
   }
   .nav-content{
     padding-left: 10px;
+  }
+}
+
+:host(.headline) {
+  button{
+    height: 42px;
   }
 }

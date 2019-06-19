@@ -3,45 +3,45 @@
 | Slot      | Description                                                                         |
 | --------- | ----------------------------------------------------------------------------------- |
 | none      | Slot with no name will be used as container for the dropdown                        |
-| `trigger` | Correspond to the trigger element to open the dropdown (`se-icon`, `se-button` ...) |
+| `trigger` | Corresponds to the trigger element to open the dropdown (`se-icon`, `se-button` ...) |
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property    | Attribute   | Description                                                                                                                                                                                                       | Type                | Default  |
-| ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
-| `alignment` | `alignment` | Define how to align the dropdown container. `left`: Position the container regarding to the left side of the trigger element. `right`: Position the container regarding to the right side of the trigger element. | `"left" \| "right"` | `'left'` |
+| Property    | Attribute   | Description                                                                                                                                                                                                              | Type                | Default  |
+| ----------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | -------- |
+| `alignment` | `alignment` | Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element. | `"left" \| "right"` | `'left'` |
 
 
 ## Events
 
-| Event      | Description                                      | Type                |
-| ---------- | ------------------------------------------------ | ------------------- |
-| `didClose` | Event emitted when the dropdown has been closed. | `CustomEvent<void>` |
-| `didOpen`  | Event emitted when the dropdown has been opened. | `CustomEvent<void>` |
+| Event      | Description                                      | Type               |
+| ---------- | ------------------------------------------------ | ------------------ |
+| `didClose` | Event emitted when the dropdown has been closed. | `CustomEvent<any>` |
+| `didOpen`  | Event emitted when the dropdown has been opened. | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `close() => void`
+### `close() => Promise<void>`
 
-Method to close the dropdown from the outside.
-
-#### Returns
-
-Type: `void`
-
-
-
-### `open() => void`
-
-Method to open the dropdown from the outside.
+Method to close the dropdown from outside its parent element.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
+
+
+
+### `open() => Promise<void>`
+
+Method to open the dropdown from outside its parent element.
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

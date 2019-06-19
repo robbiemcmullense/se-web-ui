@@ -20,7 +20,6 @@ button {
   @include justify-content(center);
   &[disabled] {
     cursor: default;
-    opacity: 0.26;
   }
 
   &.raised {
@@ -31,94 +30,173 @@ button {
     color: inherit !important;
   }
 
+  &.medium {
+    height: 40px;
+    .text {
+      font-size: $medium-fontsize;
+    }
+  }
+
+  &.large {
+    height: 48px;
+    .text {
+      font-size: $large-fontsize;
+    }
+  }
+
   &.standard {
-    @include color("standard-contrast");
+    @include  color("standard-contrast");
     @include background-color("standard");
     &:hover {
-      @include color("hover-standard-contrast");
+      @include  color("hover-standard-contrast");
       @include background-color("hover-standard");
     }
     &.outline {
       border: 1px solid;
-      @include border-color("standard-contrast");
+      border-color: $se-anthracite-grey;
       background-color: transparent;
       &:hover {
-        @include background-color("standard", 0.2);
+        @include background-color("hover-standard", 0.2);
+      }
+      &:focus {
+        @include  color("focus-contrast");
+        @include background-color("focus");
+      }
+      &[disabled] {
+        color: $se-light-grey;
+        background-color: transparent;
+        border-color: $se-light-grey;
       }
     }
+    &:focus {
+      @include  color("focus-contrast");
+      @include background-color("focus");
+    }
     &.selected {
-      @include color("selected-contrast");
+      @include  color("selected-contrast");
       @include background-color("selected");
+    }
+    &[disabled] {
+      color: $se-light-grey;
+      background-color: $se-ultra-light-grey-2;
     }
   }
 
   &.alternative {
-    @include color("alternative-contrast");
+    @include  color("alternative-contrast");
     @include background-color("alternative");
     &:hover {
-      @include color("hover-alternative-contrast");
+      @include  color("hover-alternative-contrast");
       @include background-color("hover-alternative");
     }
     &.outline {
       border: 1px solid;
       background-color: transparent;
-      @include color("alternative");
+      @include  color("alternative");
       @include border-color("alternative");
       &:hover {
-        @include background-color("alternative-contrast", 0.2);
+        @include background-color("hover-alternative", 0.6);
+      }
+      &:focus {
+        @include  color("focus-contrast");
+        @include background-color("focus");
+      }
+      &[disabled] {
+        color: $se-light-grey;
+        background-color: transparent;
+        border-color: $se-light-grey;
       }
     }
+    &:focus {
+      @include  color("focus-contrast");
+      @include background-color("focus");
+    }
     &.selected {
-      @include color("selected-contrast");
+      @include  color("selected-contrast");
       @include background-color("selected");
+    }
+    &[disabled] {
+      color: $se-light-grey;
+      @include background-color('alternative');
     }
   }
 
   &.primary {
-    @include color("primary-contrast");
+    @include  color("primary-contrast");
     @include background-color("primary");
-
     &:hover {
-      @include color("hover-primary-contrast");
+      @include  color("hover-primary-contrast");
       @include background-color("hover-primary");
     }
     &.outline {
       border: 1px solid;
       background-color: transparent;
-      @include color("primary");
+      @include  color("primary");
       @include border-color("primary");
       &:hover {
-        @include background-color("primary", 0.2);
+        @include background-color("primary", 0.3);
+      }
+      &:focus {
+        @include background-color("focus");
+        @include border-color("focus");
+      }
+      &[disabled] {
+        background-color: transparent;
+        color: #8ce599;
+        border-color: #8ce599;
       }
     }
+    &:focus {
+      @include  color("focus-contrast");
+      @include background-color("focus");
+    }
     &.selected {
-      @include color("selected-contrast");
+      @include  color("selected-contrast");
       @include background-color("selected");
     }
+    &[disabled] {
+      background-color: #8ce599;
+    }
   }
-  &.secondary {
-    @include color("secondary-contrast");
-    @include background-color("secondary");
 
+  &.secondary {
+    @include  color("secondary-contrast");
+    @include background-color("secondary");
     &:hover {
-      @include color("hover-secondary-contrast");
+      @include  color("hover-secondary-contrast");
       @include background-color("hover-secondary");
     }
     &.outline {
       background-color: transparent;
       border: 1px solid;
-      @include color("secondary");
+      @include  color("secondary");
       @include border-color("secondary");
       &:hover {
-        @include background-color("secondary", 0.2);
+        @include background-color("secondary", 0.3);
+      }
+      &:focus {
+        @include background-color("focus");
+        @include border-color("focus");
+      }
+      &[disabled] {
+        background-color: transparent;
+        color: $se-sky-blue;
+        border-color: $se-sky-blue;
       }
     }
+    &:focus {
+      @include  color("focus-contrast");
+      @include background-color("focus");
+    }
     &.selected {
-      @include color("selected-contrast");
+      @include  color("selected-contrast");
       @include background-color("selected");
     }
+    &[disabled] {
+      background-color: $se-sky-blue;
+    }
   }
-  &.fab{
+  &.fab {
       border-radius: 50%;
       font-size: 24px;
       width: 56px;
@@ -142,7 +220,7 @@ button {
       margin: 0 0 15px 0;
       @include circleShadow(4px);
       @include background-color("alternative");
-      @include color("alternative-contrast");
+      @include  color("alternative-contrast");
       &:hover {
         @include circleShadow(4px);
         @include background-color("alternative");
@@ -158,48 +236,46 @@ button {
         position: absolute;
         right: 100%;
         white-space: nowrap;
-        @include color("standard-contrast");
+        @include  color("standard-contrast");
         @include background-color("standard");
       }
     }
-    
-  
+
+
   .text {
     font-weight: 300;
-    @include typology("p");
+    @include typology("base");
     padding: 0 $spacing;
   }
   .se-icon {
     margin: 0;
     display: inline-block;
     font-family: "se-icon";
-    font-size: 22px;
+    font-size: 24px;
     font-display: block;
+    line-height: 1;
     &.standard {
-      @include color("standard");
+      @include  color("standard");
     }
     &.alternative {
-      @include color("alternative");
+      @include  color("alternative");
     }
     &.primary {
-      @include color("primary");
+      @include  color("primary");
     }
     &.secondary {
-      @include color("secondary");
+      @include  color("secondary");
     }
   }
-
-  // &:focus{
-  //   @include color("selected-contrast");
-  //   @include background-color("selected");
-  // }
 }
+
 :host(.login),
 :host(.signup) {
   @include display-flex();
   button {
     height: 32px;
     font-size: 18px;
+    // padding: 0 50px;
     line-height: 22px;
     width: 100%;
     margin-top: $spacing;
@@ -213,8 +289,7 @@ button {
     margin: $spacing-small 0;
     height: 24px;
     padding: 0 $spacing;
-    font-size: 11px;
-    line-height: 13px;
+    @include typology("nano");
     border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;
   }
@@ -243,7 +318,7 @@ button {
 
 :host(.backtotop){
   & button.fab{
-    @include color("alternative");
+    @include  color("alternative");
     background-color:$se-anthracite-grey;
     &:hover{
       @include background-color("standard-contrast")
@@ -258,7 +333,7 @@ button {
       content: "";
       position: absolute;
       top: 50%;
-      right: 15px;
+      right: 16px;
       transform: translateY(-50%);
       width: 0;
       height: 0;

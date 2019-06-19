@@ -1,4 +1,4 @@
-import { NgModule, Optional, SkipSelf, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule, Optional, SkipSelf  } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
@@ -27,8 +27,9 @@ import { SeWebModule } from '@se/web-ui-angular';
   entryComponents: [
   ],
   providers: [],
-  exports: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  exports: [
+    SeWebModule
+  ]
 })
 export class CoreModule {
 

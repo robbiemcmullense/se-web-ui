@@ -6,6 +6,7 @@ import { MockBackend } from '@angular/http/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SeWebModule } from '@se/web-ui-angular';
 import { I18nService } from '@core/i18n.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '@core/authentication/authentication.service';
@@ -19,6 +20,7 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        SeWebModule,
         FormsModule,
         ReactiveFormsModule,
         RouterTestingModule

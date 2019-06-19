@@ -17,19 +17,19 @@ describe('ButtonComponent', () => {
     expect(element).toHaveClasses(['flat', 'hydrated']);
   });
 
-  it('renders the child button component with a flat and standard classes by default', async() => {
-    expect(element.shadowRoot.querySelector('button')).toHaveClass('standard');
-    expect(element.shadowRoot.querySelector('button')).toHaveClass('flat');
+  it('renders the child button component with flat, small, and standard classes by default reflecting its default option, size, and color', async() => {
+    expect(element.shadowRoot.querySelector('button')).toHaveClasses(['flat', 'small', 'standard']);
   });
 
-  it('renders the parent element with the raised class and the child element with the alternative class when the option and color are set to those values', async() => {
+  it('applies the raised, medium, and alternative classes to the parent and child button elements when the option, size, and color are set to those values', async() => {
     await page.$eval('se-button', (elm: any) => {
       elm.option = 'raised';
-      elm.color = 'alternative'
+      elm.size = 'medium';
+      elm.color = 'alternative';
     });
     await page.waitForChanges();
     expect(element).toHaveClass('raised');
-    expect(element.shadowRoot.querySelector('button')).toHaveClass('alternative');
+    expect(element.shadowRoot.querySelector('button')).toHaveClasses(['alternative', 'medium', 'raised']);
   });
 
   it('renders the hasIcon class when the element has an icon property', async() => {
@@ -51,6 +51,17 @@ describe('Button with Preset Text', () => {
   });
 });
 
+describe('Button with ID Element', () => {
+  it('renders the child button element with an id attribute beginning with the wc prefix', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-button id="my-id">My Button</se-button>');
+
+    const element = await page.find('se-button');
+    expect(element.shadowRoot.querySelector('button')).toHaveAttribute('id');
+    expect(element.shadowRoot.querySelector('button').getAttribute('id')).toEqual('wc-my-id');
+  });
+});
+
 describe('ButtonComponent Methods and Events', () => {
   let page, element;
 
@@ -66,11 +77,13 @@ describe('ButtonComponent Methods and Events', () => {
     expect(element).toHaveClass('grouped');
   });
 
-  it('sends button data when clicked and has the grouped property', async() => {
+  it('sends button data when clicked and adds the selected class to the child button element', async() => {
     const eventSpy = await page.spyOnEvent('didClick');
     await element.callMethod('setGrouped');
     await page.waitForChanges();
     await element.click();
+
+    expect(element.shadowRoot.querySelector('button')).toHaveClass('selected');
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail({
       selected: true,

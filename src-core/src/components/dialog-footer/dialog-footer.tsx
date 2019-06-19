@@ -1,4 +1,4 @@
-import { Component } from "@stencil/core";
+import { Component, h } from "@stencil/core";
 
 @Component({
   tag: "se-dialog-footer",
@@ -6,10 +6,11 @@ import { Component } from "@stencil/core";
   shadow: true
 })
 export class DialogFooterComponent {
+
   render() {
     return [
-      <div class="flex"><slot name="start"/></div>,
-      <slot />
+      <div class="flex"><slot name="start"></slot></div>,
+      <slot></slot>
     ];
   }
 }

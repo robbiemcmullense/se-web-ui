@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-chip",
@@ -14,11 +14,15 @@ export class ChipComponent {
   /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
+  @Prop() color: 'standard' | 'alternative' = 'standard';
   /**
-   * Indicates whether or not the chip has a close button.  Set to `true` by default.
+   * Indicates whether or not the chip has a close button.  Set to `false` by default.
    */
-  @Prop() canClose: boolean = true;
+  @Prop() canClose: boolean = false;
+  /**
+   * Indicates whether or not the chip is disabled.  Set to `false` by default.
+   */
+  @Prop() disabled: boolean = false;
   @Element() el: HTMLElement;
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
@@ -26,19 +30,17 @@ export class ChipComponent {
   @Event() didClose: EventEmitter;
 
   closeChip() {
-    this.didClose.emit(this.value);
-  }
-
-  hostData() {
-    return {
-      'class': this.color
-    };
+    if (!this.disabled) {
+      this.didClose.emit(this.value);
+    }
   }
 
   render() {
-    return [
-      <div class="value">{this.value}</div>,
-      this.canClose && <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div>
-    ];
+    return (
+      <Host class={[this.color, this.disabled ? 'disabled' : ''].join(' ')}>
+        <div class="value">{this.value}</div>
+        {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
+      </Host>
+    );
   }
 }

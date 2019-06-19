@@ -6,7 +6,7 @@
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
-  "module": "esm/index.js",
+  "module": "index.mjs",
   "main": "index.js",
   "types": "types/components.d.ts",
   "collection": "collection/collection-manifest.json",

@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-radio",
@@ -7,20 +7,23 @@ import { Component, Event, EventEmitter, Method, Prop, State, Watch } from "@ste
 })
 
 export class RadioComponent {
+  @Element() el: HTMLElement;
   /**
-   * The value you want to pass to the parent component when the checkbox is checked.
+   * Defines the value you want to pass to the parent component when the radio button is checked.
    */
   @Prop() value: string;
   /**
-   * The label of the checkbox that will be attached to the box.
+   * Defines the label that will display next to the radio button.
    */
   @Prop() label: string;
   /**
-   * Adds a red asterisk if the radio button is required when used in a form field.  Default is `false`.
+   * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
    */
   @Prop() required: boolean = false;
   /**
    * Defines the color of the checkbox.
+   * The default setting is `primary`, rendering a green color.
+   * The `secondary` setting renders a blue color.
    */
   @Prop() color: 'primary' | 'secondary' = 'primary';
   /**
@@ -28,15 +31,17 @@ export class RadioComponent {
    */
   @Prop() disabled: boolean = false;
   /**
-	 * Determines whether or not the checkbox is checked when you initialize it.  Checked if `true`.
+	 * Determines whether or not the checkbox is checked when you initialize it.
+   * The default setting is `false`.
+   * Checked if set to `true`.
 	 */
   @Prop({mutable: true}) selected: boolean = false;
   @State() checked: boolean;
   /**
-   * Set the required property on the radio button element.
+   * Sets the required property on the radio button element.
    */
   @Method()
-  setRequired() {
+  async setRequired() {
     this.required = true;
   }
   /**
@@ -46,6 +51,14 @@ export class RadioComponent {
   @Watch('selected')
   selectedDidChange() {
     this.checked = this.selected;
+  }
+
+  setInputId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let input = this.el.shadowRoot.querySelector('input');
+      input.setAttribute('id', 'wc-' + id);
+    } 
   }
 
   emitEvent() {
@@ -58,6 +71,7 @@ export class RadioComponent {
     if (this.selected) {
       this.checked = this.selected;
     }
+    this.setInputId();
   }
 
   render() {

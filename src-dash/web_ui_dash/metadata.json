@@ -1,0 +1,37 @@
+{
+  "src/components/App.react.js": {
+    "description": "",
+    "displayName": "App",
+    "methods": [],
+    "props": {
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "The children of this component"
+      }
+    }
+  },
+  "src/components/Header.react.js": {
+    "description": "",
+    "displayName": "Header",
+    "methods": [],
+    "props": {
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "The children of this component"
+      },
+      "appTitle": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The title that will be printed when this component is rendered."
+      }
+    }
+  }
+}

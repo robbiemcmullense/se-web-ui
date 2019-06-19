@@ -7,6 +7,7 @@ import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SeWebModule } from '@se/web-ui-angular';
 import { AuthenticationService } from '@core/authentication/authentication.service';
 import { SigninComponent } from './signin.component';
 
@@ -21,7 +22,8 @@ describe('SigninComponent', () => {
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        SeWebModule,
         TranslateModule.forRoot()
       ],
       declarations: [SigninComponent],
@@ -45,12 +47,5 @@ describe('SigninComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should call the component login function when clicking the login button', () => {
-    spyOn(component, 'login');
-    loginButton = fixture.debugElement.query(By.css('button[type="submit"]'));
-    loginButton.nativeElement.click();
-    expect(component.login).toHaveBeenCalled();
   });
 });

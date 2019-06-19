@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element, Listen } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, Element, Listen } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -16,7 +16,7 @@ export class ListGroupComponent {
    */
   @Prop() description: string;
   /**
-   * Defines if the list group should be displayed as selected (if one of its child is selected when collapsed).
+   * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
    */
   @Prop({ mutable: true }) selected: boolean;
   /**
@@ -28,20 +28,24 @@ export class ListGroupComponent {
    */
   @Prop() iconColor: "primary" | "secondary";
   /**
-   * Defines if the item group is collapsed/closed. The `se-list-group` cannot be selected from the outside.
+   * Defines if the item group is collapsed/closed. The default setting is `false`.
    */
   @Prop({ mutable: true }) collapsed: boolean = false;
   @Watch("collapsed") collapsedChanged() {
     this.checkSelected();
   }
   /**
-   * Define the group indentation to add paddings to the list item (used with multiple list groups).
+   * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
   @Prop() indentation: number = 0;
   /**
-   * Defines the theme of the list. This them will be handled and modified by the parent element.
+   * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  /**
+   * Defines if list groups can be collapsed, true by default.
+   */
+  @Prop() canCollapse: boolean = true;
 
   @Listen('didSelectedChange') ChildUpdated() {
     this.checkSelected();
@@ -49,8 +53,10 @@ export class ListGroupComponent {
 
   checkSelected(){
     if (!this.collapsed) {
+      console.log('not collapsed');
       this.selected = false;
     } else {
+      console.log('collapsed!');
       let hasSelectedChild = false;
       Array.from(
         this.el.querySelectorAll("se-list-item, se-list-group")
@@ -63,6 +69,18 @@ export class ListGroupComponent {
     }
   }
 
+  private toggleCollapse() {
+    this.collapsed = !this.collapsed;
+  }
+
+  setButtonId() {
+    let id = this.el.getAttribute('id');
+    if (id) {
+      let button = this.el.shadowRoot.querySelector('button');
+      button.setAttribute('id', 'wc-' + id);
+    } 
+  }
+
   componentWillLoad() {
     Array.from(
       this.el.querySelectorAll("se-list-group > se-list-item, se-list-group > se-list-group")
@@ -71,46 +89,36 @@ export class ListGroupComponent {
     });
   }
 
-  private toggleCollapse() {
-    this.collapsed = !this.collapsed;
-  }
-
-  hostData() {
-    return {
-      class: [this.selected && "selected", this.collapsed && "collapsed", this.option].join(" ")
-    };
+  componentDidLoad() {
+    this.setButtonId();
   }
 
   render() {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
-    return [
-      <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()}>
-        {this.option === "nav" && this.selected && <div class="selectedBar" />}
-        {!!this.icon && (
-          <div class="nav-icon">
-            <span class={["se-icon", this.iconColor].join(" ")}>
-              {this.icon}
-            </span>
+    return (
+      <Host class={[this.selected ? "selected" : '', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
+        <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()} disabled={!this.canCollapse}>
+          {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
+          {!!this.icon ?
+            <div class="nav-icon">
+              <se-icon color={this.iconColor}>
+                {this.icon}
+              </se-icon>
+            </div>
+          : ''}
+          <div class="nav-content">
+            <div>{this.item}</div>
+            <small> {this.description}</small>
           </div>
-        )}
-        <div class="nav-content">
-          <div>{this.item}</div>
-          <small> {this.description}</small>
+          {this.option === "treeview"
+            ? <se-icon>{this.collapsed ? "arrow2_down" : "arrow2_right"}</se-icon>
+            : <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
+          }
+        </button>
+        <div class="group-item">
+          <slot/>
         </div>
-        {this.option !== "treeview" && (
-          <span class="se-icon medium">
-          {this.collapsed ? "arrow2_down" : "arrow2_up"}
-          </span>
-        )}
-        {this.option == "treeview" && (
-          <span class="se-icon">
-          arrow2_right
-          </span>
-        )}
-      </button>,
-      <div class="group-item">
-        <slot />
-      </div>
-    ];
+      </Host>
+    )
   }
 }

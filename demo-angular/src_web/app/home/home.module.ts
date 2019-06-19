@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule,    } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -24,7 +24,6 @@ import { SeWebModule } from '@se/web-ui-angular';
     ModalExampleComponent,
     ModalTableComponent
   ],
-  providers: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: []
 })
 export class HomeModule {}

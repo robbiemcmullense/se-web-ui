@@ -1,9 +1,9 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DialogService } from './dialog.service';
 import { DialogComponent, DialogModalComponent } from './dialog.component';
 import { DialogConfig } from './dialog-config';
 import { DialogModule } from './dialog.module';
+import { ProxiesModule } from '../directives/proxies.module';
 
 describe('DialogService', () => {
   let config: DialogConfig;
@@ -14,8 +14,7 @@ describe('DialogService', () => {
 
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [DialogModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [DialogModule, ProxiesModule],
       providers: [DialogConfig]
     })
   );

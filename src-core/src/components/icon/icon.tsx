@@ -1,4 +1,4 @@
-import { Component, Prop, Element } from "@stencil/core";
+import { Component, h, Host, Prop, Element } from "@stencil/core";
 
 @Component({
   tag: "se-icon",
@@ -10,28 +10,31 @@ export class IconComponent {
   /**
    * Optional property to define if the icon should act as a button (clickable).
    */
-  @Prop() option: 'button';
+  @Prop() option: "button";
   /**
-   * Defines the size of an icon. The default size is `small` (24px). `medium` is 36px, and `large` is 63px.
+   * Defines the size of an icon.
+   * `nano` sets the size to 14px.
+   * `small` sets the size to 24px. (default setting)
+   * `medium` sets the size to 32px
+   * `large` sets the size to 52px.
+   * `xlarge` sets the size to 62px.
    */
-  @Prop() size: "small" | "medium" | "large" = "small";
+  @Prop() size: "nano" | "small" | "medium" | "large" | "xlarge" = "small";
   /**
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary';
+  @Prop() color: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
 
-  componentWillLoad() {
-    this.el.classList.add(this.size);
-  }
-
-  hostData() {
-    return {
-      class: [this.color, this.option].join(" ")
-    };
-  }
+  // componentWillLoad() {
+  //   this.el.classList.add(this.size);
+  // }
 
   render() {
-    return <slot />;
+    return (
+      <Host class={[`icon-${this.size}`, this.color, `icon-${this.option}`].join(" ")}>
+        <slot />
+      </Host>
+    );
   }
 }

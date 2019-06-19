@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {SnackbarComponent} from './snackbar.component';
 import {SnackbarConfig} from './snackbar-config';
 import {SnackbarModule} from './snackbar.module';
+import { ProxiesModule } from '../directives/proxies.module';
 
 
 describe('SnackbarComponent', () => {
@@ -11,10 +11,7 @@ describe('SnackbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SnackbarModule],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-      ],
+      imports: [SnackbarModule, ProxiesModule],
       providers: [SnackbarConfig]
     })
     .compileComponents();

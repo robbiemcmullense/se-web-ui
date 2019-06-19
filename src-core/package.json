@@ -3,6 +3,10 @@
   "version": "0.0.1-PLACEHOLDER",
   "private": true,
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
+  "module": "core/index.mjs",
+  "main": "core/index.js",
+  "types": "core/types/components.d.ts",
+  "collection": "core/collection/collection-manifest.json",
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
     "build": "npm-run-all build.*",
@@ -13,27 +17,27 @@
     "build.moveCore": "cpx \"core/**/*\" \"../core\" && rimraf \"./core\"",
     "test": "stencil test --spec",
     "e2e": "stencil test --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {
     "@se/fonts": "^1.0.0",
-    "@se/icons": "^3.2.0",
-    "@stencil/core": "^0.18.1",
-    "@stencil/sass": "^0.2.1"
+    "@se/icons": "^3.4.0",
+    "@stencil/core": "^1.0.3",
+    "@stencil/sass": "^1.0.0"
   },
   "devDependencies": {
-    "@types/jest": "23.3.14",
-    "@types/puppeteer": "^1.11.1",
+    "@types/jest": "^24.0.14",
+    "@types/puppeteer": "^1.12.4",
     "cpx": "^1.5.0",
     "http-server": "^0.11.1",
-    "jest": "23.6.0",
-    "jest-cli": "23.6.0",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
     "nodecat": "^2.0.0",
     "npm-run-all": "^4.1.5",
-    "pixelmatch": "4.0.2",
-    "puppeteer": "1.11.0",
+    "pixelmatch": "^5.0.2",
+    "puppeteer": "^1.17.0",
     "rimraf": "^2.6.3",
-    "workbox-build": "~4.1.1"
+    "workbox-build": "^4.3.1"
   },
   "license": "MIT"
 }

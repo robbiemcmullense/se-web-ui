@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State } from "@stencil/core";
+import { Component, h, Prop, Element, State } from "@stencil/core";
 import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
 
@@ -12,14 +12,12 @@ export class HeaderComponent {
    * Sets the title of your application.
    */
   @Prop() appTitle: string = "";
-
   /**
    * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
    */
   @Prop() domain: string = AppInfo.domain;
-
   /**
-   * Defines the project name (useful for small project) that can be used for versioning as well. It will be placed at the right side of the title.
+   * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
    */
   @Prop() project: string;
 
@@ -46,13 +44,13 @@ export class HeaderComponent {
     }
     return [
       <div class="d-flex">
-        {this.hasMenu && (
+        {this.hasMenu ?
           <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
-            <se-icon size="large" color="primary">
+            <se-icon size="medium" color="primary">
               burger_menu
             </se-icon>
           </span>
-        )}
+        : ''}
         <div class="d-flex-column header-title-wrapper">
           {domain}
           <h1 class="header-title no-margin">
@@ -60,7 +58,7 @@ export class HeaderComponent {
             <span class="light">&nbsp;{title.last}</span>
           </h1>
         </div>
-        {this.project && <span class="project-section">{this.project}</span>}
+        {this.project ? <span class="project-section">{this.project}</span> : ''}
       </div>,
       <div class="padding-container d-flex">
         <slot name="start" />

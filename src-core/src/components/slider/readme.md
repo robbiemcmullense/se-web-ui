@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                     | Type      | Default |
-| ---------- | ---------- | ----------------------------------------------- | --------- | ------- |
-| `disabled` | `disabled` | Indicates the disabled property of your slider. | `boolean` | `false` |
-| `max`      | `max`      | Indicates the maximum value of your slider.     | `number`  | `100`   |
-| `min`      | `min`      | Indicates the minimum value of your slider.     | `number`  | `0`     |
+| Property   | Attribute  | Description                                                           | Type      | Default |
+| ---------- | ---------- | --------------------------------------------------------------------- | --------- | ------- |
+| `disabled` | `disabled` | Indicates if your slider is disabled. The default setting is `false`. | `boolean` | `false` |
+| `max`      | `max`      | Indicates the maximum value of your slider.                           | `number`  | `100`   |
+| `min`      | `min`      | Indicates the minimum value of your slider.                           | `number`  | `0`     |
 
 
 ## Events
@@ -23,19 +23,13 @@
 
 ## Methods
 
-### `setDisabled(val: boolean) => void`
+### `setDisabled(val: boolean) => Promise<void>`
 
-Set the disabled property for slider component.
-
-#### Parameters
-
-| Name  | Type      | Description               |
-| ----- | --------- | ------------------------- |
-| `val` | `boolean` | set to `true` or `false`. |
+Sets the disabled property for slider component.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

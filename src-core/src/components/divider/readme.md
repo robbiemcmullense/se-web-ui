@@ -13,6 +13,19 @@
 | `option` | `option`  | Indicates the visual appearance of your divider line.  Default setting is `horizontal`.                                                                                            | `"horizontal" \| "inset" \| "vertical"` | `"horizontal"` |
 
 
+## Dependencies
+
+### Used by
+
+ - [se-sidemenu](../sidemenu)
+
+### Graph
+```mermaid
+graph TD;
+  se-sidemenu --> se-divider
+  style se-divider fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
