@@ -9,12 +9,12 @@
 		@include  color('secondary');
 		text-decoration: none;
 		&.external {
-			// text-decoration: underline;
 			&:before {
 				content: '> ';
 			}
 		}
 		&:hover {
+      text-decoration: underline;
 			@include  color('hover-secondary');
 		}
 		&[data-disabled] {
