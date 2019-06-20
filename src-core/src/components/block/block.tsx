@@ -60,8 +60,8 @@ export class BlockComponent {
   private updateItemMode() {
     let childElms =
       this.option === "card"
-      ? "se-block-header, se-block-content, se-block-footer"
-      : "se-block-content"
+        ? "se-block-header, se-block-content, se-block-footer"
+        : "se-block-content";
     this.setChildOption(childElms);
   }
 
