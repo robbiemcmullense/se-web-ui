@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
-$chip-height: 32px;
+$chip-height: 30px; // with border it's 32px.
 
 :host {
   display: inline-flex;
@@ -18,7 +18,7 @@ $chip-height: 32px;
 
   .se-icon {
     cursor: pointer;
-    font-size: 32px;
+    font-size: 30px;
     margin-right: -6px;
     font-family: "se-icon";
     &[data-hide] {
