@@ -102,9 +102,9 @@ export namespace Components {
   }
   interface SeBlockContent {
     /**
-    * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default. If you add`option="fill"` to the block-content component, the content will fill the whole space of the block-content with no padding.
+    * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default. When the option is set to `fill`, the content will fill the whole space of the block-content with no padding.
     */
-    'option': 'fill';
+    'option': 'card' | 'widget' | 'basic' | 'fill';
   }
   interface SeBlockFooter {
     /**
@@ -1118,9 +1118,9 @@ declare namespace LocalJSX {
   }
   interface SeBlockContent extends JSXBase.HTMLAttributes<HTMLSeBlockContentElement> {
     /**
-    * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default. If you add`option="fill"` to the block-content component, the content will fill the whole space of the block-content with no padding.
+    * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default. When the option is set to `fill`, the content will fill the whole space of the block-content with no padding.
     */
-    'option'?: 'fill';
+    'option'?: 'card' | 'widget' | 'basic' | 'fill';
   }
   interface SeBlockFooter extends JSXBase.HTMLAttributes<HTMLSeBlockFooterElement> {
     /**

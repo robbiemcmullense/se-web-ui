@@ -22,3 +22,17 @@ describe('BlockContentComponent', () => {
     expect(element).toHaveClass('fill-content');
   });
 });
+
+describe('BlockContentComponent with Block parents set to card option', () => {
+  let page, element;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+    await page.setContent('<se-block option="card"><se-block-content></se-block-content><se-block>');
+    element = await page.find('se-block-content');
+  });
+
+  it('should have the card-content class, inherited from its block parent', async() => {
+    expect(element).toHaveClass('card-content');
+  });
+});

@@ -58,10 +58,11 @@ export class BlockComponent {
   }
 
   private updateItemMode() {
-    if (this.option === "card") {
-      let childElms = "se-block-header, se-block-content, se-block-footer";
-      this.setChildOption(childElms);
-    }
+    let childElms =
+      this.option === "card"
+      ? "se-block-header, se-block-content, se-block-footer"
+      : "se-block-content"
+    this.setChildOption(childElms);
   }
 
   private updateSize() {
@@ -82,7 +83,9 @@ export class BlockComponent {
 
   private setChildOption(childElms: string) {
     Array.from(this.el.querySelectorAll(childElms)).forEach((item: any) => {
-      item.option = this.option;
+      if (!item.option) {
+        item.option = this.option;
+      }
     });
   }
 

@@ -8,13 +8,13 @@ import { Component, h, Prop, Host } from "@stencil/core";
 export class BlockContent {
   /**
    * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default.
-   * If you add`option="fill"` to the block-content component, the content will fill the whole space of the block-content with no padding.
+   * When the option is set to `fill`, the content will fill the whole space of the block-content with no padding.
    */
-  @Prop() option: 'fill';
+  @Prop() option: 'card' | 'widget' | 'basic' | 'fill';
 
   render() {
     return (
-      <Host class={{'fill-content': this.option === 'fill'}}>
+      <Host class={`${this.option}-content`}>
         <slot />
       </Host>
     );
