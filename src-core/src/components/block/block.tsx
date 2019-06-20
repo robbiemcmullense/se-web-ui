@@ -83,7 +83,9 @@ export class BlockComponent {
 
   private setChildOption(childElms: string) {
     Array.from(this.el.querySelectorAll(childElms)).forEach((item: any) => {
-      item.option = this.option;
+      if (!item.option) {
+        item.option = this.option;
+      }
     });
   }
 

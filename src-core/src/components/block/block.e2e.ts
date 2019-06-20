@@ -11,6 +11,7 @@ describe('BlockComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
   });
 
   it('should have the basic class since that is the default option', async() => {
@@ -18,7 +19,8 @@ describe('BlockComponent', () => {
   });
 
   it('renders with flex class due to no specified width, along with the default alternative color class', async() => {
-    expect(element).toHaveClasses(['alternative', 'flex', 'hydrated']);
+    expect(element).toHaveClass('alternative');
+    expect(element).toHaveClass('flex');
   });
 
   it('renders a standard class when the color property is set to standard', async() => {
