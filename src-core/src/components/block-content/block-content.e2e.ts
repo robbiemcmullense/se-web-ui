@@ -14,11 +14,11 @@ describe('BlockContentComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with the full-content class whenever the option is set to basic', async() => {
+  it('renders with the fill-content class whenever the option is set to fill', async() => {
     await page.$eval('se-block-content', (elm: any) => {
-      elm.option = 'basic';
+      elm.option = 'fill';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('basic-content');
+    expect(element).toHaveClass('fill-content');
   });
 });

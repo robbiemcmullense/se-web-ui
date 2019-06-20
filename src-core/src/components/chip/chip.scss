@@ -58,7 +58,10 @@ $chip-height: 32px;
   @include background-color('focus');
 }
 
-:host(.disabled) {
+:host(.disabled),
+:host(.disabled:hover),
+:host(.disabled:focus) {
+  background-color: inherit;
   color: $se-light-grey;
   border: 1px solid $se-light-grey;
   .se-icon {
