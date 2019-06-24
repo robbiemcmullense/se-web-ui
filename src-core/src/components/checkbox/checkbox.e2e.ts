@@ -67,9 +67,9 @@ describe('CheckboxComponent in Switch Mode', () => {
     expect(inputElm.getAttribute('id')).toEqual('wc-my-switch');
   });
 
-  it('should render a label element without inner text', async() => {
-    let labelElement = await page.find('se-checkbox >>> label.checkbox-container');
-    expect(labelElement.innerText).toEqual('');
+  it('should render a label element within the checkbox-label span element', async() => {
+    let labelElement = await page.find('se-checkbox >>> span.checkbox-label');
+    expect(labelElement.innerText).toEqual('my label');
   });
 });
 
