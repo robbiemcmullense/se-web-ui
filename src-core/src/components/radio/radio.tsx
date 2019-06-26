@@ -35,7 +35,7 @@ export class RadioComponent {
    * The default setting is `false`.
    * Checked if set to `true`.
 	 */
-  @Prop({mutable: true}) selected: boolean = false;
+  @Prop({ mutable: true }) selected: boolean = false;
   @State() checked: boolean;
   /**
    * Sets the required property on the radio button element.
@@ -58,12 +58,12 @@ export class RadioComponent {
     if (id) {
       let input = this.el.shadowRoot.querySelector('input');
       input.setAttribute('id', 'wc-' + id);
-    } 
+    }
   }
 
   emitEvent() {
     this.checked = !this.checked;
-    let checkboxObject = {value: this.value, selected: this.checked};
+    let checkboxObject = { value: this.value, selected: this.checked };
     this.didCheck.emit(checkboxObject);
   }
 
@@ -76,12 +76,14 @@ export class RadioComponent {
 
   render() {
     return (
-      <label class="radio-container" data-disabled={this.disabled}>
-        {this.label}
+      <div>
+        <label class="radio-container" data-disabled={this.disabled}>
+          <input type="radio" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()} />
+          <span class="checkdot" data-color={this.color}></span>
+        </label>
+        <span class="radio-label">{this.label}</span>
         {this.required ? <span class="required">*</span> : ''}
-        <input type="radio" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()}/>
-        <span class="checkdot" data-color={this.color}></span>
-      </label>
+      </div>
     );
   }
 }

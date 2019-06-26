@@ -115,7 +115,8 @@ button {
 
 :host(.treeview) {
   button {
-    height: 32px;
+    min-height: 32px;
+    max-height: 32px;
   }
   .nav-content {
     padding-left: 0;
