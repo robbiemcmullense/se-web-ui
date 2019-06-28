@@ -275,7 +275,6 @@ button {
   button {
     height: 32px;
     font-size: 18px;
-    // padding: 0 50px;
     line-height: 22px;
     width: 100%;
     margin-top: $spacing;
@@ -314,6 +313,15 @@ button {
 :host(.hasIcon) {
   top: 3px;
   position: relative;
+  button {
+    padding: 0 $spacing-small;
+  }
+}
+
+:host(.hasIcon.hasChild) {
+  button {
+    padding: 0 $spacing;
+  }
 }
 
 :host(.backtotop){
