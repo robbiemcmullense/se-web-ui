@@ -288,8 +288,8 @@
             <se-checkbox option="onoff" id="on-off-switch-el"></se-checkbox>
             <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true">
             </se-checkbox>
-            <se-checkbox id="toggle-switch-el" option="switch"></se-checkbox>
-            <se-checkbox selected="true" option="switch" disabled="true"></se-checkbox>
+            <se-checkbox id="toggle-switch-el" option="switch" label="Switch Label"></se-checkbox>
+            <se-checkbox selected="true" option="switch" disabled="true" label="Switch Label"></se-checkbox>
             <se-divider></se-divider>
             <ul>
               <li id="radio-message">selected radio icon button: <span></span></li>
@@ -418,7 +418,7 @@
           </se-block-header>
           <se-block-content>
             <se-list option="treeview">
-              <se-list-group item="Treeview Example">
+              <se-list-group option="treeview" item="Treeview Example">
                 <se-list-item item="First treeview child"></se-list-item>
                 <se-list-group option="treeview" item="Second treeview child">
                   <se-list-item item="I'm the first treeview grandchild!"></se-list-item>

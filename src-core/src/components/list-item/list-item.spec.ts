@@ -24,10 +24,4 @@ describe('list-item', () => {
     listItem.componentDidLoad();
     expect(listItem.padding).toEqual(40);
   });
-
-  it('should set the padding to 24 with an indentation of 0 and the option set to treeview', () => {
-    listItem.option = 'treeview';
-    listItem.componentDidLoad();
-    expect(listItem.padding).toEqual(24);
-  });
 });

@@ -10,4 +10,8 @@ describe('BlockContent', () => {
 	it('should build', () => {
 		expect(blockContent).toBeTruthy();
 	});
+
+	it('should not have a defined option by default', () => {
+		expect(blockContent.option).toBeUndefined();
+	});
 });

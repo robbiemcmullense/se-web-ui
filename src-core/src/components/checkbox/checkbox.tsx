@@ -44,7 +44,7 @@ export class CheckboxComponent {
   /**
 	 * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
 	 */
-  @Prop({mutable: true}) selected: boolean = false;
+  @Prop({ mutable: true }) selected: boolean = false;
   /**
    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to `onoff`.  Set to `ON` by default.
    */
@@ -95,7 +95,7 @@ export class CheckboxComponent {
           this.el.classList.remove('selected');
         }, 200)
       }
-      let checkboxObject = {value: this.value, selected: this.checked};
+      let checkboxObject = { value: this.value, selected: this.checked };
       this.didChange.emit(checkboxObject);
     }
   }
@@ -118,17 +118,19 @@ export class CheckboxComponent {
           <button class={['active', this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOn}</button>
           <button class={['inactive', !this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOff}</button>
         </div>
-        )
+      )
     } else {
       markup = (
-        <label class="checkbox-container" data-disabled={this.disabled}>
-          {this.option === 'checkbox' ? this.label : ''}
+        <div>
+          <label class="checkbox-container" data-disabled={this.disabled}>
+            <input type="checkbox" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()} />
+            <span class="checkmark" data-color={this.color}></span>
+          </label>
+          <span class="checkbox-label">{this.label}</span>
           {this.required ? <span class="required">*</span> : ''}
-          <input type="checkbox" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()}/>
-          <span class="checkmark" data-color={this.color}></span>
-        </label>
-        )
+        </div>
+      )
     }
-    return <Host class={[this.option, this.background, this.header ? 'header' : '', this.disabled ? 'disabled': ''].join(' ')}>{markup}</Host>;
+    return <Host class={[this.option, this.background, this.header ? 'header' : '', this.disabled ? 'disabled' : ''].join(' ')}>{markup}</Host>;
   }
 }

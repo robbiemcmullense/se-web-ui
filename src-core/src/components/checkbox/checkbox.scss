@@ -1,21 +1,39 @@
 @import "../../theme/theme";
 
+:host {
+	div {
+		display: inline-block;
+	}
+
+	.required {
+		color: $se-red;
+		padding-left: 3px;
+	}
+
+	.checkbox-label {
+		font-weight: 300;
+		padding-left: 6px;
+	}
+
+	@-moz-document url-prefix() {
+		.checkbox-label {
+			margin-left: -6px;
+			padding-left: 0;
+		}
+	}
+}
+
 :host(.checkbox) {
   @include align-items(center);
 	.checkbox-container {
 		position: relative;
-		padding-left: $spacing-large;
     @include typology('small');
-    margin: $spacing;
+		margin: $spacing;
+		margin-right: 0;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-
-		.required {
-			color: $se-red;
-			padding-left: 3px;
-		}
 
 		input {
 			height: 0;
@@ -84,6 +102,11 @@
 }
 
 :host(.switch) {
+	.checkbox-label {
+		padding-left: 6px;
+		vertical-align: middle;
+	}
+
 	.checkbox-container {
 		text-align: left;
     vertical-align: middle;

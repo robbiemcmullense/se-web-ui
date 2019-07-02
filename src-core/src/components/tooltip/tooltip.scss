@@ -72,6 +72,7 @@
   width: -moz-max-content;
   width: -webkit-max-content;
   width: max-content;
+  height: fit-content;
   visibility: hidden;
   @include absolute();
   padding: $spacing $spacing;
