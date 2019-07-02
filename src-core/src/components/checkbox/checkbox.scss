@@ -12,6 +12,14 @@
 
 	.checkbox-label {
 		font-weight: 300;
+		padding-left: 6px;
+	}
+
+	@-moz-document url-prefix() {
+		.checkbox-label {
+			margin-left: -6px;
+			padding-left: 0;
+		}
 	}
 }
 
@@ -20,7 +28,8 @@
 	.checkbox-container {
 		position: relative;
     @include typology('small');
-    margin: $spacing;
+		margin: $spacing;
+		margin-right: 0;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;

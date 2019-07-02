@@ -57,9 +57,6 @@ export class ListItemComponent {
   componentDidLoad() {
     this.setButtonId();
     this.padding = 20 * this.indentation;
-    if (this.option === "treeview") {
-      this.padding += 24;
-    }
   }
 
   render() {

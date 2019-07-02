@@ -26,6 +26,9 @@
   button {
     flex-direction: row-reverse;
   }
+  .nav-content {
+    padding-left: 0;
+  }
 }
 
 :host(.headline) {
