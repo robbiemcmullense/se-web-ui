@@ -572,6 +572,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
+    */
+    'size': 'small' | 'nano';
+    /**
     * Defines the selected values of the array.
     */
     'value': string;
@@ -1599,6 +1603,10 @@ declare namespace LocalJSX {
     * Passes the selected button value to the parent component when clicking on a button in the group.
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
+    */
+    'size'?: 'small' | 'nano';
     /**
     * Defines the selected values of the array.
     */

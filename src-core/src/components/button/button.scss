@@ -264,11 +264,17 @@ button {
 :host(.grouped) {
   button {
     margin: $spacing-small 0;
-    height: 24px;
-    padding: 0 $spacing;
+    height: 32px;
+    padding: 0;
     @include typology("nano");
     border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;
+    &.nano {
+      height: 24px;
+      .text {
+        font-size: 12px;
+      }
+    }
   }
 }
 
@@ -294,6 +300,17 @@ button {
   position: relative;
   button {
     padding: 0 $spacing-small;
+  }
+}
+
+:host(.hasIcon.grouped) {
+  .se-icon {
+    font-size: 32px;
+  }
+  .nano {
+    .se-icon {
+      font-size: 24px;
+    }
   }
 }
 
