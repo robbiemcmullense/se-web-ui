@@ -11,6 +11,10 @@ describe('SidemenuComponent', () => {
 		expect(sidemenu).toBeTruthy();
 	});
 
+	it('should have a label property equal to "Menu" by default', () => {
+		expect(sidemenu.label).toEqual('Menu');
+	});
+
 	it('should be closed by default', () => {
 		expect(sidemenu.open).toBeFalsy();
 	});

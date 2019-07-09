@@ -35,23 +35,21 @@ export class SidemenuComponent {
       this.removeAnimation(() => {
         this.el.classList.remove(SHOW_MENU);
       });
-
+      if (this.selectedItem && !this.selectedItem.childElementCount) {
+        this.selectedItem = undefined;
+        this.items.forEach((item: any) => {
+          item.active = false;
+        });
+      }
     }
   }
 
   async componentWillLoad() {
     this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
-    this.initSelect();
   }
 
   async componentWillUpdate() {
     this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
-    this.initSelect();
-    // const tabBar = this.el.querySelector('ion-tab-bar');
-    // if (tabBar) {
-    //   const tab = this.selectedTab ? this.selectedTab.tab : undefined;
-    //   tabBar.selectedTab = tab;
-    // }
   }
 
   componentDidUnload() {
@@ -63,13 +61,10 @@ export class SidemenuComponent {
     return !this.items.find( x => x === this.selectedItem)
   }
 
-  private async initSelect(): Promise<void> {
-    if (this.items.length && this.noSelectedItem()) {
-      this.setActive(this.items[0]);
-    }
-  }
-
   private setActive(item: any): void {
+    if (this.menuInnerEl) {
+      this.menuInnerEl.style.width = !item.childElementCount ? '250px' : '80%';
+    }
     if (this.items.length) {
       this.items.forEach((item: any) => {
         item.active = false;
@@ -104,7 +99,7 @@ export class SidemenuComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item onClick={() => this.setActive(item)} selected={item.active} item={item.item}/>,
+        <se-list-item class={{'hide-nav-icon': !item.childElementCount}} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item}/>,
       ]
     })
   }
@@ -120,7 +115,6 @@ export class SidemenuComponent {
             </span>
             <h3 class="header-title">{this.label}</h3>
           </div>
-          <se-link url="https://schneider-electric.com" option="external">schneider-electric.com</se-link>
         </div>
         <se-divider/>
         <div class="d-flex flex">

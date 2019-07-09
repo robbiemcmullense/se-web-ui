@@ -384,10 +384,12 @@ proxyInputs(SeSidemenu, ['label']);
 export declare interface SeSidemenuItem extends Components.SeSidemenuItem {}
 @Component({ selector: 'se-sidemenu-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'item'] })
 export class SeSidemenuItem {
+  didClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didClick']);
   }
 }
 proxyInputs(SeSidemenuItem, ['active', 'item']);

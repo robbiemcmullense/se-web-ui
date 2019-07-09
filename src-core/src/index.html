@@ -72,6 +72,7 @@
             image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
           </se-about>
         </se-sidemenu-item>
+        <se-sidemenu-item id="sidemenu-item" item="Close"></se-sidemenu-item>
       </se-sidemenu>
     </se-header>
     <se-tabbar color="primary">
@@ -378,6 +379,9 @@
             <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
             <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
             <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
+            <ul>
+              <li id="sidemenu-message"></li>
+            </ul>
           </se-block-content>
         </se-block>
         <se-block id="block5">
@@ -608,6 +612,12 @@
     }
     document.querySelector('se-slider').addEventListener('didChange', function (event) {
       document.getElementById('slider-value').innerText = 'Slider Value: ' + event.detail.value;
+    });
+
+    document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
+      document.querySelector('se-sidemenu').toggle();
+      //alert('this has been clicked');
+      document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
     });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {

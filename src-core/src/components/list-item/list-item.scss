@@ -149,3 +149,9 @@ button {
     height: 42px;
   }
 }
+
+:host(.hide-nav-icon) {
+  se-icon {
+    display: none;
+  }
+}
