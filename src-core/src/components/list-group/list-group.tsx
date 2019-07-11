@@ -69,8 +69,14 @@ export class ListGroupComponent {
     }
   }
 
-  private toggleCollapse() {
-    this.collapsed = !this.collapsed;
+  private toggleCollapse(event: any) {
+    if (this.option === 'treeview') {
+      if (event.target.innerText === 'arrow2_right' || event.target.innerText === 'arrow2_down') {
+        this.collapsed = !this.collapsed;
+      }
+    } else {
+      this.collapsed = !this.collapsed;
+    }
   }
 
   setButtonId() {
@@ -97,7 +103,7 @@ export class ListGroupComponent {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
       <Host class={[this.selected ? "selected" : '', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
-        <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()} disabled={!this.canCollapse}>
+        <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
           {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
           {!!this.icon ?
             <div class="nav-icon">
