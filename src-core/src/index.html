@@ -53,9 +53,9 @@
                     </span>
                   </se-block-content>
                   <se-block-content>
-                      <se-icon size="nano" color="anthracitegrey">airconditioner_hot_heating</se-icon>
-                      <se-icon size="small" color="lightgrey">airconditioner_hot_heating</se-icon>
-                      <se-icon size="medium" color="lifegreen">other_vertical</se-icon>
+                    <se-icon size="nano" color="anthracitegrey">airconditioner_hot_heating</se-icon>
+                    <se-icon size="small" color="lightgrey">airconditioner_hot_heating</se-icon>
+                    <se-icon size="medium" color="lifegreen">other_vertical</se-icon>
                     <se-icon size="large" color="lifegreen">airconditioner_hot_heating</se-icon>
                     <se-icon size="xtralarge" color="lightgreen">airconditioner_hot_heating</se-icon>
                   </se-block-content>
@@ -214,7 +214,8 @@
               </se-list-group>
               <se-list-group item="Warning and error icon colors">
                 <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
-                <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error"></se-list-item>
+                <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error">
+                </se-list-item>
               </se-list-group>
             </se-list>
           </se-block-content>
@@ -369,15 +370,24 @@
         </se-block>
         <se-block id="block4">
           <se-block-header>
-            Modals
+            Breadcrumbs & Modals
             <div slot="end">
               <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
+            <se-breadcrumb id="my-breadcrumb" value="Second">
+              <se-breadcrumb-item value="First"></se-breadcrumb-item>
+              <se-breadcrumb-item value="Second"></se-breadcrumb-item>
+              <se-breadcrumb-item value="Third"></se-breadcrumb-item>
+            </se-breadcrumb>
             <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
             <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
             <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
+            <se-button onclick="removeLastBreadcrumb()" option="raised">Remove Last Breadcrumb</se-button>
+            <ul>
+              <li id="breadcrumb-value"></li>
+            </ul>
           </se-block-content>
         </se-block>
         <se-block id="block5">
@@ -598,6 +608,12 @@
       }, 3000);
     }
 
+    function removeLastBreadcrumb() {
+      let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
+      breadcrumbs[breadcrumbs.length-1].parentNode.removeChild(breadcrumbs[breadcrumbs.length-1]);
+      document.getElementById('my-breadcrumb').updateChildren();   
+    }
+
 
     // grid widget
     function toggle(id) {
@@ -656,4 +672,5 @@
     });
   </script>
 </body>
+
 </html>

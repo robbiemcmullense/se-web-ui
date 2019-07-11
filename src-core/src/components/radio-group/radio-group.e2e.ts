@@ -24,12 +24,24 @@ describe('RadioGroupComponent', () => {
 });
 
 describe('RadioComponent with an initialized value', () => {
-  it('should mark the first button as selected', async() => {
-    const page = await newE2EPage();
+  let page, buttonElement;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
     await page.setContent('<se-radio-group value="first"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio-group>');
     await page.waitForChanges();
-    const buttonElement = await page.find('se-radio-group se-button#first >>> button');
+    buttonElement = await page.find('se-radio-group se-button#first >>> button');
+  });
+
+  it('should mark the first button as selected', async() => {
     expect(buttonElement).toHaveClass('selected');
+  });
+
+  it('should emit an event with the value of the first button item when clicked on', async() => {
+    const eventSpy = await page.spyOnEvent('didChange');
+    await buttonElement.click();
+    expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail('first');
   });
 });
 
