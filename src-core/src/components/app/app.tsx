@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Watch, State } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-app',
@@ -7,23 +7,14 @@ import { Component, h, Host, Prop, Watch, State } from '@stencil/core';
 })
 export class AppComponent {
 
-  @State() font: string = 'se-font-technical';
-
   /**
    * Define the type of application. updating the option will impact the font used.
    * - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`.
    * - `marketing`: For `se.com` application, the font used will be `Arial Rounded`.
    */
   @Prop() option: 'technical' | 'marketing' = 'technical';
-  @Watch('option') optionDidChange() {
-    if(this.option === 'technical'){
-      this.font = 'se-font-technical';
-    } else {
-      this.font = 'se-font-website';
-    }
-  }
 
   render() {
-    return <Host class={['se-app-body', this.font].join(' ')}><slot></slot></Host>;
+    return <Host class={['se-app-body', this.option === "marketing" ? 'se-font-website' : 'se-font-technical'].join(' ')}><slot></slot></Host>;
   }
 }
