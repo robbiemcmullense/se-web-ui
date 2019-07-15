@@ -491,6 +491,7 @@ export namespace Components {
     * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
     */
     'selected': boolean;
+    'selectedChild': boolean;
   }
   interface SeListItem {
     /**
@@ -1519,6 +1520,7 @@ declare namespace LocalJSX {
     * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
     */
     'selected'?: boolean;
+    'selectedChild'?: boolean;
   }
   interface SeListItem extends JSXBase.HTMLAttributes<HTMLSeListItemElement> {
     /**

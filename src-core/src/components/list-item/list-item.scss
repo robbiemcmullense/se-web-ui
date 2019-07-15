@@ -117,19 +117,24 @@ button {
   button {
     min-height: 32px;
     max-height: 32px;
+    &.selected {
+      @include color('selected-contrast');
+      @include background-color('selected');
+      &:hover, &:focus{
+      background-color: $se-ultra-dark-grey;
+      }
+    }
+    // change the background-color when design team decides
+    &.selectedChild {
+      @include color('selected-contrast');
+      @include background-color('selected');
+      &:hover, &:focus{
+      background-color:$se-ultra-dark-grey;
+      }
+    }
   }
   .nav-content {
     padding-left: 4px;
-  }
-}
-
-:host(.treeview.selected) {
-  @include  color('selected-contrast');
-  @include background-color('selected');
-  button {
-    &:hover, &:focus{
-      background-color: $se-ultra-dark-grey;
-    }
   }
 }
 

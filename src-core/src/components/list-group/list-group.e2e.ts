@@ -59,6 +59,28 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(iconElm).toBeTruthy();
 		expect(iconElm).toEqualText('my group test icon');
 	});
+
+	it('should add a selected class to the button element when the selected property is true', async() => {
+		const page = await renderComponent();
+		await page.$eval('se-list-group', (elm: any) => {
+      elm.selected = true;
+		});
+    await page.waitForChanges();
+    
+    const buttonElm = await page.find('se-list-group >>> button');
+    expect(buttonElm).toHaveClass('selected');
+	});
+	
+	it('should add a selectedChild class to the button element when the selectedChild property is true', async() => {
+		const page = await renderComponent();
+		await page.$eval('se-list-group', (elm: any) => {
+      elm.selectedChild = true;
+		});
+    await page.waitForChanges();
+    
+    const buttonElm = await page.find('se-list-group >>> button');
+    expect(buttonElm).toHaveClass('selectedChild');
+  });
 });
 
 describe('List Group with ID Element', () => {
