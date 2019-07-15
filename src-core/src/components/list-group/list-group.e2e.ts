@@ -71,3 +71,15 @@ describe('List Group with ID Element', () => {
     expect(element.shadowRoot.querySelector('button').getAttribute('id')).toEqual('wc-my-id');
   });
 });
+
+describe('List Group with Child List Items', () => {
+  it('emits an event with the group item name and the selected child item name', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<se-list-group item="Group Title"><se-list-item item="One"></se-list-item><se-list-item item="Two" selected="true"></se-list-item></se-list-group>');
+		await page.waitForChanges();
+		const eventSpy = await page.spyOnEvent('didGroupClick');
+		const element = await page.find('se-list-group >>> button');
+		await element.click();
+		expect(eventSpy).toHaveReceivedEvent();
+  });
+});

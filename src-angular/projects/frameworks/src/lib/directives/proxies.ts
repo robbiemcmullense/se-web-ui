@@ -310,10 +310,12 @@ proxyInputs(SeList, ['canCollapse', 'option']);
 export declare interface SeListGroup extends Components.SeListGroup {}
 @Component({ selector: 'se-list-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
 export class SeListGroup {
+  didGroupClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didGroupClick']);
   }
 }
 proxyInputs(SeListGroup, ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected']);

@@ -20,6 +20,13 @@
 | `selected`    | `selected`     | Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).               | `boolean`                                                      | `undefined` |
 
 
+## Events
+
+| Event           | Description                                       | Type               |
+| --------------- | ------------------------------------------------- | ------------------ |
+| `didGroupClick` | Pass the group data to the parent when collapsed. | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Depends on

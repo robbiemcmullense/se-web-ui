@@ -1508,6 +1508,10 @@ declare namespace LocalJSX {
     */
     'item'?: string;
     /**
+    * Pass the group data to the parent when collapsed.
+    */
+    'onDidGroupClick'?: (event: CustomEvent<any>) => void;
+    /**
     * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
     */
     'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";

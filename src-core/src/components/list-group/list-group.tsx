@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Watch, Element, Listen } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Host, Prop, Watch, Element, Listen } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -46,6 +46,10 @@ export class ListGroupComponent {
    * Defines if list groups can be collapsed, true by default.
    */
   @Prop() canCollapse: boolean = true;
+  /**
+   * Pass the group data to the parent when collapsed.
+   */
+  @Event() didGroupClick: EventEmitter<any>;
 
   @Listen('didSelectedChange') ChildUpdated() {
     this.checkSelected();
@@ -71,11 +75,14 @@ export class ListGroupComponent {
 
   private toggleCollapse(event: any) {
     if (this.option === 'treeview') {
-      if (event.target.innerText === 'arrow2_right' || event.target.innerText === 'arrow2_down') {
+      if (event.target.nodeName === 'SE-ICON') {
         this.collapsed = !this.collapsed;
+      } else {
+        this.didGroupClick.emit();
       }
     } else {
       this.collapsed = !this.collapsed;
+      this.didGroupClick.emit();
     }
   }
 
