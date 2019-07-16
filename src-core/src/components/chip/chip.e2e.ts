@@ -6,7 +6,7 @@ describe('ChipComponent', () => {
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-chip></se-chip>');
-    element = await page.find('se-chip');
+    element = await page.find('se-chip >>> .se-chip');
   });
 
   it('renders', async() => {

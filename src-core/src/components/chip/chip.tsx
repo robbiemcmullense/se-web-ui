@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-chip",
@@ -37,10 +37,10 @@ export class ChipComponent {
 
   render() {
     return (
-      <Host class={[this.color, this.disabled ? 'disabled' : ''].join(' ')}>
+      <div class={['se-chip', this.color, this.disabled ? 'disabled' : ''].join(' ')}>
         <div class="value">{this.value}</div>
         {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
-      </Host>
+      </div>
     );
   }
 }

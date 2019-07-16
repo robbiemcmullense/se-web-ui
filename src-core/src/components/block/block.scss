@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
-:host {
+.se-block {
   z-index: 0;
   position: relative;
   @include display-flex();
@@ -11,53 +11,57 @@
     @include display-flex();
     @include flex-direction(column);
   }
-}
-:host(.flex){
-  width: 100%;
-  height: 100%;
-  @include flex-direction(column);
-}
-:host(.block){
-  width: auto;
-  height: auto;
-}
-:host(.grid){
-  width: 100%;
-  height: 100%;
-}
-:host(.grid-large){
-  grid-column: span 2;
-  grid-row: span 2;
-}
 
-:host(.widget){
-  .block-body {
-    margin: $spacing;
+  &.flex {
+    width: 100%;
+    height: 100%;
+    @include flex-direction(column);
+  }
+
+  &.block {
+    width: auto;
+    height: auto;
+  }
+
+  &.grid {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.grid-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  &.basic {
+    .block-body {
+      margin: 0;
+    }
+  }
+
+  &.widget {
+    .block-body {
+      margin: $spacing;
+    }
+  }
+
+  &.card {
+    .block-body {
+      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+      border-radius: $border-radius-card;
+      margin: $spacing-large;
+    }
+  }
+
+  &.standard {
+    .block-body {
+      @include background-color('standard');
+    }
+  }
+
+  &.alternative {
+    .block-body {
+      @include background-color('alternative');
+    }
   }
 }
-
-
-:host(.card){
-  .block-body {
-    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-    border-radius: $border-radius-card;
-    margin: $spacing-large;
-  }
-}
-
-:host(.alternative) {
-  .block-body {
-    @include background-color('alternative')
-  }
-}
-:host(.standard) {
-  .block-body {
-    @include background-color('standard')
-  }
-}
-:host(.basic) {
-  .block-body {
-    margin: 0;
-  }
-}
-

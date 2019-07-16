@@ -1,26 +1,27 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('BlockComponent', () => {
-  let page, element;
+  let page, hostElement, blockElement;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-block></se-block>');
-    element = await page.find('se-block');
+    hostElement = await page.find('se-block');
+    blockElement = await page.find('se-block >>> .se-block');
   });
 
   it('renders', async() => {
-    expect(element).toBeTruthy();
-    expect(element).toHaveClass('hydrated');
+    expect(hostElement).toBeTruthy();
+    expect(hostElement).toHaveClass('hydrated');
   });
 
   it('should have the basic class since that is the default option', async() => {
-    expect(element).toHaveClass('basic');
+    expect(blockElement).toHaveClass('basic');
   });
 
   it('renders with flex class due to no specified width, along with the default alternative color class', async() => {
-    expect(element).toHaveClass('alternative');
-    expect(element).toHaveClass('flex');
+    expect(blockElement).toHaveClass('alternative');
+    expect(blockElement).toHaveClass('flex');
   });
 
   it('renders a standard class when the color property is set to standard', async() => {
@@ -28,7 +29,7 @@ describe('BlockComponent', () => {
       elm.color = 'standard';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('standard');
+    expect(blockElement).toHaveClass('standard');
   });
 
   it('renders a loading element when the loading property is true', async() => {
@@ -48,7 +49,7 @@ describe('BlockComponent with Container parents set to widget option', () => {
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-container option="widget"><se-block></se-block><se-container>');
-    element = await page.find('se-block');
+    element = await page.find('se-block >>> .se-block');
   });
 
   it('should have the widget class, inherited from its container parent', async() => {
@@ -62,7 +63,7 @@ describe('BlockComponent with Container parents set to card option', () => {
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-container option="card"><se-block></se-block><se-container>');
-    element = await page.find('se-block');
+    element = await page.find('se-block >>> .se-block');
   });
 
   it('should have the card class, inherited from its container parent', async() => {

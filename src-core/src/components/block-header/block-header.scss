@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
-:host{
+.se-block-header {
   position: relative;
   padding: $spacing-small $spacing-small 2px $spacing; // 2px to compensate with border bottom
   font-size: 20px;
@@ -18,11 +18,12 @@
     text-transform: uppercase;
     margin: 8px;
   }
-}
-:host(.card) {
-  border-bottom: none;
-  padding-bottom: $spacing-small;
-  h3, h4, h5 {
-    @include color('primary');
+
+  &.card {
+    border-bottom: none;
+    padding-bottom: $spacing-small;
+    h3, h4, h5 {
+      @include color('primary');
+    }
   }
 }

@@ -1,13 +1,15 @@
 @import "../../theme/theme";
 
 :host {
+  overflow-y: auto;
+}
+.se-block-content {
   overflow-x: hidden;
   padding: $spacing $spacing-large;
   position: relative;
   @include flex(1);
-}
 
-:host(.fill-content) {
-  padding: 0;
+  &.fill-content {
+    padding: 0;
+  }
 }
-
