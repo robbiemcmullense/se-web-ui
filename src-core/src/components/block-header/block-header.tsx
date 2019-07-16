@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-block-header",
@@ -14,11 +14,11 @@ export class BlockHeader {
 
   render() {
     return (
-      <div class={['se-block-header', this.option].join(' ')}>
+      <Host class={this.option}>
         <slot name="start"></slot>
         <h4 class="flex"><slot></slot></h4>
         <slot name="end"></slot>
-      </div>
+      </Host>
     )
   }
 }

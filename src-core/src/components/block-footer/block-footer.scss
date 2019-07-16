@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
-.se-block-footer {
+:host {
   position: relative;
   padding: $spacing-small;
   font-size: 20px;
@@ -12,12 +12,11 @@
   .flex{
     @include flex();
   }
+}
+:host(.card) {
+  border-top: none;
+}
 
-  &.card {
-    border-top: none;
-  }
-
-  &.column {
-    @include flex-direction(column);
-  }
+:host(.column) {
+  @include flex-direction(column);
 }
