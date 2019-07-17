@@ -13,13 +13,3 @@
     @include flex();
   }
 }
-
-:host(.alternative){
-  @include background-color('alternative');
-  @include  color('primary');
-}
-
-:host(.primary){
-  @include background-color('primary');
-  @include  color('primary-contrast');
-}

@@ -20,6 +20,6 @@ import { newE2EPage } from '@stencil/core/testing';
       elm.color = 'light';
     });
     await page.waitForChanges();	
-    expect(element).toHaveClasses(['horizontal', 'light']);	
+    expect(element.shadowRoot.querySelector('.se-divider')).toHaveClasses(['horizontal', 'light']);	
   });
 });

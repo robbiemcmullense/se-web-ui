@@ -1,10 +1,9 @@
 @import "../../theme/theme";
 
-:host{
+.se-dialog-header {
   position: relative;
   padding: $spacing-small $spacing-small $spacing-small $spacing-large; // 2px to compensate with border bottom
   font-size: 20px;
-  // @include display-flex();
   @include align-items(center);
   @include display-flex();
 
@@ -17,16 +16,16 @@
     text-transform: uppercase;
     margin: 8px;
   }
-}
 
-:host(.alternative){
-  @include background-color('alternative');
-  @include  color('primary');
-  margin-bottom: -$spacing-large;
-}
+  &.primary {
+    min-height: 44px;
+    @include background-color('primary');
+    @include color('primary-contrast');
+  }
 
-:host(.primary){
-  min-height: 44px;
-  @include background-color('primary');
-  @include  color('primary-contrast');
+  &.alternative {
+    @include background-color('alternative');
+    @include color('primary');
+    margin-bottom: -$spacing-large;
+  }
 }

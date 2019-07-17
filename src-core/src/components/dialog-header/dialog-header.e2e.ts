@@ -11,11 +11,11 @@ describe('DialogHeaderComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
-    
+    expect(element).toHaveClass('hydrated');
   });
 
   it('renders with the primary class to indicate the default primary color property', async() => {
-    expect(element).toHaveClasses(['hydrated', 'primary']);
+    expect(element.shadowRoot.querySelector('.se-dialog-header')).toHaveClass('primary');
   });
 
   it('renders with an h4 element with a flex class and a slot element with the "end" attribute', async() => {
