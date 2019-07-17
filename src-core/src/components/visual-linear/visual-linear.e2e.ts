@@ -23,7 +23,7 @@ describe('VisualLinearComponent', () => {
   });
 
   it('renders with inline class as that is the default option', async() => {
-    expect(element).toHaveClasses(['hydrated', 'inline']);
+    expect(element.shadowRoot.querySelector('div')).toHaveClass('inline');
   });
 
   it('renders without a flex class because there is a specified width', async() => {
@@ -31,7 +31,7 @@ describe('VisualLinearComponent', () => {
       elm.option = 'stacked';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('stacked');
+    expect(element.shadowRoot.querySelector('div')).toHaveClass('stacked');
   });
 
   it('renders the label and value when provided', async() => {

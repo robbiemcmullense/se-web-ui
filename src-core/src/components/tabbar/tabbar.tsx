@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-tabbar',
@@ -21,7 +21,7 @@ export class TabbarComponent {
 
   render() {
     return (
-      <Host class={`tab-${this.color}`}>
+      <div class={`tab-${this.color}`}>
         <div class={["d-flex-main", `opt-${this.option}`].join(' ')}>
           <div class="nav-left-wrapper centered shadowed">
             <slot name="start" />
@@ -33,7 +33,7 @@ export class TabbarComponent {
             <slot name="end" />
           </div>
         </div>
-      </Host>
+      </div>
     );
   }
 }

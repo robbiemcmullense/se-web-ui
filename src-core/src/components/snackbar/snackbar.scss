@@ -5,6 +5,54 @@
 	bottom: 20px;
 	display: none;
 	align-self: center;
+	
+	.information {
+		@include background-color('focus');
+	}
+	
+	.success {
+		@include background-color('primary');
+	}
+	
+	.warning {
+		background-color: $se-honeysuckle-orange;
+	}
+	
+	.error {
+		background-color: $se-red;
+	}
+	
+	.snackbar {
+		height: 48px;
+		line-height: 48px;
+		margin-left: 5px;
+		@include display-flex();
+		@include  color('primary-contrast');
+	}
+	
+	.se-icon {
+		font-size: 24px;
+		line-height: 48px;
+		font-family: 'se-icon';
+		padding-right: 5px;
+		margin-right: -10px;
+	}
+	
+	.message {
+		font-size: 16px;
+		padding-right: 16px;
+		margin-left: 10px;
+	}
+	
+	.close {
+		cursor: pointer;
+		font-size: 14px;
+		border: 1px solid $se-white;
+		padding: 8px 16px;
+		margin: 8px;
+		margin-left: 16px;
+		line-height: 16px;
+	}	
 }
 
 :host(.show) {
@@ -12,50 +60,3 @@
 	@include slideUp();
 }
 
-:host(.information) {
-	@include background-color('focus');
-}
-
-:host(.success) {
-	@include background-color('primary');
-}
-
-:host(.warning) {
-	background-color: $se-honeysuckle-orange;
-}
-
-:host(.error) {
-	background-color: $se-red;
-}
-
-.snackbar {
-	height: 48px;
-	line-height: 48px;
-	margin-left: 5px;
-	@include display-flex();
-	@include  color('primary-contrast');
-}
-
-.se-icon {
-	font-size: 24px;
-	line-height: 48px;
-	font-family: 'se-icon';
-	padding-right: 5px;
-	margin-right: -10px;
-}
-
-.message {
-	font-size: 16px;
-	padding-right: 16px;
-	margin-left: 10px;
-}
-
-.close {
-	cursor: pointer;
-	font-size: 14px;
-	border: 1px solid $se-white;
-	padding: 8px 16px;
-	margin: 8px;
-	margin-left: 16px;
-	line-height: 16px;
-}

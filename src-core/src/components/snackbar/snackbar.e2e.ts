@@ -1,20 +1,22 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('SnackbarComponent', () => {
-  let page, element;
+  let page, hostElement, element;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-snackbar></se-snackbar>');
-    element = await page.find('se-snackbar');
+    hostElement = await page.find('se-snackbar');
+    element = await page.find('se-snackbar >>> div');
   });
 
   it('renders', async() => {
-    expect(element).toBeTruthy();
+    expect(hostElement).toBeTruthy();
+    expect(hostElement).toHaveClass('hydrated');
   });
 
   it('renders with an information class by default', async() => {
-    expect(element).toHaveClasses(['hydrated', 'information']);
+    expect(element).toHaveClass('information');
   });
 
   it('should have an icon element by default', async() => {
@@ -38,7 +40,7 @@ describe('SnackbarComponent', () => {
     });
     await page.waitForChanges();
 
-    expect(element).toHaveClass('show');
+    expect(hostElement).toHaveClass('show');
   });
 
   it('emits the didClose event when dismissing the snackbar', async() => {

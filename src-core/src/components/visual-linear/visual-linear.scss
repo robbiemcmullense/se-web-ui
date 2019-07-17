@@ -56,29 +56,29 @@
 	.linear-value + .linear-label {
 		font-size: 14px;
 	}
-}
 
-:host(.inline) {
-	.se-visual-linear {
-		flex-direction: row;
-		justify-content: center;
-		@include align-items(start);
+	.inline {
+		&.se-visual-linear {
+			flex-direction: row;
+			justify-content: center;
+			@include align-items(start);
+		}
+	
+		svg {
+			margin-right: $spacing-large;
+		}
+	
+		.linear-value {
+			margin-right: $spacing-small;
+		}
 	}
 
-	svg {
-		margin-right: $spacing-large;
-	}
-
-	.linear-value {
-		margin-right: $spacing-small;
-	}
-}
-
-:host(.stacked) {
-	.se-visual-linear {
-		flex-direction: column-reverse;
-	}
-	.linear-value + .linear-label {
-		float: right;
+	.stacked {
+		&.se-visual-linear {
+			flex-direction: column-reverse;
+		}
+		.linear-value + .linear-label {
+			float: right;
+		}
 	}
 }

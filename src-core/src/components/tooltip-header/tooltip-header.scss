@@ -1,7 +1,7 @@
 @import "../../theme/theme";
 :host {
-    position: relative;
-  }
+  position: relative;
+
   .tooltip-header{
     @include flex();
     @include display-flex();
@@ -14,5 +14,4 @@
     font-family: 'se-icon';
     padding-right: 5px;
   }
-  
-  
+}

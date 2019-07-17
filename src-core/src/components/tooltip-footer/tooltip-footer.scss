@@ -1,14 +1,15 @@
 @import "../../theme/theme";
 :host {
-    position: relative;
+  position: relative;
+  @include display-flex();
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include align-items(center);
+  font-size: 14px;
+  line-height:17px;
+
+  .flex {
     @include display-flex();
     @include flex-direction(row);
-    @include justify-content(space-between);
-    @include align-items(center);
-    font-size: 14px;
-    line-height:17px;  
-    .flex{
-      @include display-flex();
-      @include flex-direction(row);
-    }
   }
+}
