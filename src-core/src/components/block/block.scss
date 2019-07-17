@@ -10,6 +10,34 @@
     @include flex();
     @include display-flex();
     @include flex-direction(column);
+
+    &.basic {
+     
+        margin: 0;
+     
+    }
+
+    &.widget {
+    
+        margin: $spacing;
+    
+    }
+
+    &.card {
+     
+        box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+        border-radius: $border-radius-card;
+        margin: $spacing-large;
+    
+    }
+
+    &.standard {
+      @include background-color('standard');
+    }
+
+    &.alternative {
+      @include background-color('alternative');
+    }
   }
 }
 :host(.flex){
@@ -30,33 +58,6 @@
   grid-row: span 2;
 }
 
-:host(.widget){
-  .block-body {
-    margin: $spacing;
-  }
-}
 
 
-:host(.card){
-  .block-body {
-    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-    border-radius: $border-radius-card;
-    margin: $spacing-large;
-  }
-}
 
-:host(.alternative) {
-  .block-body {
-    @include background-color('alternative')
-  }
-}
-:host(.standard) {
-  .block-body {
-    @include background-color('standard')
-  }
-}
-:host(.basic) {
-  .block-body {
-    margin: 0;
-  }
-}

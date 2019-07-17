@@ -19,7 +19,7 @@ describe('BlockHeaderComponent', () => {
       elm.option = 'card';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('card');
+    expect(element.shadowRoot.querySelector('.se-block-header')).toHaveClass('card');
   });
 
   it('renders with an h3 element with a flex class and a slot element with the "end" attribute', async() => {
