@@ -17,7 +17,7 @@ export class SeAbout {
 proxyInputs(SeAbout, ['appTitle', 'copyright', 'domain', 'imageUrl', 'link', 'version']);
 
 export declare interface SeApp extends Components.SeApp {}
-@Component({ selector: 'se-app', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+@Component({ selector: 'se-app', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option'] })
 export class SeApp {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
@@ -25,6 +25,7 @@ export class SeApp {
     this.el = r.nativeElement;
   }
 }
+proxyInputs(SeApp, ['option']);
 
 export declare interface SeAuthentication extends Components.SeAuthentication {}
 @Component({ selector: 'se-authentication', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'link', 'logo', 'version'] })
