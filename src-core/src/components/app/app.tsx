@@ -10,11 +10,11 @@ export class AppComponent {
   /**
    * Define the type of application. updating the option will impact the font used.
    * - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`.
-   * - `marketing`: For `se.com` application, the font used will be `Arial Rounded`.
+   * - `website`: For `se.com` application, the font used will be `Arial Rounded`.
    */
-  @Prop() option: 'technical' | 'marketing' = 'technical';
+  @Prop() option: 'technical' | 'website' = 'technical';
 
   render() {
-    return <Host class={['se-app-body', this.option === "marketing" ? 'se-font-website' : 'se-font-technical'].join(' ')}><slot></slot></Host>;
+    return <Host class={['se-app-body', this.option === "website" ? 'se-font-website' : 'se-font-technical'].join(' ')}><slot></slot></Host>;
   }
 }

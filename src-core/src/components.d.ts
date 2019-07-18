@@ -39,7 +39,7 @@ export namespace Components {
     /**
     * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `marketing`: For `se.com` application, the font used will be `Arial Rounded`.
     */
-    'option': 'technical' | 'marketing';
+    'option': 'technical' | 'website';
   }
   interface SeAuthentication {
     /**
@@ -1060,7 +1060,7 @@ declare namespace LocalJSX {
     /**
     * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `marketing`: For `se.com` application, the font used will be `Arial Rounded`.
     */
-    'option'?: 'technical' | 'marketing';
+    'option'?: 'technical' | 'website';
   }
   interface SeAuthentication extends JSXBase.HTMLAttributes<HTMLSeAuthenticationElement> {
     /**
