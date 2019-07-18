@@ -2,12 +2,12 @@
 
 :host {
   overflow-x: hidden;
+  position: relative;
+  @include flex(1);
   
   .se-block-content {
     padding: $spacing $spacing-large;
-    position: relative;
-    @include flex(1);
-  
+
     &.fill-content {
       padding: 0;
     }

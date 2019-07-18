@@ -1,4 +1,4 @@
-import {Component, h, Host, State, Method, Event, Element, EventEmitter, Listen, Prop} from "@stencil/core";
+import {Component, h, State, Method, Event, Element, EventEmitter, Listen, Prop} from "@stencil/core";
 @Component({
   tag: "se-tooltip",
   styleUrl: "tooltip.scss",
@@ -85,14 +85,14 @@ export class TooltipComponent {
 
   render() {
     return (
-      <Host class={this.position}>
+      <div class={this.position}>
         <div onClick={this.action == "click"? ev => {this._toggle(ev)}: () => {}}>
           <slot name="tooltip" />
         </div>
         <div class={`${this.opened ? "show" : ""} tooltip`}>
           <slot />
         </div>
-      </Host>
+      </div>
     )
   }
 }
