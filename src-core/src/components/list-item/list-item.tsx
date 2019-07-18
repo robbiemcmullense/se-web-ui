@@ -61,8 +61,8 @@ export class ListItemComponent {
 
   render() {
     return (
-      <Host class={[this.selected ? "selected" : '', this.option].join(' ')}>
-        <button style={{ paddingLeft: `${this.padding}px` }}>
+      <Host class={this.option}>
+        <button class={{"selected": this.selected}} style={{ paddingLeft: `${this.padding}px` }}>
           {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
           {!!this.icon ?
             <div class="nav-icon">

@@ -86,7 +86,7 @@ export class ButtonComponent {
    */
   @Method()
   async setGrouped() {
-    this.grouped = true
+    this.grouped = true;
   }
 
   @Listen('click')

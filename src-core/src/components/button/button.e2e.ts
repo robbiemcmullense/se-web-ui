@@ -76,17 +76,4 @@ describe('ButtonComponent Methods and Events', () => {
     await page.waitForChanges();
     expect(element).toHaveClass('grouped');
   });
-
-  it('sends button data when clicked and adds the selected class to the child button element', async() => {
-    const eventSpy = await page.spyOnEvent('didClick');
-    await element.callMethod('setGrouped');
-    await page.waitForChanges();
-    await element.click();
-
-    expect(element.shadowRoot.querySelector('button')).toHaveClass('selected');
-    expect(eventSpy).toHaveReceivedEvent();
-    expect(eventSpy).toHaveReceivedEventDetail({
-      selected: true,
-      value: 'My Test Value'});
-  });
 });

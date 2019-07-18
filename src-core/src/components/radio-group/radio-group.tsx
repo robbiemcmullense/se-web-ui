@@ -12,6 +12,12 @@ export class RadioGroupComponent {
    */
   @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
   /**
+   * Defines the height of each button in the group.
+   * `small` is the default setting, rendering a 32px height and a 14px font size.
+   * `nano` sets the height to 24px and the font size to 12px.
+   */
+  @Prop() size: 'small' | 'nano' = 'small';
+  /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
   @Prop({mutable: true}) disabled: boolean = false;
@@ -55,6 +61,7 @@ export class RadioGroupComponent {
       if (this.disabled) {
         button.disabled = true;
       }
+      button.size = this.size;
       button.color = this.color;
     });
   }
