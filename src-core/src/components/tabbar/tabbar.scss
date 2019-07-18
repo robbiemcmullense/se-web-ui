@@ -117,7 +117,7 @@
   }
   .nav-center-wrapper{
     overflow-y: hidden;
-    overflow-x: -moz-scrollbars-none;
+    scrollbar-width: none;
     overflow-x: auto;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {

@@ -308,15 +308,17 @@ export class SeList {
 proxyInputs(SeList, ['canCollapse', 'option']);
 
 export declare interface SeListGroup extends Components.SeListGroup {}
-@Component({ selector: 'se-list-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
+@Component({ selector: 'se-list-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild'] })
 export class SeListGroup {
+  didGroupClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didGroupClick']);
   }
 }
-proxyInputs(SeListGroup, ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected']);
+proxyInputs(SeListGroup, ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild']);
 
 export declare interface SeListItem extends Components.SeListItem {}
 @Component({ selector: 'se-list-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
@@ -357,7 +359,7 @@ proxyMethods(SeRadio, ['setRequired']);
 proxyInputs(SeRadio, ['color', 'disabled', 'label', 'required', 'selected', 'value']);
 
 export declare interface SeRadioGroup extends Components.SeRadioGroup {}
-@Component({ selector: 'se-radio-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'value'] })
+@Component({ selector: 'se-radio-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'size', 'value'] })
 export class SeRadioGroup {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -367,7 +369,7 @@ export class SeRadioGroup {
     proxyOutputs(this, this.el, ['didChange']);
   }
 }
-proxyInputs(SeRadioGroup, ['color', 'disabled', 'value']);
+proxyInputs(SeRadioGroup, ['color', 'disabled', 'size', 'value']);
 
 export declare interface SeSidemenu extends Components.SeSidemenu {}
 @Component({ selector: 'se-sidemenu', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['label'] })

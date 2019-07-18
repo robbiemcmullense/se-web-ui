@@ -491,6 +491,7 @@ export namespace Components {
     * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
     */
     'selected': boolean;
+    'selectedChild': boolean;
   }
   interface SeListItem {
     /**
@@ -571,6 +572,10 @@ export namespace Components {
     * Optional property that defines if the button is disabled.  Set to `false` by default.
     */
     'disabled': boolean;
+    /**
+    * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
+    */
+    'size': 'small' | 'nano';
     /**
     * Defines the selected values of the array.
     */
@@ -1504,6 +1509,10 @@ declare namespace LocalJSX {
     */
     'item'?: string;
     /**
+    * Pass the group data to the parent when collapsed.
+    */
+    'onDidGroupClick'?: (event: CustomEvent<any>) => void;
+    /**
     * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
     */
     'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
@@ -1511,6 +1520,7 @@ declare namespace LocalJSX {
     * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
     */
     'selected'?: boolean;
+    'selectedChild'?: boolean;
   }
   interface SeListItem extends JSXBase.HTMLAttributes<HTMLSeListItemElement> {
     /**
@@ -1599,6 +1609,10 @@ declare namespace LocalJSX {
     * Passes the selected button value to the parent component when clicking on a button in the group.
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
+    */
+    'size'?: 'small' | 'nano';
     /**
     * Defines the selected values of the array.
     */

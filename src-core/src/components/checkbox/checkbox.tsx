@@ -88,13 +88,6 @@ export class CheckboxComponent {
   emitEvent() {
     if (!this.disabled) {
       this.checked = !this.checked;
-      if (this.option === 'switch' && this.checked) {
-        this.el.classList.add('selected');
-      } else {
-        setTimeout(() => {
-          this.el.classList.remove('selected');
-        }, 200)
-      }
       let checkboxObject = { value: this.value, selected: this.checked };
       this.didChange.emit(checkboxObject);
     }
@@ -104,9 +97,6 @@ export class CheckboxComponent {
     this.setElementId();
     if (this.selected) {
       this.checked = this.selected;
-      if (this.option === 'switch') {
-        this.el.classList.add('selected');
-      }
     }
   }
 
