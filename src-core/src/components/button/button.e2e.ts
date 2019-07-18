@@ -1,24 +1,22 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('ButtonComponent', () => {
-  let page, element;
+  let page, hostElement, buttonElement;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-button></se-button>');
-    element = await page.find('se-button');
+    hostElement = await page.find('se-button');
+    buttonElement = await page.find('se-button >>> button');
   });
 
   it('renders', async() => {
-    expect(element).toBeTruthy();
-  });
-
-  it('renders with the flat class by default', async() => {
-    expect(element).toHaveClasses(['flat', 'hydrated']);
+    expect(hostElement).toBeTruthy();
+    expect(hostElement).toHaveClass('hydrated');
   });
 
   it('renders the child button component with flat, small, and standard classes by default reflecting its default option, size, and color', async() => {
-    expect(element.shadowRoot.querySelector('button')).toHaveClasses(['flat', 'small', 'standard']);
+    expect(buttonElement).toHaveClasses(['flat', 'small', 'standard']);
   });
 
   it('applies the raised, medium, and alternative classes to the parent and child button elements when the option, size, and color are set to those values', async() => {
@@ -28,8 +26,7 @@ describe('ButtonComponent', () => {
       elm.color = 'alternative';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('raised');
-    expect(element.shadowRoot.querySelector('button')).toHaveClasses(['alternative', 'medium', 'raised']);
+    expect(buttonElement).toHaveClasses(['alternative', 'medium', 'raised']);
   });
 
   it('renders the hasIcon class when the element has an icon property', async() => {
@@ -37,7 +34,7 @@ describe('ButtonComponent', () => {
       elm.icon = 'close';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('hasIcon');
+    expect(buttonElement).toHaveClass('hasIcon');
   });
 });
 
@@ -56,9 +53,9 @@ describe('Button with ID Element', () => {
     const page = await newE2EPage();
     await page.setContent('<se-button id="my-id">My Button</se-button>');
 
-    const element = await page.find('se-button');
-    expect(element.shadowRoot.querySelector('button')).toHaveAttribute('id');
-    expect(element.shadowRoot.querySelector('button').getAttribute('id')).toEqual('wc-my-id');
+    const element = await page.find('se-button >>> button');
+    expect(element).toHaveAttribute('id');
+    expect(element.getAttribute('id')).toEqual('wc-my-id');
   });
 });
 

@@ -3,41 +3,64 @@
 
 :host {
   @include flex-direction(column);
+
   .group-item{
     overflow: hidden;
     padding-bottom: 0;
   }
-}
 
-:host(.classic), :host(.nav) {
-  button {
-    min-height: 47px;
-    max-width: 100%;
+  .se-list-group {
+    &.classic, &.nav {
+      button {
+        min-height: 47px;
+        max-width: 100%;
+      }
+    }
+
+    &.treeview {
+      button {
+        flex-direction: row-reverse;
+      }
+      .nav-content {
+        padding-left: 0;
+      }
+    }
+
+    &.headline {
+      .nav-content {
+        font-size: 16px;
+      }
+      button{
+        height: 47px;
+        background-color: $se-ultra-light-grey-2;
+      }
+    }
+
+    &.collapsed {
+      .group-item {
+        display: none;
+      }
+    }
+
+    button.selected {
+      @include color('selected-contrast');
+      @include background-color('selected');
+      &:hover, &:focus{
+      background-color: $se-ultra-dark-grey;
+      }
+    }
+    // change the background-color when design team decides
+    button.selectedChild {
+      @include color('selected-contrast');
+      @include background-color('selected');
+      &:hover, &:focus{
+      background-color:$se-ultra-dark-grey;
+      }
+    }
+
+    se-icon {
+      padding-top: 2px;
+      margin-top: 2px;
+    }
   }
 }
-
-:host(.collapsed) {
-  .group-item {
-    display: none;
-  }
-}
-
-:host(.treeview) {
-  button {
-    flex-direction: row-reverse;
-  }
-  .nav-content {
-    padding-left: 0;
-  }
-}
-
-:host(.headline) {
-  .nav-content {
-    font-size: 16px;
-  }
-  button{
-    height: 47px;
-    background-color: $se-ultra-light-grey-2;
-  }
-}
-

@@ -138,13 +138,11 @@ export class ButtonComponent {
 
   render() {
     return (
-      <Host
-        class={
-          [!!this.icon ? 'hasIcon' : '',
-          this.hasChild ? 'hasChild' : '',
-          this.grouped ? 'grouped' : '',
-          this.option].join(' ')}>
-        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type} class={[this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')} onClick={() => this.toggle()}>
+      <Host class={{'grouped': this.grouped}}>
+        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type}
+          class={
+            [!!this.icon ? 'hasIcon' : '', this.hasChild ? 'hasChild' : '', this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')}
+          onClick={() => this.toggle()}>
           {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
           {this.hasChild ? <span class="text"><slot></slot></span> : ''}
         </button>
