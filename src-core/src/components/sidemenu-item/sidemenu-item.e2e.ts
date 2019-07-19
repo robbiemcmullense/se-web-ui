@@ -1,20 +1,22 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('SidemenuItemComponent', () => {
-  let page, element;
+  let page, hostElement, sidemenuItemElement;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-sidemenu-item></se-sidemenu-item>');
-    element = await page.find('se-sidemenu-item');
+    hostElement = await page.find('se-sidemenu-item');
+    sidemenuItemElement = await page.find('se-sidemenu-item >>> div');
   });
 
   it('renders', async () => {
-    expect(element).toBeTruthy();
+    expect(hostElement).toBeTruthy();
+    expect(hostElement).toHaveClass('hydrated');
   });
 
   it('renders with a menuitem-hidden class by default as it is not active', async () => {
-    expect(element).toHaveClasses(['hydrated', 'navitem-hidden']);
+    expect(sidemenuItemElement).toHaveClass('navitem-hidden');
   });
 
   it('removes the navitem-hidden class when it is set to active', async () => {
@@ -22,6 +24,6 @@ describe('SidemenuItemComponent', () => {
       elm.active = true;
     });
     await page.waitForChanges();
-    expect(element).not.toHaveClass('navitem-hidden');
+    expect(sidemenuItemElement).not.toHaveClass('navitem-hidden');
   });
 });
