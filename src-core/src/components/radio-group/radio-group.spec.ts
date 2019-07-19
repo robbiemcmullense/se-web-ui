@@ -18,4 +18,8 @@ describe('RadioGroupComponent', () => {
 	it('should be the standard color by default', () => {
 		expect(radioGroup.color).toEqual('standard');
 	});
+
+	it('should have a small size by default', () => {
+		expect(radioGroup.size).toEqual('small');
+	});
 });

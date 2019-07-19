@@ -61,7 +61,6 @@ import { newE2EPage } from '@stencil/core/testing';
   it('should render the icon equal to the icon property when provided', async() => {
     await page.$eval('se-list-item', (elm: any) => {
       elm.option = 'nav';
-      elm.selected = true;
       elm.icon = 'my test icon';
 		});
     await page.waitForChanges();
@@ -69,6 +68,16 @@ import { newE2EPage } from '@stencil/core/testing';
     const iconElm = await page.find('se-list-item >>> .nav-icon se-icon');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('my test icon');
+  });
+
+  it('should add a selected class to the button element when the selected property is true', async() => {
+    await page.$eval('se-list-item', (elm: any) => {
+      elm.selected = true;
+		});
+    await page.waitForChanges();
+    
+    const buttonElm = await page.find('se-list-item >>> button');
+    expect(buttonElm).toHaveClass('selected');
   });
 });
 

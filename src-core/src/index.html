@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <se-app>
+  <se-app option="marketing">
     <!-- <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
       <div>
         <se-form-field label="Username" required="true" option="stacked">
@@ -290,7 +290,7 @@
             <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true">
             </se-checkbox>
             <se-checkbox id="toggle-switch-el" option="switch" label="Switch Label"></se-checkbox>
-            <se-checkbox selected="true" option="switch" disabled="true" label="Switch Label"></se-checkbox>
+            <se-checkbox selected="true" option="switch" disabled="true" label="Disabled Switch Label"></se-checkbox>
             <se-divider></se-divider>
             <ul>
               <li id="radio-message">selected radio icon button: <span></span></li>
@@ -304,7 +304,7 @@
               <li>Example Checkbox and Radio components:</li>
             </ul>
             <se-checkbox id="checkbox-primary" value="primary" label="Checkbox Primary"></se-checkbox>
-            <se-checkbox value="warn" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
+            <se-checkbox value="secondary" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
             <se-radio id="radio-primary" value="radio-primary" label="Radio Primary" selected="true"></se-radio>
             <se-radio value="radio-secondary" label="Radio Secondary" color="secondary"></se-radio>
             <se-divider></se-divider>
@@ -312,6 +312,19 @@
               <li id="checkbox-button-message">selected radio buttons: <span>second</span></li>
             </ul>
             <se-radio-group id="btnGroup1" value="second">
+              <se-button value="first">Check1</se-button>
+              <se-button value="second">Check2</se-button>
+              <se-button value="third">Check3</se-button>
+            </se-radio-group>
+            <se-divider></se-divider>
+            <ul>
+              <li>Nano-sized button groups:</li>
+            </ul>
+            <se-radio-group size="nano">
+              <se-button value="left" icon="arrow2_left"></se-button>
+              <se-button value="right" icon="arrow2_right"></se-button>
+            </se-radio-group>
+            <se-radio-group size="nano" value="second">
               <se-button value="first">Check1</se-button>
               <se-button value="second">Check2</se-button>
               <se-button value="third">Check3</se-button>
@@ -672,5 +685,4 @@
     });
   </script>
 </body>
-
 </html>

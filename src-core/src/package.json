@@ -11,7 +11,7 @@
   "types": "types/components.d.ts",
   "collection": "collection/collection-manifest.json",
   "peerDependencies": {
-    "@se/fonts": "^1.0.0",
+    "@se/fonts": "^1.1.0",
     "@se/icons": "^3.2.0"
   }
 }
