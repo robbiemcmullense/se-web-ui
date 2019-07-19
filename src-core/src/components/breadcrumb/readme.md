@@ -12,11 +12,17 @@
 | `value`  | `value`   | Defines the selected value of the breadcrumb group. | `string` | `undefined` |
 
 
-## Events
+## Methods
 
-| Event       | Description                                                                                      | Type               |
-| ----------- | ------------------------------------------------------------------------------------------------ | ------------------ |
-| `didChange` | Passes the selected breadcrumb value to the parent component when clicking on a breadcrumb item. | `CustomEvent<any>` |
+### `updateChildren() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------

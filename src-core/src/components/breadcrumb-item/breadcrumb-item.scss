@@ -1,6 +1,9 @@
 @import "../../theme/theme";
 
 :host {
+  div {
+    display: inline-block;
+  }
   .breadcrumb-item {
     display: inline;
     color: $se-anthracite-grey;
@@ -25,12 +28,12 @@
       background-color: inherit;
     }
   }
-}
 
-:host(.selected) {
-  .breadcrumb-item {
-    cursor: default;
-    text-decoration: none;
-    color: $se-light-grey;
+  .selected {
+    .breadcrumb-item {
+      cursor: default;
+      text-decoration: none;
+      color: $se-light-grey;
+    }
   }
 }

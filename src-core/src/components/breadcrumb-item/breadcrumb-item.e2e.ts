@@ -34,7 +34,7 @@ describe('BreadcrumbItemComponent', () => {
       elm.isLast = true;
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('selected');
+    expect(element.shadowRoot.querySelector('div')).toHaveClass('selected');
     expect(listItemElement.getAttribute('aria-current')).toEqual('page');
   });
 });

@@ -50,7 +50,7 @@ describe('RadioComponent with an initialized value', () => {
 
   it('should emit an event with the value of the first button item when clicked on', async() => {
     const eventSpy = await page.spyOnEvent('didChange');
-    await buttonElement.click();
+    await firstButtonElement.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail('first');
   });
