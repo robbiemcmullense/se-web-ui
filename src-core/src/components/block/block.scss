@@ -4,41 +4,6 @@
   z-index: 0;
   position: relative;
   @include display-flex();
-
-  .block-body {
-    overflow: auto;
-    @include flex();
-    @include display-flex();
-    @include flex-direction(column);
-
-    &.basic {
-     
-        margin: 0;
-     
-    }
-
-    &.widget {
-    
-        margin: $spacing;
-    
-    }
-
-    &.card {
-     
-        box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-        border-radius: $border-radius-card;
-        margin: $spacing-large;
-    
-    }
-
-    &.standard {
-      @include background-color('standard');
-    }
-
-    &.alternative {
-      @include background-color('alternative');
-    }
-  }
 }
 :host(.flex){
   width: 100%;
@@ -59,5 +24,39 @@
 }
 
 
+.block-body {
+  overflow: auto;
+  @include flex();
+  @include display-flex();
+  @include flex-direction(column);
+
+  &.basic {
+
+      margin: 0;
+
+  }
+
+  &.widget {
+
+      margin: $spacing;
+
+  }
+
+  &.card {
+
+      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+      border-radius: $border-radius-card;
+      margin: $spacing-large;
+
+  }
+
+  &.standard {
+    @include background-color('standard');
+  }
+
+  &.alternative {
+    @include background-color('alternative');
+  }
+}
 
 

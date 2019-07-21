@@ -6,73 +6,73 @@
   z-index: 100;
   background-color: transparent !important;
   line-height: 1.4;
-
-  .small {
-    .dialog {
-      width: 400px;
-      max-height: 800px;
-    }
-  }
-
-  .medium {
-    .dialog {
-      width: 550px;
-      max-height: 800px;
-    }
-  }
-
-  .large {
-    .dialog {
-      width: 800px;
-      max-height: 900px;
-    }
-  }
-
-  .fill {
-    .dialog {
-      width: 100%;
-      max-height: 100%;
-    }
-  }
-
-  .dialog-wrapper {
-    @include absolute();
-    @include display-flex();
-    @include align-items(center);
-    @include justify-content(center);
-  }
-  
-  .dialog {
-    z-index: 150;
-    position: relative;
-    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
-    @include animated();
-    @include background-color("alternative");
-    @include  color("alternative-contrast");
-    @include display-flex();
-    @include flex-direction(column);
-    &.show-dialog {
-      animation-name: fadeIn;
-    }
-    &.hide-dialog {
-      animation-name: fadeOut;
-    }
-  }
-  
-  .dialog-background {
-    @include absolute();
-    @include animated();
-    background-color: rgba(white, 0.6);
-    z-index: 120;
-    &.show-dialog {
-      animation-name: fadeIn;
-    }
-    &.hide-dialog {
-      animation-name: fadeOut;
-    }
-  }
 }
 
 :host(.show-dialog) {
   display: block !important;
 }
+.small {
+  .dialog {
+    width: 400px;
+    max-height: 800px;
+  }
+}
+
+.medium {
+  .dialog {
+    width: 550px;
+    max-height: 800px;
+  }
+}
+
+.large {
+  .dialog {
+    width: 800px;
+    max-height: 900px;
+  }
+}
+
+.fill {
+  .dialog {
+    width: 100%;
+    max-height: 100%;
+  }
+}
+
+.dialog-wrapper {
+  @include absolute();
+  @include display-flex();
+  @include align-items(center);
+  @include justify-content(center);
+}
+
+.dialog {
+  z-index: 150;
+  position: relative;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+  @include animated();
+  @include background-color("alternative");
+  @include  color("alternative-contrast");
+  @include display-flex();
+  @include flex-direction(column);
+  &.show-dialog {
+    animation-name: fadeIn;
+  }
+  &.hide-dialog {
+    animation-name: fadeOut;
+  }
+}
+
+.dialog-background {
+  @include absolute();
+  @include animated();
+  background-color: rgba(white, 0.6);
+  z-index: 120;
+  &.show-dialog {
+    animation-name: fadeIn;
+  }
+  &.hide-dialog {
+    animation-name: fadeOut;
+  }
+}
+

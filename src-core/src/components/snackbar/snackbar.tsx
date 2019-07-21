@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Prop, Watch } from "@stencil/core";
 
-const SHOW_SNACKBAR = 'show';
+const SHOW_SNACKBAR = 'show-snackbar';
 
 @Component({
   tag: "se-snackbar",

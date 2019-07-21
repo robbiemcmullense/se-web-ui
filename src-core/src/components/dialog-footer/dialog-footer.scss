@@ -9,7 +9,8 @@
   @include align-items(center);
   @include display-flex();
 
-  .flex{
-    @include flex();
-  }
+}
+
+.flex{
+  @include flex();
 }

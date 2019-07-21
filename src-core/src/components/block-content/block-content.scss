@@ -4,12 +4,12 @@
   overflow-x: hidden;
   position: relative;
   @include flex(1);
-  
-  .se-block-content {
-    padding: $spacing $spacing-large;
+}
 
-    &.fill-content {
-      padding: 0;
-    }
+.se-block-content {
+  padding: $spacing $spacing-large;
+
+  &.fill-content {
+    padding: 0;
   }
 }

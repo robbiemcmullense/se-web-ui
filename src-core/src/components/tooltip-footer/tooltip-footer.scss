@@ -7,9 +7,8 @@
   @include align-items(center);
   font-size: 14px;
   line-height:17px;
-
-  .flex {
-    @include display-flex();
-    @include flex-direction(row);
-  }
+}
+.flex {
+  @include display-flex();
+  @include flex-direction(row);
 }
