@@ -28,7 +28,8 @@ div {
 .checkbox {
   @include align-items(center);
   .checkbox-container {
-    position: relative;
+		position: relative;
+		padding-left: $spacing-large;
     @include typology('small');
     margin: $spacing;
     margin-right: 0;

@@ -66,8 +66,8 @@ describe('RadioComponent with an initialized disabled property', () => {
   });
 
   it('should render a label for each child component', async() => {
-    const radioOne = await page.find('se-radio-group se-radio#first >>> .radio-label');
-    const radioTwo = await page.find('se-radio-group se-radio#second >>> .radio-label');
+    const radioOne = await page.find('se-radio-group se-radio#first >>> label');
+    const radioTwo = await page.find('se-radio-group se-radio#second >>> label');
     expect(radioOne.innerText).toEqual('Radio One');
     expect(radioTwo.innerText).toEqual('Radio Two');
   });

@@ -40,7 +40,7 @@ describe('SnackbarComponent', () => {
     });
     await page.waitForChanges();
 
-    expect(hostElement).toHaveClass('show');
+    expect(hostElement).toHaveClass('show-snackbar');
   });
 
   it('emits the didClose event when dismissing the snackbar', async() => {

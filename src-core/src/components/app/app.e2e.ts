@@ -15,7 +15,7 @@ describe('AppComponent', () => {
   });
 
   it('should render a div element with an "se-app-body" class', async() => {
-    expect(element.shadowRoot.querySelector('div')).toHaveClass('se-app-body');
+    expect(element.querySelector('div')).toHaveClass('se-app-body');
   });
 });
 

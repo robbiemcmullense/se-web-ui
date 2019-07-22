@@ -76,13 +76,13 @@ export class RadioComponent {
 
   render() {
     return (
-      <div>
+      <div class="se-radio">
         <label class="radio-container" data-disabled={this.disabled}>
+          {this.label}
+          {this.required ? <span class="required">*</span> : ''}
           <input type="radio" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()} />
           <span class="checkdot" data-color={this.color}></span>
-        </label>
-        <span class="radio-label">{this.label}</span>
-        {this.required ? <span class="required">*</span> : ''}
+        </label>    
       </div>
     );
   }
