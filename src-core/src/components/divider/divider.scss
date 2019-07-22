@@ -6,10 +6,14 @@ $divider-inset-margin: 80px;
 .se-divider {
   display: block;
   margin: 0;
-  border-color: $divider-color;
+
   &.horizontal {
+    width: 100%;
     border-top-width: $divider-width;
     border-top-style: solid;
+  }
+  &.vertical {
+    height: 100%;
   }
   &.vertical,
   &.inset {
@@ -17,7 +21,7 @@ $divider-inset-margin: 80px;
     border-right-style: solid;
   }
   &.standard {
-    @include border-color('standard');
+    border-color: $se-super-light-grey;
   }
   &.alternative {
     @include border-color('alternative');
