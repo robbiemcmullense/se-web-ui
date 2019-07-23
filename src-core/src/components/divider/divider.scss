@@ -9,16 +9,12 @@ $divider-inset-margin: 80px;
 
   &.horizontal {
     width: 100%;
-    border-top-width: $divider-width;
-    border-top-style: solid;
-  }
-  &.vertical {
-    height: 100%;
+    outline: 1px solid $se-super-light-grey;
   }
   &.vertical,
   &.inset {
-    border-right-width: $divider-width;
-    border-right-style: solid;
+    height: 100%;
+    outline: 1px solid $se-super-light-grey;
   }
   &.standard {
     border-color: $se-super-light-grey;
