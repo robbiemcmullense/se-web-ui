@@ -1,9 +1,5 @@
 @import "../../theme/theme";
 
-:host {
-
-}
-
 div {
   display: inline-block;
 }
@@ -15,14 +11,7 @@ div {
 
 .checkbox-label {
   font-weight: 300;
-  padding-left: 6px;
-}
-
-@-moz-document url-prefix() {
-  .checkbox-label {
-    margin-left: -6px;
-    padding-left: 0;
-  }
+  padding-left: $spacing;
 }
 
 .checkbox {

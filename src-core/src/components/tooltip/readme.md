@@ -15,10 +15,11 @@
 
 ## Events
 
-| Event      | Description                                     | Type               |
-| ---------- | ----------------------------------------------- | ------------------ |
-| `didClose` | Event emitted when the tooltip has been closed. | `CustomEvent<any>` |
-| `didOpen`  | Event emitted when the tooltip has been opened. | `CustomEvent<any>` |
+| Event           | Description                                        | Type               |
+| --------------- | -------------------------------------------------- | ------------------ |
+| `closeTooltips` | Closes the tooltip when another tooltip is opened. | `CustomEvent<any>` |
+| `didClose`      | Event emitted when the tooltip has been closed.    | `CustomEvent<any>` |
+| `didOpen`       | Event emitted when the tooltip has been opened.    | `CustomEvent<any>` |
 
 
 ## Methods

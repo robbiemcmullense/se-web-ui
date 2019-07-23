@@ -1708,6 +1708,10 @@ declare namespace LocalJSX {
     */
     'action'?: "click" | "hover";
     /**
+    * Closes the tooltip when another tooltip is opened.
+    */
+    'onCloseTooltips'?: (event: CustomEvent<any>) => void;
+    /**
     * Event emitted when the tooltip has been closed.
     */
     'onDidClose'?: (event: CustomEvent<any>) => void;

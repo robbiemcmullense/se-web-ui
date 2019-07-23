@@ -10,9 +10,9 @@
     width: -moz-max-content;
     width: -webkit-max-content;
     width: max-content;
-    height: fit-content;
+
     visibility: hidden;
-    @include absolute();
+    position: absolute;
     padding: $spacing $spacing;
     font-size: 12px;
     display:inline-table;

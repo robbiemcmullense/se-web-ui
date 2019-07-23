@@ -438,11 +438,12 @@ export declare interface SeTooltip extends Components.SeTooltip {}
 export class SeTooltip {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
+  closeTooltips!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didOpen', 'didClose']);
+    proxyOutputs(this, this.el, ['didOpen', 'didClose', 'closeTooltips']);
   }
 }
 proxyMethods(SeTooltip, ['open', 'close']);
