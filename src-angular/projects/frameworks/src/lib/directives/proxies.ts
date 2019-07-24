@@ -82,6 +82,29 @@ export class SeBlockHeader {
 }
 proxyInputs(SeBlockHeader, ['option']);
 
+export declare interface SeBreadcrumb extends Components.SeBreadcrumb {}
+@Component({ selector: 'se-breadcrumb', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['value'] })
+export class SeBreadcrumb {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyMethods(SeBreadcrumb, ['updateChildren']);
+proxyInputs(SeBreadcrumb, ['value']);
+
+export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
+@Component({ selector: 'se-breadcrumb-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['href', 'isLast', 'value'] })
+export class SeBreadcrumbItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(SeBreadcrumbItem, ['href', 'isLast', 'value']);
+
 export declare interface SeButton extends Components.SeButton {}
 @Component({ selector: 'se-button', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['caption', 'color', 'disabled', 'icon', 'iconColor', 'option', 'selected', 'size', 'type', 'value'] })
 export class SeButton {

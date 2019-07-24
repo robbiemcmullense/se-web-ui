@@ -37,7 +37,7 @@ export namespace Components {
   }
   interface SeApp {
     /**
-    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `marketing`: For `se.com` application, the font used will be `Arial Rounded`.
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
     */
     'option': 'technical' | 'website';
   }
@@ -126,6 +126,27 @@ export namespace Components {
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
     */
     'option': 'card' | 'widget' | 'basic';
+  }
+  interface SeBreadcrumb {
+    'updateChildren': () => Promise<void>;
+    /**
+    * Defines the selected value of the breadcrumb group.
+    */
+    'value': string;
+  }
+  interface SeBreadcrumbItem {
+    /**
+    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
+    */
+    'href': string;
+    /**
+    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+    */
+    'isLast': boolean;
+    /**
+    * Defines the value of your breadcrumb item.
+    */
+    'value': string;
   }
   interface SeButton {
     /**
@@ -779,6 +800,18 @@ declare global {
     new (): HTMLSeBlockHeaderElement;
   };
 
+  interface HTMLSeBreadcrumbElement extends Components.SeBreadcrumb, HTMLStencilElement {}
+  var HTMLSeBreadcrumbElement: {
+    prototype: HTMLSeBreadcrumbElement;
+    new (): HTMLSeBreadcrumbElement;
+  };
+
+  interface HTMLSeBreadcrumbItemElement extends Components.SeBreadcrumbItem, HTMLStencilElement {}
+  var HTMLSeBreadcrumbItemElement: {
+    prototype: HTMLSeBreadcrumbItemElement;
+    new (): HTMLSeBreadcrumbItemElement;
+  };
+
   interface HTMLSeButtonElement extends Components.SeButton, HTMLStencilElement {}
   var HTMLSeButtonElement: {
     prototype: HTMLSeButtonElement;
@@ -996,6 +1029,8 @@ declare global {
     'se-block-content': HTMLSeBlockContentElement;
     'se-block-footer': HTMLSeBlockFooterElement;
     'se-block-header': HTMLSeBlockHeaderElement;
+    'se-breadcrumb': HTMLSeBreadcrumbElement;
+    'se-breadcrumb-item': HTMLSeBreadcrumbItemElement;
     'se-button': HTMLSeButtonElement;
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
@@ -1063,7 +1098,7 @@ declare namespace LocalJSX {
   }
   interface SeApp extends JSXBase.HTMLAttributes<HTMLSeAppElement> {
     /**
-    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `marketing`: For `se.com` application, the font used will be `Arial Rounded`.
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
     */
     'option'?: 'technical' | 'website';
   }
@@ -1152,6 +1187,26 @@ declare namespace LocalJSX {
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
     */
     'option'?: 'card' | 'widget' | 'basic';
+  }
+  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {
+    /**
+    * Defines the selected value of the breadcrumb group.
+    */
+    'value'?: string;
+  }
+  interface SeBreadcrumbItem extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement> {
+    /**
+    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
+    */
+    'href'?: string;
+    /**
+    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+    */
+    'isLast'?: boolean;
+    /**
+    * Defines the value of your breadcrumb item.
+    */
+    'value'?: string;
   }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
     /**
@@ -1786,6 +1841,8 @@ declare namespace LocalJSX {
     'se-block-content': SeBlockContent;
     'se-block-footer': SeBlockFooter;
     'se-block-header': SeBlockHeader;
+    'se-breadcrumb': SeBreadcrumb;
+    'se-breadcrumb-item': SeBreadcrumbItem;
     'se-button': SeButton;
     'se-checkbox': SeCheckbox;
     'se-chip': SeChip;
