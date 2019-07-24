@@ -18,4 +18,9 @@ describe('SidemenuComponent', () => {
 	it('should be closed by default', () => {
 		expect(sidemenu.open).toBeFalsy();
 	});
+
+	it('should open the sidemenu when the toggle method is called', () => {
+		sidemenu.toggle();
+		expect(sidemenu.open).toBeTruthy();
+	});
 });

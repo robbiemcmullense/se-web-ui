@@ -111,7 +111,7 @@ export class SidemenuComponent {
         <div class="d-flex-center">
           <div class="d-flex-center flex">
             <span class="menu-sidenav" onClick={() => this.toggle()}>
-              <se-icon size="large">test_results_nok</se-icon>
+              <se-icon size="large" color="primary">test_results_nok</se-icon>
             </span>
             <h3 class="header-title">{this.label}</h3>
           </div>
@@ -123,6 +123,9 @@ export class SidemenuComponent {
               {this.renderList()}
             </se-list>
             <se-icon-lifeison color="standard"/>
+            <div class="external-link">
+              <se-link url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
+            </div>         
           </div>
           <se-divider option="vertical"></se-divider>
           <se-block>
