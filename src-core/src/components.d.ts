@@ -129,10 +129,6 @@ export namespace Components {
   }
   interface SeBreadcrumb {
     'updateChildren': () => Promise<void>;
-    /**
-    * Defines the selected value of the breadcrumb group.
-    */
-    'value': string;
   }
   interface SeBreadcrumbItem {
     /**
@@ -143,10 +139,6 @@ export namespace Components {
     * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
     */
     'isLast': boolean;
-    /**
-    * Defines the value of your breadcrumb item.
-    */
-    'value': string;
   }
   interface SeButton {
     /**
@@ -1188,12 +1180,7 @@ declare namespace LocalJSX {
     */
     'option'?: 'card' | 'widget' | 'basic';
   }
-  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {
-    /**
-    * Defines the selected value of the breadcrumb group.
-    */
-    'value'?: string;
-  }
+  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {}
   interface SeBreadcrumbItem extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement> {
     /**
     * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
@@ -1203,10 +1190,6 @@ declare namespace LocalJSX {
     * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
     */
     'isLast'?: boolean;
-    /**
-    * Defines the value of your breadcrumb item.
-    */
-    'value'?: string;
   }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
     /**

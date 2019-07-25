@@ -11,7 +11,4 @@ describe('BreadcrumbComponent', () => {
 		expect(breadcrumb).toBeTruthy();
 	});
 
-	it('should not have an initially defined value', () => {
-		expect(breadcrumb.value).toBeUndefined();
-	});
 });
