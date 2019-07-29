@@ -142,6 +142,10 @@ export namespace Components {
   }
   interface SeButton {
     /**
+    * Optional property that defines if the button display as block in it's container.
+    */
+    'block': boolean;
+    /**
     * Optional property that defines if the button has a caption or tooltip text.
     */
     'caption': string;
@@ -242,6 +246,10 @@ export namespace Components {
   }
   interface SeChip {
     /**
+    * Optional property that defines if the button display as block in it's container.
+    */
+    'block': boolean;
+    /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose': boolean;
@@ -253,6 +261,10 @@ export namespace Components {
     * Indicates whether or not the chip is disabled.  Set to `false` by default.
     */
     'disabled': boolean;
+    /**
+    * The text you want to display in your chip.
+    */
+    'selected': boolean;
     /**
     * The text you want to display in your chip.
     */
@@ -1193,6 +1205,10 @@ declare namespace LocalJSX {
   }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
     /**
+    * Optional property that defines if the button display as block in it's container.
+    */
+    'block'?: boolean;
+    /**
     * Optional property that defines if the button has a caption or tooltip text.
     */
     'caption'?: string;
@@ -1289,6 +1305,10 @@ declare namespace LocalJSX {
   }
   interface SeChip extends JSXBase.HTMLAttributes<HTMLSeChipElement> {
     /**
+    * Optional property that defines if the button display as block in it's container.
+    */
+    'block'?: boolean;
+    /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose'?: boolean;
@@ -1304,6 +1324,10 @@ declare namespace LocalJSX {
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
     'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * The text you want to display in your chip.
+    */
+    'selected'?: boolean;
     /**
     * The text you want to display in your chip.
     */

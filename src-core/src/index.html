@@ -53,7 +53,7 @@
                   <se-block-content>
                     <se-chip tabindex="0" color="standard" value="Std Chip"></se-chip>
                     <se-chip tabindex="0" color="standard" disabled="true" value="Std Chip"></se-chip>
-                    <span style="padding: 20px; background-color: #9fa0a4;">
+                    <span style="background-color: #9fa0a4;">
                       <se-chip tabindex="0" color="alternative" value="Alt Chip"></se-chip>
                       <se-chip tabindex="0" color="alternative" disabled="true" value="Alt Chip"></se-chip>
                     </span>
@@ -237,8 +237,8 @@
             </div>
           </se-block-header>
           <se-block-content>
-            <se-button option="flat">standard flat</se-button>
-            <se-button id="raisedBtn" option="raised">standard raised</se-button>
+            <se-button option="flat" block>standard flat</se-button>
+            <se-button id="raisedBtn" option="raised" block="true">standard raised</se-button>
             <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
             <se-button option="flat" color="primary">primary</se-button>
             <se-button option="flat" color="secondary">secondary</se-button>
@@ -277,11 +277,21 @@
             <ul>
               <li id="chip-info"></li>
             </ul>
-            <se-chip id="se-chip" can-close="true" value="Chip Std"></se-chip>
+            <se-chip block id="se-chip" can-close="true" value="Chip Std block"></se-chip>
+            <se-chip id="se-chip" can-close="true" disabled="true" value="Chip Std selected" selected ></se-chip>
             <se-chip id="se-chip" can-close="true" disabled="true" value="Chip Std"></se-chip>
-            <div style="padding:8px; background-color:#9fa0a4;">
+            <div style="background-color:#9fa0a4;">
+              <se-chip value="selected" can-close="true" color="alternative" selected></se-chip>
               <se-chip value="Chip Alt" can-close="true" color="alternative"></se-chip>
               <se-chip value="Chip Alt" can-close="true" disabled="true" color="alternative"></se-chip>
+            </div>
+            <se-chip block id="se-chip"  value="Chip Std block"></se-chip>
+            <se-chip id="se-chip"  disabled="true" value="Chip Std selected" selected ></se-chip>
+            <se-chip id="se-chip"  disabled="true" value="Chip Std"></se-chip>
+            <div style="background-color:#9fa0a4;">
+              <se-chip value="selected"  color="alternative" selected></se-chip>
+              <se-chip value="Chip Alt"  color="alternative"></se-chip>
+              <se-chip value="Chip Alt"  disabled="true" color="alternative"></se-chip>
             </div>
             <se-divider></se-divider>
             <se-link url="http://google.com">Link to Google</se-link>

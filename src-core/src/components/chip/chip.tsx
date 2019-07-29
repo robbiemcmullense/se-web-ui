@@ -11,10 +11,15 @@ export class ChipComponent {
    * The text you want to display in your chip.
    */
   @Prop() value: string;
+
   /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
   @Prop() color: 'standard' | 'alternative' = 'standard';
+  /**
+   * The text you want to display in your chip.
+   */
+  @Prop() selected: boolean;
   /**
    * Indicates whether or not the chip has a close button.  Set to `false` by default.
    */
@@ -23,6 +28,11 @@ export class ChipComponent {
    * Indicates whether or not the chip is disabled.  Set to `false` by default.
    */
   @Prop() disabled: boolean = false;
+  /**
+   * Optional property that defines if the button display as block in it's container.
+   */
+  @Prop() block: boolean;
+
   @Element() el: HTMLElement;
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
@@ -37,10 +47,10 @@ export class ChipComponent {
 
   render() {
     return (
-      <div class={['se-chip', this.color, this.disabled ? 'disabled' : ''].join(' ')}>
-        <div class="value">{this.value}</div>
+      <button class={['se-chip', this.color, this.disabled ? 'disabled' : '', this.block ? 'display-Block' : '', this.selected ? 'selected' : '', !this.canClose? 'clickable' : ''].join(' ')}>
+        <span class="value">{this.value}</span>
         {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
-      </div>
+      </button>
     );
   }
 }

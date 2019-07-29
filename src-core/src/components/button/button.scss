@@ -4,6 +4,15 @@
   min-width: 0;
   display: inline-flex;
 }
+:host(.display-Block){
+  display: flex;
+  button{
+    width: 100%;
+    margin-top: $spacing;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 
 button {
   padding: 0 $spacing;
@@ -24,6 +33,8 @@ button {
     @include typology("base");
     padding: 0 $spacing;
   }
+
+
   .se-icon {
     margin: 0;
     display: inline-block;
@@ -75,7 +86,7 @@ button {
   &.standard {
     @include color("standard-contrast");
     @include background-color("standard");
-    &:hover {
+    &:hover,&:not(.selected):focus {
       @include color("hover-standard-contrast");
       @include background-color("hover-standard");
     }
@@ -95,13 +106,13 @@ button {
         background-color: transparent;
         border-color: $se-light-grey;
       }
-    }  
+    }
   }
 
   &.alternative {
     @include color("alternative-contrast");
     @include background-color("alternative");
-    &:hover {
+    &:hover,&:not(.selected):focus {
       @include color("hover-alternative-contrast");
       @include background-color("hover-alternative");
     }
@@ -128,7 +139,7 @@ button {
   &.primary {
     @include color("primary-contrast");
     @include background-color("primary");
-    &:hover {
+    &:hover, &:not(.selected):focus {
       @include color("hover-primary-contrast");
       @include background-color("hover-primary");
     }
@@ -143,12 +154,12 @@ button {
       &.selected {
         @include border-color("selected");
       }
-      &:hover {
+      &:hover, &:not(.selected):focus {
         @include background-color("primary", 0.3);
       }
-      &:focus {
-        @include border-color("focus");
-      }
+      // &:focus {
+      //   @include border-color("focus");
+      // }
       &[disabled] {
         background-color: transparent;
         color: #8ce599;
@@ -160,7 +171,7 @@ button {
   &.secondary {
     @include color("secondary-contrast");
     @include background-color("secondary");
-    &:hover {
+    &:hover, &:not(.selected):focus {
       @include color("hover-secondary-contrast");
       @include background-color("hover-secondary");
     }
@@ -175,12 +186,12 @@ button {
       &.selected {
         @include border-color("selected");
       }
-      &:hover {
+      &:hover, &:not(.selected):focus {
         @include background-color("secondary", 0.3);
       }
-      &:focus { 
-        @include border-color("focus");
-      }
+      // &:focus {
+      //   @include border-color("focus");
+      // }
       &[disabled] {
         background-color: transparent;
         color: $se-sky-blue;
@@ -195,21 +206,17 @@ button {
     @include background-color("selected");
   }
 
-  &:focus,
-  &.outline:focus {
-    @include color("focus-contrast");
-    @include background-color("focus");
-  }
+  // &:focus,
+  // &.outline:focus {
+  //   @include color("focus-contrast");
+  //   @include background-color("focus");
+  // }
 
   &.login,
   &.signup {
     height: 32px;
     font-size: 18px;
     line-height: 22px;
-    width: 100%;
-    margin-top: $spacing;
-    margin-left: 0;
-    margin-right: 0;
   }
 
   &.hasIcon {
@@ -234,7 +241,7 @@ button {
     height: 56px;
     cursor: pointer;
     @include circleShadow(4px);
-    &:hover {
+    &:hover, &:focus {
       @include circleShadow(8px);
     }
     &.alternative{
@@ -253,7 +260,7 @@ button {
     @include circleShadow(4px);
     @include background-color("alternative");
     @include color("alternative-contrast");
-    &:hover {
+    &:hover, &:focus {
       @include circleShadow(4px);
       @include background-color("alternative");
     }
