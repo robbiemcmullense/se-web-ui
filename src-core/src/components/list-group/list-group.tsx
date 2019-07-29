@@ -74,7 +74,7 @@ export class ListGroupComponent {
 
   private toggleCollapse(event: any) {
     if (this.option === 'treeview') {
-      if (event.target.nodeName === 'SE-ICON') {
+      if (this.isTreeViewTarget(event)) {
         this.collapsed = !this.collapsed;
       } else {
         this.didGroupClick.emit();
@@ -83,6 +83,10 @@ export class ListGroupComponent {
       this.collapsed = !this.collapsed;
       this.didGroupClick.emit();
     }
+  }
+
+  private isTreeViewTarget(event: any) {
+    return event.target.nodeName === 'SE-ICON' || event.target.className.includes('se-icon');
   }
 
   setButtonId() {

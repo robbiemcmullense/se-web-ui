@@ -24,6 +24,14 @@
     .nav-content {
       padding-left: 0;
     }
+    // Align right-caret icon on MS Edge.
+    // Will remove when Chromium-based Edge browser is released.
+    @supports (-ms-ime-align:auto) {
+      se-icon {
+        line-height: inherit;
+        top: 0;
+      }
+    }
   }
 
   &.headline {
