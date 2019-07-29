@@ -4,7 +4,7 @@ $chip-height: 30px; // with border it's 32px.
 
 .se-chip {
   display: inline-flex;
-  margin: $spacing-small;
+  margin: $spacing;
   height: $chip-height;
   padding-left: $chip-height / 4;
   padding-right: $chip-height / 4;
@@ -15,14 +15,7 @@ $chip-height: 30px; // with border it's 32px.
   outline: none;
   border-radius: 16px;
   @include align-items(center);
-  &.display-Block{
-    display: flex;
-    width: 100%;
-    margin-left: 0;
-  }
-  &.clickable{
-    cursor: pointer;
-  }
+
   .se-icon {
     cursor: pointer;
     font-size: 30px;
@@ -31,9 +24,6 @@ $chip-height: 30px; // with border it's 32px.
     &[data-hide] {
       display: none;
     }
-  }
-  .value{
-    flex: 1;
   }
 
   &.standard {
@@ -54,24 +44,21 @@ $chip-height: 30px; // with border it's 32px.
   }
 
   &.standard:active,
-  &.standard.selected,
-  &.alternative:active,
-  &.alternative.selected {
+  &.alternative:active {
     @include color('selected-contrast');
     @include background-color('selected');
     border: 1px solid $se-dark-grey;
   }
 
-  &.standard:not(.selected):focus,
-  &.alternative:not(.selected):focus {
-    background-color: rgba(203,203,203,0.6);
+  &.standard:focus,
+  &.alternative:focus {
+    @include color('focus-contrast');
+    @include background-color('focus');
   }
 
   &.disabled,
   &.disabled:hover,
   &.disabled:focus {
-    cursor: default;
-
     background-color: inherit;
     color: $se-light-grey;
     border: 1px solid $se-light-grey;
