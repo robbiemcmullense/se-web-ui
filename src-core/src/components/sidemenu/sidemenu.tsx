@@ -1,4 +1,4 @@
-import {Component, h, Method, Element, State, Prop} from '@stencil/core';
+import { Component, h, Method, Element, State, Prop } from '@stencil/core';
 
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
@@ -11,6 +11,7 @@ const HIDE_MENU = 'hide-menu';
 export class SidemenuComponent {
   backdropEl?: HTMLElement;
   menuInnerEl?: HTMLElement;
+  menuItemInnerEl?: HTMLElement;
   @Element() el: HTMLElement;
 
   @State() open: boolean = false;
@@ -32,6 +33,7 @@ export class SidemenuComponent {
       this.addAnimation(null);
     } else {
       // Remove css classes
+      this.menuItemInnerEl.style.display = 'none';
       this.removeAnimation(() => {
         this.el.classList.remove(SHOW_MENU);
       });
@@ -57,13 +59,13 @@ export class SidemenuComponent {
     this.selectedItem = undefined;
   }
 
-  noSelectedItem(){
-    return !this.items.find( x => x === this.selectedItem)
+  noSelectedItem() {
+    return !this.items.find(x => x === this.selectedItem)
   }
 
   private setActive(item: any): void {
-    if (this.menuInnerEl) {
-      this.menuInnerEl.style.width = !item.childElementCount ? '250px' : '80%';
+    if (this.menuItemInnerEl) {
+      this.menuItemInnerEl.style.width = !item.childElementCount ? '0px' : '60%';
     }
     if (this.items.length) {
       this.items.forEach((item: any) => {
@@ -82,8 +84,9 @@ export class SidemenuComponent {
     setTimeout(() => {
       this.menuInnerEl.classList.remove(SHOW_MENU);
       this.backdropEl.classList.remove(SHOW_MENU);
+      this.menuItemInnerEl.style.display = 'flex';
       callback && callback();
-    }, 500);
+    }, 200);
   }
 
   private removeAnimation(callback) {
@@ -93,20 +96,20 @@ export class SidemenuComponent {
       this.menuInnerEl.classList.remove(HIDE_MENU);
       this.backdropEl.classList.remove(HIDE_MENU);
       callback && callback();
-    }, 500);
+    }, 200);
   }
 
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item class={{'hide-nav-icon': !item.childElementCount}} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item}/>,
+        <se-list-item class={{ 'hide-nav-icon': !item.childElementCount }} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} />,
       ]
     })
   }
 
   render() {
     return [
-      <div class="menu-background animated" onClick={() => this.toggle()} ref={el => this.backdropEl = el}/>,
+      <div class="menu-background animated d-flex-row flex" onClick={() => this.toggle()} ref={el => this.backdropEl = el} />,
       <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
         <div class="d-flex-center">
           <div class="d-flex-center flex">
@@ -116,23 +119,23 @@ export class SidemenuComponent {
             <h3 class="header-title">{this.label}</h3>
           </div>
         </div>
-        <se-divider/>
+        <se-divider />
         <div class="d-flex flex">
           <div class="listNavItems">
             <se-list option="nav">
               {this.renderList()}
             </se-list>
-            <se-icon-lifeison color="standard"/>
+            <se-icon-lifeison color="standard" />
             <div class="external-link">
               <se-link url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
-            </div>         
+            </div>
           </div>
           <se-divider option="vertical"></se-divider>
-          <se-block>
-            <slot />
-          </se-block>
         </div>
-      </div>
+      </div>,
+      <se-block class="menu-item-container" ref={el => this.menuItemInnerEl = el}>
+        <slot />
+      </se-block>
     ]
   }
 }

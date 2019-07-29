@@ -10,36 +10,10 @@
   width: 100%;
   z-index: 20;
   background-color: transparent !important;
-  se-link{
-    padding: 16px;
-  }
-}
-.full-content {
-  @include absolute();
 }
 
-.actual-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
-  @include background-color('alternative');
-  @include  color('alternative-contrast');
-  z-index: 30;
-
-  &.show-menu {
-    animation-name: slideInLeft;
-  }
-  &.hide-menu {
-    animation-name: slideOutLeft;
-  }
-}
-
-
-.animated {
-  @include animated();
+:host(.show-menu) {
+  display: block;
 }
 
 .menu-background {
@@ -58,16 +32,31 @@
   }
 }
 
-.menu-button {
-  width: 100%;
-  margin: 0;
-  padding: 10px;
+.actual-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+  @include background-color('alternative');
+  @include color('alternative-contrast');
+  z-index: 30;
+
+  &.show-menu {
+    animation-name: slideInLeft;
+  }
+  &.hide-menu {
+    animation-name: slideOutLeft;
+  }
 }
 
+.animated {
+  @include animated();
+}
 
-.image-logo {
-  height: 45px;
-  margin: 0 auto;
+.full-content {
+  @include absolute();
 }
 
 .menu-sidenav {
@@ -79,12 +68,14 @@
 .flex {
   @include flex(1);
 }
+
 .d-flex {
   width: 100%;
   @include display-flex();
   @include align-items(left);
   @include flex-direction(row);
 }
+
 .d-flex-center {
   width: 100%;
   @include display-flex();
@@ -107,18 +98,23 @@
 }
 
 .header-title {
-  padding-left: 18px;
+  padding-left: $spacing-large;
   font-size: 30px;
   font-weight: 500;
   line-height: 20px;
   margin: 0;
 }
 
-.external-link {
-  @include background-color('standard');
-  padding: $spacing $spacing-large;
+.menu-item-container {
+  left: 250px;
+  width: 0;
+  z-index: 30;
 }
 
-:host(.show-menu) {
-  display: block;
+.external-link {
+  height: 60px;
+  @include background-color('standard');
+  @include display-flex();
+  @include justify-content(center);
+  @include align-items(center);
 }

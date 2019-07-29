@@ -6,7 +6,7 @@
     margin: $spacing-small;
     line-height: 17px;
     display: inline-block;
-		@include  color('secondary');
+		@include color('secondary');
 		text-decoration: none;
 		&.external {
 			&:before {
