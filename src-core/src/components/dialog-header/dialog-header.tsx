@@ -16,7 +16,7 @@ export class DialogHeaderComponent {
   render() {
     return (
       <div class={['se-dialog-header', this.color].join(' ')}>
-        <h4 class="flex"><slot></slot></h4>
+        <div class="flex middle"><slot></slot></div>
         <slot name="end"></slot>
       </div>
     )

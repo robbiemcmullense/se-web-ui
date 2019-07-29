@@ -86,7 +86,6 @@ a {
 body, html{
   line-height: 1.4;
   @include typology('p');
-  font-weight: normal;
   color: $off-black;
   // Header Styles
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -137,6 +136,11 @@ small { font-size: 75%; }
     font-size: 1.2rem;
   }
 }
+
+.uppercase{
+  text-transform: uppercase;
+}
+
 body, html {
   ::-webkit-scrollbar {
     height: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);

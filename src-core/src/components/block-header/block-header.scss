@@ -13,14 +13,14 @@
     @include flex();
   }
 
-  div.centered {
+  div.middle {
     @include typology('h4');
-    margin: 8px;  
+    margin: 8px;
   }
 
   &.card {
     border-bottom: none;
-    padding-bottom: $spacing-small;    
+    padding-bottom: $spacing-small;
   }
 }
 

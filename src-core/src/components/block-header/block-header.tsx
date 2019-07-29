@@ -16,7 +16,7 @@ export class BlockHeader {
     return (
       <div class={['se-block-header', this.option].join(' ')}>
         <slot name="start"></slot>
-        <div class="flex centered"><slot></slot></div>
+        <div class="flex middle"><slot></slot></div>
         <slot name="end"></slot>
       </div>
     )
