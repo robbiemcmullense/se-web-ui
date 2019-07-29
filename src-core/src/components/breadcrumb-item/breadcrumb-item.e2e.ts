@@ -17,7 +17,7 @@ describe('BreadcrumbItemComponent', () => {
   });
 
   it('should have an aria-current value of false, and text in the anchor element equal to the value property', async() => {
-    expect(linkElement.innerText).toEqual('Click Me!');
+    expect(element.innerText).toEqual('Click Me!');
   });
 
   it('should have an href attribute on the anchor element equal to the defined href value on the host element', async() => {

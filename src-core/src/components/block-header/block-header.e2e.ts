@@ -29,6 +29,6 @@ describe('BlockHeaderComponent', () => {
     expect(startElm).toBeTruthy();
     expect(endElm).toBeTruthy();
     expect(divElm).toBeTruthy();
-    expect(divElm).toHaveClasses(['flex', 'centered']);
+    expect(divElm).toHaveClasses(['flex', 'middle']);
   });
 });
