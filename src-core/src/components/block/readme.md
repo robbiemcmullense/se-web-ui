@@ -22,16 +22,18 @@
 
 ### Used by
 
- - [se-sidemenu](../sidemenu)
+ - [se-banner-item](..\banner-item)
+ - [se-sidemenu](..\sidemenu)
 
 ### Depends on
 
-- [se-loading](../loading)
+- [se-loading](..\loading)
 
 ### Graph
 ```mermaid
 graph TD;
   se-block --> se-loading
+  se-banner-item --> se-block
   se-sidemenu --> se-block
   style se-block fill:#f9f,stroke:#333,stroke-width:4px
 ```

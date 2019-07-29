@@ -16,8 +16,8 @@
 
 ### Used by
 
- - [se-authentication](../authentication)
- - [se-sidemenu](../sidemenu)
+ - [se-authentication](..\authentication)
+ - [se-sidemenu](..\sidemenu)
 
 ### Graph
 ```mermaid

@@ -75,6 +75,30 @@ export namespace Components {
     */
     'version': string;
   }
+  interface SeBanner {}
+  interface SeBannerItem {
+    /**
+    * Sets the body text for your banner item.
+    */
+    'content': string;
+    /**
+    * Sets the footer text for your banner item button.
+    */
+    'footer': string;
+    /**
+    * Sets the header text for your banner item.
+    */
+    'header': string;
+    /**
+    * Sets the background image for your banner item.
+    */
+    'imageUrl': string;
+    'setActive': (value: boolean) => Promise<void>;
+    /**
+    * Sets the width of your banner item.
+    */
+    'width': string;
+  }
   interface SeBlock {
     /**
     * Optional property that defines the background color of the block. Default setting is `alternative` (white).
@@ -776,6 +800,18 @@ declare global {
     new (): HTMLSeAuthenticationElement;
   };
 
+  interface HTMLSeBannerElement extends Components.SeBanner, HTMLStencilElement {}
+  var HTMLSeBannerElement: {
+    prototype: HTMLSeBannerElement;
+    new (): HTMLSeBannerElement;
+  };
+
+  interface HTMLSeBannerItemElement extends Components.SeBannerItem, HTMLStencilElement {}
+  var HTMLSeBannerItemElement: {
+    prototype: HTMLSeBannerItemElement;
+    new (): HTMLSeBannerItemElement;
+  };
+
   interface HTMLSeBlockElement extends Components.SeBlock, HTMLStencilElement {}
   var HTMLSeBlockElement: {
     prototype: HTMLSeBlockElement;
@@ -1025,6 +1061,8 @@ declare global {
     'se-about': HTMLSeAboutElement;
     'se-app': HTMLSeAppElement;
     'se-authentication': HTMLSeAuthenticationElement;
+    'se-banner': HTMLSeBannerElement;
+    'se-banner-item': HTMLSeBannerItemElement;
     'se-block': HTMLSeBlockElement;
     'se-block-content': HTMLSeBlockContentElement;
     'se-block-footer': HTMLSeBlockFooterElement;
@@ -1135,6 +1173,29 @@ declare namespace LocalJSX {
     * The version number you want to display.
     */
     'version'?: string;
+  }
+  interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {}
+  interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
+    /**
+    * Sets the body text for your banner item.
+    */
+    'content'?: string;
+    /**
+    * Sets the footer text for your banner item button.
+    */
+    'footer'?: string;
+    /**
+    * Sets the header text for your banner item.
+    */
+    'header'?: string;
+    /**
+    * Sets the background image for your banner item.
+    */
+    'imageUrl'?: string;
+    /**
+    * Sets the width of your banner item.
+    */
+    'width'?: string;
   }
   interface SeBlock extends JSXBase.HTMLAttributes<HTMLSeBlockElement> {
     /**
@@ -1837,6 +1898,8 @@ declare namespace LocalJSX {
     'se-about': SeAbout;
     'se-app': SeApp;
     'se-authentication': SeAuthentication;
+    'se-banner': SeBanner;
+    'se-banner-item': SeBannerItem;
     'se-block': SeBlock;
     'se-block-content': SeBlockContent;
     'se-block-footer': SeBlockFooter;

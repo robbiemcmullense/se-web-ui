@@ -16,9 +16,9 @@
 
 ### Used by
 
- - [se-about](../about)
- - [se-authentication](../authentication)
- - [se-header](../header)
+ - [se-about](..\about)
+ - [se-authentication](..\authentication)
+ - [se-header](..\header)
 
 ### Graph
 ```mermaid

@@ -53,11 +53,13 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [se-fab](../fab)
+ - [se-banner-item](..\banner-item)
+ - [se-fab](..\fab)
 
 ### Graph
 ```mermaid
 graph TD;
+  se-banner-item --> se-button
   se-fab --> se-button
   style se-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

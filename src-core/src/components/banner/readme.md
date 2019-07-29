@@ -1,4 +1,4 @@
-# se-icon-schneider
+# se-banner
 
 
 
@@ -7,15 +7,15 @@
 
 ## Dependencies
 
-### Used by
+### Depends on
 
- - [se-header](..\header)
+- [se-icon](..\icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  se-header --> se-icon-schneider
-  style se-icon-schneider fill:#f9f,stroke:#333,stroke-width:4px
+  se-banner --> se-icon
+  style se-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -38,6 +38,28 @@ export class SeAuthentication {
 }
 proxyInputs(SeAuthentication, ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'link', 'logo', 'version']);
 
+export declare interface SeBanner extends Components.SeBanner {}
+@Component({ selector: 'se-banner', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+export class SeBanner {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeBannerItem extends Components.SeBannerItem {}
+@Component({ selector: 'se-banner-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['content', 'footer', 'header', 'imageUrl', 'width'] })
+export class SeBannerItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyMethods(SeBannerItem, ['setActive']);
+proxyInputs(SeBannerItem, ['content', 'footer', 'header', 'imageUrl', 'width']);
+
 export declare interface SeBlock extends Components.SeBlock {}
 @Component({ selector: 'se-block', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'display', 'enlarged', 'height', 'loading', 'option', 'width'] })
 export class SeBlock {
