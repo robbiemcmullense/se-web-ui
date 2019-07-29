@@ -127,6 +127,19 @@ export namespace Components {
     */
     'option': 'card' | 'widget' | 'basic';
   }
+  interface SeBreadcrumb {
+    'updateChildren': () => Promise<void>;
+  }
+  interface SeBreadcrumbItem {
+    /**
+    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
+    */
+    'href': string;
+    /**
+    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+    */
+    'isLast': boolean;
+  }
   interface SeButton {
     /**
     * Optional property that defines if the button has a caption or tooltip text.
@@ -779,6 +792,18 @@ declare global {
     new (): HTMLSeBlockHeaderElement;
   };
 
+  interface HTMLSeBreadcrumbElement extends Components.SeBreadcrumb, HTMLStencilElement {}
+  var HTMLSeBreadcrumbElement: {
+    prototype: HTMLSeBreadcrumbElement;
+    new (): HTMLSeBreadcrumbElement;
+  };
+
+  interface HTMLSeBreadcrumbItemElement extends Components.SeBreadcrumbItem, HTMLStencilElement {}
+  var HTMLSeBreadcrumbItemElement: {
+    prototype: HTMLSeBreadcrumbItemElement;
+    new (): HTMLSeBreadcrumbItemElement;
+  };
+
   interface HTMLSeButtonElement extends Components.SeButton, HTMLStencilElement {}
   var HTMLSeButtonElement: {
     prototype: HTMLSeButtonElement;
@@ -996,6 +1021,8 @@ declare global {
     'se-block-content': HTMLSeBlockContentElement;
     'se-block-footer': HTMLSeBlockFooterElement;
     'se-block-header': HTMLSeBlockHeaderElement;
+    'se-breadcrumb': HTMLSeBreadcrumbElement;
+    'se-breadcrumb-item': HTMLSeBreadcrumbItemElement;
     'se-button': HTMLSeButtonElement;
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
@@ -1152,6 +1179,17 @@ declare namespace LocalJSX {
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
     */
     'option'?: 'card' | 'widget' | 'basic';
+  }
+  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {}
+  interface SeBreadcrumbItem extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement> {
+    /**
+    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
+    */
+    'href'?: string;
+    /**
+    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+    */
+    'isLast'?: boolean;
   }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
     /**
@@ -1790,6 +1828,8 @@ declare namespace LocalJSX {
     'se-block-content': SeBlockContent;
     'se-block-footer': SeBlockFooter;
     'se-block-header': SeBlockHeader;
+    'se-breadcrumb': SeBreadcrumb;
+    'se-breadcrumb-item': SeBreadcrumbItem;
     'se-button': SeButton;
     'se-checkbox': SeCheckbox;
     'se-chip': SeChip;

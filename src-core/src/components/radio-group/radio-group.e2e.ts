@@ -47,6 +47,13 @@ describe('RadioComponent with an initialized value', () => {
       selected: true,
       value: 'second'});
   });
+
+  it('should emit an event with the value of the first button item when clicked on', async() => {
+    const eventSpy = await page.spyOnEvent('didChange');
+    await firstButtonElement.click();
+    expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail('first');
+  });
 });
 
 describe('RadioComponent with an initialized disabled property', () => {

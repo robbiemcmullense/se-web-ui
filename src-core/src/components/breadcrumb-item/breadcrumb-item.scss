@@ -1,0 +1,39 @@
+@import "../../theme/theme";
+
+:host {
+  div {
+    display: inline-block;
+  }
+  .breadcrumb-item {
+    display: inline;
+    color: $se-anthracite-grey;
+    font-size: $small-fontsize;
+    line-height: 14px;
+    padding-right: $spacing-small;
+    vertical-align: super;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+  }
+  se-icon {
+    cursor: default;
+    &:active,
+    &:focus {
+      color: inherit;
+      background-color: inherit;
+    }
+  }
+
+  .selected {
+    .breadcrumb-item {
+      cursor: default;
+      text-decoration: none;
+      color: $se-light-grey;
+    }
+  }
+}
