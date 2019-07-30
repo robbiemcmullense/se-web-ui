@@ -23,6 +23,10 @@ describe('ChipComponent', () => {
 		expect(chip.disabled).toBeFalsy();
 	});
 
+	it('should not be in block mode', () => {
+		expect(chip.block).toBeUndefined();
+	});
+
 	it('should have an undefined value initially', () => {
 		expect(chip.value).toBeUndefined();
 	});

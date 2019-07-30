@@ -142,7 +142,7 @@ export namespace Components {
   }
   interface SeButton {
     /**
-    * Optional property that defines if the button display as block in it's container.
+    * Optional property that defines if the button displays as a block in it's container. When set to true, the button will be as wide as its container.
     */
     'block': boolean;
     /**
@@ -175,7 +175,6 @@ export namespace Components {
     'selected': boolean;
     /**
     * Sets the disabled property for your button from the parent component.
-    * @param val set to `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
     /**
@@ -644,7 +643,6 @@ export namespace Components {
     'min': number;
     /**
     * Sets the disabled property for slider component.
-    * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
   }
@@ -1207,7 +1205,7 @@ declare namespace LocalJSX {
   }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
     /**
-    * Optional property that defines if the button display as block in it's container.
+    * Optional property that defines if the button displays as a block in it's container. When set to true, the button will be as wide as its container.
     */
     'block'?: boolean;
     /**

@@ -35,6 +35,10 @@ describe('ButtonComponent', () => {
 		expect(button.disabled).toBeFalsy();
 	});
 
+	it('should not be in block mode', () => {
+		expect(button.block).toBeUndefined();
+	});
+
 	it('should set the disabled property to true after calling the setDisabled method', () => {
     button.setDisabled(true);
 		expect(button.disabled).toBeTruthy();

@@ -33,6 +33,14 @@ describe('ChipComponent', () => {
     expect(element).toHaveClass('disabled');
   });
 
+  it('should have a display-block class when the block property is set to true', async() => {
+    await page.$eval('se-chip', (elm: any) => {
+      elm.block = true;
+    });
+    await page.waitForChanges();
+    expect(element).toHaveClass('display-block');
+  });
+
   it('should render HTML with the passed value', async() => {
     await page.$eval('se-chip', (elm: any) => {
       elm.value = 'My Value';
