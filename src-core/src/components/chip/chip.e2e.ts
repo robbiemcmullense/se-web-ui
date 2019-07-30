@@ -19,6 +19,14 @@ describe('ChipComponent', () => {
 
   it('should have a disabled class when the disabled property is set to true', async() => {
     await page.$eval('se-chip', (elm: any) => {
+      elm.selected = true;
+    });
+    await page.waitForChanges();
+    expect(element).toHaveClass('selected');
+  });
+
+  it('should have a disabled class when the disabled property is set to true', async() => {
+    await page.$eval('se-chip', (elm: any) => {
       elm.disabled = true;
     });
     await page.waitForChanges();

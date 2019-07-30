@@ -45,15 +45,17 @@ describe('ButtonComponent', () => {
 		expect(button.grouped).toBeTruthy();
 	});
 
-	it('should have a primary color when set to the "login" option', () => {
+	it('should have a primary color and the block property set to true when set to the "login" option', () => {
 		button.option = 'login';
 		button.optionDidChange();
 		expect(button.color).toEqual('primary');
+		expect(button.block).toBeTruthy();
 	});
 
-	it('should have a secondary color when set to the "signup" option', () => {
+	it('should have a secondary color and the block property set to true when set to the "signup" option', () => {
 		button.option = 'signup';
 		button.optionDidChange();
 		expect(button.color).toEqual('secondary');
+		expect(button.block).toBeTruthy();
 	});
 });

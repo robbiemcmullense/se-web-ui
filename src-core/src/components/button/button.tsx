@@ -145,7 +145,7 @@ export class ButtonComponent {
 
   render() {
     return (
-      <Host class={{'grouped': this.grouped, 'display-Block': this.block}}>
+      <Host class={{'grouped': this.grouped, 'display-block': this.block}}>
         <button disabled={this.disabled} data-tooltip={this.caption} type={this.type}
           class={
             [!!this.icon ? 'hasIcon' : '', this.hasChild ? 'hasChild' : '', this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')}

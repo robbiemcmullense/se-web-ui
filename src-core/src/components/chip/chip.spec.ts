@@ -15,6 +15,10 @@ describe('ChipComponent', () => {
 		expect(chip.color).toEqual('standard');
 	});
 
+	it('should not be selected by default', () => {
+		expect(chip.selected).toBeFalsy();
+	});
+
 	it('should not be disabled by default', () => {
 		expect(chip.disabled).toBeFalsy();
 	});

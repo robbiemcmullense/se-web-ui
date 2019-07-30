@@ -3,18 +3,24 @@
 $chip-height: 30px; // with border it's 32px.
 
 .se-chip {
+  cursor: pointer;
   display: inline-flex;
   margin: $spacing;
   height: $chip-height;
-  padding-left: $chip-height / 4;
-  padding-right: $chip-height / 4;
+  padding-left: $spacing;
+  padding-right: $spacing;
   font-size: 16px;
-  line-height: 16px;
+  font-weight: 400;
+  line-height: 25px;
   text-align: left;
   background: transparent;
   outline: none;
   border-radius: 16px;
   @include align-items(center);
+
+  .value.can-close {
+    cursor: default;
+  }
 
   .se-icon {
     cursor: pointer;
@@ -23,6 +29,14 @@ $chip-height: 30px; // with border it's 32px.
     font-family: "se-icon";
     &[data-hide] {
       display: none;
+    }
+  }
+
+  // Align close icon on MS Edge browser.
+  // Will remove when Chromium-based Edge browser is released.
+  @supports (-ms-ime-align:auto) {
+    .se-icon {
+      top: 0;
     }
   }
 
@@ -44,7 +58,9 @@ $chip-height: 30px; // with border it's 32px.
   }
 
   &.standard:active,
-  &.alternative:active {
+  &.standard.selected,
+  &.alternative:active,
+  &.alternative.selected {
     @include color('selected-contrast');
     @include background-color('selected');
     border: 1px solid $se-dark-grey;
@@ -59,6 +75,7 @@ $chip-height: 30px; // with border it's 32px.
   &.disabled,
   &.disabled:hover,
   &.disabled:focus {
+    cursor: default;
     background-color: inherit;
     color: $se-light-grey;
     border: 1px solid $se-light-grey;

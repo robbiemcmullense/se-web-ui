@@ -36,7 +36,7 @@
       color: $se-light-grey;
     }
   }
-  // Set width on Edge to fit within widget when option is set to inline.
+  // Align caret on MS Edge browser.
   // Will remove when Chromium-based Edge browser is released.
   @supports (-ms-ime-align:auto) {
     se-icon {

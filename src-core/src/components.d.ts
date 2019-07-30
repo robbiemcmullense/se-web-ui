@@ -259,6 +259,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Indicates whether or not the chip is selected.  Set to `false` by default.
+    */
+    'selected': boolean;
+    /**
     * The text you want to display in your chip.
     */
     'value': string;
@@ -1314,6 +1318,10 @@ declare namespace LocalJSX {
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
     'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether or not the chip is selected.  Set to `false` by default.
+    */
+    'selected'?: boolean;
     /**
     * The text you want to display in your chip.
     */

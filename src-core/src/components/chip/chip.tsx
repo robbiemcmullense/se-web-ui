@@ -20,6 +20,10 @@ export class ChipComponent {
    */
   @Prop() canClose: boolean = false;
   /**
+   * Indicates whether or not the chip is selected.  Set to `false` by default.
+   */
+  @Prop() selected: boolean = false;
+  /**
    * Indicates whether or not the chip is disabled.  Set to `false` by default.
    */
   @Prop() disabled: boolean = false;
@@ -37,8 +41,8 @@ export class ChipComponent {
 
   render() {
     return (
-      <div class={['se-chip', this.color, this.disabled ? 'disabled' : ''].join(' ')}>
-        <div class="value">{this.value}</div>
+      <div class={['se-chip', this.color, this.selected ? 'selected' : '', this.disabled ? 'disabled' : ''].join(' ')}>
+        <div class={['value', this.canClose ? 'can-close' : ''].join(' ')}>{this.value}</div>
         {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
       </div>
     );
