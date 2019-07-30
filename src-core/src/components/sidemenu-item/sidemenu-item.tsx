@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Host } from '@stencil/core';
 
 @Component({
   tag: 'se-sidemenu-item',
@@ -18,12 +18,12 @@ export class SidemenuItemComponent {
 
   render() {
     return (
-      <div
+      <Host
         role={'sidenavpanel'}
         aria-hidden={{'true': !this.active}}
         class={{'navitem-hidden': !this.active}}>
         <slot></slot>
-      </div>
+      </Host>
     )
   }
 }
