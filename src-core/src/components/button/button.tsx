@@ -70,7 +70,8 @@ export class ButtonComponent {
   @Prop() caption: string;
 
   /**
-   * Optional property that defines if the button display as block in it's container.
+   * Optional property that defines if the button displays as a block in it's container.
+   * When set to true, the button will be as wide as its container.
    */
   @Prop({mutable: true}) block: boolean;
 
