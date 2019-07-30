@@ -11,6 +11,6 @@
   }
 }
 
-.navitem-hidden {
+:host(.navitem-hidden) {
   display: none !important;
 }
