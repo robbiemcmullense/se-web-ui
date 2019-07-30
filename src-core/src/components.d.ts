@@ -246,6 +246,10 @@ export namespace Components {
   }
   interface SeChip {
     /**
+    * Optional property that defines if the chip displays as a block in it's container. When set to true, the chip will be as wide as its container.
+    */
+    'block': boolean;
+    /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose': boolean;
@@ -1300,6 +1304,10 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface SeChip extends JSXBase.HTMLAttributes<HTMLSeChipElement> {
+    /**
+    * Optional property that defines if the chip displays as a block in it's container. When set to true, the chip will be as wide as its container.
+    */
+    'block'?: boolean;
     /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
