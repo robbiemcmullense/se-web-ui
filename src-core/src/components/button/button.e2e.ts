@@ -36,6 +36,14 @@ describe('ButtonComponent', () => {
     await page.waitForChanges();
     expect(buttonElement).toHaveClass('hasIcon');
   });
+
+  it('renders the display-block class on the host element when the block property is set to true', async() => {
+    await page.$eval('se-button', (elm: any) => {
+      elm.block = true;
+    });
+    await page.waitForChanges();
+    expect(hostElement).toHaveClass('display-block');
+  });
 });
 
 describe('Button with Preset Text', () => {
