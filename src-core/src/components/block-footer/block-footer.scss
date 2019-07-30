@@ -1,23 +1,23 @@
 @import "../../theme/theme";
 
-:host {
+.se-block-footer {
   position: relative;
   padding: $spacing-small;
   font-size: 20px;
   min-height: 40px;
   border-top: 1px solid $divider-color;
-  // @include display-flex();
   @include align-items(center);
   @include display-flex();
 
-  .flex{
+  .flex {
     @include flex();
   }
-}
-:host(.card) {
-  border-top: none;
-}
 
-:host(.column) {
-  @include flex-direction(column);
+  &.card {
+    border-top: none;
+  }
+
+  &.column {
+    @include flex-direction(column);
+  }
 }

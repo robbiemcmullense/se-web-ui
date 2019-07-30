@@ -1,18 +1,17 @@
 @import "../../theme/theme";
 :host {
-    position: relative;
-  }
-  .tooltip-header{
-    @include flex();
-    @include display-flex();
-    position: relative;
-    font-weight: 600;
-    font-size:14px;
-    line-height: 17px;
-  }
-  .se-icon {
-    font-family: 'se-icon';
-    padding-right: 5px;
-  }
-  
-  
+  position: relative;
+}
+
+.tooltip-header{
+  @include flex();
+  @include display-flex();
+  position: relative;
+  font-weight: 600;
+  font-size:14px;
+  line-height: 17px;
+}
+.se-icon {
+  font-family: 'se-icon';
+  padding-right: 5px;
+}

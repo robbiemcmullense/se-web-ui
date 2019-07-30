@@ -9,17 +9,8 @@
   @include align-items(center);
   @include display-flex();
 
-  .flex{
-    @include flex();
-  }
 }
 
-:host(.alternative){
-  @include background-color('alternative');
-  @include  color('primary');
-}
-
-:host(.primary){
-  @include background-color('primary');
-  @include  color('primary-contrast');
+.flex{
+  @include flex();
 }

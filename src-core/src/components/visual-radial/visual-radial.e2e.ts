@@ -14,7 +14,7 @@ describe('VisualRadialComponent', () => {
   });
 
   it('renders with the large class name by default', async() => {
-    expect(element).toHaveClasses(['hydrated', 'large']);
+    expect(element.shadowRoot.querySelector('div')).toHaveClass('large');
   });
 
   it('renders svg and 2 circle elements', async() => {

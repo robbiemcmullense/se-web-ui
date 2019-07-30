@@ -2,20 +2,24 @@
 
 :host {
   overflow-x: auto;
+}
+.inner-content{
+  @include flex();
+  margin: 0 $spacing;
+}
+
+.se-dialog-content {
   padding: $spacing-large $spacing;
   padding-bottom: 0;
   position: relative;
   @include flex(1);
   @include align-items(center);
   @include display-flex();
-}
-.inner-content{
-  @include flex();
-  margin: 0 $spacing;
-}
-:host(.full-content){
-  padding: 0;
-  .inner-content{
-    margin: 0;
+
+  &.full-content {
+    padding: 0;
+    .inner-content{
+      margin: 0;
+    }
   }
 }

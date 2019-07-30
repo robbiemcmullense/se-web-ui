@@ -5,6 +5,88 @@
   display: inline-flex;
 }
 
+:host(.display-block){
+  display: flex;
+  button {
+    width: 100%;
+    margin-top: $spacing;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+:host(.grouped) {
+  button {
+    margin: $spacing-small 0;
+    height: 32px;
+    padding: 0;
+    @include typology("nano");
+    border-radius: 0;
+    border-left: 1px solid $se-anthracite-grey;
+    &.nano {
+      height: 24px;
+      .text {
+        font-size: 12px;
+      }
+    }
+    &.hasIcon {
+      .se-icon {
+        font-size: 32px;
+      }
+      &.nano {
+        .se-icon {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+:host(.grouped:first-child) {
+  button {
+    margin-left: $spacing-small;
+    border-left: none;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+}
+
+:host(.grouped:last-child) {
+  button {
+    margin-right: $spacing-small;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+}
+
+:host(.backtotop){
+  button.fab {
+    @include color("alternative");
+    background-color:$se-anthracite-grey;
+    &:hover {
+      @include background-color("standard-contrast")
+    }
+  }
+}
+
+:host([slot="trigger"]) {
+  button {
+    padding-right: 24px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid;
+    }
+  }
+}
+
 button {
   padding: 0 $spacing;
   height: 32px;
@@ -24,6 +106,7 @@ button {
     @include typology("base");
     padding: 0 $spacing;
   }
+
   .se-icon {
     margin: 0;
     display: inline-block;
@@ -75,9 +158,13 @@ button {
   &.standard {
     @include color("standard-contrast");
     @include background-color("standard");
-    &:hover {
+    &:hover, &:focus {
       @include color("hover-standard-contrast");
       @include background-color("hover-standard");
+    }
+    &:active {
+      @include color("selected-contrast");
+      @include background-color("selected");
     }
     &[disabled] {
       color: $se-light-grey;
@@ -87,23 +174,32 @@ button {
       border: 1px solid;
       border-color: $se-anthracite-grey;
       background-color: transparent;
-      &:hover {
+      &:hover, &:focus {
         @include background-color("hover-standard", 0.2);
+      }
+      &:active {
+        @include color("selected-contrast");
+        @include background-color("selected");
+        @include border-color("selected");
       }
       &[disabled] {
         color: $se-light-grey;
         background-color: transparent;
         border-color: $se-light-grey;
       }
-    }  
+    }
   }
 
   &.alternative {
     @include color("alternative-contrast");
     @include background-color("alternative");
-    &:hover {
+    &:hover, &:focus {
       @include color("hover-alternative-contrast");
       @include background-color("hover-alternative");
+    }
+    &:active {
+      @include color("selected-contrast");
+      @include background-color("selected");
     }
     &[disabled] {
       color: $se-light-grey;
@@ -114,8 +210,13 @@ button {
       background-color: transparent;
       @include color("alternative");
       @include border-color("alternative");
-      &:hover {
+      &:hover, &:focus {
         @include background-color("hover-alternative", 0.6);
+      }
+      &:active {
+        @include color("selected-contrast");
+        @include background-color("selected");
+        @include border-color("selected");
       }
       &[disabled] {
         color: $se-light-grey;
@@ -128,9 +229,13 @@ button {
   &.primary {
     @include color("primary-contrast");
     @include background-color("primary");
-    &:hover {
+    &:hover, &:focus {
       @include color("hover-primary-contrast");
       @include background-color("hover-primary");
+    }
+    &:active {
+      @include color("selected-contrast");
+      @include background-color("selected");
     }
     &[disabled] {
       background-color: #8ce599;
@@ -140,14 +245,13 @@ button {
       background-color: transparent;
       @include color("primary");
       @include border-color("primary");
-      &.selected {
-        @include border-color("selected");
-      }
-      &:hover {
+      &:hover, &:focus {
         @include background-color("primary", 0.3);
       }
-      &:focus {
-        @include border-color("focus");
+      &:active, &.selected {
+        @include color("selected-contrast");
+        @include background-color("selected");
+        @include border-color("selected");
       }
       &[disabled] {
         background-color: transparent;
@@ -160,9 +264,13 @@ button {
   &.secondary {
     @include color("secondary-contrast");
     @include background-color("secondary");
-    &:hover {
+    &:hover, &:focus {
       @include color("hover-secondary-contrast");
       @include background-color("hover-secondary");
+    }
+    &:active {
+      @include color("selected-contrast");
+      @include background-color("selected");
     }
     &[disabled] {
       background-color: $se-sky-blue;
@@ -172,14 +280,13 @@ button {
       border: 1px solid;
       @include color("secondary");
       @include border-color("secondary");
-      &.selected {
-        @include border-color("selected");
-      }
-      &:hover {
+      &:hover, &:focus {
         @include background-color("secondary", 0.3);
       }
-      &:focus { 
-        @include border-color("focus");
+      &:active, &.selected {
+        @include color("selected-contrast");
+        @include background-color("selected");
+        @include border-color("selected");
       }
       &[disabled] {
         background-color: transparent;
@@ -190,25 +297,43 @@ button {
   }
 
   &.selected,
-  &.outline.selected {
+  &.selected:focus,
+  &.outline.selected,
+  &.outline.selected:focus {
     @include color("selected-contrast");
     @include background-color("selected");
   }
 
-  &:focus,
-  &.outline:focus {
-    @include color("focus-contrast");
-    @include background-color("focus");
+  &.login,
+  &.signup {
+    height: 32px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &.hasIcon {
+    top: 4px;
+    position: relative;
+    padding: 0 $spacing-small;
+    &.hasChild {
+      .se-icon {
+        padding-left: 10px;
+      }
+      .text {
+        padding-left: $spacing-small;
+        padding-right: 12px;
+      }
+    }
   }
 
   &.fab {
+    cursor: pointer;
     border-radius: 50%;
     font-size: 24px;
     width: 56px;
     height: 56px;
-    cursor: pointer;
     @include circleShadow(4px);
-    &:hover {
+    &:hover, &:focus {
       @include circleShadow(8px);
     }
     &.alternative{
@@ -216,140 +341,37 @@ button {
       @include color('primary');
     }
   }
-  &.minifab{
+
+  &.minifab {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin:0 20px 20px 0px;
+    margin: 0 20px 20px 0px;
     padding: 0;
     margin: 0 0 15px 0;
     @include circleShadow(4px);
     @include background-color("alternative");
     @include color("alternative-contrast");
-    &:hover {
+    &:hover, &:focus {
       @include circleShadow(4px);
       @include background-color("alternative");
     }
-    &[data-tooltip]:before {
-      font-family: arial;
-      font-weight: 300;
-      border-radius: 23.27px;
-      content: attr(data-tooltip);
-      font-size: 12px;
-      padding: 5px 7px;
-      margin-right: 12px;
-      position: absolute;
-      right: 100%;
-      white-space: nowrap;
-      @include  color("standard-contrast");
-      @include background-color("standard");
-    }
-  }
-}
-
-:host(.login),
-:host(.signup) {
-  @include display-flex();
-  button {
-    height: 32px;
-    font-size: 18px;
-    line-height: 22px;
-    width: 100%;
-    margin-top: $spacing;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-:host(.grouped) {
-  button {
-    margin: $spacing-small 0;
-    height: 32px;
-    padding: 0;
-    @include typology("nano");
-    border-radius: 0;
-    border-left: 1px solid $se-anthracite-grey;
-    &.nano {
-      height: 24px;
-      .text {
+    &[data-tooltip] {
+      overflow: visible;
+      &:before {
+        font-family: arial;
+        font-weight: 300;
+        border-radius: 23.27px;
+        content: attr(data-tooltip);
         font-size: 12px;
+        padding: 5px 7px;
+        margin-right: 12px;
+        position: absolute;
+        right: 100%;
+        white-space: nowrap;
+        @include color("standard-contrast");
+        @include background-color("standard");
       }
-    }
-  }
-}
-
-:host(.grouped:first-child) {
-  button {
-    margin-left: $spacing-small;
-    border-left: none;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
-  }
-}
-
-:host(.grouped:last-child) {
-  button {
-    margin-right: $spacing-small;
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-  }
-}
-
-:host(.hasIcon) {
-  top: 3px;
-  position: relative;
-  button {
-    padding: 0 $spacing-small;
-  }
-}
-
-:host(.hasIcon.grouped) {
-  .se-icon {
-    font-size: 32px;
-  }
-  .nano {
-    .se-icon {
-      font-size: 24px;
-    }
-  }
-}
-
-:host(.hasIcon.hasChild) {
-  button {
-    .se-icon {
-      padding-left: 10px;
-    }
-    .text {
-      padding-left: $spacing-small;
-      padding-right: 12px;
-    }
-  }
-}
-
-:host(.backtotop){
-  & button.fab{
-    @include  color("alternative");
-    background-color:$se-anthracite-grey;
-    &:hover{
-      @include background-color("standard-contrast")
-    }
-  }
-}
-
-:host([slot="trigger"]) {
-  button {
-    padding-right: 24px;
-    &:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid;
     }
   }
 }

@@ -105,7 +105,7 @@ export class SeBreadcrumbItem {
 proxyInputs(SeBreadcrumbItem, ['href', 'isLast']);
 
 export declare interface SeButton extends Components.SeButton {}
-@Component({ selector: 'se-button', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['caption', 'color', 'disabled', 'icon', 'iconColor', 'option', 'selected', 'size', 'type', 'value'] })
+@Component({ selector: 'se-button', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'option', 'selected', 'size', 'type', 'value'] })
 export class SeButton {
   didClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -116,7 +116,7 @@ export class SeButton {
   }
 }
 proxyMethods(SeButton, ['setDisabled', 'setGrouped']);
-proxyInputs(SeButton, ['caption', 'color', 'disabled', 'icon', 'iconColor', 'option', 'selected', 'size', 'type', 'value']);
+proxyInputs(SeButton, ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'option', 'selected', 'size', 'type', 'value']);
 
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @Component({ selector: 'se-checkbox', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['background', 'color', 'disabled', 'header', 'label', 'option', 'required', 'selected', 'textOff', 'textOn', 'value'] })
@@ -133,7 +133,7 @@ proxyMethods(SeCheckbox, ['setRequired']);
 proxyInputs(SeCheckbox, ['background', 'color', 'disabled', 'header', 'label', 'option', 'required', 'selected', 'textOff', 'textOn', 'value']);
 
 export declare interface SeChip extends Components.SeChip {}
-@Component({ selector: 'se-chip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canClose', 'color', 'disabled', 'value'] })
+@Component({ selector: 'se-chip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'canClose', 'color', 'disabled', 'selected', 'value'] })
 export class SeChip {
   didClose!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -143,7 +143,7 @@ export class SeChip {
     proxyOutputs(this, this.el, ['didClose']);
   }
 }
-proxyInputs(SeChip, ['canClose', 'color', 'disabled', 'value']);
+proxyInputs(SeChip, ['block', 'canClose', 'color', 'disabled', 'selected', 'value']);
 
 export declare interface SeContainer extends Components.SeContainer {}
 @Component({ selector: 'se-container', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'position', 'rowSize'] })
@@ -460,11 +460,12 @@ export declare interface SeTooltip extends Components.SeTooltip {}
 export class SeTooltip {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
+  closeTooltips!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didOpen', 'didClose']);
+    proxyOutputs(this, this.el, ['didOpen', 'didClose', 'closeTooltips']);
   }
 }
 proxyMethods(SeTooltip, ['open', 'close']);

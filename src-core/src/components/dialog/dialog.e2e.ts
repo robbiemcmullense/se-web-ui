@@ -11,10 +11,11 @@ describe('DialogComponent', () => {
   
   it('renders', async() => {
     expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
   });
 
   it('should have the medium class to indicate its (default) medium size', async() => {
-    expect(element).toHaveClasses(['hydrated', 'medium']);
+    expect(element.shadowRoot.querySelector('div')).toHaveClass('medium');
   });
 
   it('emits the backdrop event when clicking on the background', async() => {

@@ -11,10 +11,11 @@ import { newE2EPage } from '@stencil/core/testing';
 
   it('renders', async() => {
     expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
   });
 
   it('has the "bottom" class because it is bottom-aligned by default', async() => {
-    expect(element).toHaveClasses(['hydrated', 'bottom']);
+    expect(element.shadowRoot.querySelector('div')).toHaveClass('bottom');
   });
 
   it('adds a "show" class to a div element with class tooltip when open is set to true', async() => {
