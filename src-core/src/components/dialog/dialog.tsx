@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Method, Event, EventEmitter, Watch } from "@stencil/core";
+import { Component, h, Prop, Element, Method, Event, EventEmitter, Watch, Listen } from "@stencil/core";
 
 const SHOW = "show-dialog";
 const HIDE = "hide-dialog";
@@ -28,9 +28,9 @@ export class DialogComponent {
   /**
    * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
    */
-  @Prop() open: boolean = false;
+  @Prop({mutable: true}) open: boolean = false;
   /**
-   * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
+   * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
    */
   @Prop() canBackdrop: boolean = true;
 
@@ -39,7 +39,7 @@ export class DialogComponent {
       item.color = this.color;
     });
   }
-  
+
   @Watch('open') openDidChange(){
     if(this.open){
       this.addAnimation(null);
@@ -50,12 +50,23 @@ export class DialogComponent {
     }
   }
   /**
-   * Emit the `backdrop` event from the dialog's parent component.
+   * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
    */
   @Method()
   async backdropClicked() {
-    if(this.canBackdrop){
     this.backdrop.emit();
+    if(this.canBackdrop){
+      this.open = false;
+    }
+  }
+
+  /**
+   * Emit the `backdrop` event from the dialog's parent component if the escape key is clicked and if `canBackdrop=true`.
+   */
+  @Listen('keydown', { target: "document" })
+  handleKeyDown(ev: KeyboardEvent){
+    if (ev.key === 'Escape' && this.open){
+      this.backdropClicked();
     }
   }
   /**
@@ -97,11 +108,9 @@ export class DialogComponent {
 
   render(){
     return (
-      <div class={this.size}>
-        <div class="dialog-wrapper">
-          <div class="dialog" ref={el => (this.menuInnerEl = el)}><slot></slot></div>
-        </div>
+      <div class={`${this.size} dialog-wrapper`}>
         <div class="dialog-background" onClick={() => this.backdropClicked()}  ref={el => this.backdropEl = el}></div>
+        <div class="dialog" ref={el => (this.menuInnerEl = el)}><slot></slot></div>
       </div>
     )
   }

@@ -303,11 +303,11 @@ export namespace Components {
   }
   interface SeDialog {
     /**
-    * Emit the `backdrop` event from the dialog's parent component.
+    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
     */
     'backdropClicked': () => Promise<void>;
     /**
-    * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
+    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
     */
     'canBackdrop': boolean;
     /**
@@ -1367,7 +1367,7 @@ declare namespace LocalJSX {
   }
   interface SeDialog extends JSXBase.HTMLAttributes<HTMLSeDialogElement> {
     /**
-    * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
+    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
     */
     'canBackdrop'?: boolean;
     /**

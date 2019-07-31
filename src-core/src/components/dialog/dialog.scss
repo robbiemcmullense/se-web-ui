@@ -41,7 +41,7 @@
 
 .dialog-wrapper {
   position: fixed !important;
-  z-index: 150;
+  z-index: 120;
   @include absolute();
   @include display-flex();
   @include align-items(center);
@@ -54,7 +54,7 @@
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
   @include animated();
   @include background-color("alternative");
-  @include  color("alternative-contrast");
+  @include color("alternative-contrast");
   @include display-flex();
   @include flex-direction(column);
   &.show-dialog {
@@ -67,11 +67,10 @@
 
 .dialog-background {
   position: fixed !important;
-
   @include absolute();
   @include animated();
   background-color: rgba(white, 0.6);
-  z-index: 120;
+  z-index: 150;
   &.show-dialog {
     animation-name: fadeIn;
   }
