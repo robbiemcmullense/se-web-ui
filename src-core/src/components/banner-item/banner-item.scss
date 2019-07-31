@@ -4,7 +4,9 @@
   @include absolute();
 }
 
-
+:host(.hide) {
+  display: none;
+}
 
 .banner-section-wrapper{
   @include absolute();

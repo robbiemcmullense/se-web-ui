@@ -199,7 +199,6 @@ export namespace Components {
     'selected': boolean;
     /**
     * Sets the disabled property for your button from the parent component.
-    * @param val set to `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
     /**
@@ -668,7 +667,6 @@ export namespace Components {
     'min': number;
     /**
     * Sets the disabled property for slider component.
-    * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
   }
