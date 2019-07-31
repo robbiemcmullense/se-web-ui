@@ -7,6 +7,13 @@
   font-size: 20px;
   @include display-flex();
 }
+
+:host(.hide-nav-icon) {
+  se-icon {
+    display: none;
+  }
+}
+
 .se-list-item {
   width: 100%;
   width: -webkit-fill-available;
@@ -78,7 +85,6 @@
   }
 
 }
-
 
 button {
   border: none;
