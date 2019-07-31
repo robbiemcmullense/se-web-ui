@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from "@stencil/core";
 
 @Component({
   tag: "se-checkbox",
@@ -101,7 +101,15 @@ export class CheckboxComponent {
   }
 
   render() {
-    let markup: any;
+    let markup, switchMarkup: any;
+    if (this.option === 'switch' && this.required) {
+      switchMarkup = [
+        <span class="checkbox-label">{this.label}</span>,
+        <span class="required">*</span>
+      ];
+    } else if (this.option === 'switch' && !this.required) {
+      switchMarkup = <span class="checkbox-label">{this.label}</span>;
+    }
     if (this.option === 'onoff') {
       markup = (
         <div class="on-off-wrapper">
@@ -111,16 +119,17 @@ export class CheckboxComponent {
       )
     } else {
       markup = (
-        <div>
+        <div class="checkbox-wrapper">
           <label class="checkbox-container" data-disabled={this.disabled}>
+            {this.option === 'checkbox' ? this.label : ''}
+            {this.option === 'checkbox' && this.required ? <span class="required">*</span> : ''}
             <input type="checkbox" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()} />
             <span class="checkmark" data-color={this.color}></span>
           </label>
-          <span class="checkbox-label">{this.label}</span>
-          {this.required ? <span class="required">*</span> : ''}
+          {this.option === 'switch' ? switchMarkup : ''}
         </div>
       )
     }
-    return <Host class={[this.option, this.background, this.header ? 'header' : '', this.disabled ? 'disabled' : ''].join(' ')}>{markup}</Host>;
+    return <div class={[this.option, this.background, this.header ? 'header' : '', this.disabled ? 'disabled' : ''].join(' ')}>{markup}</div>;
   }
 }

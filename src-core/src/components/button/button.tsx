@@ -17,10 +17,12 @@ export class ButtonComponent {
   @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab'= 'flat';
   @Watch('option') optionDidChange() {
     if(this.option === 'login'){
-      this.color = 'primary'
+      this.color = 'primary';
+      this.block = true;
     }
     if(this.option === 'signup'){
-      this.color = 'secondary'
+      this.color = 'secondary';
+      this.block = true;
     }
   }
   /**
@@ -66,7 +68,13 @@ export class ButtonComponent {
    * Optional property that defines if the button has a caption or tooltip text.
    */
   @Prop() caption: string;
-  
+
+  /**
+   * Optional property that defines if the button displays as a block in it's container.
+   * When set to true, the button will be as wide as its container.
+   */
+  @Prop({mutable: true}) block: boolean;
+
   @State() grouped: boolean;
   @State() hasChild: boolean;
   /**
@@ -115,7 +123,7 @@ export class ButtonComponent {
     if (id) {
       let button = this.el.shadowRoot.querySelector('button');
       button.setAttribute('id', 'wc-' + id);
-    } 
+    }
   }
 
   toggle() {
@@ -138,13 +146,11 @@ export class ButtonComponent {
 
   render() {
     return (
-      <Host
-        class={
-          [!!this.icon ? 'hasIcon' : '',
-          this.hasChild ? 'hasChild' : '',
-          this.grouped ? 'grouped' : '',
-          this.option].join(' ')}>
-        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type} class={[this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')} onClick={() => this.toggle()}>
+      <Host class={{'grouped': this.grouped, 'display-block': this.block}}>
+        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type}
+          class={
+            [!!this.icon ? 'hasIcon' : '', this.hasChild ? 'hasChild' : '', this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')}
+          onClick={() => this.toggle()}>
           {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
           {this.hasChild ? <span class="text"><slot></slot></span> : ''}
         </button>

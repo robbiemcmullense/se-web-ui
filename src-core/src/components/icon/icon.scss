@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
-:host {
+.se-icon-wrapper {
   display: inline-block;
   font-family: "se-icon";
   speak: none;
@@ -23,147 +23,148 @@
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "liga";
   font-display: block;
-}
 
-:host(.icon-nano) {
-  font-size: 14px;
-  line-height: 14px;
-}
-:host(.icon-small) {
-  font-size: 24px;
-  line-height: 24px;
-}
-:host(.icon-medium) {
-  font-size: 32px;
-  line-height: 32px;
-}
-:host(.icon-large) {
-  font-size: 52px;
-  line-height: 52px;
-}
-:host(.icon-xlarge) {
-  font-size: 62px;
-  line-height: 62px;
-}
-:host(.icon-button) {
-  cursor: pointer;
-  border-radius: $border-radius;
-  line-height: inherit;
-}
+  &.icon-nano {
+    font-size: 14px;
+    line-height: 14px;
+  }
 
-:host(.icon-button.selected) {
-  @include  color("selected-contrast");
-  @include background-color("selected");
-}
+  &.icon-small {
+    font-size: 24px;
+    line-height: 24px;
+  }
 
-// Standard color
-:host(.standard) {
-  @include  color("standard");
-}
-:host(.standard.icon-button) {
-  @include  color("standard-contrast");
-  @include background-color("standard");
-}
-:host(.standard.icon-button:hover) {
-  @include  color("hover-standard-contrast");
-  @include background-color("hover-standard");
-}
+  &.icon-medium {
+    font-size: 32px;
+    line-height: 32px;
+  }
 
-// Alternative color
-:host(.alternative) {
-  @include  color("alternative");
-}
-:host(.alternative.icon-button) {
-  @include  color("alternative-contrast");
-  @include background-color("alternative");
-}
-:host(.alternative.icon-button:hover) {
-  @include  color("hover-alternative-contrast");
-  @include background-color("hover-alternative");
-}
+  &.icon-large {
+    font-size: 52px;
+    line-height: 52px;
+  }
 
-// Primary color
-:host(.primary) {
-  @include  color("primary");
-}
-:host(.primary.icon-button) {
-  @include  color("primary-contrast");
-  @include background-color("primary");
-}
-:host(.primary.icon-button:hover) {
-  @include  color("hover-primary-contrast");
-  @include background-color("hover-primary");
-}
+  &.icon-xlarge {
+    font-size: 62px;
+    line-height: 62px;
+  }
 
-// Secondary color
-:host(.secondary) {
-  @include  color("secondary");
-}
-:host(.secondary.icon-button) {
-  @include  color("secondary-contrast");
-  @include background-color("secondary");
-}
-:host(.secondary.icon-button:hover) {
-  @include  color("hover-secondary-contrast");
-  @include background-color("hover-secondary");
-}
+  &.standard {
+    @include color("standard");
+  }
 
-// success color
-:host(.success) {
-  @include  color("success");
-}
-:host(.success.icon-button) {
-  @include  color("success-contrast");
-  @include background-color("success");
-}
-:host(.success.icon-button:hover) {
-  @include  color("hover-success-contrast");
-  @include background-color("hover-success");
-}
+  &.alternative {
+    @include color("alternative");
+  }
 
-// warning color
-:host(.warning) {
-  @include  color("warning");
-}
-:host(.warning.icon-button) {
-  @include  color("warning-contrast");
-  @include background-color("warning");
-}
-:host(.warning.icon-button:hover) {
-  @include  color("hover-warning-contrast");
-  @include background-color("hover-warning");
-}
+  &.primary {
+    @include color("primary");
+  }
 
-// error color
-:host(.error) {
-  @include  color("error");
-}
-:host(.error.icon-button) {
-  @include  color("error-contrast");
-  @include background-color("error");
-}
-:host(.error.icon-button:hover) {
-  @include  color("hover-error-contrast");
-  @include background-color("hover-error");
-}
+  &.secondary {
+    @include color("secondary");
+  }
 
+  &.success {
+    @include color("success");
+  }
 
-:host(:active),
-:host(.button:active) {
-  @include  color("selected-contrast");
-  @include background-color("selected");
-}
-:host(:focus),
-:host(.button:focus) {
-  @include  color("focus-contrast");
-  @include background-color("focus");
-}
+  &.warning {
+    @include color("warning");
+  }
 
-:host(.disabled),
-:host(.button.disabled),
-:host(.disabled:hover),
-:host(.button.disabled:hover) {
-  color: $se-light-grey;
-  background-color: $se-ultra-light-grey-2;
-  cursor: default;
+  &.error {
+    @include color("error");
+  }
+
+  &.icon-button {
+    cursor: pointer;
+    border-radius: $border-radius;
+    line-height: inherit;
+
+    &.standard {
+      @include color("standard-contrast");
+      @include background-color("standard");
+      &:hover {
+        @include color("hover-standard-contrast");
+        @include background-color("hover-standard");
+      }
+    }
+
+    &.alternative {
+      @include color("alternative-contrast");
+      @include background-color("alternative");
+
+      &:hover {
+        @include color("hover-alternative-contrast");
+        @include background-color("hover-alternative");
+      }
+    }
+    &.primary {
+      @include color("primary-contrast");
+      @include background-color("primary");
+
+      &:hover {
+        @include color("hover-primary-contrast");
+        @include background-color("hover-primary");
+      }
+    }
+  
+    &.secondary {
+      @include color("secondary-contrast");
+      @include background-color("secondary");
+
+      &:hover {
+        @include color("hover-secondary-contrast");
+        @include background-color("hover-secondary");
+      }
+    }
+
+    &.success {
+      @include color("success-contrast");
+      @include background-color("success");
+
+      &:hover {
+        @include color("hover-success-contrast");
+        @include background-color("hover-success");
+      }
+    }
+
+    &.warning {
+      @include color("warning-contrast");
+      @include background-color("warning");
+
+      &:hover {
+        @include color("hover-warning-contrast");
+        @include background-color("hover-warning");
+      }
+    }
+
+    &.error {
+      @include color("error-contrast");
+      @include background-color("error");
+
+      &:hover {
+        @include color("hover-error-contrast");
+        @include background-color("hover-error");
+      }
+    }
+
+    &.selected {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+
+    &:active,
+    &.button:active {
+      @include color("selected-contrast");
+      @include background-color("selected");
+    }
+
+    &:focus,
+    &.button:focus {
+      @include  color("focus-contrast");
+      @include background-color("focus");
+    }
+  }
 }

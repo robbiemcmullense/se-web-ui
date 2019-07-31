@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-app',
@@ -15,6 +15,6 @@ export class AppComponent {
   @Prop() option: 'technical' | 'website' = 'technical';
 
   render() {
-    return <Host class={['se-app-body', this.option === "website" ? 'se-font-website' : 'se-font-technical'].join(' ')}><slot></slot></Host>;
+    return <div class={['se-app-body', this.option === "website" ? 'se-font-website' : 'se-font-technical'].join(' ')}><slot></slot></div>;
   }
 }

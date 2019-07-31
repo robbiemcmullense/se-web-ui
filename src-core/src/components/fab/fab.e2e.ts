@@ -12,10 +12,11 @@ describe('FabComponent', () => {
 
   it('renders', async () => {
     expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
   });
 
   it('has the "pos-bottom" class on the host element because it is bottom aligned by default', async () => {
-    expect(element).toHaveClasses(['pos-bottom', 'hydrated']);
+    expect(element.shadowRoot.querySelector('.se-fab')).toHaveClass('pos-bottom');
     
   });
 

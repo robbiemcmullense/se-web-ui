@@ -1,10 +1,9 @@
 @import "../../theme/theme";
 
-:host{
+.se-dialog-header {
   position: relative;
   padding: $spacing-small $spacing-small $spacing-small $spacing-large; // 2px to compensate with border bottom
   font-size: 20px;
-  // @include display-flex();
   @include align-items(center);
   @include display-flex();
 
@@ -12,21 +11,26 @@
     @include flex();
   }
 
-  h4 {
-    @include typology('h5');
-    text-transform: uppercase;
+  div.middle {
+    @include typology('h4');
     margin: 8px;
+  }
+
+  &.primary {
+    min-height: 44px;
+    @include background-color('primary');
+    @include color('primary-contrast');
+  }
+
+  &.alternative {
+    @include background-color('alternative');
+    @include color('primary');
+    margin-bottom: -$spacing-large;
   }
 }
 
-:host(.alternative){
-  @include background-color('alternative');
-  @include  color('primary');
-  margin-bottom: -$spacing-large;
-}
-
-:host(.primary){
-  min-height: 44px;
-  @include background-color('primary');
-  @include  color('primary-contrast');
+::slotted(h1), ::slotted(h2), ::slotted(h3),
+::slotted(h4), ::slotted(h5), ::slotted(h6) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }

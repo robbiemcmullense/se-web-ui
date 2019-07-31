@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-chip",
@@ -20,9 +20,18 @@ export class ChipComponent {
    */
   @Prop() canClose: boolean = false;
   /**
+   * Indicates whether or not the chip is selected.  Set to `false` by default.
+   */
+  @Prop() selected: boolean = false;
+  /**
    * Indicates whether or not the chip is disabled.  Set to `false` by default.
    */
   @Prop() disabled: boolean = false;
+  /**
+   * Optional property that defines if the chip displays as a block in it's container.
+   * When set to true, the chip will be as wide as its container.
+   */
+  @Prop({mutable: true}) block: boolean;
   @Element() el: HTMLElement;
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
@@ -37,10 +46,15 @@ export class ChipComponent {
 
   render() {
     return (
-      <Host class={[this.color, this.disabled ? 'disabled' : ''].join(' ')}>
-        <div class="value">{this.value}</div>
+      <div class={[
+        'se-chip',
+        this.color,
+        this.selected ? 'selected' : '',
+        this.disabled ? 'disabled' : '',
+        this.block ? 'display-block' : ''].join(' ')}>
+        <div class={['value', this.canClose ? 'can-close' : ''].join(' ')}>{this.value}</div>
         {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
-      </Host>
+      </div>
     );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop, Host } from '@stencil/core';
 
 @Component({
   tag: 'se-sidemenu-item',

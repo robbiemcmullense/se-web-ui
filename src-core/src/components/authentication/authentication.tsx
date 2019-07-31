@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
 
@@ -87,9 +87,9 @@ export class AuthenticationComponent {
 
   render() {
     return (
-      <Host class={{'hide': this.hide}}>
+      <div class={['se-authentication', this.hide ? 'hide' : ''].join(' ')}>
         {!this.hide ? this.renderAuthentication() : ''}
-      </Host>
+      </div>
       )
   }
 }

@@ -1,4 +1,4 @@
-import {Component, h, Host, State, Method, Event, Element, EventEmitter, Listen, Prop} from "@stencil/core";
+import {Component, h, State, Method, Event, Element, EventEmitter, Listen, Prop} from "@stencil/core";
 @Component({
   tag: "se-tooltip",
   styleUrl: "tooltip.scss",
@@ -26,6 +26,10 @@ export class TooltipComponent {
    * Event emitted when the tooltip has been closed.
    */
   @Event() didClose: EventEmitter;
+  /**
+   * Closes the tooltip when another tooltip is opened.
+   */
+  @Event() closeTooltips: EventEmitter;
   @State() opened: boolean = false;
   @Listen('touchstart', {target: 'window'})
   handleTouchstart(ev) {
@@ -55,13 +59,19 @@ export class TooltipComponent {
      this._toggle(ev);
     }
   }
+
+  @Listen('closeTooltips', {target: 'document'})
+  handleCloseTooltip() {
+    this.close();
+  }
  
   _toggle(ev: Event) {
     ev.stopPropagation();
     if (this.opened) {
       this.close(); 
       this.didClose.emit(ev);    
-    } else{
+    } else {
+      this.closeTooltips.emit(); // close other tooltips before opening target tooltip
       this.open();
       this.didOpen.emit(ev);
     }
@@ -85,14 +95,14 @@ export class TooltipComponent {
 
   render() {
     return (
-      <Host class={this.position}>
+      <div class={this.position}>
         <div onClick={this.action == "click"? ev => {this._toggle(ev)}: () => {}}>
           <slot name="tooltip" />
         </div>
         <div class={`${this.opened ? "show" : ""} tooltip`}>
           <slot />
         </div>
-      </Host>
+      </div>
     )
   }
 }

@@ -1,33 +1,34 @@
 @import "../../theme/theme";
 
-:host{
+.se-fab {
 	position: fixed;
-}
 
-:host(.pos-top){
-	top: 76px;
-	right: 32px;
-	& .mini-action-button{
-		top: 70px;
-    	left: 0;
-    	text-align: center;
+	&.pos-top {
+		top: 76px;
+		right: 32px;
+		& .mini-action-button{
+			top: 70px;
+				left: 0;
+				text-align: center;
+		}
 	}
-}
 
-:host(.pos-bottom){
-	bottom: 16px;
-	right: 32px;
-	& .mini-action-button{
-		bottom: 55px;
-		left: 0;
-    	text-align: center;
+	&.pos-bottom {
+		bottom: 16px;
+		right: 32px;
+		& .mini-action-button{
+			bottom: 55px;
+			left: 0;
+				text-align: center;
+		}
 	}
-}
-.mini-action-button{
-	cursor: pointer;
-	position: absolute;
-	display: none;
-}
-.show{
-	display: block;
+
+	.mini-action-button{
+		cursor: pointer;
+		position: absolute;
+		display: none;
+	}
+	.show {
+		display: block;
+	}
 }

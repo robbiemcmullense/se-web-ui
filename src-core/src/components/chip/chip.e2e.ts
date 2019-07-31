@@ -6,7 +6,7 @@ describe('ChipComponent', () => {
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-chip></se-chip>');
-    element = await page.find('se-chip');
+    element = await page.find('se-chip >>> .se-chip');
   });
 
   it('renders', async() => {
@@ -19,10 +19,26 @@ describe('ChipComponent', () => {
 
   it('should have a disabled class when the disabled property is set to true', async() => {
     await page.$eval('se-chip', (elm: any) => {
+      elm.selected = true;
+    });
+    await page.waitForChanges();
+    expect(element).toHaveClass('selected');
+  });
+
+  it('should have a disabled class when the disabled property is set to true', async() => {
+    await page.$eval('se-chip', (elm: any) => {
       elm.disabled = true;
     });
     await page.waitForChanges();
     expect(element).toHaveClass('disabled');
+  });
+
+  it('should have a display-block class when the block property is set to true', async() => {
+    await page.$eval('se-chip', (elm: any) => {
+      elm.block = true;
+    });
+    await page.waitForChanges();
+    expect(element).toHaveClass('display-block');
   });
 
   it('should render HTML with the passed value', async() => {

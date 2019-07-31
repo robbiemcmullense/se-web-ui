@@ -11,17 +11,17 @@ describe('DialogHeaderComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
-    
+    expect(element).toHaveClass('hydrated');
   });
 
   it('renders with the primary class to indicate the default primary color property', async() => {
-    expect(element).toHaveClasses(['hydrated', 'primary']);
+    expect(element.shadowRoot.querySelector('.se-dialog-header')).toHaveClass('primary');
   });
 
-  it('renders with an h4 element with a flex class and a slot element with the "end" attribute', async() => {
-    const headerElm = await page.find('se-dialog-header >>> h4');
+  it('renders a div element with a flex class and a slot element with the "end" attribute', async() => {
+    const headerElm = await page.find('se-dialog-header >>> .se-dialog-header div');
     expect(headerElm).toBeTruthy();
-    expect(headerElm).toHaveClass('flex');
+    expect(headerElm).toHaveClasses(['flex', 'middle']);
 
     const slotElm = await page.find ('se-dialog-header >>> slot[name="end"]');
     expect(slotElm).toBeTruthy();

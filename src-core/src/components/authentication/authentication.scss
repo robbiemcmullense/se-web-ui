@@ -1,12 +1,12 @@
 @import "../../theme/theme";
 
-:host {
+.se-authentication {
   @include absolute(0, 0, 0, 0);
   @include background-color("standard");
   z-index: 20;
-}
-:host(.hide) {
-  display: none;
+  &.hide {
+    display: none;
+  }
 }
 
 .content-wrapper {
