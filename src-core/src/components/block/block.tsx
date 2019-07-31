@@ -26,7 +26,7 @@ export class BlockComponent {
   /**
    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
    */
-  @Prop() color: "standard" | "alternative" = "alternative";
+  @Prop() color: "standard" | "alternative" | "transparent" = "alternative";
   /**
    * Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
    */

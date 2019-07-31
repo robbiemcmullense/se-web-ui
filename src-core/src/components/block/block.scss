@@ -43,11 +43,9 @@
   }
 
   &.card {
-
       box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
       border-radius: $border-radius-card;
       margin: $spacing-large;
-
   }
 
   &.standard {
@@ -56,6 +54,10 @@
 
   &.alternative {
     @include background-color('alternative');
+  }
+
+  &.transparent {
+    background-color: none;
   }
 }
 

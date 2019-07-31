@@ -77,33 +77,21 @@ export namespace Components {
   }
   interface SeBanner {}
   interface SeBannerItem {
-    /**
-    * Sets the body text for your banner item.
-    */
-    'content': string;
-    /**
-    * Sets the footer text for your banner item button.
-    */
-    'footer': string;
-    /**
-    * Sets the header text for your banner item.
-    */
-    'header': string;
+    'active': boolean;
     /**
     * Sets the background image for your banner item.
     */
     'imageUrl': string;
-    'setActive': (value: boolean) => Promise<void>;
     /**
-    * Sets the width of your banner item.
+    * Sets the active banner item in your banner component.
     */
-    'width': string;
+    'setActive': (value: boolean) => Promise<void>;
   }
   interface SeBlock {
     /**
     * Optional property that defines the background color of the block. Default setting is `alternative` (white).
     */
-    'color': "standard" | "alternative";
+    'color': "standard" | "alternative" | "transparent";
     /**
     * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
     */
@@ -1180,32 +1168,17 @@ declare namespace LocalJSX {
   }
   interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {}
   interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
-    /**
-    * Sets the body text for your banner item.
-    */
-    'content'?: string;
-    /**
-    * Sets the footer text for your banner item button.
-    */
-    'footer'?: string;
-    /**
-    * Sets the header text for your banner item.
-    */
-    'header'?: string;
+    'active'?: boolean;
     /**
     * Sets the background image for your banner item.
     */
     'imageUrl'?: string;
-    /**
-    * Sets the width of your banner item.
-    */
-    'width'?: string;
   }
   interface SeBlock extends JSXBase.HTMLAttributes<HTMLSeBlockElement> {
     /**
     * Optional property that defines the background color of the block. Default setting is `alternative` (white).
     */
-    'color'?: "standard" | "alternative";
+    'color'?: "standard" | "alternative" | "transparent";
     /**
     * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
     */

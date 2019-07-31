@@ -15,12 +15,11 @@ li {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border-color: red;
-  background-color: white;
+  background-color: $se-white;
   margin-right: 3px;
 
   &.active {
-    background-color: red;
+    background-color: $se-life-green;
   }
 }
 
@@ -32,9 +31,12 @@ li {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: #aaaaaa;
-  @include background-color('alternative');
+  color: $se-medium-grey;
   z-index: 3;
+
+  &:hover {
+    color: $se-white;
+  }
 }
 
 .previous-indicator {
@@ -43,4 +45,9 @@ li {
 
 .next-indicator {
   right: 20px;
+}
+
+.se-banner {
+  height: 500px;
+  position: relative;
 }

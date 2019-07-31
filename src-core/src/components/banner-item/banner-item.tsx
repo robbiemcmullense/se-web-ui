@@ -1,4 +1,4 @@
-import { Component, h, Host, Method, Prop, State } from "@stencil/core";
+import { Component, Element, h, Host, Method, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-banner-item",
@@ -10,27 +10,29 @@ export class BannerItemComponent {
    * Sets the background image for your banner item.
    */
   @Prop() imageUrl: string;
-  /**
-   * Sets the header text for your banner item.
-   */
-  @Prop() header: string;
-  /**
-   * Sets the body text for your banner item.
-   */
-  @Prop() content: string;
-  /**
-   * Sets the footer text for your banner item button.
-   */
-  @Prop() footer: string;
-  /**
-   * Sets the width of your banner item.
-   */
-  @Prop() width: string;
-  @State() active: boolean;
+  @Prop() active: boolean;
+  @Element() el: HTMLElement;
 
+  /**
+   * Sets the active banner item in your banner component.
+   */
   @Method()
   async setActive(value: boolean) {
     this.active = value;
+  }
+
+  componentWillLoad() {
+   this.setBlockTransparency();
+  }
+
+  componentWillUpdate() {
+    this.setBlockTransparency();
+  }
+
+  private setBlockTransparency() {
+    Array.from(this.el.querySelectorAll('se-block')).forEach((item: any) => {
+      item.color = 'transparent';
+    });
   }
 
   render() {
@@ -40,13 +42,7 @@ export class BannerItemComponent {
           <img class="image-background" style={{ backgroundImage: this.imageUrl }}/>
         </div>
         <div class="banner-section-wrapper">
-          <se-block width={this.width}>
-            <se-block-header>{this.header}</se-block-header>
-            <se-block-content>{this.content}</se-block-content>
-            <se-block-footer>
-              <se-button>{this.footer}</se-button>
-            </se-block-footer>
-          </se-block>
+          <slot/>
         </div>
       </Host>
     );
