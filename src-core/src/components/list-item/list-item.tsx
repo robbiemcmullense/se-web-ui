@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
+import { Component, h, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -61,8 +61,8 @@ export class ListItemComponent {
 
   render() {
     return (
-      <Host class={[this.selected ? "selected" : '', this.option].join(' ')}>
-        <button style={{ paddingLeft: `${this.padding}px` }}>
+      <div class={['se-list-item', this.option].join(' ')}>
+        <button class={{"selected": this.selected}} style={{ paddingLeft: `${this.padding}px` }}>
           {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
           {!!this.icon ?
             <div class="nav-icon">
@@ -78,7 +78,7 @@ export class ListItemComponent {
           {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
           {this.option === "classic" ? <slot></slot> : ''}
         </button>
-      </Host>
+      </div>
     )
   }
 }

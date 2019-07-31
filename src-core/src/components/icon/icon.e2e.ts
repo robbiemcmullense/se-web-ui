@@ -20,6 +20,6 @@ import { newE2EPage } from '@stencil/core/testing';
       elm.color = 'warn';
     });
     await page.waitForChanges();	
-    expect(element).toHaveClasses(['hydrated', 'icon-small', 'warn', 'icon-undefined']);	
+    expect(element.shadowRoot.querySelector('.se-icon-wrapper')).toHaveClasses(['icon-small', 'warn', 'icon-undefined']);	
   });
 });

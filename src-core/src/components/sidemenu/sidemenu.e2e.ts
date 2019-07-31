@@ -36,7 +36,8 @@ describe('SidemenuComponent', () => {
   it('should render as many se-list-item components as se-sidemenu-item children', async() => {
     page = await renderComponent('<se-sidemenu-item></se-sidemenu-item><se-sidemenu-item></se-sidemenu-item>');
     const listItems = await page.findAll('se-sidemenu >>> se-list-item');
-    expect(listItems.length).toBe(2);
+    expect(listItems[0].shadowRoot.querySelector('button')).toHaveClass('selected');
+    expect(listItems[1].shadowRoot.querySelector('button')).not.toHaveClass('selected');
   });
 
   it('should open the sidemenu when the toggle method is called', async() => {

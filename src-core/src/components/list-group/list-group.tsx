@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Watch, Element, Listen } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Prop, Watch, Element, Listen } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -46,6 +46,11 @@ export class ListGroupComponent {
    * Defines if list groups can be collapsed, true by default.
    */
   @Prop() canCollapse: boolean = true;
+  @Prop() selectedChild: boolean;
+  /**
+   * Pass the group data to the parent when collapsed.
+   */
+  @Event() didGroupClick: EventEmitter<any>;
 
   @Listen('didSelectedChange') ChildUpdated() {
     this.checkSelected();
@@ -54,23 +59,34 @@ export class ListGroupComponent {
   checkSelected(){
     if (!this.collapsed) {
       console.log('not collapsed');
-      this.selected = false;
+      this.selectedChild = false;
     } else {
       console.log('collapsed!');
-      let hasSelectedChild = false;
       Array.from(
         this.el.querySelectorAll("se-list-item, se-list-group")
       ).forEach((item: any) => {
-        if (item.selected) {
-          hasSelectedChild = true;
+        if (item.selected || item.selectedChild) {
+          this.selectedChild = true;
         }
       });
-      this.selected = hasSelectedChild;
     }
   }
 
-  private toggleCollapse() {
-    this.collapsed = !this.collapsed;
+  private toggleCollapse(event: any) {
+    if (this.option === 'treeview') {
+      if (this.isTreeViewTarget(event)) {
+        this.collapsed = !this.collapsed;
+      } else {
+        this.didGroupClick.emit();
+      }
+    } else {
+      this.collapsed = !this.collapsed;
+      this.didGroupClick.emit();
+    }
+  }
+
+  private isTreeViewTarget(event: any) {
+    return event.target.nodeName === 'SE-ICON' || event.target.className.includes('se-icon');
   }
 
   setButtonId() {
@@ -96,8 +112,8 @@ export class ListGroupComponent {
   render() {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
-      <Host class={[this.selected ? "selected" : '', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
-        <button style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()} disabled={!this.canCollapse}>
+      <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
+        <button class={[this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : ''].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
           {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
           {!!this.icon ?
             <div class="nav-icon">
@@ -118,7 +134,7 @@ export class ListGroupComponent {
         <div class="group-item">
           <slot/>
         </div>
-      </Host>
+      </div>
     )
   }
 }

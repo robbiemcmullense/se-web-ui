@@ -1,23 +1,26 @@
 @import "../../theme/theme";
 
-:host {
+.se-dropdown {
   display: inline-flex;
   position: relative;
 
-}
-:host([hidden]) {
-  display: none;
-}
-:host(.left){
-  .dropdown-content{
-    left:0;
+  &[hidden] {
+    display: none;
+  }
+
+  &.left {
+    .dropdown-content{
+      left:0;
+    }
+  }
+
+  &.right {
+    .dropdown-content{
+      right:0;
+    }
   }
 }
-:host(.right){
-  .dropdown-content{
-    right:0;
-  }
-}
+
 .dropdown-toggle ::slotted(*) {
   cursor: pointer;
 }

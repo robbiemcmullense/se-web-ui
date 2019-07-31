@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from "@stencil/core";
+import { Component, h, Prop, Element } from "@stencil/core";
 
 @Component({
   tag: "se-icon",
@@ -26,15 +26,11 @@ export class IconComponent {
    */
   @Prop() color: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
 
-  // componentWillLoad() {
-  //   this.el.classList.add(this.size);
-  // }
-
   render() {
     return (
-      <Host class={[`icon-${this.size}`, this.color, `icon-${this.option}`].join(" ")}>
+      <div class={['se-icon-wrapper', `icon-${this.size}`, this.color, `icon-${this.option}`].join(" ")}>
         <slot />
-      </Host>
+      </div>
     );
   }
 }

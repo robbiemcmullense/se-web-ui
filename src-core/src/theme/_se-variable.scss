@@ -16,7 +16,7 @@ $se-sky-blue-10p:           #ECF7FC !default;
 $se-red-10p:                #FCEAE7 !default;
 $se-true-black:             #000000 !default;
 $se-black:                  #0F0F0F !default;
-$se-anthracite-grey :       #333333 !default;
+$se-anthracite-grey:        #333333 !default;
 $se-ultra-dark-grey:        #434343 !default;
 $se-super-dark-grey :       #505559 !default;
 $se-dark-grey:              #626469 !default;
@@ -66,7 +66,7 @@ $seTheme: (
   'selected': $se-dark-grey,
   'selected-contrast': $se-white,
 
-  'focus': $se-anthracite-grey,
+  'focus': $se-ultra-dark-grey,
   'focus-contrast': $se-white,
 
   'background': $background
