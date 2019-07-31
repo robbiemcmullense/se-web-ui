@@ -38,7 +38,7 @@ describe('RadioComponent with an initialized value', () => {
     expect(firstButtonElement).toHaveClass('selected');
   });
 
-  it('should mark the second button as selected, and emit the se-button didChange event when clicked', async() => {
+  it('should mark the second button as selected, and emit the se-button didClick event when clicked', async() => {
     const eventSpy = await page.spyOnEvent('didClick');
     await secondButtonElement.click();
     expect(secondButtonElement).toHaveClass('selected');

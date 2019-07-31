@@ -44,6 +44,14 @@ describe('ButtonComponent', () => {
     await page.waitForChanges();
     expect(hostElement).toHaveClass('display-block');
   });
+
+  it('renders the minifab class on the host element when the option property is set to minifab', async() => {
+    await page.$eval('se-button', (elm: any) => {
+      elm.option = 'minifab';
+    });
+    await page.waitForChanges();
+    expect(hostElement).toHaveClass('minifab');
+  });
 });
 
 describe('Button with Preset Text', () => {
@@ -67,7 +75,7 @@ describe('Button with ID Element', () => {
   });
 });
 
-describe('ButtonComponent Methods and Events', () => {
+describe('ButtonComponent Methods', () => {
   let page, element;
 
   beforeEach(async() => {

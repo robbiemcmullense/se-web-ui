@@ -78,6 +78,7 @@
             image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
           </se-about>
         </se-sidemenu-item>
+        <se-sidemenu-item id="sidemenu-item" item="Close"></se-sidemenu-item>
       </se-sidemenu>
     </se-header>
     <se-tabbar color="primary">
@@ -422,7 +423,6 @@
             <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
             <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
             <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
-
           </se-block-content>
         </se-block>
         <se-block id="block5">
@@ -552,14 +552,6 @@
           </se-block-content>
         </se-block>
       </se-container>
-      <se-fab icon="action_share" position="top">
-        <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
-          icon="notification_critical_stroke"></se-button>
-        <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
-        <se-button option='minifab' caption="New User" icon="task"></se-button>
-        <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
-        <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
-      </se-fab>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
       <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -589,20 +581,19 @@
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
     <se-fab icon="action_share" position="top">
-      <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
+      <se-button option='minifab' caption="New Work Order"
         icon="notification_critical_stroke"></se-button>
       <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
       <se-button option='minifab' caption="New User" icon="task"></se-button>
       <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
       <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
     </se-fab>
-    <se-fab option="backtotop" onclick="showfab('fab button clicked')"></se-fab>
-    <!-- <se-button onclick="closeDialog('dialog-simple-notitle')" option="fab" icon="action_share"></se-button> -->
+    <se-fab option="backtotop" onclick="showfab('fab back-to-top button clicked')"></se-fab>
   </se-app>
 
   <script>
     function showfab(text) {
-      console.log(text);
+      alert(text);
     }
 
     // Dialog
@@ -659,6 +650,12 @@
     }
     document.querySelector('se-slider').addEventListener('didChange', function (event) {
       document.getElementById('slider-value').innerText = 'Slider Value: ' + event.detail.value;
+    });
+
+    document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
+      document.querySelector('se-sidemenu').toggle();
+      //alert('this has been clicked');
+      document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
     });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {
