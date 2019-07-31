@@ -133,6 +133,10 @@ export class ButtonComponent {
       this.selected = !this.selected;
       this.didClick.emit({selected: this.selected, value: this.value});
     }
+    
+    if (this.option === 'minifab') {
+      this.didClick.emit({value: this.caption});
+    }
   }
 
   componentWillLoad() {
@@ -146,7 +150,7 @@ export class ButtonComponent {
 
   render() {
     return (
-      <Host class={{'grouped': this.grouped, 'display-block': this.block}}>
+      <Host class={{'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab'}}>
         <button disabled={this.disabled} data-tooltip={this.caption} type={this.type}
           class={
             [!!this.icon ? 'hasIcon' : '', this.hasChild ? 'hasChild' : '', this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')}

@@ -1707,6 +1707,7 @@ declare namespace LocalJSX {
     * Defines the title of the menu item.
     */
     'item'?: string;
+    'onDidClick'?: (event: CustomEvent<any>) => void;
   }
   interface SeSlider extends JSXBase.HTMLAttributes<HTMLSeSliderElement> {
     /**

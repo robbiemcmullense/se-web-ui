@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method } from '@stencil/core';
+import { Component, h, Prop, State, Method, Listen } from '@stencil/core';
 const SHOW_FAB = 'show';
 
 @Component({
@@ -43,6 +43,11 @@ export class FabComponent {
 		if (this.option == 'speeddial') {
 			this.toggleIcon = !this.toggleIcon;
 		}
+	}
+
+	@Listen('didClick')
+	buttonClickedHandler() {
+		this.toggleAction();
 	}
 
 	getIcon() {

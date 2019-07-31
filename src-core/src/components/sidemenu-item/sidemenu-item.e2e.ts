@@ -25,4 +25,13 @@ describe('SidemenuItemComponent', () => {
     await page.waitForChanges();
     expect(element).not.toHaveClass('navitem-hidden');
   });
+
+  it('emits the didClick event when a sidemenu item is clicked', async() => {
+    const eventSpy = await page.spyOnEvent('didClick');
+    await page.$eval('se-sidemenu-item', (elm: any) => {
+      elm.active = true;
+    });
+    await page.waitForChanges();
+    expect(eventSpy).toHaveReceivedEvent();
+  });
 });
