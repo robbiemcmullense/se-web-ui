@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-dialog-header",
@@ -15,10 +15,10 @@ export class DialogHeaderComponent {
 
   render() {
     return (
-      <Host class={this.color}>
-        <h4 class="flex"><slot></slot></h4>
+      <div class={['se-dialog-header', this.color].join(' ')}>
+        <div class="flex middle"><slot></slot></div>
         <slot name="end"></slot>
-      </Host>
+      </div>
     )
   }
 }

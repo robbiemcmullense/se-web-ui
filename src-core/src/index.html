@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <se-app>
+  <se-app option="marketing">
     <!-- <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
       <div>
         <se-form-field label="Username" required="true" option="stacked">
@@ -30,6 +30,12 @@
     <se-header app-title="Test Advisor" project="Project name">
       <div slot="end">
         <se-link url="http://google.com" option="external">External Link to Google</se-link>
+        <se-dropdown alignment="right">
+          <se-button slot="trigger" option="inherit" icon="user_standard" icon-color="primary">Test User</se-button>
+          <se-list option="dropdown">
+            <se-list-item item="Logout" ></se-list-item>
+          </se-list>
+        </se-dropdown>
       </div>
       <se-sidemenu>
         <se-sidemenu-item item="Project">
@@ -45,17 +51,17 @@
                     </div>
                   </se-block-header>
                   <se-block-content>
-                    <se-chip tabindex="0" color="standard" value="Std Chip"></se-chip>
-                    <se-chip tabindex="0" color="standard" disabled="true" value="Std Chip"></se-chip>
-                    <span style="padding: 20px; background-color: #9fa0a4;">
-                      <se-chip tabindex="0" color="alternative" value="Alt Chip"></se-chip>
-                      <se-chip tabindex="0" color="alternative" disabled="true" value="Alt Chip"></se-chip>
-                    </span>
+                    <se-chip color="standard" value="Std Chip"></se-chip>
+                    <se-chip color="standard" disabled="true" value="Std Chip"></se-chip>
+                      <div style="background-color: #9fa0a4;">
+                        <se-chip color="alternative" value="Alt Chip"></se-chip>
+                        <se-chip color="alternative" disabled="true" value="Alt Chip"></se-chip>
+                      </div>
                   </se-block-content>
                   <se-block-content>
-                      <se-icon size="nano" color="anthracitegrey">airconditioner_hot_heating</se-icon>
-                      <se-icon size="small" color="lightgrey">airconditioner_hot_heating</se-icon>
-                      <se-icon size="medium" color="lifegreen">other_vertical</se-icon>
+                    <se-icon size="nano" color="anthracitegrey">airconditioner_hot_heating</se-icon>
+                    <se-icon size="small" color="lightgrey">airconditioner_hot_heating</se-icon>
+                    <se-icon size="medium" color="lifegreen">other_vertical</se-icon>
                     <se-icon size="large" color="lifegreen">airconditioner_hot_heating</se-icon>
                     <se-icon size="xtralarge" color="lightgreen">airconditioner_hot_heating</se-icon>
                   </se-block-content>
@@ -72,6 +78,7 @@
             image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
           </se-about>
         </se-sidemenu-item>
+        <se-sidemenu-item id="sidemenu-item" item="Close"></se-sidemenu-item>
       </se-sidemenu>
     </se-header>
     <se-tabbar color="primary">
@@ -95,7 +102,6 @@
       <nav>
         <a class="active">Home</a>
         <a>Another</a>
-        <a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
         <a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
@@ -214,7 +220,8 @@
               </se-list-group>
               <se-list-group item="Warning and error icon colors">
                 <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
-                <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error"></se-list-item>
+                <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error">
+                </se-list-item>
               </se-list-group>
             </se-list>
           </se-block-content>
@@ -231,7 +238,11 @@
           </se-block-header>
           <se-block-content>
             <se-button option="flat">standard flat</se-button>
-            <se-button id="raisedBtn" option="raised">standard raised</se-button>
+            <se-button option="raised">standard raised</se-button>
+            <se-divider></se-divider>
+            <se-button option="flat" block="true">standard flat block</se-button>
+            <se-button id="raisedBtn" option="raised" block="true">standard raised block</se-button>
+            <se-divider></se-divider>
             <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
             <se-button option="flat" color="primary">primary</se-button>
             <se-button option="flat" color="secondary">secondary</se-button>
@@ -270,11 +281,23 @@
             <ul>
               <li id="chip-info"></li>
             </ul>
+            <se-chip block="true" can-close="true" value="Chip Block"></se-chip>
             <se-chip id="se-chip" can-close="true" value="Chip Std"></se-chip>
-            <se-chip id="se-chip" can-close="true" disabled="true" value="Chip Std"></se-chip>
-            <div style="padding:8px; background-color:#9fa0a4;">
+            <se-chip can-close="true" selected="true" value="Chip Std Selected"></se-chip>
+            <se-chip can-close="true" disabled="true" value="Chip Std Disabled"></se-chip>
+            <div style="background-color:#9fa0a4;">
               <se-chip value="Chip Alt" can-close="true" color="alternative"></se-chip>
-              <se-chip value="Chip Alt" can-close="true" disabled="true" color="alternative"></se-chip>
+              <se-chip value="Chip Alt Selected" selected="true" can-close="true" color="alternative"></se-chip>
+              <se-chip value="Chip Alt Disabled" can-close="true" disabled="true" color="alternative"></se-chip>
+            </div>
+            <se-chip block="true" value="Chip Block"></se-chip>
+            <se-chip id="se-chip" value="Chip Std"></se-chip>
+            <se-chip selected="true" value="Chip Std Selected"></se-chip>
+            <se-chip disabled="true" value="Chip Std Disabled"></se-chip>
+            <div style="background-color:#9fa0a4;">
+              <se-chip value="Chip Alt" color="alternative"></se-chip>
+              <se-chip value="Chip Alt Selected" selected="true" color="alternative"></se-chip>
+              <se-chip value="Chip Alt Disabled" disabled="true" color="alternative"></se-chip>
             </div>
             <se-divider></se-divider>
             <se-link url="http://google.com">Link to Google</se-link>
@@ -289,7 +312,7 @@
             <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true">
             </se-checkbox>
             <se-checkbox id="toggle-switch-el" option="switch" label="Switch Label"></se-checkbox>
-            <se-checkbox selected="true" option="switch" disabled="true" label="Switch Label"></se-checkbox>
+            <se-checkbox selected="true" option="switch" disabled="true" label="Disabled Switch Label"></se-checkbox>
             <se-divider></se-divider>
             <ul>
               <li id="radio-message">selected radio icon button: <span></span></li>
@@ -303,7 +326,7 @@
               <li>Example Checkbox and Radio components:</li>
             </ul>
             <se-checkbox id="checkbox-primary" value="primary" label="Checkbox Primary"></se-checkbox>
-            <se-checkbox value="warn" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
+            <se-checkbox value="secondary" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
             <se-radio id="radio-primary" value="radio-primary" label="Radio Primary" selected="true"></se-radio>
             <se-radio value="radio-secondary" label="Radio Secondary" color="secondary"></se-radio>
             <se-divider></se-divider>
@@ -311,6 +334,19 @@
               <li id="checkbox-button-message">selected radio buttons: <span>second</span></li>
             </ul>
             <se-radio-group id="btnGroup1" value="second">
+              <se-button value="first">Check1</se-button>
+              <se-button value="second">Check2</se-button>
+              <se-button value="third">Check3</se-button>
+            </se-radio-group>
+            <se-divider></se-divider>
+            <ul>
+              <li>Nano-sized button groups:</li>
+            </ul>
+            <se-radio-group size="nano">
+              <se-button value="left" icon="arrow2_left"></se-button>
+              <se-button value="right" icon="arrow2_right"></se-button>
+            </se-radio-group>
+            <se-radio-group size="nano" value="second">
               <se-button value="first">Check1</se-button>
               <se-button value="second">Check2</se-button>
               <se-button value="third">Check3</se-button>
@@ -369,12 +405,21 @@
         </se-block>
         <se-block id="block4">
           <se-block-header>
-            Modals
+            Breadcrumbs & Modals
             <div slot="end">
               <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
+            <se-breadcrumb id="my-breadcrumb">
+              <se-breadcrumb-item href="#">First</se-breadcrumb-item>
+              <se-breadcrumb-item href="#">Second</se-breadcrumb-item>
+              <se-breadcrumb-item href="#">Third</se-breadcrumb-item>
+              <se-breadcrumb-item href="#">Last</se-breadcrumb-item>
+            </se-breadcrumb>
+            <se-button onclick="removeLastBreadcrumb()" option="raised">Remove Last Breadcrumb</se-button>
+
+            <se-divider></se-divider>
             <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
             <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
             <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
@@ -507,14 +552,6 @@
           </se-block-content>
         </se-block>
       </se-container>
-      <se-fab icon="action_share" position="top">
-        <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
-          icon="notification_critical_stroke"></se-button>
-        <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
-        <se-button option='minifab' caption="New User" icon="task"></se-button>
-        <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
-        <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
-      </se-fab>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
       <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -544,20 +581,19 @@
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
     <se-fab icon="action_share" position="top">
-      <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
+      <se-button option='minifab' caption="New Work Order"
         icon="notification_critical_stroke"></se-button>
       <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
       <se-button option='minifab' caption="New User" icon="task"></se-button>
       <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
       <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
     </se-fab>
-    <se-fab option="backtotop" onclick="showfab('fab button clicked')"></se-fab>
-    <!-- <se-button onclick="closeDialog('dialog-simple-notitle')" option="fab" icon="action_share"></se-button> -->
+    <se-fab option="backtotop" onclick="showfab('fab back-to-top button clicked')"></se-fab>
   </se-app>
 
   <script>
     function showfab(text) {
-      console.log(text);
+      alert(text);
     }
 
     // Dialog
@@ -598,6 +634,12 @@
       }, 3000);
     }
 
+    function removeLastBreadcrumb() {
+      let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
+      breadcrumbs[breadcrumbs.length-1].parentNode.removeChild(breadcrumbs[breadcrumbs.length-1]);
+      document.getElementById('my-breadcrumb').updateChildren();
+    }
+
 
     // grid widget
     function toggle(id) {
@@ -608,6 +650,12 @@
     }
     document.querySelector('se-slider').addEventListener('didChange', function (event) {
       document.getElementById('slider-value').innerText = 'Slider Value: ' + event.detail.value;
+    });
+
+    document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
+      document.querySelector('se-sidemenu').toggle();
+      //alert('this has been clicked');
+      document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
     });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {

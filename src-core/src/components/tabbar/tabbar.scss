@@ -34,23 +34,22 @@
   @include display-flex();
   @include align-items(center);
 }
-.nav-left-wrapper {
-  background-color: rgba(black, 0.4);
-  &>*:first-child{
-    text-transform: uppercase;
-    padding-left: $spacing-large;
-  }
-  &>*:last-child{
-    padding-right: $spacing-large;
-  }
-}
+
 
 .tab-primary {
   @include background-color('primary');
   @include  color('primary-contrast');
   // box-shadow: $inner-shadow-top;
   // border-bottom: 4px solid rgba(black, 0.25);
-
+  .nav-left-wrapper {
+    background-color: rgba(black, 0.4);
+    &>*:first-child{
+      padding-left: $spacing-large;
+    }
+    &>*:last-child{
+      padding-right: $spacing-large;
+    }
+  }
   .shadowed {
     box-shadow: $inner-shadow-top;
   }
@@ -61,7 +60,7 @@
     height: 44px;
     border-bottom: 4px solid rgba(black, 0.25);
   }
-  nav > a {
+  nav > a, nav > span {
     line-height: 44px;
     @include  color('primary-contrast');
     &:hover {
@@ -84,11 +83,18 @@
   @include background-color('alternative');
   @include  color('alternative-contrast');
   border-bottom: 1px solid $divider-color;
-
+  .nav-left-wrapper {
+    &>*:first-child{
+      padding-left: $spacing-large;
+    }
+    &>*:last-child{
+      padding-right: $spacing-large;
+    }
+  }
   nav {
     height: 40px;
   }
-  nav > a {
+  nav > a, nav > span {
     line-height: 40px;
     @include  color('alternative-contrast');
     &:hover {
@@ -117,14 +123,14 @@
   }
   .nav-center-wrapper{
     overflow-y: hidden;
-    overflow-x: -moz-scrollbars-none;
+    scrollbar-width: none;
     overflow-x: auto;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
       height: 0 !important
     }
   }
-  nav > a {
+  nav > a, nav > span {
     font-weight: 500;
     position: relative;
     margin: 0 $spacing-large;

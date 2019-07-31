@@ -35,7 +35,12 @@ export namespace Components {
     */
     'version': string;
   }
-  interface SeApp {}
+  interface SeApp {
+    /**
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
+    */
+    'option': 'technical' | 'website';
+  }
   interface SeAuthentication {
     /**
     * The title of your authentication screen.
@@ -122,7 +127,24 @@ export namespace Components {
     */
     'option': 'card' | 'widget' | 'basic';
   }
+  interface SeBreadcrumb {
+    'updateChildren': () => Promise<void>;
+  }
+  interface SeBreadcrumbItem {
+    /**
+    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
+    */
+    'href': string;
+    /**
+    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+    */
+    'isLast': boolean;
+  }
   interface SeButton {
+    /**
+    * Optional property that defines if the button displays as a block in it's container. When set to true, the button will be as wide as its container.
+    */
+    'block': boolean;
     /**
     * Optional property that defines if the button has a caption or tooltip text.
     */
@@ -153,6 +175,7 @@ export namespace Components {
     'selected': boolean;
     /**
     * Sets the disabled property for your button from the parent component.
+    * @param val set to `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
     /**
@@ -224,6 +247,10 @@ export namespace Components {
   }
   interface SeChip {
     /**
+    * Optional property that defines if the chip displays as a block in it's container. When set to true, the chip will be as wide as its container.
+    */
+    'block': boolean;
+    /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose': boolean;
@@ -235,6 +262,10 @@ export namespace Components {
     * Indicates whether or not the chip is disabled.  Set to `false` by default.
     */
     'disabled': boolean;
+    /**
+    * Indicates whether or not the chip is selected.  Set to `false` by default.
+    */
+    'selected': boolean;
     /**
     * The text you want to display in your chip.
     */
@@ -272,11 +303,11 @@ export namespace Components {
   }
   interface SeDialog {
     /**
-    * Emit the `backdrop` event from the dialog's parent component.
+    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
     */
     'backdropClicked': () => Promise<void>;
     /**
-    * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
+    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
     */
     'canBackdrop': boolean;
     /**
@@ -491,6 +522,7 @@ export namespace Components {
     * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
     */
     'selected': boolean;
+    'selectedChild': boolean;
   }
   interface SeListItem {
     /**
@@ -572,6 +604,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
+    */
+    'size': 'small' | 'nano';
+    /**
     * Defines the selected values of the array.
     */
     'value': string;
@@ -608,6 +644,7 @@ export namespace Components {
     'min': number;
     /**
     * Sets the disabled property for slider component.
+    * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
   }
@@ -767,6 +804,18 @@ declare global {
   var HTMLSeBlockHeaderElement: {
     prototype: HTMLSeBlockHeaderElement;
     new (): HTMLSeBlockHeaderElement;
+  };
+
+  interface HTMLSeBreadcrumbElement extends Components.SeBreadcrumb, HTMLStencilElement {}
+  var HTMLSeBreadcrumbElement: {
+    prototype: HTMLSeBreadcrumbElement;
+    new (): HTMLSeBreadcrumbElement;
+  };
+
+  interface HTMLSeBreadcrumbItemElement extends Components.SeBreadcrumbItem, HTMLStencilElement {}
+  var HTMLSeBreadcrumbItemElement: {
+    prototype: HTMLSeBreadcrumbItemElement;
+    new (): HTMLSeBreadcrumbItemElement;
   };
 
   interface HTMLSeButtonElement extends Components.SeButton, HTMLStencilElement {}
@@ -986,6 +1035,8 @@ declare global {
     'se-block-content': HTMLSeBlockContentElement;
     'se-block-footer': HTMLSeBlockFooterElement;
     'se-block-header': HTMLSeBlockHeaderElement;
+    'se-breadcrumb': HTMLSeBreadcrumbElement;
+    'se-breadcrumb-item': HTMLSeBreadcrumbItemElement;
     'se-button': HTMLSeButtonElement;
     'se-checkbox': HTMLSeCheckboxElement;
     'se-chip': HTMLSeChipElement;
@@ -1051,7 +1102,12 @@ declare namespace LocalJSX {
     */
     'version'?: string;
   }
-  interface SeApp extends JSXBase.HTMLAttributes<HTMLSeAppElement> {}
+  interface SeApp extends JSXBase.HTMLAttributes<HTMLSeAppElement> {
+    /**
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
+    */
+    'option'?: 'technical' | 'website';
+  }
   interface SeAuthentication extends JSXBase.HTMLAttributes<HTMLSeAuthenticationElement> {
     /**
     * The title of your authentication screen.
@@ -1138,7 +1194,22 @@ declare namespace LocalJSX {
     */
     'option'?: 'card' | 'widget' | 'basic';
   }
+  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {}
+  interface SeBreadcrumbItem extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement> {
+    /**
+    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
+    */
+    'href'?: string;
+    /**
+    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+    */
+    'isLast'?: boolean;
+  }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
+    /**
+    * Optional property that defines if the button displays as a block in it's container. When set to true, the button will be as wide as its container.
+    */
+    'block'?: boolean;
     /**
     * Optional property that defines if the button has a caption or tooltip text.
     */
@@ -1236,6 +1307,10 @@ declare namespace LocalJSX {
   }
   interface SeChip extends JSXBase.HTMLAttributes<HTMLSeChipElement> {
     /**
+    * Optional property that defines if the chip displays as a block in it's container. When set to true, the chip will be as wide as its container.
+    */
+    'block'?: boolean;
+    /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose'?: boolean;
@@ -1251,6 +1326,10 @@ declare namespace LocalJSX {
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
     'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether or not the chip is selected.  Set to `false` by default.
+    */
+    'selected'?: boolean;
     /**
     * The text you want to display in your chip.
     */
@@ -1288,7 +1367,7 @@ declare namespace LocalJSX {
   }
   interface SeDialog extends JSXBase.HTMLAttributes<HTMLSeDialogElement> {
     /**
-    * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
+    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
     */
     'canBackdrop'?: boolean;
     /**
@@ -1504,6 +1583,10 @@ declare namespace LocalJSX {
     */
     'item'?: string;
     /**
+    * Pass the group data to the parent when collapsed.
+    */
+    'onDidGroupClick'?: (event: CustomEvent<any>) => void;
+    /**
     * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
     */
     'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
@@ -1511,6 +1594,7 @@ declare namespace LocalJSX {
     * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
     */
     'selected'?: boolean;
+    'selectedChild'?: boolean;
   }
   interface SeListItem extends JSXBase.HTMLAttributes<HTMLSeListItemElement> {
     /**
@@ -1600,6 +1684,10 @@ declare namespace LocalJSX {
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
     /**
+    * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
+    */
+    'size'?: 'small' | 'nano';
+    /**
     * Defines the selected values of the array.
     */
     'value'?: string;
@@ -1619,6 +1707,7 @@ declare namespace LocalJSX {
     * Defines the title of the menu item.
     */
     'item'?: string;
+    'onDidClick'?: (event: CustomEvent<any>) => void;
   }
   interface SeSlider extends JSXBase.HTMLAttributes<HTMLSeSliderElement> {
     /**
@@ -1683,6 +1772,10 @@ declare namespace LocalJSX {
     * Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
     */
     'action'?: "click" | "hover";
+    /**
+    * Closes the tooltip when another tooltip is opened.
+    */
+    'onCloseTooltips'?: (event: CustomEvent<any>) => void;
     /**
     * Event emitted when the tooltip has been closed.
     */
@@ -1762,6 +1855,8 @@ declare namespace LocalJSX {
     'se-block-content': SeBlockContent;
     'se-block-footer': SeBlockFooter;
     'se-block-header': SeBlockHeader;
+    'se-breadcrumb': SeBreadcrumb;
+    'se-breadcrumb-item': SeBreadcrumbItem;
     'se-button': SeButton;
     'se-checkbox': SeCheckbox;
     'se-chip': SeChip;

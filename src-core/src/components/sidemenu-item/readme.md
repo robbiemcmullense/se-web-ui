@@ -13,6 +13,13 @@
 | `item`   | `item`    | Defines the title of the menu item.                                        | `string`  | `undefined` |
 
 
+## Events
+
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `didClick` |             | `CustomEvent<any>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

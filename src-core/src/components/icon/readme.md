@@ -18,6 +18,7 @@
 
 ### Used by
 
+ - [se-breadcrumb-item](../breadcrumb-item)
  - [se-dialog-content](../dialog-content)
  - [se-header](../header)
  - [se-list-group](../list-group)
@@ -29,6 +30,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  se-breadcrumb-item --> se-icon
   se-dialog-content --> se-icon
   se-header --> se-icon
   se-list-group --> se-icon

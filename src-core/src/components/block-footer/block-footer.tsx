@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-block-footer",
@@ -20,10 +20,10 @@ export class BlockFooter {
 
   render() {
     return (
-      <Host class={[this.option, this.direction].join(' ')}>
+      <div class={['se-block-footer', this.option, this.direction].join(' ')}>
         <div class="flex"><slot name="start"></slot></div>
         <slot></slot>
-      </Host>
+      </div>
     )
   }
 }

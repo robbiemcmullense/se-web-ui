@@ -35,6 +35,10 @@ describe('ButtonComponent', () => {
 		expect(button.disabled).toBeFalsy();
 	});
 
+	it('should not be in block mode', () => {
+		expect(button.block).toBeUndefined();
+	});
+
 	it('should set the disabled property to true after calling the setDisabled method', () => {
     button.setDisabled(true);
 		expect(button.disabled).toBeTruthy();
@@ -45,15 +49,17 @@ describe('ButtonComponent', () => {
 		expect(button.grouped).toBeTruthy();
 	});
 
-	it('should have a primary color when set to the "login" option', () => {
+	it('should have a primary color and the block property set to true when set to the "login" option', () => {
 		button.option = 'login';
 		button.optionDidChange();
 		expect(button.color).toEqual('primary');
+		expect(button.block).toBeTruthy();
 	});
 
-	it('should have a secondary color when set to the "signup" option', () => {
+	it('should have a secondary color and the block property set to true when set to the "signup" option', () => {
 		button.option = 'signup';
 		button.optionDidChange();
 		expect(button.color).toEqual('secondary');
+		expect(button.block).toBeTruthy();
 	});
 });
