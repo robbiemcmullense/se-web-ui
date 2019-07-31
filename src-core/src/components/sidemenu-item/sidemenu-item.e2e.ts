@@ -11,10 +11,11 @@ describe('SidemenuItemComponent', () => {
 
   it('renders', async () => {
     expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
   });
 
   it('renders with a menuitem-hidden class by default as it is not active', async () => {
-    expect(element).toHaveClasses(['hydrated', 'navitem-hidden']);
+    expect(element).toHaveClass('navitem-hidden');
   });
 
   it('removes the navitem-hidden class when it is set to active', async () => {
@@ -23,5 +24,14 @@ describe('SidemenuItemComponent', () => {
     });
     await page.waitForChanges();
     expect(element).not.toHaveClass('navitem-hidden');
+  });
+
+  it('emits the didClick event when a sidemenu item is clicked', async() => {
+    const eventSpy = await page.spyOnEvent('didClick');
+    await page.$eval('se-sidemenu-item', (elm: any) => {
+      elm.active = true;
+    });
+    await page.waitForChanges();
+    expect(eventSpy).toHaveReceivedEvent();
   });
 });

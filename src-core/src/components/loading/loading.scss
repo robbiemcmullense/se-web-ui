@@ -2,13 +2,8 @@
 
 :host {
 	display: none;
-	overflow: hidden;
+  overflow: hidden;
 }
-
-:host(.show) {
-	display: block;
-}
-
 .loading-wrapper {
   @include absolute();
   @include display-flex();
@@ -20,8 +15,8 @@
 .se-loading {
   position: relative;
   z-index: 100;
-	line-height: 128px;
-	@include animated();
+  line-height: 128px;
+  @include animated();
   @include  color("primary");
   @include display-flex();
   @include flex-direction(column);
@@ -34,12 +29,17 @@
 .loading-background {
   @include absolute();
   @include animated();
-	z-index: 120;
+  z-index: 120;
 }
 
 .se-icon {
-	position: relative;
-	font-family: 'se-icon';
-	font-size: 128px;
-	@include loader();
+  position: relative;
+  font-family: 'se-icon';
+  font-size: 128px;
+  @include loader();
+}
+
+
+:host(.show) {
+	display: block;
 }

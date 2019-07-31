@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'se-sidemenu-item',
@@ -15,6 +15,14 @@ export class SidemenuItemComponent {
    * The default setting is `false`.
    */
   @Prop({ mutable: true }) active = false;
+  @Watch('active')
+  activeDidChange() {
+    if (this.active) {
+      this.didClick.emit();
+    }
+  }
+
+  @Event() didClick: EventEmitter<any>;
 
   render() {
     return (

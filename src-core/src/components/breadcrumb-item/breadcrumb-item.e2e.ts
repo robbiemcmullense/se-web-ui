@@ -5,7 +5,7 @@ describe('BreadcrumbItemComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-breadcrumb-item value="Click Me!"></se-breadcrumb-item>');
+    await page.setContent('<se-breadcrumb-item>Click Me!</se-breadcrumb-item>');
     element = await page.find('se-breadcrumb-item');
     listItemElement = await page.find('se-breadcrumb-item >>> li');
     linkElement = await page.find('se-breadcrumb-item >>> a');
@@ -17,7 +17,7 @@ describe('BreadcrumbItemComponent', () => {
   });
 
   it('should have an aria-current value of false, and text in the anchor element equal to the value property', async() => {
-    expect(linkElement.innerText).toEqual('Click Me!');
+    expect(element.innerText).toEqual('Click Me!');
   });
 
   it('should have an href attribute on the anchor element equal to the defined href value on the host element', async() => {

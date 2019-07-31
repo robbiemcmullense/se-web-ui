@@ -42,7 +42,6 @@ Type: `Promise<void>`
 graph TD;
   se-sidemenu --> se-list-item
   se-sidemenu --> se-icon
-  se-sidemenu --> se-link
   se-sidemenu --> se-divider
   se-sidemenu --> se-list
   se-sidemenu --> se-icon-lifeison

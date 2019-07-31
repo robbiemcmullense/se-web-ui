@@ -153,10 +153,6 @@ export namespace Components {
   }
   interface SeBreadcrumb {
     'updateChildren': () => Promise<void>;
-    /**
-    * Defines the selected value of the breadcrumb group.
-    */
-    'value': string;
   }
   interface SeBreadcrumbItem {
     /**
@@ -167,12 +163,12 @@ export namespace Components {
     * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
     */
     'isLast': boolean;
-    /**
-    * Defines the value of your breadcrumb item.
-    */
-    'value': string;
   }
   interface SeButton {
+    /**
+    * Optional property that defines if the button displays as a block in it's container. When set to true, the button will be as wide as its container.
+    */
+    'block': boolean;
     /**
     * Optional property that defines if the button has a caption or tooltip text.
     */
@@ -203,6 +199,7 @@ export namespace Components {
     'selected': boolean;
     /**
     * Sets the disabled property for your button from the parent component.
+    * @param val set to `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
     /**
@@ -274,6 +271,10 @@ export namespace Components {
   }
   interface SeChip {
     /**
+    * Optional property that defines if the chip displays as a block in it's container. When set to true, the chip will be as wide as its container.
+    */
+    'block': boolean;
+    /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose': boolean;
@@ -285,6 +286,10 @@ export namespace Components {
     * Indicates whether or not the chip is disabled.  Set to `false` by default.
     */
     'disabled': boolean;
+    /**
+    * Indicates whether or not the chip is selected.  Set to `false` by default.
+    */
+    'selected': boolean;
     /**
     * The text you want to display in your chip.
     */
@@ -663,6 +668,7 @@ export namespace Components {
     'min': number;
     /**
     * Sets the disabled property for slider component.
+    * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
   }
@@ -1249,12 +1255,7 @@ declare namespace LocalJSX {
     */
     'option'?: 'card' | 'widget' | 'basic';
   }
-  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {
-    /**
-    * Defines the selected value of the breadcrumb group.
-    */
-    'value'?: string;
-  }
+  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {}
   interface SeBreadcrumbItem extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement> {
     /**
     * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
@@ -1264,12 +1265,12 @@ declare namespace LocalJSX {
     * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
     */
     'isLast'?: boolean;
-    /**
-    * Defines the value of your breadcrumb item.
-    */
-    'value'?: string;
   }
   interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
+    /**
+    * Optional property that defines if the button displays as a block in it's container. When set to true, the button will be as wide as its container.
+    */
+    'block'?: boolean;
     /**
     * Optional property that defines if the button has a caption or tooltip text.
     */
@@ -1367,6 +1368,10 @@ declare namespace LocalJSX {
   }
   interface SeChip extends JSXBase.HTMLAttributes<HTMLSeChipElement> {
     /**
+    * Optional property that defines if the chip displays as a block in it's container. When set to true, the chip will be as wide as its container.
+    */
+    'block'?: boolean;
+    /**
     * Indicates whether or not the chip has a close button.  Set to `false` by default.
     */
     'canClose'?: boolean;
@@ -1382,6 +1387,10 @@ declare namespace LocalJSX {
     * Send the chip value to the parent component when clicking the close button of a chip.
     */
     'onDidClose'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether or not the chip is selected.  Set to `false` by default.
+    */
+    'selected'?: boolean;
     /**
     * The text you want to display in your chip.
     */
@@ -1759,6 +1768,7 @@ declare namespace LocalJSX {
     * Defines the title of the menu item.
     */
     'item'?: string;
+    'onDidClick'?: (event: CustomEvent<any>) => void;
   }
   interface SeSlider extends JSXBase.HTMLAttributes<HTMLSeSliderElement> {
     /**
@@ -1823,6 +1833,10 @@ declare namespace LocalJSX {
     * Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
     */
     'action'?: "click" | "hover";
+    /**
+    * Closes the tooltip when another tooltip is opened.
+    */
+    'onCloseTooltips'?: (event: CustomEvent<any>) => void;
     /**
     * Event emitted when the tooltip has been closed.
     */

@@ -1,26 +1,28 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('CheckboxComponent', () => {
-  let page, element;
+  let page, hostElement, checkboxElement, inputElement;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-checkbox id="my-checkbox" value="my value"></se-checkbox>');
-    element = await page.find('se-checkbox');
+    hostElement = await page.find('se-checkbox');
+    checkboxElement = await page.find('se-checkbox >>> div');
+    inputElement = await page.find('se-checkbox >>> input');
   });
 
   it('renders', async() => {
-    expect(element).toBeTruthy();
+    expect(hostElement).toBeTruthy();
+    expect(hostElement).toHaveClass('hydrated');
   });
 
   it('should render with the checkbox and standard classes to reflect the default option and background properties', async() => {
-    expect(element).toHaveClasses(['checkbox', 'hydrated', 'standard']);
+    expect(checkboxElement).toHaveClasses(['checkbox', 'standard']);
   });
   
   it('renders with an id on the input element with the wc prefix', async() => {
-    const inputElm = element.shadowRoot.querySelector('input');
-    expect(inputElm).toHaveAttribute('id');
-    expect(inputElm.getAttribute('id')).toEqual('wc-my-checkbox');
+    expect(inputElement).toHaveAttribute('id');
+    expect(inputElement.getAttribute('id')).toEqual('wc-my-checkbox');
   });
 
   it('renders with a disabled class and a disabled input element when the parent element has disabled=true', async() => {
@@ -28,14 +30,12 @@ describe('CheckboxComponent', () => {
       elm.disabled = true;
     });
     await page.waitForChanges();
-    const inputElm = element.shadowRoot.querySelector('input');
-    expect(element).toHaveClass('disabled');
-    expect(inputElm.disabled).toBeTruthy();
+    expect(checkboxElement).toHaveClass('disabled');
   });
 
   it('emits an event when clicked on', async() => {
     const eventSpy = await page.spyOnEvent('didChange');
-    await element.click();
+    await hostElement.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail({
       value: 'my value',
@@ -45,26 +45,27 @@ describe('CheckboxComponent', () => {
 });
 
 describe('CheckboxComponent in Switch Mode', () => {
-  let page, element;
+  let page, hostElement, switchElement, inputElement;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-checkbox id="my-switch" option="switch" label="my label"></se-checkbox>');
-    element = await page.find('se-checkbox');
+    hostElement = await page.find('se-checkbox');
+    switchElement = await page.find('se-checkbox >>> div');
+    inputElement = await page.find('se-checkbox >>> input');
   });
 
   it('renders', async() => {
-    expect(element).toBeTruthy();
+    expect(hostElement).toBeTruthy();
   });
 
   it('should render with the switch class', async() => {
-    expect(element).toHaveClass('switch');
+    expect(switchElement).toHaveClass('switch');
   });
 
   it('renders with an id on the input element with the wc prefix', async() => {
-    const inputElm = element.shadowRoot.querySelector('input');
-    expect(inputElm).toHaveAttribute('id');
-    expect(inputElm.getAttribute('id')).toEqual('wc-my-switch');
+    expect(inputElement).toHaveAttribute('id');
+    expect(inputElement.getAttribute('id')).toEqual('wc-my-switch');
   });
 
   it('should render a label element within the checkbox-label span element', async() => {
@@ -74,21 +75,22 @@ describe('CheckboxComponent in Switch Mode', () => {
 });
 
 describe('CheckboxComponent in OnOff Mode', () => {
-  let page, element;
+  let page, hostElement, onOffElement;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-checkbox id="on-off-switch" option="onoff" header="true"></se-checkbox>');
-    element = await page.find('se-checkbox');
+    hostElement = await page.find('se-checkbox');
+    onOffElement = await page.find('se-checkbox >>> div');
   });
 
   it('renders', async() => {
-    expect(element).toBeTruthy();
+    expect(hostElement).toBeTruthy();
   });
   
   it('should render with the onoff and header classes, based on the specified properties', async() => {
-    expect(element).toHaveClass('onoff');
-    expect(element).toHaveClass('header');
+    expect(onOffElement).toHaveClass('onoff');
+    expect(onOffElement).toHaveClass('header');
   });
 
   it('should render two button elements with "ON" and "OFF" values', async() => {

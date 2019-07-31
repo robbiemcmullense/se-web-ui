@@ -5,13 +5,6 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
-
-| Property | Attribute | Description                                         | Type     | Default     |
-| -------- | --------- | --------------------------------------------------- | -------- | ----------- |
-| `value`  | `value`   | Defines the selected value of the breadcrumb group. | `string` | `undefined` |
-
-
 ## Methods
 
 ### `updateChildren() => Promise<void>`

@@ -7,10 +7,6 @@ import { Component, h, Prop } from "@stencil/core";
 })
 export class BreadcrumbItemComponent {
   /**
-   * Defines the value of your breadcrumb item.
-   */
-  @Prop() value: string;
-  /**
    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
    */
   @Prop() isLast: boolean = false;
@@ -23,9 +19,9 @@ export class BreadcrumbItemComponent {
     return (
       <div class={{ 'selected': this.isLast }}>
         {this.isLast ?
-          <li aria-current='page' class="breadcrumb-item">{this.value}</li>
+          <li aria-current='page' class="breadcrumb-item"><slot/></li>
           :
-          [<li class="breadcrumb-item"><a href={this.href}>{this.value}</a></li>,
+          [<li class="breadcrumb-item"><a href={this.href}><slot/></a></li>,
           <se-icon size="small">arrow2_right</se-icon>]}
       </div>
     )

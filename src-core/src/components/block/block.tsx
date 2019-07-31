@@ -91,8 +91,8 @@ export class BlockComponent {
 
   render() {
     return (
-      <Host class={[this.option, this.color, this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}>
-        <div class="block-body">
+      <Host class={[this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}>
+        <div class={['block-body', this.option, this.color].join(' ')}>
           {this.loading ? <se-loading loading={this.loading} /> : ''}
           <slot></slot>
         </div>

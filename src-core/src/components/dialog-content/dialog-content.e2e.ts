@@ -19,6 +19,6 @@ describe('dialogContentComponent', () => {
       elm.option = 'fill';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('full-content');
+    expect(element.shadowRoot.querySelector('.se-dialog-content')).toHaveClass('full-content');
   });
 });

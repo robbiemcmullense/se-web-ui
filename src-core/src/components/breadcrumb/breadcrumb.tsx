@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop, State, Method } from "@stencil/core";
+import { Component, Element, h, State, Method } from "@stencil/core";
 
 @Component({
   tag: "se-breadcrumb",
@@ -10,9 +10,8 @@ export class BreadcrumbComponent {
   /**
    * Defines the selected value of the breadcrumb group.
    */
-  @Prop({ mutable: true }) value: string;
   @State() items: HTMLElement[] = [];
- 
+
   @Method()
   async updateChildren() {
     this.items = [];
@@ -29,12 +28,7 @@ export class BreadcrumbComponent {
   private updateLastItem() {
     this.items = Array.from(this.el.querySelectorAll('se-breadcrumb-item'));
     this.items.forEach((item: any) => {
-      item.selected = item.value === this.value;
-      if (item === this.items[this.items.length - 1]) {
-        item.isLast = true;
-      } else {
-        item.isLast = false;
-      }
+      item.isLast = (item === this.items[this.items.length - 1]);
     });
   }
 

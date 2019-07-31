@@ -6,29 +6,79 @@
   font-weight: lighter;
   font-size: 20px;
   @include display-flex();
+}
+.se-list-item {
+  width: 100%;
+  width: -webkit-fill-available;
+
+  &.classic,
+  &.nav {
+    button {
+      height: 47px;
+      max-width: 100%;
+    }
+  }
+
+  &.classic {
+    button.selected {
+      @include color('selected-contrast');
+      @include background-color('selected');
+      &:hover, &:focus {
+        background-color: $se-ultra-dark-grey;
+      }
+    }
+  }
+
+  &.nav {
+    button.selected {
+      @include color('primary');
+    }
+  }
+
+  &.treeview {
+    button {
+      min-height: 32px;
+      max-height: 32px;
+      &.selected {
+        @include color('selected-contrast');
+        @include background-color('selected');
+        &:hover, &:focus{
+        background-color: $se-ultra-dark-grey;
+        }
+      }
+      // change the background-color when design team decides
+      &.selectedChild {
+        @include color('selected-contrast');
+        @include background-color('selected');
+        &:hover, &:focus{
+        background-color:$se-ultra-dark-grey;
+        }
+      }
+    }
+    .nav-content {
+      padding-left: 4px;
+    }
+  }
+
+  &.dropdown {
+    button {
+      min-height: 40px;
+      max-width: 100%;
+      border-bottom: none;
+    }
+    .nav-content{
+      padding-left: 10px;
+    }
+  }
+
+  &.headline {
+    button {
+      height: 42px;
+    }
+  }
 
 }
 
-// .se-icon {
-//   margin: 0;
-//   display: inline-block;
-//   font-family: "se-icon";
-//   font-size: 24px;
-//   font-display: block;
-//   &.primary {
-//     @include  color("primary");
-//   }
-//   &.warning {
-//     @include  color("warning");
-//   }
-//   &.error {
-//     @include  color("error");
-//   }
-//   &.medium {
-//     font-size: 36px;
-//     line-height: 30px;
-//   }
-// }
 
 button {
   border: none;
@@ -82,75 +132,5 @@ button {
   div, small {
     @include ellipsis();
     margin-right: $spacing;
-  }
-}
-
-:host(.classic) {
-  button {
-    height: 47px;
-    max-width: 100%;
-  }
-}
-
-:host(.classic.selected) {
-  @include  color('selected-contrast');
-  @include background-color('selected');
-  button {
-    &:hover, &:focus{
-      background-color: $se-ultra-dark-grey;
-    }
-  }
-}
-
-:host(.nav) {
-  button {
-    height: 47px;
-    max-width: 100%;
-  }
-}
-
-:host(.nav.selected) {
-  @include  color('primary');
-}
-
-:host(.treeview) {
-  button {
-    min-height: 32px;
-    max-height: 32px;
-    &.selected {
-      @include color('selected-contrast');
-      @include background-color('selected');
-      &:hover, &:focus{
-      background-color: $se-ultra-dark-grey;
-      }
-    }
-    // change the background-color when design team decides
-    &.selectedChild {
-      @include color('selected-contrast');
-      @include background-color('selected');
-      &:hover, &:focus{
-      background-color:$se-ultra-dark-grey;
-      }
-    }
-  }
-  .nav-content {
-    padding-left: 4px;
-  }
-}
-
-:host(.dropdown) {
-  button {
-    min-height: 40px;
-    max-width: 100%;
-    border-bottom: none;
-  }
-  .nav-content{
-    padding-left: 10px;
-  }
-}
-
-:host(.headline) {
-  button{
-    height: 42px;
   }
 }

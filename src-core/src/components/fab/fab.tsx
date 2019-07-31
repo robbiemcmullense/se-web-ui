@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method, Host } from '@stencil/core';
+import { Component, h, Prop, State, Method, Listen } from '@stencil/core';
 const SHOW_FAB = 'show';
 
 @Component({
@@ -45,6 +45,11 @@ export class FabComponent {
 		}
 	}
 
+	@Listen('didClick')
+	buttonClickedHandler() {
+		this.toggleAction();
+	}
+
 	getIcon() {
 		let icon: any;
 		switch (this.option) {
@@ -61,14 +66,14 @@ export class FabComponent {
 
 	render() {
 		return (
-			<Host class={`pos-${this.position}`}>
+			<div class={['se-fab', `pos-${this.position}`].join(' ')}>
 				<se-button color={this.color} class={this.option == 'backtotop' ? 'backtotop' : ''} option='fab' onClick={() => this.toggleAction()} icon={this.getIcon()}></se-button>
 				{this.option === 'speeddial' ?
 					<div class={['mini-action-button', !this.toggleIcon ? SHOW_FAB : ''].join(' ')}>
 						<slot></slot>
 					</div> : ''
 				}
-			</Host>
+			</div>
 		)
 	}
 }

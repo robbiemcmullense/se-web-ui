@@ -19,15 +19,16 @@ describe('BlockHeaderComponent', () => {
       elm.option = 'card';
     });
     await page.waitForChanges();
-    expect(element).toHaveClass('card');
+    expect(element.shadowRoot.querySelector('.se-block-header')).toHaveClass('card');
   });
 
-  it('renders with an h3 element with a flex class and a slot element with the "end" attribute', async() => {
-    const headerElm = await page.find('se-block-header >>> h4');
-    expect(headerElm).toBeTruthy();
-    expect(headerElm).toHaveClass('flex');
-
-    const slotElm = await page.find ('se-block-header >>> slot[name="end"]');
-    expect(slotElm).toBeTruthy();
+  it('renders a div element with flex and centered classes, and slot elements with the "start" and "end" attributes', async() => {
+    const divElm = await page.find('se-block-header >>> .se-block-header div');
+    const startElm = await page.find ('se-block-header >>> slot[name="start"]');
+    const endElm = await page.find ('se-block-header >>> slot[name="end"]');
+    expect(startElm).toBeTruthy();
+    expect(endElm).toBeTruthy();
+    expect(divElm).toBeTruthy();
+    expect(divElm).toHaveClasses(['flex', 'middle']);
   });
 });

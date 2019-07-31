@@ -3,35 +3,38 @@
 :host {
   overflow: auto;
 }
+
 :host(.absolute) {
   @include absolute();
 }
+
 :host(.relative) {
   position: relative;
 }
+
 :host(.column-dir) {
   @include flex-direction(column);
 }
+
 :host(.row-dir) {
   @include flex-direction(row);
 }
+
 :host(.flex-display) {
   flex-wrap: nowrap;
   @include flex();
   @include display-flex();
 }
+
 :host(.block-display) {
   display: block !important;
   width: 100%;
 }
+
 :host(.grid-display) {
   display: grid;
   width: 100%;
   width: -webkit-fill-available;
-  // @include animated();
-  // transition: all .7s;
-  // grid-auto-rows: 300px;
-  // grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Where the magic happens */
 }
 
 :host(.fill-content:not(.block-display)) {
@@ -55,21 +58,19 @@
     margin-right: auto;
     margin-left: auto;
   }
-  // @include align-items(center);
-  // @include justify-content(center);
+
+  @media (min-width: 1100px) {
+    .wrapper-center {
+      max-width: $centered;
+    }
+  }
 }
 
 :host(.standard) {
   @include background-color('background');
 }
+
 :host(.alternative) {
-  @include  color("alternative-contrast");
+  @include color("alternative-contrast");
   @include background-color("alternative");
-}
-
-
-@media (min-width: 1100px) {
-  .wrapper-center {
-    max-width: $centered;
-  }
 }

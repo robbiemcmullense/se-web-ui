@@ -1,41 +1,41 @@
 @import "../../theme/theme";
 
 :host {
-  .visual-radial-wrapper {
-    position: relative;
-  }
-  
-  .se-visual-radial,
-  .radial-data {
-    @include absolute();
-  }
-  
-  .se-visual-radial {
-    transform: rotate(-90deg);
-    border-radius: 100%;
-  }
-  
-  .radial-data {
-    color: $se-anthracite-grey;
-    @include display-flex();
-    @include flex-direction(column);
-    @include justify-content(center);
-    width: 100%;
-    height: 100%;
-  }
-  
-  .radial-value {
-    align-self: center;
-  }
-  
-  .radial-label {
-    font-size: 12px;
-    align-self: center;
-  }
+}
+.visual-radial-wrapper {
+  position: relative;
 }
 
-:host(.small) {
-  .visual-radial-wrapper {
+.se-visual-radial,
+.radial-data {
+  @include absolute();
+}
+
+.se-visual-radial {
+  transform: rotate(-90deg);
+  border-radius: 100%;
+}
+
+.radial-data {
+  color: $se-anthracite-grey;
+  @include display-flex();
+  @include flex-direction(column);
+  @include justify-content(center);
+  width: 100%;
+  height: 100%;
+}
+
+.radial-value {
+  align-self: center;
+}
+
+.radial-label {
+  font-size: 12px;
+  align-self: center;
+}
+
+.small {
+  &.visual-radial-wrapper {
     width: 82px;
     height: 82px;
   }
@@ -49,8 +49,8 @@
   }
 }
 
-:host(.large) {
-  .visual-radial-wrapper {
+.large {
+  &.visual-radial-wrapper {
     width: 164px;
     height: 164px;
   }

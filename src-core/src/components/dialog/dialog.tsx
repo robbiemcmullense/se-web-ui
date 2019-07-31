@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, Method, Event, EventEmitter, Watch } from "@stencil/core";
+import { Component, h, Prop, Element, Method, Event, EventEmitter, Watch } from "@stencil/core";
 
 const SHOW = "show-dialog";
 const HIDE = "hide-dialog";
@@ -97,12 +97,12 @@ export class DialogComponent {
 
   render(){
     return (
-      <Host class={this.size}>
+      <div class={this.size}>
         <div class="dialog-wrapper">
           <div class="dialog" ref={el => (this.menuInnerEl = el)}><slot></slot></div>
         </div>
         <div class="dialog-background" onClick={() => this.backdropClicked()}  ref={el => this.backdropEl = el}></div>
-      </Host>
+      </div>
     )
   }
 }
