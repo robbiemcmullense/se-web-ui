@@ -11,14 +11,13 @@
 | -------- | --------- | ------------------------------------------------------------------------------------------------- | --------- | ----------- |
 | `href`   | `href`    | Indicates the URL you wish to navigate to when clicking on your breadcrumb item.                  | `string`  | `undefined` |
 | `isLast` | `is-last` | Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`. | `boolean` | `false`     |
-| `value`  | `value`   | Defines the value of your breadcrumb item.                                                        | `string`  | `undefined` |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [se-icon](..\icon)
+- [se-icon](../icon)
 
 ### Graph
 ```mermaid
