@@ -553,14 +553,6 @@
           </se-block-content>
         </se-block>
       </se-container>
-      <se-fab icon="action_share" position="top">
-        <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
-          icon="notification_critical_stroke"></se-button>
-        <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
-        <se-button option='minifab' caption="New User" icon="task"></se-button>
-        <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
-        <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
-      </se-fab>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
       <se-dialog-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -590,20 +582,19 @@
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
     <se-fab icon="action_share" position="top">
-      <se-button option='minifab' caption="New Work Oder" onclick="showfab('fab button clicked')"
+      <se-button option='minifab' caption="New Work Order"
         icon="notification_critical_stroke"></se-button>
       <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
       <se-button option='minifab' caption="New User" icon="task"></se-button>
       <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
       <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
     </se-fab>
-    <se-fab option="backtotop" onclick="showfab('fab button clicked')"></se-fab>
-    <!-- <se-button onclick="closeDialog('dialog-simple-notitle')" option="fab" icon="action_share"></se-button> -->
+    <se-fab option="backtotop" onclick="showfab('fab back-to-top button clicked')"></se-fab>
   </se-app>
 
   <script>
     function showfab(text) {
-      console.log(text);
+      alert(text);
     }
 
     // Dialog

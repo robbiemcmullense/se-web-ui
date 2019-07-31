@@ -354,7 +354,10 @@ button {
     @include color("alternative-contrast");
     &:hover, &:focus {
       @include circleShadow(4px);
-      @include background-color("alternative");
+      @include background-color("hover-standard");
+    }
+    &:active {
+      @include background-color("selected");
     }
     &[data-tooltip] {
       overflow: visible;
