@@ -33,7 +33,6 @@ export class SidemenuComponent {
       this.addAnimation(null);
     } else {
       // Remove css classes
-      this.menuItemInnerEl.style.display = 'none';
       this.removeAnimation(() => {
         this.el.classList.remove(SHOW_MENU);
       });
@@ -64,8 +63,8 @@ export class SidemenuComponent {
   }
 
   private setActive(item: any): void {
-    if (this.menuItemInnerEl) {
-      this.menuItemInnerEl.style.width = !item.childElementCount ? '0px' : '60%';
+    if (this.menuInnerEl) {
+      this.menuInnerEl.style.width = !item.childElementCount ? '250px' : '80%';
     }
     if (this.items.length) {
       this.items.forEach((item: any) => {
@@ -84,7 +83,6 @@ export class SidemenuComponent {
     setTimeout(() => {
       this.menuInnerEl.classList.remove(SHOW_MENU);
       this.backdropEl.classList.remove(SHOW_MENU);
-      this.menuItemInnerEl.style.display = 'flex';
       callback && callback();
     }, 200);
   }
@@ -111,17 +109,15 @@ export class SidemenuComponent {
     return [
       <div class="menu-background animated d-flex-row flex" onClick={() => this.toggle()} ref={el => this.backdropEl = el} />,
       <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
-        <div class="d-flex-center">
-          <div class="d-flex-center flex">
-            <span class="menu-sidenav" onClick={() => this.toggle()}>
-              <se-icon size="large" color="primary">test_results_nok</se-icon>
-            </span>
-            <h3 class="header-title">{this.label}</h3>
-          </div>
-        </div>
-        <se-divider />
         <div class="d-flex flex">
           <div class="listNavItems">
+            <div class="d-flex-center flex">
+              <span class="menu-sidenav" onClick={() => this.toggle()}>
+                <se-icon size="large" color="primary">test_results_nok</se-icon>
+              </span>
+              <h3 class="header-title">{this.label}</h3>
+            </div>
+            <se-divider></se-divider>
             <se-list option="nav">
               {this.renderList()}
             </se-list>
@@ -131,11 +127,11 @@ export class SidemenuComponent {
             </div>
           </div>
           <se-divider option="vertical"></se-divider>
+          <se-block ref={el => this.menuItemInnerEl = el}>
+            <slot />
+          </se-block>
         </div>
-      </div>,
-      <se-block class="menu-item-container" ref={el => this.menuItemInnerEl = el}>
-        <slot />
-      </se-block>
+      </div>
     ]
   }
 }
