@@ -23,7 +23,7 @@
       "@env/*": ["../src_common/environments/*"],
       // Only because we load library served from other local folder. Should not be needed on regular application
       "@angular/*": ["../node_modules/@angular/*"],
-      "@se/*": ["../node_modules/@se/*"],
+      "@se/*": ["../node_modules/@se/*"]
     }
   },
   "angularCompilerOptions": {
