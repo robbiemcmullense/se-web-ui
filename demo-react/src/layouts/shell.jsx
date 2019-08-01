@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 class ShellLayout extends Component {
   render() {
     return (
-      <span className="se-app-body">
+      <se-container position="absolute" direction="column">
         <se-header app-title="React Advisor"></se-header>
         <se-tabbar color="primary">
           <nav slot="start">Tenant: <a className="dropdown" href=""> test </a></nav>
@@ -18,7 +18,7 @@ class ShellLayout extends Component {
           </nav>
         </se-tabbar>
         {this.props.children}
-      </span>
+      </se-container>
     );
   }
 }

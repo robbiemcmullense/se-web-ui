@@ -187,6 +187,7 @@ export namespace Components {
     'selected': boolean;
     /**
     * Sets the disabled property for your button from the parent component.
+    * @param val set to `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
     /**
@@ -314,11 +315,11 @@ export namespace Components {
   }
   interface SeDialog {
     /**
-    * Emit the `backdrop` event from the dialog's parent component.
+    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
     */
     'backdropClicked': () => Promise<void>;
     /**
-    * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
+    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
     */
     'canBackdrop': boolean;
     /**
@@ -655,6 +656,7 @@ export namespace Components {
     'min': number;
     /**
     * Sets the disabled property for slider component.
+    * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
   }
@@ -1399,7 +1401,7 @@ declare namespace LocalJSX {
   }
   interface SeDialog extends JSXBase.HTMLAttributes<HTMLSeDialogElement> {
     /**
-    * Option to enable clicking on the dialog's backdrop.  Default setting is `true`.
+    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
     */
     'canBackdrop'?: boolean;
     /**
