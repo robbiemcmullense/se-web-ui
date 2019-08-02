@@ -52,6 +52,14 @@ describe('ButtonComponent', () => {
     await page.waitForChanges();
     expect(hostElement).toHaveClass('minifab');
   });
+
+  it('renders the banneritem class on the host element when the option property is set to banneritem', async() => {
+    await page.$eval('se-button', (elm: any) => {
+      elm.option = 'banneritem';
+    });
+    await page.waitForChanges();
+    expect(hostElement).toHaveClass('banneritem');
+  });
 });
 
 describe('Button with Preset Text', () => {
