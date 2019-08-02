@@ -10,7 +10,11 @@ export class BannerItemComponent {
    * Sets the background image for your banner item.
    */
   @Prop() imageUrl: string;
-  @Prop() active: boolean;
+  /**
+   * Defines if the menu item is active or not.
+   * The default setting is `false`.
+   */
+  @Prop({ mutable: true }) active = false;
   @Element() el: HTMLElement;
 
   /**
@@ -23,15 +27,23 @@ export class BannerItemComponent {
 
   componentWillLoad() {
    this.setBlockTransparency();
+   this.setButtonClass();
   }
 
   componentWillUpdate() {
     this.setBlockTransparency();
+    this.setButtonClass();
   }
 
   private setBlockTransparency() {
     Array.from(this.el.querySelectorAll('se-block')).forEach((item: any) => {
       item.color = 'transparent';
+    });
+  }
+
+  private setButtonClass() {
+    Array.from(this.el.querySelectorAll('se-button')).forEach((item: any) => {
+      item.option = 'banneritem';
     });
   }
 

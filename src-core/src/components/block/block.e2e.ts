@@ -24,8 +24,6 @@ describe('BlockComponent', () => {
     expect(blockElement).toHaveClass('alternative');
   });
 
-  
-
   it('renders a standard class when the color property is set to standard', async() => {
     await page.$eval('se-block', (elm: any) => {
       elm.color = 'standard';

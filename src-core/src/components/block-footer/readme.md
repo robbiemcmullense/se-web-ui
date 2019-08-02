@@ -16,19 +16,6 @@
 | `option`    | `option`    | Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design. | `"basic" \| "card" \| "widget"` | `undefined` |
 
 
-## Dependencies
-
-### Used by
-
- - [se-banner-item](..\banner-item)
-
-### Graph
-```mermaid
-graph TD;
-  se-banner-item --> se-block-footer
-  style se-block-footer fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

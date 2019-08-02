@@ -14,7 +14,7 @@ export class ButtonComponent {
    * `outline` adds a border to the button.
    * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
    */
-  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab'= 'flat';
+  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab' | 'banneritem' = 'flat';
   @Watch('option') optionDidChange() {
     if(this.option === 'login'){
       this.color = 'primary';
@@ -150,7 +150,7 @@ export class ButtonComponent {
 
   render() {
     return (
-      <Host class={{'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab'}}>
+      <Host class={{'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab', 'banneritem': this.option === 'banneritem'}}>
         <button disabled={this.disabled} data-tooltip={this.caption} type={this.type}
           class={
             [!!this.icon ? 'hasIcon' : '', this.hasChild ? 'hasChild' : '', this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')}

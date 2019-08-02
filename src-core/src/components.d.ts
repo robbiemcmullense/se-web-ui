@@ -77,6 +77,9 @@ export namespace Components {
   }
   interface SeBanner {}
   interface SeBannerItem {
+    /**
+    * Defines if the menu item is active or not. The default setting is `false`.
+    */
     'active': boolean;
     /**
     * Sets the background image for your banner item.
@@ -180,14 +183,13 @@ export namespace Components {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
     */
-    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
+    'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab' | 'banneritem';
     /**
     * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
     */
     'selected': boolean;
     /**
     * Sets the disabled property for your button from the parent component.
-    * @param val set to `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
     /**
@@ -656,7 +658,6 @@ export namespace Components {
     'min': number;
     /**
     * Sets the disabled property for slider component.
-    * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
   }
@@ -1170,6 +1171,9 @@ declare namespace LocalJSX {
   }
   interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {}
   interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
+    /**
+    * Defines if the menu item is active or not. The default setting is `false`.
+    */
     'active'?: boolean;
     /**
     * Sets the background image for your banner item.
@@ -1271,7 +1275,7 @@ declare namespace LocalJSX {
     /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
     */
-    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
+    'option'?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab' | 'banneritem';
     /**
     * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
     */

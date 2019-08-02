@@ -17,9 +17,18 @@ export class BannerComponent {
       this.items.forEach((item: any) => {
         item.setActive(false);
       });
+
       item.setActive(true);
       this.selectedItem = item;
       this.selectedItemIndex = this.items.indexOf(item);
+      
+      let listItems = Array.from(this.el.shadowRoot.querySelectorAll('li'));
+      if (listItems.length) {
+        listItems.forEach((listItem: any) => {
+          listItem.classList.remove('active');
+        });
+        listItems[this.selectedItemIndex].classList.add('active');
+      }
     }
   }
 
@@ -33,15 +42,19 @@ export class BannerComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <li class={{'active': item.active}} />,
+        <li class={{ 'active': item.active }} />,
       ]
     })
   }
 
-  componentWillLoad() {
+  componentDidLoad() {
     this.items = Array.from(this.el.querySelectorAll('se-banner-item'));
     if (this.items.length) {
       this.setActiveItem(this.items[0]);
+      let listItemElement = this.el.shadowRoot.querySelector('li');
+      if (listItemElement) {
+        listItemElement.classList.add('active');
+      }
     }
   }
 
@@ -61,5 +74,4 @@ export class BannerComponent {
       </div>
     );
   }
-
 }
