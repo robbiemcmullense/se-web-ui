@@ -89,6 +89,14 @@ export namespace Components {
     * Sets the active banner item in your banner component.
     */
     'setActive': (value: boolean) => Promise<void>;
+    /**
+    * Sets the banner item immediately to the right of the active item in your banner component.
+    */
+    'setNext': (value: boolean) => Promise<void>;
+    /**
+    * Sets the banner item immediately to the left of the active item in your banner component.
+    */
+    'setPrevious': (value: boolean) => Promise<void>;
   }
   interface SeBlock {
     /**
@@ -190,6 +198,7 @@ export namespace Components {
     'selected': boolean;
     /**
     * Sets the disabled property for your button from the parent component.
+    * @param val set to `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
     /**
@@ -658,6 +667,7 @@ export namespace Components {
     'min': number;
     /**
     * Sets the disabled property for slider component.
+    * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
   }

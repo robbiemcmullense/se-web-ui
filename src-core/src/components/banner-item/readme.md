@@ -1,4 +1,4 @@
-# se-banner
+# se-banner-item
 
 
 
@@ -18,6 +18,26 @@
 ### `setActive(value: boolean) => Promise<void>`
 
 Sets the active banner item in your banner component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setNext(value: boolean) => Promise<void>`
+
+Sets the banner item immediately to the right of the active item in your banner component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setPrevious(value: boolean) => Promise<void>`
+
+Sets the banner item immediately to the left of the active item in your banner component.
 
 #### Returns
 
