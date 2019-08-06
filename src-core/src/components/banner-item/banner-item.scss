@@ -67,8 +67,12 @@ se-banner-item.next {
 }
 
 @media screen and (max-width: 767px) {
-  button {
-    width: 100%;
+  .image-container {
+    height: 85px;
+  }
+
+  .banner-section-wrapper {
+    top: 85px;
   }
 }
 

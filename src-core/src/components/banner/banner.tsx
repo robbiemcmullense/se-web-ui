@@ -17,8 +17,6 @@ export class BannerComponent {
 		if (this.items.length) {
 			this.items.forEach((item: any) => {
 				item.setActive(false);
-				item.classList.remove('previous');
-				item.classList.remove('next');
 			});
 
 			let listItems = Array.from(this.el.querySelectorAll('li'));
@@ -33,12 +31,14 @@ export class BannerComponent {
 				item.classList.add('slideInLeft');
 				setTimeout(() => {
 					item.classList.remove('slideInLeft');
+					item.classList.remove('previous');
 				}, 500);
 			}
 			if (direction === 'next') {
 				item.classList.add('slideInRight');
 				setTimeout(() => {
 					item.classList.remove('slideInRight');
+					item.classList.remove('next');
 				}, 500);
 			}
 			this.assignItemClasses(item);
@@ -91,12 +91,12 @@ export class BannerComponent {
 					{this.renderList()}
 				</ol>
 				<slot></slot>
-				<a class="previous-indicator" href="#" onClick={() => this.changeActive('previous')}>
-					<se-icon size="xlarge">arrow2_left</se-icon>
-				</a>
-				<a class="next-indicator" href="#" onClick={() => this.changeActive('next')}>
-					<se-icon size="xlarge">arrow2_right</se-icon>
-				</a>
+				<div class="previous-indicator" onClick={() => this.changeActive('previous')}>
+					arrow2_left
+				</div>
+				<div class="next-indicator" onClick={() => this.changeActive('next')}>
+					arrow2_right
+				</div>
 			</div>
 		);
 	}

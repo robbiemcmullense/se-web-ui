@@ -76,7 +76,7 @@ export class BannerItemComponent {
   render() {
     return (
       <Host class={{'active': this.active, 'next': this.next && !this.active, 'previous': this.previous && !this.active}}>
-        <div class={["image-container", !this.active ? 'hide' : ''].join(' ')}>
+        <div class="image-container">
           <img class="image-background" style={{ backgroundImage: this.imageUrl }}/>
         </div>
         <div class="banner-section-wrapper">
