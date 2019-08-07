@@ -18,4 +18,8 @@ describe('BannerComponent', () => {
 	it('should not have a selected item by default', () => {
 		expect(component.selectedItem).toBeUndefined();
 	});
+
+	it('should not have a selected item index by default', () => {
+		expect(component.selectedItemIndex).toBeUndefined();
+	});
 });

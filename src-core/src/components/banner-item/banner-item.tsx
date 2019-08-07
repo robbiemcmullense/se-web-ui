@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop } from "@stencil/core";
+import { Component, Element, h, Host, Method, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-banner-item",
@@ -10,6 +10,17 @@ export class BannerItemComponent {
    * Sets the background image for your banner item.
    */
   @Prop() imageUrl: string;
+  /**
+   * Indicates the active banner item in your banner component.
+   */
+  @Prop({ mutable: true }) active: boolean = false;
+  /**
+   * Method to set the active banner item outside of the banner and banner item components.
+   */
+  @Method()
+  async setActive(value: boolean) {
+    this.active = value;
+  }
 
   @Element() el: HTMLElement;
 
@@ -36,13 +47,16 @@ export class BannerItemComponent {
   }
 
   render() {
-    return [
-      <div class="image-container">
-        {this.imageUrl ? <img class="image-background" style={{ backgroundImage: this.imageUrl }} /> : ''}
-      </div>,
-      <div class="banner-section-wrapper">
-        <slot />
-      </div>
-    ];
+    return (
+      <Host class={{ 'active': this.active }}>
+        <div class="image-container">
+          {this.imageUrl ? <img class="image-background" style={{ backgroundImage: this.imageUrl }} /> : ''}
+          <div class="background-overlay"></div>
+        </div>
+        <div class="banner-section-wrapper">
+          <slot />
+        </div>
+      </Host>
+    );
   }
 }

@@ -8,61 +8,32 @@ import { Component, Element, h, State } from "@stencil/core";
 export class BannerComponent {
 
 	@Element() el: HTMLElement;
+	bannerIndicatorEl?: HTMLElement;
 	@State() items: HTMLElement[] = [];
 	@State() selectedItem?: any;
 	@State() selectedItemIndex?: number;
 
-	private setActiveItem(item: any, direction: string): void {
+	private setActiveItem(item: any): void {
 		if (this.items.length) {
 			this.items.forEach((item: any) => {
-				item.classList.remove('active');
+				item.setActive(false);
 			});
 
-			item.classList.add('active');
-			if (direction === 'previous') {
-				this.removeAdjacentClasses();
-				item.classList.add('slideInLeft');
-				setTimeout(() => {
-					item.classList.remove('slideInLeft');
-					this.assignAdjacentClasses(item);
-				}, 500);
-			}
-			if (direction === 'next') {
-				this.removeAdjacentClasses();
-				item.classList.add('slideInRight');
-				setTimeout(() => {
-					item.classList.remove('slideInRight');
-					this.assignAdjacentClasses(item);
-				}, 500);
-			}
+			item.setActive(true);
+			this.assignSelectedItem(item);
 		}
 	}
 
-	private removeAdjacentClasses() {
-		this.items.forEach((item: any) => {
-			item.classList.remove('previous');
-			item.classList.remove('next');
-		});
-	}
-
-	private assignAdjacentClasses(item: any) {
+	private assignSelectedItem(item: any) {
 		this.selectedItem = item;
 		this.selectedItemIndex = this.items.indexOf(item);
-
-		let prevItem = this.items[this.selectedItemIndex - 1];
-		let nextItem = this.items[this.selectedItemIndex + 1];
-		if (prevItem) {
-			this.items[this.selectedItemIndex - 1].classList.add('previous');
-		}
-		if (nextItem) {
-			this.items[this.selectedItemIndex + 1].classList.add('next');
-		}
+		this.bannerIndicatorEl.style.right = '' + this.selectedItemIndex * 100 + '%';
 	}
 
 	private changeActive(index: string) {
 		let item = index === 'previous' ? this.items[this.selectedItemIndex - 1] : this.items[this.selectedItemIndex + 1];
 		if (item) {
-			this.setActiveItem(item, index);
+			this.setActiveItem(item);
 		}
 	}
 
@@ -77,8 +48,10 @@ export class BannerComponent {
 	componentDidLoad() {
 		this.items = Array.from(this.el.querySelectorAll('se-banner-item'));
 		if (this.items.length) {
-			this.setActiveItem(this.items[0], null);
-			this.assignAdjacentClasses(this.items[0]);
+			this.items.forEach((item: any) => {
+				item.style.width = '' + 100 / this.items.length + '%';
+			});
+			this.setActiveItem(this.items[0]);
 		}
 	}
 
@@ -98,7 +71,9 @@ export class BannerComponent {
 				<ol class="banner-indicators">
 					{this.renderList()}
 				</ol>
-				<slot></slot>
+				<div class="banner-items"  ref={el => this.bannerIndicatorEl = el} style={{width: '' + this.items.length * 100 + '%'}}>
+					<slot></slot>
+				</div>
 				<div class="previous-indicator" onClick={() => this.changeActive('previous')}>
 					arrow2_left
 				</div>

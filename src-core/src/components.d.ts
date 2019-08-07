@@ -78,9 +78,17 @@ export namespace Components {
   interface SeBanner {}
   interface SeBannerItem {
     /**
+    * Indicates the active banner item in your banner component.
+    */
+    'active': boolean;
+    /**
     * Sets the background image for your banner item.
     */
     'imageUrl': string;
+    /**
+    * Method to set the active banner item outside of the banner and banner item components.
+    */
+    'setActive': (value: boolean) => Promise<void>;
   }
   interface SeBlock {
     /**
@@ -1165,6 +1173,10 @@ declare namespace LocalJSX {
   }
   interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {}
   interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
+    /**
+    * Indicates the active banner item in your banner component.
+    */
+    'active'?: boolean;
     /**
     * Sets the background image for your banner item.
     */

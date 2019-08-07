@@ -2,28 +2,17 @@
 @import "../../theme/theme";
 
 se-banner-item {
-  @include absolute();
+  position: relative;
   height: 700px;
-  display: none;
-  transition: transform .6s ease;
+  se-block {
+    color: $se-white;
+  }
 }
 
 se-banner-item.active {
   display: block;
   left: 0;
   right: 0;
-}
-
-se-banner-item.previous {
-  right: 100%;
-  left: 0;
-  display: block;
-}
-
-se-banner-item.next {
-  left: 100%;
-  right: 0;
-  display: block;
 }
 
 .banner-section-wrapper {
@@ -43,7 +32,6 @@ se-banner-item.next {
   overflow: hidden;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
-  opacity: 0.3;
 }
 
 .image-background {
@@ -58,11 +46,23 @@ se-banner-item.next {
   background-size: cover;
 }
 
+.background-overlay {
+  @include absolute(0,0,0,0);
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(270deg, rgba(98, 100, 105, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
 @media screen and (min-width: 900px) {
   .banner-section-wrapper {
     top: 0;
     padding: 50px 95px;
     height: 250px;
+  }
+
+  se-block {
+    width: 40%;
+    min-width: 330px;
   }
 }
 
@@ -74,14 +74,4 @@ se-banner-item.next {
   .banner-section-wrapper {
     top: 85px;
   }
-}
-
-.slideInLeft {
-  transition: 0.5s;
-  right: 0;
-}
-
-.slideInRight {
-  transition: 0.5s;
-  left: 0;
 }

@@ -1,5 +1,12 @@
 @import "../../theme/theme";
 
+.banner-items {
+  @include display-flex();
+  @include flex-direction(row);
+  position: relative;
+  transition: right 0.5s;
+}
+
 .banner-indicators {
   position: absolute;
   left: 0;
@@ -60,6 +67,7 @@
   height: 700px;
   width: 100%;
   margin: 0;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 900px) {
@@ -73,10 +81,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .se-banner {
-    height: 85px;
-  }
-
   .previous-indicator,
   .next-indicator {
     top: 43px;
