@@ -49,7 +49,7 @@ export class SeBanner {
 }
 
 export declare interface SeBannerItem extends Components.SeBannerItem {}
-@Component({ selector: 'se-banner-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'imageUrl'] })
+@Component({ selector: 'se-banner-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['backgroundColor', 'imageUrl'] })
 export class SeBannerItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -57,8 +57,7 @@ export class SeBannerItem {
     this.el = r.nativeElement;
   }
 }
-proxyMethods(SeBannerItem, ['setActive', 'setPrevious', 'setNext']);
-proxyInputs(SeBannerItem, ['active', 'imageUrl']);
+proxyInputs(SeBannerItem, ['backgroundColor', 'imageUrl']);
 
 export declare interface SeBlock extends Components.SeBlock {}
 @Component({ selector: 'se-block', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'display', 'enlarged', 'height', 'loading', 'option', 'width'] })

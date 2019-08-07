@@ -78,25 +78,13 @@ export namespace Components {
   interface SeBanner {}
   interface SeBannerItem {
     /**
-    * Defines if the menu item is active or not. The default setting is `false`.
+    * Sets the background color for your banner item.
     */
-    'active': boolean;
+    'backgroundColor': string;
     /**
     * Sets the background image for your banner item.
     */
     'imageUrl': string;
-    /**
-    * Sets the active banner item in your banner component.
-    */
-    'setActive': (value: boolean) => Promise<void>;
-    /**
-    * Sets the banner item immediately to the right of the active item in your banner component.
-    */
-    'setNext': (value: boolean) => Promise<void>;
-    /**
-    * Sets the banner item immediately to the left of the active item in your banner component.
-    */
-    'setPrevious': (value: boolean) => Promise<void>;
   }
   interface SeBlock {
     /**
@@ -1182,9 +1170,9 @@ declare namespace LocalJSX {
   interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {}
   interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
     /**
-    * Defines if the menu item is active or not. The default setting is `false`.
+    * Sets the background color for your banner item.
     */
-    'active'?: boolean;
+    'backgroundColor'?: string;
     /**
     * Sets the background image for your banner item.
     */

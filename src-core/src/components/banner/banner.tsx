@@ -13,43 +13,44 @@ export class BannerComponent {
 	@State() selectedItemIndex?: number;
 
 	private setActiveItem(item: any, direction: string): void {
-		item.setActive(true);
 		if (this.items.length) {
 			this.items.forEach((item: any) => {
-				item.setActive(false);
+				item.classList.remove('active');
 			});
 
-			let listItems = Array.from(this.el.querySelectorAll('li'));
-			if (listItems.length) {
-				listItems.forEach((listItem: any) => {
-					listItem.classList.remove('active');
-				});
-				listItems[this.selectedItemIndex].classList.add('active');
-			}
-			item.setActive(true);
+			item.classList.add('active');
 			if (direction === 'previous') {
+				this.removeAdjacentClasses();
 				item.classList.add('slideInLeft');
 				setTimeout(() => {
 					item.classList.remove('slideInLeft');
-					item.classList.remove('previous');
+					this.assignAdjacentClasses(item);
 				}, 500);
 			}
 			if (direction === 'next') {
+				this.removeAdjacentClasses();
 				item.classList.add('slideInRight');
 				setTimeout(() => {
 					item.classList.remove('slideInRight');
-					item.classList.remove('next');
+					this.assignAdjacentClasses(item);
 				}, 500);
 			}
-			this.assignItemClasses(item);
 		}
 	}
 
-	private assignItemClasses(item: any) {
+	private removeAdjacentClasses() {
+		this.items.forEach((item: any) => {
+			item.classList.remove('previous');
+			item.classList.remove('next');
+		});
+	}
+
+	private assignAdjacentClasses(item: any) {
 		this.selectedItem = item;
 		this.selectedItemIndex = this.items.indexOf(item);
+
 		let prevItem = this.items[this.selectedItemIndex - 1];
-		let nextItem = this.items[this.selectedItemIndex + 1]
+		let nextItem = this.items[this.selectedItemIndex + 1];
 		if (prevItem) {
 			this.items[this.selectedItemIndex - 1].classList.add('previous');
 		}
@@ -77,10 +78,17 @@ export class BannerComponent {
 		this.items = Array.from(this.el.querySelectorAll('se-banner-item'));
 		if (this.items.length) {
 			this.setActiveItem(this.items[0], null);
-			let listItemElement = this.el.querySelector('li');
-			if (listItemElement) {
-				listItemElement.classList.add('active');
-			}
+			this.assignAdjacentClasses(this.items[0]);
+		}
+	}
+
+	componentDidUpdate() {
+		let listItems = Array.from(this.el.querySelectorAll('li'));
+		if (listItems.length) {
+			listItems.forEach((listItem: any) => {
+				listItem.classList.remove('active');
+			});
+			listItems[this.selectedItemIndex].classList.add('active');
 		}
 	}
 
