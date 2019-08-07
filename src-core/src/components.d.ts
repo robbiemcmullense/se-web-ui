@@ -78,10 +78,6 @@ export namespace Components {
   interface SeBanner {}
   interface SeBannerItem {
     /**
-    * Sets the background color for your banner item.
-    */
-    'backgroundColor': string;
-    /**
     * Sets the background image for your banner item.
     */
     'imageUrl': string;
@@ -1169,10 +1165,6 @@ declare namespace LocalJSX {
   }
   interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {}
   interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
-    /**
-    * Sets the background color for your banner item.
-    */
-    'backgroundColor'?: string;
     /**
     * Sets the background image for your banner item.
     */
