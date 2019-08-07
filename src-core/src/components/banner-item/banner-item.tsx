@@ -37,7 +37,7 @@ export class BannerItemComponent {
 
   render() {
     return [
-      <div class="image-container" style={{ backgroundColor: this.backgroundColor }}>
+      <div class="image-container">
         {this.imageUrl ? <img class="image-background" style={{ backgroundImage: this.imageUrl }} /> : ''}
       </div>,
       <div class="banner-section-wrapper">
