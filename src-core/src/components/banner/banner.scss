@@ -4,6 +4,8 @@
   @include display-flex();
   @include flex-direction(row);
   position: relative;
+  -webkit-transition: right 0.5s;
+  -moz-transition: right 0.5s;
   transition: right 0.5s;
 }
 

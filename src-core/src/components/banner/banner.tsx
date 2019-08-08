@@ -31,10 +31,14 @@ export class BannerComponent {
 	}
 
 	private changeActive(index: string) {
-		let item = index === 'previous' ? this.items[this.selectedItemIndex - 1] : this.items[this.selectedItemIndex + 1];
-		if (item) {
-			this.setActiveItem(item);
+		let item;
+		if (index === 'previous') {
+			item = this.items[this.selectedItemIndex - 1] || this.items[this.items.length-1];
 		}
+		if (index === 'next') {
+			item = this.items[this.selectedItemIndex + 1] || this.items[0];
+		}
+		this.setActiveItem(item);
 	}
 
 	renderList() {
