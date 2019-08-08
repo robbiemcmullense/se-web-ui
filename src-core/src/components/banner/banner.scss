@@ -11,7 +11,6 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 335px;
   margin: 0;
   padding-left: 0;
   justify-content: center;
@@ -40,10 +39,6 @@
   position: absolute;
   font-family: 'se-icon';
   cursor: pointer;
-  width: 15px;
-  height: 15px;
-  font-size: 32px;
-  top: 167px;
   justify-content: center;
   align-items: center;
   text-decoration: none;
@@ -55,14 +50,6 @@
   }
 }
 
-.previous-indicator {
-  left: 10px;
-}
-
-.next-indicator {
-  right: 10px;
-}
-
 .se-banner {
   position: relative;
   height: 700px;
@@ -71,23 +58,13 @@
   overflow: hidden;
 }
 
-@media screen and (min-width: 900px) {
-  .se-banner {
-    height: 350px;
-  }
-
-  .banner-indicators {
-    bottom: 10px;
-  }
-}
-
 @media screen and (max-width: 767px) {
   .previous-indicator,
   .next-indicator {
-    top: 38px;
+    top: 37px;
     height: 10px;
     width: 10px;
-    font-size: 24px;
+    font-size: 32px;
   }
 
   .previous-indicator {
@@ -100,5 +77,55 @@
 
   .banner-indicators {
     top: 75px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .banner-indicators {
+    top: 330px;
+  }
+
+  .previous-indicator,
+  .next-indicator {
+    width: 15px;
+    height: 15px;
+    font-size: 48px;
+    top: 167px;
+  }
+
+  .previous-indicator {
+    left: 15px;
+  }
+
+  .next-indicator {
+    right: 15px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .se-banner {
+    height: 350px;
+  }
+}
+
+@media screen and (min-width: 1281px) {
+  .banner-indicators {
+    top: 325px;
+  }
+
+  .previous-indicator,
+  .next-indicator {
+    width: 20px;
+    height: 20px;
+    font-size: 62px;
+    top: 165px;
+  }
+
+  .previous-indicator {
+    left: 30px;
+  }
+
+  .next-indicator {
+    right: 30px;
   }
 }

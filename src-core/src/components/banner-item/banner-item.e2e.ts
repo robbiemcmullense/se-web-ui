@@ -14,14 +14,21 @@ describe('BannerItemComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-
   it('should render an image container element', async() => {
-    let imageContainer = await page.find('se-banner-item .image-container');
+    let imageContainer = await page.find('se-banner-item >>> .image-container');
     expect(imageContainer).toBeTruthy();
   });
 
   it('should render a div element with the banner section wrapper class', async() => {
-    let bannerSection = await page.find('se-banner-item .banner-section-wrapper');
+    let bannerSection = await page.find('se-banner-item >>> .banner-section-wrapper');
     expect(bannerSection).toBeTruthy();
+  });
+
+  it('should apply the active class on the host element when it is the active item', async() => {
+    await page.$eval('se-banner-item', (elm: any) => {
+      elm.active = true;
+    });
+    await page.waitForChanges();
+    expect(element).toHaveClass('active');
   });
 });
