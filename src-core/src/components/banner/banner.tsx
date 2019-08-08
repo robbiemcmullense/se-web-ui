@@ -12,6 +12,7 @@ export class BannerComponent {
 	@State() items: HTMLElement[] = [];
 	@State() selectedItem?: any;
 	@State() selectedItemIndex?: number;
+	interval: any;
 
 	private setActiveItem(item: any): void {
 		if (this.items.length) {
@@ -28,9 +29,15 @@ export class BannerComponent {
 		this.selectedItem = item;
 		this.selectedItemIndex = this.items.indexOf(item);
 		this.bannerIndicatorEl.style.right = '' + this.selectedItemIndex * 100 + '%';
+		this.interval = setInterval(() => {
+			// rotate carousel to the right every 6 seconds
+			this.changeActive('next')
+		}, 6000);
 	}
 
 	private changeActive(index: string) {
+		//reset timer to rotate when clicking on arrow button
+		clearInterval(this.interval);
 		let item;
 		if (index === 'previous') {
 			item = this.items[this.selectedItemIndex - 1] || this.items[this.items.length-1];
@@ -39,6 +46,10 @@ export class BannerComponent {
 			item = this.items[this.selectedItemIndex + 1] || this.items[0];
 		}
 		this.setActiveItem(item);
+	}
+
+	rotateCarousel() {
+		return this.changeActive('next');
 	}
 
 	renderList() {
