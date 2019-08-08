@@ -5,24 +5,35 @@
   position: relative;
   @include display-flex();
 }
+
 :host(.flex){
   width: 100%;
   height: 100%;
   @include flex-direction(column);
 }
+
 :host(.block){
   width: auto;
   height: auto;
 }
+
 :host(.grid){
   width: 100%;
   height: 100%;
 }
+
 :host(.grid-large){
   grid-column: span 2;
   grid-row: span 2;
 }
 
+@media screen and (min-width: 900px) {
+  :host(.banneritem) {
+    width: 40%;
+    min-width: 330px;
+    color: $se-white;
+  }
+}
 
 .block-body {
   overflow: auto;
@@ -31,21 +42,17 @@
   @include flex-direction(column);
 
   &.basic {
-
-      margin: 0;
-
+    margin: 0;
   }
 
   &.widget {
-
-      margin: $spacing;
-
+    margin: $spacing;
   }
 
   &.card {
-      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-      border-radius: $border-radius-card;
-      margin: $spacing-large;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+    border-radius: $border-radius-card;
+    margin: $spacing-large;
   }
 
   &.standard {

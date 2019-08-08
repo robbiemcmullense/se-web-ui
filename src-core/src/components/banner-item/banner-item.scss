@@ -1,15 +1,12 @@
 @import "../../theme/animation";
 @import "../../theme/theme";
 
-se-banner-item {
+:host {
   position: relative;
   height: 700px;
-  se-block {
-    color: $se-white;
-  }
 }
 
-se-banner-item.active {
+:host(.active) {
   display: block;
   left: 0;
   right: 0;
@@ -58,11 +55,6 @@ se-banner-item.active {
     top: 0;
     padding: 50px 95px;
     height: 250px;
-  }
-
-  se-block {
-    width: 40%;
-    min-width: 330px;
   }
 }
 

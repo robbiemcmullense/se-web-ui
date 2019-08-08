@@ -7,9 +7,23 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                                     | Type     | Default     |
-| ---------- | ----------- | ----------------------------------------------- | -------- | ----------- |
-| `imageUrl` | `image-url` | Sets the background image for your banner item. | `string` | `undefined` |
+| Property   | Attribute   | Description                                                | Type      | Default     |
+| ---------- | ----------- | ---------------------------------------------------------- | --------- | ----------- |
+| `active`   | `active`    | Indicates the active banner item in your banner component. | `boolean` | `false`     |
+| `imageUrl` | `image-url` | Sets the background image for your banner item.            | `string`  | `undefined` |
+
+
+## Methods
+
+### `setActive(value: boolean) => Promise<void>`
+
+Method to set the active banner item outside of the banner and banner item components.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------

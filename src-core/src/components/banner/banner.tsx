@@ -3,7 +3,7 @@ import { Component, Element, h, State } from "@stencil/core";
 @Component({
 	tag: "se-banner",
 	styleUrl: "banner.scss",
-	shadow: false
+	shadow: true
 })
 export class BannerComponent {
 

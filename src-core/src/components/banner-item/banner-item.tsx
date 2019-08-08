@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop } from "@stencil/core";
 @Component({
   tag: "se-banner-item",
   styleUrl: "banner-item.scss",
-  shadow: false
+  shadow: true
 })
 export class BannerItemComponent {
   /**
@@ -37,6 +37,7 @@ export class BannerItemComponent {
   private setBlockTransparency() {
     Array.from(this.el.querySelectorAll('se-block')).forEach((item: any) => {
       item.color = 'transparent';
+      item.classList.add('banneritem');
     });
   }
 
