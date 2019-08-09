@@ -79,32 +79,6 @@
           </se-about>
           </se-about>
         </se-sidemenu-item>
-        <se-sidemenu-item item="Banner">
-          <se-banner>
-            <se-banner-item
-              image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
-              <se-block>
-                <se-block-header>Reliable Through the Storm</se-block-header>
-                <se-block-content>
-                  <div>And we do it at every level with EcoStruxure.</div>
-                  <div>Yes, we do it at every level with EcoStruxure!</div>
-                </se-block-content>
-                <se-block-footer>
-                  <se-button slot="start" color="secondary">Call to action</se-button>
-                  <se-button slot="start" option="outline">Secondary button</se-button>
-                </se-block-footer>
-              </se-block>
-            </se-banner-item>
-            <se-banner-item
-              image-url="url(https://images.unsplash.com/photo-1440098334316-9b3afb87b5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)">
-              <se-block>
-                <se-block-header>Header 2</se-block-header>
-                <se-block-content>Content 2</se-block-content>
-                <se-block-footer>Footer 2</se-block-footer>
-              </se-block>
-            </se-banner-item>
-          </se-banner>
-        </se-sidemenu-item>
         <se-sidemenu-item id="sidemenu-item" item="Close"></se-sidemenu-item>
       </se-sidemenu>
     </se-header>
@@ -188,7 +162,7 @@
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
-      <se-container direction="column" position="relative">
+      <se-container direction="column" position="relative" display="block" color="alternative">
         <se-container option="centered">
           <se-banner>
             <se-banner-item
@@ -226,8 +200,7 @@
             </se-banner-item>
           </se-banner>
         </se-container>
-
-        <!-- <se-container option="card" display="grid" column-size="400px" row-size="400px">
+        <se-container option="card" display="grid" column-size="400px" row-size="400px">
           <se-block id="block0">
             <se-block-header>
               <div slot="start">
@@ -618,7 +591,7 @@
               </div>
             </se-block-content>
           </se-block>
-        </se-container> -->
+        </se-container>
       </se-container>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
