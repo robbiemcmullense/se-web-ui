@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `didClick` |             | `CustomEvent<any>` |
+| Event      | Description                                  | Type               |
+| ---------- | -------------------------------------------- | ------------------ |
+| `didClick` | Send an event when the sidemenu item changes | `CustomEvent<any>` |
 
 
 ----------------------------------------------

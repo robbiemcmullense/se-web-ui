@@ -1181,6 +1181,10 @@ declare namespace LocalJSX {
     * Sets the background image for your banner item.
     */
     'imageUrl'?: string;
+    /**
+    * Send an event when the banner item changes
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
   }
   interface SeBlock extends JSXBase.HTMLAttributes<HTMLSeBlockElement> {
     /**
@@ -1747,6 +1751,9 @@ declare namespace LocalJSX {
     * Defines the title of the menu item.
     */
     'item'?: string;
+    /**
+    * Send an event when the sidemenu item changes
+    */
     'onDidClick'?: (event: CustomEvent<any>) => void;
   }
   interface SeSlider extends JSXBase.HTMLAttributes<HTMLSeSliderElement> {

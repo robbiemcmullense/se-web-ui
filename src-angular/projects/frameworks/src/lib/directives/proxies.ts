@@ -51,10 +51,12 @@ export class SeBanner {
 export declare interface SeBannerItem extends Components.SeBannerItem {}
 @Component({ selector: 'se-banner-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'imageUrl'] })
 export class SeBannerItem {
+  didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didChange']);
   }
 }
 proxyMethods(SeBannerItem, ['setActive']);

@@ -13,6 +13,13 @@
 | `imageUrl` | `image-url` | Sets the background image for your banner item.            | `string`  | `undefined` |
 
 
+## Events
+
+| Event       | Description                                | Type               |
+| ----------- | ------------------------------------------ | ------------------ |
+| `didChange` | Send an event when the banner item changes | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `setActive(value: boolean) => Promise<void>`

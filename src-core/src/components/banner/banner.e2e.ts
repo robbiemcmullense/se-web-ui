@@ -23,8 +23,8 @@ describe('BannerComponent', () => {
   it('should render two indicator elements with arrow2_left and arrow2_right text', async() => {
     page = await renderComponent();
     element = await page.find('se-banner');
-    let prevIndicator = element.shadowRoot.querySelector('.previous-indicator');
-    let nextIndicator = element.shadowRoot.querySelector('.next-indicator');
+    const prevIndicator = element.shadowRoot.querySelector('.previous-indicator');
+    const nextIndicator = element.shadowRoot.querySelector('.next-indicator');
     expect(prevIndicator.innerText).toEqual('arrow2_left');
     expect(nextIndicator.innerText).toEqual('arrow2_right');
   });
@@ -33,5 +33,13 @@ describe('BannerComponent', () => {
     page = await renderComponent('<se-banner-item></se-banner-item><se-banner-item></se-banner-item>');
     const listItems = await page.findAll('se-banner >>> li');
     expect(listItems.length).toEqual(2);
+  });
+
+  it('should set the first banner item as active by default', async() => {
+    page = await renderComponent(`<se-banner-item></se-banner-item><se-banner-item></se-banner-item>`);
+    await page.waitForChanges();
+    const bannerItems = await page.findAll('se-banner-item');
+    expect(bannerItems[0]).toHaveClass('active');
+    expect(bannerItems[1]).not.toHaveClass('active');
   });
 });

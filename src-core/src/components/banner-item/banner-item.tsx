@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-banner-item",
@@ -23,6 +23,17 @@ export class BannerItemComponent {
   }
 
   @Element() el: HTMLElement;
+
+  @Watch('active')
+  activeDidChange() {
+    if (this.active) {
+      this.didChange.emit();
+    }
+  }
+  /**
+   * Send an event when the banner item changes
+   */
+  @Event() didChange: EventEmitter<any>;
 
   componentWillLoad() {
     this.setBlockTransparency();
