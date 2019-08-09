@@ -53,11 +53,29 @@ function readPkg(project) {
   return JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 }
 
+function alreadyDeployedVersion(version) {
+  const projectRoot = projectPath('');
+  const {stdout} = execa.sync('yarn', ['info', '@se/web-ui', 'dist-tags.latest'], { cwd: projectRoot });
+  const list = stdout.split('\n');
+  let alreadyDeployed = false;
+  list.forEach(function(elm) {
+    if (elm === version){
+      alreadyDeployed = true
+    }
+  });
+  return alreadyDeployed;
+}
 
 async function main() {
   try {
     const tasks = [];
     const { version } = readPkg('');
+
+    // Do not deploy a version if already published
+    if (alreadyDeployedVersion(version)){
+      console.log('\n Package version already deployed \n');
+      process.exit(1);
+    }
 
     // Update package version
     updatePackageVersions(tasks, packages, version);

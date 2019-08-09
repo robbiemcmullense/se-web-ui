@@ -9,14 +9,17 @@
   "collection": "core/collection/collection-manifest.json",
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
+    "postinstall": "yarn build",
     "build": "npm-run-all build.*",
     "build.core": "stencil build --docs",
     "build.localRef": "cpx \"src/package.json\" core",
     "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
     "build.exportDocs": "cpx \"src/**/*.md\" core/docs",
     "build.moveCore": "cpx \"core/**/*\" \"../core\" && rimraf \"./core\"",
-    "test": "stencil test --spec",
+    "test": "stencil test --spec --e2e --coverage",
+    "spec": "stencil test --spec",
     "e2e": "stencil test --e2e",
+    "e2e.screenshot": "stencil test --e2e --screenshot",
     "test.watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {

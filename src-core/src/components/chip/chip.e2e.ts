@@ -11,6 +11,7 @@ describe('ChipComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
+    await page.compareScreenshot('Default Chips', {fullPage: false});
   });
 
   it('should have a class equal to standard to reflect its default color', () => {

@@ -3,9 +3,10 @@
   "version": "0.0.1-PLACEHOLDER",
   "scripts": {
     "ng": "ng",
+    "postinstall": "yarn build",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --code-coverage",
+    "test": "ng test --code-coverage --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
