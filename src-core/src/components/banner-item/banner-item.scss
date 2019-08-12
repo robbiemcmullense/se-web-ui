@@ -59,11 +59,16 @@
 }
 
 @media screen and (max-width: 767px) {
+  :host {
+    height: 100%;
+  }
+
   .image-container {
+    position: relative;
     height: 85px;
   }
 
   .banner-section-wrapper {
-    top: 85px;
+    position: relative;
   }
 }
