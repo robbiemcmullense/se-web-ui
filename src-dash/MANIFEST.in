@@ -1,0 +1,4 @@
+include web_ui_dash/*.js
+include web_ui_dash/metadata.json
+include web_ui_dash/package.json
+include README.md

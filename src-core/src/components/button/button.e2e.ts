@@ -13,6 +13,7 @@ describe('ButtonComponent', () => {
   it('renders', async() => {
     expect(hostElement).toBeTruthy();
     expect(hostElement).toHaveClass('hydrated');
+    await page.compareScreenshot('My Button', {fullPage: false});
   });
 
   it('renders the child button component with flat, small, and standard classes by default reflecting its default option, size, and color', async() => {
