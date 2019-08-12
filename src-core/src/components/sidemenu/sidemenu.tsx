@@ -100,7 +100,7 @@ export class SidemenuComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item class={{ 'hide-nav-icon': !item.childElementCount }} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} />,
+        <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} />,
       ]
     })
   }
@@ -123,7 +123,7 @@ export class SidemenuComponent {
             </se-list>
             <se-icon-lifeison color="standard" />
             <div class="external-link">
-              <se-link url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
+              <se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
             </div>
           </div>
           <se-divider option="vertical"></se-divider>

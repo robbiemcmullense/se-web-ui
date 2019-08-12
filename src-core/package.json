@@ -15,8 +15,8 @@
     "build.exportTheme": "cpx \"src/theme/**/*\" core/styles",
     "build.exportDocs": "cpx \"src/**/*.md\" core/docs",
     "build.moveCore": "cpx \"core/**/*\" \"../core\" && rimraf \"./core\"",
-    "test": "stencil test --spec",
-    "e2e": "stencil test --e2e",
+    "test": "stencil test --spec --coverage",
+    "e2e": "stencil test --e2e --coverage",
     "test.watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {
