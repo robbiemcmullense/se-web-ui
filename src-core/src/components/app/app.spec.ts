@@ -27,4 +27,16 @@ describe('AppComponent', () => {
 			</se-app>
 		`);
 	});
+
+	it('should render with the se-font-website class when app.option is set to website', async() => {
+		const page = await newSpecPage({
+			components: [AppComponent],
+			html: `<se-app option="website"></se-app>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-app option="website">
+				<div class="se-app-body se-font-website"></div>
+			</se-app>
+		`);
+	});
 });
