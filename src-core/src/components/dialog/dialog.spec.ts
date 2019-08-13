@@ -47,12 +47,12 @@ describe('DialogComponent', () => {
 
 	it('should call the colorDidChange and openDidChange functions when the component loads', async() => {
 		dialogComponent.menuInnerEl = {classList: {
-			add: (value: any)=> { return value;},
-			remove: (value: any)=> { return value;}
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
 		}};
 		dialogComponent.backdropEl = {classList: {
-			add: (value: any)=> { return value;},
-			remove: (value: any)=> { return value;}
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
 		}};
 		const colorEventSpy = jest.spyOn(dialogComponent, 'colorDidChange');
 		const openEventSpy = jest.spyOn(dialogComponent, 'openDidChange');
@@ -63,12 +63,12 @@ describe('DialogComponent', () => {
 
 	it('should call the addAnimation function when openDidChange is Called', async() => {
 		dialogComponent.menuInnerEl = {classList: {
-			add: (value: any)=> { return value;},
-			remove: (value: any)=> { return value;}
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
 		}};
 		dialogComponent.backdropEl = {classList: {
-			add: (value: any)=> { return value;},
-			remove: (value: any)=> { return value;}
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
 		}};
 		dialogComponent.open = true;
 		const eventSpy = jest.spyOn(dialogComponent, 'openDidChange');
