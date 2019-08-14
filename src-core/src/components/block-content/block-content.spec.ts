@@ -24,7 +24,7 @@ describe('BlockContent', () => {
 		expect(page.root).toEqualHtml(`
 			<se-block-content>
 				<mock:shadow-root>
-					<div class="se-block-content undefined-content">
+					<div class="se-block-content">
 						<slot></slot>
       		</div>
 				</mock:shadow-root>
