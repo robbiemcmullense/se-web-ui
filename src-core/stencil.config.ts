@@ -17,6 +17,10 @@ export const config: Config = {
       copy
     },
     {
+      type: 'docs-json',
+      file: 'core/se-components.json'
+    },
+    {
       type: 'angular',
       componentCorePackage: '@se/web-ui',
       directivesProxyFile: '../src-angular/projects/frameworks/src/lib/directives/proxies.ts',
