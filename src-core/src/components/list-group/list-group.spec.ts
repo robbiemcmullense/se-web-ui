@@ -90,5 +90,19 @@ describe('list-group', () => {
     listGroup.collapsedChanged();
     listGroup.ChildUpdated();
 		expect(eventSpy).toHaveBeenCalledTimes(2);
-	});
+  });
+  
+  it('should emit the didGroupClick event when the toggleCollapse method is called', () => {
+    const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
+    listGroup.toggleCollapse();
+    expect(eventSpy).toHaveBeenCalled();
+  });
+
+  it('should not emit the didGroupClick event when the toggleCollapse method is called in treeview option and is the treeview target', () => {
+    listGroup.option = 'treeview';
+    const event = {target: {nodeName: 'SE-ICON'}};
+    const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
+    listGroup.toggleCollapse(event);
+    expect(eventSpy).not.toHaveBeenCalled();
+  });
 });

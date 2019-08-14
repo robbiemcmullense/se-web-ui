@@ -58,12 +58,29 @@ describe('TooltipComponent', () => {
     expect(eventSpy).toHaveBeenCalled();
   });
 
-  it('should call the _toggle method 3 times, when the touchstart, touchend, and mouseover events occur', () => {
+  it('should call the _toggle method twice, when the touchstart and touchend events occur', () => {
     const mockEvent = {stopPropagation: () => {return '';}};
     const eventSpy = jest.spyOn(tooltip, '_toggle');
     tooltip.handleTouchstart(mockEvent);
     tooltip.handleTouchEnd(mockEvent);
+    expect(eventSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('should call the _toggle method twice, when the mouseover and mouseleave hover events occur', () => {
+    const mockEvent = {stopPropagation: () => {return '';}};
+    const eventSpy = jest.spyOn(tooltip, '_toggle');
+    tooltip.action = 'hover';
     tooltip.handleMouseOver(mockEvent);
-    expect(eventSpy).toHaveBeenCalledTimes(3);
-  })
+    tooltip.handleMouseLeave(mockEvent);
+    expect(eventSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('should call the _toggle method on a click with the tooltip open', () => {
+    const mockEvent = {stopPropagation: () => {return '';}};
+    const eventSpy = jest.spyOn(tooltip, '_toggle');
+    tooltip.action = 'click';
+    tooltip.opened = true;
+    tooltip.handleMouseClick(mockEvent);
+    expect(eventSpy).toHaveBeenCalled();
+  });
 });

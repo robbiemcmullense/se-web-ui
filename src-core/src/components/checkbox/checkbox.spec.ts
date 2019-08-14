@@ -32,6 +32,11 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.required).toBeFalsy();
 	});
 
+	it('should set required to true when the setRequired method is called', () => {
+		checkbox.setRequired();
+		expect(checkbox.required).toBeTruthy();
+	});
+
 	it('should have the "standard" background by default', () => {
 		expect(checkbox.background).toEqual('standard');
 	});
@@ -96,6 +101,12 @@ describe('CheckboxComponent', () => {
 	it('should call the updateSize function when the component loads', async() => {
 		const eventSpy = jest.spyOn(checkbox, 'setElementId');
 		checkbox.componentDidLoad();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should emit the didChange event when the emitEvent function is executed', async() => {
+		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
+		checkbox.emitEvent();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 });

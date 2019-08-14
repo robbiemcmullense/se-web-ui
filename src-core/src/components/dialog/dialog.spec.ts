@@ -28,6 +28,12 @@ describe('DialogComponent', () => {
 		expect(dialogComponent.canBackdrop).toBeTruthy();
 	});
 
+	it('should set open to false when the backdropClicked method is called', () => {
+		dialogComponent.open = true;
+		dialogComponent.backdropClicked();
+		expect(dialogComponent.open).toBeFalsy();
+	});
+
 	it('should render', async() => {
 		const page = await newSpecPage({
 			components: [DialogComponent],
@@ -61,7 +67,21 @@ describe('DialogComponent', () => {
 		expect(openEventSpy).toHaveBeenCalled();
 	});
 
-	it('should call the addAnimation function when openDidChange is Called', async() => {
+	it('should call the removeAnimation function when openDidChange is called', async() => {
+		dialogComponent.menuInnerEl = {classList: {
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
+		}};
+		dialogComponent.backdropEl = {classList: {
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
+		}};
+		const eventSpy = jest.spyOn(dialogComponent, 'removeAnimation');
+		dialogComponent.openDidChange();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should call the addAnimation function when openDidChange is called and the dialog is open', async() => {
 		dialogComponent.menuInnerEl = {classList: {
 			add: (value: any) => { return value;},
 			remove: (value: any) => { return value;}
@@ -71,8 +91,16 @@ describe('DialogComponent', () => {
 			remove: (value: any) => { return value;}
 		}};
 		dialogComponent.open = true;
-		const eventSpy = jest.spyOn(dialogComponent, 'openDidChange');
-		dialogComponent.componentDidLoad();
+		const eventSpy = jest.spyOn(dialogComponent, 'addAnimation');
+		dialogComponent.openDidChange();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should call the backdropClicked method, emitting the backdrop event when the handleKeyDown event occurs', () => {
+		dialogComponent.open = true;
+		const event = {key: 'Escape'};
+		const eventSpy = jest.spyOn(dialogComponent.backdrop, 'emit');
+		dialogComponent.handleKeyDown(event);
 		expect(eventSpy).toHaveBeenCalled();
 	});
 });

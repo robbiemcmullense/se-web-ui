@@ -38,10 +38,41 @@ describe('RadioGroupComponent', () => {
 		`);
 	});
 
+	it('should render with a child se-button element', async() => {
+		const page = await newSpecPage({
+			components: [RadioGroupComponent],
+			html: `<se-radio-group><se-button></se-button></se-radio-group>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-radio-group>
+				<mock:shadow-root>
+					<slot></slot>
+				</mock:shadow-root>
+				<se-button></se-button>
+			</se-radio-group>
+		`);
+	});
+
+	it('should render with a child se-radio element', async() => {
+		const page = await newSpecPage({
+			components: [RadioGroupComponent],
+			html: `<se-radio-group><se-radio></se-radio></se-radio-group>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-radio-group>
+				<mock:shadow-root>
+					<slot></slot>
+				</mock:shadow-root>
+				<se-radio></se-radio>
+			</se-radio-group>
+		`);
+	});
+
 	it('calls the updateItemMode function when the component loads', () => {
 		const eventSpy = jest.spyOn(radioGroup, 'updateItemMode')
 		radioGroup.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
+		radioGroup.disabledDidChange();
+		expect(eventSpy).toHaveBeenCalledTimes(2);
 	});
 
 	it('calls the handleEventChange function twice, when a button or radio element is clicked', () => {
@@ -51,4 +82,6 @@ describe('RadioGroupComponent', () => {
 		radioGroup.radioButtonCheckedHandler(event, 'se-radio');
 		expect(eventSpy).toHaveBeenCalledTimes(2);
 	});
+
+	
 });
