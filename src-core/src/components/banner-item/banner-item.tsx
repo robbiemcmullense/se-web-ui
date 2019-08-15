@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-banner-item",
@@ -14,14 +14,6 @@ export class BannerItemComponent {
    * Indicates the active banner item in your banner component.
    */
   @Prop({ mutable: true }) active: boolean = false;
-  /**
-   * Method to set the active banner item outside of the banner and banner item components.
-   */
-  @Method()
-  async setActive(value: boolean) {
-    this.active = value;
-  }
-
   @Element() el: HTMLElement;
 
   @Watch('active')

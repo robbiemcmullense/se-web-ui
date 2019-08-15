@@ -21,7 +21,7 @@ describe('BannerComponent', () => {
   });
 
   it('should render two indicator elements with arrow2_left and arrow2_right text', async() => {
-    page = await renderComponent();
+    page = await renderComponent('<se-banner-item></se-banner-item><se-banner-item></se-banner-item>');
     element = await page.find('se-banner');
     const prevIndicator = element.shadowRoot.querySelector('.previous-indicator');
     const nextIndicator = element.shadowRoot.querySelector('.next-indicator');

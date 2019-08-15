@@ -20,19 +20,6 @@
 | `didChange` | Send an event when the banner item changes | `CustomEvent<any>` |
 
 
-## Methods
-
-### `setActive(value: boolean) => Promise<void>`
-
-Method to set the active banner item outside of the banner and banner item components.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

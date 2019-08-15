@@ -3,7 +3,6 @@
 
 :host {
   position: relative;
-  height: 700px;
 }
 
 :host(.active) {
@@ -23,7 +22,6 @@
 }
 
 .image-container {
-  @include absolute(0,0,0,0);
   width: 100%;
   height: 350px;
   overflow: hidden;
@@ -50,14 +48,6 @@
   background-image: linear-gradient(270deg, rgba(98, 100, 105, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
-@media screen and (min-width: 900px) {
-  .banner-section-wrapper {
-    top: 0;
-    padding: 50px 95px;
-    height: 250px;
-  }
-}
-
 @media screen and (max-width: 767px) {
   :host {
     height: 100%;
@@ -70,5 +60,28 @@
 
   .banner-section-wrapper {
     position: relative;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :host {
+    height: 100%;
+  }
+
+  .image-container,
+  .banner-section-wrapper {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .image-container {
+    @include absolute(0,0,0,0);
+  }
+  
+  .banner-section-wrapper {
+    top: 0;
+    padding: 50px 95px;
+    height: 250px;
   }
 }

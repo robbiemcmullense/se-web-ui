@@ -75,7 +75,12 @@ export namespace Components {
     */
     'version': string;
   }
-  interface SeBanner {}
+  interface SeBanner {
+    /**
+    * Set the duration (in ms) that the banner will automatically switch slides. Default is `6000`.
+    */
+    'duration': number;
+  }
   interface SeBannerItem {
     /**
     * Indicates the active banner item in your banner component.
@@ -85,10 +90,6 @@ export namespace Components {
     * Sets the background image for your banner item.
     */
     'imageUrl': string;
-    /**
-    * Method to set the active banner item outside of the banner and banner item components.
-    */
-    'setActive': (value: boolean) => Promise<void>;
   }
   interface SeBlock {
     /**
@@ -1171,7 +1172,12 @@ declare namespace LocalJSX {
     */
     'version'?: string;
   }
-  interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {}
+  interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {
+    /**
+    * Set the duration (in ms) that the banner will automatically switch slides. Default is `6000`.
+    */
+    'duration'?: number;
+  }
   interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
     /**
     * Indicates the active banner item in your banner component.
