@@ -5,7 +5,7 @@ describe('ButtonComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-button></se-button>');
+    await page.setContent('<se-button>My Button</se-button>');
     hostElement = await page.find('se-button');
     buttonElement = await page.find('se-button >>> button');
   });
@@ -27,6 +27,7 @@ describe('ButtonComponent', () => {
     });
     await page.waitForChanges();
     expect(buttonElement).toHaveClasses(['alternative', 'medium', 'raised']);
+    await page.compareScreenshot('applies the raised, medium, and alternative', {fullPage: false});
   });
 
   it('renders the hasIcon class when the element has an icon property', async() => {
@@ -98,19 +99,17 @@ describe('ButtonComponent Screenshots', () => {
     page = await newE2EPage();
   });
 
-  it('renders in the default flat option', async() => {
-    await page.setContent('<se-button>Flat Button</se-button>');
-    element = await page.find('se-button');
-    expect(element).toBeTruthy();
-    expect(element).toHaveClass('hydrated');
-    await page.compareScreenshot('Flat Button', {fullPage: false});
+  it('Test multiple version of the button', async() => {
+    await page.setContent(`
+      <se-button option="flat">validate</se-button>
+      <se-button option="flat" color="secondary">standard</se-button>
+      <se-button option="outline">Cancel</se-button>
+      <se-button option="outline" color="primary">Assign IP Address</se-button>
+      <se-button option="flat" color="primary">Generate Task</se-button>
+      <se-button option="outline" color="secondary">Contact</se-button>
+      <se-button option="raised" color="primary" icon="new_project">Create New Project</se-button>`
+    );
+    await page.compareScreenshot('multi Buttons', {fullPage: false});
   });
 
-  it('renders in the raised option', async() => {
-    await page.setContent('<se-button option="raised">Raised Button</se-button>');
-    element = await page.find('se-button');
-    expect(element).toBeTruthy();
-    expect(element).toHaveClass('hydrated');
-    await page.compareScreenshot('Flat Button', {fullPage: false});
-  });
 });

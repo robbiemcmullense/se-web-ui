@@ -61,7 +61,6 @@ Each component should follow the same input convention as much as possible. So f
 - `color`: define potential color of an element linked to a css variable. prefer using the full set `primary`, `accent`, `warn`, and `error`
 
 
-
 ### Event
 TODO: Define common best practice of events
 
@@ -117,3 +116,14 @@ yarn e2e
 ```
 
 This will run all `.e2e.ts` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.
+
+#### Screenshot
+
+Running the `yarn e2e` will also run the screenshot compare tool.
+To open the `/src-core/screenshot/compare.html` file, you have to use firefox in an insecure mode:
+- Open firefox
+- Type in the search bar `about:config`
+- In the search config, enter `security.fileuri.strict_origin_policy`
+- Change the value to `false`
+
+**PS:** This action will set you firefox browser to insecure mode. Make sure you only use firefox for developement and only on trusted sources. Put the security back the config to `true` otherwise.  
