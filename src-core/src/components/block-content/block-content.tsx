@@ -14,7 +14,7 @@ export class BlockContent {
 
   render() {
     return (
-      <div class={['se-block-content', `${this.option}-content`].join(' ')}>
+      <div class={['se-block-content', this.option ? `${this.option}-content` : ''].join(' ')}>
         <slot />
       </div>
     );
