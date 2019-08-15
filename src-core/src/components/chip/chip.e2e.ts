@@ -11,7 +11,6 @@ describe('ChipComponent', () => {
 
   it('renders', async() => {
     expect(element).toBeTruthy();
-    await page.compareScreenshot('Default Chips', {fullPage: false});
   });
 
   it('should have a class equal to standard to reflect its default color', () => {
@@ -62,5 +61,27 @@ describe('ChipComponent', () => {
     await element.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail('My Value');
+  });
+});
+
+describe('ChipComponent Screenshots', () => {
+  let page, element;
+
+  beforeEach(async() => {
+    page = await newE2EPage(); 
+  });
+
+  it('renders without a close icon by default', async() => {
+    await page.setContent('<se-chip value="Default Chip"></se-chip>');
+    element = await page.find('se-chip');
+    expect(element).toBeTruthy();
+    await page.compareScreenshot('Default Chip', {fullPage: false});
+  });
+
+  it('renders with a close icon when specified', async() => {
+    await page.setContent('<se-chip can-close="true" value="Chip can Close"></se-chip>');
+    element = await page.find('se-chip');
+    expect(element).toBeTruthy();
+    await page.compareScreenshot('Default Chip', {fullPage: false});
   });
 });

@@ -18,8 +18,7 @@
     "build.moveCore": "cpx \"core/**/*\" \"../core\" && rimraf \"./core\"",
     "test": "stencil test --spec --e2e --coverage",
     "spec": "stencil test --spec",
-    "e2e": "stencil test --e2e",
-    "e2e.screenshot": "stencil test --e2e --screenshot",
+    "e2e": "stencil test --e2e --screenshot",
     "test.watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {

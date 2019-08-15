@@ -13,7 +13,6 @@ describe('ButtonComponent', () => {
   it('renders', async() => {
     expect(hostElement).toBeTruthy();
     expect(hostElement).toHaveClass('hydrated');
-    await page.compareScreenshot('My Button', {fullPage: false});
   });
 
   it('renders the child button component with flat, small, and standard classes by default reflecting its default option, size, and color', async() => {
@@ -89,5 +88,29 @@ describe('ButtonComponent Methods', () => {
     await element.callMethod('setGrouped');
     await page.waitForChanges();
     expect(element).toHaveClass('grouped');
+  });
+});
+
+describe('ButtonComponent Screenshots', () => {
+  let page, element;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('renders in the default flat option', async() => {
+    await page.setContent('<se-button>Flat Button</se-button>');
+    element = await page.find('se-button');
+    expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
+    await page.compareScreenshot('Flat Button', {fullPage: false});
+  });
+
+  it('renders in the raised option', async() => {
+    await page.setContent('<se-button option="raised">Raised Button</se-button>');
+    element = await page.find('se-button');
+    expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
+    await page.compareScreenshot('Flat Button', {fullPage: false});
   });
 });
