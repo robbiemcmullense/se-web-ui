@@ -90,7 +90,7 @@ export class TooltipComponent {
    */
   @Method()
   async close() {
-    this.opened =false;
+    this.opened = false;
   }
 
   render() {

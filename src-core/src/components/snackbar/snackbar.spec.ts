@@ -1,4 +1,5 @@
 import { SnackbarComponent } from "./snackbar";
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('SnackbarComponent', () => {
 	let snackbar;
@@ -25,5 +26,67 @@ describe('SnackbarComponent', () => {
 
 	it('should not be closeable by default', () => {
 		expect(snackbar.canClose).toBe(false);
+	});
+
+	it('should render with the information class and an information circle as that is the default option and icon', async() => {
+		const page = await newSpecPage({
+			components: [SnackbarComponent],
+			html: `<se-snackbar></se-snackbar>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-snackbar>
+				<mock:shadow-root>
+					<div class="information">
+						<div class="snackbar">
+							<span class="se-icon">information_circle</span>
+							<span class="message"></span>
+						</div>
+					</div>
+				</mock:shadow-root>
+			</se-snackbar>
+		`);
+	});
+
+	it('should render with a span element with the close class when the canClose property is true', async() => {
+		const page = await newSpecPage({
+			components: [SnackbarComponent],
+			html: `<se-snackbar can-close="true"></se-snackbar>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-snackbar can-close="true">
+				<mock:shadow-root>
+					<div class="information">
+						<div class="snackbar">
+							<span class="se-icon">information_circle</span>
+							<span class="message"></span>
+							<span class="close">dismiss</span>
+						</div>
+					</div>
+				</mock:shadow-root>
+			</se-snackbar>
+		`);
+	});
+
+	it('should call the openDidChange function when the component loads', () => {
+		const eventSpy = jest.spyOn(snackbar, 'openDidChange');
+		snackbar.componentDidLoad();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should not have the show-snackbar class by default on the host element, as the open property is false by default', () => {
+		snackbar.openDidChange();
+		expect(snackbar.el).not.toHaveClass('show-snackbar');
+	});
+
+	it('should not have the show-snackbar class by default on the host element, as the open property is false by default', () => {
+		snackbar.open = true;
+		snackbar.openDidChange();
+		expect(snackbar.el).toHaveClass('show-snackbar');
+	});
+
+	it('should set the open property to false when the closeSnackbar function is called', () => {
+		snackbar.open = true;
+		snackbar.closeSnackbar();
+		expect(snackbar.open).toBeFalsy();
 	});
 });
