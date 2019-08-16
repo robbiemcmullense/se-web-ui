@@ -45,102 +45,66 @@
   align-items: center;
   text-decoration: none;
   z-index: 3;
-  border-bottom-style: solid;
-  border-color: $se-medium-grey;
-
+  color: $se-medium-grey;
   &:hover {
-    border-color: $se-white;
+    color: $se-white;
   }
 }
 
-.previous-indicator {
-  border-left-style: solid;
-  transform: rotate(45deg);
-}
 
-.next-indicator {
-  border-right-style: solid;
-  transform: rotate(-45deg);
-}
 
 .se-banner {
   position: relative;
+  padding-top: 15px;
   width: 100%;
   margin: 0;
   overflow: hidden;
 }
 
+.previous-indicator {
+  left: -5px;    
+}
+
+.next-indicator {
+  right: -5px;    
+}
+
 @media screen and (max-width: 767px) {
   .previous-indicator,
   .next-indicator {
-    top: 37px;
-    height: 6px;
-    width: 6px;
-    border-bottom-width: 1px;
+    top: 45px;   
   }
-
-  .previous-indicator {
-    left: 7px;
-    border-left-width: 1px;
-  }
-
-  .next-indicator {
-    right: 7px;
-    border-right-width: 1px;
-  }
-
+ 
   .banner-indicators {
-    top: 75px;
+    top: 90px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .banner-indicators {
-    top: 330px;
+    top: 345px;
   }
 
   .previous-indicator,
-  .next-indicator {
-    width: 9px;
-    height: 9px;
-    top: 167px;
-    border-bottom-width: 2px;
+  .next-indicator {   
+    top: 165px;    
   }
 
-  .previous-indicator {
-    left: 18px;
-    border-left-width: 2px;
-  }
-
-  .next-indicator {
-    right: 18px;
-    border-right-width: 2px;
-  }
 }
 
 @media screen and (min-width: 900px) {
   .se-banner {
     height: 350px;
   }
-
-  .previous-indicator {
-    left: 33px;
-  }
-
-  .next-indicator {
-    right: 33px;
-  }
 }
 
 @media screen and (min-width: 1281px) {
   .banner-indicators {
-    top: 325px;
+    top: 340px;
   }
 
   .previous-indicator,
   .next-indicator {
-    width: 12px;
-    height: 12px;
-    top: 165px;
+    top: 160px;
   }
 }
