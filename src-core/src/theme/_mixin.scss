@@ -60,41 +60,34 @@ $prefix: "--se-"; //Prefix string for custom CSS properties
 }
 
 @mixin typology($value) {
-  $margin: 16px 0 10px;
-
-  font-weight: 300;
-  line-height: 1.4 !important;
+  font-weight: 300; //`normal` default to 400
   @if $value == "h1" {
-    margin: $margin;
-    margin-top: 32px;
+    line-height: 50px ;
     font-size: $h1-fontsize;
   } @else if $value == "h2" {
-    margin: $margin;
+    line-height: 45px;
     font-size: $h2-fontsize;
   } @else if $value == "h3" {
-    margin: $margin;
+    line-height: 40px;
     font-size: $h3-fontsize;
-    font-weight: 500;
   } @else if $value == "h4" {
-    margin: $margin;
+    line-height: 30px;
     font-size: $h4-fontsize;
-    font-weight: 500;
   } @else if $value == "h5" {
-    margin: $margin;
+    line-height: 25px;
     font-size: $h5-fontsize;
-    font-weight: 500;
-
+    font-weight: bold;
   } @else if $value == "h6" {
-    margin: $margin;
+    line-height: 20px;
     font-size: $h6-fontsize;
-    font-weight: 500;
-
+    font-weight: bold;
   } @else if $value == "p" {
     font-size: $p-fontsize;
+    line-height: 20px;
     margin: 8px 0;
     strong,
     .bold {
-      font-weight: 500;
+      font-weight: bold;
     }
     &.small, small {
       line-height: $line-height-sm !important;
