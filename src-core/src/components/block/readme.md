@@ -22,11 +22,11 @@
 
 ### Used by
 
- - [se-sidemenu](../sidemenu)
+ - [se-sidemenu](..\sidemenu)
 
 ### Depends on
 
-- [se-loading](../loading)
+- [se-loading](..\loading)
 
 ### Graph
 ```mermaid

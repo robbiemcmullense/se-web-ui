@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'src-react'
+import { App as SeApp, Header } from 'web-ui-react'
 
 export default class App extends Component {
   render () {
     return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
+      <App>
+        <Header appTitle='Modern React component module' />
+      </App>
     )
   }
 }

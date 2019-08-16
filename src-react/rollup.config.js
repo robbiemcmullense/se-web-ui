@@ -25,14 +25,14 @@ export default {
   plugins: [
     external(),
     postcss({
-      modules: true
+    modules: true
     }),
     url(),
     svgr(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: [ 'node_modules/**', "../core/**" ]
     }),
     resolve(),
     commonjs()
-  ]
+    ]
 }

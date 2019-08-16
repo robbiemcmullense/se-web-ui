@@ -1,8 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 
-import { defineCustomElements as defineSeComponent } from "@se/web-ui/loader";
+import { defineCustomElements, applyPolyfills } from "@se/web-ui/loader";
 // Add custom element definition to the windows
-defineSeComponent(window);
+
+//applyPolyfills().then(() => {
+  defineCustomElements(window);
+//});
 
 import App from "./components/App.react";
 import Header from "./components/Header.react";

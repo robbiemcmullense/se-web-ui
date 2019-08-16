@@ -6,11 +6,11 @@
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
     "postinstall": "npm-run-all install.*",
-    "install.core": "cd src-core && yarn",
-    "install.angular": "cd src-angular && yarn",
+    "install.core": "cd src-core && npm install",
+    "install.angular": "cnpmd src-angular && npm install",
     "build": "npm-run-all build.*",
-    "build.core": "cd src-core && yarn build",
-    "build.angular": "cd src-angular && yarn build",
+    "build.core": "cd src-core && npm run build",
+    "build.angular": "cd src-angular && npm run build",
     "release": "npm-run-all release.*",
     "release.publish": "node publish.js"
   },

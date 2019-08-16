@@ -17,7 +17,7 @@
 
 ### Depends on
 
-- [se-icon](../icon)
+- [se-icon](..\icon)
 
 ### Graph
 ```mermaid

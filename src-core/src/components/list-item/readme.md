@@ -29,11 +29,11 @@
 
 ### Used by
 
- - [se-sidemenu](../sidemenu)
+ - [se-sidemenu](..\sidemenu)
 
 ### Depends on
 
-- [se-icon](../icon)
+- [se-icon](..\icon)
 
 ### Graph
 ```mermaid

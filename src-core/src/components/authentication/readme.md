@@ -23,8 +23,8 @@
 
 ### Depends on
 
-- [se-icon-ecostruxure](../icon-ecostruxure)
-- [se-icon-lifeison](../icon-lifeison)
+- [se-icon-ecostruxure](..\icon-ecostruxure)
+- [se-icon-lifeison](..\icon-lifeison)
 
 ### Graph
 ```mermaid

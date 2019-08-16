@@ -9,7 +9,7 @@
   "collection": "core/collection/collection-manifest.json",
   "scripts": {
     "start": "stencil build --dev --watch --serve --port 3344",
-    "postinstall": "yarn build",
+    "postinstall": "npm build",
     "build": "npm-run-all build.*",
     "build.core": "stencil build --docs",
     "build.localRef": "cpx \"src/package.json\" core",
