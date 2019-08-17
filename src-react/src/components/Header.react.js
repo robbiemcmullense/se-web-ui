@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Header extends Component {
-  render() {
-    const { appTitle, children } = this.props;
-    return (
-      <se-header app-title={appTitle}>{children}</se-header>
-    );
-  }
+	render() {
+		const { appTitle, domain, project, children } = this.props;
+		return (
+			<se-header app-title={appTitle} domain={domain} project={project} ref={this._handleRef}>{children}</se-header>
+		);
+	}
 }
 
 Header.defaultProps = {};
@@ -18,7 +18,15 @@ Header.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * The title that will be printed when this component is rendered.
+   * Sets the title of your application.
    */
-  appTitle: PropTypes.string
+  appTitle: PropTypes.string,
+  /**
+   * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
+   */
+  domain: PropTypes.string,
+  /**
+   * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
+   */
+  project: PropTypes.string
 };
