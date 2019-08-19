@@ -107,3 +107,33 @@ describe('CheckboxComponent in OnOff Mode', () => {
     expect(offButton.getAttribute('id')).toEqual('wc-on-off-switch-inactive');
   });
 });
+
+describe('Checkbox Screenshots', () => {
+
+  it('renders in standard checkbox option', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-checkbox label="Label"></se-checkbox><se-checkbox selected="true" label="Label"></se-checkbox>'); 
+    await page.compareScreenshot('Checkbox Checked and Unchecked', {fullPage: false});
+  });
+
+});
+
+describe('Switch Screenshots', () => {
+
+  it('renders in the toggle switch option', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-checkbox option="switch" label="Label"></se-checkbox><se-checkbox option="switch" selected="true" label="Label"></se-checkbox>'); 
+    await page.compareScreenshot('Switch Checked and Unchecked', {fullPage: false});
+  });
+
+});
+
+describe('OnOff Screenshots', () => {
+
+  it('renders as an on/off switch', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-checkbox option="onoff" label="Label"></se-checkbox><se-checkbox option="onoff" selected="true" label="Label"></se-checkbox>'); 
+    await page.compareScreenshot('On Off Switch', {fullPage: false});
+  });
+
+});

@@ -72,3 +72,37 @@ describe('BlockComponent with Container parents set to card option', () => {
     expect(element).toHaveClass('card');
   });
 });
+
+describe('Block Screenshots', () => {
+
+  it('renders in basic mode with a header, content and footer', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`<se-block>
+    <se-block-header>Basic Header</se-block-header>
+    <se-block-content>Basic Content</se-block-content>
+    <se-block-footer>Basic Footer</se-block-footer>
+    </se-block>`); 
+    await page.compareScreenshot('Basic Block', {fullPage: false});
+  });
+
+  it('renders in widget mode with a header, content and footer', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`<se-block option="widget">
+    <se-block-header>Widget Header</se-block-header>
+    <se-block-content>Widget Content</se-block-content>
+    <se-block-footer>Widget Footer</se-block-footer>
+    </se-block>`); 
+    await page.compareScreenshot('Widget Block', {fullPage: false});
+  });
+
+  it('renders in widget mode with a header, content and footer', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`<se-block option="card">
+    <se-block-header>Card Header</se-block-header>
+    <se-block-content>Card Content</se-block-content>
+    <se-block-footer>Card Footer</se-block-footer>
+    </se-block>`); 
+    await page.compareScreenshot('Card Block', {fullPage: false});
+  });
+
+});

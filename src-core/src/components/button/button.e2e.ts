@@ -92,14 +92,10 @@ describe('ButtonComponent Methods', () => {
   });
 });
 
-describe('ButtonComponent Screenshots', () => {
-  let page, element;
+describe('Button Component Screenshots', () => {
 
-  beforeEach(async() => {
-    page = await newE2EPage();
-  });
-
-  it('Test multiple version of the button', async() => {
+  it('tests multiple version of the button', async() => {
+    let page = await newE2EPage();
     await page.setContent(`
       <se-button option="flat">validate</se-button>
       <se-button option="flat" color="secondary">standard</se-button>
@@ -109,7 +105,6 @@ describe('ButtonComponent Screenshots', () => {
       <se-button option="outline" color="secondary">Contact</se-button>
       <se-button option="raised" color="primary" icon="new_project">Create New Project</se-button>`
     );
-    await page.compareScreenshot('multi Buttons', {fullPage: false});
+    await page.compareScreenshot('multiple buttons', {fullPage: false});
   });
-
 });

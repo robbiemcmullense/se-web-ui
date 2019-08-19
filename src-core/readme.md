@@ -126,4 +126,4 @@ To open the `/src-core/screenshot/compare.html` file, you have to use firefox in
 - In the search config, enter `security.fileuri.strict_origin_policy`
 - Change the value to `false`
 
-**PS:** This action will set you firefox browser to insecure mode. Make sure you only use firefox for developement and only on trusted sources. Put the security back the config to `true` otherwise.  
+**PS:** This action will set your Firefox browser to insecure mode. Make sure you only use firefox for developement and only on trusted sources. Put the security back the config to `true` otherwise.  
