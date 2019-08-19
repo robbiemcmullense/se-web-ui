@@ -39,6 +39,11 @@ export class BannerComponent {
 		}
 	}
 
+	@Listen('resize', {target: 'window'})
+	windowSizeDidChange() {
+		this.setIconSize();
+	}
+
 	private setActiveItem(item: any): void {
 		if (this.items.length) {
 			this.items.forEach((item: any) => {
@@ -114,12 +119,12 @@ export class BannerComponent {
 	componentDidLoad() {
 		this.setBannerItemWidth();
 		this.setActiveItem(this.items[0]);
+		this.setIconSize();
 	}
 
 	componentDidUpdate() {
-		this.setBannerItemWidth();
 		this.setIconSize();
-	}
+	};
 
 	componentDidUnload() {
 		clearInterval(this.interval);

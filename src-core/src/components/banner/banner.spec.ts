@@ -28,8 +28,7 @@ describe('BannerComponent', () => {
 		expect(banner.duration).toEqual(6000);
 	});
 
-	// skipped for now, for some reason it hangs up the test suite
-	xit('should render', async() => {
+	it('should render', async() => {
 		const page = await newSpecPage({
 			components: [BannerComponent],
 			html: `<se-banner></se-banner>`,
@@ -47,8 +46,7 @@ describe('BannerComponent', () => {
 		`);
 	});
 
-	// skipped for now, for some reason it hangs up the test suite
-	xit('should render with two banner item element', async() => {
+	it('should render with two banner item elements', async() => {
 		const page = await newSpecPage({
 			components: [BannerComponent],
 			html: `<se-banner><se-banner-item></se-banner-item><se-banner-item></se-banner-item></se-banner>`,
