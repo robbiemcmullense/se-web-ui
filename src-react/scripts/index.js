@@ -47,7 +47,19 @@ const compileComponents = (destination, indexPath) => {
   // Pass components template to Handlebars compiler
   let template = Handlebars.compile(templateFile);
 
+  // First letter of event to uppercase (ex. didClick -> onDidClick)
+  Handlebars.registerHelper('onEvent', event => `on${event[0].toUpperCase()}${event.slice(1)}`);
+  // Wrapping props with { }
   Handlebars.registerHelper('wrap', name => `{${name}}`);
+  // Swap PropTypes:
+  //  case boolean -> bool
+  //  case string with delimeters (ex. `"basic" | "card"` -> string)
+  Handlebars.registerHelper('types', type => 
+    type === "boolean" ?
+      "bool" :
+        type.indexOf('"') >= 0 ?
+          "string" :
+            `${type}`);
 
   const components = getInputData("../core/se-components.json");
 

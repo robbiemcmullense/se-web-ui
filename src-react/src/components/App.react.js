@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { option, children } = this.props;
 		return (
-			<se-app option={option} ref={this._handleRef}>{children}</se-app>
+			<se-app option={option} >{children}</se-app>
 		);
 	}
 }
@@ -22,5 +26,5 @@ App.propTypes = {
    * - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`.
    * - `website`: For `se.com` application, the font used will be `Arial Rounded`.
    */
-  option: PropTypes."technical" | "website"
+  option: PropTypes.string
 };

@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class List extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { canCollapse, option, children } = this.props;
 		return (
-			<se-list can-collapse={canCollapse} option={option} ref={this._handleRef}>{children}</se-list>
+			<se-list can-collapse={canCollapse} option={option} >{children}</se-list>
 		);
 	}
 }
@@ -20,9 +24,9 @@ List.propTypes = {
   /**
    * Defines if list groups can be collapsed.  The default setting is `true`.
    */
-  canCollapse: PropTypes.boolean,
+  canCollapse: PropTypes.bool,
   /**
    * Defines the style of the list.  The default setting is `classic`.
    */
-  option: PropTypes."classic" | "dropdown" | "headline" | "nav" | "treeview"
+  option: PropTypes.string
 };

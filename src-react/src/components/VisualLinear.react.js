@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class VisualLinear extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { label, option, percentage, secolor, value, children } = this.props;
 		return (
-			<se-visual-linear label={label} option={option} percentage={percentage} secolor={secolor} value={value} ref={this._handleRef}>{children}</se-visual-linear>
+			<se-visual-linear label={label} option={option} percentage={percentage} secolor={secolor} value={value} >{children}</se-visual-linear>
 		);
 	}
 }
@@ -26,7 +30,7 @@ VisualLinear.propTypes = {
    * `inline` is the default option.  This sets the "progress bar" adjacent to the label.
    * `stacked` option will render the "progress bar" below the label.
    */
-  option: PropTypes."inline" | "stacked",
+  option: PropTypes.string,
   /**
    * Set the percentage of the "progress bar" to be "filled".
    */

@@ -2,23 +2,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Chip extends Component {
+  constructor(props) {
+    super(props);
+    this._handleRef = component => {
+      this.switchCmp = component;
+    };
+  }
+
+  didClose(e) {
+    this.props.onDidClose && this.props.onDidClose(e)
+  }
 
   componentDidMount() {
-    this.switchCmp.addEventListener("didClose", e => this.props.didClose(e));
+    this.switchCmp.addEventListener("didClose", e => this.didClose(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("didClose", e => this.props.didClose(e));
+    this.switchCmp.removeEventListener("didClose", e => this.didClose(e));
   }
-
-  _handleRef = component => {
-    this.switchCmp = component;
-  };
 
 	render() {
 		const { block, canClose, color, disabled, selected, value, didClose, children } = this.props;
 		return (
-			<se-chip block={block} can-close={canClose} color={color} disabled={disabled} selected={selected} value={value} ref={this._handleRef}>{children}</se-chip>
+			<se-chip block={block} can-close={canClose} color={color} disabled={disabled} selected={selected} value={value} ref={this._handleRef} >{children}</se-chip>
 		);
 	}
 }
@@ -34,23 +40,23 @@ Chip.propTypes = {
    * Optional property that defines if the chip displays as a block in it's container.
    * When set to true, the chip will be as wide as its container.
    */
-  block: PropTypes.boolean,
+  block: PropTypes.bool,
   /**
    * Indicates whether or not the chip has a close button.  Set to `false` by default.
    */
-  canClose: PropTypes.boolean,
+  canClose: PropTypes.bool,
   /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
-  color: PropTypes."alternative" | "standard",
+  color: PropTypes.string,
   /**
    * Indicates whether or not the chip is disabled.  Set to `false` by default.
    */
-  disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
   /**
    * Indicates whether or not the chip is selected.  Set to `false` by default.
    */
-  selected: PropTypes.boolean,
+  selected: PropTypes.bool,
   /**
    * The text you want to display in your chip.
    */
@@ -58,5 +64,5 @@ Chip.propTypes = {
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
    */
-  didClose: PropTypes.function
+  didClose: PropTypes.func
 };

@@ -2,23 +2,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class SidemenuItem extends Component {
+  constructor(props) {
+    super(props);
+    this._handleRef = component => {
+      this.switchCmp = component;
+    };
+  }
+
+  didClick(e) {
+    this.props.onDidClick && this.props.onDidClick(e)
+  }
 
   componentDidMount() {
-    this.switchCmp.addEventListener("didClick", e => this.props.didClick(e));
+    this.switchCmp.addEventListener("didClick", e => this.didClick(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("didClick", e => this.props.didClick(e));
+    this.switchCmp.removeEventListener("didClick", e => this.didClick(e));
   }
-
-  _handleRef = component => {
-    this.switchCmp = component;
-  };
 
 	render() {
 		const { active, item, didClick, children } = this.props;
 		return (
-			<se-sidemenu-item active={active} item={item} ref={this._handleRef}>{children}</se-sidemenu-item>
+			<se-sidemenu-item active={active} item={item} ref={this._handleRef} >{children}</se-sidemenu-item>
 		);
 	}
 }
@@ -34,7 +40,7 @@ SidemenuItem.propTypes = {
    * Defines if the menu item is active or not.
    * The default setting is `false`.
    */
-  active: PropTypes.boolean,
+  active: PropTypes.bool,
   /**
    * Defines the title of the menu item.
    */
@@ -42,5 +48,5 @@ SidemenuItem.propTypes = {
   /**
    * 
    */
-  didClick: PropTypes.function
+  didClick: PropTypes.func
 };

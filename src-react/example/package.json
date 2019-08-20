@@ -5,12 +5,13 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@se/icons": "^3.5.1",
+    "@se/web-ui": "link:../../core",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "web-ui-react": "link:..",
-    "@se/web-ui": "link:../../core"
+    "web-ui-react": "link:.."
   },
   "scripts": {
     "start": "react-scripts start",

@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class TooltipContent extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { icon, children } = this.props;
 		return (
-			<se-tooltip-content icon={icon} ref={this._handleRef}>{children}</se-tooltip-content>
+			<se-tooltip-content icon={icon} >{children}</se-tooltip-content>
 		);
 	}
 }

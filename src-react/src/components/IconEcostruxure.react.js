@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class IconEcostruxure extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { size, children } = this.props;
 		return (
-			<se-icon-ecostruxure size={size} ref={this._handleRef}>{children}</se-icon-ecostruxure>
+			<se-icon-ecostruxure size={size} >{children}</se-icon-ecostruxure>
 		);
 	}
 }
@@ -20,5 +24,5 @@ IconEcostruxure.propTypes = {
   /**
    * Sets the size of the EcoStruxure icon.  The default setting is `small`.
    */
-  size: PropTypes."medium" | "small"
+  size: PropTypes.string
 };

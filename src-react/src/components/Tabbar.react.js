@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Tabbar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { color, option, children } = this.props;
 		return (
-			<se-tabbar color={color} option={option} ref={this._handleRef}>{children}</se-tabbar>
+			<se-tabbar color={color} option={option} >{children}</se-tabbar>
 		);
 	}
 }
@@ -22,11 +26,11 @@ Tabbar.propTypes = {
    * Default setting is `primary`, rendering a green background.
    * The `alternative` setting renders a white background.
    */
-  color: PropTypes."alternative" | "primary",
+  color: PropTypes.string,
   /**
    * Defines the inner appearance of a tabbar.
    * `fill` is the default option, taking the full space of the tabbar.
    * `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
    */
-  option: PropTypes."centered" | "fill"
+  option: PropTypes.string
 };

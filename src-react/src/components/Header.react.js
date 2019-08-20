@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { appTitle, domain, project, children } = this.props;
 		return (
-			<se-header app-title={appTitle} domain={domain} project={project} ref={this._handleRef}>{children}</se-header>
+			<se-header app-title={appTitle} domain={domain} project={project} >{children}</se-header>
 		);
 	}
 }

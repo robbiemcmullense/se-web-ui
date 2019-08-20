@@ -2,29 +2,39 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class {{name}} extends Component {
+  constructor(props) {
+    super(props);
+    {{#if events}}
+    this._handleRef = component => {
+      this.switchCmp = component;
+    };
+    {{/if}}
+  }
 {{#if events}}
 
+  {{#each events}}
+  {{event}}(e) {
+    this.props.{{#onEvent event}}{{/onEvent}} && this.props.{{#onEvent event}}{{/onEvent}}(e)
+  }
+  {{/each}}
+
   componentDidMount() {
-    {{#each events}}
-    this.switchCmp.addEventListener("{{event}}", e => this.props.{{event}}(e));
-    {{/each}}
+  {{#each events}}
+    this.switchCmp.addEventListener("{{event}}", e => this.{{event}}(e));
+  {{/each}}
   }
 
   componentWillUnmount() {
-    {{#each events}}
-    this.switchCmp.removeEventListener("{{event}}", e => this.props.{{event}}(e));
-    {{/each}}
+  {{#each events}}
+    this.switchCmp.removeEventListener("{{event}}", e => this.{{event}}(e));
+  {{/each}}
   }
+  {{/if}}
 
-  _handleRef = component => {
-    this.switchCmp = component;
-  };
-
-{{/if}}
 	render() {
 		const { {{#each props}}{{name}}, {{/each}}{{#each events}}{{event}}, {{/each}}children } = this.props;
 		return (
-			<{{tag}} {{#each props}}{{attr}}={{#wrap name}}{{/wrap}} {{/each}}ref={this._handleRef}>{children}</{{tag}}>
+			<{{tag}} {{#each props}}{{attr}}={{#wrap name}}{{/wrap}} {{/each}}{{#if events}}ref={this._handleRef} {{/if}}>{children}</{{tag}}>
 		);
 	}
 }
@@ -40,12 +50,12 @@ export default class {{name}} extends Component {
   /**
    * {{{docs}}}
    */
-  {{name}}: PropTypes.{{{type}}},
+  {{name}}: PropTypes.{{#types type}}{{/types}},
   {{/each}}
   {{#each events}}
   /**
    * {{{docs}}}
    */
-  {{event}}: PropTypes.function,
+  {{event}}: PropTypes.func,
   {{/each}}
 };

@@ -2,23 +2,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Snackbar extends Component {
+  constructor(props) {
+    super(props);
+    this._handleRef = component => {
+      this.switchCmp = component;
+    };
+  }
+
+  didClose(e) {
+    this.props.onDidClose && this.props.onDidClose(e)
+  }
 
   componentDidMount() {
-    this.switchCmp.addEventListener("didClose", e => this.props.didClose(e));
+    this.switchCmp.addEventListener("didClose", e => this.didClose(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("didClose", e => this.props.didClose(e));
+    this.switchCmp.removeEventListener("didClose", e => this.didClose(e));
   }
-
-  _handleRef = component => {
-    this.switchCmp = component;
-  };
 
 	render() {
 		const { canClose, closeText, icon, message, open, type, didClose, children } = this.props;
 		return (
-			<se-snackbar can-close={canClose} close-text={closeText} icon={icon} message={message} open={open} type={type} ref={this._handleRef}>{children}</se-snackbar>
+			<se-snackbar can-close={canClose} close-text={closeText} icon={icon} message={message} open={open} type={type} ref={this._handleRef} >{children}</se-snackbar>
 		);
 	}
 }
@@ -35,7 +41,7 @@ Snackbar.propTypes = {
    * The default setting is `false`.
    * This will be visible if set to `true`.
    */
-  canClose: PropTypes.boolean,
+  canClose: PropTypes.bool,
   /**
    * Defines the text you want your "close button" to read.  The default text is `dismiss`.
    */
@@ -51,7 +57,7 @@ Snackbar.propTypes = {
   /**
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
-  open: PropTypes.boolean,
+  open: PropTypes.bool,
   /**
    * Indicates the background color of your snackbar.
    * `success`: green
@@ -59,9 +65,9 @@ Snackbar.propTypes = {
    * `error`: red
    * `information`: dark grey, default setting
    */
-  type: PropTypes."error" | "information" | "success" | "warning",
+  type: PropTypes.string,
   /**
    * Sends information to the parent component when closing the snackbar.
    */
-  didClose: PropTypes.function
+  didClose: PropTypes.func
 };

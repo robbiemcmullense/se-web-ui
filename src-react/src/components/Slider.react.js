@@ -2,23 +2,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Slider extends Component {
+  constructor(props) {
+    super(props);
+    this._handleRef = component => {
+      this.switchCmp = component;
+    };
+  }
+
+  didChange(e) {
+    this.props.onDidChange && this.props.onDidChange(e)
+  }
 
   componentDidMount() {
-    this.switchCmp.addEventListener("didChange", e => this.props.didChange(e));
+    this.switchCmp.addEventListener("didChange", e => this.didChange(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("didChange", e => this.props.didChange(e));
+    this.switchCmp.removeEventListener("didChange", e => this.didChange(e));
   }
-
-  _handleRef = component => {
-    this.switchCmp = component;
-  };
 
 	render() {
 		const { disabled, max, min, didChange, children } = this.props;
 		return (
-			<se-slider disabled={disabled} max={max} min={min} ref={this._handleRef}>{children}</se-slider>
+			<se-slider disabled={disabled} max={max} min={min} ref={this._handleRef} >{children}</se-slider>
 		);
 	}
 }
@@ -34,7 +40,7 @@ Slider.propTypes = {
    * Indicates if your slider is disabled.
    * The default setting is `false`.
    */
-  disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
   /**
    * Indicates the maximum value of your slider.
    */
@@ -46,5 +52,5 @@ Slider.propTypes = {
   /**
    * Event emitted when the slider has been changed.
    */
-  didChange: PropTypes.function
+  didChange: PropTypes.func
 };

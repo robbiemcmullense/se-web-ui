@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class IconSchneider extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { children } = this.props;
 		return (
-			<se-icon-schneider ref={this._handleRef}>{children}</se-icon-schneider>
+			<se-icon-schneider >{children}</se-icon-schneider>
 		);
 	}
 }

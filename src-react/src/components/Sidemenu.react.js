@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Sidemenu extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { label, children } = this.props;
 		return (
-			<se-sidemenu label={label} ref={this._handleRef}>{children}</se-sidemenu>
+			<se-sidemenu label={label} >{children}</se-sidemenu>
 		);
 	}
 }

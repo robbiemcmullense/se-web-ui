@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class BreadcrumbItem extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { href, isLast, children } = this.props;
 		return (
-			<se-breadcrumb-item href={href} is-last={isLast} ref={this._handleRef}>{children}</se-breadcrumb-item>
+			<se-breadcrumb-item href={href} is-last={isLast} >{children}</se-breadcrumb-item>
 		);
 	}
 }
@@ -24,5 +28,5 @@ BreadcrumbItem.propTypes = {
   /**
    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
    */
-  isLast: PropTypes.boolean
+  isLast: PropTypes.bool
 };

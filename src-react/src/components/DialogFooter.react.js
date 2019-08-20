@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class DialogFooter extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { children } = this.props;
 		return (
-			<se-dialog-footer ref={this._handleRef}>{children}</se-dialog-footer>
+			<se-dialog-footer >{children}</se-dialog-footer>
 		);
 	}
 }

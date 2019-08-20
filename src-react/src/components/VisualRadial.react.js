@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class VisualRadial extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { label, percentage, secolor, size, value, children } = this.props;
 		return (
-			<se-visual-radial label={label} percentage={percentage} secolor={secolor} size={size} value={value} ref={this._handleRef}>{children}</se-visual-radial>
+			<se-visual-radial label={label} percentage={percentage} secolor={secolor} size={size} value={value} >{children}</se-visual-radial>
 		);
 	}
 }
@@ -34,7 +38,7 @@ VisualRadial.propTypes = {
   /**
    * Determines the visual size of your circular progress bar.  The default setting is `large`.
    */
-  size: PropTypes."large" | "small",
+  size: PropTypes.string,
   /**
    * Defines the value of your component.
    */

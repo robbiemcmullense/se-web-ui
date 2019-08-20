@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Authentication extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { appTitle, copyright, domain, hide, imageUrl, link, logo, version, children } = this.props;
 		return (
-			<se-authentication app-title={appTitle} copyright={copyright} domain={domain} hide={hide} image-url={imageUrl} link={link} logo={logo} version={version} ref={this._handleRef}>{children}</se-authentication>
+			<se-authentication app-title={appTitle} copyright={copyright} domain={domain} hide={hide} image-url={imageUrl} link={link} logo={logo} version={version} >{children}</se-authentication>
 		);
 	}
 }
@@ -32,7 +36,7 @@ Authentication.propTypes = {
   /**
    * If set to `true`, this will hide the authentication screen.
    */
-  hide: PropTypes.boolean,
+  hide: PropTypes.bool,
   /**
    * Sets the background image for your authentication screen.
    */

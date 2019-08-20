@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class Icon extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { color, option, size, children } = this.props;
 		return (
-			<se-icon color={color} option={option} size={size} ref={this._handleRef}>{children}</se-icon>
+			<se-icon color={color} option={option} size={size} >{children}</se-icon>
 		);
 	}
 }
@@ -21,11 +25,11 @@ Icon.propTypes = {
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
    */
-  color: PropTypes."alternative" | "error" | "primary" | "secondary" | "standard" | "success" | "warning",
+  color: PropTypes.string,
   /**
    * Optional property to define if the icon should act as a button (clickable).
    */
-  option: PropTypes."button",
+  option: PropTypes.string,
   /**
    * Defines the size of an icon.
    * `nano` sets the size to 14px.
@@ -34,5 +38,5 @@ Icon.propTypes = {
    * `large` sets the size to 52px.
    * `xlarge` sets the size to 62px.
    */
-  size: PropTypes."large" | "medium" | "nano" | "small" | "xlarge"
+  size: PropTypes.string
 };

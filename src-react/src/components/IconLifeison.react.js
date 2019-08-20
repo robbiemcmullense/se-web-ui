@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class IconLifeison extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { color, children } = this.props;
 		return (
-			<se-icon-lifeison color={color} ref={this._handleRef}>{children}</se-icon-lifeison>
+			<se-icon-lifeison color={color} >{children}</se-icon-lifeison>
 		);
 	}
 }
@@ -22,5 +26,5 @@ IconLifeison.propTypes = {
    * `standard`: displays a light green / dark green conventional SE logo.
    * `inherited`: default option, which takes the color from it's parent.
    */
-  color: PropTypes."inherited" | "standard"
+  color: PropTypes.string
 };

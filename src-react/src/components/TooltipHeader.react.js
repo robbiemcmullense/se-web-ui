@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class TooltipHeader extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { icon, children } = this.props;
 		return (
-			<se-tooltip-header icon={icon} ref={this._handleRef}>{children}</se-tooltip-header>
+			<se-tooltip-header icon={icon} >{children}</se-tooltip-header>
 		);
 	}
 }

@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class About extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { appTitle, copyright, domain, imageUrl, link, version, children } = this.props;
 		return (
-			<se-about app-title={appTitle} copyright={copyright} domain={domain} image-url={imageUrl} link={link} version={version} ref={this._handleRef}>{children}</se-about>
+			<se-about app-title={appTitle} copyright={copyright} domain={domain} image-url={imageUrl} link={link} version={version} >{children}</se-about>
 		);
 	}
 }

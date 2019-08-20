@@ -2,23 +2,29 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class ListItem extends Component {
+  constructor(props) {
+    super(props);
+    this._handleRef = component => {
+      this.switchCmp = component;
+    };
+  }
+
+  didSelectedChange(e) {
+    this.props.onDidSelectedChange && this.props.onDidSelectedChange(e)
+  }
 
   componentDidMount() {
-    this.switchCmp.addEventListener("didSelectedChange", e => this.props.didSelectedChange(e));
+    this.switchCmp.addEventListener("didSelectedChange", e => this.didSelectedChange(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("didSelectedChange", e => this.props.didSelectedChange(e));
+    this.switchCmp.removeEventListener("didSelectedChange", e => this.didSelectedChange(e));
   }
-
-  _handleRef = component => {
-    this.switchCmp = component;
-  };
 
 	render() {
 		const { description, icon, iconColor, indentation, item, option, selected, didSelectedChange, children } = this.props;
 		return (
-			<se-list-item description={description} icon={icon} icon-color={iconColor} indentation={indentation} item={item} option={option} selected={selected} ref={this._handleRef}>{children}</se-list-item>
+			<se-list-item description={description} icon={icon} icon-color={iconColor} indentation={indentation} item={item} option={option} selected={selected} ref={this._handleRef} >{children}</se-list-item>
 		);
 	}
 }
@@ -41,7 +47,7 @@ ListItem.propTypes = {
   /**
    * Optional property to define the color of the icon. The default color will be inherited from it's parent.
    */
-  iconColor: PropTypes."alternative" | "error" | "primary" | "secondary" | "standard" | "success" | "warning",
+  iconColor: PropTypes.string,
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
@@ -53,13 +59,13 @@ ListItem.propTypes = {
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  option: PropTypes."classic" | "dropdown" | "headline" | "nav" | "treeview",
+  option: PropTypes.string,
   /**
    * Defines if the list element should be selected or not.
    */
-  selected: PropTypes.boolean,
+  selected: PropTypes.bool,
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
    */
-  didSelectedChange: PropTypes.function
+  didSelectedChange: PropTypes.func
 };

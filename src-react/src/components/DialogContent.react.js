@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class DialogContent extends Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
 		const { icon, iconColor, option, children } = this.props;
 		return (
-			<se-dialog-content icon={icon} icon-color={iconColor} option={option} ref={this._handleRef}>{children}</se-dialog-content>
+			<se-dialog-content icon={icon} icon-color={iconColor} option={option} >{children}</se-dialog-content>
 		);
 	}
 }
@@ -24,9 +28,9 @@ DialogContent.propTypes = {
   /**
    * Indicates what color schema you want to render in your dialog.
    */
-  iconColor: PropTypes."alternative" | "primary" | "secondary" | "standard",
+  iconColor: PropTypes.string,
   /**
    * When set to `fill`, the content will fill the whole space of the dialog.
    */
-  option: PropTypes."fill"
+  option: PropTypes.string
 };
