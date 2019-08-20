@@ -32,3 +32,26 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(dropdownContent).not.toHaveClass('show');
   });
 });
+
+describe('Dropdown Screenshots', () => {
+  let page, element;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('should render left-aligned by default', async() => {
+    await page.setContent(`
+      <se-dropdown>
+        <se-list option="dropdown">
+          <se-list-item item="First"></se-list-item>
+          <se-list-item item="Second"></se-list-item>
+          <se-list-item item="Third"></se-list-item>
+        </se-list>
+      </se-dropdown>
+    `);
+    element = await page.find('se-dropdown');
+    await element.callMethod('open');
+    await page.compareScreenshot('Left-Aligned Dropdown', {fullPage: false});
+  });
+});

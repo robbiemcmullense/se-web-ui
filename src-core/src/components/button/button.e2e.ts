@@ -27,7 +27,6 @@ describe('ButtonComponent', () => {
     });
     await page.waitForChanges();
     expect(buttonElement).toHaveClasses(['alternative', 'medium', 'raised']);
-    await page.compareScreenshot('applies the raised, medium, and alternative', {fullPage: false});
   });
 
   it('renders the hasIcon class when the element has an icon property', async() => {
@@ -93,7 +92,6 @@ describe('ButtonComponent Methods', () => {
 });
 
 describe('Button Component Screenshots', () => {
-
   it('tests multiple version of the button', async() => {
     let page = await newE2EPage();
     await page.setContent(`

@@ -74,9 +74,13 @@ describe('BlockComponent with Container parents set to card option', () => {
 });
 
 describe('Block Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
 
   it('renders in basic mode with a header, content and footer', async() => {
-    let page = await newE2EPage();
     await page.setContent(`<se-block>
     <se-block-header>Basic Header</se-block-header>
     <se-block-content>Basic Content</se-block-content>
@@ -86,7 +90,6 @@ describe('Block Screenshots', () => {
   });
 
   it('renders in widget mode with a header, content and footer', async() => {
-    let page = await newE2EPage();
     await page.setContent(`<se-block option="widget">
     <se-block-header>Widget Header</se-block-header>
     <se-block-content>Widget Content</se-block-content>
@@ -96,7 +99,6 @@ describe('Block Screenshots', () => {
   });
 
   it('renders in widget mode with a header, content and footer', async() => {
-    let page = await newE2EPage();
     await page.setContent(`<se-block option="card">
     <se-block-header>Card Header</se-block-header>
     <se-block-content>Card Content</se-block-content>
@@ -104,5 +106,4 @@ describe('Block Screenshots', () => {
     </se-block>`); 
     await page.compareScreenshot('Card Block', {fullPage: false});
   });
-
 });

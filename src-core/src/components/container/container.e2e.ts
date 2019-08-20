@@ -47,3 +47,55 @@ describe('ContainerComponent', () => {
     expect(divElm).toBeTruthy();
   });
 });
+
+describe('Container Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+  
+  it('should render a block in its default fill option with no spacing', async() => {
+    await page.setContent(`
+      <se-container>
+        <se-block>
+          My Basic Fill Container
+        </se-block>
+      </se-container>
+    `);
+    await page.compareScreenshot('Fill Container', {fullPage: false});
+  });
+
+  it('should render a block in widget option with spacing', async() => {
+    await page.setContent(`
+      <se-container option="widget">
+        <se-block>
+          My Widget Container
+        </se-block>
+      </se-container>
+    `);
+    await page.compareScreenshot('Widget Container', {fullPage: false});
+  });
+
+  it('should render a block in card option', async() => {
+    await page.setContent(`
+      <se-container option="card">
+        <se-block>
+          My Card Container
+        </se-block>
+      </se-container>
+    `);
+    await page.compareScreenshot('Card Container', {fullPage: false});
+  });
+
+  it('should render a block in centered option', async() => {
+    await page.setContent(`
+      <se-container option="centered">
+        <se-block>
+          My Centered Container
+        </se-block>
+      </se-container>
+    `);
+    await page.compareScreenshot('Centered Container', {fullPage: false});
+  });
+});
