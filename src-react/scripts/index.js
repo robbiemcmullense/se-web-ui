@@ -48,7 +48,7 @@ const compileComponents = (destination, indexPath) => {
   let template = Handlebars.compile(templateFile);
 
   // First letter of event to uppercase (ex. didClick -> onDidClick)
-  Handlebars.registerHelper('onEvent', event => `on${event[0].toUpperCase()}${event.slice(1)}`);
+  Handlebars.registerHelper('onEvent', event => `on${event.replace(event.charAt(0), event.charAt(0).toUpperCase())}`);
   // Wrapping props with { }
   Handlebars.registerHelper('wrap', name => `{${name}}`);
   // Swap PropTypes:
