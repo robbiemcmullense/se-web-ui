@@ -38,7 +38,7 @@ describe('SliderComponent', () => {
       <se-slider>
         <mock:shadow-root>
           <div class="slider-container">
-            <input type="range" min="" max="100" value="" />
+            <input type="range" min="0" max="100" value="0" />
           </div>
         </mock:shadow-root>
       </se-slider>
