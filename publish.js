@@ -53,11 +53,12 @@ function readPkg(project) {
   return JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 }
 
-function alreadyDeployedVersion(version) {
-  const projectRoot = projectPath('');
-  const {stdout} = execa.sync('yarn', ['info', '@se/web-ui', 'dist-tags.latest'], { cwd: projectRoot });
+// Make sure that we are not publishing twice the same version
+function alreadyDeployedVersion(name, version) {
+  const {stdout} = execa.sync('yarn', ['info', name, 'dist-tags.latest']);
   const list = stdout.split('\n');
   let alreadyDeployed = false;
+  // Parse each line in case the `yarn info` function return more information than expected
   list.forEach(function(elm) {
     if (elm === version){
       alreadyDeployed = true
@@ -66,13 +67,14 @@ function alreadyDeployedVersion(version) {
   return alreadyDeployed;
 }
 
+
 async function main() {
   try {
     const tasks = [];
-    const { version } = readPkg('');
+    const { name, version } = readPkg('');
 
     // Do not deploy a version if already published
-    if (alreadyDeployedVersion(version)){
+    if (alreadyDeployedVersion(name, version)){
       console.log('\n Package version already deployed \n');
       process.exit(1);
     }
