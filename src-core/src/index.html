@@ -418,6 +418,7 @@
               <se-breadcrumb-item href="#">Last</se-breadcrumb-item>
             </se-breadcrumb>
             <se-button onclick="removeLastBreadcrumb()" option="raised">Remove Last Breadcrumb</se-button>
+            <se-button onclick="addNewBreadcrumb()" option="raised">Add New Breadcrumb</se-button>
 
             <se-divider></se-divider>
             <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
@@ -637,9 +638,15 @@
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
       breadcrumbs[breadcrumbs.length-1].parentNode.removeChild(breadcrumbs[breadcrumbs.length-1]);
-      document.getElementById('my-breadcrumb').updateChildren();
     }
 
+    function addNewBreadcrumb() {
+      let node = document.createElement('se-breadcrumb-item');
+      let textNode = document.createTextNode('New');
+      node.appendChild(textNode);
+      let breadcrumb = document.getElementById('my-breadcrumb');
+      breadcrumb.appendChild(node);
+    }
 
     // grid widget
     function toggle(id) {

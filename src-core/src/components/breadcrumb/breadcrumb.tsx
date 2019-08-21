@@ -1,4 +1,4 @@
-import { Component, Element, h, State, Method } from "@stencil/core";
+import { Component, Element, h, State } from "@stencil/core";
 
 @Component({
   tag: "se-breadcrumb",
@@ -7,29 +7,34 @@ import { Component, Element, h, State, Method } from "@stencil/core";
 })
 export class BreadcrumbComponent {
   @Element() el: HTMLElement;
-  /**
-   * Defines the selected value of the breadcrumb group.
-   */
   @State() items: HTMLElement[] = [];
-
-  @Method()
-  async updateChildren() {
-    this.items = [];
-  }
-
-  componentWillLoad() {
-    this.updateLastItem();
-  }
-
-  componentWillUpdate() {
-    this.updateLastItem();
-  }
+  observer: any;
 
   private updateLastItem() {
     this.items = Array.from(this.el.querySelectorAll('se-breadcrumb-item'));
     this.items.forEach((item: any) => {
       item.isLast = (item === this.items[this.items.length - 1]);
     });
+  }
+
+  private watchItemList() {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length || mutation.removedNodes.length) {
+          this.updateLastItem();
+        }
+      });
+    });
+    this.observer.observe(this.el, {childList: true});
+  }
+
+  componentWillLoad() {
+    this.updateLastItem();
+    this.watchItemList();
+  }
+
+  componentDidUnload() {
+    this.observer.disconnect();
   }
 
   render() {
