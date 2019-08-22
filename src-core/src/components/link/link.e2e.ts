@@ -35,3 +35,14 @@ describe('LinkComponent', () => {
     expect(anchorElement).toHaveAttribute('data-disabled');
   });
 });
+
+describe('Link Screenshots', () => {
+  it('tests the internal and external options for the link component', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-link option="internal" url="http://google.com">Link to Google</se-link>
+      <se-link option="external" url="http://google.com">Link to Google</se-link>
+      `);
+    await page.compareScreenshot('multiple links', {fullPage: false});
+  });
+});

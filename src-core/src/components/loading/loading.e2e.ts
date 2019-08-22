@@ -26,3 +26,17 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(element).toHaveClass('show');
 	});
 });
+
+describe('Loading Screenshots', () => {
+  it('renders the standard version of the loading component', async() => {
+    let page = await newE2EPage();
+		await page.setContent('<se-loading loading="true"></se-loading>')
+    await page.compareScreenshot('Standard Loading Component', {fullPage: false});
+	});
+	
+	it('renders the dialog version of the loading component', async() => {
+    let page = await newE2EPage();
+		await page.setContent('<se-loading option="dialog" loading="true"></se-loading>')
+    await page.compareScreenshot('Dialog Loading Component', {fullPage: false});
+  });
+});

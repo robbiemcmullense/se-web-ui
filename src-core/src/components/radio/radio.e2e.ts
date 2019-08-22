@@ -44,3 +44,20 @@ describe('Radio with ID Element', () => {
     expect(element.shadowRoot.querySelector('input').getAttribute('id')).toEqual('wc-my-id');
   });
 });
+
+describe('Radio Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('renders in both primary and secondary colors', async() => {
+    await page.setContent(`
+      <se-radio value="standard-radio" label="Unchecked Radio Button"></se-radio>
+      <se-radio value="radio-primary" label="Radio Primary" selected="true"></se-radio>
+      <se-radio value="radio-secondary" label="Radio Secondary" selected="true"color="secondary"></se-radio>
+    `);
+    await page.compareScreenshot('Radio Components', {fullPage: false});
+  });
+});
