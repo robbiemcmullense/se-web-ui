@@ -23,3 +23,19 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(element.shadowRoot.querySelector('.se-icon-wrapper')).toHaveClasses(['icon-small', 'warn', 'icon-undefined']);	
   });
 });
+
+describe('Icon Screenshots', () => {
+  it('tests multiple versions of the icons', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-icon option="nano" color="standard">icon</se-icon>
+      <se-icon option="small" color="alternative">icon</se-icon>
+      <se-icon option="medium" color="primary">icon</se-icon>
+      <se-icon option="medium" color="secondary">icon</se-icon>
+      <se-icon option="medium" color="success">icon</se-icon>
+      <se-icon option="large" color="warning">icon</se-icon>
+      <se-icon option="xlarge" color="error">icon</se-icon>`
+    );
+    await page.compareScreenshot('multiple icons', {fullPage: false});
+  });
+});
