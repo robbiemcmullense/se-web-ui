@@ -7,6 +7,7 @@ import { Component, Element, h, State } from "@stencil/core";
 })
 export class BreadcrumbComponent {
   @Element() el: HTMLElement;
+  listEl?: HTMLElement;
   @State() items: HTMLElement[] = [];
   observer: any;
 
@@ -25,12 +26,22 @@ export class BreadcrumbComponent {
         }
       });
     });
-    this.observer.observe(this.el, {childList: true});
+    // assign mutation observer for all browsers that use Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') === -1) {
+      this.observer.observe(this.el, {childList: true});
+    }
   }
 
   componentWillLoad() {
     this.updateLastItem();
     this.watchItemList();
+  }
+
+  componentDidLoad() {
+    // assign mutation observer for MS Edge, as it uses polyfills instead of Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') > -1) {
+      this.observer.observe(this.listEl, {childList: true});
+    }
   }
 
   componentDidUnload() {
@@ -40,7 +51,7 @@ export class BreadcrumbComponent {
   render() {
     return (
       <nav aria-label="breadcrumb">
-        <ol>
+        <ol ref={el => this.listEl = el}>
           <slot></slot>
         </ol>
       </nav>
