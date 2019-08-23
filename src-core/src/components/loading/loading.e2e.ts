@@ -28,15 +28,23 @@ import { newE2EPage } from '@stencil/core/testing';
 });
 
 describe('Loading Screenshots', () => {
-  it('renders the standard version of the loading component', async() => {
+  it('tests the standard version of the loader', async() => {
     let page = await newE2EPage();
-		await page.setContent('<se-loading loading="true"></se-loading>')
-    await page.compareScreenshot('Standard Loading Component', {fullPage: false});
+    await page.setContent(`
+			<div style="width: 200px; height: 200px;">
+				<se-loading loading="true"></se-loading>
+			</div>
+    `);
+    await page.compareScreenshot('standard loader component', {fullPage: false});
 	});
 	
-	it('renders the dialog version of the loading component', async() => {
+	it('tests the dialog version of the loader', async() => {
     let page = await newE2EPage();
-		await page.setContent('<se-loading option="dialog" loading="true"></se-loading>')
-    await page.compareScreenshot('Dialog Loading Component', {fullPage: false});
+    await page.setContent(`
+			<div style="width: 200px; height: 200px;">
+				<se-loading option="dialog" loading="true"></se-loading>
+			</div>
+    `);
+    await page.compareScreenshot('dialog loader component', {fullPage: false});
   });
 });

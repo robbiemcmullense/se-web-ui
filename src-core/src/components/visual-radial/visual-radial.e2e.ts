@@ -60,3 +60,17 @@ describe('VisualRadialComponent', () => {
     expect(circleElement.getAttribute('stroke')).toEqual('#aaa');
   });
 });
+
+describe('Visual Radio Screenshots', () => {
+  it('tests the default version of the component, with the large size and a green progress bar', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-visual-radial percentage="30" label="units" value="8"></se-visual-radial>');
+    await page.compareScreenshot('green large visual radial component', {fullPage: false});
+	});
+	
+	it('tests the component with the small size and a red colored progress bar', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-visual-radial size="small" percentage="30" secolor="#ee0014" label="label"></se-visual-radial>');
+    await page.compareScreenshot('red small visual radial component', {fullPage: false});
+  });
+});

@@ -47,3 +47,17 @@ describe('VisualLinearComponent', () => {
     expect(value).toEqualText('13');
   });
 });
+
+describe('Visual Linear Screenshots', () => {
+  it('tests the default version of the component, with the inline option and a green progress bar', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>');
+    await page.compareScreenshot('green inline visual linear component', {fullPage: false});
+	});
+	
+	it('tests the component with the stacked option and a dark blue colored progress bar', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels"></se-visual-linear>');
+    await page.compareScreenshot('blue stacked visual linear component', {fullPage: false});
+  });
+});

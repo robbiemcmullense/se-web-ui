@@ -56,3 +56,16 @@ describe('SnackbarComponent', () => {
     expect(eventSpy).toHaveReceivedEvent();
   });
 });
+
+describe('Snackbar Screenshots', () => {
+  it('tests multiple versions of the snackbar', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-snackbar style="bottom: 170px;" open="true" icon="icon" message="Info"></se-snackbar>
+      <se-snackbar style="bottom: 120px;" open="true" type="success" icon="icon" message="Success"></se-snackbar>
+      <se-snackbar style="bottom: 70px;" open="true" type="warning" icon="icon" message="Warning"></se-snackbar>
+      <se-snackbar open="true" type="error" icon="icon" message="error" can-close="true"></se-snackbar>
+    `);
+    await page.compareScreenshot('multiple snackbar components', {fullPage: false});
+  });
+});
