@@ -43,3 +43,28 @@ describe('BannerComponent', () => {
     expect(bannerItems[1]).not.toHaveClass('active');
   });
 });
+
+describe('Banner Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('should show the first active banner item and 3 circle indicators to reflect 3 banner items', async() => {
+    await page.setContent(`
+      <se-banner>
+        <se-banner-item active="true">
+          <div>My Banner Item 1</div>
+        </se-banner-item>
+        <se-banner-item active="true">
+          <div>My Banner Item 2</div>
+        </se-banner-item>
+        <se-banner-item active="true">
+          <div>My Banner Item 3</div>
+        </se-banner-item>
+      </se-banner>
+    `);
+    await page.compareScreenshot('banner component', {fullPage: false});
+  })
+})

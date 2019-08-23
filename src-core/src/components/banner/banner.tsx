@@ -21,6 +21,7 @@ export class BannerComponent {
 	xStart: any;
 	xEnd: any;
 	direction: string;
+	observer: any;
 
 	@Listen('touchstart', {target: 'window'})
 	handleTouchStart(event: any) {
@@ -60,13 +61,7 @@ export class BannerComponent {
 		this.selectedItem = item;
 		this.selectedItemIndex = this.items.indexOf(item);
 		this.bannerIndicatorEl.style.right = '' + this.selectedItemIndex * 100 + '%';
-		if (this.duration > 500) {
-			this.interval = setInterval(() => {
-				// Rotate carousel to the right based on the specified duration.
-				// Must be greater than 500ms, as it takes that amount of time to switch slides.
-				this.changeActive('next')
-			}, this.duration);
-		}
+		this.setInterval();
 	}
 
 	private changeActive(index: string) {
@@ -82,9 +77,36 @@ export class BannerComponent {
 		this.setActiveItem(item);
 	}
 
-	rotateCarousel() {
-		return this.changeActive('next');
+	private setInterval() {
+		if (this.duration > 500) {
+			this.interval = setInterval(() => {
+				// Rotate carousel to the right based on the specified duration.
+				// Must be greater than 500ms, as it takes that amount of time to switch slides.
+				this.changeActive('next');
+			}, this.duration);
+		}
 	}
+
+	private watchItemList() {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+					clearInterval(this.interval);
+					this.setBannerItemWidth();
+					this.setInterval();
+        }
+        if (mutation.removedNodes.length) {
+					clearInterval(this.interval);
+					this.setBannerItemWidth();
+					this.setActiveItem(this.items[0]);
+        }
+      });
+    });
+    // assign mutation observer for all browsers that use Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') === -1) {
+      this.observer.observe(this.el, {childList: true});
+    }
+  }
 
 	renderList() {
 		return this.items.map((item: any) => {
@@ -116,10 +138,17 @@ export class BannerComponent {
 		});
 	}
 
+	componentWillLoad() {
+		this.watchItemList();
+	}
+
 	componentDidLoad() {
 		this.setBannerItemWidth();
 		this.setActiveItem(this.items[0]);
 		this.setIconSize();
+		if (navigator.userAgent.indexOf('Edge') > -1) {
+      this.observer.observe(this.bannerIndicatorEl, {childList: true});
+    }
 	}
 
 	componentDidUpdate() {

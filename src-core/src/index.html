@@ -164,7 +164,7 @@
       <se-divider option="vertical"></se-divider>
       <se-container direction="column" position="relative" display="block" color="alternative">
         <se-container option="centered">
-          <se-banner>
+          <se-banner id="se-banner">
             <se-banner-item
               image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
               <se-block>
@@ -457,6 +457,8 @@
                 <se-breadcrumb-item href="#">Last</se-breadcrumb-item>
               </se-breadcrumb>
               <se-button onclick="removeLastBreadcrumb()" option="raised">Remove Last Breadcrumb</se-button>
+              <se-button onclick="addBannerItem()" option="raised">Add Banner Item</se-button>
+              <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
 
               <se-divider></se-divider>
               <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
@@ -678,6 +680,22 @@
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
       breadcrumbs[breadcrumbs.length - 1].parentNode.removeChild(breadcrumbs[breadcrumbs.length - 1]);
       document.getElementById('my-breadcrumb').updateChildren();
+    }
+
+    function addBannerItem() {
+      let node = document.createElement('se-banner-item');
+      node.innerHTML = ('<se-block>My New Banner</se-block>');
+      let banner = document.getElementById('se-banner');
+      if (navigator.userAgent.indexOf('Edge') > -1) {
+        banner.querySelector('.banner-items').appendChild(node);
+      } else {
+        banner.appendChild(node);
+      }
+    }
+
+    function removeLastBannerItem() {
+      let bannerItems = document.getElementsByTagName('se-banner-item');
+      bannerItems[bannerItems.length-1].parentNode.removeChild(bannerItems[bannerItems.length-1]);
     }
 
 
