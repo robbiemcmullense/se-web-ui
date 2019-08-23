@@ -37,7 +37,7 @@ describe('Loading Screenshots', () => {
     `);
     await page.compareScreenshot('standard loader component', {fullPage: false});
 	});
-	
+
 	it('tests the dialog version of the loader', async() => {
     let page = await newE2EPage();
     await page.setContent(`
@@ -46,5 +46,5 @@ describe('Loading Screenshots', () => {
 			</div>
     `);
     await page.compareScreenshot('dialog loader component', {fullPage: false});
-  });
+	});
 });
