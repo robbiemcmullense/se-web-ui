@@ -1,7 +1,6 @@
-// ******** transpile src->index.js to add all components
-
-const fs         = require('fs');
-const Handlebars = require('handlebars');
+const fs         = require("fs");
+const path       = require("path");
+const Handlebars = require("handlebars");
 
 const getInputData = (source) => {
 
@@ -20,7 +19,7 @@ const getInputData = (source) => {
 			.replace(/^se/, "")
 			.replace(/-[a-z]/g, i => i.toUpperCase())
       .replace(/-/g, "");
-    // Add indentation to hints of every property of every component
+    // Add indentation to hints for every property of every component
     for (prop of component.props) {
       prop.docs = prop.docs
         .replace(/\r\n/g, "\r\n   * ");
@@ -31,7 +30,7 @@ const getInputData = (source) => {
 
 }
 
-const compileComponents = (destination, indexPath) => {
+const generateComponents = (destination, indexPath) => {
 
   // Create destination path for new React Components files
   if (!fs.existsSync(destination)) {
@@ -47,19 +46,20 @@ const compileComponents = (destination, indexPath) => {
   // Pass components template to Handlebars compiler
   let template = Handlebars.compile(templateFile);
 
-  // First letter of event to uppercase (ex. didClick -> onDidClick)
-  Handlebars.registerHelper('onEvent', event => `on${event.replace(event.charAt(0), event.charAt(0).toUpperCase())}`);
+  // First letter of event to uppercase (ex. didClick -> DidClick)
+  Handlebars.registerHelper("firstToUpper", event => `${event.replace(event.charAt(0), event.charAt(0).toUpperCase())}`);
   // Wrapping props with { }
-  Handlebars.registerHelper('wrap', name => `{${name}}`);
-  // Swap PropTypes:
+  Handlebars.registerHelper("wrap", name => `{${name}}`);
+  // Swap to React types PropTypes:
   //  case boolean -> bool
   //  case string with delimeters (ex. `"basic" | "card"` -> string)
-  Handlebars.registerHelper('types', type => 
+  Handlebars.registerHelper("types", type => 
     type === "boolean" ?
       "bool" :
-        type.indexOf('"') >= 0 ?
-          "string" :
-            `${type}`);
+      type.indexOf('"') >= 0 ?
+        "string" :
+        type
+  );
 
   const components = getInputData("../core/se-components.json");
 
@@ -74,6 +74,7 @@ const compileComponents = (destination, indexPath) => {
       if (err) throw err;
     });
   }
+  console.log(`Components successfully generated in: \x1b[36m${path.resolve(destination)}`);
 
   // Read index template file
   templateFile = fs.readFileSync("./scripts/template-index.js", "utf8", (err, data) => {
@@ -86,10 +87,16 @@ const compileComponents = (destination, indexPath) => {
   let rendered = template(components);
   // Remove unnecessary `, `, so `, ` will be only between elements of collection
   rendered = rendered.replace(/,\W{1,4}\}/, " }");
-  fs.writeFileSync(indexPath, rendered, err => { 
+  fs.writeFileSync(`${indexPath}/index.js`, rendered, err => { 
     if (err) throw err;
   });
+  console.log(`\x1b[32mindex.js\x1b[0m successfully generated in: \x1b[36m${path.resolve(indexPath)}\r\n`);
 
 }
 
-compileComponents( "./src/components", "./src/index.js");
+try {
+  generateComponents( "./src/components", "./src");
+}
+catch (err) {
+  console.error(`\x1b[31m${err}`);
+}

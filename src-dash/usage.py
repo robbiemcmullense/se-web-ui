@@ -15,7 +15,7 @@ app.layout = web_ui_dash.App(children=[
     html.Div(id='output')
 ])
 
-@app.callback(Output('output', 'children'), [Input('input', 'value')])
+@app.callback(Output('output', 'children'))#, [Input('input', 'value')])
 def display_output(value):
     return 'You have entered {}'.format(value)
 

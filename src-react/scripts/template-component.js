@@ -14,7 +14,7 @@ export default class {{name}} extends Component {
 
   {{#each events}}
   {{event}}(e) {
-    this.props.{{#onEvent event}}{{/onEvent}} && this.props.{{#onEvent event}}{{/onEvent}}(e)
+    this.props.on{{#firstToUpper event}}{{/firstToUpper}} && this.props.on{{#firstToUpper event}}{{/firstToUpper}}(e)
   }
   {{/each}}
 
