@@ -1,3 +1,4 @@
+import '../mutation-observer-mock';
 import { SidemenuComponent } from "./sidemenu";
 import { newSpecPage } from '@stencil/core/testing';
 
@@ -25,8 +26,7 @@ describe('SidemenuComponent', () => {
 		expect(sidemenu.open).toBeTruthy();
 	});
 
-	// need to see if we can update Jest to include MutationObserver
-	xit('should render', async() => {
+	it('should render', async() => {
 		const page = await newSpecPage({
 			components: [SidemenuComponent],
 			html: `<se-sidemenu></se-sidemenu>`,
@@ -63,8 +63,7 @@ describe('SidemenuComponent', () => {
 		`);
 	});
 
-	// need to see if we can update Jest to include MutationObserver
-	xit('should render with 1 sidemenu item', async() => {
+	it('should render with 1 sidemenu item', async() => {
 		const page = await newSpecPage({
 			components: [SidemenuComponent],
 			html: `<se-sidemenu><se-sidemenu-item></se-sidemenu-item></se-sidemenu>`,
@@ -103,8 +102,7 @@ describe('SidemenuComponent', () => {
 		`);
 	});
 
-	// need to see if we can update Jest to include MutationObserver
-	xit('should render with 1 sidemenu item, along with the menu item content', async() => {
+	it('should render with 1 sidemenu item, along with the menu item content', async() => {
 		const page = await newSpecPage({
 			components: [SidemenuComponent],
 			html: `<se-sidemenu><se-sidemenu-item><div></div></se-sidemenu-item></se-sidemenu>`,
