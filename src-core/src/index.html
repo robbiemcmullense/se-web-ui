@@ -110,7 +110,7 @@
     </se-tabbar>
     <se-container>
       <se-block width="250px">
-        <se-list>
+        <se-list id="TEMP-LIST-ID">
           <se-list-item item="my item 1" selected="false" icon="user_standard" icon-color="primary"
             description="I have a description">
           </se-list-item>
@@ -633,6 +633,21 @@
         loadingBlock.loading = false;
       }, 3000);
     }
+    
+    // TEMPORARY FOR NEW LIST ITEM SPACING/PADDING ISSUE
+    function newListItem() {
+      let listItem = document.createElement("se-list-item");
+      listItem.item = "Test item";
+
+      setTimeout(function () {
+        let collapse = document.getElementById('simple-collapse');
+        // let collapse = document.getElementById('TEMP-LIST-ID');
+        // listItem.indentaton = collapse.indentation + 1
+        collapse.appendChild(listItem);
+      }, 5000);
+    }
+
+    newListItem();
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
