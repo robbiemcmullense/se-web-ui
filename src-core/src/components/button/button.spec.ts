@@ -128,6 +128,12 @@ describe('ButtonComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
+	it('should not emit the didClick event when a standalone standard button is clicked as it is not part of a group', () => {
+		const eventSpy = jest.spyOn(button.didClick, 'emit');
+		button.toggle();
+		expect(eventSpy).not.toHaveBeenCalled();
+	});
+
 	it('should emit the didClick event when the button is part of a group', () => {
 		button.grouped = true;
 		const eventSpy = jest.spyOn(button.didClick, 'emit');
