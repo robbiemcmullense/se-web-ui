@@ -633,6 +633,19 @@
         loadingBlock.loading = false;
       }, 3000);
     }
+    
+    // Newly rendered item should get parent's indentation and style
+    function newListItem() {
+      let listItem = document.createElement("se-list-item");
+      listItem.item = "Test item";
+
+      setTimeout(function () {
+        let collapse = document.getElementById('simple-collapse');
+        collapse.appendChild(listItem);
+      }, 5000);
+    }
+
+    newListItem();
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
