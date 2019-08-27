@@ -98,12 +98,16 @@ export class ListGroupComponent {
   }
 
   getParentConfig() {
-    const myParent: any = this.el.parentElement;
-    const indentation = myParent.indentation;
-    if(indentation !== null && indentation !== undefined) {
-      this.indentation = indentation + 1;
+    const elParent: any = this.el.parentElement;
+    if (!!elParent) {
+      const indentation = elParent.indentation;
+      if(!!elParent.indentation) {
+        this.indentation = indentation + 1;
+      }
+      if(!!elParent.option) {
+        this.option = elParent.option;
+      }
     }
-    this.option = myParent.option;
   }
 
   componentWillLoad() {
