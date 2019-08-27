@@ -110,7 +110,7 @@
     </se-tabbar>
     <se-container>
       <se-block width="250px">
-        <se-list id="TEMP-LIST-ID">
+        <se-list>
           <se-list-item item="my item 1" selected="false" icon="user_standard" icon-color="primary"
             description="I have a description">
           </se-list-item>
@@ -634,7 +634,7 @@
       }, 3000);
     }
     
-    // TEMPORARY FOR NEW LIST ITEM SPACING/PADDING ISSUE
+    // Newly rendered item should get parent's indentation and style
     function newListItem() {
       let listItem = document.createElement("se-list-item");
       listItem.item = "Test item";
