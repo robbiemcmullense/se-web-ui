@@ -6,6 +6,14 @@ describe('DialogComponent', () => {
 
 	beforeEach(() => {
 		dialogComponent = new DialogComponent();
+		dialogComponent.menuInnerEl = {classList: {
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
+		}};
+		dialogComponent.backdropEl = {classList: {
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
+		}};
 	});
 
 	it('should build', () => {
@@ -68,28 +76,12 @@ describe('DialogComponent', () => {
 	});
 
 	it('should call the removeAnimation function when openDidChange is called', async() => {
-		dialogComponent.menuInnerEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
-		dialogComponent.backdropEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
 		const eventSpy = jest.spyOn(dialogComponent, 'removeAnimation');
 		dialogComponent.openDidChange();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
 	it('should call the addAnimation function when openDidChange is called and the dialog is open', async() => {
-		dialogComponent.menuInnerEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
-		dialogComponent.backdropEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
 		dialogComponent.open = true;
 		const eventSpy = jest.spyOn(dialogComponent, 'addAnimation');
 		dialogComponent.openDidChange();

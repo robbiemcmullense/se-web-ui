@@ -2,10 +2,11 @@ import { TooltipComponent } from './tooltip';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('TooltipComponent', () => {
-  let tooltip;
+  let tooltip, mockEvent, eventSpy;
 
   beforeEach(() => {
-  tooltip = new TooltipComponent();
+    tooltip = new TooltipComponent();
+    mockEvent = {stopPropagation: jest.fn()};
   });
 
   it('should build', () => {
@@ -53,22 +54,20 @@ describe('TooltipComponent', () => {
   });
 
   it('should call the close method when the closeTooltips event is emitted', () => {
-    const eventSpy = jest.spyOn(tooltip, 'close');
+    eventSpy = jest.spyOn(tooltip, 'close');
     tooltip.handleCloseTooltip();
     expect(eventSpy).toHaveBeenCalled();
   });
 
   it('should call the _toggle method twice, when the touchstart and touchend events occur', () => {
-    const mockEvent = {stopPropagation: () => {return '';}};
-    const eventSpy = jest.spyOn(tooltip, '_toggle');
+    eventSpy = jest.spyOn(tooltip, '_toggle');
     tooltip.handleTouchstart(mockEvent);
     tooltip.handleTouchEnd(mockEvent);
     expect(eventSpy).toHaveBeenCalledTimes(2);
   });
 
   it('should call the _toggle method twice, when the mouseover and mouseleave hover events occur', () => {
-    const mockEvent = {stopPropagation: () => {return '';}};
-    const eventSpy = jest.spyOn(tooltip, '_toggle');
+    eventSpy = jest.spyOn(tooltip, '_toggle');
     tooltip.action = 'hover';
     tooltip.handleMouseOver(mockEvent);
     tooltip.handleMouseLeave(mockEvent);
@@ -76,11 +75,25 @@ describe('TooltipComponent', () => {
   });
 
   it('should call the _toggle method on a click with the tooltip open', () => {
-    const mockEvent = {stopPropagation: () => {return '';}};
-    const eventSpy = jest.spyOn(tooltip, '_toggle');
+    eventSpy = jest.spyOn(tooltip, '_toggle');
     tooltip.action = 'click';
     tooltip.opened = true;
     tooltip.handleMouseClick(mockEvent);
     expect(eventSpy).toHaveBeenCalled();
+  });
+
+  it('should emit the didOpen and closeTooltips events when opening a tooltip', () => {
+    const closeTooltipsSpy = jest.spyOn(tooltip.closeTooltips, 'emit');
+    const openSpy = jest.spyOn(tooltip.didOpen, 'emit');
+    tooltip._toggle(mockEvent);
+    expect(closeTooltipsSpy).toHaveBeenCalled();
+    expect(openSpy).toHaveBeenCalled();
+  });
+
+  it('should emit the didClose events when closing a tooltip', () => {
+    const closeSpy = jest.spyOn(tooltip.didClose, 'emit');
+    tooltip.opened = true;
+    tooltip._toggle(mockEvent);
+    expect(closeSpy).toHaveBeenCalled();
   });
 });

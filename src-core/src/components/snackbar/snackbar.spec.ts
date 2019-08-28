@@ -89,4 +89,10 @@ describe('SnackbarComponent', () => {
 		snackbar.closeSnackbar();
 		expect(snackbar.open).toBeFalsy();
 	});
+
+	it('should emit the didClose event when the snackbar is closed', () => {
+		const eventSpy = jest.spyOn(snackbar.didClose, 'emit');
+		snackbar.closeSnackbar();
+		expect(eventSpy).toHaveBeenCalled();
+	});
 });

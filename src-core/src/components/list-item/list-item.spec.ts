@@ -47,4 +47,10 @@ describe('list-item', () => {
 		listItem.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
   });
+
+  it('should emit the didSelectedChange event when the selected property changes', () => {
+    const eventSpy = jest.spyOn(listItem.didSelectedChange, 'emit');
+    listItem.SelectedDidChange();
+    expect(eventSpy).toHaveBeenCalled();
+  });
 });

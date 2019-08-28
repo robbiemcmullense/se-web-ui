@@ -91,7 +91,6 @@ export class SeBreadcrumb {
     this.el = r.nativeElement;
   }
 }
-proxyMethods(SeBreadcrumb, ['updateChildren']);
 
 export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
 @Component({ selector: 'se-breadcrumb-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['href', 'isLast'] })
