@@ -24,7 +24,7 @@ If you have selected install_dependencies during the prompt, you can skip this p
     $ virtualenv .venv
     $ . .venv/bin/activate
     ```
-    _Under proxy: `HTTP_PROXY=http://gateway.schneider.zscaler.net:9480 HTTPS_PROXY=http://gateway.schneider.zscaler.net:9480 virtualenv .venv`\r\n
+    _Under proxy: `HTTP_PROXY=http://gateway.schneider.zscaler.net:9480 HTTPS_PROXY=http://gateway.schneider.zscaler.net:9480 virtualenv .venv`  
     on Win: source .venv/Scripts/activate_
 
 3. Install python packages required to build components.
@@ -44,16 +44,16 @@ If you have selected install_dependencies during the prompt, you can skip this p
         ```
         $ npm run build:all
         ```
-        _On Win in order to dash-generate-components part of build not fail\r\n
-        under global env modify file `C:\Users\username\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\dash\development\component_generator.py`\r\n
-        under virtual env modify file `[.venv]\Lib\site-packages\dash\development\component_generator.py`\r\n
-        line #64\r\n
-             `"node {} {} {} {}".format(`\r\n
-        with\r\n
-             `"node {} \"{}\" \"{}\" {}".format(  `\r\n
-        modify last IFFE in file web_ui_dash\web_ui_dash.min.js\r\n
-             `(void 0)().then(function(){var t,e;t=window,Object(o.a)(t,r,e)})`\r\n
-        with\r\n
+        _On Win in order to dash-generate-components part of build not fail  
+        under global env modify file `C:\Users\username\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\dash\development\component_generator.py`  
+        under virtual env modify file `[.venv]\Lib\site-packages\dash\development\component_generator.py`  
+        line #64  
+             `"node {} {} {} {}".format(`  
+        with  
+             `"node {} \"{}\" \"{}\" {}".format(  `  
+        modify last IFFE in file web_ui_dash\web_ui_dash.min.js  
+             `(void 0)().then(function(){var t,e;t=window,Object(o.a)(t,r,e)})`  
+        with  
              `rr=window,Object(o.a)(rr,r,ir)` or `void function(){var t,e;t=window,Object(o.a)(t,r,e)}()` _
     2. Run and modify the `usage.py` sample dash app:
         ```
