@@ -1,5 +1,6 @@
 import { SliderComponent } from './slider';
 import { newSpecPage } from '@stencil/core/testing';
+import { setMaxListeners } from 'cluster';
 
 describe('SliderComponent', () => {
   let slider;
@@ -38,10 +39,17 @@ describe('SliderComponent', () => {
       <se-slider>
         <mock:shadow-root>
           <div class="slider-container">
-            <input type="range" min="" max="100" value="" />
+            <input type="range" min="0" max="100" value="0" />
           </div>
         </mock:shadow-root>
       </se-slider>
     `);
+  });
+
+  it('should emit the didChange event when the slider value changes', () => {
+    const eventSpy = jest.spyOn(slider.didChange, 'emit');
+    slider.sliderElement = {addEventListener: jest.fn()};
+    slider.handleEvent();
+    expect(eventSpy).toHaveBeenCalled();
   });
 });

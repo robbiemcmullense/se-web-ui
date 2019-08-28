@@ -1,4 +1,4 @@
-import { Component, Element, h, State, Method } from "@stencil/core";
+import { Component, Element, h, State } from "@stencil/core";
 
 @Component({
   tag: "se-breadcrumb",
@@ -7,23 +7,9 @@ import { Component, Element, h, State, Method } from "@stencil/core";
 })
 export class BreadcrumbComponent {
   @Element() el: HTMLElement;
-  /**
-   * Defines the selected value of the breadcrumb group.
-   */
+  listEl?: HTMLElement;
   @State() items: HTMLElement[] = [];
-
-  @Method()
-  async updateChildren() {
-    this.items = [];
-  }
-
-  componentWillLoad() {
-    this.updateLastItem();
-  }
-
-  componentWillUpdate() {
-    this.updateLastItem();
-  }
+  observer: any;
 
   private updateLastItem() {
     this.items = Array.from(this.el.querySelectorAll('se-breadcrumb-item'));
@@ -32,10 +18,40 @@ export class BreadcrumbComponent {
     });
   }
 
+  private watchItemList() {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length || mutation.removedNodes.length) {
+          this.updateLastItem();
+        }
+      });
+    });
+    // assign mutation observer for all browsers that use Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') === -1) {
+      this.observer.observe(this.el, {childList: true});
+    }
+  }
+
+  componentWillLoad() {
+    this.updateLastItem();
+    this.watchItemList();
+  }
+
+  componentDidLoad() {
+    // assign mutation observer for MS Edge, as it uses polyfills instead of Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') > -1) {
+      this.observer.observe(this.listEl, {childList: true});
+    }
+  }
+
+  componentDidUnload() {
+    this.observer.disconnect();
+  }
+
   render() {
     return (
       <nav aria-label="breadcrumb">
-        <ol>
+        <ol ref={el => this.listEl = el}>
           <slot></slot>
         </ol>
       </nav>

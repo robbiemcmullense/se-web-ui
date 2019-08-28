@@ -68,4 +68,17 @@ describe('ChipComponent', () => {
 			</se-chip>
 		`);
 	});
+
+	it('should emit the didClose event when the closeChip function is called', () => {
+		const eventSpy = jest.spyOn(chip.didClose, 'emit');
+		chip.closeChip();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should not emit the didClose event when the chip is disabled', () => {
+		const eventSpy = jest.spyOn(chip.didClose, 'emit');
+		chip.disabled = true;
+		chip.closeChip();
+		expect(eventSpy).not.toHaveBeenCalled();
+	});
 });

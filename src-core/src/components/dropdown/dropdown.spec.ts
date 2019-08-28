@@ -54,7 +54,7 @@ describe('DropdownComponent', () => {
 
   it('should call the _toggle function when a click occurs and the dropdown is open', async() => {
     dropdown.opened = true;
-    const event = {stopPropagation: () => {}};
+    const event = {stopPropagation: jest.fn()};
 		const eventSpy = jest.spyOn(dropdown, '_toggle');
 		dropdown.handleClick(event);
 		expect(eventSpy).toHaveBeenCalled();
@@ -62,9 +62,24 @@ describe('DropdownComponent', () => {
   
   it('should call the _toggle function when a touchstart occurs and the dropdown is open', async() => {
     dropdown.opened = true;
-    const event = {stopPropagation: () => {}};
+    const event = {stopPropagation: jest.fn()};
 		const eventSpy = jest.spyOn(dropdown, '_toggle');
 		dropdown.handleTouchstart(event);
 		expect(eventSpy).toHaveBeenCalled();
-	});
+  });
+  
+  it('should emit the didOpen event when the toggle function is called and the dropdown closed', () => {
+    const eventSpy = jest.spyOn(dropdown.didOpen, 'emit');
+    const event = {stopPropagation: jest.fn()};
+    dropdown._toggle(event);
+    expect(eventSpy).toHaveBeenCalled();
+  });
+
+  it('should emit the didClose event when the toggle function is called and the dropdown open', () => {
+    dropdown.opened = true;
+    const eventSpy = jest.spyOn(dropdown.didClose, 'emit');
+    const event = {stopPropagation: jest.fn()};
+    dropdown._toggle(event);
+    expect(eventSpy).toHaveBeenCalled();
+  });
 });

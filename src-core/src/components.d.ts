@@ -143,9 +143,7 @@ export namespace Components {
     */
     'option': 'card' | 'widget' | 'basic';
   }
-  interface SeBreadcrumb {
-    'updateChildren': () => Promise<void>;
-  }
+  interface SeBreadcrumb {}
   interface SeBreadcrumbItem {
     /**
     * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.

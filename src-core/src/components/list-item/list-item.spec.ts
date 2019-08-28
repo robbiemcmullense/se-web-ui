@@ -20,12 +20,6 @@ describe('list-item', () => {
     expect(listItem.option).toEqual('classic');
   });
 
-  it('should set the padding to 40 with an indentation of 2', () => {
-    listItem.indentation = 2;
-    listItem.componentDidLoad();
-    expect(listItem.padding).toEqual(40);
-  });
-
   it('should render', async() => {
 		const page = await newSpecPage({
 			components: [ListItemComponent],
@@ -52,5 +46,11 @@ describe('list-item', () => {
 		const eventSpy = jest.spyOn(listItem, 'setButtonId');
 		listItem.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
+  });
+
+  it('should emit the didSelectedChange event when the selected property changes', () => {
+    const eventSpy = jest.spyOn(listItem.didSelectedChange, 'emit');
+    listItem.SelectedDidChange();
+    expect(eventSpy).toHaveBeenCalled();
   });
 });

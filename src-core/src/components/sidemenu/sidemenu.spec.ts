@@ -1,3 +1,4 @@
+import '../mutation-observer-mock';
 import { SidemenuComponent } from "./sidemenu";
 import { newSpecPage } from '@stencil/core/testing';
 
@@ -6,6 +7,14 @@ describe('SidemenuComponent', () => {
 
 	beforeEach(() => {
 		sidemenu = new SidemenuComponent();
+		sidemenu.menuInnerEl = {classList: {
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
+		}};
+		sidemenu.backdropEl = {classList: {
+			add: (value: any) => { return value;},
+			remove: (value: any) => { return value;}
+		}};
 	});
 
 	it('should build', () => {
@@ -24,6 +33,14 @@ describe('SidemenuComponent', () => {
 		sidemenu.toggle();
 		expect(sidemenu.open).toBeTruthy();
 	});
+
+	it('should not have any items by default', () => {
+		expect(sidemenu.items.length).toEqual(0);
+	});
+
+	it('should return a true value for noSelectedItem by default', () => {
+		expect(sidemenu.noSelectedItem()).toBeTruthy();
+	})
 
 	it('should render', async() => {
 		const page = await newSpecPage({
@@ -140,15 +157,20 @@ describe('SidemenuComponent', () => {
 		`);
 	});
 
+	it('should set the menuInnerEl width to 250px by default', () => {
+		const item = 'my item';
+		sidemenu.menuInnerEl = {style: {}};
+		sidemenu.setActive(item);
+		expect(sidemenu.menuInnerEl.style.width).toEqual('250px');
+	});
+
+	it('should call the watchItemList function when the component loads', () => {
+		const eventSpy = jest.spyOn(sidemenu, 'watchItemList');
+		sidemenu.componentWillLoad();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
 	it('should call the addAnimation method when the toggle method is called and the sidemenu is closed', () => {
-		sidemenu.menuInnerEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
-		sidemenu.backdropEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
 		const eventSpy = jest.spyOn(sidemenu, 'addAnimation');
 		sidemenu.toggle();
 		expect(eventSpy).toHaveBeenCalled();
@@ -156,6 +178,14 @@ describe('SidemenuComponent', () => {
 
 	it('should call the removeAnimation method when the toggle method is called and the sidemenu is open', () => {
 		sidemenu.open = true;
+		const eventSpy = jest.spyOn(sidemenu, 'removeAnimation');
+		sidemenu.toggle();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should set the selectedItem without a child element count to undefined when the toggle method is called and the sidemenu is open', () => {
+		sidemenu.open = true;
+		sidemenu.selectedItem = 'selected item';
 		sidemenu.menuInnerEl = {classList: {
 			add: (value: any) => { return value;},
 			remove: (value: any) => { return value;}
@@ -164,21 +194,16 @@ describe('SidemenuComponent', () => {
 			add: (value: any) => { return value;},
 			remove: (value: any) => { return value;}
 		}};
-		const eventSpy = jest.spyOn(sidemenu, 'removeAnimation');
 		sidemenu.toggle();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
-	it('should set the selected item to undefined when componentDidUnload is called', () => {
-		sidemenu.selectedItem = 'selected item';
-		sidemenu.componentDidUnload();
 		expect(sidemenu.selectedItem).toBeUndefined();
 	});
 
-	it('should set the menuInnerEl width to 250px by default', () => {
-		const item = 'my item';
-		sidemenu.menuInnerEl = {style: {}};
-		sidemenu.setActive(item);
-		expect(sidemenu.menuInnerEl.style.width).toEqual('250px');
+	it('should set the selected item to undefined and return the items length to zero when componentDidUnload is called', () => {
+		sidemenu.items = ['first item', 'second item'];
+		sidemenu.selectedItem = 'selected item';
+		sidemenu.observer = {disconnect: () => {return "disconnected"}};
+		sidemenu.componentDidUnload();
+		expect(sidemenu.selectedItem).toBeUndefined();
+		expect(sidemenu.items.length).toEqual(0);
 	});
 });

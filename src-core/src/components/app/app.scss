@@ -19,8 +19,24 @@
   @include background-color('background');
 }
 
+
 // Create all classes to use colors as classes
-@each $element in ('primary', 'secondary', 'standard', 'alternative', 'standard-contrast','alternative-contrast','primary-contrast','secondary-contrast', 'background') {
+@each $element in ( 'standard',
+                    'alternative',
+                    'primary',
+                    'secondary',
+                    'success',
+                    'warning',
+                    'error',
+                    'standard-contrast',
+                    'alternative-contrast',
+                    'primary-contrast',
+                    'secondary-contrast',
+                    'success-contrast',
+                    'warning-contrast',
+                    'error-contrast',
+                    'background'
+                    ) {
   .color-#{$element}{
     @include  color('' + $element);
   }
