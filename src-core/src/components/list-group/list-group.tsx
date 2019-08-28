@@ -97,12 +97,27 @@ export class ListGroupComponent {
     } 
   }
 
+  getParentConfig() {
+    const elParent: any = this.el.parentElement;
+    if (!!elParent) {
+      const indentation = elParent.indentation;
+      if(!!elParent.indentation) {
+        this.indentation = indentation + 1;
+      }
+      if(!!elParent.option) {
+        this.option = elParent.option;
+      }
+    }
+  }
+
   componentWillLoad() {
     Array.from(
       this.el.querySelectorAll("se-list-group > se-list-item, se-list-group > se-list-group")
     ).forEach((item: any) => {
       item.indentation = this.indentation + 1;
     });
+    
+    this.getParentConfig();
   }
 
   componentDidLoad() {
