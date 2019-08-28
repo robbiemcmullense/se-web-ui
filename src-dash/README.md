@@ -51,7 +51,10 @@ If you have selected install_dependencies during the prompt, you can skip this p
         _Note:     `"node {} {} {} {}".format(`_
         _Note: with_
         _Note:     `"node {} \"{}\" \"{}\" {}".format(  `_
-        _Note: rename `./web_ui_dash/_imports_.py` with `__init__.py`_
+        _Note: modify last IFFE in file web_ui_dash\web_ui_dash.min.js_
+        _Note:     `(void 0)().then(function(){var t,e;t=window,Object(o.a)(t,r,e)})`_
+        _Note: with_
+        _Note:     `rr=window,Object(o.a)(rr,r,ir)` or `void function(){var t,e;t=window,Object(o.a)(t,r,e)}()` _
     2. Run and modify the `usage.py` sample dash app:
         ```
         $ python usage.py
