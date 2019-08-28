@@ -15,8 +15,6 @@ describe('AboutComponent', () => {
     await page.compareScreenshot('My About page', {fullPage: false});
   });
 
-  });
-
   it('renders an ecostruxure icon by default', async() => {
     let iconElement = await page.find('se-about >>> se-icon-ecostruxure');
     expect(iconElement).toBeTruthy();

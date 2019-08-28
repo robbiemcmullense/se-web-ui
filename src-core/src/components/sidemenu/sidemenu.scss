@@ -10,10 +10,6 @@
   width: 100%;
   z-index: 20;
   background-color: transparent !important;
-
-}
-se-link{
-  padding: 16px;
 }
 
 :host(.show-menu) {
@@ -121,4 +117,8 @@ se-link{
   @include display-flex();
   @include justify-content(center);
   @include align-items(center);
+}
+
+se-link {
+  padding: 16px;
 }

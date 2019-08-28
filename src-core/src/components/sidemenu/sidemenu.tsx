@@ -12,6 +12,7 @@ export class SidemenuComponent {
   backdropEl?: HTMLElement;
   menuInnerEl?: HTMLElement;
   menuItemInnerEl?: HTMLElement;
+  observer: any;
   @Element() el: HTMLElement;
 
   @State() open: boolean = false;
@@ -43,19 +44,6 @@ export class SidemenuComponent {
         });
       }
     }
-  }
-
-  async componentWillLoad() {
-    this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
-  }
-
-  async componentWillUpdate() {
-    this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
-  }
-
-  componentDidUnload() {
-    this.items.length = 0;
-    this.selectedItem = undefined;
   }
 
   noSelectedItem() {
@@ -97,10 +85,56 @@ export class SidemenuComponent {
     }, 200);
   }
 
+  private watchItemList() {
+    this.observer = new MutationObserver((mutations) => {
+      let activeItem = false;
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
+        }
+        if (mutation.removedNodes.length) {
+          this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
+          this.items.forEach((item: any) => {
+            if (item.active) {
+              activeItem = true;
+            }
+          });
+          if (!activeItem && this.selectedItem) {
+            this.selectedItem = undefined;
+            this.menuInnerEl.style.width = '250px';
+          }
+        }
+      });
+    });
+    // assign mutation observer for all browsers that use Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') === -1) {
+      this.observer.observe(this.el, {childList: true});
+    }
+  }
+
+  componentWillLoad() {
+    this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
+    this.watchItemList();
+  }
+
+  componentDidLoad() {
+    // assign mutation observer for MS Edge, as it uses polyfills instead of Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') > -1) {
+      let element = this.el.querySelector('.block-body');
+      this.observer.observe(element, {childList: true});
+    }
+  }
+
+  componentDidUnload() {
+    this.items.length = 0;
+    this.selectedItem = undefined;
+    this.observer.disconnect();
+  }
+
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item class={{ 'hide-nav-icon': !item.childElementCount }} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} />,
+        <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} />,
       ]
     })
   }
@@ -123,7 +157,7 @@ export class SidemenuComponent {
             </se-list>
             <se-icon-lifeison color="standard" />
             <div class="external-link">
-              <se-link url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
+              <se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
             </div>
           </div>
           <se-divider option="vertical"></se-divider>

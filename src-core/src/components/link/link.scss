@@ -21,3 +21,9 @@ a {
     color: $se-light-grey;
   }
 }
+
+:host(.sidemenu-link) {
+  a {
+    font-size: 16px;
+  }
+}
