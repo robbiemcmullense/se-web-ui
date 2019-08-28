@@ -48,13 +48,13 @@ If you have selected install_dependencies during the prompt, you can skip this p
         under global env modify file `C:\Users\username\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\dash\development\component_generator.py`  
         under virtual env modify file `[.venv]\Lib\site-packages\dash\development\component_generator.py`  
         line #64  
-             `"node {} {} {} {}".format(`  
+            `"node {} {} {} {}".format(`  
         with  
-             `"node {} \"{}\" \"{}\" {}".format(  `  
+            `"node {} \"{}\" \"{}\" {}".format(  `  
         modify last IFFE in file web_ui_dash\web_ui_dash.min.js  
-             `(void 0)().then(function(){var t,e;t=window,Object(o.a)(t,r,e)})`  
+            `(void 0)().then(function(){var t,e;t=window,Object(o.a)(t,r,e)})`  
         with  
-             `rr=window,Object(o.a)(rr,r,ir)` or `void function(){var t,e;t=window,Object(o.a)(t,r,e)}()` _
+            `rr=window,Object(o.a)(rr,r,ir)` or `void function(){var t,e;t=window,Object(o.a)(t,r,e)}()`_
     2. Run and modify the `usage.py` sample dash app:
         ```
         $ python usage.py
