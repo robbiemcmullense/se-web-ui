@@ -15,7 +15,7 @@
   }
 }
 
-:host(.banneritem) {
+:host(.banner-child) {
   button {
     height: 40px;
     margin-right: $spacing-large;
@@ -23,7 +23,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  :host(.banneritem) {
+  :host(.banner-child) {
     display: flex;
     button {
       width: 100%;

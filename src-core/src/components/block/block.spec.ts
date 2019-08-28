@@ -20,8 +20,8 @@ describe('BlockComponent', () => {
 		expect(block.display).toBe('flex');
 	});
 
-	it('should have an alternative color by default', () => {
-		expect(block.color).toBe('alternative');
+	it('should have a transparent color by default', () => {
+		expect(block.color).toBe('transparent');
 	});
 
 	it('should not be loading by default', () => {
@@ -40,7 +40,7 @@ describe('BlockComponent', () => {
 		expect(page.root).toEqualHtml(`
 			<se-block class="flex">
 				<mock:shadow-root>
-					<div class="alternative basic block-body">
+					<div class="basic block-body transparent">
 						<slot></slot>
 					</div>
 				</mock:shadow-root>

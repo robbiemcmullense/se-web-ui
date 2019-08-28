@@ -52,14 +52,14 @@ describe('BannerItemComponent with block and button components', () => {
     buttonElement = await page.find('se-button#button');
   });
   
-  it('adds a banneritem class to the host block element and the transparent color to its internal markup', async() => {
+  it('adds a banner-child class to the host block element and the transparent color to its internal markup', async() => {
     expect(blockElement).toBeTruthy();
-    expect(blockElement).toHaveClass('banneritem');
+    expect(blockElement).toHaveClass('banner-child');
     expect(blockElement.shadowRoot.querySelector('.block-body')).toHaveClass('transparent');
   });
 
-  it('adds a banneritem class to the host button element', async() => {
+  it('adds a banner-child class to the host button element', async() => {
     expect(buttonElement).toBeTruthy();
-    expect(buttonElement).toHaveClass('banneritem');
+    expect(buttonElement).toHaveClass('banner-child');
   });
 });

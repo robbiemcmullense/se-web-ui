@@ -19,9 +19,9 @@ describe('BlockComponent', () => {
     expect(hostElement).toHaveClass('flex');
   });
 
-  it('should have the basic and alternative classes since that is the default option and color', async() => {
+  it('should have the basic and transparent classes since that is the default option and color', async() => {
     expect(blockElement).toHaveClass('basic');
-    expect(blockElement).toHaveClass('alternative');
+    expect(blockElement).toHaveClass('transparent');
   });
 
   it('renders a standard class when the color property is set to standard', async() => {

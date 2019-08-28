@@ -1,8 +1,9 @@
+import '../mutation-observer-mock';
 import { BannerComponent } from './banner';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('BannerComponent', () => {
-	let banner;
+	let banner, eventSpy;
 
 	beforeEach(() => {
 		banner = new BannerComponent();
@@ -29,7 +30,7 @@ describe('BannerComponent', () => {
 	});
 
 	// need to see if we can update Jest to include MutationObserver
-	xit('should render', async() => {
+	it('should render', async() => {
 		const page = await newSpecPage({
 			components: [BannerComponent],
 			html: `<se-banner></se-banner>`,
@@ -48,7 +49,7 @@ describe('BannerComponent', () => {
 	});
 
 	// need to see if we can update Jest to include MutationObserver
-	xit('should render with two banner item elements', async() => {
+	it('should render with two banner item elements', async() => {
 		const page = await newSpecPage({
 			components: [BannerComponent],
 			html: `<se-banner><se-banner-item></se-banner-item><se-banner-item></se-banner-item></se-banner>`,
@@ -72,6 +73,12 @@ describe('BannerComponent', () => {
 				<se-banner-item></se-banner-item>
 			</se-banner>
 		`);
+	});
+
+	it('should call the watchItemList function when componentWillLoad is executed', () => {
+		eventSpy = jest.spyOn(banner, 'watchItemList');
+		banner.componentWillLoad();
+		expect(eventSpy).toHaveBeenCalled();
 	});
 
 	it('should set the selectedItem and selectedItemIndex to undefined when componentDidUnload is called', () => {

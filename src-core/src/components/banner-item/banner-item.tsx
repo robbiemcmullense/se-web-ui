@@ -39,14 +39,13 @@ export class BannerItemComponent {
 
   private setBlockTransparency() {
     Array.from(this.el.querySelectorAll('se-block')).forEach((item: any) => {
-      item.color = 'transparent';
-      item.classList.add('banneritem');
+      item.classList.add('banner-child');
     });
   }
 
   private setButtonClass() {
     Array.from(this.el.querySelectorAll('se-button')).forEach((item: any) => {
-      item.option = 'banneritem';
+      item.classList.add('banner-child');
     });
   }
 
