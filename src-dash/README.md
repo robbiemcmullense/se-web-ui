@@ -24,8 +24,8 @@ If you have selected install_dependencies during the prompt, you can skip this p
     $ virtualenv .venv
     $ . .venv/bin/activate
     ```
-    _Note: under proxy: `HTTP_PROXY=http://gateway.schneider.zscaler.net:9480 HTTPS_PROXY=http://gateway.schneider.zscaler.net:9480 virtualenv .venv`_
-    _Note: on Win: source .venv/Scripts/activate_
+    _Under proxy: `HTTP_PROXY=http://gateway.schneider.zscaler.net:9480 HTTPS_PROXY=http://gateway.schneider.zscaler.net:9480 virtualenv .venv`
+    on Win: source .venv/Scripts/activate_
 
 3. Install python packages required to build components.
     ```
@@ -44,17 +44,17 @@ If you have selected install_dependencies during the prompt, you can skip this p
         ```
         $ npm run build:all
         ```
-        _Note: on Win in order to dash-generate-components part of build not fail_
-        _Note: under global env modify file `C:\Users\username\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\dash\development\component_generator.py`_
-        _Note: under virtual env modify file `[.venv]\Lib\site-packages\dash\development\component_generator.py`_
-        _Note: line #64_
-        _Note:     `"node {} {} {} {}".format(`_
-        _Note: with_
-        _Note:     `"node {} \"{}\" \"{}\" {}".format(  `_
-        _Note: modify last IFFE in file web_ui_dash\web_ui_dash.min.js_
-        _Note:     `(void 0)().then(function(){var t,e;t=window,Object(o.a)(t,r,e)})`_
-        _Note: with_
-        _Note:     `rr=window,Object(o.a)(rr,r,ir)` or `void function(){var t,e;t=window,Object(o.a)(t,r,e)}()` _
+        _On Win in order to dash-generate-components part of build not fail
+        under global env modify file `C:\Users\username\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\dash\development\component_generator.py`
+        under virtual env modify file `[.venv]\Lib\site-packages\dash\development\component_generator.py`
+        line #64
+             `"node {} {} {} {}".format(`
+        with
+             `"node {} \"{}\" \"{}\" {}".format(  `
+        modify last IFFE in file web_ui_dash\web_ui_dash.min.js
+             `(void 0)().then(function(){var t,e;t=window,Object(o.a)(t,r,e)})`
+        with_
+             `rr=window,Object(o.a)(rr,r,ir)` or `void function(){var t,e;t=window,Object(o.a)(t,r,e)}()` _
     2. Run and modify the `usage.py` sample dash app:
         ```
         $ python usage.py
