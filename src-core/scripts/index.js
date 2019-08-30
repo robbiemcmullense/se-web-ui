@@ -2,7 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
 
-const srcReactFolder = "../src-react/src";
+const distFolder = "../src-react"
+const distFolderSrc = path.join(distFolder, "src");
+const distFolderCmp = path.join(distFolderSrc, "components");
 
 
 const getInputData = source => {
@@ -32,11 +34,8 @@ const getInputData = source => {
   return inputData.components;
 };
 
+
 const generateComponents = (destination, indexPath) => {
-  // Create destination path for new React Components files
-  if (!fs.existsSync(destination)) {
-    fs.mkdirSync(destination);
-  }
 
   // Read components template file
   let templateFile = fs.readFileSync(
@@ -119,8 +118,18 @@ const generateComponents = (destination, indexPath) => {
   );
 };
 
+const createFolder = function() {
+  for ( folder of [distFolder, distFolderSrc, distFolderCmp]) {
+    // Create destination path for new React Components files
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder);
+    }
+  }
+}
+
 try {
-  generateComponents(`${srcReactFolder}/components`, srcReactFolder);
+  createFolder();
+  generateComponents(distFolderCmp, distFolderSrc);
 } catch (err) {
   console.error(`\x1b[31m${err}`);
 }
