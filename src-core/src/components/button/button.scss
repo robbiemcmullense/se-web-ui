@@ -5,6 +5,10 @@
   display: inline-flex;
 }
 
+:host(.disabled) {
+  pointer-events: none;
+}
+
 :host(.display-block){
   display: flex;
   button {
