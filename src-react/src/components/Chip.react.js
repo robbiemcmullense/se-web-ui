@@ -22,9 +22,9 @@ export default class Chip extends Component {
   }
 
 	render() {
-		const { block, canClose, color, disabled, selected, value, didClose, children } = this.props;
+		const { block, canClose, color, disabled, selected, size, value, didClose, children } = this.props;
 		return (
-			<se-chip block={block} can-close={canClose} color={color} disabled={disabled} selected={selected} value={value} ref={this._handleRef} >{children}</se-chip>
+			<se-chip block={block} can-close={canClose} color={color} disabled={disabled} selected={selected} size={size} value={value} ref={this._handleRef} >{children}</se-chip>
 		);
 	}
 }
@@ -57,6 +57,12 @@ When set to true, the chip will be as wide as its container.
    * Indicates whether or not the chip is selected.  Set to `false` by default.
    */
   selected: PropTypes.bool,
+  /**
+   * Defines the size of the chip.
+`nano` sets the font to 14px and the height to 24px.
+`small` is the default option, with a 16px font and a 32px height.
+   */
+  size: PropTypes.string,
   /**
    * The text you want to display in your chip.
    */
