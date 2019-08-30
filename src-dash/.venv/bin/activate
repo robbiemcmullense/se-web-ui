@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/franciosdelpech/Documents/GIT-SE/se-web-ui/src-dash/.venv"
+VIRTUAL_ENV="/Users/franciosdelpech/Developments/GIT-SE/se-web-ui/src-dash/.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

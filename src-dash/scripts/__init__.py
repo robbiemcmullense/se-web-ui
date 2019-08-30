@@ -30,18 +30,13 @@ _current_path = _os.path.dirname(_os.path.abspath(__file__))
 
 _this_module = _sys.modules[__name__]
 
+_js_dist = []
 
-_js_dist = [
-    {
-        'relative_package_path': 'web_ui_dash.min.js',
-        'namespace': package_name
-    }
-]
+# List all .js files to be added and sent to the client
+_js_files = glob.glob(_os.path.join(_basepath, '*.js'))
 
-# _js_dist = []
-
-# for x in range(1,85):
-#     _js_dist.append({'assets_external_path': "x.js".replace("x", str(x)),'namespace': package_name})
+for x in _js_files:
+    _js_dist.append({'relative_package_path': x.replace(_basepath + _os.sep, ''),'namespace': package_name, 'type': "module", 'nomodule': ""})
 
 _css_dist = []
 

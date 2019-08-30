@@ -14,6 +14,7 @@
     "build.all.copy.icons-fonts": "cpx \"./node_modules/@se/icons/fonts/*\" assets/icons/fonts",
     "build.all.js": "webpack --mode production",
     "build.all.py": "dash-generate-components \"./src/components\" web_ui_dash",
+    "build.all.copy.init": "cpx \"./scripts/*\" web_ui_dash",
     "build.all.rm.src": "rimraf \"./src\"",
     "build.js": "webpack --mode development",
     "build.activated.py": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py)",

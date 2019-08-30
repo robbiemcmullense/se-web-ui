@@ -38,7 +38,7 @@ Chip.propTypes = {
   children: PropTypes.node,
   /**
    * Optional property that defines if the chip displays as a block in it's container.
-   * When set to true, the chip will be as wide as its container.
+When set to true, the chip will be as wide as its container.
    */
   block: PropTypes.bool,
   /**

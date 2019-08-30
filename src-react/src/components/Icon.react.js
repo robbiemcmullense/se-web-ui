@@ -23,7 +23,7 @@ Icon.propTypes = {
   children: PropTypes.node,
   /**
    * Optional property that defines the background color of the button.
-   * The default color will be inherited from its parent.
+The default color will be inherited from its parent.
    */
   color: PropTypes.string,
   /**
@@ -32,11 +32,11 @@ Icon.propTypes = {
   option: PropTypes.string,
   /**
    * Defines the size of an icon.
-   * `nano` sets the size to 14px.
-   * `small` sets the size to 24px. (default setting)
-   * `medium` sets the size to 32px
-   * `large` sets the size to 52px.
-   * `xlarge` sets the size to 62px.
+`nano` sets the size to 14px.
+`small` sets the size to 24px. (default setting)
+`medium` sets the size to 32px
+`large` sets the size to 52px.
+`xlarge` sets the size to 62px.
    */
   size: PropTypes.string
 };

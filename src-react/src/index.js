@@ -1,11 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 
+// Does not work as expected with Dash...
 import { defineCustomElements, applyPolyfills } from "@se/web-ui/loader";
-// Add custom element definition to the windows
-
-//applyPolyfills().then(() => {
+// applyPolyfills().then(() => {
   defineCustomElements(window);
-//});
+// });
 
 import About from "./components/About.react";
 import App from "./components/App.react";

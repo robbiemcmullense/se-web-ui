@@ -18,14 +18,14 @@
 
 ### Used by
 
- - [se-breadcrumb-item](..\breadcrumb-item)
- - [se-dialog-content](..\dialog-content)
- - [se-header](..\header)
- - [se-list-group](..\list-group)
- - [se-list-item](..\list-item)
- - [se-sidemenu](..\sidemenu)
- - [se-tooltip-content](..\tooltip-content)
- - [se-tooltip-header](..\tooltip-header)
+ - [se-breadcrumb-item](../breadcrumb-item)
+ - [se-dialog-content](../dialog-content)
+ - [se-header](../header)
+ - [se-list-group](../list-group)
+ - [se-list-item](../list-item)
+ - [se-sidemenu](../sidemenu)
+ - [se-tooltip-content](../tooltip-content)
+ - [se-tooltip-header](../tooltip-header)
 
 ### Graph
 ```mermaid

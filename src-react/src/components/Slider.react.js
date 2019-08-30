@@ -38,7 +38,7 @@ Slider.propTypes = {
   children: PropTypes.node,
   /**
    * Indicates if your slider is disabled.
-   * The default setting is `false`.
+The default setting is `false`.
    */
   disabled: PropTypes.bool,
   /**

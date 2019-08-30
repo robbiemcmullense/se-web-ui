@@ -7,11 +7,11 @@
   "dependencies": {
     "@se/icons": "^3.5.1",
     "@se/web-ui": "link:../../core",
+    "@se/web-ui-react": "link:..",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "^1.1.4",
-    "web-ui-react": "link:.."
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -23,8 +23,8 @@ DialogHeader.propTypes = {
   children: PropTypes.node,
   /**
    * Defines the color of the dialog header.
-   * `alternative`: Alternative background with primary color for the text.
-   * `primary`: Primary color schema.
+`alternative`: Alternative background with primary color for the text.
+`primary`: Primary color schema.
    */
   color: PropTypes.string
 };
