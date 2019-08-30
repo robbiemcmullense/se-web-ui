@@ -5,13 +5,14 @@ describe('AboutComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-about></se-about>');  
+    await page.setContent('<se-about></se-about>');
     element = await page.find('se-about');
   });
-  
+
   it('renders', async() => {
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
+    await page.compareScreenshot('My About page', {fullPage: false});
   });
 
   it('renders an ecostruxure icon by default', async() => {

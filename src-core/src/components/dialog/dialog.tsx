@@ -34,13 +34,13 @@ export class DialogComponent {
    */
   @Prop() canBackdrop: boolean = true;
 
-  @Watch('color') colorDidChange(){
+  @Watch('color') colorDidChange() {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach((item: any) => {
       item.color = this.color;
     });
   }
 
-  @Watch('open') openDidChange(){
+  @Watch('open') openDidChange() {
     if(this.open){
       this.addAnimation(null);
     } else {
@@ -59,7 +59,6 @@ export class DialogComponent {
       this.open = false;
     }
   }
-
   /**
    * Emit the `backdrop` event from the dialog's parent component if the escape key is clicked and if `canBackdrop=true`.
    */
@@ -81,8 +80,10 @@ export class DialogComponent {
 
   private addAnimation(callback) {
     this.el.classList.add(SHOW);
-    this.menuInnerEl.classList.add(SHOW);
-    this.backdropEl.classList.add(SHOW);
+    if (this.menuInnerEl && this.backdropEl) {
+      this.menuInnerEl.classList.add(SHOW);
+      this.backdropEl.classList.add(SHOW);
+    }
     setTimeout(() => {
       this.menuInnerEl.classList.remove(SHOW);
       this.backdropEl.classList.remove(SHOW);

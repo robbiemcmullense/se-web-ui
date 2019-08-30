@@ -52,7 +52,7 @@ export class RadioGroupComponent {
     });
   }
 
-  private updateItemMode(){
+  private updateItemMode() {
     let buttons = this.el.querySelectorAll('se-button, se-radio');
     buttons.forEach((button: any) => {
       if (button.localName == 'se-button') {
