@@ -59,7 +59,7 @@ export class ListItemComponent {
     const indentation = myParent.indentation;
     if(indentation !== null && indentation !== undefined) {
       this.indentation = indentation + 1;
-      console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
+      // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
     }
     if(!!myParent.option) {
       this.option = myParent.option;
