@@ -31,4 +31,20 @@ describe('BlockContent', () => {
 			</se-block-content>
 		`);
 	});
+
+	it('should render with an option-content class reflecting the specified option', async() => {
+		const page = await newSpecPage({
+			components: [BlockContent],
+			html: `<se-block-content option="widget"></se-block-content>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-block-content option="widget">
+				<mock:shadow-root>
+					<div class="se-block-content widget-content">
+						<slot></slot>
+      		</div>
+				</mock:shadow-root>
+			</se-block-content>
+		`);
+	});
 });

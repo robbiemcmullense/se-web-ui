@@ -86,7 +86,33 @@ describe('RadioGroupComponent', () => {
 	it('emits the didChange event when a child element in the radio group is clicked on', () => {
 		const event = {detail: {value: 'my value'}};
 		const eventSpy = jest.spyOn(radioGroup.didChange, 'emit');
-		radioGroup. handleEventChange(event, 'se-button');
+		radioGroup.handleEventChange(event, 'se-button');
 		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('passes a secondary color value to se-radio child elements when specified', () => {
+		radioGroup.color = 'secondary';
+		let radioElm = document.createElement('se-radio');
+		radioGroup.el.appendChild(radioElm);
+		radioGroup.updateItemMode();
+		expect(radioElm.color).toEqual('secondary');
+	});
+
+	it('passes a nano size and primary color value to se-button child elements when specified', () => {
+		radioGroup.size = 'nano';
+		radioGroup.color = 'primary';
+		let buttonElm = document.createElement('se-button');
+		radioGroup.el.appendChild(buttonElm);
+		radioGroup.updateItemMode();
+		expect(buttonElm.size).toEqual('nano');
+		expect(buttonElm.color).toEqual('primary');
+	});
+
+	it('passes a disabled property value to se-button child elements when specified', () => {
+		radioGroup.disabled = true;
+		let buttonElm = document.createElement('se-button');
+		radioGroup.el.appendChild(buttonElm);
+		radioGroup.updateItemMode();
+		expect(buttonElm.disabled).toBeTruthy();
 	});
 });

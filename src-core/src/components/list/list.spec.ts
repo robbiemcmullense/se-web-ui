@@ -32,5 +32,16 @@ describe('list-group', () => {
 				</mock:shadow-root>
 			</se-list>
 		`);
-	});
+  });
+  
+  it('should pass its option property to se-list-group child elements', () => {
+    list.option = 'dropdown';
+    let listGroup = document.createElement('se-list-group');
+    let listItem = document.createElement('se-list-item');
+    listGroup.appendChild(listItem);
+    list.el.appendChild(listGroup);
+    list.componentWillLoad();
+    expect(listGroup.option).toEqual('dropdown');
+    expect(listItem.option).toEqual('dropdown');
+  });
 });

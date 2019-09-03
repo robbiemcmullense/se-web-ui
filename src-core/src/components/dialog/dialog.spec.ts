@@ -42,7 +42,7 @@ describe('DialogComponent', () => {
 		expect(dialogComponent.open).toBeFalsy();
 	});
 
-	it('should render', async() => {
+	it('should render with a medium class to reflect the default medium size', async() => {
 		const page = await newSpecPage({
 			components: [DialogComponent],
 			html: `<se-dialog></se-dialog>`,
@@ -51,6 +51,23 @@ describe('DialogComponent', () => {
 			<se-dialog>
 				<mock:shadow-root>
 					<div class="dialog-wrapper medium">
+						<div class="dialog-background hide-dialog"></div>
+						<div class="dialog hide-dialog"><slot></slot></div>
+					</div>
+				</mock:shadow-root>
+			</se-dialog>
+		`);
+	});
+
+	it('should render with the large class when the size is large', async() => {
+		const page = await newSpecPage({
+			components: [DialogComponent],
+			html: `<se-dialog size="large"></se-dialog>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-dialog size="large">
+				<mock:shadow-root>
+					<div class="dialog-wrapper large">
 						<div class="dialog-background hide-dialog"></div>
 						<div class="dialog hide-dialog"><slot></slot></div>
 					</div>
@@ -94,5 +111,13 @@ describe('DialogComponent', () => {
 		const eventSpy = jest.spyOn(dialogComponent.backdrop, 'emit');
 		dialogComponent.handleKeyDown(event);
 		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should set the alternative color property to the dialog header when the se-dialog color is set to alternative', () => {
+		dialogComponent.color = 'alternative';
+		let header = document.createElement('se-dialog-header');
+		dialogComponent.el.appendChild(header);
+		dialogComponent.colorDidChange();
+		expect(header.color).toEqual('alternative');
 	});
 });

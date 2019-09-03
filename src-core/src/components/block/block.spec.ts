@@ -74,4 +74,32 @@ describe('BlockComponent', () => {
 		expect(block.el.style.minHeight).toEqual(block.height);
 	});
 
+	it('should set the card option to block-header, block-content, and block-footer elements when se-block has the option set to card', () => {
+		block.option = 'card';
+		let header = document.createElement('se-block-header');
+		let content = document.createElement('se-block-content');
+		let footer = document.createElement('se-block-footer');
+		block.el.appendChild(header);
+		block.el.appendChild(content);
+		block.el.appendChild(footer);
+		block.updateItemMode();
+		expect(header.option).toEqual('card');
+		expect(content.option).toEqual('card');
+		expect(footer.option).toEqual('card');
+	});
+
+	it('should set the widget option only to block-content elements when se-block has the option set to card', () => {
+		block.option = 'widget';
+		let header = document.createElement('se-block-header');
+		let content = document.createElement('se-block-content');
+		let footer = document.createElement('se-block-footer');
+		block.el.appendChild(header);
+		block.el.appendChild(content);
+		block.el.appendChild(footer);
+		block.updateItemMode();
+		expect(header.option).toBeUndefined();
+		expect(content.option).toEqual('widget');
+		expect(footer.option).toBeUndefined();
+	});
+
 });

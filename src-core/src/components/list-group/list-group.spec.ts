@@ -114,4 +114,20 @@ describe('list-group', () => {
     listGroup.toggleCollapse(event);
     expect(eventSpy).toHaveBeenCalled();
   });
+
+  it('should inherit the headline option from its parent when specified', () => {
+    let parentListElm = document.createElement('se-list');
+    parentListElm.option = 'headline';
+    parentListElm.appendChild(listGroup.el);
+    listGroup.getParentConfig();
+    expect(listGroup.option).toEqual('headline');
+  });
+
+  it('should set an indentation of 2 when its parent element has an indentation of 1', () => {
+    let parentListElm = document.createElement('se-list-group');
+    parentListElm.indentation = 1;
+    parentListElm.appendChild(listGroup.el);
+    listGroup.getParentConfig();
+    expect(listGroup.indentation).toEqual(2);
+  });
 });

@@ -176,6 +176,20 @@ describe('SidemenuComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
+	it('should add and remove classes to the menu and backdrop elements when addAnimation is called', () => {
+		const menuAddSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'add');
+		const menuRemoveSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'remove');
+		const backdropAddSpy = jest.spyOn(sidemenu.backdropEl.classList, 'add');
+		const backdropRemoveSpy = jest.spyOn(sidemenu.backdropEl.classList, 'remove');
+		sidemenu.addAnimation();
+		expect(menuAddSpy).toHaveBeenCalled();
+		expect(backdropAddSpy).toHaveBeenCalled();
+		setTimeout(() => {
+			expect(menuRemoveSpy).toHaveBeenCalled();
+			expect(backdropRemoveSpy).toHaveBeenCalled();
+		}, 300);
+	});
+
 	it('should call the removeAnimation method when the toggle method is called and the sidemenu is open', () => {
 		sidemenu.open = true;
 		const eventSpy = jest.spyOn(sidemenu, 'removeAnimation');
@@ -183,17 +197,23 @@ describe('SidemenuComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
+	it('should add and remove classes to the menu and backdrop elements when addAnimation is called', () => {
+		const menuAddSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'add');
+		const menuRemoveSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'remove');
+		const backdropAddSpy = jest.spyOn(sidemenu.backdropEl.classList, 'add');
+		const backdropRemoveSpy = jest.spyOn(sidemenu.backdropEl.classList, 'remove');
+		sidemenu.removeAnimation();
+		expect(menuAddSpy).toHaveBeenCalled();
+		expect(backdropAddSpy).toHaveBeenCalled();
+		setTimeout(() => {
+			expect(menuRemoveSpy).toHaveBeenCalled();
+			expect(backdropRemoveSpy).toHaveBeenCalled();
+		}, 300);
+	});
+
 	it('should set the selectedItem without a child element count to undefined when the toggle method is called and the sidemenu is open', () => {
 		sidemenu.open = true;
 		sidemenu.selectedItem = 'selected item';
-		sidemenu.menuInnerEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
-		sidemenu.backdropEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
 		sidemenu.toggle();
 		expect(sidemenu.selectedItem).toBeUndefined();
 	});
@@ -201,9 +221,45 @@ describe('SidemenuComponent', () => {
 	it('should set the selected item to undefined and return the items length to zero when componentDidUnload is called', () => {
 		sidemenu.items = ['first item', 'second item'];
 		sidemenu.selectedItem = 'selected item';
-		sidemenu.observer = {disconnect: () => {return "disconnected"}};
+		sidemenu.observer = {disconnect: jest.fn()};
 		sidemenu.componentDidUnload();
 		expect(sidemenu.selectedItem).toBeUndefined();
 		expect(sidemenu.items.length).toEqual(0);
+	});
+
+	it('should assign a mutation observer for Edge browsers when componentDidLoad is called', () => {
+		sidemenu.observer = {observe: jest.fn()};
+		const eventSpy = jest.spyOn(sidemenu.observer, 'observe');
+		Object.defineProperty(window.navigator, 'userAgent', {value: 'Edge'});
+		sidemenu.componentDidLoad();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should disconnect the mutation observer when componentDidUnload is called', () => {
+		sidemenu.observer = {disconnect: jest.fn()};
+		const eventSpy = jest.spyOn(sidemenu.observer, 'disconnect');
+		sidemenu.componentDidUnload();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should add to the items array when a sidemenu item is added, and not be active by default', () => {
+		let node = document.createElement('se-sidemenu-item');
+		node.setAttribute('item', 'Close');
+		sidemenu.el.appendChild(node);
+		sidemenu.componentWillLoad();
+		expect(sidemenu.items.length).toEqual(1);
+		expect(sidemenu.items[0].active).toBeFalsy();
+	});
+
+	it('should add to the items array and set it as active when a sidemenu item is added and setActive is called', () => {
+		let node = document.createElement('se-sidemenu-item');
+		node.setAttribute('item', 'Close');
+		sidemenu.el.appendChild(node);
+		sidemenu.menuInnerEl = {style: {}};
+		sidemenu.componentWillLoad();
+		sidemenu.setActive(sidemenu.items[0]);
+		setTimeout(() => {
+			expect(sidemenu.items[0].active).toBeTruthy();
+		});
 	});
 });

@@ -53,4 +53,20 @@ describe('list-item', () => {
     listItem.SelectedDidChange();
     expect(eventSpy).toHaveBeenCalled();
   });
+
+  it('should inherit the nav option from its parent when specified', () => {
+    let parentListElm = document.createElement('se-list');
+    parentListElm.option = 'nav';
+    parentListElm.appendChild(listItem.el);
+    listItem.getParentConfig();
+    expect(listItem.option).toEqual('nav');
+  });
+
+  it('should set an indentation of 2 when its parent element has an indentation of 1', () => {
+    let parentListElm = document.createElement('se-list-group');
+    parentListElm.indentation = 1;
+    parentListElm.appendChild(listItem.el);
+    listItem.getParentConfig();
+    expect(listItem.indentation).toEqual(2);
+  });
 });

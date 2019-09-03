@@ -65,4 +65,10 @@ describe('RadioComponent', () => {
 		radio.emitEvent();
 		expect(eventSpy).toHaveBeenCalled();
 	});
+
+	it('should change the checked property to match the selected property', () => {
+		radio.selected = true;
+		radio.selectedDidChange();
+		expect(radio.checked).toBeTruthy();
+	});
 });

@@ -66,6 +66,26 @@ describe('FormFieldComponent', () => {
 		expect(eventSpy).toHaveBeenCalledTimes(3);
 	});
 
+	it('should disable the input field when the form field disabled property is true', () => {
+		formField.disabled = true;
+		let input = document.createElement('input');
+		input.setAttribute('type', 'text');
+		formField.el.appendChild(input);
+		formField.initLabel();
+		expect(input.disabled).toBeTruthy();
+	});
+
+	it('should set the required and label properties to the radio component when they are set to the form field', () => {
+		formField.type = 'radio';
+		formField.required = true;
+		formField.label = 'label';
+		let radio = document.createElement('se-radio');
+		formField.el.appendChild(radio);
+		formField.initLabel();
+		expect(radio.label).toEqual('label');
+		expect(radio.required).toBeTruthy();
+	});
+
 	it('should call the handleEvent function 3 times, when a user input changes on the radio, checkbox, or input, element', () => {
 		const event = {detail: {selected: true}};
 		const eventSpy = jest.spyOn(formField, 'handleEvent');

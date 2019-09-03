@@ -28,5 +28,19 @@ describe('IconLifeisonComponent', () => {
 				</mock:shadow-root>
 			</se-icon-lifeison>
 		`);
+	});
+	
+	it('should render with the standard class when specified', async() => {
+    const page = await newSpecPage({
+			components: [IconLifeisonComponent],
+			html: `<se-icon-lifeison color="standard"></se-icon-lifeison>`,
+		});
+		expect(page.root).toEqualHtml(`
+			<se-icon-lifeison color="standard">
+				<mock:shadow-root>
+					<img class="standard" src="[object Object]">
+				</mock:shadow-root>
+			</se-icon-lifeison>
+		`);
   });
 });
