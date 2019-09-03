@@ -44,7 +44,7 @@ describe('ChipComponent', () => {
 		expect(page.root).toEqualHtml(`
 			<se-chip value="my chip value">
 				<mock:shadow-root>
-					<div class="se-chip standard">
+					<div class="se-chip small standard">
 						<div class="value">my chip value</div>
 					</div>
 				</mock:shadow-root>
@@ -60,7 +60,7 @@ describe('ChipComponent', () => {
 		expect(page.root).toEqualHtml(`
 			<se-chip value="my chip value" can-close="true">
 				<mock:shadow-root>
-					<div class="se-chip standard">
+					<div class="se-chip small standard">
 						<div class="can-close value">my chip value</div>
 						<div class="close se-icon">action_delete_cross</div>
 					</div>

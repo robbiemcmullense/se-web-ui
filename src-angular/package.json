@@ -6,7 +6,7 @@
     "postinstall": "npm build",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --code-coverage --watch=false",
+    "test": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -49,6 +49,6 @@
     "tsickle": "^0.37.0",
     "tslib": "^1.10.0",
     "tslint": "^5.19.0",
-    "typescript": "^3.5.3"
+    "typescript": "~3.5.3"
   }
 }
