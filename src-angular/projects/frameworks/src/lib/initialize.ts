@@ -5,8 +5,8 @@ export function appInitialize(doc: Document) {
     const win = doc.defaultView as any;
     if (win) {
       applyPolyfills().then(() => {
-        defineCustomElements(window)
-      })
+        return defineCustomElements(win);
+      });
     }
   };
 }
