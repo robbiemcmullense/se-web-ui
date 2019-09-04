@@ -117,7 +117,7 @@ describe('DialogComponent', () => {
 		dialogComponent.color = 'alternative';
 		let header = document.createElement('se-dialog-header');
 		dialogComponent.el.appendChild(header);
-		dialogComponent.colorDidChange();
+		dialogComponent.componentDidLoad();
 		expect(header.color).toEqual('alternative');
 	});
 });

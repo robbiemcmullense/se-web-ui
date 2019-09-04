@@ -82,7 +82,7 @@ describe('BlockComponent', () => {
 		block.el.appendChild(header);
 		block.el.appendChild(content);
 		block.el.appendChild(footer);
-		block.updateItemMode();
+		block.componentWillLoad();
 		expect(header.option).toEqual('card');
 		expect(content.option).toEqual('card');
 		expect(footer.option).toEqual('card');

@@ -86,16 +86,16 @@ describe('BreadcrumbComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should add to the items array when updateLastItem is called, setting isLast to the item', () => {
+	it('should add to the items array when the component loads', () => {
 		let node = document.createElement('se-breadcrumb-item');
 		let textNode = document.createTextNode('New');
 		node.appendChild(textNode);
 		breadcrumb.el.appendChild(node);
-		breadcrumb.updateLastItem();
+		breadcrumb.componentWillLoad();
 		expect(breadcrumb.items.length).toEqual(1);
 	});
 
-	it('should add two items array when updateLastItem is called, setting isLast=false to the first item and isLast=true for the second', () => {
+	it('should add two items array when the component loads, setting isLast=false to the first item and isLast=true for the second', () => {
 		let nodeOne = document.createElement('se-breadcrumb-item');
 		let firstTextNode = document.createTextNode('New 1');
 		nodeOne.appendChild(firstTextNode);
@@ -104,7 +104,7 @@ describe('BreadcrumbComponent', () => {
 		nodeOne.appendChild(secondTextNode);
 		breadcrumb.el.appendChild(nodeOne);
 		breadcrumb.el.appendChild(nodeTwo);
-		breadcrumb.updateLastItem();
+		breadcrumb.componentWillLoad();
 		expect(breadcrumb.items.length).toEqual(2);
 		expect(breadcrumb.items[0].isLast).toBeFalsy();
 		expect(breadcrumb.items[1].isLast).toBeTruthy();
