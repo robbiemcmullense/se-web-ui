@@ -95,7 +95,6 @@
     @include  color('alternative-contrast');
     &:after, &.active {
       @include  color('primary');
-      opacity: 1;
     }
   }
 }
