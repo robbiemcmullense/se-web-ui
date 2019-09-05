@@ -12,7 +12,7 @@ describe('blockHeader', () => {
 		expect(blockHeader).toBeTruthy();
 	});
 
-	it('should render', async() => {
+	it('should render with a se-block-header class', async() => {
 		const page = await newSpecPage({
 			components: [BlockHeader],
 			html: `<se-block-header></se-block-header>`,

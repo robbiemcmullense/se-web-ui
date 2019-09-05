@@ -25,7 +25,7 @@ describe('DropdownComponent', () => {
     expect(dropdown.opened).toBeTruthy();
   });
 
-  it('should render', async() => {
+  it('should render, with a se-dropdown class', async() => {
     const page = await newSpecPage({
       components: [DropdownComponent],
       html: `<se-dropdown></se-dropdown>`,

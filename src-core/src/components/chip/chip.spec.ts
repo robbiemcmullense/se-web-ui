@@ -36,7 +36,7 @@ describe('ChipComponent', () => {
 		expect(chip.canClose).toBeFalsy();
 	});
 
-	it('should render with the specified value', async() => {
+	it('should render with a se-chip class', async() => {
 		const page = await newSpecPage({
 			components: [ChipComponent],
 			html: `<se-chip value="my chip value"></se-chip>`,

@@ -12,7 +12,7 @@ describe('blockFooter', () => {
 		expect(blockFooter).toBeTruthy();
 	});
 
-	it('should render', async() => {
+	it('should render with a se-block-footer class', async() => {
 		const page = await newSpecPage({
 			components: [BlockFooter],
 			html: `<se-block-footer></se-block-footer>`,

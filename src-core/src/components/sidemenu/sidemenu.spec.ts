@@ -42,126 +42,50 @@ describe('SidemenuComponent', () => {
 		expect(sidemenu.noSelectedItem()).toBeTruthy();
 	})
 
-	it('should render', async() => {
+	it('should render, with a menu-background class', async() => {
 		const page = await newSpecPage({
 			components: [SidemenuComponent],
 			html: `<se-sidemenu></se-sidemenu>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-sidemenu>
-				<mock:shadow-root>
-					<div class="menu-background animated d-flex-row flex"></div>
-					<div class="actual-menu animated full-content d-flex-column flex">
-						<div class="d-flex flex">
-							<div class="listNavItems">
-								<div class="d-flex-center flex">
-									<span class="menu-sidenav">
-										<se-icon size="large" color="primary">test_results_nok</se-icon>
-									</span>
-									<h3 class="header-title">Menu</h3>
-								</div>
-								<se-divider></se-divider>
-								<se-list option="nav">
-								</se-list>
-								<se-icon-lifeison color="standard"></se-icon-lifeison>
-								<div class="external-link">
-									<se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
-								</div>
-							</div>
-							<se-divider option="vertical"></se-divider>
-							<se-block>
-								<slot></slot>
-							</se-block>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-sidemenu>
-		`);
+		expect(page.root.shadowRoot.querySelector('.menu-background')).toBeTruthy();
 	});
 
-	it('should render with 1 sidemenu item', async() => {
+	it('should render with 1 sidemenu item and a corresponding se-list-item element', async() => {
 		const page = await newSpecPage({
 			components: [SidemenuComponent],
 			html: `<se-sidemenu><se-sidemenu-item></se-sidemenu-item></se-sidemenu>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-sidemenu>
-				<mock:shadow-root>
-					<div class="menu-background animated d-flex-row flex"></div>
-					<div class="actual-menu animated full-content d-flex-column flex">
-						<div class="d-flex flex">
-							<div class="listNavItems">
-								<div class="d-flex-center flex">
-									<span class="menu-sidenav">
-										<se-icon size="large" color="primary">test_results_nok</se-icon>
-									</span>
-									<h3 class="header-title">Menu</h3>
-								</div>
-								<se-divider></se-divider>
-								<se-list option="nav">
-									<se-list-item class="hide-nav-icon sidemenu-list-item" option="nav"></se-list-item>
-								</se-list>
-								<se-icon-lifeison color="standard"></se-icon-lifeison>
-								<div class="external-link">
-									<se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
-								</div>
-							</div>
-							<se-divider option="vertical"></se-divider>
-							<se-block>
-								<slot></slot>
-							</se-block>
-						</div>
-					</div>
-				</mock:shadow-root>
-				<se-sidemenu-item></se-sidemenu-item>
-			</se-sidemenu>
-		`);
+		expect(page.root.shadowRoot.querySelector('se-list-item')).toBeTruthy();
 	});
 
 	it('should render with 1 sidemenu item, along with the menu item content', async() => {
 		const page = await newSpecPage({
 			components: [SidemenuComponent],
+
 			html: `<se-sidemenu><se-sidemenu-item><div></div></se-sidemenu-item></se-sidemenu>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-sidemenu>
-				<mock:shadow-root>
-					<div class="menu-background animated d-flex-row flex"></div>
-					<div class="actual-menu animated full-content d-flex-column flex">
-						<div class="d-flex flex">
-							<div class="listNavItems">
-								<div class="d-flex-center flex">
-									<span class="menu-sidenav">
-										<se-icon size="large" color="primary">test_results_nok</se-icon>
-									</span>
-									<h3 class="header-title">Menu</h3>
-								</div>
-								<se-divider></se-divider>
-								<se-list option="nav">
-									<se-list-item class="sidemenu-list-item" option="nav"></se-list-item>
-								</se-list>
-								<se-icon-lifeison color="standard"></se-icon-lifeison>
-								<div class="external-link">
-									<se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
-								</div>
-							</div>
-							<se-divider option="vertical"></se-divider>
-							<se-block>
-								<slot></slot>
-							</se-block>
-						</div>
-					</div>
-				</mock:shadow-root>
-				<se-sidemenu-item><div></div></se-sidemenu-item>
-			</se-sidemenu>
-		`);
+		expect(page.root.querySelector('div')).toBeTruthy();
 	});
 
-	it('should set the menuInnerEl width to 250px by default', () => {
-		const item = 'my item';
+	it('should add to the items array when a sidemenu item is added, and not be active by default', () => {
+		let node = document.createElement('se-sidemenu-item');
+		node.setAttribute('item', 'Close');
+		sidemenu.el.appendChild(node);
+		sidemenu.componentWillLoad();
+		expect(sidemenu.items.length).toEqual(1);
+		expect(sidemenu.items[0].active).toBeFalsy();
+	});
+
+	it('should add to the items array and set it as active when a sidemenu item is added and setActive is called', () => {
+		let node = document.createElement('se-sidemenu-item');
+		node.setAttribute('item', 'Close');
+		sidemenu.el.appendChild(node);
 		sidemenu.menuInnerEl = {style: {}};
-		sidemenu.setActive(item);
-		expect(sidemenu.menuInnerEl.style.width).toEqual('250px');
+		sidemenu.componentWillLoad();
+		sidemenu.setActive(sidemenu.items[0]);
+		setTimeout(() => {
+			expect(sidemenu.items[0].active).toBeTruthy();
+		});
 	});
 
 	it('should call the watchItemList function when the component loads', () => {
@@ -170,18 +94,33 @@ describe('SidemenuComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should call the addAnimation method when the toggle method is called and the sidemenu is closed', () => {
-		const eventSpy = jest.spyOn(sidemenu, 'addAnimation');
-		sidemenu.toggle();
+	it('should assign a mutation observer for Edge browsers when componentDidLoad is called', () => {
+		sidemenu.observer = {observe: jest.fn()};
+		const eventSpy = jest.spyOn(sidemenu.observer, 'observe');
+		Object.defineProperty(window.navigator, 'userAgent', {value: 'Edge'});
+		sidemenu.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should add and remove classes to the menu and backdrop elements when addAnimation is called', () => {
+	it('should set the menuInnerEl width to 250px by default', () => {
+		const item = 'my item';
+		sidemenu.menuInnerEl = {style: {}};
+		sidemenu.setActive(item); // user clicks on a sidemenu list item
+		expect(sidemenu.menuInnerEl.style.width).toEqual('250px');
+	});
+
+	it('should call the addAnimation method when the toggle method is called and the sidemenu is closed', () => {
+		const eventSpy = jest.spyOn(sidemenu, 'addAnimation');
+		sidemenu.toggle(); // user clicks on "X" button
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should add and remove classes to the menu and backdrop elements when the toggle method is called', () => {
 		const menuAddSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'add');
 		const menuRemoveSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'remove');
 		const backdropAddSpy = jest.spyOn(sidemenu.backdropEl.classList, 'add');
 		const backdropRemoveSpy = jest.spyOn(sidemenu.backdropEl.classList, 'remove');
-		sidemenu.addAnimation();
+		sidemenu.toggle();
 		expect(menuAddSpy).toHaveBeenCalled();
 		expect(backdropAddSpy).toHaveBeenCalled();
 		setTimeout(() => {
@@ -197,12 +136,12 @@ describe('SidemenuComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should add and remove classes to the menu and backdrop elements when addAnimation is called', () => {
+	it('should add and remove classes to the menu and backdrop elements when the toggle method is called', () => {
 		const menuAddSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'add');
 		const menuRemoveSpy = jest.spyOn(sidemenu.menuInnerEl.classList, 'remove');
 		const backdropAddSpy = jest.spyOn(sidemenu.backdropEl.classList, 'add');
 		const backdropRemoveSpy = jest.spyOn(sidemenu.backdropEl.classList, 'remove');
-		sidemenu.removeAnimation();
+		sidemenu.toggle();
 		expect(menuAddSpy).toHaveBeenCalled();
 		expect(backdropAddSpy).toHaveBeenCalled();
 		setTimeout(() => {
@@ -227,39 +166,10 @@ describe('SidemenuComponent', () => {
 		expect(sidemenu.items.length).toEqual(0);
 	});
 
-	it('should assign a mutation observer for Edge browsers when componentDidLoad is called', () => {
-		sidemenu.observer = {observe: jest.fn()};
-		const eventSpy = jest.spyOn(sidemenu.observer, 'observe');
-		Object.defineProperty(window.navigator, 'userAgent', {value: 'Edge'});
-		sidemenu.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
 	it('should disconnect the mutation observer when componentDidUnload is called', () => {
 		sidemenu.observer = {disconnect: jest.fn()};
 		const eventSpy = jest.spyOn(sidemenu.observer, 'disconnect');
 		sidemenu.componentDidUnload();
 		expect(eventSpy).toHaveBeenCalled();
-	});
-
-	it('should add to the items array when a sidemenu item is added, and not be active by default', () => {
-		let node = document.createElement('se-sidemenu-item');
-		node.setAttribute('item', 'Close');
-		sidemenu.el.appendChild(node);
-		sidemenu.componentWillLoad();
-		expect(sidemenu.items.length).toEqual(1);
-		expect(sidemenu.items[0].active).toBeFalsy();
-	});
-
-	it('should add to the items array and set it as active when a sidemenu item is added and setActive is called', () => {
-		let node = document.createElement('se-sidemenu-item');
-		node.setAttribute('item', 'Close');
-		sidemenu.el.appendChild(node);
-		sidemenu.menuInnerEl = {style: {}};
-		sidemenu.componentWillLoad();
-		sidemenu.setActive(sidemenu.items[0]);
-		setTimeout(() => {
-			expect(sidemenu.items[0].active).toBeTruthy();
-		});
 	});
 });

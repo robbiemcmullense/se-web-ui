@@ -16,27 +16,19 @@ describe('BlockContent', () => {
 		expect(blockContent.option).toBeUndefined();
 	});
 
-	it('should render', async() => {
+	it('should render with a se-block-content class', async() => {
 		const page = await newSpecPage({
 			components: [BlockContent],
 			html: `<se-block-content></se-block-content>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-block-content>
-				<mock:shadow-root>
-					<div class="se-block-content">
-						<slot></slot>
-      		</div>
-				</mock:shadow-root>
-			</se-block-content>
-		`);
+		expect(page.root.shadowRoot.querySelector('.se-block-content')).toBeTruthy();
 	});
 
-	it('should render with an option-content class reflecting the specified option', async() => {
+	it('should render with an widget-content class reflecting the specified option', async() => {
 		const page = await newSpecPage({
 			components: [BlockContent],
 			html: `<se-block-content option="widget"></se-block-content>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.se-block-content')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.widget-content')).toBeTruthy();
 	});
 });

@@ -12,7 +12,7 @@ describe('DialogContentComponent', () => {
 		expect(dialogContentComponent).toBeTruthy();
 	});
 
-	it('should render', async() => {
+	it('should render with a se-dialog-content class', async() => {
 		const page = await newSpecPage({
 			components: [DialogContentComponent],
 			html: `<se-dialog-content></se-dialog-content>`,

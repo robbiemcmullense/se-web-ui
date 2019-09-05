@@ -50,7 +50,7 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.header).toBeFalsy();
 	});
 
-	it('should render in checkbox mode by default', async() => {
+	it('should render in checkbox mode by default with an input element', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox label="my label" required="true"></se-checkbox>`,
@@ -58,7 +58,7 @@ describe('CheckboxComponent', () => {
 		expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
 	});
 
-	it('should render in switch mode without a required asterisk', async() => {
+	it('should render in switch mode with a checkbox-label class', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox option="switch" label="my label"></se-checkbox>`,
@@ -66,7 +66,7 @@ describe('CheckboxComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.checkbox-label')).toBeTruthy();
 	});
 
-	it('should render in switch mode with a required asterisk', async() => {
+	it('should render with a required asterisk', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox option="switch" label="my label" required="true"></se-checkbox>`,
@@ -74,7 +74,7 @@ describe('CheckboxComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.required')).toBeTruthy();
 	});
 
-	it('should render in onoff mode with unique markup and ON and OFF labels', async() => {
+	it('should render in onoff mode with a .on-off-wrapper class', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox option="onoff"></se-checkbox>`,

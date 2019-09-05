@@ -12,7 +12,7 @@ describe('DialogFooter', () => {
 		expect(dialogFooter).toBeTruthy();
 	});
 
-	it('should render', async() => {
+	it('should render with a flex class', async() => {
 		const page = await newSpecPage({
 			components: [DialogFooterComponent],
 			html: `<se-dialog-footer></se-dialog-footer>`,

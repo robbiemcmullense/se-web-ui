@@ -28,7 +28,7 @@ describe('ContainerComponent', () => {
 		expect(container.display).toEqual('flex');
 	});
 
-	it('should render with fill-content, flex-display, and row-dir classes by default', async() => {
+	it('should render, with a slot element', async() => {
 		const page = await newSpecPage({
 			components: [ContainerComponent],
 			html: `<se-container></se-container>`,

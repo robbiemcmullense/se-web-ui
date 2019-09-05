@@ -21,6 +21,6 @@ describe('DialogHeaderComponent', () => {
 			components: [DialogHeaderComponent],
 			html: `<se-dialog-header></se-dialog-header>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.se-dialog-header')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.se-dialog-header.primary')).toBeTruthy();
 	});
 });

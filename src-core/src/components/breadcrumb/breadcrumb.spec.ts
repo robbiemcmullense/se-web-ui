@@ -21,7 +21,7 @@ describe('BreadcrumbComponent', () => {
 		expect(breadcrumb.el).toBeDefined();
 	});
 
-	it('should render', async() => {
+	it('should render with a nav element', async() => {
 		const page = await newSpecPage({
 			components: [BreadcrumbComponent],
 			html: `<se-breadcrumb></se-breadcrumb>`,

@@ -36,7 +36,7 @@ describe('BlockComponent', () => {
 		expect(block.enlarged).toBeFalsy();
 	});
 
-	it('should render', async() => {
+	it('should render with a block-body class', async() => {
 		const page = await newSpecPage({
 			components: [BlockComponent],
 			html: `<se-block></se-block>`,

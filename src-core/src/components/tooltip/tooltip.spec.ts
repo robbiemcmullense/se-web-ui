@@ -32,30 +32,17 @@ describe('TooltipComponent', () => {
     expect(tooltip.opened).toBeFalsy();
   });
 
-  it('should render', async() => {
+  it('should render, with a tooltip class', async() => {
     const page = await newSpecPage({
       components: [TooltipComponent],
       html: `<se-tooltip></se-tooltip>`,
     });
-    expect(page.root).toEqualHtml(`
-      <se-tooltip>
-        <mock:shadow-root>
-          <div class="bottom">
-            <div>
-              <slot name="tooltip"></slot>
-            </div>
-            <div class="tooltip">
-              <slot></slot>
-            </div>
-          </div>
-        </mock:shadow-root>
-      </se-tooltip>
-    `);
+    expect(page.root.shadowRoot.querySelector('.tooltip')).toBeTruthy();
   });
 
   it('should call the close method when the closeTooltips event is emitted', () => {
     eventSpy = jest.spyOn(tooltip, 'close');
-    tooltip.handleCloseTooltip();
+    tooltip.handleCloseTooltip(); // user opens a tooltip while another tooltip is open
     expect(eventSpy).toHaveBeenCalled();
   });
 
