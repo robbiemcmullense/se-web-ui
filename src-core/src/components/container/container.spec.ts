@@ -33,13 +33,7 @@ describe('ContainerComponent', () => {
 			components: [ContainerComponent],
 			html: `<se-container></se-container>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-container class="fill-content flex-display relative row-dir">
-				<mock:shadow-root>
-					<slot></slot>
-				</mock:shadow-root>
-			</se-container>
-		`);
+		expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
 	});
 
 	it('should render with a div element that has a wrapper-center class when the option is set to centered', async() => {
@@ -47,13 +41,7 @@ describe('ContainerComponent', () => {
 			components: [ContainerComponent],
 			html: `<se-container option="centered"></se-container>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-container class="centered-content flex-display relative row-dir" option="centered">
-				<mock:shadow-root>
-					<div class="wrapper-center"><slot></slot></div>
-				</mock:shadow-root>
-			</se-container>
-		`);
+		expect(page.root.shadowRoot.querySelector('.wrapper-center')).toBeTruthy();
 	});
 
 	it('should call the optionDidChange and displayDidChange function when the component loads', async() => {
@@ -66,7 +54,7 @@ describe('ContainerComponent', () => {
 
 	it('should call the rowSizeDidChange and columnSizeDidChange function when the component loads', async() => {
 		const rowEventSpy = jest.spyOn(container, 'rowSizeDidChange');
-		const colEventSpy = jest.spyOn(container, 'rowSizeDidChange');
+		const colEventSpy = jest.spyOn(container, 'columnSizeDidChange');
 		container.componentWillLoad();
 		expect(rowEventSpy).toHaveBeenCalled();
 		expect(colEventSpy).toHaveBeenCalled();
@@ -75,7 +63,7 @@ describe('ContainerComponent', () => {
 	it('should call the assignBlockClasses when the component loads with option set to widget, setting the color to standard', async() => {
 		container.option = 'widget';
 		const eventSpy = jest.spyOn(container, 'assignBlockClasses');
-		container.optionDidChange();
+		container.componentWillLoad();
 		expect(eventSpy).toHaveBeenCalled();
 		expect(container.color).toEqual('standard');
 	});
@@ -83,7 +71,7 @@ describe('ContainerComponent', () => {
 	it('should call the assignBlockClasses when the component loads with option set to card, keeping the color as alternative', async() => {
 		container.option = 'card';
 		const eventSpy = jest.spyOn(container, 'assignBlockClasses');
-		container.optionDidChange();
+		container.componentWillLoad();
 		expect(eventSpy).toHaveBeenCalled();
 		expect(container.color).toEqual('alternative');
 	});

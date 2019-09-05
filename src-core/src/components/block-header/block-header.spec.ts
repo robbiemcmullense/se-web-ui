@@ -17,16 +17,6 @@ describe('blockHeader', () => {
 			components: [BlockHeader],
 			html: `<se-block-header></se-block-header>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-block-header>
-				<mock:shadow-root>
-					<div class="se-block-header">
-        		<slot name="start"></slot>
-        		<div class="flex middle"><slot></slot></div>
-        		<slot name="end"></slot>
-      		</div>
-				</mock:shadow-root>
-			</se-block-header>
-		`);
+		expect(page.root.shadowRoot.querySelector('.se-block-header')).toBeTruthy();
 	});
 });

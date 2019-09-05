@@ -25,18 +25,7 @@ describe('FormFieldComponent', () => {
 			components: [FormFieldComponent],
 			html: `<se-form-field></se-form-field>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-form-field>
-				<mock:shadow-root>
-					<div class="inline input se-form-field">
-						<div class="form-field-wrapper">
-							<label class="se-label"></label>
-							<slot></slot>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-form-field>
-		`);
+		expect(page.root.shadowRoot.querySelector('.input')).toBeTruthy();
 	});
 
 	it('should render in select mode when the option is set to select, and the required symbol when required is set to true', async() => {
@@ -44,26 +33,8 @@ describe('FormFieldComponent', () => {
 			components: [FormFieldComponent],
 			html: `<se-form-field type="select" label="Label" required="true"></se-form-field>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-form-field type="select" label="Label" required="true">
-				<mock:shadow-root>
-					<div class="inline se-form-field select">
-						<div class="form-field-wrapper">
-							<label class="se-label">Label<span>*</span></label>
-							<slot></slot>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-form-field>
-		`);
-	});
-
-	it('should call the initLabel function 3 times, when the component loads, when the type changes, or if the disabled property changes', async() => {
-		const eventSpy = jest.spyOn(formField, 'initLabel');
-		formField.componentDidLoad();
-		formField.typeDidChange();
-		formField.disabledDidChange();
-		expect(eventSpy).toHaveBeenCalledTimes(3);
+		expect(page.root.shadowRoot.querySelector('.select')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('span')).toBeTruthy();
 	});
 
 	it('should disable the input field when the form field disabled property is true', () => {
@@ -71,7 +42,7 @@ describe('FormFieldComponent', () => {
 		let input = document.createElement('input');
 		input.setAttribute('type', 'text');
 		formField.el.appendChild(input);
-		formField.initLabel();
+		formField.componentDidLoad();
 		expect(input.disabled).toBeTruthy();
 	});
 
@@ -81,7 +52,7 @@ describe('FormFieldComponent', () => {
 		formField.label = 'label';
 		let radio = document.createElement('se-radio');
 		formField.el.appendChild(radio);
-		formField.initLabel();
+		formField.componentDidLoad();
 		expect(radio.label).toEqual('label');
 		expect(radio.required).toBeTruthy();
 	});
@@ -89,16 +60,16 @@ describe('FormFieldComponent', () => {
 	it('should call the handleEvent function 3 times, when a user input changes on the radio, checkbox, or input, element', () => {
 		const event = {detail: {selected: true}};
 		const eventSpy = jest.spyOn(formField, 'handleEvent');
-		formField.inputSelectListenerHandler(event);
-		formField.radioListenerHandler(event);
-		formField.checkboxListenerHandler(event);
+		formField.inputSelectListenerHandler(event);  // user changes value in input field
+		formField.radioListenerHandler(event); // user changes value of se-checkbox
+		formField.checkboxListenerHandler(event); // user changes value of se-checkbox
 		expect(eventSpy).toHaveBeenCalledTimes(3);
 	});
 
 	it('should emit the didSubmit event when the handleEvent function is called', () => {
 		const event = {detail: {selected: true}};
 		const eventSpy = jest.spyOn(formField.didSubmit, 'emit');
-		formField.handleEvent(event);
+		formField.inputSelectListenerHandler(event); // user changes value in input field
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
@@ -106,7 +77,7 @@ describe('FormFieldComponent', () => {
 		const event = {detail: {selected: true}};
 		const eventSpy = jest.spyOn(formField.didSubmit, 'emit');
 		formField.disabled = true;
-		formField.handleEvent(event);
+		formField.inputSelectListenerHandler(event); // user changes value in input field
 		expect(eventSpy).not.toHaveBeenCalled();
 	});
 });

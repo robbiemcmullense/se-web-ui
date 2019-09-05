@@ -25,31 +25,7 @@ describe('HeaderComponent', () => {
 			components: [HeaderComponent],
 			html: `<se-header></se-header>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-header>
-				<mock:shadow-root>
-					<div class="d-flex">
-						<div class="d-flex-column header-title-wrapper">
-							<se-icon-ecostruxure class="header-title-type"></se-icon-ecostruxure>
-							<h1 class="header-title no-margin">
-								<span></span>
-								<span class="light"></span>
-							</h1>
-						</div>
-					</div>
-					<div class="padding-container d-flex">
-						<slot name="start"></slot>
-					</div>
-					<div class="fill-space center-header-container">
-						<slot></slot>
-					</div>
-					<div class="padding-container d-flex">
-						<slot name="end"></slot>
-						<se-icon-schneider class="header-title-type"></se-icon-schneider>
-					</div>
-				</mock:shadow-root>
-			</se-header>
-		`);
+		expect(page.root.shadowRoot.querySelector('se-icon-ecostruxure')).toBeTruthy();
 	});
 
 	it('should render without an ecostruxure icon when a custom domain property is provided', async() => {
@@ -57,31 +33,7 @@ describe('HeaderComponent', () => {
 			components: [HeaderComponent],
 			html: `<se-header domain="my domain"></se-header>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-header domain="my domain">
-				<mock:shadow-root>
-					<div class="d-flex">
-						<div class="d-flex-column header-title-wrapper">
-							<span class="header-title-type">my domain</span>
-							<h1 class="header-title no-margin">
-								<span></span>
-								<span class="light"></span>
-							</h1>
-						</div>
-					</div>
-					<div class="padding-container d-flex">
-						<slot name="start"></slot>
-					</div>
-					<div class="fill-space center-header-container">
-						<slot></slot>
-					</div>
-					<div class="padding-container d-flex">
-						<slot name="end"></slot>
-						<se-icon-schneider class="header-title-type"></se-icon-schneider>
-					</div>
-				</mock:shadow-root>
-			</se-header>
-		`);
+		expect(page.root.shadowRoot.querySelector('se-icon-ecostruxure')).not.toBeTruthy();
 	});
 
 	it('should render with a burger icon when a sidemenu element is present', async() => {
@@ -89,35 +41,7 @@ describe('HeaderComponent', () => {
 			components: [HeaderComponent],
 			html: `<se-header><se-sidemenu></se-sidemenu></se-header>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-header>
-				<mock:shadow-root>
-					<div class="d-flex">
-						<span class="menu-sidenav">
-            	<se-icon size="medium" color="primary">burger_menu</se-icon>
-          	</span>
-						<div class="d-flex-column header-title-wrapper">
-							<se-icon-ecostruxure class="header-title-type"></se-icon-ecostruxure>
-							<h1 class="header-title no-margin">
-								<span></span>
-								<span class="light"></span>
-							</h1>
-						</div>
-					</div>
-					<div class="padding-container d-flex">
-						<slot name="start"></slot>
-					</div>
-					<div class="fill-space center-header-container">
-						<slot></slot>
-					</div>
-					<div class="padding-container d-flex">
-						<slot name="end"></slot>
-						<se-icon-schneider class="header-title-type"></se-icon-schneider>
-					</div>
-				</mock:shadow-root>
-				<se-sidemenu></se-sidemenu>
-			</se-header>
-		`);
+		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('burger_menu');
 	});
 
 	it('should set the component hasMenu property to true when a sidemenu element is present', () => {

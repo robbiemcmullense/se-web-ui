@@ -47,16 +47,7 @@ describe('DialogComponent', () => {
 			components: [DialogComponent],
 			html: `<se-dialog></se-dialog>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-dialog>
-				<mock:shadow-root>
-					<div class="dialog-wrapper medium">
-						<div class="dialog-background hide-dialog"></div>
-						<div class="dialog hide-dialog"><slot></slot></div>
-					</div>
-				</mock:shadow-root>
-			</se-dialog>
-		`);
+		expect(page.root.shadowRoot.querySelector('.dialog-wrapper.medium')).toBeTruthy();
 	});
 
 	it('should render with the large class when the size is large', async() => {
@@ -64,16 +55,7 @@ describe('DialogComponent', () => {
 			components: [DialogComponent],
 			html: `<se-dialog size="large"></se-dialog>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-dialog size="large">
-				<mock:shadow-root>
-					<div class="dialog-wrapper large">
-						<div class="dialog-background hide-dialog"></div>
-						<div class="dialog hide-dialog"><slot></slot></div>
-					</div>
-				</mock:shadow-root>
-			</se-dialog>
-		`);
+		expect(page.root.shadowRoot.querySelector('.dialog-wrapper.large')).toBeTruthy();
 	});
 
 	it('should call the colorDidChange and openDidChange functions when the component loads', async() => {
@@ -92,16 +74,16 @@ describe('DialogComponent', () => {
 		expect(openEventSpy).toHaveBeenCalled();
 	});
 
-	it('should call the removeAnimation function when openDidChange is called', async() => {
-		const eventSpy = jest.spyOn(dialogComponent, 'removeAnimation');
-		dialogComponent.openDidChange();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
 	it('should call the addAnimation function when openDidChange is called and the dialog is open', async() => {
 		dialogComponent.open = true;
 		const eventSpy = jest.spyOn(dialogComponent, 'addAnimation');
-		dialogComponent.openDidChange();
+		dialogComponent.openDidChange();  // use case when the dialog opens
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should call the removeAnimation function when openDidChange is called', async() => {
+		const eventSpy = jest.spyOn(dialogComponent, 'removeAnimation');
+		dialogComponent.openDidChange(); // use case when the dialog closes
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
@@ -109,7 +91,7 @@ describe('DialogComponent', () => {
 		dialogComponent.open = true;
 		const event = {key: 'Escape'};
 		const eventSpy = jest.spyOn(dialogComponent.backdrop, 'emit');
-		dialogComponent.handleKeyDown(event);
+		dialogComponent.handleKeyDown(event);  // user presses ESC button when dialog is open
 		expect(eventSpy).toHaveBeenCalled();
 	});
 

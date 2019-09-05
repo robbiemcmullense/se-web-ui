@@ -12,6 +12,10 @@ describe('BlockComponent', () => {
 		expect(block).toBeTruthy();
 	});
 
+	it('should have an HTML element reference', () => {
+		expect(block.el).toBeTruthy();
+	});
+
 	it('should have the basic option by default', () => {
 		expect(block.option).toEqual('basic');
 	});
@@ -37,31 +41,15 @@ describe('BlockComponent', () => {
 			components: [BlockComponent],
 			html: `<se-block></se-block>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-block class="flex">
-				<mock:shadow-root>
-					<div class="alternative basic block-body">
-						<slot></slot>
-					</div>
-				</mock:shadow-root>
-			</se-block>
-		`);
+		expect(page.root.shadowRoot.querySelector('.block-body')).toBeTruthy();
 	});
 
-	it('should call the updateSize function when the component loads', async() => {
-		const eventSpy = jest.spyOn(block, 'updateSize');
-		block.componentWillLoad();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
-	it('should call the updateItemMode function when the component option changes', async() => {
-		const eventSpy = jest.spyOn(block, 'updateItemMode');
-		block.componentWillLoad();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
-	it('should have an HTML element reference', () => {
-		expect(block.el).toBeTruthy();
+	it('should render with a se-loading icon when the loading property is set to true', async() => {
+		const page = await newSpecPage({
+			components: [BlockComponent],
+			html: `<se-block loading="true"></se-block>`,
+		});
+		expect(page.root.shadowRoot.querySelector('se-loading')).toBeTruthy();
 	});
 
 	it('should set the element style width, height, minWidth, and minHeight properties when width and height are specified as component properties', () => {
@@ -101,5 +89,4 @@ describe('BlockComponent', () => {
 		expect(content.option).toEqual('widget');
 		expect(footer.option).toBeUndefined();
 	});
-
 });

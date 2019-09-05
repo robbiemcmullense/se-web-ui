@@ -33,38 +33,19 @@ describe('FabComponent', () => {
     expect(fab.toggleIcon).toBeFalsy();
   });
 
-  it('should render', async() => {
+  it('should render in speeddial mode by default, with an element with the mini-action-button class', async() => {
     const page = await newSpecPage({
 			components: [FabComponent],
 			html: `<se-fab></se-fab>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-fab>
-				<mock:shadow-root>
-          <div class="pos-bottom se-fab">
-          <se-button color="primary" option="fab"></se-button>
-            <div class="mini-action-button">
-              <slot></slot>
-            </div>
-          </div>
-				</mock:shadow-root>
-			</se-fab>
-		`);
+		expect(page.root.shadowRoot.querySelector('.mini-action-button')).toBeTruthy();
   });
 
-  it('should render with the arrow4_top icon when the option is set to backtotop', async() => {
+  it('should render an se-button element with the backtotop class when the option is set to backtotop', async() => {
     const page = await newSpecPage({
 			components: [FabComponent],
 			html: `<se-fab option="backtotop"></se-fab>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-fab option="backtotop">
-				<mock:shadow-root>
-          <div class="pos-bottom se-fab">
-          <se-button color="primary" class="backtotop" option="fab" icon="arrow4_top"></se-button>
-          </div>
-				</mock:shadow-root>
-			</se-fab>
-		`);
+		expect(page.root.shadowRoot.querySelector('.backtotop')).toBeTruthy();
   });
 });

@@ -37,14 +37,6 @@ describe('BlockContent', () => {
 			components: [BlockContent],
 			html: `<se-block-content option="widget"></se-block-content>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-block-content option="widget">
-				<mock:shadow-root>
-					<div class="se-block-content widget-content">
-						<slot></slot>
-      		</div>
-				</mock:shadow-root>
-			</se-block-content>
-		`);
+		expect(page.root.shadowRoot.querySelector('.se-block-content')).toBeTruthy();
 	});
 });
