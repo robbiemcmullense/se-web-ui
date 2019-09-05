@@ -40,6 +40,7 @@ export const config: Config = {
     sass()
   ],
   testing: {
+    browserArgs: ['--no-sandbox'],
     transform: {
       "^.+\\.svg$": "<rootDir>/svgTransform.js"
     }
