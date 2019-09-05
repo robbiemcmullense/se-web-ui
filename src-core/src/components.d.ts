@@ -281,6 +281,10 @@ export namespace Components {
     */
     'selected': boolean;
     /**
+    * Defines the size of the chip. `nano` sets the font to 14px and the height to 24px. `small` is the default option, with a 16px font and a 32px height.
+    */
+    'size': 'nano' | 'small';
+    /**
     * The text you want to display in your chip.
     */
     'value': string;
@@ -1378,6 +1382,10 @@ declare namespace LocalJSX {
     * Indicates whether or not the chip is selected.  Set to `false` by default.
     */
     'selected'?: boolean;
+    /**
+    * Defines the size of the chip. `nano` sets the font to 14px and the height to 24px. `small` is the default option, with a 16px font and a 32px height.
+    */
+    'size'?: 'nano' | 'small';
     /**
     * The text you want to display in your chip.
     */
