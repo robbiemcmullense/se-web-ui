@@ -17,6 +17,7 @@ export class BannerComponent {
 	@State() items: HTMLElement[] = [];
 	@State() selectedItem?: any;
 	@State() selectedItemIndex?: number;
+	activeIndex: number;
 	interval: any;
 	xStart: any;
 	xEnd: any;
@@ -49,8 +50,17 @@ export class BannerComponent {
 		if (this.items.length) {
 			this.items.forEach((item: any) => {
 				item.active = false;
+				item.isThreeAway = false;
+				item.isFourAway = false;
 			});
 			item.active = true;
+			this.activeIndex = this.items.indexOf(item);
+			this.items.forEach((item: any) => {
+				let diff = Math.abs(this.items.indexOf(item) - this.activeIndex);
+				if (diff == 3) {
+					item.isThreeAway = true;
+				}
+			});
 			this.assignSelectedItem(item);
 		}
 	}
@@ -111,7 +121,7 @@ export class BannerComponent {
 	renderList() {
 		return this.items.map((item: any) => {
 			return [
-				<li class={{ 'active': item.active }} />,
+				<li class={{ 'active': item.active, 'small-indicator': item.isThreeAway, 'hide': item.isFourAway }} />,
 			]
 		})
 	}
