@@ -92,9 +92,18 @@
   }
   nav > a, nav > span {
     line-height: 40px;
+    transition: linear .1s;
     @include  color('alternative-contrast');
-    &:after, &.active {
-      @include  color('primary');
+    &:hover, &.active {
+      @include  color('primary')
+    }
+    &:after {
+      display: none;
+    }
+    &.active:after {
+      @include  background-color('primary');
+      bottom: 0;
+      display: inline-block;
     }
   }
 }
