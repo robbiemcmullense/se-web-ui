@@ -39,7 +39,7 @@ import { newE2EPage } from '@stencil/core/testing';
     const titleElm = await page.find('se-list-item >>> .nav-content div');
     const description = await page.find('se-list-item >>> .nav-content small');
     expect(titleElm.innerText).toEqual('My List Item');
-    expect(description.innerText).toEqual(' sample list item');
+    expect(description.innerText).toEqual('sample list item');
   });
 
   it('should render an icon with arrow2_right when the option is set to nav', async () => {
