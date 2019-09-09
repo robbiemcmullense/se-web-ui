@@ -31,6 +31,12 @@ export class VisualLinearComponent {
 	 */
 	@Prop({ mutable: true }) percentage: number;
 
+	componentDidLoad() {
+		if (this.secolor && this.secolor.indexOf('#') == -1) {
+			this.secolor = 'var(--se-' + this.secolor + ')';
+		}
+	}
+
 	render() {
 		return (
 			<div class={["se-visual-linear", this.option].join(' ')}>

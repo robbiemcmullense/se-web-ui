@@ -50,7 +50,7 @@ describe('VisualRadialComponent', () => {
     expect(svgElement.getAttribute('width')).toEqual('82');
   });
 
-  it('renders a border color equal to the provided secolor value', async() => {
+  it('renders a border color equal to the provided secolor hex value', async() => {
     await page.$eval('se-visual-radial', (elm: any) => {
       elm.secolor = '#aaa';
     });
@@ -58,5 +58,15 @@ describe('VisualRadialComponent', () => {
 
     let circleElement = await page.find('se-visual-radial >>> circle:last-child');
     expect(circleElement.getAttribute('stroke')).toEqual('#aaa');
+  });
+
+  it('renders a border color equal to the provided secolor, adding var and se prefix', async() => {
+    await page.$eval('se-visual-radial', (elm: any) => {
+      elm.secolor = 'error';
+    });
+    await page.waitForChanges();
+
+    let circleElement = await page.find('se-visual-radial >>> circle:last-child');
+    expect(circleElement.getAttribute('stroke')).toEqual('error');
   });
 });

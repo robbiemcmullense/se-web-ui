@@ -27,7 +27,7 @@ describe('VisualLinearComponent', () => {
 					<div class="inline se-visual-linear">
 						<svg height="8">
 							<rect class="progress-bar-wrapper" width="100%" height="8"></rect>
-							<rect class="progress-bar" width="30%" height="8" style="fill: red"></rect>
+							<rect class="progress-bar" width="30%" height="8" style="fill: var(--se-red)"></rect>
 							Sorry, your browser does not support inline SVG.
 						</svg>
 						<text>
@@ -50,7 +50,7 @@ describe('VisualLinearComponent', () => {
 					<div class="inline se-visual-linear">
 						<svg height="8">
 							<rect class="progress-bar-wrapper" width="100%" height="8"></rect>
-							<rect class="progress-bar" width="30%" height="8" style="fill: red"></rect>
+							<rect class="progress-bar" width="30%" height="8" style="fill: var(--se-red)"></rect>
 							Sorry, your browser does not support inline SVG.
 						</svg>
 						<text>

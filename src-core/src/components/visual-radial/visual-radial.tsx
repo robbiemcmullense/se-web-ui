@@ -42,6 +42,9 @@ export class VisualRadialComponent {
   }
 
   componentDidLoad() {
+    if (this.secolor && this.secolor.indexOf('#') == -1) {
+			this.secolor = 'var(--se-' + this.secolor + ')';
+		}
     this.sizeDidChange();
   }
 

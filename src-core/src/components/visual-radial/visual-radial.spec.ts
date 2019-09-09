@@ -40,7 +40,7 @@ describe('VisualRadialComponent', () => {
 					<div class="large visual-radial-wrapper">
 						<svg class="se-visual-radial" height="164" width="164">
 							<circle cx="82" cy="82" fill="transparent" r="66" stroke="#f7f7f7" stroke-width="8" fill="transparent"></circle>
-							<circle cx="82" cy="82" fill="transparent" r="66" stroke="red" stroke-width="8" fill="transparent" style="stroke-dashoffset: 290.2831611916969;"></circle>
+							<circle cx="82" cy="82" fill="transparent" r="66" stroke="var(--se-red)" stroke-width="8" fill="transparent" style="stroke-dashoffset: 290.2831611916969;"></circle>
 							Sorry, your browser does not support inline SVG.
 						</svg>
 						<svg height="164" width="164">
