@@ -117,3 +117,5 @@ yarn e2e
 ```
 
 This will run all `.e2e.ts` files in your project.  If there are specific tests that you don't want to run, add these files to the `testPathIgnorePatterns` parameter in the `stencil.config.ts` file.
+
+**PS**: will run before every PR
