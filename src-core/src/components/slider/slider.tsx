@@ -61,7 +61,7 @@ export class SliderComponent {
   render() {
     return (
       <div class="slider-container">
-        <input type="range" min={this.min} max={this.max} value={this.value} disabled={this.disabled} ref={el => this.sliderElement = el as HTMLInputElement} onChange={() => this.handleEvent()} />
+        <input type="range" min={this.min || "0"} max={this.max} value={this.value || "0"} disabled={this.disabled} ref={el => this.sliderElement = el as HTMLInputElement} onChange={() => this.handleEvent()} />
       </div>
     )
   }

@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, State, Watch, Event, EventEmitter} from "@stencil/core";
+import { Component, h, Prop, Element, Watch, Event, EventEmitter } from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -36,13 +36,13 @@ export class ListItemComponent {
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
-  @State() padding: number;
+
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
    */
   @Event() didSelectedChange: EventEmitter<void>;
 
-  @Watch('selected') SelectedDidChange(){
+  @Watch('selected') SelectedDidChange() {
     this.didSelectedChange.emit()
   }
 
@@ -51,18 +51,33 @@ export class ListItemComponent {
     if (id) {
       let button = this.el.shadowRoot.querySelector('button');
       button.setAttribute('id', 'wc-' + id);
-    } 
+    }
+  }
+
+  getParentConfig() {
+    const myParent: any = this.el.parentElement;
+    const indentation = myParent.indentation;
+    if(indentation !== null && indentation !== undefined) {
+      this.indentation = indentation + 1;
+      // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
+    }
+    if(!!myParent.option) {
+      this.option = myParent.option;
+    }
+  }
+
+  componentWillLoad() {
+    this.getParentConfig();
   }
 
   componentDidLoad() {
     this.setButtonId();
-    this.padding = 20 * this.indentation;
   }
 
   render() {
     return (
       <div class={['se-list-item', this.option].join(' ')}>
-        <button class={{"selected": this.selected}} style={{ paddingLeft: `${this.padding}px` }}>
+        <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} >
           {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
           {!!this.icon ?
             <div class="nav-icon">
@@ -70,7 +85,7 @@ export class ListItemComponent {
                 {this.icon}
               </se-icon>
             </div>
-          : ''}
+            : ''}
           <div class="nav-content">
             <div>{this.item}</div>
             <small> {this.description}</small>

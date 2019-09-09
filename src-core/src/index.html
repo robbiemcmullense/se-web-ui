@@ -37,7 +37,7 @@
           </se-list>
         </se-dropdown>
       </div>
-      <se-sidemenu>
+      <se-sidemenu id="main-sidemenu">
         <se-sidemenu-item item="Project">
           <se-block>
             <se-block-header>some block design</se-block-header>
@@ -123,7 +123,7 @@
           <se-list-item item="Basic Item" icon="action_settings2">
           </se-list-item>
           <se-list-group item="I have a selected child" icon="action_settings2" icon-color="primary"
-            description="I'm selected if collapsed">
+            description="I'm selected if collapsed" id="simple-collapse-parent">
             <se-list-item item="my item 1" selected="false" icon="action_settings2" icon-color="primary"
               description="I have a description">
             </se-list-item>
@@ -418,6 +418,9 @@
               <se-breadcrumb-item href="#">Last</se-breadcrumb-item>
             </se-breadcrumb>
             <se-button onclick="removeLastBreadcrumb()" option="raised">Remove Last Breadcrumb</se-button>
+            <se-button onclick="addNewBreadcrumb()" option="raised">Add New Breadcrumb</se-button>
+            <se-button onclick="removeSidemenuItem()" option="raised">Remove Sidemenu Item</se-button>
+            <se-button onclick="addNewSidemenuItem()" option="raised">Add New Sidemenu Item</se-button>
 
             <se-divider></se-divider>
             <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
@@ -633,13 +636,52 @@
         loadingBlock.loading = false;
       }, 3000);
     }
+    
+    // Newly rendered item should get parent's indentation and style
+    function newListItem() {
+      let listItem = document.createElement("se-list-item");
+      listItem.item = "Test item";
+
+      setTimeout(function () {
+        let collapse = document.getElementById('simple-collapse');
+        collapse.appendChild(listItem);
+      }, 5000);
+    }
+
+    newListItem();
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
       breadcrumbs[breadcrumbs.length-1].parentNode.removeChild(breadcrumbs[breadcrumbs.length-1]);
-      document.getElementById('my-breadcrumb').updateChildren();
     }
 
+    function addNewBreadcrumb() {
+      let node = document.createElement('se-breadcrumb-item');
+      let textNode = document.createTextNode('New');
+      node.appendChild(textNode);
+      let breadcrumb = document.getElementById('my-breadcrumb');
+      if (navigator.userAgent.indexOf('Edge') > -1) {
+        breadcrumb.querySelector('ol').appendChild(node);
+      } else {
+        breadcrumb.appendChild(node);
+      }
+    }
+
+    function addNewSidemenuItem() {
+      let node = document.createElement('se-sidemenu-item');
+      node.setAttribute('item', 'New Close');
+      let sidemenu = document.getElementById('main-sidemenu');
+      if (navigator.userAgent.indexOf('Edge') > -1) {
+        sidemenu.querySelector('.block-body').appendChild(node);
+      } else {
+        sidemenu.appendChild(node);
+      }
+    }
+
+    function removeSidemenuItem() {
+      let menuItems = document.getElementsByTagName('se-sidemenu-item');
+      menuItems[menuItems.length-1].parentNode.removeChild(menuItems[menuItems.length-1]);
+    }
 
     // grid widget
     function toggle(id) {

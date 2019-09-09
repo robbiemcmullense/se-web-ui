@@ -36,13 +36,18 @@ describe('ButtonComponent', () => {
 		expect(button.disabled).toBeFalsy();
 	});
 
-	it('should not be in block mode', () => {
+	it('should not have an undefined block value', () => {
 		expect(button.block).toBeUndefined();
 	});
 
 	it('should set the disabled property to true after calling the setDisabled method', () => {
     button.setDisabled(true);
 		expect(button.disabled).toBeTruthy();
+	});
+
+	it('should set the disabled property to false after calling the setDisabled method', () => {
+    button.setDisabled(false);
+		expect(button.disabled).toBeFalsy();
 	});
 
 	it('should set the grouped property to true after calling the setGrouped method', () => {
@@ -120,6 +125,26 @@ describe('ButtonComponent', () => {
 	it('should call the setButtonId function when the componentDidLoad function is called', async() => {
 		const eventSpy = jest.spyOn(button, 'setButtonId');
 		button.componentDidLoad();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should not emit the didClick event when a standalone standard button is clicked as it is not part of a group', () => {
+		const eventSpy = jest.spyOn(button.didClick, 'emit');
+		button.toggle();
+		expect(eventSpy).not.toHaveBeenCalled();
+	});
+
+	it('should emit the didClick event when the button is part of a group', () => {
+		button.grouped = true;
+		const eventSpy = jest.spyOn(button.didClick, 'emit');
+		button.toggle();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should emit the didClick event when the button is a minifab', () => {
+		button.option = 'minifab';
+		const eventSpy = jest.spyOn(button.didClick, 'emit');
+		button.toggle();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 });

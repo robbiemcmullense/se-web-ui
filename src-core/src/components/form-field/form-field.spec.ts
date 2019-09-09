@@ -74,4 +74,19 @@ describe('FormFieldComponent', () => {
 		formField.checkboxListenerHandler(event);
 		expect(eventSpy).toHaveBeenCalledTimes(3);
 	});
+
+	it('should emit the didSubmit event when the handleEvent function is called', () => {
+		const event = {detail: {selected: true}};
+		const eventSpy = jest.spyOn(formField.didSubmit, 'emit');
+		formField.handleEvent(event);
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should not emit the didSubmit event when the form field is disabled', () => {
+		const event = {detail: {selected: true}};
+		const eventSpy = jest.spyOn(formField.didSubmit, 'emit');
+		formField.disabled = true;
+		formField.handleEvent(event);
+		expect(eventSpy).not.toHaveBeenCalled();
+	});
 });

@@ -59,4 +59,10 @@ describe('RadioComponent', () => {
 		radio.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
 	});
+
+	it('should emit the didCheck event when a radio button is clicked', () => {
+		const eventSpy = jest.spyOn(radio.didCheck, 'emit');
+		radio.emitEvent();
+		expect(eventSpy).toHaveBeenCalled();
+	});
 });

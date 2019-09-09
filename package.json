@@ -1,6 +1,6 @@
 {
   "name": "@se/web-ui",
-  "version": "3.2.1",
+  "version": "3.2.3",
   "private": true,
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
   "scripts": {
@@ -14,6 +14,9 @@
     "build": "npm-run-all build.*",
     "build.core": "cd src-core && yarn build",
     "build.angular": "cd src-angular && yarn build",
+    "test": "npm-run-all test.*",
+    "test.core": "cd src-core && yarn test",
+    "test.angular": "cd src-angular && yarn test",
     "release": "npm-run-all release.*",
     "release.publish": "node publish.js"
   },
@@ -22,8 +25,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "execa": "^1.0.0",
-    "fs-extra": "^7.0.1",
+    "colorette": "^1.1.0",
+    "execa": "^2.0.4",
+    "fs-extra": "^8.1.0",
     "listr": "^0.14.3",
     "rimraf": "^3.0.0",
     "turbocolor": "^2.6.1"

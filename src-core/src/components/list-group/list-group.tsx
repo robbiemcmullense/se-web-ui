@@ -58,10 +58,8 @@ export class ListGroupComponent {
 
   checkSelected(){
     if (!this.collapsed) {
-      console.log('not collapsed');
       this.selectedChild = false;
     } else {
-      console.log('collapsed!');
       Array.from(
         this.el.querySelectorAll("se-list-item, se-list-group")
       ).forEach((item: any) => {
@@ -94,7 +92,20 @@ export class ListGroupComponent {
     if (id) {
       let button = this.el.shadowRoot.querySelector('button');
       button.setAttribute('id', 'wc-' + id);
-    } 
+    }
+  }
+
+  getParentConfig() {
+    const elParent: any = this.el.parentElement;
+    if (!!elParent) {
+      const indentation = elParent.indentation;
+      if(!!elParent.indentation) {
+        this.indentation = indentation + 1;
+      }
+      if(!!elParent.option) {
+        this.option = elParent.option;
+      }
+    }
   }
 
   componentWillLoad() {
@@ -103,6 +114,8 @@ export class ListGroupComponent {
     ).forEach((item: any) => {
       item.indentation = this.indentation + 1;
     });
+
+    this.getParentConfig();
   }
 
   componentDidLoad() {
