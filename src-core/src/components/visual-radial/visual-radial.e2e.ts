@@ -27,10 +27,8 @@ describe('VisualRadialComponent', () => {
   });
 
   it('renders the label and value when provided', async() => {
-    await page.$eval('se-visual-radial', (elm: any) => {
-      elm.label = 'test label';
-      elm.value = '13';
-    });
+    element.setProperty('label', 'test label');
+    element.setProperty('value', '13');
     await page.waitForChanges();
 
     let label = await page.find('se-visual-radial >>> .radial-label');
@@ -40,9 +38,7 @@ describe('VisualRadialComponent', () => {
   });
 
   it('renders a height and width with values of 82 when the size is small', async() => {
-    await page.$eval('se-visual-radial', (elm: any) => {
-      elm.size = 'small';
-    });
+    element.setProperty('size', 'small');
     await page.waitForChanges();
 
     let svgElement = await page.find('se-visual-radial >>> .se-visual-radial');
@@ -51,9 +47,7 @@ describe('VisualRadialComponent', () => {
   });
 
   it('renders a border color equal to the provided secolor value', async() => {
-    await page.$eval('se-visual-radial', (elm: any) => {
-      elm.secolor = '#aaa';
-    });
+    element.setProperty('secolor', '#aaa');
     await page.waitForChanges();
 
     let circleElement = await page.find('se-visual-radial >>> circle:last-child');

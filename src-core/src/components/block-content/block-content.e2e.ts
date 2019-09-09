@@ -15,9 +15,7 @@ describe('BlockContentComponent', () => {
   });
 
   it('renders with the fill-content class whenever the option is set to fill', async() => {
-    await page.$eval('se-block-content', (elm: any) => {
-      elm.option = 'fill';
-    });
+    element.setProperty('option', 'fill');
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('.se-block-content')).toHaveClass('fill-content');
   });

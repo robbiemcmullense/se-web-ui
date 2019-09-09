@@ -20,10 +20,8 @@ import { newE2EPage } from '@stencil/core/testing';
   });
 
   it('should change the classes to vertical and alternative when those properties are set', async() => {	
-    await page.$eval('se-divider', (elm: any) => {
-      elm.option = 'vertical';
-      elm.color = 'alternative';
-    });
+    hostElement.setProperty('option', 'vertical');
+    hostElement.setProperty('color', 'alternative');
     await page.waitForChanges();	
     expect(dividerElement).toHaveClasses(['vertical', 'alternative']);	
   });

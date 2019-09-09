@@ -1,22 +1,22 @@
 import { newE2EPage } from '@stencil/core/testing';
 
  describe('ListItemComponent', () => {
-	let page;
+	let page, element;
 
 	beforeEach(async () => {
 		page = await newE2EPage();
-		await page.setContent('<se-list-item></se-list-item>');
+    await page.setContent('<se-list-item></se-list-item>');
+    element = await page.find('se-list-item');
 	});
 
   it('renders', async () => {
-		const element = await page.find('se-list-item');
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
   });
 
   it('should have hyrdated and classic classes by default', async () => {
-    const element = await page.find('se-list-item >>> .se-list-item');
-    expect(element).toHaveClass('classic');
+    const listItemChild = await page.find('se-list-item >>> .se-list-item');
+    expect(listItemChild).toHaveClass('classic');
   });
 
   it('should render a slot element by default', async() => {
@@ -25,21 +25,15 @@ import { newE2EPage } from '@stencil/core/testing';
   });
 
   it('should not render a slot element when the option is not set to classic', async() => {
-    await page.$eval('se-list-item', (elm: any) => {
-			elm.option = 'dropdown';
-		});
+    element.setProperty('option', 'dropdown');
     await page.waitForChanges();
-    
     const slotElm = await page.find('se-list-item >>> slot');
     expect(slotElm).not.toBeTruthy();
   });
 
   it('should render a title and description when provided', async () => {
-		await page.$eval('se-list-item', (elm: any) => {
-
-			elm.item = 'My List Item';
-			elm.description = 'sample list item';
-		});
+    element.setProperty('item', 'My List Item');
+    element.setProperty('description', 'sample list item');
 		await page.waitForChanges();
 
     const titleElm = await page.find('se-list-item >>> .nav-content div');
@@ -49,9 +43,7 @@ import { newE2EPage } from '@stencil/core/testing';
   });
 
   it('should render an icon with arrow2_right when the option is set to nav', async () => {
-		await page.$eval('se-list-item', (elm: any) => {
-			elm.option = 'nav';
-		});
+		element.setProperty('option', 'nav');
 		await page.waitForChanges();
 
     const iconElm = await page.find('se-list-item >>> se-icon');
@@ -60,10 +52,8 @@ import { newE2EPage } from '@stencil/core/testing';
   });
 
   it('should render the icon equal to the icon property when provided', async() => {
-    await page.$eval('se-list-item', (elm: any) => {
-      elm.option = 'nav';
-      elm.icon = 'my test icon';
-		});
+    element.setProperty('option', 'nav');
+    element.setProperty('icon', 'my test icon');
     await page.waitForChanges();
     
     const iconElm = await page.find('se-list-item >>> .nav-icon se-icon');
@@ -72,11 +62,8 @@ import { newE2EPage } from '@stencil/core/testing';
   });
 
   it('should add a selected class to the button element when the selected property is true', async() => {
-    await page.$eval('se-list-item', (elm: any) => {
-      elm.selected = true;
-		});
+    element.setProperty('selected', true);
     await page.waitForChanges();
-    
     const buttonElm = await page.find('se-list-item >>> button');
     expect(buttonElm).toHaveClass('selected');
   });

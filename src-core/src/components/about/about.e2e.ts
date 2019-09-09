@@ -19,10 +19,8 @@ describe('AboutComponent', () => {
     expect(iconElement).toBeTruthy();
   });
 
-  it('renders an a span element when the domain is not equal to ecostruxure', async() => {
-    await page.$eval('se-about', (elm: any) => {
-      elm.domain = 'myDomain';
-    });
+  it('renders a span element with the class header-title-type when the domain is not equal to ecostruxure', async() => {
+    element.setProperty('domain', 'myDomain');
     await page.waitForChanges();
 
     let ecostruxureElement = await page.find('se-about >>> se-icon-ecostruxure');

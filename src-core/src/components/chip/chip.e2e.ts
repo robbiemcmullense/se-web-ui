@@ -1,64 +1,55 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('ChipComponent', () => {
-  let page, element;
+  let page, hostElement, childElement;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-chip></se-chip>');
-    element = await page.find('se-chip >>> .se-chip');
+    hostElement = await page.find('se-chip');
+    childElement = await page.find('se-chip >>> .se-chip');
   });
 
   it('renders', async() => {
-    expect(element).toBeTruthy();
+    expect(childElement).toBeTruthy();
   });
 
   it('should have a class equal to standard to reflect its default color', () => {
-    expect(element).toHaveClass('standard');
+    expect(childElement).toHaveClass('standard');
   });
 
   it('should have a disabled class when the disabled property is set to true', async() => {
-    await page.$eval('se-chip', (elm: any) => {
-      elm.selected = true;
-    });
+    hostElement.setProperty('selected', true);
     await page.waitForChanges();
-    expect(element).toHaveClass('selected');
+    expect(childElement).toHaveClass('selected');
   });
 
   it('should have a disabled class when the disabled property is set to true', async() => {
-    await page.$eval('se-chip', (elm: any) => {
-      elm.disabled = true;
-    });
+    hostElement.setProperty('disabled', true);
     await page.waitForChanges();
-    expect(element).toHaveClass('disabled');
+    expect(childElement).toHaveClass('disabled');
   });
 
   it('should have a display-block class when the block property is set to true', async() => {
-    await page.$eval('se-chip', (elm: any) => {
-      elm.block = true;
-    });
+    hostElement.setProperty('block', true);
     await page.waitForChanges();
-    expect(element).toHaveClass('display-block');
+    expect(childElement).toHaveClass('display-block');
   });
 
   it('should render HTML with the passed value', async() => {
-    await page.$eval('se-chip', (elm: any) => {
-      elm.value = 'My Value';
-    });
+    hostElement.setProperty('value', 'My Value');
     await page.waitForChanges();
-    const element = await page.find('se-chip >>> div.value');
-    expect(element.innerText).toEqual('My Value');
+    const valueElm = await page.find('se-chip >>> div.value');
+    expect(valueElm.innerText).toEqual('My Value');
   });
 
   it('should emit a close event when the chip is clicked and the canClose property is true', async() => {
-    await page.$eval('se-chip', (elm: any) => {
-      elm.value = 'My Value';
-      elm.canClose = true;
-    });
+    hostElement.setProperty('value', 'My Value');
+    hostElement.setProperty('canClose', true);
     await page.waitForChanges();
     const eventSpy = await page.spyOnEvent('didClose');
-    const element = await page.find('se-chip >>> div.close');
-    await element.click();
+    const closeElm = await page.find('se-chip >>> div.close');
+    await closeElm.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail('My Value');
   });

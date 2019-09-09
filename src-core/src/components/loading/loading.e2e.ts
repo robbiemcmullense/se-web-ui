@@ -19,9 +19,7 @@ import { newE2EPage } from '@stencil/core/testing';
 	});
 
 	it('displays on screen when the loading property is set to true', async() => {
-		await page.$eval('se-loading', (elm: any) => {
-			elm.loading = true;
-		});
+		element.setProperty('loading', true);
 		await page.waitForChanges();
 		expect(element).toHaveClass('show');
 	});

@@ -27,17 +27,13 @@ describe('BlockComponent', () => {
   
 
   it('renders a standard class when the color property is set to standard', async() => {
-    await page.$eval('se-block', (elm: any) => {
-      elm.color = 'standard';
-    });
+    hostElement.setProperty('color', 'standard');
     await page.waitForChanges();
     expect(blockElement).toHaveClass('standard');
   });
 
   it('renders a loading element when the loading property is true', async() => {
-    await page.$eval('se-block', (elm: any) => {
-      elm.loading = true;
-    });
+    hostElement.setProperty('loading', true);
     await page.waitForChanges();
 
     const loader = await page.find('se-block >>> se-loading')

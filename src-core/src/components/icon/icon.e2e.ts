@@ -15,10 +15,8 @@ import { newE2EPage } from '@stencil/core/testing';
   });
 
   it('renders classes based on the provided size, color, and option', async() => {	
-    await page.$eval('se-icon', (elm: any) => {
-      elm.size = 'small';
-      elm.color = 'warn';
-    });
+    element.setProperty('size', 'small');
+    element.setProperty('color', 'warn');
     await page.waitForChanges();	
     expect(element.shadowRoot.querySelector('.se-icon-wrapper')).toHaveClasses(['icon-small', 'warn', 'icon-undefined']);	
   });

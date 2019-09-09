@@ -15,9 +15,7 @@ describe('RadioComponent', () => {
   });
 
   it('renders with a disabled input element when the parent element has disabled=true', async() => {
-    await page.$eval('se-radio', (elm: any) => {
-      elm.disabled = true;
-    });
+    element.setProperty('disabled', true);
     await page.waitForChanges();
     const inputElm = element.shadowRoot.querySelector('input');
     expect(inputElm.disabled).toBeTruthy();

@@ -18,29 +18,23 @@ describe('ContainerComponent', () => {
   });
 
   it('renders the "block-display" and "absolute" classes when the component has these properties for option and position', async() => {	
-    await page.$eval('se-container', (elm: any) => {
-      elm.display = 'block';
-      elm.position = 'absolute';
-    });
+    element.setProperty('display', 'block');
+    element.setProperty('position', 'absolute');
     await page.waitForChanges();	
     expect(element).toHaveClass('block-display');
     expect(element).toHaveClass('absolute');
   });
 
   it('renders the "column-dir" and "alternative" classes when the component has these properties for direction and color', async() => {	
-    await page.$eval('se-container', (elm: any) => {
-      elm.direction = 'column';
-      elm.color = 'alternative';
-    });
+    element.setProperty('direction', 'column');
+    element.setProperty('color', 'alternative');
     await page.waitForChanges();	
     expect(element).toHaveClass('alternative');
     expect(element).toHaveClass('column-dir');
   });
 
   it('renders a div element with class wrapper-center when the option is set to centered', async() => {
-    await page.$eval('se-container', (elm: any) => {
-      elm.option = 'centered';
-    });
+    element.setProperty('option', 'centered');
     await page.waitForChanges();	
     let divElm = await page.find('se-container >>> div.wrapper-center');
     expect(element).toHaveClass('centered-content');

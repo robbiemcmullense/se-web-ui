@@ -20,9 +20,7 @@ describe('BlockFooterComponent', () => {
   });
 
   it('should render with the card class when option is set to card', async() => {
-    await page.$eval('se-block-footer', (elm: any) => {
-      elm.option = 'card';
-    });
+    hostElement.setProperty('option', 'card');
     await page.waitForChanges();
     expect(footerElement).toHaveClass('card');
   });

@@ -26,9 +26,7 @@ describe('CheckboxComponent', () => {
   });
 
   it('renders with a disabled class and a disabled input element when the parent element has disabled=true', async() => {
-    await page.$eval('se-checkbox', (elm: any) => {
-      elm.disabled = true;
-    });
+    hostElement.setProperty('disabled', true);
     await page.waitForChanges();
     expect(checkboxElement).toHaveClass('disabled');
   });

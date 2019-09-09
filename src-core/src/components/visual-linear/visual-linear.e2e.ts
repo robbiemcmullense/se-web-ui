@@ -27,18 +27,14 @@ describe('VisualLinearComponent', () => {
   });
 
   it('renders without a flex class because there is a specified width', async() => {
-    await page.$eval('se-visual-linear', (elm: any) => {
-      elm.option = 'stacked';
-    });
+    element.setProperty('option', 'stacked');
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('div')).toHaveClass('stacked');
   });
 
   it('renders the label and value when provided', async() => {
-    await page.$eval('se-visual-linear', (elm: any) => {
-      elm.label = 'test label';
-      elm.value = '13';
-    });
+    element.setProperty('label', 'test label');
+    element.setProperty('value', '13');
     await page.waitForChanges();
 
     let label = await page.find('se-visual-linear >>> .linear-label');

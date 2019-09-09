@@ -20,35 +20,27 @@ describe('ButtonComponent', () => {
   });
 
   it('applies the raised, medium, and alternative classes to the parent and child button elements when the option, size, and color are set to those values', async() => {
-    await page.$eval('se-button', (elm: any) => {
-      elm.option = 'raised';
-      elm.size = 'medium';
-      elm.color = 'alternative';
-    });
+    hostElement.setProperty('option', 'raised');
+    hostElement.setProperty('size', 'medium');
+    hostElement.setProperty('color', 'alternative');
     await page.waitForChanges();
     expect(buttonElement).toHaveClasses(['alternative', 'medium', 'raised']);
   });
 
   it('renders the hasIcon class when the element has an icon property', async() => {
-    await page.$eval('se-button', (elm: any) => {
-      elm.icon = 'close';
-    });
+    hostElement.setProperty('icon', 'close');
     await page.waitForChanges();
     expect(buttonElement).toHaveClass('hasIcon');
   });
 
   it('renders the display-block class on the host element when the block property is set to true', async() => {
-    await page.$eval('se-button', (elm: any) => {
-      elm.block = true;
-    });
+    hostElement.setProperty('block', true);
     await page.waitForChanges();
     expect(hostElement).toHaveClass('display-block');
   });
 
   it('renders the minifab class on the host element when the option property is set to minifab', async() => {
-    await page.$eval('se-button', (elm: any) => {
-      elm.option = 'minifab';
-    });
+    hostElement.setProperty('option', 'minifab');
     await page.waitForChanges();
     expect(hostElement).toHaveClass('minifab');
   });

@@ -15,9 +15,7 @@ describe('BlockHeaderComponent', () => {
   });
 
   it('should render with the card class when option is set to card', async() => {
-    await page.$eval('se-block-header', (elm: any) => {
-      elm.option = 'card';
-    });
+    element.setProperty('option', 'card');
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('.se-block-header')).toHaveClass('card');
   });

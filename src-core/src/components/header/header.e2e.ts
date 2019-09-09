@@ -25,6 +25,18 @@ describe('HeaderComponent', () => {
     const iconElm = await page.find('se-header >>> se-icon-ecostruxure');
     expect(iconElm).toBeTruthy();
   });
+
+  it('renders a span element with the class header-title-type when the domain is not equal to ecostruxure', async() => {
+    element = await page.find('se-header');
+    element.setProperty('domain', 'myDomain');
+    await page.waitForChanges();
+
+    let ecostruxureElement = await page.find('se-header >>> se-icon-ecostruxure');
+    let spanElement = await page.find('se-header >>> span.header-title-type');
+    expect(ecostruxureElement).not.toBeTruthy();
+    expect(spanElement).toBeTruthy();
+    expect(spanElement.innerText).toEqual('myDomain');
+  });
 });
 
 describe('Header Component with Sidenav Child', () => {

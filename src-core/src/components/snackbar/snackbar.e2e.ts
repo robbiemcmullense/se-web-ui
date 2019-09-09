@@ -26,29 +26,21 @@ describe('SnackbarComponent', () => {
   });
 
   it('should have an error class when the type is set to error', async() => {
-    await page.$eval('se-snackbar', (elm: any) => {
-      elm.type = 'error';
-    });
+    hostElement.setProperty('type', 'error');
     await page.waitForChanges();
-
     expect(element).toHaveClass('error');
   });
 
   it('should have a "show" class when opened', async() => {
-    await page.$eval('se-snackbar', (elm: any) => {
-      elm.open = true;
-    });
+    hostElement.setProperty('open', true);
     await page.waitForChanges();
-
     expect(hostElement).toHaveClass('show-snackbar');
   });
 
   it('emits the didClose event when dismissing the snackbar', async() => {
     const eventSpy = await page.spyOnEvent('didClose');
-    await page.$eval('se-snackbar', (elm: any) => {
-      elm.open = true;
-      elm.canClose = true;
-    });
+    hostElement.setProperty('open', true);
+    hostElement.setProperty('canClose', true);
     await page.waitForChanges();
 
     const closeElm = await page.find('se-snackbar >>> .close');
