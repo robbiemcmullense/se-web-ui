@@ -31,7 +31,7 @@ describe('AboutComponent', () => {
       		</div>
 					<div class="about-section-wrapper">
 						<div class="information">
-								<se-icon-ecostruxure size="medium"></se-icon-ecostruxure>
+								<se-icon-ecostruxure size="medium" color="inherited"></se-icon-ecostruxure>
 							<h1 class="header-title">
 								<span></span>
 								<span class="light"></span>

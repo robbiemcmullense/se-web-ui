@@ -24,7 +24,7 @@ describe('IconEcostruxureComponent', () => {
 		expect(page.root).toEqualHtml(`
 			<se-icon-ecostruxure>
 				<mock:shadow-root>
-					<img class="small" src="[object Object]">
+					<img class="small standard" src="[object Object]">
 				</mock:shadow-root>
 			</se-icon-ecostruxure>
 		`);
