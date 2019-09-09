@@ -10,6 +10,9 @@
 }
 
 .se-list-group {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   &.classic, &.nav {
     button {
       min-height: 47px;
@@ -20,6 +23,13 @@
   &.treeview {
     button {
       flex-direction: row-reverse;
+      padding: 5.5px 0;
+      .nav-icon {
+        margin: -3px -8px -3px 4px;
+        + .nav-content {
+          padding-left: 12px;
+        }
+      }
     }
     .nav-content {
       padding-left: 0;
@@ -70,4 +80,20 @@
     padding-top: 2px;
     margin-top: 2px;
   }
+}
+
+.se-list-group.treeview {
+  .nav-icon {
+    margin-right: 0;
+    margin-left: -4px;
+  }
+  .nav-content {
+    margin-right: 8px;
+  }
+  se-icon {
+    margin: -4px 0;
+  }
+}
+.se-list-group.dropdown button {
+  margin-top: -1px;
 }
