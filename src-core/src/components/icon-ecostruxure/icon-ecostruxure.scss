@@ -1,12 +1,17 @@
 @import "../../theme/theme";
 
- :host {
+:host {
   height: auto;
   font-size: 12px !important;
   color: inherit;
   fill: currentColor;
 }
+
 .medium {
   width: 144px;
   height: 27px;
+}
+
+.inherited {
+  filter: brightness(0) invert(1);
 }
