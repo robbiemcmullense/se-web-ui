@@ -47,3 +47,33 @@ describe('SidemenuComponent', () => {
     expect(element).toHaveClass('show-menu');
   });
 });
+
+describe('Sidemenu Screenshots', () => {
+  it('renders with 3 sidemenu items and a width of 250px', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-sidemenu class="show-menu">
+        <se-sidemenu-item item="Open"></se-sidemenu-item>
+        <se-sidemenu-item item="About"></se-sidemenu-item>
+        <se-sidemenu-item item="Close"></se-sidemenu-item>
+      </se-sidemenu>
+    `);
+    await page.compareScreenshot('initially opened sidemenu', {fullPage: false});
+	});
+	
+	it('tests the tabbar with the centered option and the alternative color', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-sidemenu class="show-menu">
+        <se-sidemenu-item item="Open"></se-sidemenu-item>
+        <se-sidemenu-item item="About" active="true">
+          <div style="position: relative; top: 70px;">HTML Content</div>
+        </se-sidemenu-item>
+        <se-sidemenu-item item="Close"></se-sidemenu-item>
+      </se-sidemenu>
+    `);
+    let element = await page.find('se-sidemenu >>> se-list-item:nth-child(2)');
+    await element.click();
+    await page.compareScreenshot('sidemenu with active item and content', {fullPage: false});
+  });
+});

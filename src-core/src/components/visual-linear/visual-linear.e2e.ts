@@ -27,23 +27,33 @@ describe('VisualLinearComponent', () => {
   });
 
   it('renders without a flex class because there is a specified width', async() => {
-    await page.$eval('se-visual-linear', (elm: any) => {
-      elm.option = 'stacked';
-    });
+    element.setProperty('option', 'stacked');
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('div')).toHaveClass('stacked');
   });
 
   it('renders the label and value when provided', async() => {
-    await page.$eval('se-visual-linear', (elm: any) => {
-      elm.label = 'test label';
-      elm.value = '13';
-    });
+    element.setProperty('label', 'test label');
+    element.setProperty('value', '13');
     await page.waitForChanges();
 
     let label = await page.find('se-visual-linear >>> .linear-label');
     let value = await page.find('se-visual-linear >>> .linear-value');
     expect(label).toEqualText('test label');
     expect(value).toEqualText('13');
+  });
+});
+
+describe('Visual Linear Screenshots', () => {
+  it('tests the default version of the component, with the inline option and a green progress bar', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>');
+    await page.compareScreenshot('green inline visual linear component', {fullPage: false});
+	});
+	
+	it('tests the component with the stacked option and a dark blue colored progress bar', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels"></se-visual-linear>');
+    await page.compareScreenshot('blue stacked visual linear component', {fullPage: false});
   });
 });

@@ -88,7 +88,7 @@ export class ListItemComponent {
             : ''}
           <div class="nav-content">
             <div>{this.item}</div>
-            <small> {this.description}</small>
+            <small>{this.description}</small>
           </div>
           {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
           {this.option === "classic" ? <slot></slot> : ''}
