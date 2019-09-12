@@ -52,3 +52,26 @@ describe('FabComponent Click Event', () => {
     expect(eventSpy).toHaveReceivedEventDetail({value: 'my caption'});
   });
 });
+
+describe('Fab Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('should render in speeddial option by default', async() => {
+    await page.setContent(`
+      <se-fab icon="action_share">
+        <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
+        <se-button option='minifab' caption="New User" icon="task"></se-button>
+      </se-fab>
+    `);
+    await page.compareScreenshot('Speeddial Fab', {fullPage: false});
+  });
+
+  it('should render in backtotop option', async() => {
+    await page.setContent('<se-fab option="backtotop"></se-fab>');
+    await page.compareScreenshot('Back to Top Fab', {fullPage: false});
+  });
+});

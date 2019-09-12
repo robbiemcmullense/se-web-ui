@@ -21,11 +21,7 @@ describe('AppComponent', () => {
 			components: [AppComponent],
 			html: `<se-app></se-app>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-app>
-				<div class="se-app-body se-font-technical"></div>
-			</se-app>
-		`);
+		expect(page.root.querySelector('.se-font-technical')).toBeTruthy();
 	});
 
 	it('should render with the se-font-website class when app.option is set to website', async() => {
@@ -33,10 +29,6 @@ describe('AppComponent', () => {
 			components: [AppComponent],
 			html: `<se-app option="website"></se-app>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-app option="website">
-				<div class="se-app-body se-font-website"></div>
-			</se-app>
-		`);
+		expect(page.root.querySelector('.se-font-website')).toBeTruthy();
 	});
 });
