@@ -16,6 +16,7 @@
   &.classic, &.nav {
     button {
       min-height: 47px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
     }
   }
