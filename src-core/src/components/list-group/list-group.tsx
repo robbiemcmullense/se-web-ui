@@ -123,6 +123,10 @@ export class ListGroupComponent {
   }
 
   render() {
+    let myDescription = null;
+    if (!!this.description) {
+      myDescription = <small>{this.description}</small>
+    };
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
       <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
@@ -137,7 +141,7 @@ export class ListGroupComponent {
           : ''}
           <div class="nav-content">
             <div>{this.item}</div>
-            <small> {this.description}</small>
+            {myDescription}
           </div>
           {this.option === "treeview"
             ? <se-icon>{this.collapsed ? "arrow2_down" : "arrow2_right"}</se-icon>
