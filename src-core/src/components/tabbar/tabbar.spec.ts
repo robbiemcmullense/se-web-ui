@@ -21,16 +21,7 @@ describe('TabbarComponent', () => {
       components: [TabbarComponent],
       html: `<se-tabbar></se-tabbar>`,
     });
-    expect(page.root).toEqualHtml(`
-      <se-tabbar>
-				<div class="tab-primary">
-					<div class="d-flex-main opt-fill">
-						<div class="nav-left-wrapper centered shadowed"></div>
-						<div class="fill-space nav-center-wrapper shadowed"></div>
-						<div class="centered shadowed"></div>
-					</div>
-				</div>
-      </se-tabbar>
-    `);
+		expect(page.root.querySelector('.tab-primary')).toBeTruthy();
+		expect(page.root.querySelector('.fill-space')).toBeTruthy();
   });
 });
