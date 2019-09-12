@@ -13,6 +13,22 @@ describe('VisualLinearComponent', () => {
     expect(element).toBeTruthy();
   });
 
+  it('renders the component with a color-primary class by default', async() => {
+    expect(element).toHaveClass('color-primary');
+  });
+
+  it('renders the component with a color-error class when secolor is set to error', async() => {
+    element.setProperty('secolor', 'error');
+    await page.waitForChanges();
+    expect(element).toHaveClass('color-error');
+  });
+
+  it('should not render a color class when the secolor property is a hexadecimal value', async() => {
+    element.setProperty('secolor', '#aa4311');
+    await page.waitForChanges();
+    expect(element).not.toHaveClass('color-primary');
+  });
+
   it('renders svg and 2 rectangle elements', async() => {
     let svg = await page.find('se-visual-linear >>> svg');
     let rectOne = await page.find('se-visual-linear >>> rect:first-child');
@@ -41,7 +57,7 @@ describe('VisualLinearComponent', () => {
     let value = await page.find('se-visual-linear >>> .linear-value');
     expect(label).toEqualText('test label');
     expect(value).toEqualText('13');
-  });
+  }); 
 });
 
 describe('Visual Linear Screenshots', () => {
