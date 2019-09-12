@@ -19,3 +19,14 @@ describe('IconEcostruxureComponent', () => {
     expect(imgElm).toHaveClass('small');
   });
 });
+
+describe('Icon Screenshots', () => {
+  it('renders the small and medium sized versions of the Ecostruxure icon', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-icon-ecostruxure size="small"></se-icon-ecostruxure>
+      <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>
+    `);
+    await page.compareScreenshot('Ecostruxure Icons', {fullPage: false});
+  });
+});

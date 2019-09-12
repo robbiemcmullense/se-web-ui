@@ -30,3 +30,16 @@ describe('Slider with ID Element', () => {
     expect(element.shadowRoot.querySelector('input').getAttribute('id')).toEqual('wc-my-id');
   });
 });
+
+describe('Slider Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('renders with a value of zero by default', async() => {
+    await page.setContent('<se-slider></se-slider>');
+    await page.compareScreenshot('slider at zero', {fullPage: false});
+  });
+});

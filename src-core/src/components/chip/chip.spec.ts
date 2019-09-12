@@ -36,20 +36,12 @@ describe('ChipComponent', () => {
 		expect(chip.canClose).toBeFalsy();
 	});
 
-	it('should render with the specified value', async() => {
+	it('should render with a se-chip class', async() => {
 		const page = await newSpecPage({
 			components: [ChipComponent],
 			html: `<se-chip value="my chip value"></se-chip>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-chip value="my chip value">
-				<mock:shadow-root>
-					<div class="se-chip small standard">
-						<div class="value">my chip value</div>
-					</div>
-				</mock:shadow-root>
-			</se-chip>
-		`);
+		expect(page.root.shadowRoot.querySelector('.se-chip')).toBeTruthy();
 	});
 
 	it('should render with a close icon when canClose is set to true', async() => {
@@ -57,16 +49,9 @@ describe('ChipComponent', () => {
 			components: [ChipComponent],
 			html: `<se-chip value="my chip value" can-close="true"></se-chip>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-chip value="my chip value" can-close="true">
-				<mock:shadow-root>
-					<div class="se-chip small standard">
-						<div class="can-close value">my chip value</div>
-						<div class="close se-icon">action_delete_cross</div>
-					</div>
-				</mock:shadow-root>
-			</se-chip>
-		`);
+		let icon = page.root.shadowRoot.querySelector('.se-icon');
+		expect(icon).toBeTruthy();
+		expect(icon.innerHTML).toEqual('action_delete_cross');
 	});
 
 	it('should emit the didClose event when the closeChip function is called', () => {
