@@ -21,22 +21,12 @@ describe('BreadcrumbComponent', () => {
 		expect(breadcrumb.el).toBeDefined();
 	});
 
-	it('should render', async() => {
+	it('should render with a nav element', async() => {
 		const page = await newSpecPage({
 			components: [BreadcrumbComponent],
 			html: `<se-breadcrumb></se-breadcrumb>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-breadcrumb>
-				<mock:shadow-root>
-					<nav aria-label="breadcrumb">
-						<ol>
-							<slot></slot>
-						</ol>
-					</nav>
-				</mock:shadow-root>
-			</se-breadcrumb>
-		`);
+		expect(page.root.shadowRoot.querySelector('nav')).toBeTruthy();;
 	});
 
 	it('should render with two breadcrumb items', async() => {
@@ -44,25 +34,7 @@ describe('BreadcrumbComponent', () => {
 			components: [BreadcrumbComponent],
 			html: `<se-breadcrumb><se-breadcrumb-item>First</se-breadcrumb-item><se-breadcrumb-item>Second</se-breadcrumb-item></se-breadcrumb>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-breadcrumb>
-				<mock:shadow-root>
-					<nav aria-label="breadcrumb">
-						<ol>
-							<slot></slot>
-						</ol>
-					</nav>
-				</mock:shadow-root>
-				<se-breadcrumb-item>First</se-breadcrumb-item>
-				<se-breadcrumb-item>Second</se-breadcrumb-item>
-			</se-breadcrumb>
-		`);
-	});
-
-	it('should call the updateLastItem function when componentWillLoad is executed', () => {
-		const eventSpy = jest.spyOn(breadcrumb, 'updateLastItem');
-		breadcrumb.componentWillLoad();
-		expect(eventSpy).toHaveBeenCalled();
+		expect(page.root.querySelectorAll('se-breadcrumb-item').length).toEqual(2);
 	});
 
 	it('should call the watchItemList function when componentWillLoad is executed', () => {
@@ -84,5 +56,29 @@ describe('BreadcrumbComponent', () => {
 		const eventSpy = jest.spyOn(breadcrumb.observer, 'disconnect');
 		breadcrumb.componentDidUnload();
 		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should add to the items array when the component loads', () => {
+		let node = document.createElement('se-breadcrumb-item');
+		let textNode = document.createTextNode('New');
+		node.appendChild(textNode);
+		breadcrumb.el.appendChild(node);
+		breadcrumb.componentWillLoad();
+		expect(breadcrumb.items.length).toEqual(1);
+	});
+
+	it('should add two items array when the component loads, setting isLast=false to the first item and isLast=true for the second', () => {
+		let nodeOne = document.createElement('se-breadcrumb-item');
+		let firstTextNode = document.createTextNode('New 1');
+		nodeOne.appendChild(firstTextNode);
+		let nodeTwo = document.createElement('se-breadcrumb-item');
+		let secondTextNode = document.createTextNode('New 2');
+		nodeOne.appendChild(secondTextNode);
+		breadcrumb.el.appendChild(nodeOne);
+		breadcrumb.el.appendChild(nodeTwo);
+		breadcrumb.componentWillLoad();
+		expect(breadcrumb.items.length).toEqual(2);
+		expect(breadcrumb.items[0].isLast).toBeFalsy();
+		expect(breadcrumb.items[1].isLast).toBeTruthy();
 	});
 });

@@ -42,7 +42,11 @@ svg {
 }
 
 .progress-bar {
-  fill: $se-life-green;
+  color: inherit;
+}
+
+text {
+  color: $se-anthracite-grey;
 }
 
 .linear-value {

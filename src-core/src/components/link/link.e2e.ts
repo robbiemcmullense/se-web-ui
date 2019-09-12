@@ -19,19 +19,26 @@ describe('LinkComponent', () => {
   });
 
   it('renders with a blank target attribute and an external class when the option is set to external', async() => {
-    await page.$eval('se-link', (elm: any) => {
-      elm.option = 'external';
-    });
+    element.setProperty('option', 'external');
     await page.waitForChanges();
     expect(anchorElement).toHaveClass('external');
     expect(anchorElement.getAttribute('target')).toEqual('_blank');
   });
 
   it('renders with a data-disabled attribute when the disabled property is set to true', async() => {
-    await page.$eval('se-link', (elm: any) => {
-      elm.disabled = true;
-    });
+    element.setProperty('disabled', true);
     await page.waitForChanges();
     expect(anchorElement).toHaveAttribute('data-disabled');
+  });
+});
+
+describe('Link Screenshots', () => {
+  it('tests the internal and external options for the link component', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-link option="internal" url="http://google.com">Link to Google</se-link>
+      <se-link option="external" url="http://google.com">Link to Google</se-link>
+      `);
+    await page.compareScreenshot('multiple links', {fullPage: false});
   });
 });

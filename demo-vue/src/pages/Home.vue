@@ -3,7 +3,8 @@
     <se-block style="width: 300px">
       <se-block-header>Filter</se-block-header>
       <se-block-content>
-        <se-radio-on-off id="switch-el"></se-radio-on-off>
+        <se-checkbox option="switch" @didChange="myValue = $event.detail.selected" :selected="myValue"></se-checkbox>
+        {{ myValue }}
         <se-button id="flatBtn1" option="flat" color="error">Warning</se-button>
         <se-button option="login" value="myLoginValue">Login</se-button>
         <se-button option="signup">Sign Up</se-button>
@@ -58,7 +59,8 @@ export default {
   data() {
     return {
       loading: true,
-      posts: null
+      posts: null,
+      myValue: true
     };
   },
 

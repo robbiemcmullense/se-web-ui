@@ -4,7 +4,6 @@
   z-index: 0;
   margin: 0;
   font-weight: lighter;
-  font-size: 20px;
   @include display-flex();
 }
 
@@ -31,12 +30,13 @@
   &.classic,
   &.nav {
     button {
-      height: 47px;
+      min-height: 47px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
     }
   }
 
-  &.classic {
+  &.classic, &.dropdown {
     button.selected {
       @include color('selected-contrast');
       @include background-color('selected');
@@ -54,8 +54,7 @@
 
   &.treeview {
     button {
-      min-height: 32px;
-      max-height: 32px;
+      padding: 5.5px 0;
       &.selected {
         @include color('selected-contrast');
         @include background-color('selected');
@@ -75,25 +74,59 @@
     .nav-content {
       padding-left: 4px;
     }
+    .nav-icon {
+      margin: -3px -8px -3px 4px;
+      + .nav-content {
+        padding-left: 12px;
+      }
+    }
   }
 
   &.dropdown {
     button {
       min-height: 40px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
       border-bottom: none;
     }
     .nav-content{
-      padding-left: 10px;
+      padding: 5px 0 5px 10px;
     }
   }
 
   &.headline {
     button {
-      height: 42px;
+      min-height: 42px;
+      height: 20px; // IE fix so flexbox vertical alignment works
     }
   }
 
+}
+
+:host .se-list-group.treeview {
+  .nav-icon {
+    margin-right: 0;
+    margin-left: -4px;
+  }
+  .nav-content {
+    margin-right: 8px;
+  }
+  se-icon {
+    padding-top: 0;
+  }
+}
+
+:host .dropdown {
+  button {
+    padding-left: 0;
+  }
+  .nav-icon {
+    margin-right: 0;
+    margin-left: 4px;
+  }
+  .nav-content {
+    margin-right: 8px;
+  }
 }
 
 button {
@@ -121,11 +154,11 @@ button {
     }
   }
 }
-
 .selectedBar {
   position: absolute;
   top: 0;
   bottom: 0;
+  left: 0;
   width: 5px;
   @include background-color("primary");
 }
@@ -137,8 +170,9 @@ button {
 
 .nav-content {
   min-width: 0;
-  padding-left: 18px;
+  padding: 3px 0 3px 18px;
   margin: 0;
+  overflow: hidden;
   @include typology('base');
   @include flex();
   @include display-flex();
@@ -149,4 +183,7 @@ button {
     @include ellipsis();
     margin-right: $spacing;
   }
+}
+se-list-item .nav-icon {
+  margin-left: 18px;
 }

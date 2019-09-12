@@ -25,12 +25,6 @@ describe('divider', () => {
       components: [DividerComponent],
       html: `<se-divider></se-divider>`,
     });
-    expect(page.root).toEqualHtml(`
-      <se-divider>
-        <mock:shadow-root>
-          <div class="horizontal standard se-divider"></div>
-        </mock:shadow-root>
-      </se-divider>
-    `);
+    expect(page.root.shadowRoot.querySelector('.horizontal.standard')).toBeTruthy();
   });
 });

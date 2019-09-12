@@ -12,20 +12,11 @@ describe('DialogFooter', () => {
 		expect(dialogFooter).toBeTruthy();
 	});
 
-	it('should render', async() => {
+	it('should render with a flex class', async() => {
 		const page = await newSpecPage({
 			components: [DialogFooterComponent],
 			html: `<se-dialog-footer></se-dialog-footer>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-dialog-footer>
-				<mock:shadow-root>
-					<div class="flex">
-						<slot name="start"></slot>
-					</div>
-					<slot></slot>
-				</mock:shadow-root>
-			</se-dialog-footer>
-		`);
+		expect(page.root.shadowRoot.querySelector('div.flex')).toBeTruthy();
 	});
 });

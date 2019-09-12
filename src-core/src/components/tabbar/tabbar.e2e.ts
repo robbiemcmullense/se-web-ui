@@ -29,3 +29,29 @@ describe('NavbarComponent with Alternative Color', () => {
     expect(element).toHaveClass('tab-alternative');
   });
 });
+
+describe('Tabbar Screenshots', () => {
+  it('tests the default version of the tabbar, with a fill option and primary color', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-tabbar>
+        <nav slot="start">Left Content</nav>
+        <nav>Centered Content</nav>
+        <nav slot="end">Right Content</nav>
+      </se-tabbar>
+    `);
+    await page.compareScreenshot('primary fill tabbar component', {fullPage: false});
+	});
+	
+	it('tests the tabbar with the centered option and the alternative color', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-tabbar option="centered" color="alternative">
+        <nav slot="start">Left Content</nav>
+        <nav>Centered Content</nav>
+        <nav slot="end">Right Content</nav>
+      </se-tabbar>
+    `);
+    await page.compareScreenshot('alternative centered tabbar component', {fullPage: false});
+  });
+});

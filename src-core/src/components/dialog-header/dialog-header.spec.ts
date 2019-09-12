@@ -21,15 +21,6 @@ describe('DialogHeaderComponent', () => {
 			components: [DialogHeaderComponent],
 			html: `<se-dialog-header></se-dialog-header>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-dialog-header>
-				<mock:shadow-root>
-					<div class="se-dialog-header primary">
-						<div class="flex middle"><slot></slot></div>
-						<slot name="end"></slot>
-					</div>
-				</mock:shadow-root>
-			</se-dialog-header>
-		`);
+		expect(page.root.shadowRoot.querySelector('.se-dialog-header.primary')).toBeTruthy();
 	});
 });
