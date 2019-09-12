@@ -20,17 +20,22 @@ describe('list-group', () => {
     expect(list.canCollapse).toBe(true);
   });
 
-  it('should render', async() => {
+  it('should render, with a slot element', async() => {
 		const page = await newSpecPage({
 			components: [ListComponent],
 			html: `<se-list></se-list>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-list>
-				<mock:shadow-root>
-					<slot></slot>
-				</mock:shadow-root>
-			</se-list>
-		`);
-	});
+		expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
+  });
+  
+  it('should pass its option property to se-list-group child elements', () => {
+    list.option = 'dropdown';
+    let listGroup = document.createElement('se-list-group');
+    let listItem = document.createElement('se-list-item');
+    listGroup.appendChild(listItem);
+    list.el.appendChild(listGroup);
+    list.componentWillLoad();
+    expect(listGroup.option).toEqual('dropdown');
+    expect(listItem.option).toEqual('dropdown');
+  });
 });

@@ -21,14 +21,6 @@ describe('se-icon', () => {
 			components: [IconComponent],
 			html: `<se-icon></se-icon>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-icon>
-				<mock:shadow-root>
-          <div class="icon-small icon-undefined se-icon-wrapper">
-            <slot></slot>
-          </div>
-				</mock:shadow-root>
-			</se-icon>
-		`);
+		expect(page.root.shadowRoot.querySelector('.icon-small')).toBeTruthy();
   });
 });

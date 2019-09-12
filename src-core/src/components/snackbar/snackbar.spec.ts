@@ -33,18 +33,8 @@ describe('SnackbarComponent', () => {
 			components: [SnackbarComponent],
 			html: `<se-snackbar></se-snackbar>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-snackbar>
-				<mock:shadow-root>
-					<div class="information">
-						<div class="snackbar">
-							<span class="se-icon">information_circle</span>
-							<span class="message"></span>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-snackbar>
-		`);
+		expect(page.root.shadowRoot.querySelector('.information')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.se-icon').innerHTML).toEqual('information_circle');
 	});
 
 	it('should render with a span element with the close class when the canClose property is true', async() => {
@@ -52,19 +42,7 @@ describe('SnackbarComponent', () => {
 			components: [SnackbarComponent],
 			html: `<se-snackbar can-close="true"></se-snackbar>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-snackbar can-close="true">
-				<mock:shadow-root>
-					<div class="information">
-						<div class="snackbar">
-							<span class="se-icon">information_circle</span>
-							<span class="message"></span>
-							<span class="close">dismiss</span>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-snackbar>
-		`);
+		expect(page.root.shadowRoot.querySelector('.close')).toBeTruthy();
 	});
 
 	it('should call the openDidChange function when the component loads', () => {
@@ -74,25 +52,21 @@ describe('SnackbarComponent', () => {
 	});
 
 	it('should not have the show-snackbar class by default on the host element, as the open property is false by default', () => {
-		snackbar.openDidChange();
+		snackbar.openDidChange(); // snackbar is closed
 		expect(snackbar.el).not.toHaveClass('show-snackbar');
 	});
 
 	it('should not have the show-snackbar class by default on the host element, as the open property is false by default', () => {
 		snackbar.open = true;
-		snackbar.openDidChange();
+		snackbar.openDidChange(); // snackbar is opened
 		expect(snackbar.el).toHaveClass('show-snackbar');
 	});
 
-	it('should set the open property to false when the closeSnackbar function is called', () => {
+	it('should set the open property to false when the closeSnackbar function is called, and emit the didClose event', () => {
 		snackbar.open = true;
-		snackbar.closeSnackbar();
-		expect(snackbar.open).toBeFalsy();
-	});
-
-	it('should emit the didClose event when the snackbar is closed', () => {
 		const eventSpy = jest.spyOn(snackbar.didClose, 'emit');
-		snackbar.closeSnackbar();
+		snackbar.closeSnackbar(); //close button is clicked
+		expect(snackbar.open).toBeFalsy();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 });
