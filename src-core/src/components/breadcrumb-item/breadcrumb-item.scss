@@ -2,7 +2,8 @@
 
 :host {
   div {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
   }
   .breadcrumb-item {
     display: inline;

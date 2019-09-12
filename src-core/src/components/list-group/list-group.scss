@@ -20,6 +20,7 @@
   &.treeview {
     button {
       flex-direction: row-reverse;
+      height: 32px;
     }
     .nav-content {
       padding-left: 0;
@@ -64,10 +65,5 @@
     &:hover, &:focus{
     background-color:$se-ultra-dark-grey;
     }
-  }
-
-  se-icon {
-    padding-top: 2px;
-    margin-top: 2px;
   }
 }
