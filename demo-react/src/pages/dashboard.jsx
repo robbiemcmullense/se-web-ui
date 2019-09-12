@@ -13,7 +13,7 @@ class Dashboard  extends Component {
   render() {
     console.log('ID', this.props)
     return (
-      <se-container option="widget">
+      <se-container>
         <se-block width="250px">
           <se-block-header>List classic with expender</se-block-header>
           <se-block-content option="fill">

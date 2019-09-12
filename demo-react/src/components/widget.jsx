@@ -4,14 +4,14 @@ import "./widget.scss";
 
 class Widget extends Component {
   customAlert(data) {
-    alert(`switch ${data.detail.active} ${this.props.name}`);
+    alert(`switch ${this.props.name}: ${data.detail.selected}`);
   }
   componentDidMount() {
-    this.switchCmp.addEventListener("change", e => this.customAlert(e));
+    this.switchCmp.addEventListener("didChange", e => this.customAlert(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("change", e => this.customAlert(e));
+    this.switchCmp.removeEventListener("didChange", e => this.customAlert(e));
   }
 
   _handleRef = component => {
@@ -33,7 +33,7 @@ class Widget extends Component {
         <se-block-content>
           <div className="mycoolstyle">my content</div>
           <ul>
-            <se-radio-on-off ref={this._handleRef} />
+            <se-checkbox option="switch" ref={this._handleRef} />
           </ul>
 
         </se-block-content>
