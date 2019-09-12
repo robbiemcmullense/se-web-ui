@@ -6,9 +6,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.scss';
 
-
 applyPolyfills().then(() => {
-    defineCustomElements(window);
+  defineCustomElements(window);
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));
+

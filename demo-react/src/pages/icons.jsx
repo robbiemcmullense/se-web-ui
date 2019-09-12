@@ -7,7 +7,7 @@ const widgetStyle = {
 class Icons extends Component {
   render() {
     return (
-      <se-container option="widget">
+      <se-container>
         <se-block style={widgetStyle}>
           <se-block-header>Icons</se-block-header>
 
