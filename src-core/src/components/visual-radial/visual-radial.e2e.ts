@@ -13,6 +13,22 @@ describe('VisualRadialComponent', () => {
     expect(element).toBeTruthy();
   });
 
+  it('renders the component with a color-primary class by default', async() => {
+    expect(element).toHaveClass('color-primary');
+  });
+
+  it('renders the component with a color-error class when secolor is set to error', async() => {
+    element.setProperty('secolor', 'error');
+    await page.waitForChanges();
+    expect(element).toHaveClass('color-error');
+  });
+
+  it('should not render a color class when the secolor property is a hexadecimal value', async() => {
+    element.setProperty('secolor', '#aa4311');
+    await page.waitForChanges();
+    expect(element).not.toHaveClass('color-primary');
+  });
+
   it('renders with the large class name by default', async() => {
     expect(element.shadowRoot.querySelector('div')).toHaveClass('large');
   });
@@ -49,9 +65,15 @@ describe('VisualRadialComponent', () => {
   it('renders a border color equal to the provided secolor value', async() => {
     element.setProperty('secolor', '#aaa');
     await page.waitForChanges();
-
     let circleElement = await page.find('se-visual-radial >>> circle:last-child');
     expect(circleElement.getAttribute('stroke')).toEqual('#aaa');
+  });
+
+  it('renders a color equal to the provided secolor, adding var and se prefix', async() => {
+    element.setProperty('secolor', 'error');
+    await page.waitForChanges();
+    let circleElement = await page.find('se-visual-radial >>> circle:last-child');
+    expect(circleElement.getAttribute('stroke')).toEqual('currentColor');
   });
 });
 

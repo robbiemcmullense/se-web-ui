@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, State } from "@stencil/core";
 
 @Component({
 	tag: "se-visual-linear",
@@ -25,25 +25,37 @@ export class VisualLinearComponent {
 	 * The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
 	 * By default, the progress bar will have a green color.
 	 */
-	@Prop() secolor: string;
+	@Prop() secolor: string = 'primary';
+	@Watch('secolor')
+	colorDidChange() {
+		this.isHexColor = (this.secolor && this.secolor.indexOf('#') !== -1) ? true : false;
+	}
+
+	@State() isHexColor: boolean = false;
 	/**
 	 * Set the percentage of the "progress bar" to be "filled".
 	 */
 	@Prop({ mutable: true }) percentage: number;
 
+	componentDidLoad() {
+		this.colorDidChange();
+	}
+
 	render() {
 		return (
-			<div class={["se-visual-linear", this.option].join(' ')}>
-				<svg height="8">
-					<rect class="progress-bar-wrapper" width="100%" height="8"></rect>
-					<rect class="progress-bar" width={this.percentage + '%'} height="8" style={{ 'fill': this.secolor }}></rect>
-					Sorry, your browser does not support inline SVG.
-				</svg>
-				<text>
-					{this.value ? <tspan class="linear-value">{this.value}</tspan> : ''}
-					<tspan x="100%" class="linear-label">{this.label}</tspan>
-				</text>
-			</div>
+			<Host class={!this.isHexColor ? `color-${this.secolor}`: ''}>
+				<div class={["se-visual-linear", this.option].join(' ')}>
+					<svg height="8">
+						<rect class="progress-bar-wrapper" width="100%" height="8"></rect>
+						<rect class="progress-bar" width={this.percentage + '%'} height="8" style={{fill: this.isHexColor ? this.secolor : 'currentColor'}}></rect>
+						Sorry, your browser does not support inline SVG.
+					</svg>
+					<text>
+						{this.value ? <tspan class="linear-value">{this.value}</tspan> : ''}
+						<tspan x="100%" class="linear-label">{this.label}</tspan>
+					</text>
+				</div>
+			</Host>
 		)
 	}
 }

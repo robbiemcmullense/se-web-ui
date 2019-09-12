@@ -452,6 +452,10 @@ export namespace Components {
   }
   interface SeIconEcostruxure {
     /**
+    * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
+    */
+    'color': "standard" | "inherited";
+    /**
     * Sets the size of the EcoStruxure icon.  The default setting is `small`.
     */
     'size': "small" | "medium";
@@ -1523,6 +1527,10 @@ declare namespace LocalJSX {
     'size'?: "nano" | "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure extends JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement> {
+    /**
+    * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
+    */
+    'color'?: "standard" | "inherited";
     /**
     * Sets the size of the EcoStruxure icon.  The default setting is `small`.
     */
