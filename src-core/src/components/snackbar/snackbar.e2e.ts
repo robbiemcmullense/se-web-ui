@@ -26,33 +26,38 @@ describe('SnackbarComponent', () => {
   });
 
   it('should have an error class when the type is set to error', async() => {
-    await page.$eval('se-snackbar', (elm: any) => {
-      elm.type = 'error';
-    });
+    hostElement.setProperty('type', 'error');
     await page.waitForChanges();
-
     expect(element).toHaveClass('error');
   });
 
   it('should have a "show" class when opened', async() => {
-    await page.$eval('se-snackbar', (elm: any) => {
-      elm.open = true;
-    });
+    hostElement.setProperty('open', true);
     await page.waitForChanges();
-
     expect(hostElement).toHaveClass('show-snackbar');
   });
 
   it('emits the didClose event when dismissing the snackbar', async() => {
     const eventSpy = await page.spyOnEvent('didClose');
-    await page.$eval('se-snackbar', (elm: any) => {
-      elm.open = true;
-      elm.canClose = true;
-    });
+    hostElement.setProperty('open', true);
+    hostElement.setProperty('canClose', true);
     await page.waitForChanges();
 
     const closeElm = await page.find('se-snackbar >>> .close');
     await closeElm.click();
     expect(eventSpy).toHaveReceivedEvent();
+  });
+});
+
+describe('Snackbar Screenshots', () => {
+  it('tests multiple versions of the snackbar', async() => {
+    let page = await newE2EPage();
+    await page.setContent(`
+      <se-snackbar style="bottom: 170px;" open="true" icon="icon" message="Info"></se-snackbar>
+      <se-snackbar style="bottom: 120px;" open="true" type="success" icon="icon" message="Success"></se-snackbar>
+      <se-snackbar style="bottom: 70px;" open="true" type="warning" icon="icon" message="Warning"></se-snackbar>
+      <se-snackbar open="true" type="error" icon="icon" message="error" can-close="true"></se-snackbar>
+    `);
+    await page.compareScreenshot('multiple snackbar components', {fullPage: false});
   });
 });

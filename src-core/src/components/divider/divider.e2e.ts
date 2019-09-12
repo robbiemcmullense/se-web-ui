@@ -20,11 +20,39 @@ import { newE2EPage } from '@stencil/core/testing';
   });
 
   it('should change the classes to vertical and alternative when those properties are set', async() => {	
-    await page.$eval('se-divider', (elm: any) => {
-      elm.option = 'vertical';
-      elm.color = 'alternative';
-    });
+    hostElement.setProperty('option', 'vertical');
+    hostElement.setProperty('color', 'alternative');
     await page.waitForChanges();	
     expect(dividerElement).toHaveClasses(['vertical', 'alternative']);	
+  });
+});
+
+describe('Divider Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('renders the divider in horizontal mode by default', async() => {
+    await page.setContent(`
+      <se-container direction="column">
+        <div style="width: 100%; height: 100%;>Top Content</div>
+        <se-divider></se-divider>
+        <div style="width: 100%; height: 100%;">Bottom Content</div>
+      </se-container>
+    `);
+    await page.compareScreenshot('Horizontal Divider', {fullPage: false});
+  });
+
+  it('renders the divider in vertical mode', async() => {
+    await page.setContent(`
+      <se-container>
+        <div style="width: 100%; height: 100%;">Left Content</div>
+        <se-divider option="vertical"></se-divider>
+        <div style="width: 100%; height: 100%;">Right Content</div>
+      </se-container>
+    `);
+    await page.compareScreenshot('Vertical Divider', {fullPage: false});
   });
 });

@@ -21,18 +21,14 @@ describe('BreadcrumbItemComponent', () => {
   });
 
   it('should have an href attribute on the anchor element equal to the defined href value on the host element', async() => {
-    await page.$eval('se-breadcrumb-item', (elm: any) => {
-      elm.href = '#home';
-    });
+    element.setProperty('href', '#home');
     await page.waitForChanges();
     expect(linkElement.getAttribute('href')).toBeTruthy();
     expect(linkElement.getAttribute('href')).toEqual('#home');
   });
 
   it('should have the selected class on the host element when the isLast property is set to true, and an aria-current property equal to page', async() => {
-    await page.$eval('se-breadcrumb-item', (elm: any) => {
-      elm.isLast = true;
-    });
+    element.setProperty('isLast', true);
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('div')).toHaveClass('selected');
     expect(listItemElement.getAttribute('aria-current')).toEqual('page');

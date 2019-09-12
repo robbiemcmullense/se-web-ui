@@ -29,23 +29,12 @@ describe('RadioComponent', () => {
 		expect(radio.required).toBeTruthy();
 	});
 
-	it('should render', async() => {
+	it('should render, with a radio-container class', async() => {
 		const page = await newSpecPage({
 			components: [RadioComponent],
 			html: `<se-radio></se-radio>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-radio>
-				<mock:shadow-root>
-					<div class="se-radio">
-						<label class="radio-container">
-							<input type="radio" />
-							<span class="checkdot" data-color="primary"></span>
-						</label>
-					</div>
-				</mock:shadow-root>
-			</se-radio>
-		`);
+		expect(page.root.shadowRoot.querySelector('.radio-container')).toBeTruthy();
 	});
 
 	it('sets checked to true if selected is true when the component loads', () => {
@@ -62,7 +51,7 @@ describe('RadioComponent', () => {
 
 	it('should emit the didCheck event when a radio button is clicked', () => {
 		const eventSpy = jest.spyOn(radio.didCheck, 'emit');
-		radio.emitEvent();
+		radio.emitEvent(); // user clicks on radio button
 		expect(eventSpy).toHaveBeenCalled();
 	});
 });
