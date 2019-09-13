@@ -33,7 +33,7 @@
         <se-dropdown alignment="right">
           <se-button slot="trigger" option="inherit" icon="user_standard" icon-color="primary">Test User</se-button>
           <se-list option="dropdown">
-            <se-list-item item="Logout"></se-list-item>
+            <se-list-item item="Logout" id="test-button-label"></se-list-item>
           </se-list>
         </se-dropdown>
       </div>
@@ -118,7 +118,7 @@
           </se-list-item>
           <se-list-item item="my item 3 no icon" description="I'm here too">
           </se-list-item>
-          <se-list-item item="I'm the selected one!" selected="false">
+          <se-list-item item="I'm the selected one!" selected="true">
           </se-list-item>
           <se-list-item item="Basic Item" icon="action_settings2">
           </se-list-item>
@@ -158,6 +158,34 @@
             <se-list-item item="Basic Item">
             </se-list-item>
           </se-list-group>
+          <se-list-group item="Widget Title">
+            <se-block option="widget" >
+              <se-block-content>Testing a block widget within an se-list-group</se-block-content>
+            </se-block>
+            <se-block option="widget" >
+              <se-block-content>Further testing</se-block-content>
+            </se-block>
+          </se-list-group>
+          <!-- <se-divider></se-divider> -->
+          <se-list-group item="Card Title">
+            <se-block option="card">
+              <se-block-content>Testing a block card within an se-list-group</se-block-content>
+            </se-block>
+            <se-block option="card">
+              <se-block-content>Further testing</se-block-content>
+            </se-block>
+          </se-list-group>
+          <!-- <se-divider></se-divider> -->
+          <se-list-group item="Block Title">
+            <se-block option="basic">
+              <se-block-content>Testing a block card within an se-list-group</se-block-content>
+            </se-block>
+            <se-block option="basic">
+              <se-block-content>Further testing</se-block-content>
+            </se-block>
+          </se-list-group>
+          <!-- <se-divider></se-divider> -->
+          <se-list-item item="My last item"></se-list-item>
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
@@ -436,9 +464,9 @@
             </div>
           </se-block-header>
           <se-block-content>
-            <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
-            <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels">
-            </se-visual-linear>
+            <se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>
+            <se-visual-linear id="progBar" secolor="error" percentage="66" value="16" label="Labels"></se-visual-linear>
+            <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels"></se-visual-linear>
             <se-slider id="sliderID"></se-slider>
             <ul>
               <li id="slider-value"><span></span></li>
@@ -454,7 +482,8 @@
           </se-block-header>
           <se-block-content>
             <se-visual-radial percentage="30" label="units"></se-visual-radial>
-            <se-visual-radial percentage="30" secolor="#ee0014" label="Label" value="8"></se-visual-radial>
+            <se-visual-radial percentage="60" secolor="warning" label="units"></se-visual-radial>
+            <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
           </se-block-content>
         </se-block>
         <se-block id="block7">
@@ -641,14 +670,25 @@
     function newListItem() {
       let listItem = document.createElement("se-list-item");
       listItem.item = "Test item";
+      listItem.setAttribute("id", "Test-List-Item")
 
       setTimeout(function () {
         let collapse = document.getElementById('simple-collapse');
         collapse.appendChild(listItem);
-      }, 5000);
+      }, 4500); //set to about 20000 when testing IE
     }
 
     newListItem();
+
+    // Then try to remove that item from the DOM
+    function removeNewListItem() {
+      setTimeout(function () {
+        let deleted = document.getElementById("Test-List-Item");
+        deleted.parentNode.removeChild(deleted);
+      }, 9000); //set to about 30000 when testing IE
+    }
+
+    removeNewListItem();
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');

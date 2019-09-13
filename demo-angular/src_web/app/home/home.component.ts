@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
   public loaderTable = false;
   public showDialogMessage: string;
 
+  public myValue = true;
+
+  public myRadioValue: string;
+
   constructor(
     public dialogService: DialogService,
     private snackbarService: SnackbarService,

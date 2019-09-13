@@ -14,9 +14,13 @@ version 4.0.0
  ```sh
  yarn install
  ```
-3. Link  `@se/web-ui` to current folder (file reference does not work)
-  - At the root of `web-ui` folder, run `yarn link`
-  - In the folder `web-ui/demo-angular`, run `yarn link @se/web-ui` 
+3. If doing local development of web-component (building and testing new web-component in the different demo). Need to be done only once.
+  1.  Link  `@se/web-ui` to current folder. 
+    - At the root of the generated `/core` folder, run `yarn link`
+    - In the folder `/demo-angular`, run `yarn link @se/web-ui` 
+  2. Link `@se/web-ui-angular` to current folder. 
+    - At the root of the generated `/angular` folder, run `yarn link`
+    - In the folder `/demo-angular`, run `yarn link @se/web-ui-angular` 
 4. Launch development server, and open `localhost:4200` in your browser:
  ```sh
  yarn start

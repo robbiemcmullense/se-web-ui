@@ -1,5 +1,5 @@
 import { AppComponent } from './app';
-import { newSpecPage } from "@stencil/core/testing"; 
+import { newSpecPage } from "@stencil/core/testing";
 
 describe('AppComponent', () => {
 	let app;
@@ -16,19 +16,19 @@ describe('AppComponent', () => {
 		expect(app.option).toEqual('technical');
 	});
 
-	it('should render in with the se-font-technical class by default', async() => {
+	it('should render and update the body with the se-font-technical class by default', async() => {
 		const page = await newSpecPage({
 			components: [AppComponent],
 			html: `<se-app></se-app>`,
 		});
-		expect(page.root.querySelector('.se-font-technical')).toBeTruthy();
+		expect(page.body.className).toContain(`se-font-technical`);
 	});
 
-	it('should render with the se-font-website class when app.option is set to website', async() => {
+	it('should render then update body with the se-font-website class when app.option is set to website', async() => {
 		const page = await newSpecPage({
 			components: [AppComponent],
 			html: `<se-app option="website"></se-app>`,
 		});
-		expect(page.root.querySelector('.se-font-website')).toBeTruthy();
+    expect(page.body.className).toContain(`se-font-website`);
 	});
 });

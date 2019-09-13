@@ -10,9 +10,13 @@
 }
 
 .se-list-group {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   &.classic, &.nav {
     button {
       min-height: 47px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
     }
   }
@@ -21,6 +25,13 @@
     button {
       flex-direction: row-reverse;
       height: 32px;
+      padding: 5.5px 0;
+      .nav-icon {
+        margin: -3px -8px -3px 4px;
+        + .nav-content {
+          padding-left: 12px;
+        }
+      }
     }
     .nav-content {
       padding-left: 0;
@@ -66,4 +77,20 @@
     background-color:$se-ultra-dark-grey;
     }
   }
+}
+
+.se-list-group.treeview {
+  .nav-icon {
+    margin-right: 0;
+    margin-left: -4px;
+  }
+  .nav-content {
+    margin-right: 8px;
+  }
+  se-icon {
+    margin: -4px 0;
+  }
+}
+.se-list-group.dropdown button {
+  margin-top: -1px;
 }

@@ -1,5 +1,3 @@
-import { defineCustomElements } from "/se/web-ui/esm/loader.mjs";
-defineCustomElements(window);
 
 const myApp = {};
 window.myApp = myApp;

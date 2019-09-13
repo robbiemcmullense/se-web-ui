@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                             | Type                  | Default   |
-| -------- | --------- | ----------------------------------------------------------------------- | --------------------- | --------- |
-| `size`   | `size`    | Sets the size of the EcoStruxure icon.  The default setting is `small`. | `"medium" \| "small"` | `"small"` |
+| Property | Attribute | Description                                                                                                                                                               | Type                        | Default      |
+| -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------------ |
+| `color`  | `color`   | Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent. | `"inherited" \| "standard"` | `"standard"` |
+| `size`   | `size`    | Sets the size of the EcoStruxure icon.  The default setting is `small`.                                                                                                   | `"medium" \| "small"`       | `"small"`    |
 
 
 ## Dependencies

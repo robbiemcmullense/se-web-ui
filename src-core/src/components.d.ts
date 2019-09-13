@@ -37,9 +37,9 @@ export namespace Components {
   }
   interface SeApp {
     /**
-    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
     */
-    'option': 'technical' | 'website';
+    'option': 'technical' | 'website' | 'dcx';
   }
   interface SeAuthentication {
     /**
@@ -451,6 +451,10 @@ export namespace Components {
     'size': "nano" | "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure {
+    /**
+    * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
+    */
+    'color': "standard" | "inherited";
     /**
     * Sets the size of the EcoStruxure icon.  The default setting is `small`.
     */
@@ -1106,9 +1110,9 @@ declare namespace LocalJSX {
   }
   interface SeApp extends JSXBase.HTMLAttributes<HTMLSeAppElement> {
     /**
-    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
     */
-    'option'?: 'technical' | 'website';
+    'option'?: 'technical' | 'website' | 'dcx';
   }
   interface SeAuthentication extends JSXBase.HTMLAttributes<HTMLSeAuthenticationElement> {
     /**
@@ -1523,6 +1527,10 @@ declare namespace LocalJSX {
     'size'?: "nano" | "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure extends JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement> {
+    /**
+    * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
+    */
+    'color'?: "standard" | "inherited";
     /**
     * Sets the size of the EcoStruxure icon.  The default setting is `small`.
     */
