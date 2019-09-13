@@ -37,11 +37,4 @@
       color: $se-light-grey;
     }
   }
-  // Align caret on MS Edge browser.
-  // Will remove when Chromium-based Edge browser is released.
-  @supports (-ms-ime-align:auto) {
-    se-icon {
-      top: -2px;
-    }
-  }
 }
