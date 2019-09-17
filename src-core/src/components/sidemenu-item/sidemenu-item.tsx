@@ -29,7 +29,7 @@ export class SidemenuItemComponent {
       <Host
         role={'sidenavpanel'}
         aria-hidden={{'true': !this.active}}
-        class={{'navitem-hidden': !this.active}}>
+        class={[this.active ? 'active' : 'navitem-hidden'].join(' ')}>
         <slot></slot>
       </Host>
     )

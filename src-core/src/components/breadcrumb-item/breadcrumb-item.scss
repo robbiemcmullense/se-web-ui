@@ -2,7 +2,8 @@
 
 :host {
   div {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
   }
   .breadcrumb-item {
     display: inline;
@@ -34,13 +35,6 @@
       cursor: default;
       text-decoration: none;
       color: $se-light-grey;
-    }
-  }
-  // Align caret on MS Edge browser.
-  // Will remove when Chromium-based Edge browser is released.
-  @supports (-ms-ime-align:auto) {
-    se-icon {
-      top: -2px;
     }
   }
 }
