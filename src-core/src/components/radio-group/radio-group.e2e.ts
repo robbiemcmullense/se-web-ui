@@ -79,3 +79,33 @@ describe('RadioComponent with an initialized disabled property', () => {
     expect(radioTwo.innerText).toEqual('Radio Two');
   });
 });
+
+describe('Radio Group Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('renders with child radio components', async() => {
+    await page.setContent(`
+      <se-radio-group>
+        <se-radio value="one radio" label="First Radio Button"></se-radio>
+        <se-radio value="two radio" label="Second Radio Button" selected="true"></se-radio>
+        <se-radio value="three radio" label="Third Radio Button"></se-radio>
+      </se-radio-group>
+    `);
+    await page.compareScreenshot('Radio Group with Radio Buttons', {fullPage: false});
+  });
+
+  it('renders with child button components', async() => {
+    await page.setContent(`
+      <se-radio-group>
+        <se-button value="first">Check1</se-button>
+        <se-button value="second">Check2</se-button>
+        <se-button value="third">Check3</se-button>
+      </se-radio-group>
+    `);
+    await page.compareScreenshot('Radio Group with Child SE-Buttons', {fullPage: false});
+  });
+});

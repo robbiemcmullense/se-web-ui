@@ -33,7 +33,7 @@
         <se-dropdown alignment="right">
           <se-button slot="trigger" option="inherit" icon="user_standard" icon-color="primary">Test User</se-button>
           <se-list option="dropdown">
-            <se-list-item item="Logout"></se-list-item>
+            <se-list-item item="Logout" id="test-button-label"></se-list-item>
           </se-list>
         </se-dropdown>
       </div>
@@ -119,7 +119,7 @@
           </se-list-item>
           <se-list-item item="my item 3 no icon" description="I'm here too">
           </se-list-item>
-          <se-list-item item="I'm the selected one!" selected="false">
+          <se-list-item item="I'm the selected one!" selected="true">
           </se-list-item>
           <se-list-item item="Basic Item" icon="action_settings2">
           </se-list-item>
@@ -159,6 +159,34 @@
             <se-list-item item="Basic Item">
             </se-list-item>
           </se-list-group>
+          <se-list-group item="Widget Title">
+            <se-block option="widget" >
+              <se-block-content>Testing a block widget within an se-list-group</se-block-content>
+            </se-block>
+            <se-block option="widget" >
+              <se-block-content>Further testing</se-block-content>
+            </se-block>
+          </se-list-group>
+          <!-- <se-divider></se-divider> -->
+          <se-list-group item="Card Title">
+            <se-block option="card">
+              <se-block-content>Testing a block card within an se-list-group</se-block-content>
+            </se-block>
+            <se-block option="card">
+              <se-block-content>Further testing</se-block-content>
+            </se-block>
+          </se-list-group>
+          <!-- <se-divider></se-divider> -->
+          <se-list-group item="Block Title">
+            <se-block option="basic">
+              <se-block-content>Testing a block card within an se-list-group</se-block-content>
+            </se-block>
+            <se-block option="basic">
+              <se-block-content>Further testing</se-block-content>
+            </se-block>
+          </se-list-group>
+          <!-- <se-divider></se-divider> -->
+          <se-list-item item="My last item"></se-list-item>
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
@@ -463,58 +491,56 @@
               <se-button onclick="addBannerItem()" option="raised">Add Banner Item</se-button>
               <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
 
-              <se-divider></se-divider>
-              <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
-              <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon
-              </se-button>
-              <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
-            </se-block-content>
-          </se-block>
-          <se-block id="block5">
-            <se-block-header>
-              Linear chart & Slider
-              <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
-              </div>
-            </se-block-header>
-            <se-block-content>
-              <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
-              <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels">
-              </se-visual-linear>
-              <se-slider id="sliderID"></se-slider>
-              <ul>
-                <li id="slider-value"><span></span></li>
-              </ul>
-            </se-block-content>
-          </se-block>
-          <se-block id="block6">
-            <se-block-header>
-              Radial chart
-              <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
-              </div>
-            </se-block-header>
-            <se-block-content>
-              <se-visual-radial percentage="30" label="units"></se-visual-radial>
-              <se-visual-radial percentage="30" secolor="#ee0014" label="Label" value="8"></se-visual-radial>
-            </se-block-content>
-          </se-block>
-          <se-block id="block7">
-            <se-block-header>
-              Tree view
-              <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
-              </div>
-            </se-block-header>
-            <se-block-content>
-              <se-list option="treeview">
-                <se-list-group option="treeview" item="Treeview Example">
-                  <se-list-item item="First treeview child"></se-list-item>
-                  <se-list-group option="treeview" item="Second treeview child">
-                    <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
-                    <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
-                  </se-list-group>
-                  <se-list-item item="Third treeview child"></se-list-item>
+            <se-divider></se-divider>
+            <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
+            <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
+            <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
+          </se-block-content>
+        </se-block>
+        <se-block id="block5">
+          <se-block-header>
+            Linear chart & Slider
+            <div slot="end">
+              <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
+            </div>
+          </se-block-header>
+          <se-block-content>
+            <se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>
+            <se-visual-linear id="progBar" secolor="error" percentage="66" value="16" label="Labels"></se-visual-linear>
+            <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels"></se-visual-linear>
+            <se-slider id="sliderID"></se-slider>
+            <ul>
+              <li id="slider-value"><span></span></li>
+            </ul>
+          </se-block-content>
+        </se-block>
+        <se-block id="block6">
+          <se-block-header>
+            Radial chart
+            <div slot="end">
+              <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
+            </div>
+          </se-block-header>
+          <se-block-content>
+            <se-visual-radial percentage="30" label="units"></se-visual-radial>
+            <se-visual-radial percentage="60" secolor="warning" label="units"></se-visual-radial>
+            <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
+          </se-block-content>
+        </se-block>
+        <se-block id="block7">
+          <se-block-header>
+            Tree view
+            <div slot="end">
+              <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
+            </div>
+          </se-block-header>
+          <se-block-content>
+            <se-list option="treeview">
+              <se-list-group option="treeview" item="Treeview Example">
+                <se-list-item item="First treeview child"></se-list-item>
+                <se-list-group option="treeview" item="Second treeview child">
+                  <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                  <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
                 </se-list-group>
               </se-list>
             </se-block-content>
@@ -683,14 +709,25 @@
     function newListItem() {
       let listItem = document.createElement("se-list-item");
       listItem.item = "Test item";
+      listItem.setAttribute("id", "Test-List-Item")
 
       setTimeout(function () {
         let collapse = document.getElementById('simple-collapse');
         collapse.appendChild(listItem);
-      }, 5000);
+      }, 4500); //set to about 20000 when testing IE
     }
 
     newListItem();
+
+    // Then try to remove that item from the DOM
+    function removeNewListItem() {
+      setTimeout(function () {
+        let deleted = document.getElementById("Test-List-Item");
+        deleted.parentNode.removeChild(deleted);
+      }, 9000); //set to about 30000 when testing IE
+    }
+
+    removeNewListItem();
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');

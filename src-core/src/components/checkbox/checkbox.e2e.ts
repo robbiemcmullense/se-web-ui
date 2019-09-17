@@ -26,9 +26,7 @@ describe('CheckboxComponent', () => {
   });
 
   it('renders with a disabled class and a disabled input element when the parent element has disabled=true', async() => {
-    await page.$eval('se-checkbox', (elm: any) => {
-      elm.disabled = true;
-    });
+    hostElement.setProperty('disabled', true);
     await page.waitForChanges();
     expect(checkboxElement).toHaveClass('disabled');
   });
@@ -105,5 +103,29 @@ describe('CheckboxComponent in OnOff Mode', () => {
     let offButton = await page.find('se-checkbox >>> button.inactive');
     expect(onButton.getAttribute('id')).toEqual('wc-on-off-switch-active');
     expect(offButton.getAttribute('id')).toEqual('wc-on-off-switch-inactive');
+  });
+});
+
+describe('Checkbox Screenshots', () => {
+  it('renders in standard checkbox option', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-checkbox label="Label"></se-checkbox><se-checkbox selected="true" label="Label"></se-checkbox>'); 
+    await page.compareScreenshot('Checkbox Checked and Unchecked', {fullPage: false});
+  });
+});
+
+describe('Switch Screenshots', () => {
+  it('renders in the toggle switch option', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-checkbox option="switch" label="Label"></se-checkbox><se-checkbox option="switch" selected="true" label="Label"></se-checkbox>'); 
+    await page.compareScreenshot('Switch Checked and Unchecked', {fullPage: false});
+  });
+});
+
+describe('OnOff Screenshots', () => {
+  it('renders as an on/off switch', async() => {
+    let page = await newE2EPage();
+    await page.setContent('<se-checkbox option="onoff" label="Label"></se-checkbox><se-checkbox option="onoff" selected="true" label="Label"></se-checkbox>'); 
+    await page.compareScreenshot('On Off Switch', {fullPage: false});
   });
 });

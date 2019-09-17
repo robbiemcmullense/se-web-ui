@@ -30,26 +30,18 @@ describe('SliderComponent', () => {
     expect(slider.disabled).toBeTruthy();
   });
   
-  it('should render', async() => {
+  it('should render with an input element', async() => {
     const page = await newSpecPage({
       components: [SliderComponent],
       html: `<se-slider></se-slider>`,
     });
-    expect(page.root).toEqualHtml(`
-      <se-slider>
-        <mock:shadow-root>
-          <div class="slider-container">
-            <input type="range" min="0" max="100" value="0" />
-          </div>
-        </mock:shadow-root>
-      </se-slider>
-    `);
+    expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
   });
 
   it('should emit the didChange event when the slider value changes', () => {
     const eventSpy = jest.spyOn(slider.didChange, 'emit');
     slider.sliderElement = {addEventListener: jest.fn()};
-    slider.handleEvent();
+    slider.handleEvent(); // slider value changes from user interaction
     expect(eventSpy).toHaveBeenCalled();
   });
 });

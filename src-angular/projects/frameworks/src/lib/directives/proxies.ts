@@ -300,7 +300,7 @@ export class SeIcon {
 proxyInputs(SeIcon, ['color', 'option', 'size']);
 
 export declare interface SeIconEcostruxure extends Components.SeIconEcostruxure {}
-@Component({ selector: 'se-icon-ecostruxure', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['size'] })
+@Component({ selector: 'se-icon-ecostruxure', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'size'] })
 export class SeIconEcostruxure {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -308,7 +308,7 @@ export class SeIconEcostruxure {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeIconEcostruxure, ['size']);
+proxyInputs(SeIconEcostruxure, ['color', 'size']);
 
 export declare interface SeIconLifeison extends Components.SeIconLifeison {}
 @Component({ selector: 'se-icon-lifeison', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color'] })

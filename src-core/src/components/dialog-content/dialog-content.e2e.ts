@@ -15,9 +15,7 @@ describe('dialogContentComponent', () => {
   });
 
   it('renders with the mode class whenever the mode is set to fill', async() => {
-    await page.$eval('se-dialog-content', (elm: any) => {
-      elm.option = 'fill';
-    });
+    element.setProperty('option', 'fill');
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('.se-dialog-content')).toHaveClass('full-content');
   });

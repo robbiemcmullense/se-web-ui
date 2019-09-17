@@ -25,6 +25,18 @@ describe('HeaderComponent', () => {
     const iconElm = await page.find('se-header >>> se-icon-ecostruxure');
     expect(iconElm).toBeTruthy();
   });
+
+  it('renders a span element with the class header-title-type when the domain is not equal to ecostruxure', async() => {
+    element = await page.find('se-header');
+    element.setProperty('domain', 'myDomain');
+    await page.waitForChanges();
+
+    let ecostruxureElement = await page.find('se-header >>> se-icon-ecostruxure');
+    let spanElement = await page.find('se-header >>> span.header-title-type');
+    expect(ecostruxureElement).not.toBeTruthy();
+    expect(spanElement).toBeTruthy();
+    expect(spanElement.innerText).toEqual('myDomain');
+  });
 });
 
 describe('Header Component with Sidenav Child', () => {
@@ -34,5 +46,27 @@ describe('Header Component with Sidenav Child', () => {
     const element = await page.find('se-header >>> se-icon');
     expect(element).toBeTruthy();
     expect(element.innerText).toEqual('burger_menu');
+  });
+});
+
+describe('Header Component Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('should render with the Ecostruxure domain by default, along with the provided app title and project property', async() => {
+    await page.setContent('<se-header app-title="My App" project="My Project"></se-header>');
+    await page.compareScreenshot('Ecostruxure Header', {fullPage: false});
+  });
+
+  it('should render with a burger icon, when there is a sidemenu, along with the custom domain name', async() => {
+    await page.setContent(`
+      <se-header domain="My Domain" app-title="My App" project="My Project">
+        <se-sidemenu></se-sidemenu>
+      </se-header>
+      `);
+    await page.compareScreenshot('Custom Domain Header with Sidemenu', {fullPage: false});
   });
 });

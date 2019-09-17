@@ -75,6 +75,10 @@ export class ListItemComponent {
   }
 
   render() {
+    let myDescription = null;
+    if (!!this.description) {
+      myDescription = <small>{this.description}</small>
+    };
     return (
       <div class={['se-list-item', this.option].join(' ')}>
         <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} >
@@ -88,7 +92,7 @@ export class ListItemComponent {
             : ''}
           <div class="nav-content">
             <div>{this.item}</div>
-            <small> {this.description}</small>
+            {myDescription}
           </div>
           {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
           {this.option === "classic" ? <slot></slot> : ''}
