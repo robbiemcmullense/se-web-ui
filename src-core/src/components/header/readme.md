@@ -22,9 +22,9 @@
 
 ### Depends on
 
-- [se-icon-ecostruxure](..\icon-ecostruxure)
-- [se-icon](..\icon)
-- [se-icon-schneider](..\icon-schneider)
+- [se-icon-ecostruxure](../icon-ecostruxure)
+- [se-icon](../icon)
+- [se-icon-schneider](../icon-schneider)
 
 ### Graph
 ```mermaid
