@@ -35,6 +35,17 @@
   }
 }
 
+@media screen and (min-width: 900px) {
+  :host(.banner-child) {
+    button {
+      &.outline {
+        color: $se-white;
+        border-color: $se-white;
+      }
+    }
+  }
+}
+
 :host(.grouped) {
   button {
     margin: $spacing-small 0;

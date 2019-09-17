@@ -13,6 +13,7 @@
   position: absolute;
   left: 0;
   right: 0;
+  top: 90px;
   margin: 0;
   padding-left: 0;
   justify-content: center;
@@ -45,6 +46,7 @@
 .next-indicator {
   display: flex;
   position: absolute;
+  top: 45px;
   font-family: 'se-icon';
   cursor: pointer;
   justify-content: center;
@@ -56,8 +58,6 @@
     color: $se-white;
   }
 }
-
-
 
 .se-banner {
   position: relative;
@@ -75,17 +75,7 @@
   right: -5px;    
 }
 
-@media screen and (max-width: 767px) {
-  .previous-indicator,
-  .next-indicator {
-    top: 45px;   
-  }
- 
-  .banner-indicators {
-    top: 90px;
-  }
-}
-
+// tablet < 900px
 @media screen and (min-width: 768px) {
   .banner-indicators {
     top: 345px;
@@ -95,15 +85,16 @@
   .next-indicator {   
     top: 165px;    
   }
-
 }
 
+// tablet >= 900px
 @media screen and (min-width: 900px) {
   .se-banner {
     height: 350px;
   }
 }
 
+// desktop
 @media screen and (min-width: 1281px) {
   .banner-indicators {
     top: 340px;

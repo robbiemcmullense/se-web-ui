@@ -30,49 +30,22 @@ describe('BannerComponent', () => {
 	});
 
 	// need to see if we can update Jest to include MutationObserver
-	it('should render', async() => {
+	it('should render with a div element with a banner-items class', async() => {
 		const page = await newSpecPage({
 			components: [BannerComponent],
 			html: `<se-banner></se-banner>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-banner>
-				<mock:shadow-root>
-					<div class="se-banner">
-						<div class="banner-items" style="width: 0%;">
-							<slot></slot>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-banner>
-		`);
+		expect(page.root.shadowRoot.querySelector('.banner-items')).toBeTruthy();
 	});
 
 	// need to see if we can update Jest to include MutationObserver
-	it('should render with two banner item elements', async() => {
+	it('should render with two banner item elements, as well as elements with previous-indicator and next-indicator classes', async() => {
 		const page = await newSpecPage({
 			components: [BannerComponent],
 			html: `<se-banner><se-banner-item></se-banner-item><se-banner-item></se-banner-item></se-banner>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-banner>
-				<mock:shadow-root>
-					<div class="se-banner">
-						<div class="banner-items" style="width: 200%; right: 0%;">
-							<slot></slot>
-						</div>
-						<ol class="banner-indicators">
-							<li class="active"></li>
-							<li></li>
-						</ol>
-						<se-icon class="previous-indicator">arrow2_left</se-icon>
-						<se-icon class="next-indicator">arrow2_right</se-icon>
-					</div>
-				</mock:shadow-root>
-				<se-banner-item></se-banner-item>
-				<se-banner-item></se-banner-item>
-			</se-banner>
-		`);
+		expect(page.root.shadowRoot.querySelector('.previous-indicator')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.next-indicator')).toBeTruthy();
 	});
 
 	it('should call the watchItemList function when componentWillLoad is executed', () => {

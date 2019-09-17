@@ -20,24 +20,13 @@ describe('BannerItemComponent', () => {
 		expect(bannerItem.active).toBeFalsy();
 	});
 
-	it('should render', async() => {
+	it('should render with an element with the class image-container, and an element with the class banner-section-wrapper', async() => {
 		const page = await newSpecPage({
 			components: [BannerItemComponent],
 			html: `<se-banner-item></se-banner-item>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-banner-item>
-				<mock:shadow-root>
-					<div class="image-container">
-						<img class="image-background"/>
-						<div class="background-overlay"></div>
-					</div>
-					<div class="banner-section-wrapper">
-						<slot></slot>
-					</div>
-				</mock:shadow-root>
-			</se-banner-item>
-		`);
+		expect(page.root.shadowRoot.querySelector('.image-container')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.banner-section-wrapper')).toBeTruthy();
 	});
 
 	it('should call setBlockTransparency twice, when the component loads and when it updates', () => {

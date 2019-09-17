@@ -27,14 +27,6 @@
   grid-row: span 2;
 }
 
-@media screen and (min-width: 900px) {
-  :host(.banner-child) {
-    width: 40%;
-    min-width: 330px;
-    color: $se-white;
-  }
-}
-
 .block-body {
   overflow: auto;
   @include flex();
