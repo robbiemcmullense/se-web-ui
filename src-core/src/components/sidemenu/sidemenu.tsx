@@ -52,7 +52,8 @@ export class SidemenuComponent {
 
   private setActive(item: any): void {
     if (this.menuInnerEl) {
-      this.menuInnerEl.style.width = !item.childElementCount ? '250px' : '80%';
+      console.log(this.menuInnerEl)
+      this.menuInnerEl.style.width = !item.childElementCount ? '250px' : '80%'; // This logic shouldn't directly change the width? needs to be based on if a sidemenu item has and "active" class
     }
     if (this.items.length) {
       this.items.forEach((item: any) => {
@@ -100,8 +101,9 @@ export class SidemenuComponent {
             }
           });
           if (!activeItem && this.selectedItem) {
+            console.log(this.selectedItem);
             this.selectedItem = undefined;
-            this.menuInnerEl.style.width = '250px';
+            this.menuInnerEl.style.width = '250px'; // CHANGE THIS? ADD CLASS INSTEAD TO CONTROL SIZING IN CSS?
           }
         }
       });
@@ -144,22 +146,24 @@ export class SidemenuComponent {
       <div class="menu-background animated d-flex-row flex" onClick={() => this.toggle()} ref={el => this.backdropEl = el} />,
       <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
         <div class="d-flex flex">
-          <div class="listNavItems">
+          <se-block width="250px">
             <div class="d-flex-center flex">
               <span class="menu-sidenav" onClick={() => this.toggle()}>
                 <se-icon size="large" color="primary">test_results_nok</se-icon>
               </span>
               <h3 class="header-title">{this.label}</h3>
             </div>
-            <se-divider></se-divider>
-            <se-list option="nav">
-              {this.renderList()}
-            </se-list>
-            <se-icon-lifeison color="standard" />
+            <se-divider />
+            <se-block-content option="fill">
+              <se-list option="nav">
+                {this.renderList()}
+              </se-list>
+            </se-block-content>
+            <se-icon-lifeison class="footer-icon" color="standard" />
             <div class="external-link">
               <se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
             </div>
-          </div>
+          </se-block>
           <se-divider option="vertical"></se-divider>
           <se-block ref={el => this.menuItemInnerEl = el}>
             <slot />
