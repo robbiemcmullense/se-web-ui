@@ -4,6 +4,7 @@
 :host {
   @include flex-direction(column);
 }
+
 .group-item{
   overflow: hidden;
   padding-bottom: 0;
