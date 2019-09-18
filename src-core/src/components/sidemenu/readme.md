@@ -30,23 +30,25 @@ Type: `Promise<void>`
 ### Depends on
 
 - [se-list-item](../list-item)
+- [se-block](../block)
 - [se-icon](../icon)
 - [se-divider](../divider)
+- [se-block-content](../block-content)
 - [se-list](../list)
 - [se-icon-lifeison](../icon-lifeison)
 - [se-link](../link)
-- [se-block](../block)
 
 ### Graph
 ```mermaid
 graph TD;
   se-sidemenu --> se-list-item
+  se-sidemenu --> se-block
   se-sidemenu --> se-icon
   se-sidemenu --> se-divider
+  se-sidemenu --> se-block-content
   se-sidemenu --> se-list
   se-sidemenu --> se-icon-lifeison
   se-sidemenu --> se-link
-  se-sidemenu --> se-block
   se-list-item --> se-icon
   se-block --> se-loading
   style se-sidemenu fill:#f9f,stroke:#333,stroke-width:4px
