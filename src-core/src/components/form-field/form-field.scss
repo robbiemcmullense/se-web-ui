@@ -40,12 +40,6 @@ $max-width-input: 320px;
     background-color: $se-white;
   }
   
-  ::slotted(input:focus) {
-    outline: none;
-    border: 1px solid;
-    @include border-color('primary')
-  }
-  
   ::slotted(select) {
     height: 32px;
     width: 60%;
@@ -64,6 +58,14 @@ $max-width-input: 320px;
     border: 1px solid $se-super-light-grey;
     font-family: inherit;
     resize: vertical;
+  }
+
+  ::slotted(input:focus),
+  ::slotted(select:focus),
+  ::slotted(textarea:focus) {
+    outline: none;
+    border: 1px solid;
+    @include border-color('primary')
   }
 
   &.stacked {
