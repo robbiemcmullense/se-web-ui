@@ -41,7 +41,7 @@ export class ListGroupComponent {
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
   /**
    * Defines if list groups can be collapsed, true by default.
    */
@@ -96,14 +96,15 @@ export class ListGroupComponent {
   }
 
   getParentConfig() {
-    const elParent: any = this.el.parentElement;
-    if (!!elParent) {
-      const indentation = elParent.indentation;
-      if(!!elParent.indentation) {
+    const myParent: any = this.el.parentElement;
+    if(!!myParent) {
+      const indentation = myParent.indentation;
+      if(indentation !== null && indentation !== undefined) {
         this.indentation = indentation + 1;
+        // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
       }
-      if(!!elParent.option) {
-        this.option = elParent.option;
+      if(!this.option) {
+        this.option = myParent.option;
       }
     }
   }

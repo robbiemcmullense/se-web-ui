@@ -35,7 +35,7 @@ export class ListItemComponent {
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
 
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
@@ -56,13 +56,15 @@ export class ListItemComponent {
 
   getParentConfig() {
     const myParent: any = this.el.parentElement;
-    const indentation = myParent.indentation;
-    if(indentation !== null && indentation !== undefined) {
-      this.indentation = indentation + 1;
-      // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
-    }
-    if(!!myParent.option) {
-      this.option = myParent.option;
+    if(!!myParent) {
+      const indentation = myParent.indentation;
+      if(indentation !== null && indentation !== undefined) {
+        this.indentation = indentation + 1;
+        // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
+      }
+      if(!this.option) {
+        this.option = myParent.option;
+      }
     }
   }
 
