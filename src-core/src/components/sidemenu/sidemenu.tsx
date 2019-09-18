@@ -2,6 +2,7 @@ import { Component, h, Method, Element, State, Prop } from '@stencil/core';
 
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
+const OPEN_ITEM = 'open-item';
 
 @Component({
   tag: 'se-sidemenu',
@@ -32,11 +33,15 @@ export class SidemenuComponent {
       // Add css classes
       this.el.classList.add(SHOW_MENU);
       this.addAnimation(null);
+      if (this.el.getElementsByClassName("active").length > 0) {
+        this.el.classList.add(OPEN_ITEM);
+      }
     } else {
       // Remove css classes
       this.removeAnimation(() => {
         this.el.classList.remove(SHOW_MENU);
       });
+      this.el.classList.remove(OPEN_ITEM);
       if (this.selectedItem && !this.selectedItem.childElementCount) {
         this.selectedItem = undefined;
         this.items.forEach((item: any) => {
@@ -51,10 +56,6 @@ export class SidemenuComponent {
   }
 
   private setActive(item: any): void {
-    if (this.menuInnerEl) {
-      console.log(this.menuInnerEl)
-      this.menuInnerEl.style.width = !item.childElementCount ? '250px' : '80%'; // This logic shouldn't directly change the width? needs to be based on if a sidemenu item has and "active" class
-    }
     if (this.items.length) {
       this.items.forEach((item: any) => {
         item.active = false;
@@ -62,6 +63,7 @@ export class SidemenuComponent {
       setTimeout(() => {
         item.active = true;
         this.selectedItem = item;
+        this.el.classList.add(OPEN_ITEM);
       }, 100)
     }
   }
@@ -103,7 +105,6 @@ export class SidemenuComponent {
           if (!activeItem && this.selectedItem) {
             console.log(this.selectedItem);
             this.selectedItem = undefined;
-            this.menuInnerEl.style.width = '250px'; // CHANGE THIS? ADD CLASS INSTEAD TO CONTROL SIZING IN CSS?
           }
         }
       });

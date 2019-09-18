@@ -29,10 +29,36 @@
     background-color: $se-white;
     box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px 0px;
     height: 100vh;
+    max-height: 100%;
+    overflow: hidden;
     position: relative;
-    // width: 250px;
+    width: 250px;
     max-width: 80%;
     z-index: 10;
+  }
+}
+
+:host(.open-item) {
+  .actual-menu {
+    width: 80%;
+  }
+}
+
+.menu-background {
+  &.show-menu {
+    animation-name: fadeIn;
+  }
+  &.hide-menu {
+    animation-name: fadeOut;
+  }
+}
+
+.actual-menu {
+  &.show-menu {
+    animation-name: slideInLeft;
+  }
+  &.hide-menu {
+    animation-name: slideOutLeft;
   }
 }
 
