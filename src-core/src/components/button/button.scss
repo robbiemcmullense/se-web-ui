@@ -107,7 +107,7 @@ button {
 
   .text {
     font-weight: 300;
-    @include typology("base");
+    font-size: $small-fontsize;
     padding: 0 $spacing;
   }
 

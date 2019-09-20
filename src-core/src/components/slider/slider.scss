@@ -6,6 +6,7 @@ $thumb-dimension: 16px;
 $ie_thumb-dimesion: 20px;
 $track-color: #f7f7f7;
 $fill-color: #626469;
+$disabled-color: #cbcbcb;
 
 @mixin track($fill: 0) {
 	box-sizing: border-box;
@@ -15,19 +16,30 @@ $fill-color: #626469;
 	background: $track-color;
 
 	@if $fill == 1 {
-	.slider-container & {
-		width: 100%;
-		background: linear-gradient($fill-color, $fill-color)0/ var(--sx) 100% no-repeat $track-color;
+		.slider-container & {
+			width: 100%;
+			background: linear-gradient($fill-color, $fill-color)0/ var(--sx) 100% no-repeat $track-color;
+		}
+	}
+
+	@if $fill == 'disabled' {
+		.slider-container & {
+			width: 100%;
+			background: linear-gradient($disabled-color, $disabled-color)0/ var(--sx) 100% no-repeat $track-color;
 		}
 	}
 }
 
-@mixin fill() {
+@mixin fill($fill: 0) {
 	height: $track-height;
-	background: $fill-color
+	background: $fill-color;
+
+	@if $fill == 'disabled' {
+		background: $disabled-color;
+	}
 }
 
-@mixin thumb() {
+@mixin thumb($value: 0) {
 	box-sizing: border-box;
 	border: none;
 	width: $thumb-dimension;
@@ -40,8 +52,27 @@ $fill-color: #626469;
 	-ms-border-radius: 50%;
 	-o-border-radius: 50%;
 	&:hover {
-		@include background-color('selected');
+		@include background-color('hover-standard');
 		border: $spacing-small solid transparent;
+	}
+	&:active {
+		@include background-color('selected');
+	}
+
+	&:hover, &:active {
+		width: 24px;
+		height: 24px;
+		position: relative;
+		bottom: 80%;
+	}
+
+	@if $value == 'disabled' {
+		&:hover, &:active {
+			background-color: $se-white;
+			width: $thumb-dimension;
+			height: $thumb-dimension;
+			position: static;
+		}
 	}
 }
 
@@ -58,10 +89,10 @@ input[type='range'] {
 	&::-webkit-slider-runnable-track {
 		@include track(1);
 	}
-	&::-moz-range-track { @include track }
-	&::-ms-track { @include track;}
+	&::-moz-range-track { @include track; }
+	&::-ms-track { @include track; }
 
-	&::-moz-range-progress { @include fill }
+	&::-moz-range-progress { @include fill; }
 	&::-ms-fill-lower { @include fill; }
 
 	&::-webkit-slider-thumb {
@@ -69,10 +100,10 @@ input[type='range'] {
 		@include thumb;
 	}
 
-	&::-moz-range-thumb { @include thumb }
+	&::-moz-range-thumb { @include thumb; }
 	&::-ms-thumb {
 		margin-top: 0;
-        @include thumb;
+		@include thumb;
 	}
 
 	&::-ms-tooltip { display: none }
@@ -83,10 +114,35 @@ input[type='range'] {
 	::-ms-ticks-before {
 			display: none;
 	}
+
+	&[disabled] {
+		&::-webkit-slider-runnable-track {
+			@include track('disabled');
+		}
+		&::-moz-range-progress { @include fill('disabled'); }
+		&::-ms-fill-lower { @include fill('disabled'); }
+		
+		&::-webkit-slider-thumb {
+			@include thumb('disabled');
+		}
+		&::-moz-range-thumb {
+			@include thumb('disabled');
+		}
+	}
 }
 
 @supports (-ms-ime-align:auto) {
 	input[type='range'] {
 		height: $ie_thumb-dimesion;
+		&::-ms-thumb:hover {
+			width: $thumb-dimension;
+			height: $thumb-dimension;
+			position: static;
+		}
+		&::-ms-thumb:active {
+			width: $thumb-dimension;
+			height: $thumb-dimension;
+			position: static;
+		}
 	}
 }
