@@ -35,7 +35,7 @@ export class ListItemComponent {
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  @Prop({mutable: true}) option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
 
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
@@ -64,9 +64,7 @@ export class ListItemComponent {
       }
       if(myParent.option) {
         // console.log("Setting as parent's option");
-        this.el.setAttribute("option", myParent.option);
-      } else {
-        this.el.setAttribute("option", this.option);
+        this.option = myParent.option;
       }
     }
   }
@@ -84,9 +82,8 @@ export class ListItemComponent {
     if (!!this.description) {
       myDescription = <small>{this.description}</small>
     };
-    const myParent: any = this.el.parentElement;
     return (
-      <div class={['se-list-item', this.option ? this.option : myParent.option].join(' ')}>
+      <div class={['se-list-item', this.option].join(' ')}>
         <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} >
           {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
           {!!this.icon ?

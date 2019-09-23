@@ -40,8 +40,12 @@ export class SidemenuComponent {
       // Add css classes
       this.el.classList.add(SHOW_MENU);
       this.addAnimation(null);
-      if (this.el.getElementsByClassName("active").length > 0) {
-        this.el.classList.add(OPEN_ITEM);
+      try {
+        if (this.el.getElementsByClassName("active").length > 0) {
+          this.el.classList.add(OPEN_ITEM);
+        }
+      } catch (error) {
+        console.log(error);
       }
     } else {
       // Remove css classes
@@ -76,23 +80,31 @@ export class SidemenuComponent {
   }
 
   private addAnimation(callback) {
-    this.menuInnerEl.classList.add(SHOW_MENU);
-    this.backdropEl.classList.add(SHOW_MENU);
-    setTimeout(() => {
-      this.menuInnerEl.classList.remove(SHOW_MENU);
-      this.backdropEl.classList.remove(SHOW_MENU);
-      callback && callback();
-    }, 200);
+    try {
+      this.menuInnerEl.classList.add(SHOW_MENU);
+      this.backdropEl.classList.add(SHOW_MENU);
+      setTimeout(() => {
+        this.menuInnerEl.classList.remove(SHOW_MENU);
+        this.backdropEl.classList.remove(SHOW_MENU);
+        callback && callback();
+      }, 200);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   private removeAnimation(callback) {
-    this.menuInnerEl.classList.add(HIDE_MENU);
-    this.backdropEl.classList.add(HIDE_MENU);
-    setTimeout(() => {
-      this.menuInnerEl.classList.remove(HIDE_MENU);
-      this.backdropEl.classList.remove(HIDE_MENU);
-      callback && callback();
-    }, 200);
+    try {
+      this.menuInnerEl.classList.add(HIDE_MENU);
+      this.backdropEl.classList.add(HIDE_MENU);
+      setTimeout(() => {
+        this.menuInnerEl.classList.remove(HIDE_MENU);
+        this.backdropEl.classList.remove(HIDE_MENU);
+        callback && callback();
+      }, 200);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   private watchItemList() {
@@ -168,7 +180,7 @@ export class SidemenuComponent {
               </se-list>
             </se-block-content>
             <se-icon-lifeison class="footer-icon" color="standard" />
-            { this.link ? 
+            { this.link ?
               <div class="external-link">
                 <se-link class="sidemenu-link" url={`http://${this.link}`}>{this.link}</se-link>
             </div> : ''}

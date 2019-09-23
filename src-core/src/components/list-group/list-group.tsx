@@ -104,9 +104,7 @@ export class ListGroupComponent {
         // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
       }
       if(myParent.option) {
-        this.el.setAttribute("option", myParent.option);
-      } else {
-        this.el.setAttribute("option", this.option);
+        this.option = myParent.option;
       }
     }
   }
@@ -131,9 +129,8 @@ export class ListGroupComponent {
       myDescription = <small>{this.description}</small>
     };
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
-    const myParent: any = this.el.parentElement;
     return (
-      <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option ? this.option : myParent.option].join(' ')}>
+      <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
         <button class={[this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : ''].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
           {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
           {!!this.icon ?
@@ -152,7 +149,7 @@ export class ListGroupComponent {
             : <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
           }
         </button>
-        <div class={["group-item", this.option ? this.option : myParent.option].join(' ')}>
+        <div class={["group-item", this.option].join(' ')}>
           <slot/>
         </div>
       </div>
