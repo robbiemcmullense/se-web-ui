@@ -24,8 +24,8 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.disabled).toBeFalsy();
 	});
 
-	it('should not be checked by default', () => {
-		expect(checkbox.checked).toBeFalsy();
+	it('should not be selected by default', () => {
+		expect(checkbox.selected).toBeFalsy();
 	});
 
 	it('should not be required by default', () => {
@@ -82,28 +82,22 @@ describe('CheckboxComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.on-off-wrapper')).toBeTruthy();
 	});
 
-	it('should be checked when selected is set to true', () => {
-		checkbox.selected = true;
-		checkbox.componentDidLoad();
-		expect(checkbox.checked).toBeTruthy();
-	});
-
 	it('should call the setElementId function when the component loads', async() => {
 		const eventSpy = jest.spyOn(checkbox, 'setElementId');
 		checkbox.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should emit the didChange event when the emitEvent function is executed', async() => {
+	it('should emit the didChange event when the handleClick function is executed', async() => {
 		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
-		checkbox.emitEvent();  // user clicks on the checkbox
+		checkbox.handleClick();  // user clicks on the checkbox
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
 	it('should not emit the didChange event when the checkbox is disabled', async() => {
 		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
 		checkbox.disabled = true;
-		checkbox.emitEvent(); // user clicks on the checkbox
+		checkbox.handleClick(); // user clicks on the checkbox
 		expect(eventSpy).not.toHaveBeenCalled();
 	});
 });
