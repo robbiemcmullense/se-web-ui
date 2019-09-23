@@ -119,7 +119,7 @@ export class CheckboxComponent {
           <label class="checkbox-container" data-disabled={this.disabled}>
             {this.option === 'checkbox' ? this.label : ''}
             {this.option === 'checkbox' && this.required ? <span class="required">*</span> : ''}
-            <input type="checkbox" checked={this.selected} disabled={this.disabled} onClick={() => this.handleClick()} />
+            <input type="checkbox" checked={this.selected} disabled={this.disabled} onClick={() => this.handleClick()} value={this.value}/>
             <span class="checkmark" data-color={this.color}></span>
           </label>
           {this.option === 'switch' ? switchMarkup : ''}
