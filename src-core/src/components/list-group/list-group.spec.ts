@@ -36,6 +36,22 @@ describe('list-group', () => {
 		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_up');
   });
 
+  it('should render the button with attribute "disabled" true when canCollapse is false', async() => {
+		const page = await newSpecPage({
+			components: [ListGroupComponent],
+			html: `<se-list-group can-collapse="false"></se-list-group>`,
+		});
+		expect(page.root.shadowRoot.querySelector('button').getAttribute('disabled')).toBe('');
+  });
+
+  it('should render the button without an arrow when canCollapse is false', async() => {
+		const page = await newSpecPage({
+			components: [ListGroupComponent],
+			html: `<se-list-group can-collapse="false"></se-list-group>`,
+		});
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBe(null);
+  });
+
   it('should render a div element with the selectedBar class when selected is true and option is set to nav', async() => {
 		const page = await newSpecPage({
 			components: [ListGroupComponent],
