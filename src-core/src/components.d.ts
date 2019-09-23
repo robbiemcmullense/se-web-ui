@@ -215,6 +215,10 @@ export namespace Components {
     */
     'label': string;
     /**
+    * Sets the position of the label for your checkbox component. The default setting is `right`.
+    */
+    'labelPos': 'left' | 'right';
+    /**
     * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
     */
     'option': 'checkbox' | 'onoff' | 'switch';
@@ -583,6 +587,10 @@ export namespace Components {
     * Defines the label that will display next to the radio button.
     */
     'label': string;
+    /**
+    * Sets the position of the label for your checkbox component. The default setting is `right`.
+    */
+    'labelPos': 'left' | 'right';
     /**
     * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
     */
@@ -1283,6 +1291,10 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
+    * Sets the position of the label for your checkbox component. The default setting is `right`.
+    */
+    'labelPos'?: 'left' | 'right';
+    /**
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
@@ -1667,6 +1679,10 @@ declare namespace LocalJSX {
     * Defines the label that will display next to the radio button.
     */
     'label'?: string;
+    /**
+    * Sets the position of the label for your checkbox component. The default setting is `right`.
+    */
+    'labelPos'?: 'left' | 'right';
     /**
     * Send the checkbox value to the parent component when clicking on the checkbox.
     */

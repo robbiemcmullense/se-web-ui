@@ -37,12 +37,6 @@ describe('RadioComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.radio-container')).toBeTruthy();
 	});
 
-	it('sets checked to true if selected is true when the component loads', () => {
-		radio.selected = true;
-		radio.componentDidLoad();
-		expect(radio.checked).toBeTruthy();
-	});
-
 	it('calls the setInputId function when the component loads', () => {
 		const eventSpy = jest.spyOn(radio, 'setInputId')
 		radio.componentDidLoad();
@@ -51,7 +45,7 @@ describe('RadioComponent', () => {
 
 	it('should emit the didCheck event when a radio button is clicked', () => {
 		const eventSpy = jest.spyOn(radio.didCheck, 'emit');
-		radio.emitEvent(); // user clicks on radio button
+		radio.handleClick(); // user clicks on radio button
 		expect(eventSpy).toHaveBeenCalled();
 	});
 });

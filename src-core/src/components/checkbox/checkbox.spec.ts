@@ -24,10 +24,6 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.disabled).toBeFalsy();
 	});
 
-	it('should not be checked by default', () => {
-		expect(checkbox.checked).toBeFalsy();
-	});
-
 	it('should not be required by default', () => {
 		expect(checkbox.required).toBeFalsy();
 	});
@@ -80,12 +76,6 @@ describe('CheckboxComponent', () => {
 			html: `<se-checkbox option="onoff"></se-checkbox>`,
 		});
 		expect(page.root.shadowRoot.querySelector('.on-off-wrapper')).toBeTruthy();
-	});
-
-	it('should be checked when selected is set to true', () => {
-		checkbox.selected = true;
-		checkbox.componentDidLoad();
-		expect(checkbox.checked).toBeTruthy();
 	});
 
 	it('should call the setElementId function when the component loads', async() => {
