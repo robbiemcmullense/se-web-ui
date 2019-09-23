@@ -58,6 +58,14 @@ describe('CheckboxComponent', () => {
 		expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
 	});
 
+	it('should render "value" property as an input attribute', async() => {
+		const page = await newSpecPage({
+			components: [CheckboxComponent],
+			html: `<se-checkbox value="my value"></se-checkbox>`,
+		});
+		expect(page.root.shadowRoot.querySelector('input').getAttribute('value')).toBe('my value');
+	});
+
 	it('should render in switch mode with a checkbox-label class', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
