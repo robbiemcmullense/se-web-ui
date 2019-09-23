@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Method, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-checkbox",
