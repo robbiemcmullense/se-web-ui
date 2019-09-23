@@ -24,6 +24,10 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.disabled).toBeFalsy();
 	});
 
+	it('should not be selected by default', () => {
+		expect(checkbox.selected).toBeFalsy();
+	});
+
 	it('should not be required by default', () => {
 		expect(checkbox.required).toBeFalsy();
 	});
@@ -52,6 +56,14 @@ describe('CheckboxComponent', () => {
 			html: `<se-checkbox label="my label" required="true"></se-checkbox>`,
 		});
 		expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
+	});
+
+	it('should render "value" property as an input attribute', async() => {
+		const page = await newSpecPage({
+			components: [CheckboxComponent],
+			html: `<se-checkbox value="my value"></se-checkbox>`,
+		});
+		expect(page.root.shadowRoot.querySelector('input').getAttribute('value')).toBe('my value');
 	});
 
 	it('should render in switch mode with a checkbox-label class', async() => {
@@ -84,16 +96,16 @@ describe('CheckboxComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should emit the didChange event when the emitEvent function is executed', async() => {
+	it('should emit the didChange event when the handleClick function is executed', async() => {
 		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
-		checkbox.emitEvent();  // user clicks on the checkbox
+		checkbox.handleClick();  // user clicks on the checkbox
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
 	it('should not emit the didChange event when the checkbox is disabled', async() => {
 		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
 		checkbox.disabled = true;
-		checkbox.emitEvent(); // user clicks on the checkbox
+		checkbox.handleClick(); // user clicks on the checkbox
 		expect(eventSpy).not.toHaveBeenCalled();
 	});
 });
