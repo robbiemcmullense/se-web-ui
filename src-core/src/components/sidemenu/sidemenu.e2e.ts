@@ -28,11 +28,14 @@ describe('SidemenuComponent', () => {
 
   it('renders a se-link element', async() => {
     page = await renderComponent();
+    let headerCmp = await page.find('se-sidemenu');
+    headerCmp.setProperty('link', 'www.partner.com');
+    await page.waitForChanges();
     element = await page.find('se-sidemenu >>> se-link');
     expect(element).toBeTruthy();
-    expect(element.innerText).toEqual('www.se.com/en/partners');
+    expect(element.innerText).toEqual('www.partner.com');
   });
-
+  
   it('should render as many se-list-item components as se-sidemenu-item children', async() => {
     page = await renderComponent('<se-sidemenu-item></se-sidemenu-item><se-sidemenu-item></se-sidemenu-item>');
     const listItems = await page.findAll('se-sidemenu >>> se-list-item');

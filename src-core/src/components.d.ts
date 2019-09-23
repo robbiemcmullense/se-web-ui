@@ -623,6 +623,7 @@ export namespace Components {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label': string;
+    'link': string;
     'toggle': () => Promise<void>;
   }
   interface SeSidemenuItem {
@@ -1711,6 +1712,7 @@ declare namespace LocalJSX {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label'?: string;
+    'link'?: string;
   }
   interface SeSidemenuItem extends JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement> {
     /**

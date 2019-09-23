@@ -82,6 +82,9 @@
 }
 .footer-icon {
   height: 74px;
+  &:last-child {
+    margin-bottom: 3px;
+  }
 }
 .external-link {
   background-color: $se-ultra-light-grey-2;

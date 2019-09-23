@@ -25,6 +25,13 @@ export class SidemenuComponent {
    * The default value is `Menu`.
    */
   @Prop() label: string = 'Menu';
+   /*
+   * Defines the link to be uses in the external-link element of the Sidemenu.
+   * The default value is www.se.com, which will generate if no link is defined.
+   * If a different url is provided it will replace the default value.
+   * If an empty string is provided the external link element will not be generated.
+  */
+  @Prop() link: string = 'www.se.com';
 
   @Method()
   async toggle() {
@@ -103,7 +110,7 @@ export class SidemenuComponent {
             }
           });
           if (!activeItem && this.selectedItem) {
-            console.log(this.selectedItem);
+            // console.log(this.selectedItem);
             this.selectedItem = undefined;
           }
         }
@@ -161,9 +168,10 @@ export class SidemenuComponent {
               </se-list>
             </se-block-content>
             <se-icon-lifeison class="footer-icon" color="standard" />
-            <div class="external-link">
-              <se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
-            </div>
+            { this.link ? 
+              <div class="external-link">
+                <se-link class="sidemenu-link" url={`http://${this.link}`}>{this.link}</se-link>
+            </div> : ''}
           </se-block>
           <se-divider option="vertical"></se-divider>
           <se-block ref={el => this.menuItemInnerEl = el}>
