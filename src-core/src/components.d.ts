@@ -223,7 +223,7 @@ export namespace Components {
     */
     'required': boolean;
     /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+    * The "checked" state of the checkbox, `false` by default.
     */
     'selected': boolean;
     /**
@@ -1296,7 +1296,7 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
     /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+    * The "checked" state of the checkbox, `false` by default.
     */
     'selected'?: boolean;
     /**
