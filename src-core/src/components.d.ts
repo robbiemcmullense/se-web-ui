@@ -223,7 +223,7 @@ export namespace Components {
     */
     'required': boolean;
     /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+    * The "checked" state of the checkbox, `false` by default.
     */
     'selected': boolean;
     /**
@@ -365,6 +365,14 @@ export namespace Components {
     * Method to close the dropdown from outside its parent element.
     */
     'close': () => Promise<void>;
+    /**
+    * Sets the maximum height of the dropdown in pixels.  Default setting is "400".
+    */
+    'maxHeight': number;
+    /**
+    * Sets the maximum width of the dropdown in pixels.  Default setting is "200".
+    */
+    'maxWidth': number;
     /**
     * Method to open the dropdown from outside its parent element.
     */
@@ -623,6 +631,7 @@ export namespace Components {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label': string;
+    'link': string;
     'toggle': () => Promise<void>;
   }
   interface SeSidemenuItem {
@@ -1295,7 +1304,7 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
     /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+    * The "checked" state of the checkbox, `false` by default.
     */
     'selected'?: boolean;
     /**
@@ -1437,6 +1446,14 @@ declare namespace LocalJSX {
     * Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element.
     */
     'alignment'?: 'left' | 'right';
+    /**
+    * Sets the maximum height of the dropdown in pixels.  Default setting is "400".
+    */
+    'maxHeight'?: number;
+    /**
+    * Sets the maximum width of the dropdown in pixels.  Default setting is "200".
+    */
+    'maxWidth'?: number;
     /**
     * Event emitted when the dropdown has been closed.
     */
@@ -1711,6 +1728,7 @@ declare namespace LocalJSX {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label'?: string;
+    'link'?: string;
   }
   interface SeSidemenuItem extends JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement> {
     /**

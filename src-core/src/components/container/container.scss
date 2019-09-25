@@ -67,7 +67,7 @@
 }
 
 :host(.standard) {
-  @include background-color('background');
+  @include background-color('background-standard');
 }
 
 :host(.alternative) {
