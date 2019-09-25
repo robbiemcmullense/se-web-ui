@@ -37,7 +37,7 @@
           </se-list>
         </se-dropdown>
       </div>
-      <se-sidemenu id="main-sidemenu">
+      <se-sidemenu id="main-sidemenu" link="www.se.com/en/partners">
         <se-sidemenu-item item="Project" active="true">
           <se-block>
             <se-block-header>some block design</se-block-header>
@@ -964,7 +964,9 @@
     document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
       document.querySelector('se-sidemenu').toggle();
       //alert('this has been clicked');
-      document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
+      if(document.getElementById('sidemenu-message')) {
+        document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
+      }
     });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {

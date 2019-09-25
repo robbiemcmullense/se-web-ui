@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                            | Type     | Default  |
-| -------- | --------- | -------------------------------------------------------------------------------------- | -------- | -------- |
-| `label`  | `label`   | Defines the text displayed in the header of the Sidemenu. The default value is `Menu`. | `string` | `'Menu'` |
+| Property | Attribute | Description                                                                            | Type     | Default        |
+| -------- | --------- | -------------------------------------------------------------------------------------- | -------- | -------------- |
+| `label`  | `label`   | Defines the text displayed in the header of the Sidemenu. The default value is `Menu`. | `string` | `'Menu'`       |
+| `link`   | `link`    |                                                                                        | `string` | `'www.se.com'` |
 
 
 ## Methods

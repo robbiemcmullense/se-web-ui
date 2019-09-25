@@ -47,7 +47,8 @@ class Dashboard extends Component {
             </div>
           </se-block-header>
           <se-block-content option="fill">
-            <se-list>
+            <se-list option="treeview">
+              <se-list-item item="Static item"></se-list-item>
               <se-list-group item="New Block" id="testing-list-group">
                 {listItems.map( id => {
                   return(

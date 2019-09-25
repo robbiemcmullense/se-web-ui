@@ -21,9 +21,10 @@ import { newE2EPage } from '@stencil/core/testing';
 	});
 
 	it('renders a list group passing the "nav" option from its parent', async() => {
-		await page.setContent('<se-list option="nav"><se-list-group item="group title"></se-list-group></se-list>');
+		await page.setContent('<se-list option="nav"><se-list-group item="group title" selected="true"></se-list-group></se-list>');
 		const element = await page.find('se-list se-list-group >>> .se-list-group');
-		expect(element).toHaveClass('nav');
+    expect(element).toHaveClass('nav');
+    expect(element.querySelector('.selectedBar')).toBeTruthy();
 	});
 
 	it('renders a list group passing the "canCollapse" value from its parent', async() => {

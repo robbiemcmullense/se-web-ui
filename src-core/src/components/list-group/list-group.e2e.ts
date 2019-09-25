@@ -15,12 +15,6 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(element).toHaveClass('hydrated');
 	});
 
-	it('should have hyrdated and classic classes by default', async () => {
-    const page = await renderComponent();
-    const element = await page.find('se-list-group >>> .se-list-group');
-    expect(element).toHaveClass('classic');
-  });
-
 	it('renders an arrow2_up icon by default', async() => {
     const page = await renderComponent();
 		const iconElm = await page.find('se-list-group >>> se-icon');
