@@ -96,7 +96,7 @@ export class ListItemComponent {
             </div>
             : ''}
           <div class="nav-content">
-            <div>{this.item}</div>
+            <div class="list-label-item">{this.item}</div>
             {myDescription}
           </div>
           {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}

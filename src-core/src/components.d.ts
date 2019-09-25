@@ -366,6 +366,14 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Sets the maximum height of the dropdown in pixels.  Default setting is "400".
+    */
+    'maxHeight': number;
+    /**
+    * Sets the maximum width of the dropdown in pixels.  Default setting is "200".
+    */
+    'maxWidth': number;
+    /**
     * Method to open the dropdown from outside its parent element.
     */
     'open': () => Promise<void>;
@@ -1438,6 +1446,14 @@ declare namespace LocalJSX {
     * Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element.
     */
     'alignment'?: 'left' | 'right';
+    /**
+    * Sets the maximum height of the dropdown in pixels.  Default setting is "400".
+    */
+    'maxHeight'?: number;
+    /**
+    * Sets the maximum width of the dropdown in pixels.  Default setting is "200".
+    */
+    'maxWidth'?: number;
     /**
     * Event emitted when the dropdown has been closed.
     */
