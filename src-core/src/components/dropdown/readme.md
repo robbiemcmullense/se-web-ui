@@ -10,9 +10,11 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                                                                                                                                                                                              | Type                | Default  |
-| ----------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | -------- |
-| `alignment` | `alignment` | Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element. | `"left" \| "right"` | `'left'` |
+| Property    | Attribute    | Description                                                                                                                                                                                                              | Type                | Default  |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | -------- |
+| `alignment` | `alignment`  | Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element. | `"left" \| "right"` | `'left'` |
+| `maxHeight` | `max-height` | Sets the maximum height of the dropdown in pixels.  Default setting is "400".                                                                                                                                            | `number`            | `400`    |
+| `maxWidth`  | `max-width`  | Sets the maximum width of the dropdown in pixels.  Default setting is "200".                                                                                                                                             | `number`            | `200`    |
 
 
 ## Events

@@ -144,7 +144,7 @@ export class ListGroupComponent {
             </div>
           : ''}
           <div class="nav-content">
-            <div>{this.item}</div>
+            <div class="list-label-item">{this.item}</div>
             {myDescription}
           </div>
           {this.option === "treeview"
