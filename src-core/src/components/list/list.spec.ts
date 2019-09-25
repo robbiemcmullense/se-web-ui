@@ -7,7 +7,7 @@ describe('list-group', () => {
   beforeEach(() => {
     list = new ListComponent();
   });
-  
+
   it('should build', () => {
     expect(list).toBeTruthy();
   });
@@ -27,7 +27,7 @@ describe('list-group', () => {
 		});
 		expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
   });
-  
+
   it('should pass its option property to se-list-group child elements', () => {
     list.option = 'dropdown';
     let listGroup = document.createElement('se-list-group');
@@ -39,7 +39,7 @@ describe('list-group', () => {
     expect(listItem.option).toEqual('dropdown');
   });
 
-  it('should render a div element with the selectedBar class when selected is true and option is set to nav', async() => {
+  it('should render a div element with the selectedBar class when selected is true and option is set to nav', () => {
     list.option = 'nav';
     let listGroup = document.createElement('se-list-group');
     let listItem = document.createElement('se-list-item');
@@ -49,6 +49,5 @@ describe('list-group', () => {
     list.componentWillLoad();
     expect(listGroup.option).toEqual('nav');
     expect(listItem.option).toEqual('nav');
-    expect(listGroup.querySelector('.selectedBar')).toBeTruthy();
   });
 });
