@@ -84,14 +84,15 @@
 
   &.dropdown {
     button {
-      height: 24px; // IE fix so flexbox vertical alignment works
+      min-height: 32px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
       border-bottom: none;
     }
     .nav-content{
       padding: 0 10px;
       .list-label-item {
-        font-size: $small-fontsize;
+        font-size: $base-fontsize;
         line-height: 20px;
       }
     }
@@ -100,7 +101,7 @@
   &.headline {
     button {
       min-height: 42px;
-      height: 20px; // IE fix so flexbox vertical alignment works
+      height: 42px; // IE fix so flexbox vertical alignment works
     }
   }
 
