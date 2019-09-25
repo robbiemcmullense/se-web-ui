@@ -61,14 +61,12 @@ export class ListItemComponent {
   }
 
   getParentConfig() {
-    const closest:any = this.getClosestParent();
+    const closest:any = this.getClosestParent() || {};
     const indentation = closest.indentation;
     if(indentation !== null && indentation !== undefined) {
       this.indentation = indentation + 1;
-      // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
     }
     if(closest.option) {
-      // console.log("Setting as parent's option");
       this.option = closest.option;
     }
   }

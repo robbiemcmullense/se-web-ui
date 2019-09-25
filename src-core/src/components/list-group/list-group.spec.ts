@@ -20,10 +20,6 @@ describe('list-group', () => {
     expect(listGroup.collapsed).toBeFalsy();
   });
 
-  it('should be in classic option by default', () => {
-    expect(listGroup.option).toEqual('classic');
-  });
-
   it('should be have canCollapse true by default', () => {
     expect(listGroup.canCollapse).toBe(true);
   });
@@ -34,15 +30,6 @@ describe('list-group', () => {
 			html: `<se-list-group></se-list-group>`,
 		});
 		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_up');
-  });
-
-  it('should render a div element with the selectedBar class when selected is true and option is set to nav', async() => {
-		const page = await newSpecPage({
-			components: [ListGroupComponent],
-			html: `<se-list-group option="nav" selected="true"></se-list-group>`,
-		});
-    expect(page.root.shadowRoot.querySelector('.nav')).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('.selectedBar')).toBeTruthy();
   });
   
   it('should call the setButtonId function when the component loads', async() => {
