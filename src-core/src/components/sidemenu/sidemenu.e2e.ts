@@ -25,12 +25,30 @@ describe('SidemenuComponent', () => {
     element = await page.find('se-sidemenu >>> se-icon-lifeison');
     expect(element).toBeTruthy();
   });
-
-  it('renders a se-link element', async() => {
+  it('renders a default link element as www.se.com', async() => {
     page = await renderComponent();
     element = await page.find('se-sidemenu >>> se-link');
     expect(element).toBeTruthy();
-    expect(element.innerText).toEqual('www.se.com/en/partners');
+    expect(element.innerText).toEqual('www.se.com');
+  });
+
+  it('renders www.partner.com when link is changed', async() => {
+    page = await renderComponent();
+    let headerCmp = await page.find('se-sidemenu');
+    headerCmp.setProperty('link', 'www.partner.com');
+    await page.waitForChanges();
+    element = await page.find('se-sidemenu >>> se-link');
+    expect(element).toBeTruthy();
+    expect(element.innerText).toEqual('www.partner.com');
+  });
+
+  it('renders no link block if link is null', async() => {
+    page = await renderComponent();
+    let headerCmp = await page.find('se-sidemenu');
+    headerCmp.setProperty('link', '');
+    await page.waitForChanges();
+    element = await page.find('se-sidemenu >>> se-link');
+    expect(element).toBeNull();
   });
 
   it('should render as many se-list-item components as se-sidemenu-item children', async() => {
@@ -60,7 +78,7 @@ describe('Sidemenu Screenshots', () => {
     `);
     await page.compareScreenshot('initially opened sidemenu', {fullPage: false});
 	});
-	
+
 	it('tests the tabbar with the centered option and the alternative color', async() => {
     let page = await newE2EPage();
     await page.setContent(`

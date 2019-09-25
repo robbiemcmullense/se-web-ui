@@ -14,23 +14,6 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should have hyrdated and classic classes by default', async () => {
-    const listItemChild = await page.find('se-list-item >>> .se-list-item');
-    expect(listItemChild).toHaveClass('classic');
-  });
-
-  it('should render a slot element by default', async() => {
-    const slotElm = await page.find('se-list-item >>> slot');
-    expect(slotElm).toBeTruthy();
-  });
-
-  it('should not render a slot element when the option is not set to classic', async() => {
-    element.setProperty('option', 'dropdown');
-    await page.waitForChanges();
-    const slotElm = await page.find('se-list-item >>> slot');
-    expect(slotElm).not.toBeTruthy();
-  });
-
   it('should render a title and description when provided', async () => {
     element.setProperty('item', 'My List Item');
     element.setProperty('description', 'sample list item');

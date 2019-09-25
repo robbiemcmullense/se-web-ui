@@ -366,6 +366,14 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Sets the maximum height of the dropdown in pixels.  Default setting is "400".
+    */
+    'maxHeight': number;
+    /**
+    * Sets the maximum width of the dropdown in pixels.  Default setting is "200".
+    */
+    'maxWidth': number;
+    /**
     * Method to open the dropdown from outside its parent element.
     */
     'open': () => Promise<void>;
@@ -623,6 +631,7 @@ export namespace Components {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label': string;
+    'link': string;
     'toggle': () => Promise<void>;
   }
   interface SeSidemenuItem {
@@ -1438,6 +1447,14 @@ declare namespace LocalJSX {
     */
     'alignment'?: 'left' | 'right';
     /**
+    * Sets the maximum height of the dropdown in pixels.  Default setting is "400".
+    */
+    'maxHeight'?: number;
+    /**
+    * Sets the maximum width of the dropdown in pixels.  Default setting is "200".
+    */
+    'maxWidth'?: number;
+    /**
     * Event emitted when the dropdown has been closed.
     */
     'onDidClose'?: (event: CustomEvent<any>) => void;
@@ -1711,6 +1728,7 @@ declare namespace LocalJSX {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label'?: string;
+    'link'?: string;
   }
   interface SeSidemenuItem extends JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement> {
     /**
