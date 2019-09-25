@@ -16,9 +16,11 @@
   @include absolute(0,0,0,0);
   @include display-flex();
   @include flex-direction(column);
-  @include background-color('background');
+  @include background-color('background-standard');
 }
-
+body {
+  @include background-color('background-standard');
+}
 
 // Create all classes to use colors as classes
 @each $element in ( 'standard',
@@ -35,7 +37,7 @@
                     'success-contrast',
                     'warning-contrast',
                     'error-contrast',
-                    'background'
+                    'background-standard'
                     ) {
   .color-#{$element}{
     @include  color('' + $element);
