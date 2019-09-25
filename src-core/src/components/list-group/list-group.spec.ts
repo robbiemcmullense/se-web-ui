@@ -31,6 +31,23 @@ describe('list-group', () => {
 		});
 		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_up');
   });
+
+  it('should render the button with attribute "disabled" true when canCollapse is false', async() => {
+		const page = await newSpecPage({
+			components: [ListGroupComponent],
+			html: `<se-list-group can-collapse="false"></se-list-group>`,
+		});
+		expect(page.root.shadowRoot.querySelector('button').getAttribute('disabled')).toBe('');
+  });
+
+  it('should render the button without an arrow when canCollapse is false', async() => {
+		const page = await newSpecPage({
+			components: [ListGroupComponent],
+			html: `<se-list-group can-collapse="false"></se-list-group>`,
+		});
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBe(null);
+  });
+
   
   it('should call the setButtonId function when the component loads', async() => {
 		const eventSpy = jest.spyOn(listGroup, 'setButtonId');
