@@ -54,7 +54,7 @@
 
   &.treeview {
     button {
-      padding: 5.5px 0;
+      padding: 7px 0;
       &.selected {
         @include color('selected-contrast');
         @include background-color('selected');
@@ -84,13 +84,16 @@
 
   &.dropdown {
     button {
-      min-height: 40px;
-      height: 20px; // IE fix so flexbox vertical alignment works
+      height: 24px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
       border-bottom: none;
     }
     .nav-content{
-      padding: 5px 0 5px 10px;
+      padding: 0 10px;
+      .list-label-item {
+        font-size: $small-fontsize;
+        line-height: 20px;
+      }
     }
   }
 
@@ -123,9 +126,6 @@
   .nav-icon {
     margin-right: 0;
     margin-left: 4px;
-  }
-  .nav-content {
-    margin-right: 8px;
   }
 }
 
@@ -170,7 +170,7 @@ button {
 
 .nav-content {
   min-width: 0;
-  padding: 3px 0 3px 18px;
+  padding: 0 16px;
   margin: 0;
   overflow: hidden;
   @include typology('base');
@@ -181,7 +181,16 @@ button {
 
   div, small {
     @include ellipsis();
-    margin-right: $spacing;
+  }
+
+  .list-label-item {
+    font-size: $small-fontsize;
+    line-height: 17px;
+  }
+
+  small {
+    font-size: $nano-fontsize;
+    line-height: $small-fontsize;
   }
 }
 se-list-item .nav-icon {
