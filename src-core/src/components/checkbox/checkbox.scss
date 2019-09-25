@@ -189,6 +189,7 @@ div {
     display: inline-flex;
   }
   button {
+    color: $se-anthracite-grey;
     padding: 6px 8px;
     border: none;
     outline: none;
@@ -214,7 +215,7 @@ div {
       border-bottom-right-radius: 2px;
       margin-left: 0;
       &.selected {
-        color: $se-super-light-grey;
+        color: $se-white;
         background-color: $se-red;
       }
     }
@@ -231,14 +232,12 @@ div {
 .standard {
   button {
     @include background-color("standard");
-    @include  color("focus");
   }
 }
 
 .alternative {
   button {
     @include background-color("alternative");
-    @include  color("alternative-contrast");
   }
 }
 
@@ -251,7 +250,7 @@ div {
       color: $se-white;
     }
     &.inactive.selected {
-      background-color: $se-light-grey;
+      opacity: 0.5;
       color: $se-white;
     }
   }
