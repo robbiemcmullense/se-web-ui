@@ -23,13 +23,13 @@ export class DropdownComponent {
    */
   @Prop() alignment: 'left' | 'right' = 'left';
   /**
-   * Sets the maximum width of the dropdown in pixels.  Default setting is "200".
+   * Sets the maximum width of the dropdown.  Default setting is "200px".
    */
-  @Prop() maxWidth: number = 200;
+  @Prop() maxWidth: string = "200px";
   /**
-   * Sets the maximum height of the dropdown in pixels.  Default setting is "400".
+   * Sets the maximum height of the dropdown.  Default setting is "400px".
    */
-  @Prop() maxHeight: number = 400;
+  @Prop() maxHeight: string = "400px";
   @State() opened: boolean = false;
   @Listen('click', { target: 'window' })
   handleClick(ev) {
@@ -78,7 +78,7 @@ export class DropdownComponent {
         <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
           <slot name="trigger"></slot>
         </div>
-        <div class={`${this.opened ? 'show' : ''} dropdown-content`} style={{ maxWidth: this.maxWidth.toString() + 'px', maxHeight: this.maxHeight.toString() + 'px' }}>
+        <div class={`${this.opened ? 'show' : ''} dropdown-content`} style={{ maxWidth: this.maxWidth.toString(), maxHeight: this.maxHeight.toString()}}>
           <slot></slot>
         </div>
       </div>

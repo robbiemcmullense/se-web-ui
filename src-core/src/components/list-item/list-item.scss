@@ -185,12 +185,11 @@ button {
   }
 
   .list-label-item {
-    font-size: $small-fontsize;
     line-height: 17px;
   }
 
   small {
-    font-size: $nano-fontsize;
+    font-size: $small-fontsize;
     line-height: $small-fontsize;
   }
 }
