@@ -9,6 +9,7 @@ describe('DialogComponent', () => {
   let fixture: ComponentFixture<DialogComponent>;
   let modalcomponent : DialogModalComponent;
   let modalfixture : ComponentFixture<DialogModalComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [DialogModule, ProxiesModule],
@@ -29,6 +30,7 @@ describe('DialogComponent', () => {
   it('should create dialog component', () => {
     expect(component).toBeTruthy();
   });
+
   it('should emit confirmdialog',()=>{
     spyOn(component.afterClosed, 'emit');
     // trigger the click
@@ -47,29 +49,32 @@ describe('DialogComponent', () => {
     component.backdropClick();
     expect(component.afterClosed.error).toHaveBeenCalled();
   });
+
   it('should emit cancelclick',()=>{
     spyOn(component.afterClosed, 'error');
     component.cancelDialog();
     expect(component.afterClosed.error).toHaveBeenCalled();
   });
 
-//modal dialog test cases
-it('should create modal component', () => {
-  expect(modalcomponent).toBeTruthy();
-});
-it('should emit close modal dialog',()=>{
-  spyOn(modalcomponent.afterClosed , 'emit');
-  modalcomponent.closeDialog();
-  expect(modalcomponent.afterClosed.emit).toHaveBeenCalled();
-});
-it('should emit close backdropclick',()=>{
-  spyOn(modalcomponent.afterClosed , 'error');
-  modalcomponent.backdropClick();
-  expect(modalcomponent.afterClosed.error).toHaveBeenCalled();
-});
-it('should load child component',()=>{
-  modalcomponent.loadChildComponent(DialogModalComponent);
-  expect(modalcomponent.loadChildComponent).toBeTruthy();
-});
+  //modal dialog test cases
+  it('should create modal component', () => {
+    expect(modalcomponent).toBeTruthy();
+  });
 
+  it('should emit close modal dialog',()=>{
+    spyOn(modalcomponent.afterClosed , 'emit');
+    modalcomponent.closeDialog();
+    expect(modalcomponent.afterClosed.emit).toHaveBeenCalled();
+  });
+
+  it('should emit close backdropclick',()=>{
+    spyOn(modalcomponent.afterClosed , 'error');
+    modalcomponent.backdropClick();
+    expect(modalcomponent.afterClosed.error).toHaveBeenCalled();
+  });
+  
+  it('should load child component',()=>{
+    modalcomponent.loadChildComponent(DialogModalComponent);
+    expect(modalcomponent.loadChildComponent).toBeTruthy();
+  });
 });

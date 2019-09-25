@@ -1,13 +1,11 @@
-  <se-dialog [open]="true" [color]="dialog.color" [size]="dialog.size" (didClose)="closeDialog()" (backdrop)="backdropClick()" [canBackdrop]="dialog.canBackdrop">
-   <se-dialog-header *ngIf="dialog.title">{{dialog.title}}</se-dialog-header>
-    <se-dialog-content [icon]="dialog.icon" [iconColor]="dialog.iconColor" [option]="dialog.option">{{dialog.message}}</se-dialog-content>
+  <se-dialog [open]="true" [color]="dialog.data ? dialog.data.color : dialog.color" [size]="dialog.data ? dialog.data.size : dialog.size" (didClose)="closeDialog()" (backdrop)="backdropClick()" [canBackdrop]="dialog.data ? dialog.data.canBackdrop : dialog.canBackdrop">
+   <se-dialog-header *ngIf="dialog.data ? dialog.data.title : dialog.title">{{dialog.data ? dialog.data.title : dialog.title}}</se-dialog-header>
+    <se-dialog-content [icon]="dialog.data ? dialog.data.icon : dialog.icon" [iconColor]="dialog.data ? dialog.data.iconColor : dialog.iconColor" [option]="dialog.data ? dialog.data.option : dialog.option">{{dialog.data ? dialog.data.message : dialog.message}}</se-dialog-content>
     <se-dialog-footer *ngIf="type==='alert'">
-        <se-button (click)="closeDialog()">{{dialog.textOK?dialog.textOK:'Ok'}}</se-button>
+        <se-button (click)="closeDialog()">{{dialog.data ? dialog.data.textOK : dialog.textOK || 'Ok'}}</se-button>
     </se-dialog-footer>
     <se-dialog-footer *ngIf="type==='confirm'">
-        <se-button (click)="cancelDialog()" color="alternative">{{dialog.textCancel?dialog.textCancel :'Cancel'}}</se-button>
-        <se-button (click)="closeDialog()">{{dialog.textOK?dialog.textOK :'Ok'}}</se-button>  
+        <se-button (click)="cancelDialog()" color="alternative">{{dialog.data ? dialog.data.textCancel : dialog.textCancel || 'Cancel'}}</se-button>
+        <se-button (click)="closeDialog()">{{dialog.data ? dialog.data.textOK : dialog.textOK || 'Ok'}}</se-button>  
     </se-dialog-footer>
   </se-dialog>
-
-  

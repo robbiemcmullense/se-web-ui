@@ -42,4 +42,19 @@ export class DialogConfig {
    * @description option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
    */
   canBackdrop?: boolean;
+  /**
+   * @description option to pass a data object to the dialog
+   */
+  data?: {
+    title: string,
+    message: string,
+    icon: string,
+    textOK: string,
+    textCancel: string,
+    size: string,
+    color: string,
+    iconColor: string,
+    option: string,
+    canBackdrop: boolean
+  };
 }

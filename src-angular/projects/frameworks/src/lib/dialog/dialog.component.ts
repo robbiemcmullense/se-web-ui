@@ -25,13 +25,13 @@ export class DialogComponent {
   constructor(public dialog: DialogConfig) {}
   @Input() type: string;
   closeDialog() {
-    this.afterClosed.emit();
+    this.afterClosed.emit(this.dialog.data);
   }
   backdropClick() {
-    this.afterClosed.error('dialogclosed');
+    this.afterClosed.error('dialog backdrop clicked ' + this.dialog.data);
   }
   cancelDialog() {
-    this.afterClosed.error('dialogclosed');
+    this.afterClosed.error('dialog cancel button clicked' + this.dialog.data);
   }
 }
 
