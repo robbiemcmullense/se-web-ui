@@ -28,10 +28,10 @@ export class DialogComponent {
     this.afterClosed.emit(this.dialog.data);
   }
   backdropClick() {
-    this.afterClosed.error('dialog backdrop clicked ' + this.dialog.data);
+    this.afterClosed.error('dialog backdrop clicked');
   }
   cancelDialog() {
-    this.afterClosed.error('dialog cancel button clicked' + this.dialog.data);
+    this.afterClosed.error('dialog cancel button clicked');
   }
 }
 
