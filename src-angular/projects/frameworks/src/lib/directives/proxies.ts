@@ -214,7 +214,7 @@ export class SeDivider {
 proxyInputs(SeDivider, ['color', 'option']);
 
 export declare interface SeDropdown extends Components.SeDropdown {}
-@Component({ selector: 'se-dropdown', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignment'] })
+@Component({ selector: 'se-dropdown', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignment', 'maxHeight', 'maxWidth'] })
 export class SeDropdown {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
@@ -226,7 +226,7 @@ export class SeDropdown {
   }
 }
 proxyMethods(SeDropdown, ['open', 'close']);
-proxyInputs(SeDropdown, ['alignment']);
+proxyInputs(SeDropdown, ['alignment', 'maxHeight', 'maxWidth']);
 
 export declare interface SeFab extends Components.SeFab {}
 @Component({ selector: 'se-fab', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'icon', 'option', 'position'] })
@@ -394,7 +394,7 @@ export class SeRadioGroup {
 proxyInputs(SeRadioGroup, ['color', 'disabled', 'size', 'value']);
 
 export declare interface SeSidemenu extends Components.SeSidemenu {}
-@Component({ selector: 'se-sidemenu', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['label'] })
+@Component({ selector: 'se-sidemenu', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['label', 'link'] })
 export class SeSidemenu {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -403,7 +403,7 @@ export class SeSidemenu {
   }
 }
 proxyMethods(SeSidemenu, ['toggle']);
-proxyInputs(SeSidemenu, ['label']);
+proxyInputs(SeSidemenu, ['label', 'link']);
 
 export declare interface SeSidemenuItem extends Components.SeSidemenuItem {}
 @Component({ selector: 'se-sidemenu-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'item'] })

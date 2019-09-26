@@ -40,6 +40,25 @@ $max-width-input: 320px;
     background-color: $se-white;
   }
   
+  ::slotted(input:focus) {
+    outline: none;
+    border: 1px solid;
+    @include border-color('primary')
+  }
+
+  ::slotted(input[type="date"]) {
+    height: 20px;
+    padding: 5px;
+  }
+
+  @-moz-document url-prefix() {
+    ::slotted(input[type="date"]) {
+      padding-top: 6px;
+      padding-bottom: 4px;
+      padding-right: 5px;
+    }
+  }
+  
   ::slotted(select) {
     height: 32px;
     width: 60%;

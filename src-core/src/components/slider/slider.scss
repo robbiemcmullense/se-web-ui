@@ -13,7 +13,7 @@ $disabled-color: #cbcbcb;
 	border: none;
 	width: $track-width;
 	height: $track-height;
-	background: $track-color;
+	@include background-color('background');
 
 	@if $fill == 1 {
 		.slider-container & {
@@ -32,7 +32,7 @@ $disabled-color: #cbcbcb;
 
 @mixin fill($fill: 0) {
 	height: $track-height;
-	background: $fill-color;
+	@include background-color('selected');
 
 	@if $fill == 'disabled' {
 		background: $disabled-color;

@@ -16,18 +16,6 @@ describe('list-item', () => {
     expect(listItem.collapsible).toBeFalsy();
   });
 
-  it('should be in classic option by default', () => {
-    expect(listItem.option).toEqual('classic');
-  });
-
-  it('should render, with a classic class to reflect the default option', async() => {
-		const page = await newSpecPage({
-			components: [ListItemComponent],
-			html: `<se-list-item></se-list-item>`,
-		});
-		expect(page.root.shadowRoot.querySelector('.se-list-item.classic')).toBeTruthy();
-  });
-
   it('should inherit the nav option from its parent when specified', () => {
     let parentListElm = document.createElement('se-list');
     parentListElm.option = 'nav';
