@@ -18,7 +18,9 @@
   @include flex-direction(column);
   @include background-color('background');
 }
-
+body {
+  @include background-color('background');
+}
 
 // Create all classes to use colors as classes
 @each $element in ( 'standard',

@@ -51,7 +51,7 @@
   }
 
   &.standard {
-    @include background-color('standard');
+    @include background-color('background');
   }
 
   &.alternative {
