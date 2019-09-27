@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import { DialogConfig } from './dialog-config';
 import { DialogDirective } from './dialog.directive';
+import { DialogService } from './dialog.service';
 
 @Component({
   selector: 'se-app-dialog',
@@ -25,7 +26,7 @@ export class DialogComponent {
   constructor(public dialog: DialogConfig) {}
   @Input() type: string;
   closeDialog() {
-    this.afterClosed.emit(this.dialog.data);
+    this.afterClosed.emit(this.dialog);
   }
   backdropClick() {
     this.afterClosed.error('dialog backdrop clicked');
@@ -47,13 +48,11 @@ export class DialogModalComponent implements AfterViewInit, OnDestroy {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private cd: ChangeDetectorRef,
+    private dialogService: DialogService,
     @Optional() public modal: DialogConfig
   ) {}
-  closeDialog() {
-    this.afterClosed.emit();
-  }
   backdropClick() {
-    this.afterClosed.error('modalclosed');
+    this.dialogService.close(false, 'modal backdrop clicked');
   }
 
   ngAfterViewInit() {

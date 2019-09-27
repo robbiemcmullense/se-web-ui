@@ -62,10 +62,10 @@ export class DialogService {
     alertDialogRef.instance.type = 'alert';
     alertDialogRef.instance.afterClosed.subscribe(
       (data: any) => {
-        this.close();
+        this.close(true, '');
       },
       (err: any) => {
-        this.close();
+        this.close(false, '');
       }
     );
     return alertDialogRef;
@@ -80,10 +80,10 @@ export class DialogService {
     confirmDialogRef.instance.type = 'confirm';
     confirmDialogRef.instance.afterClosed.subscribe(
       () => {
-        this.close();
+        this.close(true, '');
       },
       (err: any) => {
-        this.close();
+        this.close(false, '');
       }
     );
     return confirmDialogRef;
@@ -101,14 +101,6 @@ export class DialogService {
       config
     );
     this.componentRef.instance.childComponentType = componentType;
-    modalDialogRef.instance.afterClosed.subscribe(
-      () => {
-        this.close();
-      },
-      (err: any) => {
-        this.close();
-      }
-    );
     return modalDialogRef;
   }
 
@@ -116,7 +108,10 @@ export class DialogService {
    * @name close
    * @description method to close the dialog by setting close property to true
    */
-  public close() {
+  public close(success: boolean, data: any) {
+    if (this.componentRef.instance.constructor.name === 'DialogModalComponent') {
+      success ? this.componentRef.instance.afterClosed.emit(data) : this.componentRef.instance.afterClosed.error(data);
+    }
     this.appRef.detachView(this.componentRef.hostView);
     this.componentRef.destroy();
   }

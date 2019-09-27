@@ -89,7 +89,7 @@ describe('DialogService', () => {
       color: 'alternative'
     };
     service.alert(config);
-    service.close();
+    service.close(true, '');
     expect(service.componentRef.hostView.destroyed).toBeTruthy();
   });
   it('should cancel dialog', () => {

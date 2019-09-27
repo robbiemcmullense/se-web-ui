@@ -60,18 +60,6 @@ describe('DialogComponent', () => {
   it('should create modal component', () => {
     expect(modalcomponent).toBeTruthy();
   });
-
-  it('should emit close modal dialog',()=>{
-    spyOn(modalcomponent.afterClosed , 'emit');
-    modalcomponent.closeDialog();
-    expect(modalcomponent.afterClosed.emit).toHaveBeenCalled();
-  });
-
-  it('should emit close backdropclick',()=>{
-    spyOn(modalcomponent.afterClosed , 'error');
-    modalcomponent.backdropClick();
-    expect(modalcomponent.afterClosed.error).toHaveBeenCalled();
-  });
   
   it('should load child component',()=>{
     modalcomponent.loadChildComponent(DialogModalComponent);

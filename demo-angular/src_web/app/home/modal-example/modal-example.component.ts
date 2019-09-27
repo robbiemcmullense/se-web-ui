@@ -9,6 +9,7 @@ const log = new Logger('ModalExampleComponent');
   styleUrls: ['./modal-example.component.scss']
 })
 export class ModalExampleComponent implements OnInit {
+  value: string;
   constructor(private dialog:DialogService) { }
 
   ngOnInit() {
@@ -16,10 +17,10 @@ export class ModalExampleComponent implements OnInit {
   }
   closeModal() {
     log.debug("close modal by calling service method");
-    this.dialog.close();
+    this.dialog.close(false, 'clicked cancel');
   }
   submitModal(){
     log.debug("submit modal form");
-    this.dialog.close();
+    this.dialog.close(true, this.value);
   }
 }
