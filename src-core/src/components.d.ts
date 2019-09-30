@@ -665,6 +665,10 @@ export namespace Components {
   }
   interface SeSnackbar {
     /**
+    * Defines the text you want your custom action button to read.
+    */
+    'actionText': string;
+    /**
     * Displays a "button" to close the snackbar. The default setting is `false`. This will be visible if set to `true`.
     */
     'canClose': boolean;
@@ -672,6 +676,10 @@ export namespace Components {
     * Defines the text you want your "close button" to read.  The default text is `dismiss`.
     */
     'closeText': string;
+    /**
+    * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false. The default setting is 5000.
+    */
+    'duration': number;
     /**
     * The name of the icon you wish to display.  The default icon is an information circle.
     */
@@ -1761,6 +1769,10 @@ declare namespace LocalJSX {
   }
   interface SeSnackbar extends JSXBase.HTMLAttributes<HTMLSeSnackbarElement> {
     /**
+    * Defines the text you want your custom action button to read.
+    */
+    'actionText'?: string;
+    /**
     * Displays a "button" to close the snackbar. The default setting is `false`. This will be visible if set to `true`.
     */
     'canClose'?: boolean;
@@ -1769,6 +1781,10 @@ declare namespace LocalJSX {
     */
     'closeText'?: string;
     /**
+    * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false. The default setting is 5000.
+    */
+    'duration'?: number;
+    /**
     * The name of the icon you wish to display.  The default icon is an information circle.
     */
     'icon'?: string;
@@ -1776,6 +1792,10 @@ declare namespace LocalJSX {
     * The content of the message you want the snackbar to display.
     */
     'message'?: string;
+    /**
+    * Sends information to the parent component when clicking a custom action button.
+    */
+    'onActionClicked'?: (event: CustomEvent<any>) => void;
     /**
     * Sends information to the parent component when closing the snackbar.
     */

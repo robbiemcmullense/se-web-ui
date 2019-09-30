@@ -54,19 +54,16 @@ export class SnackbarService {
    * @returns reference of snackbar component
    */
   public open(config: SnackbarConfig) {
-    if(this.snackbarComponentRef){
+    if (this.snackbarComponentRef) {
       this.removeSnackBarComponent();
     }
     const ref = this.appendSnackbarComponentToBody(config);
-
     //subscribing SnackbarComponent instace event while closing snackbar
     const sub = this.snackbarComponentRef.instance.didClose.subscribe(() => {
       this.removeSnackBarComponent();
       sub.unsubscribe();
     });
-
-    this.autoDismiss(config.canClose,config.duration);
-    
+    this.autoDismiss(config.canClose, config.actionText, config.duration);
     return ref;
   }
 
@@ -75,9 +72,9 @@ export class SnackbarService {
    * @description method called if canClose attribute is false to close the snackbar authomatically
    * @param canClose 
    */
-  autoDismiss(canClose: boolean,duration:number) {
+  autoDismiss(canClose: boolean, actionText:string, duration:number) {
     let delay=duration?duration:5000;
-    if (!canClose) {
+    if (!canClose && !actionText) {
       setTimeout(() => {
         this.removeSnackBarComponent();
       }, delay);

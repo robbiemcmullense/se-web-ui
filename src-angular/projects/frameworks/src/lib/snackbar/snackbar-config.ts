@@ -26,10 +26,25 @@ export class SnackbarConfig {
     /**
     * @description closeText passed to displayed on close button in snackbar component.
     */
-    closeText?: string;
+		closeText?: string;
+		
+		/**
+    * @description actionText passed to displayed on action button in snackbar component.
+    */
+	 actionText?: string;
 
     /**
     * @description time duration for which snackbar will be displayed.
     */
     duration?:number=5000;
+
+    data?: {
+			type: 'success' | 'error' | 'warning' | 'information',
+			message: string,
+			icon: string,
+			canClose: boolean,
+			closeText: string,
+			actionText: string,
+			duration: number
+    };
 }

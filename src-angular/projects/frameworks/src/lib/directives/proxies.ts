@@ -433,17 +433,18 @@ proxyMethods(SeSlider, ['setDisabled']);
 proxyInputs(SeSlider, ['disabled', 'max', 'min']);
 
 export declare interface SeSnackbar extends Components.SeSnackbar {}
-@Component({ selector: 'se-snackbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canClose', 'closeText', 'icon', 'message', 'open', 'type'] })
+@Component({ selector: 'se-snackbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionText', 'canClose', 'closeText', 'duration', 'icon', 'message', 'open', 'type'] })
 export class SeSnackbar {
   didClose!: EventEmitter<CustomEvent>;
+  actionClicked!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didClose']);
+    proxyOutputs(this, this.el, ['didClose', 'actionClicked']);
   }
 }
-proxyInputs(SeSnackbar, ['canClose', 'closeText', 'icon', 'message', 'open', 'type']);
+proxyInputs(SeSnackbar, ['actionText', 'canClose', 'closeText', 'duration', 'icon', 'message', 'open', 'type']);
 
 export declare interface SeTabbar extends Components.SeTabbar {}
 @Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
