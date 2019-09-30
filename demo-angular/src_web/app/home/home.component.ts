@@ -131,9 +131,15 @@ export class HomeComponent implements OnInit {
 
   //calling modal service
   showModal(): void {
-    const modal = this.dialogService.modal(ModalExampleComponent);
+    const modal = this.dialogService.modal(ModalExampleComponent, {
+      data: {
+        username: "1234User",
+        password: "mySecret"
+      }
+    });
     modal.instance.afterClosed.subscribe(
       (data: any) => {
+        log.debug("my data coming back:", data)
         this.closeModalCallback();
       },
       (err: any) => {

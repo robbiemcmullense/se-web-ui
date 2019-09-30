@@ -43,18 +43,7 @@ export class DialogConfig {
    */
   canBackdrop?: boolean;
   /**
-   * @description option to pass a data object to the dialog
+   * @description option to pass any data to the custom dialog component.
    */
-  data?: {
-    title: string,
-    message: string,
-    icon: string,
-    textOK: string,
-    textCancel: string,
-    size: string,
-    color: string,
-    iconColor: string,
-    option: string,
-    canBackdrop: boolean
-  };
+  data?: any;
 }

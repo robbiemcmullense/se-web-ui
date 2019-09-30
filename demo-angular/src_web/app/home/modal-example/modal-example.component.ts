@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DialogService} from '@se/web-ui-angular';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DialogService, MODAL_DATA} from '@se/web-ui-angular';
 import {Logger} from '@core/logger.service';
 const log = new Logger('ModalExampleComponent');
 
@@ -9,8 +9,12 @@ const log = new Logger('ModalExampleComponent');
   styleUrls: ['./modal-example.component.scss']
 })
 export class ModalExampleComponent implements OnInit {
-  value: string;
-  constructor(private dialog:DialogService) { }
+  username: string;
+  password: string;
+  constructor(private dialog: DialogService, @Inject(MODAL_DATA) public data: any) {
+    this.username = data.username;
+    this.password = data.password;
+  }
 
   ngOnInit() {
 
@@ -21,6 +25,6 @@ export class ModalExampleComponent implements OnInit {
   }
   submitModal(){
     log.debug("submit modal form");
-    this.dialog.close(this.value);
+    this.dialog.close({user: this.username, password: this.password});
   }
 }

@@ -7,17 +7,17 @@ import { ProxiesModule } from '../directives/proxies.module';
 
 describe('DialogService', () => {
   let config: DialogConfig;
-  let component: DialogComponent;
-  let fixture: ComponentFixture<DialogComponent>;
-  let modalcomponent: DialogModalComponent;
-  let modalfixture: ComponentFixture<DialogModalComponent>;
+  const component: DialogComponent;
+  const fixture: ComponentFixture<DialogComponent>;
+  const modalcomponent: DialogModalComponent;
+  const modalfixture: ComponentFixture<DialogModalComponent>;
 
   beforeEach(() => {
     config = new DialogConfig();
     TestBed.configureTestingModule({
       imports: [DialogModule, ProxiesModule],
       providers: [DialogConfig]
-    })
+    });
   });
 
   it('should create the DialogService', () => {
