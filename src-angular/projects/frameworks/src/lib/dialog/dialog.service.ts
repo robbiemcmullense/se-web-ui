@@ -60,14 +60,6 @@ export class DialogService {
   public alert(config: DialogConfig) {
     const alertDialogRef = this.createDialogComponent(DialogComponent, config);
     alertDialogRef.instance.type = 'alert';
-    alertDialogRef.instance.afterClosed.subscribe(
-      (data: any) => {
-        this.close(true, '');
-      },
-      (err: any) => {
-        this.close(false, '');
-      }
-    );
     return alertDialogRef;
   }
   /**
@@ -78,14 +70,6 @@ export class DialogService {
   public confirm(config: DialogConfig) {
     let confirmDialogRef = this.createDialogComponent(DialogComponent, config);
     confirmDialogRef.instance.type = 'confirm';
-    confirmDialogRef.instance.afterClosed.subscribe(
-      () => {
-        this.close(true, '');
-      },
-      (err: any) => {
-        this.close(false, '');
-      }
-    );
     return confirmDialogRef;
   }
   /**
@@ -96,10 +80,7 @@ export class DialogService {
    */
 
   public modal(componentType: Type<any>, config?: DialogConfig) {
-    let modalDialogRef = this.createDialogComponent(
-      DialogModalComponent,
-      config
-    );
+    let modalDialogRef = this.createDialogComponent(DialogModalComponent,config);
     this.componentRef.instance.childComponentType = componentType;
     return modalDialogRef;
   }
@@ -108,10 +89,8 @@ export class DialogService {
    * @name close
    * @description method to close the dialog by setting close property to true
    */
-  public close(success: boolean, data: any) {
-    if (this.componentRef.instance.constructor.name === 'DialogModalComponent') {
-      success ? this.componentRef.instance.afterClosed.emit(data) : this.componentRef.instance.afterClosed.error(data);
-    }
+  public close(data: any) {
+    this.componentRef.instance.afterClosed.emit(data)
     this.appRef.detachView(this.componentRef.hostView);
     this.componentRef.destroy();
   }
@@ -119,7 +98,8 @@ export class DialogService {
    * @name cancel
    * @description method to close the dialog by setting close property to true
    */
-  public cancel() {
+  public cancel(data: any) {
+    this.componentRef.instance.afterClosed.error(data);
     this.appRef.detachView(this.componentRef.hostView);
     this.componentRef.destroy();
   }

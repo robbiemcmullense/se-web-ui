@@ -23,16 +23,16 @@ import { DialogService } from './dialog.service';
 })
 export class DialogComponent {
   @Output() afterClosed = new EventEmitter();
-  constructor(public dialog: DialogConfig) {}
+  constructor(public dialog: DialogConfig, public dialogService: DialogService) {}
   @Input() type: string;
   closeDialog() {
-    this.afterClosed.emit(this.dialog);
+    this.dialogService.close(this.dialog);
   }
   backdropClick() {
-    this.afterClosed.error('dialog backdrop clicked');
+    this.dialogService.cancel('dialog backdrop clicked');
   }
   cancelDialog() {
-    this.afterClosed.error('dialog cancel button clicked');
+    this.dialogService.cancel('dialog cancel button clicked');
   }
 }
 
@@ -48,11 +48,11 @@ export class DialogModalComponent implements AfterViewInit, OnDestroy {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private cd: ChangeDetectorRef,
-    private dialogService: DialogService,
+    public dialogService: DialogService,
     @Optional() public modal: DialogConfig
   ) {}
   backdropClick() {
-    this.dialogService.close(false, 'modal backdrop clicked');
+    this.dialogService.cancel('modal backdrop clicked');
   }
 
   ngAfterViewInit() {

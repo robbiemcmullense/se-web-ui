@@ -1,5 +1,6 @@
 import { SeWebModule } from '@se/web-ui-angular';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { ModalExampleComponent } from './modal-example.component';
 
 describe('ModalExampleComponent', () => {
@@ -8,7 +9,7 @@ describe('ModalExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SeWebModule],
+      imports: [SeWebModule, FormsModule],
       declarations: [ModalExampleComponent]
     })
     .compileComponents();

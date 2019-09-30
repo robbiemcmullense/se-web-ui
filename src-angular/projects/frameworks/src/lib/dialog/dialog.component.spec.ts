@@ -31,8 +31,8 @@ describe('DialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should emit confirmdialog',()=>{
-    spyOn(component.afterClosed, 'emit');
+  it('should call the DialogService close method when the OK button is clicked',()=>{
+    spyOn(component.dialogService, 'close');
     // trigger the click
     fixture.componentInstance.type='confirm';
     fixture.detectChanges();
@@ -41,19 +41,19 @@ describe('DialogComponent', () => {
     button.dispatchEvent(new Event('click'));
     fixture.detectChanges();
     component.closeDialog();
-    expect(component.afterClosed.emit).toHaveBeenCalled();
+    expect(component.dialogService.close).toHaveBeenCalled();
   });
 
-  it('should emit backdropclick',()=>{
-    spyOn(component.afterClosed, 'error');
-    component.backdropClick();
-    expect(component.afterClosed.error).toHaveBeenCalled();
-  });
-
-  it('should emit cancelclick',()=>{
-    spyOn(component.afterClosed, 'error');
+  it('should call the DialogService cancel method when the cancel button is clicked', ()=>{
+    spyOn(component.dialogService, 'cancel');
     component.cancelDialog();
-    expect(component.afterClosed.error).toHaveBeenCalled();
+    expect(component.dialogService.cancel).toHaveBeenCalled();
+  });
+
+  it('should call the DialogService cancel method when the backdrop is clicked',()=>{
+    spyOn(component.dialogService, 'cancel');
+    component.backdropClick();
+    expect(component.dialogService.cancel).toHaveBeenCalled();
   });
 
   //modal dialog test cases
@@ -64,5 +64,11 @@ describe('DialogComponent', () => {
   it('should load child component',()=>{
     modalcomponent.loadChildComponent(DialogModalComponent);
     expect(modalcomponent.loadChildComponent).toBeTruthy();
+  });
+
+  it('should call the DialogService cancel method when the backdrop is clicked',()=>{
+    spyOn(modalcomponent.dialogService, 'cancel');
+    modalcomponent.backdropClick();
+    expect(modalcomponent.dialogService.cancel).toHaveBeenCalled();
   });
 });

@@ -17,10 +17,10 @@ export class ModalExampleComponent implements OnInit {
   }
   closeModal() {
     log.debug("close modal by calling service method");
-    this.dialog.close(false, 'clicked cancel');
+    this.dialog.cancel('clicked cancel');
   }
   submitModal(){
     log.debug("submit modal form");
-    this.dialog.close(true, this.value);
+    this.dialog.close(this.value);
   }
 }

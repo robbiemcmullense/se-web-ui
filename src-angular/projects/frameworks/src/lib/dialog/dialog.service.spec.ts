@@ -12,20 +12,20 @@ describe('DialogService', () => {
   let modalcomponent: DialogModalComponent;
   let modalfixture: ComponentFixture<DialogModalComponent>;
 
-  beforeEach(() =>
+  beforeEach(() => {
+    config = new DialogConfig();
     TestBed.configureTestingModule({
       imports: [DialogModule, ProxiesModule],
       providers: [DialogConfig]
     })
-  );
-  beforeEach(() => {
-    config = new DialogConfig();
   });
-  it('Dialog service should be created', () => {
+
+  it('should create the DialogService', () => {
     const service: DialogService = TestBed.get(DialogService);
     expect(service).toBeTruthy();
   });
-  it('should call create component', () => {
+
+  it('should call createDialogComponent', () => {
     const service: DialogService = TestBed.get(DialogService);
     const config = {
       title: 'Dialog title',
@@ -36,7 +36,8 @@ describe('DialogService', () => {
     const result = service.createDialogComponent(DialogComponent, config);
     expect(result.instance).toBeTruthy();
   });
-  it('should call alert', () => {
+
+  it('should call the service alert method', () => {
     const service: DialogService = TestBed.get(DialogService);
     const config = {
       title: 'Dialog title',
@@ -51,7 +52,8 @@ describe('DialogService', () => {
     );
     expect(result.instance.dialog.textOK).toBe('Yes');
   });
-  it('should call confirm', () => {
+
+  it('should call the service confirm method', () => {
     const service: DialogService = TestBed.get(DialogService);
     const config = {
       title: 'Dialog title',
@@ -68,7 +70,8 @@ describe('DialogService', () => {
     expect(result.instance.dialog.textOK).toBe('Yes');
     expect(result.instance.dialog.textCancel).toBe('No');
   });
-  it('should call modal', () => {
+
+  it('should call the service modal method', () => {
     const service: DialogService = TestBed.get(DialogService);
     const config = {
       size: 'small',
@@ -77,29 +80,32 @@ describe('DialogService', () => {
     const result = service.modal(DialogModalComponent, config);
     expect(result.instance.modal.size).toBe('small');
   });
+
   it('should call modal without config', () => {
     const service: DialogService = TestBed.get(DialogService);
     const result = service.modal(DialogModalComponent);
     expect(result.instance).toBeTruthy();
   });
-  it('should close dialog', () => {
+
+  it('should close the dialog throug the close method', () => {
     const service: DialogService = TestBed.get(DialogService);
     const config = {
       size: 'small',
       color: 'alternative'
     };
     service.alert(config);
-    service.close(true, '');
+    service.close('successfully closed the dialog');
     expect(service.componentRef.hostView.destroyed).toBeTruthy();
   });
-  it('should cancel dialog', () => {
+
+  it('should close the dialog through the cancel method', () => {
     const service: DialogService = TestBed.get(DialogService);
     const config = {
       size: 'small',
       color: 'alternative'
     };
     service.alert(config);
-    service.cancel();
+    service.cancel('canceling the dialog transaction');
     expect(service.componentRef.hostView.destroyed).toBeTruthy();
   });
 });
