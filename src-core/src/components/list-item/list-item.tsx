@@ -35,7 +35,7 @@ export class ListItemComponent {
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  @Prop({mutable: true}) option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
 
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
@@ -54,15 +54,20 @@ export class ListItemComponent {
     }
   }
 
+  getClosestParent() {
+    const closestGroup = this.el.parentElement.closest("se-list-group");
+    const closestList = this.el.parentElement.closest("se-list");
+    return !closestGroup ? closestList : closestGroup;
+  }
+
   getParentConfig() {
-    const myParent: any = this.el.parentElement;
-    const indentation = myParent.indentation;
+    const closest:any = this.getClosestParent() || {};
+    const indentation = closest.indentation;
     if(indentation !== null && indentation !== undefined) {
       this.indentation = indentation + 1;
-      // console.log("parent has indentation is", myParent.indentation, "so I add to it for a total of", this.indentation);
     }
-    if(!!myParent.option) {
-      this.option = myParent.option;
+    if(closest.option) {
+      this.option = closest.option;
     }
   }
 
@@ -91,7 +96,7 @@ export class ListItemComponent {
             </div>
             : ''}
           <div class="nav-content">
-            <div>{this.item}</div>
+            <div class="list-label-item" title={this.item}>{this.item}</div>
             {myDescription}
           </div>
           {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}

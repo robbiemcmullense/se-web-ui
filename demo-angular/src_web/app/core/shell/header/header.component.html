@@ -1,18 +1,16 @@
 <se-header [appTitle]="appInfo.title">
-  <se-sidemenu>
+  <se-sidemenu link="google.com">
     <se-sidemenu-item item="About">
       <se-about [appTitle]="appInfo.title" [version]="appInfo.version" [imageUrl]="appInfo.image"></se-about>
     </se-sidemenu-item>
-    <se-sidemenu-item item="Sidenav 2">
+    <se-sidemenu-item item="Sidenav 2" active="true">
       <se-block option="fill">
         <se-block-header>some widget design</se-block-header>
         <se-block-content>
           <se-chip id="se-chip" value="Chip 01"></se-chip>
         </se-block-content>
         <se-block-footer>
-          <div slot="end">
             <se-button option="raised" color="primary">RaisedGreen</se-button>
-          </div>
         </se-block-footer>
       </se-block>
     </se-sidemenu-item>

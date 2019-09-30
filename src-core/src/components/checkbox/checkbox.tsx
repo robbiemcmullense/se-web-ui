@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Method, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-checkbox",
@@ -42,7 +42,7 @@ export class CheckboxComponent {
    */
   @Prop() disabled: boolean = false;
   /**
-	 * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+	 * The "checked" state of the checkbox, `false` by default.
 	 */
   @Prop({ mutable: true }) selected: boolean = false;
   /**
@@ -58,7 +58,6 @@ export class CheckboxComponent {
    * Useful if the on/off checkbox is within a header element.
    */
   @Prop() header: boolean = false;
-  @State() checked: boolean;
   /**
    * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
    */
@@ -85,19 +84,16 @@ export class CheckboxComponent {
     }
   }
 
-  emitEvent() {
+  handleClick() {
     if (!this.disabled) {
-      this.checked = !this.checked;
-      let checkboxObject = { value: this.value, selected: this.checked };
+      this.selected = !this.selected;
+      let checkboxObject = { value: this.value, selected: this.selected };
       this.didChange.emit(checkboxObject);
     }
   }
 
   componentDidLoad() {
     this.setElementId();
-    if (this.selected) {
-      this.checked = this.selected;
-    }
   }
 
   render() {
@@ -113,8 +109,8 @@ export class CheckboxComponent {
     if (this.option === 'onoff') {
       markup = (
         <div class="on-off-wrapper">
-          <button class={['active', this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOn}</button>
-          <button class={['inactive', !this.checked ? ' selected' : ''].join(' ')} onClick={() => this.emitEvent()}>{this.textOff}</button>
+          <button class={['active', this.selected ? ' selected' : ''].join(' ')} onClick={() => this.handleClick()}>{this.textOn}</button>
+          <button class={['inactive', !this.selected ? ' selected' : ''].join(' ')} onClick={() => this.handleClick()}>{this.textOff}</button>
         </div>
       )
     } else {
@@ -123,7 +119,7 @@ export class CheckboxComponent {
           <label class="checkbox-container" data-disabled={this.disabled}>
             {this.option === 'checkbox' ? this.label : ''}
             {this.option === 'checkbox' && this.required ? <span class="required">*</span> : ''}
-            <input type="checkbox" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()} />
+            <input type="checkbox" checked={this.selected} disabled={this.disabled} onClick={() => this.handleClick()} value={this.value}/>
             <span class="checkmark" data-color={this.color}></span>
           </label>
           {this.option === 'switch' ? switchMarkup : ''}

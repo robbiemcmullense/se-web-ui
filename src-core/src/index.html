@@ -37,7 +37,7 @@
           </se-list>
         </se-dropdown>
       </div>
-      <se-sidemenu id="main-sidemenu">
+      <se-sidemenu id="main-sidemenu" link="www.se.com/en/partners">
         <se-sidemenu-item item="Project" active="true">
           <se-block>
             <se-block-header>some block design</se-block-header>
@@ -384,12 +384,15 @@
             </se-list-item>
           </se-list-group>
           <se-list-group item="Widget Title">
-            <se-block option="widget" >
-              <se-block-content>Testing a block widget within an se-list-group</se-block-content>
-            </se-block>
-            <se-block option="widget" >
-              <se-block-content>Further testing</se-block-content>
-            </se-block>
+            <div class="bg-background">
+              <se-block option="widget">
+                <se-block-content>Testing a block widget within an se-list-group</se-block-content>
+              </se-block>
+              <se-block option="widget">
+                <se-block-content>Further testing</se-block-content>
+              </se-block>
+            </div>
+
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Card Title">
@@ -414,6 +417,7 @@
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
+
       <se-container direction="column" position="relative" display="block" color="alternative">
         <se-container option="centered">
           <se-banner id="se-banner">
@@ -452,6 +456,7 @@
             </se-banner-item>
           </se-banner>
         </se-container>
+
         <se-container option="card" display="grid" column-size="400px" row-size="400px">
           <se-block id="block0">
             <se-block-header>
@@ -460,11 +465,11 @@
               </div>
               Typography
               <div slot="end">
-                <se-dropdown alignment="right">
+                <se-dropdown alignment="right" max-width="300px">
                   <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
                   <se-list option="dropdown">
-                    <se-list-item item="I'm selected"></se-list-item>
-                    <se-list-item item="my item 2 no description  with a long text"></se-list-item>
+                    <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
+                    <se-list-item item="my item 2 no description  with a long text long text"></se-list-item>
                     <se-list-item item="my item 3 no icon"></se-list-item>
                   </se-list>
                 </se-dropdown>
@@ -502,7 +507,7 @@
               </div>
             </se-block-header>
             <se-block-content option="fill">
-              <se-list option="headline" can-collapse="true">
+              <se-list option="headline" can-collapse="false">
                 <se-list-group item="Headline Example">
                   <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
                   <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary"></se-list-item>
@@ -678,6 +683,9 @@
               <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
                 <textarea rows="5"></textarea>
               </se-form-field>
+              <se-form-field label="Date">
+                <input type="date" />
+              </se-form-field>
               <h4>Stacked </h4>
               <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
                 <input type="text" />
@@ -712,60 +720,63 @@
               <se-button onclick="addNewBreadcrumb()" option="raised">Add New Breadcrumb</se-button>
               <se-button onclick="removeSidemenuItem()" option="raised">Remove Sidemenu Item</se-button>
               <se-button onclick="addNewSidemenuItem()" option="raised">Add New Sidemenu Item</se-button>
+
+              <se-divider></se-divider>
+              <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
+              <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon
+              </se-button>
+              <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
               <se-button onclick="addBannerItem()" option="raised">Add Banner Item</se-button>
               <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
-
-            <se-divider></se-divider>
-            <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
-            <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
-            <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
-          </se-block-content>
-        </se-block>
-        <se-block id="block5">
-          <se-block-header>
-            Linear chart & Slider
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>
-            <se-visual-linear id="progBar" secolor="error" percentage="66" value="16" label="Labels"></se-visual-linear>
-            <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels"></se-visual-linear>
-            <se-slider id="sliderID"></se-slider>
-            <ul>
-              <li id="slider-value"><span></span></li>
-            </ul>
-          </se-block-content>
-        </se-block>
-        <se-block id="block6">
-          <se-block-header>
-            Radial chart
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-visual-radial percentage="30" label="units"></se-visual-radial>
-            <se-visual-radial percentage="60" secolor="warning" label="units"></se-visual-radial>
-            <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
-          </se-block-content>
-        </se-block>
-        <se-block id="block7">
-          <se-block-header>
-            Tree view
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-list option="treeview">
-              <se-list-group option="treeview" item="Treeview Example">
-                <se-list-item item="First treeview child"></se-list-item>
-                <se-list-group option="treeview" item="Second treeview child">
-                  <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
-                  <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
-                </se-list-group>
+            </se-block-content>
+          </se-block>
+          <se-block id="block5">
+            <se-block-header>
+              Linear chart & Slider
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>
+              <se-visual-linear id="progBar" secolor="error" percentage="66" value="16" label="Labels">
+              </se-visual-linear>
+              <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels">
+              </se-visual-linear>
+              <se-slider id="sliderID"></se-slider>
+              <ul>
+                <li id="slider-value"><span></span></li>
+              </ul>
+            </se-block-content>
+          </se-block>
+          <se-block id="block6">
+            <se-block-header>
+              Radial chart
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-visual-radial percentage="30" label="units"></se-visual-radial>
+              <se-visual-radial percentage="60" secolor="warning" label="units"></se-visual-radial>
+              <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
+            </se-block-content>
+          </se-block>
+          <se-block id="block7">
+            <se-block-header>
+              Tree view
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-list option="treeview">
+                <se-list-group option="treeview" item="Treeview Example">
+                  <se-list-item item="First treeview child"></se-list-item>
+                  <se-list-group option="treeview" item="Second treeview child">
+                    <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                    <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
+                  </se-list-group>
               </se-list>
             </se-block-content>
           </se-block>
@@ -955,7 +966,7 @@
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
-      breadcrumbs[breadcrumbs.length-1].parentNode.removeChild(breadcrumbs[breadcrumbs.length-1]);
+      breadcrumbs[breadcrumbs.length - 1].parentNode.removeChild(breadcrumbs[breadcrumbs.length - 1]);
     }
 
     function addNewBreadcrumb() {
@@ -983,7 +994,7 @@
 
     function removeSidemenuItem() {
       let menuItems = document.getElementsByTagName('se-sidemenu-item');
-      menuItems[menuItems.length-1].parentNode.removeChild(menuItems[menuItems.length-1]);
+      menuItems[menuItems.length - 1].parentNode.removeChild(menuItems[menuItems.length - 1]);
     }
 
     function addBannerItem() {
@@ -1016,7 +1027,9 @@
     document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
       document.querySelector('se-sidemenu').toggle();
       //alert('this has been clicked');
-      document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
+      if (document.getElementById('sidemenu-message')) {
+        document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
+      }
     });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {
