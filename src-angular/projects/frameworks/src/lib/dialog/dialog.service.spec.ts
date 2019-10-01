@@ -11,14 +11,14 @@ describe('DialogService', () => {
 
   beforeEach(() => {
     config = new DialogConfig();
-    service = TestBed.get(DialogService);
     TestBed.configureTestingModule({
       imports: [DialogModule, ProxiesModule],
       providers: [DialogConfig]
     });
+    service = TestBed.get(DialogService);
   });
 
-  it('should create the DialogService', () => {
+  it('should create the DialogService', () => {  
     expect(service).toBeTruthy();
   });
 
