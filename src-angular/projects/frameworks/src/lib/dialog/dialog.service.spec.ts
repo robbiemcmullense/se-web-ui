@@ -7,10 +7,6 @@ import { ProxiesModule } from '../directives/proxies.module';
 
 describe('DialogService', () => {
   let config: DialogConfig;
-  const component: DialogComponent;
-  const fixture: ComponentFixture<DialogComponent>;
-  const modalcomponent: DialogModalComponent;
-  const modalfixture: ComponentFixture<DialogModalComponent>;
 
   beforeEach(() => {
     config = new DialogConfig();
