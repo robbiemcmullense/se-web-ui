@@ -2,12 +2,10 @@
    <se-dialog-header *ngIf="dialog.title">{{dialog.title}}</se-dialog-header>
     <se-dialog-content [icon]="dialog.icon" [iconColor]="dialog.iconColor" [option]="dialog.option">{{dialog.message}}</se-dialog-content>
     <se-dialog-footer *ngIf="type==='alert'">
-        <se-button (click)="closeDialog()">{{dialog.textOK?dialog.textOK:'Ok'}}</se-button>
+        <se-button (click)="closeDialog()">{{dialog.textOK || 'Ok'}}</se-button>
     </se-dialog-footer>
     <se-dialog-footer *ngIf="type==='confirm'">
-        <se-button (click)="cancelDialog()" color="alternative">{{dialog.textCancel?dialog.textCancel :'Cancel'}}</se-button>
-        <se-button (click)="closeDialog()">{{dialog.textOK?dialog.textOK :'Ok'}}</se-button>  
+        <se-button (click)="cancelDialog()" color="alternative">{{dialog.textCancel || 'Cancel'}}</se-button>
+        <se-button (click)="closeDialog()">{{dialog.textOK || 'Ok'}}</se-button>
     </se-dialog-footer>
   </se-dialog>
-
-  
