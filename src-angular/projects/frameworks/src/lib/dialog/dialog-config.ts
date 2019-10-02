@@ -23,11 +23,11 @@ export class DialogConfig {
    */
   textCancel?: string;
   /**
-   * @description size of the dialog:'small'|'large'|'medium'|'fill'
+   * @description size of the dialog: 'small'|'large'|'medium'|'fill'
    */
   size?: string;
   /**
-   * @description color of the dialog header:'alternative'|'primary'
+   * @description color of the dialog header: 'alternative'|'primary'
    */
   color?: string;
   /**
