@@ -133,6 +133,7 @@ export class HomeComponent implements OnInit {
   showModal(): void {
     const modal = this.dialogService.modal(ModalExampleComponent, {
       data: {
+        title: "Login",
         username: "1234User",
         password: "mySecret"
       }
