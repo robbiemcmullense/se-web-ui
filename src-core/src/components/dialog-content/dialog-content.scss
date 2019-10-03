@@ -3,6 +3,11 @@
 :host {
   overflow-x: auto;
 }
+
+.se-icon-wrapper {
+  height: 60px;
+}
+
 .inner-content{
   @include flex();
   margin: 0 $spacing;
