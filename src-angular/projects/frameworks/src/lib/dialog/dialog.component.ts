@@ -24,7 +24,7 @@ export class DialogComponent {
   @Output() afterClosed = new EventEmitter();
 
   // Web-component Event accessible from dialog service to call close/cancel function
-  private closeEvent = new EventEmitter();
+  @Output() closeEvent = new EventEmitter();
 
   constructor(public dialog: DialogConfig) {
   }
@@ -48,7 +48,7 @@ export class DialogModalComponent implements AfterViewInit, OnDestroy {
   @Output() afterClosed = new EventEmitter();
 
   // Web-component Event accessible from dialog service to call close/cancel function
-  private closeEvent = new EventEmitter();
+  @Output() closeEvent = new EventEmitter();
 
   @ViewChild(DialogDirective, {static: false}) insertionPoint: DialogDirective;
   childComponentType: Type<any>;
