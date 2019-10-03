@@ -305,7 +305,7 @@ export namespace Components {
   }
   interface SeDialog {
     /**
-    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
+    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
     */
     'backdropClicked': () => Promise<void>;
     /**

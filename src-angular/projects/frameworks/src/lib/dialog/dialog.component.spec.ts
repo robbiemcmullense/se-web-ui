@@ -30,8 +30,8 @@ describe('DialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call the DialogService close method when the OK button is clicked', () => {
-    spyOn(component.dialogService, 'close');
+  it('should call the afterClosed emit method when the OK button is clicked', () => {
+    spyOn(component.afterClosed, 'emit');
     // trigger the click
     fixture.componentInstance.type = 'confirm';
     fixture.detectChanges();
@@ -40,19 +40,19 @@ describe('DialogComponent', () => {
     button.dispatchEvent(new Event('click'));
     fixture.detectChanges();
     component.closeDialog();
-    expect(component.dialogService.close).toHaveBeenCalled();
+    expect(component.afterClosed.emit).toHaveBeenCalled();
   });
 
-  it('should call the DialogService cancel method when the cancel button is clicked', () => {
-    spyOn(component.dialogService, 'cancel');
+  it('should call the afterClosed error method when the cancel button is clicked', () => {
+    spyOn(component.afterClosed, 'error');
     component.cancelDialog();
-    expect(component.dialogService.cancel).toHaveBeenCalled();
+    expect(component.afterClosed.error).toHaveBeenCalled();
   });
 
-  it('should call the DialogService cancel method when the backdrop is clicked', () => {
-    spyOn(component.dialogService, 'cancel');
+  it('should call the afterClosed error method when the backdrop is clicked', () => {
+    spyOn(component.afterClosed, 'error');
     component.backdropClick();
-    expect(component.dialogService.cancel).toHaveBeenCalled();
+    expect(component.afterClosed.error).toHaveBeenCalled();
   });
 
   // Modal dialog test cases
@@ -65,9 +65,9 @@ describe('DialogComponent', () => {
     expect(modalComponent.loadChildComponent).toBeTruthy();
   });
 
-  it('should call the DialogService cancel method when the backdrop is clicked', () => {
-    spyOn(modalComponent.dialogService, 'cancel');
+  it('should call the afterClosed error method when the backdrop is clicked', () => {
+    spyOn(modalComponent.afterClosed, 'error');
     modalComponent.backdropClick();
-    expect(modalComponent.dialogService.cancel).toHaveBeenCalled();
+    expect(modalComponent.afterClosed.error).toHaveBeenCalled();
   });
 });

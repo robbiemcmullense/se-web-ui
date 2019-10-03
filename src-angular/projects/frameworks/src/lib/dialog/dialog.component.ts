@@ -14,7 +14,6 @@ import {
 } from '@angular/core';
 import { DialogConfig } from './dialog-config';
 import { DialogDirective } from './dialog.directive';
-import { DialogService } from './dialog.service';
 
 @Component({
   selector: 'lib-dialog',
@@ -23,16 +22,21 @@ import { DialogService } from './dialog.service';
 })
 export class DialogComponent {
   @Output() afterClosed = new EventEmitter();
-  constructor(public dialog: DialogConfig, public dialogService: DialogService) {}
+
+  // Web-component Event accessible from dialog service to call close/cancel function
+  private closeEvent = new EventEmitter();
+
+  constructor(public dialog: DialogConfig) {
+  }
   @Input() type: string;
   closeDialog() {
-    this.dialogService.close(this.dialog);
+    this.closeEvent.emit(this.dialog);
   }
   backdropClick() {
-    this.dialogService.cancel('dialog backdrop clicked');
+    this.closeEvent.error({type: 'backdrop'});
   }
   cancelDialog() {
-    this.dialogService.cancel('dialog cancel button clicked');
+    this.closeEvent.error({type: 'cancel'});
   }
 }
 
@@ -42,17 +46,20 @@ export class DialogComponent {
 })
 export class DialogModalComponent implements AfterViewInit, OnDestroy {
   @Output() afterClosed = new EventEmitter();
+
+  // Web-component Event accessible from dialog service to call close/cancel function
+  private closeEvent = new EventEmitter();
+
   @ViewChild(DialogDirective, {static: false}) insertionPoint: DialogDirective;
   childComponentType: Type<any>;
   componentRef: ComponentRef<any>;
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private cd: ChangeDetectorRef,
-    public dialogService: DialogService,
     @Optional() public modal: DialogConfig
   ) {}
   backdropClick() {
-    this.dialogService.cancel('modal backdrop clicked');
+    this.closeEvent.error({type: 'backdrop'});
   }
 
   ngAfterViewInit() {

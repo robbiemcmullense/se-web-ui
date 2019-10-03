@@ -24,8 +24,7 @@ export const MODAL_DATA = new InjectionToken<any>('ModalData');
   providedIn: 'root'
 })
 export class DialogService {
-  dialogRef: ComponentRef<DialogComponent>;
-  modalRef: ComponentRef<DialogModalComponent>;
+  closeEvent: any;
 
   public componentRef: ComponentRef<any>;
   constructor(
@@ -64,29 +63,53 @@ export class DialogService {
    */
 
   public alert(config: DialogConfig) {
-    const alertDialogRef = this.createDialogComponent(DialogComponent, config);
-    alertDialogRef.instance.type = 'alert';
-    return alertDialogRef;
+    const dialogRef = this.createDialogComponent(DialogComponent, config);
+    dialogRef.instance.type = 'alert';
+    this.closeEvent = dialogRef.instance.closeEvent.subscribe(
+      (data) => {
+        this.close(data);
+      },
+      (err: any) => {
+        this.cancel(err);
+      }
+    );
+    return dialogRef;
   }
   /**
    * @description method to open confirm dialog
    */
   public confirm(config: DialogConfig) {
-    const confirmDialogRef = this.createDialogComponent(DialogComponent, config);
-    confirmDialogRef.instance.type = 'confirm';
-    return confirmDialogRef;
+    const dialogRef = this.createDialogComponent(DialogComponent, config);
+    dialogRef.instance.type = 'confirm';
+    this.closeEvent = dialogRef.instance.closeEvent.subscribe(
+      (data) => {
+        this.close(data);
+      },
+      (err: any) => {
+        this.cancel(err);
+      }
+    );
+    return dialogRef;
   }
   /**
    * @description method to open modal dialog
    */
 
   public modal(componentType: Type<any>, config?: DialogConfig) {
-    const modalDialogRef = this.createDialogComponent(
+    const dialogRef = this.createDialogComponent(
       DialogModalComponent,
       config
     );
+    this.closeEvent = dialogRef.instance.closeEvent.subscribe(
+      (data) => {
+        this.close(data);
+      },
+      (err: any) => {
+        this.cancel(err);
+      }
+    );
     this.componentRef.instance.childComponentType = componentType;
-    return modalDialogRef;
+    return dialogRef;
   }
 
   /**
@@ -96,6 +119,9 @@ export class DialogService {
     this.componentRef.instance.afterClosed.emit(data);
     this.appRef.detachView(this.componentRef.hostView);
     this.componentRef.destroy();
+    if (this.closeEvent) {
+      this.closeEvent.unsubscribe();
+    }
   }
   /**
    * @description method to close the dialog by setting close property to true
@@ -104,5 +130,8 @@ export class DialogService {
     this.componentRef.instance.afterClosed.error(data);
     this.appRef.detachView(this.componentRef.hostView);
     this.componentRef.destroy();
+    if (this.closeEvent) {
+      this.closeEvent.unsubscribe();
+    }
   }
 }

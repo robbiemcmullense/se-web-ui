@@ -12,6 +12,7 @@ import { ProxiesModule } from './directives/proxies.module';
 
 export * from './snackbar/snackbar.service';
 export * from './dialog/dialog.service';
+export * from './dialog/dialog-config';
 export * from './page-loader/page-loader.service';
 export * from './directives/proxies';
 
