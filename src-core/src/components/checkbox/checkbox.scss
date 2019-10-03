@@ -103,7 +103,7 @@ div {
 
 .switch {
   .checkbox-label {
-    padding-left: 6px;
+    padding-left: 0;
     vertical-align: middle;
   }
 
@@ -112,12 +112,20 @@ div {
     vertical-align: middle;
     width: 44px;
     height: 26px;
+    margin-left: 6px;
     border-radius: 13px;
     border: none;
     background-color: $se-white;
     display: inline-block;
     position: relative;
     cursor: pointer;
+
+    &.checkbox-label-right {
+      margin-left: 0;
+      ~.checkbox-label {
+        padding-left: 6px;
+      }
+    }
 
     .checkmark {
       display: block;

@@ -215,7 +215,7 @@ export namespace Components {
     */
     'label': string;
     /**
-    * Sets the position of the label for your checkbox component. The default setting is `right`.
+    * Sets the position of the label for your checkbox component. The default setting is `right` when the option is set to `checkbox`. The default setting is `left` when the option is set to `switch`.
     */
     'labelPos': 'left' | 'right';
     /**
@@ -1291,7 +1291,7 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
-    * Sets the position of the label for your checkbox component. The default setting is `right`.
+    * Sets the position of the label for your checkbox component. The default setting is `right` when the option is set to `checkbox`. The default setting is `left` when the option is set to `switch`.
     */
     'labelPos'?: 'left' | 'right';
     /**

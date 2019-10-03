@@ -60,9 +60,10 @@ export class CheckboxComponent {
   @Prop() header: boolean = false;
   /**
    * Sets the position of the label for your checkbox component.
-   * The default setting is `right`.
+   * The default setting is `right` when the option is set to `checkbox`.
+   * The default setting is `left` when the option is set to `switch`.
    */
-  @Prop() labelPos: 'left' | 'right' = 'right';
+  @Prop() labelPos: 'left' | 'right';
   /**
    * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
    */
@@ -98,6 +99,9 @@ export class CheckboxComponent {
   }
 
   componentDidLoad() {
+    if (!this.labelPos) {
+      this.labelPos = this.option === 'switch' ? 'left' : 'right';
+    }
     this.setElementId();
   }
 
@@ -121,13 +125,14 @@ export class CheckboxComponent {
     } else {
       markup = (
         <div class="checkbox-wrapper">
+          {this.option === 'switch' && this.labelPos === 'left' ? switchMarkup : ''}
           <label class={["checkbox-container", `checkbox-label-${this.labelPos}`].join(' ')} data-disabled={this.disabled}>
             {this.option === 'checkbox' ? this.label : ''}
             {this.option === 'checkbox' && this.required ? <span class="required">*</span> : ''}
             <input type="checkbox" checked={this.selected} disabled={this.disabled} onClick={() => this.handleClick()} value={this.value}/>
             <span class="checkmark" data-color={this.color}></span>
           </label>
-          {this.option === 'switch' ? switchMarkup : ''}
+          {this.option === 'switch' && this.labelPos === 'right' ? switchMarkup : ''}
         </div>
       )
     }
