@@ -1,7 +1,7 @@
-import { Injectable,ComponentFactoryResolver, ApplicationRef, Injector, EmbeddedViewRef, ComponentRef} from '@angular/core';
-import {SnackbarComponent} from './snackbar.component';
-import {SnackbarConfig} from './snackbar-config';
-import {ComponentInjector} from '../shared/component-injector';
+import { Injectable, ComponentFactoryResolver, ApplicationRef, Injector, EmbeddedViewRef, ComponentRef } from '@angular/core';
+import { SnackbarComponent } from './snackbar.component';
+import { SnackbarConfig } from './snackbar-config';
+import { ComponentInjector } from '../shared/component-injector';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +12,28 @@ export class SnackbarService {
    * @description ComponentRef of Snackbar Component
    */
   snackbarComponentRef: ComponentRef<SnackbarComponent>;
- 
+
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private appRef: ApplicationRef, private injector: Injector) { }
-  
+
   /**
    * @name appendSnackbarComponentToBody
    * @description method to append the component to document body
    * @param config : configuration value of type SnackbarConfig
    * @returns reference of sncackbar componenet created
    */
-  appendSnackbarComponentToBody(config: SnackbarConfig){
+  appendSnackbarComponentToBody(config: SnackbarConfig) {
 
     //create a map with the config 
     const map = new WeakMap();
     map.set(SnackbarConfig, config);
 
-    const componentFactory=this.componentFactoryResolver.resolveComponentFactory(SnackbarComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(SnackbarComponent);
     const componentRef = componentFactory.create(new ComponentInjector(this.injector, map));
     this.appRef.attachView(componentRef.hostView);
-    const domElem=(componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+    const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
-    this.snackbarComponentRef=componentRef;
-  
+    this.snackbarComponentRef = componentRef;
+
     //returning snackbar component refernce
     return this.snackbarComponentRef;
   }
@@ -42,7 +42,7 @@ export class SnackbarService {
    * @name removeSnackBarComponent
    * @description method to remove / detach snackbar component from document body
    */
-  removeSnackBarComponent(){
+  removeSnackBarComponent() {
     this.appRef.detachView(this.snackbarComponentRef.hostView);
     this.snackbarComponentRef.destroy();
   }
@@ -72,14 +72,12 @@ export class SnackbarService {
    * @description method called if canClose attribute is false to close the snackbar authomatically
    * @param canClose 
    */
-  autoDismiss(canClose: boolean, actionText:string, duration:number) {
-    let delay=duration?duration:5000;
+  autoDismiss(canClose: boolean, actionText: string, duration: number) {
+    let delay = duration ? duration : 5000;
     if (!canClose && !actionText) {
       setTimeout(() => {
         this.removeSnackBarComponent();
       }, delay);
     }
   }
-  
-
 }

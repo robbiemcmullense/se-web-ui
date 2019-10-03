@@ -32,7 +32,6 @@
 .snackbar {
   height: 48px;
   line-height: 48px;
-  margin-left: 5px;
   @include display-flex();
   @include  color('primary-contrast');
 }
@@ -41,23 +40,22 @@
   font-size: 24px;
   line-height: 48px;
   font-family: 'se-icon';
-  padding-right: 5px;
-  margin-right: -10px;
+  padding-left: 10px;
+  margin-right: -4px;
 }
 
 .message {
   font-size: 16px;
   padding-right: 16px;
-  margin-left: 10px;
+  margin-left: 16px;
 }
 
-.close, .action {
+.action, .close {
   cursor: pointer;
   font-size: 14px;
   border: 1px solid $se-white;
   padding: 8px 16px;
   margin: 8px;
-  margin-left: 16px;
+  margin-left: 0;
   line-height: 16px;
 }
-

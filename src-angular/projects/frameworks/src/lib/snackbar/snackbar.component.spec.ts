@@ -26,9 +26,16 @@ describe('SnackbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should call closeEvent',()=>{
+
+  it('should emit the didClose Event when closeEvent is called',()=>{
     spyOn(component.didClose, 'emit');
     component.closeEvent();
     expect(component.didClose.emit).toHaveBeenCalled();
-  })
+  });
+
+  it('should emit the actionClicked event when actionClickedEvent is called',()=>{
+    spyOn(component.actionClicked, 'emit');
+    component.actionClickedEvent();
+    expect(component.actionClicked.emit).toHaveBeenCalled();
+  });
 });

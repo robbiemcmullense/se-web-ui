@@ -1,5 +1,4 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SnackbarService } from './snackbar.service';
 import { SnackbarComponent } from './snackbar.component';
 import { SnackbarConfig } from './snackbar-config';
@@ -8,24 +7,22 @@ import { ProxiesModule } from '../directives/proxies.module';
 
 describe('SnackbarService', () => {
   let config: SnackbarConfig;
-  let component: SnackbarComponent;
-  let fixture: ComponentFixture<SnackbarComponent>;
+  let service: SnackbarService;
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [SnackbarModule, ProxiesModule]
   }));
   beforeEach(() => {
     config = new SnackbarConfig();
+    service = TestBed.get(SnackbarService);
   });
 
   it('should be created', () => {
-    const service: SnackbarService = TestBed.get(SnackbarService);
     expect(service).toBeTruthy();
   });
 
   it('should call append Snackbar Component To Body',()=>{
-    const service: SnackbarService = TestBed.get(SnackbarService);
-    const config:SnackbarConfig={
+    config = {
       type: 'success',
       message: 'This is info',
       canClose: true,
@@ -40,7 +37,6 @@ describe('SnackbarService', () => {
   });
 
   it('should set open property true', () => {
-    const service: SnackbarService = TestBed.get(SnackbarService);
     const item = service.open({
       type: 'success',
       message: 'This is info',
@@ -53,7 +49,6 @@ describe('SnackbarService', () => {
   });
 
   it('should remove snackbar', () => {
-    const service: SnackbarService = TestBed.get(SnackbarService);
     service.open({
       type: 'success',
       message: 'This is info',
@@ -68,20 +63,16 @@ describe('SnackbarService', () => {
   it('should auto remove snackbar after certain time duration', () => {
     jasmine.clock().uninstall();
     jasmine.clock().install();
-    const service: SnackbarService = TestBed.get(SnackbarService);
     service.open({
       type: 'success',
       message: 'This is info',
       canClose: false,
       closeText: 'Dismiss',
       icon: 'information_stroke',
-      duration:500
+      duration: 500
     });
-    //service.autoDismiss(true, 500);
     jasmine.clock().tick(600);
     expect(service.snackbarComponentRef.hostView.destroyed).toBeTruthy();
     jasmine.clock().uninstall();
-
   });
-
 });
