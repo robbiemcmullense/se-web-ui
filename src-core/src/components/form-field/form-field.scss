@@ -11,6 +11,7 @@ $max-width-input: 320px;
   }
 
   label {
+    width: 30%;
     padding-top: 4px;
     text-align: right;
     @include typology('small');
@@ -23,8 +24,13 @@ $max-width-input: 320px;
 
   ::slotted(se-checkbox) {
     padding-top: 6px;
+    margin-left: calc(30% + 7px);
   }
-  
+
+  ::slotted(se-radio) {
+    margin-left: calc(30% + 7px);
+  }
+
   ::slotted(input) {
     height: 28px;
     width: 60%;
@@ -96,6 +102,12 @@ $max-width-input: 320px;
       text-align: left;
       line-height: 12px;
       width: auto;
+    }
+    ::slotted(se-checkbox) {
+      margin-left: 0;
+    }
+    ::slotted(se-radio) {
+      margin-left: 0;
     }
     ::slotted(input) {
       width: 97%;

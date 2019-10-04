@@ -53,10 +53,10 @@
                   <se-block-content>
                     <se-chip color="standard" value="Std Chip"></se-chip>
                     <se-chip color="standard" disabled="true" value="Std Chip"></se-chip>
-                      <div style="background-color: #9fa0a4;">
-                        <se-chip color="alternative" value="Alt Chip"></se-chip>
-                        <se-chip color="alternative" disabled="true" value="Alt Chip"></se-chip>
-                      </div>
+                    <div style="background-color: #9fa0a4;">
+                      <se-chip color="alternative" value="Alt Chip"></se-chip>
+                      <se-chip color="alternative" disabled="true" value="Alt Chip"></se-chip>
+                    </div>
                   </se-block-content>
                   <se-block-content>
                     <se-icon size="nano" color="anthracitegrey">airconditioner_hot_heating</se-icon>
@@ -382,12 +382,12 @@
             <se-list-item item="Basic Item">
             </se-list-item>
           </se-list-group>
-          <se-list-group item="Widget Title" >
+          <se-list-group item="Widget Title">
             <div class="bg-background">
-              <se-block option="widget" >
+              <se-block option="widget">
                 <se-block-content>Testing a block widget within an se-list-group</se-block-content>
               </se-block>
-              <se-block option="widget" >
+              <se-block option="widget">
                 <se-block-content>Further testing</se-block-content>
               </se-block>
             </div>
@@ -617,40 +617,24 @@
             </div>
           </se-block-header>
           <se-block-content>
-            <h4>Inlined </h4>
-            <ul>
+            <ul style="padding: 10px;">
               <li id="form-field-message">last submitted form field value: <span></span></li>
             </ul>
-            <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
-              required="true">
+            <h4>Inlined:</h4>
+            <se-form-field id="checkbox-form" label="Inline Checkbox" type="checkbox" required="true">
               <se-checkbox></se-checkbox>
             </se-form-field>
-            <se-form-field label="This is my custom Checkbox.  It is unique." type="checkbox"
-              required="true">
-              <se-checkbox label-pos="left"></se-checkbox>
-            </se-form-field>
-            <se-form-field id="radio-form" label="This is my custom Radio Button.  It is unique." type="radio"
-              required="true">
+            <se-form-field id="radio-form" label="Inline Radio" type="radio" required="true">
               <se-radio></se-radio>
-            </se-form-field>
-            <se-form-field label="This is my custom Radio Button.  It is unique." type="radio"
-              required="true">
-              <se-radio label-pos="left"></se-radio>
-            </se-form-field>
-            <se-form-field label="Switch Label within Form Field" type="checkbox">
-              <se-checkbox option="switch"></se-checkbox>
-            </se-form-field>
-            <se-form-field label="Switch Label within Form Field" type="checkbox">
-              <se-checkbox label-pos="right" option="switch"></se-checkbox>
             </se-form-field>
             <se-form-field id="input-form" label="Input" required="true">
               <input type="text" />
             </se-form-field>
             <se-form-field id="select-form" label="Select" required="true" type="select">
               <select>
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
+                <option>Inline Option 1</option>
+                <option>Inline Option 2</option>
+                <option>Inline Option 3</option>
               </select>
             </se-form-field>
             <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
@@ -659,7 +643,7 @@
             <se-form-field label="Date">
               <input type="date" />
             </se-form-field>
-            <h4>Stacked </h4>
+            <h4>Stacked:</h4>
             <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
               <input type="text" />
             </se-form-field>
@@ -672,6 +656,12 @@
             </se-form-field>
             <se-form-field option="stacked" type="input" label="Very Long Multi-Line Input">
               <textarea rows="10"></textarea>
+            </se-form-field>
+            <se-form-field option="stacked" label="Stacked Checkbox" type="checkbox" required="true">
+              <se-checkbox></se-checkbox>
+            </se-form-field>
+            <se-form-field option="stacked" label="Stacked Radio" type="radio" required="true">
+              <se-radio></se-radio>
             </se-form-field>
           </se-block-content>
         </se-block>
@@ -710,7 +700,8 @@
           <se-block-content>
             <se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>
             <se-visual-linear id="progBar" secolor="error" percentage="66" value="16" label="Labels"></se-visual-linear>
-            <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels"></se-visual-linear>
+            <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels">
+            </se-visual-linear>
             <se-slider id="sliderID"></se-slider>
             <ul>
               <li id="slider-value"><span></span></li>
@@ -857,8 +848,7 @@
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
     <se-fab icon="action_share" position="top">
-      <se-button option='minifab' caption="New Work Order"
-        icon="notification_critical_stroke"></se-button>
+      <se-button option='minifab' caption="New Work Order" icon="notification_critical_stroke"></se-button>
       <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
       <se-button option='minifab' caption="New User" icon="task"></se-button>
       <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
@@ -936,7 +926,7 @@
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
-      breadcrumbs[breadcrumbs.length-1].parentNode.removeChild(breadcrumbs[breadcrumbs.length-1]);
+      breadcrumbs[breadcrumbs.length - 1].parentNode.removeChild(breadcrumbs[breadcrumbs.length - 1]);
     }
 
     function addNewBreadcrumb() {
@@ -964,7 +954,7 @@
 
     function removeSidemenuItem() {
       let menuItems = document.getElementsByTagName('se-sidemenu-item');
-      menuItems[menuItems.length-1].parentNode.removeChild(menuItems[menuItems.length-1]);
+      menuItems[menuItems.length - 1].parentNode.removeChild(menuItems[menuItems.length - 1]);
     }
 
     // grid widget
@@ -981,7 +971,7 @@
     document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
       document.querySelector('se-sidemenu').toggle();
       //alert('this has been clicked');
-      if(document.getElementById('sidemenu-message')) {
+      if (document.getElementById('sidemenu-message')) {
         document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
       }
     });
@@ -1032,4 +1022,5 @@
     });
   </script>
 </body>
+
 </html>
