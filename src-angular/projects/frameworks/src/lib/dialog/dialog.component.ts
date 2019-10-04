@@ -16,31 +16,40 @@ import { DialogConfig } from './dialog-config';
 import { DialogDirective } from './dialog.directive';
 
 @Component({
-  selector: 'se-app-dialog',
+  selector: 'lib-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent {
   @Output() afterClosed = new EventEmitter();
-  constructor(public dialog: DialogConfig) {}
+
+  // Web-component Event accessible from dialog service to call close/cancel function
+  @Output() closeEvent = new EventEmitter();
+
+  constructor(public dialog: DialogConfig) {
+  }
   @Input() type: string;
   closeDialog() {
-    this.afterClosed.emit();
+    this.closeEvent.emit(this.dialog);
   }
   backdropClick() {
-    this.afterClosed.error('dialogclosed');
+    this.closeEvent.error({type: 'backdrop'});
   }
   cancelDialog() {
-    this.afterClosed.error('dialogclosed');
+    this.closeEvent.error({type: 'cancel'});
   }
 }
 
 @Component({
-  selector: 'se-app-dialog-modal',
+  selector: 'lib-dialog-modal',
   templateUrl: './dialog-modal.component.html'
 })
 export class DialogModalComponent implements AfterViewInit, OnDestroy {
   @Output() afterClosed = new EventEmitter();
+
+  // Web-component Event accessible from dialog service to call close/cancel function
+  @Output() closeEvent = new EventEmitter();
+
   @ViewChild(DialogDirective, {static: false}) insertionPoint: DialogDirective;
   childComponentType: Type<any>;
   componentRef: ComponentRef<any>;
@@ -49,11 +58,8 @@ export class DialogModalComponent implements AfterViewInit, OnDestroy {
     private cd: ChangeDetectorRef,
     @Optional() public modal: DialogConfig
   ) {}
-  closeDialog() {
-    this.afterClosed.emit();
-  }
   backdropClick() {
-    this.afterClosed.error('modalclosed');
+    this.closeEvent.error({type: 'backdrop'});
   }
 
   ngAfterViewInit() {

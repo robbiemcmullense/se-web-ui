@@ -6,7 +6,7 @@
   speak: none;
   font-style: normal;
   position: relative;
-  top: 0;
+  top: -2px;
   font-size: 24px;
   font-weight: normal;
   font-variant: normal;
@@ -110,7 +110,7 @@
         @include background-color("hover-primary");
       }
     }
-  
+
     &.secondary {
       @include color("secondary-contrast");
       @include background-color("secondary");

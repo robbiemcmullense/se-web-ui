@@ -309,7 +309,7 @@ export namespace Components {
   }
   interface SeDialog {
     /**
-    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
+    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
     */
     'backdropClicked': () => Promise<void>;
     /**
@@ -369,6 +369,14 @@ export namespace Components {
     * Method to close the dropdown from outside its parent element.
     */
     'close': () => Promise<void>;
+    /**
+    * Sets the maximum height of the dropdown.  Default setting is "400px".
+    */
+    'maxHeight': string;
+    /**
+    * Sets the maximum width of the dropdown.  Default setting is "200px".
+    */
+    'maxWidth': string;
     /**
     * Method to open the dropdown from outside its parent element.
     */
@@ -631,6 +639,7 @@ export namespace Components {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label': string;
+    'link': string;
     'toggle': () => Promise<void>;
   }
   interface SeSidemenuItem {
@@ -1450,6 +1459,14 @@ declare namespace LocalJSX {
     */
     'alignment'?: 'left' | 'right';
     /**
+    * Sets the maximum height of the dropdown.  Default setting is "400px".
+    */
+    'maxHeight'?: string;
+    /**
+    * Sets the maximum width of the dropdown.  Default setting is "200px".
+    */
+    'maxWidth'?: string;
+    /**
     * Event emitted when the dropdown has been closed.
     */
     'onDidClose'?: (event: CustomEvent<any>) => void;
@@ -1727,6 +1744,7 @@ declare namespace LocalJSX {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label'?: string;
+    'link'?: string;
   }
   interface SeSidemenuItem extends JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement> {
     /**

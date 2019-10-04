@@ -5,9 +5,13 @@
   <se-tabbar color='primary'>
     <nav slot="start">
       Tenant:
-      <a class="dropdown">
-        test
-      </a>
+      <se-dropdown alignment="left">
+        <se-button slot="trigger" option="inherit">Site 1</se-button>
+        <se-list option="dropdown">
+          <se-list-item item="Site 2"></se-list-item>
+          <se-list-item item="Site 3"></se-list-item>
+        </se-list>
+      </se-dropdown>
     </nav>
     <nav>
       <a routerLink="/home" routerLinkActive="active">Home</a>

@@ -2,6 +2,7 @@ import { Component, h, Method, Element, State, Prop } from '@stencil/core';
 
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
+const OPEN_ITEM = 'open-item';
 
 @Component({
   tag: 'se-sidemenu',
@@ -24,6 +25,13 @@ export class SidemenuComponent {
    * The default value is `Menu`.
    */
   @Prop() label: string = 'Menu';
+   /*
+   * Defines the link to be uses in the external-link element of the Sidemenu.
+   * The default value is www.se.com, which will generate if no link is defined.
+   * If a different url is provided it will replace the default value.
+   * If an empty string is provided the external link element will not be generated.
+  */
+  @Prop() link: string = 'www.se.com';
 
   @Method()
   async toggle() {
@@ -32,11 +40,19 @@ export class SidemenuComponent {
       // Add css classes
       this.el.classList.add(SHOW_MENU);
       this.addAnimation(null);
+      try {
+        if (this.el.getElementsByClassName("active").length > 0) {
+          this.el.classList.add(OPEN_ITEM);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       // Remove css classes
       this.removeAnimation(() => {
         this.el.classList.remove(SHOW_MENU);
       });
+      this.el.classList.remove(OPEN_ITEM);
       if (this.selectedItem && !this.selectedItem.childElementCount) {
         this.selectedItem = undefined;
         this.items.forEach((item: any) => {
@@ -51,10 +67,6 @@ export class SidemenuComponent {
   }
 
   private setActive(item: any): void {
-    if (this.menuInnerEl) {
-      console.log(this.menuInnerEl)
-      this.menuInnerEl.style.width = !item.childElementCount ? '250px' : '80%'; // This logic shouldn't directly change the width? needs to be based on if a sidemenu item has and "active" class
-    }
     if (this.items.length) {
       this.items.forEach((item: any) => {
         item.active = false;
@@ -62,28 +74,37 @@ export class SidemenuComponent {
       setTimeout(() => {
         item.active = true;
         this.selectedItem = item;
+        this.el.classList.add(OPEN_ITEM);
       }, 100)
     }
   }
 
   private addAnimation(callback) {
-    this.menuInnerEl.classList.add(SHOW_MENU);
-    this.backdropEl.classList.add(SHOW_MENU);
-    setTimeout(() => {
-      this.menuInnerEl.classList.remove(SHOW_MENU);
-      this.backdropEl.classList.remove(SHOW_MENU);
-      callback && callback();
-    }, 200);
+    try {
+      this.menuInnerEl.classList.add(SHOW_MENU);
+      this.backdropEl.classList.add(SHOW_MENU);
+      setTimeout(() => {
+        this.menuInnerEl.classList.remove(SHOW_MENU);
+        this.backdropEl.classList.remove(SHOW_MENU);
+        callback && callback();
+      }, 200);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   private removeAnimation(callback) {
-    this.menuInnerEl.classList.add(HIDE_MENU);
-    this.backdropEl.classList.add(HIDE_MENU);
-    setTimeout(() => {
-      this.menuInnerEl.classList.remove(HIDE_MENU);
-      this.backdropEl.classList.remove(HIDE_MENU);
-      callback && callback();
-    }, 200);
+    try {
+      this.menuInnerEl.classList.add(HIDE_MENU);
+      this.backdropEl.classList.add(HIDE_MENU);
+      setTimeout(() => {
+        this.menuInnerEl.classList.remove(HIDE_MENU);
+        this.backdropEl.classList.remove(HIDE_MENU);
+        callback && callback();
+      }, 200);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   private watchItemList() {
@@ -101,9 +122,8 @@ export class SidemenuComponent {
             }
           });
           if (!activeItem && this.selectedItem) {
-            console.log(this.selectedItem);
+            // console.log(this.selectedItem);
             this.selectedItem = undefined;
-            this.menuInnerEl.style.width = '250px'; // CHANGE THIS? ADD CLASS INSTEAD TO CONTROL SIZING IN CSS?
           }
         }
       });
@@ -160,9 +180,10 @@ export class SidemenuComponent {
               </se-list>
             </se-block-content>
             <se-icon-lifeison class="footer-icon" color="standard" />
-            <div class="external-link">
-              <se-link class="sidemenu-link" url="http://www.se.com/en/partners">www.se.com/en/partners</se-link>
-            </div>
+            { this.link ?
+              <div class="external-link">
+                <se-link class="sidemenu-link" url={`http://${this.link}`}>{this.link}</se-link>
+            </div> : ''}
           </se-block>
           <se-divider option="vertical"></se-divider>
           <se-block ref={el => this.menuItemInnerEl = el}>

@@ -37,7 +37,7 @@
           </se-list>
         </se-dropdown>
       </div>
-      <se-sidemenu id="main-sidemenu">
+      <se-sidemenu id="main-sidemenu" link="www.se.com/en/partners">
         <se-sidemenu-item item="Project" active="true">
           <se-block>
             <se-block-header>some block design</se-block-header>
@@ -382,13 +382,16 @@
             <se-list-item item="Basic Item">
             </se-list-item>
           </se-list-group>
-          <se-list-group item="Widget Title">
-            <se-block option="widget" >
-              <se-block-content>Testing a block widget within an se-list-group</se-block-content>
-            </se-block>
-            <se-block option="widget" >
-              <se-block-content>Further testing</se-block-content>
-            </se-block>
+          <se-list-group item="Widget Title" >
+            <div class="bg-background">
+              <se-block option="widget" >
+                <se-block-content>Testing a block widget within an se-list-group</se-block-content>
+              </se-block>
+              <se-block option="widget" >
+                <se-block-content>Further testing</se-block-content>
+              </se-block>
+            </div>
+
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Card Title">
@@ -422,11 +425,11 @@
             </div>
             Typography
             <div slot="end">
-              <se-dropdown alignment="right">
+              <se-dropdown alignment="right" max-width="300px">
                 <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
                 <se-list option="dropdown">
-                  <se-list-item item="I'm selected"></se-list-item>
-                  <se-list-item item="my item 2 no description  with a long text"></se-list-item>
+                  <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
+                  <se-list-item item="my item 2 no description  with a long text long text"></se-list-item>
                   <se-list-item item="my item 3 no icon"></se-list-item>
                 </se-list>
               </se-dropdown>
@@ -464,7 +467,7 @@
             </div>
           </se-block-header>
           <se-block-content option="fill">
-            <se-list option="headline" can-collapse="true">
+            <se-list option="headline" can-collapse="false">
               <se-list-group item="Headline Example">
                 <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
                 <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary"></se-list-item>
@@ -652,6 +655,9 @@
             </se-form-field>
             <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
               <textarea rows="5"></textarea>
+            </se-form-field>
+            <se-form-field label="Date">
+              <input type="date" />
             </se-form-field>
             <h4>Stacked </h4>
             <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
@@ -903,7 +909,7 @@
         loadingBlock.loading = false;
       }, 3000);
     }
-    
+
     // Newly rendered item should get parent's indentation and style
     function newListItem() {
       let listItem = document.createElement("se-list-item");
@@ -975,7 +981,9 @@
     document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
       document.querySelector('se-sidemenu').toggle();
       //alert('this has been clicked');
-      document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
+      if(document.getElementById('sidemenu-message')) {
+        document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
+      }
     });
 
     document.getElementById('se-chip').addEventListener('didClose', function (event) {

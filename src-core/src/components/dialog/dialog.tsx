@@ -50,12 +50,13 @@ export class DialogComponent {
     }
   }
   /**
-   * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
+   * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */
   @Method()
   async backdropClicked() {
-    this.backdrop.emit();
     if(this.canBackdrop){
+      // Only emit if canBackdrop was clicked
+      this.backdrop.emit();
       this.open = false;
     }
   }
