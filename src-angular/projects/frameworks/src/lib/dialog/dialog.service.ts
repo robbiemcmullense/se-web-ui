@@ -40,7 +40,15 @@ export class DialogService {
     componentType: Type<any>,
     config?: DialogConfig
   ) {
-
+    if (!config.canBackdrop) {
+      config.canBackdrop = true;
+    }
+    if (!config.color) {
+      config.color = 'primary';
+    }
+    if (!config.size) {
+      config.size = 'medium';
+    }
     const userConf = config || {};
     // MODAL_DATA added as DI based on config.data
     const map = new WeakMap<any, any>([

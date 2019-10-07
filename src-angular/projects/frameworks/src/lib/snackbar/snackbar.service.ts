@@ -57,6 +57,15 @@ export class SnackbarService {
     if (this.snackbarComponentRef) {
       this.removeSnackBarComponent();
     }
+    if (!config.type) {
+      config.type = 'information';
+    }
+    if (!config.icon) {
+      config.icon = 'information_circle';
+    }
+    if (!config.closeText) {
+      config.closeText = 'Dismiss';
+    }
     const ref = this.appendSnackbarComponentToBody(config);
     //subscribing SnackbarComponent instace event while closing snackbar
     const sub = this.snackbarComponentRef.instance.didClose.subscribe(() => {

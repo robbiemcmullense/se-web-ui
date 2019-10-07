@@ -1,6 +1,5 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { SnackbarService } from './snackbar.service';
-import { SnackbarComponent } from './snackbar.component';
 import { SnackbarConfig } from './snackbar-config';
 import { SnackbarModule } from './snackbar.module';
 import { ProxiesModule } from '../directives/proxies.module';
@@ -44,8 +43,18 @@ describe('SnackbarService', () => {
       closeText: 'Dismiss',
       icon: 'information_stroke',
       duration: 500
-    })
+    });
     expect(item.instance).toBeDefined();
+  });
+
+  it('should set the default icon, closeText, and type when those properties are not defined', () => {
+    const item = service.open({
+      message: 'This is info',
+      canClose: true
+    });
+    expect(item.instance.config.type).toEqual('information');
+    expect(item.instance.config.icon).toEqual('information_circle');
+    expect(item.instance.config.closeText).toEqual('Dismiss');
   });
 
   it('should remove snackbar', () => {
@@ -55,7 +64,7 @@ describe('SnackbarService', () => {
       canClose: true,
       closeText: 'Dismiss',
       icon: 'information_stroke',
-    })
+    });
     service.removeSnackBarComponent();
     expect(service.snackbarComponentRef.hostView.destroyed).toBeTruthy();
   });

@@ -33,6 +33,18 @@ describe('DialogService', () => {
     expect(result.instance).toBeTruthy();
   });
 
+  it('should set the default size, color, and canBackdrop properties when they are undefined', () => {
+    config = {
+      title: 'Dialog title',
+      message:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
+    };
+    result = service.createDialogComponent(DialogComponent, config);
+    expect(result.instance.dialog.canBackdrop).toBeTruthy();
+    expect(result.instance.dialog.size).toEqual('medium');
+    expect(result.instance.dialog.color).toEqual('primary');
+  });
+
   it('should call the service alert method', () => {
     config = {
       title: 'Dialog title',
