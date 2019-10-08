@@ -419,7 +419,7 @@ export class SeSidemenuItem {
 proxyInputs(SeSidemenuItem, ['active', 'item']);
 
 export declare interface SeSlider extends Components.SeSlider {}
-@Component({ selector: 'se-slider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'max', 'min'] })
+@Component({ selector: 'se-slider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'max', 'min', 'value'] })
 export class SeSlider {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -430,7 +430,7 @@ export class SeSlider {
   }
 }
 proxyMethods(SeSlider, ['setDisabled']);
-proxyInputs(SeSlider, ['disabled', 'max', 'min']);
+proxyInputs(SeSlider, ['disabled', 'max', 'min', 'value']);
 
 export declare interface SeSnackbar extends Components.SeSnackbar {}
 @Component({ selector: 'se-snackbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canClose', 'closeText', 'icon', 'message', 'open', 'type'] })
