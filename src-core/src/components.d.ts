@@ -673,10 +673,6 @@ export namespace Components {
     */
     'canClose': boolean;
     /**
-    * Defines the text you want your "close button" to read.  The default text is `dismiss`.
-    */
-    'closeText': string;
-    /**
     * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false. The default setting is 5000.
     */
     'duration': number;
@@ -1776,10 +1772,6 @@ declare namespace LocalJSX {
     * Displays a "button" to close the snackbar. The default setting is `false`. This will be visible if set to `true`.
     */
     'canClose'?: boolean;
-    /**
-    * Defines the text you want your "close button" to read.  The default text is `dismiss`.
-    */
-    'closeText'?: string;
     /**
     * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false. The default setting is 5000.
     */

@@ -38,7 +38,7 @@ describe('SnackbarComponent', () => {
 			html: `<se-snackbar></se-snackbar>`,
 		});
 		expect(page.root.shadowRoot.querySelector('.information')).toBeTruthy();
-		expect(page.root.shadowRoot.querySelector('.se-icon').innerHTML).toEqual('information_circle');
+		expect(page.root.shadowRoot.querySelector('.snackbar-icon').innerHTML).toEqual('information_circle');
 	});
 
 	it('should render with a span element with the close class when the canClose property is true', async() => {

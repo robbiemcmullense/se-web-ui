@@ -32,10 +32,6 @@ export class SnackbarComponent {
    */
   @Prop() canClose: boolean = false;
   /**
-   * Defines the text you want your "close button" to read.  The default text is `dismiss`.
-   */
-  @Prop() closeText: string = 'dismiss';
-  /**
    * Defines the text you want your custom action button to read.
    */
   @Prop() actionText: string;
@@ -87,10 +83,10 @@ export class SnackbarComponent {
     return (
       <div class={this.type}>
         <div class="snackbar">
-          {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
+          {this.icon ? <span class="snackbar-icon se-icon">{this.icon}</span> : ''}
           <span class="message">{this.message}</span>
           {this.actionText ? <span class="action" onClick={() => this.submitData()}>{this.actionText}</span> : ''}
-          {this.canClose ? <span class="close" onClick={() => this.closeSnackbar()}>{this.closeText}</span> : ''}
+          {this.canClose ? <span class="close se-icon" onClick={() => this.closeSnackbar()}>action_delete_cross</span> : ''}
         </div>
       </div>
     )

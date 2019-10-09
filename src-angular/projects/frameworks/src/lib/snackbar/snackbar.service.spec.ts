@@ -25,7 +25,6 @@ describe('SnackbarService', () => {
       type: 'success',
       message: 'This is info',
       canClose: true,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
       duration: 500
     }
@@ -40,21 +39,19 @@ describe('SnackbarService', () => {
       type: 'success',
       message: 'This is info',
       canClose: true,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
       duration: 500
     });
     expect(item.instance).toBeDefined();
   });
 
-  it('should set the default icon, closeText, and type when those properties are not defined', () => {
+  it('should set the default icon and type when those properties are not defined', () => {
     const item = service.open({
       message: 'This is info',
       canClose: true
     });
     expect(item.instance.config.type).toEqual('information');
     expect(item.instance.config.icon).toEqual('information_circle');
-    expect(item.instance.config.closeText).toEqual('Dismiss');
   });
 
   it('should remove snackbar', () => {
@@ -62,7 +59,6 @@ describe('SnackbarService', () => {
       type: 'success',
       message: 'This is info',
       canClose: true,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
     });
     service.removeSnackBarComponent();
@@ -76,7 +72,6 @@ describe('SnackbarService', () => {
       type: 'success',
       message: 'This is info',
       canClose: false,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
       duration: 500
     });

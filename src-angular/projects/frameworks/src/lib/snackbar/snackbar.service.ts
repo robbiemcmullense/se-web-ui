@@ -63,9 +63,6 @@ export class SnackbarService {
     if (!config.icon) {
       config.icon = 'information_circle';
     }
-    if (!config.closeText) {
-      config.closeText = 'Dismiss';
-    }
     const ref = this.appendSnackbarComponentToBody(config);
     //subscribing SnackbarComponent instace event while closing snackbar
     const sub = this.snackbarComponentRef.instance.didClose.subscribe(() => {

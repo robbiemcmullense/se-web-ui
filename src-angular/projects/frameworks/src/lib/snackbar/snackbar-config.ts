@@ -23,11 +23,6 @@ export class SnackbarConfig {
   canClose?: boolean;
 
   /**
-  * @description closeText passed to displayed on close button in snackbar component.
-  */
-  closeText?: string;
-
-  /**
   * @description actionText passed to displayed on action button in snackbar component.
   */
   actionText?: string;
