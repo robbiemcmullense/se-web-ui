@@ -18,6 +18,11 @@ export class SnackbarConfig {
   icon?: string;
 
   /**
+  * @description indicates if the snackbar is open, set to `false` (closed) by default
+  */
+  open?: boolean;
+
+  /**
   * @description canClose boolean flag to set whether close button is required in snackbar component.
   */
   canClose?: boolean;
