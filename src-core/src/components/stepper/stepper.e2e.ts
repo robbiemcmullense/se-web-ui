@@ -31,3 +31,33 @@ describe('StepperItemComponent', () => {
     expect(navElement).toHaveClass('alternative');
   });
 });
+
+describe('Stepper Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('renders the primary color by default', async() => {
+    await page.setContent(`
+      <se-stepper>
+        <se-stepper-item label="Step 1"></se-stepper-item>
+        <se-stepper-item label="Step 2"></se-stepper-item>
+        <se-stepper-item label="Step 3"></se-stepper-item>
+      </se-stepper>
+    `);
+    await page.compareScreenshot('stepper primary color', {fullPage: false});
+  });
+
+  it('renders the alternative color', async() => {
+    await page.setContent(`
+      <se-stepper color="alternative">
+        <se-stepper-item label="Step 1"></se-stepper-item>
+        <se-stepper-item label="Step 2"></se-stepper-item>
+        <se-stepper-item label="Step 3"></se-stepper-item>
+      </se-stepper>
+    `);
+    await page.compareScreenshot('stepper alternative color', {fullPage: false});
+  });
+});
