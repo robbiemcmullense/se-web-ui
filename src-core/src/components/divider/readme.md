@@ -18,11 +18,13 @@
 ### Used by
 
  - [se-sidemenu](../sidemenu)
+ - [se-stepper-item](../stepper-item)
 
 ### Graph
 ```mermaid
 graph TD;
   se-sidemenu --> se-divider
+  se-stepper-item --> se-divider
   style se-divider fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -445,6 +445,28 @@ export class SeSnackbar {
 }
 proxyInputs(SeSnackbar, ['canClose', 'closeText', 'icon', 'message', 'open', 'type']);
 
+export declare interface SeStepper extends Components.SeStepper {}
+@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color'] })
+export class SeStepper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(SeStepper, ['color']);
+
+export declare interface SeStepperItem extends Components.SeStepperItem {}
+@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['isLast', 'label'] })
+export class SeStepperItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(SeStepperItem, ['isLast', 'label']);
+
 export declare interface SeTabbar extends Components.SeTabbar {}
 @Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
 export class SeTabbar {

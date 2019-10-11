@@ -1,0 +1,14 @@
+@import "../../theme/theme";
+
+nav {
+  height: 56px;
+  @include color('primary');
+  &.alternative {
+    background: $se-medium-grey;
+    color: $se-white;
+  }
+}
+
+ol {
+  padding: 16px;
+}

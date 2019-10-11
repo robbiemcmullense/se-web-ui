@@ -1,0 +1,33 @@
+@import "../../theme/theme";
+
+.stepper-item-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+se-icon {
+  margin-right: 4px;
+}
+
+.stepper-item {
+  display: inline;
+  color: $se-anthracite-grey;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  padding-right: $spacing-small;
+  &:hover {
+    font-weight: 400;
+    cursor: pointer;
+  }
+}
+
+se-divider {
+  width: 30px;
+}
+
+:host(.alternative) {
+  .stepper-item {
+    color: $se-white;
+  }
+}

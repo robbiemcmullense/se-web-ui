@@ -689,6 +689,22 @@ export namespace Components {
     */
     'type': 'success' | 'error' | 'warning' | 'information';
   }
+  interface SeStepper {
+    /**
+    * Sets the background color of your stepper.
+    */
+    'color': 'primary' | 'alternative';
+  }
+  interface SeStepperItem {
+    /**
+    * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
+    */
+    'isLast': boolean;
+    /**
+    * Indicates the label for your stepper item.
+    */
+    'label': string;
+  }
   interface SeTabbar {
     /**
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
@@ -1001,6 +1017,18 @@ declare global {
     new (): HTMLSeSnackbarElement;
   };
 
+  interface HTMLSeStepperElement extends Components.SeStepper, HTMLStencilElement {}
+  var HTMLSeStepperElement: {
+    prototype: HTMLSeStepperElement;
+    new (): HTMLSeStepperElement;
+  };
+
+  interface HTMLSeStepperItemElement extends Components.SeStepperItem, HTMLStencilElement {}
+  var HTMLSeStepperItemElement: {
+    prototype: HTMLSeStepperItemElement;
+    new (): HTMLSeStepperItemElement;
+  };
+
   interface HTMLSeTabbarElement extends Components.SeTabbar, HTMLStencilElement {}
   var HTMLSeTabbarElement: {
     prototype: HTMLSeTabbarElement;
@@ -1080,6 +1108,8 @@ declare global {
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
     'se-slider': HTMLSeSliderElement;
     'se-snackbar': HTMLSeSnackbarElement;
+    'se-stepper': HTMLSeStepperElement;
+    'se-stepper-item': HTMLSeStepperItemElement;
     'se-tabbar': HTMLSeTabbarElement;
     'se-tooltip': HTMLSeTooltipElement;
     'se-tooltip-content': HTMLSeTooltipContentElement;
@@ -1789,6 +1819,22 @@ declare namespace LocalJSX {
     */
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
+  interface SeStepper extends JSXBase.HTMLAttributes<HTMLSeStepperElement> {
+    /**
+    * Sets the background color of your stepper.
+    */
+    'color'?: 'primary' | 'alternative';
+  }
+  interface SeStepperItem extends JSXBase.HTMLAttributes<HTMLSeStepperItemElement> {
+    /**
+    * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
+    */
+    'isLast'?: boolean;
+    /**
+    * Indicates the label for your stepper item.
+    */
+    'label'?: string;
+  }
   interface SeTabbar extends JSXBase.HTMLAttributes<HTMLSeTabbarElement> {
     /**
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
@@ -1917,6 +1963,8 @@ declare namespace LocalJSX {
     'se-sidemenu-item': SeSidemenuItem;
     'se-slider': SeSlider;
     'se-snackbar': SeSnackbar;
+    'se-stepper': SeStepper;
+    'se-stepper-item': SeStepperItem;
     'se-tabbar': SeTabbar;
     'se-tooltip': SeTooltip;
     'se-tooltip-content': SeTooltipContent;
