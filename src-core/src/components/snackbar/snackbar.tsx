@@ -49,7 +49,7 @@ export class SnackbarComponent {
     if (this.open) {
       this.el.classList.add(SHOW_SNACKBAR);
       setTimeout(() => {
-        if (!this.canClose && !this.actionText) {
+        if (!this.canClose) {
           this.closeSnackbar();
         }
       }, this.duration);

@@ -69,7 +69,7 @@ export class SnackbarService {
       this.removeSnackBarComponent();
       sub.unsubscribe();
     });
-    this.autoDismiss(config.canClose, config.actionText, config.duration);
+    this.autoDismiss(config.canClose, config.duration);
     return ref;
   }
 
@@ -78,9 +78,9 @@ export class SnackbarService {
    * @description method called if canClose attribute is false to close the snackbar authomatically
    * @param canClose 
    */
-  autoDismiss(canClose: boolean, actionText: string, duration: number) {
+  autoDismiss(canClose: boolean, duration: number) {
     let delay = duration ? duration : 5000;
-    if (!canClose && !actionText) {
+    if (!canClose) {
       setTimeout(() => {
         this.removeSnackBarComponent();
       }, delay);
