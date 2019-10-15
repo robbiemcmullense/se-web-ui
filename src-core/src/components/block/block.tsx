@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
+// import { isTemplateElement } from "@babel/types";
 
 @Component({
   tag: "se-block",
@@ -7,6 +8,39 @@ import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
 })
 export class BlockComponent {
   @Element() el: HTMLElement;
+  /**
+   * Defines se-block items' dividers. This will be overridden by direct ancestor se-container level divider selections.
+   * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
+   * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+   */
+  @Prop() divider: boolean;
+  @Watch("divider") dividerDidChange() {
+    this.updateItemMode();
+  }
+  /**
+   * 
+   */
+  @Prop() outline: boolean;
+  /**
+   * 
+   */
+  @Prop() outlineColor: "standard" | "alternate";
+  /**
+   * 
+   */
+  @Prop() margin: "none" | "nano" | "small" | "medium" | "large";
+  /**
+   * 
+   */
+  @Prop() corner: "none" | 2 | 5;
+  /**
+   * 
+   */
+  @Prop() elevation: "none" | "small" | "medium";
+  /**
+   * 
+   */
+  @Prop() clickable: boolean;
   /**
    * Defines the visual appearance of a block.
    * `basic` will remove any spacing.
@@ -55,14 +89,22 @@ export class BlockComponent {
   componentWillLoad() {
     this.updateSize();
     this.updateItemMode();
+    this.optionDidChange();
+    this.dividerDidChange();
+    // console.log("block loading", this.option, this.divider, this.el)
   }
 
-  private updateItemMode() {
-    let childElms =
-      this.option === "card"
-        ? "se-block-header, se-block-content, se-block-footer"
-        : "se-block-content";
-    this.setChildOption(childElms);
+  updateItemMode() {
+    let childElms = "se-block-header, se-block-content, se-block-footer";
+
+    if (this.divider === undefined) this.divider = this.option !== "card";
+
+    Array.from(this.el.querySelectorAll(childElms)).forEach((item:any) => {
+      if(item.parentNode === this.el) { // have to do this because otherwise blocks inside other blocks get settings overridden by higher ancestors
+        item.divider = this.divider;
+        item.option = this.option;
+      }
+    })
   }
 
   private updateSize() {
@@ -81,17 +123,9 @@ export class BlockComponent {
     }
   }
 
-  private setChildOption(childElms: string) {
-    Array.from(this.el.querySelectorAll(childElms)).forEach((item: any) => {
-      if (!item.option) {
-        item.option = this.option;
-      }
-    });
-  }
-
   render() {
     return (
-      <Host class={[this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}>
+      <Host class={[this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')} divider={this.divider}>
         <div class={['block-body', this.option, this.color].join(' ')}>
           {this.loading ? <se-loading loading={this.loading} /> : ''}
           <slot></slot>

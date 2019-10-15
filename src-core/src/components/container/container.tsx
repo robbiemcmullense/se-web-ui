@@ -7,7 +7,39 @@ import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
 })
 export class ContainerComponent {
   @Element() el: HTMLElement;
-
+  /**
+   * Defines direct decendant se-block items' dividers. This will override se-block level divider selections.
+   * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
+   * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+   */
+  @Prop() divider: boolean;
+  @Watch("divider") dividerDidChange() {
+    this.assignBlockClasses();
+  }
+  /**
+   * 
+   */
+  @Prop() outline: boolean;
+  /**
+   * 
+   */
+  @Prop() outlineColor: "standard" | "alternate";
+  /**
+   * 
+   */
+  @Prop() margin: "none" | "nano" | "small" | "medium" | "large";
+  /**
+   * 
+   */
+  @Prop() corner: "none" | 2 | 5;
+  /**
+   * 
+   */
+  @Prop() elevation: "none" | "small" | "medium";
+  /**
+   * 
+   */
+  @Prop() clickable: boolean;
   /**
    * Defines the inner appearance of a container.
    * `fill` is the default option, taking the full space of the container.
@@ -16,13 +48,12 @@ export class ContainerComponent {
    * `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white).
    * `inherited` will insure that no specific style is applied to the container.
    */
-  @Prop() option: "fill" | "widget" | "card" | "centered" | "inherited"  = "fill";
+  @Prop() option: "fill" | "widget" | "card" | "centered" | "inherited" = "fill";
   @Watch("option") optionDidChange() {
-    if (this.option === "widget") {
+    if (this.option === "widget" || this.option === "fill") {
       this.color = "standard";
       this.assignBlockClasses();
-    }
-    if (this.option === "card") {
+    } else if (this.option === "card") {
       this.color = "alternative";
       this.assignBlockClasses();
     }
@@ -84,6 +115,7 @@ export class ContainerComponent {
   @Prop({ mutable: true }) color: "standard" | "alternative";
 
   componentWillLoad() {
+    this.assignBlockClasses(); // not having this called here makes the original/new function not actually work as expected. the original function would return this.option as undefined.
     this.optionDidChange();
     this.displayDidChange();
     this.columnSizeDidChange();
@@ -93,7 +125,17 @@ export class ContainerComponent {
   assignBlockClasses() {
     Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
       (item: any) => {
-        item.option = this.option;
+
+        if (this.option === "widget" || this.option === "card") item.option = this.option;
+
+        if (this.divider !== undefined) { // e.g. if we set the divider on the container level...
+          item.divider = this.divider; // ...we want to set the item dividers to all match the container divider
+        } else { // but if we don't set the container divider...
+          if (this.option === "card" || this.option === "widget") { // ...and if the container is set to option card or widget...
+            if (this.divider === undefined) this.divider = this.option !== "card"; // ...if the container divider is not set, set it based on the container option...
+            item.divider = this.divider; // ...and set the item divider to match the container divider
+          } // else {} // otherwise, if the container is fill, centered, or inherited we don't do anything so dividers are based on item level selections
+        }
       }
     );
   }

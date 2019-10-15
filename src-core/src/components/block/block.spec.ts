@@ -76,7 +76,7 @@ describe('BlockComponent', () => {
 		expect(footer.option).toEqual('card');
 	});
 
-	it('should set the widget option only to block-content elements when se-block has the option set to card', () => {
+	it('should set the widget option only to block-content elements when se-block has the option set to widget', () => {
 		block.option = 'widget';
 		let header = document.createElement('se-block-header');
 		let content = document.createElement('se-block-content');
@@ -85,8 +85,8 @@ describe('BlockComponent', () => {
 		block.el.appendChild(content);
 		block.el.appendChild(footer);
 		block.updateItemMode();
-		expect(header.option).toBeUndefined();
+		expect(header.option).toEqual('widget');
 		expect(content.option).toEqual('widget');
-		expect(footer.option).toBeUndefined();
+		expect(footer.option).toEqual('widget');
 	});
 });
