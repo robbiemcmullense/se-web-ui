@@ -1,4 +1,5 @@
-import { Component, Element, h, State, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Listen, State, Prop } from "@stencil/core";
+
 
 @Component({
   tag: "se-stepper",
@@ -7,34 +8,50 @@ import { Component, Element, h, State, Prop } from "@stencil/core";
 })
 export class StepperComponent {
   @Element() el: HTMLElement;
-  listEl?: HTMLElement;
   @State() items: HTMLElement[] = [];
+  @State() index: number = 0;
   observer: any;
   /**
    * Sets the background color of your stepper.
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
+  @Event() optionSelected: EventEmitter;
 
-  private updateLastItem() {
-    this.items = Array.from(this.el.querySelectorAll('se-stepper-item'));
+  @Listen('didClick')
+  stepperItemClickedHandler(event) {
     this.items.forEach((item: any) => {
-      item.isLast = (item === this.items[this.items.length - 1]);
+      const indicator = item.shadowRoot.querySelector('span');
+      indicator.classList.remove('se-icon');
+      indicator.innerText = this.items.indexOf(item) + 1;
+      item.classList.remove('active');
+      if (item.label === event.detail) {
+        this.index = this.items.indexOf(item);
+      }
     });
-  }
-
-  private setColorSchema() {
-    this.items = Array.from(this.el.querySelectorAll('se-stepper-item'));
-    this.items.forEach((item: any) => {
-      item.classList.add(this.color);
-    });
+    for (var i=0; i<=this.index; i++) {
+      this.items[i].classList.add('active');
+      if (i !== this.index) {
+        let indicator = this.items[i].shadowRoot.querySelector('span');
+        indicator.classList.add('se-icon');
+        indicator.innerText = 'notification_ok';
+      }
+    }
+    this.optionSelected.emit();
   }
 
   componentWillLoad() {
-    this.updateLastItem();
-    this.setColorSchema();
+    this.items = Array.from(this.el.querySelectorAll('se-stepper-item'));
+    this.items.forEach((item: any) => {
+      item.isLast = (item === this.items[this.items.length - 1]);
+      item.classList.add(this.color);
+      let element = item.shadowRoot.querySelector('span');
+      element.innerText = this.items.indexOf(item) + 1;
+    });
+    this.items[0].classList.add('active');
   }
 
   componentDidLoad() {
+    
   }
 
   componentDidUnload() {
@@ -44,7 +61,7 @@ export class StepperComponent {
   render() {
     return (
       <nav class={this.color}>
-        <ol ref={el => this.listEl = el}>
+        <ol>
           <slot></slot>
         </ol>
       </nav>

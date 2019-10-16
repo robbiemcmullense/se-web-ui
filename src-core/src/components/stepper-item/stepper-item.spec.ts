@@ -29,7 +29,7 @@ describe('StepperItemComponent', () => {
 			components: [StepperItemComponent],
 			html: `<se-stepper-item></se-stepper-item>`,
 		});
-		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('span.indicator')).toBeTruthy();
 		expect(page.root.shadowRoot.querySelector('se-divider')).toBeTruthy();
 	});
 

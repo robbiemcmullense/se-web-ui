@@ -10,5 +10,7 @@ nav {
 }
 
 ol {
-  padding: 16px;
+  display: flex;
+  justify-content: center;
+  padding: $spacing-large;
 }

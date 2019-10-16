@@ -5,17 +5,32 @@
   align-items: center;
 }
 
-se-icon {
+.indicator {
+  text-align: center;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
   margin-right: 4px;
+  border: 1px solid transparent;
+  border-radius: 100%;
+  color: $se-white;
+  background-color: $se-light-grey;
+  &.se-icon {
+    font-family: 'se-icon';
+    font-size: 24px;
+    font-weight: 400;
+  }
 }
 
 .stepper-item {
   display: inline;
-  color: $se-anthracite-grey;
+  color: $se-light-grey;
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;
-  padding-right: $spacing-small;
+  padding-right: $spacing;
   &:hover {
     font-weight: 400;
     cursor: pointer;
@@ -24,9 +39,23 @@ se-icon {
 
 se-divider {
   width: 25px;
+  margin-right: $spacing;
 }
 
-:host(.alternative) {
+:host(.primary.active) {
+  .indicator {
+   background-color: $se-life-green;
+  }
+  .stepper-item {
+    color: $se-anthracite-grey;
+  }
+}
+
+:host(.alternative.active) {
+  .indicator {
+    background-color: $se-white;
+    color: $se-life-green;
+  }
   .stepper-item {
     color: $se-white;
   }

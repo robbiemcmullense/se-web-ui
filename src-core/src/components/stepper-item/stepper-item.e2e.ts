@@ -22,8 +22,8 @@ describe('StepperItemComponent', () => {
     expect(listItem).toHaveClass('stepper-item');
   });
 
-  it('renders se-icon and se-divider elements', async() => {
-    let iconElm = await page.find('se-stepper-item >>> se-icon');
+  it('renders span and se-divider elements', async() => {
+    let iconElm = await page.find('se-stepper-item >>> span');
     let divider = await page.find('se-stepper-item >>> se-divider');
     expect(iconElm).toBeTruthy();
     expect(divider).toBeTruthy();

@@ -752,17 +752,22 @@
             </se-radio-group>
             <div>Selected radio button value: <span id="se-radio-value"></span></div>
             <se-divider></se-divider>
-            <se-stepper>
+            <se-stepper id="primary-stepper">
               <se-stepper-item label="Step 1"></se-stepper-item>
               <se-stepper-item label="Step 2"></se-stepper-item>
               <se-stepper-item label="Step 3"></se-stepper-item>
+              <se-stepper-item label="Step 4"></se-stepper-item>
+              <se-stepper-item label="Step 5"></se-stepper-item>
             </se-stepper>
             <se-stepper color="alternative">
-              <se-stepper-item label="Alt 1"></se-stepper-item>
-              <se-stepper-item label="Alt 2"></se-stepper-item>
-              <se-stepper-item label="Alt 3"></se-stepper-item>
+              <se-stepper-item label="Step 1"></se-stepper-item>
+              <se-stepper-item label="Step 2"></se-stepper-item>
+              <se-stepper-item label="Step 3"></se-stepper-item>
+              <se-stepper-item label="Step 4"></se-stepper-item>
+              <se-stepper-item label="Step 5"></se-stepper-item>
             </se-stepper>
           </se-block-content>
+          <se-block-footer>Stepper item clicked: <span id="stepper-message">No</span></se-block-footer>
         </se-block>
         <se-block id="block9">
           <se-block-header>
@@ -1026,6 +1031,9 @@
     });
     document.getElementById('radio-button-dot-group').addEventListener('didCheck', function (event) {
       document.getElementById('se-radio-value').innerText = event.detail.value;
+    });
+    document.getElementById('primary-stepper').addEventListener('optionSelected', function (event) {
+      document.getElementById('stepper-message').innerText = 'yes';
     });
   </script>
 </body>

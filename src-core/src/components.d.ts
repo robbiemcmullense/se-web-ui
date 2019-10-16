@@ -1824,6 +1824,7 @@ declare namespace LocalJSX {
     * Sets the background color of your stepper.
     */
     'color'?: 'primary' | 'alternative';
+    'onOptionSelected'?: (event: CustomEvent<any>) => void;
   }
   interface SeStepperItem extends JSXBase.HTMLAttributes<HTMLSeStepperItemElement> {
     /**
@@ -1834,6 +1835,7 @@ declare namespace LocalJSX {
     * Indicates the label for your stepper item.
     */
     'label'?: string;
+    'onDidClick'?: (event: CustomEvent<any>) => void;
   }
   interface SeTabbar extends JSXBase.HTMLAttributes<HTMLSeTabbarElement> {
     /**

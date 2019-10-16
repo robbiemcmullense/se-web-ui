@@ -13,17 +13,22 @@
 | `label`  | `label`   | Indicates the label for your stepper item.                                                                            | `string`  | `undefined` |
 
 
+## Events
+
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `didClick` |             | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Depends on
 
-- [se-icon](../icon)
 - [se-divider](../divider)
 
 ### Graph
 ```mermaid
 graph TD;
-  se-stepper-item --> se-icon
   se-stepper-item --> se-divider
   style se-stepper-item fill:#f9f,stroke:#333,stroke-width:4px
 ```

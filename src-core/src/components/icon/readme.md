@@ -24,7 +24,6 @@
  - [se-list-group](../list-group)
  - [se-list-item](../list-item)
  - [se-sidemenu](../sidemenu)
- - [se-stepper-item](../stepper-item)
  - [se-tooltip-content](../tooltip-content)
  - [se-tooltip-header](../tooltip-header)
 
@@ -37,7 +36,6 @@ graph TD;
   se-list-group --> se-icon
   se-list-item --> se-icon
   se-sidemenu --> se-icon
-  se-stepper-item --> se-icon
   se-tooltip-content --> se-icon
   se-tooltip-header --> se-icon
   style se-icon fill:#f9f,stroke:#333,stroke-width:4px

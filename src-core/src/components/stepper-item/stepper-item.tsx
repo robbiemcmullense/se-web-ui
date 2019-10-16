@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-stepper-item",
@@ -14,16 +14,21 @@ export class StepperItemComponent {
    * Indicates the label for your stepper item.
    */
   @Prop() label: string;
+  @Event() didClick: EventEmitter;
+
+  emitEvent() {
+    this.didClick.emit(this.label);
+  }
 
   render() {
     return (
       <div class="stepper-item-wrapper">
         {this.isLast ?
-          [<se-icon>information_circle</se-icon>,
-          <li class="stepper-item">{this.label}</li>]
+          [<span class="indicator"></span>,
+          <li class="stepper-item" onClick={() => this.emitEvent()}>{this.label}</li>]
           :
-          [<se-icon>information_circle</se-icon>,
-          <li class="stepper-item">{this.label}</li>,
+          [<span class="indicator"></span>,
+          <li class="stepper-item" onClick={() => this.emitEvent()}>{this.label}</li>,
           <se-divider></se-divider>]}
       </div>
     )
