@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `didClick` |             | `CustomEvent<any>` |
+| Event      | Description                                                            | Type               |
+| ---------- | ---------------------------------------------------------------------- | ------------------ |
+| `didClick` | Event to send to the parent component when clicking on a stepper item. | `CustomEvent<any>` |
 
 
 ## Dependencies

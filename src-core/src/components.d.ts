@@ -1835,6 +1835,9 @@ declare namespace LocalJSX {
     * Indicates the label for your stepper item.
     */
     'label'?: string;
+    /**
+    * Event to send to the parent component when clicking on a stepper item.
+    */
     'onDidClick'?: (event: CustomEvent<any>) => void;
   }
   interface SeTabbar extends JSXBase.HTMLAttributes<HTMLSeTabbarElement> {

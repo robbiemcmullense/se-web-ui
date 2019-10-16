@@ -14,6 +14,9 @@ export class StepperItemComponent {
    * Indicates the label for your stepper item.
    */
   @Prop() label: string;
+  /**
+   * Event to send to the parent component when clicking on a stepper item.
+   */
   @Event() didClick: EventEmitter;
 
   emitEvent() {

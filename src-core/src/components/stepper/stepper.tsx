@@ -48,8 +48,10 @@ export class StepperComponent {
     this.items.forEach((item: any) => {
       item.isLast = (item === this.items[this.items.length - 1]);
       item.classList.add(this.color);
-      let element = item.shadowRoot.querySelector('span');
-      element.innerText = this.items.indexOf(item) + 1;
+      if (item.shadowRoot) {
+        let element = item.shadowRoot.querySelector('span');
+        element.innerText = this.items.indexOf(item) + 1;
+      }
     });
     this.items[0].classList.add('active');
   }

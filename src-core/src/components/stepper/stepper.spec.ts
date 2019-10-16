@@ -16,4 +16,14 @@ describe('StepperComponent', () => {
     expect(stepper.color).toBe('primary');
   });
 	
+	it('should render', async() => {
+		const page = await newSpecPage({
+      components: [StepperComponent],
+			html: `<se-stepper>
+				<se-stepper-item label="One"></se-stepper-item>
+				<se-stepper-item label="Two"></se-stepper-item>
+			</se-stepper>`,
+    });
+		expect(page.root.shadowRoot.querySelector('nav')).toBeTruthy();
+	});
 });
