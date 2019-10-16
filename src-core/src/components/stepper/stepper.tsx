@@ -40,6 +40,10 @@ export class StepperComponent {
   }
 
   componentWillLoad() {
+    
+  }
+
+  componentDidLoad() {
     this.items = Array.from(this.el.querySelectorAll('se-stepper-item'));
     this.items.forEach((item: any) => {
       item.isLast = (item === this.items[this.items.length - 1]);
@@ -48,10 +52,6 @@ export class StepperComponent {
       element.innerText = this.items.indexOf(item) + 1;
     });
     this.items[0].classList.add('active');
-  }
-
-  componentDidLoad() {
-    
   }
 
   componentDidUnload() {
