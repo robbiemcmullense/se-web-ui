@@ -143,7 +143,7 @@ export class BannerComponent {
 			} else if (window.innerWidth > 767) {
 				icon.size = 'large';
 			} else {
-				icon.size = 'small';
+				icon.size = 'medium';
 			}
 		});
 	}
