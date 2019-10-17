@@ -79,6 +79,14 @@ $max-width-input: 320px;
     resize: vertical;
   }
 
+  ::slotted(input:focus),
+  ::slotted(select:focus),
+  ::slotted(textarea:focus) {
+    outline: none;
+    border: 1px solid;
+    @include border-color('primary')
+  }
+
   &.stacked {
     .form-field-wrapper {
       flex-direction: column;
