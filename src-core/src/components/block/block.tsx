@@ -10,35 +10,48 @@ export class BlockComponent {
   @Element() el: HTMLElement;
   /**
    * Defines se-block items' dividers. This will be overridden by direct ancestor se-container level divider selections.
+   * Default for `card` option is `true`, default for `widget` and `basic` options is `false`.
    * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
    * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
    */
   @Prop() divider: boolean;
   @Watch("divider") dividerDidChange() {
-    this.updateItemMode();
+    this.updateItem();
   }
   /**
-   * 
+   * Defines `card` se-block item's outline. This will be overridden by direct ancestor se-container level outline selections.
+   * `true` will add a 1px border.
+   * Default is `false`.
    */
   @Prop() outline: boolean;
   /**
-   * 
+   * Defines `card` se-block item's outline color. This will be overridden by direct ancestor se-container level outline color selections.
+   * Default is `standard` which is `$se-ultra-light-grey-2`.
+   * `alternative` defines the outline color as `$se-life-green`.
    */
-  @Prop() outlineColor: "standard" | "alternate";
+  @Prop() outlinecolor: "standard" | "alternative";
+  /**
+   * Defines `card` se-block item's corner radius. This will be overridden by direct ancestor se-container level corner radius selections.
+   * `0` pixels is for a sharp, 90 degree corner.
+   * `2` pixels is for a slightly rounded corner.
+   * Default is `4` pixels.
+   */
+  @Prop() corner: 0 | 2 | 4;
+  /**
+   * Defines `card` se-block item's elevation. This will be overridden by direct ancestor se-container level elevation selections.
+   * Default is `true` which adds a box-shadow to the se-block.
+   * `false` removes the box-shadow.
+   * `large` adds a stronger box-shadow.
+   */
+  @Prop() elevation: boolean | "large";
   /**
    * 
    */
-  @Prop() margin: "none" | "nano" | "small" | "medium" | "large";
+  // @Prop() margin: "none" | "nano" | "small" | "medium" | "large";
   /**
-   * 
-   */
-  @Prop() corner: "none" | 2 | 5;
-  /**
-   * 
-   */
-  @Prop() elevation: "none" | "small" | "medium";
-  /**
-   * 
+   * Defines se-block item's ability to be clickable / selectable. This will be overridden by direct ancestor se-container level clickable selections.
+   * Default is `false`.
+   * `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If the se-block is a `card` a `large` box-shadow will appear.
    */
   @Prop() clickable: boolean;
   /**
@@ -49,7 +62,7 @@ export class BlockComponent {
    */
   @Prop() option: "basic" | "card" | "widget" = "basic";
   @Watch("option") optionDidChange() {
-    this.updateItemMode();
+    this.updateItem();
   }
   /**
    * Defines how to display the element.
@@ -88,17 +101,16 @@ export class BlockComponent {
 
   componentWillLoad() {
     this.updateSize();
-    this.updateItemMode();
+    this.updateItem();
     this.optionDidChange();
     this.dividerDidChange();
-    // console.log("block loading", this.option, this.divider, this.el)
   }
 
-  updateItemMode() {
+  updateItem() {
+
+    if (this.divider === undefined) this.divider = this.option !== "card"; // if the container divider is not defined set based
+
     let childElms = "se-block-header, se-block-content, se-block-footer";
-
-    if (this.divider === undefined) this.divider = this.option !== "card";
-
     Array.from(this.el.querySelectorAll(childElms)).forEach((item:any) => {
       if(item.parentNode === this.el) { // have to do this because otherwise blocks inside other blocks get settings overridden by higher ancestors
         item.divider = this.divider;
@@ -124,8 +136,21 @@ export class BlockComponent {
   }
 
   render() {
+    
+    const outlineClass = this.outline === true && this.option !== "basic" ? 'outline' : '';
+    const outlineColor = this.outlinecolor === "alternative" ? 'alternative' : '';
+    const outline = `${outlineClass}${outlineColor === "alternative" ? '-alternative' : ''}`; // add the suffix after a - only if the color is alternative, default outline will be standard ultra-light-grey-2
+
     return (
-      <Host class={[this.display, this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')} divider={this.divider}>
+      <Host 
+        class={[
+          this.display,
+          this.option !== "basic" ? outline : '',
+          this.corner !== undefined ? `corner-${this.corner}` : '',
+          this.option === "card" && this.elevation !== undefined ? `elevated-${this.elevation}` : '',
+          this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}
+        divider={this.divider}
+        clickable={this.clickable === true ? "true" : "false"}>
         <div class={['block-body', this.option, this.color].join(' ')}>
           {this.loading ? <se-loading loading={this.loading} /> : ''}
           <slot></slot>

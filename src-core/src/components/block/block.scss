@@ -23,9 +23,81 @@
   grid-row: span 2;
 }
 
+:host(.outline) .block-body.card {
+  border: 1px solid $se-ultra-light-grey-2;
+}
+:host(.outline-alternative) .block-body.card {
+  border: 1px solid $se-life-green;
+}
+
+.block-body.card {
+  border-radius: $border-radius-card;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+  margin: $spacing-large;
+}
+:host(.elevated-false) .block-body.card {
+  box-shadow: none;
+}
+:host(.elevated-large) .block-body.card {
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3), 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+:host(.corner-0) .block-body.card {
+  border-radius: 0;
+}
+:host(.corner-2) .block-body.card {
+  border-radius: 2px;
+}
+:host([clickable=true]:not([corner="0"])) .block-body.card:before {
+  border-radius: 4px 4px 0 0;
+}
+:host([clickable=true]) {
+  .block-body:hover {
+    cursor: pointer;
+  }
+  .block-body {
+    &:hover:before {
+      height: 3px;
+      max-height: 3px;
+    }
+    &:before {
+      content: '';
+      background: rgba(255,255,255,0);
+      height: 0;
+      max-height: 3px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100%);
+      max-width: calc(100%);
+      text-align: center;
+      transition: .2s;
+    }
+  }
+  .block-body:hover:before {
+    background: $se-life-green;
+  }
+  .block-body.card {
+    &:hover {
+      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3), 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+    }
+    &:before {
+      top: $spacing-large;
+      left: $spacing-large;
+      width: calc(100% - (2 * #{$spacing-large}));
+    }
+  }
+  .block-body.widget {
+    &:before {
+      top: $spacing;
+      left: $spacing;
+      width: calc(100% - (2 * #{$spacing}));
+    }
+  }
+}
 
 .block-body {
   overflow: auto;
+  transition: .2s;
   @include flex();
   @include display-flex();
   @include flex-direction(column);
@@ -39,14 +111,6 @@
   &.widget {
 
       margin: $spacing;
-
-  }
-
-  &.card {
-
-      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-      border-radius: $border-radius-card;
-      margin: $spacing-large;
 
   }
 

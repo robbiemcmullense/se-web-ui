@@ -384,7 +384,7 @@
           </se-list-group> -->
           <se-list-group item="Widget Title" >
             <div class="bg-background">
-              <se-block option="widget" >
+              <se-block option="widget" clickable="true">
                 <se-block-content>Testing a block widget within an se-list-group</se-block-content>
               </se-block>
               <se-block option="widget">
@@ -397,10 +397,10 @@
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Card Title">
-            <se-block option="card">
+            <se-block option="card" outline outlinecolor="alternative" corner="0" elevation="false">
               <se-block-content>Testing a block card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="card">
+            <se-block option="card" clickable="true">
               <se-block-header id="test">More</se-block-header>
               <se-block-content>Further testing</se-block-content>
               <se-block-footer>Fin</se-block-footer>
@@ -408,10 +408,10 @@
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Block Title">
-            <se-block option="basic">
+            <se-block elevation="large" option="basic">
               <se-block-content>Testing a block card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="basic">
+            <se-block option="basic" clickable="true">
               <se-block-header>More</se-block-header>
               <se-block-content>Further testing</se-block-content>
               <se-block-footer>Fin</se-block-footer>
@@ -423,8 +423,8 @@
       </se-block>
       <se-divider option="vertical"></se-divider>
 
-      <se-container option="widget" divider="false" display="grid" column-size="300px" row-size="200px">
-        <se-block option="card" id="block0">
+      <se-container option="card" outline clickable="true" display="grid" column-size="300px" row-size="200px">
+        <se-block option="card" outline outlinecolor="alternative" corner="4" clickable="true" id="block0">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -465,7 +465,7 @@
             <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
           </se-block-footer>
         </se-block>
-        <se-block option="card" divider="true" id="block0">
+        <se-block option="card" outline outlinecolor="alternative" corner="2" divider="true" id="block0">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -506,7 +506,7 @@
             <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
           </se-block-footer>
         </se-block>
-        <se-block option="card" divider="false" id="block0">
+        <se-block option="card" clickable="true" corner="0" elevation="large" divider="false" id="block0">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -569,7 +569,7 @@
               </se-list>
             </se-block-content>
         </se-block>
-        <se-block option="basic" divider="true" id="block1">
+        <se-block option="basic" clickable="true" divider="true" id="block1">
           <se-block-header>
             Headline list with colored icons
             <div slot="end">
@@ -591,7 +591,7 @@
             </se-list>
           </se-block-content>
         </se-block>
-        <se-block option="basic" divider="false" id="block1">
+        <se-block option="basic" elevation="false" divider="false" id="block1">
             <se-block-header>
               Headline list with colored icons
               <div slot="end">
@@ -613,7 +613,7 @@
               </se-list>
             </se-block-content>
         </se-block>
-        <se-block option="widget" id="block2">
+        <se-block option="widget" clickable="true" id="block2">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">connection_bluetooth</se-icon>
@@ -867,7 +867,7 @@
               </se-radio-group>
             </se-block-content>
         </se-block>
-        <se-block option="widget" divider="false" id="block2">
+        <se-block option="widget" clickable="true" divider="false" id="block2">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">connection_bluetooth</se-icon>
@@ -1047,7 +1047,7 @@
             </se-form-field>
           </se-block-content>
         </se-block>
-        <se-block id="block3" divider="true">
+        <se-block clickable="true" id="block3" divider="true">
           <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
           <se-block-header>
             Forms

@@ -14,30 +14,48 @@ export class ContainerComponent {
    */
   @Prop() divider: boolean;
   @Watch("divider") dividerDidChange() {
-    this.assignBlockClasses();
+    this.setProps();
   }
   /**
-   * 
+   * Defines direct decendant `card` se-block item's outline. This will override se-block level outline selections.
+   * `true` will add a 1px border.
+   * Default is `false`.
    */
   @Prop() outline: boolean;
+  @Watch("outline") outlineDidChange() {
+    this.setProps();
+  }
   /**
-   * 
+   * Defines direct decendant `card` se-block item's outline color. This will override se-block level outline color selections.
+   * Default is `standard` which is `$se-ultra-light-grey-2`.
+   * `alternative` defines the outline color as `$se-life-green`.
    */
-  @Prop() outlineColor: "standard" | "alternate";
+  @Prop() outlinecolor: "standard" | "alternative";
+  @Watch("outlinecolor") outlineColorDidChange() {
+    this.setProps();
+  }
   /**
-   * 
-   */
-  @Prop() margin: "none" | "nano" | "small" | "medium" | "large";
-  /**
-   * 
+   * Defines direct decendant `card` se-block item's corner radius. This will se-block level corner radius selections.
+   * `0` pixels is for a sharp, 90 degree corner.
+   * `2` pixels is for a slightly rounded corner.
+   * Default is `4` pixels.
    */
   @Prop() corner: "none" | 2 | 5;
   /**
-   * 
+   * Defines `card` se-block item's elevation. This will override se-block level elevation selections.
+   * Default is `true` which adds a box-shadow to the se-block.
+   * `false` removes the box-shadow.
+   * `large` adds a stronger box-shadow.
    */
-  @Prop() elevation: "none" | "small" | "medium";
+  @Prop() elevation: boolean | "large";
   /**
    * 
+   */
+  // @Prop() margin: "none" | "nano" | "small" | "medium" | "large";
+  /**
+   * Defines direct decendant se-block item's ability to be clickable / selectable. This will override se-block level clickable selections.
+   * Default is `false`.
+   * `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If the se-block is a `card` a `large` box-shadow will appear.
    */
   @Prop() clickable: boolean;
   /**
@@ -52,10 +70,10 @@ export class ContainerComponent {
   @Watch("option") optionDidChange() {
     if (this.option === "widget" || this.option === "fill") {
       this.color = "standard";
-      this.assignBlockClasses();
+      this.setProps();
     } else if (this.option === "card") {
       this.color = "alternative";
-      this.assignBlockClasses();
+      this.setProps();
     }
   }
 
@@ -115,18 +133,24 @@ export class ContainerComponent {
   @Prop({ mutable: true }) color: "standard" | "alternative";
 
   componentWillLoad() {
-    this.assignBlockClasses(); // not having this called here makes the original/new function not actually work as expected. the original function would return this.option as undefined.
+    this.setProps(); // not having this called here makes the original/new function not actually work as expected. the original function would return this.option as undefined.
     this.optionDidChange();
     this.displayDidChange();
     this.columnSizeDidChange();
     this.rowSizeDidChange();
   }
 
-  assignBlockClasses() {
+  setProps() {
     Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
       (item: any) => {
 
         if (this.option === "widget" || this.option === "card") item.option = this.option;
+
+        if (this.outline !== undefined) item.outline = this.outline;
+        if (this.outlinecolor !== undefined) item.outlinecolor = this.outlinecolor;
+        if (this.corner !== undefined) item.corner = this.corner;
+        if (this.elevation !== undefined) item.elevation = this.elevation;
+        if (this.clickable !== undefined) item.clickable = this.clickable;
 
         if (this.divider !== undefined) { // e.g. if we set the divider on the container level...
           item.divider = this.divider; // ...we want to set the item dividers to all match the container divider
@@ -134,7 +158,7 @@ export class ContainerComponent {
           if (this.option === "card" || this.option === "widget") { // ...and if the container is set to option card or widget...
             if (this.divider === undefined) this.divider = this.option !== "card"; // ...if the container divider is not set, set it based on the container option...
             item.divider = this.divider; // ...and set the item divider to match the container divider
-          } // else {} // otherwise, if the container is fill, centered, or inherited we don't do anything so dividers are based on item level selections
+          } // else {} // otherwise, if the container is fill, centered, or inherited we don't do anything so dividers are based on item level selections 
         }
       }
     );
