@@ -694,6 +694,10 @@ export namespace Components {
     * Sets the background color of your stepper.
     */
     'color': 'primary' | 'alternative';
+    /**
+    * If set to `true`, you are required to complete previous steps before moving onto the next step. Default setting is `false`.
+    */
+    'linear': boolean;
   }
   interface SeStepperItem {
     /**
@@ -1824,6 +1828,13 @@ declare namespace LocalJSX {
     * Sets the background color of your stepper.
     */
     'color'?: 'primary' | 'alternative';
+    /**
+    * If set to `true`, you are required to complete previous steps before moving onto the next step. Default setting is `false`.
+    */
+    'linear'?: boolean;
+    /**
+    * Indicate to the parent component that a new stepper item has been selected.
+    */
     'onOptionSelected'?: (event: CustomEvent<any>) => void;
   }
   interface SeStepperItem extends JSXBase.HTMLAttributes<HTMLSeStepperItemElement> {

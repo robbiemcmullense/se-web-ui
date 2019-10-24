@@ -446,7 +446,7 @@ export class SeSnackbar {
 proxyInputs(SeSnackbar, ['canClose', 'closeText', 'icon', 'message', 'open', 'type']);
 
 export declare interface SeStepper extends Components.SeStepper {}
-@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color'] })
+@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'linear'] })
 export class SeStepper {
   optionSelected!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -456,7 +456,7 @@ export class SeStepper {
     proxyOutputs(this, this.el, ['optionSelected']);
   }
 }
-proxyInputs(SeStepper, ['color']);
+proxyInputs(SeStepper, ['color', 'linear']);
 
 export declare interface SeStepperItem extends Components.SeStepperItem {}
 @Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['isLast', 'label'] })

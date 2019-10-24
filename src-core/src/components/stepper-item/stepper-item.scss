@@ -35,6 +35,9 @@
     font-weight: 400;
     cursor: pointer;
   }
+  &.disabled {
+    pointer-events: none;
+  }
 }
 
 se-divider {
