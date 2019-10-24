@@ -51,7 +51,7 @@ export class StepperComponent {
         indicator.innerText = 'notification_ok';
       }
     }
-    this.optionSelected.emit();
+    this.optionSelected.emit(event.detail);
   }
 
   componentDidLoad() {

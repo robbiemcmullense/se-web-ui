@@ -766,8 +766,8 @@
               <se-stepper-item label="Step 4"></se-stepper-item>
               <se-stepper-item label="Step 5"></se-stepper-item>
             </se-stepper>
+            <div>Stepper item clicked: <span id="stepper-message">None</span></div>
           </se-block-content>
-          <se-block-footer>Stepper item clicked: <span id="stepper-message">No</span></se-block-footer>
         </se-block>
         <se-block id="block9">
           <se-block-header>
@@ -1033,7 +1033,7 @@
       document.getElementById('se-radio-value').innerText = event.detail.value;
     });
     document.getElementById('primary-stepper').addEventListener('optionSelected', function (event) {
-      document.getElementById('stepper-message').innerText = 'yes';
+      document.getElementById('stepper-message').innerText = event.detail;
     });
   </script>
 </body>
