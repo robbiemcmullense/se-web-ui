@@ -739,26 +739,28 @@
 
         <se-block id="block8">
           <se-block-header>
-            Group of Radio Buttons
+            Radio Button Group and Steppers
             <div slot="end">
               <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content option="fill">
+            <div>Selected radio button value: <span id="se-radio-value"></span></div>
             <se-radio-group id="radio-button-dot-group">
               <se-radio value="one radio" label="First Radio Button"></se-radio>
               <se-radio value="two radio" label="Second Radio Button"></se-radio>
               <se-radio value="three radio" label="Third Radio Button"></se-radio>
             </se-radio-group>
-            <div>Selected radio button value: <span id="se-radio-value"></span></div>
             <se-divider></se-divider>
+            <div>Primary Color Stepper (linear mode):</div>
             <se-stepper id="primary-stepper" linear="true">
               <se-stepper-item label="Step 1"></se-stepper-item>
               <se-stepper-item label="Step 2"></se-stepper-item>
-              <se-stepper-item label="Step 3"></se-stepper-item>
+              <se-stepper-item label="Step 3" id="stepper-item-three"></se-stepper-item>
               <se-stepper-item label="Step 4"></se-stepper-item>
               <se-stepper-item label="Step 5"></se-stepper-item>
             </se-stepper>
+            <div>Alternative Color Stepper (non-linear mode):</div>
             <se-stepper color="alternative">
               <se-stepper-item label="Step 1"></se-stepper-item>
               <se-stepper-item label="Step 2"></se-stepper-item>
@@ -766,7 +768,7 @@
               <se-stepper-item label="Step 4"></se-stepper-item>
               <se-stepper-item label="Step 5"></se-stepper-item>
             </se-stepper>
-            <div>Stepper item clicked: <span id="stepper-message">None</span></div>
+            <div style="border: 1px solid black; padding: 10px;">Selected Primary Step: <span id="stepper-message">Step 1</span></div>
           </se-block-content>
         </se-block>
         <se-block id="block9">
