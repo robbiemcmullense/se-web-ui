@@ -84,7 +84,7 @@ describe('BlockComponent', () => {
 		block.el.appendChild(header);
 		block.el.appendChild(content);
 		block.el.appendChild(footer);
-		block.updateItemMode();
+		block.updateItem();
 		expect(header.option).toEqual('widget');
 		expect(content.option).toEqual('widget');
 		expect(footer.option).toEqual('widget');

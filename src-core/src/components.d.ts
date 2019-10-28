@@ -77,7 +77,7 @@ export namespace Components {
   }
   interface SeBlock {
     /**
-    * Defines se-block item's ability to be clickable / selectable. This will be overridden by direct ancestor se-container level clickable selections. Default is `false`. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If the se-block is a `card` a `large` box-shadow will appear.
+    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block.  The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block.  If a `card` block elevation is `none` a standard box-shadow will also appear.
     */
     'clickable': boolean;
     /**
@@ -85,7 +85,7 @@ export namespace Components {
     */
     'color': "standard" | "alternative";
     /**
-    * Defines `card` se-block item's corner radius. This will be overridden by direct ancestor se-container level corner radius selections. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. Default is `4` pixels.
+    * Defines `card` se-block item's corner radius. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. Default is `4` pixels.
     */
     'corner': 0 | 2 | 4;
     /**
@@ -93,13 +93,13 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines se-block items' dividers. This will be overridden by direct ancestor se-container level divider selections. Default for `card` option is `true`, default for `widget` and `basic` options is `false`. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+    * Defines se-block items' dividers. Default for `card` option is `true`, default for `widget` and `basic` options is `false`. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider': boolean;
     /**
-    * Defines `card` se-block item's elevation. This will be overridden by direct ancestor se-container level elevation selections. Default is `true` which adds a box-shadow to the se-block. `false` removes the box-shadow. `large` adds a stronger box-shadow.
+    * Defines `card` se-block item's elevation. Default is `true` which adds a standard box-shadow `0 0 1px 0 rgba(51,51,51,0.14), 0 2px 7px 0 rgba(51,51,51,0.2)` to the se-block. `false` removes the box-shadow. DCX `nano` adds a small, crisp box-shadow `0 1px 1px 0 rgba(0,0,0,0.1)`. `large` adds a stronger box-shadow `0 0 2px 0 rgba(51,51,51,0.14), 0 7px 15px 0 rgba(51,51,51,0.2)`.
     */
-    'elevation': boolean | "large";
+    'elevation': boolean | "nano" | "large";
     /**
     * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1).
     */
@@ -113,15 +113,19 @@ export namespace Components {
     */
     'loading': boolean;
     /**
+    * Defines the spacing around a block. `none` is 0px, default of `basic` blocks. `small` is 8px, default of `widget` blocks. `medium` is 16px, default of `card` blocks. `large` is 32px.
+    */
+    'margin': "none" | "small" | "medium" | "large";
+    /**
     * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with a shadow and rounded corners.
     */
     'option': "basic" | "card" | "widget";
     /**
-    * Defines `card` se-block item's outline. This will be overridden by direct ancestor se-container level outline selections. `true` will add a 1px border. Default is `false`.
+    * Defines `card` se-block item's outline. `true` will add a 1px border. Default is `false`.
     */
     'outline': boolean;
     /**
-    * Defines `card` se-block item's outline color. This will be overridden by direct ancestor se-container level outline color selections. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`.
+    * Defines `card` se-block item's outline color. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
     */
     'outlinecolor': "standard" | "alternative";
     /**
@@ -301,7 +305,7 @@ export namespace Components {
   }
   interface SeContainer {
     /**
-    * Defines direct decendant se-block item's ability to be clickable / selectable. This will override se-block level clickable selections. Default is `false`. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If the se-block is a `card` a `large` box-shadow will appear.
+    * Defines direct decendant se-block item's ability to appear clickable / selectable. This will set se-block level clickable selections when no block level is set. Default is `false`. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If a `card` block elevation is `none` a standard box-shadow will also appear.
     */
     'clickable': boolean;
     /**
@@ -313,7 +317,7 @@ export namespace Components {
     */
     'columnSize': string;
     /**
-    * Defines direct decendant `card` se-block item's corner radius. This will se-block level corner radius selections. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. Default is `4` pixels.
+    * Defines direct decendant `card` se-block item's corner radius. This will set se-block level corner radius selections when no block level is set. `0` pixels is for a sharp, 90 degree corner for DCX and Technical applications. `2` pixels is for a slightly rounded corner for Technical applications. Default is `4` pixels for Technical applications.
     */
     'corner': "none" | 2 | 5;
     /**
@@ -325,23 +329,27 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines direct decendant se-block items' dividers. This will override se-block level divider selections. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+    * Defines direct decendant se-block items' dividers. This will set se-block level divider selections when no block level is set. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider': boolean;
     /**
-    * Defines `card` se-block item's elevation. This will override se-block level elevation selections. Default is `true` which adds a box-shadow to the se-block. `false` removes the box-shadow. `large` adds a stronger box-shadow.
+    * Defines `card` se-block item's elevation. This will set se-block level elevation selections when no block level is set. Default is `true` which adds a box-shadow to the se-block. `false` removes the box-shadow. `nano` adds a small, crisp box-shadow. `large` adds a stronger box-shadow.
     */
-    'elevation': boolean | "large";
+    'elevation': boolean | "nano" | "large";
+    /**
+    * Defines the spacing around a block. This will set se-block level margin selections when no block level is set. `none` is 0px, default of `basic` blocks. `small` is 8px, default of `widget` blocks. `medium` is 16px, default of `card` blocks. `large` is 32px.
+    */
+    'margin': "none" | "small" | "medium" | "large";
     /**
     * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
     */
     'option': "fill" | "widget" | "card" | "centered" | "inherited";
     /**
-    * Defines direct decendant `card` se-block item's outline. This will override se-block level outline selections. `true` will add a 1px border. Default is `false`.
+    * Defines direct decendant `card` se-block item's outline. This will set se-block level outline selections when no block level is set. `true` will add a 1px border. Default is `false`.
     */
     'outline': boolean;
     /**
-    * Defines direct decendant `card` se-block item's outline color. This will override se-block level outline color selections. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`.
+    * Defines direct decendant `card` se-block item's outline color. This will set se-block level outline color selections when no block level is set. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
     */
     'outlinecolor': "standard" | "alternative";
     /**
@@ -1209,7 +1217,7 @@ declare namespace LocalJSX {
   }
   interface SeBlock {
     /**
-    * Defines se-block item's ability to be clickable / selectable. This will be overridden by direct ancestor se-container level clickable selections. Default is `false`. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If the se-block is a `card` a `large` box-shadow will appear.
+    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block.  The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block.  If a `card` block elevation is `none` a standard box-shadow will also appear.
     */
     'clickable'?: boolean;
     /**
@@ -1217,7 +1225,7 @@ declare namespace LocalJSX {
     */
     'color'?: "standard" | "alternative";
     /**
-    * Defines `card` se-block item's corner radius. This will be overridden by direct ancestor se-container level corner radius selections. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. Default is `4` pixels.
+    * Defines `card` se-block item's corner radius. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. Default is `4` pixels.
     */
     'corner'?: 0 | 2 | 4;
     /**
@@ -1225,13 +1233,13 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines se-block items' dividers. This will be overridden by direct ancestor se-container level divider selections. Default for `card` option is `true`, default for `widget` and `basic` options is `false`. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+    * Defines se-block items' dividers. Default for `card` option is `true`, default for `widget` and `basic` options is `false`. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider'?: boolean;
     /**
-    * Defines `card` se-block item's elevation. This will be overridden by direct ancestor se-container level elevation selections. Default is `true` which adds a box-shadow to the se-block. `false` removes the box-shadow. `large` adds a stronger box-shadow.
+    * Defines `card` se-block item's elevation. Default is `true` which adds a standard box-shadow `0 0 1px 0 rgba(51,51,51,0.14), 0 2px 7px 0 rgba(51,51,51,0.2)` to the se-block. `false` removes the box-shadow. DCX `nano` adds a small, crisp box-shadow `0 1px 1px 0 rgba(0,0,0,0.1)`. `large` adds a stronger box-shadow `0 0 2px 0 rgba(51,51,51,0.14), 0 7px 15px 0 rgba(51,51,51,0.2)`.
     */
-    'elevation'?: boolean | "large";
+    'elevation'?: boolean | "nano" | "large";
     /**
     * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1).
     */
@@ -1245,15 +1253,19 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
+    * Defines the spacing around a block. `none` is 0px, default of `basic` blocks. `small` is 8px, default of `widget` blocks. `medium` is 16px, default of `card` blocks. `large` is 32px.
+    */
+    'margin'?: "none" | "small" | "medium" | "large";
+    /**
     * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with a shadow and rounded corners.
     */
     'option'?: "basic" | "card" | "widget";
     /**
-    * Defines `card` se-block item's outline. This will be overridden by direct ancestor se-container level outline selections. `true` will add a 1px border. Default is `false`.
+    * Defines `card` se-block item's outline. `true` will add a 1px border. Default is `false`.
     */
     'outline'?: boolean;
     /**
-    * Defines `card` se-block item's outline color. This will be overridden by direct ancestor se-container level outline color selections. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`.
+    * Defines `card` se-block item's outline color. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
     */
     'outlinecolor'?: "standard" | "alternative";
     /**
@@ -1432,7 +1444,7 @@ declare namespace LocalJSX {
   }
   interface SeContainer {
     /**
-    * Defines direct decendant se-block item's ability to be clickable / selectable. This will override se-block level clickable selections. Default is `false`. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If the se-block is a `card` a `large` box-shadow will appear.
+    * Defines direct decendant se-block item's ability to appear clickable / selectable. This will set se-block level clickable selections when no block level is set. Default is `false`. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. If a `card` block elevation is `none` a standard box-shadow will also appear.
     */
     'clickable'?: boolean;
     /**
@@ -1444,7 +1456,7 @@ declare namespace LocalJSX {
     */
     'columnSize'?: string;
     /**
-    * Defines direct decendant `card` se-block item's corner radius. This will se-block level corner radius selections. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. Default is `4` pixels.
+    * Defines direct decendant `card` se-block item's corner radius. This will set se-block level corner radius selections when no block level is set. `0` pixels is for a sharp, 90 degree corner for DCX and Technical applications. `2` pixels is for a slightly rounded corner for Technical applications. Default is `4` pixels for Technical applications.
     */
     'corner'?: "none" | 2 | 5;
     /**
@@ -1456,23 +1468,27 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines direct decendant se-block items' dividers. This will override se-block level divider selections. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+    * Defines direct decendant se-block items' dividers. This will set se-block level divider selections when no block level is set. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider'?: boolean;
     /**
-    * Defines `card` se-block item's elevation. This will override se-block level elevation selections. Default is `true` which adds a box-shadow to the se-block. `false` removes the box-shadow. `large` adds a stronger box-shadow.
+    * Defines `card` se-block item's elevation. This will set se-block level elevation selections when no block level is set. Default is `true` which adds a box-shadow to the se-block. `false` removes the box-shadow. `nano` adds a small, crisp box-shadow. `large` adds a stronger box-shadow.
     */
-    'elevation'?: boolean | "large";
+    'elevation'?: boolean | "nano" | "large";
+    /**
+    * Defines the spacing around a block. This will set se-block level margin selections when no block level is set. `none` is 0px, default of `basic` blocks. `small` is 8px, default of `widget` blocks. `medium` is 16px, default of `card` blocks. `large` is 32px.
+    */
+    'margin'?: "none" | "small" | "medium" | "large";
     /**
     * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
     */
     'option'?: "fill" | "widget" | "card" | "centered" | "inherited";
     /**
-    * Defines direct decendant `card` se-block item's outline. This will override se-block level outline selections. `true` will add a 1px border. Default is `false`.
+    * Defines direct decendant `card` se-block item's outline. This will set se-block level outline selections when no block level is set. `true` will add a 1px border. Default is `false`.
     */
     'outline'?: boolean;
     /**
-    * Defines direct decendant `card` se-block item's outline color. This will override se-block level outline color selections. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`.
+    * Defines direct decendant `card` se-block item's outline color. This will set se-block level outline color selections when no block level is set. Default is `standard` which is `$se-ultra-light-grey-2`. `alternative` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
     */
     'outlinecolor'?: "standard" | "alternative";
     /**
