@@ -20,6 +20,8 @@
     z-index: -1;
     @include border-radius($border-radius);
     box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: .2s;
   }
   
   .tooltip::after {
@@ -29,6 +31,7 @@
   }
   
   .tooltip.show {
+    opacity: 1;
     visibility: visible;
     z-index: 1;
   }
@@ -98,3 +101,55 @@
   display: none;
 }
 
+:host(.fab-tip) {
+  .top .tooltip, .left .tooltip {
+    top: auto;
+    left: auto;
+    transform: none;
+    z-index: 10;
+  }
+  .left {
+    .tooltip {
+      right: 104px;
+      bottom: calc((56px / 2) + 16px - 50%);
+      transform: translateY(50%);
+    }
+  }
+  .top {
+    .tooltip {
+      right: 16px;
+      bottom: 72px;
+      min-width: 80px;
+    }
+  }
+}
+
+:host(.fab-tip-top) {
+  .top .tooltip, .left .tooltip, .bottom .tooltip {
+    left: auto;
+    transform: none;
+    z-index: 10;
+  }
+  .left {
+    .tooltip {
+      top: calc(-100vh + 64px + 48px);
+      right: 104px;
+      transform: translateY(-50%);
+    }
+  }
+  .top {
+    .tooltip {
+      top: auto;
+      right: 16px;
+      bottom: calc(100vh - 64px - 16px);
+      min-width: 80px;
+    }
+  }
+  .bottom {
+    .tooltip {
+      top: calc(-100vh + 64px + 24px + 56px);
+      right: 16px;
+      min-width: 80px;
+    }
+  }
+}
