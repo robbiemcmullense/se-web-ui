@@ -22,7 +22,12 @@ describe('DialogService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call createDialogComponent', () => {
+  it('should call createDialogComponent without a config object', () => {
+    result = service.createDialogComponent(DialogComponent);
+    expect(result.instance).toBeTruthy();
+  });
+
+  it('should call createDialogComponent with a config object', () => {
     config = {
       title: 'Dialog title',
       message:
@@ -33,7 +38,7 @@ describe('DialogService', () => {
     expect(result.instance).toBeTruthy();
   });
 
-  it('should set the default size, color, and canBackdrop properties when they are undefined', () => {
+  it('should set the default size, color, and canBackdrop properties for the dialog when the config object does not define them', () => {
     config = {
       title: 'Dialog title',
       message:
