@@ -36,7 +36,7 @@
     z-index: 1;
   }
 
-  .top {
+  .tooltip-top {
     .tooltip {
       left:50%;
       top:-88%;
@@ -51,7 +51,7 @@
     }
   }
 
-  .bottom {
+  .tooltip-bottom {
     .tooltip {
       margin-top: 8px;
       top: 100%;
@@ -66,7 +66,7 @@
     }
   }
 
-  .left {
+  .tooltip-left {
     .tooltip {
       margin-left: -8px;
       left: 0px;
@@ -81,7 +81,7 @@
     }
   }
 
-  .right {
+  .tooltip-right {
     .tooltip {
       margin-left: 8px;
       left:100%;
@@ -101,55 +101,56 @@
   display: none;
 }
 
-:host(.fab-tip) {
-  .top .tooltip, .left .tooltip {
+.tooltip-fab {
+  &.tooltip-top .tooltip, &.tooltip-left .tooltip {
     top: auto;
     left: auto;
     transform: none;
     z-index: 10;
   }
-  .left {
+  &.tooltip-left {
     .tooltip {
       right: 104px;
       bottom: calc((56px / 2) + 16px - 50%);
       transform: translateY(50%);
     }
   }
-  .top {
+  &.tooltip-top {
     .tooltip {
       right: 16px;
       bottom: 72px;
       min-width: 80px;
     }
   }
-}
-
-:host(.fab-tip-top) {
-  .top .tooltip, .left .tooltip, .bottom .tooltip {
-    left: auto;
-    transform: none;
-    z-index: 10;
-  }
-  .left {
-    .tooltip {
-      top: calc(-100vh + 64px + 48px);
-      right: 104px;
-      transform: translateY(-50%);
+  &-top {
+    &.tooltip-top, &.tooltip-left, &.tooltip-bottom {
+      .tooltip {
+        left: auto;
+        transform: none;
+        z-index: 10;
+      }
     }
-  }
-  .top {
-    .tooltip {
-      top: auto;
-      right: 16px;
-      bottom: calc(100vh - 64px - 16px);
-      min-width: 80px;
+    &.tooltip-left {
+      .tooltip {
+        top: calc(-100vh + 64px + 48px);
+        right: 104px;
+        transform: translateY(-50%);
+      }
     }
-  }
-  .bottom {
-    .tooltip {
-      top: calc(-100vh + 64px + 24px + 56px);
-      right: 16px;
-      min-width: 80px;
+    &.tooltip-top {
+      .tooltip {
+        top: auto;
+        right: 16px;
+        bottom: calc(100vh - 64px - 16px);
+        min-width: 80px;
+      }
+    }
+    &.tooltip-bottom {
+      .tooltip {
+        top: calc(-100vh + 64px + 24px + 56px);
+        right: 16px;
+        min-width: 80px;
+      }
     }
   }
 }

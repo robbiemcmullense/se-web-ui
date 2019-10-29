@@ -798,6 +798,10 @@
                 <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
                 Tooltip Right
               </se-tooltip>
+              <se-tooltip position="bottom">
+                <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
+                Tooltip Bottom
+              </se-tooltip>
               <se-tooltip position="left">
                 <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
                 Tooltip Left
@@ -805,15 +809,6 @@
               <se-tooltip position="top">
                 <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
                 Tooltip Top
-              </se-tooltip>
-              <se-tooltip position="bottom">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
-                <se-tooltip-header>Tooltip Complex</se-tooltip-header>
-                <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
-                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
-                <se-tooltip-footer>
-                  <se-button option="raised" color="secondary">Retry</se-button>
-                </se-tooltip-footer>
               </se-tooltip>
             </div>
           </se-block-content>
@@ -847,24 +842,18 @@
       </se-dialog-footer>
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
-    <se-tooltip action="click" position="bottom">
-      <se-fab icon="action_download_stroke" slot="tooltip" position="top"></se-fab>
-      <!-- <se-fab icon="action_share" slot="tooltip" position="top"></se-fab> -->
-      <se-tooltip-header>Tooltip</se-tooltip-header>
-      <se-tooltip-content>Tooltip testing with more content<br />And more<br />And more<br />And more</se-tooltip-content>
-      <se-tooltip-footer>
-        <se-button option="raised" color="secondary">Retry</se-button>
-      </se-tooltip-footer>
-      <!-- <se-button option='minifab' caption="New Work Order" icon="notification_critical_stroke"></se-button>
+    <se-fab icon="action_share" position="top">
+      <se-button option='minifab' caption="New Work Order" icon="notification_critical_stroke"></se-button>
       <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
       <se-button option='minifab' caption="New User" icon="task"></se-button>
       <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
-      <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button> -->
-    </se-tooltip>
-    <se-tooltip position="left">
-      <se-fab option="backtotop" slot="tooltip" onclick="showfab('fab back-to-top button clicked')"></se-fab>
+      <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
+    </se-fab>
+    <se-tooltip action="click" position="left">
+      <se-fab option="backtotop" slot="tooltip"></se-fab>
+      <!-- Testing -->
       <se-tooltip-header>Tooltip</se-tooltip-header>
-      <se-tooltip-content>Tooltip testing with more content<br />And more<br />And more<br />And more</se-tooltip-content>
+      <se-tooltip-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur adipiscing elit</se-tooltip-content>
       <se-tooltip-footer>
         <se-button option="raised" color="secondary">Retry</se-button>
       </se-tooltip-footer>

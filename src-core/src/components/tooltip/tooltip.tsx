@@ -93,34 +93,26 @@ export class TooltipComponent {
     this.opened = false;
   }
 
-  componentDidLoad() {
+  render() {
     const containsFab = (this.el as HTMLElement).querySelector("se-fab");
-    const fabTop = (this.el as HTMLElement).querySelector("se-fab").getAttribute("position") === "top";
-
-    if (containsFab && fabTop ) { // console.log("fab top", this.el, this.el.children, this.el.children[0]);
-      this.el.classList.add("fab-tip-top")
-    } else if (containsFab) { // console.log("fab bottom", this.el, this.el.children, this.el.children[0]);
-      this.el.classList.add("fab-tip")
-    }
-
-    if (containsFab && fabTop) {
-      const tooltipPosition = this.el.getAttribute("position");
-      const fabHeight = this.el.querySelector("se-fab").shadowRoot.querySelector("se-button").shadowRoot.querySelector("button").offsetHeight;
-      const fab = this.el.querySelector("se-fab").shadowRoot.querySelector("div").offsetTop;
-      const button = this.el.querySelector("se-fab").shadowRoot.querySelector("se-button").shadowRoot.querySelector("button").offsetTop;
-      if (tooltipPosition === "left") {
-        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(-100vh + ${fab}px + ${button}px + (${fabHeight}px / 2))`)
-      } else if (tooltipPosition === "top") {
-        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `bottom: calc(100vh - ${fab}px `)
-      } else if (tooltipPosition === "bottom") {
-        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(-100vh + ${fab}px + ${fabHeight}px + 16px`)
+    const tooltipPosition = this.el.getAttribute("position");
+    
+    if (!!this.el.shadowRoot.querySelector("div .tooltip") && containsFab && containsFab.getAttribute("position") === "top") {
+      const fabButtonHeight = this.el.querySelector("se-fab").shadowRoot.querySelector("se-button").shadowRoot.querySelector("button");
+      const fabHeight = this.el.querySelector("se-fab").shadowRoot.querySelector("div").offsetTop;
+      if (!!tooltipPosition && tooltipPosition === "left") {
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(-100vh + ${fabHeight}px + ${fabButtonHeight.offsetTop}px + (${fabButtonHeight.offsetHeight}px / 2))`)
+      } else if (!!tooltipPosition && tooltipPosition === "top") {
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `bottom: calc(100vh - ${fabHeight}px - 8px `)
+      } else if (tooltipPosition === null || tooltipPosition === "bottom") {
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(-100vh + ${fabHeight}px + ${fabButtonHeight.offsetHeight}px + 8px`)
       }
     }
-  }
-
-  render() {
     return (
-      <div class={this.position}>
+      <div class={[
+        this.position ? `tooltip-${this.position}` : 'tooltip-bottom', 
+        containsFab ? `tooltip-fab${containsFab.getAttribute("position") === "top" ? '-top' : ''}` : '']
+        .join(' ')}>
         <div onClick={this.action == "click"? ev => {this._toggle(ev)}: () => {}}>
           <slot name="tooltip" />
         </div>
