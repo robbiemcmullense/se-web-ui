@@ -20,7 +20,7 @@ describe('SnackbarService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call append Snackbar Component To Body',()=>{
+  it('should call append Snackbar Component To Body', () => {
     config = {
       type: 'success',
       message: 'This is info',
