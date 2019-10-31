@@ -7,13 +7,19 @@ import { Component, Event, EventEmitter, h, Prop } from "@stencil/core";
 })
 export class StepperItemComponent {
   /**
-   * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
-   */
-  @Prop() isLast: boolean = false;
-  /**
    * Indicates the label for your stepper item.
    */
   @Prop() label: string;
+  /**
+   * Indicates whether or not this is a required section of your stepper component.
+   * If set to `true`, the next step will not be accessible until the data in this step is completed.
+   * The default setting is `false`.
+   */
+  @Prop() required: boolean = false;
+  /**
+   * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
+   */
+  @Prop() isLast: boolean = false;
   /**
    * Event to send to the parent component when clicking on a stepper item.
    */

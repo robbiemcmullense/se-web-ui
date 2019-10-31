@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                           | Type      | Default     |
-| -------- | --------- | --------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `isLast` | `is-last` | Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`. | `boolean` | `false`     |
-| `label`  | `label`   | Indicates the label for your stepper item.                                                                            | `string`  | `undefined` |
+| Property   | Attribute  | Description                                                                                                                                                                                                     | Type      | Default     |
+| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `isLast`   | `is-last`  | Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.                                                                                           | `boolean` | `false`     |
+| `label`    | `label`    | Indicates the label for your stepper item.                                                                                                                                                                      | `string`  | `undefined` |
+| `required` | `required` | Indicates whether or not this is a required section of your stepper component. If set to `true`, the next step will not be accessible until the data in this step is completed. The default setting is `false`. | `boolean` | `false`     |
 
 
 ## Events

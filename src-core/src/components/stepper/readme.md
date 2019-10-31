@@ -20,6 +20,19 @@
 | `optionSelected` | Indicate to the parent component that a new stepper item has been selected. | `CustomEvent<any>` |
 
 
+## Methods
+
+### `stepCompleted() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

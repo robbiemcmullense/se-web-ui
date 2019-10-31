@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Listen, State, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Listen, Method, State, Prop } from "@stencil/core";
 
 
 @Component({
@@ -54,15 +54,43 @@ export class StepperComponent {
     this.optionSelected.emit(event.detail);
   }
 
+  @Method()
+  async stepCompleted() {
+    let removeReq;
+    this.items.forEach((item: any) => {
+      if (this.items.indexOf(item) == this.index && item.required) {
+        removeReq = true;
+        if (this.linear) {
+          this.items[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+        }
+      }
+    });
+    if (removeReq && !this.linear) {
+      for (var i=this.index+1; i<this.items.length; i++) {
+        this.items[i].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+        if (this.items[i].getAttribute('required')) {
+          break;
+        }
+      }
+    }
+  }
+
   componentDidLoad() {
+    let reqIndex;
     this.items = Array.from(this.el.querySelectorAll('se-stepper-item'));
     this.items.forEach((item: any) => {
       item.isLast = (item === this.items[this.items.length - 1]);
       item.classList.add(this.color);
       if (item.shadowRoot) {
-        let spanElement = item.shadowRoot.querySelector('span');
-        let listItemElement = item.shadowRoot.querySelector('.stepper-item');
+        const spanElement = item.shadowRoot.querySelector('span');
+        const listItemElement = item.shadowRoot.querySelector('.stepper-item');
         spanElement.innerText = this.items.indexOf(item) + 1;
+        if (item.required && !reqIndex) {
+          reqIndex = this.items.indexOf(item);
+        }
+        if (this.items.indexOf(item) > reqIndex) {
+          listItemElement.classList.add('disabled');
+        }
         if (this.linear && this.items.indexOf(item) > 1) {
           listItemElement.classList.add('disabled');
         }

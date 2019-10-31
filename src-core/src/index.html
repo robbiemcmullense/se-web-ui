@@ -756,19 +756,28 @@
             <se-stepper id="primary-stepper" linear="true">
               <se-stepper-item label="Step 1"></se-stepper-item>
               <se-stepper-item label="Step 2"></se-stepper-item>
-              <se-stepper-item label="Step 3" id="stepper-item-three"></se-stepper-item>
+              <se-stepper-item label="Step 3" required="true"></se-stepper-item>
               <se-stepper-item label="Step 4"></se-stepper-item>
               <se-stepper-item label="Step 5"></se-stepper-item>
+              <se-stepper-item label="Step 6" required="true"></se-stepper-item>
+              <se-stepper-item label="Step 7"></se-stepper-item>
+              <se-stepper-item label="Step 8"></se-stepper-item>
             </se-stepper>
             <div>Alternative Color Stepper (non-linear mode):</div>
-            <se-stepper color="alternative">
-              <se-stepper-item label="Step 1"></se-stepper-item>
-              <se-stepper-item label="Step 2"></se-stepper-item>
-              <se-stepper-item label="Step 3"></se-stepper-item>
-              <se-stepper-item label="Step 4"></se-stepper-item>
-              <se-stepper-item label="Step 5"></se-stepper-item>
+            <se-stepper id="alt-stepper" color="alternative">
+              <se-stepper-item label="Alt 1"></se-stepper-item>
+              <se-stepper-item label="Alt 2"></se-stepper-item>
+              <se-stepper-item label="Alt 3" required="true"></se-stepper-item>
+              <se-stepper-item label="Alt 4"></se-stepper-item>
+              <se-stepper-item label="Alt 5"></se-stepper-item>
+              <se-stepper-item label="Alt 6" required="true"></se-stepper-item>
+              <se-stepper-item label="Alt 7"></se-stepper-item>
+              <se-stepper-item label="Alt 8"></se-stepper-item>
             </se-stepper>
-            <div style="border: 1px solid black; padding: 10px;">Selected Primary Step: <span id="stepper-message">Step 1</span></div>
+            <div style="border: 1px solid black; padding: 10px;">Selected Primary Step: <span id="stepper-message">Step 1</span>
+              <se-button onclick="updateAltStepper()">Primary Submit</se-button>
+              <se-button onclick="updateAltStepper()">Alt Submit</se-button>
+            </div>
           </se-block-content>
         </se-block>
         <se-block id="block9">
@@ -1037,6 +1046,13 @@
     document.getElementById('primary-stepper').addEventListener('optionSelected', function (event) {
       document.getElementById('stepper-message').innerText = event.detail;
     });
+
+    function updatePrimaryStepper() {
+      document.getElementById('primary-stepper').stepCompleted();
+    }
+    function updateAltStepper() {
+      document.getElementById('alt-stepper').stepCompleted();
+    }
   </script>
 </body>
 </html>

@@ -698,6 +698,7 @@ export namespace Components {
     * If set to `true`, you are required to complete previous steps before moving onto the next step. Default setting is `false`.
     */
     'linear': boolean;
+    'stepCompleted': () => Promise<void>;
   }
   interface SeStepperItem {
     /**
@@ -708,6 +709,10 @@ export namespace Components {
     * Indicates the label for your stepper item.
     */
     'label': string;
+    /**
+    * Indicates whether or not this is a required section of your stepper component. If set to `true`, the next step will not be accessible until the data in this step is completed. The default setting is `false`.
+    */
+    'required': boolean;
   }
   interface SeTabbar {
     /**
@@ -1850,6 +1855,10 @@ declare namespace LocalJSX {
     * Event to send to the parent component when clicking on a stepper item.
     */
     'onDidClick'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether or not this is a required section of your stepper component. If set to `true`, the next step will not be accessible until the data in this step is completed. The default setting is `false`.
+    */
+    'required'?: boolean;
   }
   interface SeTabbar extends JSXBase.HTMLAttributes<HTMLSeTabbarElement> {
     /**
