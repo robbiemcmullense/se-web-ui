@@ -10,67 +10,50 @@ export class BlockComponent {
   @Element() el: HTMLElement;
   /**
    * Defines se-block items' dividers.
-   * Default for `card` option is `true`, default for `widget` and `basic` options is `false`.
    * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
    * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+   * 
+   * Note - `options` is being deprecated. Currently default for `card` option is `false`, default for `widget` and `basic` options is `true`.
    */
   @Prop() divider: boolean;
   @Watch("divider") dividerDidChange() {
     this.updateItem();
   }
   /**
-   * Defines `card` se-block item's outline.
+   * Defines se-block item's outline.
    * `true` will add a 1px border.
    * Default is `false`.
    */
   @Prop() outline: boolean;
   /**
-   * Defines `card` se-block item's outline color.
+   * Defines se-block item's outline color.
    * Default is `standard` which is `$se-ultra-light-grey-2`.
-   * `alternative` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
+   * `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
+   * `secondary` defines the outline color as `se-sky-blue`.
    */
-  @Prop() outlinecolor: "standard" | "alternative";
+  @Prop() outlineColor: "standard" | "secondary" | "primary";
   /**
-   * Defines `card` se-block item's corner radius.
+   * Defines se-block item's corner radius.
    * `0` pixels is for a sharp, 90 degree corner.
    * `2` pixels is for a slightly rounded corner.
-   * Default is `4` pixels.
+   * `4` pixels is for a rounded corner.
    */
   @Prop() corner: 0 | 2 | 4;
   /**
-   * Defines `card` se-block item's elevation.
-   * Default is `true` which adds a standard box-shadow `0 0 1px 0 rgba(51,51,51,0.14), 0 2px 7px 0 rgba(51,51,51,0.2)` to the se-block.
-   * `false` removes the box-shadow.
-   * DCX `nano` adds a small, crisp box-shadow `0 1px 1px 0 rgba(0,0,0,0.1)`.
-   * `large` adds a stronger box-shadow `0 0 2px 0 rgba(51,51,51,0.14), 0 7px 15px 0 rgba(51,51,51,0.2)`.
-   */
-  @Prop() elevation: boolean | "nano" | "large";
-  /**
    * Defines se-block item's ability to appear clickable / selectable.
    * Default is `false`, no hover effects on the block level.
-   * `true` adds a hover effect on the se-block. 
-   * The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. 
-   * If a `card` block elevation is `none` a standard box-shadow will also appear.
+   * `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block. 
    */
   @Prop() clickable: boolean;
   /**
-   * Defines the spacing around a block.
-   * `none` is 0px, default of `basic` blocks.
-   * `small` is 8px, default of `widget` blocks.
-   * `medium` is 16px, default of `card` blocks.
-   * `large` is 32px.
+   * Defines the spacing around the outside edge of a block.
+   * Default `none` is 0px.
+   * `small` is 4px.
+   * `medium` is 8px.
+   * `large` is 16px.
+   * `xlarge` is 32px.
    */
-  @Prop() margin: "none" | "small" | "medium" | "large";
-  /**
-   * Defines the visual appearance of a block.
-   * `basic` will remove any spacing.
-   * `widget` will create a flat widget look and feel with a small margin around it.
-   * `card` will create a card look and feel with a shadow and rounded corners.
-   */
-  @Prop() option: "basic" | "card" | "widget" = "basic";
-  @Watch("option") optionDidChange() {
-    this.updateItem();
-  }
+  @Prop() margin: "none" | "small" | "medium" | "large" | "xlarge";
   /**
    * Defines how to display the element.
    * `flex` is the default display.
@@ -78,9 +61,12 @@ export class BlockComponent {
    */
   @Prop() display: "flex" | "block" | "grid" = "flex";
   /**
-   * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+   * Optional property that defines the background color of the block.
+   * `none` has no background.
+   * `standard` is a light gray.
+   * Default `alternative` is a white background.
    */
-  @Prop() color: "standard" | "alternative" = "alternative";
+  @Prop() color: "none" | "standard" | "alternative" = "alternative";
   /**
    * Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
    */
@@ -105,6 +91,18 @@ export class BlockComponent {
    * Displays the loading icon if set to `true`.  Default setting is `false`.
    */
   @Prop({ mutable: true }) loading: boolean = false;
+  /**
+   * Note - this is being deprecated. Please set props manually without using `option`.
+   * 
+   * Defines the visual appearance of a block.
+   * Default `basic` will remove any spacing.
+   * `widget` will create a flat widget look and feel with a `medium` margin around it.
+   * `card` will create a card look and feel with rounded corners, box-shadow, and with a `large` margin around it.
+   */
+  @Prop() option: "basic" | "card" | "widget" = "basic";
+  @Watch("option") optionDidChange() {
+    this.updateItem();
+  }
 
   componentWillLoad() {
     this.updateSize();
@@ -114,13 +112,13 @@ export class BlockComponent {
   }
 
   updateItem() {
-    if (this.divider === undefined) this.divider = this.option !== "card"; // if the container divider is not defined set based on if the option is card
+    if (this.option !== undefined && this.divider === undefined) {this.divider = this.option !== "card"};
 
     let childElms = "se-block-header, se-block-content, se-block-footer";
     Array.from(this.el.querySelectorAll(childElms)).forEach((item:any) => {
       if(item.parentNode === this.el) { // have to do this because otherwise blocks inside other blocks get settings overridden by higher ancestors
         item.divider = this.divider;
-        item.option = this.option;
+        !item.option ? item.option = this.option : '';
       }
     })
   }
@@ -143,23 +141,19 @@ export class BlockComponent {
 
   render() {
     
-    const outlineClass = this.outline === true && this.option !== "basic" ? 'outline' : '';
-    const outlineColor = this.outlinecolor === "alternative" ? 'alternative' : '';
-    const outline = `${outlineClass}${outlineColor === "alternative" ? '-alternative' : ''}`; // add the suffix after a - only if the color is alternative, default outline will be standard ultra-light-grey-2
+    const outlineColor = this.outlineColor ? `-${this.outlineColor}` : '';
+    const outline =  this.outline === true ? `outline${outlineColor}` : '';
 
     return (
-      <Host 
-        class={[
-          this.display,
-          this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}
-        divider={this.divider}
-        clickable={this.clickable === true ? "true" : "false"}>
+      <Host class={[
+        this.display ? `block-${this.display}` : '', 
+        this.enlarged && this.display === 'grid' ? 'grid-large' : ''].join(' ')}>
         <div class={[
-          'block-body', 
+          'block-body',
+          this.clickable === true ? "clickable" : '',
           this.option,
-          this.option !== "basic" && this.option !== "widget" ? outline : '',
+          this.outline !== undefined ? outline : '',
           this.corner !== undefined ? `corner-${this.corner}` : '',
-          this.option === "card" && this.elevation !== undefined ? `elevated-${this.elevation}` : '',
           this.margin !== undefined ? `margin-${this.margin}` : '', 
           this.color].join(' ')}>
           {this.loading ? <se-loading loading={this.loading} /> : ''}

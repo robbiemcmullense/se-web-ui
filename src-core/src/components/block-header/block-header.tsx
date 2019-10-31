@@ -21,7 +21,6 @@ export class BlockHeader {
   }
 
   render() {
-    // console.log('Test block-header', this.divider, this.option, this.el);
     return (
       <Host>
         <div class={['se-block-header', this.option].join(' ')}>

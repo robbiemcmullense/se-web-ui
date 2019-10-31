@@ -24,7 +24,6 @@ export class BlockFooter {
   @Prop() direction: "row" | "column" = "row";
 
   render() {
-    // console.log('Test block-footer', this.divider, this.option, this.el);
     return (
       <Host>
         {this.divider ? <se-divider></se-divider> : null}

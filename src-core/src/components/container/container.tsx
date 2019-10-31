@@ -8,78 +8,25 @@ import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
 export class ContainerComponent {
   @Element() el: HTMLElement;
   /**
-   * Defines direct decendant se-block items' dividers. This will set se-block level divider selections when no block level is set.
-   * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
-   * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
-   */
-  @Prop() divider: boolean;
-  @Watch("divider") dividerDidChange() {
-    this.setProps();
-  }
-  /**
-   * Defines direct decendant `card` se-block item's outline. This will set se-block level outline selections when no block level is set.
-   * `true` will add a 1px border.
-   * Default is `false`.
-   */
-  @Prop() outline: boolean;
-  @Watch("outline") outlineDidChange() {
-    this.setProps();
-  }
-  /**
-   * Defines direct decendant `card` se-block item's outline color. This will set se-block level outline color selections when no block level is set.
-   * Default is `standard` which is `$se-ultra-light-grey-2`.
-   * `alternative` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
-   */
-  @Prop() outlinecolor: "standard" | "alternative";
-  @Watch("outlinecolor") outlineColorDidChange() {
-    this.setProps();
-  }
-  /**
-   * Defines direct decendant `card` se-block item's corner radius. This will set se-block level corner radius selections when no block level is set.
-   * `0` pixels is for a sharp, 90 degree corner for DCX and Technical applications.
-   * `2` pixels is for a slightly rounded corner for Technical applications.
-   * Default is `4` pixels for Technical applications.
-   */
-  @Prop() corner: "none" | 2 | 5;
-  /**
-   * Defines `card` se-block item's elevation. This will set se-block level elevation selections when no block level is set.
-   * Default is `true` which adds a box-shadow to the se-block.
-   * `false` removes the box-shadow.
-   * `nano` adds a small, crisp box-shadow.
-   * `large` adds a stronger box-shadow.
-   */
-  @Prop() elevation: boolean | "nano" | "large";
-  /**
-   * Defines direct decendant se-block item's ability to appear clickable / selectable. This will set se-block level clickable selections when no block level is set.
-   * Default is `false`.
-   * `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block.
-   * If a `card` block elevation is `none` a standard box-shadow will also appear.
-   */
-  @Prop() clickable: boolean;
-  /**
-   * Defines the spacing around a block. This will set se-block level margin selections when no block level is set.
-   * `none` is 0px, default of `basic` blocks.
-   * `small` is 8px, default of `widget` blocks.
-   * `medium` is 16px, default of `card` blocks.
-   * `large` is 32px.
-   */
-  @Prop() margin: "none" | "small" | "medium" | "large";
-  /**
+   * Note - this is being deprecated. Please set style props manually on the block level without using `option` card or widget.
+   * 
    * Defines the inner appearance of a container.
-   * `fill` is the default option, taking the full space of the container.
-   * `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray).
+   * `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set.
+   * `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set.
    * `centered` centers the container so the content does not exceed a maximum width.
-   * `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white).
+   * `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set.
    * `inherited` will insure that no specific style is applied to the container.
    */
   @Prop() option: "fill" | "widget" | "card" | "centered" | "inherited" = "fill";
   @Watch("option") optionDidChange() {
-    if (this.option === "widget" || this.option === "fill") {
-      this.color = "standard";
-      this.setProps();
-    } else if (this.option === "card") {
-      this.color = "alternative";
-      this.setProps();
+    if (this.color === undefined || this.color === null) {
+      if (this.option === "widget" || this.option === "fill") {
+        this.color = "standard";
+        this.setProps();
+      } else if (this.option === "card") {
+        this.color = "alternative";
+        this.setProps();
+      }
     }
   }
 
@@ -109,6 +56,15 @@ export class ContainerComponent {
       }
     );
   }
+  /**
+   * Defines the spacing around the inside edge of a container.
+   * `none` is 0px.
+   * `small` is 4px.
+   * `medium` is 8px.
+   * `large` is 16px.
+   * `xlarge` is 32px.
+   */
+  @Prop() padding: "none" | "small" | "medium" | "large" | "xlarge";
 
   /**
    * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there.
@@ -130,13 +86,13 @@ export class ContainerComponent {
       this.el.style.gridAutoRows = this.rowSize;
     }
   }
-
   /**
    * Defines the background color of the container.
+   * `none` has no background.
    * `standard` is a light gray.
    * `alternative` is a white background.
    */
-  @Prop({ mutable: true }) color: "standard" | "alternative";
+  @Prop({ mutable: true }) color: "none" | "standard" | "alternative";
 
   componentWillLoad() {
     this.setProps(); // not having this called here makes the original/new function not actually work as expected. the original function would return this.option as undefined.
@@ -150,29 +106,20 @@ export class ContainerComponent {
     Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
       (item: any) => {
         if (this.option === "widget" || this.option === "card") item.option = this.option;
-
-        if (this.outline !== undefined && item.outline === undefined) item.outline = this.outline;
-        if (this.outlinecolor !== undefined && item.outlinecolor === undefined) item.outlinecolor = this.outlinecolor;
-        if (this.corner !== undefined && item.corner === undefined) item.corner = this.corner;
-        if (this.elevation !== undefined && item.elevation === undefined) item.elevation = this.elevation;
-        if (this.clickable !== undefined && item.clickable === undefined) item.clickable = this.clickable;
-        if (this.margin !== undefined && item.margin === undefined) item.margin = this.margin;
-
-        if (this.divider !== undefined && item.divider === undefined) { // e.g. if we set the divider on the container level...
-          item.divider = this.divider; // ...we want to set the item dividers to all match the container divider
-        } else if (item.divider === undefined) { // but if we don't set the container divider...
-          if (this.option === "card" || this.option === "widget") { // ...and if the container is set to option card or widget...
-            if (this.divider === undefined) this.divider = this.option !== "card"; // ...if the container divider is not set, set it based on the container option...
-            item.divider = this.divider; // ...and set the item divider to match the container divider
-          } // else {} // otherwise, if the container is fill, centered, or inherited we don't do anything so dividers are based on item level selections 
-        }
       }
     );
   }
 
   render() {
     return (
-      <Host class={[`${this.option}-content`, this.position, this.color, `${this.direction}-dir`, `${this.display}-display`].join(' ')}>
+      <Host class={[
+        `${this.option}-content`, 
+        this.position, 
+        this.color ? `ct-background-${this.color}` : 'ct-background-none', 
+        `${this.direction}-dir`, 
+        `${this.display}-display`,
+        this.padding ? `ct-padding-${this.padding}` : '']
+        .join(' ')}>
         {this.option === "centered" ? <div class="wrapper-center"><slot></slot></div> : <slot></slot>}
       </Host>
     )

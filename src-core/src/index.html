@@ -407,9 +407,9 @@
             </se-block>
           </se-list-group>
           <!-- <se-divider></se-divider> -->
-          <se-list-group item="Block Title">
+          <se-list-group item="Basic Title">
             <se-block elevation="large" option="basic">
-              <se-block-content>Testing a block card within an se-list-group</se-block-content>
+              <se-block-content>Testing a basic card within an se-list-group</se-block-content>
             </se-block>
             <se-block option="basic" clickable="true">
               <se-block-header>More</se-block-header>
@@ -423,8 +423,8 @@
       </se-block>
       <se-divider option="vertical"></se-divider>
 
-      <se-container display="grid" column-size="300px" row-size="200px">
-        <se-block option="card" id="block0">
+      <se-container color="standard" padding option="card" display="grid" column-size="350px" row-size="350px">
+        <se-block color="none" margin="small" outline=true corner="0" outline-color="secondary" clickable="true" id="block0">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -432,14 +432,14 @@
             Typography
             <div slot="end">
               <se-dropdown alignment="right" max-width="300px">
-                <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
+                <se-icon slot="trigger" option="button" color="none">other_vertical</se-icon>
                 <se-list option="dropdown">
                   <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
                   <se-list-item item="my item 2 no description  with a long text long text"></se-list-item>
                   <se-list-item item="my item 3 no icon"></se-list-item>
                 </se-list>
               </se-dropdown>
-              <se-icon option="button" color="alternative" onclick="toggle(0)">presentation_mode</se-icon>
+              <se-icon option="button" color="none" onclick="toggle(0)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -465,7 +465,7 @@
             <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
           </se-block-footer>
         </se-block>
-        <se-block option="card" id="block1">
+        <se-block option="card" clickable=true outline-color="primary" corner="2" outline id="block1">
             <se-block-header>
               Headline list with colored icons
               <div slot="end">
@@ -490,7 +490,7 @@
               Fin
             </se-block-footer>
         </se-block>
-        <se-block option="card" id="block2">
+        <se-block color="none" option="widget" clickable=true outline id="block2">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">connection_bluetooth</se-icon>
@@ -620,7 +620,7 @@
             Fin
           </se-block-footer>
         </se-block>
-        <se-block option="basic" id="block3">
+        <se-block clickable="true" outline outline-color="standard" id="block3">
           <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
           <se-block-header>
             Forms
@@ -676,7 +676,7 @@
             Fin
           </se-block-footer>
         </se-block>
-        <se-block option="basic" id="block4">
+        <se-block option="card" divider="true" id="block4">
           <se-block-header>
             Breadcrumbs & Modals
             <div slot="end">
@@ -704,7 +704,7 @@
             Fin
           </se-block-footer>
         </se-block>
-        <se-block option="basic" id="block5">
+        <se-block option="widget" divider="false" id="block5">
           <se-block-header>
             Linear chart & Slider
             <div slot="end">
@@ -724,7 +724,7 @@
             Fin
           </se-block-footer>
         </se-block>
-        <se-block option="widget" id="block6">
+        <se-block id="block6">
           <se-block-header>
             Radial chart
             <div slot="end">
@@ -740,7 +740,7 @@
             Fin
           </se-block-footer>
         </se-block>
-        <se-block option="widget" id="block7">
+        <se-block id="block7">
           <se-block-header>
             Tree view
             <div slot="end">
@@ -763,7 +763,7 @@
             Fin
           </se-block-footer>
         </se-block>
-        <se-block option="widget" id="block8">
+        <se-block id="block8">
           <se-block-header>
             Group of Radio Buttons
             <div slot="end">
@@ -929,28 +929,28 @@
     }
 
     // Newly rendered item should get parent's indentation and style
-    // function newListItem() {
-    //   let listItem = document.createElement("se-list-item");
-    //   listItem.item = "Test item";
-    //   listItem.setAttribute("id", "Test-List-Item")
+    function newListItem() {
+      let listItem = document.createElement("se-list-item");
+      listItem.item = "Test item";
+      listItem.setAttribute("id", "Test-List-Item")
 
-    //   setTimeout(function () {
-    //     let collapse = document.getElementById('simple-collapse');
-    //     collapse.appendChild(listItem);
-    //   }, 4500); //set to about 20000 when testing IE
-    // }
+      setTimeout(function () {
+        let collapse = document.getElementById('simple-collapse');
+        collapse.appendChild(listItem);
+      }, 4500); //set to about 20000 when testing IE
+    }
 
-    // newListItem();
+    newListItem();
 
-    // // Then try to remove that item from the DOM
-    // function removeNewListItem() {
-    //   setTimeout(function () {
-    //     let deleted = document.getElementById("Test-List-Item");
-    //     deleted.parentNode.removeChild(deleted);
-    //   }, 9000); //set to about 30000 when testing IE
-    // }
+    // Then try to remove that item from the DOM
+    function removeNewListItem() {
+      setTimeout(function () {
+        let deleted = document.getElementById("Test-List-Item");
+        deleted.parentNode.removeChild(deleted);
+      }, 9000); //set to about 30000 when testing IE
+    }
 
-    // removeNewListItem();
+    removeNewListItem();
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');

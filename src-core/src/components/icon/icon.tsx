@@ -24,7 +24,7 @@ export class IconComponent {
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
    */
-  @Prop() color: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+  @Prop() color: "none" | "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
 
   render() {
     return (
