@@ -101,11 +101,11 @@ export class TooltipComponent {
       const fabButtonHeight = this.el.querySelector("se-fab").shadowRoot.querySelector("se-button").shadowRoot.querySelector("button");
       const fabHeight = this.el.querySelector("se-fab").shadowRoot.querySelector("div").offsetTop;
       if (!!tooltipPosition && tooltipPosition === "left") {
-        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(-100vh + ${fabHeight}px + ${fabButtonHeight.offsetTop}px + (${fabButtonHeight.offsetHeight}px / 2))`)
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(${fabHeight}px + ${fabButtonHeight.offsetTop}px + (${fabButtonHeight.offsetHeight}px / 2))`)
       } else if (!!tooltipPosition && tooltipPosition === "top") {
         this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `bottom: calc(100vh - ${fabHeight}px - 8px `)
       } else if (tooltipPosition === null || tooltipPosition === "bottom") {
-        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(-100vh + ${fabHeight}px + ${fabButtonHeight.offsetHeight}px + 8px`)
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(${fabHeight}px + ${fabButtonHeight.offsetHeight}px + 8px`)
       }
     }
     return (

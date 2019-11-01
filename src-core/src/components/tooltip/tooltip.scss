@@ -102,6 +102,9 @@
 }
 
 .tooltip-fab {
+  .tooltip, &-top .tooltip {
+    position: fixed;
+  }
   &.tooltip-top .tooltip, &.tooltip-left .tooltip {
     top: auto;
     left: auto;
@@ -111,7 +114,7 @@
   &.tooltip-left {
     .tooltip {
       right: 104px;
-      bottom: calc((56px / 2) + 16px - 50%);
+      bottom: calc((56px / 2) + 16px);
       transform: translateY(50%);
     }
   }
