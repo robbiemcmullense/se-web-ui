@@ -1,35 +1,30 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { SnackbarService } from './snackbar.service';
-import { SnackbarComponent } from './snackbar.component';
 import { SnackbarConfig } from './snackbar-config';
 import { SnackbarModule } from './snackbar.module';
 import { ProxiesModule } from '../directives/proxies.module';
 
 describe('SnackbarService', () => {
   let config: SnackbarConfig;
-  let component: SnackbarComponent;
-  let fixture: ComponentFixture<SnackbarComponent>;
+  let service: SnackbarService;
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [SnackbarModule, ProxiesModule]
   }));
   beforeEach(() => {
     config = new SnackbarConfig();
+    service = TestBed.get(SnackbarService);
   });
 
   it('should be created', () => {
-    const service: SnackbarService = TestBed.get(SnackbarService);
     expect(service).toBeTruthy();
   });
 
-  it('should call append Snackbar Component To Body',()=>{
-    const service: SnackbarService = TestBed.get(SnackbarService);
-    const config:SnackbarConfig={
+  it('should call append Snackbar Component To Body', () => {
+    config = {
       type: 'success',
       message: 'This is info',
       canClose: true,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
       duration: 500
     }
@@ -40,27 +35,32 @@ describe('SnackbarService', () => {
   });
 
   it('should set open property true', () => {
-    const service: SnackbarService = TestBed.get(SnackbarService);
     const item = service.open({
       type: 'success',
       message: 'This is info',
       canClose: true,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
       duration: 500
-    })
+    });
     expect(item.instance).toBeDefined();
   });
 
+  it('should set the default icon and type when those properties are not defined', () => {
+    const item = service.open({
+      message: 'This is info',
+      canClose: true
+    });
+    expect(item.instance.config.type).toEqual('information');
+    expect(item.instance.config.icon).toEqual('information_circle');
+  });
+
   it('should remove snackbar', () => {
-    const service: SnackbarService = TestBed.get(SnackbarService);
     service.open({
       type: 'success',
       message: 'This is info',
       canClose: true,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
-    })
+    });
     service.removeSnackBarComponent();
     expect(service.snackbarComponentRef.hostView.destroyed).toBeTruthy();
   });
@@ -68,20 +68,15 @@ describe('SnackbarService', () => {
   it('should auto remove snackbar after certain time duration', () => {
     jasmine.clock().uninstall();
     jasmine.clock().install();
-    const service: SnackbarService = TestBed.get(SnackbarService);
     service.open({
       type: 'success',
       message: 'This is info',
       canClose: false,
-      closeText: 'Dismiss',
       icon: 'information_stroke',
-      duration:500
+      duration: 500
     });
-    //service.autoDismiss(true, 500);
     jasmine.clock().tick(600);
     expect(service.snackbarComponentRef.hostView.destroyed).toBeTruthy();
     jasmine.clock().uninstall();
-
   });
-
 });

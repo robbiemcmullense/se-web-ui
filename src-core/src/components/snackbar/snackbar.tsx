@@ -32,18 +32,27 @@ export class SnackbarComponent {
    */
   @Prop() canClose: boolean = false;
   /**
-   * Defines the text you want your "close button" to read.  The default text is `dismiss`.
+   * Defines the text you want your custom action button to read.
    */
-  @Prop() closeText: string = 'dismiss';
+  @Prop() actionText: string;
   /**
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
   @Prop({ mutable: true }) open: boolean = false;
+  /**
+   * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false.
+   * The default setting is 5000.
+   */
+  @Prop() duration: number = 5000;
+
   @Watch('open') openDidChange() {
     if (this.open) {
       this.el.classList.add(SHOW_SNACKBAR);
-    } else {
-      this.el.classList.remove(SHOW_SNACKBAR);
+      setTimeout(() => {
+        if (!this.canClose) {
+          this.closeSnackbar();
+        }
+      }, this.duration);
     }
   }
   @Element() el: HTMLElement;
@@ -51,10 +60,19 @@ export class SnackbarComponent {
    * Sends information to the parent component when closing the snackbar.
    */
   @Event() didClose: EventEmitter;
+  /**
+   * Sends information to the parent component when clicking a custom action button.
+   */
+  @Event() actionClicked: EventEmitter;
 
   closeSnackbar() {
     this.open = false;
+    this.el.classList.remove(SHOW_SNACKBAR);
     this.didClose.emit();
+  }
+
+  submitData() {
+    this.actionClicked.emit();
   }
 
   componentDidLoad() {
@@ -65,9 +83,10 @@ export class SnackbarComponent {
     return (
       <div class={this.type}>
         <div class="snackbar">
-          {this.icon ? <span class="se-icon">{this.icon}</span> : ''}
+          {this.icon ? <span class="snackbar-icon se-icon">{this.icon}</span> : ''}
           <span class="message">{this.message}</span>
-          {this.canClose ? <span class="close" onClick={() => this.closeSnackbar()}>{this.closeText}</span> : ''}
+          {this.actionText ? <span class="action" onClick={() => this.submitData()}>{this.actionText}</span> : ''}
+          {this.canClose ? <span class="close se-icon" onClick={() => this.closeSnackbar()}>action_delete_cross</span> : ''}
         </div>
       </div>
     )
