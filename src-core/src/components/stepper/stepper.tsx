@@ -45,12 +45,13 @@ export class StepperComponent {
         }
       }
     });
-    for (var i=0; i<=this.index; i++) {
-      this.items[i].classList.add('active');
-      if (i !== this.index) {
-        let indicator = this.items[i].shadowRoot.querySelector('span');
-        indicator.classList.add('se-icon');
-        indicator.innerText = 'notification_ok';
+    for (let item of this.items) {
+      item.classList.add('active');
+      let itemIndex = this.items.indexOf(item);
+      if (itemIndex !== this.index) {
+        this.addCheckmark(itemIndex);
+      } else if (itemIndex == this.index) {
+        break;
       }
     }
     this.optionSelected.emit(event.detail);
@@ -64,9 +65,7 @@ export class StepperComponent {
         removeReq = true;
         this.index = this.items.indexOf(item) + 1;
         this.items[this.index].classList.add('active');
-        let indicator = this.items[this.index - 1].shadowRoot.querySelector('span');
-        indicator.classList.add('se-icon');
-        indicator.innerText = 'notification_ok';
+        this.addCheckmark(this.index-1);
         if (this.linear) {
           this.items[this.index].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
           if (!this.items[this.index].getAttribute('required')) {
@@ -76,13 +75,22 @@ export class StepperComponent {
       }
     });
     if (removeReq && !this.linear) {
-      for (var i=this.index; i<this.items.length; i++) {
-        this.items[i].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
-        if (this.items[i].getAttribute('required')) {
+      for (let item of this.items) {
+        let itemIndex = this.items.indexOf(item);
+        if (itemIndex >= this.index) {
+          item.shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+        }
+        if (item.getAttribute('required')) {
           break;
         }
       }
     }
+  }
+
+  addCheckmark(index: number) {
+    let indicator = this.items[index].shadowRoot.querySelector('span');
+    indicator.classList.add('se-icon');
+    indicator.innerText = 'notification_ok';
   }
 
   componentDidLoad() {
