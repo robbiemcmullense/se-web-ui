@@ -53,6 +53,7 @@ export class AboutComponent {
             <span class="light">&nbsp;{title.last}</span>
           </h1>
           <p class="version">version {this.version}</p>
+          <slot name="custom-info"></slot>
         </div>
         <div class="more-information">
           <div class="background-light"></div>

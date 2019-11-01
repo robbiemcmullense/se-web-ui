@@ -1,5 +1,8 @@
 # se-about
 
+| Slot          | Description                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| `custom-info` | A space below the version number for extra information such as user, product reference, etc. |
 
 
 <!-- Auto Generated Below -->
