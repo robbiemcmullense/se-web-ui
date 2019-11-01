@@ -27,6 +27,7 @@ export class StepperComponent {
   @Listen('didClick')
   stepperItemClickedHandler(event) {
     this.items.forEach((item: any) => {
+      let disabledIndex;
       const indicator = item.shadowRoot.querySelector('span');
       indicator.classList.remove('se-icon');
       indicator.innerText = this.items.indexOf(item) + 1;
@@ -36,7 +37,8 @@ export class StepperComponent {
       }
       if (this.linear) {
         const stepperItem = item.shadowRoot.querySelector('.stepper-item');
-        if (this.items.indexOf(item) >= this.index + 2) {
+        disabledIndex = (this.items[this.index].getAttribute('required')) ? this.index + 1 : this.index + 2;
+        if (this.items.indexOf(item) >= disabledIndex) {
           stepperItem.classList.add('disabled');
         } else {
           stepperItem.classList.remove('disabled');
@@ -58,15 +60,23 @@ export class StepperComponent {
   async stepCompleted() {
     let removeReq;
     this.items.forEach((item: any) => {
-      if (this.items.indexOf(item) == this.index && item.required) {
+      if (this.items.indexOf(item) == this.index && item.required && !removeReq) {
         removeReq = true;
+        this.index = this.items.indexOf(item) + 1;
+        this.items[this.index].classList.add('active');
+        let indicator = this.items[this.index - 1].shadowRoot.querySelector('span');
+        indicator.classList.add('se-icon');
+        indicator.innerText = 'notification_ok';
         if (this.linear) {
-          this.items[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+          this.items[this.index].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+          if (!this.items[this.index].getAttribute('required')) {
+            this.items[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+          }
         }
       }
     });
     if (removeReq && !this.linear) {
-      for (var i=this.index+1; i<this.items.length; i++) {
+      for (var i=this.index; i<this.items.length; i++) {
         this.items[i].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
         if (this.items[i].getAttribute('required')) {
           break;
@@ -76,7 +86,7 @@ export class StepperComponent {
   }
 
   componentDidLoad() {
-    let reqIndex;
+    let reqIndex, disabledIndex;
     this.items = Array.from(this.el.querySelectorAll('se-stepper-item'));
     this.items.forEach((item: any) => {
       item.isLast = (item === this.items[this.items.length - 1]);
@@ -85,13 +95,16 @@ export class StepperComponent {
         const spanElement = item.shadowRoot.querySelector('span');
         const listItemElement = item.shadowRoot.querySelector('.stepper-item');
         spanElement.innerText = this.items.indexOf(item) + 1;
-        if (item.required && !reqIndex) {
+        if (item.required && !reqIndex && reqIndex !== 0) {
           reqIndex = this.items.indexOf(item);
         }
-        if (this.items.indexOf(item) > reqIndex) {
-          listItemElement.classList.add('disabled');
+        if (this.linear) {
+          disabledIndex = (reqIndex == 0) ? this.items.indexOf(item) > 0 : this.items.indexOf(item) > 1;
+          if (disabledIndex) {
+            listItemElement.classList.add('disabled');
+          }
         }
-        if (this.linear && this.items.indexOf(item) > 1) {
+        if (this.items.indexOf(item) > reqIndex) {
           listItemElement.classList.add('disabled');
         }
       }
