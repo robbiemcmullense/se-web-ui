@@ -77,13 +77,25 @@ export namespace Components {
   }
   interface SeBlock {
     /**
-    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block.
     */
-    'color': "standard" | "alternative";
+    'clickable': boolean;
+    /**
+    * Optional property that defines the background color of the block. `none` has no background. `standard` is a light gray. Default `alternative` is a white background.
+    */
+    'color': "none" | "standard" | "alternative";
+    /**
+    * Defines se-block item's corner radius. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. `4` pixels is for a rounded corner.
+    */
+    'corner': 0 | 2 | 4;
     /**
     * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
     */
     'display': "flex" | "block" | "grid";
+    /**
+    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.  Note - `options` is being deprecated. Currently default for `card` option is `false`, default for `widget` and `basic` options is `true`.
+    */
+    'divider': boolean;
     /**
     * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1).
     */
@@ -97,9 +109,21 @@ export namespace Components {
     */
     'loading': boolean;
     /**
-    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with a shadow and rounded corners.
+    * Defines the spacing around the outside edge of a block. Default `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+    */
+    'margin': "none" | "small" | "medium" | "large" | "xlarge";
+    /**
+    * Note - this is being deprecated. Please set props manually without using `option`.  Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, box-shadow, and with a `large` margin around it.
     */
     'option': "basic" | "card" | "widget";
+    /**
+    * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
+    */
+    'outline': boolean;
+    /**
+    * Defines se-block item's outline color. Default is `standard` which is `$se-ultra-light-grey-2`. `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected. `secondary` defines the outline color as `se-sky-blue`.
+    */
+    'outlineColor': "standard" | "secondary" | "primary";
     /**
     * Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
     */
@@ -116,12 +140,14 @@ export namespace Components {
     * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction': "row" | "column";
+    'divider': boolean;
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
     */
     'option': 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader {
+    'divider': boolean;
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
     */
@@ -275,9 +301,9 @@ export namespace Components {
   }
   interface SeContainer {
     /**
-    * Defines the background color of the container. `standard` is a light gray. `alternative` is a white background.
+    * Defines the background color of the container. `none` has no background. `standard` is a light gray. `alternative` is a white background.
     */
-    'color': "standard" | "alternative";
+    'color': "none" | "standard" | "alternative";
     /**
     * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`.
     */
@@ -291,9 +317,13 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
+    * Note - this is being deprecated. Please set style props manually on the block level without using `option` card or widget.  Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. `inherited` will insure that no specific style is applied to the container.
     */
     'option': "fill" | "widget" | "card" | "centered" | "inherited";
+    /**
+    * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+    */
+    'padding': "none" | "small" | "medium" | "large" | "xlarge";
     /**
     * In specific cases, it may be necessary to define the container with an absolute position (such as inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
     */
@@ -448,7 +478,7 @@ export namespace Components {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color': "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+    'color': "none" | "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */
@@ -1163,13 +1193,25 @@ declare namespace LocalJSX {
   }
   interface SeBlock {
     /**
-    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer` and a `$se-life-green` bar will appear at the top of the block.
     */
-    'color'?: "standard" | "alternative";
+    'clickable'?: boolean;
+    /**
+    * Optional property that defines the background color of the block. `none` has no background. `standard` is a light gray. Default `alternative` is a white background.
+    */
+    'color'?: "none" | "standard" | "alternative";
+    /**
+    * Defines se-block item's corner radius. `0` pixels is for a sharp, 90 degree corner. `2` pixels is for a slightly rounded corner. `4` pixels is for a rounded corner.
+    */
+    'corner'?: 0 | 2 | 4;
     /**
     * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
     */
     'display'?: "flex" | "block" | "grid";
+    /**
+    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.  Note - `options` is being deprecated. Currently default for `card` option is `false`, default for `widget` and `basic` options is `true`.
+    */
+    'divider'?: boolean;
     /**
     * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1).
     */
@@ -1183,9 +1225,21 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
-    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with a shadow and rounded corners.
+    * Defines the spacing around the outside edge of a block. Default `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+    */
+    'margin'?: "none" | "small" | "medium" | "large" | "xlarge";
+    /**
+    * Note - this is being deprecated. Please set props manually without using `option`.  Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, box-shadow, and with a `large` margin around it.
     */
     'option'?: "basic" | "card" | "widget";
+    /**
+    * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
+    */
+    'outline'?: boolean;
+    /**
+    * Defines se-block item's outline color. Default is `standard` which is `$se-ultra-light-grey-2`. `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected. `secondary` defines the outline color as `se-sky-blue`.
+    */
+    'outlineColor'?: "standard" | "secondary" | "primary";
     /**
     * Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
     */
@@ -1202,12 +1256,14 @@ declare namespace LocalJSX {
     * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction'?: "row" | "column";
+    'divider'?: boolean;
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
     */
     'option'?: 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader {
+    'divider'?: boolean;
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
     */
@@ -1360,9 +1416,9 @@ declare namespace LocalJSX {
   }
   interface SeContainer {
     /**
-    * Defines the background color of the container. `standard` is a light gray. `alternative` is a white background.
+    * Defines the background color of the container. `none` has no background. `standard` is a light gray. `alternative` is a white background.
     */
-    'color'?: "standard" | "alternative";
+    'color'?: "none" | "standard" | "alternative";
     /**
     * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`.
     */
@@ -1376,9 +1432,13 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
+    * Note - this is being deprecated. Please set style props manually on the block level without using `option` card or widget.  Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. `inherited` will insure that no specific style is applied to the container.
     */
     'option'?: "fill" | "widget" | "card" | "centered" | "inherited";
+    /**
+    * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+    */
+    'padding'?: "none" | "small" | "medium" | "large" | "xlarge";
     /**
     * In specific cases, it may be necessary to define the container with an absolute position (such as inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
     */
@@ -1537,7 +1597,7 @@ declare namespace LocalJSX {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
-    'color'?: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+    'color'?: "none" | "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
     * Optional property to define if the icon should act as a button (clickable).
     */

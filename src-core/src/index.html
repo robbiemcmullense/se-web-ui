@@ -384,31 +384,37 @@
           </se-list-group>
           <se-list-group item="Widget Title" >
             <div class="bg-background">
-              <se-block option="widget" >
+              <se-block option="widget" clickable="true">
                 <se-block-content>Testing a block widget within an se-list-group</se-block-content>
               </se-block>
-              <se-block option="widget" >
+              <se-block option="widget">
+                <se-block-header>More</se-block-header>
                 <se-block-content>Further testing</se-block-content>
+                <se-block-footer>Fin</se-block-footer>
               </se-block>
             </div>
 
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Card Title">
-            <se-block option="card">
+            <se-block option="card" outline outlinecolor="alternative" corner="0" elevation="false">
               <se-block-content>Testing a block card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="card">
+            <se-block option="card" clickable="true">
+              <se-block-header id="test">More</se-block-header>
               <se-block-content>Further testing</se-block-content>
+              <se-block-footer>Fin</se-block-footer>
             </se-block>
           </se-list-group>
           <!-- <se-divider></se-divider> -->
-          <se-list-group item="Block Title">
-            <se-block option="basic">
-              <se-block-content>Testing a block card within an se-list-group</se-block-content>
+          <se-list-group item="Basic Title">
+            <se-block elevation="large" option="basic">
+              <se-block-content>Testing a basic card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="basic">
+            <se-block option="basic" clickable="true">
+              <se-block-header>More</se-block-header>
               <se-block-content>Further testing</se-block-content>
+              <se-block-footer>Fin</se-block-footer>
             </se-block>
           </se-list-group>
           <!-- <se-divider></se-divider> -->
@@ -417,8 +423,8 @@
       </se-block>
       <se-divider option="vertical"></se-divider>
 
-      <se-container option="card" display="grid" column-size="400px" row-size="400px">
-        <se-block id="block0">
+      <se-container color="standard" padding option="card" display="grid" column-size="350px" row-size="350px">
+        <se-block color="none" margin="small" outline=true corner="0" outline-color="secondary" clickable="true" id="block0">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -426,14 +432,14 @@
             Typography
             <div slot="end">
               <se-dropdown alignment="right" max-width="300px">
-                <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
+                <se-icon slot="trigger" option="button" color="none">other_vertical</se-icon>
                 <se-list option="dropdown">
                   <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
                   <se-list-item item="my item 2 no description  with a long text long text"></se-list-item>
                   <se-list-item item="my item 3 no icon"></se-list-item>
                 </se-list>
               </se-dropdown>
-              <se-icon option="button" color="alternative" onclick="toggle(0)">presentation_mode</se-icon>
+              <se-icon option="button" color="none" onclick="toggle(0)">presentation_mode</se-icon>
             </div>
           </se-block-header>
           <se-block-content>
@@ -459,29 +465,32 @@
             <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
           </se-block-footer>
         </se-block>
-        <se-block id="block1">
-          <se-block-header>
-            Headline list with colored icons
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(1)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content option="fill">
-            <se-list option="headline" can-collapse="false">
-              <se-list-group item="Headline Example">
-                <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
-                <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary"></se-list-item>
-                <se-list-item item="Disable color icon" icon="action_editor" icon-color="disable"></se-list-item>
-              </se-list-group>
-              <se-list-group item="Warning and error icon colors">
-                <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
-                <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error">
-                </se-list-item>
-              </se-list-group>
-            </se-list>
-          </se-block-content>
+        <se-block option="card" clickable=true outline-color="primary" corner="2" outline id="block1">
+            <se-block-header>
+              Headline list with colored icons
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(1)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content option="fill">
+              <se-list option="headline" can-collapse="false">
+                <se-list-group item="Headline Example">
+                  <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
+                  <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary"></se-list-item>
+                  <se-list-item item="Disable color icon" icon="action_editor" icon-color="disable"></se-list-item>
+                </se-list-group>
+                <se-list-group item="Warning and error icon colors">
+                  <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
+                  <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error">
+                  </se-list-item>
+                </se-list-group>
+              </se-list>
+            </se-block-content>
+            <se-block-footer>
+              Fin
+            </se-block-footer>
         </se-block>
-        <se-block id="block2">
+        <se-block color="none" option="widget" clickable=true outline id="block2">
           <se-block-header>
             <div slot="start">
               <se-icon color="primary">connection_bluetooth</se-icon>
@@ -607,8 +616,11 @@
               <se-button value="third">Check3</se-button>
             </se-radio-group>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
-        <se-block id="block3">
+        <se-block clickable="true" outline outline-color="standard" id="block3">
           <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
           <se-block-header>
             Forms
@@ -660,8 +672,11 @@
               <textarea rows="10"></textarea>
             </se-form-field>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
-        <se-block id="block4">
+        <se-block option="card" divider="true" id="block4">
           <se-block-header>
             Breadcrumbs & Modals
             <div slot="end">
@@ -685,8 +700,11 @@
             <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
             <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
-        <se-block id="block5">
+        <se-block option="widget" divider="false" id="block5">
           <se-block-header>
             Linear chart & Slider
             <div slot="end">
@@ -702,6 +720,9 @@
               <li id="slider-value"><span></span></li>
             </ul>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
         <se-block id="block6">
           <se-block-header>
@@ -715,6 +736,9 @@
             <se-visual-radial percentage="60" secolor="warning" label="units"></se-visual-radial>
             <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
         <se-block id="block7">
           <se-block-header>
@@ -735,8 +759,10 @@
               </se-list-group>
             </se-list>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
-
         <se-block id="block8">
           <se-block-header>
             Group of Radio Buttons
@@ -752,6 +778,9 @@
             </se-radio-group>
             <div>Selected radio button value: <span id="se-radio-value"></span></div>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
         <se-block id="block9">
           <se-block-header>
@@ -812,6 +841,9 @@
               </se-tooltip>
             </div>
           </se-block-content>
+          <se-block-footer>
+            Fin
+          </se-block-footer>
         </se-block>
       </se-container>
     </se-container>

@@ -16,7 +16,7 @@ describe('BlockComponent', () => {
   });
 
   it('renders with flex class due to no specified display', async() => {
-    expect(hostElement).toHaveClass('flex');
+    expect(hostElement).toHaveClass('block-flex');
   });
 
   it('should have the basic and alternative classes since that is the default option and color', async() => {
