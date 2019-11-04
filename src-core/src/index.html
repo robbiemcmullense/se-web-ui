@@ -870,14 +870,21 @@
     </se-dialog>
     <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
     <se-fab icon="action_share" position="top">
-      <se-button option='minifab' caption="New Work Order"
-        icon="notification_critical_stroke"></se-button>
+      <se-button option='minifab' caption="New Work Order" icon="notification_critical_stroke"></se-button>
       <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
       <se-button option='minifab' caption="New User" icon="task"></se-button>
       <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
       <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
     </se-fab>
-    <se-fab option="backtotop" onclick="showfab('fab back-to-top button clicked')"></se-fab>
+    <se-tooltip action="click" position="left">
+      <se-fab option="backtotop" slot="tooltip"></se-fab>
+      Testing
+      <!-- <se-tooltip-header>Tooltip</se-tooltip-header>
+      <se-tooltip-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur adipiscing elit</se-tooltip-content>
+      <se-tooltip-footer>
+        <se-button option="raised" color="secondary">Retry</se-button>
+      </se-tooltip-footer> -->
+    </se-tooltip>
   </se-app>
 
   <script>

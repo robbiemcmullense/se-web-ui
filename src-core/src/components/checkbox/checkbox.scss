@@ -68,6 +68,7 @@ div {
       @include background-color("alternative");
       border: 1px solid $se-light-grey;
       border-radius: 2px;
+      transition: .2s;
 
       &:after {
         content: "";
@@ -199,6 +200,7 @@ div {
     line-height: 13px;
     font-weight: 300;
     cursor: pointer;
+    transition: .2s;
 
     &.active {
       border-top-left-radius: 2px;

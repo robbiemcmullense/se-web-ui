@@ -28,13 +28,17 @@ describe('SnackbarComponent', () => {
 		expect(snackbar.canClose).toBe(false);
 	});
 
+	it('should have a default duration of 5000 ms', () => {
+		expect(snackbar.duration).toEqual(5000);
+	});
+
 	it('should render with the information class and an information circle as that is the default option and icon', async() => {
 		const page = await newSpecPage({
 			components: [SnackbarComponent],
 			html: `<se-snackbar></se-snackbar>`,
 		});
 		expect(page.root.shadowRoot.querySelector('.information')).toBeTruthy();
-		expect(page.root.shadowRoot.querySelector('.se-icon').innerHTML).toEqual('information_circle');
+		expect(page.root.shadowRoot.querySelector('.snackbar-icon').innerHTML).toEqual('information_circle');
 	});
 
 	it('should render with a span element with the close class when the canClose property is true', async() => {
@@ -43,6 +47,14 @@ describe('SnackbarComponent', () => {
 			html: `<se-snackbar can-close="true"></se-snackbar>`,
 		});
 		expect(page.root.shadowRoot.querySelector('.close')).toBeTruthy();
+	});
+
+	it('should render with a span element with the action class when there is action text', async() => {
+		const page = await newSpecPage({
+			components: [SnackbarComponent],
+			html: `<se-snackbar action-text="text"></se-snackbar>`,
+		});
+		expect(page.root.shadowRoot.querySelector('.action')).toBeTruthy();
 	});
 
 	it('should call the openDidChange function when the component loads', () => {
@@ -65,8 +77,14 @@ describe('SnackbarComponent', () => {
 	it('should set the open property to false when the closeSnackbar function is called, and emit the didClose event', () => {
 		snackbar.open = true;
 		const eventSpy = jest.spyOn(snackbar.didClose, 'emit');
-		snackbar.closeSnackbar(); //close button is clicked
+		snackbar.closeSnackbar(); // close button is clicked
 		expect(snackbar.open).toBeFalsy();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should emit the actionClicked event when submitData is called', () => {
+		const eventSpy = jest.spyOn(snackbar.actionClicked, 'emit');
+		snackbar.submitData(); // close button is clicked
 		expect(eventSpy).toHaveBeenCalled();
 	});
 });
