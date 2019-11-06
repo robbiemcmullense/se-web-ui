@@ -24,7 +24,7 @@ describe('BlockComponent', () => {
 		expect(block.display).toBe('flex');
 	});
 
-	it('should have an alternative color by default', () => {
+	it('should have a alternative color by default', () => {
 		expect(block.color).toBe('alternative');
 	});
 

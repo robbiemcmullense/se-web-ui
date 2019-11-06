@@ -21,7 +21,9 @@ export class SidemenuItemComponent {
       this.didClick.emit();
     }
   }
-
+  /**
+   * Send an event when the sidemenu item changes
+   */
   @Event() didClick: EventEmitter<any>;
 
   render() {

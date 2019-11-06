@@ -53,10 +53,10 @@
                   <se-block-content>
                     <se-chip color="standard" value="Std Chip"></se-chip>
                     <se-chip color="standard" disabled="true" value="Std Chip"></se-chip>
-                      <div style="background-color: #9fa0a4;">
-                        <se-chip color="alternative" value="Alt Chip"></se-chip>
-                        <se-chip color="alternative" disabled="true" value="Alt Chip"></se-chip>
-                      </div>
+                    <div style="background-color: #9fa0a4;">
+                      <se-chip color="alternative" value="Alt Chip"></se-chip>
+                      <se-chip color="alternative" disabled="true" value="Alt Chip"></se-chip>
+                    </div>
                   </se-block-content>
                   <se-block-content>
                     <se-icon size="nano" color="anthracitegrey">airconditioner_hot_heating</se-icon>
@@ -382,7 +382,7 @@
             <se-list-item item="Basic Item">
             </se-list-item>
           </se-list-group>
-          <se-list-group item="Widget Title" >
+          <se-list-group item="Widget Title">
             <div class="bg-background">
               <se-block option="widget" clickable="true">
                 <se-block-content>Testing a block widget within an se-list-group</se-block-content>
@@ -423,49 +423,88 @@
       </se-block>
       <se-divider option="vertical"></se-divider>
 
-      <se-container color="standard" padding option="card" display="grid" column-size="350px" row-size="350px">
-        <se-block color="none" margin="small" outline=true corner="0" outline-color="secondary" clickable="true" id="block0">
-          <se-block-header>
-            <div slot="start">
-              <se-icon color="primary">airconditioner_hot_heating</se-icon>
-            </div>
-            Typography
-            <div slot="end">
-              <se-dropdown alignment="right" max-width="300px">
-                <se-icon slot="trigger" option="button" color="none">other_vertical</se-icon>
-                <se-list option="dropdown">
-                  <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
-                  <se-list-item item="my item 2 no description  with a long text long text"></se-list-item>
-                  <se-list-item item="my item 3 no icon"></se-list-item>
-                </se-list>
-              </se-dropdown>
-              <se-icon option="button" color="none" onclick="toggle(0)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <h1>My h1 string with a divider</h1>
-            <se-divider></se-divider>
-            <h2>My h2 string with a divider </h2>
-            <se-divider></se-divider>
-            <h3>My h3 string with a divider </h3>
-            <se-divider></se-divider>
-            <h4>My h4 string with a divider </h4>
-            <se-divider></se-divider>
-            <h5>My h5 string with a divider </h5>
-            <se-divider></se-divider>
-            <h6>My h6 string with a divider </h6>
-            <se-divider></se-divider>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </p>
-          </se-block-content>
-          <se-block-footer>
-            <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
-          </se-block-footer>
-        </se-block>
-        <se-block option="card" clickable=true outline-color="primary" corner="2" outline id="block1">
+      <se-container option="centered" direction="column" position="relative" display="block">
+        <se-container display="block">
+          <se-banner id="se-banner">
+            <se-banner-item
+              image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
+              <se-block color="none" divider="false">
+                <se-block-header>Reliable Through the Storm</se-block-header>
+                <se-block-content>
+                  <div>
+                    And we do it at every level with EcoStruxure.
+                    Discover how Schneider Electric bold ideas happen with an INNOVATION portfolio
+                    of IoT enabled, connected products, edge control, and apps, analytics, and services.
+                  </div>
+                </se-block-content>
+                <se-block-footer>
+                  <se-button slot="start" color="secondary">Call to action</se-button>
+                  <se-button slot="start" option="outline">Secondary button</se-button>
+                </se-block-footer>
+              </se-block>
+            </se-banner-item>
+            <se-banner-item
+              image-url="url(https://images.unsplash.com/photo-1440098334316-9b3afb87b5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)">
+              <se-block outline outline-color="primary" clickable margin="xlarge" corner="4" color="standard">
+                <se-block-header>Header 2</se-block-header>
+                <se-block-content>Content 2</se-block-content>
+                <se-block-footer>Footer 2</se-block-footer>
+              </se-block>
+            </se-banner-item>
+            <se-banner-item
+              image-url="url(https://images.freeimages.com/images/large-previews/199/sunflowers-6-1392951.jpg)">
+              <se-block>
+                <se-block-header>Header 3</se-block-header>
+                <se-block-content>Content 3</se-block-content>
+                <se-block-footer>Footer 3</se-block-footer>
+              </se-block>
+            </se-banner-item>
+          </se-banner>
+        </se-container>
+
+        <se-container option="widget" display="grid" column-size="350px" row-size="350px">
+          <se-block option="card" color="none" outline="true" corner="none" outline-color="secondary" clickable="true" id="block0">
+            <se-block-header>
+              <div slot="start">
+                <se-icon color="primary">airconditioner_hot_heating</se-icon>
+              </div>
+              Typography
+              <div slot="end">
+                <se-dropdown alignment="right" max-width="300px">
+                  <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
+                  <se-list option="dropdown">
+                    <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
+                    <se-list-item item="my item 2 no description  with a long text long text"></se-list-item>
+                    <se-list-item item="my item 3 no icon"></se-list-item>
+                  </se-list>
+                </se-dropdown>
+                <se-icon option="button" color="alternative" onclick="toggle(0)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <h1>My h1 string with a divider</h1>
+              <se-divider></se-divider>
+              <h2>My h2 string with a divider </h2>
+              <se-divider></se-divider>
+              <h3>My h3 string with a divider </h3>
+              <se-divider></se-divider>
+              <h4>My h4 string with a divider </h4>
+              <se-divider></se-divider>
+              <h5>My h5 string with a divider </h5>
+              <se-divider></se-divider>
+              <h6>My h6 string with a divider </h6>
+              <se-divider></se-divider>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
+              </p>
+            </se-block-content>
+            <se-block-footer>
+              <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
+            </se-block-footer>
+          </se-block>
+          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano" outline="true" id="block1">
             <se-block-header>
               Headline list with colored icons
               <div slot="end">
@@ -480,371 +519,350 @@
                   <se-list-item item="Disable color icon" icon="action_editor" icon-color="disable"></se-list-item>
                 </se-list-group>
                 <se-list-group item="Warning and error icon colors">
-                  <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
+                  <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning">
+                  </se-list-item>
                   <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error">
                   </se-list-item>
                 </se-list-group>
               </se-list>
             </se-block-content>
-            <se-block-footer>
-              Fin
-            </se-block-footer>
-        </se-block>
-        <se-block color="none" option="widget" clickable=true outline id="block2">
-          <se-block-header>
-            <div slot="start">
-              <se-icon color="primary">connection_bluetooth</se-icon>
-            </div>
-            Buttons
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(2)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-button option="flat">standard flat</se-button>
-            <se-button option="raised">standard raised</se-button>
-            <se-divider></se-divider>
-            <se-button option="flat" block="true">standard flat block</se-button>
-            <se-button id="raisedBtn" option="raised" block="true">standard raised block</se-button>
-            <se-divider></se-divider>
-            <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
-            <se-button option="flat" color="primary">primary</se-button>
-            <se-button option="flat" color="secondary">secondary</se-button>
-            <se-dropdown alignment="left">
-              <se-button slot="trigger" option="flat">Dropdown</se-button>
-              <se-list option="dropdown">
-                <se-list-item item="Item 1"></se-list-item>
-                <se-list-item item="Item 2"></se-list-item>
-                <se-list-item item="Item 3 longer description"></se-list-item>
-                <se-list-item item="Basic Item"></se-list-item>
-                <se-list-item item="I'm here"></se-list-item>
-                <se-list-item item="My item with no description and a long text"></se-list-item>
-              </se-list>
-            </se-dropdown>
-            <se-button icon="action_resize">Resize</se-button>
-            <se-button option="outline">Outline</se-button>
-            <se-button option="outline" color="alternative">Outline alternative</se-button>
-            <se-button option="outline" color="primary">Outline primary</se-button>
-            <se-button option="outline" color="secondary">Outline secondary</se-button>
-            <se-button icon="action_resize"></se-button>
-            <se-divider></se-divider>
-            <se-button icon="action_resize" size="medium">medium size</se-button>
-            <se-button icon="action_resize" size="large">large size</se-button>
-            <se-divider></se-divider>
-            <se-button onclick="standardLoader()">Standard Loader</se-button>
-            <se-button onclick="dialogLoader()">Dialog Loader</se-button>
-            <se-divider></se-divider>
-            <se-icon size="nano">calendar</se-icon>
-            <se-icon size="small">calendar</se-icon>
-            <se-icon size="medium">calendar</se-icon>
-            <se-icon size="large">calendar</se-icon>
-            <se-icon size="xlarge">calendar</se-icon>
-            <se-divider></se-divider>
-            <se-button option='fab' icon="notebook_paper" color="primary"></se-button>
-            <se-divider></se-divider>
-            <ul>
-              <li id="chip-info"></li>
-            </ul>
-            <se-chip block="true" can-close="true" value="Chip Block"></se-chip>
-            <se-chip id="se-chip" can-close="true" value="Chip Std"></se-chip>
-            <se-chip can-close="true" selected="true" value="Chip Std Selected"></se-chip>
-            <se-chip can-close="true" disabled="true" value="Chip Std Disabled"></se-chip>
-            <div style="background-color:#9fa0a4;">
-              <se-chip value="Chip Alt" can-close="true" color="alternative"></se-chip>
-              <se-chip value="Chip Alt Selected" selected="true" can-close="true" color="alternative"></se-chip>
-              <se-chip value="Chip Alt Disabled" can-close="true" disabled="true" color="alternative"></se-chip>
-            </div>
-            <se-chip block="true" value="Chip Block"></se-chip>
-            <se-chip id="se-chip" value="Chip Std"></se-chip>
-            <se-chip selected="true" value="Chip Std Selected"></se-chip>
-            <se-chip disabled="true" value="Chip Std Disabled"></se-chip>
-            <div style="background-color:#9fa0a4;">
-              <se-chip value="Chip Alt" color="alternative"></se-chip>
-              <se-chip value="Chip Alt Selected" selected="true" color="alternative"></se-chip>
-              <se-chip value="Chip Alt Disabled" disabled="true" color="alternative"></se-chip>
-            </div>
-            <se-divider></se-divider>
-            <se-link url="http://google.com">Link to Google</se-link>
-            <se-link url="http://google.com" option="external">External Link to Google</se-link>
-            <se-link url="http://google.com" disabled="true">Link to Google</se-link>
-            <se-link url="http://google.com" option="external" disabled="true">External Link to Google</se-link>
-            <ul>
-              <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
-              <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
-            </ul>
-            <se-checkbox option="onoff" id="on-off-switch-el"></se-checkbox>
-            <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true">
-            </se-checkbox>
-            <se-checkbox id="toggle-switch-el" option="switch" label="Switch Label"></se-checkbox>
-            <se-checkbox selected="true" option="switch" disabled="true" label="Disabled Switch Label"></se-checkbox>
-            <se-divider></se-divider>
-            <ul>
-              <li id="radio-message">selected radio icon button: <span></span></li>
-            </ul>
-            <se-radio-group id="RadioGroup1">
-              <se-button value="left" icon="arrow2_left"></se-button>
-              <se-button value="right" icon="arrow2_right"></se-button>
-            </se-radio-group>
-            <se-divider></se-divider>
-            <ul>
-              <li>Example Checkbox and Radio components:</li>
-            </ul>
-            <se-checkbox id="checkbox-primary" value="primary" label="Checkbox Primary"></se-checkbox>
-            <se-checkbox value="secondary" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
-            <se-radio id="radio-primary" value="radio-primary" label="Radio Primary" selected="true"></se-radio>
-            <se-radio value="radio-secondary" label="Radio Secondary" color="secondary"></se-radio>
-            <se-divider></se-divider>
-            <ul>
-              <li id="checkbox-button-message">selected radio buttons: <span>second</span></li>
-            </ul>
-            <se-radio-group id="btnGroup1" value="second">
-              <se-button value="first">Check1</se-button>
-              <se-button value="second">Check2</se-button>
-              <se-button value="third">Check3</se-button>
-            </se-radio-group>
-            <se-divider></se-divider>
-            <ul>
-              <li>Nano-sized button groups:</li>
-            </ul>
-            <se-radio-group size="nano">
-              <se-button value="left" icon="arrow2_left"></se-button>
-              <se-button value="right" icon="arrow2_right"></se-button>
-            </se-radio-group>
-            <se-radio-group size="nano" value="second">
-              <se-button value="first">Check1</se-button>
-              <se-button value="second">Check2</se-button>
-              <se-button value="third">Check3</se-button>
-            </se-radio-group>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
-        <se-block clickable="true" outline outline-color="standard" id="block3">
-          <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
-          <se-block-header>
-            Forms
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(3)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <h4>Inlined </h4>
-            <ul>
-              <li id="form-field-message">last submitted form field value: <span></span></li>
-            </ul>
-            <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
-              required="true">
-              <se-checkbox></se-checkbox>
-            </se-form-field>
-            <se-form-field id="radio-form" label="This is my custom Radio Button.  It is unique." type="radio"
-              required="true">
-              <se-radio></se-radio>
-            </se-form-field>
-            <se-form-field id="input-form" label="Input" required="true">
-              <input type="text" />
-            </se-form-field>
-            <se-form-field id="select-form" label="Select" required="true" type="select">
-              <select>
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-              </select>
-            </se-form-field>
-            <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
-              <textarea rows="5"></textarea>
-            </se-form-field>
-            <se-form-field label="Date">
-              <input type="date" />
-            </se-form-field>
-            <h4>Stacked </h4>
-            <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
-              <input type="text" />
-            </se-form-field>
-            <se-form-field id="select-form" label="Select" required="true" type="select" option="stacked">
-              <select>
-                <option>Stacked Option 1</option>
-                <option>Stacked Option 2</option>
-                <option>Stacked Option 3</option>
-              </select>
-            </se-form-field>
-            <se-form-field option="stacked" type="input" label="Very Long Multi-Line Input">
-              <textarea rows="10"></textarea>
-            </se-form-field>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
-        <se-block option="card" divider="true" id="block4">
-          <se-block-header>
-            Breadcrumbs & Modals
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-breadcrumb id="my-breadcrumb">
-              <se-breadcrumb-item href="#">First</se-breadcrumb-item>
-              <se-breadcrumb-item href="#">Second</se-breadcrumb-item>
-              <se-breadcrumb-item href="#">Third</se-breadcrumb-item>
-              <se-breadcrumb-item href="#">Last</se-breadcrumb-item>
-            </se-breadcrumb>
-            <se-button onclick="removeLastBreadcrumb()" option="raised">Remove Last Breadcrumb</se-button>
-            <se-button onclick="addNewBreadcrumb()" option="raised">Add New Breadcrumb</se-button>
-            <se-button onclick="removeSidemenuItem()" option="raised">Remove Sidemenu Item</se-button>
-            <se-button onclick="addNewSidemenuItem()" option="raised">Add New Sidemenu Item</se-button>
+          </se-block>
+          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true" id="block2">
+            <se-block-header>
+              <div slot="start">
+                <se-icon color="primary">connection_bluetooth</se-icon>
+              </div>
+              Buttons
+              <div slot="end">
+                <se-icon option="button" color="standard" onclick="toggle(2, 'vertical')">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-button option="flat">standard flat</se-button>
+              <se-button option="raised">standard raised</se-button>
+              <se-divider></se-divider>
+              <se-button option="flat" block="true">standard flat block</se-button>
+              <se-button id="raisedBtn" option="raised" block="true">standard raised block</se-button>
+              <se-divider></se-divider>
+              <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
+              <se-button option="flat" color="primary">primary</se-button>
+              <se-button option="flat" color="secondary">secondary</se-button>
+              <se-dropdown alignment="left">
+                <se-button slot="trigger" option="flat">Dropdown</se-button>
+                <se-list option="dropdown">
+                  <se-list-item item="Item 1"></se-list-item>
+                  <se-list-item item="Item 2"></se-list-item>
+                  <se-list-item item="Item 3 longer description"></se-list-item>
+                  <se-list-item item="Basic Item"></se-list-item>
+                  <se-list-item item="I'm here"></se-list-item>
+                  <se-list-item item="My item with no description and a long text"></se-list-item>
+                </se-list>
+              </se-dropdown>
+              <se-button icon="action_resize">Resize</se-button>
+              <se-button option="outline">Outline</se-button>
+              <se-button option="outline" color="alternative">Outline alternative</se-button>
+              <se-button option="outline" color="primary">Outline primary</se-button>
+              <se-button option="outline" color="secondary">Outline secondary</se-button>
+              <se-button icon="action_resize"></se-button>
+              <se-divider></se-divider>
+              <se-button icon="action_resize" size="medium">medium size</se-button>
+              <se-button icon="action_resize" size="large">large size</se-button>
+              <se-divider></se-divider>
+              <se-button onclick="standardLoader()">Standard Loader</se-button>
+              <se-button onclick="dialogLoader()">Dialog Loader</se-button>
+              <se-divider></se-divider>
+              <se-icon size="nano">calendar</se-icon>
+              <se-icon size="small">calendar</se-icon>
+              <se-icon size="medium">calendar</se-icon>
+              <se-icon size="large">calendar</se-icon>
+              <se-icon size="xlarge">calendar</se-icon>
+              <se-divider></se-divider>
+              <se-button option='fab' icon="notebook_paper" color="primary"></se-button>
+              <se-divider></se-divider>
+              <ul>
+                <li id="chip-info"></li>
+              </ul>
+              <se-chip block="true" can-close="true" value="Chip Block"></se-chip>
+              <se-chip id="se-chip" can-close="true" value="Chip Std"></se-chip>
+              <se-chip can-close="true" selected="true" value="Chip Std Selected"></se-chip>
+              <se-chip can-close="true" disabled="true" value="Chip Std Disabled"></se-chip>
+              <div style="background-color:#9fa0a4;">
+                <se-chip value="Chip Alt" can-close="true" color="alternative"></se-chip>
+                <se-chip value="Chip Alt Selected" selected="true" can-close="true" color="alternative"></se-chip>
+                <se-chip value="Chip Alt Disabled" can-close="true" disabled="true" color="alternative"></se-chip>
+              </div>
+              <se-chip block="true" value="Chip Block"></se-chip>
+              <se-chip id="se-chip" value="Chip Std"></se-chip>
+              <se-chip selected="true" value="Chip Std Selected"></se-chip>
+              <se-chip disabled="true" value="Chip Std Disabled"></se-chip>
+              <div style="background-color:#9fa0a4;">
+                <se-chip value="Chip Alt" color="alternative"></se-chip>
+                <se-chip value="Chip Alt Selected" selected="true" color="alternative"></se-chip>
+                <se-chip value="Chip Alt Disabled" disabled="true" color="alternative"></se-chip>
+              </div>
+              <se-divider></se-divider>
+              <se-link url="http://google.com">Link to Google</se-link>
+              <se-link url="http://google.com" option="external">External Link to Google</se-link>
+              <se-link url="http://google.com" disabled="true">Link to Google</se-link>
+              <se-link url="http://google.com" option="external" disabled="true">External Link to Google</se-link>
+              <ul>
+                <li id="switch-message">the selected state of the on/off switch is: <span></span></li>
+                <li id="toggle-switch-message">the selected state of the toggle switch is: <span></span></li>
+              </ul>
+              <se-checkbox option="onoff" id="on-off-switch-el"></se-checkbox>
+              <se-checkbox option="onoff" disabled="true" text-on="active" text-off="inactive" selected="true">
+              </se-checkbox>
+              <se-checkbox id="toggle-switch-el" option="switch" label="Switch Label"></se-checkbox>
+              <se-checkbox selected="true" option="switch" disabled="true" label="Disabled Switch Label"></se-checkbox>
+              <se-divider></se-divider>
+              <ul>
+                <li id="radio-message">selected radio icon button: <span></span></li>
+              </ul>
+              <se-radio-group id="RadioGroup1">
+                <se-button value="left" icon="arrow2_left"></se-button>
+                <se-button value="right" icon="arrow2_right"></se-button>
+              </se-radio-group>
+              <se-divider></se-divider>
+              <ul>
+                <li>Example Checkbox and Radio components:</li>
+              </ul>
+              <se-checkbox id="checkbox-primary" value="primary" label="Checkbox Primary"></se-checkbox>
+              <se-checkbox value="secondary" selected="true" color="secondary" label="Checkbox Secondary"></se-checkbox>
+              <se-radio id="radio-primary" value="radio-primary" label="Radio Primary" selected="true"></se-radio>
+              <se-radio value="radio-secondary" label="Radio Secondary" color="secondary"></se-radio>
+              <se-divider></se-divider>
+              <ul>
+                <li id="checkbox-button-message">selected radio buttons: <span>second</span></li>
+              </ul>
+              <se-radio-group id="btnGroup1" value="second">
+                <se-button value="first">Check1</se-button>
+                <se-button value="second">Check2</se-button>
+                <se-button value="third">Check3</se-button>
+              </se-radio-group>
+              <se-divider></se-divider>
+              <ul>
+                <li>Nano-sized button groups:</li>
+              </ul>
+              <se-radio-group size="nano">
+                <se-button value="left" icon="arrow2_left"></se-button>
+                <se-button value="right" icon="arrow2_right"></se-button>
+              </se-radio-group>
+              <se-radio-group size="nano" value="second">
+                <se-button value="first">Check1</se-button>
+                <se-button value="second">Check2</se-button>
+                <se-button value="third">Check3</se-button>
+              </se-radio-group>
+            </se-block-content>
+          </se-block>
+          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard" id="block3">
+            <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
+            <se-block-header>
+              Forms
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <h4>Inlined </h4>
+              <ul>
+                <li id="form-field-message">last submitted form field value: <span></span></li>
+              </ul>
+              <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
+                required="true">
+                <se-checkbox></se-checkbox>
+              </se-form-field>
+              <se-form-field id="radio-form" label="This is my custom Radio Button.  It is unique." type="radio"
+                required="true">
+                <se-radio></se-radio>
+              </se-form-field>
+              <se-form-field id="input-form" label="Input" required="true">
+                <input type="text" />
+              </se-form-field>
+              <se-form-field id="select-form" label="Select" required="true" type="select">
+                <select>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </se-form-field>
+              <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
+                <textarea rows="5"></textarea>
+              </se-form-field>
+              <se-form-field label="Date">
+                <input type="date" />
+              </se-form-field>
+              <h4>Stacked </h4>
+              <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
+                <input type="text" />
+              </se-form-field>
+              <se-form-field id="select-form" label="Select" required="true" type="select" option="stacked">
+                <select>
+                  <option>Stacked Option 1</option>
+                  <option>Stacked Option 2</option>
+                  <option>Stacked Option 3</option>
+                </select>
+              </se-form-field>
+              <se-form-field option="stacked" type="input" label="Very Long Multi-Line Input">
+                <textarea rows="10"></textarea>
+              </se-form-field>
+            </se-block-content>
+          </se-block>
+          <se-block divider="true" outline="false" id="block4">
+            <se-block-header>
+              Breadcrumbs & Modals
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(4)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-breadcrumb id="my-breadcrumb">
+                <se-breadcrumb-item href="#">First</se-breadcrumb-item>
+                <se-breadcrumb-item href="#">Second</se-breadcrumb-item>
+                <se-breadcrumb-item href="#">Third</se-breadcrumb-item>
+                <se-breadcrumb-item href="#">Last</se-breadcrumb-item>
+              </se-breadcrumb>
+              <se-button onclick="removeLastBreadcrumb()" option="raised">Remove Last Breadcrumb</se-button>
+              <se-button onclick="addNewBreadcrumb()" option="raised">Add New Breadcrumb</se-button>
+              <se-button onclick="removeSidemenuItem()" option="raised">Remove Sidemenu Item</se-button>
+              <se-button onclick="addNewSidemenuItem()" option="raised">Add New Sidemenu Item</se-button>
 
-            <se-divider></se-divider>
-            <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
-            <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon</se-button>
-            <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
-        <se-block option="widget" divider="false" id="block5">
-          <se-block-header>
-            Linear chart & Slider
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>
-            <se-visual-linear id="progBar" secolor="error" percentage="66" value="16" label="Labels"></se-visual-linear>
-            <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels"></se-visual-linear>
-            <se-slider id="sliderID"></se-slider>
-            <ul>
-              <li id="slider-value"><span></span></li>
-            </ul>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
-        <se-block id="block6">
-          <se-block-header>
-            Radial chart
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-visual-radial percentage="30" label="units"></se-visual-radial>
-            <se-visual-radial percentage="60" secolor="warning" label="units"></se-visual-radial>
-            <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
-        <se-block id="block7">
-          <se-block-header>
-            Tree view
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <se-list option="treeview">
-              <se-list-group option="treeview" item="Treeview Example">
-                <se-list-item item="First treeview child"></se-list-item>
-                <se-list-group option="treeview" item="Second treeview child">
-                  <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
-                  <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
+              <se-divider></se-divider>
+              <se-button onclick="openDialog('dialog-simple-notitle')" option="raised">Open Dialog simple</se-button>
+              <se-button onclick="openDialog('dialog-simple-title')" option="raised">Open Dialog title & icon
+              </se-button>
+              <se-button onclick="openDialog('dialog-complex')" option="raised">Open Dialog complex</se-button>
+              <se-button onclick="addBannerItem()" option="raised">Add Banner Item</se-button>
+              <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
+            </se-block-content>
+          </se-block>
+          <se-block enlarged="true" option="widget" divider="false" id="block5">
+            <se-block-header>
+              Linear chart & Slider
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-visual-linear percentage="33" value="8" label="Labels"></se-visual-linear>
+              <se-visual-linear id="progBar" secolor="error" percentage="66" value="16" label="Labels">
+              </se-visual-linear>
+              <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Stacked Labels">
+              </se-visual-linear>
+              <se-slider id="sliderID"></se-slider>
+              <ul>
+                <li id="slider-value"><span></span></li>
+              </ul>
+            </se-block-content>
+          </se-block>
+          <se-block corner="4" clickable id="block6">
+            <se-block-header>
+              Radial chart
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(6)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-visual-radial percentage="30" label="units"></se-visual-radial>
+              <se-visual-radial percentage="60" secolor="warning" label="units"></se-visual-radial>
+              <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
+            </se-block-content>
+          </se-block>
+          <se-block id="block7">
+            <se-block-header>
+              Tree view
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <se-list option="treeview">
+                <se-list-group option="treeview" item="Treeview Example">
+                  <se-list-item item="First treeview child"></se-list-item>
+                  <se-list-group option="treeview" item="Second treeview child">
+                    <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                    <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
+                  </se-list-group>
                 </se-list-group>
-                <se-list-item item="Third treeview child"></se-list-item>
-              </se-list-group>
-            </se-list>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
-        <se-block id="block8">
-          <se-block-header>
-            Group of Radio Buttons
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content option="fill">
-            <se-radio-group id="radio-button-dot-group">
-              <se-radio value="one radio" label="First Radio Button"></se-radio>
-              <se-radio value="two radio" label="Second Radio Button"></se-radio>
-              <se-radio value="three radio" label="Third Radio Button"></se-radio>
-            </se-radio-group>
-            <div>Selected radio button value: <span id="se-radio-value"></span></div>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
-        <se-block id="block9">
-          <se-block-header>
-            Tooltips
-            <div slot="end">
-              <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
-            </div>
-          </se-block-header>
-          <se-block-content>
-            <div style="padding-left:100px;">
-              <h4>Tooltip OnClick</h4>
-              <se-tooltip action="click">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
-                <se-tooltip-header>Tooltip Title</se-tooltip-header>
-                <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
-                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
-              </se-tooltip>
-              <se-tooltip action="click">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Icon & Message</se-button>
-                <se-tooltip-header icon="information_circle">Tooltip With Icon</se-tooltip-header>
-                <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
-                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
-              </se-tooltip>
-            </div>
-            <div style="padding-left:100px;">
-              <se-tooltip action="click">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
-                <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
-                </se-tooltip-content>
-              </se-tooltip>
-              <se-tooltip action="click">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Complex</se-button>
-                <se-tooltip-header>Tooltip Complex</se-tooltip-header>
-                <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
-                  Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
-                <se-tooltip-footer>
-                  <se-button option="raised" color="secondary">Retry</se-button>
-                </se-tooltip-footer>
-              </se-tooltip>
-            </div>
-            <div style="padding-top:140px;padding-left: 100px;">
-              <h4>Tooltip OnHover</h4>
-              <se-tooltip position="right">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
-                Tooltip Right
-              </se-tooltip>
-              <se-tooltip position="bottom">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
-                Tooltip Bottom
-              </se-tooltip>
-              <se-tooltip position="left">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
-                Tooltip Left
-              </se-tooltip>
-              <se-tooltip position="top">
-                <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
-                Tooltip Top
-              </se-tooltip>
-            </div>
-          </se-block-content>
-          <se-block-footer>
-            Fin
-          </se-block-footer>
-        </se-block>
+              </se-list>
+            </se-block-content>
+          </se-block>
+          <se-block id="block8">
+            <se-block-header>
+              Group of Radio Buttons
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(8)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content option="fill">
+              <se-radio-group id="radio-button-dot-group">
+                <se-radio value="one radio" label="First Radio Button"></se-radio>
+                <se-radio value="two radio" label="Second Radio Button"></se-radio>
+                <se-radio value="three radio" label="Third Radio Button"></se-radio>
+              </se-radio-group>
+              <div>Selected radio button value: <span id="se-radio-value"></span></div>
+            </se-block-content>
+          </se-block>
+          <se-block enlarged="horizontal" id="block9">
+            <se-block-header>
+              Tooltips
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content>
+              <div style="padding-left:100px;">
+                <h4>Tooltip OnClick</h4>
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
+                  <se-tooltip-header>Tooltip Title</se-tooltip-header>
+                  <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                    Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                </se-tooltip>
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Icon & Message</se-button>
+                  <se-tooltip-header icon="information_circle">Tooltip With Icon</se-tooltip-header>
+                  <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                    Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
+                </se-tooltip>
+              </div>
+              <div style="padding-left:100px;">
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
+                  <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                  </se-tooltip-content>
+                </se-tooltip>
+                <se-tooltip action="click">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Complex</se-button>
+                  <se-tooltip-header>Tooltip Complex</se-tooltip-header>
+                  <se-tooltip-content>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                    Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </se-tooltip-content>
+                  <se-tooltip-footer>
+                    <se-button option="raised" color="secondary">Retry</se-button>
+                  </se-tooltip-footer>
+                </se-tooltip>
+              </div>
+              <div style="padding-top:140px;padding-left: 100px;">
+                <h4>Tooltip OnHover</h4>
+                <se-tooltip position="right">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
+                  Tooltip Right
+                </se-tooltip>
+                <se-tooltip position="bottom">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Bottom</se-button>
+                  Tooltip Bottom
+                </se-tooltip>
+                <se-tooltip position="left">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Left</se-button>
+                  Tooltip Left
+                </se-tooltip>
+                <se-tooltip position="top">
+                  <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
+                  Tooltip Top
+                </se-tooltip>
+              </div>
+            </se-block-content>
+          </se-block>
+        </se-container>
       </se-container>
     </se-container>
     <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
@@ -961,7 +979,7 @@
 
     function removeLastBreadcrumb() {
       let breadcrumbs = document.getElementsByTagName('se-breadcrumb-item');
-      breadcrumbs[breadcrumbs.length-1].parentNode.removeChild(breadcrumbs[breadcrumbs.length-1]);
+      breadcrumbs[breadcrumbs.length - 1].parentNode.removeChild(breadcrumbs[breadcrumbs.length - 1]);
     }
 
     function addNewBreadcrumb() {
@@ -989,14 +1007,30 @@
 
     function removeSidemenuItem() {
       let menuItems = document.getElementsByTagName('se-sidemenu-item');
-      menuItems[menuItems.length-1].parentNode.removeChild(menuItems[menuItems.length-1]);
+      menuItems[menuItems.length - 1].parentNode.removeChild(menuItems[menuItems.length - 1]);
+    }
+
+    function addBannerItem() {
+      let node = document.createElement('se-banner-item');
+      node.innerHTML = ('<se-block>My New Banner</se-block>');
+      let banner = document.getElementById('se-banner');
+      if (navigator.userAgent.indexOf('Edge') > -1) {
+        banner.querySelector('.banner-items').appendChild(node);
+      } else {
+        banner.appendChild(node);
+      }
+    }
+
+    function removeLastBannerItem() {
+      let bannerItems = document.getElementsByTagName('se-banner-item');
+      bannerItems[bannerItems.length - 1].parentNode.removeChild(bannerItems[bannerItems.length - 1]);
     }
 
     // grid widget
-    function toggle(id) {
+    function toggle(id, enlargedClass) {
       let block = document.getElementById("block" + id);
       let icon = block.querySelector('div[slot="end"] > se-icon');
-      block.enlarged = !block.enlarged;
+      block.enlarged = !block.enlarged ? (enlargedClass ? enlargedClass : true) : false;
       icon.innerText = block.enlarged ? 'exit_presentation' : 'presentation_mode';
     }
     document.querySelector('se-slider').addEventListener('didChange', function (event) {
@@ -1006,7 +1040,7 @@
     document.getElementById('sidemenu-item').addEventListener('didClick', function (event) {
       document.querySelector('se-sidemenu').toggle();
       //alert('this has been clicked');
-      if(document.getElementById('sidemenu-message')) {
+      if (document.getElementById('sidemenu-message')) {
         document.getElementById('sidemenu-message').innerText = 'clicked sidemenu close';
       }
     });
@@ -1057,4 +1091,5 @@
     });
   </script>
 </body>
+
 </html>

@@ -5,6 +5,8 @@ export const DIRECTIVES = [
 d.SeAbout,
   d.SeApp,
   d.SeAuthentication,
+  d.SeBanner,
+  d.SeBannerItem,
   d.SeBlock,
   d.SeBlockContent,
   d.SeBlockFooter,

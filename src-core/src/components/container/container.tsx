@@ -8,8 +8,6 @@ import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
 export class ContainerComponent {
   @Element() el: HTMLElement;
   /**
-   * Note - this is being deprecated. Please set style props manually on the block level without using `option` card or widget.
-   * 
    * Defines the inner appearance of a container.
    * `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set.
    * `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set.
@@ -20,7 +18,7 @@ export class ContainerComponent {
   @Prop() option: "fill" | "widget" | "card" | "centered" | "inherited" = "fill";
   @Watch("option") optionDidChange() {
     if (this.color === undefined || this.color === null) {
-      if (this.option === "widget" || this.option === "fill") {
+      if (this.option === "widget") {
         this.color = "standard";
         this.setProps();
       } else if (this.option === "card") {
@@ -29,7 +27,6 @@ export class ContainerComponent {
       }
     }
   }
-
   /**
    * In specific cases, it may be necessary to define the container with an absolute position (such as inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box.
    * `relative` is the default position. This is perfect to use with flex content.
@@ -89,7 +86,7 @@ export class ContainerComponent {
   /**
    * Defines the background color of the container.
    * `none` has no background.
-   * `standard` is a light gray.
+   * `standard` is `se-background`, light gray.
    * `alternative` is a white background.
    */
   @Prop({ mutable: true }) color: "none" | "standard" | "alternative";
@@ -115,7 +112,7 @@ export class ContainerComponent {
       <Host class={[
         `${this.option}-content`, 
         this.position, 
-        this.color ? `ct-background-${this.color}` : 'ct-background-none', 
+        this.color ? `ct-bg-${this.color}` : '', 
         `${this.direction}-dir`, 
         `${this.display}-display`,
         this.padding ? `ct-padding-${this.padding}` : '']

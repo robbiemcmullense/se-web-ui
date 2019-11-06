@@ -14,7 +14,7 @@ export class ButtonComponent {
    * `outline` adds a border to the button.
    * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
    */
-  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab'= 'flat';
+  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab' = 'flat';
   @Watch('option') optionDidChange() {
     if(this.option === 'login'){
       this.color = 'primary';
