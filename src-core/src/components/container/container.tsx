@@ -13,9 +13,10 @@ export class ContainerComponent {
    * `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set.
    * `centered` centers the container so the content does not exceed a maximum width.
    * `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set.
+   * Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
    * `inherited` will insure that no specific style is applied to the container.
    */
-  @Prop() option: "fill" | "widget" | "card" | "centered" | "inherited" = "fill";
+  @Prop() option: "fill" | "widget" | "card" | "card-old" | "centered" | "inherited" = "fill";
   @Watch("option") optionDidChange() {
     if (this.color === undefined || this.color === null) {
       if (this.option === "widget") {
@@ -102,7 +103,7 @@ export class ContainerComponent {
   setProps() {
     Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
       (item: any) => {
-        if (this.option === "widget" || this.option === "card") item.option = this.option;
+        if (this.option === "widget" || this.option === "card" || this.option === "card-old") item.option = this.option;
       }
     );
   }
@@ -110,7 +111,7 @@ export class ContainerComponent {
   render() {
     return (
       <Host class={[
-        `${this.option}-content`, 
+        this.option !== "card-old" ? `${this.option}-content` : "card-content", 
         this.position, 
         this.color ? `ct-bg-${this.color}` : '', 
         `${this.direction}-dir`, 
