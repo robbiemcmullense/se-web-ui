@@ -12,8 +12,6 @@ export class BlockComponent {
    * Defines se-block items' dividers.
    * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
    * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
-   * 
-   * Note - `options` is being deprecated. Currently default for `card` option is `false`, default for `widget` and `basic` options is `true`.
    */
   @Prop() divider: boolean;
   @Watch("divider") dividerDidChange() {
@@ -104,8 +102,9 @@ export class BlockComponent {
    * Default `basic` will remove any spacing.
    * `widget` will create a flat widget look and feel with a `medium` margin around it.
    * `card` will create a card look and feel with rounded corners, and with a `large` margin around it.
+   * Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
    */
-  @Prop() option: "basic" | "card" | "widget" = "basic";
+  @Prop() option: "basic" | "card" | "card-old" | "widget" = "basic";
   @Watch("option") optionDidChange() {
     this.updateItem();
   }
@@ -118,7 +117,11 @@ export class BlockComponent {
   }
 
   updateItem() {
-    if (this.option !== undefined && this.divider === undefined) {this.divider = this.option !== "card"};
+    if (this.option !== undefined && this.divider === undefined) {
+      if (this.option === "card" || this.option === "card-old") {
+        this.divider = false;
+      } else this.divider = true;
+    }
 
     let childElms = "se-block-header, se-block-content, se-block-footer";
     Array.from(this.el.querySelectorAll(childElms)).forEach((item:any) => {

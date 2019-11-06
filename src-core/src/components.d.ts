@@ -114,7 +114,7 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.  Note - `options` is being deprecated. Currently default for `card` option is `false`, default for `widget` and `basic` options is `true`.
+    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider': boolean;
     /**
@@ -134,9 +134,9 @@ export namespace Components {
     */
     'margin': "none" | "small" | "medium" | "large" | "xlarge";
     /**
-    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it.
+    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
     */
-    'option': "basic" | "card" | "widget";
+    'option': "basic" | "card" | "card-old" | "widget";
     /**
     * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
     */
@@ -338,9 +338,9 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. `inherited` will insure that no specific style is applied to the container.
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated. `inherited` will insure that no specific style is applied to the container.
     */
-    'option': "fill" | "widget" | "card" | "centered" | "inherited";
+    'option': "fill" | "widget" | "card" | "card-old" | "centered" | "inherited";
     /**
     * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
     */
@@ -1268,7 +1268,7 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.  Note - `options` is being deprecated. Currently default for `card` option is `false`, default for `widget` and `basic` options is `true`.
+    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider'?: boolean;
     /**
@@ -1288,9 +1288,9 @@ declare namespace LocalJSX {
     */
     'margin'?: "none" | "small" | "medium" | "large" | "xlarge";
     /**
-    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it.
+    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
     */
-    'option'?: "basic" | "card" | "widget";
+    'option'?: "basic" | "card" | "card-old" | "widget";
     /**
     * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
     */
@@ -1491,9 +1491,9 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. `inherited` will insure that no specific style is applied to the container.
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated. `inherited` will insure that no specific style is applied to the container.
     */
-    'option'?: "fill" | "widget" | "card" | "centered" | "inherited";
+    'option'?: "fill" | "widget" | "card" | "card-old" | "centered" | "inherited";
     /**
     * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
     */
