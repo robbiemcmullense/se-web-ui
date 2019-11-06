@@ -26,6 +26,7 @@ export class SidemenuItemComponent {
    */
   @Event() didClick: EventEmitter<any>;
 
+
   render() {
     return (
       <Host

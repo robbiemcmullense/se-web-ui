@@ -17,11 +17,15 @@
 
 ### Used by
 
+ - [se-block-footer](../block-footer)
+ - [se-block-header](../block-header)
  - [se-sidemenu](../sidemenu)
 
 ### Graph
 ```mermaid
 graph TD;
+  se-block-footer --> se-divider
+  se-block-header --> se-divider
   se-sidemenu --> se-divider
   style se-divider fill:#f9f,stroke:#333,stroke-width:4px
 ```
