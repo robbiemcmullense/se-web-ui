@@ -384,31 +384,37 @@
           </se-list-group>
           <se-list-group item="Widget Title">
             <div class="bg-background">
-              <se-block option="widget">
+              <se-block option="widget" clickable="true">
                 <se-block-content>Testing a block widget within an se-list-group</se-block-content>
               </se-block>
               <se-block option="widget">
+                <se-block-header>More</se-block-header>
                 <se-block-content>Further testing</se-block-content>
+                <se-block-footer>Fin</se-block-footer>
               </se-block>
             </div>
 
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Card Title">
-            <se-block option="card">
+            <se-block option="card" outline outlinecolor="alternative" corner="0" elevation="false">
               <se-block-content>Testing a block card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="card">
+            <se-block option="card" clickable="true">
+              <se-block-header id="test">More</se-block-header>
               <se-block-content>Further testing</se-block-content>
+              <se-block-footer>Fin</se-block-footer>
             </se-block>
           </se-list-group>
           <!-- <se-divider></se-divider> -->
-          <se-list-group item="Block Title">
-            <se-block option="basic">
-              <se-block-content>Testing a block card within an se-list-group</se-block-content>
+          <se-list-group item="Basic Title">
+            <se-block elevation="large" option="basic">
+              <se-block-content>Testing a basic card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="basic">
+            <se-block option="basic" clickable="true">
+              <se-block-header>More</se-block-header>
               <se-block-content>Further testing</se-block-content>
+              <se-block-footer>Fin</se-block-footer>
             </se-block>
           </se-list-group>
           <!-- <se-divider></se-divider> -->
@@ -417,12 +423,12 @@
       </se-block>
       <se-divider option="vertical"></se-divider>
 
-      <se-container direction="column" position="relative" display="block" color="alternative">
-        <se-container option="centered">
+      <se-container option="centered" direction="column" position="relative" display="block">
+        <se-container display="block">
           <se-banner id="se-banner">
             <se-banner-item
               image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
-              <se-block>
+              <se-block color="none" divider="false">
                 <se-block-header>Reliable Through the Storm</se-block-header>
                 <se-block-content>
                   <div>
@@ -439,7 +445,7 @@
             </se-banner-item>
             <se-banner-item
               image-url="url(https://images.unsplash.com/photo-1440098334316-9b3afb87b5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)">
-              <se-block>
+              <se-block outline outline-color="primary" clickable margin="xlarge" corner="4" color="standard">
                 <se-block-header>Header 2</se-block-header>
                 <se-block-content>Content 2</se-block-content>
                 <se-block-footer>Footer 2</se-block-footer>
@@ -456,8 +462,8 @@
           </se-banner>
         </se-container>
 
-        <se-container option="card" display="grid" column-size="400px" row-size="400px">
-          <se-block id="block0">
+        <se-container option="widget" display="grid" column-size="350px" row-size="350px">
+          <se-block option="card" color="none" outline="true" corner="none" outline-color="secondary" clickable="true" id="block0">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -498,7 +504,7 @@
               <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
             </se-block-footer>
           </se-block>
-          <se-block id="block1">
+          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano" outline="true" id="block1">
             <se-block-header>
               Headline list with colored icons
               <div slot="end">
@@ -521,14 +527,14 @@
               </se-list>
             </se-block-content>
           </se-block>
-          <se-block id="block2">
+          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true" id="block2">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">connection_bluetooth</se-icon>
               </div>
               Buttons
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(2)">presentation_mode</se-icon>
+                <se-icon option="button" color="standard" onclick="toggle(2, 'vertical')">presentation_mode</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
@@ -648,12 +654,12 @@
               </se-radio-group>
             </se-block-content>
           </se-block>
-          <se-block id="block3">
+          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard" id="block3">
             <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
             <se-block-header>
               Forms
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(3)">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
@@ -701,7 +707,7 @@
               </se-form-field>
             </se-block-content>
           </se-block>
-          <se-block id="block4">
+          <se-block divider="true" outline="false" id="block4">
             <se-block-header>
               Breadcrumbs & Modals
               <div slot="end">
@@ -729,7 +735,7 @@
               <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
             </se-block-content>
           </se-block>
-          <se-block id="block5">
+          <se-block enlarged="true" option="widget" divider="false" id="block5">
             <se-block-header>
               Linear chart & Slider
               <div slot="end">
@@ -748,7 +754,7 @@
               </ul>
             </se-block-content>
           </se-block>
-          <se-block id="block6">
+          <se-block corner="4" clickable id="block6">
             <se-block-header>
               Radial chart
               <div slot="end">
@@ -776,10 +782,10 @@
                     <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
                     <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
                   </se-list-group>
+                </se-list-group>
               </se-list>
             </se-block-content>
           </se-block>
-
           <se-block id="block8">
             <se-block-header>
               Group of Radio Buttons
@@ -796,7 +802,7 @@
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-block-content>
           </se-block>
-          <se-block id="block9">
+          <se-block enlarged="horizontal" id="block9">
             <se-block-header>
               Tooltips
               <div slot="end">
@@ -893,7 +899,15 @@
       <se-button option='minifab' caption="New Work Item" icon="user_add"></se-button>
       <se-button option='minifab' caption="New Task List" icon="notebook_paper"></se-button>
     </se-fab>
-    <se-fab option="backtotop" onclick="showfab('fab back-to-top button clicked')"></se-fab>
+    <se-tooltip action="click" position="left">
+      <se-fab option="backtotop" slot="tooltip"></se-fab>
+      Testing
+      <!-- <se-tooltip-header>Tooltip</se-tooltip-header>
+      <se-tooltip-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur adipiscing elit</se-tooltip-content>
+      <se-tooltip-footer>
+        <se-button option="raised" color="secondary">Retry</se-button>
+      </se-tooltip-footer> -->
+    </se-tooltip>
   </se-app>
 
   <script>
@@ -1013,10 +1027,10 @@
     }
 
     // grid widget
-    function toggle(id) {
+    function toggle(id, enlargedClass) {
       let block = document.getElementById("block" + id);
       let icon = block.querySelector('div[slot="end"] > se-icon');
-      block.enlarged = !block.enlarged;
+      block.enlarged = !block.enlarged ? (enlargedClass ? enlargedClass : true) : false;
       icon.innerText = block.enlarged ? 'exit_presentation' : 'presentation_mode';
     }
     document.querySelector('se-slider').addEventListener('didChange', function (event) {

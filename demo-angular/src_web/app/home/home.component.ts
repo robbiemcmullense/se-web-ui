@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
     const title = this.dialogService.alert({
       title: 'Dialog With Title & Icon',
       message:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+        'Lorem ipsum dolor sit amet, <br /><br /><a href="/">consectetur adipiscing elit</a>, <strong>sed</strong> do <em>eiusmod</em> tempor incididunt ut labore et dolore magna aliqua',
       icon: 'help_wired_flat'
     });
     title.instance.afterClosed.subscribe(

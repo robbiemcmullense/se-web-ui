@@ -29,7 +29,7 @@ describe('ContainerComponent', () => {
     element.setProperty('direction', 'column');
     element.setProperty('color', 'alternative');
     await page.waitForChanges();	
-    expect(element).toHaveClass('alternative');
+    expect(element).toHaveClass('ct-bg-alternative');
     expect(element).toHaveClass('column-dir');
   });
 

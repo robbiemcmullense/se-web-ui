@@ -60,17 +60,17 @@ describe('ContainerComponent', () => {
 		expect(colEventSpy).toHaveBeenCalled();
 	});
 
-	it('should call the assignBlockClasses when the component loads with option set to widget, setting the color to standard', async() => {
+	it('should call the setProps when the component loads with option set to widget, setting the color to standard', async() => {
 		container.option = 'widget';
-		const eventSpy = jest.spyOn(container, 'assignBlockClasses');
+		const eventSpy = jest.spyOn(container, 'setProps');
 		container.componentWillLoad();
 		expect(eventSpy).toHaveBeenCalled();
 		expect(container.color).toEqual('standard');
 	});
 
-	it('should call the assignBlockClasses when the component loads with option set to card, keeping the color as alternative', async() => {
+	it('should call the setProps when the component loads with option set to card, keeping the color as alternative', async() => {
 		container.option = 'card';
-		const eventSpy = jest.spyOn(container, 'assignBlockClasses');
+		const eventSpy = jest.spyOn(container, 'setProps');
 		container.componentWillLoad();
 		expect(eventSpy).toHaveBeenCalled();
 		expect(container.color).toEqual('alternative');
