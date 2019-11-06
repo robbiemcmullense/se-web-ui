@@ -763,10 +763,13 @@
               <se-stepper-item label="Step 7"></se-stepper-item>
               <se-stepper-item label="Step 8"></se-stepper-item>
             </se-stepper>
+            <div style="border: 1px solid black; padding: 10px;">Selected Primary Step: <span id="stepper-message">Step 1</span>
+              <se-button onclick="updatePrimaryStepper()">Primary Submit</se-button>
+            </div>
             <div>Alternative Color Stepper (non-linear mode):</div>
             <se-stepper id="alt-stepper" color="alternative">
               <se-stepper-item label="Alt 1" required="true"></se-stepper-item>
-              <se-stepper-item label="Alt 2"></se-stepper-item>
+              <se-stepper-item label="Alt 2" required="true"></se-stepper-item>
               <se-stepper-item label="Alt 3"></se-stepper-item>
               <se-stepper-item label="Alt 4"></se-stepper-item>
               <se-stepper-item label="Alt 5"></se-stepper-item>
@@ -774,8 +777,7 @@
               <se-stepper-item label="Alt 7"></se-stepper-item>
               <se-stepper-item label="Alt 8"></se-stepper-item>
             </se-stepper>
-            <div style="border: 1px solid black; padding: 10px;">Selected Primary Step: <span id="stepper-message">Step 1</span>
-              <se-button onclick="updatePrimaryStepper()">Primary Submit</se-button>
+            <div style="border: 1px solid black; padding: 10px;">
               <se-button onclick="updateAltStepper()">Alt Submit</se-button>
             </div>
           </se-block-content>

@@ -64,10 +64,12 @@ export class StepperComponent {
       if (this.items.indexOf(item) == this.index && item.required && !removeReq) {
         removeReq = true;
         this.index = this.items.indexOf(item) + 1;
-        this.items[this.index].classList.add('active');
+        const nextItem: HTMLElement = this.items[this.index].shadowRoot.querySelector('.stepper-item');
+        nextItem.click();
         this.addCheckmark(this.index-1);
+        
         if (this.linear) {
-          this.items[this.index].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+          nextItem.classList.remove('disabled');
           if (!this.items[this.index].getAttribute('required')) {
             this.items[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
           }
@@ -80,7 +82,7 @@ export class StepperComponent {
         if (itemIndex >= this.index) {
           item.shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
         }
-        if (item.getAttribute('required')) {
+        if (item.getAttribute('required') && this.items.indexOf(item) >= this.index) {
           break;
         }
       }
