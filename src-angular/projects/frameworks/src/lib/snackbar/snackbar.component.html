@@ -5,6 +5,8 @@
 [icon]="config.icon" 
 [message]="config.message" 
 [canClose]="config.canClose" 
-[closeText]="config.closeText" 
-(didClose)="closeEvent()">
+[actionText]="config.actionText"
+[duration]="config.duration"
+(didClose)="closeEvent()"
+(actionClicked)="actionClickedEvent()">
 </se-snackbar>

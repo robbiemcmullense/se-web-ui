@@ -26,6 +26,9 @@
 .se-list-item {
   width: 100%;
   width: -webkit-fill-available;
+  button {
+    transition: .2s;
+  }
 
   &.classic,
   &.nav {

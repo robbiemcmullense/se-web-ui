@@ -1,6 +1,7 @@
 @import "../../theme/theme";
 
 :host {
+  box-sizing: border-box;
   overflow: auto;
 }
 
@@ -41,13 +42,38 @@
   padding: 0;
   height: 100%;
 }
-
 :host(.card-content:not(.block-display)) {
   padding: $spacing;
 }
-
+:host(.ct-padding-none),
+:host(.ct-padding-none.card-content:not(.block-display)),
+:host(.ct-padding-none.fill-content:not(.block-display)),
+:host(.ct-padding-none.widget-content:not(.block-display)) {
+  padding: 0;
+}
+:host(.ct-padding-small),
+:host(.ct-padding-small.card-content:not(.block-display)),
+:host(.ct-padding-small.fill-content:not(.block-display)),
 :host(.widget-content:not(.block-display)) {
   padding: $spacing-small;
+}
+:host(.ct-padding-medium),
+:host(.ct-padding-medium.card-content:not(.block-display)),
+:host(.ct-padding-medium.fill-content:not(.block-display)),
+:host(.ct-padding-medium.widget-content:not(.block-display)) {
+  padding: $spacing;
+}
+:host(.ct-padding-large),
+:host(.ct-padding-large.card-content:not(.block-display)),
+:host(.ct-padding-large.fill-content:not(.block-display)),
+:host(.ct-padding-large.widget-content:not(.block-display)) {
+  padding: $spacing-large;
+}
+:host(.ct-padding-xlarge),
+:host(.ct-padding-xlarge.card-content:not(.block-display)),
+:host(.ct-padding-xlarge.fill-content:not(.block-display)),
+:host(.ct-padding-xlarge.widget-content:not(.block-display)) {
+  padding: $spacing-xlarge;
 }
 
 :host(.centered-content) {
@@ -66,11 +92,10 @@
   }
 }
 
-:host(.standard) {
+:host(.ct-bg-standard) {
   @include background-color('background');
 }
-
-:host(.alternative) {
+:host(.ct-bg-alternative) {
   @include color("alternative-contrast");
   @include background-color("alternative");
 }
