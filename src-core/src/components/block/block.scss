@@ -5,55 +5,118 @@
   position: relative;
   @include display-flex();
 }
-:host(.flex){
+:host(.block-flex){
   width: 100%;
   height: 100%;
   @include flex-direction(column);
 }
-:host(.block){
+:host(.block-block){
   width: auto;
   height: auto;
 }
-:host(.grid){
+:host(.block-grid){
   width: 100%;
   height: 100%;
 }
-:host(.grid-large){
+:host(.block-grid-large){
   grid-column: span 2;
   grid-row: span 2;
 }
 
+.block-body.card {
+  border-radius: $border-radius-card;
+  box-shadow: 0 0 1px 0 rgba(51,51,51,0.14), 0 2px 7px 0 rgba(51,51,51,0.2);
+}
+
+.clickable {
+  position: relative;
+  &:hover {
+    cursor: pointer;     
+    box-shadow: 0 0 1px 0 rgba(51,51,51,0.14), 0 2px 7px 0 rgba(51,51,51,0.2);
+  }
+  &:hover:before {
+    @include background-color('primary');
+    height: 3px;
+  }
+  &:before {
+    content: '';
+    background: rgba(255,255,255,0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100%);
+    max-width: calc(100%);
+    text-align: center;
+    transition: .2s;
+  }
+  &.corner {
+    &-0:before {
+      border-radius: 0 0 0 0;
+    }
+    &-2:before {
+      border-radius: 2px 2px 0 0;
+    }
+    &-4 {
+      border-radius: 4px 4px 0 0;
+    }
+  }
+}
 
 .block-body {
   overflow: auto;
+  transition: .2s;
   @include flex();
   @include display-flex();
   @include flex-direction(column);
-
   &.basic {
-
-      margin: 0;
-
+    margin: 0;
   }
-
   &.widget {
-
-      margin: $spacing;
-
+    margin: $spacing;
   }
-
   &.card {
-
-      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-      border-radius: $border-radius-card;
-      margin: $spacing-large;
-
+    margin: $spacing-large;
+    &.corner {
+      &-0 {
+        border-radius: 0;
+      }
+      &-2 {
+        border-radius: 2px;
+      }
+    }
   }
-
+  &.margin {
+    &-none {
+      margin: 0;
+    }
+    &-small {
+      margin: $spacing-small;
+    }
+    &-medium {
+      margin: $spacing;
+    }
+    &-large {
+      margin: $spacing-large;
+    }
+    &-xlarge {
+      margin: $spacing-xlarge;
+    }
+  }
+  &.outline {
+    border: 1px solid;
+    @include border-color('standard');
+    &-primary {
+      border: 1px solid;
+      @include border-color('primary');
+    }
+    &-secondary {
+      border: 1px solid;
+      @include border-color('secondary');
+    }
+  }
   &.standard {
     @include background-color('background');
   }
-
   &.alternative {
     @include background-color('alternative');
   }
