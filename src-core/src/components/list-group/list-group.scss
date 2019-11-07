@@ -24,12 +24,11 @@
 
   &.treeview {
     button {
-      flex-direction: row-reverse;
       padding: 5.5px 0;
       .nav-icon {
         margin: -3px -8px -3px 4px;
         + .nav-content {
-          padding-left: 12px;
+          padding-left: 2px;
         }
       }
     }
