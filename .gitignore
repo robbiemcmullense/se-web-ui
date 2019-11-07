@@ -5,6 +5,7 @@ docs/build/
 core/
 angular/
 coverage
+src-core/src/components/*/readme.md
 
 package-lock.json
 

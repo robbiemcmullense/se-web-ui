@@ -156,7 +156,7 @@ export class SidemenuComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} />,
+        <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} id={item.id ? `list-${item.id}` : ''}/>,
       ]
     })
   }

@@ -19,6 +19,33 @@
   }
 }
 
+:host(.banner-child) {
+  button {
+    height: 40px;
+    margin-right: $spacing-large;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :host(.banner-child) {
+    display: flex;
+    button {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  :host(.banner-child) {
+    button {
+      &.outline {
+        color: $se-white;
+        border-color: $se-white;
+      }
+    }
+  }
+}
+
 :host(.grouped) {
   button {
     margin: $spacing-small 0;

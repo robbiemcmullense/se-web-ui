@@ -1,6 +1,7 @@
 @import "../../theme/theme";
 
 :host {
+  box-sizing: border-box;
   overflow: auto;
 }
 
@@ -91,10 +92,10 @@
   }
 }
 
-:host(.ct-background-standard) {
+:host(.ct-bg-standard) {
   @include background-color('background');
 }
-:host(.ct-background-alternative) {
+:host(.ct-bg-alternative) {
   @include color("alternative-contrast");
   @include background-color("alternative");
 }

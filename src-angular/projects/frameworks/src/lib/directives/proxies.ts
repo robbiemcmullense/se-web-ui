@@ -38,8 +38,32 @@ export class SeAuthentication {
 }
 proxyInputs(SeAuthentication, ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'link', 'logo', 'version']);
 
+export declare interface SeBanner extends Components.SeBanner {}
+@Component({ selector: 'se-banner', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['duration'] })
+export class SeBanner {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(SeBanner, ['duration']);
+
+export declare interface SeBannerItem extends Components.SeBannerItem {}
+@Component({ selector: 'se-banner-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'imageUrl'] })
+export class SeBannerItem {
+  didChange!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didChange']);
+  }
+}
+proxyInputs(SeBannerItem, ['active', 'imageUrl']);
+
 export declare interface SeBlock extends Components.SeBlock {}
-@Component({ selector: 'se-block', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width'] })
+@Component({ selector: 'se-block', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'clickableBar', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width'] })
 export class SeBlock {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -47,7 +71,7 @@ export class SeBlock {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeBlock, ['clickable', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width']);
+proxyInputs(SeBlock, ['clickable', 'clickableBar', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width']);
 
 export declare interface SeBlockContent extends Components.SeBlockContent {}
 @Component({ selector: 'se-block-content', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option'] })
