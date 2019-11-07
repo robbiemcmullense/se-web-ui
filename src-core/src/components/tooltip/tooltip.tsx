@@ -94,8 +94,25 @@ export class TooltipComponent {
   }
 
   render() {
+    const containsFab = (this.el as HTMLElement).querySelector("se-fab");
+    const tooltipPosition = this.el.getAttribute("position");
+    
+    if (!!this.el.shadowRoot.querySelector("div .tooltip") && containsFab && containsFab.getAttribute("position") === "top") {
+      const fabButtonHeight = this.el.querySelector("se-fab").shadowRoot.querySelector("se-button").shadowRoot.querySelector("button");
+      const fabHeight = this.el.querySelector("se-fab").shadowRoot.querySelector("div").offsetTop;
+      if (!!tooltipPosition && tooltipPosition === "left") {
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(${fabHeight}px + ${fabButtonHeight.offsetTop}px + (${fabButtonHeight.offsetHeight}px / 2))`)
+      } else if (!!tooltipPosition && tooltipPosition === "top") {
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `bottom: calc(100vh - ${fabHeight}px - 8px `)
+      } else if (tooltipPosition === null || tooltipPosition === "bottom") {
+        this.el.shadowRoot.querySelector(".tooltip").setAttribute("style", `top: calc(${fabHeight}px + ${fabButtonHeight.offsetHeight}px + 8px`)
+      }
+    }
     return (
-      <div class={this.position}>
+      <div class={[
+        this.position ? `tooltip-${this.position}` : 'tooltip-bottom', 
+        containsFab ? `tooltip-fab${containsFab.getAttribute("position") === "top" ? '-top' : ''}` : '']
+        .join(' ')}>
         <div onClick={this.action == "click"? ev => {this._toggle(ev)}: () => {}}>
           <slot name="tooltip" />
         </div>

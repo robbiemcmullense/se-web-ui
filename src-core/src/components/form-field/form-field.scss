@@ -39,6 +39,7 @@ $max-width-input: 320px;
     font-family: inherit;
     font-size: 14px;
     padding-left: 7px;
+    transition: .2s;
   }
   
   ::slotted(input[disabled]) {

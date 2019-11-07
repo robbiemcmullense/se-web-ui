@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, Element, h, Prop, Host } from "@stencil/core";
 
 @Component({
   tag: "se-block-footer",
@@ -6,6 +6,11 @@ import { Component, h, Prop } from "@stencil/core";
   shadow: true
 })
 export class BlockFooter {
+  @Element() el: HTMLElement;
+  /**
+  * 
+  */
+  @Prop() divider: boolean;
   /**
    * Defines the visual appearance of a footer.
    * Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
@@ -20,10 +25,13 @@ export class BlockFooter {
 
   render() {
     return (
-      <div class={['se-block-footer', this.option, this.direction].join(' ')}>
-        <div class="flex"><slot name="start"></slot></div>
-        <slot></slot>
-      </div>
+      <Host>
+        {this.divider ? <se-divider></se-divider> : null}
+        <div class={['se-block-footer', this.option, this.direction].join(' ')}>
+          <div class="flex"><slot name="start"></slot></div>
+          <slot></slot>
+        </div>
+      </Host>
     )
   }
 }

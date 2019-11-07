@@ -38,8 +38,32 @@ export class SeAuthentication {
 }
 proxyInputs(SeAuthentication, ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'link', 'logo', 'version']);
 
+export declare interface SeBanner extends Components.SeBanner {}
+@Component({ selector: 'se-banner', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['duration'] })
+export class SeBanner {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyInputs(SeBanner, ['duration']);
+
+export declare interface SeBannerItem extends Components.SeBannerItem {}
+@Component({ selector: 'se-banner-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'imageUrl'] })
+export class SeBannerItem {
+  didChange!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didChange']);
+  }
+}
+proxyInputs(SeBannerItem, ['active', 'imageUrl']);
+
 export declare interface SeBlock extends Components.SeBlock {}
-@Component({ selector: 'se-block', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'display', 'enlarged', 'height', 'loading', 'option', 'width'] })
+@Component({ selector: 'se-block', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'clickableBar', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width'] })
 export class SeBlock {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -47,7 +71,7 @@ export class SeBlock {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeBlock, ['color', 'display', 'enlarged', 'height', 'loading', 'option', 'width']);
+proxyInputs(SeBlock, ['clickable', 'clickableBar', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width']);
 
 export declare interface SeBlockContent extends Components.SeBlockContent {}
 @Component({ selector: 'se-block-content', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option'] })
@@ -61,7 +85,7 @@ export class SeBlockContent {
 proxyInputs(SeBlockContent, ['option']);
 
 export declare interface SeBlockFooter extends Components.SeBlockFooter {}
-@Component({ selector: 'se-block-footer', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['direction', 'option'] })
+@Component({ selector: 'se-block-footer', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['direction', 'divider', 'option'] })
 export class SeBlockFooter {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -69,10 +93,10 @@ export class SeBlockFooter {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeBlockFooter, ['direction', 'option']);
+proxyInputs(SeBlockFooter, ['direction', 'divider', 'option']);
 
 export declare interface SeBlockHeader extends Components.SeBlockHeader {}
-@Component({ selector: 'se-block-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option'] })
+@Component({ selector: 'se-block-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['divider', 'option'] })
 export class SeBlockHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -80,7 +104,7 @@ export class SeBlockHeader {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeBlockHeader, ['option']);
+proxyInputs(SeBlockHeader, ['divider', 'option']);
 
 export declare interface SeBreadcrumb extends Components.SeBreadcrumb {}
 @Component({ selector: 'se-breadcrumb', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
@@ -145,7 +169,7 @@ export class SeChip {
 proxyInputs(SeChip, ['block', 'canClose', 'color', 'disabled', 'selected', 'size', 'value']);
 
 export declare interface SeContainer extends Components.SeContainer {}
-@Component({ selector: 'se-container', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'position', 'rowSize'] })
+@Component({ selector: 'se-container', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'padding', 'position', 'rowSize'] })
 export class SeContainer {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -153,7 +177,7 @@ export class SeContainer {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeContainer, ['color', 'columnSize', 'direction', 'display', 'option', 'position', 'rowSize']);
+proxyInputs(SeContainer, ['color', 'columnSize', 'direction', 'display', 'option', 'padding', 'position', 'rowSize']);
 
 export declare interface SeDialog extends Components.SeDialog {}
 @Component({ selector: 'se-dialog', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canBackdrop', 'color', 'open', 'size'] })
