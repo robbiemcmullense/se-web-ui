@@ -27,10 +27,10 @@ RUN npm -v
 RUN node -v
 
 COPY ./ .
-# RUN yarn install
-# RUN yarn build
+RUN yarn install
+RUN yarn build
 
-# RUN yarn test
+RUN yarn test
 
 RUN if [ "$RELEASE" = "false" ] ; then echo 'Test mode only'; else \
   npm config set "@se:registry" "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/" \
