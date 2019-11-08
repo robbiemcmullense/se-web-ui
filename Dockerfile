@@ -36,5 +36,5 @@ RUN if [ "$RELEASE" = "false" ] ; then echo 'Test mode only'; else \
   npm config set "@se:registry" "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/" \
   && npm config set "//nexus.tools.struxurewarecloud.com/repository/npm-internal/:_authToken" $NPM_TOKEN \
   && echo "Releasing the app..." \
-  # && yarn release \
+  && yarn release \
   ; fi
