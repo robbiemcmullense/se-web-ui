@@ -23,17 +23,23 @@
   }
 
   &.treeview {
+    padding-left: 4px;
     button {
-      padding: 5.5px 0;
+      padding: 4px 0;
+      se-icon.treeview-collapse-icon {
+        + .nav-icon {
+          margin-left: 6px;
+        }
+      }
       .nav-icon {
-        margin: -3px -8px -3px 4px;
+        margin-right: 0;
         + .nav-content {
           padding-left: 2px;
         }
       }
-    }
-    .nav-content {
-      padding-left: 0;
+      .nav-content {
+        padding-left: 8px;
+      }
     }
     // Align right-caret icon on MS Edge.
     // Will remove when Chromium-based Edge browser is released.
@@ -76,20 +82,12 @@
     background-color:$se-ultra-dark-grey;
     }
   }
+
+  .list-group-label {
+    line-height: 24px;
+  }
 }
 
-.se-list-group.treeview {
-  .nav-icon {
-    margin-right: 0;
-    margin-left: -4px;
-  }
-  .nav-content {
-    margin-right: 8px;
-  }
-  se-icon {
-    margin: -4px 0;
-  }
-}
 .se-list-group.dropdown button {
   margin-top: -1px;
 }
