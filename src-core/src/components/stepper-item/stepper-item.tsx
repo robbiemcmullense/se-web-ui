@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-stepper-item",
@@ -20,13 +20,17 @@ export class StepperItemComponent {
    * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
    */
   @Prop() isLast: boolean = false;
+  @Element() el: HTMLElement;
   /**
    * Event to send to the parent component when clicking on a stepper item.
    */
   @Event() didClick: EventEmitter;
 
   emitEvent() {
-    this.didClick.emit(this.label);
+    this.didClick.emit({
+      label: this.label,
+      el: this.el
+    });
   }
 
   render() {

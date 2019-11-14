@@ -45,7 +45,7 @@ se-divider {
   margin-right: $spacing;
 }
 
-:host(.primary.active) {
+:host(.primary.selected) {
   .indicator {
    background-color: $se-life-green;
   }
@@ -54,7 +54,7 @@ se-divider {
   }
 }
 
-:host(.alternative.active) {
+:host(.alternative.selected) {
   .indicator {
     background-color: $se-white;
     color: $se-life-green;

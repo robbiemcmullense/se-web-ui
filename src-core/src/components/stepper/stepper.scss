@@ -13,4 +13,15 @@ ol {
   display: flex;
   justify-content: center;
   padding: $spacing-large;
+  margin-bottom: 0;
+}
+
+::slotted(div[slot="stepper-item-content"]) {
+  width: auto;
+  display: none;
+  color: $se-anthracite-grey;
+}
+
+::slotted(div[slot="stepper-item-content"].active) {
+  display: block;
 }

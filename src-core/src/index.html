@@ -338,7 +338,8 @@
           <se-list-item id="item1" item="my item 1" selected="false" icon="user_standard" icon-color="primary"
             description="I have a description">
           </se-list-item>
-          <se-list-item id="item2" item="my item 2 no description with a long text" icon="user_standard" icon-color="primary">
+          <se-list-item id="item2" item="my item 2 no description with a long text" icon="user_standard"
+            icon-color="primary">
           </se-list-item>
           <se-list-item id="item3" item="my item 3 no icon" description="I'm here too">
           </se-list-item>
@@ -463,7 +464,8 @@
         </se-container>
 
         <se-container option="widget" display="grid" column-size="350px" row-size="350px">
-          <se-block option="card-old" color="none" outline="true" corner="none" outline-color="secondary" clickable="true" id="block0">
+          <se-block option="card-old" color="none" outline="true" corner="none" outline-color="secondary"
+            clickable="true" id="block0">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -504,7 +506,8 @@
               <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
             </se-block-footer>
           </se-block>
-          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano" outline="true" id="block1">
+          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano"
+            outline="true" id="block1">
             <se-block-header>
               Headline list with colored icons
               <div slot="end">
@@ -527,7 +530,8 @@
               </se-list>
             </se-block-content>
           </se-block>
-          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true" id="block2">
+          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true"
+            id="block2">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">connection_bluetooth</se-icon>
@@ -654,12 +658,14 @@
               </se-radio-group>
             </se-block-content>
           </se-block>
-          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard" id="block3">
+          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard"
+            id="block3">
             <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
             <se-block-header>
               Forms
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode
+                </se-icon>
               </div>
             </se-block-header>
             <se-block-content>
@@ -862,7 +868,7 @@
               </div>
             </se-block-content>
           </se-block>
-          <se-block enlarged="horizontal" id="block10">
+          <se-block enlarged="true" id="block10">
             <se-block-header>Stepper
               <div slot="end">
                 <se-icon option="button" color="alternative" onclick="toggle(10)">exit_presentation</se-icon>
@@ -870,29 +876,49 @@
             </se-block-header>
             <se-block-content>
               <div>Primary Color Stepper (linear mode):</div>
-            <se-stepper id="primary-stepper" linear="true">
-              <se-stepper-item label="Step 1" required="true"></se-stepper-item>
-              <se-stepper-item label="Step 2"></se-stepper-item>
-              <se-stepper-item label="Step 3"></se-stepper-item>
-              <se-stepper-item label="Step 4" required="true"></se-stepper-item>
-              <se-stepper-item label="Step 5"></se-stepper-item>
-              <se-stepper-item label="Step 6"></se-stepper-item>
-            </se-stepper>
-            <div style="border: 1px solid black; padding: 10px;">Selected Primary Step: <span id="stepper-message">Step 1</span>
-              <se-button onclick="updatePrimaryStepper()">Primary Submit</se-button>
-            </div>
-            <div style="margin-top: 10px;">Alternative Color Stepper (non-linear mode):</div>
-            <se-stepper id="alt-stepper" color="alternative">
-              <se-stepper-item label="Alt 1" required="true"></se-stepper-item>
-              <se-stepper-item label="Alt 2"></se-stepper-item>
-              <se-stepper-item label="Alt 3"></se-stepper-item>
-              <se-stepper-item label="Alt 4" required="true"></se-stepper-item>
-              <se-stepper-item label="Alt 5"></se-stepper-item>
-              <se-stepper-item label="Alt 6"></se-stepper-item>
-            </se-stepper>
-            <div style="border: 1px solid black; padding: 10px;">
-              <se-button onclick="updateAltStepper()">Alt Submit</se-button>
-            </div>
+              <se-stepper id="primary-stepper" linear="true">
+
+                <se-stepper-item label="Step 1" required="true"></se-stepper-item>
+                <se-stepper-item label="Step 2"></se-stepper-item>
+                <se-stepper-item label="Step 3"></se-stepper-item>
+                <se-stepper-item label="Step 4" required="true"></se-stepper-item>
+                <se-stepper-item label="Step 5"></se-stepper-item>
+                <se-stepper-item label="Step 6"></se-stepper-item>
+
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
+                  <se-button onclick="updatePrimaryStepper()">Submit Primary Step 1</se-button>
+                </div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Second Step</div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Third Step</div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
+                  <se-button onclick="updatePrimaryStepper()">Submit Primary Step 4</se-button>
+                </div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Fifth Step</div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Sixth Step</div>
+              </se-stepper>
+            </se-block-content>
+            <se-block-content>
+              <div style="margin-top: 10px;">Alternative Color Stepper (non-linear mode):</div>
+              <se-stepper id="alt-stepper" color="alternative">
+
+                <se-stepper-item label="Alt 1" required="true"></se-stepper-item>
+                <se-stepper-item label="Alt 2"></se-stepper-item>
+                <se-stepper-item label="Alt 3"></se-stepper-item>
+                <se-stepper-item label="Alt 4" required="true"></se-stepper-item>
+                <se-stepper-item label="Alt 5"></se-stepper-item>
+                <se-stepper-item label="Alt 6"></se-stepper-item>
+
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
+                  <se-button onclick="updateAltStepper()">Submit Alt Step 1</se-button>
+                </div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Second Step</div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Third Step</div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
+                  <se-button onclick="updateAltStepper()">Submit Alt Step 4</se-button>
+                </div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Fifth Step</div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Sixth Step</div>
+              </se-stepper>
             </se-block-content>
           </se-block>
         </se-container>
@@ -1121,9 +1147,6 @@
     });
     document.getElementById('radio-button-dot-group').addEventListener('didCheck', function (event) {
       document.getElementById('se-radio-value').innerText = event.detail.value;
-    });
-    document.getElementById('primary-stepper').addEventListener('optionSelected', function (event) {
-      document.getElementById('stepper-message').innerText = event.detail;
     });
 
     function updatePrimaryStepper() {
