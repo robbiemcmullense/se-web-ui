@@ -326,7 +326,7 @@
       <nav>
         <a class="active">Home</a>
         <a>Another</a>
-        <a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+        <a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
         <se-button color="alternative" option="outline">alternative</se-button>
@@ -421,7 +421,7 @@
           <se-list-item item="My last item"></se-list-item>
         </se-list>
       </se-block>
-      <se-divider option="vertical"></se-divider>
+      <se-divider option="vertical"></se-divider>         
 
       <se-container option="centered" direction="column" position="relative" display="block">
         <se-container display="block">
@@ -802,7 +802,7 @@
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-block-content>
           </se-block>
-          <se-block enlarged="horizontal" id="block9">
+          <se-block id="block9">
             <se-block-header>
               Tooltips
               <div slot="end">
@@ -860,6 +860,42 @@
                   Tooltip Top
                 </se-tooltip>
               </div>
+            </se-block-content>
+          </se-block>
+          <se-block outline="true" outline-color="primary" color="standard" enlarged="horizontal" id="block9">
+            <se-block-header>
+              Tabbars
+            </se-block-header>
+            <se-block-content>
+              <br>
+              <se-tabbar color="alternative">
+                <nav>
+                  <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a>
+                </nav>
+                <nav slot="end">
+                  <se-button color="primary" option="outline">primary</se-button>
+                </nav>
+              </se-tabbar>
+              <br>
+              <se-tabbar color="primary"> </se-tabbar>
+              <br>
+              <se-tabbar option="content" color="primary" display="centered">
+                <nav>
+                  <a>Introduction</a>
+                  <a class="active">Installation</a>
+                  <a disabled>Maintenance</a>
+                  <a>Glossary</a>
+                </nav>
+              </se-tabbar>
+              <br>
+              <se-tabbar option="content" color="alternative" display="centered">
+                <nav>
+                  <a>Introduction</a>
+                  <a class="active">Installation</a>
+                  <a disabled>Maintenance</a>
+                  <a>Glossary</a>
+                </nav>
+              </se-tabbar>
             </se-block-content>
           </se-block>
         </se-container>
