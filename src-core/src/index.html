@@ -326,7 +326,7 @@
       <nav>
         <a class="active">Home</a>
         <a>Another</a>
-        <a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+        <a>Another</a><a disabled>Another</a><a>Another<se-icon>arrow2_right</se-icon></a><a><se-icon>earth_arrow</se-icon>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
         <se-button color="alternative" option="outline">alternative</se-button>
@@ -810,7 +810,7 @@
               </div>
             </se-block-header>
             <se-block-content>
-              <div style="padding-left:100px;">
+              <div style="padding-left:50px;">
                 <h4>Tooltip OnClick</h4>
                 <se-tooltip action="click">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
@@ -825,7 +825,7 @@
                     Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
                 </se-tooltip>
               </div>
-              <div style="padding-left:100px;">
+              <div style="padding-left:50px;">
                 <se-tooltip action="click">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
                   <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
@@ -841,7 +841,7 @@
                   </se-tooltip-footer>
                 </se-tooltip>
               </div>
-              <div style="padding-top:140px;padding-left: 100px;">
+              <div style="padding-top:40px;padding-left:50px;">
                 <h4>Tooltip OnHover</h4>
                 <se-tooltip position="right">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
@@ -870,10 +870,7 @@
               <br>
               <se-tabbar color="alternative">
                 <nav>
-                  <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a>
-                </nav>
-                <nav slot="end">
-                  <se-button color="primary" option="outline">primary</se-button>
+                  <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another<se-icon>arrow2_right</se-icon></a><a><se-icon>earth_arrow</se-icon>Another</a>
                 </nav>
               </se-tabbar>
               <br>
@@ -883,8 +880,8 @@
                 <nav>
                   <a>Introduction</a>
                   <a class="active">Installation</a>
-                  <a disabled>Maintenance</a>
-                  <a>Glossary</a>
+                  <a disabled>Maintenance<se-icon>arrow2_right</se-icon></a>
+                  <a><se-icon>earth_arrow</se-icon>Glossary</a>
                 </nav>
               </se-tabbar>
               <br>

@@ -41,7 +41,7 @@
   width: 100%;
   &.opt-nav {
     nav > a, nav > span {
-      margin: 0 $spacing-large;
+      margin: 0 calc(#{$spacing-large} * 1.5);
     }
     nav > a[disabled] {
       color: $se-light-green;
@@ -54,6 +54,8 @@
       box-sizing: border-box;
       height: 46px;
       margin: 1px;
+      min-width: calc(100% - 2px);
+      width: calc(100% - 2px);
       > a {
         border-right: 1px solid $se-ultra-light-grey-1;
         border-left: 1px solid $se-ultra-light-grey-1;
@@ -61,7 +63,6 @@
         @include  color('alternative-contrast');
         margin-left: -1px;
         padding: 0 $spacing-xlarge;
-        transition: .2s;
         &:not([disabled]):hover {
           background-color: $se-light-grey;
         }
@@ -115,10 +116,11 @@
       font-weight: 500;
       position: relative;
       cursor: pointer;
-      display: inline-block;
+      display: flex;
       padding-right: 0;
       padding-left: 0;
       text-decoration: none;
+      transition: .2s;
       height: 100%;
       &:focus {
         background-color: transparent;
@@ -134,7 +136,7 @@
         left: 0;
         bottom: -4px;
         height: 4px;
-        transition: linear .1s;
+        transition: .2s;
         width: 100%;
       }
       &.active:after{
@@ -144,6 +146,9 @@
         opacity: 0.8;
         padding: 0.1em 0.4em 0.2em;
         margin-bottom: 2px;
+      }
+      > se-icon {
+        margin: -2px 0 0;
       }
     }
   }
@@ -212,7 +217,7 @@
           bottom: 0;
           display: inline-block;
         }
-        &:hover:after {
+        &:hover:not([disabled]):after {
           @include background-color('primary');
           height: 4px;
         }
@@ -238,7 +243,6 @@
     }
   }
   nav > a, nav > span {
-    transition: linear .1s;
     @include  color('alternative-contrast');
     &.active:after {
       @include  background-color('primary');
