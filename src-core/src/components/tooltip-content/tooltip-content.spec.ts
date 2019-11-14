@@ -12,20 +12,12 @@ describe('TooltipContentComponent', () => {
     expect(tooltipContent).toBeTruthy();
   });
 
-  it('should render', async() => {
+  it('should render with a tooltip-content class', async() => {
     const page = await newSpecPage({
 			components: [TooltipContentComponent],
 			html: `<se-tooltip-content></se-tooltip-content>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-tooltip-content>
-				<mock:shadow-root>
-					<div class="tooltip-content">
-						<slot></slot>
-					</div>
-				</mock:shadow-root>
-			</se-tooltip-content>
-		`);
+		expect(page.root.shadowRoot.querySelector('.tooltip-content')).toBeTruthy();
   });
 
   it('should render with an se-icon component when an icon property is specified', async() => {
@@ -33,15 +25,6 @@ describe('TooltipContentComponent', () => {
 			components: [TooltipContentComponent],
 			html: `<se-tooltip-content icon="my icon"></se-tooltip-content>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-tooltip-content icon="my icon">
-				<mock:shadow-root>
-          <div class="tooltip-content">
-            <se-icon class="se-icon" size="small">my icon</se-icon>
-						<slot></slot>
-					</div>
-				</mock:shadow-root>
-			</se-tooltip-content>
-		`);
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
   });
 });

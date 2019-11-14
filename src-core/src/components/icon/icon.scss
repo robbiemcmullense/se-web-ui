@@ -6,7 +6,6 @@
   speak: none;
   font-style: normal;
   position: relative;
-  top: 0;
   font-size: 24px;
   font-weight: normal;
   font-variant: normal;
@@ -16,6 +15,7 @@
   text-rendering: auto; // optimizelegibility throws things off #1094
   font-smoothing: antialiased;
   letter-spacing: normal;
+  vertical-align: middle;
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
@@ -23,6 +23,7 @@
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "liga";
   font-display: block;
+  transition: .2s;
 
   &.icon-nano {
     font-size: 14px;
@@ -109,7 +110,7 @@
         @include background-color("hover-primary");
       }
     }
-  
+
     &.secondary {
       @include color("secondary-contrast");
       @include background-color("secondary");

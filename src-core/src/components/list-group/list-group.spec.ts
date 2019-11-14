@@ -20,10 +20,6 @@ describe('list-group', () => {
     expect(listGroup.collapsed).toBeFalsy();
   });
 
-  it('should be in classic option by default', () => {
-    expect(listGroup.option).toEqual('classic');
-  });
-
   it('should be have canCollapse true by default', () => {
     expect(listGroup.canCollapse).toBe(true);
   });
@@ -33,51 +29,25 @@ describe('list-group', () => {
 			components: [ListGroupComponent],
 			html: `<se-list-group></se-list-group>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-list-group>
-				<mock:shadow-root>
-				  <div class="classic se-list-group">
-            <button style="padding-left: 0px">
-              <div class="nav-content">
-                <div></div>
-                <small></small>
-              </div>
-              <se-icon size="medium">arrow2_up</se-icon>
-            </button>
-            <div class="group-item">
-              <slot/>
-            </div>
-          </div>
-				</mock:shadow-root>
-			</se-list-group>
-		`);
+		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_up');
   });
 
-  it('should render a div element with the selectedBar class when selected is true and option is set to nav', async() => {
+  it('should render the button with attribute "disabled" true when canCollapse is false', async() => {
 		const page = await newSpecPage({
 			components: [ListGroupComponent],
-			html: `<se-list-group option="nav" selected="true"></se-list-group>`,
+			html: `<se-list-group can-collapse="false"></se-list-group>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-list-group option="nav" selected="true">
-				<mock:shadow-root>
-				  <div class="nav se-list-group">
-            <button class="selected" style="padding-left: 0px">
-              <div class="selectedBar"></div>
-              <div class="nav-content">
-                <div></div>
-                <small></small>
-              </div>
-              <se-icon size="medium">arrow2_up</se-icon>
-            </button>
-            <div class="group-item">
-              <slot/>
-            </div>
-          </div>
-				</mock:shadow-root>
-			</se-list-group>
-		`);
+		expect(page.root.shadowRoot.querySelector('button').getAttribute('disabled')).toBe('');
   });
+
+  it('should render the button without an arrow when canCollapse is false', async() => {
+		const page = await newSpecPage({
+			components: [ListGroupComponent],
+			html: `<se-list-group can-collapse="false"></se-list-group>`,
+		});
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBe(null);
+  });
+
   
   it('should call the setButtonId function when the component loads', async() => {
 		const eventSpy = jest.spyOn(listGroup, 'setButtonId');
@@ -87,15 +57,15 @@ describe('list-group', () => {
   
   it('should call the checkSelected function twice, when the collapsed property changes or a child becomes selected', async() => {
 		const eventSpy = jest.spyOn(listGroup, 'checkSelected');
-    listGroup.collapsedChanged();
-    listGroup.ChildUpdated();
+    listGroup.collapsedChanged(); // list group is collapsed
+    listGroup.ChildUpdated(); // child list item becomes selected/deselected
 		expect(eventSpy).toHaveBeenCalledTimes(2);
   });
   
   it('should emit the didGroupClick event when the toggleCollapse method is called', () => {
     listGroup.option = 'classic';
     const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
-    listGroup.toggleCollapse();
+    listGroup.toggleCollapse(); // list group button is clicked
     expect(eventSpy).toHaveBeenCalled();
   });
 
@@ -103,7 +73,7 @@ describe('list-group', () => {
     listGroup.option = 'treeview';
     const event = {target: {nodeName: 'SE-ICON'}};
     const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
-    listGroup.toggleCollapse(event);
+    listGroup.toggleCollapse(event); // list group button is clicked
     expect(eventSpy).not.toHaveBeenCalled();
   });
 
@@ -111,7 +81,23 @@ describe('list-group', () => {
     listGroup.option = 'treeview';
     const event = {target: {nodeName: 'button', className: 'button'}};
     const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
-    listGroup.toggleCollapse(event);
+    listGroup.toggleCollapse(event); // list group button is clicked
     expect(eventSpy).toHaveBeenCalled();
+  });
+
+  it('should inherit the headline option from its parent when specified', () => {
+    let parentListElm = document.createElement('se-list');
+    parentListElm.option = 'headline';
+    parentListElm.appendChild(listGroup.el);
+    listGroup.componentWillLoad();
+    expect(listGroup.option).toEqual('headline');
+  });
+
+  it('should set an indentation of 2 when its parent element has an indentation of 1', () => {
+    let parentListElm = document.createElement('se-list-group');
+    parentListElm.indentation = 1;
+    parentListElm.appendChild(listGroup.el);
+    listGroup.componentWillLoad();
+    expect(listGroup.indentation).toEqual(2);
   });
 });

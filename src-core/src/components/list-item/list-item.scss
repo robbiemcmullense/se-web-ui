@@ -4,7 +4,6 @@
   z-index: 0;
   margin: 0;
   font-weight: lighter;
-  font-size: 20px;
   @include display-flex();
 }
 
@@ -20,24 +19,27 @@
   }
 
   button {
-    outline: 1px solid $divider-color;
-    border-bottom: none;
+    border-bottom: 1px solid $divider-color;
   }
 }
 
 .se-list-item {
   width: 100%;
   width: -webkit-fill-available;
+  button {
+    transition: .2s;
+  }
 
   &.classic,
   &.nav {
     button {
-      height: 47px;
+      min-height: 47px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
     }
   }
 
-  &.classic {
+  &.classic, &.dropdown {
     button.selected {
       @include color('selected-contrast');
       @include background-color('selected');
@@ -55,8 +57,7 @@
 
   &.treeview {
     button {
-      min-height: 32px;
-      max-height: 32px;
+      padding: 4px 0;
       &.selected {
         @include color('selected-contrast');
         @include background-color('selected');
@@ -74,27 +75,52 @@
       }
     }
     .nav-content {
-      padding-left: 4px;
+      padding-left: 12px;
+    }
+    .nav-icon {
+      margin-left: 10px;
+      margin-right: 0;
+      + .nav-content {
+        padding-left: 2px;
+      }
     }
   }
 
   &.dropdown {
     button {
-      min-height: 40px;
+      min-height: 32px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
       border-bottom: none;
     }
     .nav-content{
-      padding-left: 10px;
+      padding: 0 10px;
+      .list-item-label {
+        font-size: $base-fontsize;
+        line-height: 20px;
+      }
     }
   }
 
   &.headline {
     button {
-      height: 42px;
+      min-height: 42px;
+      height: 42px; // IE fix so flexbox vertical alignment works
     }
   }
 
+}
+
+
+
+:host .dropdown {
+  button {
+    padding-left: 0;
+  }
+  .nav-icon {
+    margin-right: 0;
+    margin-left: 4px;
+  }
 }
 
 button {
@@ -122,11 +148,11 @@ button {
     }
   }
 }
-
 .selectedBar {
   position: absolute;
   top: 0;
   bottom: 0;
+  left: 0;
   width: 5px;
   @include background-color("primary");
 }
@@ -138,8 +164,9 @@ button {
 
 .nav-content {
   min-width: 0;
-  padding-left: 18px;
+  padding: 0 16px;
   margin: 0;
+  overflow: hidden;
   @include typology('base');
   @include flex();
   @include display-flex();
@@ -148,6 +175,17 @@ button {
 
   div, small {
     @include ellipsis();
-    margin-right: $spacing;
   }
+
+  .list-item-label {
+    line-height: 24px;
+  }
+
+  small {
+    font-size: $small-fontsize;
+    line-height: $small-fontsize;
+  }
+}
+se-list-item .nav-icon {
+  margin-left: 18px;
 }

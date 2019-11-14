@@ -15,12 +15,6 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(element).toHaveClass('hydrated');
 	});
 
-	it('should have hyrdated and classic classes by default', async () => {
-    const page = await renderComponent();
-    const element = await page.find('se-list-group >>> .se-list-group');
-    expect(element).toHaveClass('classic');
-  });
-
 	it('renders an arrow2_up icon by default', async() => {
     const page = await renderComponent();
 		const iconElm = await page.find('se-list-group >>> se-icon');
@@ -29,9 +23,8 @@ import { newE2EPage } from '@stencil/core/testing';
 
 	it('renders an arrow2_down icon when collapsed', async() => {
     const page = await renderComponent();
-		await page.$eval('se-list-group', (elm: any) => {
-			elm.collapsed = true;
-		});
+		const element = await page.find('se-list-group');
+		element.setProperty('collapsed', true);
 		await page.waitForChanges();
 		const iconElm = await page.find('se-list-group >>> se-icon');
 		expect(iconElm).toEqualText('arrow2_down');
@@ -39,9 +32,8 @@ import { newE2EPage } from '@stencil/core/testing';
 
 	it('renders an arrow2_right icon when the option is set to treeview', async() => {
     const page = await renderComponent();
-		await page.$eval('se-list-group', (elm: any) => {
-			elm.option = 'treeview';
-		});
+		const element = await page.find('se-list-group');
+		element.setProperty('option', 'treeview');
 		await page.waitForChanges();
 		const iconElm = await page.find('se-list-group >>> se-icon');
 		expect(iconElm).toEqualText('arrow2_right');
@@ -49,10 +41,9 @@ import { newE2EPage } from '@stencil/core/testing';
 
 	it('renders an icon element when the option is set to nav', async() => {
     const page = await renderComponent();
-		await page.$eval('se-list-group', (elm: any) => {
-			elm.option = 'nav';
-			elm.icon = 'my group test icon';
-		});
+		const element = await page.find('se-list-group');
+		element.setProperty('option', 'nav');
+		element.setProperty('icon', 'my group test icon');
 		await page.waitForChanges();
 		const parentElm = await page.find('se-list-group >>> .se-list-group');
 		expect(parentElm).toHaveClass('nav');
@@ -63,9 +54,8 @@ import { newE2EPage } from '@stencil/core/testing';
 
 	it('should add a selected class to the button element when the selected property is true', async() => {
 		const page = await renderComponent();
-		await page.$eval('se-list-group', (elm: any) => {
-      elm.selected = true;
-		});
+		const element = await page.find('se-list-group');
+		element.setProperty('selected', true);
     await page.waitForChanges();
     
     const buttonElm = await page.find('se-list-group >>> button');
@@ -74,9 +64,8 @@ import { newE2EPage } from '@stencil/core/testing';
 	
 	it('should add a selectedChild class to the button element when the selectedChild property is true', async() => {
 		const page = await renderComponent();
-		await page.$eval('se-list-group', (elm: any) => {
-      elm.selectedChild = true;
-		});
+		const element = await page.find('se-list-group');
+		element.setProperty('selectedChild', true);
     await page.waitForChanges();
     
     const buttonElm = await page.find('se-list-group >>> button');

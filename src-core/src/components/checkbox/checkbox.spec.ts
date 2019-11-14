@@ -24,8 +24,8 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.disabled).toBeFalsy();
 	});
 
-	it('should not be checked by default', () => {
-		expect(checkbox.checked).toBeFalsy();
+	it('should not be selected by default', () => {
+		expect(checkbox.selected).toBeFalsy();
 	});
 
 	it('should not be required by default', () => {
@@ -50,121 +50,62 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.header).toBeFalsy();
 	});
 
-	it('should be checked when selected is set to true', () => {
-		checkbox.selected = true;
-		checkbox.componentDidLoad();
-		expect(checkbox.checked).toBeTruthy();
-	});
-
-	it('should render in checkbox mode by default', async() => {
+	it('should render in checkbox mode by default with an input element', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox label="my label" required="true"></se-checkbox>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-checkbox label="my label" required="true">
-				<mock:shadow-root>
-					<div class="checkbox standard">
-						<div class="checkbox-wrapper">
-							<label class="checkbox-container">
-								my label
-								<span class="required">*</span>
-								<input type="checkbox" />
-								<span class="checkmark" data-color="primary"></span>
-							</label>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-checkbox>
-		`);
+		expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
 	});
 
-	it('should render in switch mode without a required asterisk', async() => {
+	it('should render "value" property as an input attribute', async() => {
+		const page = await newSpecPage({
+			components: [CheckboxComponent],
+			html: `<se-checkbox value="my value"></se-checkbox>`,
+		});
+		expect(page.root.shadowRoot.querySelector('input').getAttribute('value')).toBe('my value');
+	});
+
+	it('should render in switch mode with a checkbox-label class', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox option="switch" label="my label"></se-checkbox>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-checkbox option="switch" label="my label">
-				<mock:shadow-root>
-					<div class="switch standard">
-						<div class="checkbox-wrapper">
-							<label class="checkbox-container">
-								<input type="checkbox" />
-								<span class="checkmark" data-color="primary"></span>
-							</label>
-							<span class="checkbox-label">my label</span>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-checkbox>
-		`);
+		expect(page.root.shadowRoot.querySelector('.checkbox-label')).toBeTruthy();
 	});
 
-	it('should render in switch mode with a required asterisk', async() => {
+	it('should render with a required asterisk', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox option="switch" label="my label" required="true"></se-checkbox>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-checkbox option="switch" label="my label" required="true">
-				<mock:shadow-root>
-					<div class="switch standard">
-						<div class="checkbox-wrapper">
-							<label class="checkbox-container">
-								<input type="checkbox" />
-								<span class="checkmark" data-color="primary"></span>
-							</label>
-							<span class="checkbox-label">my label</span>
-							<span class="required">*</span>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-checkbox>
-		`);
+		expect(page.root.shadowRoot.querySelector('.required')).toBeTruthy();
 	});
 
-	it('should render in onoff mode with unique markup and ON and OFF labels', async() => {
+	it('should render in onoff mode with a .on-off-wrapper class', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox option="onoff"></se-checkbox>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-checkbox option="onoff">
-				<mock:shadow-root>
-					<div class="onoff standard">
-						<div class="on-off-wrapper">
-							<button class="active">ON</button>
-							<button class="inactive selected">OFF</button>
-						</div>
-					</div>
-				</mock:shadow-root>
-			</se-checkbox>
-		`);
+		expect(page.root.shadowRoot.querySelector('.on-off-wrapper')).toBeTruthy();
 	});
 
-	it('should call the updateSize function when the component loads', async() => {
+	it('should call the setElementId function when the component loads', async() => {
 		const eventSpy = jest.spyOn(checkbox, 'setElementId');
 		checkbox.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should set the checked property to true if the selected property is true when the component loads', async() => {
-		checkbox.selected = true;
-		checkbox.componentDidLoad();
-		expect(checkbox.checked).toBeTruthy();
-	});
-
-	it('should emit the didChange event when the emitEvent function is executed', async() => {
+	it('should emit the didChange event when the handleClick function is executed', async() => {
 		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
-		checkbox.emitEvent();
+		checkbox.handleClick();  // user clicks on the checkbox
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
 	it('should not emit the didChange event when the checkbox is disabled', async() => {
 		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
 		checkbox.disabled = true;
-		checkbox.emitEvent();
+		checkbox.handleClick(); // user clicks on the checkbox
 		expect(eventSpy).not.toHaveBeenCalled();
 	});
 });

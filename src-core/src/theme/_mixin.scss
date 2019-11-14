@@ -143,6 +143,15 @@ $prefix: "--se-"; //Prefix string for custom CSS properties
   }
 }
 
+@mixin slideDown() {
+  -webkit-animation: slideDown 0.2s linear;
+  animation: slideDown 0.2s linear;
+  @keyframes slideDown {
+    0%  {bottom: 20px;}
+    100% {bottom: 0px;}
+  }
+}
+
 @mixin display-flex() {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -193,7 +202,7 @@ $prefix: "--se-"; //Prefix string for custom CSS properties
   flex-flow: $values;
 }
 
-@mixin flex($fg: 1, $fs: null, $fb: null) {
+@mixin flex($fg: 1, $fs: 1, $fb: auto) {
   // Set a variable to be used by box-flex properties
   $fg-boxflex: $fg;
 

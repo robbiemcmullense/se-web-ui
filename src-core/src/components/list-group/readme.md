@@ -16,7 +16,7 @@
 | `iconColor`     | `icon-color`     | Optional property to define the color of the icon. The default color will be inherited from it's parent.                           | `"primary" \| "secondary"`                                     | `undefined` |
 | `indentation`   | `indentation`    | Defines the group indentation to add paddings to the list item (used with multiple list groups).                                   | `number`                                                       | `0`         |
 | `item`          | `item`           | Defines the title of the item.                                                                                                     | `string`                                                       | `undefined` |
-| `option`        | `option`         | Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element. | `"classic" \| "dropdown" \| "headline" \| "nav" \| "treeview"` | `"classic"` |
+| `option`        | `option`         | Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element. | `"classic" \| "dropdown" \| "headline" \| "nav" \| "treeview"` | `undefined` |
 | `selected`      | `selected`       | Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).               | `boolean`                                                      | `undefined` |
 | `selectedChild` | `selected-child` |                                                                                                                                    | `boolean`                                                      | `undefined` |
 

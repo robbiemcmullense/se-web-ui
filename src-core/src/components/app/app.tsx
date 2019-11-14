@@ -10,11 +10,28 @@ export class AppComponent {
   /**
    * Define the type of application. updating the option will impact the font used.
    * - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`.
-   * - `website`: For `se.com` application, the font used will be `Arial Rounded`.
+   * - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
    */
-  @Prop() option: 'technical' | 'website' = 'technical';
+  @Prop() option: 'technical' | 'website' | 'dcx' = 'technical';
+
+
+  updateBodyClass(newClass){
+    // Update the body class to make sure all component affected by the framework are affected by the font family
+    if(document && document.body){
+      // Remove the class if already there
+      ['se-font-technical', 'se-font-website'].forEach(classItem => {
+        document.body.classList.remove(classItem)
+      })
+      // Add the new class
+      document.body.classList.add(newClass);
+    }
+  }
 
   render() {
-    return <div class={['se-app-body', this.option === "website" ? 'se-font-website' : 'se-font-technical'].join(' ')}><slot></slot></div>;
+    const bodyClass = this.option === "technical" ? 'se-font-technical' : 'se-font-website';
+
+    this.updateBodyClass(bodyClass);
+
+    return <div class={['se-app-body', this.option].join(' ')}><slot></slot></div>;
   }
 }

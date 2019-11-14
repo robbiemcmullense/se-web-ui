@@ -12,8 +12,16 @@
       <ul>
         ...
       </ul>
-      <se-checkbox option="onoff"></se-checkbox>
-      <span id="switch-state"></span>
+      <se-checkbox option="onoff" (didChange)="myValue=$event.detail.selected" [selected]="myValue"></se-checkbox>
+      checkbox: {{myValue}}
+
+      <se-divider></se-divider>
+      <se-radio-group [value]="myRadioValue" (didChange)="myRadioValue = $event.detail">
+        <se-button value="one">One</se-button>
+        <se-button value="two">Two</se-button>
+        <se-button value="three">Three</se-button>
+      </se-radio-group>
+      radio selected: {{myRadioValue}}
     </se-block-content>
     <se-block-footer>
       <se-button color="standard">Apply</se-button>

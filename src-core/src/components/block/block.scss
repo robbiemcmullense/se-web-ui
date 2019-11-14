@@ -5,16 +5,16 @@
   position: relative;
   @include display-flex();
 }
-:host(.flex){
+:host(.block-flex){
   width: 100%;
   height: 100%;
   @include flex-direction(column);
 }
-:host(.block){
+:host(.block-block){
   width: auto;
   height: auto;
 }
-:host(.grid){
+:host(.block-grid){
   width: 100%;
   height: 100%;
 }
@@ -22,40 +22,125 @@
   grid-column: span 2;
   grid-row: span 2;
 }
+:host(.grid-vertical) {
+  grid-row: span 2;
+}
+:host(.grid-horizontal) {
+  grid-column: span 2;
+}
 
+:host(a *:not(a)) {
+  color: initial;
+  text-decoration: none;
+}
+
+.clickable {
+  &, &-nobar {
+    position: relative;
+  }
+  &:hover, &-nobar:hover {
+    cursor: pointer;     
+    box-shadow: 0 0 16px 2px rgba(0,0,0,0.15);
+  }
+  &:not(-nobar):hover:before {
+    @include background-color('primary');
+    height: 3px;
+  }
+  &:not(-nobar):before {
+    content: '';
+    background: rgba(255,255,255,0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100%);
+    max-width: calc(100%);
+    text-align: center;
+    transition: .2s;
+  }
+  &.corner {
+    &-none:before {
+      border-radius: 0 0 0 0;
+    }
+    &-nano:before {
+      border-radius: 2px 2px 0 0;
+    }
+    &-small:before {
+      border-radius: 4px 4px 0 0;
+    }
+  }
+}
 
 .block-body {
   overflow: auto;
+  transition: .2s;
   @include flex();
   @include display-flex();
   @include flex-direction(column);
-
+  @include background-color('alternative');
   &.basic {
-
-      margin: 0;
-
+    margin: 0;
   }
-
   &.widget {
-
-      margin: $spacing;
-
+    margin: $spacing;
   }
-
   &.card {
-
-      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-      border-radius: $border-radius-card;
+    border-radius: 4px;
+    margin: $spacing-large;
+    border: 1px solid;
+    border-color: $se-super-light-grey;
+    &-old {
+      border-radius: 4px;
       margin: $spacing-large;
-
+      box-shadow: 0 0 1px 0 rgba(51,51,51,0.14), 0 2px 7px 0 rgba(51,51,51,0.2);
+    }
   }
-
-  &.standard {
-    @include background-color('standard');
+  &.corner {
+    &-none {
+      border-radius: 0;
+    }
+    &-nano {
+      border-radius: 2px;
+    }
+    &-small {
+      border-radius: 4px;
+    }
   }
-
-  &.alternative {
-    @include background-color('alternative');
+  &.margin {
+    &-none {
+      margin: 0;
+    }
+    &-small {
+      margin: $spacing-small;
+    }
+    &-medium {
+      margin: $spacing;
+    }
+    &-large {
+      margin: $spacing-large;
+    }
+    &-xlarge {
+      margin: $spacing-xlarge;
+    }
+  }
+  &.outline {
+    &-standard {
+      border: 1px solid;
+      border-color: $se-super-light-grey;
+    }
+    &-primary {
+      border: 1px solid;
+      @include border-color('primary');
+    }
+    &-secondary {
+      border: 1px solid;
+      @include border-color('secondary');
+    }
+  }
+  &.block-bg-standard {
+    @include background-color('background');
+  }
+  &.block-bg-none {
+    background-color: transparent;
   }
 }
 

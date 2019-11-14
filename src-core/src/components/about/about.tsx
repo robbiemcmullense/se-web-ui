@@ -37,7 +37,7 @@ export class AboutComponent {
     var title = getFullTitle(this.appTitle);
     let domain;
     if (this.domain.toLowerCase() === `ecostruxure`) {
-      domain = <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>;
+      domain = <se-icon-ecostruxure size="medium" color="inherited"></se-icon-ecostruxure>;
     } else if (this.domain.toLowerCase() !== "none") {
       domain = <span class="header-title-type">{this.domain}</span>;
     }
@@ -53,6 +53,7 @@ export class AboutComponent {
             <span class="light">&nbsp;{title.last}</span>
           </h1>
           <p class="version">version {this.version}</p>
+          <slot name="custom-info"></slot>
         </div>
         <div class="more-information">
           <div class="background-light"></div>

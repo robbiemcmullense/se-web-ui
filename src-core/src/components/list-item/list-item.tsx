@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Watch, Event, EventEmitter } from "@stencil/core";
+import { Component, h, Prop, Element, Watch, Event, EventEmitter, State } from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -35,7 +35,7 @@ export class ListItemComponent {
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  @Prop({mutable: true}) option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
 
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
@@ -46,24 +46,29 @@ export class ListItemComponent {
     this.didSelectedChange.emit()
   }
 
+  @State() innerId;
+
   setButtonId() {
     let id = this.el.getAttribute('id');
     if (id) {
-      let button = this.el.shadowRoot.querySelector('button');
-      button.setAttribute('id', 'wc-' + id);
+      this.innerId = `wc-${id}`;
     }
   }
 
+  getClosestParent() {
+    const closestGroup = this.el.parentElement.closest("se-list-group");
+    const closestList = this.el.parentElement.closest("se-list");
+    return !closestGroup ? closestList : closestGroup;
+  }
+
   getParentConfig() {
-    const elParent: any = this.el.parentElement;
-    if (!!elParent) {
-      const indentation = elParent.indentation;
-      if(!!elParent.indentation) {
-        this.indentation = indentation + 1;
-      }
-      if(!!elParent.option) {
-        this.option = elParent.option;
-      }
+    const closest:any = this.getClosestParent() || {};
+    const indentation = closest.indentation;
+    if(indentation !== null && indentation !== undefined) {
+      this.indentation = indentation + 1;
+    }
+    if(closest.option) {
+      this.option = closest.option;
     }
   }
 
@@ -76,9 +81,13 @@ export class ListItemComponent {
   }
 
   render() {
+    let myDescription = null;
+    if (!!this.description) {
+      myDescription = <small>{this.description}</small>
+    };
     return (
       <div class={['se-list-item', this.option].join(' ')}>
-        <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} >
+        <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} id={this.innerId} >
           {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
           {!!this.icon ?
             <div class="nav-icon">
@@ -88,8 +97,8 @@ export class ListItemComponent {
             </div>
             : ''}
           <div class="nav-content">
-            <div>{this.item}</div>
-            <small> {this.description}</small>
+            <div class="list-item-label" title={this.item}>{this.item}</div>
+            {myDescription}
           </div>
           {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
           {this.option === "classic" ? <slot></slot> : ''}

@@ -16,30 +16,20 @@ describe('list-item', () => {
     expect(listItem.collapsible).toBeFalsy();
   });
 
-  it('should be in classic option by default', () => {
-    expect(listItem.option).toEqual('classic');
+  it('should inherit the nav option from its parent when specified', () => {
+    let parentListElm = document.createElement('se-list');
+    parentListElm.option = 'nav';
+    parentListElm.appendChild(listItem.el);
+    listItem.componentWillLoad();
+    expect(listItem.option).toEqual('nav');
   });
 
-  it('should render', async() => {
-		const page = await newSpecPage({
-			components: [ListItemComponent],
-			html: `<se-list-item></se-list-item>`,
-		});
-		expect(page.root).toEqualHtml(`
-      <se-list-item>
-        <mock:shadow-root>
-          <div class="classic se-list-item">
-            <button style="padding-left: 0px">
-              <div class="nav-content">
-                <div></div>
-                <small></small>
-              </div>
-              <slot></slot>
-            </button>
-          </div>
-        </mock:shadow-root>
-			</se-list-item>
-		`);
+  it('should set an indentation of 2 when its parent element has an indentation of 1', () => {
+    let parentListElm = document.createElement('se-list-group');
+    parentListElm.indentation = 1;
+    parentListElm.appendChild(listItem.el);
+    listItem.componentWillLoad();
+    expect(listItem.indentation).toEqual(2);
   });
   
   it('should call the setButtonId function when the component loads', async() => {
@@ -50,7 +40,7 @@ describe('list-item', () => {
 
   it('should emit the didSelectedChange event when the selected property changes', () => {
     const eventSpy = jest.spyOn(listItem.didSelectedChange, 'emit');
-    listItem.SelectedDidChange();
+    listItem.SelectedDidChange(); // list item element is selected/deselected
     expect(eventSpy).toHaveBeenCalled();
   });
 });

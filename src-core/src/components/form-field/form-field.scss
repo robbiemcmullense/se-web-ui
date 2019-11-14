@@ -34,6 +34,7 @@ $max-width-input: 320px;
     font-family: inherit;
     font-size: 14px;
     padding-left: 7px;
+    transition: .2s;
   }
   
   ::slotted(input[disabled]) {
@@ -44,6 +45,19 @@ $max-width-input: 320px;
     outline: none;
     border: 1px solid;
     @include border-color('primary')
+  }
+
+  ::slotted(input[type="date"]) {
+    height: 20px;
+    padding: 5px;
+  }
+
+  @-moz-document url-prefix() {
+    ::slotted(input[type="date"]) {
+      padding-top: 6px;
+      padding-bottom: 4px;
+      padding-right: 5px;
+    }
   }
   
   ::slotted(select) {
@@ -64,6 +78,14 @@ $max-width-input: 320px;
     border: 1px solid $se-super-light-grey;
     font-family: inherit;
     resize: vertical;
+  }
+
+  ::slotted(input:focus),
+  ::slotted(select:focus),
+  ::slotted(textarea:focus) {
+    outline: none;
+    border: 1px solid;
+    @include border-color('primary')
   }
 
   &.stacked {

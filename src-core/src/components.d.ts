@@ -37,9 +37,9 @@ export namespace Components {
   }
   interface SeApp {
     /**
-    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
     */
-    'option': 'technical' | 'website';
+    'option': 'technical' | 'website' | 'dcx';
   }
   interface SeAuthentication {
     /**
@@ -75,19 +75,51 @@ export namespace Components {
     */
     'version': string;
   }
+  interface SeBanner {
+    /**
+    * Set the duration (in ms) that the banner will automatically switch slides. Default is `6000`.
+    */
+    'duration': number;
+  }
+  interface SeBannerItem {
+    /**
+    * Indicates the active banner item in your banner component.
+    */
+    'active': boolean;
+    /**
+    * Sets the background image for your banner item.
+    */
+    'imageUrl': string;
+  }
   interface SeBlock {
     /**
-    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
     */
-    'color': "standard" | "alternative";
+    'clickable': boolean;
+    /**
+    * Defines clickable se-block item's bar on hover. Default is `true`, `$se-life-green` bar appears on hover. `false` removes the bar from the hover effect.
+    */
+    'clickableBar': boolean;
+    /**
+    * Optional property that defines the background color of the block. `none` has no background. `standard` is `$se-background`. Default `alternative` is `$se-alternative`.
+    */
+    'color': "none" | "standard" | "alternative";
+    /**
+    * Defines se-block item's corner radius. `none` is for a sharp, 90 degree corner. `nano` is for a slightly rounded, 2px rounded corner. `small` is for a rounded, 4px rounded corner.
+    */
+    'corner': "none" | "nano" | "small";
     /**
     * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
     */
     'display': "flex" | "block" | "grid";
     /**
-    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1).
+    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
-    'enlarged': boolean;
+    'divider': boolean;
+    /**
+    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1). `true` spans 2 rows and 2 columns (2/2). `vertical` spans 2 rows (2/1). `horizontal` spans 2 columns (1/2).
+    */
+    'enlarged': "vertical" | "horizontal" | boolean;
     /**
     * Defines the specific height of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
     */
@@ -97,9 +129,21 @@ export namespace Components {
     */
     'loading': boolean;
     /**
-    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with a shadow and rounded corners.
+    * Defines the spacing around the outside edge of a block. Default `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
     */
-    'option': "basic" | "card" | "widget";
+    'margin': "none" | "small" | "medium" | "large" | "xlarge";
+    /**
+    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
+    */
+    'option': "basic" | "card" | "card-old" | "widget";
+    /**
+    * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
+    */
+    'outline': boolean;
+    /**
+    * Defines se-block item's outline color. Default is `standard` which is `$se-super-light-grey`. `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected. `secondary` defines the outline color as `se-sky-blue`.
+    */
+    'outlineColor': "standard" | "secondary" | "primary";
     /**
     * Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
     */
@@ -116,12 +160,14 @@ export namespace Components {
     * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction': "row" | "column";
+    'divider': boolean;
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
     */
     'option': 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader {
+    'divider': boolean;
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
     */
@@ -223,7 +269,7 @@ export namespace Components {
     */
     'required': boolean;
     /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+    * The "checked" state of the checkbox, `false` by default.
     */
     'selected': boolean;
     /**
@@ -275,9 +321,9 @@ export namespace Components {
   }
   interface SeContainer {
     /**
-    * Defines the background color of the container. `standard` is a light gray. `alternative` is a white background.
+    * Defines the background color of the container. `none` has no background. `standard` is `se-background`, light gray. `alternative` is a white background.
     */
-    'color': "standard" | "alternative";
+    'color': "none" | "standard" | "alternative";
     /**
     * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`.
     */
@@ -291,9 +337,13 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated. `inherited` will insure that no specific style is applied to the container.
     */
-    'option': "fill" | "widget" | "card" | "centered" | "inherited";
+    'option': "fill" | "widget" | "card" | "card-old" | "centered" | "inherited";
+    /**
+    * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+    */
+    'padding': "none" | "small" | "medium" | "large" | "xlarge";
     /**
     * In specific cases, it may be necessary to define the container with an absolute position (such as inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
     */
@@ -305,7 +355,7 @@ export namespace Components {
   }
   interface SeDialog {
     /**
-    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`.
+    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
     */
     'backdropClicked': () => Promise<void>;
     /**
@@ -365,6 +415,14 @@ export namespace Components {
     * Method to close the dropdown from outside its parent element.
     */
     'close': () => Promise<void>;
+    /**
+    * Sets the maximum height of the dropdown.  Default setting is "400px".
+    */
+    'maxHeight': string;
+    /**
+    * Sets the maximum width of the dropdown.  Default setting is "200px".
+    */
+    'maxWidth': string;
     /**
     * Method to open the dropdown from outside its parent element.
     */
@@ -451,6 +509,10 @@ export namespace Components {
     'size': "nano" | "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure {
+    /**
+    * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
+    */
+    'color': "standard" | "inherited";
     /**
     * Sets the size of the EcoStruxure icon.  The default setting is `small`.
     */
@@ -619,6 +681,7 @@ export namespace Components {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label': string;
+    'link': string;
     'toggle': () => Promise<void>;
   }
   interface SeSidemenuItem {
@@ -652,13 +715,17 @@ export namespace Components {
   }
   interface SeSnackbar {
     /**
+    * Defines the text you want your custom action button to read.
+    */
+    'actionText': string;
+    /**
     * Displays a "button" to close the snackbar. The default setting is `false`. This will be visible if set to `true`.
     */
     'canClose': boolean;
     /**
-    * Defines the text you want your "close button" to read.  The default text is `dismiss`.
+    * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false. The default setting is 5000.
     */
-    'closeText': string;
+    'duration': number;
     /**
     * The name of the icon you wish to display.  The default icon is an information circle.
     */
@@ -782,6 +849,18 @@ declare global {
   var HTMLSeAuthenticationElement: {
     prototype: HTMLSeAuthenticationElement;
     new (): HTMLSeAuthenticationElement;
+  };
+
+  interface HTMLSeBannerElement extends Components.SeBanner, HTMLStencilElement {}
+  var HTMLSeBannerElement: {
+    prototype: HTMLSeBannerElement;
+    new (): HTMLSeBannerElement;
+  };
+
+  interface HTMLSeBannerItemElement extends Components.SeBannerItem, HTMLStencilElement {}
+  var HTMLSeBannerItemElement: {
+    prototype: HTMLSeBannerItemElement;
+    new (): HTMLSeBannerItemElement;
   };
 
   interface HTMLSeBlockElement extends Components.SeBlock, HTMLStencilElement {}
@@ -1033,6 +1112,8 @@ declare global {
     'se-about': HTMLSeAboutElement;
     'se-app': HTMLSeAppElement;
     'se-authentication': HTMLSeAuthenticationElement;
+    'se-banner': HTMLSeBannerElement;
+    'se-banner-item': HTMLSeBannerItemElement;
     'se-block': HTMLSeBlockElement;
     'se-block-content': HTMLSeBlockContentElement;
     'se-block-footer': HTMLSeBlockFooterElement;
@@ -1106,9 +1187,9 @@ declare namespace LocalJSX {
   }
   interface SeApp extends JSXBase.HTMLAttributes<HTMLSeAppElement> {
     /**
-    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website`: For `se.com` application, the font used will be `Arial Rounded`.
+    * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
     */
-    'option'?: 'technical' | 'website';
+    'option'?: 'technical' | 'website' | 'dcx';
   }
   interface SeAuthentication extends JSXBase.HTMLAttributes<HTMLSeAuthenticationElement> {
     /**
@@ -1144,19 +1225,55 @@ declare namespace LocalJSX {
     */
     'version'?: string;
   }
+  interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {
+    /**
+    * Set the duration (in ms) that the banner will automatically switch slides. Default is `6000`.
+    */
+    'duration'?: number;
+  }
+  interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
+    /**
+    * Indicates the active banner item in your banner component.
+    */
+    'active'?: boolean;
+    /**
+    * Sets the background image for your banner item.
+    */
+    'imageUrl'?: string;
+    /**
+    * Send an event when the banner item changes
+    */
+    'onDidChange'?: (event: CustomEvent<any>) => void;
+  }
   interface SeBlock extends JSXBase.HTMLAttributes<HTMLSeBlockElement> {
     /**
-    * Optional property that defines the background color of the block. Default setting is `alternative` (white).
+    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
     */
-    'color'?: "standard" | "alternative";
+    'clickable'?: boolean;
+    /**
+    * Defines clickable se-block item's bar on hover. Default is `true`, `$se-life-green` bar appears on hover. `false` removes the bar from the hover effect.
+    */
+    'clickableBar'?: boolean;
+    /**
+    * Optional property that defines the background color of the block. `none` has no background. `standard` is `$se-background`. Default `alternative` is `$se-alternative`.
+    */
+    'color'?: "none" | "standard" | "alternative";
+    /**
+    * Defines se-block item's corner radius. `none` is for a sharp, 90 degree corner. `nano` is for a slightly rounded, 2px rounded corner. `small` is for a rounded, 4px rounded corner.
+    */
+    'corner'?: "none" | "nano" | "small";
     /**
     * Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1).
+    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
-    'enlarged'?: boolean;
+    'divider'?: boolean;
+    /**
+    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1). `true` spans 2 rows and 2 columns (2/2). `vertical` spans 2 rows (2/1). `horizontal` spans 2 columns (1/2).
+    */
+    'enlarged'?: "vertical" | "horizontal" | boolean;
     /**
     * Defines the specific height of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
     */
@@ -1166,9 +1283,21 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
-    * Defines the visual appearance of a block. `basic` will remove any spacing. `widget` will create a flat widget look and feel with a small margin around it. `card` will create a card look and feel with a shadow and rounded corners.
+    * Defines the spacing around the outside edge of a block. Default `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
     */
-    'option'?: "basic" | "card" | "widget";
+    'margin'?: "none" | "small" | "medium" | "large" | "xlarge";
+    /**
+    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
+    */
+    'option'?: "basic" | "card" | "card-old" | "widget";
+    /**
+    * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
+    */
+    'outline'?: boolean;
+    /**
+    * Defines se-block item's outline color. Default is `standard` which is `$se-super-light-grey`. `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected. `secondary` defines the outline color as `se-sky-blue`.
+    */
+    'outlineColor'?: "standard" | "secondary" | "primary";
     /**
     * Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
     */
@@ -1185,12 +1314,14 @@ declare namespace LocalJSX {
     * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction'?: "row" | "column";
+    'divider'?: boolean;
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
     */
     'option'?: 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader extends JSXBase.HTMLAttributes<HTMLSeBlockHeaderElement> {
+    'divider'?: boolean;
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
     */
@@ -1291,7 +1422,7 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
     /**
-    * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+    * The "checked" state of the checkbox, `false` by default.
     */
     'selected'?: boolean;
     /**
@@ -1343,9 +1474,9 @@ declare namespace LocalJSX {
   }
   interface SeContainer extends JSXBase.HTMLAttributes<HTMLSeContainerElement> {
     /**
-    * Defines the background color of the container. `standard` is a light gray. `alternative` is a white background.
+    * Defines the background color of the container. `none` has no background. `standard` is `se-background`, light gray. `alternative` is a white background.
     */
-    'color'?: "standard" | "alternative";
+    'color'?: "none" | "standard" | "alternative";
     /**
     * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there. Default is `350px`.
     */
@@ -1359,9 +1490,13 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. `widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray). `centered` centers the container so the content does not exceed a maximum width. `card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white). `inherited` will insure that no specific style is applied to the container.
+    * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated. `inherited` will insure that no specific style is applied to the container.
     */
-    'option'?: "fill" | "widget" | "card" | "centered" | "inherited";
+    'option'?: "fill" | "widget" | "card" | "card-old" | "centered" | "inherited";
+    /**
+    * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+    */
+    'padding'?: "none" | "small" | "medium" | "large" | "xlarge";
     /**
     * In specific cases, it may be necessary to define the container with an absolute position (such as inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box. `relative` is the default position. This is perfect to use with flex content. `absolute` is useful in specific cases. Make sure you know what you are doing.
     */
@@ -1433,6 +1568,14 @@ declare namespace LocalJSX {
     * Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element.
     */
     'alignment'?: 'left' | 'right';
+    /**
+    * Sets the maximum height of the dropdown.  Default setting is "400px".
+    */
+    'maxHeight'?: string;
+    /**
+    * Sets the maximum width of the dropdown.  Default setting is "200px".
+    */
+    'maxWidth'?: string;
     /**
     * Event emitted when the dropdown has been closed.
     */
@@ -1523,6 +1666,10 @@ declare namespace LocalJSX {
     'size'?: "nano" | "small" | "medium" | "large" | "xlarge";
   }
   interface SeIconEcostruxure extends JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement> {
+    /**
+    * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
+    */
+    'color'?: "standard" | "inherited";
     /**
     * Sets the size of the EcoStruxure icon.  The default setting is `small`.
     */
@@ -1703,6 +1850,7 @@ declare namespace LocalJSX {
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label'?: string;
+    'link'?: string;
   }
   interface SeSidemenuItem extends JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement> {
     /**
@@ -1713,6 +1861,9 @@ declare namespace LocalJSX {
     * Defines the title of the menu item.
     */
     'item'?: string;
+    /**
+    * Send an event when the sidemenu item changes
+    */
     'onDidClick'?: (event: CustomEvent<any>) => void;
   }
   interface SeSlider extends JSXBase.HTMLAttributes<HTMLSeSliderElement> {
@@ -1735,13 +1886,17 @@ declare namespace LocalJSX {
   }
   interface SeSnackbar extends JSXBase.HTMLAttributes<HTMLSeSnackbarElement> {
     /**
+    * Defines the text you want your custom action button to read.
+    */
+    'actionText'?: string;
+    /**
     * Displays a "button" to close the snackbar. The default setting is `false`. This will be visible if set to `true`.
     */
     'canClose'?: boolean;
     /**
-    * Defines the text you want your "close button" to read.  The default text is `dismiss`.
+    * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false. The default setting is 5000.
     */
-    'closeText'?: string;
+    'duration'?: number;
     /**
     * The name of the icon you wish to display.  The default icon is an information circle.
     */
@@ -1750,6 +1905,10 @@ declare namespace LocalJSX {
     * The content of the message you want the snackbar to display.
     */
     'message'?: string;
+    /**
+    * Sends information to the parent component when clicking a custom action button.
+    */
+    'onActionClicked'?: (event: CustomEvent<any>) => void;
     /**
     * Sends information to the parent component when closing the snackbar.
     */
@@ -1857,6 +2016,8 @@ declare namespace LocalJSX {
     'se-about': SeAbout;
     'se-app': SeApp;
     'se-authentication': SeAuthentication;
+    'se-banner': SeBanner;
+    'se-banner-item': SeBannerItem;
     'se-block': SeBlock;
     'se-block-content': SeBlockContent;
     'se-block-footer': SeBlockFooter;

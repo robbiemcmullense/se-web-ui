@@ -1,13 +1,13 @@
-<se-container option="widget" position="absolute">
+<se-container position="absolute">
   <se-block width="250px">
-    <se-list>
+    <se-list option="treeview">
       <se-list-item item="my item 1" selected="false" icon-color="primary" description="I have a description">
       </se-list-item>
       <se-list-item item="my item 2 no description with a long text" icon-color="primary">
       </se-list-item>
       <se-list-item item="my item 3 no icon" description="I'm here too">
       </se-list-item>
-      <se-list-item item="I'm the selected one!" selected="false">
+      <se-list-item item="I'm the selected one!" selected="true">
       </se-list-item>
       <se-list-item item="Basic Item">
       </se-list-item>
@@ -18,19 +18,12 @@
         </se-list-item>
         <se-list-item item="my item 3 no icon" description="I'm here too">
         </se-list-item>
-        <se-list-item item="I'm the selected one!" selected="false">
+        <se-list-item item="I'm the selected one!" selected="true">
         </se-list-item>
         <se-list-item item="Basic Item">
         </se-list-item>
         <se-list-group item="simple collapse">
-          <se-list-item item="No icon, not selected" selected="false">
-          </se-list-item>
-          <se-list-item item="my item 2 no description" icon-color="primary">
-          </se-list-item>
-          <se-list-item item="my item 3 no icon" description="I'm here too">
-          </se-list-item>
-          <se-list-item item="Basic Item" selected="true">
-          </se-list-item>
+          <se-list-item *ngFor="let item of items" [item]="item.name"></se-list-item>
         </se-list-group>
       </se-list-group>
       <se-list-group item="simple collapse">
@@ -45,10 +38,13 @@
       </se-list-group>
     </se-list>
   </se-block>
+  <se-divider option="vertical"></se-divider>
   <se-block>
     <se-block-header>Docs</se-block-header>
     <se-block-content>
       <div fxFlex>This is the se-block body. It can be modified to the user's liking.</div>
+      <se-button (click)="removeLastListItem()" option="raised">Remove Last List Item</se-button>
+      <se-button (click)="addNewListItem()" option="raised">Add New List Item</se-button>
     </se-block-content>
     <se-block-footer>
       <se-button option="raised">Apply</se-button>

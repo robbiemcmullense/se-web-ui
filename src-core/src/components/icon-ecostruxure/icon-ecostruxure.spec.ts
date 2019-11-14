@@ -21,12 +21,14 @@ describe('IconEcostruxureComponent', () => {
 			components: [IconEcostruxureComponent],
 			html: `<se-icon-ecostruxure></se-icon-ecostruxure>`,
 		});
-		expect(page.root).toEqualHtml(`
-			<se-icon-ecostruxure>
-				<mock:shadow-root>
-					<img class="small" src="[object Object]">
-				</mock:shadow-root>
-			</se-icon-ecostruxure>
-		`);
+		expect(page.root.shadowRoot.querySelector('img.small')).toBeTruthy();
+	});
+	
+	it('should render with the medium class when specified', async() => {
+    const page = await newSpecPage({
+			components: [IconEcostruxureComponent],
+			html: `<se-icon-ecostruxure size="medium"></se-icon-ecostruxure>`,
+		});
+		expect(page.root.shadowRoot.querySelector('img.medium')).toBeTruthy();
   });
 });

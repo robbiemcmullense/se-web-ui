@@ -14,7 +14,7 @@ export class ButtonComponent {
    * `outline` adds a border to the button.
    * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
    */
-  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab'= 'flat';
+  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab' = 'flat';
   @Watch('option') optionDidChange() {
     if(this.option === 'login'){
       this.color = 'primary';
@@ -118,11 +118,12 @@ export class ButtonComponent {
     }
   }
 
+  @State() innerId;
+
   setButtonId() {
     let id = this.el.getAttribute('id');
     if (id) {
-      let button = this.el.shadowRoot.querySelector('button');
-      button.setAttribute('id', 'wc-' + id);
+      this.innerId = `wc-${id}`;
     }
   }
 
@@ -133,7 +134,7 @@ export class ButtonComponent {
       this.selected = !this.selected;
       this.didClick.emit({selected: this.selected, value: this.value});
     }
-    
+
     if (this.option === 'minifab') {
       this.didClick.emit({value: this.caption});
     }
@@ -152,6 +153,7 @@ export class ButtonComponent {
     return (
       <Host class={{'disabled': this.disabled, 'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab'}}>
         <button disabled={this.disabled} data-tooltip={this.caption} type={this.type}
+          id={this.innerId}
           class={
             [!!this.icon ? 'hasIcon' : '', this.hasChild ? 'hasChild' : '', this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')}
           onClick={() => this.toggle()}>

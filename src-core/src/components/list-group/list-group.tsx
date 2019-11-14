@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop, Watch, Element, Listen } from "@stencil/core";
+import { Component, Event, EventEmitter, h, Prop, Watch, Element, Listen, Host, State } from "@stencil/core";
 
 @Component({
   tag: "se-list-group",
@@ -41,7 +41,7 @@ export class ListGroupComponent {
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
+  @Prop({mutable: true}) option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
   /**
    * Defines if list groups can be collapsed, true by default.
    */
@@ -87,34 +87,33 @@ export class ListGroupComponent {
     return event.target.nodeName === 'SE-ICON' || event.target.className.includes('se-icon');
   }
 
+  @State() innerId;
+
   setButtonId() {
     let id = this.el.getAttribute('id');
     if (id) {
-      let button = this.el.shadowRoot.querySelector('button');
-      button.setAttribute('id', 'wc-' + id);
+      this.innerId = `wc-${id}`;
     }
   }
 
+  getClosestParent() {
+    const closestGroup = this.el.parentElement.closest("se-list-group");
+    const closestList = this.el.parentElement.closest("se-list");
+    return !closestGroup ? closestList : closestGroup;
+  }
+
   getParentConfig() {
-    const elParent: any = this.el.parentElement;
-    if (!!elParent) {
-      const indentation = elParent.indentation;
-      if(!!elParent.indentation) {
-        this.indentation = indentation + 1;
-      }
-      if(!!elParent.option) {
-        this.option = elParent.option;
-      }
+    const closest:any = this.getClosestParent() || {};
+    const indentation = closest.indentation;
+    if(indentation !== null && indentation !== undefined) {
+      this.indentation = indentation + 1;
+    }
+    if(closest.option) {
+      this.option = closest.option;
     }
   }
 
   componentWillLoad() {
-    Array.from(
-      this.el.querySelectorAll("se-list-group > se-list-item, se-list-group > se-list-group")
-    ).forEach((item: any) => {
-      item.indentation = this.indentation + 1;
-    });
-
     this.getParentConfig();
   }
 
@@ -123,31 +122,38 @@ export class ListGroupComponent {
   }
 
   render() {
+    let myDescription = null;
+    if (!!this.description) {
+      myDescription = <small>{this.description}</small>
+    }
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
-      <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
-        <button class={[this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : ''].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
-          {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
-          {!!this.icon ?
-            <div class="nav-icon">
-              <se-icon color={this.iconColor}>
-                {this.icon}
-              </se-icon>
+      <Host option={this.option}>
+        <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
+          <button id={this.innerId} class={[this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : ''].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
+            {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
+            {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon">{this.collapsed ? "arrow2_down" : "arrow2_right"}</se-icon> : ''}
+            {!!this.icon ?
+              <div class="nav-icon">
+                <se-icon color={this.iconColor}>
+                  {this.icon}
+                </se-icon>
+              </div>
+            : ''}
+            <div class="nav-content">
+              <div class="list-group-label">{this.item}</div>
+              {myDescription}
             </div>
-          : ''}
-          <div class="nav-content">
-            <div>{this.item}</div>
-            <small> {this.description}</small>
+            {this.option !== "treeview" && this.canCollapse
+                ? <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
+                : ''
+            }
+          </button>
+          <div class={["group-item", this.option].join(' ')}>
+            <slot/>
           </div>
-          {this.option === "treeview"
-            ? <se-icon>{this.collapsed ? "arrow2_down" : "arrow2_right"}</se-icon>
-            : <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
-          }
-        </button>
-        <div class="group-item">
-          <slot/>
         </div>
-      </div>
+      </Host>
     )
   }
 }

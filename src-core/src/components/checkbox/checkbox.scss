@@ -65,9 +65,10 @@ div {
       left: -8px;
       height: 14px;
       width: 14px;
-      background-color: $se-white;
+      @include background-color("alternative");
       border: 1px solid $se-light-grey;
       border-radius: 2px;
+      transition: .2s;
 
       &:after {
         content: "";
@@ -106,7 +107,7 @@ div {
     height: 26px;
     border-radius: 13px;
     border: none;
-    background-color: $se-white;
+    @include background-color("alternative");
     display: inline-block;
     position: relative;
     cursor: pointer;
@@ -128,7 +129,7 @@ div {
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         border: 1px solid $se-super-light-grey;
-        background-color: $se-white;
+        @include background-color("alternative");
         border-radius: 13px;
         transition: all .2s ease-out .1s;
         transform: scale(1);
@@ -189,6 +190,7 @@ div {
     display: inline-flex;
   }
   button {
+    color: $se-anthracite-grey;
     padding: 6px 8px;
     border: none;
     outline: none;
@@ -198,13 +200,14 @@ div {
     line-height: 13px;
     font-weight: 300;
     cursor: pointer;
+    transition: .2s;
 
     &.active {
       border-top-left-radius: 2px;
       border-bottom-left-radius: 2px;
       margin-right: 0;
       &.selected {
-        color: $se-white;
+        @include color('alternative');
         background-color: $se-life-green;
       }
     }
@@ -214,7 +217,7 @@ div {
       border-bottom-right-radius: 2px;
       margin-left: 0;
       &.selected {
-        color: $se-super-light-grey;
+        @include color('alternative');
         background-color: $se-red;
       }
     }
@@ -231,14 +234,12 @@ div {
 .standard {
   button {
     @include background-color("standard");
-    @include  color("focus");
   }
 }
 
 .alternative {
   button {
     @include background-color("alternative");
-    @include  color("alternative-contrast");
   }
 }
 
@@ -248,11 +249,11 @@ div {
     color: $se-light-grey;
     &.active.selected {
       background-color: #8ce599;
-      color: $se-white;
+      @include color('alternative');
     }
     &.inactive.selected {
-      background-color: $se-light-grey;
-      color: $se-white;
+      opacity: 0.5;
+      @include color('alternative');
     }
   }
 

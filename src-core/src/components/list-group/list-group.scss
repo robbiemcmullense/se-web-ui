@@ -4,25 +4,42 @@
 :host {
   @include flex-direction(column);
 }
+
 .group-item{
   overflow: hidden;
   padding-bottom: 0;
 }
 
 .se-list-group {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   &.classic, &.nav {
     button {
       min-height: 47px;
+      height: 20px; // IE fix so flexbox vertical alignment works
       max-width: 100%;
     }
   }
 
   &.treeview {
+    padding-left: 4px;
     button {
-      flex-direction: row-reverse;
-    }
-    .nav-content {
-      padding-left: 0;
+      padding: 4px 0;
+      se-icon.treeview-collapse-icon {
+        + .nav-icon {
+          margin-left: 6px;
+        }
+      }
+      .nav-icon {
+        margin-right: 0;
+        + .nav-content {
+          padding-left: 2px;
+        }
+      }
+      .nav-content {
+        padding-left: 8px;
+      }
     }
     // Align right-caret icon on MS Edge.
     // Will remove when Chromium-based Edge browser is released.
@@ -66,8 +83,11 @@
     }
   }
 
-  se-icon {
-    padding-top: 2px;
-    margin-top: 2px;
+  .list-group-label {
+    line-height: 24px;
   }
+}
+
+.se-list-group.dropdown button {
+  margin-top: -1px;
 }

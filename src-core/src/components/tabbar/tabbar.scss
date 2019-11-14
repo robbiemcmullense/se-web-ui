@@ -64,16 +64,12 @@
     line-height: 44px;
     @include  color('primary-contrast');
     &:hover {
-      &:before {
+      &:after {
         @include background-color('primary-contrast');
-        height: 1px;
       }
     }
-    &.active:before {
+    &.active:after {
       @include background-color('primary-contrast');
-    }
-    &.active:before, &:hover:before {
-      bottom: -4px !important;
     }
   }
 
@@ -96,15 +92,18 @@
   }
   nav > a, nav > span {
     line-height: 40px;
+    transition: linear .1s;
     @include  color('alternative-contrast');
-    &:hover {
-      @include  color('primary');
+    &:hover, &.active {
+      @include  color('primary')
     }
-    &.active {
-      @include  color('primary');
-      &:before {
-        @include background-color('primary');
-      }
+    &:after {
+      display: none;
+    }
+    &.active:after {
+      @include  background-color('primary');
+      bottom: 0;
+      display: inline-block;
     }
   }
 }
@@ -148,17 +147,17 @@
       text-decoration: none;
       background-color: transparent;
     }
-    &.active:before, &:hover:before {
+    &:after {
       content: "";
-      position: absolute;
       cursor: default;
-      width: 100%;
-      bottom: 0;
-    }
-    &:hover:before {
+      position: absolute;
+      left: 0;
+      bottom: -4px;
       height: 2px;
+      transition: linear .1s;
+      width: 100%;
     }
-    &.active:before{
+    &.active:after{
       height: 4px;
     }
     &.label {
@@ -169,8 +168,7 @@
     &[disabled] {
       color: #8ce599;
       cursor: default;
-      &:hover:before,
-      &:active:before {
+      &:after {
         height: 0;
       }
     }

@@ -13,8 +13,7 @@ export const config: Config = {
   outputTargets:[
     {
       type: 'dist',
-      dir: 'core',
-      copy
+      dir: 'core'
     },
     {
       type: 'docs-json',
@@ -40,6 +39,7 @@ export const config: Config = {
     sass()
   ],
   testing: {
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     transform: {
       "^.+\\.svg$": "<rootDir>/svgTransform.js"
     }

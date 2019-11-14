@@ -15,9 +15,7 @@ describe('RadioComponent', () => {
   });
 
   it('renders with a disabled input element when the parent element has disabled=true', async() => {
-    await page.$eval('se-radio', (elm: any) => {
-      elm.disabled = true;
-    });
+    element.setProperty('disabled', true);
     await page.waitForChanges();
     const inputElm = element.shadowRoot.querySelector('input');
     expect(inputElm.disabled).toBeTruthy();
@@ -42,5 +40,22 @@ describe('Radio with ID Element', () => {
     const element = await page.find('se-radio');
     expect(element.shadowRoot.querySelector('input')).toHaveAttribute('id');
     expect(element.shadowRoot.querySelector('input').getAttribute('id')).toEqual('wc-my-id');
+  });
+});
+
+describe('Radio Screenshots', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+  });
+
+  it('renders in both primary and secondary colors', async() => {
+    await page.setContent(`
+      <se-radio value="standard-radio" label="Unchecked Radio Button"></se-radio>
+      <se-radio value="radio-primary" label="Radio Primary" selected="true"></se-radio>
+      <se-radio value="radio-secondary" label="Radio Secondary" selected="true"color="secondary"></se-radio>
+    `);
+    await page.compareScreenshot('Radio Components', {fullPage: false});
   });
 });

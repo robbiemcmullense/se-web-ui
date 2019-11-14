@@ -21,15 +21,18 @@ export class SidemenuItemComponent {
       this.didClick.emit();
     }
   }
-
+  /**
+   * Send an event when the sidemenu item changes
+   */
   @Event() didClick: EventEmitter<any>;
+
 
   render() {
     return (
       <Host
         role={'sidenavpanel'}
         aria-hidden={{'true': !this.active}}
-        class={{'navitem-hidden': !this.active}}>
+        class={[this.active ? 'active' : 'navitem-hidden'].join(' ')}>
         <slot></slot>
       </Host>
     )

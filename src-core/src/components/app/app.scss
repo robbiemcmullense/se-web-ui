@@ -18,7 +18,9 @@
   @include flex-direction(column);
   @include background-color('background');
 }
-
+body {
+  @include background-color('background');
+}
 
 // Create all classes to use colors as classes
 @each $element in ( 'standard',
@@ -181,4 +183,8 @@ body, html {
       border: $scrollbar-side-padding solid transparent;
     }
   }
+}
+
+.technical se-block ::slotted(se-block) {
+  border: 4px solid red;
 }
