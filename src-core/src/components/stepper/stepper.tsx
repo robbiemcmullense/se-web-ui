@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Method, State, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Listen, Watch, State, Prop } from "@stencil/core";
 
 
 @Component({
@@ -21,6 +21,11 @@ export class StepperComponent {
    */
   @Prop() linear: boolean = false;
   /**
+   * Set the validated property to true when a form field tied to a required step has the required input data.
+   * Otherwise, set this to false.
+   */
+  @Prop() validated: boolean = false;
+  /**
    * Indicate to the parent component that a new stepper item has been selected.
    */
   @Event() optionSelected: EventEmitter;
@@ -37,7 +42,9 @@ export class StepperComponent {
       }
       if (this.linear) {
         const stepperItem = item.shadowRoot.querySelector('.stepper-item');
-        const disabledIndex = (this.stepperItems[this.index].getAttribute('required')) ? this.index + 1 : this.index + 2;
+        const isRequired = this.stepperItems[this.index].getAttribute('required');
+        const isValidated = this.stepperItems[this.index].getAttribute('validated');
+        const disabledIndex = (isRequired && !isValidated) ? this.index + 1 : this.index + 2;
         if (this.stepperItems.indexOf(item) >= disabledIndex) {
           stepperItem.classList.add('disabled');
         } else {
@@ -63,35 +70,37 @@ export class StepperComponent {
     this.optionSelected.emit(event.detail);
   }
 
-  @Method()
-  async stepCompleted() {
-    let stepValidated;
-    this.stepperItems.forEach((item: any) => {
-      if (this.stepperItems.indexOf(item) == this.index && item.required && !stepValidated) {
-        stepValidated = true;
-        this.index = this.stepperItems.indexOf(item) + 1;
-        const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
-        nextItem.click();
-        this.addCheckmark(this.index-1);
-        
-        if (this.linear) {
-          nextItem.classList.remove('disabled');
-          if (!this.stepperItems[this.index].getAttribute('required')) {
-            this.stepperItems[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+  @Watch('validated')
+  validatedStepCompleted() {
+    if (this.validated) {
+      this.stepperItems.forEach((item: any) => {
+        if (this.stepperItems.indexOf(item) == this.index && item.required) {
+          item.setAttribute('validated', true);
+          this.index = this.stepperItems.indexOf(item) + 1;
+          const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
+          nextItem.click();
+          this.addCheckmark(this.index - 1);
+
+          if (this.linear) {
+            nextItem.classList.remove('disabled');
+            if (!this.stepperItems[this.index].getAttribute('required')) {
+              this.stepperItems[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+            }
+          }
+        }
+      });
+      if (!this.linear) {
+        for (let item of this.stepperItems) {
+          let itemIndex = this.stepperItems.indexOf(item);
+          if (itemIndex >= this.index) {
+            item.shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+          }
+          if (item.getAttribute('required') && this.stepperItems.indexOf(item) >= this.index) {
+            break;
           }
         }
       }
-    });
-    if (stepValidated && !this.linear) {
-      for (let item of this.stepperItems) {
-        let itemIndex = this.stepperItems.indexOf(item);
-        if (itemIndex >= this.index) {
-          item.shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
-        }
-        if (item.getAttribute('required') && this.stepperItems.indexOf(item) >= this.index) {
-          break;
-        }
-      }
+      this.validated = false;
     }
   }
 
