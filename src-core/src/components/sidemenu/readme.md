@@ -15,7 +15,7 @@
 
 ## Methods
 
-### `toggle() => Promise<void>`
+### `toggle(itemName?: string) => Promise<void>`
 
 
 
