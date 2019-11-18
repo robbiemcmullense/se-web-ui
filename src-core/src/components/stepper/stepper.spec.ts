@@ -1,5 +1,4 @@
 import { StepperComponent } from './stepper';
-import { newSpecPage } from '@stencil/core/testing';
 
 describe('StepperComponent', () => {
 	let stepper;
@@ -19,50 +18,51 @@ describe('StepperComponent', () => {
 	it('should not be linear by default', () => {
 		expect(stepper.linear).toBeFalsy();
 	});
-	
-	it('should add to the items array when a stepper item is added, and be active and last by default', () => {
-		let node = document.createElement('se-stepper-item');
-		stepper.el.appendChild(node);
 
-		let contentNode = document.createElement('div');
-		contentNode.setAttribute('slot', 'stepper-item-content');
-		stepper.el.appendChild(contentNode);
-		
-		stepper.componentDidLoad();
-		expect(stepper.stepperItems.length).toEqual(1);
-		expect(stepper.stepperItems[0].isLast).toBeTruthy();
-		expect(stepper.stepperItems[0]).toHaveClass('selected');
+	it('should not be validated by default', () => {
+		expect(stepper.validated).toBeFalsy();
 	});
+});
 
-	it('should not set the isLast property to the first stepper item when there are two stepper items', () => {
-		let nodeOne = document.createElement('se-stepper-item');
+describe('Stepper Component methods', () => {
+	let stepper, nodeOne, nodeTwo, shadowRootOne, shadowRootTwo, contentNodeOne, contentNodeTwo;
+
+	beforeEach(() => {
+		stepper = new StepperComponent();
+		
+		nodeOne = document.createElement('se-stepper-item');
+		nodeOne.setAttribute('label', 'Step 1');
+		shadowRootOne = nodeOne.attachShadow({mode: 'open'});
+		shadowRootOne.appendChild(document.createElement('span'));
 		stepper.el.appendChild(nodeOne);
-		let nodeTwo = document.createElement('se-stepper-item');
+
+		nodeTwo = document.createElement('se-stepper-item');
+		nodeOne.setAttribute('label', 'Step 2');
+		shadowRootTwo = nodeTwo.attachShadow({mode: 'open'});
+		shadowRootTwo.appendChild(document.createElement('span'));
 		stepper.el.appendChild(nodeTwo);
 		
-		let contentNodeOne = document.createElement('div');
+		contentNodeOne = document.createElement('div');
 		contentNodeOne.setAttribute('slot', 'stepper-item-content');
 		stepper.el.appendChild(contentNodeOne);
-		let contentNodeTwo = document.createElement('div');
+
+		contentNodeTwo = document.createElement('div');
 		contentNodeTwo.setAttribute('slot', 'stepper-item-content');
 		stepper.el.appendChild(contentNodeTwo);
+	});
 
+	it('should set the isLast property to the second stepper item when there are two stepper items', () => {	
 		stepper.componentDidLoad();
 		expect(stepper.stepperItems.length).toEqual(2);
 		expect(stepper.stepperItems[0].isLast).toBeFalsy();
 		expect(stepper.stepperItems[1]).not.toHaveClass('selected');
 	});
-	
-	it('should render', async() => {
-		const page = await newSpecPage({
-      components: [StepperComponent],
-			html: `<se-stepper>
-				<se-stepper-item label="One"></se-stepper-item>
-				<se-stepper-item label="Two"></se-stepper-item>
-				<div slot="stepper-item-content">Step 1</div>
-				<div slot="stepper-item-content">Step 2</div>
-			</se-stepper>`,
-    });
-		expect(page.root.shadowRoot.querySelector('nav')).toBeTruthy();
+
+	it('should emit the optionSelected event when the 2nd stepper item is clicked on', () => {
+		const event = {detail: {label: 'Step 2'}};
+		const eventSpy = jest.spyOn(stepper.optionSelected, 'emit');
+		stepper.componentDidLoad(); // initialize stepper and content items
+		stepper.stepperItemClickedHandler(event);
+		expect(eventSpy).toHaveBeenCalled();
 	});
 });

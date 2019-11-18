@@ -116,22 +116,20 @@ export class StepperComponent {
     this.stepperItems.forEach((item: any) => {
       item.isLast = (item === this.stepperItems[this.stepperItems.length - 1]);
       item.classList.add(this.color);
-      if (item.shadowRoot) {
-        const indicator = item.shadowRoot.querySelector('span');
-        const listItemElement = item.shadowRoot.querySelector('.stepper-item');
-        indicator.innerText = this.stepperItems.indexOf(item) + 1;
-        if (item.required && !requiredIndex && requiredIndex !== 0) {
-          requiredIndex = this.stepperItems.indexOf(item);
-        }
-        if (this.linear) {
-          const disabledIndex = (requiredIndex == 0) ? this.stepperItems.indexOf(item) > 0 : this.stepperItems.indexOf(item) > 1;
-          if (disabledIndex) {
-            listItemElement.classList.add('disabled');
-          }
-        }
-        if (this.stepperItems.indexOf(item) > requiredIndex) {
+      const indicator = item.shadowRoot.querySelector('span');
+      const listItemElement = item.shadowRoot.querySelector('.stepper-item');
+      indicator.innerText = this.stepperItems.indexOf(item) + 1;
+      if (item.required && !requiredIndex && requiredIndex !== 0) {
+        requiredIndex = this.stepperItems.indexOf(item);
+      }
+      if (this.linear) {
+        const disabledIndex = (requiredIndex == 0) ? this.stepperItems.indexOf(item) > 0 : this.stepperItems.indexOf(item) > 1;
+        if (disabledIndex) {
           listItemElement.classList.add('disabled');
         }
+      }
+      if (this.stepperItems.indexOf(item) > requiredIndex) {
+        listItemElement.classList.add('disabled');
       }
     });
     this.stepperItems[0].classList.add('selected');
