@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Watch, State, Prop } from "@stencil/core";
 
-
 @Component({
   tag: "se-stepper",
   styleUrl: "stepper.scss",
@@ -31,6 +30,7 @@ export class StepperComponent {
    */
   @Event() optionSelected: EventEmitter;
 
+  // changes the active stepper item when clicked on
   @Listen('didClick')
   stepperItemClickedHandler(event) {
     this.stepperItems.forEach((item: any) => {
@@ -53,11 +53,9 @@ export class StepperComponent {
         }
       }
     });
-
     this.contentItems.forEach((item: any) => {
       item.classList.remove('active');
     });
-
     for (let item of this.stepperItems) {
       item.classList.add('selected');
       let itemIndex = this.stepperItems.indexOf(item);
@@ -71,6 +69,7 @@ export class StepperComponent {
     this.optionSelected.emit(event.detail);
   }
 
+  // advances the active stepper item by one when a required step is validated
   @Watch('validated')
   validatedStepCompleted() {
     if (this.validated) {
@@ -81,7 +80,6 @@ export class StepperComponent {
           const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
           nextItem.click();
           this.addCheckmark(this.index - 1);
-
           if (this.linear) {
             nextItem.classList.remove('disabled');
             if (!this.stepperItems[this.index].getAttribute('required')) {
@@ -119,9 +117,9 @@ export class StepperComponent {
       item.isLast = (item === this.stepperItems[this.stepperItems.length - 1]);
       item.classList.add(this.color);
       if (item.shadowRoot) {
-        const spanElement = item.shadowRoot.querySelector('span');
+        const indicator = item.shadowRoot.querySelector('span');
         const listItemElement = item.shadowRoot.querySelector('.stepper-item');
-        spanElement.innerText = this.stepperItems.indexOf(item) + 1;
+        indicator.innerText = this.stepperItems.indexOf(item) + 1;
         if (item.required && !requiredIndex && requiredIndex !== 0) {
           requiredIndex = this.stepperItems.indexOf(item);
         }

@@ -484,7 +484,7 @@ export class SeStepper {
 proxyInputs(SeStepper, ['color', 'linear', 'validated']);
 
 export declare interface SeStepperItem extends Components.SeStepperItem {}
-@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['isLast', 'label', 'required', 'validated'] })
+@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['isLast', 'label', 'required'] })
 export class SeStepperItem {
   didClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -494,7 +494,7 @@ export class SeStepperItem {
     proxyOutputs(this, this.el, ['didClick']);
   }
 }
-proxyInputs(SeStepperItem, ['isLast', 'label', 'required', 'validated']);
+proxyInputs(SeStepperItem, ['isLast', 'label', 'required']);
 
 export declare interface SeTabbar extends Components.SeTabbar {}
 @Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })

@@ -6,6 +6,7 @@ import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core"
   shadow: true
 })
 export class StepperItemComponent {
+  @Element() el: HTMLElement;
   /**
    * Indicates the label for your stepper item.
    */
@@ -19,12 +20,6 @@ export class StepperItemComponent {
    * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
    */
   @Prop() isLast: boolean = false;
-  /**
-   * The validated property should be set to false or remain undefined.
-   * Set this value to true outside of the HTML markup when this step is required and a form field connected to this step has the required input data.
-   */
-  @Prop() validated: boolean;
-  @Element() el: HTMLElement;
   /**
    * Event to send to the parent component when clicking on a stepper item.
    * This event emits the stepper item element object and its label property.
