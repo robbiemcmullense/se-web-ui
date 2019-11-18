@@ -117,6 +117,7 @@
       position: relative;
       cursor: pointer;
       display: flex;
+      align-items: center;
       padding-right: 0;
       padding-left: 0;
       text-decoration: none;
@@ -148,7 +149,7 @@
         margin-bottom: 2px;
       }
       > se-icon {
-        margin: -2px 0 0;
+        margin-top: -2px;
       }
     }
   }
@@ -182,7 +183,6 @@
         line-height: 44px;
         &[disabled] {
           cursor: default;
-          opacity: .5;
         }
       }
     }
