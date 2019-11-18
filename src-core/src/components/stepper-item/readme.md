@@ -7,19 +7,19 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                                                                                                                                                                                          | Type      | Default     |
-| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `isLast`    | `is-last`   | Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.                                                                                                | `boolean` | `false`     |
-| `label`     | `label`     | Indicates the label for your stepper item.                                                                                                                                                                           | `string`  | `undefined` |
-| `required`  | `required`  | Indicates whether or not this is a required section of your stepper component. If set to `true`, the next step will not be accessible until the data in this step is completed. The default setting is `false`.      | `boolean` | `false`     |
-| `validated` | `validated` | The validated property should be set to false or remain undefined. Set this value to true outside of the HTML markup when this step is required and a form field connected to this step has the required input data. | `boolean` | `undefined` |
+| Property    | Attribute   | Description                                                                                                                                                                                                                                  | Type      | Default     |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `isLast`    | `is-last`   | Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.                                                                                                                        | `boolean` | `false`     |
+| `label`     | `label`     | Indicates the label for your stepper item.                                                                                                                                                                                                   | `string`  | `undefined` |
+| `required`  | `required`  | Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated. | `boolean` | `false`     |
+| `validated` | `validated` | The validated property should be set to false or remain undefined. Set this value to true outside of the HTML markup when this step is required and a form field connected to this step has the required input data.                         | `boolean` | `undefined` |
 
 
 ## Events
 
-| Event      | Description                                                            | Type               |
-| ---------- | ---------------------------------------------------------------------- | ------------------ |
-| `didClick` | Event to send to the parent component when clicking on a stepper item. | `CustomEvent<any>` |
+| Event      | Description                                                                                                                                     | Type               |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `didClick` | Event to send to the parent component when clicking on a stepper item. This event emits the stepper item element object and its label property. | `CustomEvent<any>` |
 
 
 ## Dependencies

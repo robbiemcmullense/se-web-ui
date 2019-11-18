@@ -746,15 +746,15 @@ export namespace Components {
   }
   interface SeStepper {
     /**
-    * Sets the background color of your stepper.
+    * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background.
     */
     'color': 'primary' | 'alternative';
     /**
-    * If set to `true`, you are required to complete previous steps before moving onto the next step. Default setting is `false`.
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
     */
     'linear': boolean;
     /**
-    * Set the validated property to true when a form field tied to a required step has the required input data. Otherwise, set this to false.
+    * Set the validated property to true when a form field tied to a required step has the required input data. The default setting is `false`.
     */
     'validated': boolean;
   }
@@ -768,7 +768,7 @@ export namespace Components {
     */
     'label': string;
     /**
-    * Indicates whether or not this is a required section of your stepper component. If set to `true`, the next step will not be accessible until the data in this step is completed. The default setting is `false`.
+    * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
     */
     'required': boolean;
     /**
@@ -1971,19 +1971,19 @@ declare namespace LocalJSX {
   }
   interface SeStepper {
     /**
-    * Sets the background color of your stepper.
+    * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background.
     */
     'color'?: 'primary' | 'alternative';
     /**
-    * If set to `true`, you are required to complete previous steps before moving onto the next step. Default setting is `false`.
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
     */
     'linear'?: boolean;
     /**
-    * Indicate to the parent component that a new stepper item has been selected.
+    * Emits an event to the parent component that a new stepper item has been selected.
     */
     'onOptionSelected'?: (event: CustomEvent<any>) => void;
     /**
-    * Set the validated property to true when a form field tied to a required step has the required input data. Otherwise, set this to false.
+    * Set the validated property to true when a form field tied to a required step has the required input data. The default setting is `false`.
     */
     'validated'?: boolean;
   }
@@ -1997,11 +1997,11 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
-    * Event to send to the parent component when clicking on a stepper item.
+    * Event to send to the parent component when clicking on a stepper item. This event emits the stepper item element object and its label property.
     */
     'onDidClick'?: (event: CustomEvent<any>) => void;
     /**
-    * Indicates whether or not this is a required section of your stepper component. If set to `true`, the next step will not be accessible until the data in this step is completed. The default setting is `false`.
+    * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
     */
     'required'?: boolean;
     /**

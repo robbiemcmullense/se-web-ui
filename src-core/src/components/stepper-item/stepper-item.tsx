@@ -11,9 +11,8 @@ export class StepperItemComponent {
    */
   @Prop() label: string;
   /**
-   * Indicates whether or not this is a required section of your stepper component.
-   * If set to `true`, the next step will not be accessible until the data in this step is completed.
-   * The default setting is `false`.
+   * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`.
+   * If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
    */
   @Prop() required: boolean = false;
   /**
@@ -28,6 +27,7 @@ export class StepperItemComponent {
   @Element() el: HTMLElement;
   /**
    * Event to send to the parent component when clicking on a stepper item.
+   * This event emits the stepper item element object and its label property.
    */
   @Event() didClick: EventEmitter;
 

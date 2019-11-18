@@ -13,20 +13,21 @@ export class StepperComponent {
   @State() index: number = 0;
   /**
    * Sets the background color of your stepper.
+   * The default setting is `primary`, implementing a green background for the stepper visual items.
+   * The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background.
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
   /**
-   * If set to `true`, you are required to complete previous steps before moving onto the next step.
-   * Default setting is `false`.
+   * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
    */
   @Prop() linear: boolean = false;
   /**
    * Set the validated property to true when a form field tied to a required step has the required input data.
-   * Otherwise, set this to false.
+   * The default setting is `false`.
    */
   @Prop() validated: boolean = false;
   /**
-   * Indicate to the parent component that a new stepper item has been selected.
+   * Emits an event to the parent component that a new stepper item has been selected.
    */
   @Event() optionSelected: EventEmitter;
 

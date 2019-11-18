@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                                                                                                             | Type                         | Default     |
-| ----------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
-| `color`     | `color`     | Sets the background color of your stepper.                                                                                              | `"alternative" \| "primary"` | `'primary'` |
-| `linear`    | `linear`    | If set to `true`, you are required to complete previous steps before moving onto the next step. Default setting is `false`.             | `boolean`                    | `false`     |
-| `validated` | `validated` | Set the validated property to true when a form field tied to a required step has the required input data. Otherwise, set this to false. | `boolean`                    | `false`     |
+| Property    | Attribute   | Description                                                                                                                                                                                                                                                                            | Type                         | Default     |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
+| `color`     | `color`     | Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background. | `"alternative" \| "primary"` | `'primary'` |
+| `linear`    | `linear`    | Defines if the stepper items must be completed sequentially.  The default setting is `false`.                                                                                                                                                                                          | `boolean`                    | `false`     |
+| `validated` | `validated` | Set the validated property to true when a form field tied to a required step has the required input data. The default setting is `false`.                                                                                                                                              | `boolean`                    | `false`     |
 
 
 ## Events
 
-| Event            | Description                                                                 | Type               |
-| ---------------- | --------------------------------------------------------------------------- | ------------------ |
-| `optionSelected` | Indicate to the parent component that a new stepper item has been selected. | `CustomEvent<any>` |
+| Event            | Description                                                                       | Type               |
+| ---------------- | --------------------------------------------------------------------------------- | ------------------ |
+| `optionSelected` | Emits an event to the parent component that a new stepper item has been selected. | `CustomEvent<any>` |
 
 
 ----------------------------------------------
