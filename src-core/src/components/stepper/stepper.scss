@@ -1,7 +1,6 @@
 @import "../../theme/theme";
 
 nav {
-  height: 56px;
   @include color('primary');
   &.alternative {
     background: $se-medium-grey;
@@ -14,12 +13,14 @@ ol {
   justify-content: center;
   padding: $spacing-large;
   margin-bottom: 0;
+  height: 24px;
 }
 
 ::slotted(div[slot="stepper-item-content"]) {
   width: auto;
   display: none;
   color: $se-anthracite-grey;
+  @include background-color('alternative');
 }
 
 ::slotted(div[slot="stepper-item-content"].active) {
