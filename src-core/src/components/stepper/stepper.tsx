@@ -74,7 +74,7 @@ export class StepperComponent {
   validatedStepCompleted() {
     if (this.validated) {
       this.stepperItems.forEach((item: any) => {
-        if (this.stepperItems.indexOf(item) == this.index && item.required) {
+        if (this.stepperItems.indexOf(item) == this.index && item.required && this.validated) {
           item.setAttribute('validated', true);
           this.index = this.stepperItems.indexOf(item) + 1;
           const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
@@ -86,6 +86,7 @@ export class StepperComponent {
               this.stepperItems[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
             }
           }
+          this.validated = false;
         }
       });
       if (!this.linear) {
@@ -99,7 +100,6 @@ export class StepperComponent {
           }
         }
       }
-      this.validated = false;
     }
   }
 

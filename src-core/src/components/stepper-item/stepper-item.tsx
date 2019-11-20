@@ -37,11 +37,15 @@ export class StepperItemComponent {
     return (
       <div class="stepper-item-wrapper">
         {this.isLast ?
-          [<span class="indicator"></span>,
-          <li class="stepper-item" onClick={() => this.emitEvent()}>{this.label}</li>]
+          [<div class="stepper-item" onClick={() => this.emitEvent()}>
+            <span class="indicator"></span>
+            <li class="stepper-item-label">{this.label}</li>
+          </div>]
           :
-          [<span class="indicator"></span>,
-          <li class="stepper-item" onClick={() => this.emitEvent()}>{this.label}</li>,
+          [<div class="stepper-item" onClick={() => this.emitEvent()}>
+            <span class="indicator"></span>
+            <li class="stepper-item-label">{this.label}</li>
+          </div>,
           <se-divider></se-divider>]}
       </div>
     )

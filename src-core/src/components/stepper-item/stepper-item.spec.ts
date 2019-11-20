@@ -25,7 +25,7 @@ describe('StepperItemComponent', () => {
 			components: [StepperItemComponent],
 			html: `<se-stepper-item></se-stepper-item>`,
 		});
-		expect(page.root.shadowRoot.querySelector('li.stepper-item')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('li.stepper-item-label')).toBeTruthy();
 	});
 
 	it('should render with se-icon and se-divider elements', async() => {
@@ -42,7 +42,7 @@ describe('StepperItemComponent', () => {
 			components: [StepperItemComponent],
 			html: `<se-stepper-item label="My Label"></se-stepper-item>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.stepper-item').innerHTML).toEqual('My Label');
+		expect(page.root.shadowRoot.querySelector('.stepper-item-label').innerHTML).toEqual('My Label');
 	});
 
 	it('should not render the se-divider when is-last is true', async() => {

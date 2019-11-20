@@ -25,18 +25,27 @@
 }
 
 .stepper-item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  &:hover {
+    cursor: pointer;
+  }
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+.stepper-item-label {
   display: inline;
   color: $se-light-grey;
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;
+  padding-left: 3px;
   padding-right: $spacing;
   &:hover {
     font-weight: 400;
-    cursor: pointer;
-  }
-  &.disabled {
-    pointer-events: none;
   }
 }
 
@@ -49,7 +58,7 @@ se-divider {
   .indicator {
    background-color: $se-life-green;
   }
-  .stepper-item {
+  .stepper-item-label {
     color: $se-anthracite-grey;
   }
 }
@@ -59,7 +68,7 @@ se-divider {
     background-color: $se-white;
     color: $se-life-green;
   }
-  .stepper-item {
+  .stepper-item-label {
     color: $se-white;
   }
 }
