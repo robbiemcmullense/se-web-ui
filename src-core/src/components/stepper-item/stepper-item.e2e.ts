@@ -19,7 +19,7 @@ describe('StepperItemComponent', () => {
 
   it('renders a li element with the class stepper-item', async() => {
     let listItem = await page.find('se-stepper-item >>> li');
-    expect(listItem).toHaveClass('stepper-item');
+    expect(listItem).toHaveClass('stepper-item-label');
   });
 
   it('renders span and se-divider elements', async() => {

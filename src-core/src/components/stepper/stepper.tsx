@@ -106,7 +106,6 @@ export class StepperComponent {
   addCheckmark(index: number) {
     let indicator = this.stepperItems[index].shadowRoot.querySelector('span');
     indicator.classList.add('se-icon');
-    indicator.innerText = 'notification_ok';
   }
 
   componentDidLoad() {
