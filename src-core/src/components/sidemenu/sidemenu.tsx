@@ -33,6 +33,10 @@ export class SidemenuComponent {
  */
   @Prop() link: string = 'www.se.com';
 
+  /**
+   * Toggle the menu from the sidemenu-item `item` or `id` to toggle the menu on the right menu item.
+   * ex: document.getElementById("main-sidemenu").toggle("side-about");
+   */
   @Method()
   async toggle(itemName?: string) {
     // Only perform toggle if no item name is passed or menu is closed
@@ -43,7 +47,7 @@ export class SidemenuComponent {
         this.addAnimation(null);
       }
       this.open = !this.open;
-    } else if (this.selectedItem && this.selectedItem.getAttribute('item') !== itemName) {
+    } else if (this.selectedItem && this.isItemElement(this.selectedItem, itemName)) {
       // Deselect the active item if a new item name is passed
       this.unselectAll();
     }
@@ -89,7 +93,11 @@ export class SidemenuComponent {
   }
 
   private getItemElement(name: string): HTMLElement {
-    return this.items.find(i => i.getAttribute('item') === name);
+    return this.items.find(i => this.isItemElement(i, name));
+  }
+
+  private isItemElement(elm: HTMLElement, name: string): boolean {
+    return elm.getAttribute('item') === name || elm.getAttribute('id') === name
   }
 
   private setActive(item: any): void {

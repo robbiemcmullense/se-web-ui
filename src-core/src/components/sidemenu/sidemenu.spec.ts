@@ -131,14 +131,15 @@ describe('SidemenuComponent with spy', () => {
     let node1 = document.createElement('se-sidemenu-item');
     let node2 = document.createElement('se-sidemenu-item');
 		node1.setAttribute('item', 'foo');
-		node2.setAttribute('item', 'bar');
+    node2.setAttribute('item', 'bar');
+    node2.setAttribute('id', 'bar-id');
     sidemenu.el.appendChild(node1);
     sidemenu.el.appendChild(node2);
     sidemenu.componentWillLoad();
     sidemenu.toggle('foo');
     setTimeout(() => {
       expect(sidemenu.selectedItem.getAttribute('item')).toEqual('foo');
-      sidemenu.toggle('bar');
+      sidemenu.toggle('bar-id');
       setTimeout(() => {
         expect(sidemenu.selectedItem.getAttribute('item')).toEqual('bar');
       }, 200);

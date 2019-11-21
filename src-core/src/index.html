@@ -329,7 +329,7 @@
         <a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
-        <se-button color="alternative" option="outline">alternative</se-button>
+        <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
       </nav>
     </se-tabbar>
     <se-container>
@@ -917,6 +917,10 @@
   <script>
     function showfab(text) {
       alert(text);
+    }
+    // Side menu
+    function openmenu(menu) {
+      document.getElementById("main-sidemenu").toggle(menu);
     }
 
     // Dialog
