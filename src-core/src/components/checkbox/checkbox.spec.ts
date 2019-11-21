@@ -50,12 +50,13 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.header).toBeFalsy();
 	});
 
-	it('should render in checkbox mode by default with an input element', async() => {
+	it('should render in checkbox mode by default with an input element, and the label right-positioned', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox label="my label" required="true"></se-checkbox>`,
 		});
 		expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.checkbox-label-right')).toBeTruthy();
 	});
 
 	it('should render "value" property as an input attribute', async() => {
@@ -66,12 +67,13 @@ describe('CheckboxComponent', () => {
 		expect(page.root.shadowRoot.querySelector('input').getAttribute('value')).toBe('my value');
 	});
 
-	it('should render in switch mode with a checkbox-label class', async() => {
+	it('should render in switch mode with a checkbox-label class, and the label left-positioned', async() => {
 		const page = await newSpecPage({
 			components: [CheckboxComponent],
 			html: `<se-checkbox option="switch" label="my label"></se-checkbox>`,
 		});
 		expect(page.root.shadowRoot.querySelector('.checkbox-label')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.checkbox-label-left')).toBeTruthy();
 	});
 
 	it('should render with a required asterisk', async() => {
@@ -90,10 +92,17 @@ describe('CheckboxComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.on-off-wrapper')).toBeTruthy();
 	});
 
-	it('should call the setElementId function when the component loads', async() => {
+	it('should call the setElementId function when the component loads, and set label-pos to right by default', async() => {
 		const eventSpy = jest.spyOn(checkbox, 'setElementId');
 		checkbox.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
+		expect(checkbox.labelPos).toEqual('right');
+	});
+
+	it('should set label-pos to left when option is set to switch', async() => {
+		checkbox.option = 'switch';
+		checkbox.componentDidLoad();
+		expect(checkbox.labelPos).toEqual('left');
 	});
 
 	it('should emit the didChange event when the handleClick function is executed', async() => {

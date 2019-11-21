@@ -1,21 +1,17 @@
 @import "../../theme/theme";
 
 :host {
-  @include align-items(center);
-  
+  @include align-items(center);  
   .se-radio {
     display: inline-block;
-
     .required {
       color: $se-red;
       padding-left: 3px;
-    }
-    
+    }   
     .radio-label {
       @include typology('small');
       padding-left: 6px;
-    }
-    
+    }    
     .radio-container {
       position: relative;
       padding-left: $spacing-large;
@@ -25,8 +21,7 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
-      user-select: none;
-    
+      user-select: none;  
       input {
         height: 0;
         width: 0;
@@ -35,16 +30,14 @@
           height: 6px;
           width: 6px;
           border: 5px solid;
-          @include border-color('primary');
-    
+          @include border-color('primary');   
           &[data-color="secondary"] {
             @include border-color('secondary');
           }
           &:after {
             display: block;
           }
-        }
-    
+        }   
         &[disabled] {
           &:checked ~ .checkdot {
             border: 1px solid #8ce599;
@@ -54,8 +47,7 @@
             }
           }
         }
-      }
-    
+      }   
       .checkdot {
         position: absolute;
         top: 1px;
@@ -66,7 +58,13 @@
         border: 1px solid $se-light-grey;
         border-radius: 50%;
       }
-    
+      &.checkdot-label-left {
+        padding-left: 0;
+        margin: 0;
+        .checkdot {
+          left: auto;
+        }
+      }    
       &[data-disabled] {
         .checkdot {
           border: 1px solid $se-ultra-light-grey-2;
