@@ -21,6 +21,19 @@ export class StepperItemComponent {
    */
   @Prop() isLast: boolean = false;
   /**
+   * Indicates the numerical position of the stepper item within the stepper component.
+   */
+  @Prop() step: number;
+  /**
+   * Indicates whether or not a stepper item has been selected.
+   */
+  @Prop() active: boolean;
+  /**
+   * Indicates whether or not a stepper item has been disabled.
+   */
+  @Prop() disabled: boolean;
+
+  /**
    * Event to send to the parent component when clicking on a stepper item.
    * This event emits the stepper item element object and its label property.
    */
@@ -35,15 +48,15 @@ export class StepperItemComponent {
 
   render() {
     return (
-      <div class="stepper-item-wrapper">
+      <div class={["stepper-item-wrapper", this.active ? "active" : ''].join(' ')}>
         {this.isLast ?
-          [<div class="stepper-item" onClick={() => this.emitEvent()}>
-            <span class="indicator"></span>
+          [<div class={["stepper-item", this.disabled ? "disabled" : ''].join(' ')} onClick={() => this.emitEvent()}>
+            <span class="indicator">{this.step}</span>
             <li class="stepper-item-label">{this.label}</li>
           </div>]
           :
-          [<div class="stepper-item" onClick={() => this.emitEvent()}>
-            <span class="indicator"></span>
+          [<div class={["stepper-item", this.disabled ? "disabled" : ''].join(' ')} onClick={() => this.emitEvent()}>
+            <span class="indicator">{this.step}</span>
             <li class="stepper-item-label">{this.label}</li>
           </div>,
           <se-divider></se-divider>]}

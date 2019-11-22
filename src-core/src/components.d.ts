@@ -768,6 +768,14 @@ export namespace Components {
   }
   interface SeStepperItem {
     /**
+    * Indicates whether or not a stepper item has been selected.
+    */
+    'active': boolean;
+    /**
+    * Indicates whether or not a stepper item has been disabled.
+    */
+    'disabled': boolean;
+    /**
     * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
     */
     'isLast': boolean;
@@ -779,6 +787,10 @@ export namespace Components {
     * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
     */
     'required': boolean;
+    /**
+    * Indicates the numerical position of the stepper item within the stepper component.
+    */
+    'step': number;
   }
   interface SeTabbar {
     /**
@@ -2001,6 +2013,14 @@ declare namespace LocalJSX {
   }
   interface SeStepperItem {
     /**
+    * Indicates whether or not a stepper item has been selected.
+    */
+    'active'?: boolean;
+    /**
+    * Indicates whether or not a stepper item has been disabled.
+    */
+    'disabled'?: boolean;
+    /**
     * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
     */
     'isLast'?: boolean;
@@ -2016,6 +2036,10 @@ declare namespace LocalJSX {
     * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
     */
     'required'?: boolean;
+    /**
+    * Indicates the numerical position of the stepper item within the stepper component.
+    */
+    'step'?: number;
   }
   interface SeTabbar {
     /**

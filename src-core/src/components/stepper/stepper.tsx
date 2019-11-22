@@ -36,20 +36,19 @@ export class StepperComponent {
     this.stepperItems.forEach((item: any) => {
       const indicator = item.shadowRoot.querySelector('span');
       indicator.classList.remove('se-icon');
-      indicator.innerText = this.stepperItems.indexOf(item) + 1;
-      item.classList.remove('selected');
+      this.setActiveItem(item, false);
+      //item.classList.remove('selected');
       if (item.label === event.detail.label) {
         this.index = this.stepperItems.indexOf(item);
       }
       if (this.linear) {
-        const stepperItem = item.shadowRoot.querySelector('.stepper-item');
         const isRequired = this.stepperItems[this.index].getAttribute('required');
         const isValidated = this.stepperItems[this.index].getAttribute('validated');
         const disabledIndex = (isRequired && !isValidated) ? this.index + 1 : this.index + 2;
         if (this.stepperItems.indexOf(item) >= disabledIndex) {
-          stepperItem.classList.add('disabled');
+          item.disabled = true;
         } else {
-          stepperItem.classList.remove('disabled');
+          item.disabled = false;
         }
       }
     });
@@ -57,7 +56,8 @@ export class StepperComponent {
       item.classList.remove('active');
     });
     for (let item of this.stepperItems) {
-      item.classList.add('selected');
+      this.setActiveItem(item, true);
+      //item.classList.add('selected');
       let itemIndex = this.stepperItems.indexOf(item);
       if (itemIndex !== this.index) {
         this.addCheckmark(itemIndex);
@@ -81,21 +81,20 @@ export class StepperComponent {
           nextItem.click();
           this.addCheckmark(this.index - 1);
           if (this.linear) {
-            nextItem.classList.remove('disabled');
+            this.setDisabledItem(this.stepperItems[this.index], false);
             if (!this.stepperItems[this.index].getAttribute('required')) {
-              this.stepperItems[this.index + 1].shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+              this.setDisabledItem(this.stepperItems[this.index + 1], false);
             }
           }
           this.validated = false;
         }
       });
       if (!this.linear) {
-        for (let item of this.stepperItems) {
-          let itemIndex = this.stepperItems.indexOf(item);
-          if (itemIndex >= this.index) {
-            item.shadowRoot.querySelector('.stepper-item').classList.remove('disabled');
+        for (let i=0; i<this.stepperItems.length; i++) {
+          if (i >= this.index) {
+            this.setDisabledItem(this.stepperItems[i], false);
           }
-          if (item.getAttribute('required') && this.stepperItems.indexOf(item) >= this.index) {
+          if (this.stepperItems[i].getAttribute('required') && i >= this.index) {
             break;
           }
         }
@@ -108,6 +107,14 @@ export class StepperComponent {
     indicator.classList.add('se-icon');
   }
 
+  private setActiveItem(item: any, value: boolean) {
+    item.active = value;
+  }
+
+  private setDisabledItem(item: any, value: boolean) {
+    item.disabled = value;
+  }
+
   componentDidLoad() {
     let requiredIndex;
     this.stepperItems = Array.from(this.el.querySelectorAll('se-stepper-item'));
@@ -115,23 +122,22 @@ export class StepperComponent {
     this.stepperItems.forEach((item: any) => {
       item.isLast = (item === this.stepperItems[this.stepperItems.length - 1]);
       item.classList.add(this.color);
-      const indicator = item.shadowRoot.querySelector('span');
-      const listItemElement = item.shadowRoot.querySelector('.stepper-item');
-      indicator.innerText = this.stepperItems.indexOf(item) + 1;
+      item.step = this.stepperItems.indexOf(item) + 1;
       if (item.required && !requiredIndex && requiredIndex !== 0) {
         requiredIndex = this.stepperItems.indexOf(item);
       }
       if (this.linear) {
         const disabledIndex = (requiredIndex == 0) ? this.stepperItems.indexOf(item) > 0 : this.stepperItems.indexOf(item) > 1;
         if (disabledIndex) {
-          listItemElement.classList.add('disabled');
+          item.disabled = true;
         }
       }
       if (this.stepperItems.indexOf(item) > requiredIndex) {
-        listItemElement.classList.add('disabled');
+        item.disabled = true;
       }
     });
-    this.stepperItems[0].classList.add('selected');
+    //this.stepperItems[0].classList.add('selected');
+    this.setActiveItem(this.stepperItems[0], true);
     this.contentItems[0].classList.add('active');
   }
 

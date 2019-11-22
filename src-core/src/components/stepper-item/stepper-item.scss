@@ -72,21 +72,25 @@ se-divider {
   margin-right: $spacing;
 }
 
-:host(.primary.selected) {
-  .indicator {
-   background-color: $se-life-green;
-  }
-  .stepper-item-label {
-    color: $se-anthracite-grey;
+:host(.primary) {
+  .active {
+    .indicator {
+      background-color: $se-life-green;
+     }
+     .stepper-item-label {
+       color: $se-anthracite-grey;
+     }
   }
 }
 
-:host(.alternative.selected) {
-  .indicator {
-    background-color: $se-white;
-    color: $se-life-green;
-  }
-  .stepper-item-label {
-    color: $se-white;
+:host(.alternative) {
+  .active {
+    .indicator {
+      background-color: $se-white;
+      color: $se-life-green;
+    }
+    .stepper-item-label {
+      color: $se-white;
+    }
   }
 }
