@@ -57,7 +57,6 @@ export class StepperComponent {
     });
     for (let item of this.stepperItems) {
       this.setActiveItem(item, true);
-      //item.classList.add('selected');
       let itemIndex = this.stepperItems.indexOf(item);
       if (itemIndex !== this.index) {
         this.addCheckmark(itemIndex);
@@ -90,11 +89,12 @@ export class StepperComponent {
         }
       });
       if (!this.linear) {
-        for (let i=0; i<this.stepperItems.length; i++) {
-          if (i >= this.index) {
-            this.setDisabledItem(this.stepperItems[i], false);
+        for (let item of this.stepperItems) {
+          let itemIndex = this.stepperItems.indexOf(item);
+          if (itemIndex >= this.index) {
+            this.setDisabledItem(item, false);
           }
-          if (this.stepperItems[i].getAttribute('required') && i >= this.index) {
+          if (item.getAttribute('required') && itemIndex >= this.index) {
             break;
           }
         }
