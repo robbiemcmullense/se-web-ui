@@ -471,7 +471,7 @@ export class SeSnackbar {
 proxyInputs(SeSnackbar, ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type']);
 
 export declare interface SeStepper extends Components.SeStepper {}
-@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'linear', 'validated'] })
+@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'linear'] })
 export class SeStepper {
   optionSelected!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -481,20 +481,21 @@ export class SeStepper {
     proxyOutputs(this, this.el, ['optionSelected']);
   }
 }
-proxyInputs(SeStepper, ['color', 'linear', 'validated']);
+proxyInputs(SeStepper, ['color', 'linear']);
 
 export declare interface SeStepperItem extends Components.SeStepperItem {}
-@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'disabled', 'isLast', 'label', 'required', 'step'] })
+@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'disabled', 'isLast', 'label', 'required', 'step', 'validated'] })
 export class SeStepperItem {
   didClick!: EventEmitter<CustomEvent>;
+  itemValidated!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didClick']);
+    proxyOutputs(this, this.el, ['didClick', 'itemValidated']);
   }
 }
-proxyInputs(SeStepperItem, ['active', 'disabled', 'isLast', 'label', 'required', 'step']);
+proxyInputs(SeStepperItem, ['active', 'disabled', 'isLast', 'label', 'required', 'step', 'validated']);
 
 export declare interface SeTabbar extends Components.SeTabbar {}
 @Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })

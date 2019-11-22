@@ -882,20 +882,20 @@
               <div>Primary Color Stepper (linear mode):</div>
               <se-stepper id="primary-stepper" linear="true">
 
-                <se-stepper-item label="Step 1" required="true"></se-stepper-item>
+                <se-stepper-item label="Step 1" required="true" id="primone"></se-stepper-item>
                 <se-stepper-item label="Step 2"></se-stepper-item>
                 <se-stepper-item label="Step 3"></se-stepper-item>
-                <se-stepper-item label="Step 4" required="true"></se-stepper-item>
+                <se-stepper-item label="Step 4" required="true" id="primfour"></se-stepper-item>
                 <se-stepper-item label="Step 5"></se-stepper-item>
                 <se-stepper-item label="Step 6"></se-stepper-item>
 
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
-                  <se-button onclick="updatePrimaryStepper()">Submit Primary Step 1</se-button>
+                  <se-button onclick="updatePrimaryStepper('primone')">Submit Primary Step 1</se-button>
                 </div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Second Step</div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Third Step</div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
-                  <se-button onclick="updatePrimaryStepper()">Submit Primary Step 4</se-button>
+                  <se-button onclick="updatePrimaryStepper('primfour')">Submit Primary Step 4</se-button>
                 </div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Fifth Step</div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Sixth Step</div>
@@ -905,20 +905,22 @@
               <div style="margin-top: 10px;">Alternative Color Stepper (non-linear mode):</div>
               <se-stepper id="alt-stepper" color="alternative">
 
-                <se-stepper-item label="Alt 1" required="true"></se-stepper-item>
-                <se-stepper-item label="Alt 2"></se-stepper-item>
+                <se-stepper-item label="Alt 1" required="true" id="altone"></se-stepper-item>
+                <se-stepper-item label="Alt 2" required="true" id="alttwo"></se-stepper-item>
                 <se-stepper-item label="Alt 3"></se-stepper-item>
-                <se-stepper-item label="Alt 4" required="true"></se-stepper-item>
+                <se-stepper-item label="Alt 4" required="true" id="altfour"></se-stepper-item>
                 <se-stepper-item label="Alt 5"></se-stepper-item>
                 <se-stepper-item label="Alt 6"></se-stepper-item>
 
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
-                  <se-button onclick="updateAltStepper()">Submit Alt Step 1</se-button>
+                  <se-button onclick="updateAltStepper('altone')">Submit Alt Step 1</se-button>
                 </div>
-                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Second Step</div>
+                <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
+                  <se-button onclick="updateAltStepper('alttwo')">Submit Alt Step 2</se-button>
+                </div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Third Step</div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">
-                  <se-button onclick="updateAltStepper()">Submit Alt Step 4</se-button>
+                  <se-button onclick="updateAltStepper('altfour')">Submit Alt Step 4</se-button>
                 </div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Fifth Step</div>
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Sixth Step</div>
@@ -1153,11 +1155,11 @@
       document.getElementById('se-radio-value').innerText = event.detail.value;
     });
 
-    function updatePrimaryStepper() {
-      document.getElementById('primary-stepper').validated = true;
+    function updatePrimaryStepper(value) {
+      document.getElementById(value).validated = true;
     }
-    function updateAltStepper() {
-      document.getElementById('alt-stepper').validated = true;
+    function updateAltStepper(value) {
+      document.getElementById(value).validated = true;
     }
   </script>
 </body>

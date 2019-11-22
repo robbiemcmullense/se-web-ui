@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Watch, State, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Listen, State, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-stepper",
@@ -21,11 +21,6 @@ export class StepperComponent {
    */
   @Prop() linear: boolean = false;
   /**
-   * Set the validated property to true when a form field tied to a required step has the required input data.
-   * The default setting is `false`.
-   */
-  @Prop() validated: boolean = false;
-  /**
    * Emits an event to the parent component that a new stepper item has been selected.
    */
   @Event() optionSelected: EventEmitter;
@@ -37,13 +32,12 @@ export class StepperComponent {
       const indicator = item.shadowRoot.querySelector('span');
       indicator.classList.remove('se-icon');
       this.setActiveItem(item, false);
-      //item.classList.remove('selected');
       if (item.label === event.detail.label) {
         this.index = this.stepperItems.indexOf(item);
       }
       if (this.linear) {
         const isRequired = this.stepperItems[this.index].getAttribute('required');
-        const isValidated = this.stepperItems[this.index].getAttribute('validated');
+        const isValidated = this.checkIfValidated(this.stepperItems[this.index]);
         const disabledIndex = (isRequired && !isValidated) ? this.index + 1 : this.index + 2;
         if (this.stepperItems.indexOf(item) >= disabledIndex) {
           item.disabled = true;
@@ -69,34 +63,30 @@ export class StepperComponent {
   }
 
   // advances the active stepper item by one when a required step is validated
-  @Watch('validated')
+  @Listen('itemValidated')
   validatedStepCompleted() {
-    if (this.validated) {
-      this.stepperItems.forEach((item: any) => {
-        if (this.stepperItems.indexOf(item) == this.index && item.required && this.validated) {
-          item.setAttribute('validated', true);
-          this.index = this.stepperItems.indexOf(item) + 1;
-          const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
-          nextItem.click();
-          this.addCheckmark(this.index - 1);
-          if (this.linear) {
-            this.setDisabledItem(this.stepperItems[this.index], false);
-            if (!this.stepperItems[this.index].getAttribute('required')) {
-              this.setDisabledItem(this.stepperItems[this.index + 1], false);
-            }
+    this.stepperItems.forEach((item: any) => {
+      if (this.stepperItems.indexOf(item) == this.index && item.required && item.validated) {
+        this.index = this.stepperItems.indexOf(item) + 1;
+        const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
+        nextItem.click();
+        this.addCheckmark(this.index - 1);
+        if (this.linear) {
+          this.setDisabledItem(this.stepperItems[this.index], false);
+          if (!this.stepperItems[this.index].getAttribute('required')) {
+            this.setDisabledItem(this.stepperItems[this.index + 1], false);
           }
-          this.validated = false;
         }
-      });
-      if (!this.linear) {
-        for (let item of this.stepperItems) {
-          let itemIndex = this.stepperItems.indexOf(item);
-          if (itemIndex >= this.index) {
-            this.setDisabledItem(item, false);
-          }
-          if (item.getAttribute('required') && itemIndex >= this.index) {
-            break;
-          }
+      }
+    });
+    if (!this.linear) {
+      for (let item of this.stepperItems) {
+        let itemIndex = this.stepperItems.indexOf(item);
+        if (itemIndex >= this.index) {
+          this.setDisabledItem(item, false);
+        }
+        if (item.getAttribute('required') && itemIndex >= this.index) {
+          break;
         }
       }
     }
@@ -113,6 +103,10 @@ export class StepperComponent {
 
   private setDisabledItem(item: any, value: boolean) {
     item.disabled = value;
+  }
+
+  private checkIfValidated(item) {
+    return item.validated;
   }
 
   componentDidLoad() {

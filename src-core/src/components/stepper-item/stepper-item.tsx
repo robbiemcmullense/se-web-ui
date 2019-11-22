@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Prop, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-stepper-item",
@@ -32,18 +32,30 @@ export class StepperItemComponent {
    * Indicates whether or not a stepper item has been disabled.
    */
   @Prop() disabled: boolean;
-
+  /**
+   * Indicates whether a required item's data has been validated.  Useful if using a form field.
+   */
+  @Prop() validated: boolean;
   /**
    * Event to send to the parent component when clicking on a stepper item.
    * This event emits the stepper item element object and its label property.
    */
   @Event() didClick: EventEmitter;
+  /**
+   * Event to send to the parent component when a stepper item's data is validated.
+   */
+  @Event() itemValidated: EventEmitter;
 
   emitEvent() {
     this.didClick.emit({
       label: this.label,
       el: this.el
     });
+  }
+
+  @Watch('validated')
+  validatedDidChange() {
+    this.itemValidated.emit();
   }
 
   render() {

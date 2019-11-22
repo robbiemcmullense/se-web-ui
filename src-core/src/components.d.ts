@@ -761,10 +761,6 @@ export namespace Components {
     * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
     */
     'linear': boolean;
-    /**
-    * Set the validated property to true when a form field tied to a required step has the required input data. The default setting is `false`.
-    */
-    'validated': boolean;
   }
   interface SeStepperItem {
     /**
@@ -791,6 +787,10 @@ export namespace Components {
     * Indicates the numerical position of the stepper item within the stepper component.
     */
     'step': number;
+    /**
+    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+    */
+    'validated': boolean;
   }
   interface SeTabbar {
     /**
@@ -2006,10 +2006,6 @@ declare namespace LocalJSX {
     * Emits an event to the parent component that a new stepper item has been selected.
     */
     'onOptionSelected'?: (event: CustomEvent<any>) => void;
-    /**
-    * Set the validated property to true when a form field tied to a required step has the required input data. The default setting is `false`.
-    */
-    'validated'?: boolean;
   }
   interface SeStepperItem {
     /**
@@ -2033,6 +2029,10 @@ declare namespace LocalJSX {
     */
     'onDidClick'?: (event: CustomEvent<any>) => void;
     /**
+    * Event to send to the parent component when a stepper item's data is validated.
+    */
+    'onItemValidated'?: (event: CustomEvent<any>) => void;
+    /**
     * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
     */
     'required'?: boolean;
@@ -2040,6 +2040,10 @@ declare namespace LocalJSX {
     * Indicates the numerical position of the stepper item within the stepper component.
     */
     'step'?: number;
+    /**
+    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+    */
+    'validated'?: boolean;
   }
   interface SeTabbar {
     /**
