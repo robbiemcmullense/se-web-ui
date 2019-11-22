@@ -7,9 +7,9 @@ export default class BlockFooter extends Component {
   }
 
 	render() {
-		const { direction, option, children } = this.props;
+		const { direction, divider, option, children } = this.props;
 		return (
-			<se-block-footer direction={direction} option={option} >{children}</se-block-footer>
+			<se-block-footer direction={direction} divider={divider} option={option} >{children}</se-block-footer>
 		);
 	}
 }
@@ -27,6 +27,10 @@ BlockFooter.propTypes = {
 `column` is useful in specific cases. Make sure you know what you are doing.
    */
   direction: PropTypes.string,
+  /**
+   * 
+   */
+  divider: PropTypes.bool,
   /**
    * Defines the visual appearance of a footer.
 Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.

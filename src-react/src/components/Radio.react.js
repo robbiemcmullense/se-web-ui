@@ -22,9 +22,9 @@ export default class Radio extends Component {
   }
 
 	render() {
-		const { color, disabled, label, required, selected, value, didCheck, children } = this.props;
+		const { color, disabled, label, labelPos, required, selected, value, didCheck, children } = this.props;
 		return (
-			<se-radio color={color} disabled={disabled} label={label} required={required} selected={selected} value={value} ref={this._handleRef} >{children}</se-radio>
+			<se-radio color={color} disabled={disabled} label={label} label-pos={labelPos} required={required} selected={selected} value={value} ref={this._handleRef} >{children}</se-radio>
 		);
 	}
 }
@@ -50,6 +50,11 @@ The `secondary` setting renders a blue color.
    * Defines the label that will display next to the radio button.
    */
   label: PropTypes.string,
+  /**
+   * Sets the position of the label for your checkbox component.
+The default setting is `right`.
+   */
+  labelPos: PropTypes.string,
   /**
    * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
    */

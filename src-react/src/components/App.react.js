@@ -24,7 +24,7 @@ App.propTypes = {
   /**
    * Define the type of application. updating the option will impact the font used.
 - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`.
-- `website`: For `se.com` application, the font used will be `Arial Rounded`.
+- `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
    */
   option: PropTypes.string
 };

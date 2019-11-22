@@ -83,8 +83,6 @@ $prefix: "--se-"; //Prefix string for custom CSS properties
     font-weight: bold;
   } @else if $value == "p" {
     font-size: $p-fontsize;
-    line-height: 20px;
-    margin: 8px 0;
     strong,
     .bold {
       font-weight: bold;

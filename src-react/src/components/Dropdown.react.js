@@ -27,9 +27,9 @@ export default class Dropdown extends Component {
   }
 
 	render() {
-		const { alignment, didClose, didOpen, children } = this.props;
+		const { alignment, maxHeight, maxWidth, didClose, didOpen, children } = this.props;
 		return (
-			<se-dropdown alignment={alignment} ref={this._handleRef} >{children}</se-dropdown>
+			<se-dropdown alignment={alignment} max-height={maxHeight} max-width={maxWidth} ref={this._handleRef} >{children}</se-dropdown>
 		);
 	}
 }
@@ -47,6 +47,14 @@ Dropdown.propTypes = {
 `right`: Position the container with respect to the right side of the trigger element.
    */
   alignment: PropTypes.string,
+  /**
+   * Sets the maximum height of the dropdown.  Default setting is "400px".
+   */
+  maxHeight: PropTypes.string,
+  /**
+   * Sets the maximum width of the dropdown.  Default setting is "200px".
+   */
+  maxWidth: PropTypes.string,
   /**
    * Event emitted when the dropdown has been closed.
    */

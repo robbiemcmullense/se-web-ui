@@ -7,9 +7,9 @@ export default class BlockHeader extends Component {
   }
 
 	render() {
-		const { option, children } = this.props;
+		const { divider, option, children } = this.props;
 		return (
-			<se-block-header option={option} >{children}</se-block-header>
+			<se-block-header divider={divider} option={option} >{children}</se-block-header>
 		);
 	}
 }
@@ -21,6 +21,10 @@ BlockHeader.propTypes = {
    * The children of this component
    */
   children: PropTypes.node,
+  /**
+   * 
+   */
+  divider: PropTypes.bool,
   /**
    * Defines the visual appearance of a header.
 Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
