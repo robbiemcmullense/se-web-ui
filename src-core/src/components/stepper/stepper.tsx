@@ -53,7 +53,7 @@ export class StepperComponent {
       }
     });
     this.contentItems.forEach((item: any) => {
-      item.classList.remove('active');
+      item.classList.remove('selected');
     });
     for (let item of this.stepperItems) {
       this.setActiveItem(item, true);
@@ -64,7 +64,7 @@ export class StepperComponent {
         break;
       }
     }
-    this.contentItems[this.index].classList.add('active');
+    this.contentItems[this.index].classList.add('selected');
     this.optionSelected.emit(event.detail);
   }
 
@@ -136,9 +136,8 @@ export class StepperComponent {
         item.disabled = true;
       }
     });
-    //this.stepperItems[0].classList.add('selected');
     this.setActiveItem(this.stepperItems[0], true);
-    this.contentItems[0].classList.add('active');
+    this.contentItems[0].classList.add('selected');
   }
 
   render() {

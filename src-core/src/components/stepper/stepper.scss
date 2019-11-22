@@ -23,6 +23,6 @@ ol {
   @include background-color('alternative');
 }
 
-::slotted(div[slot="stepper-item-content"].active) {
+::slotted(div[slot="stepper-item-content"].selected) {
   display: block;
 }
