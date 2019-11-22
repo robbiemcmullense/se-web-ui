@@ -34,7 +34,7 @@ export class SidemenuComponent {
   @Prop() link: string = 'www.se.com';
 
   /**
-   * Toggle the menu from the sidemenu-item `item` or `id` to toggle the menu on the right menu item.
+   * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.
    * ex: document.getElementById("main-sidemenu").toggle("side-about");
    */
   @Method()
