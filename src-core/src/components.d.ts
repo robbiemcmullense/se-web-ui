@@ -761,7 +761,18 @@ export namespace Components {
     * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
     */
     'linear': boolean;
-    'resetStepper': () => Promise<void>;
+    /**
+    * Call the `next` method to navigate to the next step from the step that is currently selected. This will not work if the next step is required and not validated.
+    */
+    'next': () => Promise<void>;
+    /**
+    * Call the `previous` method to navigate to the previous step from the step that is currently selected.
+    */
+    'previous': () => Promise<void>;
+    /**
+    * Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
+    */
+    'reset': () => Promise<void>;
   }
   interface SeStepperItem {
     /**

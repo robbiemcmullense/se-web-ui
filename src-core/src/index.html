@@ -927,6 +927,8 @@
               </se-stepper>
             </se-block-content>
             <se-block-footer>
+              <se-button onclick="prevStep()">Previous Primary Step</se-button>
+              <se-button onclick="nextStep()">Next Alt Step</se-button>
               <se-button onclick="primaryStepperReset()">Reset Primary Stepper</se-button>
               <se-button onclick="altStepperReset()">Reset Alt Stepper</se-button>
             </se-block-footer>
@@ -1167,11 +1169,19 @@
     }
 
     function primaryStepperReset() {
-      document.getElementById('primary-stepper').resetStepper();
+      document.getElementById('primary-stepper').reset();
     }
 
     function altStepperReset() {
-      document.getElementById('alt-stepper').resetStepper();
+      document.getElementById('alt-stepper').reset();
+    }
+
+    function prevStep() {
+      document.getElementById('primary-stepper').previous();
+    }
+
+    function nextStep() {
+      document.getElementById('alt-stepper').next();
     }
 
   </script>

@@ -22,7 +22,27 @@
 
 ## Methods
 
-### `resetStepper() => Promise<void>`
+### `next() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `previous() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `reset() => Promise<void>`
 
 
 

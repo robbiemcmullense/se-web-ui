@@ -92,14 +92,44 @@ export class StepperComponent {
     }
   }
 
+  /**
+   * Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
+   */
   @Method()
-  async resetStepper() {
+  async reset() {
     this.stepperItems.forEach((item: any) => {
       item.validated = false;
       item.disabled = (this.stepperItems.indexOf(item) == 0) ? false : true;
     });
     const firstItem: HTMLElement = this.stepperItems[0].shadowRoot.querySelector('.stepper-item');
     firstItem.click();
+  }
+
+  /**
+   * Call the `previous` method to navigate to the previous step from the step that is currently selected.
+   */
+  @Method()
+  async previous() {
+    const prevItem: HTMLElement = this.stepperItems[this.index-1].shadowRoot.querySelector('.stepper-item');
+    prevItem.click();
+  }
+
+  /**
+   * Call the `next` method to navigate to the next step from the step that is currently selected.
+   * This will not work if the next step is required and not validated.
+   */
+  @Method()
+  async next() {
+    let nextStepValidated;
+    this.stepperItems.forEach((item: any) => {
+      if (this.stepperItems.indexOf(item) == this.index && (!item.required || item.validated)) {
+        nextStepValidated = true;
+      }
+    });
+    if (nextStepValidated) {
+      const nextItem: HTMLElement = this.stepperItems[this.index+1].shadowRoot.querySelector('.stepper-item');
+      nextItem.click();
+    }
   }
 
   addCheckmark(index: number) {
