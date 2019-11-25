@@ -926,6 +926,10 @@
                 <div slot="stepper-item-content" style="border: 1px solid black; padding: 10px;">Sixth Step</div>
               </se-stepper>
             </se-block-content>
+            <se-block-footer>
+              <se-button onclick="primaryStepperReset()">Reset Primary Stepper</se-button>
+              <se-button onclick="altStepperReset()">Reset Alt Stepper</se-button>
+            </se-block-footer>
           </se-block>
         </se-container>
       </se-container>
@@ -1161,6 +1165,15 @@
     function updateAltStepper(value) {
       document.getElementById(value).validated = true;
     }
+
+    function primaryStepperReset() {
+      document.getElementById('primary-stepper').resetStepper();
+    }
+
+    function altStepperReset() {
+      document.getElementById('alt-stepper').resetStepper();
+    }
+
   </script>
 </body>
 

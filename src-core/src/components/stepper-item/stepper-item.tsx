@@ -55,7 +55,7 @@ export class StepperItemComponent {
 
   @Watch('validated')
   validatedDidChange() {
-    this.itemValidated.emit();
+    this.itemValidated.emit(this.validated);
   }
 
   render() {

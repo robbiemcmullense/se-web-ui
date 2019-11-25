@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Listen, State, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Listen, State, Prop, Method } from "@stencil/core";
 
 @Component({
   tag: "se-stepper",
@@ -64,10 +64,10 @@ export class StepperComponent {
 
   // advances the active stepper item by one when a required step is validated
   @Listen('itemValidated')
-  validatedStepCompleted() {
+  validatedStepCompleted(value: boolean) {
     this.stepperItems.forEach((item: any) => {
       if (this.stepperItems.indexOf(item) == this.index && item.required && item.validated) {
-        this.index = this.stepperItems.indexOf(item) + 1;
+        this.index = value ? this.stepperItems.indexOf(item) + 1 : 0;
         const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
         nextItem.click();
         this.addCheckmark(this.index - 1);
@@ -90,6 +90,16 @@ export class StepperComponent {
         }
       }
     }
+  }
+
+  @Method()
+  async resetStepper() {
+    this.stepperItems.forEach((item: any) => {
+      item.validated = false;
+      item.disabled = (this.stepperItems.indexOf(item) == 0) ? false : true;
+    });
+    const firstItem: HTMLElement = this.stepperItems[0].shadowRoot.querySelector('.stepper-item');
+    firstItem.click();
   }
 
   addCheckmark(index: number) {

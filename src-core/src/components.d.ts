@@ -761,6 +761,7 @@ export namespace Components {
     * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
     */
     'linear': boolean;
+    'resetStepper': () => Promise<void>;
   }
   interface SeStepperItem {
     /**

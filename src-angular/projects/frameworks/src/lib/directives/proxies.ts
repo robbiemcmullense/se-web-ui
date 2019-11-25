@@ -481,6 +481,7 @@ export class SeStepper {
     proxyOutputs(this, this.el, ['optionSelected']);
   }
 }
+proxyMethods(SeStepper, ['resetStepper']);
 proxyInputs(SeStepper, ['color', 'linear']);
 
 export declare interface SeStepperItem extends Components.SeStepperItem {}
