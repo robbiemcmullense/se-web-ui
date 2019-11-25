@@ -22,6 +22,7 @@ describe('StepperComponent', () => {
 	it('should not be validated by default', () => {
 		expect(stepper.validated).toBeFalsy();
 	});
+
 });
 
 describe('Stepper Component methods', () => {
@@ -49,6 +50,14 @@ describe('Stepper Component methods', () => {
 		contentNodeTwo = document.createElement('div');
 		contentNodeTwo.setAttribute('slot', 'stepper-item-content');
 		stepper.el.appendChild(contentNodeTwo);
+	});
+
+	it('should set the validated property to false for all stepper items when the reset method is called', () => {
+		stepper.componentDidLoad();
+		stepper.stepperItems[0].setAttribute('validated', true);
+		stepper.reset();
+		expect(stepper.stepperItems[0].validated).toBeFalsy();
+		expect(stepper.stepperItems[1].validated).toBeFalsy();
 	});
 
 	it('should set the isLast property to the second stepper item when there are two stepper items', () => {	
