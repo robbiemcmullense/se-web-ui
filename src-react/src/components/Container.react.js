@@ -7,9 +7,9 @@ export default class Container extends Component {
   }
 
 	render() {
-		const { color, columnSize, direction, display, option, position, rowSize, children } = this.props;
+		const { color, columnSize, direction, display, option, padding, position, rowSize, children } = this.props;
 		return (
-			<se-container color={color} column-size={columnSize} direction={direction} display={display} option={option} position={position} row-size={rowSize} >{children}</se-container>
+			<se-container color={color} column-size={columnSize} direction={direction} display={display} option={option} padding={padding} position={position} row-size={rowSize} >{children}</se-container>
 		);
 	}
 }
@@ -23,7 +23,8 @@ Container.propTypes = {
   children: PropTypes.node,
   /**
    * Defines the background color of the container.
-`standard` is a light gray.
+`none` has no background.
+`standard` is `se-background`, light gray.
 `alternative` is a white background.
    */
   color: PropTypes.string,
@@ -46,13 +47,23 @@ Default is `350px`.
   display: PropTypes.string,
   /**
    * Defines the inner appearance of a container.
-`fill` is the default option, taking the full space of the container.
-`widget` adds a small spacing around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray).
+`fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set.
+`widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set.
 `centered` centers the container so the content does not exceed a maximum width.
-`card` adds a larger spacing around each child element.  This option automatically sets the color property to `alternative` (white).
+`card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set.
+Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
 `inherited` will insure that no specific style is applied to the container.
    */
   option: PropTypes.string,
+  /**
+   * Defines the spacing around the inside edge of a container.
+`none` is 0px.
+`small` is 4px.
+`medium` is 8px.
+`large` is 16px.
+`xlarge` is 32px.
+   */
+  padding: PropTypes.string,
   /**
    * In specific cases, it may be necessary to define the container with an absolute position (such as inside an angular router-container). Most of the time, the default position will work perfectly with CSS flex box.
 `relative` is the default position. This is perfect to use with flex content.

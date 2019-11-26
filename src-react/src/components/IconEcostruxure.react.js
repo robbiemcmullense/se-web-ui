@@ -7,9 +7,9 @@ export default class IconEcostruxure extends Component {
   }
 
 	render() {
-		const { size, children } = this.props;
+		const { color, size, children } = this.props;
 		return (
-			<se-icon-ecostruxure size={size} >{children}</se-icon-ecostruxure>
+			<se-icon-ecostruxure color={color} size={size} >{children}</se-icon-ecostruxure>
 		);
 	}
 }
@@ -21,6 +21,12 @@ IconEcostruxure.propTypes = {
    * The children of this component
    */
   children: PropTypes.node,
+  /**
+   * Defines the color of the logo.
+`standard`: displays a light green / dark green conventional SE logo.
+`inherited`: default option, which takes the color from it's parent.
+   */
+  color: PropTypes.string,
   /**
    * Sets the size of the EcoStruxure icon.  The default setting is `small`.
    */

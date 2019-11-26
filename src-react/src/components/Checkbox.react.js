@@ -22,9 +22,9 @@ export default class Checkbox extends Component {
   }
 
 	render() {
-		const { background, color, disabled, header, label, option, required, selected, textOff, textOn, value, didChange, children } = this.props;
+		const { background, color, disabled, header, label, labelPos, option, required, selected, textOff, textOn, value, didChange, children } = this.props;
 		return (
-			<se-checkbox background={background} color={color} disabled={disabled} header={header} label={label} option={option} required={required} selected={selected} text-off={textOff} text-on={textOn} value={value} ref={this._handleRef} >{children}</se-checkbox>
+			<se-checkbox background={background} color={color} disabled={disabled} header={header} label={label} label-pos={labelPos} option={option} required={required} selected={selected} text-off={textOff} text-on={textOn} value={value} ref={this._handleRef} >{children}</se-checkbox>
 		);
 	}
 }
@@ -61,6 +61,12 @@ Useful if the on/off checkbox is within a header element.
    */
   label: PropTypes.string,
   /**
+   * Sets the position of the label for your checkbox component.
+The default setting is `right` when the option is set to `checkbox`.
+The default setting is `left` when the option is set to `switch`.
+   */
+  labelPos: PropTypes.string,
+  /**
    * Determines the visual appearance of the component.
 `checkbox` is the default option, which will render the component like a standard HTML checkbox.
 `switch` renders the component like a toggle switch.
@@ -72,7 +78,7 @@ Useful if the on/off checkbox is within a header element.
    */
   required: PropTypes.bool,
   /**
-   * Determines whether or not the checkbox is checked when you initialize it.  Set to `false` by default.
+   * The "checked" state of the checkbox, `false` by default.
    */
   selected: PropTypes.bool,
   /**

@@ -46,7 +46,7 @@ The default setting is `false`.
    */
   item: PropTypes.string,
   /**
-   * 
+   * Send an event when the sidemenu item changes
    */
   didClick: PropTypes.func
 };
