@@ -473,30 +473,27 @@ proxyInputs(SeSnackbar, ['actionText', 'canClose', 'duration', 'icon', 'message'
 export declare interface SeStepper extends Components.SeStepper {}
 @Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'linear'] })
 export class SeStepper {
-  optionSelected!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['optionSelected']);
   }
 }
 proxyMethods(SeStepper, ['reset', 'previous', 'next']);
 proxyInputs(SeStepper, ['color', 'linear']);
 
 export declare interface SeStepperItem extends Components.SeStepperItem {}
-@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'disabled', 'isLast', 'label', 'required', 'step', 'validated'] })
+@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'isLast', 'label', 'required', 'selected', 'selectedContent', 'step', 'validated'] })
 export class SeStepperItem {
-  didClick!: EventEmitter<CustomEvent>;
   itemValidated!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didClick', 'itemValidated']);
+    proxyOutputs(this, this.el, ['itemValidated']);
   }
 }
-proxyInputs(SeStepperItem, ['active', 'disabled', 'isLast', 'label', 'required', 'step', 'validated']);
+proxyInputs(SeStepperItem, ['disabled', 'isLast', 'label', 'required', 'selected', 'selectedContent', 'step', 'validated']);
 
 export declare interface SeTabbar extends Components.SeTabbar {}
 @Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })

@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-stepper-item",
@@ -27,7 +27,11 @@ export class StepperItemComponent {
   /**
    * Indicates whether or not a stepper item has been selected.
    */
-  @Prop() active: boolean;
+  @Prop() selected: boolean;
+  /**
+   * Indicates the content for the currently selected step in the stepper.
+   */
+  @Prop() selectedContent: boolean;
   /**
    * Indicates whether or not a stepper item has been disabled.
    */
@@ -37,21 +41,9 @@ export class StepperItemComponent {
    */
   @Prop() validated: boolean;
   /**
-   * Event to send to the parent component when clicking on a stepper item.
-   * This event emits the stepper item element object and its label property.
-   */
-  @Event() didClick: EventEmitter;
-  /**
    * Event to send to the parent component when a stepper item's data is validated.
    */
   @Event() itemValidated: EventEmitter;
-
-  emitEvent() {
-    this.didClick.emit({
-      label: this.label,
-      el: this.el
-    });
-  }
 
   @Watch('validated')
   validatedDidChange() {
@@ -60,19 +52,10 @@ export class StepperItemComponent {
 
   render() {
     return (
-      <div class={["stepper-item-wrapper", this.active ? "active" : ''].join(' ')}>
-        {this.isLast ?
-          [<div class={["stepper-item", this.disabled ? "disabled" : ''].join(' ')} onClick={() => this.emitEvent()}>
-            <span class="indicator">{this.step}</span>
-            <li class="stepper-item-label">{this.label}</li>
-          </div>]
-          :
-          [<div class={["stepper-item", this.disabled ? "disabled" : ''].join(' ')} onClick={() => this.emitEvent()}>
-            <span class="indicator">{this.step}</span>
-            <li class="stepper-item-label">{this.label}</li>
-          </div>,
-          <se-divider></se-divider>]}
-      </div>
+      <Host
+        class={[this.selectedContent ? 'active' : 'navitem-hidden'].join(' ')}>
+        <slot></slot>
+      </Host>
     )
   }
 }

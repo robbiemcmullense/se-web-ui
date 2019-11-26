@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Listen, State, Prop, Method } from "@stencil/core";
+import { Component, Element, h, Listen, State, Prop, Method } from "@stencil/core";
 
 @Component({
   tag: "se-stepper",
@@ -8,7 +8,6 @@ import { Component, Element, Event, EventEmitter, h, Listen, State, Prop, Method
 export class StepperComponent {
   @Element() el: HTMLElement;
   @State() stepperItems: HTMLElement[] = [];
-  @State() contentItems: HTMLElement[] = [];
   @State() index: number = 0;
   /**
    * Sets the background color of your stepper.
@@ -20,19 +19,16 @@ export class StepperComponent {
    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
    */
   @Prop() linear: boolean = false;
-  /**
-   * Emits an event to the parent component that a new stepper item has been selected.
-   */
-  @Event() optionSelected: EventEmitter;
 
-  // changes the active stepper item when clicked on
-  @Listen('didClick')
   stepperItemClickedHandler(event) {
     this.stepperItems.forEach((item: any) => {
-      const indicator = item.shadowRoot.querySelector('span');
-      indicator.classList.remove('se-icon');
-      this.setActiveItem(item, false);
-      if (item.label === event.detail.label) {
+      let indicator = Array.from(this.el.shadowRoot.querySelectorAll('span'));
+      indicator.forEach((item: any) => {
+        item.classList.remove('se-icon');
+      });
+      this.setSelectedItem(item, false);
+      this.setSelectedContent(item, false);
+      if (item.label === event) {
         this.index = this.stepperItems.indexOf(item);
       }
       if (this.linear) {
@@ -46,20 +42,18 @@ export class StepperComponent {
         }
       }
     });
-    this.contentItems.forEach((item: any) => {
-      item.classList.remove('selected');
-    });
+
     for (let item of this.stepperItems) {
-      this.setActiveItem(item, true);
+      this.setSelectedItem(item, true);
       let itemIndex = this.stepperItems.indexOf(item);
       if (itemIndex !== this.index) {
         this.addCheckmark(itemIndex);
       } else if (itemIndex == this.index) {
+        this.setSelectedContent(item, true);
         break;
       }
     }
-    this.contentItems[this.index].classList.add('selected');
-    this.optionSelected.emit(event.detail);
+
   }
 
   // advances the active stepper item by one when a required step is validated
@@ -110,7 +104,7 @@ export class StepperComponent {
    */
   @Method()
   async previous() {
-    const prevItem: HTMLElement = this.stepperItems[this.index-1].shadowRoot.querySelector('.stepper-item');
+    const prevItem: HTMLElement = this.stepperItems[this.index - 1].shadowRoot.querySelector('.stepper-item');
     prevItem.click();
   }
 
@@ -127,18 +121,25 @@ export class StepperComponent {
       }
     });
     if (nextStepValidated) {
-      const nextItem: HTMLElement = this.stepperItems[this.index+1].shadowRoot.querySelector('.stepper-item');
+      const nextItem: HTMLElement = this.stepperItems[this.index + 1].shadowRoot.querySelector('.stepper-item');
       nextItem.click();
     }
   }
 
   addCheckmark(index: number) {
-    let indicator = this.stepperItems[index].shadowRoot.querySelector('span');
-    indicator.classList.add('se-icon');
+    let indicator = Array.from(this.el.shadowRoot.querySelectorAll('span'));
+    for (var i = 0; i <= index; i++) {
+      indicator[i].classList.add('se-icon');
+    }
+
   }
 
-  private setActiveItem(item: any, value: boolean) {
-    item.active = value;
+  private setSelectedItem(item: any, value: boolean) {
+    item.selected = value;
+  }
+
+  private setSelectedContent(item: any, value: boolean) {
+    item.selectedContent = value;
   }
 
   private setDisabledItem(item: any, value: boolean) {
@@ -149,39 +150,42 @@ export class StepperComponent {
     return item.validated;
   }
 
+  renderList() {
+    return this.stepperItems.map((item: any) => {
+      return [
+        <div class={["stepper-item-wrapper", item.selected ? "selected" : ''].join(' ')}>
+          <div class={["stepper-item", item.disabled ? "disabled" : ''].join(' ')} onClick={() => this.stepperItemClickedHandler(item.label)}>
+            <span class="indicator">{item.step}</span>
+            <li class="stepper-item-label">{item.label}</li>
+          </div>
+          {this.stepperItems.indexOf(item) !== this.stepperItems.length - 1 ? <se-divider></se-divider> : ''}
+        </div>
+      ]
+    })
+  }
+
   componentDidLoad() {
-    let requiredIndex;
     this.stepperItems = Array.from(this.el.querySelectorAll('se-stepper-item'));
-    this.contentItems = Array.from(this.el.querySelectorAll('[slot="stepper-item-content"]'));
     this.stepperItems.forEach((item: any) => {
       item.isLast = (item === this.stepperItems[this.stepperItems.length - 1]);
       item.classList.add(this.color);
       item.step = this.stepperItems.indexOf(item) + 1;
-      if (item.required && !requiredIndex && requiredIndex !== 0) {
-        requiredIndex = this.stepperItems.indexOf(item);
-      }
-      if (this.linear) {
-        const disabledIndex = (requiredIndex == 0) ? this.stepperItems.indexOf(item) > 0 : this.stepperItems.indexOf(item) > 1;
-        if (disabledIndex) {
-          item.disabled = true;
-        }
-      }
-      if (this.stepperItems.indexOf(item) > requiredIndex) {
+      if (this.linear && this.stepperItems.indexOf(item) > 1) {
         item.disabled = true;
       }
     });
-    this.setActiveItem(this.stepperItems[0], true);
-    this.contentItems[0].classList.add('selected');
+    this.setSelectedItem(this.stepperItems[0], true);
+    this.setSelectedContent(this.stepperItems[0], true);
   }
 
-  render() {
-    return (
-      <nav class={this.color}>
-        <ol>
-          <slot></slot>
-        </ol>
-        <slot name="stepper-item-content"></slot>
-      </nav>
-    )
-  }
+render() {
+  return [
+    <nav class={this.color}>
+      <ol>
+        {this.renderList()}
+      </ol>
+    </nav>,
+    <slot></slot>
+  ]
+}
 }

@@ -25,37 +25,6 @@ describe('StepperItemComponent', () => {
 			components: [StepperItemComponent],
 			html: `<se-stepper-item></se-stepper-item>`,
 		});
-		expect(page.root.shadowRoot.querySelector('li.stepper-item-label')).toBeTruthy();
-	});
-
-	it('should render with se-icon and se-divider elements', async() => {
-		const page = await newSpecPage({
-			components: [StepperItemComponent],
-			html: `<se-stepper-item></se-stepper-item>`,
-		});
-		expect(page.root.shadowRoot.querySelector('span.indicator')).toBeTruthy();
-		expect(page.root.shadowRoot.querySelector('se-divider')).toBeTruthy();
-	});
-
-	it('should render the label property as the inner text of a list item element', async() => {
-		const page = await newSpecPage({
-			components: [StepperItemComponent],
-			html: `<se-stepper-item label="My Label"></se-stepper-item>`,
-		});
-		expect(page.root.shadowRoot.querySelector('.stepper-item-label').innerHTML).toEqual('My Label');
-	});
-
-	it('should not render the se-divider when is-last is true', async() => {
-		const page = await newSpecPage({
-			components: [StepperItemComponent],
-			html: `<se-stepper-item is-last="true"></se-stepper-item>`,
-		});
-		expect(page.root.shadowRoot.querySelector('se-divider')).not.toBeTruthy();
-	});
-
-	it('should emit the didClick event when clicking on a stepper item', () => {
-		const eventSpy = jest.spyOn(stepperItem.didClick, 'emit');
-		stepperItem.emitEvent(); // user clicks on stepper item
-		expect(eventSpy).toHaveBeenCalled();
+		expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
 	});
 });
