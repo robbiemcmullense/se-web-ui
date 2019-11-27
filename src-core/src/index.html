@@ -881,7 +881,7 @@
             <se-block-content>
               <div>Primary Color Stepper (linear mode):</div>
               <se-stepper id="primary-stepper" linear="true">
-                <se-stepper-item label="Step 1"  id="primone">
+                <se-stepper-item label="Step 1" id="primone">
                   <div style="border: 1px solid black; padding: 10px;">
                     <se-button onclick="updatePrimaryStepper('primone')">Submit Primary Step 1</se-button>
                   </div>
@@ -908,12 +908,12 @@
             <se-block-content>
               <div style="margin-top: 10px;">Alternative Color Stepper (non-linear mode):</div>
               <se-stepper id="alt-stepper" color="alternative">
-                <se-stepper-item label="Alt 1" id="altone">
+                <se-stepper-item label="Alt 1" required="true" id="altone">
                   <div style="border: 1px solid black; padding: 10px;">
                     <se-button onclick="updateAltStepper('altone')">Submit Alt Step 1</se-button>
                   </div>
                 </se-stepper-item>
-                <se-stepper-item label="Alt 2" id="alttwo">
+                <se-stepper-item label="Alt 2" required="true" id="alttwo">
                   <div style="border: 1px solid black; padding: 10px;">
                     <se-button onclick="updateAltStepper('alttwo')">Submit Alt Step 2</se-button>
                   </div>
@@ -921,7 +921,7 @@
                 <se-stepper-item label="Alt 3">
                   <div style="border: 1px solid black; padding: 10px;">Third Step</div>
                 </se-stepper-item>
-                <se-stepper-item label="Alt 4" id="altfour">
+                <se-stepper-item label="Alt 4" required="true" id="altfour">
                   <div style="border: 1px solid black; padding: 10px;">
                     <se-button onclick="updateAltStepper('altfour')">Submit Alt Step 4</se-button>
                   </div>

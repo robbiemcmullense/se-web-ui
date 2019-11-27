@@ -62,15 +62,9 @@ export class StepperComponent {
     this.stepperItems.forEach((item: any) => {
       if (this.stepperItems.indexOf(item) == this.index && item.required && item.validated) {
         this.index = value ? this.stepperItems.indexOf(item) + 1 : 0;
-        const nextItem: HTMLElement = this.stepperItems[this.index].shadowRoot.querySelector('.stepper-item');
+        let stepperIndicators = Array.from(this.el.shadowRoot.querySelectorAll('.stepper-item')) as HTMLElement[];
+        const nextItem: HTMLElement = stepperIndicators[this.index];
         nextItem.click();
-        this.addCheckmark(this.index - 1);
-        if (this.linear) {
-          this.setDisabledItem(this.stepperItems[this.index], false);
-          if (!this.stepperItems[this.index].getAttribute('required')) {
-            this.setDisabledItem(this.stepperItems[this.index + 1], false);
-          }
-        }
       }
     });
     if (!this.linear) {
@@ -138,13 +132,14 @@ export class StepperComponent {
     item.selected = value;
   }
 
+  private setDisabledItem(item: any, value: boolean) {
+    item.disabled = value;
+  }
+
   private setSelectedContent(item: any, value: boolean) {
     item.selectedContent = value;
   }
 
-  private setDisabledItem(item: any, value: boolean) {
-    item.disabled = value;
-  }
 
   private checkIfValidated(item) {
     return item.validated;
@@ -165,13 +160,25 @@ export class StepperComponent {
   }
 
   componentDidLoad() {
+    let requiredIndex;
     this.stepperItems = Array.from(this.el.querySelectorAll('se-stepper-item'));
     this.stepperItems.forEach((item: any) => {
       item.isLast = (item === this.stepperItems[this.stepperItems.length - 1]);
       item.classList.add(this.color);
       item.step = this.stepperItems.indexOf(item) + 1;
-      if (this.linear && this.stepperItems.indexOf(item) > 1) {
-        item.disabled = true;
+      if (this.linear) {
+        item.required = true;
+        item.validated = false;
+        if (this.stepperItems.indexOf(item) > 0) {
+          item.disabled = true;
+        }
+      } else {
+        if (item.required && requiredIndex == undefined) {
+          requiredIndex = this.stepperItems.indexOf(item);
+        }
+        if (this.stepperItems.indexOf(item) > requiredIndex) {
+          item.disabled = true;
+        }
       }
     });
     this.setSelectedItem(this.stepperItems[0], true);
