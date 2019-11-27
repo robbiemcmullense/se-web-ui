@@ -31,29 +31,22 @@ export class StepperComponent {
       if (item.label === event) {
         this.index = this.stepperItems.indexOf(item);
       }
-      if (this.linear) {
-        const isRequired = this.stepperItems[this.index].getAttribute('required');
-        const isValidated = this.checkIfValidated(this.stepperItems[this.index]);
-        const disabledIndex = (isRequired && !isValidated) ? this.index + 1 : this.index + 2;
-        if (this.stepperItems.indexOf(item) >= disabledIndex) {
-          item.disabled = true;
-        } else {
-          item.disabled = false;
-        }
-      }
     });
 
     for (let item of this.stepperItems) {
       this.setSelectedItem(item, true);
       let itemIndex = this.stepperItems.indexOf(item);
-      if (itemIndex !== this.index) {
+      if (itemIndex < this.index) {
         this.addCheckmark(itemIndex);
-      } else if (itemIndex == this.index) {
+      }
+      if (itemIndex == this.index) {
         this.setSelectedContent(item, true);
+        if (this.linear && this.checkIfValidated(item)) {
+          this.setDisabledItem(this.stepperItems[this.index + 1], false);
+        }
         break;
       }
     }
-
   }
 
   // advances the active stepper item by one when a required step is validated
@@ -125,7 +118,10 @@ export class StepperComponent {
     for (var i = 0; i <= index; i++) {
       indicator[i].classList.add('se-icon');
     }
+  }
 
+  private checkIfValidated(item) {
+    return item.validated;
   }
 
   private setSelectedItem(item: any, value: boolean) {
@@ -138,11 +134,6 @@ export class StepperComponent {
 
   private setSelectedContent(item: any, value: boolean) {
     item.selectedContent = value;
-  }
-
-
-  private checkIfValidated(item) {
-    return item.validated;
   }
 
   renderList() {
