@@ -772,7 +772,7 @@ export namespace Components {
     /**
     * Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
     */
-    'reset': () => Promise<void>;
+    'reset': (index: number) => Promise<void>;
   }
   interface SeStepperItem {
     /**

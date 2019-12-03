@@ -34,29 +34,34 @@ export class StepperComponent {
     });
 
     for (let item of this.stepperItems) {
-      this.setSelectedItem(item, true);
       let itemIndex = this.stepperItems.indexOf(item);
       if (itemIndex < this.index) {
         this.addCheckmark(itemIndex);
       }
+      if (itemIndex <= this.index) {
+        this.setSelectedItem(item, true);
+      }
       if (itemIndex == this.index) {
         this.setSelectedContent(item, true);
-        if (this.linear && this.checkIfValidated(item)) {
-          this.setDisabledItem(this.stepperItems[this.index + 1], false);
-        }
-        break;
+      }
+      if (this.linear && itemIndex >= this.index) {
+        this.invalidateItem(item);
+      }
+      if (this.linear && itemIndex > this.index) {
+        this.setDisabledItem(item, true);
       }
     }
   }
 
   // advances the active stepper item by one when a required step is validated
   @Listen('itemValidated')
-  validatedStepCompleted(value: boolean) {
+  validatedStepCompleted() {
     this.stepperItems.forEach((item: any) => {
       if (this.stepperItems.indexOf(item) == this.index && item.required && item.validated) {
-        this.index = value ? this.stepperItems.indexOf(item) + 1 : 0;
+        this.index = this.stepperItems.indexOf(item) + 1;
         let stepperIndicators = Array.from(this.el.shadowRoot.querySelectorAll('.stepper-item')) as HTMLElement[];
         const nextItem: HTMLElement = stepperIndicators[this.index];
+        this.setDisabledItem(this.stepperItems[this.index], false);
         nextItem.click();
       }
     });
@@ -77,13 +82,35 @@ export class StepperComponent {
    * Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
    */
   @Method()
-  async reset() {
-    this.stepperItems.forEach((item: any) => {
-      item.validated = false;
-      item.disabled = (this.stepperItems.indexOf(item) == 0) ? false : true;
-    });
-    const firstItem: HTMLElement = this.stepperItems[0].shadowRoot.querySelector('.stepper-item');
-    firstItem.click();
+  async reset(index: number) {
+    if (index >= this.index) {
+      return; // don't advance the stepper when clicking the reset button
+    }
+    if (!index) {
+      index = 0;
+    }
+    let nonLinearRequiredIndex;
+    for (var i = index; i < this.stepperItems.length; i++) {
+      if (this.linear) {
+        this.invalidateItem(this.stepperItems[i]);
+        if (i > index) {
+          this.setDisabledItem(this.stepperItems[i], false);
+        }
+      } else {
+        if (this.stepperItems[i].getAttribute('required')) {
+          if (nonLinearRequiredIndex === undefined) {
+            nonLinearRequiredIndex = i;
+          }
+          this.invalidateItem(this.stepperItems[i]);
+        }
+        if (i > nonLinearRequiredIndex) {
+          this.setDisabledItem(this.stepperItems[i], true);
+        }
+      }
+    }
+    const stepperIndicators = Array.from(this.el.shadowRoot.querySelectorAll('.stepper-item')) as HTMLElement[];
+    const targetItem: HTMLElement = stepperIndicators[index];
+    targetItem.click();
   }
 
   /**
@@ -91,8 +118,12 @@ export class StepperComponent {
    */
   @Method()
   async previous() {
-    const prevItem: HTMLElement = this.stepperItems[this.index - 1].shadowRoot.querySelector('.stepper-item');
-    prevItem.click();
+    // do not trigger this method when the first stepper item is the active item
+    if (this.index !== 0) {
+      const stepperIndicators = Array.from(this.el.shadowRoot.querySelectorAll('.stepper-item')) as HTMLElement[];
+      const prevItem: HTMLElement = stepperIndicators[this.index - 1];
+      prevItem.click();
+    }
   }
 
   /**
@@ -108,7 +139,8 @@ export class StepperComponent {
       }
     });
     if (nextStepValidated) {
-      const nextItem: HTMLElement = this.stepperItems[this.index + 1].shadowRoot.querySelector('.stepper-item');
+      const stepperIndicators = Array.from(this.el.shadowRoot.querySelectorAll('.stepper-item')) as HTMLElement[];
+      const nextItem: HTMLElement = stepperIndicators[this.index + 1];
       nextItem.click();
     }
   }
@@ -120,8 +152,8 @@ export class StepperComponent {
     }
   }
 
-  private checkIfValidated(item) {
-    return item.validated;
+  private invalidateItem(item) {
+    item.validated = false;
   }
 
   private setSelectedItem(item: any, value: boolean) {
@@ -176,14 +208,14 @@ export class StepperComponent {
     this.setSelectedContent(this.stepperItems[0], true);
   }
 
-render() {
-  return [
-    <nav class={this.color}>
-      <ol>
-        {this.renderList()}
-      </ol>
-    </nav>,
-    <slot></slot>
-  ]
-}
+  render() {
+    return [
+      <nav class={this.color}>
+        <ol>
+          {this.renderList()}
+        </ol>
+      </nav>,
+      <slot></slot>
+    ]
+  }
 }
