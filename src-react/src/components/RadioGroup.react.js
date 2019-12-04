@@ -46,8 +46,8 @@ RadioGroup.propTypes = {
   disabled: PropTypes.bool,
   /**
    * Defines the height of each button in the group.
-`small` is the default setting, rendering a 32px height and a 14px font size.
-`nano` sets the height to 24px and the font size to 12px.
+   * `small` is the default setting, rendering a 32px height and a 14px font size.
+   * `nano` sets the height to 24px and the font size to 12px.
    */
   size: PropTypes.string,
   /**

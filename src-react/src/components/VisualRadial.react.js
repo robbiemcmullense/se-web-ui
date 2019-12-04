@@ -31,8 +31,8 @@ VisualRadial.propTypes = {
   percentage: PropTypes.number,
   /**
    * Sets the color of the visual "progress bar".
-The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
-By default, the progress bar will have a green color.
+   * The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
+   * By default, the progress bar will have a green color.
    */
   secolor: PropTypes.string,
   /**

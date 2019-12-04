@@ -38,7 +38,7 @@ Button.propTypes = {
   children: PropTypes.node,
   /**
    * Optional property that defines if the button displays as a block in it's container.
-When set to true, the button will be as wide as its container.
+   * When set to true, the button will be as wide as its container.
    */
   block: PropTypes.bool,
   /**
@@ -63,10 +63,10 @@ When set to true, the button will be as wide as its container.
   iconColor: PropTypes.string,
   /**
    * Defines the visual appearance of the button.
-`flat` is the default option, which includes a gray background.
-`raised` adds a box shadow to the button.
-`outline` adds a border to the button.
-`login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
+   * `flat` is the default option, which includes a gray background.
+   * `raised` adds a box shadow to the button.
+   * `outline` adds a border to the button.
+   * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
    */
   option: PropTypes.string,
   /**
@@ -75,16 +75,16 @@ When set to true, the button will be as wide as its container.
   selected: PropTypes.bool,
   /**
    * Defines the size of the button.
-`small` is the default option, with a 14px font and a 32px height.
-`medium` sets the font to 16px and the height to 40px.
-`large` sets the font to 18px and the height to 48px.
+   * `small` is the default option, with a 14px font and a 32px height.
+   * `medium` sets the font to 16px and the height to 40px.
+   * `large` sets the font to 18px and the height to 48px.
    */
   size: PropTypes.string,
   /**
    * Optional property.
-`button`	is the default setting, creating a clickable button.
-`submit`	creates a "submit" button (useful to submit form-data).
-`reset`	creates a reset button (useful to reset form-data to its initial values).
+   * `button`	is the default setting, creating a clickable button.
+   * `submit`	creates a "submit" button (useful to submit form-data).
+   * `reset`	creates a reset button (useful to reset form-data to its initial values).
    */
   type: PropTypes.string,
   /**

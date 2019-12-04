@@ -47,8 +47,8 @@ Dialog.propTypes = {
   canBackdrop: PropTypes.bool,
   /**
    * Defines the color of the dialog header.
-`alternative`: Alternative background with primary color for the text
-`primary`: Primary color schema and default setting.
+   * `alternative`: Alternative background with primary color for the text
+   * `primary`: Primary color schema and default setting.
    */
   color: PropTypes.string,
   /**
@@ -57,9 +57,9 @@ Dialog.propTypes = {
   open: PropTypes.bool,
   /**
    * Defines the size of the modal.
-`small`: used in alerts and messages
-`medium`: default setting, used by other apps
-`fill`: takes the full space of the screen
+   * `small`: used in alerts and messages
+   * `medium`: default setting, used by other apps
+   * `fill`: takes the full space of the screen
    */
   size: PropTypes.string,
   /**

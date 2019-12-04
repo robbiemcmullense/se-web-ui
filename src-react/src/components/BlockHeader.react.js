@@ -27,7 +27,7 @@ BlockHeader.propTypes = {
   divider: PropTypes.bool,
   /**
    * Defines the visual appearance of a header.
-Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
+   * Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
    */
   option: PropTypes.string
 };

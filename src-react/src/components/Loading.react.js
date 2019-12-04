@@ -27,8 +27,8 @@ Loading.propTypes = {
   loading: PropTypes.bool,
   /**
    * Defines the visual display of the loader.
-`standard` is the default option, and displays a spinning green circle.
-`dialog` gives the loading icon a look-and-feel that it is within a popup dialog box.
+   * `standard` is the default option, and displays a spinning green circle.
+   * `dialog` gives the loading icon a look-and-feel that it is within a popup dialog box.
    */
   option: PropTypes.string
 };

@@ -27,8 +27,8 @@ Link.propTypes = {
   disabled: PropTypes.bool,
   /**
    * Adds visual and function properties to your link component.
-The default setting is `internal`, which redirects you to the specified URL in the same page.
-The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
+   * The default setting is `internal`, which redirects you to the specified URL in the same page.
+   * The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
    */
   option: PropTypes.string,
   /**
