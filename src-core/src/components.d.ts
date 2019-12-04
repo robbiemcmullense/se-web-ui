@@ -169,9 +169,9 @@ export namespace Components {
   interface SeBlockHeader {
     'divider': boolean;
     /**
-    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
+    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
     */
-    'option': 'card' | 'widget' | 'basic';
+    'option': 'card' | 'widget' | 'basic' | 'fill';
   }
   interface SeBreadcrumb {}
   interface SeBreadcrumbItem {
@@ -745,13 +745,17 @@ export namespace Components {
   }
   interface SeTabbar {
     /**
-    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    * Indicates the color of your tabbar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color': 'primary' | 'alternative';
     /**
-    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+    * Defines the inner appearance of a tabbar. `fill` is the default display, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
     */
-    'option': "fill" | "centered";
+    'display': "fill" | "centered";
+    /**
+    * Defines the function of the tabbar. Default `nav` creates a tabbar that functions as a nav-bar. `content` creates a tabbar that functions as a content section tabbar.
+    */
+    'option': "nav" | "content";
   }
   interface SeTooltip {
     /**
@@ -1159,7 +1163,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface SeAbout extends JSXBase.HTMLAttributes<HTMLSeAboutElement> {
+  interface SeAbout {
     /**
     * The title of your about screen.
     */
@@ -1185,13 +1189,13 @@ declare namespace LocalJSX {
     */
     'version'?: string;
   }
-  interface SeApp extends JSXBase.HTMLAttributes<HTMLSeAppElement> {
+  interface SeApp {
     /**
     * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
     */
     'option'?: 'technical' | 'website' | 'dcx';
   }
-  interface SeAuthentication extends JSXBase.HTMLAttributes<HTMLSeAuthenticationElement> {
+  interface SeAuthentication {
     /**
     * The title of your authentication screen.
     */
@@ -1225,13 +1229,13 @@ declare namespace LocalJSX {
     */
     'version'?: string;
   }
-  interface SeBanner extends JSXBase.HTMLAttributes<HTMLSeBannerElement> {
+  interface SeBanner {
     /**
     * Set the duration (in ms) that the banner will automatically switch slides. Default is `6000`.
     */
     'duration'?: number;
   }
-  interface SeBannerItem extends JSXBase.HTMLAttributes<HTMLSeBannerItemElement> {
+  interface SeBannerItem {
     /**
     * Indicates the active banner item in your banner component.
     */
@@ -1245,7 +1249,7 @@ declare namespace LocalJSX {
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
   }
-  interface SeBlock extends JSXBase.HTMLAttributes<HTMLSeBlockElement> {
+  interface SeBlock {
     /**
     * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
     */
@@ -1303,13 +1307,13 @@ declare namespace LocalJSX {
     */
     'width'?: string;
   }
-  interface SeBlockContent extends JSXBase.HTMLAttributes<HTMLSeBlockContentElement> {
+  interface SeBlockContent {
     /**
     * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default. When the option is set to `fill`, the content will fill the whole space of the block-content with no padding.
     */
     'option'?: 'card' | 'widget' | 'basic' | 'fill';
   }
-  interface SeBlockFooter extends JSXBase.HTMLAttributes<HTMLSeBlockFooterElement> {
+  interface SeBlockFooter {
     /**
     * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
@@ -1320,15 +1324,15 @@ declare namespace LocalJSX {
     */
     'option'?: 'card' | 'widget' | 'basic';
   }
-  interface SeBlockHeader extends JSXBase.HTMLAttributes<HTMLSeBlockHeaderElement> {
+  interface SeBlockHeader {
     'divider'?: boolean;
     /**
-    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
+    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
     */
-    'option'?: 'card' | 'widget' | 'basic';
+    'option'?: 'card' | 'widget' | 'basic' | 'fill';
   }
-  interface SeBreadcrumb extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement> {}
-  interface SeBreadcrumbItem extends JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement> {
+  interface SeBreadcrumb {}
+  interface SeBreadcrumbItem {
     /**
     * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
     */
@@ -1338,7 +1342,7 @@ declare namespace LocalJSX {
     */
     'isLast'?: boolean;
   }
-  interface SeButton extends JSXBase.HTMLAttributes<HTMLSeButtonElement> {
+  interface SeButton {
     /**
     * Optional property that defines if the button displays as a block in it's container. When set to true, the button will be as wide as its container.
     */
@@ -1388,7 +1392,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface SeCheckbox extends JSXBase.HTMLAttributes<HTMLSeCheckboxElement> {
+  interface SeCheckbox {
     /**
     * Defines the color schema of the checkbox when the option is set to `onoff`. The default value is `standard`.
     */
@@ -1438,7 +1442,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface SeChip extends JSXBase.HTMLAttributes<HTMLSeChipElement> {
+  interface SeChip {
     /**
     * Optional property that defines if the chip displays as a block in it's container. When set to true, the chip will be as wide as its container.
     */
@@ -1472,7 +1476,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface SeContainer extends JSXBase.HTMLAttributes<HTMLSeContainerElement> {
+  interface SeContainer {
     /**
     * Defines the background color of the container. `none` has no background. `standard` is `se-background`, light gray. `alternative` is a white background.
     */
@@ -1506,7 +1510,7 @@ declare namespace LocalJSX {
     */
     'rowSize'?: string;
   }
-  interface SeDialog extends JSXBase.HTMLAttributes<HTMLSeDialogElement> {
+  interface SeDialog {
     /**
     * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
     */
@@ -1532,7 +1536,7 @@ declare namespace LocalJSX {
     */
     'size'?: "small" | "medium" | "large" | "fill";
   }
-  interface SeDialogContent extends JSXBase.HTMLAttributes<HTMLSeDialogContentElement> {
+  interface SeDialogContent {
     /**
     * Indicates an icon you want to display in your dialog.
     */
@@ -1546,14 +1550,14 @@ declare namespace LocalJSX {
     */
     'option'?: 'fill';
   }
-  interface SeDialogFooter extends JSXBase.HTMLAttributes<HTMLSeDialogFooterElement> {}
-  interface SeDialogHeader extends JSXBase.HTMLAttributes<HTMLSeDialogHeaderElement> {
+  interface SeDialogFooter {}
+  interface SeDialogHeader {
     /**
     * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
     */
     'color'?: 'primary' | 'alternative';
   }
-  interface SeDivider extends JSXBase.HTMLAttributes<HTMLSeDividerElement> {
+  interface SeDivider {
     /**
     * Indicates the color schema of your divider line. Default setting is `standard`, rendering a light gray colored line. The `alternative` property sets a white colored divider line.
     */
@@ -1563,7 +1567,7 @@ declare namespace LocalJSX {
     */
     'option'?: "horizontal" | "vertical" | "inset";
   }
-  interface SeDropdown extends JSXBase.HTMLAttributes<HTMLSeDropdownElement> {
+  interface SeDropdown {
     /**
     * Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element.
     */
@@ -1585,7 +1589,7 @@ declare namespace LocalJSX {
     */
     'onDidOpen'?: (event: CustomEvent<any>) => void;
   }
-  interface SeFab extends JSXBase.HTMLAttributes<HTMLSeFabElement> {
+  interface SeFab {
     /**
     * Indicates the color of your main action button . The Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
@@ -1603,7 +1607,7 @@ declare namespace LocalJSX {
     */
     'position'?: 'bottom' | 'top';
   }
-  interface SeFormField extends JSXBase.HTMLAttributes<HTMLSeFormFieldElement> {
+  interface SeFormField {
     /**
     * Optional property that defines if the form field is disabled.  Set to `false` by default.
     */
@@ -1637,7 +1641,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface SeHeader extends JSXBase.HTMLAttributes<HTMLSeHeaderElement> {
+  interface SeHeader {
     /**
     * Sets the title of your application.
     */
@@ -1651,7 +1655,7 @@ declare namespace LocalJSX {
     */
     'project'?: string;
   }
-  interface SeIcon extends JSXBase.HTMLAttributes<HTMLSeIconElement> {
+  interface SeIcon {
     /**
     * Optional property that defines the background color of the button. The default color will be inherited from its parent.
     */
@@ -1665,7 +1669,7 @@ declare namespace LocalJSX {
     */
     'size'?: "nano" | "small" | "medium" | "large" | "xlarge";
   }
-  interface SeIconEcostruxure extends JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement> {
+  interface SeIconEcostruxure {
     /**
     * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
     */
@@ -1675,14 +1679,14 @@ declare namespace LocalJSX {
     */
     'size'?: "small" | "medium";
   }
-  interface SeIconLifeison extends JSXBase.HTMLAttributes<HTMLSeIconLifeisonElement> {
+  interface SeIconLifeison {
     /**
     * Defines the color of the logo. `standard`: displays a light green / dark green conventional SE logo. `inherited`: default option, which takes the color from it's parent.
     */
     'color'?: "standard" | "inherited";
   }
-  interface SeIconSchneider extends JSXBase.HTMLAttributes<HTMLSeIconSchneiderElement> {}
-  interface SeLink extends JSXBase.HTMLAttributes<HTMLSeLinkElement> {
+  interface SeIconSchneider {}
+  interface SeLink {
     /**
     * Determines whether or not the link is disabled.
     */
@@ -1696,7 +1700,7 @@ declare namespace LocalJSX {
     */
     'url'?: string;
   }
-  interface SeList extends JSXBase.HTMLAttributes<HTMLSeListElement> {
+  interface SeList {
     /**
     * Defines if list groups can be collapsed.  The default setting is `true`.
     */
@@ -1706,7 +1710,7 @@ declare namespace LocalJSX {
     */
     'option'?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
   }
-  interface SeListGroup extends JSXBase.HTMLAttributes<HTMLSeListGroupElement> {
+  interface SeListGroup {
     /**
     * Defines if list groups can be collapsed, true by default.
     */
@@ -1749,7 +1753,7 @@ declare namespace LocalJSX {
     'selected'?: boolean;
     'selectedChild'?: boolean;
   }
-  interface SeListItem extends JSXBase.HTMLAttributes<HTMLSeListItemElement> {
+  interface SeListItem {
     /**
     * Defines the description of the item, placed under its title.
     */
@@ -1783,7 +1787,7 @@ declare namespace LocalJSX {
     */
     'selected'?: boolean;
   }
-  interface SeLoading extends JSXBase.HTMLAttributes<HTMLSeLoadingElement> {
+  interface SeLoading {
     /**
     * Displays the loading icon on screen when set to `true`.
     */
@@ -1793,7 +1797,7 @@ declare namespace LocalJSX {
     */
     'option'?: 'standard' | 'dialog';
   }
-  interface SeRadio extends JSXBase.HTMLAttributes<HTMLSeRadioElement> {
+  interface SeRadio {
     /**
     * Defines the color of the checkbox. The default setting is `primary`, rendering a green color. The `secondary` setting renders a blue color.
     */
@@ -1823,7 +1827,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface SeRadioGroup extends JSXBase.HTMLAttributes<HTMLSeRadioGroupElement> {
+  interface SeRadioGroup {
     /**
     * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
     */
@@ -1845,14 +1849,14 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface SeSidemenu extends JSXBase.HTMLAttributes<HTMLSeSidemenuElement> {
+  interface SeSidemenu {
     /**
     * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
     */
     'label'?: string;
     'link'?: string;
   }
-  interface SeSidemenuItem extends JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement> {
+  interface SeSidemenuItem {
     /**
     * Defines if the menu item is active or not. The default setting is `false`.
     */
@@ -1866,7 +1870,7 @@ declare namespace LocalJSX {
     */
     'onDidClick'?: (event: CustomEvent<any>) => void;
   }
-  interface SeSlider extends JSXBase.HTMLAttributes<HTMLSeSliderElement> {
+  interface SeSlider {
     /**
     * Indicates if your slider is disabled. The default setting is `false`.
     */
@@ -1884,7 +1888,7 @@ declare namespace LocalJSX {
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
   }
-  interface SeSnackbar extends JSXBase.HTMLAttributes<HTMLSeSnackbarElement> {
+  interface SeSnackbar {
     /**
     * Defines the text you want your custom action button to read.
     */
@@ -1922,17 +1926,21 @@ declare namespace LocalJSX {
     */
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
-  interface SeTabbar extends JSXBase.HTMLAttributes<HTMLSeTabbarElement> {
+  interface SeTabbar {
     /**
-    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    * Indicates the color of your tabbar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
     */
     'color'?: 'primary' | 'alternative';
     /**
-    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+    * Defines the inner appearance of a tabbar. `fill` is the default display, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
     */
-    'option'?: "fill" | "centered";
+    'display'?: "fill" | "centered";
+    /**
+    * Defines the function of the tabbar. Default `nav` creates a tabbar that functions as a nav-bar. `content` creates a tabbar that functions as a content section tabbar.
+    */
+    'option'?: "nav" | "content";
   }
-  interface SeTooltip extends JSXBase.HTMLAttributes<HTMLSeTooltipElement> {
+  interface SeTooltip {
     /**
     * Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
     */
@@ -1954,20 +1962,20 @@ declare namespace LocalJSX {
     */
     'position'?: "top" | "bottom" | "left" | "right";
   }
-  interface SeTooltipContent extends JSXBase.HTMLAttributes<HTMLSeTooltipContentElement> {
+  interface SeTooltipContent {
     /**
     * Indicates an icon you want to display in your tooltip.
     */
     'icon'?: string;
   }
-  interface SeTooltipFooter extends JSXBase.HTMLAttributes<HTMLSeTooltipFooterElement> {}
-  interface SeTooltipHeader extends JSXBase.HTMLAttributes<HTMLSeTooltipHeaderElement> {
+  interface SeTooltipFooter {}
+  interface SeTooltipHeader {
     /**
     * Indicates an icon you want to display in your tooltip.
     */
     'icon'?: string;
   }
-  interface SeVisualLinear extends JSXBase.HTMLAttributes<HTMLSeVisualLinearElement> {
+  interface SeVisualLinear {
     /**
     * Defines the text value of the label in your component.
     */
@@ -1989,7 +1997,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface SeVisualRadial extends JSXBase.HTMLAttributes<HTMLSeVisualRadialElement> {
+  interface SeVisualRadial {
     /**
     * Defines the text value of the label in your component.
     */
@@ -2067,7 +2075,54 @@ export { LocalJSX as JSX };
 
 declare module "@stencil/core" {
   export namespace JSX {
-    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+    interface IntrinsicElements {
+      'se-about': LocalJSX.SeAbout & JSXBase.HTMLAttributes<HTMLSeAboutElement>;
+      'se-app': LocalJSX.SeApp & JSXBase.HTMLAttributes<HTMLSeAppElement>;
+      'se-authentication': LocalJSX.SeAuthentication & JSXBase.HTMLAttributes<HTMLSeAuthenticationElement>;
+      'se-banner': LocalJSX.SeBanner & JSXBase.HTMLAttributes<HTMLSeBannerElement>;
+      'se-banner-item': LocalJSX.SeBannerItem & JSXBase.HTMLAttributes<HTMLSeBannerItemElement>;
+      'se-block': LocalJSX.SeBlock & JSXBase.HTMLAttributes<HTMLSeBlockElement>;
+      'se-block-content': LocalJSX.SeBlockContent & JSXBase.HTMLAttributes<HTMLSeBlockContentElement>;
+      'se-block-footer': LocalJSX.SeBlockFooter & JSXBase.HTMLAttributes<HTMLSeBlockFooterElement>;
+      'se-block-header': LocalJSX.SeBlockHeader & JSXBase.HTMLAttributes<HTMLSeBlockHeaderElement>;
+      'se-breadcrumb': LocalJSX.SeBreadcrumb & JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement>;
+      'se-breadcrumb-item': LocalJSX.SeBreadcrumbItem & JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement>;
+      'se-button': LocalJSX.SeButton & JSXBase.HTMLAttributes<HTMLSeButtonElement>;
+      'se-checkbox': LocalJSX.SeCheckbox & JSXBase.HTMLAttributes<HTMLSeCheckboxElement>;
+      'se-chip': LocalJSX.SeChip & JSXBase.HTMLAttributes<HTMLSeChipElement>;
+      'se-container': LocalJSX.SeContainer & JSXBase.HTMLAttributes<HTMLSeContainerElement>;
+      'se-dialog': LocalJSX.SeDialog & JSXBase.HTMLAttributes<HTMLSeDialogElement>;
+      'se-dialog-content': LocalJSX.SeDialogContent & JSXBase.HTMLAttributes<HTMLSeDialogContentElement>;
+      'se-dialog-footer': LocalJSX.SeDialogFooter & JSXBase.HTMLAttributes<HTMLSeDialogFooterElement>;
+      'se-dialog-header': LocalJSX.SeDialogHeader & JSXBase.HTMLAttributes<HTMLSeDialogHeaderElement>;
+      'se-divider': LocalJSX.SeDivider & JSXBase.HTMLAttributes<HTMLSeDividerElement>;
+      'se-dropdown': LocalJSX.SeDropdown & JSXBase.HTMLAttributes<HTMLSeDropdownElement>;
+      'se-fab': LocalJSX.SeFab & JSXBase.HTMLAttributes<HTMLSeFabElement>;
+      'se-form-field': LocalJSX.SeFormField & JSXBase.HTMLAttributes<HTMLSeFormFieldElement>;
+      'se-header': LocalJSX.SeHeader & JSXBase.HTMLAttributes<HTMLSeHeaderElement>;
+      'se-icon': LocalJSX.SeIcon & JSXBase.HTMLAttributes<HTMLSeIconElement>;
+      'se-icon-ecostruxure': LocalJSX.SeIconEcostruxure & JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement>;
+      'se-icon-lifeison': LocalJSX.SeIconLifeison & JSXBase.HTMLAttributes<HTMLSeIconLifeisonElement>;
+      'se-icon-schneider': LocalJSX.SeIconSchneider & JSXBase.HTMLAttributes<HTMLSeIconSchneiderElement>;
+      'se-link': LocalJSX.SeLink & JSXBase.HTMLAttributes<HTMLSeLinkElement>;
+      'se-list': LocalJSX.SeList & JSXBase.HTMLAttributes<HTMLSeListElement>;
+      'se-list-group': LocalJSX.SeListGroup & JSXBase.HTMLAttributes<HTMLSeListGroupElement>;
+      'se-list-item': LocalJSX.SeListItem & JSXBase.HTMLAttributes<HTMLSeListItemElement>;
+      'se-loading': LocalJSX.SeLoading & JSXBase.HTMLAttributes<HTMLSeLoadingElement>;
+      'se-radio': LocalJSX.SeRadio & JSXBase.HTMLAttributes<HTMLSeRadioElement>;
+      'se-radio-group': LocalJSX.SeRadioGroup & JSXBase.HTMLAttributes<HTMLSeRadioGroupElement>;
+      'se-sidemenu': LocalJSX.SeSidemenu & JSXBase.HTMLAttributes<HTMLSeSidemenuElement>;
+      'se-sidemenu-item': LocalJSX.SeSidemenuItem & JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement>;
+      'se-slider': LocalJSX.SeSlider & JSXBase.HTMLAttributes<HTMLSeSliderElement>;
+      'se-snackbar': LocalJSX.SeSnackbar & JSXBase.HTMLAttributes<HTMLSeSnackbarElement>;
+      'se-tabbar': LocalJSX.SeTabbar & JSXBase.HTMLAttributes<HTMLSeTabbarElement>;
+      'se-tooltip': LocalJSX.SeTooltip & JSXBase.HTMLAttributes<HTMLSeTooltipElement>;
+      'se-tooltip-content': LocalJSX.SeTooltipContent & JSXBase.HTMLAttributes<HTMLSeTooltipContentElement>;
+      'se-tooltip-footer': LocalJSX.SeTooltipFooter & JSXBase.HTMLAttributes<HTMLSeTooltipFooterElement>;
+      'se-tooltip-header': LocalJSX.SeTooltipHeader & JSXBase.HTMLAttributes<HTMLSeTooltipHeaderElement>;
+      'se-visual-linear': LocalJSX.SeVisualLinear & JSXBase.HTMLAttributes<HTMLSeVisualLinearElement>;
+      'se-visual-radial': LocalJSX.SeVisualRadial & JSXBase.HTMLAttributes<HTMLSeVisualRadialElement>;
+    }
   }
 }
 

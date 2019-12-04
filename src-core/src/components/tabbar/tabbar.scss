@@ -37,7 +37,7 @@
 
 .tab-primary,
 .tab-alternative {
-  font-size: 14px;
+  font-size: 16px;
   width: 100%;
   &.opt-nav {
     nav > a, nav > span {
@@ -55,8 +55,9 @@
       height: 46px;
       margin: 1px;
       min-width: calc(100% - 2px);
-      width: calc(100% - 2px);
+      max-width: calc(100% - 2px);
       > a {
+        background-color: $se-white;
         border-right: 1px solid $se-ultra-light-grey-1;
         border-left: 1px solid $se-ultra-light-grey-1;
         line-height: 46px;
@@ -94,7 +95,7 @@
       }
     }
   }
-  .nav-center-wrapper{
+  .nav-center-wrapper {
     overflow-y: hidden;
     scrollbar-width: none;
     overflow-x: auto;
@@ -116,8 +117,7 @@
       font-weight: 500;
       position: relative;
       cursor: pointer;
-      display: flex;
-      align-items: center;
+      display: inline;
       padding-right: 0;
       padding-left: 0;
       text-decoration: none;
@@ -148,9 +148,6 @@
         padding: 0.1em 0.4em 0.2em;
         margin-bottom: 2px;
       }
-      > se-icon {
-        margin-top: -2px;
-      }
     }
   }
 }
@@ -169,6 +166,7 @@
     }
     .nav-left-wrapper {
       background-color: rgba(black, 0.4);
+      // &:not(:empty) {}
       &>*:first-child{
         padding-left: $spacing-large;
       }
@@ -181,9 +179,6 @@
       text-transform: uppercase;
       > a {
         line-height: 44px;
-        &[disabled] {
-          cursor: default;
-        }
       }
     }
   }
@@ -228,6 +223,7 @@
     nav {
       background-color: $se-ultra-light-grey-2;
       > a {
+        background-color: $se-ultra-light-grey-2;
         &.active {
           @include background-color('alternative');
         }

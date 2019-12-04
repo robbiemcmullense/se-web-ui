@@ -326,7 +326,7 @@
       <nav>
         <a class="active">Home</a>
         <a>Another</a>
-        <a>Another</a><a disabled>Another</a><a>Another<se-icon>arrow2_right</se-icon></a><a><se-icon>earth_arrow</se-icon>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+        <a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
         <se-button color="alternative" option="outline">alternative</se-button>
@@ -423,8 +423,24 @@
       </se-block>
       <se-divider option="vertical"></se-divider>         
 
-      <se-container option="centered" direction="column" position="relative" display="block">
+      <se-container color="alternative" option="centered" direction="column" position="relative" display="block">
         <se-container display="block">
+          <br>
+            <se-tabbar option="content" color="primary" display="centered">
+                <nav>
+                  <a>Introduction</a>
+                  <a class="active">Installation</a>
+                  <a disabled>Maintenance</a>
+                  <a>Glossary</a>
+                  <a>Glossary</a>
+                  <a>Glossary</a>
+                  <a>Glossary</a>
+                  <a>Glossary</a>
+                  <a>Glossary</a>
+                  <a>Glossary</a>
+                  <a>Glossary</a>
+                </nav>
+              </se-tabbar>
           <se-banner id="se-banner">
             <se-banner-item
               image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
@@ -462,7 +478,7 @@
           </se-banner>
         </se-container>
 
-        <se-container option="widget" display="grid" column-size="350px" row-size="350px">
+        <se-container color="none" option="fill" display="grid" column-size="350px" row-size="350px">
           <se-block option="card-old" color="none" outline="true" corner="none" outline-color="secondary" clickable="true" id="block0">
             <se-block-header>
               <div slot="start">
@@ -735,7 +751,7 @@
               <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
             </se-block-content>
           </se-block>
-          <se-block enlarged="true" option="widget" divider="false" id="block5">
+          <se-block enlarged="true" option="widget" outline="true" divider="false" id="block5">
             <se-block-header>
               Linear chart & Slider
               <div slot="end">
@@ -802,8 +818,8 @@
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-block-content>
           </se-block>
-          <se-block id="block9">
-            <se-block-header>
+          <se-block option="fill" id="block9">
+            <se-block-header option="fill">
               Tooltips
               <div slot="end">
                 <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
@@ -862,36 +878,9 @@
               </div>
             </se-block-content>
           </se-block>
-          <se-block outline="true" outline-color="primary" enlarged="horizontal" id="block9">
-            <se-block-header>
-              Tabbars
-            </se-block-header>
-            <se-block-content>
-              <br>
-              <se-tabbar color="alternative">
-                <nav>
-                  <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another<se-icon>arrow2_right</se-icon></a><a><se-icon>earth_arrow</se-icon>Another</a>
-                </nav>
-              </se-tabbar>
-              <br>
-              <se-tabbar color="primary"> </se-tabbar>
-              <br>
-              <se-tabbar option="content" color="primary" display="centered">
-                <nav>
-                  <a>Introduction</a>
-                  <a class="active">Installation</a>
-                  <a disabled>Maintenance<se-icon>arrow2_right</se-icon></a>
-                  <a><se-icon>earth_arrow</se-icon>Glossary</a>
-                </nav>
-              </se-tabbar>
-              <se-container display="block" style="border: 1px solid #ededed;border-top:0;">
-                <se-block color="standard" margin="none" divider="false">
-                  <se-block-header>Testing</se-block-header>
-                  <se-block-content>Testing more content</se-block-content>
-                </se-block>
-              </se-container>
-              <br>
-              <se-tabbar option="content" color="alternative" display="centered">
+          <se-block color="alternative" divider="false" enlarged="horizontal" id="block10">
+            <se-block-header option="fill">
+              <se-tabbar color="alternative" option="content" display="centered">
                 <nav>
                   <a>Introduction</a>
                   <a class="active">Installation</a>
@@ -899,14 +888,139 @@
                   <a>Glossary</a>
                 </nav>
               </se-tabbar>
-              <se-container display="block" style="border: 1px solid #ededed;border-top:0;">
-                <se-block margin="none" divider="false">
-                  <se-block-header>Testing</se-block-header>
-                  <se-block-content>Testing more content</se-block-content>
+            </se-block-header>
+            <se-block-content style="border-right: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED; border-left: 1px solid #EDEDED;">
+              <br>
+              <se-tabbar color="alternative">
+                <nav>
+                  <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a>
+                </nav>
+              </se-tabbar>
+              <br>
+              <se-tabbar color="primary"> </se-tabbar>
+              <br>
+              <se-container display="block">
+                <se-tabbar option="content" color="primary" display="centered">
+                  <nav>
+                    <a>Introduction</a>
+                    <a class="active">Installation</a>
+                    <a disabled>Maintenance</a>
+                    <a>Glossary</a>
+                  </nav>
+                </se-tabbar>
+                <se-block color="standard" margin="none" divider="false">
+                  <se-block-header style="border: 1px solid #ededed;border-top:0;border-bottom:0;">Testing</se-block-header>
+                  <se-block-content style="border: 1px solid #ededed;border-top:0;">Testing more content</se-block-content>
                 </se-block>
               </se-container>
+              <br>
+              <se-container color="standard" padding="large" display="block" style="border: 1px solid #ededed;">
+                <se-block margin="none" divider="false">
+                  <se-block-header option="fill">
+                    <se-tabbar option="content" color="alternative" display="centered">
+                        <nav>
+                          <a>Introduction</a>
+                          <a class="active">Installation</a>
+                          <a disabled>Maintenance</a>
+                          <a>Glossary</a>
+                        </nav>
+                      </se-tabbar>
+                  </se-block-header>
+                  <se-block-content>Testing<br/><br/>Testing more content</se-block-content>
+                </se-block>
+              </se-container>
+              <br/>
+              <se-tabbar color="primary">
+                  <nav slot="start">
+                    <se-icon color="alternative" size="medium">arrow2_left</se-icon>
+                    Back button
+                  </nav>
+                  <nav>
+                    <a class="active">Specification</a>
+                    <a>Design</a>
+                    <a>BOM</a>
+                    <a>Report & Doc</a>
+                  </nav>
+                </se-tabbar>
+                <br/>
             </se-block-content>
           </se-block>
+          <se-block color="alternative" divider="false" enlarged="horizontal" id="block11">
+              <se-block-header option="fill">
+                <se-tabbar color="alternative" option="content" display="centered">
+                  <nav>
+                    <a>Introduction</a>
+                    <a class="active">Installation</a>
+                    <a disabled>Maintenance</a>
+                    <a>Glossary</a>
+                    <a>Glossary</a>
+                    <a>Glossary</a>
+                    <a>Glossary</a>
+                  </nav>
+                </se-tabbar>
+              </se-block-header>
+              <se-block-content style="border-right: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED; border-left: 1px solid #EDEDED;">
+                <br>
+                <se-tabbar color="alternative">
+                  <nav>
+                    <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+                  </nav>
+                </se-tabbar>
+                <br>
+                <se-tabbar color="primary"> </se-tabbar>
+                <br>
+                <se-container display="block">
+                  <se-tabbar option="content" color="primary" display="centered">
+                    <nav>
+                      <a>Introduction</a>
+                      <a class="active">Installation</a>
+                      <a disabled>Maintenance</a>
+                      <a>Glossary</a>
+                      <a>Glossary</a>
+                      <a>Glossary</a>
+                      <a>Glossary</a>
+                    </nav>
+                  </se-tabbar>
+                  <se-block color="standard" margin="none" divider="false">
+                    <se-block-header style="border: 1px solid #ededed;border-top:0;border-bottom:0;">Testing</se-block-header>
+                    <se-block-content style="border: 1px solid #ededed;border-top:0;">Testing more content</se-block-content>
+                  </se-block>
+                </se-container>
+                <br>
+                <se-container color="standard" padding="large" display="block" style="border: 1px solid #ededed;">
+                  <se-block margin="none" divider="false">
+                    <se-block-header option="fill">
+                      <se-tabbar option="content" color="alternative" display="centered">
+                          <nav>
+                            <a>Introduction</a>
+                            <a class="active">Installation</a>
+                            <a disabled>Maintenance</a>
+                            <a>Glossary</a>
+                            <a>Glossary</a>
+                            <a>Glossary</a>
+                            <a>Glossary</a>
+                          </nav>
+                        </se-tabbar>
+                    </se-block-header>
+                    <se-block-content>Testing<br/><br/>Testing more content</se-block-content>
+                  </se-block>
+                </se-container>
+                <br/>
+                <se-tabbar color="primary">
+                    <nav slot="start">
+                      <se-icon color="alternative" size="medium">arrow2_left</se-icon>
+                      Back button
+                    </nav>
+                    <nav>
+                      <a class="active">Specification</a>
+                      <a>Design</a>
+                      <a>BOM</a>
+                      <a>Report & Doc</a>
+                    </nav>
+                  </se-tabbar>
+                  <br/>
+              </se-block-content>
+            </se-block>
         </se-container>
       </se-container>
     </se-container>
