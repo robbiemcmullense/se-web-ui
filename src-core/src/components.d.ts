@@ -691,7 +691,10 @@ export namespace Components {
     */
     'label': string;
     'link': string;
-    'toggle': () => Promise<void>;
+    /**
+    * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item. ex: document.getElementById("main-sidemenu").toggle("side-about");
+    */
+    'toggle': (itemName?: string) => Promise<void>;
   }
   interface SeSidemenuItem {
     /**

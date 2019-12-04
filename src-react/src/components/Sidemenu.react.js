@@ -7,9 +7,9 @@ export default class Sidemenu extends Component {
   }
 
 	render() {
-		const { label, children } = this.props;
+		const { label, link, children } = this.props;
 		return (
-			<se-sidemenu label={label} >{children}</se-sidemenu>
+			<se-sidemenu label={label} link={link} >{children}</se-sidemenu>
 		);
 	}
 }
@@ -25,5 +25,9 @@ Sidemenu.propTypes = {
    * Defines the text displayed in the header of the Sidemenu.
 The default value is `Menu`.
    */
-  label: PropTypes.string
+  label: PropTypes.string,
+  /**
+   * 
+   */
+  link: PropTypes.string
 };
