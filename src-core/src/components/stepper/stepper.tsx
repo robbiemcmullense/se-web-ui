@@ -22,8 +22,8 @@ export class StepperComponent {
 
   stepperItemClickedHandler(event) {
     this.stepperItems.forEach((item: any) => {
-      let indicator = Array.from(this.el.shadowRoot.querySelectorAll('span'));
-      indicator.forEach((item: any) => {
+      const indicators = Array.from(this.el.shadowRoot.querySelectorAll('span'));
+      indicators.forEach((item: any) => {
         item.classList.remove('se-icon');
       });
       this.setSelectedItem(item, false);
@@ -34,7 +34,7 @@ export class StepperComponent {
     });
 
     for (let item of this.stepperItems) {
-      let itemIndex = this.stepperItems.indexOf(item);
+      const itemIndex = this.stepperItems.indexOf(item);
       if (itemIndex < this.index) {
         this.addCheckmark(itemIndex);
       }
@@ -59,15 +59,15 @@ export class StepperComponent {
     this.stepperItems.forEach((item: any) => {
       if (this.stepperItems.indexOf(item) == this.index && item.required && item.validated) {
         this.index = this.stepperItems.indexOf(item) + 1;
-        let stepperIndicators = Array.from(this.el.shadowRoot.querySelectorAll('.stepper-item')) as HTMLElement[];
-        const nextItem: HTMLElement = stepperIndicators[this.index];
         this.setDisabledItem(this.stepperItems[this.index], false);
+        const stepperIndicators = Array.from(this.el.shadowRoot.querySelectorAll('.stepper-item')) as HTMLElement[];
+        const nextItem: HTMLElement = stepperIndicators[this.index];
         nextItem.click();
       }
     });
     if (!this.linear) {
       for (let item of this.stepperItems) {
-        let itemIndex = this.stepperItems.indexOf(item);
+        const itemIndex = this.stepperItems.indexOf(item);
         if (itemIndex >= this.index) {
           this.setDisabledItem(item, false);
         }
@@ -146,9 +146,9 @@ export class StepperComponent {
   }
 
   addCheckmark(index: number) {
-    let indicator = Array.from(this.el.shadowRoot.querySelectorAll('span'));
+    const indicators = Array.from(this.el.shadowRoot.querySelectorAll('span'));
     for (var i = 0; i <= index; i++) {
-      indicator[i].classList.add('se-icon');
+      indicators[i].classList.add('se-icon');
     }
   }
 
