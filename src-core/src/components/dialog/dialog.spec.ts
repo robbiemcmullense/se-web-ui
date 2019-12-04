@@ -59,15 +59,7 @@ describe('DialogComponent', () => {
 	});
 
 	it('should call the colorDidChange and openDidChange functions when the component loads', async() => {
-		dialogComponent.menuInnerEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
-		dialogComponent.backdropEl = {classList: {
-			add: (value: any) => { return value;},
-			remove: (value: any) => { return value;}
-		}};
-		const colorEventSpy = jest.spyOn(dialogComponent, 'colorDidChange');
+		const colorEventSpy = jest.spyOn(dialogComponent, 'assignDialogHeaderColor');
 		const openEventSpy = jest.spyOn(dialogComponent, 'openDidChange');
 		dialogComponent.componentDidLoad();
 		expect(colorEventSpy).toHaveBeenCalled();
