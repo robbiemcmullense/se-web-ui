@@ -11,10 +11,24 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                                                                                                | Type                            | Default     |
-| -------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------- |
-| `option` | `option`  | Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. | `"basic" \| "card" \| "widget"` | `undefined` |
+| Property  | Attribute | Description                                                                                                                                                                                                | Type                            | Default     |
+| --------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------- |
+| `divider` | `divider` |                                                                                                                                                                                                            | `boolean`                       | `undefined` |
+| `option`  | `option`  | Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. | `"basic" \| "card" \| "widget"` | `undefined` |
 
+
+## Dependencies
+
+### Depends on
+
+- [se-divider](../divider)
+
+### Graph
+```mermaid
+graph TD;
+  se-block-header --> se-divider
+  style se-block-header fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

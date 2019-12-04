@@ -13,8 +13,7 @@ export const config: Config = {
   outputTargets:[
     {
       type: 'dist',
-      dir: 'core',
-      copy
+      dir: 'core'
     },
     {
       type: 'docs-json',

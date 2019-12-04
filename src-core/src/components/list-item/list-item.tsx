@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Watch, Event, EventEmitter } from "@stencil/core";
+import { Component, h, Prop, Element, Watch, Event, EventEmitter, State } from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -46,11 +46,12 @@ export class ListItemComponent {
     this.didSelectedChange.emit()
   }
 
+  @State() innerId;
+
   setButtonId() {
     let id = this.el.getAttribute('id');
     if (id) {
-      let button = this.el.shadowRoot.querySelector('button');
-      button.setAttribute('id', 'wc-' + id);
+      this.innerId = `wc-${id}`;
     }
   }
 
@@ -86,7 +87,7 @@ export class ListItemComponent {
     };
     return (
       <div class={['se-list-item', this.option].join(' ')}>
-        <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} >
+        <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} id={this.innerId} >
           {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
           {!!this.icon ?
             <div class="nav-icon">
@@ -96,7 +97,7 @@ export class ListItemComponent {
             </div>
             : ''}
           <div class="nav-content">
-            <div class="list-label-item" title={this.item}>{this.item}</div>
+            <div class="list-item-label" title={this.item}>{this.item}</div>
             {myDescription}
           </div>
           {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}

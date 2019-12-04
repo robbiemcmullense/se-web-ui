@@ -1,0 +1,14 @@
+**/node_modules
+
+src-core/.stencil
+
+npm-debug.log
+Dockerfile*
+docker-compose*
+.git
+README.md
+LICENSE
+.vscode
+
+core
+angular

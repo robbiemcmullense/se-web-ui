@@ -25,45 +25,79 @@ export class SidemenuComponent {
    * The default value is `Menu`.
    */
   @Prop() label: string = 'Menu';
-   /*
-   * Defines the link to be uses in the external-link element of the Sidemenu.
-   * The default value is www.se.com, which will generate if no link is defined.
-   * If a different url is provided it will replace the default value.
-   * If an empty string is provided the external link element will not be generated.
-  */
+  /*
+  * Defines the link to be uses in the external-link element of the Sidemenu.
+  * The default value is www.se.com, which will generate if no link is defined.
+  * If a different url is provided it will replace the default value.
+  * If an empty string is provided the external link element will not be generated.
+ */
   @Prop() link: string = 'www.se.com';
 
+  /**
+   * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.
+   * ex: document.getElementById("main-sidemenu").toggle("side-about");
+   */
   @Method()
-  async toggle() {
-    this.open = !this.open;
+  async toggle(itemName?: string) {
+    // Only perform toggle if no item name is passed or menu is closed
+    if (!this.open || !itemName || itemName && !this.open) {
+      // Only perform open animation if menu is closed
+      if (!this.open) {
+        this.el.classList.add(SHOW_MENU);
+        this.addAnimation(null);
+      }
+      this.open = !this.open;
+    } else if (this.selectedItem && this.isItemElement(this.selectedItem, itemName)) {
+      // Deselect the active item if a new item name is passed
+      this.unselectAll();
+    }
+
     if (this.open) {
-      // Add css classes
-      this.el.classList.add(SHOW_MENU);
-      this.addAnimation(null);
-      try {
-        if (this.el.getElementsByClassName("active").length > 0) {
-          this.el.classList.add(OPEN_ITEM);
+      if (itemName) {
+        // If an item name was provided, open that item in the menu (#228)
+        const itemElement = this.getItemElement(itemName);
+        if (itemElement) {
+          // Select the new active element
+          this.setActive(itemElement);
         }
-      } catch (error) {
-        console.log(error);
+      } else {
+        try {
+          if (this.el.getElementsByClassName("active").length > 0) {
+            this.el.classList.add(OPEN_ITEM);
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
     } else {
-      // Remove css classes
+      // Remove css classes and unselect the active element
       this.removeAnimation(() => {
         this.el.classList.remove(SHOW_MENU);
       });
-      this.el.classList.remove(OPEN_ITEM);
-      if (this.selectedItem && !this.selectedItem.childElementCount) {
-        this.selectedItem = undefined;
-        this.items.forEach((item: any) => {
-          item.active = false;
-        });
-      }
+      this.unselectAll();
     }
   }
 
   noSelectedItem() {
     return !this.items.find(x => x === this.selectedItem)
+  }
+
+  private unselectAll(): void {
+    this.el.classList.remove(OPEN_ITEM);
+    if (this.selectedItem && !this.selectedItem.childElementCount) {
+      this.selectedItem = undefined;
+      this.items.forEach((item: any) => {
+        item.active = false;
+      });
+    }
+  }
+
+  private getItemElement(name: string): HTMLElement {
+    return this.items.find(i => this.isItemElement(i, name));
+  }
+
+  private isItemElement(elm: HTMLElement, name: string): boolean {
+    return elm.getAttribute('item') === name || elm.getAttribute('id') === name
   }
 
   private setActive(item: any): void {
@@ -130,7 +164,7 @@ export class SidemenuComponent {
     });
     // assign mutation observer for all browsers that use Shadow DOM
     if (navigator.userAgent.indexOf('Edge') === -1) {
-      this.observer.observe(this.el, {childList: true});
+      this.observer.observe(this.el, { childList: true });
     }
   }
 
@@ -143,7 +177,7 @@ export class SidemenuComponent {
     // assign mutation observer for MS Edge, as it uses polyfills instead of Shadow DOM
     if (navigator.userAgent.indexOf('Edge') > -1) {
       let element = this.el.querySelector('.block-body');
-      this.observer.observe(element, {childList: true});
+      this.observer.observe(element, { childList: true });
     }
   }
 
@@ -156,7 +190,7 @@ export class SidemenuComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} />,
+        <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} id={item.id ? `list-${item.id}` : ''} />,
       ]
     })
   }
@@ -180,10 +214,10 @@ export class SidemenuComponent {
               </se-list>
             </se-block-content>
             <se-icon-lifeison class="footer-icon" color="standard" />
-            { this.link ?
+            {this.link ?
               <div class="external-link">
                 <se-link class="sidemenu-link" url={`http://${this.link}`}>{this.link}</se-link>
-            </div> : ''}
+              </div> : ''}
           </se-block>
           <se-divider option="vertical"></se-divider>
           <se-block ref={el => this.menuItemInnerEl = el}>

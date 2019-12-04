@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Method, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-radio",
@@ -36,7 +36,11 @@ export class RadioComponent {
    * Checked if set to `true`.
 	 */
   @Prop({ mutable: true }) selected: boolean = false;
-  @State() checked: boolean;
+  /**
+   * Sets the position of the label for your checkbox component.
+   * The default setting is `right`.
+   */
+  @Prop() labelPos: 'left' | 'right' = 'right';
   /**
    * Sets the required property on the radio button element.
    */
@@ -48,10 +52,6 @@ export class RadioComponent {
    * Send the checkbox value to the parent component when clicking on the checkbox.
    */
   @Event() didCheck: EventEmitter;
-  @Watch('selected')
-  selectedDidChange() {
-    this.checked = this.selected;
-  }
 
   setInputId() {
     let id = this.el.getAttribute('id');
@@ -61,26 +61,23 @@ export class RadioComponent {
     }
   }
 
-  emitEvent() {
-    this.checked = !this.checked;
-    let checkboxObject = { value: this.value, selected: this.checked };
+  handleClick() {
+    this.selected = !this.selected;
+    let checkboxObject = { value: this.value, selected: this.selected };
     this.didCheck.emit(checkboxObject);
   }
 
   componentDidLoad() {
-    if (this.selected) {
-      this.checked = this.selected;
-    }
     this.setInputId();
   }
 
   render() {
     return (
       <div class="se-radio">
-        <label class="radio-container" data-disabled={this.disabled}>
+        <label class={["radio-container", `checkdot-label-${this.labelPos}`].join(' ')} data-disabled={this.disabled}>
           {this.label}
           {this.required ? <span class="required">*</span> : ''}
-          <input type="radio" checked={this.checked} disabled={this.disabled} onClick={() => this.emitEvent()} />
+          <input type="radio" checked={this.selected} disabled={this.disabled} onClick={() => this.handleClick()} />
           <span class="checkdot" data-color={this.color}></span>
         </label>    
       </div>

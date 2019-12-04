@@ -16,20 +16,18 @@ describe('BlockComponent', () => {
   });
 
   it('renders with flex class due to no specified display', async() => {
-    expect(hostElement).toHaveClass('flex');
+    expect(hostElement).toHaveClass('block-flex');
   });
 
-  it('should have the basic and alternative classes since that is the default option and color', async() => {
+  it('should have the basic and block-bg-alternative classes since that is the default option and color', async() => {
     expect(blockElement).toHaveClass('basic');
-    expect(blockElement).toHaveClass('alternative');
+    expect(blockElement).toHaveClass('block-bg-alternative');
   });
 
-  
-
-  it('renders a standard class when the color property is set to standard', async() => {
+  it('renders a block-bg-standard class when the color property is set to standard', async() => {
     hostElement.setProperty('color', 'standard');
     await page.waitForChanges();
-    expect(blockElement).toHaveClass('standard');
+    expect(blockElement).toHaveClass('block-bg-standard');
   });
 
   it('renders a loading element when the loading property is true', async() => {

@@ -32,6 +32,6 @@ export class AppComponent {
 
     this.updateBodyClass(bodyClass);
 
-    return <div class={'se-app-body'}><slot></slot></div>;
+    return <div class={['se-app-body', this.option].join(' ')}><slot></slot></div>;
   }
 }

@@ -26,6 +26,9 @@
 .se-list-item {
   width: 100%;
   width: -webkit-fill-available;
+  button {
+    transition: .2s;
+  }
 
   &.classic,
   &.nav {
@@ -54,7 +57,7 @@
 
   &.treeview {
     button {
-      padding: 7px 0;
+      padding: 4px 0;
       &.selected {
         @include color('selected-contrast');
         @include background-color('selected');
@@ -72,12 +75,13 @@
       }
     }
     .nav-content {
-      padding-left: 4px;
+      padding-left: 12px;
     }
     .nav-icon {
-      margin: -3px -8px -3px 4px;
+      margin-left: 10px;
+      margin-right: 0;
       + .nav-content {
-        padding-left: 12px;
+        padding-left: 2px;
       }
     }
   }
@@ -91,7 +95,7 @@
     }
     .nav-content{
       padding: 0 10px;
-      .list-label-item {
+      .list-item-label {
         font-size: $base-fontsize;
         line-height: 20px;
       }
@@ -107,18 +111,7 @@
 
 }
 
-:host .se-list-group.treeview {
-  .nav-icon {
-    margin-right: 0;
-    margin-left: -4px;
-  }
-  .nav-content {
-    margin-right: 8px;
-  }
-  se-icon {
-    padding-top: 0;
-  }
-}
+
 
 :host .dropdown {
   button {
@@ -184,8 +177,8 @@ button {
     @include ellipsis();
   }
 
-  .list-label-item {
-    line-height: 17px;
+  .list-item-label {
+    line-height: 24px;
   }
 
   small {

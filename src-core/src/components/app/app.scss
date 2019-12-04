@@ -78,9 +78,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1.4;
-}
+// body {
+// 	 line-height: 1.4;
+// }
 ol, ul {
 	list-style: none;
 }
@@ -102,7 +102,6 @@ a {
 }
 
 body, html{
-  line-height: 1.4;
   @include typology('p');
   color: $off-black;
   // Header Styles
@@ -183,4 +182,8 @@ body, html {
       border: $scrollbar-side-padding solid transparent;
     }
   }
+}
+
+.technical se-block ::slotted(se-block) {
+  border: 4px solid red;
 }
