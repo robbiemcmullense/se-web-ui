@@ -15,7 +15,7 @@
 
 ## Methods
 
-### `next() => Promise<void>`
+### `next(validate: boolean) => Promise<void>`
 
 Call the `next` method to navigate to the next step from the step that is currently selected.
 This will not work if the next step is required and not validated.
@@ -36,7 +36,7 @@ Type: `Promise<void>`
 
 
 
-### `reset(index: number) => Promise<void>`
+### `reset(step?: number) => Promise<void>`
 
 Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
 

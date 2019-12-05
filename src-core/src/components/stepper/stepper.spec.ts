@@ -52,7 +52,7 @@ describe('Stepper Component methods', () => {
 		stepper.componentDidLoad();
 		expect(stepper.stepperItems.length).toEqual(2);
 		expect(stepper.stepperItems[0].isLast).toBeFalsy();
-		expect(stepper.stepperItems[0].selected).toBeTruthy();
+		expect(stepper.stepperItems[0].active).toBeTruthy();
 	});
 
 	it('should set the validated property to false for all stepper items when the reset method is called', () => {

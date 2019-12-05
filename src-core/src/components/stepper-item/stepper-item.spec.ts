@@ -19,10 +19,6 @@ describe('StepperItemComponent', () => {
   it('should not be the last stepper item by defualt', () => {
     expect(stepperItem.isLast).toBeFalsy();
 	});
-
-	it('should not be required by default', () => {
-		expect(stepperItem.required).toBeFalsy();
-	});
 	
 	it('should render with a list item with the stepper-item class', async() => {
 		const page = await newSpecPage({
@@ -41,7 +37,7 @@ describe('StepperItemComponent', () => {
 	});
 
 	it('should emit the itemValidated event when the validated property changes', () => {
-		const eventSpy = jest.spyOn(stepperItem.itemValidated, 'emit');
+		const eventSpy = jest.spyOn(stepperItem.didValidate, 'emit');
 		stepperItem.validatedDidChange(); // validated property changes
 		expect(eventSpy).toHaveBeenCalled();
 	});

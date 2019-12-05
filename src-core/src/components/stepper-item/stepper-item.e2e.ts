@@ -19,8 +19,9 @@ describe('StepperItemComponent', () => {
   });
 
   it('removes the navitem-hidden class when it is set to active', async () => {
-    element.setProperty('selectedContent', true);
+    element.setProperty('active', true);
     await page.waitForChanges();
+    expect(element).toHaveClass('active');
     expect(element).not.toHaveClass('navitem-hidden');
   });
 });
