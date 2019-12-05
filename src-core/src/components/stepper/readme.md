@@ -10,7 +10,7 @@
 | Property | Attribute | Description                                                                                                                                                                                                                                                                            | Type                         | Default     |
 | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
 | `color`  | `color`   | Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background. | `"alternative" \| "primary"` | `'primary'` |
-| `linear` | `linear`  | Defines if the stepper items must be completed sequentially.  The default setting is `false`.                                                                                                                                                                                          | `boolean`                    | `false`     |
+| `linear` | `linear`  | Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.                                                                                               | `boolean`                    | `false`     |
 
 
 ## Methods
@@ -18,7 +18,7 @@
 ### `next(validate: boolean) => Promise<void>`
 
 Call the `next` method to navigate to the next step from the step that is currently selected.
-This will not work if the next step is required and not validated.
+This will not work in linear mode if the next step is not validated.
 
 #### Returns
 
@@ -38,7 +38,8 @@ Type: `Promise<void>`
 
 ### `reset(step?: number) => Promise<void>`
 
-Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
+Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
+It no step parameter is provided, it will reset to the first stepper item.
 
 #### Returns
 

@@ -22,9 +22,9 @@ export default class StepperItem extends Component {
   }
 
 	render() {
-		const { active, isLast, label, step, validated, didValidate, children } = this.props;
+		const { active, label, validated, didValidate, children } = this.props;
 		return (
-			<se-stepper-item active={active} is-last={isLast} label={label} step={step} validated={validated} ref={this._handleRef} >{children}</se-stepper-item>
+			<se-stepper-item active={active} label={label} validated={validated} ref={this._handleRef} >{children}</se-stepper-item>
 		);
 	}
 }
@@ -41,23 +41,17 @@ StepperItem.propTypes = {
    */
   active: PropTypes.bool,
   /**
-   * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
-   */
-  isLast: PropTypes.bool,
-  /**
    * Indicates the label for your stepper item.
    */
   label: PropTypes.string,
   /**
-   * Indicates the numerical position of the stepper item within the stepper component.
-   */
-  step: PropTypes.number,
-  /**
    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+   * When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
    */
   validated: PropTypes.bool,
   /**
    * Event to send to the parent component when a stepper item's data is validated.
+The boolean validated property is passed to the parent.
    */
   didValidate: PropTypes.func
 };

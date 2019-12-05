@@ -761,11 +761,11 @@ export namespace Components {
     */
     'color': 'primary' | 'alternative';
     /**
-    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
     */
     'linear': boolean;
     /**
-    * Call the `next` method to navigate to the next step from the step that is currently selected. This will not work if the next step is required and not validated.
+    * Call the `next` method to navigate to the next step from the step that is currently selected. This will not work in linear mode if the next step is not validated.
     */
     'next': (validate: boolean) => Promise<void>;
     /**
@@ -773,7 +773,7 @@ export namespace Components {
     */
     'previous': () => Promise<void>;
     /**
-    * Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
+    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps. It no step parameter is provided, it will reset to the first stepper item.
     */
     'reset': (step?: number) => Promise<void>;
   }
@@ -787,7 +787,7 @@ export namespace Components {
     */
     'label': string;
     /**
-    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+    * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
     */
     'validated': boolean;
   }
@@ -1998,7 +1998,7 @@ declare namespace LocalJSX {
     */
     'color'?: 'primary' | 'alternative';
     /**
-    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
     */
     'linear'?: boolean;
   }
@@ -2012,11 +2012,11 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
-    * Event to send to the parent component when a stepper item's data is validated.
+    * Event to send to the parent component when a stepper item's data is validated. The boolean validated property is passed to the parent.
     */
     'onDidValidate'?: (event: CustomEvent<any>) => void;
     /**
-    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+    * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
     */
     'validated'?: boolean;
   }
