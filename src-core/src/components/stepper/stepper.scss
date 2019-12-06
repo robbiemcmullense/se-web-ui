@@ -2,10 +2,6 @@
 
 nav {
   @include color('primary');
-  &.alternative {
-    background: $se-medium-grey;
-    color: $se-white;
-  }
 }
 
 ol {

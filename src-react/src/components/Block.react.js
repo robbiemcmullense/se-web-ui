@@ -23,48 +23,48 @@ Block.propTypes = {
   children: PropTypes.node,
   /**
    * Defines se-block item's ability to appear clickable / selectable.
-   * Default is `false`, no hover effects on the block level.
-   * `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
+Default is `false`, no hover effects on the block level.
+`true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
    */
   clickable: PropTypes.bool,
   /**
    * Defines clickable se-block item's bar on hover.
-   * Default is `true`, `$se-life-green` bar appears on hover.
-   * `false` removes the bar from the hover effect.
+Default is `true`, `$se-life-green` bar appears on hover.
+`false` removes the bar from the hover effect.
    */
   clickableBar: PropTypes.bool,
   /**
    * Optional property that defines the background color of the block.
-   * `none` has no background.
-   * `standard` is `$se-background`.
-   * Default `alternative` is `$se-alternative`.
+`none` has no background.
+`standard` is `$se-background`.
+Default `alternative` is `$se-alternative`.
    */
   color: PropTypes.string,
   /**
    * Defines se-block item's corner radius.
-   * `none` is for a sharp, 90 degree corner.
-   * `nano` is for a slightly rounded, 2px rounded corner.
-   * `small` is for a rounded, 4px rounded corner.
+`none` is for a sharp, 90 degree corner.
+`nano` is for a slightly rounded, 2px rounded corner.
+`small` is for a rounded, 4px rounded corner.
    */
   corner: PropTypes.string,
   /**
    * Defines how to display the element.
-   * `flex` is the default display.
-   * `block` helps in specific cases. Make sure you know what you are doing.
+`flex` is the default display.
+`block` helps in specific cases. Make sure you know what you are doing.
    */
   display: PropTypes.string,
   /**
    * Defines se-block items' dividers.
-   * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
-   * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+`true` will add a divider to the se-block-header and se-block-footer, if they are present.
+`false` will remove dividers on the se-block header and se-block-footer, if they are present.
    */
   divider: PropTypes.bool,
   /**
    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item.
-   * Default setting is `false` (1/1).
-   * `true` spans 2 rows and 2 columns (2/2).
-   * `vertical` spans 2 rows (2/1).
-   * `horizontal` spans 2 columns (1/2).
+Default setting is `false` (1/1).
+`true` spans 2 rows and 2 columns (2/2).
+`vertical` spans 2 rows (2/1).
+`horizontal` spans 2 columns (1/2).
    */
   enlarged: PropTypes.string,
   /**
@@ -77,32 +77,32 @@ Block.propTypes = {
   loading: PropTypes.bool,
   /**
    * Defines the spacing around the outside edge of a block.
-   * Default `none` is 0px.
-   * `small` is 4px.
-   * `medium` is 8px.
-   * `large` is 16px.
-   * `xlarge` is 32px.
+Default `none` is 0px.
+`small` is 4px.
+`medium` is 8px.
+`large` is 16px.
+`xlarge` is 32px.
    */
   margin: PropTypes.string,
   /**
    * Defines the visual appearance of a block.
-   * Default `basic` will remove any spacing.
-   * `widget` will create a flat widget look and feel with a `medium` margin around it.
-   * `card` will create a card look and feel with rounded corners, and with a `large` margin around it.
-   * Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
+Default `basic` will remove any spacing.
+`widget` will create a flat widget look and feel with a `medium` margin around it.
+`card` will create a card look and feel with rounded corners, and with a `large` margin around it.
+Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
    */
   option: PropTypes.string,
   /**
    * Defines se-block item's outline.
-   * `true` will add a 1px border.
-   * Default is `false`.
+`true` will add a 1px border.
+Default is `false`.
    */
   outline: PropTypes.bool,
   /**
    * Defines se-block item's outline color.
-   * Default is `standard` which is `$se-super-light-grey`.
-   * `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
-   * `secondary` defines the outline color as `se-sky-blue`.
+Default is `standard` which is `$se-super-light-grey`.
+`primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
+`secondary` defines the outline color as `se-sky-blue`.
    */
   outlineColor: PropTypes.string,
   /**

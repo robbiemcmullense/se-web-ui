@@ -46,7 +46,7 @@ StepperItem.propTypes = {
   label: PropTypes.string,
   /**
    * Indicates whether a required item's data has been validated.  Useful if using a form field.
-   * When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
+When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
    */
   validated: PropTypes.bool,
   /**

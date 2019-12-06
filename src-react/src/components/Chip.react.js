@@ -38,7 +38,7 @@ Chip.propTypes = {
   children: PropTypes.node,
   /**
    * Optional property that defines if the chip displays as a block in it's container.
-   * When set to true, the chip will be as wide as its container.
+When set to true, the chip will be as wide as its container.
    */
   block: PropTypes.bool,
   /**
@@ -59,8 +59,8 @@ Chip.propTypes = {
   selected: PropTypes.bool,
   /**
    * Defines the size of the chip.
-   * `nano` sets the font to 14px and the height to 24px.
-   * `small` is the default option, with a 16px font and a 32px height.
+`nano` sets the font to 14px and the height to 24px.
+`small` is the default option, with a 16px font and a 32px height.
    */
   size: PropTypes.string,
   /**

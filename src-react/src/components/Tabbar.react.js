@@ -23,14 +23,14 @@ Tabbar.propTypes = {
   children: PropTypes.node,
   /**
    * Indicates the color of your tab bar.
-   * Default setting is `primary`, rendering a green background.
-   * The `alternative` setting renders a white background.
+Default setting is `primary`, rendering a green background.
+The `alternative` setting renders a white background.
    */
   color: PropTypes.string,
   /**
    * Defines the inner appearance of a tabbar.
-   * `fill` is the default option, taking the full space of the tabbar.
-   * `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+`fill` is the default option, taking the full space of the tabbar.
+`centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
    */
   option: PropTypes.string
 };

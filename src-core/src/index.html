@@ -16,6 +16,14 @@
     /* remove the glitch on display  */
     se-app { display: none; }
     se-app.hydrated { display: initial; }
+    .dark {
+      background: #9FA0A4;
+      color: white;
+    }
+    .inherit{
+      background: inherit;
+      color: inherit;
+    }
   </style>
 </head>
 
@@ -883,7 +891,7 @@
                 <se-icon option="button" color="alternative" onclick="toggle(10)">exit_presentation</se-icon>
               </div>
             </se-block-header>
-            <se-block-content>
+            <se-block-content id="stepper-content">
               <div><span id="stepper-color">Primary</span> Color Stepper (<span id="stepper-mode">non-linear</span> mode):</div>
               <se-stepper id="se-stepper">
                 <se-stepper-item label="Step 1" id="primone">
@@ -1152,6 +1160,8 @@
       document.getElementById('se-radio-value').innerText = event.detail.value;
     });
 
+    // Stepper
+
     function toggleStepperMode() {
       stepperReset();
       let stepper = document.getElementById('se-stepper');
@@ -1167,14 +1177,17 @@
     }
 
     function toggleStepperColor() {
-      let stepper = document.getElementById('se-stepper');
-      let stepperColorText = document.getElementById('stepper-color');
+      const stepper = document.getElementById('se-stepper');
+      const stepperColorText = document.getElementById('stepper-color');
+      const stepperContent = document.getElementById('stepper-content');
       if (stepper.color == 'primary') {
         stepper.color = 'alternative';
         stepperColorText.innerText = 'Alternative';
+        stepperContent.classList.add('dark');
       } else if (stepper.color == 'alternative') {
         stepper.color = 'primary';
         stepperColorText.innerText = 'Primary';
+        stepperContent.classList.remove('dark');
       }
     }
 

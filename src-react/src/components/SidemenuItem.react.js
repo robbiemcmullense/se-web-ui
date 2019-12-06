@@ -38,7 +38,7 @@ SidemenuItem.propTypes = {
   children: PropTypes.node,
   /**
    * Defines if the menu item is active or not.
-   * The default setting is `false`.
+The default setting is `false`.
    */
   active: PropTypes.bool,
   /**
