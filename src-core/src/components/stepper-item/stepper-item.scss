@@ -1,0 +1,6 @@
+@import "../../theme/theme";
+
+
+:host(.navitem-hidden) {
+  display: none !important;
+}

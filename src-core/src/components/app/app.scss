@@ -5,6 +5,8 @@
     @include define-custom-property($element, $value);
   }
 }
+
+
 :host{
   width: 100%;
 }
@@ -17,6 +19,7 @@
   @include display-flex();
   @include flex-direction(column);
   @include background-color('background');
+
 }
 body {
   @include background-color('background');

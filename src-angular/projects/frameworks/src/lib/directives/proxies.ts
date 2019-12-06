@@ -470,6 +470,31 @@ export class SeSnackbar {
 }
 proxyInputs(SeSnackbar, ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type']);
 
+export declare interface SeStepper extends Components.SeStepper {}
+@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'linear'] })
+export class SeStepper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyMethods(SeStepper, ['reset', 'previous', 'next']);
+proxyInputs(SeStepper, ['color', 'linear']);
+
+export declare interface SeStepperItem extends Components.SeStepperItem {}
+@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'label', 'validated'] })
+export class SeStepperItem {
+  didValidate!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didValidate']);
+  }
+}
+proxyInputs(SeStepperItem, ['active', 'label', 'validated']);
+
 export declare interface SeTabbar extends Components.SeTabbar {}
 @Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
 export class SeTabbar {

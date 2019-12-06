@@ -33,4 +33,8 @@ $se-icon-folder: "~@se/icons/fonts";
 @import "~@se/icons/scss/styles";
 $se-fonts-path: "~@se/fonts/fonts";
 @import "~@se/fonts/scss/styles";
+
+/* remove the glitch on display  */
+se-app { display: none; }
+se-app.hydrated { display: initial; }
 </style>
