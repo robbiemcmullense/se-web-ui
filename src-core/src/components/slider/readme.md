@@ -12,6 +12,7 @@
 | `disabled` | `disabled` | Indicates if your slider is disabled. The default setting is `false`. | `boolean` | `false` |
 | `max`      | `max`      | Indicates the maximum value of your slider.                           | `number`  | `100`   |
 | `min`      | `min`      | Indicates the minimum value of your slider.                           | `number`  | `0`     |
+| `value`    | `value`    |                                                                       | `any`     | `0`     |
 
 
 ## Events

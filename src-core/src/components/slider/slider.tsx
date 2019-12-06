@@ -9,7 +9,7 @@ export class SliderComponent {
 
   private sliderElement?: HTMLInputElement;
   @Element() el: HTMLElement;
-  value: number = 0;
+  @Prop() value: any = 0;
   /**
   * Indicates the minimum value of your slider.
   */
@@ -44,17 +44,23 @@ export class SliderComponent {
     }
   }
 
+  setSliderPosition() {
+    const rangeInterval = (Number(this.max) - Number(this.min));
+    const rangePercent = (Number(this.sliderElement.value) + Math.abs(Number(this.min))) / rangeInterval * 100;
+    this.sliderElement.style.setProperty('--sx', rangePercent + '%');
+  }
+
   handleEvent() {
     this.sliderElement.addEventListener('input', () => {
-      const rangeInterval = (Number(this.max) - Number(this.min));
-      const rangePercent = (Number(this.sliderElement.value) + Math.abs(Number(this.min))) / rangeInterval * 100;
-      this.sliderElement.style.setProperty('--sx', rangePercent + '%');
+      this.setSliderPosition();
     });
     this.didChange.emit(this.sliderElement);
   }
 
   componentDidLoad() {
     this.setInputId();
+    this.sliderElement.value = this.value;
+    this.setSliderPosition();
     this.handleEvent();
   }
 
