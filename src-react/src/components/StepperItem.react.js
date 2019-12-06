@@ -9,22 +9,22 @@ export default class StepperItem extends Component {
     };
   }
 
-  didClick(e) {
-    this.props.onDidClick && this.props.onDidClick(e)
+  didValidate(e) {
+    this.props.onDidValidate && this.props.onDidValidate(e)
   }
 
   componentDidMount() {
-    this.switchCmp.addEventListener("didClick", e => this.didClick(e));
+    this.switchCmp.addEventListener("didValidate", e => this.didValidate(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("didClick", e => this.didClick(e));
+    this.switchCmp.removeEventListener("didValidate", e => this.didValidate(e));
   }
 
 	render() {
-		const { isLast, label, required, didClick, children } = this.props;
+		const { active, label, validated, didValidate, children } = this.props;
 		return (
-			<se-stepper-item is-last={isLast} label={label} required={required} ref={this._handleRef} >{children}</se-stepper-item>
+			<se-stepper-item active={active} label={label} validated={validated} ref={this._handleRef} >{children}</se-stepper-item>
 		);
 	}
 }
@@ -37,21 +37,21 @@ StepperItem.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
+   * Indicates the content for the currently selected step in the stepper.
    */
-  isLast: PropTypes.bool,
+  active: PropTypes.bool,
   /**
    * Indicates the label for your stepper item.
    */
   label: PropTypes.string,
   /**
-   * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`.
-If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
+   * Indicates whether a required item's data has been validated.  Useful if using a form field.
+When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
    */
-  required: PropTypes.bool,
+  validated: PropTypes.bool,
   /**
-   * Event to send to the parent component when clicking on a stepper item.
-This event emits the stepper item element object and its label property.
+   * Event to send to the parent component when a stepper item's data is validated.
+The boolean validated property is passed to the parent.
    */
-  didClick: PropTypes.func
+  didValidate: PropTypes.func
 };

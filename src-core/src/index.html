@@ -12,6 +12,19 @@
   </link>
   <link rel="stylesheet" href="icons/css/styles.css">
   </link>
+  <style>
+    /* remove the glitch on display  */
+    se-app { display: none; }
+    se-app.hydrated { display: initial; }
+    .dark {
+      background: #9FA0A4;
+      color: white;
+    }
+    .inherit{
+      background: inherit;
+      color: inherit;
+    }
+  </style>
 </head>
 
 <body>
@@ -338,7 +351,8 @@
           <se-list-item id="item1" item="my item 1" selected="false" icon="user_standard" icon-color="primary"
             description="I have a description">
           </se-list-item>
-          <se-list-item id="item2" item="my item 2 no description with a long text" icon="user_standard" icon-color="primary">
+          <se-list-item id="item2" item="my item 2 no description with a long text" icon="user_standard"
+            icon-color="primary">
           </se-list-item>
           <se-list-item id="item3" item="my item 3 no icon" description="I'm here too">
           </se-list-item>
@@ -421,7 +435,7 @@
           <se-list-item item="My last item"></se-list-item>
         </se-list>
       </se-block>
-      <se-divider option="vertical"></se-divider>         
+      <se-divider option="vertical"></se-divider>
 
       <se-container color="standard" option="centered" direction="column" position="relative" display="block">
         <se-container color="none" display="block">
@@ -504,7 +518,8 @@
               <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
             </se-block-footer>
           </se-block>
-          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano" outline="true" id="block1">
+          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano"
+            outline="true" id="block1">
             <se-block-header>
               Headline list with colored icons
               <div slot="end">
@@ -527,7 +542,8 @@
               </se-list>
             </se-block-content>
           </se-block>
-          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true" id="block2">
+          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true"
+            id="block2">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">connection_bluetooth</se-icon>
@@ -654,12 +670,14 @@
               </se-radio-group>
             </se-block-content>
           </se-block>
-          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard" id="block3">
+          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard"
+            id="block3">
             <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
             <se-block-header>
               Forms
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode
+                </se-icon>
               </div>
             </se-block-header>
             <se-block-content>
@@ -743,7 +761,7 @@
             <se-block-header>
               Linear chart & Slider
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(5)">exit_presentation</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
@@ -810,7 +828,7 @@
             <se-block-header option="fill">
               Tooltips
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(9)">exit_presentation</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
@@ -917,7 +935,49 @@
                   <se-block-content>Testing<br/><br/>Testing more content</se-block-content>
                 </se-block>
               </se-container>
-  
+            </se-block-content>
+          </se-block>
+          <se-block enlarged="horizontal" id="block11">
+            <se-block-header>Stepper
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(10)">exit_presentation</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content id="stepper-content">
+              <div><span id="stepper-color">Primary</span> Color Stepper (<span id="stepper-mode">non-linear</span> mode):</div>
+              <se-stepper id="se-stepper">
+                <se-stepper-item label="Step 1" id="primone">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 2" id="primtwo">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 3" id="primthree">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 4" id="primfour">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 5" id="primfive">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 6">
+                  <div style="border: 1px solid black; padding: 10px;">Sixth Step</div>
+                </se-stepper-item>
+              </se-stepper>
+              <se-button onclick="toggleStepperMode()">Toggle Stepper Mode</se-button>
+              <se-button onclick="toggleStepperColor()">Toggle Stepper Color</se-button>
+              <se-button onclick="stepperReset()">Reset Stepper</se-button>
             </se-block-content>
           </se-block>
         </se-container>
@@ -1151,6 +1211,54 @@
     document.getElementById('radio-button-dot-group').addEventListener('didCheck', function (event) {
       document.getElementById('se-radio-value').innerText = event.detail.value;
     });
+
+    // Stepper
+
+    function toggleStepperMode() {
+      stepperReset();
+      let stepper = document.getElementById('se-stepper');
+      let stepperText = document.getElementById('stepper-mode');
+      if (stepper.linear) {
+        stepper.linear = false;
+        stepperText.innerText = 'non-linear';
+      } else if (!stepper.linear) {
+        stepper.linear = true;
+        stepperText.innerText = 'linear';
+      }
+      console.log(document.getElementById('stepper-mode').innerHTML);
+    }
+
+    function toggleStepperColor() {
+      const stepper = document.getElementById('se-stepper');
+      const stepperColorText = document.getElementById('stepper-color');
+      const stepperContent = document.getElementById('stepper-content');
+      if (stepper.color == 'primary') {
+        stepper.color = 'alternative';
+        stepperColorText.innerText = 'Alternative';
+        stepperContent.classList.add('dark');
+      } else if (stepper.color == 'alternative') {
+        stepper.color = 'primary';
+        stepperColorText.innerText = 'Primary';
+        stepperContent.classList.remove('dark');
+      }
+    }
+
+    function validateStepperItem(value) {
+      document.getElementById(value).validated = true;
+    }
+
+    function stepperReset() {
+      document.getElementById('se-stepper').reset();
+    }
+
+    function prevStep() {
+      document.getElementById('se-stepper').previous();
+    }
+
+    function nextStep() {
+      document.getElementById('se-stepper').next(true);
+    }
+
   </script>
 </body>
 

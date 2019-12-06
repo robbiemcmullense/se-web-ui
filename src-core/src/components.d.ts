@@ -756,9 +756,45 @@ export namespace Components {
     */
     'type': 'success' | 'error' | 'warning' | 'information';
   }
+  interface SeStepper {
+    /**
+    * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background.
+    */
+    'color': 'primary' | 'alternative';
+    /**
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
+    */
+    'linear': boolean;
+    /**
+    * Call the `next` method to navigate to the next step from the step that is currently selected. This will not work in linear mode if the next step is not validated.
+    */
+    'next': (validate: boolean) => Promise<void>;
+    /**
+    * Call the `previous` method to navigate to the previous step from the step that is currently selected.
+    */
+    'previous': () => Promise<void>;
+    /**
+    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps. It no step parameter is provided, it will reset to the first stepper item.
+    */
+    'reset': (step?: number) => Promise<void>;
+  }
+  interface SeStepperItem {
+    /**
+    * Indicates the content for the currently selected step in the stepper.
+    */
+    'active': boolean;
+    /**
+    * Indicates the label for your stepper item.
+    */
+    'label': string;
+    /**
+    * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
+    */
+    'validated': boolean;
+  }
   interface SeTabbar {
     /**
-    * Indicates the color of your tabbar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
     */
     'color': 'primary' | 'alternative';
     /**
@@ -766,7 +802,7 @@ export namespace Components {
     */
     'display': "fill" | "centered";
     /**
-    * Defines the function of the tabbar. Default `nav` creates a tabbar that functions as a nav-bar. `content` creates a tabbar that functions as a content section tabbar.
+    * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
     */
     'option': "nav" | "content";
   }
@@ -1084,6 +1120,18 @@ declare global {
     new (): HTMLSeSnackbarElement;
   };
 
+  interface HTMLSeStepperElement extends Components.SeStepper, HTMLStencilElement {}
+  var HTMLSeStepperElement: {
+    prototype: HTMLSeStepperElement;
+    new (): HTMLSeStepperElement;
+  };
+
+  interface HTMLSeStepperItemElement extends Components.SeStepperItem, HTMLStencilElement {}
+  var HTMLSeStepperItemElement: {
+    prototype: HTMLSeStepperItemElement;
+    new (): HTMLSeStepperItemElement;
+  };
+
   interface HTMLSeTabbarElement extends Components.SeTabbar, HTMLStencilElement {}
   var HTMLSeTabbarElement: {
     prototype: HTMLSeTabbarElement;
@@ -1165,6 +1213,8 @@ declare global {
     'se-sidemenu-item': HTMLSeSidemenuItemElement;
     'se-slider': HTMLSeSliderElement;
     'se-snackbar': HTMLSeSnackbarElement;
+    'se-stepper': HTMLSeStepperElement;
+    'se-stepper-item': HTMLSeStepperItemElement;
     'se-tabbar': HTMLSeTabbarElement;
     'se-tooltip': HTMLSeTooltipElement;
     'se-tooltip-content': HTMLSeTooltipContentElement;
@@ -1948,9 +1998,37 @@ declare namespace LocalJSX {
     */
     'type'?: 'success' | 'error' | 'warning' | 'information';
   }
+  interface SeStepper {
+    /**
+    * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background.
+    */
+    'color'?: 'primary' | 'alternative';
+    /**
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
+    */
+    'linear'?: boolean;
+  }
+  interface SeStepperItem {
+    /**
+    * Indicates the content for the currently selected step in the stepper.
+    */
+    'active'?: boolean;
+    /**
+    * Indicates the label for your stepper item.
+    */
+    'label'?: string;
+    /**
+    * Event to send to the parent component when a stepper item's data is validated. The boolean validated property is passed to the parent.
+    */
+    'onDidValidate'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
+    */
+    'validated'?: boolean;
+  }
   interface SeTabbar {
     /**
-    * Indicates the color of your tabbar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
     */
     'color'?: 'primary' | 'alternative';
     /**
@@ -1958,7 +2036,7 @@ declare namespace LocalJSX {
     */
     'display'?: "fill" | "centered";
     /**
-    * Defines the function of the tabbar. Default `nav` creates a tabbar that functions as a nav-bar. `content` creates a tabbar that functions as a content section tabbar.
+    * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
     */
     'option'?: "nav" | "content";
   }
@@ -2082,6 +2160,8 @@ declare namespace LocalJSX {
     'se-sidemenu-item': SeSidemenuItem;
     'se-slider': SeSlider;
     'se-snackbar': SeSnackbar;
+    'se-stepper': SeStepper;
+    'se-stepper-item': SeStepperItem;
     'se-tabbar': SeTabbar;
     'se-tooltip': SeTooltip;
     'se-tooltip-content': SeTooltipContent;
@@ -2137,6 +2217,8 @@ declare module "@stencil/core" {
       'se-sidemenu-item': LocalJSX.SeSidemenuItem & JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement>;
       'se-slider': LocalJSX.SeSlider & JSXBase.HTMLAttributes<HTMLSeSliderElement>;
       'se-snackbar': LocalJSX.SeSnackbar & JSXBase.HTMLAttributes<HTMLSeSnackbarElement>;
+      'se-stepper': LocalJSX.SeStepper & JSXBase.HTMLAttributes<HTMLSeStepperElement>;
+      'se-stepper-item': LocalJSX.SeStepperItem & JSXBase.HTMLAttributes<HTMLSeStepperItemElement>;
       'se-tabbar': LocalJSX.SeTabbar & JSXBase.HTMLAttributes<HTMLSeTabbarElement>;
       'se-tooltip': LocalJSX.SeTooltip & JSXBase.HTMLAttributes<HTMLSeTooltipElement>;
       'se-tooltip-content': LocalJSX.SeTooltipContent & JSXBase.HTMLAttributes<HTMLSeTooltipContentElement>;

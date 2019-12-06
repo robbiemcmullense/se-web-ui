@@ -20,6 +20,7 @@
  - [se-block-footer](../block-footer)
  - [se-block-header](../block-header)
  - [se-sidemenu](../sidemenu)
+ - [se-stepper](../stepper)
 
 ### Graph
 ```mermaid
@@ -27,6 +28,7 @@ graph TD;
   se-block-footer --> se-divider
   se-block-header --> se-divider
   se-sidemenu --> se-divider
+  se-stepper --> se-divider
   style se-divider fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
