@@ -724,6 +724,7 @@ export namespace Components {
     * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
+    'value': any;
   }
   interface SeSnackbar {
     /**
@@ -1903,6 +1904,7 @@ declare namespace LocalJSX {
     * Event emitted when the slider has been changed.
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
+    'value'?: any;
   }
   interface SeSnackbar {
     /**

@@ -102,7 +102,6 @@ input[type='range'] {
 
 	&::-moz-range-thumb { @include thumb; }
 	&::-ms-thumb {
-		margin-top: 0;
 		@include thumb;
 	}
 
@@ -128,10 +127,13 @@ input[type='range'] {
 		&::-moz-range-thumb {
 			@include thumb('disabled');
 		}
+		&::-ms-thumb {
+			@include thumb('disabled');
+		}
 	}
 }
 
-@supports (-ms-ime-align:auto) {
+@mixin ms-thumb-hover() {
 	input[type='range'] {
 		height: $ie_thumb-dimesion;
 		&::-ms-thumb:hover {
@@ -145,4 +147,14 @@ input[type='range'] {
 			position: static;
 		}
 	}
+}
+
+// MS Edge specific properties
+@supports (-ms-ime-align:auto) {
+	@include ms-thumb-hover;
+}
+
+// IE 11 specific properties
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	@include ms-thumb-hover;
 }
