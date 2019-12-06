@@ -24,12 +24,12 @@ describe('list-group', () => {
     expect(listGroup.canCollapse).toBe(true);
   });
 
-  it('should render in classic mode with an up arrow by default', async() => {
+  it('should render in classic mode with a down arrow by default', async() => {
 		const page = await newSpecPage({
 			components: [ListGroupComponent],
 			html: `<se-list-group></se-list-group>`,
 		});
-		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_up');
+		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_down');
   });
 
   it('should render the button with attribute "disabled" true when canCollapse is false', async() => {
