@@ -8,13 +8,13 @@ import { Component, h, Prop } from '@stencil/core';
 export class TabbarComponent {
   /**
    * Defines the function of the tabbar.
-   * Default `nav` creates a tabbar that functions as a nav-bar.
-   * `content` creates a tabbar that functions as a content section tabbar.
+   * Default `nav` creates a tab bar that functions as a nav-bar.
+   * `content` creates a ta bbar that functions as a content section tab bar.
    */
   @Prop() option: "nav" | "content"  = "nav";
   /**
-   * Indicates the color of your tabbar.
-   * Default setting is `primary`, rendering a green background.
+   * Indicates the color of your tab bar.
+   * Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content.
    * The `alternative` setting renders a white background.
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
