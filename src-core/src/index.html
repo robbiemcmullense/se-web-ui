@@ -339,7 +339,7 @@
       <nav>
         <a class="active">Home</a>
         <a>Another</a>
-        <a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+        <a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
         <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
@@ -437,8 +437,8 @@
       </se-block>
       <se-divider option="vertical"></se-divider>
 
-      <se-container option="centered" direction="column" position="relative" display="block">
-        <se-container display="block">
+      <se-container color="standard" option="centered" direction="column" position="relative" display="block">
+        <se-container color="none" display="block">
           <se-banner id="se-banner">
             <se-banner-item
               image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
@@ -476,9 +476,8 @@
           </se-banner>
         </se-container>
 
-        <se-container option="widget" display="grid" column-size="350px" row-size="350px">
-          <se-block option="card-old" color="none" outline="true" corner="none" outline-color="secondary"
-            clickable="true" id="block0">
+        <se-container color="none" option="widget" display="grid" column-size="350px" row-size="350px">
+          <se-block option="card-old" color="none" outline="true" corner="none" outline-color="secondary" clickable="true" id="block0">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">airconditioner_hot_heating</se-icon>
@@ -758,7 +757,7 @@
               <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
             </se-block-content>
           </se-block>
-          <se-block enlarged="true" option="widget" divider="false" id="block5">
+          <se-block enlarged="true" option="widget" outline="true" divider="false" id="block5">
             <se-block-header>
               Linear chart & Slider
               <div slot="end">
@@ -825,15 +824,15 @@
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-block-content>
           </se-block>
-          <se-block enlarged="horizontal" id="block9">
-            <se-block-header>
+          <se-block option="fill" id="block9">
+            <se-block-header option="fill">
               Tooltips
               <div slot="end">
                 <se-icon option="button" color="alternative" onclick="toggle(9)">exit_presentation</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
-              <div style="padding-left:100px;">
+              <div style="padding-left:50px;">
                 <h4>Tooltip OnClick</h4>
                 <se-tooltip action="click">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
@@ -848,7 +847,7 @@
                     Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
                 </se-tooltip>
               </div>
-              <div style="padding-left:100px;">
+              <div style="padding-left:50px;">
                 <se-tooltip action="click">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
                   <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
@@ -864,7 +863,7 @@
                   </se-tooltip-footer>
                 </se-tooltip>
               </div>
-              <div style="padding-top:140px;padding-left: 100px;">
+              <div style="padding-top:40px;padding-left:50px;">
                 <h4>Tooltip OnHover</h4>
                 <se-tooltip position="right">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
@@ -885,7 +884,60 @@
               </div>
             </se-block-content>
           </se-block>
-          <se-block enlarged="true" id="block10">
+          <se-block color="alternative" divider="false" enlarged="horizontal" id="block10">
+            <se-block-header option="fill">
+              <se-tabbar color="alternative" option="content" display="centered">
+                <nav>
+                  <a>Introduction</a>
+                  <a class="active">Installation</a>
+                  <a disabled>Maintenance</a>
+                  <a>Glossary</a>
+                </nav>
+              </se-tabbar>
+            </se-block-header>
+            <se-block-content style="border-right: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED; border-left: 1px solid #EDEDED;">
+              <br>
+              <se-tabbar color="alternative">
+                <nav>
+                  <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a>
+                </nav>
+              </se-tabbar>
+              <br>
+              <se-tabbar color="primary"> </se-tabbar>
+              <br>
+              <se-container display="block">
+                <se-tabbar option="content" color="primary" display="centered">
+                  <nav>
+                    <a>Introduction</a>
+                    <a class="active">Installation</a>
+                    <a disabled>Maintenance</a>
+                    <a>Glossary</a>
+                  </nav>
+                </se-tabbar>
+                <se-block color="standard" margin="none" divider="false">
+                  <se-block-header style="border: 1px solid #ededed;border-top:0;border-bottom:0;">Testing</se-block-header>
+                  <se-block-content style="border: 1px solid #ededed;border-top:0;">Testing more content</se-block-content>
+                </se-block>
+              </se-container>
+              <br>
+              <se-container color="standard" padding="large" display="block" style="border: 1px solid #ededed;">
+                <se-block margin="none" divider="false">
+                  <se-block-header option="fill">
+                    <se-tabbar option="content" color="alternative" display="centered">
+                        <nav>
+                          <a>Introduction</a>
+                          <a class="active">Installation</a>
+                          <a disabled>Maintenance</a>
+                          <a>Glossary</a>
+                        </nav>
+                      </se-tabbar>
+                  </se-block-header>
+                  <se-block-content>Testing<br/><br/>Testing more content</se-block-content>
+                </se-block>
+              </se-container>
+            </se-block-content>
+          </se-block>
+          <se-block enlarged="horizontal" id="block11">
             <se-block-header>Stepper
               <div slot="end">
                 <se-icon option="button" color="alternative" onclick="toggle(10)">exit_presentation</se-icon>

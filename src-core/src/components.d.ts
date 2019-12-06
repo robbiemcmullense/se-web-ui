@@ -170,9 +170,9 @@ export namespace Components {
   interface SeBlockHeader {
     'divider': boolean;
     /**
-    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
+    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
     */
-    'option': 'card' | 'widget' | 'basic';
+    'option': 'card' | 'widget' | 'basic' | 'fill';
   }
   interface SeBreadcrumb {}
   interface SeBreadcrumbItem {
@@ -794,13 +794,17 @@ export namespace Components {
   }
   interface SeTabbar {
     /**
-    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
     */
     'color': 'primary' | 'alternative';
     /**
-    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+    * Defines the inner appearance of a tabbar. `fill` is the default display, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
     */
-    'option': "fill" | "centered";
+    'display': "fill" | "centered";
+    /**
+    * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
+    */
+    'option': "nav" | "content";
   }
   interface SeTooltip {
     /**
@@ -1386,9 +1390,9 @@ declare namespace LocalJSX {
   interface SeBlockHeader {
     'divider'?: boolean;
     /**
-    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
+    * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
     */
-    'option'?: 'card' | 'widget' | 'basic';
+    'option'?: 'card' | 'widget' | 'basic' | 'fill';
   }
   interface SeBreadcrumb {}
   interface SeBreadcrumbItem {
@@ -2024,13 +2028,17 @@ declare namespace LocalJSX {
   }
   interface SeTabbar {
     /**
-    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+    * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
     */
     'color'?: 'primary' | 'alternative';
     /**
-    * Defines the inner appearance of a tabbar. `fill` is the default option, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
+    * Defines the inner appearance of a tabbar. `fill` is the default display, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
     */
-    'option'?: "fill" | "centered";
+    'display'?: "fill" | "centered";
+    /**
+    * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
+    */
+    'option'?: "nav" | "content";
   }
   interface SeTooltip {
     /**

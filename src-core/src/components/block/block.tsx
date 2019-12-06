@@ -29,7 +29,7 @@ export class BlockComponent {
    * `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected.
    * `secondary` defines the outline color as `se-sky-blue`.
    */
-  @Prop() outlineColor: "standard" | "secondary" | "primary";
+  @Prop() outlineColor: "standard" | "secondary" | "primary" = "standard";
   /**
    * Defines se-block item's corner radius.
    * `none` is for a sharp, 90 degree corner.

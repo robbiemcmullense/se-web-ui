@@ -22,6 +22,13 @@
     // border-bottom: none;
     padding-bottom: $spacing-small;
   }
+  &.fill {
+    padding: 0;
+    div.middle {
+      margin: 0;
+      max-width: 100%;
+    }
+  }
 }
 
 ::slotted(h1), ::slotted(h2), ::slotted(h3),
