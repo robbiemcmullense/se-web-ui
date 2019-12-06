@@ -888,28 +888,28 @@
               <se-stepper id="se-stepper">
                 <se-stepper-item label="Step 1" id="primone">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="validateStepperItem('primone')">Validate Step 1</se-button>
-                  </div>
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 2" id="primtwo">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="validateStepperItem('primtwo')">Validate Step 2</se-button>
-                  </div>
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 3" id="primthree">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="validateStepperItem('primthree')">Validate Step 3</se-button>
-                  </div>
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 4" id="primfour">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="validateStepperItem('primfour')">Validate Step 4</se-button>
-                  </div>
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 5" id="primfive">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="validateStepperItem('primfive')">Validate Step 5</se-button>
-                  </div>
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 6">
                   <div style="border: 1px solid black; padding: 10px;">Sixth Step</div>
@@ -917,9 +917,8 @@
               </se-stepper>
               <se-button onclick="toggleStepperMode()">Toggle Stepper Mode</se-button>
               <se-button onclick="toggleStepperColor()">Toggle Stepper Color</se-button>
-              <se-button onclick="nextStep()">Validate and Next Step</se-button>
               <se-button onclick="stepperReset()">Reset Stepper</se-button>
-            </se-block-content>  
+            </se-block-content>
           </se-block>
         </se-container>
       </se-container>
@@ -1168,7 +1167,6 @@
     }
 
     function toggleStepperColor() {
-      stepperReset();
       let stepper = document.getElementById('se-stepper');
       let stepperColorText = document.getElementById('stepper-color');
       if (stepper.color == 'primary') {
