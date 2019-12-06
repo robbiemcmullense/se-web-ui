@@ -24,7 +24,7 @@ describe('list-group', () => {
     expect(listGroup.canCollapse).toBe(true);
   });
 
-  it('should render in classic mode with an up arrow by default', async() => {
+  it('should render in classic mode with a down arrow by default', async() => {
 		const page = await newSpecPage({
 			components: [ListGroupComponent],
 			html: `<se-list-group></se-list-group>`,
@@ -48,20 +48,20 @@ describe('list-group', () => {
 		expect(page.root.shadowRoot.querySelector('se-icon')).toBe(null);
   });
 
-  
+
   it('should call the setButtonId function when the component loads', async() => {
 		const eventSpy = jest.spyOn(listGroup, 'setButtonId');
 		listGroup.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
   });
-  
+
   it('should call the checkSelected function twice, when the collapsed property changes or a child becomes selected', async() => {
 		const eventSpy = jest.spyOn(listGroup, 'checkSelected');
     listGroup.collapsedChanged(); // list group is collapsed
     listGroup.ChildUpdated(); // child list item becomes selected/deselected
 		expect(eventSpy).toHaveBeenCalledTimes(2);
   });
-  
+
   it('should emit the didGroupClick event when the toggleCollapse method is called', () => {
     listGroup.option = 'classic';
     const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');

@@ -12,6 +12,15 @@
   </link>
   <link rel="stylesheet" href="icons/css/styles.css">
   </link>
+  <style>
+    /* remove the glitch on display  */
+    se-app { display: none; }
+    se-app.hydrated { display: inherit; }
+    .dark {
+      background: #9FA0A4;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
@@ -326,10 +335,10 @@
       <nav>
         <a class="active">Home</a>
         <a>Another</a>
-        <a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+        <a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
-        <se-button color="alternative" option="outline">alternative</se-button>
+        <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
       </nav>
     </se-tabbar>
     <se-container>
@@ -338,7 +347,8 @@
           <se-list-item id="item1" item="my item 1" selected="false" icon="user_standard" icon-color="primary"
             description="I have a description">
           </se-list-item>
-          <se-list-item id="item2" item="my item 2 no description with a long text" icon="user_standard" icon-color="primary">
+          <se-list-item id="item2" item="my item 2 no description with a long text" icon="user_standard"
+            icon-color="primary">
           </se-list-item>
           <se-list-item id="item3" item="my item 3 no icon" description="I'm here too">
           </se-list-item>
@@ -423,8 +433,8 @@
       </se-block>
       <se-divider option="vertical"></se-divider>
 
-      <se-container option="centered" direction="column" position="relative" display="block">
-        <se-container display="block">
+      <se-container color="standard" option="centered" direction="column" position="relative" display="block">
+        <se-container color="none" display="block">
           <se-banner id="se-banner">
             <se-banner-item
               image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
@@ -462,7 +472,7 @@
           </se-banner>
         </se-container>
 
-        <se-container option="widget" display="grid" column-size="350px" row-size="350px">
+        <se-container color="none" option="widget" display="grid" column-size="350px" row-size="350px">
           <se-block option="card-old" color="none" outline="true" corner="none" outline-color="secondary" clickable="true" id="block0">
             <se-block-header>
               <div slot="start">
@@ -504,7 +514,8 @@
               <se-button onclick="openSnackbar()" option="raised">Open Snackbar</se-button>
             </se-block-footer>
           </se-block>
-          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano" outline="true" id="block1">
+          <se-block enlarged="vertical" clickable="true" color="alternative" outline-color="primary" corner="nano"
+            outline="true" id="block1">
             <se-block-header>
               Headline list with colored icons
               <div slot="end">
@@ -527,7 +538,8 @@
               </se-list>
             </se-block-content>
           </se-block>
-          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true" id="block2">
+          <se-block margin="small" corner="small" color="standard" clickable="true" corner="small" outline="true"
+            id="block2">
             <se-block-header>
               <div slot="start">
                 <se-icon color="primary">connection_bluetooth</se-icon>
@@ -654,25 +666,25 @@
               </se-radio-group>
             </se-block-content>
           </se-block>
-          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard" id="block3">
+          <se-block margin="large" clickable="true" clickable-bar="false" outline="true" outline-color="standard"
+            id="block3">
             <se-loading id="dialog-loader" loading="false" option="dialog"></se-loading>
             <se-block-header>
               Forms
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(3, 'horizontal')">presentation_mode
+                </se-icon>
               </div>
             </se-block-header>
             <se-block-content>
-              <h4>Inlined </h4>
-              <ul>
+              <ul style="padding: 10px;">
                 <li id="form-field-message">last submitted form field value: <span></span></li>
               </ul>
-              <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
-                required="true">
+              <h4>Inlined:</h4>
+              <se-form-field id="checkbox-form" label="Inline Checkbox" type="checkbox" required="true">
                 <se-checkbox></se-checkbox>
               </se-form-field>
-              <se-form-field id="radio-form" label="This is my custom Radio Button.  It is unique." type="radio"
-                required="true">
+              <se-form-field id="radio-form" label="Inline Radio" type="radio" required="true">
                 <se-radio></se-radio>
               </se-form-field>
               <se-form-field id="input-form" label="Input" required="true">
@@ -680,9 +692,9 @@
               </se-form-field>
               <se-form-field id="select-form" label="Select" required="true" type="select">
                 <select>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
+                  <option>Inline Option 1</option>
+                  <option>Inline Option 2</option>
+                  <option>Inline Option 3</option>
                 </select>
               </se-form-field>
               <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
@@ -691,7 +703,7 @@
               <se-form-field label="Date">
                 <input type="date" />
               </se-form-field>
-              <h4>Stacked </h4>
+              <h4>Stacked:</h4>
               <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
                 <input type="text" />
               </se-form-field>
@@ -704,6 +716,12 @@
               </se-form-field>
               <se-form-field option="stacked" type="input" label="Very Long Multi-Line Input">
                 <textarea rows="10"></textarea>
+              </se-form-field>
+              <se-form-field option="stacked" label="Stacked Checkbox" type="checkbox" required="true">
+                <se-checkbox></se-checkbox>
+              </se-form-field>
+              <se-form-field option="stacked" label="Stacked Radio" type="radio" required="true">
+                <se-radio></se-radio>
               </se-form-field>
             </se-block-content>
           </se-block>
@@ -735,11 +753,11 @@
               <se-button onclick="removeLastBannerItem()" option="raised">Remove Last Banner Item</se-button>
             </se-block-content>
           </se-block>
-          <se-block enlarged="true" option="widget" divider="false" id="block5">
+          <se-block enlarged="true" option="widget" outline="true" divider="false" id="block5">
             <se-block-header>
               Linear chart & Slider
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(5)">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(5)">exit_presentation</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
@@ -802,15 +820,15 @@
               <div>Selected radio button value: <span id="se-radio-value"></span></div>
             </se-block-content>
           </se-block>
-          <se-block enlarged="horizontal" id="block9">
-            <se-block-header>
+          <se-block option="fill" id="block9">
+            <se-block-header option="fill">
               Tooltips
               <div slot="end">
-                <se-icon option="button" color="alternative" onclick="toggle(9)">presentation_mode</se-icon>
+                <se-icon option="button" color="alternative" onclick="toggle(9)">exit_presentation</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
-              <div style="padding-left:100px;">
+              <div style="padding-left:50px;">
                 <h4>Tooltip OnClick</h4>
                 <se-tooltip action="click">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Title & Message</se-button>
@@ -825,7 +843,7 @@
                     Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</se-tooltip-content>
                 </se-tooltip>
               </div>
-              <div style="padding-left:100px;">
+              <div style="padding-left:50px;">
                 <se-tooltip action="click">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Message Without Title</se-button>
                   <se-tooltip-content icon="information_circle">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
@@ -841,7 +859,7 @@
                   </se-tooltip-footer>
                 </se-tooltip>
               </div>
-              <div style="padding-top:140px;padding-left: 100px;">
+              <div style="padding-top:40px;padding-left:50px;">
                 <h4>Tooltip OnHover</h4>
                 <se-tooltip position="right">
                   <se-button option="raised" color="primary" slot="tooltip">Tooltip Right</se-button>
@@ -860,6 +878,102 @@
                   Tooltip Top
                 </se-tooltip>
               </div>
+            </se-block-content>
+          </se-block>
+          <se-block color="alternative" divider="false" enlarged="horizontal" id="block10">
+            <se-block-header option="fill">
+              <se-tabbar color="alternative" option="content" display="centered">
+                <nav>
+                  <a>Introduction</a>
+                  <a class="active">Installation</a>
+                  <a disabled>Maintenance</a>
+                  <a>Glossary</a>
+                </nav>
+              </se-tabbar>
+            </se-block-header>
+            <se-block-content style="border-right: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED; border-left: 1px solid #EDEDED;">
+              <br>
+              <se-tabbar color="alternative">
+                <nav>
+                  <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a>
+                </nav>
+              </se-tabbar>
+              <br>
+              <se-tabbar color="primary"> </se-tabbar>
+              <br>
+              <se-container display="block">
+                <se-tabbar option="content" color="primary" display="centered">
+                  <nav>
+                    <a>Introduction</a>
+                    <a class="active">Installation</a>
+                    <a disabled>Maintenance</a>
+                    <a>Glossary</a>
+                  </nav>
+                </se-tabbar>
+                <se-block color="standard" margin="none" divider="false">
+                  <se-block-header style="border: 1px solid #ededed;border-top:0;border-bottom:0;">Testing</se-block-header>
+                  <se-block-content style="border: 1px solid #ededed;border-top:0;">Testing more content</se-block-content>
+                </se-block>
+              </se-container>
+              <br>
+              <se-container color="standard" padding="large" display="block" style="border: 1px solid #ededed;">
+                <se-block margin="none" divider="false">
+                  <se-block-header option="fill">
+                    <se-tabbar option="content" color="alternative" display="centered">
+                        <nav>
+                          <a>Introduction</a>
+                          <a class="active">Installation</a>
+                          <a disabled>Maintenance</a>
+                          <a>Glossary</a>
+                        </nav>
+                      </se-tabbar>
+                  </se-block-header>
+                  <se-block-content>Testing<br/><br/>Testing more content</se-block-content>
+                </se-block>
+              </se-container>
+            </se-block-content>
+          </se-block>
+          <se-block enlarged="horizontal" id="block11">
+            <se-block-header>Stepper
+              <div slot="end">
+                <se-icon option="button" color="alternative" onclick="toggle(10)">exit_presentation</se-icon>
+              </div>
+            </se-block-header>
+            <se-block-content id="stepper-content">
+              <div><span id="stepper-color">Primary</span> Color Stepper (<span id="stepper-mode">non-linear</span> mode):</div>
+              <se-stepper id="se-stepper">
+                <se-stepper-item label="Step 1" id="primone">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 2" id="primtwo">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 3" id="primthree">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 4" id="primfour">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 5" id="primfive">
+                  <div style="border: 1px solid black; padding: 10px;">
+                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
+                    </div>
+                </se-stepper-item>
+                <se-stepper-item label="Step 6">
+                  <div style="border: 1px solid black; padding: 10px;">Sixth Step</div>
+                </se-stepper-item>
+              </se-stepper>
+              <se-button onclick="toggleStepperMode()">Toggle Stepper Mode</se-button>
+              <se-button onclick="toggleStepperColor()">Toggle Stepper Color</se-button>
+              <se-button onclick="stepperReset()">Reset Stepper</se-button>
             </se-block-content>
           </se-block>
         </se-container>
@@ -913,6 +1027,10 @@
   <script>
     function showfab(text) {
       alert(text);
+    }
+    // Side menu
+    function openmenu(menu) {
+      document.getElementById("main-sidemenu").toggle(menu);
     }
 
     // Dialog
@@ -1089,6 +1207,54 @@
     document.getElementById('radio-button-dot-group').addEventListener('didCheck', function (event) {
       document.getElementById('se-radio-value').innerText = event.detail.value;
     });
+
+    // Stepper
+
+    function toggleStepperMode() {
+      stepperReset();
+      let stepper = document.getElementById('se-stepper');
+      let stepperText = document.getElementById('stepper-mode');
+      if (stepper.linear) {
+        stepper.linear = false;
+        stepperText.innerText = 'non-linear';
+      } else if (!stepper.linear) {
+        stepper.linear = true;
+        stepperText.innerText = 'linear';
+      }
+      console.log(document.getElementById('stepper-mode').innerHTML);
+    }
+
+    function toggleStepperColor() {
+      const stepper = document.getElementById('se-stepper');
+      const stepperColorText = document.getElementById('stepper-color');
+      const stepperContent = document.getElementById('stepper-content');
+      if (stepper.color == 'primary') {
+        stepper.color = 'alternative';
+        stepperColorText.innerText = 'Alternative';
+        stepperContent.classList.add('dark');
+      } else if (stepper.color == 'alternative') {
+        stepper.color = 'primary';
+        stepperColorText.innerText = 'Primary';
+        stepperContent.classList.remove('dark');
+      }
+    }
+
+    function validateStepperItem(value) {
+      document.getElementById(value).validated = true;
+    }
+
+    function stepperReset() {
+      document.getElementById('se-stepper').reset();
+    }
+
+    function prevStep() {
+      document.getElementById('se-stepper').previous();
+    }
+
+    function nextStep() {
+      document.getElementById('se-stepper').next(true);
+    }
+
   </script>
 </body>
 

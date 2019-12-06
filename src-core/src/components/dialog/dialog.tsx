@@ -34,9 +34,11 @@ export class DialogComponent {
    */
   @Prop() canBackdrop: boolean = true;
 
-  @Watch('color') colorDidChange() {
+  assignDialogHeaderColor() {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach((item: any) => {
-      item.color = this.color;
+      if (!item.color) {
+        item.color = this.color;
+      }
     });
   }
 
@@ -104,7 +106,7 @@ export class DialogComponent {
   }
 
   componentDidLoad() {
-    this.colorDidChange();
+    this.assignDialogHeaderColor();
     this.openDidChange();
   }
 

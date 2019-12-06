@@ -11,10 +11,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                                | Type                            | Default     |
-| --------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------- |
-| `divider` | `divider` |                                                                                                                                                                                                            | `boolean`                       | `undefined` |
-| `option`  | `option`  | Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. | `"basic" \| "card" \| "widget"` | `undefined` |
+| Property  | Attribute | Description                                                                                                                                                                                                                                                                                      | Type                                      | Default     |
+| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- | ----------- |
+| `divider` | `divider` |                                                                                                                                                                                                                                                                                                  | `boolean`                                 | `undefined` |
+| `option`  | `option`  | Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`. | `"basic" \| "card" \| "fill" \| "widget"` | `undefined` |
 
 
 ## Dependencies

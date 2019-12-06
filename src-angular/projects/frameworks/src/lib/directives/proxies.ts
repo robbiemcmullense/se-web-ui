@@ -142,7 +142,7 @@ proxyMethods(SeButton, ['setDisabled', 'setGrouped']);
 proxyInputs(SeButton, ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'option', 'selected', 'size', 'type', 'value']);
 
 export declare interface SeCheckbox extends Components.SeCheckbox {}
-@Component({ selector: 'se-checkbox', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['background', 'color', 'disabled', 'header', 'label', 'option', 'required', 'selected', 'textOff', 'textOn', 'value'] })
+@Component({ selector: 'se-checkbox', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['background', 'color', 'disabled', 'header', 'label', 'labelPos', 'option', 'required', 'selected', 'textOff', 'textOn', 'value'] })
 export class SeCheckbox {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -153,7 +153,7 @@ export class SeCheckbox {
   }
 }
 proxyMethods(SeCheckbox, ['setRequired']);
-proxyInputs(SeCheckbox, ['background', 'color', 'disabled', 'header', 'label', 'option', 'required', 'selected', 'textOff', 'textOn', 'value']);
+proxyInputs(SeCheckbox, ['background', 'color', 'disabled', 'header', 'label', 'labelPos', 'option', 'required', 'selected', 'textOff', 'textOn', 'value']);
 
 export declare interface SeChip extends Components.SeChip {}
 @Component({ selector: 'se-chip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'canClose', 'color', 'disabled', 'selected', 'size', 'value'] })
@@ -391,7 +391,7 @@ export class SeLoading {
 proxyInputs(SeLoading, ['loading', 'option']);
 
 export declare interface SeRadio extends Components.SeRadio {}
-@Component({ selector: 'se-radio', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'label', 'required', 'selected', 'value'] })
+@Component({ selector: 'se-radio', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'label', 'labelPos', 'required', 'selected', 'value'] })
 export class SeRadio {
   didCheck!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -402,7 +402,7 @@ export class SeRadio {
   }
 }
 proxyMethods(SeRadio, ['setRequired']);
-proxyInputs(SeRadio, ['color', 'disabled', 'label', 'required', 'selected', 'value']);
+proxyInputs(SeRadio, ['color', 'disabled', 'label', 'labelPos', 'required', 'selected', 'value']);
 
 export declare interface SeRadioGroup extends Components.SeRadioGroup {}
 @Component({ selector: 'se-radio-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'size', 'value'] })
@@ -443,7 +443,7 @@ export class SeSidemenuItem {
 proxyInputs(SeSidemenuItem, ['active', 'item']);
 
 export declare interface SeSlider extends Components.SeSlider {}
-@Component({ selector: 'se-slider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'max', 'min'] })
+@Component({ selector: 'se-slider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'max', 'min', 'value'] })
 export class SeSlider {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -454,7 +454,7 @@ export class SeSlider {
   }
 }
 proxyMethods(SeSlider, ['setDisabled']);
-proxyInputs(SeSlider, ['disabled', 'max', 'min']);
+proxyInputs(SeSlider, ['disabled', 'max', 'min', 'value']);
 
 export declare interface SeSnackbar extends Components.SeSnackbar {}
 @Component({ selector: 'se-snackbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type'] })
@@ -470,8 +470,33 @@ export class SeSnackbar {
 }
 proxyInputs(SeSnackbar, ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type']);
 
+export declare interface SeStepper extends Components.SeStepper {}
+@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'linear'] })
+export class SeStepper {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+proxyMethods(SeStepper, ['reset', 'previous', 'next']);
+proxyInputs(SeStepper, ['color', 'linear']);
+
+export declare interface SeStepperItem extends Components.SeStepperItem {}
+@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'label', 'validated'] })
+export class SeStepperItem {
+  didValidate!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didValidate']);
+  }
+}
+proxyInputs(SeStepperItem, ['active', 'label', 'validated']);
+
 export declare interface SeTabbar extends Components.SeTabbar {}
-@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
+@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'display', 'option'] })
 export class SeTabbar {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -479,7 +504,7 @@ export class SeTabbar {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeTabbar, ['color', 'option']);
+proxyInputs(SeTabbar, ['color', 'display', 'option']);
 
 export declare interface SeTooltip extends Components.SeTooltip {}
 @Component({ selector: 'se-tooltip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['action', 'position'] })

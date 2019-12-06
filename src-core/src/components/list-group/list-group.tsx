@@ -132,7 +132,7 @@ export class ListGroupComponent {
         <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
           <button id={this.innerId} class={[this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : ''].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
             {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
-            {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon">{this.collapsed ? "arrow2_down" : "arrow2_right"}</se-icon> : ''}
+            {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon">{this.collapsed ? "arrow2_right" : "arrow2_down"}</se-icon> : ''}
             {!!this.icon ?
               <div class="nav-icon">
                 <se-icon color={this.iconColor}>

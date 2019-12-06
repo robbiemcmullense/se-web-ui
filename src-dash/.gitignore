@@ -1,6 +1,7 @@
 web_ui_dash/
-!web_ui_dash/__init__.py
-./src
+src/
+assets/
+# .venv/bin
 
 # Created by .ignore support plugin (hsz.mobi)
 ### VisualStudioCode template

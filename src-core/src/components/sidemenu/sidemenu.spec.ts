@@ -1,6 +1,6 @@
 import '../mutation-observer-mock';
 import { SidemenuComponent } from "./sidemenu";
-import { newSpecPage } from '@stencil/core/testing';
+// import { newSpecPage } from '@stencil/core/testing';
 
 describe('SidemenuComponent', () => {
 	let sidemenu;
@@ -126,6 +126,39 @@ describe('SidemenuComponent with spy', () => {
 			expect(backdropRemoveSpy).toHaveBeenCalled();
 		}, 300);
 	});
+
+  it('should open the menu to a specified menu item and mark it as active', () => {
+    let node1 = document.createElement('se-sidemenu-item');
+    let node2 = document.createElement('se-sidemenu-item');
+		node1.setAttribute('item', 'foo');
+    node2.setAttribute('item', 'bar');
+    node2.setAttribute('id', 'bar-id');
+    sidemenu.el.appendChild(node1);
+    sidemenu.el.appendChild(node2);
+    sidemenu.componentWillLoad();
+    sidemenu.toggle('foo');
+    setTimeout(() => {
+      expect(sidemenu.selectedItem.getAttribute('item')).toEqual('foo');
+      sidemenu.toggle('bar-id');
+      setTimeout(() => {
+        expect(sidemenu.selectedItem.getAttribute('item')).toEqual('bar');
+      }, 200);
+    }, 200);
+  });
+
+  it('should use default behavior if given item does not exist', () => {
+    let node1 = document.createElement('se-sidemenu-item');
+    let node2 = document.createElement('se-sidemenu-item');
+		node1.setAttribute('item', 'foo');
+		node2.setAttribute('item', 'bar');
+    sidemenu.el.appendChild(node1);
+    sidemenu.el.appendChild(node2);
+    sidemenu.componentWillLoad();
+    sidemenu.toggle('baz');
+    setTimeout(() => {
+      expect(sidemenu.selectedItem).toBeUndefined();
+    }, 200);
+  });
 
 	it('should set the selectedItem without a child element count to undefined when the toggle method is called and the sidemenu is open', () => {
 		sidemenu.open = true;
