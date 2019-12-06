@@ -16,8 +16,8 @@ describe('StepperComponent', () => {
     expect(stepper.color).toBe('primary');
 	});
 
-	it('should not be linear by default', () => {
-		expect(stepper.linear).toBeFalsy();
+	it('should be linear by default', () => {
+		expect(stepper.linear).toBeTruthy();
 	});
 
 	it('should render with a nav element, and a div element with the class stepper-item-wrapper', async() => {
