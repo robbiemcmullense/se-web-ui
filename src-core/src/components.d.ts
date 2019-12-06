@@ -761,53 +761,33 @@ export namespace Components {
     */
     'color': 'primary' | 'alternative';
     /**
-    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
     */
     'linear': boolean;
     /**
-    * Call the `next` method to navigate to the next step from the step that is currently selected. This will not work if the next step is required and not validated.
+    * Call the `next` method to navigate to the next step from the step that is currently selected. This will not work in linear mode if the next step is not validated.
     */
-    'next': () => Promise<void>;
+    'next': (validate: boolean) => Promise<void>;
     /**
     * Call the `previous` method to navigate to the previous step from the step that is currently selected.
     */
     'previous': () => Promise<void>;
     /**
-    * Call the `reset` method to reset the stepper to the first step.  This also invalidates any validated steps.
+    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps. It no step parameter is provided, it will reset to the first stepper item.
     */
-    'reset': (index: number) => Promise<void>;
+    'reset': (step?: number) => Promise<void>;
   }
   interface SeStepperItem {
     /**
-    * Indicates whether or not a stepper item has been disabled.
+    * Indicates the content for the currently selected step in the stepper.
     */
-    'disabled': boolean;
-    /**
-    * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
-    */
-    'isLast': boolean;
+    'active': boolean;
     /**
     * Indicates the label for your stepper item.
     */
     'label': string;
     /**
-    * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
-    */
-    'required': boolean;
-    /**
-    * Indicates whether or not a stepper item has been selected.
-    */
-    'selected': boolean;
-    /**
-    * Indicates the content for the currently selected step in the stepper.
-    */
-    'selectedContent': boolean;
-    /**
-    * Indicates the numerical position of the stepper item within the stepper component.
-    */
-    'step': number;
-    /**
-    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+    * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
     */
     'validated': boolean;
   }
@@ -2018,45 +1998,25 @@ declare namespace LocalJSX {
     */
     'color'?: 'primary' | 'alternative';
     /**
-    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
+    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
     */
     'linear'?: boolean;
   }
   interface SeStepperItem {
     /**
-    * Indicates whether or not a stepper item has been disabled.
+    * Indicates the content for the currently selected step in the stepper.
     */
-    'disabled'?: boolean;
-    /**
-    * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
-    */
-    'isLast'?: boolean;
+    'active'?: boolean;
     /**
     * Indicates the label for your stepper item.
     */
     'label'?: string;
     /**
-    * Event to send to the parent component when a stepper item's data is validated.
+    * Event to send to the parent component when a stepper item's data is validated. The boolean validated property is passed to the parent.
     */
-    'onItemValidated'?: (event: CustomEvent<any>) => void;
+    'onDidValidate'?: (event: CustomEvent<any>) => void;
     /**
-    * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`. If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
-    */
-    'required'?: boolean;
-    /**
-    * Indicates whether or not a stepper item has been selected.
-    */
-    'selected'?: boolean;
-    /**
-    * Indicates the content for the currently selected step in the stepper.
-    */
-    'selectedContent'?: boolean;
-    /**
-    * Indicates the numerical position of the stepper item within the stepper component.
-    */
-    'step'?: number;
-    /**
-    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+    * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
     */
     'validated'?: boolean;
   }

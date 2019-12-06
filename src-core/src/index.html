@@ -884,73 +884,42 @@
               </div>
             </se-block-header>
             <se-block-content>
-              <div>Primary Color Stepper (linear mode):</div>
-              <se-stepper id="primary-stepper" linear="true">
+              <div><span id="stepper-color">Primary</span> Color Stepper (<span id="stepper-mode">non-linear</span> mode):</div>
+              <se-stepper id="se-stepper">
                 <se-stepper-item label="Step 1" id="primone">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updatePrimaryStepper('primone')">Submit Primary Step 1</se-button>
+                    <se-button onclick="validateStepperItem('primone')">Validate Step 1</se-button>
                   </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 2" id="primtwo">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updatePrimaryStepper('primtwo')">Submit Primary Step 2</se-button>
+                    <se-button onclick="validateStepperItem('primtwo')">Validate Step 2</se-button>
                   </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 3" id="primthree">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updatePrimaryStepper('primthree')">Submit Primary Step 3</se-button>
+                    <se-button onclick="validateStepperItem('primthree')">Validate Step 3</se-button>
                   </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 4" id="primfour">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updatePrimaryStepper('primfour')">Submit Primary Step 4</se-button>
+                    <se-button onclick="validateStepperItem('primfour')">Validate Step 4</se-button>
                   </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 5" id="primfive">
                   <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updatePrimaryStepper('primfive')">Submit Primary Step 5</se-button>
+                    <se-button onclick="validateStepperItem('primfive')">Validate Step 5</se-button>
                   </div>
                 </se-stepper-item>
                 <se-stepper-item label="Step 6">
                   <div style="border: 1px solid black; padding: 10px;">Sixth Step</div>
                 </se-stepper-item>
               </se-stepper>
-            </se-block-content>
-            <se-block-content>
-              <div style="margin-top: 10px;">Alternative Color Stepper (non-linear mode):</div>
-              <se-stepper id="alt-stepper" color="alternative">
-                <se-stepper-item label="Alt 1" required="true" id="altone">
-                  <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updateAltStepper('altone')">Submit Alt Step 1</se-button>
-                  </div>
-                </se-stepper-item>
-                <se-stepper-item label="Alt 2" required="true" id="alttwo">
-                  <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updateAltStepper('alttwo')">Submit Alt Step 2</se-button>
-                  </div>
-                </se-stepper-item>
-                <se-stepper-item label="Alt 3">
-                  <div style="border: 1px solid black; padding: 10px;">Third Step</div>
-                </se-stepper-item>
-                <se-stepper-item label="Alt 4" required="true" id="altfour">
-                  <div style="border: 1px solid black; padding: 10px;">
-                    <se-button onclick="updateAltStepper('altfour')">Submit Alt Step 4</se-button>
-                  </div>
-                </se-stepper-item>
-                <se-stepper-item label="Alt 5">
-                  <div style="border: 1px solid black; padding: 10px;">Fifth Step</div>
-                </se-stepper-item>
-                <se-stepper-item label="Alt 6">
-                  <div style="border: 1px solid black; padding: 10px;">Sixth Step</div>
-                </se-stepper-item>
-              </se-stepper>
-            </se-block-content>
-            <se-block-footer>
-              <se-button onclick="prevStep()">Previous Primary Step</se-button>
-              <se-button onclick="nextStep()">Next Alt Step</se-button>
-              <se-button onclick="primaryStepperReset()">Reset Primary Stepper</se-button>
-              <se-button onclick="altStepperReset()">Reset Alt Stepper</se-button>
-            </se-block-footer>
+              <se-button onclick="toggleStepperMode()">Toggle Stepper Mode</se-button>
+              <se-button onclick="toggleStepperColor()">Toggle Stepper Color</se-button>
+              <se-button onclick="nextStep()">Validate and Next Step</se-button>
+              <se-button onclick="stepperReset()">Reset Stepper</se-button>
+            </se-block-content>  
           </se-block>
         </se-container>
       </se-container>
@@ -1184,27 +1153,47 @@
       document.getElementById('se-radio-value').innerText = event.detail.value;
     });
 
-    function updatePrimaryStepper(value) {
-      document.getElementById(value).validated = true;
+    function toggleStepperMode() {
+      stepperReset();
+      let stepper = document.getElementById('se-stepper');
+      let stepperText = document.getElementById('stepper-mode');
+      if (stepper.linear) {
+        stepper.linear = false;
+        stepperText.innerText = 'non-linear';
+      } else if (!stepper.linear) {
+        stepper.linear = true;
+        stepperText.innerText = 'linear';
+      }
+      console.log(document.getElementById('stepper-mode').innerHTML);
     }
-    function updateAltStepper(value) {
+
+    function toggleStepperColor() {
+      stepperReset();
+      let stepper = document.getElementById('se-stepper');
+      let stepperColorText = document.getElementById('stepper-color');
+      if (stepper.color == 'primary') {
+        stepper.color = 'alternative';
+        stepperColorText.innerText = 'Alternative';
+      } else if (stepper.color == 'alternative') {
+        stepper.color = 'primary';
+        stepperColorText.innerText = 'Primary';
+      }
+    }
+
+    function validateStepperItem(value) {
       document.getElementById(value).validated = true;
     }
 
-    function primaryStepperReset() {
-      document.getElementById('primary-stepper').reset();
-    }
-
-    function altStepperReset() {
-      document.getElementById('alt-stepper').reset();
+    function stepperReset() {
+      document.getElementById('se-stepper').reset();
     }
 
     function prevStep() {
-      document.getElementById('primary-stepper').previous();
+      document.getElementById('se-stepper').previous();
     }
 
     function nextStep() {
-      document.getElementById('alt-stepper').next();
+      document.getElementById('se-stepper').next(true);
     }
 
   </script>

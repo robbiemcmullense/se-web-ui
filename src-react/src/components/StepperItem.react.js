@@ -9,22 +9,22 @@ export default class StepperItem extends Component {
     };
   }
 
-  itemValidated(e) {
-    this.props.onItemValidated && this.props.onItemValidated(e)
+  didValidate(e) {
+    this.props.onDidValidate && this.props.onDidValidate(e)
   }
 
   componentDidMount() {
-    this.switchCmp.addEventListener("itemValidated", e => this.itemValidated(e));
+    this.switchCmp.addEventListener("didValidate", e => this.didValidate(e));
   }
 
   componentWillUnmount() {
-    this.switchCmp.removeEventListener("itemValidated", e => this.itemValidated(e));
+    this.switchCmp.removeEventListener("didValidate", e => this.didValidate(e));
   }
 
 	render() {
-		const { disabled, isLast, label, required, selected, selectedContent, step, validated, itemValidated, children } = this.props;
+		const { active, label, validated, didValidate, children } = this.props;
 		return (
-			<se-stepper-item disabled={disabled} is-last={isLast} label={label} required={required} selected={selected} selected-content={selectedContent} step={step} validated={validated} ref={this._handleRef} >{children}</se-stepper-item>
+			<se-stepper-item active={active} label={label} validated={validated} ref={this._handleRef} >{children}</se-stepper-item>
 		);
 	}
 }
@@ -37,40 +37,21 @@ StepperItem.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Indicates whether or not a stepper item has been disabled.
+   * Indicates the content for the currently selected step in the stepper.
    */
-  disabled: PropTypes.bool,
-  /**
-   * Indicates whether or not the stepper item is the last item in the stepper component.  The default setting is `false`.
-   */
-  isLast: PropTypes.bool,
+  active: PropTypes.bool,
   /**
    * Indicates the label for your stepper item.
    */
   label: PropTypes.string,
   /**
-   * Indicates whether or not this is a required section of your stepper component.  The default setting is `false`.
-   * If set to `true`, the next step will not be accessible until the input fields associated with this step have been validated.
-   */
-  required: PropTypes.bool,
-  /**
-   * Indicates whether or not a stepper item has been selected.
-   */
-  selected: PropTypes.bool,
-  /**
-   * Indicates the content for the currently selected step in the stepper.
-   */
-  selectedContent: PropTypes.bool,
-  /**
-   * Indicates the numerical position of the stepper item within the stepper component.
-   */
-  step: PropTypes.number,
-  /**
    * Indicates whether a required item's data has been validated.  Useful if using a form field.
+   * When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
    */
   validated: PropTypes.bool,
   /**
    * Event to send to the parent component when a stepper item's data is validated.
+The boolean validated property is passed to the parent.
    */
-  itemValidated: PropTypes.func
+  didValidate: PropTypes.func
 };

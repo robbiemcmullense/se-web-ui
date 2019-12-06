@@ -29,6 +29,7 @@ Stepper.propTypes = {
   color: PropTypes.string,
   /**
    * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
+   * When set to `true`, each stepper item must be validated before advancing to the next step.
    */
   linear: PropTypes.bool
 };
