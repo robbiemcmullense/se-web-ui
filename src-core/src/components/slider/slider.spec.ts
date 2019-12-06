@@ -1,6 +1,5 @@
 import { SliderComponent } from './slider';
 import { newSpecPage } from '@stencil/core/testing';
-import { setMaxListeners } from 'cluster';
 
 describe('SliderComponent', () => {
   let slider;
@@ -13,11 +12,15 @@ describe('SliderComponent', () => {
     expect(slider).toBeTruthy();
   });
 
-  it('minimum value should be 0 default', () => {
+  it('should have a default value of 0', () => {
+    expect(slider.value).toEqual(0);
+  });
+
+  it('should have a default minimum value of 0', () => {
     expect(slider.min).toEqual(0);
   });
 
-  it('maximum value should be 100 by default', () => {
+  it('should have a default maximum value of 100', () => {
     expect(slider.max).toEqual(100);
   });
 
@@ -36,6 +39,19 @@ describe('SliderComponent', () => {
       html: `<se-slider></se-slider>`,
     });
     expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
+  });
+
+  it('should set the sliderElement value to the specified input and call the setSliderPosition function when the component loads', () => {
+    slider.value = 30;
+    slider.sliderElement = {
+      value: '',
+      style: {setProperty: jest.fn()},
+      addEventListener: jest.fn()
+    };
+    const eventSpy = jest.spyOn(slider, 'setSliderPosition');
+    slider.componentDidLoad();
+    expect(slider.sliderElement.value).toEqual(30);
+    expect(eventSpy).toHaveBeenCalled();
   });
 
   it('should emit the didChange event when the slider value changes', () => {

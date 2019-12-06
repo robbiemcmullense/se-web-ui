@@ -329,7 +329,7 @@
         <a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
-        <se-button color="alternative" option="outline">alternative</se-button>
+        <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
       </nav>
     </se-tabbar>
     <se-container>
@@ -663,16 +663,14 @@
               </div>
             </se-block-header>
             <se-block-content>
-              <h4>Inlined </h4>
-              <ul>
+              <ul style="padding: 10px;">
                 <li id="form-field-message">last submitted form field value: <span></span></li>
               </ul>
-              <se-form-field id="checkbox-form" label="This is my custom Checkbox.  It is unique." type="checkbox"
-                required="true">
+              <h4>Inlined:</h4>
+              <se-form-field id="checkbox-form" label="Inline Checkbox" type="checkbox" required="true">
                 <se-checkbox></se-checkbox>
               </se-form-field>
-              <se-form-field id="radio-form" label="This is my custom Radio Button.  It is unique." type="radio"
-                required="true">
+              <se-form-field id="radio-form" label="Inline Radio" type="radio" required="true">
                 <se-radio></se-radio>
               </se-form-field>
               <se-form-field id="input-form" label="Input" required="true">
@@ -680,9 +678,9 @@
               </se-form-field>
               <se-form-field id="select-form" label="Select" required="true" type="select">
                 <select>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
+                  <option>Inline Option 1</option>
+                  <option>Inline Option 2</option>
+                  <option>Inline Option 3</option>
                 </select>
               </se-form-field>
               <se-form-field id="textarea-form" type="input" label="Multi-Line Input">
@@ -691,7 +689,7 @@
               <se-form-field label="Date">
                 <input type="date" />
               </se-form-field>
-              <h4>Stacked </h4>
+              <h4>Stacked:</h4>
               <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
                 <input type="text" />
               </se-form-field>
@@ -704,6 +702,12 @@
               </se-form-field>
               <se-form-field option="stacked" type="input" label="Very Long Multi-Line Input">
                 <textarea rows="10"></textarea>
+              </se-form-field>
+              <se-form-field option="stacked" label="Stacked Checkbox" type="checkbox" required="true">
+                <se-checkbox></se-checkbox>
+              </se-form-field>
+              <se-form-field option="stacked" label="Stacked Radio" type="radio" required="true">
+                <se-radio></se-radio>
               </se-form-field>
             </se-block-content>
           </se-block>
@@ -967,6 +971,10 @@
   <script>
     function showfab(text) {
       alert(text);
+    }
+    // Side menu
+    function openmenu(menu) {
+      document.getElementById("main-sidemenu").toggle(menu);
     }
 
     // Dialog
