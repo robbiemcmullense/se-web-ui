@@ -28,6 +28,7 @@ BlockHeader.propTypes = {
   /**
    * Defines the visual appearance of a header.
 Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
+`fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
    */
   option: PropTypes.string
 };

@@ -145,7 +145,7 @@ export class ListGroupComponent {
               {myDescription}
             </div>
             {this.option !== "treeview" && this.canCollapse
-                ? <se-icon size="medium">{this.collapsed ? "arrow2_up" : "arrow2_down"}</se-icon>
+                ? <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
                 : ''
             }
           </button>

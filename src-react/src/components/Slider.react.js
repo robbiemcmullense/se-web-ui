@@ -22,9 +22,9 @@ export default class Slider extends Component {
   }
 
 	render() {
-		const { disabled, max, min, didChange, children } = this.props;
+		const { disabled, max, min, value, didChange, children } = this.props;
 		return (
-			<se-slider disabled={disabled} max={max} min={min} ref={this._handleRef} >{children}</se-slider>
+			<se-slider disabled={disabled} max={max} min={min} value={value} ref={this._handleRef} >{children}</se-slider>
 		);
 	}
 }
@@ -49,6 +49,10 @@ The default setting is `false`.
    * Indicates the minimum value of your slider.
    */
   min: PropTypes.number,
+  /**
+   * 
+   */
+  value: PropTypes.any,
   /**
    * Event emitted when the slider has been changed.
    */

@@ -3,6 +3,3 @@ $se-icon-folder: "~@se/icons/fonts";
 $se-fonts-path: "~@se/fonts/fonts";
 @import "~@se/fonts/scss/styles.scss";
 
-
-se-app { display: none; }
-se-app.hydrated { display: initial; }

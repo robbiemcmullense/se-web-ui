@@ -18,7 +18,7 @@ import { newE2EPage } from '@stencil/core/testing';
 	it('renders an arrow2_down icon by default', async() => {
     const page = await renderComponent();
 		const iconElm = await page.find('se-list-group >>> se-icon');
-		expect(iconElm).toEqualText('arrow2_down');
+		expect(iconElm).toEqualText('arrow2_up');
 	});
 
 	it('renders an arrow2_up icon when collapsed', async() => {
@@ -27,7 +27,7 @@ import { newE2EPage } from '@stencil/core/testing';
 		element.setProperty('collapsed', true);
 		await page.waitForChanges();
 		const iconElm = await page.find('se-list-group >>> se-icon');
-		expect(iconElm).toEqualText('arrow2_up');
+		expect(iconElm).toEqualText('arrow2_down');
 	});
 
 	it('renders an arrow2_right icon when the option is set to treeview and when collapsed', async() => {
@@ -58,17 +58,17 @@ import { newE2EPage } from '@stencil/core/testing';
 		const element = await page.find('se-list-group');
 		element.setProperty('selected', true);
     await page.waitForChanges();
-    
+
     const buttonElm = await page.find('se-list-group >>> button');
     expect(buttonElm).toHaveClass('selected');
 	});
-	
+
 	it('should add a selectedChild class to the button element when the selectedChild property is true', async() => {
 		const page = await renderComponent();
 		const element = await page.find('se-list-group');
 		element.setProperty('selectedChild', true);
     await page.waitForChanges();
-    
+
     const buttonElm = await page.find('se-list-group >>> button');
     expect(buttonElm).toHaveClass('selectedChild');
   });
