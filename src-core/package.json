@@ -27,14 +27,14 @@
     "spec.watch": "stencil test --spec --watchAll"
   },
   "dependencies": {
-    "@stencil/core": "^1.3.0",
-    "@stencil/sass": "^1.0.1"
+    "@stencil/core": "^1.7.5",
+    "@stencil/sass": "^1.1.1"
   },
   "devDependencies": {
-    "@se/fonts": "^1.0.0",
-    "@se/icons": "^3.4.0",
-    "@types/jest": "^24.0.18",
-    "@types/puppeteer": "^1.19.1",
+    "@se/fonts": "^1.1.0",
+    "@se/icons": "^3.5.4",
+    "@types/jest": "^24.0.20",
+    "@types/puppeteer": "^1.20.2",
     "cpx": "^1.5.0",
     "handlebars": "^4.1.2",
     "http-server": "^0.11.1",
@@ -42,8 +42,8 @@
     "jest-cli": "24.9.0",
     "nodecat": "^2.0.0",
     "npm-run-all": "^4.1.5",
-    "pixelmatch": "^5.0.2",
-    "puppeteer": "1.19.0",
+    "pixelmatch": "^5.1.0",
+    "puppeteer": "1.20.0",
     "rimraf": "^3.0.0",
     "workbox-build": "^4.3.1"
   },
