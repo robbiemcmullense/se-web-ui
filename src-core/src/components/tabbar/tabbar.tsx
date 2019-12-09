@@ -18,24 +18,18 @@ export class TabbarComponent {
    * The `alternative` setting renders a white background.
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
-  /**
-   * Defines the inner appearance of a tabbar.
-   * `fill` is the default display, taking the full space of the tabbar.
-   * `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
-   */
-  @Prop() display: "fill" | "centered"  = "fill";
 
   render() {
     return (
       <div class={[`tab-${this.color}`, `opt-${this.option}`].join(' ')}>
-        <div class={["d-flex-main", `dis-${this.display}`, `opt-${this.option}`].join(' ')}>
-          <div class={["nav-left-wrapper", "centered", `${this.option === "nav" ? "shadowed" : ''}`].join(' ')}>
+        <div class={["d-flex-main", `opt-${this.option}`].join(' ')}>
+          <div class={["nav-left-wrapper", "centered"].join(' ')}>
             <slot name="start" />
           </div>
-          <div class={["fill-space", "nav-center-wrapper", `${this.option === "nav" ? "shadowed" : ''}`].join(' ')}>
+          <div class={["fill-space", "nav-center-wrapper", `opt-${this.option}`].join(' ')}>
             <slot />
           </div>
-          {this.option === "nav" ? <div class="centered shadowed"><slot name="end" /></div> : ''}
+          <div class={["centered"].join(' ')}><slot name="end" /></div>
         </div>
       </div>
     );

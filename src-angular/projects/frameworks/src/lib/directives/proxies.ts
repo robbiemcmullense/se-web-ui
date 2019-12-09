@@ -496,7 +496,7 @@ export class SeStepperItem {
 proxyInputs(SeStepperItem, ['active', 'label', 'validated']);
 
 export declare interface SeTabbar extends Components.SeTabbar {}
-@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'display', 'option'] })
+@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
 export class SeTabbar {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -504,7 +504,7 @@ export class SeTabbar {
     this.el = r.nativeElement;
   }
 }
-proxyInputs(SeTabbar, ['color', 'display', 'option']);
+proxyInputs(SeTabbar, ['color', 'option']);
 
 export declare interface SeTooltip extends Components.SeTooltip {}
 @Component({ selector: 'se-tooltip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['action', 'position'] })

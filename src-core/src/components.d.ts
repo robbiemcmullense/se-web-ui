@@ -762,7 +762,7 @@ export namespace Components {
     */
     'color': 'primary' | 'alternative';
     /**
-    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
+    * Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.
     */
     'linear': boolean;
     /**
@@ -797,10 +797,6 @@ export namespace Components {
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
     */
     'color': 'primary' | 'alternative';
-    /**
-    * Defines the inner appearance of a tabbar. `fill` is the default display, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
-    */
-    'display': "fill" | "centered";
     /**
     * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
     */
@@ -2004,7 +2000,7 @@ declare namespace LocalJSX {
     */
     'color'?: 'primary' | 'alternative';
     /**
-    * Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.
+    * Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.
     */
     'linear'?: boolean;
   }
@@ -2031,10 +2027,6 @@ declare namespace LocalJSX {
     * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
     */
     'color'?: 'primary' | 'alternative';
-    /**
-    * Defines the inner appearance of a tabbar. `fill` is the default display, taking the full space of the tabbar. `centered` centers the tabbar so the content does not exceed a maximum width (1070px by default).
-    */
-    'display'?: "fill" | "centered";
     /**
     * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
     */

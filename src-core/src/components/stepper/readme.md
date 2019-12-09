@@ -10,7 +10,7 @@
 | Property | Attribute | Description                                                                                                                                                                                                                                                                            | Type                         | Default     |
 | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
 | `color`  | `color`   | Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background. | `"alternative" \| "primary"` | `'primary'` |
-| `linear` | `linear`  | Defines if the stepper items must be completed sequentially.  The default setting is `false`. When set to `true`, each stepper item must be validated before advancing to the next step.                                                                                               | `boolean`                    | `false`     |
+| `linear` | `linear`  | Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.                                                               | `boolean`                    | `true`      |
 
 
 ## Methods

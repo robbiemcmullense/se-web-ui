@@ -84,6 +84,9 @@ export class ListGroupComponent {
   }
 
   private isTreeViewTarget(event: any) {
+    if (window.MSInputMethodContext) { // check if running on IE11
+      return event.target.nodeName === 'BUTTON' && event.target.className.includes('sc-se-list-group');
+    }
     return event.target.nodeName === 'SE-ICON' || event.target.className.includes('se-icon');
   }
 

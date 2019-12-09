@@ -880,7 +880,7 @@
               </div>
             </se-block-content>
           </se-block>
-          <se-block color="alternative" divider="false" enlarged="horizontal" id="block10">
+          <se-block outline="true" color="alternative" divider="false" enlarged="horizontal" id="block10">
             <se-block-header option="fill">
               <se-tabbar color="alternative" option="content" display="centered">
                 <nav>
@@ -909,6 +909,9 @@
                     <a disabled>Maintenance</a>
                     <a>Glossary</a>
                   </nav>
+                  <nav slot="end">
+                    <se-link url="www.google.com" option="external">Google</se-link>
+                  </nav>
                 </se-tabbar>
                 <se-block color="standard" margin="none" divider="false">
                   <se-block-header style="border: 1px solid #ededed;border-top:0;border-bottom:0;">Testing</se-block-header>
@@ -917,7 +920,7 @@
               </se-container>
               <br>
               <se-container color="standard" padding="large" display="block" style="border: 1px solid #ededed;">
-                <se-block margin="none" divider="false">
+                <se-block outline="true" margin="none" divider="false">
                   <se-block-header option="fill">
                     <se-tabbar option="content" color="alternative" display="centered">
                         <nav>
@@ -925,6 +928,9 @@
                           <a class="active">Installation</a>
                           <a disabled>Maintenance</a>
                           <a>Glossary</a>
+                        </nav>
+                        <nav slot="end">
+                          <se-link url="www.google.com" option="external">Google</se-link>
                         </nav>
                       </se-tabbar>
                   </se-block-header>
@@ -940,7 +946,7 @@
               </div>
             </se-block-header>
             <se-block-content id="stepper-content">
-              <div><span id="stepper-color">Primary</span> Color Stepper (<span id="stepper-mode">non-linear</span> mode):</div>
+              <div><span id="stepper-color">Primary</span> Color Stepper (<span id="stepper-mode">linear</span> mode):</div>
               <se-stepper id="se-stepper">
                 <se-stepper-item label="Step 1" id="primone">
                   <div style="border: 1px solid black; padding: 10px;">
@@ -962,12 +968,7 @@
                       <se-button onclick="nextStep()">Validate and Next Step</se-button>
                     </div>
                 </se-stepper-item>
-                <se-stepper-item label="Step 5" id="primfive">
-                  <div style="border: 1px solid black; padding: 10px;">
-                      <se-button onclick="nextStep()">Validate and Next Step</se-button>
-                    </div>
-                </se-stepper-item>
-                <se-stepper-item label="Step 6">
+                <se-stepper-item label="Step 5">
                   <div style="border: 1px solid black; padding: 10px;">Sixth Step</div>
                 </se-stepper-item>
               </se-stepper>

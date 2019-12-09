@@ -17,10 +17,11 @@ export class StepperComponent {
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
   /**
-   * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
-   * When set to `true`, each stepper item must be validated before advancing to the next step.
+   * Defines if the stepper items must be completed sequentially.
+   * The default setting is `true`, each stepper item must be validated before advancing to the next step.
+   * `false` allows each step to be selected in any order.
    */
-  @Prop() linear: boolean = false;
+  @Prop() linear: boolean = true;
 
   selectStep(item: any) {
     this.selectedItem.active = false;
@@ -84,7 +85,7 @@ export class StepperComponent {
   checkIfPreviousItemValidated(item: any) {
     if (this.getItemStep(item) > 1 && this.linear) {
       return !this.stepperItems[this.stepperItems.indexOf(item)-1].validated;
-    } 
+    }
     return false;
   }
 

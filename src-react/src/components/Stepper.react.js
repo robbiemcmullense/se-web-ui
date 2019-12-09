@@ -28,8 +28,9 @@ The `alternative` setting implements a white background for the stepper visual i
    */
   color: PropTypes.string,
   /**
-   * Defines if the stepper items must be completed sequentially.  The default setting is `false`.
-When set to `true`, each stepper item must be validated before advancing to the next step.
+   * Defines if the stepper items must be completed sequentially.
+The default setting is `true`, each stepper item must be validated before advancing to the next step.
+`false` allows each step to be selected in any order.
    */
   linear: PropTypes.bool
 };

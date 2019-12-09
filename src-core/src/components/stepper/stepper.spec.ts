@@ -16,8 +16,8 @@ describe('StepperComponent', () => {
     expect(stepper.color).toBe('primary');
 	});
 
-	it('should not be linear by default', () => {
-		expect(stepper.linear).toBeFalsy();
+	it('should be linear by default', () => {
+		expect(stepper.linear).toBeTruthy();
 	});
 
 	it('should render with a nav element, and a div element with the class stepper-item-wrapper', async() => {
@@ -38,7 +38,7 @@ describe('Stepper Component methods', () => {
 
 	beforeEach(() => {
 		stepper = new StepperComponent();
-		
+
 		nodeOne = document.createElement('se-stepper-item');
 		nodeOne.setAttribute('label', 'Step 1');
 		stepper.el.appendChild(nodeOne);
@@ -48,7 +48,7 @@ describe('Stepper Component methods', () => {
 		stepper.el.appendChild(nodeTwo);
 	});
 
-	it('should have 2 stepper items, setting the selected property to the first stepper item and the isLast property to the second stepper item', () => {	
+	it('should have 2 stepper items, setting the selected property to the first stepper item and the isLast property to the second stepper item', () => {
 		stepper.componentDidLoad();
 		expect(stepper.stepperItems.length).toEqual(2);
 		expect(stepper.stepperItems[0].isLast).toBeFalsy();
