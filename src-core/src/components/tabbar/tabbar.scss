@@ -37,7 +37,8 @@
       margin: 0 calc(#{$spacing-large} * 1.5);
     }
     nav > a[disabled] {
-      color: $se-light-green;
+      @include color('primary');
+      opacity: 0.3;
     }
   }
   &.opt-content {
@@ -53,7 +54,7 @@
         border-bottom: 0;
         border-left: 0;
         line-height: 46px;
-        @include  color('alternative-contrast');
+        @include color('alternative-contrast');
         padding: 0 $spacing-xlarge;
         &:first-child {
           border-left: 1px solid $se-ultra-light-grey-1;

@@ -27,9 +27,9 @@
         width: 0;
         opacity: 0;
         &:checked ~ .checkdot {
-          height: 6px;
-          width: 6px;
-          border: 5px solid;
+          height: 8px;
+          width: 8px;
+          border: 4px solid;
           @include border-color('primary');   
           &[data-color="secondary"] {
             @include border-color('secondary');
@@ -40,11 +40,7 @@
         }   
         &[disabled] {
           &:checked ~ .checkdot {
-            border: 1px solid #8ce599;
-    
-            &[data-color="secondary"] {
-              border: 1px solid $se-sky-blue;
-            }
+            opacity: 0.3;
           }
         }
       }   

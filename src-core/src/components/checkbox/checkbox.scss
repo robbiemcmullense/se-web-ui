@@ -48,14 +48,7 @@ div {
         }
       }
       &[disabled]:checked ~ .checkmark {
-        &[data-color="primary"] {
-          background-color: #8ce599;
-          border-color: #8ce599;
-        }
-        &[data-color="secondary"] {
-          background-color: $se-sky-blue;
-          border-color: $se-sky-blue;
-        }
+        opacity: 0.3;
       }
     }
 
@@ -169,7 +162,8 @@ div {
       display: none;
       &:checked ~ span {
         &:before {
-          border: 1px solid $se-life-green;
+          border: 1px solid;
+          border-color: $se-life-green;
           background-color: $se-life-green;
         }
         &:after {
@@ -179,8 +173,7 @@ div {
       &[disabled] {
         &:checked ~ span {
           &:before {
-            border: 1px solid #8ce599;
-            background-color: #8ce599;
+            opacity: 0.3;
           }
         }
       }
@@ -263,12 +256,9 @@ div {
   button {
     cursor: default;
     color: $se-light-grey;
-    &.active.selected {
-      background-color: #8ce599;
-      @include color('alternative');
-    }
+    opacity: 0.3;
+    &.active.selected,
     &.inactive.selected {
-      opacity: 0.5;
       @include color('alternative');
     }
   }

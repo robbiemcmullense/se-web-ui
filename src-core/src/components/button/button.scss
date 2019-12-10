@@ -270,7 +270,7 @@ button {
       @include background-color("selected");
     }
     &[disabled] {
-      background-color: #8ce599;
+      opacity: 0.3;
     }
     &.outline {
       border: 1px solid;
@@ -287,8 +287,6 @@ button {
       }
       &[disabled] {
         background-color: transparent;
-        color: #8ce599;
-        border-color: #8ce599;
       }
     }
   }
@@ -305,7 +303,7 @@ button {
       @include background-color("selected");
     }
     &[disabled] {
-      background-color: $se-sky-blue;
+      opacity: 0.3;
     }
     &.outline {
       background-color: transparent;
@@ -322,8 +320,6 @@ button {
       }
       &[disabled] {
         background-color: transparent;
-        color: $se-sky-blue;
-        border-color: $se-sky-blue;
       }
     }
   }
