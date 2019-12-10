@@ -50,4 +50,35 @@
       <se-button option="raised">Apply</se-button>
     </se-block-footer>
   </se-block>
+  <se-divider option="vertical"></se-divider>
+  <se-block>
+    <se-block-header>Stepper Component</se-block-header>
+    <se-block-content>
+      <se-stepper #stepper>
+        <se-stepper-item [validated]="nameValidated" label="Step 1">
+          <div style="border: 1px solid black; padding: 10px;">
+            <se-form-field label="Enter your name:" required="true" (didSubmit)="handleNameInput($event)">
+              <input [(ngModel)]="name" />
+              <se-button (click)="nextStep(nameValidated)">Next</se-button>
+            </se-form-field>
+          </div>
+        </se-stepper-item>
+        <se-stepper-item [validated]="addressValidated" label="Step 2">
+          <div style="border: 1px solid black; padding: 10px;">
+            <se-form-field label="Enter your address:" required="true" (didSubmit)="handleAddressInput($event)">
+              <input [(ngModel)]="address" />
+              <se-button (click)="nextStep(addressValidated)">Next</se-button>
+            </se-form-field>
+          </div>
+        </se-stepper-item>
+        <se-stepper-item label="Step 3">
+          <div style="border: 1px solid black; padding: 10px;">
+            <div>You have submitted the name: {{name}} and address: {{address}}</div>
+            <se-button (click)="prevStep()">Previous</se-button>
+            <se-button (click)="resetStepper()">Reset Stepper</se-button>
+          </div>
+        </se-stepper-item>
+      </se-stepper>
+    </se-block-content>
+  </se-block>
 </se-container>
