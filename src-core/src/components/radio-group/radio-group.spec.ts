@@ -84,6 +84,7 @@ describe('RadioGroupComponent', () => {
 	it('emits the didChange event when a child element in the radio group is clicked on', () => {
 		const event = {detail: {value: 'my value'}};
 		const eventSpy = jest.spyOn(radioGroup.didChange, 'emit');
+		radioGroup.componentDidLoad();
 		radioGroup.buttonClickedHandler(event);
 		radioGroup.radioButtonCheckedHandler(event);
 		expect(eventSpy).toHaveBeenCalledTimes(2);

@@ -21,10 +21,6 @@ export class RadioGroupComponent {
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
   @Prop({mutable: true}) disabled: boolean = false;
-  @Watch('disabled') disabledDidChange() {
-    this.updateItemMode()
-  }
-  
   /**
    * Defines the selected values of the array.
    */
@@ -33,47 +29,58 @@ export class RadioGroupComponent {
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */
   @Event() didChange: EventEmitter;
+  children: NodeList;
+
+  @Watch('disabled') disabledDidChange() {
+    this.updateItemMode()
+  }
+
+  @Watch('value')
+  valueDidChange(value: any) {
+    this.selectChild(this.children, value);
+    this.didChange.emit(this.value);
+  }
 
   @Listen('didClick')
   buttonClickedHandler(event: CustomEvent) {
-    this.handleEventChange(event, 'se-button');
+    this.handleChildClicked(event);
   }
 
   @Listen('didCheck')
   radioButtonCheckedHandler(event: CustomEvent) {
-    this.handleEventChange(event, 'se-radio');
+    this.handleChildClicked(event);
+  }
+
+  updateItemMode() {
+    this.children.forEach((child: any) => {
+      if (child.localName == 'se-button') {
+        child.setGrouped();
+      }
+      if (this.disabled) {
+        child.disabled = true;
+      }
+      child.size = this.size;
+      child.color = this.color;
+    });
+  }
+
+  handleChildClicked(event: CustomEvent) {
+    let buttonInfo = event.detail;
+    this.value = buttonInfo.value;
+    this.selectChild(this.children, this.value);
+    this.didChange.emit(this.value);
+  }
+
+  selectChild(children: any, value: any) {
+    children.forEach((child: any) => {
+      child.selected = child.value === value;
+    });
   }
 
   componentDidLoad() {
+    this.children = this.el.querySelectorAll('se-button, se-radio');
     this.updateItemMode();
-    const buttons = this.el.querySelectorAll('se-button, se-radio');
-    buttons.forEach((button: any) => {
-      button.selected = button.value === this.value;
-    });
-  }
-
-  private updateItemMode() {
-    let buttons = this.el.querySelectorAll('se-button, se-radio');
-    buttons.forEach((button: any) => {
-      if (button.localName == 'se-button') {
-        button.setGrouped();
-      }
-      if (this.disabled) {
-        button.disabled = true;
-      }
-      button.size = this.size;
-      button.color = this.color;
-    });
-  }
-
-  private handleEventChange(event: CustomEvent, elementName: string) {
-    let buttonInfo = event.detail;
-    this.value = buttonInfo.value;
-    const buttons = this.el.querySelectorAll(elementName);
-    buttons.forEach((button: any) => {
-      button.selected = button.value === buttonInfo.value;
-    });
-    this.didChange.emit(this.value);
+    this.selectChild(this.children, this.value);
   }
 
   render() {
