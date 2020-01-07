@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from '@core/authentication/authentication.service';
 import { environment } from '@env/environment';
+import { SnackbarService } from '@se/web-ui-angular';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,19 @@ export class HeaderComponent implements OnInit {
   ];
   public selectable = false;
 
-  constructor( public authenticationService: AuthenticationService, private router: Router) {}
+  constructor( public authenticationService: AuthenticationService, private router: Router,
+    private snackbarService: SnackbarService) {}
+
+  openSidemenuSnackbar(): void {
+    const snackbar = this.snackbarService.open({
+      message: 'This is info',
+      type: 'success'
+    });
+    snackbar.instance.didClose.subscribe((data: any) => {
+      // do something
+      console.log('closed')
+    });
+  }
 
   public logout() {
     this.authenticationService.logout();

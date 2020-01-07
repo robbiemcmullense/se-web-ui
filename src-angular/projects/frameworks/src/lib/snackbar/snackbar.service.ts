@@ -63,6 +63,9 @@ export class SnackbarService {
     if (!config.icon) {
       config.icon = 'information_circle';
     }
+    if (!config.duration) {
+      config.duration = 5000;
+    }
     const ref = this.appendSnackbarComponentToBody(config);
     //subscribing SnackbarComponent instace event while closing snackbar
     const sub = this.snackbarComponentRef.instance.didClose.subscribe(() => {
@@ -79,11 +82,10 @@ export class SnackbarService {
    * @param canClose 
    */
   autoDismiss(canClose: boolean, duration: number) {
-    let delay = duration ? duration : 5000;
     if (!canClose) {
       setTimeout(() => {
         this.removeSnackBarComponent();
-      }, delay);
+      }, duration);
     }
   }
 }

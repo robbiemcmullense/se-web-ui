@@ -6,6 +6,7 @@
   display: block;
   visibility: hidden;
   align-self: center;
+  z-index: 40;
   opacity: 0;
   transition: .2s;
 	@include slideDown();
