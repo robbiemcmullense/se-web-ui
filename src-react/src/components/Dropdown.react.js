@@ -43,8 +43,8 @@ Dropdown.propTypes = {
   children: PropTypes.node,
   /**
    * Defines how to align the dropdown container.
-`left`: Position the container with respect to the left side of the trigger element.
-`right`: Position the container with respect to the right side of the trigger element.
+   * `left`: Position the container with respect to the left side of the trigger element.
+   * `right`: Position the container with respect to the right side of the trigger element.
    */
   alignment: PropTypes.string,
   /**

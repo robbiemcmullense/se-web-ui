@@ -15,11 +15,9 @@ export class SidemenuComponent {
   menuItemInnerEl?: HTMLElement;
   observer: any;
   @Element() el: HTMLElement;
-
   @State() open: boolean = false;
   @State() items: HTMLElement[] = [];
   @State() selectedItem?: HTMLElement;
-
   /**
    * Defines the text displayed in the header of the Sidemenu.
    * The default value is `Menu`.
@@ -32,7 +30,6 @@ export class SidemenuComponent {
   * If an empty string is provided the external link element will not be generated.
  */
   @Prop() link: string = 'www.se.com';
-
   /**
    * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.
    * ex: document.getElementById("main-sidemenu").toggle("side-about");
@@ -62,7 +59,7 @@ export class SidemenuComponent {
         }
       } else {
         try {
-          if (this.el.getElementsByClassName("active").length > 0) {
+          if (this.items.find(x => x.classList.contains('active'))) {
             this.el.classList.add(OPEN_ITEM);
           }
         } catch (error) {
@@ -82,7 +79,7 @@ export class SidemenuComponent {
     return !this.items.find(x => x === this.selectedItem)
   }
 
-  private unselectAll(): void {
+  unselectAll(): void {
     this.el.classList.remove(OPEN_ITEM);
     if (this.selectedItem && !this.selectedItem.childElementCount) {
       this.selectedItem = undefined;
@@ -92,15 +89,15 @@ export class SidemenuComponent {
     }
   }
 
-  private getItemElement(name: string): HTMLElement {
+  getItemElement(name: string): HTMLElement {
     return this.items.find(i => this.isItemElement(i, name));
   }
 
-  private isItemElement(elm: HTMLElement, name: string): boolean {
+  isItemElement(elm: HTMLElement, name: string): boolean {
     return elm.getAttribute('item') === name || elm.getAttribute('id') === name
   }
 
-  private setActive(item: any): void {
+  setActive(item: any): void {
     if (this.items.length) {
       this.items.forEach((item: any) => {
         item.active = false;
@@ -113,7 +110,7 @@ export class SidemenuComponent {
     }
   }
 
-  private addAnimation(callback) {
+  addAnimation(callback) {
     try {
       this.menuInnerEl.classList.add(SHOW_MENU);
       this.backdropEl.classList.add(SHOW_MENU);
@@ -127,7 +124,7 @@ export class SidemenuComponent {
     }
   }
 
-  private removeAnimation(callback) {
+  removeAnimation(callback) {
     try {
       this.menuInnerEl.classList.add(HIDE_MENU);
       this.backdropEl.classList.add(HIDE_MENU);
@@ -141,15 +138,15 @@ export class SidemenuComponent {
     }
   }
 
-  private watchItemList() {
+  watchItemList() {
     this.observer = new MutationObserver((mutations) => {
       let activeItem = false;
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length) {
-          this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
+          this.setItemsArray();
         }
         if (mutation.removedNodes.length) {
-          this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
+          this.setItemsArray();
           this.items.forEach((item: any) => {
             if (item.active) {
               activeItem = true;
@@ -168,23 +165,8 @@ export class SidemenuComponent {
     }
   }
 
-  componentWillLoad() {
+  setItemsArray() {
     this.items = Array.from(this.el.querySelectorAll('se-sidemenu-item'));
-    this.watchItemList();
-  }
-
-  componentDidLoad() {
-    // assign mutation observer for MS Edge, as it uses polyfills instead of Shadow DOM
-    if (navigator.userAgent.indexOf('Edge') > -1) {
-      let element = this.el.querySelector('.block-body');
-      this.observer.observe(element, { childList: true });
-    }
-  }
-
-  componentDidUnload() {
-    this.items.length = 0;
-    this.selectedItem = undefined;
-    this.observer.disconnect();
   }
 
   renderList() {
@@ -193,6 +175,25 @@ export class SidemenuComponent {
         <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} id={item.id ? `list-${item.id}` : ''} />,
       ]
     })
+  }
+
+  componentWillLoad() {
+    this.setItemsArray();
+    this.watchItemList();
+  }
+
+  componentDidLoad() {
+    // assign mutation observer for MS Edge, as it uses polyfills instead of Shadow DOM
+    if (navigator.userAgent.indexOf('Edge') > -1) {
+      const element = this.el.querySelector('.block-body');
+      this.observer.observe(element, { childList: true });
+    }
+  }
+
+  componentDidUnload() {
+    this.items.length = 0;
+    this.selectedItem = undefined;
+    this.observer.disconnect();
   }
 
   render() {

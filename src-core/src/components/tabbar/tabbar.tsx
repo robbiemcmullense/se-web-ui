@@ -11,7 +11,7 @@ export class TabbarComponent {
    * Default `nav` creates a tab bar that functions as a nav-bar.
    * `content` creates a ta bbar that functions as a content section tab bar.
    */
-  @Prop() option: "nav" | "content"  = "nav";
+  @Prop() option: "nav" | "content" = "nav";
   /**
    * Indicates the color of your tab bar.
    * Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content.

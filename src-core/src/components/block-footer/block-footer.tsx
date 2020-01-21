@@ -8,8 +8,9 @@ import { Component, Element, h, Prop, Host } from "@stencil/core";
 export class BlockFooter {
   @Element() el: HTMLElement;
   /**
-  * 
-  */
+   * Defines whether or not a divider will be applied to the se-block-footer.
+   * The se-block component's divider property will be applied to the se-block-footer component.
+   */
   @Prop() divider: boolean;
   /**
    * Defines the visual appearance of a footer.
@@ -18,7 +19,7 @@ export class BlockFooter {
   @Prop() option: 'card' | 'widget' | 'basic';
   /**
    * Defines the direction of the flex element.
-   * `row` is the default direction. This is perfect to use with flex content.
+   * Default setting is `row`. This is perfect to use with flex content.
    * `column` is useful in specific cases. Make sure you know what you are doing.
    */
   @Prop() direction: "row" | "column" = "row";

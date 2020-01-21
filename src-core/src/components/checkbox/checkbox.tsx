@@ -5,7 +5,6 @@ import { Component, Element, Event, EventEmitter, h, Method, Prop } from "@stenc
   styleUrl: "checkbox.scss",
   shadow: true
 })
-
 export class CheckboxComponent {
   /**
    * Determines the visual appearance of the component.
@@ -80,13 +79,10 @@ export class CheckboxComponent {
   setElementId() {
     let id = this.el.getAttribute('id');
     if (id && this.option === 'onoff') {
-      let firstTarget = this.el.shadowRoot.querySelector('button.active');
-      let secondTarget = this.el.shadowRoot.querySelector('button.inactive');
-      firstTarget.setAttribute('id', 'wc-' + id + '-active');
-      secondTarget.setAttribute('id', 'wc-' + id + '-inactive');
+      this.el.shadowRoot.querySelector('button.active').setAttribute('id', 'wc-' + id + '-active');
+      this.el.shadowRoot.querySelector('button.inactive').setAttribute('id', 'wc-' + id + '-inactive');
     } else if (id) {
-      let input = this.el.shadowRoot.querySelector('input');
-      input.setAttribute('id', 'wc-' + id);
+      this.el.shadowRoot.querySelector('input').setAttribute('id', 'wc-' + id);
     }
   }
 

@@ -5,12 +5,8 @@ const SHOW_FAB = 'show';
 	tag: 'se-fab',
 	styleUrl: 'fab.scss',
 	shadow: true
-
 })
 export class FabComponent {
-
-	@State() toggleIcon: boolean = true;
-
 	error_icon = 'notification_error';
 	arrow_up = 'arrow4_top';
 	/**
@@ -35,6 +31,7 @@ export class FabComponent {
 	* The `alternative` setting renders a white background.
 	*/
 	@Prop() color: 'primary' | 'alternative' = 'primary';
+	@State() toggleIcon: boolean = true;
 	/**
 	 * Use this method to toggle (show/hide) the mini action buttons.
 	 */
@@ -71,8 +68,7 @@ export class FabComponent {
 				{this.option === 'speeddial' ?
 					<div class={['mini-action-button', !this.toggleIcon ? SHOW_FAB : ''].join(' ')}>
 						<slot></slot>
-					</div> : ''
-				}
+					</div> : ''}
 			</div>
 		)
 	}

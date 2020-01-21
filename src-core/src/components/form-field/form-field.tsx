@@ -6,6 +6,7 @@ import { Component, Element, Event, EventEmitter, h, Prop, Listen, Watch } from 
 	shadow: true
 })
 export class FormFieldComponent {
+	@Element() el: HTMLElement;
 	/**
 	 * Defines the layout of your form field.
 	 * `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label.
@@ -40,38 +41,28 @@ export class FormFieldComponent {
    * Optional property that defines if the form field is disabled.  Set to `false` by default.
    */
 	@Prop() disabled: boolean = false;
-	@Element() el: HTMLElement;
 	/**
    * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
    */
 	@Event() didSubmit: EventEmitter;
 
-	@Listen('change')
-	inputSelectListenerHandler(event) {
+	@Listen('change') inputSelectListenerHandler(event) {
 		this.handleEvent(event);
 	}
 
-	@Listen('didChange')
-	checkboxListenerHandler(event) {
+	@Listen('didChange') checkboxListenerHandler(event) {
 		this.handleEvent(event);
 	}
 
-	@Listen('didCheck')
-	radioListenerHandler(event) {
+	@Listen('didCheck') radioListenerHandler(event) {
 		this.handleEvent(event);
 	}
 
-	@Watch('disabled')
-	disabledDidChange() {
+	@Watch('disabled') disabledDidChange() {
 		this.initLabel();
 	}
 
-	@Watch('type')
-	typeDidChange() {
-		this.initLabel();
-	}
-
-	componentDidLoad() {
+	@Watch('type') typeDidChange() {
 		this.initLabel();
 	}
 
@@ -83,6 +74,10 @@ export class FormFieldComponent {
 				item.required = this.required;
 			}
 		});
+	}
+
+	componentDidLoad() {
+		this.initLabel();
 	}
 
 	handleEvent(event: any) {

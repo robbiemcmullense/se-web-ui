@@ -27,8 +27,8 @@ VisualLinear.propTypes = {
   label: PropTypes.string,
   /**
    * Defines the layout of your component.
-`inline` is the default option.  This sets the "progress bar" adjacent to the label.
-`stacked` option will render the "progress bar" below the label.
+   * `inline` is the default option.  This sets the "progress bar" adjacent to the label.
+   * `stacked` option will render the "progress bar" below the label.
    */
   option: PropTypes.string,
   /**
@@ -37,8 +37,8 @@ VisualLinear.propTypes = {
   percentage: PropTypes.number,
   /**
    * Sets the color of the visual "progress bar".
-The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
-By default, the progress bar will have a green color.
+   * The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
+   * By default, the progress bar will have a green color.
    */
   secolor: PropTypes.string,
   /**

@@ -43,6 +43,16 @@ describe('RadioComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
+	it('should assign an id to the input element with the wc prefix when the host element has an id', () => {
+		radio.el.id = 'radio-id';
+		let input = document.createElement('input');
+		let shadow = radio.el.attachShadow({mode: 'open'});
+		shadow.appendChild(input);
+		radio.componentDidLoad();
+		expect(input).toHaveAttribute('id');
+		expect(input.getAttribute('id')).toEqual('wc-radio-id');
+	});
+
 	it('should emit the didCheck event when a radio button is clicked', () => {
 		const eventSpy = jest.spyOn(radio.didCheck, 'emit');
 		radio.handleClick(); // user clicks on radio button

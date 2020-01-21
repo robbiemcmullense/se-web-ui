@@ -38,19 +38,22 @@ Slider.propTypes = {
   children: PropTypes.node,
   /**
    * Indicates if your slider is disabled.
-The default setting is `false`.
+   * The default setting is `false`.
    */
   disabled: PropTypes.bool,
   /**
    * Indicates the maximum value of your slider.
+   * The default value is `100`.
    */
   max: PropTypes.number,
   /**
    * Indicates the minimum value of your slider.
+   * The default value is `0`.
    */
   min: PropTypes.number,
   /**
-   * 
+   * Indicates the initial value of your slider component when it loads.
+   * The default value is `0`.
    */
   value: PropTypes.any,
   /**

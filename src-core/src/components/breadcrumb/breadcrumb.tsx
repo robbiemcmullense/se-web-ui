@@ -11,14 +11,14 @@ export class BreadcrumbComponent {
   @State() items: HTMLElement[] = [];
   observer: any;
 
-  private updateLastItem() {
+  updateLastItem() {
     this.items = Array.from(this.el.querySelectorAll('se-breadcrumb-item'));
     this.items.forEach((item: any) => {
       item.isLast = (item === this.items[this.items.length - 1]);
     });
   }
 
-  private watchItemList() {
+  watchItemList() {
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length || mutation.removedNodes.length) {

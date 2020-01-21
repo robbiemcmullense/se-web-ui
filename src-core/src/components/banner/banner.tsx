@@ -12,7 +12,6 @@ export class BannerComponent {
 	 */
 	@Prop() duration: number = 6000;
 	@Element() el: HTMLElement;
-	bannerEl?: HTMLElement;
 	bannerIndicatorEl?: HTMLElement;
 	@State() items: HTMLElement[] = [];
 	@State() selectedItem?: any;
@@ -21,17 +20,14 @@ export class BannerComponent {
 	interval: any;
 	xStart: any;
 	xEnd: any;
-	direction: string;
 	observer: any;
 
-	@Listen('touchstart', {target: 'window'})
-	handleTouchStart(event: any) {
+	@Listen('touchstart', {target: 'window'}) handleTouchStart(event: any) {
 		clearInterval(this.interval);
 		this.xStart = event.touches[0].clientX;
 	}
 
-	@Listen('touchmove', {target: 'window'})
-	handleTouchMove(event: any) {
+	@Listen('touchmove', {target: 'window'}) handleTouchMove(event: any) {
 		this.xEnd = event.touches[0].clientX;
 		let xDiff = this.xStart - this.xEnd;
 		if (xDiff > 0) {
@@ -41,12 +37,11 @@ export class BannerComponent {
 		}
 	}
 
-	@Listen('resize', {target: 'window'})
-	windowSizeDidChange() {
+	@Listen('resize', {target: 'window'}) windowSizeDidChange() {
 		this.setIconSize();
 	}
 
-	private setActiveItem(item: any): void {
+	setActiveItem(item: any): void {
 		if (this.items.length) {
 			this.items.forEach((item: any) => {
 				item.active = false;
@@ -65,7 +60,7 @@ export class BannerComponent {
 		}
 	}
 
-	private assignSelectedItem(item: any) {
+	assignSelectedItem(item: any) {
 		this.xStart = undefined;
 		this.xEnd = undefined;
 		this.selectedItem = item;
@@ -74,7 +69,7 @@ export class BannerComponent {
 		this.setInterval();
 	}
 
-	private changeActive(index: string) {
+	changeActive(index: string) {
 		// reset timer to rotate when clicking on arrow button
 		clearInterval(this.interval);
 		let item;
@@ -87,7 +82,7 @@ export class BannerComponent {
 		this.setActiveItem(item);
 	}
 
-	private setInterval() {
+	setInterval() {
 		if (this.duration > 500) {
 			this.interval = setInterval(() => {
 				// Rotate carousel to the right based on the specified duration.
@@ -97,7 +92,7 @@ export class BannerComponent {
 		}
 	}
 
-	private watchItemList() {
+	watchItemList() {
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length) {
@@ -174,7 +169,7 @@ export class BannerComponent {
 
 	render() {
 		return [
-			<div class="se-banner" ref={el => this.bannerEl = el}>
+			<div class="se-banner">
 				<div class="banner-items" ref={el => this.bannerIndicatorEl = el} style={{ width: '' + this.items.length * 100 + '%' }}>
 					<slot></slot>
 				</div>

@@ -6,16 +6,21 @@ import { Component, Element, h, Prop, Event, EventEmitter, Method } from '@stenc
   shadow: true
 })
 export class SliderComponent {
-
-  private sliderElement?: HTMLInputElement;
+  sliderElement?: HTMLInputElement;
   @Element() el: HTMLElement;
+  /**
+   * Indicates the initial value of your slider component when it loads.
+   * The default value is `0`.
+   */
   @Prop() value: any = 0;
   /**
   * Indicates the minimum value of your slider.
+  * The default value is `0`.
   */
   @Prop() min: number = 0;
   /**
   * Indicates the maximum value of your slider.
+  * The default value is `100`.
   */
   @Prop() max: number = 100;
   /**

@@ -44,7 +44,7 @@ describe('ContainerComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.wrapper-center')).toBeTruthy();
 	});
 
-	it('should call the optionDidChange and displayDidChange function when the component loads', async() => {
+	it('should call the optionDidChange and displayDidChange function when the component loads', () => {
 		const optionEventSpy = jest.spyOn(container, 'optionDidChange');
 		const displayEventSpy = jest.spyOn(container, 'displayDidChange');
 		container.componentWillLoad();
@@ -52,7 +52,7 @@ describe('ContainerComponent', () => {
 		expect(displayEventSpy).toHaveBeenCalled();
 	});
 
-	it('should call the rowSizeDidChange and columnSizeDidChange function when the component loads', async() => {
+	it('should call the rowSizeDidChange and columnSizeDidChange function when the component loads', () => {
 		const rowEventSpy = jest.spyOn(container, 'rowSizeDidChange');
 		const colEventSpy = jest.spyOn(container, 'columnSizeDidChange');
 		container.componentWillLoad();
@@ -60,7 +60,7 @@ describe('ContainerComponent', () => {
 		expect(colEventSpy).toHaveBeenCalled();
 	});
 
-	it('should call the setProps when the component loads with option set to widget, setting the color to standard', async() => {
+	it('should call the setProps when the component loads with option set to widget, setting the color to standard', () => {
 		container.option = 'widget';
 		const eventSpy = jest.spyOn(container, 'setProps');
 		container.componentWillLoad();
@@ -68,7 +68,7 @@ describe('ContainerComponent', () => {
 		expect(container.color).toEqual('standard');
 	});
 
-	it('should call the setProps when the component loads with option set to card, keeping the color as alternative', async() => {
+	it('should call the setProps when the component loads with option set to card, keeping the color as alternative', () => {
 		container.option = 'card';
 		const eventSpy = jest.spyOn(container, 'setProps');
 		container.componentWillLoad();

@@ -16,6 +16,47 @@ describe('list-item', () => {
     expect(listItem.collapsible).toBeFalsy();
   });
 
+  it('should render, with an element with the se-list-item class', async() => {
+		const page = await newSpecPage({
+			components: [ListItemComponent],
+			html: `<se-list-item></se-list-item>`,
+		});
+		expect(page.root.shadowRoot.querySelector('.se-list-item')).toBeTruthy();
+  });
+
+  it('should render, with a small element when there is a defined description property', async() => {
+		const page = await newSpecPage({
+			components: [ListItemComponent],
+			html: `<se-list-item description="my description"></se-list-item>`,
+		});
+		expect(page.root.shadowRoot.querySelector('small')).toBeTruthy();
+  });
+
+  it('should render, with a se-icon element when there is a defined icon property', async() => {
+		const page = await newSpecPage({
+			components: [ListItemComponent],
+			html: `<se-list-item icon="close"></se-list-item>`,
+		});
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
+  });
+
+  it('should render, with a slot element when the option property is set to classic', async() => {
+		const page = await newSpecPage({
+			components: [ListItemComponent],
+			html: `<se-list-item option="classic"></se-list-item>`,
+		});
+		expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
+  });
+
+  it('should render, with an element with the selectedBar class and an se-icon with size medium when option equals nav and selected is true', async() => {
+		const page = await newSpecPage({
+			components: [ListItemComponent],
+			html: `<se-list-item option="nav" selected="true"></se-list-item>`,
+		});
+    expect(page.root.shadowRoot.querySelector('se-icon[size="medium"]')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.selectedBar')).toBeTruthy();
+  });
+
   it('should inherit the nav option from its parent when specified', () => {
     let parentListElm = document.createElement('se-list');
     parentListElm.option = 'nav';
@@ -36,6 +77,12 @@ describe('list-item', () => {
 		const eventSpy = jest.spyOn(listItem, 'setButtonId');
 		listItem.componentDidLoad();
 		expect(eventSpy).toHaveBeenCalled();
+  });
+
+  it('should set the innerId property when the host element has a defined id', () => {
+    listItem.el.id = 'list-item-id';
+    listItem.componentDidLoad();
+    expect(listItem.innerId).toEqual('wc-list-item-id');
   });
 
   it('should emit the didSelectedChange event when the selected property changes', () => {

@@ -8,6 +8,7 @@ import { AppInfo } from "../appInfo";
   shadow: true
 })
 export class HeaderComponent {
+  @Element() el: HTMLElement;
   /**
    * Sets the title of your application.
    */
@@ -19,19 +20,17 @@ export class HeaderComponent {
   /**
    * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
    */
-  @Prop() project: string;
-
-  @Element() el: HTMLElement;
+  @Prop() project: string; 
   @State() hasMenu: boolean;
   elLeftNav;
+
+  onClickMenu() {
+    this.elLeftNav.toggle();
+  }
 
   async componentDidLoad() {
     this.elLeftNav = this.el.querySelector("se-sidemenu");
     this.hasMenu = !!this.elLeftNav;
-  }
-
-  onClickMenu() {
-    this.elLeftNav.toggle();
   }
 
   render() {

@@ -16,11 +16,11 @@ export class ButtonComponent {
    */
   @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab' = 'flat';
   @Watch('option') optionDidChange() {
-    if(this.option === 'login'){
+    if (this.option === 'login'){
       this.color = 'primary';
       this.block = true;
     }
-    if(this.option === 'signup'){
+    if (this.option === 'signup'){
       this.color = 'secondary';
       this.block = true;
     }
@@ -63,12 +63,10 @@ export class ButtonComponent {
    * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
    */
   @Prop({mutable: true}) selected: boolean;
-
    /**
    * Optional property that defines if the button has a caption or tooltip text.
    */
   @Prop() caption: string;
-
   /**
    * Optional property that defines if the button displays as a block in it's container.
    * When set to true, the button will be as wide as its container.
@@ -119,7 +117,6 @@ export class ButtonComponent {
   }
 
   @State() innerId;
-
   setButtonId() {
     let id = this.el.getAttribute('id');
     if (id) {
@@ -128,7 +125,7 @@ export class ButtonComponent {
   }
 
   toggle() {
-    if(this.disabled) return;
+    if (this.disabled) return;
 
     if (this.grouped) {
       this.selected = !this.selected;

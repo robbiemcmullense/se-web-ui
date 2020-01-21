@@ -1,4 +1,4 @@
-import { Component, Watch, Element, h, Prop, Host } from "@stencil/core";
+import { Component, Element, h, Prop, Host } from "@stencil/core";
 
 @Component({
   tag: "se-block-header",
@@ -8,7 +8,8 @@ import { Component, Watch, Element, h, Prop, Host } from "@stencil/core";
 export class BlockHeader {
   @Element() el: HTMLElement;
   /**
-   * 
+   * Defines whether or not a divider will be applied to the se-block-header.
+   * The se-block component's divider property will be applied to the se-block-header component.
    */
   @Prop() divider: boolean;
   /**
@@ -17,9 +18,6 @@ export class BlockHeader {
    * `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
    */
   @Prop() option: 'card' | 'widget' | 'basic' | 'fill';
-  @Watch("option") optionDidChange() {
-
-  }
 
   render() {
     return (

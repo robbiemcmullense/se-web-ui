@@ -94,19 +94,19 @@ export namespace Components {
   }
   interface SeBlock {
     /**
-    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
+    * Defines the se-block item's ability to appear clickable / selectable. Default setting is `false`, resulting in no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
     */
     'clickable': boolean;
     /**
-    * Defines clickable se-block item's bar on hover. Default is `true`, `$se-life-green` bar appears on hover. `false` removes the bar from the hover effect.
+    * Defines clickable se-block item's bar on hover. Default setting is `false`. `true` renders a `$se-life-green` colored bar on a hover.
     */
     'clickableBar': boolean;
     /**
-    * Optional property that defines the background color of the block. `none` has no background. `standard` is `$se-background`. Default `alternative` is `$se-alternative`.
+    * Optional property that defines the background color of the block. Default setting is `alternative`, rendering the "alternative" theme background. `none` has no background. `standard` renders the "standard" theme background.
     */
     'color': "none" | "standard" | "alternative";
     /**
-    * Defines se-block item's corner radius. `none` is for a sharp, 90 degree corner. `nano` is for a slightly rounded, 2px rounded corner. `small` is for a rounded, 4px rounded corner.
+    * Defines the se-block corner radius. Default setting is `small`, rendering a rounded, 4px rounded corner. `none` is for a sharp, 90 degree corner. `nano` is for a slightly rounded, 2px rounded corner.
     */
     'corner': "none" | "nano" | "small";
     /**
@@ -114,11 +114,11 @@ export namespace Components {
     */
     'display': "flex" | "block" | "grid";
     /**
-    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+    * Defines whether or not a divider will be applied to the se-block header and footer. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider': boolean;
     /**
-    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1). `true` spans 2 rows and 2 columns (2/2). `vertical` spans 2 rows (2/1). `horizontal` spans 2 columns (1/2).
+    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false`, spanning 1 row and 1 column (1/1). `true` spans 2 rows and 2 columns (2/2). `vertical` spans 2 rows (2/1). `horizontal` spans 2 columns (1/2).
     */
     'enlarged': "vertical" | "horizontal" | boolean;
     /**
@@ -134,15 +134,15 @@ export namespace Components {
     */
     'margin': "none" | "small" | "medium" | "large" | "xlarge";
     /**
-    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
+    * Defines the visual appearance of a block. Default setting is `basic`, which will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
     */
     'option': "basic" | "card" | "card-old" | "widget";
     /**
-    * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
+    * Defines the se-block outline. Default setting is `false`. Setting this property to `true` will add a 1px border.
     */
     'outline': boolean;
     /**
-    * Defines se-block item's outline color. Default is `standard` which is `$se-super-light-grey`. `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected. `secondary` defines the outline color as `se-sky-blue`.
+    * Defines the se-block outline color. Default setting is `standard`, which renders the outline with the `$se-super-light-grey` color. `primary` defines the outline color as `$se-life-green`, used primarily for technical applications when the block is selected. `secondary` defines the outline color as `$se-sky-blue`.
     */
     'outlineColor': "standard" | "secondary" | "primary";
     /**
@@ -158,9 +158,12 @@ export namespace Components {
   }
   interface SeBlockFooter {
     /**
-    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
+    * Defines the direction of the flex element. Default setting is `row`. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction': "row" | "column";
+    /**
+    * Defines whether or not a divider will be applied to the se-block-footer. The se-block component's divider property will be applied to the se-block-footer component.
+    */
     'divider': boolean;
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
@@ -168,6 +171,9 @@ export namespace Components {
     'option': 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader {
+    /**
+    * Defines whether or not a divider will be applied to the se-block-header. The se-block component's divider property will be applied to the se-block-header component.
+    */
     'divider': boolean;
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
@@ -712,11 +718,11 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
-    * Indicates the maximum value of your slider.
+    * Indicates the maximum value of your slider. The default value is `100`.
     */
     'max': number;
     /**
-    * Indicates the minimum value of your slider.
+    * Indicates the minimum value of your slider. The default value is `0`.
     */
     'min': number;
     /**
@@ -724,6 +730,9 @@ export namespace Components {
     * @param val : boolean, `true` or `false`.
     */
     'setDisabled': (val: boolean) => Promise<void>;
+    /**
+    * Indicates the initial value of your slider component when it loads. The default value is `0`.
+    */
     'value': any;
   }
   interface SeSnackbar {
@@ -1310,19 +1319,19 @@ declare namespace LocalJSX {
   }
   interface SeBlock {
     /**
-    * Defines se-block item's ability to appear clickable / selectable. Default is `false`, no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
+    * Defines the se-block item's ability to appear clickable / selectable. Default setting is `false`, resulting in no hover effects on the block level. `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
     */
     'clickable'?: boolean;
     /**
-    * Defines clickable se-block item's bar on hover. Default is `true`, `$se-life-green` bar appears on hover. `false` removes the bar from the hover effect.
+    * Defines clickable se-block item's bar on hover. Default setting is `false`. `true` renders a `$se-life-green` colored bar on a hover.
     */
     'clickableBar'?: boolean;
     /**
-    * Optional property that defines the background color of the block. `none` has no background. `standard` is `$se-background`. Default `alternative` is `$se-alternative`.
+    * Optional property that defines the background color of the block. Default setting is `alternative`, rendering the "alternative" theme background. `none` has no background. `standard` renders the "standard" theme background.
     */
     'color'?: "none" | "standard" | "alternative";
     /**
-    * Defines se-block item's corner radius. `none` is for a sharp, 90 degree corner. `nano` is for a slightly rounded, 2px rounded corner. `small` is for a rounded, 4px rounded corner.
+    * Defines the se-block corner radius. Default setting is `small`, rendering a rounded, 4px rounded corner. `none` is for a sharp, 90 degree corner. `nano` is for a slightly rounded, 2px rounded corner.
     */
     'corner'?: "none" | "nano" | "small";
     /**
@@ -1330,11 +1339,11 @@ declare namespace LocalJSX {
     */
     'display'?: "flex" | "block" | "grid";
     /**
-    * Defines se-block items' dividers. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
+    * Defines whether or not a divider will be applied to the se-block header and footer. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.
     */
     'divider'?: boolean;
     /**
-    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false` (1/1). `true` spans 2 rows and 2 columns (2/2). `vertical` spans 2 rows (2/1). `horizontal` spans 2 columns (1/2).
+    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false`, spanning 1 row and 1 column (1/1). `true` spans 2 rows and 2 columns (2/2). `vertical` spans 2 rows (2/1). `horizontal` spans 2 columns (1/2).
     */
     'enlarged'?: "vertical" | "horizontal" | boolean;
     /**
@@ -1350,15 +1359,15 @@ declare namespace LocalJSX {
     */
     'margin'?: "none" | "small" | "medium" | "large" | "xlarge";
     /**
-    * Defines the visual appearance of a block. Default `basic` will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
+    * Defines the visual appearance of a block. Default setting is `basic`, which will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
     */
     'option'?: "basic" | "card" | "card-old" | "widget";
     /**
-    * Defines se-block item's outline. `true` will add a 1px border. Default is `false`.
+    * Defines the se-block outline. Default setting is `false`. Setting this property to `true` will add a 1px border.
     */
     'outline'?: boolean;
     /**
-    * Defines se-block item's outline color. Default is `standard` which is `$se-super-light-grey`. `primary` defines the outline color as `$se-life-green`, for Technical applications when the block is selected. `secondary` defines the outline color as `se-sky-blue`.
+    * Defines the se-block outline color. Default setting is `standard`, which renders the outline with the `$se-super-light-grey` color. `primary` defines the outline color as `$se-life-green`, used primarily for technical applications when the block is selected. `secondary` defines the outline color as `$se-sky-blue`.
     */
     'outlineColor'?: "standard" | "secondary" | "primary";
     /**
@@ -1374,9 +1383,12 @@ declare namespace LocalJSX {
   }
   interface SeBlockFooter {
     /**
-    * Defines the direction of the flex element. `row` is the default direction. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
+    * Defines the direction of the flex element. Default setting is `row`. This is perfect to use with flex content. `column` is useful in specific cases. Make sure you know what you are doing.
     */
     'direction'?: "row" | "column";
+    /**
+    * Defines whether or not a divider will be applied to the se-block-footer. The se-block component's divider property will be applied to the se-block-footer component.
+    */
     'divider'?: boolean;
     /**
     * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
@@ -1384,6 +1396,9 @@ declare namespace LocalJSX {
     'option'?: 'card' | 'widget' | 'basic';
   }
   interface SeBlockHeader {
+    /**
+    * Defines whether or not a divider will be applied to the se-block-header. The se-block component's divider property will be applied to the se-block-header component.
+    */
     'divider'?: boolean;
     /**
     * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
@@ -1943,17 +1958,20 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
-    * Indicates the maximum value of your slider.
+    * Indicates the maximum value of your slider. The default value is `100`.
     */
     'max'?: number;
     /**
-    * Indicates the minimum value of your slider.
+    * Indicates the minimum value of your slider. The default value is `0`.
     */
     'min'?: number;
     /**
     * Event emitted when the slider has been changed.
     */
     'onDidChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Indicates the initial value of your slider component when it loads. The default value is `0`.
+    */
     'value'?: any;
   }
   interface SeSnackbar {

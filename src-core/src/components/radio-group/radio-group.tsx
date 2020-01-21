@@ -35,19 +35,16 @@ export class RadioGroupComponent {
     this.updateItemMode()
   }
 
-  @Watch('value')
-  valueDidChange(value: any) {
+  @Watch('value') valueDidChange(value: any) {
     this.selectChild(this.children, value);
     this.didChange.emit(this.value);
   }
 
-  @Listen('didClick')
-  buttonClickedHandler(event: CustomEvent) {
+  @Listen('didClick') buttonClickedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
   }
 
-  @Listen('didCheck')
-  radioButtonCheckedHandler(event: CustomEvent) {
+  @Listen('didCheck') radioButtonCheckedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
   }
 

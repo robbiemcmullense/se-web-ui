@@ -54,6 +54,30 @@ describe('ChipComponent', () => {
 		expect(icon.innerHTML).toEqual('action_delete_cross');
 	});
 
+	it('should render with a selected class when the selected property is true', async() => {
+		const page = await newSpecPage({
+			components: [ChipComponent],
+			html: `<se-chip value="my chip value" selected="true"></se-chip>`,
+		});
+		expect(page.root.shadowRoot.querySelector('.selected')).toBeTruthy();
+	});
+
+	it('should render with a disabled class when the disabled property is true', async() => {
+		const page = await newSpecPage({
+			components: [ChipComponent],
+			html: `<se-chip value="my chip value" disabled="true"></se-chip>`,
+		});
+		expect(page.root.shadowRoot.querySelector('.disabled')).toBeTruthy();
+	});
+
+	it('should render with a display-block class when the block property is true', async() => {
+		const page = await newSpecPage({
+			components: [ChipComponent],
+			html: `<se-chip value="my chip value" block="true"></se-chip>`,
+		});
+		expect(page.root.shadowRoot.querySelector('.display-block')).toBeTruthy();
+	});
+
 	it('should emit the didClose event when the closeChip function is called', () => {
 		const eventSpy = jest.spyOn(chip.didClose, 'emit');
 		chip.closeChip();

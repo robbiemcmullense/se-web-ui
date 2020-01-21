@@ -74,7 +74,6 @@ export class ContainerComponent {
       this.el.style.gridTemplateColumns = `repeat(auto-fit, minmax(${this.columnSize}, 1fr))`;
     }
   }
-
   /**
    * When in `display="grid"`, defines the height of each container.  Default is `300px`.
    */
@@ -92,20 +91,20 @@ export class ContainerComponent {
    */
   @Prop({ mutable: true }) color: "none" | "standard" | "alternative";
 
-  componentWillLoad() {
-    this.setProps(); // not having this called here makes the original/new function not actually work as expected. the original function would return this.option as undefined.
-    this.optionDidChange();
-    this.displayDidChange();
-    this.columnSizeDidChange();
-    this.rowSizeDidChange();
-  }
-
   setProps() {
     Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
       (item: any) => {
         if (this.option === "widget" || this.option === "card" || this.option === "card-old") item.option = this.option;
       }
     );
+  }
+
+  componentWillLoad() {
+    this.setProps(); // not having this called here makes the original/new function not actually work as expected. the original function would return this.option as undefined.
+    this.optionDidChange();
+    this.displayDidChange();
+    this.columnSizeDidChange();
+    this.rowSizeDidChange();
   }
 
   render() {

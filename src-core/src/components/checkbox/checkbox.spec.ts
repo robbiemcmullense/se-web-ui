@@ -105,6 +105,34 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.labelPos).toEqual('left');
 	});
 
+	it('should assign an id to the input element with the wc prefix when the host element has an id', () => {
+		checkbox.el.id = 'checkbox-id';
+		let input = document.createElement('input');
+		let shadow = checkbox.el.attachShadow({mode: 'open'});
+		shadow.appendChild(input);
+		checkbox.componentDidLoad();
+		expect(input).toHaveAttribute('id');
+		expect(input.getAttribute('id')).toEqual('wc-checkbox-id');
+	});
+
+	it('should assign an id to the button elements with the wc prefix when the host element has an id and the option is set to onoff', () => {
+		checkbox.option = 'onoff';
+		checkbox.el.id = 'onoff-id';
+
+		let activeBtn = document.createElement('button');
+		activeBtn.classList.add('active');
+		let inactiveBtn = document.createElement('button')
+		inactiveBtn.classList.add('inactive');
+		let shadow = checkbox.el.attachShadow({mode: 'open'});
+
+		shadow.appendChild(activeBtn);
+		shadow.appendChild(inactiveBtn);
+
+		checkbox.componentDidLoad();
+		expect(activeBtn.getAttribute('id')).toEqual('wc-onoff-id-active');
+		expect(inactiveBtn.getAttribute('id')).toEqual('wc-onoff-id-inactive');
+	});
+
 	it('should emit the didChange event when the handleClick function is executed', async() => {
 		const eventSpy = jest.spyOn(checkbox.didChange, 'emit');
 		checkbox.handleClick();  // user clicks on the checkbox

@@ -29,19 +29,6 @@ export class DialogComponent {
    * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
    */
   @Prop({mutable: true}) open: boolean = false;
-  /**
-   * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
-   */
-  @Prop() canBackdrop: boolean = true;
-
-  assignDialogHeaderColor() {
-    Array.from(this.el.querySelectorAll('se-dialog-header')).forEach((item: any) => {
-      if (!item.color) {
-        item.color = this.color;
-      }
-    });
-  }
-
   @Watch('open') openDidChange() {
     if(this.open){
       this.addAnimation(null);
@@ -51,6 +38,10 @@ export class DialogComponent {
       });
     }
   }
+  /**
+   * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
+   */
+  @Prop() canBackdrop: boolean = true;
   /**
    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */
@@ -63,15 +54,6 @@ export class DialogComponent {
     }
   }
   /**
-   * Emit the `backdrop` event from the dialog's parent component if the escape key is clicked and if `canBackdrop=true`.
-   */
-  @Listen('keydown', { target: "document" })
-  handleKeyDown(ev: KeyboardEvent){
-    if (ev.key === 'Escape' && this.open){
-      this.backdropClicked();
-    }
-  }
-  /**
    * Send data to the parent component when the backdrop is clicked.
    */
   @Event() backdrop: EventEmitter<any>;
@@ -81,7 +63,25 @@ export class DialogComponent {
    */
   @Event() didClose: EventEmitter<any>;
 
-  private addAnimation(callback) {
+  assignDialogHeaderColor() {
+    Array.from(this.el.querySelectorAll('se-dialog-header')).forEach((item: any) => {
+      if (!item.color) {
+        item.color = this.color;
+      }
+    });
+  }
+
+  /**
+   * Emit the `backdrop` event from the dialog's parent component if the escape key is clicked and if `canBackdrop=true`.
+   */
+  @Listen('keydown', { target: "document" })
+  handleKeyDown(ev: KeyboardEvent){
+    if (ev.key === 'Escape' && this.open){
+      this.backdropClicked();
+    }
+  }
+  
+  addAnimation(callback) {
     this.el.classList.add(SHOW);
     if (this.menuInnerEl && this.backdropEl) {
       this.menuInnerEl.classList.add(SHOW);
@@ -94,7 +94,7 @@ export class DialogComponent {
     }, 500);
   }
 
-  private removeAnimation(callback) {
+  removeAnimation(callback) {
     this.menuInnerEl.classList.add(HIDE);
     this.backdropEl.classList.add(HIDE);
     setTimeout(() => {

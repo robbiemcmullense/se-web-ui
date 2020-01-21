@@ -19,16 +19,14 @@ export class StepperItemComponent {
    * When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
    */
   @Prop() validated: boolean;
+  @Watch('validated') validatedDidChange() {
+    this.didValidate.emit(this.validated);
+  }
   /**
    * Event to send to the parent component when a stepper item's data is validated.
    * The boolean validated property is passed to the parent.
    */
   @Event() didValidate: EventEmitter;
-
-  @Watch('validated')
-  validatedDidChange() {
-    this.didValidate.emit(this.validated);
-  }
 
   render() {
     return (

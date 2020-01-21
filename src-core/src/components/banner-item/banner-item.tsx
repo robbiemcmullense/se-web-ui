@@ -16,8 +16,7 @@ export class BannerItemComponent {
   @Prop({ mutable: true }) active: boolean = false;
   @Element() el: HTMLElement;
 
-  @Watch('active')
-  activeDidChange() {
+  @Watch('active') activeDidChange() {
     if (this.active) {
       this.didChange.emit();
     }
@@ -27,6 +26,18 @@ export class BannerItemComponent {
    */
   @Event() didChange: EventEmitter<any>;
 
+  setBlockTransparency() {
+    Array.from(this.el.querySelectorAll('se-block')).forEach((item: any) => {
+      item.classList.add('banner-child');
+    });
+  }
+
+  setButtonClass() {
+    Array.from(this.el.querySelectorAll('se-button')).forEach((item: any) => {
+      item.classList.add('banner-child');
+    });
+  }
+
   componentWillLoad() {
     this.setBlockTransparency();
     this.setButtonClass();
@@ -35,18 +46,6 @@ export class BannerItemComponent {
   componentWillUpdate() {
     this.setBlockTransparency();
     this.setButtonClass();
-  }
-
-  private setBlockTransparency() {
-    Array.from(this.el.querySelectorAll('se-block')).forEach((item: any) => {
-      item.classList.add('banner-child');
-    });
-  }
-
-  private setButtonClass() {
-    Array.from(this.el.querySelectorAll('se-button')).forEach((item: any) => {
-      item.classList.add('banner-child');
-    });
   }
 
   render() {

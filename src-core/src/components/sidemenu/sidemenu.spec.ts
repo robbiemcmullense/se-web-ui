@@ -1,6 +1,5 @@
 import '../mutation-observer-mock';
 import { SidemenuComponent } from "./sidemenu";
-// import { newSpecPage } from '@stencil/core/testing';
 
 describe('SidemenuComponent', () => {
 	let sidemenu;
@@ -21,11 +20,6 @@ describe('SidemenuComponent', () => {
 		expect(sidemenu.open).toBeFalsy();
 	});
 
-	it('should open the sidemenu when the toggle method is called', () => {
-		sidemenu.toggle();
-		expect(sidemenu.open).toBeTruthy();
-	});
-
 	it('should not have any items by default', () => {
 		expect(sidemenu.items.length).toEqual(0);
 	});
@@ -33,7 +27,6 @@ describe('SidemenuComponent', () => {
 	it('should return a true value for noSelectedItem by default', () => {
 		expect(sidemenu.noSelectedItem()).toBeTruthy();
 	})
-
 
 	it('should add to the items array when a sidemenu item is added, and not be active by default', () => {
 		let node = document.createElement('se-sidemenu-item');
@@ -51,13 +44,45 @@ describe('SidemenuComponent', () => {
 		sidemenu.componentWillLoad();
 		sidemenu.setActive(sidemenu.items[0]);
 		setTimeout(() => {
-      // It take 100 ms to get the item to be changed to active=true
+      // It takes 100 ms to get the item to be changed to active=true
 			expect(sidemenu.items[0].active).toBeTruthy();
 		}, 200);
-  });
+	});
+	
+	it('should call the watchItemList and setItemsArray functions when the component is about to load', () => {
+		const listSpy = jest.spyOn(sidemenu, 'watchItemList');
+		const arraySpy = jest.spyOn(sidemenu, 'setItemsArray');
+		sidemenu.componentWillLoad();
+		expect(listSpy).toHaveBeenCalled();
+		expect(arraySpy).toHaveBeenCalled();
+	});
+
+	it('should assign a mutation observer for Edge browsers when componentDidLoad is called', () => {
+		sidemenu.observer = {observe: jest.fn()};
+		const eventSpy = jest.spyOn(sidemenu.observer, 'observe');
+		Object.defineProperty(window.navigator, 'userAgent', {value: 'Edge'});
+		sidemenu.componentDidLoad();
+		expect(eventSpy).toHaveBeenCalled();
+	});
+
+	it('should set the selected item to undefined and return the items length to zero when componentDidUnload is called', () => {
+		sidemenu.items = ['first item', 'second item'];
+		sidemenu.selectedItem = 'selected item';
+		sidemenu.observer = {disconnect: jest.fn()};
+		sidemenu.componentDidUnload();
+		expect(sidemenu.selectedItem).toBeUndefined();
+		expect(sidemenu.items.length).toEqual(0);
+	});
+
+	it('should disconnect the mutation observer when componentDidUnload is called', () => {
+		sidemenu.observer = {disconnect: jest.fn()};
+		const eventSpy = jest.spyOn(sidemenu.observer, 'disconnect');
+		sidemenu.componentDidUnload();
+		expect(eventSpy).toHaveBeenCalled();
+	});
 });
 
-describe('SidemenuComponent with spy', () => {
+describe('SidemenuComponent toggle method', () => {
   let sidemenu;
 
   beforeEach(() => {
@@ -70,20 +95,11 @@ describe('SidemenuComponent with spy', () => {
       add: (value: any) => { return value;},
       remove: (value: any) => { return value;}
     }};
-  });
-
-	it('should call the watchItemList function when the component loads', () => {
-		const eventSpy = jest.spyOn(sidemenu, 'watchItemList');
-		sidemenu.componentWillLoad();
-		expect(eventSpy).toHaveBeenCalled();
 	});
-
-	it('should assign a mutation observer for Edge browsers when componentDidLoad is called', () => {
-		sidemenu.observer = {observe: jest.fn()};
-		const eventSpy = jest.spyOn(sidemenu.observer, 'observe');
-		Object.defineProperty(window.navigator, 'userAgent', {value: 'Edge'});
-		sidemenu.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
+	
+	it('should open the sidemenu when the toggle method is called', () => {
+		sidemenu.toggle();
+		expect(sidemenu.open).toBeTruthy();
 	});
 
 	it('should call the addAnimation method when the toggle method is called and the sidemenu is closed', () => {
@@ -165,21 +181,5 @@ describe('SidemenuComponent with spy', () => {
 		sidemenu.selectedItem = 'selected item';
 		sidemenu.toggle();
 		expect(sidemenu.selectedItem).toBeUndefined();
-	});
-
-	it('should set the selected item to undefined and return the items length to zero when componentDidUnload is called', () => {
-		sidemenu.items = ['first item', 'second item'];
-		sidemenu.selectedItem = 'selected item';
-		sidemenu.observer = {disconnect: jest.fn()};
-		sidemenu.componentDidUnload();
-		expect(sidemenu.selectedItem).toBeUndefined();
-		expect(sidemenu.items.length).toEqual(0);
-	});
-
-	it('should disconnect the mutation observer when componentDidUnload is called', () => {
-		sidemenu.observer = {disconnect: jest.fn()};
-		const eventSpy = jest.spyOn(sidemenu.observer, 'disconnect');
-		sidemenu.componentDidUnload();
-		expect(eventSpy).toHaveBeenCalled();
 	});
 });

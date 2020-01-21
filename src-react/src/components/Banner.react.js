@@ -23,7 +23,7 @@ Banner.propTypes = {
   children: PropTypes.node,
   /**
    * Set the duration (in ms) that the banner will automatically switch slides.
-Default is `6000`.
+   * Default is `6000`.
    */
   duration: PropTypes.number
 };

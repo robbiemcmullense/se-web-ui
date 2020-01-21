@@ -26,16 +26,14 @@ export class VisualLinearComponent {
 	 * By default, the progress bar will have a green color.
 	 */
 	@Prop() secolor: string = 'primary';
-	@Watch('secolor')
-	colorDidChange() {
+	@Watch('secolor') colorDidChange() {
 		this.isHexColor = (this.secolor && this.secolor.indexOf('#') !== -1) ? true : false;
 	}
-
-	@State() isHexColor: boolean = false;
 	/**
 	 * Set the percentage of the "progress bar" to be "filled".
 	 */
 	@Prop({ mutable: true }) percentage: number;
+	@State() isHexColor: boolean = false;
 
 	componentDidLoad() {
 		this.colorDidChange();
@@ -43,7 +41,7 @@ export class VisualLinearComponent {
 
 	render() {
 		return (
-			<Host class={!this.isHexColor ? `color-${this.secolor}`: ''}>
+			<Host class={!this.isHexColor ? `color-${this.secolor}` : ''}>
 				<div class={["se-visual-linear", this.option].join(' ')}>
 					<svg height="8">
 						<rect class="progress-bar-wrapper" width="100%" height="8"></rect>

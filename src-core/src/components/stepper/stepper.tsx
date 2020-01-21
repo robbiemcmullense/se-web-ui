@@ -22,18 +22,6 @@ export class StepperComponent {
    * `false` allows each step to be selected in any order.
    */
   @Prop() linear: boolean = true;
-
-  selectStep(item: any) {
-    this.selectedItem.active = false;
-    this.selectedItem = item;
-    this.selectedItem.active = true;
-  }
-
-  @Listen('didValidate')
-  itemValidated(value) {
-    this.validatedChanged = value;
-  }
-
   /**
    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
    * It no step parameter is provided, it will reset to the first stepper item.
@@ -50,7 +38,6 @@ export class StepperComponent {
     });
     this.selectStep(this.stepperItems[step-1]);
   }
-
   /**
    * Call the `previous` method to navigate to the previous step from the step that is currently selected.
    */
@@ -62,7 +49,6 @@ export class StepperComponent {
       this.selectStep(this.stepperItems[index - 1]);
     }
   }
-
   /**
    * Call the `next` method to navigate to the next step from the step that is currently selected.
    * This will not work in linear mode if the next step is not validated.
@@ -78,6 +64,16 @@ export class StepperComponent {
     }
   }
 
+  selectStep(item: any) {
+    this.selectedItem.active = false;
+    this.selectedItem = item;
+    this.selectedItem.active = true;
+  }
+
+  @Listen('didValidate') itemValidated(value) {
+    this.validatedChanged = value;
+  }
+  
   getItemStep(item: any) {
     return this.stepperItems.indexOf(item) + 1;
   }

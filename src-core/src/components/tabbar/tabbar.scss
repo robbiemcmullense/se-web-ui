@@ -37,7 +37,6 @@
       margin: 0 calc(#{$spacing-large} * 1.5);
     }
     nav > a[disabled] {
-      @include color('primary');
       opacity: 0.3;
     }
   }

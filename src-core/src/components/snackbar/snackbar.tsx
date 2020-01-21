@@ -1,5 +1,4 @@
 import { Component, Element, Event, EventEmitter, h, Prop, Watch } from "@stencil/core";
-
 const SHOW_SNACKBAR = 'show-snackbar';
 
 @Component({
@@ -7,8 +6,8 @@ const SHOW_SNACKBAR = 'show-snackbar';
   styleUrl: "snackbar.scss",
   shadow: true
 })
-
 export class SnackbarComponent {
+  @Element() el: HTMLElement;
   /**
    * Indicates the background color of your snackbar.
    * `success`: green
@@ -39,12 +38,6 @@ export class SnackbarComponent {
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
   @Prop({ mutable: true }) open: boolean = false;
-  /**
-   * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false.
-   * The default setting is 5000.
-   */
-  @Prop() duration: number = 5000;
-
   @Watch('open') openDidChange() {
     if (this.open) {
       this.el.classList.add(SHOW_SNACKBAR);
@@ -55,7 +48,11 @@ export class SnackbarComponent {
       }, this.duration);
     }
   }
-  @Element() el: HTMLElement;
+  /**
+   * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false.
+   * The default setting is 5000.
+   */
+  @Prop() duration: number = 5000;
   /**
    * Sends information to the parent component when closing the snackbar.
    */

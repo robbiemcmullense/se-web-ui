@@ -10,6 +10,13 @@ export class VisualRadialComponent {
    * Determines the visual size of your circular progress bar.  The default setting is `large`.
    */
   @Prop() size: 'small' | 'large' = 'large';
+  @Watch('size') sizeDidChange() {
+    this.svgSize = (this.size == 'small') ? 82 : 164;
+    this.circleDimensions = (this.size == 'small') ? 41 : 82;
+    this.circleRadius = (this.size == 'small') ? 33 : 66;
+    let circumference = (this.size == 'small') ? 66 * Math.PI : 132 * Math.PI;
+    this.offset = circumference - this.percentage / 100 * circumference;
+  }
 	/**
 	 * Defines the text value of the label in your component.
 	 */
@@ -24,27 +31,18 @@ export class VisualRadialComponent {
 	 * By default, the progress bar will have a green color.
 	 */
   @Prop() secolor: string = 'primary';
-  @Watch('secolor')
-  colorDidChange() {
+  @Watch('secolor') colorDidChange() {
     this.isHexColor = (this.secolor && this.secolor.indexOf('#') !== -1) ? true : false;
   }
 	/**
 	 * Set the percentage of the "progress bar" to be "filled".
 	 */
   @Prop({ mutable: true }) percentage: number;
-
   @State() isHexColor: boolean = false;
   @State() offset: number;
   @State() circleDimensions: number;
   @State() circleRadius: number;
   @State() svgSize: number;
-  @Watch('size') sizeDidChange() {
-    this.svgSize = (this.size == 'small') ? 82 : 164;
-    this.circleDimensions = (this.size == 'small') ? 41 : 82;
-    this.circleRadius = (this.size == 'small') ? 33 : 66;
-    let circumference = (this.size == 'small') ? 66 * Math.PI : 132 * Math.PI;
-    this.offset = circumference - this.percentage / 100 * circumference;
-  }
 
   componentDidLoad() {
     this.colorDidChange();
@@ -53,7 +51,7 @@ export class VisualRadialComponent {
 
   render() {
     return (
-      <Host class={!this.isHexColor ? `color-${this.secolor}`: ''}>
+      <Host class={!this.isHexColor ? `color-${this.secolor}` : ''}>
         <div class={["visual-radial-wrapper", this.size].join(' ')}>
           <svg class="se-visual-radial" height={this.svgSize} width={this.svgSize}>
             <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke="#f7f7f7" stroke-width="8" fill="transparent"></circle>

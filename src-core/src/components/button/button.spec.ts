@@ -94,6 +94,21 @@ describe('ButtonComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
+	it('should set the innerId property when the host element has a defined id', () => {
+    button.el.id = 'button-id';
+    button.componentDidLoad();
+    expect(button.innerId).toEqual('wc-button-id');
+	});
+	
+	it('should append a separate button element to submit a form when an se-button component is a child of an HTML form element', () => {
+		const event = {preventDefault: jest.fn()};
+		const form = document.createElement('form');
+		button.type = 'submit';
+		form.appendChild(button.el);
+		button.buttonClickedHandler(event); // user clicks on the button
+		expect(document.querySelector('form > button')).toBeDefined();
+	});
+
 	it('should not emit the didClick event when a standalone standard button is clicked as it is not part of a group', () => {
 		const eventSpy = jest.spyOn(button.didClick, 'emit');
 		button.toggle();  // user clicks on the button

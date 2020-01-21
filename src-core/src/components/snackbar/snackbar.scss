@@ -3,8 +3,7 @@
 :host {
   position: fixed;
   bottom: 20px;
-  display: block;
-  visibility: hidden;
+  display: none;
   align-self: center;
   z-index: 40;
   opacity: 0;
@@ -15,10 +14,8 @@
 :host(.show-snackbar) {
   display: block;
   opacity: 1;
-  visibility: visible;
 	@include slideUp();
 }
-
 
 .information {
   @include background-color('focus');

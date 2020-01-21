@@ -40,6 +40,14 @@ describe('TooltipComponent', () => {
     expect(page.root.shadowRoot.querySelector('.tooltip')).toBeTruthy();
   });
 
+  it('should render, with a tooltip-top class to reflect the position property set to top', async() => {
+    const page = await newSpecPage({
+      components: [TooltipComponent],
+      html: `<se-tooltip position="top"></se-tooltip>`,
+    });
+    expect(page.root.shadowRoot.querySelector('.tooltip-top')).toBeTruthy();
+  });
+
   it('should call the close method when the closeTooltips event is emitted', () => {
     eventSpy = jest.spyOn(tooltip, 'close');
     tooltip.handleCloseTooltip(); // user opens a tooltip while another tooltip is open

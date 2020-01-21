@@ -6,7 +6,6 @@ import { Component, h, Prop, Element, Watch, Event, EventEmitter, State } from "
   shadow: true
 })
 export class ListItemComponent {
-
   @Element() el: HTMLElement;
   /**
    * Defines the title of the item.
@@ -36,14 +35,12 @@ export class ListItemComponent {
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
   @Prop({mutable: true}) option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
-
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
    */
   @Event() didSelectedChange: EventEmitter<void>;
-
   @Watch('selected') SelectedDidChange() {
-    this.didSelectedChange.emit()
+    this.didSelectedChange.emit();
   }
 
   @State() innerId;

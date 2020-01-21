@@ -46,14 +46,14 @@ FormField.propTypes = {
   label: PropTypes.string,
   /**
    * Defines the layout of your form field.
-`inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label.
-`stacked` option will render the input or select field below the label.
+   * `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label.
+   * `stacked` option will render the input or select field below the label.
    */
   option: PropTypes.string,
   /**
    * Determines if the input is required by the application.
-Set to `false` by default.
-Setting this value to `true` will render a red asterisk next to your label.
+   * Set to `false` by default.
+   * Setting this value to `true` will render a red asterisk next to your label.
    */
   required: PropTypes.bool,
   /**
@@ -62,12 +62,12 @@ Setting this value to `true` will render a red asterisk next to your label.
   status: PropTypes.string,
   /**
    * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`).
-`input` is the default type.
+   * `input` is the default type.
    */
   type: PropTypes.string,
   /**
    * Defines the value of your form field to get passed to the parent component.
-When the type is set to "input", this value will be the default placeholder in your input field.
+   * When the type is set to "input", this value will be the default placeholder in your input field.
    */
   value: PropTypes.string,
   /**

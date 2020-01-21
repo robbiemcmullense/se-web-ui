@@ -5,7 +5,6 @@ import { Component, Element, Event, EventEmitter, h, Method, Prop } from "@stenc
   styleUrl: "radio.scss",
   shadow: true
 })
-
 export class RadioComponent {
   @Element() el: HTMLElement;
   /**

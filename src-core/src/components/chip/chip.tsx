@@ -5,7 +5,6 @@ import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core"
   styleUrl: "chip.scss",
   shadow: true
 })
-
 export class ChipComponent {
   /**
    * The text you want to display in your chip.

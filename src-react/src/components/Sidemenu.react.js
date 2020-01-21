@@ -23,7 +23,7 @@ Sidemenu.propTypes = {
   children: PropTypes.node,
   /**
    * Defines the text displayed in the header of the Sidemenu.
-The default value is `Menu`.
+   * The default value is `Menu`.
    */
   label: PropTypes.string,
   /**

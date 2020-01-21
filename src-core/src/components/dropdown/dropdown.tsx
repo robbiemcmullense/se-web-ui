@@ -1,6 +1,5 @@
 import { Component, h, Prop, State, Method, Element, Event, EventEmitter, Listen } from '@stencil/core';
 
-
 @Component({
   tag: 'se-dropdown',
   styleUrl: 'dropdown.scss',
@@ -8,14 +7,6 @@ import { Component, h, Prop, State, Method, Element, Event, EventEmitter, Listen
 })
 export class DropdownComponent {
   @Element() el: HTMLElement;
-  /**
-   * Event emitted when the dropdown has been opened.
-   */
-  @Event() didOpen: EventEmitter;
-  /**
-   * Event emitted when the dropdown has been closed.
-   */
-  @Event() didClose: EventEmitter;
   /**
    * Defines how to align the dropdown container.
    * `left`: Position the container with respect to the left side of the trigger element.
@@ -30,21 +21,6 @@ export class DropdownComponent {
    * Sets the maximum height of the dropdown.  Default setting is "400px".
    */
   @Prop() maxHeight: string = "400px";
-  @State() opened: boolean = false;
-  @Listen('click', { target: 'window' })
-  handleClick(ev) {
-    if (this.opened) {
-      this._toggle(ev);
-    }
-  }
-
-  @Listen('touchstart', { target: 'window' })
-  handleTouchstart(ev) {
-    if (this.opened) {
-      this._toggle(ev);
-    }
-  }
-
   /**
    * Method to open the dropdown from outside its parent element.
    */
@@ -52,13 +28,35 @@ export class DropdownComponent {
   async open() {
     this.opened = true;
   }
-
   /**
    * Method to close the dropdown from outside its parent element.
    */
   @Method()
   async close() {
     this.opened = false;
+  }
+  /**
+   * Event emitted when the dropdown has been opened.
+   */
+  @Event() didOpen: EventEmitter;
+  /**
+   * Event emitted when the dropdown has been closed.
+   */
+  @Event() didClose: EventEmitter;
+  @State() opened: boolean = false;
+
+  @Listen('click', { target: 'window' })
+  handleClick(ev) {
+    if (this.opened) {
+      this._toggle(ev);
+    }
+  }
+  
+  @Listen('touchstart', { target: 'window' })
+  handleTouchstart(ev) {
+    if (this.opened) {
+      this._toggle(ev);
+    }
   }
 
   _toggle(ev: Event) {

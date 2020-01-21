@@ -15,8 +15,7 @@ export class SidemenuItemComponent {
    * The default setting is `false`.
    */
   @Prop({ mutable: true }) active = false;
-  @Watch('active')
-  activeDidChange() {
+  @Watch('active') activeDidChange() {
     if (this.active) {
       this.didClick.emit();
     }
@@ -25,7 +24,6 @@ export class SidemenuItemComponent {
    * Send an event when the sidemenu item changes
    */
   @Event() didClick: EventEmitter<any>;
-
 
   render() {
     return (

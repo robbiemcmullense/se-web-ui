@@ -52,6 +52,54 @@ describe('BlockComponent', () => {
 		expect(page.root.shadowRoot.querySelector('se-loading')).toBeTruthy();
 	});
 
+	it('should render with a clickable-nobar class when the clickable property is set to true', async() => {
+		const page = await newSpecPage({
+			components: [BlockComponent],
+			html: `<se-block clickable="true"></se-block>`,
+		});
+		expect(page.root.shadowRoot.querySelector('.clickable')).toBeTruthy();
+	});
+
+	it('should render with a clickable class when the clickable is true and clickableBar is false', async() => {
+		const page = await newSpecPage({
+			components: [BlockComponent],
+			html: `<se-block clickable="true" clickable-bar="false"></se-block>`,
+		});
+		expect(page.root.shadowRoot.querySelector('.clickable-nobar')).toBeTruthy();
+	});
+
+	it('should render with a block-grid class on the host element when the display property is set to grid', async() => {
+		const page = await newSpecPage({
+			components: [BlockComponent],
+			html: `<se-block display="grid"></se-block>`,
+		});
+		expect(page.root).toHaveClass('block-grid');
+	});
+
+	it('should render with a grid-horizontal class on the host element when display is grid and enlarged is horizontal', async() => {
+		const page = await newSpecPage({
+			components: [BlockComponent],
+			html: `<se-block display="grid" enlarged="horizontal"></se-block>`,
+		});
+		expect(page.root).toHaveClass('grid-horizontal');
+	});
+
+	it('should render with a grid-horizontal class on the host element when display is grid and enlarged is vertical', async() => {
+		const page = await newSpecPage({
+			components: [BlockComponent],
+			html: `<se-block display="grid" enlarged="vertical"></se-block>`,
+		});
+		expect(page.root).toHaveClass('grid-vertical');
+	});
+
+	it('should render with a grid-horizontal class on the host element when display is grid and enlarged is true', async() => {
+		const page = await newSpecPage({
+			components: [BlockComponent],
+			html: `<se-block display="grid" enlarged="true"></se-block>`,
+		});
+		expect(page.root).toHaveClass('grid-large');
+	});
+
 	it('should set the element style width, height, minWidth, and minHeight properties when width and height are specified as component properties', () => {
 		block.width = '350px';
 		block.height = '350px';
@@ -60,6 +108,19 @@ describe('BlockComponent', () => {
 		expect(block.el.style.minWidth).toEqual(block.width);
 		expect(block.el.style.height).toEqual(block.height);
 		expect(block.el.style.minHeight).toEqual(block.height);
+	});
+
+	it('should set the element style width, height, minWidth, and minHeight properties when width and height are specified as component properties', () => {
+		const eventSpy = jest.spyOn(block, 'updateSize');
+		block.widthDidChange();
+		block.heightDidChange();
+		expect(eventSpy).toHaveBeenCalledTimes(2);
+	});
+
+	it('should set the element style width, height, minWidth, and minHeight properties when width and height are specified as component properties', () => {
+		const eventSpy = jest.spyOn(block, 'updateItem');
+		block.optionDidChange();
+		expect(eventSpy).toHaveBeenCalled();
 	});
 
 	it('should set the card option to block-header, block-content, and block-footer elements when se-block has the option set to card', () => {
