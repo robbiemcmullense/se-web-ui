@@ -76,7 +76,7 @@ export class FormFieldComponent {
 	}
 
 	initLabel() {
-		Array.from(this.el.querySelectorAll('input, select, se-checkbox, se-radio')).forEach((item: any) => {
+		Array.from(this.el.querySelectorAll('input, select, textarea, se-checkbox, se-radio')).forEach((item: any) => {
 			item.disabled = this.disabled;
 			if (this.type === "checkbox" || this.type === "radio") {
 				item.label = this.label;

@@ -40,7 +40,7 @@
         }   
         &[disabled] {
           &:checked ~ .checkdot {
-            opacity: 0.3;
+            opacity: 0.5;
           }
         }
       }   
@@ -63,7 +63,7 @@
       }    
       &[data-disabled] {
         .checkdot {
-          border: 1px solid $se-ultra-light-grey-2;
+          opacity: 0.5;
         }
       }
     }

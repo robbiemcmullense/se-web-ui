@@ -40,10 +40,17 @@ $max-width-input: 320px;
     font-size: 14px;
     padding-left: 7px;
     transition: .2s;
+    @include background-color('alternative');
   }
   
   ::slotted(input[disabled]) {
-    background-color: $se-white;
+    @include background-color('alternative');
+    opacity: 0.5;
+  }
+
+  ::slotted(textarea[disabled]) {
+    @include background-color('alternative');
+    opacity: 0.5;
   }
   
   ::slotted(input:focus) {
@@ -71,10 +78,15 @@ $max-width-input: 320px;
     border-radius: 0;
     max-width: $max-width-input + 10;
     border: 1px solid $se-super-light-grey;
-    background-color: transparent;
+    @include background-color('alternative');
     font-family: inherit;
     font-size: 14px;
     padding-left: 4px;
+  }
+
+  ::slotted(select[disabled]) {
+    opacity: 0.5;
+    cursor: default;
   }
   
   ::slotted(textarea) {
@@ -139,13 +151,6 @@ $max-width-input: 320px;
     ::slotted(input) {
       border: 1px solid;
       @include border-color('success')
-    }
-  }
-
-  &.input,
-  &.select {
-    .form-field-wrapper[data-disabled] {
-      opacity: 0.26;
     }
   }
 }

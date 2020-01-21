@@ -48,7 +48,7 @@ div {
         }
       }
       &[disabled]:checked ~ .checkmark {
-        opacity: 0.3;
+        opacity: 0.5;
       }
     }
 
@@ -89,7 +89,7 @@ div {
 
     &[data-disabled] {
       .checkmark {
-        border: 1px solid $se-ultra-light-grey-2;
+        opacity: 0.5;
       }
     }
   }
@@ -173,7 +173,7 @@ div {
       &[disabled] {
         &:checked ~ span {
           &:before {
-            opacity: 0.3;
+            opacity: 0.5;
           }
         }
       }
@@ -183,7 +183,6 @@ div {
       .checkmark {
         cursor: default;
         &:before {
-          border: 1px solid $se-ultra-light-grey-2;
           cursor: default;
         }
         &:after {
@@ -256,7 +255,7 @@ div {
   button {
     cursor: default;
     color: $se-light-grey;
-    opacity: 0.3;
+    opacity: 0.5;
     &.active.selected,
     &.inactive.selected {
       @include color('alternative');
