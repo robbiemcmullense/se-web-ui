@@ -8,6 +8,6 @@ import IconSchneider from './icon-schneider.svg';
 })
 export class IconSchneiderComponent {
   render() {
-    return <img src={IconSchneider}/>;
+    return <img alt="Schneider Electric" src={IconSchneider}/>;
   }
 }

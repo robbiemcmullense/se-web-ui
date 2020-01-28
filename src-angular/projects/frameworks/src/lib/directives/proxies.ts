@@ -367,7 +367,7 @@ export class SeListGroup {
 proxyInputs(SeListGroup, ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild']);
 
 export declare interface SeListItem extends Components.SeListItem {}
-@Component({ selector: 'se-list-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
+@Component({ selector: 'se-list-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['description', 'href', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
 export class SeListItem {
   didSelectedChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -377,7 +377,7 @@ export class SeListItem {
     proxyOutputs(this, this.el, ['didSelectedChange']);
   }
 }
-proxyInputs(SeListItem, ['description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected']);
+proxyInputs(SeListItem, ['description', 'href', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected']);
 
 export declare interface SeLoading extends Components.SeLoading {}
 @Component({ selector: 'se-loading', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['loading', 'option'] })
@@ -443,7 +443,7 @@ export class SeSidemenuItem {
 proxyInputs(SeSidemenuItem, ['active', 'item']);
 
 export declare interface SeSlider extends Components.SeSlider {}
-@Component({ selector: 'se-slider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'max', 'min', 'value'] })
+@Component({ selector: 'se-slider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'label', 'max', 'min', 'value'] })
 export class SeSlider {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -454,7 +454,7 @@ export class SeSlider {
   }
 }
 proxyMethods(SeSlider, ['setDisabled']);
-proxyInputs(SeSlider, ['disabled', 'max', 'min', 'value']);
+proxyInputs(SeSlider, ['disabled', 'label', 'max', 'min', 'value']);
 
 export declare interface SeSnackbar extends Components.SeSnackbar {}
 @Component({ selector: 'se-snackbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type'] })

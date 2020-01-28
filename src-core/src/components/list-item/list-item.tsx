@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Watch, Event, EventEmitter, State } from "@stencil/core";
+import { Component, Host, h, Prop, Element, Watch, Event, EventEmitter, State } from "@stencil/core";
 
 @Component({
   tag: "se-list-item",
@@ -35,6 +35,12 @@ export class ListItemComponent {
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
   @Prop({mutable: true}) option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
+  /**
+   * Determines if se-item configures an `a` tag with an `href` attibute.
+   * Default when href is blank configures as a `button` tag.
+   */
+  @Prop() href: string;
+
   /**
    * Event emitted to notify the list-group component that the selected state has changed.
    */
@@ -82,25 +88,43 @@ export class ListItemComponent {
     if (!!this.description) {
       myDescription = <small>{this.description}</small>
     };
+    const TagType = this.href === undefined ? 'button' : 'a' as any;
+    const attrs = (TagType === 'a') ? { href : this.href } : {};
+
+    const icon = this.option !== "treeview" ? 
+      <se-icon class="nav-icon" color={this.iconColor}>
+        {this.icon}
+      </se-icon>
+      : 
+      this.indentation !== 0 ? 
+        <se-icon class="nav-icon" color={this.iconColor} style={{ paddingLeft: `8px` }}>
+          {this.icon}
+        </se-icon>
+        :
+        <se-icon class="nav-icon" color={this.iconColor}>
+          {this.icon}
+        </se-icon>
+      ;
+
+    const padding = this.option !== "treeview" ? 20 : 24;
+
     return (
-      <div class={['se-list-item', this.option].join(' ')}>
-        <button class={{ "selected": this.selected }} style={{ paddingLeft: `${20 * this.indentation}px` }} id={this.innerId} >
-          {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
-          {!!this.icon ?
-            <div class="nav-icon">
-              <se-icon color={this.iconColor}>
-                {this.icon}
-              </se-icon>
-            </div>
-            : ''}
-          <div class="nav-content">
-            <div class="list-item-label" title={this.item}>{this.item}</div>
-            {myDescription}
-          </div>
-          {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
-          {this.option === "classic" ? <slot></slot> : ''}
-        </button>
-      </div>
+      <Host role="listitem">
+          <TagType 
+            {...attrs} 
+            class={{ "selected": this.selected, ["button"] : true, [this.option] : true, ["se-list-item"] : true }} 
+            style={{ paddingLeft: `${padding * this.indentation}px`}} 
+            id={this.innerId} >
+            {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
+            {!!this.icon ? icon : ''}
+            <div class="nav-content">
+              <div class="list-item-label" title={this.item}>{this.item}</div>
+              {myDescription}
+            </div> 
+            <slot></slot>
+            {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
+          </TagType>
+      </Host>
     )
   }
 }

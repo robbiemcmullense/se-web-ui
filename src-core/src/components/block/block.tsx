@@ -172,14 +172,14 @@ export class BlockComponent {
         enlargedClass,
         `block-bg-${this.color}`].join(' ')}>
         <div class={[
-          'block-body',
-          this.clickable === true ? `${this.clickableBar !== false ? "clickable" : "clickable-nobar"}` : '',
-          this.option,
-          this.outline !== undefined ? outline : '',
-          this.corner !== undefined ? `corner-${this.corner}` : '',
-          this.margin !== undefined ? `margin-${this.margin}` : '', 
-          this.color !== undefined ? `block-bg-${this.color}` : 'block-bg-alternative'].join(' ')}>
-          {this.loading ? <se-loading loading={this.loading} /> : ''}
+            'block-body',
+            this.clickable === true ? `${this.clickableBar !== false ? "clickable" : "clickable-nobar"}` : '',
+            this.option,
+            this.outline !== undefined ? outline : '',
+            this.corner !== undefined ? `corner-${this.corner}` : '',
+            this.margin !== undefined ? `margin-${this.margin}` : '', 
+            this.color !== undefined ? `block-bg-${this.color}` : 'block-bg-alternative'].join(' ')}>
+            {this.loading ? <se-loading loading={this.loading} /> : ''}
           <slot></slot>
         </div>
       </Host>

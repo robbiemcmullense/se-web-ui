@@ -91,8 +91,7 @@ export class FormFieldComponent {
 		return (
 			<div class={['se-form-field', this.status, this.option, this.type].join(' ')}>
 				<div class="form-field-wrapper" data-disabled={this.disabled}>
-					{(this.type === 'input' || this.type === 'select') ? <label class="se-label">{this.label}{this.required ? <span>*</span> : ''}</label> : ''}
-					<slot></slot>
+					{(this.type === 'input' || this.type === 'select') ? <label class={[`se-label`, this.option].join(' ')}><span>{this.label}{this.required ? <span class="required">*</span> : ''}</span><slot></slot></label> : <slot></slot>}
 				</div>
 			</div>
 		)

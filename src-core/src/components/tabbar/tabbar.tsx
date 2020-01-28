@@ -21,16 +21,14 @@ export class TabbarComponent {
 
   render() {
     return (
-      <div class={[`tab-${this.color}`, `opt-${this.option}`].join(' ')}>
-        <div class={["d-flex-main", `opt-${this.option}`].join(' ')}>
-          <div class={["nav-left-wrapper", "centered"].join(' ')}>
-            <slot name="start" />
-          </div>
-          <div class={["fill-space", "nav-center-wrapper", `opt-${this.option}`].join(' ')}>
-            <slot />
-          </div>
-          <div class={["centered"].join(' ')}><slot name="end" /></div>
+      <div class={[`tab-${this.color}`, "d-flex-main", `opt-${this.option}`].join(' ')}>
+        <div class={["nav-left-wrapper", "centered"].join(' ')}>
+          <slot name="start" />
         </div>
+        <div class={["fill-space", "nav-center-wrapper", `opt-${this.option}`].join(' ')}>
+          <slot />
+        </div>
+        <div class={["centered"].join(' ')}><slot name="end" /></div>
       </div>
     );
   }

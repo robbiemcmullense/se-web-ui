@@ -19,6 +19,6 @@ export class IconEcostruxureComponent {
   @Prop() color: "standard" | "inherited" = "standard";
 
   render() {
-    return <img class={[this.size, this.color].join(' ')} src={IconEcostruxure}/>;
+    return <img alt="EcoStruxure" class={[this.size, this.color].join(' ')} src={IconEcostruxure}/>;
   }
 }

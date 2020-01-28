@@ -4,6 +4,19 @@ $max-width-input: 320px;
 
 
 .se-form-field {
+  &.checkbox, &.radio {
+    .form-field-wrapper {
+      @include justify-content(center);
+      &:before {
+        content: '';
+        display: block;
+        flex-basis: 40%;
+        height: 1px;
+        max-width: 140px;
+      }
+    }
+  }
+
 	.form-field-wrapper {
     @include display-flex();
     padding: $spacing;
@@ -11,34 +24,46 @@ $max-width-input: 320px;
   }
 
   label {
-    width: 30%;
+    width: 100%;
     padding-top: 4px;
-    text-align: right;
+    text-align: center;
     @include typology('small');
-    padding-right: 7px;
-    span {
-      color: $se-red;
+    @include display-flex;
+    @include justify-content(center);
+    @include align-items(center);
+    >span {
+      @include flex(1, 1, 40%);
+      max-width: 140px;
+      text-align: right;
+    }
+    .required {
+      @include color('error');
       padding-left: 3px;
     }
   }
 
   ::slotted(se-checkbox) {
     padding-top: 6px;
-    margin-left: calc(30% + 7px);
+    flex-basis: 60%;
+    max-width: $max-width-input;
   }
 
   ::slotted(se-radio) {
-    margin-left: calc(30% + 7px);
+    flex-basis: 60%;
+    max-width: $max-width-input;
   }
 
   ::slotted(input) {
     height: 28px;
     width: 60%;
+    flex-basis: 60%;
     max-width: $max-width-input;
-    border: 1px solid $se-super-light-grey;
+    border: 1px solid;
+    @include border-color('hover-standard');
     font-family: inherit;
     font-size: 14px;
     padding-left: 7px;
+    margin-left: 7px;
     transition: .2s;
     @include background-color('alternative');
   }
@@ -77,10 +102,12 @@ $max-width-input: 320px;
     width: 60%;
     border-radius: 0;
     max-width: $max-width-input + 10;
-    border: 1px solid $se-super-light-grey;
+    border: 1px solid;
+    @include border-color('hover-standard');
     @include background-color('alternative');
     font-family: inherit;
     font-size: 14px;
+    margin-left: 7px;
     padding-left: 4px;
   }
 
@@ -90,9 +117,12 @@ $max-width-input: 320px;
   }
   
   ::slotted(textarea) {
-    width: 62%;
-    padding: 8px;
-    border: 1px solid $se-super-light-grey;
+    width: 60%;
+    max-width: $max-width-input;
+    padding-left: 7px;
+    margin-left: 7px;
+    border: 1px solid;
+    @include border-color('hover-standard');
     font-family: inherit;
     resize: vertical;
   }
@@ -114,7 +144,14 @@ $max-width-input: 320px;
       padding: 0 8px 4px;
       text-align: left;
       line-height: 12px;
-      width: auto;
+      width: 100%;
+      display: block;
+      >span {
+        display: block;
+        max-width: none;
+        text-align: left;
+        line-height: 1.5;
+      }
     }
     ::slotted(se-checkbox) {
       margin-left: 0;
@@ -124,12 +161,16 @@ $max-width-input: 320px;
     }
     ::slotted(input) {
       width: 97%;
+      margin-left: -7px;
     }
     ::slotted(select) {
       width: 100%;
+      margin-left: -7px;
     }
     ::slotted(textarea) {
       width: 97%;
+      max-width: none;
+      margin-left: -7px;
     }
   }
 

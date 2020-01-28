@@ -24,8 +24,8 @@ ol {
   width: 24px;
   height: 24px;
   border-radius: 100%;
-  color: $se-white;
-  background-color: $se-light-grey;
+  @include color('alternative');
+  @include background-color('hover-standard');
   &.se-icon {
     font-family: 'se-icon';
     font-size: 24px;
@@ -68,7 +68,7 @@ ol {
 
 .stepper-item-label {
   display: inline;
-  color: $se-light-grey;
+  @include color('hover-standard');
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;
@@ -86,10 +86,10 @@ se-divider {
 .primary {
   .selected {
     .indicator {
-      background-color: $se-life-green;
+      @include background-color('primary');
      }
      .stepper-item-label {
-       color: $se-anthracite-grey;
+       @include color('focus');
      }
   }
 }
@@ -97,11 +97,11 @@ se-divider {
 .alternative {
   .selected {
     .indicator {
-      background-color: $se-white;
-      color: $se-life-green;
+      @include background-color('alternative');
+      @include color('primary');
     }
     .stepper-item-label {
-      color: $se-white;
+      @include background-color('alternative');
     }
   }
 }

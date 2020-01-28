@@ -8,6 +8,10 @@ $track-color: #f7f7f7;
 $fill-color: #626469;
 $disabled-color: #cbcbcb;
 
+.slider-container {
+	display: block;
+}
+
 @mixin track($fill: 0) {
 	box-sizing: border-box;
 	border: none;

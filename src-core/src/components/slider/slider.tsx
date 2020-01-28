@@ -24,6 +24,10 @@ export class SliderComponent {
   */
   @Prop() max: number = 100;
   /**
+   * The label of the slider that will be attached to the input.
+   */
+  @Prop() label: string;
+  /**
   * Indicates if your slider is disabled.
   * The default setting is `false`.
   */
@@ -71,9 +75,10 @@ export class SliderComponent {
 
   render() {
     return (
-      <div class="slider-container">
+      <label class="slider-container">
+        {this.label}
         <input type="range" min={this.min || "0"} max={this.max} value={this.value || "0"} disabled={this.disabled} ref={el => this.sliderElement = el as HTMLInputElement} onChange={() => this.handleEvent()} />
-      </div>
+      </label>
     )
   }
 }

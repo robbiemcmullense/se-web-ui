@@ -131,30 +131,26 @@ export class ListGroupComponent {
     }
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
-      <Host option={this.option}>
-        <div class={['se-list-group', this.collapsed ? "collapsed" : '', this.option].join(' ')}>
-          <button id={this.innerId} class={[this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : ''].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
-            {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
-            {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon">{this.collapsed ? "arrow2_right" : "arrow2_down"}</se-icon> : ''}
-            {!!this.icon ?
-              <div class="nav-icon">
-                <se-icon color={this.iconColor}>
-                  {this.icon}
-                </se-icon>
-              </div>
-            : ''}
-            <div class="nav-content">
-              <div class="list-group-label">{this.item}</div>
-              {myDescription}
-            </div>
-            {this.option !== "treeview" && this.canCollapse
-                ? <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
-                : ''
-            }
-          </button>
-          <div class={["group-item", this.option].join(' ')}>
-            <slot/>
+      <Host role="listitem" option={this.option}>
+        <button aria-expanded={`${this.collapsed}`} id={this.innerId} class={['se-list-group', this.option, this.collapsed ? "collapsed" : '', this.option, this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : '', "button"].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
+          {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
+          {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon" style={{ paddingLeft: `calc(${8 * this.indentation}px)`}}>{this.collapsed ? "arrow2_right" : "arrow2_down"}</se-icon> : ''}
+          {!!this.icon ?
+            <se-icon class="nav-icon" color={this.iconColor}>
+              {this.icon}
+            </se-icon>
+          : ''}
+          <div class="nav-content">
+            <div class="list-group-label">{this.item}</div>
+            {myDescription}
           </div>
+          {this.option !== "treeview" && this.canCollapse
+              ? <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
+              : ''
+          }
+        </button>
+        <div role="list" class={["se-list-group", "group-item", this.option].join(' ')}>
+          <slot/>
         </div>
       </Host>
     )

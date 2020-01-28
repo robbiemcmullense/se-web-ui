@@ -14,80 +14,83 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  &.classic, &.nav {
-    button {
-      min-height: 47px;
-      height: 20px; // IE fix so flexbox vertical alignment works
-      max-width: 100%;
-    }
+}
+.se-list-group.button .list-group-label {
+  line-height: 24px;
+}
+.se-list-group.button.collapsed {
+  + .group-item {
+    display: none;
   }
-
-  &.treeview {
-    padding-left: 4px;
-    button {
-      padding: 4px 0;
-      se-icon.treeview-collapse-icon {
-        + .nav-icon {
-          margin-left: 6px;
-        }
-      }
-      .nav-icon {
-        margin-right: 0;
-        + .nav-content {
-          padding-left: 2px;
-        }
-      }
-      .nav-content {
-        padding-left: 8px;
-      }
-    }
-    // Align right-caret icon on MS Edge.
-    // Will remove when Chromium-based Edge browser is released.
-    @supports (-ms-ime-align:auto) {
-      se-icon {
-        line-height: inherit;
-        top: 0;
-      }
-    }
+}
+.se-list-group.button.selected {
+  @include color('selected-contrast');
+  @include background-color('selected');
+  &:hover, &:focus{
+  background-color: $se-ultra-dark-grey;
   }
-
-  &.headline {
-    .nav-content {
-      font-size: 16px;
-    }
-    button{
-      height: 47px;
-      background-color: $se-ultra-light-grey-2;
-    }
-  }
-
-  &.collapsed {
-    .group-item {
-      display: none;
-    }
-  }
-
-  button.selected {
-    @include color('selected-contrast');
-    @include background-color('selected');
-    &:hover, &:focus{
-    background-color: $se-ultra-dark-grey;
-    }
-  }
-  // change the background-color when design team decides
-  button.selectedChild {
-    @include color('selected-contrast');
-    @include background-color('selected');
-    &:hover, &:focus{
-    background-color:$se-ultra-dark-grey;
-    }
-  }
-
-  .list-group-label {
-    line-height: 24px;
+}
+// change the background-color when design team decides
+.se-list-group.button.selectedChild {
+  @include color('selected-contrast');
+  @include background-color('selected');
+  &:hover, &:focus{
+    @include background-color('focus');
   }
 }
 
-.se-list-group.dropdown button {
+    
+.se-list-group.button.classic, .se-list-group.button.nav {
+  min-height: 47px;
+  height: 20px; // IE fix so flexbox vertical alignment works
+  max-width: 100%;
+}
+
+
+.se-list-group.button.treeview {
+  border-bottom: 0;
+  padding: 4px 0;
+  // Align right-caret icon on MS Edge.
+  // Will remove when Chromium-based Edge browser is released.
+  @supports (-ms-ime-align:auto) {
+    se-icon {
+      line-height: inherit;
+      top: 0;
+    }
+  }
+}
+.se-list-group.button.treeview > *:first-child {
+  padding-left: 4px;
+}
+.se-list-group.button.treeview .nav-icon {
+  margin-right: 0;
+  // + .nav-content {
+  //   padding-left: 2px;
+  // }
+}
+.se-list-group.button.treeview .nav-content {
+  padding-left: 8px;
+}
+.se-list-group.button.treeview .treeview-collapse-icon {
+  margin-left: 2px;
+  // + .nav-icon {
+  //   margin-left: 2px;
+  // }
+}
+.se-list-group.button.treeview + div se-list-item {
+  padding-left: 6px;
+}
+
+
+.se-list-group.button.headline {
+  height: 47px;
+  background-color: $se-ultra-light-grey-2;
+}
+.se-list-group.button.headline .nav-content {
+  font-size: 16px;
+}
+
+
+.se-list-group.button.dropdown {
   margin-top: -1px;
 }

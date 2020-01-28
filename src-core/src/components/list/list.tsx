@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, Element } from "@stencil/core";
+import { Component, Host, h, Prop, Watch, Element} from "@stencil/core";
 
 @Component({
   tag: "se-list",
@@ -33,6 +33,6 @@ export class ListComponent {
   }
 
   render() {
-    return <slot></slot>;
+    return <Host role="list"><slot></slot></Host>;
   }
 }

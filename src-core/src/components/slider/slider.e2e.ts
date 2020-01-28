@@ -15,7 +15,7 @@ import { newE2EPage } from '@stencil/core/testing';
 
   it('adds a "slider-element" class to a div element', async() => {
     await page.waitForChanges();
-    const slider = await page.find('se-slider >>> div.slider-container');
+    const slider = await page.find('se-slider >>> .slider-container');
     expect(slider).toHaveClasses(['slider-container']);
   });
 });

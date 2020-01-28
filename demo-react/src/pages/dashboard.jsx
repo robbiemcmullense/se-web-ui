@@ -69,6 +69,24 @@ class Dashboard extends Component {
         </se-block>
         <se-divider option="vertical"></se-divider>
         <se-block>
+          <se-list option="treeview">
+              <se-list-item item="Static item"></se-list-item>
+              <se-list-group item="New Block" id="testing-list-group">
+                {listItems.map( id => {
+                  return(
+                      <se-list-item
+                        key={id}
+                        item={`my item ${id}`}
+                        onClick={() => this.changePage(id)}
+                        icon="user_standard"
+                        selected={this.props.location.pathname === `/dashboard/${id}`}
+                        icon-color="primary"
+                        description={`I have a description ${id}`}
+                      />
+                  );
+                })}
+              </se-list-group>
+            </se-list>
           <Route path={`/dashboard/:id`} component={Widget}/>
         </se-block>
       </se-container>

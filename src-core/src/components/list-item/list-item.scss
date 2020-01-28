@@ -17,8 +17,7 @@
   .nav-content {
     font-weight: 500;
   }
-
-  button {
+  .button {
     border-bottom: 1px solid $divider-color;
   }
 }
@@ -26,104 +25,71 @@
 .se-list-item {
   width: 100%;
   width: -webkit-fill-available;
-  button {
-    transition: .2s;
-  }
-
-  &.classic,
-  &.nav {
-    button {
-      min-height: 47px;
-      height: 20px; // IE fix so flexbox vertical alignment works
-      max-width: 100%;
-    }
-  }
-
-  &.classic, &.dropdown {
-    button.selected {
-      @include color('selected-contrast');
-      @include background-color('selected');
-      &:hover, &:focus {
-        background-color: $se-ultra-dark-grey;
-      }
-    }
-  }
-
-  &.nav {
-    button.selected {
-      @include color('primary');
-    }
-  }
-
-  &.treeview {
-    button {
-      padding: 4px 0;
-      &.selected {
-        @include color('selected-contrast');
-        @include background-color('selected');
-        &:hover, &:focus{
-        background-color: $se-ultra-dark-grey;
-        }
-      }
-      // change the background-color when design team decides
-      &.selectedChild {
-        @include color('selected-contrast');
-        @include background-color('selected');
-        &:hover, &:focus{
-        background-color:$se-ultra-dark-grey;
-        }
-      }
-    }
-    .nav-content {
-      padding-left: 12px;
-    }
-    .nav-icon {
-      margin-left: 10px;
-      margin-right: 0;
-      + .nav-content {
-        padding-left: 2px;
-      }
-    }
-  }
-
-  &.dropdown {
-    button {
-      min-height: 32px;
-      height: 20px; // IE fix so flexbox vertical alignment works
-      max-width: 100%;
-      border-bottom: none;
-    }
-    .nav-content{
-      padding: 0 10px;
-      .list-item-label {
-        font-size: $base-fontsize;
-        line-height: 20px;
-      }
-    }
-  }
-
-  &.headline {
-    button {
-      min-height: 42px;
-      height: 42px; // IE fix so flexbox vertical alignment works
-    }
-  }
-
+  transition: .2s;
 }
-
-
-
-:host .dropdown {
-  button {
-    padding-left: 0;
+.se-list-item.button.classic, .se-list-item.button.nav {
+  min-height: 47px;
+  height: 20px; // IE fix so flexbox vertical alignment works
+  max-width: 100%;
+}
+.se-list-item.classic.selected, .se-list-item.dropdown.selected {
+  @include color('selected-contrast');
+  @include background-color('selected');
+  &:hover, &:focus {
+    @include color('hover-standard-contrast');
+    @include background-color('hover-standard')
+  }
+}
+.se-list-item.nav.selected {
+  @include color('primary');
+}
+.se-list-item.treeview {
+  border-bottom: 0;
+  padding: 4px 0;
+  .nav-content {
+    padding-left: 12px;
+  }
+  .nav-icon {
+    margin-left: 2px;
+    margin-right: -8px;
+  }
+}
+.se-list-item.treeview.selected {
+  @include color('selected-contrast');
+  @include background-color('selected');
+  &:hover, &:focus{
+    @include color('hover-standard-contrast');
+    @include background-color('hover-standard');
+  }
+}
+.se-list-item.dropdown {
+  min-height: 32px;
+  max-width: 100%;
+  border-bottom: none;
+  padding-left: 0;
+  .nav-content{
+    // height: 20px; // IE fix so flexbox vertical alignment works
+    padding: 6px 10px;
+    .list-item-label {
+      font-size: $base-fontsize;
+      line-height: 20px;
+    }
   }
   .nav-icon {
     margin-right: 0;
     margin-left: 4px;
   }
 }
+.se-list-item.headline {
+  min-height: 42px;
+  height: 42px; // IE fix so flexbox vertical alignment works
+  .nav-content small {
+    padding-bottom: 2px;
+  }
+}
 
-button {
+.button {
+  box-sizing: border-box;
   border: none;
   margin: 0;
   padding: 0;
@@ -141,6 +107,7 @@ button {
   text-align: left; // MS Edge does not support "start"
   text-align: start;
   border-bottom: 1px solid $divider-color;
+  text-decoration: none;
   &:not([disabled]){
     cursor: pointer;
     &:hover, &:focus{

@@ -88,13 +88,13 @@ export class StepperComponent {
   renderList() {
     return this.stepperItems.map((item: any) => {
       return [
-        <div class={["stepper-item-wrapper", (this.getItemStep(this.selectedItem) === this.getItemStep(item) || item.validated) ? "selected" : ''].join(' ')}>
+        <li class={["stepper-item-wrapper", (this.getItemStep(this.selectedItem) === this.getItemStep(item) || item.validated) ? "selected" : ''].join(' ')}>
           <div class={["stepper-item", this.checkIfPreviousItemValidated(item) ? "disabled" : ''].join(' ')} onClick={() => this.selectStep(item)}>
             <span class={["indicator", item.validated && !item.active ? "se-icon" : ''].join(' ')}>{this.getItemStep(item)}</span>
-            <li class="stepper-item-label">{item.label}</li>
+            <span class="stepper-item-label">{item.label}</span>
           </div>
           {this.getItemStep(item) !== this.stepperItems.length ? <se-divider></se-divider> : ''}
-        </div>
+        </li>
       ]
     })
   }

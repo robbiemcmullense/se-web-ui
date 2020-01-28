@@ -5,7 +5,7 @@ div {
 }
 
 .required {
-  color: $se-red;
+  @include color('error');
   padding-left: 3px;
 }
 
@@ -31,6 +31,9 @@ div {
       height: 0;
       width: 0;
       opacity: 0;
+      margin: 0;
+      position: absolute;
+      clip: rect(1px, 1px, 1px, 1px);
       &:checked ~ .checkmark {
 
         &[data-color="primary"] {
@@ -59,7 +62,8 @@ div {
       height: 14px;
       width: 14px;
       @include background-color("alternative");
-      border: 1px solid $se-light-grey;
+      border: 1px solid;
+      @include border-color('hover-standard');
       border-radius: 2px;
       transition: .2s;
 

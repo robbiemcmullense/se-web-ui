@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, Host, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "se-breadcrumb-item",
@@ -17,13 +17,15 @@ export class BreadcrumbItemComponent {
 
   render() {
     return (
-      <div class={{ 'selected': this.isLast }}>
-        {this.isLast ?
-          <li aria-current='page' class="breadcrumb-item"><slot/></li>
-          :
-          [<li class="breadcrumb-item"><a href={this.href}><slot/></a></li>,
-          <se-icon size="small">arrow2_right</se-icon>]}
-      </div>
+      <Host role="listitem">
+        <div class={{ 'selected': this.isLast }}>
+          {this.isLast ?
+            <span aria-current='page' class="breadcrumb-item"><slot/></span>
+            :
+            [<span class="breadcrumb-item"><a href={this.href}><slot/></a></span>,
+            <se-icon size="small">arrow2_right</se-icon>]}
+        </div>
+      </Host>
     )
   }
 }

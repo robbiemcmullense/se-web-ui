@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Element, Component, h, Prop } from "@stencil/core";
 import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
 
@@ -8,6 +8,7 @@ import { AppInfo } from "../appInfo";
   shadow: true
 })
 export class AboutComponent {
+	@Element() el: HTMLElement;
   /**
    * The title of your about screen.
    */
@@ -43,7 +44,7 @@ export class AboutComponent {
     }
     return [
       <div class="image-container">
-        <img class="image-background" style={{ backgroundImage: this.imageUrl }}/>
+        <div class="image-background" style={{ backgroundImage: this.imageUrl }}/>
       </div>,
       <div class="about-section-wrapper">
         <div class="information">

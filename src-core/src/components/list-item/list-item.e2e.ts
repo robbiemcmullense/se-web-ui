@@ -39,7 +39,7 @@ import { newE2EPage } from '@stencil/core/testing';
     element.setProperty('icon', 'my test icon');
     await page.waitForChanges();
     
-    const iconElm = await page.find('se-list-item >>> .nav-icon se-icon');
+    const iconElm = await page.find('se-list-item >>> se-icon.nav-icon ');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('my test icon');
   });

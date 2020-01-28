@@ -5,20 +5,20 @@ a {
   margin: $spacing-small;
   line-height: 17px;
   display: inline-block;
-  @include  color('secondary');
+  @include color('secondary');
   text-decoration: none;
   &.external {
     &:before {
-      content: '> ';
+      content: '>\00a0';
     }
   }
   &:hover {
     text-decoration: underline;
-    @include  color('hover-secondary');
+    @include color('hover-secondary');
   }
   &[data-disabled] {
     pointer-events: none;
-    color: $se-light-grey;
+    @include color('hover-standard');
   }
 }
 

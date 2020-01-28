@@ -25,20 +25,20 @@
 
 <body>
   <se-app>
-    <!-- <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
-      <div>
-        <se-form-field label="Username" required="true" option="stacked">
-          <input type="text"/>
-        </se-form-field>
-        <se-form-field label="Password" required="true" option="stacked">
-          <input type="password" />
-        </se-form-field>
-        <se-button onclick="closeLogin()" option="login" value="myLoginValue">Login</se-button>
-      </div>
-    </se-authentication> -->
+          <!-- <se-authentication id="se-authentication" app-title="Test Advisor" version="1.2.3" image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
+            <div>
+              <se-form-field label="Username" required="true" option="stacked">
+                <input type="text"/>
+              </se-form-field>
+              <se-form-field label="Password" required="true" option="stacked">
+                <input type="password" />
+              </se-form-field>
+              <se-button onclick="closeLogin()" option="login" value="myLoginValue">Login</se-button>
+            </div>
+          </se-authentication> -->
     <se-header app-title="Test Advisor" project="Project name">
       <div slot="end">
-        <se-link url="http://google.com" option="external">External Link to Google</se-link>
+        <se-link url="http://google.com" option="external" style="display:inline-block;">External Link to Google</se-link>
         <se-dropdown alignment="right">
           <se-button slot="trigger" option="inherit" icon="user_standard" icon-color="primary">Test User</se-button>
           <se-list option="dropdown">
@@ -83,7 +83,7 @@
           </se-block>
         </se-sidemenu-item>
         <se-sidemenu-item item="About" id="side-about">
-          <se-about app-title="Test Advisor" version="1.2.3"
+          <se-about app-title="Test Advisor" version="1.2.3" 
             image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
           </se-about>
         </se-sidemenu-item>
@@ -119,9 +119,9 @@
     </se-tabbar>
     <se-container>
       <se-block width="250px">
-        <se-list>
+        <se-list option="classic">
           <se-list-item id="item1" item="my item 1" selected="false" icon="user_standard" icon-color="primary"
-            description="I have a description">
+            description="I have a description" href="https://www.google.com">
           </se-list-item>
           <se-list-item id="item2" item="my item 2 no description with a long text" icon="user_standard"
             icon-color="primary">
@@ -142,7 +142,7 @@
             <se-list-item item="my item 3 no icon" icon="action_settings2" description="I'm here too">
             </se-list-item>
             <se-list-item item="Check me!" icon="action_settings2" selected="false">
-              <se-checkbox></se-checkbox>
+              <se-checkbox label="Check me"></se-checkbox>
             </se-list-item>
             <se-list-item item="Click the button!" icon="action_settings2">
               <se-button>Select</se-button>
@@ -169,24 +169,22 @@
             </se-list-item>
           </se-list-group>
           <se-list-group item="Widget Title">
-            <div class="bg-background">
-              <se-block option="widget" clickable="true">
+              <se-block role="listitem" option="widget" clickable="true">
                 <se-block-content>Testing a block widget within an se-list-group</se-block-content>
               </se-block>
-              <se-block option="widget">
+              <se-block role="listitem" option="widget">
                 <se-block-header>More</se-block-header>
                 <se-block-content>Further testing</se-block-content>
                 <se-block-footer>Fin</se-block-footer>
               </se-block>
-            </div>
 
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Card Title">
-            <se-block option="card" outline outlinecolor="alternative" corner="0" elevation="false">
+            <se-block role="listitem" option="card" outline outlinecolor="alternative" corner="0" elevation="false">
               <se-block-content>Testing a block card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="card" clickable="true">
+            <se-block role="listitem" option="card" clickable="true">
               <se-block-header id="test">More</se-block-header>
               <se-block-content>Further testing</se-block-content>
               <se-block-footer>Fin</se-block-footer>
@@ -194,10 +192,10 @@
           </se-list-group>
           <!-- <se-divider></se-divider> -->
           <se-list-group item="Basic Title">
-            <se-block elevation="large" option="basic">
+            <se-block role="listitem" elevation="large" option="basic">
               <se-block-content>Testing a basic card within an se-list-group</se-block-content>
             </se-block>
-            <se-block option="basic" clickable="true">
+            <se-block role="listitem" option="basic" clickable="true">
               <se-block-header>More</se-block-header>
               <se-block-content>Further testing</se-block-content>
               <se-block-footer>Fin</se-block-footer>
@@ -281,7 +279,7 @@
               <h6>My h6 string with a divider </h6>
               <se-divider></se-divider>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                Lorem ipsum dolor sit amet, <se-link>consectetur adipiscing elit, sed dooo</se-link> eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua.
               </p>
@@ -299,7 +297,7 @@
               </div>
             </se-block-header>
             <se-block-content option="fill">
-              <se-list option="headline" can-collapse="false">
+              <se-list option="headline" can-collapse="true">
                 <se-list-group item="Headline Example">
                   <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
                   <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary"></se-list-item>
@@ -380,7 +378,7 @@
                 <se-chip value="Chip Alt Disabled" can-close="true" disabled="true" color="alternative"></se-chip>
               </div>
               <se-chip block="true" value="Chip Block"></se-chip>
-              <se-chip id="se-chip" value="Chip Std"></se-chip>
+              <se-chip value="Chip Std"></se-chip>
               <se-chip selected="true" value="Chip Std Selected"></se-chip>
               <se-chip disabled="true" value="Chip Std Disabled"></se-chip>
               <div style="background-color:#9fa0a4;">
@@ -458,13 +456,13 @@
               </ul>
               <h4>Inlined:</h4>
               <se-form-field id="checkbox-form" label="Inline Checkbox" type="checkbox" required="true">
-                <se-checkbox></se-checkbox>
+                <se-checkbox required="required"></se-checkbox>
               </se-form-field>
               <se-form-field id="radio-form" label="Inline Radio" type="radio" required="true">
                 <se-radio></se-radio>
               </se-form-field>
               <se-form-field id="input-form" label="Input" required="true">
-                <input type="text" />
+                <input type="text" required/>
               </se-form-field>
               <se-form-field id="select-form" label="Select" required="true" type="select">
                 <select>
@@ -483,7 +481,7 @@
               <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
                 <input type="text" />
               </se-form-field>
-              <se-form-field id="select-form" label="Select" required="true" type="select" option="stacked">
+              <se-form-field label="Select" required="true" type="select" option="stacked">
                 <select>
                   <option>Stacked Option 1</option>
                   <option>Stacked Option 2</option>
@@ -561,23 +559,111 @@
               <se-visual-radial percentage="90" secolor="#1400ee" label="units" value="8"></se-visual-radial>
             </se-block-content>
           </se-block>
-          <se-block id="block7">
+          <se-block enlarged="true" id="block7">
             <se-block-header>
-              Tree view
+              Lists
               <div slot="end">
                 <se-icon option="button" color="alternative" onclick="toggle(7)">presentation_mode</se-icon>
               </div>
             </se-block-header>
             <se-block-content>
-              <se-list option="treeview">
-                <se-list-group option="treeview" item="Treeview Example">
-                  <se-list-item item="First treeview child"></se-list-item>
-                  <se-list-group option="treeview" item="Second treeview child">
-                    <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
-                    <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
-                  </se-list-group>
-                </se-list-group>
-              </se-list>
+              <se-container option="fill" style="border:1px solid black;">
+                <se-block width="250px" option="fill">
+                  <se-list>
+                    <se-list-item item="my classic list item" icon="user_standard" icon-color="primary" description="I have a description that is really super long"></se-list-item>
+                    <se-list-item item="my item 2 no description with a long text" icon="user_standard" icon-color="primary"></se-list-item>
+                    <se-list-item item="Basic Item"></se-list-item>
+                    <se-list-item item="Check me!" icon="action_settings2" selected="false" role="listitem" class="hydrated"> <se-checkbox label="Check me" class="hydrated"></se-checkbox> </se-list-item>
+                    <se-list-item item="Click the button!" icon="action_settings2" role="listitem" class="hydrated"> <se-button class="hydrated">Select</se-button> </se-list-item>
+                    <se-list-group item="I have a selected child">
+                      <se-list-item item="my item 1" icon="action_settings2" icon-color="primary" description="I have a description"></se-list-item>
+                      <se-list-item item="my item 2 no description" selected="true" icon="action_settings2" icon-color="primary"></se-list-item>
+                      <se-list-item item="my item 3 no icon" description="I'm here too"></se-list-item>
+                      <se-list-group icon="action_settings2" item="Second treeview child">
+                        <se-list-item icon="action_settings2" item="I'm the first treeview grandchild!"></se-list-item>
+                      </se-list-group>
+                    </se-list-group>
+                    <se-list-group item="simple collapse">
+                      <se-list-item item="No icon, not selected"></se-list-item>
+                    </se-list-group>
+                  </se-list>
+                </se-block>
+                <se-divider option="vertical"></se-divider>
+                <se-block width="250px" option="fill">
+                    <se-list option="nav">
+                      <se-list-item item="my classic list item" icon="user_standard" icon-color="primary" description="I have a description"></se-list-item>
+                      <se-list-item item="my item 2 no description with a long text" icon="user_standard" icon-color="primary"></se-list-item>
+                      <se-list-item item="Basic Item"></se-list-item>
+                      <se-list-item item="Check me!" icon="action_settings2" selected="false" role="listitem" class="hydrated"> <se-checkbox label="Check me" class="hydrated"></se-checkbox> </se-list-item>
+                      <se-list-item item="Click the button!" icon="action_settings2" role="listitem" class="hydrated"> <se-button class="hydrated">Select</se-button> </se-list-item>
+                      <se-list-group item="I have a selected child">
+                        <se-list-item item="my item 1" icon="action_settings2" icon-color="primary" description="I have a description"></se-list-item>
+                        <se-list-item item="my item 2 no description" selected="true" icon="action_settings2" icon-color="primary"></se-list-item>
+                        <se-list-item item="my item 3 no icon" description="I'm here too"></se-list-item>
+                        <se-list-group icon="action_settings2" item="Second treeview child">
+                          <se-list-item icon="action_settings2" item="I'm the first treeview grandchild!"></se-list-item>
+                        </se-list-group>
+                      </se-list-group>
+                      <se-list-group item="simple collapse">
+                        <se-list-item item="No icon, not selected"></se-list-item>
+                      </se-list-group>
+                    </se-list>
+                  </se-block>
+                <se-divider option="vertical"></se-divider>
+                <se-block width="250px" option="fill">
+                  <se-list option="treeview">
+                    <se-list-item item="First treeview item"></se-list-item>
+                    <se-list-group item="Treeview Example">
+                      <se-list-item item="First treeview child" description="I have a description"></se-list-item>
+                      <se-list-group item="Second treeview child">
+                        <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                        <se-list-item item="I'm the second treeview grandchild!"></se-list-item>
+                        <se-list-item item="Check me!" selected="false" role="listitem" class="hydrated"> <se-checkbox label="Check me" class="hydrated"></se-checkbox> </se-list-item>
+                        <se-list-item item="Click the button!" role="listitem" class="hydrated"> <se-button class="hydrated">Select</se-button> </se-list-item>
+                        <se-list-group item="Second treeview child">
+                          <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                          <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
+                        </se-list-group>
+                      </se-list-group>
+                      <se-list-item item="Third treeview child" description="I have a description"></se-list-item>
+                      <se-list-item item="Third treeview child"></se-list-item>
+                    </se-list-group>
+                    <se-list-item item="Forth treeview child"></se-list-item>
+                    <se-list-item item="Forth treeview child"></se-list-item>
+                  </se-list>
+                </se-block>
+                <se-divider option="vertical"></se-divider>
+                <se-block width="250px" option="fill">
+                  <se-list option="dropdown">
+                    <se-list-item item="dropdown item"></se-list-item>
+                    <se-list-item item="Item 2" description="I have a description"></se-list-item>
+                    <se-list-item item="Item 3"></se-list-item>
+                    <se-list-item item="Check me!" icon="action_settings2" selected="false" role="listitem" class="hydrated"> <se-checkbox label="Check me" class="hydrated"></se-checkbox> </se-list-item>
+                    <se-list-item item="Click the button!" icon="action_settings2" role="listitem" class="hydrated"> <se-button size="large" class="hydrated">Select</se-button> </se-list-item>
+                    <se-divider></se-divider>
+                    <se-list-item item="Item separated with a divider" description="I have a description"></se-list-item>
+                  </se-list>
+                </se-block>
+                <se-divider option="vertical"></se-divider>
+                <se-block width="250px" option="fill">
+                  <se-list option="headline" can-collapse="true">
+                    <se-list-group item="Headline Example">
+                      <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
+                      <se-list-item item="Primary color icon" icon="action_doc_add" icon-color="primary" description="I have a description"></se-list-item>
+                      <se-list-item item="Disable color icon" icon="action_editor" icon-color="disable"></se-list-item>
+                      <se-list-group item="Headline Example">
+                        <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard" description="I have a description"></se-list-item>
+                        <se-list-item item="Check me!" icon="action_settings2" selected="false" role="listitem" class="hydrated" description="I have a description"> <se-checkbox label="Check me" class="hydrated"></se-checkbox> </se-list-item>
+                    <se-list-item item="Click the button!" icon="action_settings2" role="listitem" class="hydrated"> <se-button class="hydrated">Select</se-button> </se-list-item>
+                      </se-list-group>
+                    </se-list-group>
+                    <se-list-group item="Warning and error icon colors">
+                      <se-list-item item="Warning color icon" icon="general_danger_wired" icon-color="warning"></se-list-item>
+                      <se-list-item item="Error color icon" icon="notification_error_full_stroke" icon-color="error"></se-list-item>
+                    </se-list-group>
+                  </se-list>
+                </se-block>
+              </se-container>
             </se-block-content>
           </se-block>
           <se-block id="block8">

@@ -79,7 +79,7 @@ export class SnackbarComponent {
   render() {
     return (
       <div class={this.type}>
-        <div class="snackbar">
+        <div class="snackbar" role="alert">
           {this.icon ? <span class="snackbar-icon se-icon">{this.icon}</span> : ''}
           <span class="message">{this.message}</span>
           {this.actionText ? <span class="action" onClick={() => this.submitData()}>{this.actionText}</span> : ''}

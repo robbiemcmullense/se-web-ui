@@ -49,10 +49,13 @@ export class BannerItemComponent {
   }
 
   render() {
+
     return (
       <Host class={{ 'active': this.active }}>
         <div class="image-container">
-          <img class="image-background" style={{ backgroundImage: this.imageUrl }} />
+          <div 
+            class="image-background" 
+            style={{ backgroundImage: this.imageUrl }} />
           <div class="background-overlay"></div>
         </div>
         <div class="banner-section-wrapper">

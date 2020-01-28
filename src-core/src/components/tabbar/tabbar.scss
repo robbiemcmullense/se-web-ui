@@ -28,6 +28,16 @@
   @include align-items(center);
 }
 
+.nav-center-wrapper {
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    height: 0 !important
+  }
+}
+
 .tab-primary,
 .tab-alternative {
   font-size: 16px;
@@ -37,29 +47,31 @@
       margin: 0 calc(#{$spacing-large} * 1.5);
     }
     nav > a[disabled] {
-      opacity: 0.3;
+      opacity: 0.5;
     }
   }
   &.opt-content {
     nav {
-      background-color: $se-white;
+      @include background-color('alternative');
       box-sizing: border-box;
       height: 46px;
       min-width: 100%;
       max-width: 100%;
       > a, > span {
-        background-color: $se-white;
-        border: 1px solid $se-ultra-light-grey-1;
+        @include background-color('alternative');
+        border: 1px solid;
+        @include border-color('standard');
         border-bottom: 0;
         border-left: 0;
         line-height: 46px;
         @include color('alternative-contrast');
         padding: 0 $spacing-xlarge;
         &:first-child {
-          border-left: 1px solid $se-ultra-light-grey-1;
+          border-left: 1px solid;
+          @include border-color('standard');
         }
         &:not([disabled]):hover {
-          background-color: $se-light-grey;
+          @include background-color('hover-standard');
         }
         &:after {
           display: none;
@@ -68,7 +80,7 @@
           height: 0;
         }
         &.active {
-          background-color: $se-ultra-light-grey-2;
+          @include background-color('background');
           height: 47px;
           @include color('primary');
           &:after {
@@ -84,98 +96,64 @@
           }
         }
         &[disabled] {
-          color: $se-light-grey;
+          @include color('hover-standard');
         }
-      }
-    }
-  }
-  .nav-center-wrapper {
-    overflow-y: hidden;
-    scrollbar-width: none;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-      height: 0 !important
-    }
-  }
-  nav {
-    width: fit-content;
-    min-width: 100%;
-    height: 100%;
-    @include display-flex();
-    @include align-items(center);
-    > a[disabled] {
-      cursor: default;
-    }
-    > a, > span {
-      font-weight: 500;
-      position: relative;
-      cursor: pointer;
-      display: inline;
-      padding-right: 0;
-      padding-left: 0;
-      text-decoration: none;
-      transition: .2s;
-      height: 100%;
-      &:focus {
-        background-color: transparent;
-      }
-      &:hover {
-        text-decoration: none;
-        background-color: transparent;
-      }
-      &:after {
-        content: "";
-        cursor: default;
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        height: 4px;
-        transition: .2s;
-        width: 100%;
-      }
-      &.active:after{
-        height: 4px;
-      }
-      &.label {
-        opacity: 0.8;
-        padding: 0.1em 0.4em 0.2em;
-        margin-bottom: 2px;
       }
     }
   }
 }
 
-.tab-primary {
-  &.opt-nav {
-    @include background-color('primary');
-    @include  color('primary-contrast');
-    // box-shadow: $inner-shadow-top;
-    // border-bottom: 4px solid rgba(black, 0.25);
-    nav:not([slot='start']) {
-      border-bottom: 4px solid rgba(black, 0.25);
+nav {
+  width: fit-content;
+  min-width: 100%;
+  height: 100%;
+  @include display-flex();
+  @include align-items(center);
+  > a[disabled] {
+    cursor: default;
+  }
+  > a, > span {
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+    display: inline;
+    padding-right: 0;
+    padding-left: 0;
+    text-decoration: none;
+    transition: .2s;
+    height: 100%;
+    &:focus {
+      background-color: transparent;
     }
-    .nav-left-wrapper {
-      background-color: rgba(black, 0.4);
-      // &:not(:empty) {}
-      &>*:first-child{
-        padding-left: $spacing-large;
-      }
-      &>*:last-child{
-        padding-right: $spacing-large;
-      }
+    &:hover {
+      text-decoration: none;
+      background-color: transparent;
     }
-    nav {
-      height: 44px;
-      text-transform: uppercase;
-      > a {
-        line-height: 44px;
-      }
+    &:after {
+      content: "";
+      cursor: default;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 4px;
+      transition: .2s;
+      width: 100%;
+    }
+    &.active:after{
+      height: 4px;
+    }
+    &.label {
+      opacity: 0.8;
+      padding: 0.1em 0.4em 0.2em;
+      margin-bottom: 2px;
     }
   }
+}
+
+.tab-primary {
   nav {
     > a, > span {
-      @include  color('primary-contrast');
+      @include color('primary-contrast');
       &:not([disabled]):hover {
         &:after {
           @include background-color('primary-contrast');
@@ -191,36 +169,6 @@
 .tab-alternative {
   @include background-color('alternative');
   @include color('alternative-contrast');
-  &.opt-nav {
-    nav {
-      height: 40px;
-      > a {
-        line-height: 40px;
-        &:not([disabled]):hover, &.active {
-          @include color('primary')
-        }
-        &:after {
-          bottom: 0;
-          display: inline-block;
-        }
-        &:hover:not([disabled]):after {
-          @include background-color('primary');
-          height: 4px;
-        }
-      }
-    }
-  }
-  &.opt-content {
-    nav {
-      background-color: $se-ultra-light-grey-2;
-      > a {
-        background-color: $se-ultra-light-grey-2;
-        &.active {
-          @include background-color('alternative');
-        }
-      }
-    }
-  }
   .nav-left-wrapper {
     &>*:first-child{
       padding-left: $spacing-large;
@@ -230,9 +178,131 @@
     }
   }
   nav > a, nav > span {
-    @include  color('alternative-contrast');
+    @include color('alternative-contrast');
     &.active:after {
-      @include  background-color('primary');
+      @include background-color('primary');
+    }
+  }
+}
+
+.opt-nav, .opt-content {
+  font-size: 16px;
+  width: 100%;
+}
+
+.opt-nav {
+  nav > a, nav > span {
+    margin: 0 calc(#{$spacing-large} * 1.5);
+  }
+  nav > a[disabled] {
+    opacity: .5;
+  }
+}
+.opt-nav.tab-primary {
+  @include background-color('primary');
+  @include color('primary-contrast');
+  // box-shadow: $inner-shadow-top;
+  // border-bottom: 4px solid rgba(black, 0.25);
+  nav:not([slot='start']) {
+    border-bottom: 4px solid rgba(black, 0.25);
+  }
+  .nav-left-wrapper {
+    background-color: rgba(black, 0.4);
+    // &:not(:empty) {}
+    &>*:first-child{
+      padding-left: $spacing-large;
+    }
+    &>*:last-child{
+      padding-right: $spacing-large;
+    }
+  }
+  nav {
+    height: 44px;
+    text-transform: uppercase;
+    > a {
+      line-height: 44px;
+    }
+  }
+}
+.opt-nav.tab-alternative nav {
+  height: 40px;
+  > a {
+    line-height: 40px;
+    &[disabled] {
+      @include color('primary');
+      opacity: .4;
+    }
+    &:not([disabled]):hover, &.active {
+      @include color('primary')
+    }
+    &:after {
+      bottom: 0;
+      display: inline-block;
+    }
+    &:hover:not([disabled]):after {
+      @include background-color('primary');
+      height: 4px;
+    }
+  }
+}
+.opt-content nav {
+  @include background-color('alternative');
+  box-sizing: border-box;
+  height: 46px;
+  min-width: 100%;
+  max-width: 100%;
+  > a, > span {
+    @include background-color('alternative');
+    border: 1px solid;
+    @include border-color('standard');
+    border-bottom: 0;
+    border-left: 0;
+    line-height: 46px;
+    @include color('alternative-contrast');
+    padding: 0 $spacing-xlarge;
+    &:first-child {
+      border-left: 1px solid;
+      @include border-color('standard');
+    }
+    &:not([disabled]):hover {
+      @include background-color('hover-standard')
+    }
+    &:after {
+      display: none;
+      bottom: auto;
+      top: 0;
+      height: 0;
+    }
+    &.active {
+      @include background-color('background');
+      height: 47px;
+      @include color('primary');
+      &:after {
+        display: inline-block;
+        @include background-color('primary');
+        height: 2px;
+      }
+      &:hover {
+        color: initial;
+        &:after {
+          @include background-color('primary');
+        }
+      }
+    }
+    &[disabled] {
+      @include color('hover-standard');
+    }
+  }
+}
+.opt-content.tab-alternative nav {
+  @include background-color('background');
+  > a, > span {
+    @include background-color('background');
+    &.active {
+      @include background-color('alternative');
+    }
+    &:not([disabled]):hover {
+      @include background-color('hover-standard')
     }
   }
 }

@@ -605,6 +605,10 @@ export namespace Components {
     */
     'description': string;
     /**
+    * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
+    */
+    'href': string;
+    /**
     * Places an icon on the left side of the item list.
     */
     'icon': string;
@@ -717,6 +721,10 @@ export namespace Components {
     * Indicates if your slider is disabled. The default setting is `false`.
     */
     'disabled': boolean;
+    /**
+    * The label of the slider that will be attached to the input.
+    */
+    'label': string;
     /**
     * Indicates the maximum value of your slider. The default value is `100`.
     */
@@ -1837,6 +1845,10 @@ declare namespace LocalJSX {
     */
     'description'?: string;
     /**
+    * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
+    */
+    'href'?: string;
+    /**
     * Places an icon on the left side of the item list.
     */
     'icon'?: string;
@@ -1957,6 +1969,10 @@ declare namespace LocalJSX {
     * Indicates if your slider is disabled. The default setting is `false`.
     */
     'disabled'?: boolean;
+    /**
+    * The label of the slider that will be attached to the input.
+    */
+    'label'?: string;
     /**
     * Indicates the maximum value of your slider. The default value is `100`.
     */

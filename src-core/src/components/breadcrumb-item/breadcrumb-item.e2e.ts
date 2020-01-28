@@ -7,7 +7,7 @@ describe('BreadcrumbItemComponent', () => {
     page = await newE2EPage();
     await page.setContent('<se-breadcrumb-item>Click Me!</se-breadcrumb-item>');
     element = await page.find('se-breadcrumb-item');
-    listItemElement = await page.find('se-breadcrumb-item >>> li');
+    listItemElement = await page.find('se-breadcrumb-item >>> span');
     linkElement = await page.find('se-breadcrumb-item >>> a');
   });
 

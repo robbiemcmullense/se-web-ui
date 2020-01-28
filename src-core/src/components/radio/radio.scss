@@ -5,7 +5,7 @@
   .se-radio {
     display: inline-block;
     .required {
-      color: $se-red;
+      @include color('error');
       padding-left: 3px;
     }   
     .radio-label {
@@ -26,6 +26,9 @@
         height: 0;
         width: 0;
         opacity: 0;
+        margin: 0;
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
         &:checked ~ .checkdot {
           height: 8px;
           width: 8px;
@@ -50,8 +53,9 @@
         left: -8px;
         height: 14px;
         width: 14px;
-        background-color: $se-white;
-        border: 1px solid $se-light-grey;
+        @include background-color('alternative');
+        border: 1px solid;
+        @include border-color('hover-standard');
         border-radius: 50%;
       }
       &.checkdot-label-left {
