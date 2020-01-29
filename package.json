@@ -1,6 +1,6 @@
 {
   "name": "@se/web-ui",
-  "version": "3.5.2",
+  "version": "3.5.3",
   "private": true,
   "description": "Library of HTML [custom element](https://developers.google.com/web/fundamentals/web-components/customelements) that can be used with any framework like jquery, React, Vue or even no framework at all.",
   "scripts": {
@@ -20,6 +20,7 @@
     "release": "node release.js"
   },
   "devDependencies": {
+    "husky": "^4.2.1",
     "npm-run-all": "^4.1.5"
   },
   "license": "MIT",

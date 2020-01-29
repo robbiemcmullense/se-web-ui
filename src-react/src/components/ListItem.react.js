@@ -42,7 +42,7 @@ ListItem.propTypes = {
   description: PropTypes.string,
   /**
    * Determines if se-item configures an `a` tag with an `href` attibute.
-   * Default when href is blank configures as a `button` tag.
+Default when href is blank configures as a `button` tag.
    */
   href: PropTypes.string,
   /**

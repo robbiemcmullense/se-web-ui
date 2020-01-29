@@ -79,6 +79,7 @@ When set to true, the button will be as wide as its container.
   selected: PropTypes.bool,
   /**
    * Defines the size of the button.
+`nano` sets the font to 12px font and a 24px height.  Used primarily with the `se-radio-group` component.
 `small` is the default option, with a 14px font and a 32px height.
 `medium` sets the font to 16px and the height to 40px.
 `large` sets the font to 18px and the height to 48px.
