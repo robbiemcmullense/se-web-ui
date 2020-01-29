@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core';
+import spinner from "@se/icons/svg/spinner.svg";
 
 @Component({
   tag: 'se-loading',
@@ -22,7 +23,7 @@ export class LoadingComponent {
       <Host class={{'show': this.loading}}>
         <div class="loading-wrapper">
           <div class={["se-loading", this.option].join(' ')}>
-            <div class="se-icon">spinner</div>
+            <div class="loading-icon" innerHTML={spinner}></div>
           </div>
         </div>
         <div class="loading-background"></div>

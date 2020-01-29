@@ -8,19 +8,20 @@
   width: 100%;
   min-height: 64px;
   max-height: 64px;
-  // @include animated("slow");
-  // animation-name: fadeIn;
   z-index: 10;
-
   @include display-flex();
   @include flex-direction(row);
   @include justify-content(space-between);
   @include align-items(center);
-
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   white-space: nowrap;
   @include background-color("alternative");
+}
+
+::slotted([slot="end"]) {
+  display: flex;
+  align-items: center;
 }
 
 .fill-space {
@@ -29,7 +30,6 @@
 .d-flex {
   justify-content: center;
   align-items: center;
-
   @include display-flex();
   @include flex-direction(row);
 }
@@ -40,17 +40,10 @@
   @include flex-direction(column);
 }
 
-.header-title-wrapper{
+.header-title-wrapper {
   margin-right: $spacing-large;
 }
 
-// .line {
-//   border: 1px solid #333333;
-//   width: 0px;
-//   height: 32px;
-//   margin-left: 15px;
-//   margin-right: 15px;
-// }
 .project-section {
   color: $se-dark-grey;
   margin: 0 $spacing-large;
@@ -63,13 +56,18 @@
 .header-menu-button {
   margin-left: 6px;
 }
+
 .menu-sidenav {
   cursor: pointer;
   margin-right: -17px;
   padding: $spacing $spacing-large;
+  se-icon {
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: -moz-middle-with-baseline;
+  }
 }
 
-.header-title{
+.header-title {
   @include  color("primary");
   padding-left: 18px;
   font-size: 20px;
@@ -95,16 +93,18 @@
 .font-lighter {
   font-weight: 100;
 }
+
 se-icon-schneider {
   width: 140px;
   padding-left: 9px !important;
   margin-top: 5px;
 }
+
 se-icon-ecostruxure {
   margin-bottom: -5px;
 }
+
 .padding-container {
-  // margin-right: 13px;
   &.link-container {
     font-size: 13px;
   }
@@ -118,28 +118,3 @@ se-icon-ecostruxure {
     height: 64px;
   }
 }
-
-// ::ng-deep {
-//   [header-user],
-//   header-user {
-//     margin-right: 10px;
-//     .mat-button-wrapper {
-//       color : $se-dark-grey;
-//       padding: 0 13px;
-//       font-weight: 100;
-
-//       &:after {
-//         content: "";
-//         position: absolute;
-//         top: 50%;
-//         right: 10px;
-//         transform: translateY(-50%);
-//         width: 0;
-//         height: 0;
-//         border-left: 5px solid transparent;
-//         border-right: 5px solid transparent;
-//         border-top: 5px solid $se-dark-grey;
-//       }
-//     }
-//   }
-// }

@@ -1,4 +1,6 @@
-import { Component, h, Prop, State, Method, Listen } from '@stencil/core';
+import { Component, h, Prop, State, Method } from '@stencil/core';
+import notification_error from "@se/icons/svg/notification_error.svg";
+import arrow4_top from "@se/icons/svg/arrow4_top.svg";
 const SHOW_FAB = 'show';
 
 @Component({
@@ -7,8 +9,8 @@ const SHOW_FAB = 'show';
 	shadow: true
 })
 export class FabComponent {
-	error_icon = 'notification_error';
-	arrow_up = 'arrow4_top';
+	error_icon = notification_error;
+	arrow_up = arrow4_top;
 	/**
 	 * Property that determines if an icon is included in the main action button.
 	 */
@@ -42,11 +44,6 @@ export class FabComponent {
 		}
 	}
 
-	@Listen('didClick')
-	buttonClickedHandler() {
-		this.toggleAction();
-	}
-
 	getIcon() {
 		let icon: any;
 		switch (this.option) {
@@ -64,7 +61,9 @@ export class FabComponent {
 	render() {
 		return (
 			<div class={['se-fab', `pos-${this.position}`].join(' ')}>
-				<se-button color={this.color} class={this.option == 'backtotop' ? 'backtotop' : ''} option='fab' onClick={() => this.toggleAction()} icon={this.getIcon()}></se-button>
+				<se-button color={this.color} icon-only="true" class={this.option == 'backtotop' ? 'backtotop' : ''} option='fab' onClick={() => this.toggleAction()}>
+          <se-icon slot="icon" size="medium"><span innerHTML={this.getIcon()}></span></se-icon>
+        </se-button>
 				{this.option === 'speeddial' ?
 					<div class={['mini-action-button', !this.toggleIcon ? SHOW_FAB : ''].join(' ')}>
 						<slot></slot>

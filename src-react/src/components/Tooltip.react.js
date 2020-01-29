@@ -48,13 +48,13 @@ Tooltip.propTypes = {
   children: PropTypes.node,
   /**
    * Indicates the action of your tooltip.
-   * The default setting is `hover`, triggering the tooltip when hovering over the parent element.
-   * The `click` action triggers the tooltip when you click on the parent element.
+The default setting is `hover`, triggering the tooltip when hovering over the parent element.
+The `click` action triggers the tooltip when you click on the parent element.
    */
   action: PropTypes.string,
   /**
    * Indicates the position of your tooltip.
-   * The default setting is `bottom`, rendering the tooltip below its parent.
+The default setting is `bottom`, rendering the tooltip below its parent.
    */
   position: PropTypes.string,
   /**

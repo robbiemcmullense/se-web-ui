@@ -13,8 +13,8 @@ describe('IconLifeIsOnComponent', () => {
     expect(element).toBeTruthy();
   });
 
-  it('has an img element with the "inherited" class by default', async () => {
-    let imgElm = await page.find('se-icon-lifeison >>> img');
+  it('has a span element with the "inherited" class by default', async () => {
+    let imgElm = await page.find('se-icon-lifeison >>> span');
     expect(imgElm).toBeTruthy();
     expect(imgElm).toHaveClass('inherited');
   });

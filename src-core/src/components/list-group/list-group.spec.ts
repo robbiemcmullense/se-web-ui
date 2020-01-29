@@ -24,12 +24,12 @@ describe('list-group', () => {
     expect(listGroup.canCollapse).toBe(true);
   });
 
-  it('should render in classic mode with a down arrow by default', async() => {
+  it('should render in classic mode, with a se-icon element by default', async() => {
 		const page = await newSpecPage({
 			components: [ListGroupComponent],
 			html: `<se-list-group></se-list-group>`,
 		});
-		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_up');
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
   });
 
   it('should render the button with attribute "disabled" true when canCollapse is false', async() => {
@@ -75,14 +75,6 @@ describe('list-group', () => {
     const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
     listGroup.toggleCollapse(event); // list group button is clicked
     expect(eventSpy).not.toHaveBeenCalled();
-  });
-
-  it('should emit the didGroupClick event when the toggleCollapse method is called in treeview option and the target is not the icon', () => {
-    listGroup.option = 'treeview';
-    const event = {target: {nodeName: 'button', className: 'button'}};
-    const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
-    listGroup.toggleCollapse(event); // list group button is clicked
-    expect(eventSpy).toHaveBeenCalled();
   });
 
   it('should inherit the headline option from its parent when specified', () => {

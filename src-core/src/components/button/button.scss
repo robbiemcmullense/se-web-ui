@@ -50,7 +50,7 @@
   button {
     margin: $spacing-small 0;
     height: 32px;
-    padding: 0;
+    padding: 0 $spacing;
     @include typology("nano");
     border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;
@@ -60,15 +60,8 @@
         font-size: 12px;
       }
     }
-    &.hasIcon {
-      .se-icon {
-        font-size: 32px;
-      }
-      &.nano {
-        .se-icon {
-          font-size: 24px;
-        }
-      }
+    &.iconOnly {
+      padding: 0 $spacing-small;
     }
   }
 }
@@ -118,8 +111,18 @@
   }
 }
 
+::slotted(se-icon[slot="icon"]), se-icon {
+  margin-right: $spacing;
+}
+
+:host[icon-only] {
+  ::slotted(se-icon[slot="icon"]) {
+    margin-right: 0;
+  }
+}
+
 button {
-  padding: 0 $spacing;
+  padding: 0 $spacing-large;
   height: 32px;
   margin: $spacing-small;
   border: none;
@@ -133,30 +136,10 @@ button {
   @include ellipsis();
   @include justify-content(center);
 
-  .text {
-    font-weight: 300;
-    @include typology("base");
-    padding: 0 $spacing;
-  }
-
-  .se-icon {
-    margin: 0;
-    display: inline-block;
-    font-family: "se-icon";
-    font-size: 24px;
-    font-display: block;
-    line-height: 1;
-    &.standard {
-      @include color("standard");
-    }
-    &.alternative {
-      @include color("alternative");
-    }
-    &.primary {
-      @include color("primary");
-    }
-    &.secondary {
-      @include color("secondary");
+  &.iconOnly {
+    padding: 0 $spacing-small;
+    ::slotted(se-icon[slot="icon"]), se-icon {
+      margin-right: 0;
     }
   }
 
@@ -337,21 +320,6 @@ button {
     height: 32px;
     font-size: 18px;
     line-height: 22px;
-  }
-
-  &.hasIcon {
-    top: 4px;
-    position: relative;
-    padding: 0 $spacing-small;
-    &.hasChild {
-      .se-icon {
-        padding-left: 10px;
-      }
-      .text {
-        padding-left: $spacing-small;
-        padding-right: 12px;
-      }
-    }
   }
 
   &.fab {

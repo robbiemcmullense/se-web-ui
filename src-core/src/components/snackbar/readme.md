@@ -1,6 +1,9 @@
 # se-snackbar
 
-
+| Slot   | Description                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------------- |
+| `icon` | Another way to configure your own icon instead of using the icon property (used to load svg icon) |
+| none   | Can be used to contain the snackbar message instead of the `message` parameter                    |
 
 <!-- Auto Generated Below -->
 
@@ -25,6 +28,19 @@
 | `actionClicked` | Sends information to the parent component when clicking a custom action button. | `CustomEvent<any>` |
 | `didClose`      | Sends information to the parent component when closing the snackbar.            | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [se-icon](../icon)
+
+### Graph
+```mermaid
+graph TD;
+  se-snackbar --> se-icon
+  style se-snackbar fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

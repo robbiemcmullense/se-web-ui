@@ -1,6 +1,8 @@
 # se-list-item
 
-
+| Slot   | Description                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------------- |
+| `icon` | Another way to configure your own icon instead of using the icon property (used to load svg icon) |
 
 <!-- Auto Generated Below -->
 
@@ -10,6 +12,7 @@
 | Property      | Attribute     | Description                                                                                                                        | Type                                                                                           | Default     |
 | ------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------- |
 | `description` | `description` | Defines the description of the item, placed under its title.                                                                       | `string`                                                                                       | `undefined` |
+| `href`        | `href`        | Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.      | `string`                                                                                       | `undefined` |
 | `icon`        | `icon`        | Places an icon on the left side of the item list.                                                                                  | `string`                                                                                       | `undefined` |
 | `iconColor`   | `icon-color`  | Optional property to define the color of the icon. The default color will be inherited from it's parent.                           | `"alternative" \| "error" \| "primary" \| "secondary" \| "standard" \| "success" \| "warning"` | `undefined` |
 | `indentation` | `indentation` | Defines the group indentation to add paddings to the list item (used with multiple list groups).                                   | `number`                                                                                       | `0`         |

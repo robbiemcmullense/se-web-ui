@@ -52,6 +52,9 @@ export class RadioGroupComponent {
     this.children.forEach((child: any) => {
       if (child.localName == 'se-button') {
         child.setGrouped();
+        if (child.icon) {
+          child.iconOnly = true;
+        }
       }
       if (this.disabled) {
         child.disabled = true;

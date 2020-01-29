@@ -1,5 +1,6 @@
 <svg version="1.1" id="Calque_1"
-  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="88px" height="16px" viewBox="0 0 88 16" enable-background="new 0 0 88 16">
+  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="88px" height="16px" viewBox="0 0 88 16" enable-background="new 0 0 88 16" role="img">
+  <title>Ecostruxure</title>
   <pattern width="20" height="20" patternUnits="userSpaceOnUse" id="Unnamed_Pattern_3" viewBox="0 -20 20 20" overflow="visible">
     <g>
       <polygon fill="none" points="0,-20 20,-20 20,0 0,0"></polygon>

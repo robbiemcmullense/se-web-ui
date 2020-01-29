@@ -17,6 +17,6 @@ describe('IconSchneiderComponent', () => {
 			components: [IconSchneiderComponent],
 			html: `<se-icon-schneider></se-icon-schneider>`,
 		});
-		expect(page.root.shadowRoot.querySelector('img')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('span')).toBeTruthy();
   });
 });

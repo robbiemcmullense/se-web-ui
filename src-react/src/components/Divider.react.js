@@ -23,8 +23,8 @@ Divider.propTypes = {
   children: PropTypes.node,
   /**
    * Indicates the color schema of your divider line.
-   * Default setting is `standard`, rendering a light gray colored line.
-   * The `alternative` property sets a white colored divider line.
+Default setting is `standard`, rendering a light gray colored line.
+The `alternative` property sets a white colored divider line.
    */
   color: PropTypes.string,
   /**

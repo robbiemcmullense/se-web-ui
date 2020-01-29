@@ -13,6 +13,7 @@ export class TooltipContentComponent {
     return (
       <div class="tooltip-content">
         {this.icon && <se-icon class="se-icon" size="small">{this.icon}</se-icon>}
+        <slot name="icon"></slot>
         <slot />
       </div>
     )

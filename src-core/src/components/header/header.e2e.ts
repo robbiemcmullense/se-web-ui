@@ -40,12 +40,11 @@ describe('HeaderComponent', () => {
 });
 
 describe('Header Component with Sidenav Child', () => {
-  it('should render a se-icon element with the burger_menu text', async() => {
+  it('should render a se-icon element when an se-sidemenu element exists within the header', async() => {
     const page = await newE2EPage();
     await page.setContent('<se-header><se-sidemenu><se-sidemenu-item></se-sidemenu-item></se-sidemenu></se-header>');
     const element = await page.find('se-header >>> se-icon');
     expect(element).toBeTruthy();
-    expect(element.innerText).toEqual('burger_menu');
   });
 });
 

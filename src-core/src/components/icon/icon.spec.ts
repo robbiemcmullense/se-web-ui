@@ -12,15 +12,11 @@ describe('se-icon', () => {
     expect(icon).toBeTruthy();
   });
 
-  it('should be a small size by default', () => {
-    expect(icon.size).toEqual('small');
-  });
-
-  it('should render with the icon-small class to reflect the default small size', async() => {
+  it('should render, with an se-icon-wrapper class', async() => {
     const page = await newSpecPage({
 			components: [IconComponent],
 			html: `<se-icon></se-icon>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.icon-small')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.se-icon-wrapper')).toBeTruthy();
   });
 });

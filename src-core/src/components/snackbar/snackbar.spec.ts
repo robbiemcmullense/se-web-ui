@@ -16,9 +16,6 @@ describe('SnackbarComponent', () => {
 		expect(snackbar.type).toEqual('information');
 	});
 
-	it('should have an information circle icon by default', () => {
-		expect(snackbar.icon).toEqual('information_circle');
-	});
 
 	it('should not be open by default', () => {
 		expect(snackbar.open).toBe(false);
@@ -38,7 +35,6 @@ describe('SnackbarComponent', () => {
 			html: `<se-snackbar></se-snackbar>`,
 		});
 		expect(page.root.shadowRoot.querySelector('.information')).toBeTruthy();
-		expect(page.root.shadowRoot.querySelector('.snackbar-icon').innerHTML).toEqual('information_circle');
 	});
 
 	it('should render with a span element with the close class when the canClose property is true', async() => {

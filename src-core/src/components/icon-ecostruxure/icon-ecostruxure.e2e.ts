@@ -13,8 +13,8 @@ describe('IconEcostruxureComponent', () => {
     expect(element).toBeTruthy();
   });
 
-  it('has an img element with the "small" class by default', async () => {
-    let imgElm = await page.find('se-icon-ecostruxure >>> img');
+  it('has a span element with the "small" class by default', async () => {
+    let imgElm = await page.find('se-icon-ecostruxure >>> span');
     expect(imgElm).toBeTruthy();
     expect(imgElm).toHaveClass('small');
   });

@@ -6,7 +6,7 @@
 	&.pos-top {
 		top: 76px;
 		right: 32px;
-		& .mini-action-button{
+		& .mini-action-button {
 			top: 70px;
 				left: 0;
 				text-align: center;
@@ -16,18 +16,23 @@
 	&.pos-bottom {
 		bottom: 16px;
 		right: 32px;
-		& .mini-action-button{
+		& .mini-action-button {
 			bottom: 55px;
 			left: 0;
 				text-align: center;
 		}
 	}
 
-	.mini-action-button{
+	.mini-action-button {
 		cursor: pointer;
 		position: absolute;
 		display: none;
 	}
+
+	se-icon {
+		margin-right: 0;
+	}
+
 	.show {
 		display: block;
 	}

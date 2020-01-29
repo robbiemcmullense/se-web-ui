@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
   showConfirm(): void {
     const confirm = this.dialogService.confirm({
       title: 'Dialog Confirm',
-      message: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`
+      message: `Lorem ipsum <small>dolor sit amet, consectetur adipiscing elit,</small> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`
     });
     confirm.instance.afterClosed.subscribe(
       (data: any) => {

@@ -38,8 +38,8 @@ Radio.propTypes = {
   children: PropTypes.node,
   /**
    * Defines the color of the checkbox.
-   * The default setting is `primary`, rendering a green color.
-   * The `secondary` setting renders a blue color.
+The default setting is `primary`, rendering a green color.
+The `secondary` setting renders a blue color.
    */
   color: PropTypes.string,
   /**
@@ -52,7 +52,7 @@ Radio.propTypes = {
   label: PropTypes.string,
   /**
    * Sets the position of the label for your checkbox component.
-   * The default setting is `right`.
+The default setting is `right`.
    */
   labelPos: PropTypes.string,
   /**
@@ -61,8 +61,8 @@ Radio.propTypes = {
   required: PropTypes.bool,
   /**
    * Determines whether or not the checkbox is checked when you initialize it.
-   *  The default setting is `false`.
-   *  Checked if set to `true`.
+ The default setting is `false`.
+ Checked if set to `true`.
    */
   selected: PropTypes.bool,
   /**

@@ -24,12 +24,12 @@ describe('BreadcrumbItemComponent', () => {
 		expect(breadcrumbItem.href).toBeUndefined();
 	});
 
-	it('should render with a right-arrowed se-icon by default', async() => {
+	it('should render, with an se-icon element present by default', async() => {
 		const page = await newSpecPage({
 			components: [BreadcrumbItemComponent],
 			html: `<se-breadcrumb-item></se-breadcrumb-item>`,
 		});
-		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('arrow2_right');
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
 	});
 
 	it('should render without an icon because it is the last item', async() => {

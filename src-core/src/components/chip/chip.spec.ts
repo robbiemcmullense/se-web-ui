@@ -49,9 +49,8 @@ describe('ChipComponent', () => {
 			components: [ChipComponent],
 			html: `<se-chip value="my chip value" can-close="true"></se-chip>`,
 		});
-		let icon = page.root.shadowRoot.querySelector('.se-icon');
+		let icon = page.root.shadowRoot.querySelector('se-icon');
 		expect(icon).toBeTruthy();
-		expect(icon.innerHTML).toEqual('action_delete_cross');
 	});
 
 	it('should render with a selected class when the selected property is true', async() => {

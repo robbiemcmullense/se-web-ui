@@ -25,6 +25,19 @@
 | `didClose` | Send the chip value to the parent component when clicking the close button of a chip. | `CustomEvent<any>` |
 
 
+## Dependencies
+
+### Depends on
+
+- [se-icon](../icon)
+
+### Graph
+```mermaid
+graph TD;
+  se-chip --> se-icon
+  style se-chip fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

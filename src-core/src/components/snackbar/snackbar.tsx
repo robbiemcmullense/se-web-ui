@@ -1,4 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Prop, Watch } from "@stencil/core";
+import information_circle from "@se/icons/svg/information_circle.svg";
+import action_delete_cross from "@se/icons/svg/action_delete_cross.svg";
+
 const SHOW_SNACKBAR = 'show-snackbar';
 
 @Component({
@@ -19,7 +22,7 @@ export class SnackbarComponent {
   /**
    * The name of the icon you wish to display.  The default icon is an information circle.
    */
-  @Prop() icon: string = 'information_circle';
+  @Prop() icon: string | "none" = 'information_circle';
   /**
    * The content of the message you want the snackbar to display.
    */
@@ -77,13 +80,23 @@ export class SnackbarComponent {
   }
 
   render() {
+    let renderIcon: string | boolean = this.icon === 'information_circle' ? information_circle : this.icon;
+    if (this.icon === "none") {
+      renderIcon = false;
+    }
     return (
       <div class={this.type}>
         <div class="snackbar" role="alert">
-          {this.icon ? <span class="snackbar-icon se-icon">{this.icon}</span> : ''}
-          <span class="message">{this.message}</span>
+          <span class="snackbar-icon" >
+            {renderIcon && <se-icon><span innerHTML={renderIcon as string}></span></se-icon>}
+            <slot name="icon"></slot>
+          </span>
+         <span class="message">
+           {this.message}
+           <slot></slot>
+          </span>
           {this.actionText ? <span class="action" onClick={() => this.submitData()}>{this.actionText}</span> : ''}
-          {this.canClose ? <span class="close se-icon" onClick={() => this.closeSnackbar()}>action_delete_cross</span> : ''}
+          {this.canClose ? <span class="close"><se-icon onClick={() => this.closeSnackbar()}><span innerHTML={action_delete_cross}></span></se-icon></span> : ''}
         </div>
       </div>
     )

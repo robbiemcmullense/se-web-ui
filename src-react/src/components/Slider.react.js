@@ -22,9 +22,9 @@ export default class Slider extends Component {
   }
 
 	render() {
-		const { disabled, max, min, value, didChange, children } = this.props;
+		const { disabled, label, max, min, value, didChange, children } = this.props;
 		return (
-			<se-slider disabled={disabled} max={max} min={min} value={value} ref={this._handleRef} >{children}</se-slider>
+			<se-slider disabled={disabled} label={label} max={max} min={min} value={value} ref={this._handleRef} >{children}</se-slider>
 		);
 	}
 }
@@ -41,6 +41,10 @@ Slider.propTypes = {
    * The default setting is `false`.
    */
   disabled: PropTypes.bool,
+  /**
+   * The label of the slider that will be attached to the input.
+   */
+  label: PropTypes.string,
   /**
    * Indicates the maximum value of your slider.
    * The default value is `100`.

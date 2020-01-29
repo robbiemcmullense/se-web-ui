@@ -21,7 +21,7 @@ describe('IconEcostruxureComponent', () => {
 			components: [IconEcostruxureComponent],
 			html: `<se-icon-ecostruxure></se-icon-ecostruxure>`,
 		});
-		expect(page.root.shadowRoot.querySelector('img.small')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('span.small')).toBeTruthy();
 	});
 	
 	it('should render with the medium class when specified', async() => {
@@ -29,6 +29,6 @@ describe('IconEcostruxureComponent', () => {
 			components: [IconEcostruxureComponent],
 			html: `<se-icon-ecostruxure size="medium"></se-icon-ecostruxure>`,
 		});
-		expect(page.root.shadowRoot.querySelector('img.medium')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('span.medium')).toBeTruthy();
   });
 });

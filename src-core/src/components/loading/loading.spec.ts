@@ -25,11 +25,11 @@ describe('list-group', () => {
 		expect(loader.loading).toBeDefined();
 	});
 
-	it('should render, with a spinner icon', async() => {
+	it('should render, with an standard class to reflect the default option', async() => {
     const page = await newSpecPage({
       components: [LoadingComponent],
       html: `<se-loading></se-loading>`,
     });
-    expect(page.root.shadowRoot.querySelector('.se-icon').innerHTML).toEqual('spinner');
+    expect(page.root.shadowRoot.querySelector('.se-loading.standard')).toBeTruthy();
   });
 });

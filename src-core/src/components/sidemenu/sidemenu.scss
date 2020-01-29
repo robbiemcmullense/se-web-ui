@@ -76,6 +76,11 @@
 }
 .menu-sidenav {
   margin-right: -6px;
+  cursor: pointer;
+  se-icon {
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: -moz-middle-with-baseline;
+  }
 }
 .header-title {
   margin: 0;

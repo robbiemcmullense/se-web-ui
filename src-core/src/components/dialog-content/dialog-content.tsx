@@ -22,7 +22,10 @@ export class DialogContentComponent {
   render() {
     return (
       <div class={['se-dialog-content', this.option === 'fill' ? 'full-content' : ''].join(' ')}>
-        {this.icon ? <span class="se-icon-wrapper"><se-icon size="large" color={this.iconColor}>{this.icon}</se-icon></span>: ''}
+        <span class="se-icon-wrapper">
+          {this.icon ? <se-icon size="large" color={this.iconColor}><span innerHTML={this.icon}></span></se-icon>: ''}
+          <slot name="icon"></slot>
+        </span>
         <div class="inner-content"><slot></slot></div>
       </div>
     )

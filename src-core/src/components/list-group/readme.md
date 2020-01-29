@@ -1,6 +1,9 @@
 # se-list-group
 
 
+| Slot   | Description                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------------- |
+| `icon` | Another way to configure your own icon instead of using the icon property (used to load svg icon) |
 
 <!-- Auto Generated Below -->
 

@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from "@stencil/core";
+import arrow2_right from "@se/icons/svg/arrow2_right.svg";
 
 @Component({
   tag: "se-breadcrumb-item",
@@ -23,7 +24,7 @@ export class BreadcrumbItemComponent {
             <span aria-current='page' class="breadcrumb-item"><slot/></span>
             :
             [<span class="breadcrumb-item"><a href={this.href}><slot/></a></span>,
-            <se-icon size="small">arrow2_right</se-icon>]}
+            <se-icon size="small"><span innerHTML={arrow2_right}></span></se-icon>]}
         </div>
       </Host>
     )

@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { inlineSvg } from 'stencil-inline-svg';
 
 const copy = [
   { src: '../node_modules/@se/fonts/css', dest: 'fonts/css' },
@@ -14,6 +15,10 @@ export const config: Config = {
     {
       type: 'dist',
       dir: 'core'
+    },
+    {
+      type: 'dist-hydrate-script',
+      dir: 'core/hydrate'
     },
     {
       type: 'docs-json',
@@ -36,12 +41,14 @@ export const config: Config = {
     }
   ],
   plugins: [
-    sass()
+    sass(),
+    inlineSvg()
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     transform: {
       "^.+\\.svg$": "<rootDir>/svgTransform.js"
-    }
+    },
+    transformIgnorePatterns: ['/node_modules/(?!@se/icons/svg)']
   }
 };

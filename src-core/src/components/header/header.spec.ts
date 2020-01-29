@@ -36,12 +36,12 @@ describe('HeaderComponent', () => {
 		expect(page.root.shadowRoot.querySelector('se-icon-ecostruxure')).not.toBeTruthy();
 	});
 
-	it('should render with a burger icon when a sidemenu element is present', async() => {
+	it('should render with an se-icon element when a sidemenu element is present', async() => {
 		const page = await newSpecPage({
 			components: [HeaderComponent],
 			html: `<se-header><se-sidemenu></se-sidemenu></se-header>`,
 		});
-		expect(page.root.shadowRoot.querySelector('se-icon').innerText).toEqual('burger_menu');
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
 	});
 
 	it('should set the component hasMenu property to true when a sidemenu element is present', () => {

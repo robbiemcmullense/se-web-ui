@@ -48,7 +48,7 @@ describe('ChipComponent', () => {
     hostElement.setProperty('canClose', true);
     await page.waitForChanges();
     const eventSpy = await page.spyOnEvent('didClose');
-    const closeElm = await page.find('se-chip >>> div.close');
+    const closeElm = await page.find('se-chip >>> se-icon.close');
     await closeElm.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail('My Value');

@@ -10,7 +10,7 @@
   "dependencies": {
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.3.0",
-    "@se/web-ui": "^3.0.0",
+    "@se/web-ui": "file:../core",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1"
   },
@@ -19,35 +19,23 @@
     "@vue/cli-plugin-eslint": "^3.5.1",
     "@vue/cli-service": "^3.5.2",
     "@vue/eslint-config-prettier": "^5.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^6.0.1",
+    "html-loader": "^0.5.5",
     "node-sass": "^4.9.0",
+    "prettier": "^1.19.1",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "vue": {
-    "lintOnSave": true
+    "vue-svg-loader": "^0.15.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "babel": {
     "presets": [
       "@vue/app"
     ]
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/prettier"
-    ],
-    "rules": {
-      "no-console": "off",
-      "no-debugger": "off"
-    },
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
   },
   "postcss": {
     "plugins": {

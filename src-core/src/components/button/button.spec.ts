@@ -63,7 +63,7 @@ describe('ButtonComponent', () => {
 			components: [ButtonComponent],
 			html: `<se-button icon="my icon"></se-button>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.se-icon')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
 	});
 
 	it('should render with an span element that has class equal to text when the button has inner html markup', async() => {

@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Element, Watch, Event, EventEmitter, State } from "@stencil/core";
+import arrow2_right from "@se/icons/svg/arrow2_right.svg";
 
 @Component({
   tag: "se-list-item",
@@ -91,17 +92,17 @@ export class ListItemComponent {
     const TagType = this.href === undefined ? 'button' : 'a' as any;
     const attrs = (TagType === 'a') ? { href : this.href } : {};
 
-    const icon = this.option !== "treeview" ? 
-      <se-icon class="nav-icon" color={this.iconColor}>
+    const icon = this.option !== "treeview" ?
+      <se-icon color={this.iconColor}>
         {this.icon}
       </se-icon>
-      : 
-      this.indentation !== 0 ? 
-        <se-icon class="nav-icon" color={this.iconColor} style={{ paddingLeft: `8px` }}>
+      :
+      this.indentation !== 0 ?
+        <se-icon color={this.iconColor} style={{ paddingLeft: `8px` }}>
           {this.icon}
         </se-icon>
         :
-        <se-icon class="nav-icon" color={this.iconColor}>
+        <se-icon color={this.iconColor}>
           {this.icon}
         </se-icon>
       ;
@@ -110,19 +111,22 @@ export class ListItemComponent {
 
     return (
       <Host role="listitem">
-          <TagType 
-            {...attrs} 
-            class={{ "selected": this.selected, ["button"] : true, [this.option] : true, ["se-list-item"] : true }} 
-            style={{ paddingLeft: `${padding * this.indentation}px`}} 
+          <TagType
+            {...attrs}
+            class={{ "selected": this.selected, ["button"] : true, [this.option] : true, ["se-list-item"] : true }}
+            style={{ paddingLeft: `${padding * this.indentation}px`}}
             id={this.innerId} >
             {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
-            {!!this.icon ? icon : ''}
+            <div class="nav-icon">
+              {!!this.icon ? icon : ''}
+              <slot name="icon"></slot>
+            </div>
             <div class="nav-content">
               <div class="list-item-label" title={this.item}>{this.item}</div>
               {myDescription}
-            </div> 
+            </div>
             <slot></slot>
-            {this.option === "nav" ? <se-icon size="medium">arrow2_right</se-icon> : ''}
+            {this.option === "nav" ? <se-icon size="medium"><span innerHTML={arrow2_right}></span></se-icon> : ''}
           </TagType>
       </Host>
     )

@@ -3,12 +3,18 @@
     <se-block style="width: 300px">
       <se-block-header>Filter</se-block-header>
       <se-block-content>
-        <se-checkbox option="switch" @didChange="myValue = $event.detail.selected" :selected="myValue"></se-checkbox>
+        <se-checkbox
+          option="switch"
+          @didChange="myValue = $event.detail.selected"
+          :selected="myValue"
+        ></se-checkbox>
         {{ myValue }}
-        <se-button id="flatBtn1" option="flat" color="error">Warning</se-button>
+      </se-block-content>
+      <se-block-content>
         <se-button option="login" value="myLoginValue">Login</se-button>
         <se-button option="signup">Sign Up</se-button>
       </se-block-content>
+
       <se-block-footer>
         <se-radio option="radio">
           <se-button value="left">Radio1</se-button>
@@ -24,13 +30,20 @@
           ...
         </ul>
         <div class="button-row">
-          <se-button option="outline">outline</se-button>
-          <se-button option="outline" color="primary"
+          <se-button
+            id="flatBtn1"
+            option="flat"
+            :icon="userStandard"
+            >With Icon props!</se-button
+          >
+          <se-button option="outline" :icon="userStandard">outline</se-button>
+          <se-button option="outline" color="primary" :icon="userStandard"
             >outline primary</se-button
           >
           <se-button option="raised" color="secondary"
             >Raised secondary</se-button
           >
+          <se-icon size="small" :icon="userStandard"></se-icon>
         </div>
         <div class="button-row">
           <se-button option="raised">Raised</se-button>
@@ -53,27 +66,16 @@
 </style>
 
 <script>
-import Api from "@/Api";
+import userStandard from "@se/icons/svg/user_standard.svg";
 
 export default {
   data() {
     return {
+      userStandard: userStandard,
       loading: true,
       posts: null,
       myValue: true
     };
-  },
-
-  created() {
-    Api.getPosts()
-      .then(response => {
-        this.posts = response.data;
-        this.loading = false;
-      })
-      .catch(() => {
-        alert("ERROR");
-        this.loading = false;
-      });
   }
 };
 </script>

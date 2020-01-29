@@ -12,7 +12,11 @@ export class TooltipHeaderComponent {
 
   render() {
     return [
-      <div class="tooltip-header">{this.icon && <se-icon class="se-icon" size="small" >{this.icon}</se-icon>}<slot /></div>,
+      <div class="tooltip-header">
+        {this.icon && <se-icon class="se-icon" size="small">{this.icon}</se-icon>}
+        <slot name="icon"></slot>
+        <slot />
+      </div>,
       <slot name="end" />
     ];
   }

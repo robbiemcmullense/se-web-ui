@@ -217,6 +217,10 @@ export namespace Components {
     */
     'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
+    * Optional property to specify if the button contains a text or only an icon. THis will impact how the buttons render. Only necessary when using svg icon instead of the `icon` name property.
+    */
+    'iconOnly': boolean;
+    /**
     * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
     */
     'option': 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
@@ -234,9 +238,9 @@ export namespace Components {
     */
     'setGrouped': () => Promise<void>;
     /**
-    * Defines the size of the button. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
+    * Defines the size of the button. `nano` sets the font to 12px font and a 24px height.  Used primarily with the `se-radio-group` component. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
     */
-    'size': 'small' | 'medium' | 'large';
+    'size': 'nano' | 'small' | 'medium' | 'large';
     /**
     * Optional property. `button`	is the default setting, creating a clickable button. `submit`	creates a "submit" button (useful to submit form-data). `reset`	creates a reset button (useful to reset form-data to its initial values).
     */
@@ -759,7 +763,7 @@ export namespace Components {
     /**
     * The name of the icon you wish to display.  The default icon is an information circle.
     */
-    'icon': string;
+    'icon': string | "none";
     /**
     * The content of the message you want the snackbar to display.
     */
@@ -1450,6 +1454,10 @@ declare namespace LocalJSX {
     */
     'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
+    * Optional property to specify if the button contains a text or only an icon. THis will impact how the buttons render. Only necessary when using svg icon instead of the `icon` name property.
+    */
+    'iconOnly'?: boolean;
+    /**
     * Passes button data to the parent component on a click.
     */
     'onDidClick'?: (event: CustomEvent<any>) => void;
@@ -1462,9 +1470,9 @@ declare namespace LocalJSX {
     */
     'selected'?: boolean;
     /**
-    * Defines the size of the button. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
+    * Defines the size of the button. `nano` sets the font to 12px font and a 24px height.  Used primarily with the `se-radio-group` component. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
     */
-    'size'?: 'small' | 'medium' | 'large';
+    'size'?: 'nano' | 'small' | 'medium' | 'large';
     /**
     * Optional property. `button`	is the default setting, creating a clickable button. `submit`	creates a "submit" button (useful to submit form-data). `reset`	creates a reset button (useful to reset form-data to its initial values).
     */
@@ -2006,7 +2014,7 @@ declare namespace LocalJSX {
     /**
     * The name of the icon you wish to display.  The default icon is an information circle.
     */
-    'icon'?: string;
+    'icon'?: string | "none";
     /**
     * The content of the message you want the snackbar to display.
     */

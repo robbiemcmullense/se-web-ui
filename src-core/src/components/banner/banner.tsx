@@ -1,4 +1,6 @@
 import { Component, Element, h, State, Prop, Listen } from "@stencil/core";
+import arrow2_left from "@se/icons/svg/arrow2_left.svg";
+import arrow2_right from "@se/icons/svg/arrow2_right.svg";
 
 @Component({
 	tag: "se-banner",
@@ -178,10 +180,10 @@ export class BannerComponent {
 						{this.renderList()}
 					</ol>,
 					<se-icon class="previous-indicator" onClick={() => this.changeActive('previous')}>
-						arrow2_left
+            <span innerHTML={arrow2_left}></span>
 					</se-icon>,
 					<se-icon class="next-indicator" onClick={() => this.changeActive('next')}>
-						arrow2_right
+            <span innerHTML={arrow2_right}></span>
 					</se-icon>]
 					: ''}
 			</div>

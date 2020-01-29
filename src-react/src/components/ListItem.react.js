@@ -22,9 +22,9 @@ export default class ListItem extends Component {
   }
 
 	render() {
-		const { description, icon, iconColor, indentation, item, option, selected, didSelectedChange, children } = this.props;
+		const { description, href, icon, iconColor, indentation, item, option, selected, didSelectedChange, children } = this.props;
 		return (
-			<se-list-item description={description} icon={icon} icon-color={iconColor} indentation={indentation} item={item} option={option} selected={selected} ref={this._handleRef} >{children}</se-list-item>
+			<se-list-item description={description} href={href} icon={icon} icon-color={iconColor} indentation={indentation} item={item} option={option} selected={selected} ref={this._handleRef} >{children}</se-list-item>
 		);
 	}
 }
@@ -40,6 +40,11 @@ ListItem.propTypes = {
    * Defines the description of the item, placed under its title.
    */
   description: PropTypes.string,
+  /**
+   * Determines if se-item configures an `a` tag with an `href` attibute.
+   * Default when href is blank configures as a `button` tag.
+   */
+  href: PropTypes.string,
   /**
    * Places an icon on the left side of the item list.
    */

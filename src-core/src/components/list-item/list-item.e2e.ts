@@ -25,21 +25,19 @@ import { newE2EPage } from '@stencil/core/testing';
     expect(description.innerText).toEqual('sample list item');
   });
 
-  it('should render an icon with arrow2_right when the option is set to nav', async () => {
+  it('should render an se-icon element when the option is set to nav', async () => {
 		element.setProperty('option', 'nav');
 		await page.waitForChanges();
 
     const iconElm = await page.find('se-list-item >>> se-icon');
     expect(iconElm).toBeTruthy();
-    expect(iconElm.innerText).toEqual('arrow2_right');
   });
 
   it('should render the icon equal to the icon property when provided', async() => {
-    element.setProperty('option', 'nav');
     element.setProperty('icon', 'my test icon');
     await page.waitForChanges();
     
-    const iconElm = await page.find('se-list-item >>> se-icon.nav-icon ');
+    const iconElm = await page.find('se-list-item >>> .nav-icon ');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('my test icon');
   });

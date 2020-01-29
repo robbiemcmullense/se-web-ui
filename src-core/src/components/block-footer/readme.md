@@ -1,9 +1,8 @@
 # se-block-footer
 
-| Slot  | Description                                                             |
-| ----- | ----------------------------------------------------------------------- |
-| none  | Slot with no name will be positioned to the end of the element (right)  |
-| `start` | Positions to the `left` of the content.                               |
+| Slot   | Description                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------------- |
+| `icon` | Another way to configure your own icon instead of using the icon property (used to load svg icon) |
 
 <!-- Auto Generated Below -->
 

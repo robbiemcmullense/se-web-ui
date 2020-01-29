@@ -17,7 +17,7 @@
   z-index: 100;
   line-height: 128px;
   @include animated();
-  @include  color("primary");
+  @include color("primary");
   @include display-flex();
   @include flex-direction(column);
   &.dialog {
@@ -32,11 +32,13 @@
   z-index: 120;
 }
 
-.se-icon {
+.loading-icon {
   position: relative;
-  font-family: 'se-icon';
   font-size: 128px;
+  height: 128px;
+  width: 128px;
   @include loader();
+  fill: currentColor;
 }
 
 

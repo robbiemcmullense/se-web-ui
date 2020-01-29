@@ -1,6 +1,7 @@
 import { Component, h, Prop, Element, State } from "@stencil/core";
 import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
+import burger_menu from "@se/icons/svg/burger_menu.svg";
 
 @Component({
   tag: "se-header",
@@ -20,7 +21,7 @@ export class HeaderComponent {
   /**
    * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
    */
-  @Prop() project: string; 
+  @Prop() project: string;
   @State() hasMenu: boolean;
   elLeftNav;
 
@@ -45,9 +46,7 @@ export class HeaderComponent {
       <div class="d-flex">
         {this.hasMenu ?
           <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
-            <se-icon size="medium" color="primary">
-              burger_menu
-            </se-icon>
+            <se-icon size="medium" color="primary"><span innerHTML={burger_menu}></span></se-icon>
           </span>
         : ''}
         <div class="d-flex-column header-title-wrapper">

@@ -23,13 +23,13 @@
     opacity: 0;
     transition: .2s;
   }
-  
+
   .tooltip::after {
     content: "";
     position: absolute;
     border: 5px solid;
   }
-  
+
   .tooltip.show {
     opacity: 1;
     visibility: visible;
@@ -47,7 +47,9 @@
       top: 100%;
       left: 50%;
       margin-left: -5px;
-      border-color: $se-medium-blue transparent transparent transparent;
+      $color: map-get($seTheme, "secondary");
+      border-color: $color transparent transparent transparent;
+      border-color: var(#{custom-property-name("secondary")}, $color) transparent transparent transparent;
     }
   }
 
@@ -62,7 +64,9 @@
       bottom: 100%;
       left: 50%;
       margin-left: -5px;
-      border-color: transparent transparent $se-medium-blue transparent;
+      $color: map-get($seTheme, "secondary");
+      border-color: transparent transparent $color transparent;
+      border-color: transparent transparent var(#{custom-property-name("secondary")}, $color) transparent;
     }
   }
 
@@ -77,7 +81,9 @@
       top: 50%;
       left: 100%;
       margin-top: -5px;
-      border-color: transparent transparent transparent $se-medium-blue;
+      $color: map-get($seTheme, "secondary");
+      border-color: transparent transparent transparent $color;
+      border-color: transparent transparent transparent var(#{custom-property-name("secondary")}, $color);
     }
   }
 
@@ -92,7 +98,9 @@
       top: 50%;
       right: 100%;
       margin-top: -5px;
-      border-color: transparent $se-medium-blue transparent transparent;
+      $color: map-get($seTheme, "secondary");
+      border-color: transparent $color transparent transparent;
+      border-color: transparent var(#{custom-property-name("secondary")}, $color) transparent transparent;
     }
   }
 }

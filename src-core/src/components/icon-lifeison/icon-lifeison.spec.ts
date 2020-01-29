@@ -21,7 +21,7 @@ describe('IconLifeisonComponent', () => {
 			components: [IconLifeisonComponent],
 			html: `<se-icon-lifeison></se-icon-lifeison>`,
 		});
-		expect(page.root.shadowRoot.querySelector('img.inherited')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('span.inherited')).toBeTruthy();
 	});
 	
 	it('should render with the standard class when specified', async() => {
@@ -29,6 +29,6 @@ describe('IconLifeisonComponent', () => {
 			components: [IconLifeisonComponent],
 			html: `<se-icon-lifeison color="standard"></se-icon-lifeison>`,
 		});
-		expect(page.root.shadowRoot.querySelector('img.standard')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('span.standard')).toBeTruthy();
   });
 });

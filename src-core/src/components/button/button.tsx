@@ -27,11 +27,12 @@ export class ButtonComponent {
   }
   /**
    * Defines the size of the button.
+   * `nano` sets the font to 12px font and a 24px height.  Used primarily with the `se-radio-group` component.
    * `small` is the default option, with a 14px font and a 32px height.
    * `medium` sets the font to 16px and the height to 40px.
    * `large` sets the font to 18px and the height to 48px.
    */
-  @Prop() size: 'small' | 'medium' | 'large' = 'small';
+  @Prop() size: 'nano' | 'small' | 'medium' | 'large' = 'small';
   /**
    * Defines the background color of the button. The default setting is `standard`.
    */
@@ -44,10 +45,16 @@ export class ButtonComponent {
    * Optional property that determines if your button includes an icon.
    */
   @Prop() icon: string;
+
   /**
    * Optional property to change the color of the icon when needed. For example, the user dropdown in the header component.
    */
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
+
+  /**
+   * Optional property to specify if the button contains a text or only an icon. THis will impact how the buttons render. Only necessary when using svg icon instead of the `icon` name property.
+   */
+  @Prop() iconOnly: boolean;
    /**
    * Optional property.
    * `button`	is the default setting, creating a clickable button.
@@ -74,7 +81,6 @@ export class ButtonComponent {
   @Prop({mutable: true}) block: boolean;
 
   @State() grouped: boolean;
-  @State() hasChild: boolean;
   /**
    * Passes button data to the parent component on a click.
    */
@@ -138,24 +144,40 @@ export class ButtonComponent {
   }
 
   componentWillLoad() {
-    this.hasChild = this.el.innerHTML && this.el.innerHTML !== '<!---->'; // MS Edge still renders innerHTML for icon only buttons
     this.optionDidChange();
   }
 
-  componentDidLoad() {
+  componentDidLoad(){
     this.setButtonId();
   }
 
+
   render() {
+    const hasChild = this.el.innerHTML && this.el.innerHTML !== '<!---->'; // MS Edge still renders innerHTML for icon only buttons
+
+    const iconOnly = this.iconOnly || (this.icon && !hasChild);
+    const {color,
+      size,
+      option,
+      icon,
+      iconColor,
+      selected} = this;
+
     return (
       <Host class={{'disabled': this.disabled, 'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab'}}>
-        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type}
-          id={this.innerId}
-          class={
-            [!!this.icon ? 'hasIcon' : '', this.hasChild ? 'hasChild' : '', this.color, this.size, this.option, this.selected ? 'selected' : ''].join(' ')}
-          onClick={() => this.toggle()}>
-          {this.icon ? <span class={["se-icon", this.iconColor].join(' ')}>{this.icon}</span> : ''}
-          {this.hasChild ? <span class="text"><slot></slot></span> : ''}
+        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type} id={this.innerId} onClick={() => this.toggle()}
+          class={{
+            [color]: true,
+            [size]: true,
+            [option]: true,
+            'selected': selected,
+            'iconOnly': iconOnly}} >
+
+          {icon && <se-icon size={this.grouped && this.size !== 'nano' ? 'medium' : 'small'} color={iconColor}>{icon}</se-icon> }
+          <slot name="icon"></slot>
+
+          {!iconOnly && <span class="text"><slot></slot></span>}
+
         </button>
       </Host>
     )

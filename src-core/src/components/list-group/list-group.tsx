@@ -1,4 +1,8 @@
 import { Component, Event, EventEmitter, h, Prop, Watch, Element, Listen, Host, State } from "@stencil/core";
+import arrow2_down from "@se/icons/svg/arrow2_down.svg";
+import arrow2_up from "@se/icons/svg/arrow2_up.svg";
+import arrow2_right from "@se/icons/svg/arrow2_right.svg";
+
 
 @Component({
   tag: "se-list-group",
@@ -70,24 +74,16 @@ export class ListGroupComponent {
     }
   }
 
-  private toggleCollapse(event: any) {
-    if (this.option === 'treeview') {
-      if (this.isTreeViewTarget(event)) {
-        this.collapsed = !this.collapsed;
-      } else {
-        this.didGroupClick.emit();
-      }
-    } else {
+  private toggleCollapse() {
+    if (this.option !== 'treeview') {
       this.collapsed = !this.collapsed;
       this.didGroupClick.emit();
     }
   }
-
-  private isTreeViewTarget(event: any) {
-    if (window.MSInputMethodContext) { // check if running on IE11
-      return event.target.nodeName === 'BUTTON' && event.target.className.includes('sc-se-list-group');
-    }
-    return event.target.nodeName === 'SE-ICON' || event.target.className.includes('se-icon');
+  private toggleCollapseTreeview() {
+    // called only from treeview
+    this.collapsed = !this.collapsed;
+    this.didGroupClick.emit();
   }
 
   @State() innerId;
@@ -132,21 +128,22 @@ export class ListGroupComponent {
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
       <Host role="listitem" option={this.option}>
-        <button aria-expanded={`${this.collapsed}`} id={this.innerId} class={['se-list-group', this.option, this.collapsed ? "collapsed" : '', this.option, this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : '', "button"].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={(event) => this.toggleCollapse(event)} disabled={!this.canCollapse}>
+        <button aria-expanded={`${this.collapsed}`} id={this.innerId} class={['se-list-group', this.option, this.collapsed ? "collapsed" : '', this.option, this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : '', "button"].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()} disabled={!this.canCollapse}>
           {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
-          {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon" style={{ paddingLeft: `calc(${8 * this.indentation}px)`}}>{this.collapsed ? "arrow2_right" : "arrow2_down"}</se-icon> : ''}
+          {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon" onClick={() => this.toggleCollapseTreeview()} style={{ paddingLeft: `calc(${8 * this.indentation}px)`}}><span innerHTML={this.collapsed ? arrow2_right : arrow2_down}></span></se-icon> : ''}
           {!!this.icon ?
-            <se-icon class="nav-icon" color={this.iconColor}>
-              {this.icon}
-            </se-icon>
+            <div class="nav-icon">
+              { this.icon && <se-icon color={this.iconColor}>{this.icon}</se-icon> }
+              <slot name="icon"></slot>
+            </div>
           : ''}
           <div class="nav-content">
             <div class="list-group-label">{this.item}</div>
             {myDescription}
           </div>
           {this.option !== "treeview" && this.canCollapse
-              ? <se-icon size="medium">{this.collapsed ? "arrow2_down" : "arrow2_up"}</se-icon>
-              : ''
+            ? <se-icon class="standard-collapse-icon" size="medium"><span innerHTML={this.collapsed ? arrow2_down : arrow2_up}></span></se-icon>
+            : ''
           }
         </button>
         <div role="list" class={["se-list-group", "group-item", this.option].join(' ')}>

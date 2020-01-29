@@ -29,9 +29,8 @@ export default {
 </script>
 
 <style lang="scss">
-$se-icon-folder: "~@se/icons/fonts";
-@import "~@se/icons/scss/styles";
-$se-fonts-path: "~@se/fonts/fonts";
-@import "~@se/fonts/scss/styles";
-
+// $se-icon-folder: "~@se/icons/fonts";
+// @import "~@se/icons/scss/styles";
+// $se-fonts-path: "~@se/fonts/fonts";
+// @import "~@se/fonts/scss/styles";
 </style>

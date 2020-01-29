@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from "@stencil/core";
+import { Component, h, Prop, Element, Host } from "@stencil/core";
 
 @Component({
   tag: "se-icon",
@@ -19,18 +19,24 @@ export class IconComponent {
    * `large` sets the size to 52px.
    * `xlarge` sets the size to 62px.
    */
-  @Prop() size: "nano" | "small" | "medium" | "large" | "xlarge" = "small";
+  @Prop() size: "nano" | "small" | "medium" | "large" | "xlarge";
   /**
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
    */
   @Prop() color: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
 
+
   render() {
     return (
-      <div class={['se-icon-wrapper', `icon-${this.size}`, this.color, `icon-${this.option}`].join(" ")}>
-        <slot />
-      </div>
+      <Host class={`icon-${this.size || 'small'}`}>
+        <div class={{
+          'se-icon-wrapper': true,
+          [this.color]: !!this.color,
+          [`icon-${this.option}`] : true}}>
+            <slot />
+        </div>
+      </Host>
     );
   }
 }

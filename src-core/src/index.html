@@ -8,10 +8,8 @@
   <script type="module" src="/build/se-components.esm.js"></script>
   <script nomodule src="/build/se-components.js"></script>
 
-  <link rel="stylesheet" href="fonts/css/styles.css">
-  </link>
-  <link rel="stylesheet" href="icons/css/styles.css">
-  </link>
+  <link rel="stylesheet" href="fonts/css/styles.css"></link>
+  <link rel="stylesheet" href="icons/css/styles.css"></link>
   <style>
     /* remove the glitch on display  */
     se-app { display: none; }
@@ -40,7 +38,10 @@
       <div slot="end">
         <se-link url="http://google.com" option="external" style="display:inline-block;">External Link to Google</se-link>
         <se-dropdown alignment="right">
-          <se-button slot="trigger" option="inherit" icon="user_standard" icon-color="primary">Test User</se-button>
+          <se-button slot="trigger" option="inherit" >
+            <se-icon slot="icon" size="medium" color="primary">user_standard</se-icon>
+            Test User
+          </se-button>
           <se-list option="dropdown">
             <se-list-item item="Logout" id="test-button-label"></se-list-item>
           </se-list>
@@ -74,7 +75,7 @@
                     <se-icon size="large" color="lifegreen">airconditioner_hot_heating</se-icon>
                     <se-icon size="xtralarge" color="lightgreen">airconditioner_hot_heating</se-icon>
                   </se-block-content>
-                </se-block>            
+                </se-block>
               </se-container>
             </se-block-content>
             <se-block-footer>
@@ -83,7 +84,7 @@
           </se-block>
         </se-sidemenu-item>
         <se-sidemenu-item item="About" id="side-about">
-          <se-about app-title="Test Advisor" version="1.2.3" 
+          <se-about app-title="Test Advisor" version="1.2.3"
             image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
           </se-about>
         </se-sidemenu-item>
@@ -266,6 +267,11 @@
               </div>
             </se-block-header>
             <se-block-content>
+              <se-button icon-only>
+                <se-icon slot="icon">
+                  folder
+                </se-icon>
+              </se-button>
               <h1>My h1 string with a divider</h1>
               <se-divider></se-divider>
               <h2>My h2 string with a divider </h2>
@@ -328,10 +334,19 @@
               <se-button option="raised">standard raised</se-button>
               <se-divider></se-divider>
               <se-button option="flat" block="true">standard flat block</se-button>
-              <se-button id="raisedBtn" option="raised" block="true">standard raised block</se-button>
+              <se-button id="raisedBtn" option="raised" block="true">
+                <se-icon slot="icon" size="small">presentation_mode</se-icon>
+                standard raised block
+              </se-button>
               <se-divider></se-divider>
-              <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
-              <se-button option="flat" color="primary">primary</se-button>
+              <se-button id="flatBtn1" option="flat" color="alternative">
+                <se-icon slot="icon">presentation_mode</se-icon>
+                alternative
+              </se-button>
+              <se-button option="flat" color="primary" size="large">
+                <se-icon slot="icon" size="small">action_resize</se-icon>
+                primary
+              </se-button>
               <se-button option="flat" color="secondary">secondary</se-button>
               <se-dropdown alignment="left">
                 <se-button slot="trigger" option="flat">Dropdown</se-button>
@@ -351,6 +366,7 @@
               <se-button option="outline" color="secondary">Outline secondary</se-button>
               <se-button icon="action_resize"></se-button>
               <se-divider></se-divider>
+              <se-button icon="action_resize">default size</se-button>
               <se-button icon="action_resize" size="medium">medium size</se-button>
               <se-button icon="action_resize" size="large">large size</se-button>
               <se-divider></se-divider>
@@ -868,8 +884,9 @@
         <se-button onclick="closeDialog('dialog-complex')">OK</se-button>
       </se-dialog-footer>
     </se-dialog>
-    <se-snackbar id="snackbar" type="warning" message="my message"></se-snackbar>
-    <se-snackbar id="sidemenu-snackbar" message="my sidemenu notification"></se-snackbar>
+    <se-snackbar id="snackbar" type="warning" message="my message" icon="none">
+      <se-icon slot="icon">folder</se-icon>
+    </se-snackbar>
     <se-fab icon="action_share" position="top">
       <se-button option='minifab' caption="New Work Order" icon="notification_critical_stroke"></se-button>
       <se-button option='minifab' caption="New Task" icon="notebook_paper"></se-button>
@@ -1122,6 +1139,17 @@
     function nextStep() {
       document.getElementById('se-stepper').next(true);
     }
+
+    ///
+    function darkMode() {
+      let root = document.documentElement;
+      root.style.setProperty('--se-standard', "#ededed");
+      root.style.setProperty('--se-alternative', "#293133");
+      root.style.setProperty('--se-standard-contrast', "#0f0f0f");
+      root.style.setProperty('--se-alternative-contrast', "#ffffff");
+      root.style.setProperty('--se-background', "#505559");
+    }
+
 
   </script>
 </body>

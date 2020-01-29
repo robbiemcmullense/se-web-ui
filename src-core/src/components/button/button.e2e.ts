@@ -27,10 +27,11 @@ describe('ButtonComponent', () => {
     expect(buttonElement).toHaveClasses(['alternative', 'medium', 'raised']);
   });
 
-  it('renders the hasIcon class when the element has an icon property', async() => {
+  it('renders an se-icon element when the element has an icon property', async() => {
     hostElement.setProperty('icon', 'close');
     await page.waitForChanges();
-    expect(buttonElement).toHaveClass('hasIcon');
+    expect(buttonElement.querySelector('se-icon')).toBeTruthy();
+    expect(buttonElement.querySelector('se-icon').innerText).toEqual('close');
   });
 
   it('renders the display-block class on the host element when the block property is set to true', async() => {

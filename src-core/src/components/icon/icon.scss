@@ -1,22 +1,50 @@
 @import "../../theme/theme";
 
+// Defines a custom property
+@mixin size-icon($sizeFont) {
+  font-size: $sizeFont;
+  line-height: $sizeFont;
+  .se-icon-wrapper {
+    height: $sizeFont;
+    width: $sizeFont;
+  }
+}
+
+:host {
+  fill: currentColor;
+  display: inline-flex;
+}
+
+:host(.icon-nano){
+  @include size-icon(14px)
+}
+:host(.icon-small){
+  @include size-icon(24px)
+}
+:host(.icon-medium){
+  @include size-icon(32px);
+}
+:host(.icon-large){
+  @include size-icon(52px);
+}
+:host(.icon-xlarge){
+  @include size-icon(62px)
+}
+
 .se-icon-wrapper {
   display: inline-block;
   font-family: "se-icon";
-  speak: none;
   font-style: normal;
   position: relative;
-  font-size: 24px;
-  line-height: 20px;
   font-weight: normal;
   font-variant: normal;
   text-decoration: inherit;
   font-stretch: normal;
   text-transform: none;
-  text-rendering: auto; // optimizelegibility throws things off #1094
-  font-smoothing: antialiased;
+  text-rendering: auto; // optimize legibility throws things off #1094
   letter-spacing: normal;
-  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: -moz-middle-with-baseline;
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
@@ -25,148 +53,137 @@
   font-feature-settings: "liga";
   font-display: block;
   transition: 0;
+  overflow: hidden;
+  fill: currentColor;
+  shape-rendering: geometricprecision;
+}
 
-  &.icon-nano {
-    font-size: 14px;
-    line-height: 14px;
+// Align icons on MS Edge.
+// Will remove when Chromium-based Edge browser is released.
+@supports (-ms-ime-align:auto) {
+  .se-icon-wrapper {
+    vertical-align: top;
+    top: 0;
   }
+}
 
-  &.icon-small {
-    font-size: 24px;
-    line-height: 24px;
+// Align icons on IE 11.
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .se-icon-wrapper {
+    vertical-align: top;
+    top: 0;
   }
+}
 
-  &.icon-medium {
-    font-size: 32px;
-    line-height: 32px;
+.standard {
+  @include color("standard");
+  &.icon-button {
+    @include color("standard-contrast");
+    @include background-color("standard");
+    &:hover {
+      @include color("hover-standard-contrast");
+      @include background-color("hover-standard");
+    }
   }
+}
 
-  &.icon-large {
-    font-size: 52px;
-    line-height: 52px;
-  }
-
-  &.icon-xlarge {
-    font-size: 62px;
-    line-height: 62px;
-  }
-
-  &.standard {
-    @include color("standard");
-  }
-
-  &.alternative {
-    @include color("alternative");
-  }
-
-  &.primary {
-    @include color("primary");
-  }
-
-  &.secondary {
-    @include color("secondary");
-  }
-
-  &.success {
-    @include color("success");
-  }
-
-  &.warning {
-    @include color("warning");
-  }
-
-  &.error {
-    @include color("error");
-  }
+.alternative {
+  @include color("alternative");
 
   &.icon-button {
-    cursor: pointer;
-    border-radius: $border-radius;
-    line-height: inherit;
+    @include color("alternative-contrast");
+    @include background-color("alternative");
 
-    &.standard {
-      @include color("standard-contrast");
-      @include background-color("standard");
-      &:hover {
-        @include color("hover-standard-contrast");
-        @include background-color("hover-standard");
-      }
+    &:hover {
+      @include color("hover-alternative-contrast");
+      @include background-color("hover-alternative");
     }
+  }
+}
 
-    &.alternative {
-      @include color("alternative-contrast");
-      @include background-color("alternative");
+.primary {
+  @include color("primary");
+  &.icon-button {
+    @include color("primary-contrast");
+    @include background-color("primary");
 
-      &:hover {
-        @include color("hover-alternative-contrast");
-        @include background-color("hover-alternative");
-      }
+    &:hover {
+      @include color("hover-primary-contrast");
+      @include background-color("hover-primary");
     }
-    &.primary {
-      @include color("primary-contrast");
-      @include background-color("primary");
+  }
+}
 
-      &:hover {
-        @include color("hover-primary-contrast");
-        @include background-color("hover-primary");
-      }
+.secondary {
+  @include color("secondary");
+  &.icon-button {
+    @include color("secondary-contrast");
+    @include background-color("secondary");
+
+    &:hover {
+      @include color("hover-secondary-contrast");
+      @include background-color("hover-secondary");
     }
+  }
+}
 
-    &.secondary {
-      @include color("secondary-contrast");
-      @include background-color("secondary");
+.success {
+  @include color("success");
+  &.icon-button {
+    @include color("success-contrast");
+    @include background-color("success");
 
-      &:hover {
-        @include color("hover-secondary-contrast");
-        @include background-color("hover-secondary");
-      }
+    &:hover {
+      @include color("hover-success-contrast");
+      @include background-color("hover-success");
     }
+  }
+}
 
-    &.success {
-      @include color("success-contrast");
-      @include background-color("success");
+.warning {
+  @include color("warning");
+  &.icon-button {
+    @include color("warning-contrast");
+    @include background-color("warning");
 
-      &:hover {
-        @include color("hover-success-contrast");
-        @include background-color("hover-success");
-      }
+    &:hover {
+      @include color("hover-warning-contrast");
+      @include background-color("hover-warning");
     }
+  }
+}
 
-    &.warning {
-      @include color("warning-contrast");
-      @include background-color("warning");
+.error {
+  @include color("error");
+  &.icon-button {
+    @include color("error-contrast");
+    @include background-color("error");
 
-      &:hover {
-        @include color("hover-warning-contrast");
-        @include background-color("hover-warning");
-      }
+    &:hover {
+      @include color("hover-error-contrast");
+      @include background-color("hover-error");
     }
+  }
+}
 
-    &.error {
-      @include color("error-contrast");
-      @include background-color("error");
+.icon-button {
+  cursor: pointer;
+  border-radius: $border-radius;
+  line-height: inherit;
+  &.selected {
+    @include color("selected-contrast");
+    @include background-color("selected");
+  }
 
-      &:hover {
-        @include color("hover-error-contrast");
-        @include background-color("hover-error");
-      }
-    }
+  &:active,
+  &.button:active {
+    @include color("selected-contrast");
+    @include background-color("selected");
+  }
 
-    &.selected {
-      @include color("selected-contrast");
-      @include background-color("selected");
-    }
-
-    &:active,
-    &.button:active {
-      @include color("selected-contrast");
-      @include background-color("selected");
-    }
-
-    &:focus,
-    &.button:focus {
-      @include  color("focus-contrast");
-      @include background-color("focus");
-    }
+  &:focus,
+  &.button:focus {
+    @include  color("focus-contrast");
+    @include background-color("focus");
   }
 }

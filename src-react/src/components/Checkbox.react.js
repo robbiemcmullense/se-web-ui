@@ -38,13 +38,13 @@ Checkbox.propTypes = {
   children: PropTypes.node,
   /**
    * Defines the color schema of the checkbox when the option is set to `onoff`.
-   * The default value is `standard`.
+The default value is `standard`.
    */
   background: PropTypes.string,
   /**
    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`.
-   * The default value is `primary`, rendering a green color.
-   * The `secondary` setting renders a blue color.
+The default value is `primary`, rendering a green color.
+The `secondary` setting renders a blue color.
    */
   color: PropTypes.string,
   /**
@@ -53,7 +53,7 @@ Checkbox.propTypes = {
   disabled: PropTypes.bool,
   /**
    * Reduces the visual height of the checkbox when the option is set to `onoff`.
-   * Useful if the on/off checkbox is within a header element.
+Useful if the on/off checkbox is within a header element.
    */
   header: PropTypes.bool,
   /**
@@ -62,15 +62,15 @@ Checkbox.propTypes = {
   label: PropTypes.string,
   /**
    * Sets the position of the label for your checkbox component.
-   * The default setting is `right` when the option is set to `checkbox`.
-   * The default setting is `left` when the option is set to `switch`.
+The default setting is `right` when the option is set to `checkbox`.
+The default setting is `left` when the option is set to `switch`.
    */
   labelPos: PropTypes.string,
   /**
    * Determines the visual appearance of the component.
-   * `checkbox` is the default option, which will render the component like a standard HTML checkbox.
-   * `switch` renders the component like a toggle switch.
-   * `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+`checkbox` is the default option, which will render the component like a standard HTML checkbox.
+`switch` renders the component like a toggle switch.
+`onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
    */
   option: PropTypes.string,
   /**

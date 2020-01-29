@@ -15,31 +15,6 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(element).toHaveClass('hydrated');
 	});
 
-	it('renders an arrow2_down icon by default', async() => {
-    const page = await renderComponent();
-		const iconElm = await page.find('se-list-group >>> se-icon');
-		expect(iconElm).toEqualText('arrow2_up');
-	});
-
-	it('renders an arrow2_up icon when collapsed', async() => {
-    const page = await renderComponent();
-		const element = await page.find('se-list-group');
-		element.setProperty('collapsed', true);
-		await page.waitForChanges();
-		const iconElm = await page.find('se-list-group >>> se-icon');
-		expect(iconElm).toEqualText('arrow2_down');
-	});
-
-	it('renders an arrow2_right icon when the option is set to treeview and when collapsed', async() => {
-    const page = await renderComponent();
-		const element = await page.find('se-list-group');
-    element.setProperty('option', 'treeview');
-    element.setProperty('collapsed', true);
-		await page.waitForChanges();
-		const iconElm = await page.find('se-list-group >>> se-icon');
-		expect(iconElm).toEqualText('arrow2_right');
-	});
-
 	it('renders an icon element when the option is set to nav', async() => {
     const page = await renderComponent();
 		const element = await page.find('se-list-group');

@@ -47,13 +47,13 @@ Snackbar.propTypes = {
   actionText: PropTypes.string,
   /**
    * Displays a "button" to close the snackbar.
-   * The default setting is `false`.
-   * This will be visible if set to `true`.
+The default setting is `false`.
+This will be visible if set to `true`.
    */
   canClose: PropTypes.bool,
   /**
    * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false.
-   * The default setting is 5000.
+The default setting is 5000.
    */
   duration: PropTypes.number,
   /**
@@ -70,10 +70,10 @@ Snackbar.propTypes = {
   open: PropTypes.bool,
   /**
    * Indicates the background color of your snackbar.
-   * `success`: green
-   * `warning`: orange
-   * `error`: red
-   * `information`: dark grey, default setting
+`success`: green
+`warning`: orange
+`error`: red
+`information`: dark grey, default setting
    */
   type: PropTypes.string,
   /**

@@ -12,7 +12,6 @@
 }
 .se-app-body {
   overflow: hidden;
-  overflow: hidden;
   margin: 0 !important;
   padding: 0;
   @include absolute(0,0,0,0);
@@ -49,7 +48,6 @@ body {
     @include background-color('' + $element);
   }
 }
-
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -106,7 +104,8 @@ a {
 
 body, html{
   @include typology('p');
-  color: $off-black;
+  // color: $off-black;
+  @include color("alternative-contrast");
   // Header Styles
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     font-weight: inherit;
@@ -182,7 +181,7 @@ body, html {
     background-color: $se-light-grey;
     &:hover {
       @include background-color('selected');
-      border: $scrollbar-side-padding solid transparent;
+      border: $scrollbar-side-padding / 2 solid transparent;
     }
   }
 }

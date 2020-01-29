@@ -1,4 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core";
+import action_delete_cross from "@se/icons/svg/action_delete_cross.svg";
+
 
 @Component({
   tag: "se-chip",
@@ -15,7 +17,7 @@ export class ChipComponent {
   * `nano` sets the font to 14px and the height to 24px.
   * `small` is the default option, with a 16px font and a 32px height.
   */
- @Prop() size: 'nano' | 'small' = 'small' 
+ @Prop() size: 'nano' | 'small' = 'small'
    /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
@@ -59,7 +61,7 @@ export class ChipComponent {
         this.disabled ? 'disabled' : '',
         this.block ? 'display-block' : ''].join(' ')}>
         <div class={['value', this.canClose ? 'can-close' : ''].join(' ')}>{this.value}</div>
-        {this.canClose ? <div class="close se-icon" onClick={() => this.closeChip()}>action_delete_cross</div> : ''}
+        {this.canClose ? <se-icon class="close" onClick={() => this.closeChip()}><span innerHTML={action_delete_cross}></span></se-icon> : ''}
       </div>
     );
   }

@@ -43,12 +43,11 @@
 .snackbar-icon {
   padding-left: 10px;
   margin-right: -6px;
-}
-
-.se-icon {
-  font-size: 24px;
-  line-height: 48px;
-  font-family: 'se-icon';
+  @include display-flex();
+  @include align-items(center);
+  se-icon {
+    top: 1px;
+  }
 }
 
 .message {
@@ -74,4 +73,8 @@
   cursor: pointer;
   padding-right: 10px;
   margin-left: -2px;
+  se-icon {
+    vertical-align: middle;
+    top: 0; // aligns snackbar icons on Edge, IE 11
+  }
 }

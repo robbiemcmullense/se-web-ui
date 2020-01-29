@@ -1,4 +1,5 @@
 import { Component, h, Method, Element, State, Prop } from '@stencil/core';
+import test_results_nok from "@se/icons/svg/test_results_nok.svg";
 
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
@@ -204,7 +205,7 @@ export class SidemenuComponent {
           <se-block width="250px">
             <div class="d-flex-center flex">
               <span class="menu-sidenav" onClick={() => this.toggle()}>
-                <se-icon size="large" color="primary">test_results_nok</se-icon>
+                <se-icon size="large" color="primary"><span innerHTML={test_results_nok}></span></se-icon>
               </span>
               <h3 class="header-title">{this.label}</h3>
             </div>
