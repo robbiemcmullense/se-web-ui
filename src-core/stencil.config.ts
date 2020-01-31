@@ -1,6 +1,31 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
+import { reactOutputTarget } from '@stencil/react-output-target';
+// import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
+// const EVENTS = {
+//   Change: "didChange",
+// };
+
+// const ATTRS = {
+//   Value: "value",
+//   Selected: "selected"
+// };
+
+// const angularValueAccessorBindings: ValueAccessorConfig[] = [
+//   {
+//     elementSelectors: [ "se-checkbox", "se-radio"],
+//     event: EVENTS.Change,
+//     targetAttr: ATTRS.Selected,
+//     type: "boolean"
+//   },
+//   {
+//     elementSelectors: [ "se-radio-group" ],
+//     event: EVENTS.Change,
+//     targetAttr: ATTRS.Value,
+//     type: "text"
+//   }
+// ];
 
 const copy = [
   { src: '../node_modules/@se/fonts/css', dest: 'fonts/css' },
@@ -31,6 +56,17 @@ export const config: Config = {
       directivesUtilsFile: '../src-angular/projects/frameworks/src/lib/directives/proxies-utils.ts',
       directivesArrayFile: '../src-angular/projects/frameworks/src/lib/directives/proxies-list.ts',
     },
+    // angularOutputTarget({
+    //   componentCorePackage: '@se/web-ui',
+    //   directivesProxyFile: '../src-angular/projects/frameworks/src/lib/directives/proxies.ts',
+    //   directivesUtilsFile: '../src-angular/projects/frameworks/src/lib/directives/proxies-utils.ts',
+    //   directivesArrayFile: '../src-angular/projects/frameworks/src/lib/directives/proxies-list.ts',
+    //   valueAccessorConfigs: angularValueAccessorBindings,
+    // }),
+    reactOutputTarget({
+      componentCorePackage: '@se/web-ui',
+      proxiesFile: '../src-react/src/components.ts',
+    }),
     {
       type: 'docs-readme'
     },

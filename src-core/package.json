@@ -17,7 +17,7 @@
     "build.export.docs": "cpx \"src/**/*.md\" core/docs",
     "build.move.core": "cpx \"core/**/*\" \"../core/\"",
     "build.rm.core": "rimraf \"./core\"",
-    "build.react": "node scripts/index.js",
+    "build.dash": "node scripts/index.js",
     "test": "stencil test --e2e --testTimeout=30000",
     "posttest": "stencil test --spec --coverage",
     "spec": "stencil test --spec",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@se/fonts": "^1.1.0",
     "@se/icons": "^3.5.4",
+    "@stencil/react-output-target": "^0.0.3",
     "@types/jest": "24.0.25",
     "@types/puppeteer": "^1.20.2",
     "cpx": "^1.5.0",

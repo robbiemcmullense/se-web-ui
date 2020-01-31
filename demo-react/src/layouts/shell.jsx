@@ -1,32 +1,33 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom'
+import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeChip, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter } from '@se/web-ui-react';
 
 class ShellLayout extends Component {
   render() {
     return (
-      <se-container position="absolute" direction="column">
-        <se-header app-title="React Advisor">
-          <se-sidemenu link="google.com">
-            <se-sidemenu-item item="About">
-              <se-about app-title="React Advisor" version="123"></se-about>
-            </se-sidemenu-item>
-            <se-sidemenu-item item="Sidenav 2" active="true">
-              <se-block option="fill">
-                <se-block-header>some widget design</se-block-header>
-                <se-block-content>
-                  <se-chip id="se-chip" value="Chip 01"></se-chip>
-                </se-block-content>
-                <se-block-footer>
-                    <se-button option="raised" color="primary">RaisedGreen</se-button>
-                </se-block-footer>
-              </se-block>
-            </se-sidemenu-item>
-            <se-sidemenu-item item="Sidenav 3">
+      <SeContainer position="absolute" direction="column">
+        <SeHeader appTitle="React Advisor">
+          <SeSidemenu link="google.com">
+            <SeSidemenuItem item="About">
+              <SeAbout appTitle="React Advisor" version="123"></SeAbout>
+            </SeSidemenuItem>
+            <SeSidemenuItem item="Sidenav 2" active="true">
+              <SeBlock option="fill">
+                <SeBlockHeader>some widget design</SeBlockHeader>
+                <SeBlockContent>
+                  <SeChip id="SeChip" value="Chip 01"></SeChip>
+                </SeBlockContent>
+                <SeBlockFooter>
+                    <SeButton option="raised" color="primary">RaisedGreen</SeButton>
+                </SeBlockFooter>
+              </SeBlock>
+            </SeSidemenuItem>
+            <SeSidemenuItem item="Sidenav 3">
               <div>A simple div</div>
-            </se-sidemenu-item>
-          </se-sidemenu>
-        </se-header>
-        <se-tabbar color="primary">
+            </SeSidemenuItem>
+          </SeSidemenu>
+        </SeHeader>
+        <SeTabbar color="primary">
           <nav slot="start">Tenant: <a className="dropdown" href=""> test </a></nav>
           <nav>
             <NavLink to="/" exact={true} activeClassName='active'>Home</NavLink>
@@ -36,9 +37,9 @@ class ShellLayout extends Component {
           <nav slot="end">
             <a href="">End</a>
           </nav>
-        </se-tabbar>
+        </SeTabbar>
         {this.props.children}
-      </se-container>
+      </SeContainer>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeCheckbox, SeBlockFooter } from '@se/web-ui-react';
 
 const widgetStyle = {
   width: '300px'
@@ -7,29 +8,29 @@ const widgetStyle = {
 class Icons extends Component {
   render() {
     return (
-      <se-container>
-        <se-block style={widgetStyle}>
-          <se-block-header>Icons</se-block-header>
+      <SeContainer>
+        <SeBlock style={widgetStyle}>
+          <SeBlockHeader>Icons</SeBlockHeader>
 
-          <se-block-content>
+          <SeBlockContent>
             <div className="mycoolstyle">my content</div>
             <ul>
               ...
             </ul>
-            <se-radio-on-off ref={this._handleRef}></se-radio-on-off>
-          </se-block-content>
-          <se-block-footer>
-          <se-button option="raised">Raised</se-button>
-            <se-button option="raised" color="primary">
+            <SeCheckbox ref={this._handleRef}></SeCheckbox>
+          </SeBlockContent>
+          <SeBlockFooter>
+          <SeButton option="raised">Raised</SeButton>
+            <SeButton option="raised" color="primary">
               RaisedGreen
-            </se-button>
-            <se-button option="text">Text</se-button>
-            <se-button option="text" color="primary">
+            </SeButton>
+            <SeButton option="text">Text</SeButton>
+            <SeButton option="text" color="primary">
               Primary
-            </se-button>
-          </se-block-footer>
-        </se-block>
-      </se-container>
+            </SeButton>
+          </SeBlockFooter>
+        </SeBlock>
+      </SeContainer>
     );
   }
 }

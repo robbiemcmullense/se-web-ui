@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Widget from '../components/widget';
+import { SeContainer } from '@se/web-ui-react';
 
 class Home extends Component {
 
@@ -27,9 +28,9 @@ class Home extends Component {
         );
     });
     return (
-      <se-container>
+      <SeContainer>
         {rows}
-      </se-container>
+      </SeContainer>
     );
   }
 }

@@ -2,10 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
 
-const distFolder = "../src-react"
+const distFolder = "../src-dash"
 const distFolderSrc = path.join(distFolder, "src");
 const distFolderCmp = path.join(distFolderSrc, "components");
-
 
 const getInputData = source => {
   // Get input data from input JSON file

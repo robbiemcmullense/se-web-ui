@@ -9,6 +9,7 @@ const rootDir = __dirname;
 const packages = [
   'core',
   'angular',
+  'src-react'
 ];
 
 function packagePath(project) {

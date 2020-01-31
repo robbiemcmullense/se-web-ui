@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, BrowserRouter } from "react-router-dom"
 import ShellLayout from './layouts/shell';
 import DefaultLayout from './layouts/default';
-
+import { SeApp } from '@se/web-ui-react';
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
 import Icons from './pages/icons';
@@ -20,7 +20,7 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 class App extends Component {
   render() {
     return (
-      <se-app>
+      <SeApp>
         <BrowserRouter>
           <Switch>
             <AppRoute exact path="/" layout={ShellLayout} component={Home} />
@@ -29,7 +29,7 @@ class App extends Component {
             <AppRoute path="/*" layout={DefaultLayout} component={NoPage} />
           </Switch>
         </BrowserRouter>
-      </se-app>
+      </SeApp>
     );
   }
 }

@@ -1,33 +1,16 @@
-# src-react
+# stencil-ds-react-template
 
-> React wrapper components for web-ui lib
+This is an example repo of building plugins.
 
-[![NPM](https://img.shields.io/npm/v/src-react.svg)](https://www.npmjs.com/package/src-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+## Step 1.
 
-## Install
+- Update the `package.json` to have the correct package name for this repo.
+- Replace `component-library` under `dependencies` with your core stencil package name.
 
-```bash
-npm install --save src-react
-```
+## Step 2.
 
-## Usage
+- Build your core stencil package.
 
-```jsx
-import React, { Component } from 'react'
+## Step 3.
 
-import MyComponent from 'src-react'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
-```
-
-
-
-## License
-
-MIT © [Francois Delpech](https://github.com/Francois Delpech)
+- Run build on this package.

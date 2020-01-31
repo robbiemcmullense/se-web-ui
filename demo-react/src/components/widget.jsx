@@ -1,47 +1,36 @@
 import React, { Component } from "react";
 import "./widget.scss";
-// import { wc } from '../utils/webComponent';
+import {  SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeBlockFooter, SeCheckbox, SeIcon, SeDivider } from '@se/web-ui-react';
 
 class Widget extends Component {
-  customAlert(data) {
+  customAlert = (data) => {
     alert(`switch ${this.props.name}: ${data.detail.selected}`);
   }
-  componentDidMount() {
-    this.switchCmp.addEventListener("didChange", e => this.customAlert(e));
-  }
-
-  componentWillUnmount() {
-    this.switchCmp.removeEventListener("didChange", e => this.customAlert(e));
-  }
-
-  _handleRef = component => {
-    this.switchCmp = component;
-  };
 
   render() {
     const { name, match } = this.props;
 
     return [
-      <se-block>
-        <se-block-header>
+      <SeBlock>
+        <SeBlockHeader>
         {name || match.params.id}
           <div slot="end">
-              <se-icon option="button" color="alternative">favourites_addto</se-icon>
-              <se-icon option="button" color="alternative">other_vertical</se-icon>
+              <SeIcon option="button" color="alternative">favourites_addto</SeIcon>
+              <SeIcon option="button" color="alternative">other_vertical</SeIcon>
           </div>
-        </se-block-header>
-        <se-block-content>
+        </SeBlockHeader>
+        <SeBlockContent>
           <div className="mycoolstyle">my content</div>
           <ul>
-            <se-checkbox option="switch" ref={this._handleRef} />
+            <SeCheckbox option="switch" onDidChange={this.customAlert} />
           </ul>
 
-        </se-block-content>
-        <se-block-footer>
-          <se-button>Apply</se-button>
-        </se-block-footer>
-      </se-block>,
-      <se-divider option="vertical"></se-divider>
+        </SeBlockContent>
+        <SeBlockFooter>
+          <SeButton>Apply</SeButton>
+        </SeBlockFooter>
+      </SeBlock>,
+      <SeDivider option="vertical"></SeDivider>
     ];
   }
 }
