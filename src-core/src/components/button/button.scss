@@ -50,6 +50,7 @@
   button {
     margin: $spacing-small 0;
     height: 32px;
+    font-size: $base-fontsize;
     padding: 0 $spacing;
     @include typology("nano");
     border-radius: 0;
