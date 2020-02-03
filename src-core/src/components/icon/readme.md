@@ -26,6 +26,7 @@
  - [se-chip](../chip)
  - [se-dialog-content](../dialog-content)
  - [se-fab](../fab)
+ - [se-fab-item](../fab-item)
  - [se-header](../header)
  - [se-list-group](../list-group)
  - [se-list-item](../list-item)
@@ -43,6 +44,7 @@ graph TD;
   se-chip --> se-icon
   se-dialog-content --> se-icon
   se-fab --> se-icon
+  se-fab-item --> se-icon
   se-header --> se-icon
   se-list-group --> se-icon
   se-list-item --> se-icon

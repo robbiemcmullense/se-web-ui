@@ -465,6 +465,12 @@ export namespace Components {
     */
     'toggleAction': () => Promise<void>;
   }
+  interface SeFabItem {
+    /**
+    * Property that determines if an icon is included in the floating action button.
+    */
+    'icon': string;
+  }
   interface SeFormField {
     /**
     * Optional property that defines if the form field is disabled.  Set to `false` by default.
@@ -1035,6 +1041,12 @@ declare global {
     new (): HTMLSeFabElement;
   };
 
+  interface HTMLSeFabItemElement extends Components.SeFabItem, HTMLStencilElement {}
+  var HTMLSeFabItemElement: {
+    prototype: HTMLSeFabItemElement;
+    new (): HTMLSeFabItemElement;
+  };
+
   interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {}
   var HTMLSeFormFieldElement: {
     prototype: HTMLSeFormFieldElement;
@@ -1213,6 +1225,7 @@ declare global {
     'se-divider': HTMLSeDividerElement;
     'se-dropdown': HTMLSeDropdownElement;
     'se-fab': HTMLSeFabElement;
+    'se-fab-item': HTMLSeFabItemElement;
     'se-form-field': HTMLSeFormFieldElement;
     'se-header': HTMLSeHeaderElement;
     'se-icon': HTMLSeIconElement;
@@ -1701,6 +1714,16 @@ declare namespace LocalJSX {
     */
     'position'?: 'bottom' | 'top';
   }
+  interface SeFabItem {
+    /**
+    * Property that determines if an icon is included in the floating action button.
+    */
+    'icon'?: string;
+    /**
+    * Send the value of the caption to the parent when clicking on the item.
+    */
+    'onDidClick'?: (event: CustomEvent<any>) => void;
+  }
   interface SeFormField {
     /**
     * Optional property that defines if the form field is disabled.  Set to `false` by default.
@@ -2177,6 +2200,7 @@ declare namespace LocalJSX {
     'se-divider': SeDivider;
     'se-dropdown': SeDropdown;
     'se-fab': SeFab;
+    'se-fab-item': SeFabItem;
     'se-form-field': SeFormField;
     'se-header': SeHeader;
     'se-icon': SeIcon;
@@ -2234,6 +2258,7 @@ declare module "@stencil/core" {
       'se-divider': LocalJSX.SeDivider & JSXBase.HTMLAttributes<HTMLSeDividerElement>;
       'se-dropdown': LocalJSX.SeDropdown & JSXBase.HTMLAttributes<HTMLSeDropdownElement>;
       'se-fab': LocalJSX.SeFab & JSXBase.HTMLAttributes<HTMLSeFabElement>;
+      'se-fab-item': LocalJSX.SeFabItem & JSXBase.HTMLAttributes<HTMLSeFabItemElement>;
       'se-form-field': LocalJSX.SeFormField & JSXBase.HTMLAttributes<HTMLSeFormFieldElement>;
       'se-header': LocalJSX.SeHeader & JSXBase.HTMLAttributes<HTMLSeHeaderElement>;
       'se-icon': LocalJSX.SeIcon & JSXBase.HTMLAttributes<HTMLSeIconElement>;

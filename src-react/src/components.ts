@@ -30,6 +30,7 @@ export const SeDialogHeader = /*@__PURE__*/createReactComponent<JSX.SeDialogHead
 export const SeDivider = /*@__PURE__*/createReactComponent<JSX.SeDivider, HTMLSeDividerElement>('se-divider');
 export const SeDropdown = /*@__PURE__*/createReactComponent<JSX.SeDropdown, HTMLSeDropdownElement>('se-dropdown');
 export const SeFab = /*@__PURE__*/createReactComponent<JSX.SeFab, HTMLSeFabElement>('se-fab');
+export const SeFabItem = /*@__PURE__*/createReactComponent<JSX.SeFabItem, HTMLSeFabItemElement>('se-fab-item');
 export const SeFormField = /*@__PURE__*/createReactComponent<JSX.SeFormField, HTMLSeFormFieldElement>('se-form-field');
 export const SeHeader = /*@__PURE__*/createReactComponent<JSX.SeHeader, HTMLSeHeaderElement>('se-header');
 export const SeIcon = /*@__PURE__*/createReactComponent<JSX.SeIcon, HTMLSeIconElement>('se-icon');

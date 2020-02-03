@@ -261,6 +261,19 @@ export class SeFab {
   }
 }
 
+export declare interface SeFabItem extends Components.SeFabItem {}
+@ProxyCmp({inputs: ['icon']})
+@Component({ selector: 'se-fab-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['icon'] })
+export class SeFabItem {
+  didClick!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didClick']);
+  }
+}
+
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({inputs: ['disabled', 'label', 'option', 'required', 'status', 'type', 'value']})
 @Component({ selector: 'se-form-field', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'label', 'option', 'required', 'status', 'type', 'value'] })
