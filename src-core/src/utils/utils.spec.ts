@@ -1,4 +1,4 @@
-import { getFullTitle } from './utils';
+import { getFullTitle, getFullCopyright } from './utils';
 
 describe('format', () => {
   it('returns empty object', () => {
@@ -23,5 +23,17 @@ describe('format', () => {
     const title = getFullTitle("simple name");
     expect(title.first).toEqual('simple');
     expect(title.last).toEqual('name');
+  });
+
+  it('formats the copyright into two segments', () => {
+    const copyright = getFullCopyright("my copyright. ©2020");
+    expect(copyright.first).toEqual('my copyright.');
+    expect(copyright.last).toEqual('©2020');
+  });
+
+  it('does not format the copyright when there is no copyright symbol', () => {
+    const copyright = getFullCopyright("my copyright");
+    expect(copyright.first).toEqual('my copyright');
+    expect(copyright.last).toEqual('');
   });
 });

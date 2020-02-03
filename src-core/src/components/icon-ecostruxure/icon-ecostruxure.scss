@@ -8,8 +8,10 @@
 }
 
 .medium {
-  width: 144px;
-  height: 27px;
+  svg {
+    width: 144px;
+    height: 27px;
+  }
 }
 
 .inherited {

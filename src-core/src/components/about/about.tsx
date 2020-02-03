@@ -1,5 +1,5 @@
-import { Element, Component, h, Prop } from "@stencil/core";
-import { getFullTitle } from "../../utils/utils";
+import { Component, h, Prop } from "@stencil/core";
+import { getFullTitle, getFullCopyright } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
 
 @Component({
@@ -8,7 +8,6 @@ import { AppInfo } from "../appInfo";
   shadow: true
 })
 export class AboutComponent {
-	@Element() el: HTMLElement;
   /**
    * The title of your about screen.
    */
@@ -36,6 +35,7 @@ export class AboutComponent {
 
   render() {
     var title = getFullTitle(this.appTitle);
+    var fullCopyright = getFullCopyright(this.copyright);
     let domain;
     if (this.domain.toLowerCase() === `ecostruxure`) {
       domain = <se-icon-ecostruxure size="medium" color="inherited"></se-icon-ecostruxure>;
@@ -53,14 +53,10 @@ export class AboutComponent {
             <span>{title.first}</span>
             <span class="light">&nbsp;{title.last}</span>
           </h1>
-          <p class="version">version {this.version}</p>
+          <p class="version">Version {this.version}</p>
           <slot name="custom-info"></slot>
-        </div>
-        <div class="more-information">
-          <div class="background-light"></div>
-          <div class="content-info">
-            <span>{this.copyright}</span>
-          </div>
+          <div class="copyright-info-first">{fullCopyright.first}</div>
+          <div class="copyright-info-last">{fullCopyright.last}</div>
         </div>
       </div>
     ];
