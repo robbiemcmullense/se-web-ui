@@ -12,8 +12,8 @@
   "dependencies": {
     "@se/fonts": "^1.0.0",
     "@se/icons": "^3.0.4",
-    "@se/web-ui": "^3.0.0",
-    "@se/web-ui-react": "^3.5.3",
+    "@se/web-ui": "link:../core",
+    "@se/web-ui-react": "link:../react",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-router-dom": "^4.3.1",
