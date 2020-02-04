@@ -14,12 +14,18 @@ describe('FabComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should have 2 span elements, one with a description class and one with an se-icon class', async() => {
+  it('should have a span element with a description class', async() => {
     const description = await page.find('se-fab-item >>> span.description');
-    const icon = await page.find('se-fab-item >>> span.se-icon');
     expect(description).toBeTruthy();
-    expect(icon).toBeTruthy();
+    
   });
+
+  it('should render with a se-icon element when the fab item has an icon property', async() => {
+    element.setProperty('icon', 'action_delete_cross');
+    await page.waitForChanges();
+    const icon = await page.find('se-fab-item >>> se-icon');
+    expect(icon).toBeTruthy();
+  })
 
   it('emits the didClick event when the fab item is clicked', async() => {
     const eventSpy = await page.spyOnEvent('didClick');

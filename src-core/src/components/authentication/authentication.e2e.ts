@@ -31,8 +31,8 @@ describe('AuthenticationComponent', () => {
   });
 
   it('renders a copyright message by default', async() => {
-    let copyright = await page.find('se-authentication >>> div.copyright-note');
-    expect(copyright.innerText).toEqual('This application is protected by copyright law and international treaties. © 2017 Schneider Electric Industries SAS. All Rights Reserved.');
+    let copyright = await page.find('se-authentication >>> div.copyright-note > span');
+    expect(copyright.innerText).toEqual('This application is protected by copyright law and international treaties. © 2020 Schneider Electric Industries SAS. All Rights Reserved.');
   });
 });
 

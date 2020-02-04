@@ -31,8 +31,10 @@ describe('AboutComponent', () => {
   });
 
   it('renders a copyright message by default', async() => {
-    let copyright = await page.find('se-about >>> div.content-info');
-    expect(copyright.innerText).toEqual('This application is protected by copyright law and international treaties. © 2017 Schneider Electric Industries SAS. All Rights Reserved.');
+    let copyrightFirst = await page.find('se-about >>> div.copyright-info-first');
+    let copyrightLast = await page.find('se-about >>> div.copyright-info-last');
+    expect(copyrightFirst.innerText).toEqual('This application is protected by copyright law and international treaties.');
+    expect(copyrightLast.innerText).toEqual('© 2020 Schneider Electric Industries SAS. All Rights Reserved.');
   });
 });
 
