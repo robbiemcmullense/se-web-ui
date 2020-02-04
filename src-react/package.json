@@ -1,6 +1,6 @@
 {
   "name": "@se/web-ui-react",
-  "version": "0.0.1-PLACEHOLDER",
+  "version": "3.6.0",
   "sideEffects": false,
   "description": "React specific wrapper for component-library",
   "repository": {

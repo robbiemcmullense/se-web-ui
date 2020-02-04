@@ -125,6 +125,7 @@ button {
   outline: none;
   transition: .2s;
   cursor: pointer;
+  font-family:inherit;
   font-weight: 300;
   @include display-flex();
   @include align-items(center);
