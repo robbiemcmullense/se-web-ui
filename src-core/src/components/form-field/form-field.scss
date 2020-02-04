@@ -140,6 +140,13 @@ $max-width-input: 320px;
       flex-direction: column;
       @include align-items(start);
     }
+    // on IE 11 browser, set stacked form field to display: block
+    // IE 11 renders slotted se-checkbox and se-radio differently due to lack of shadow DOM
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .form-field-wrapper {
+        display: block;
+      }
+    }
     label {
       padding: 0 8px 4px;
       text-align: left;
