@@ -1,0 +1,49 @@
+{
+  "name": "@se/web-ui",
+  "version": "0.0.1-PLACEHOLDER",
+  "description": "web-ui library of web-component to build SE application",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/se-components/se-components.js",
+  "publishConfig": {
+    "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
+  },
+  "files": [
+    "dist",
+    "loader",
+    "styles",
+    "docs",
+    "package.json",
+    "readme.md"
+  ],
+  "scripts": {
+    "build": "npm-run-all build.*",
+    "build.rm.theme": "rimraf \"./styles\"",
+    "build.rm.docs": "rimraf \"./docs\"",
+    "build.mkdir": "mkdir docs && mkdir styles",
+    "build.core": "stencil build --docs",
+    "build.export.theme": "cpx \"src/theme/**/*\" styles",
+    "build.export.docs": "cpx \"src/**/*.md\" docs",
+    "build_.dash": "node scripts/index.js",
+    "test": "stencil test --e2e --testTimeout=30000",
+    "posttest": "stencil test --spec --coverage",
+    "spec": "stencil test --spec",
+    "e2e": "stencil test --e2e",
+    "e2e.screenshot": "stencil test --e2e --screenshot",
+    "test.watch": "stencil test --e2e --watchAll",
+    "spec.watch": "stencil test --spec --watchAll",
+    "watch": "npm run build && stencil build --watch"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "24.0.25",
+    "@types/puppeteer": "1.20.3",
+    "jest": "24.9.0",
+    "puppeteer": "1.20.0"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "npmScope": "se",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "react-demo": {
+      "tags": []
+    },
+    "react-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["react-demo"]
+    },
+    "angular-demo": {
+      "tags": []
+    },
+    "angular-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["angular-demo"]
+    },
+    "angular": {
+      "tags": [],
+      "implicitDependencies": ["core"]
+    },
+    "react": {
+      "tags": [],
+      "implicitDependencies": ["core"]
+    },
+    "core": {
+      "tags": []
+    },
+    "dash": {
+      "tags": []
+    },
+    "utils": {
+      "tags": []
+    },
+    "web-demo": {
+      "tags": []
+    },
+    "web-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web-demo"]
+    }
+  }
+}

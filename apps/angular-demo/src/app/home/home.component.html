@@ -1,0 +1,83 @@
+<se-container position="absolute">
+  <se-block width="300px">
+    <se-block-header>Sample List</se-block-header>
+    <se-block-content>
+      <se-list>
+        <se-list-item item="My Site 1"></se-list-item>
+        <se-list-item item="My Site 2"></se-list-item>
+        <se-list-item item="My Site 3"></se-list-item>
+      </se-list>
+    </se-block-content>
+    <se-block-footer>
+      <se-button option="flat" (click)="showDialog()">Open Dialog</se-button>
+    </se-block-footer>
+  </se-block>
+  <se-divider option="vertical"></se-divider>
+  <se-block>
+    <se-container option="card" display="grid" column-size="400px" row-size="400px">
+      <se-block class="flex">
+        <se-block-content>
+          <se-button option="flat">standard flat</se-button>
+          <se-button option="raised">standard raised</se-button>
+          <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
+          <se-button option="flat" color="primary">primary</se-button>
+          <se-button option="flat" color="secondary">secondary</se-button>
+          <se-button icon="action_resize">Resize</se-button>
+          <se-button option="outline">Outline</se-button>
+          <se-button option="outline" color="alternative">Outline alternative</se-button>
+          <se-button option="outline" color="primary">Outline primary</se-button>
+          <se-button option="outline" color="secondary">Outline secondary</se-button>
+        </se-block-content>
+      </se-block>
+      <se-block>
+        <se-block-header id="switch-header">Switches</se-block-header>
+        <se-block-content>
+          <se-checkbox option="switch" (didChange)="handleOnOff($event)"></se-checkbox>
+          <se-checkbox option="onoff" (didChange)="handleToggle($event)" style="padding-left: 10px;"></se-checkbox>
+          <li style="padding-top: 10px;">Click the on/off switch to change the header's background color when in the "on" position.</li>
+          <li>Click the toggle switch to change the footer's background color when in the "on" position.</li>
+        </se-block-content>
+        <se-divider></se-divider>
+        <se-block-footer id="switch-footer"></se-block-footer>
+      </se-block>
+      <se-block>
+        <se-block-header>
+          Form Field
+        </se-block-header>
+        <se-block-content>
+          <se-form-field label="This is my custom Checkbox.  It is unique." type="checkbox" required="true">
+            <se-checkbox></se-checkbox>
+          </se-form-field>
+          <se-form-field id="input-form" label="Input" required="true">
+            <input type="text" />
+          </se-form-field>
+          <se-form-field id="select-form" label="Select" required="true" type="select">
+            <select>
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </se-form-field>
+        </se-block-content>
+        <se-block-footer>
+          <se-button option="raised" (click)="showSnackbar()">Open Snackbar</se-button>
+        </se-block-footer>
+      </se-block>
+      <se-block>
+        <se-block-header>Linear Graphs</se-block-header>
+        <se-block-content>
+          <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
+          <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels"></se-visual-linear>
+        </se-block-content>
+      </se-block>
+      <se-block>
+          <se-block-header>Circular Graphs</se-block-header>
+          <se-block-content style="display: flex;">
+            <se-visual-radial percentage="30" label="units"></se-visual-radial>
+            <se-visual-radial percentage="30" secolor="#ee0014" label="Label" value="8"></se-visual-radial>
+          </se-block-content>
+        </se-block>
+    </se-container>
+  </se-block>
+
+</se-container>

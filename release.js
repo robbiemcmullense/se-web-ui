@@ -2,14 +2,13 @@ const fs = require('fs-extra');
 const path = require('path');
 const execa = require('execa');
 const Listr = require('listr');
-const tc = require('turbocolor');
 
 const rootDir = __dirname;
 
 const packages = [
-  'core',
-  'angular',
-  'src-react'
+  'libs/core',
+  'libs/angular',
+  'libs/react'
 ];
 
 function packagePath(project) {
@@ -25,7 +24,7 @@ function updatePackageVersions(tasks, packages, version) {
     const projectRoot = projectPath(package);
     tasks.push(
       {
-        title: `${package}: update package.json ${tc.dim(`(${version})`)}`,
+        title: `${package}: update package.json ${version}`,
         task: async () => {
           await execa('npm', ['version', version], { cwd: projectRoot });
         }
@@ -35,7 +34,6 @@ function updatePackageVersions(tasks, packages, version) {
 }
 
 function publishPackages(tasks, packages, tag = 'latest') {
-
   // next publish
   packages.forEach(package => {
     const projectRoot = projectPath(package);
@@ -91,7 +89,7 @@ async function main() {
     console.log(`\nweb-ui ${version} published!! 🎉\n`);
 
   } catch (err) {
-    console.log('\n', tc.red(err), '\n');
+    console.log('\n', err, '\n');
     process.exit(1);
   }
 }

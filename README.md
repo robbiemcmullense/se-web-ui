@@ -1,191 +1,174 @@
-# SE WEB-UI library
+# @se/web-ui
 
-> Follow the [design system](https://pages.github.schneider-electric.com/iot/design-system/) for in depth documentation.
+This project was generated using [Nx](https://nx.dev).
 
-## Overview
+<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
 
-The purpose of this project is to create a common UI Library that will assist any developer in quickly developing Schneider Electric design elements thanks to native [custom elements](https://developers.google.com/web/fundamentals/web-components/customelements). Custom elements can be used with any coding framework including pure JavaScript, jQuery, React, Vue or Angular.
-
-Components developed in this way can be as complex as holding a full independent widget with routes, and thus they can be configured from the outside (parameter) and work in any already created application. Like in [this example](https://auth0.com/blog/creating-web-components-with-stencil/), the developer could integrate an authentication component that could be shared with other projects.
-
-This project uses [StencilJS](https://stenciljs.com) to generate web components from the source code. StencilJS generates compact web-components that follow 100% of the web standards, taking care of the polyfills if the browser does not support them natively. StencilJS utilizes [TypeScript](https://www.typescriptlang.org/) to follow best coding practices.
-
-You can test all of these components with this [Online Template Editor](https://pages.github.schneider-electric.com/IoT/web-template-editor/).
+🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in this repository.
 
     .
-    ├── angular             // `@se/web-ui-angular`
-    ├── core                // `@se/web-ui`
-    ├── demo-*              // demos folder
-    ├── node_modules
-    ├── src-angular         // Src angular module
-    ├── src-core            // Src core stencil library
+    ├── apps
+    │  ├── angular-demo        // Angular specific app
+    │  ├── angular-demo-e2e    // Cypress related to the angular-demo app
+    │  ├── storybook           
+    ├── libs                  // All libs shared and deployed
+    │  ├── core                // @se/web-ui library (StencilJs)
+    │  ├── angular             // @se/web-ui-angular
+    │  ├── react               // @se/web-ui-react 
+    ├── package.json          // Centralized package.json
     ├── LICENSE
-    ├── package.json
-    ├── publish.js          // Publish libraries with the same version
+    ├── workspace.json        // Defined all nx apps and libraries
     └── README.md
 
-**Note :** Any library (core, angular..) will be generated with the same version number defined in `package.json`.
+**PS :** To start, the StencilJs (`core`) library needs to be compile to generate the codes in `react` and `angular`. 
 
-## List of Components
+## Environment setup
 
-| Done | Component      | Info                                                                                                                       |
-| ---- | -------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| [x]  | App            | define a wrapper for the design/style/css variable and insure that the content of the app takes the full page              |
-| [x]  | TabBar         | Called Tab bar in the guideline. Use or regular `nav` tag for nab item                                                     |
-| [x]  | Header         | Header of an se app. does not include navigation.                                                                          |
-| [x]  | container      | page container. Can be used to add a margin for better widget alignment. Default will make the use of the full flex space. |
-| [x]  | divider        | used to add a line to divide element between each others.                                                                  |
-| [x]  | widget         | Body of a widget. the widget itself should be defined as flex                                                              |
-| [x]  | widget-header  | Top part of the widget.                                                                                                    |
-| [x]  | widget-content | Middle par of the widget. should take the full space (flex:1)                                                              |
-| [x]  | widget-footer  | Bottom part of a widget.                                                                                                   |
-| [x]  | Checkbox       | checkbox to check or uncheck a value                                                                                       |
-| [ ]  | Input          | Text input. Should also handle error?                                                                                      |
-| [ ]  | Select         | Dropdown that takes the selected choice                                                                                    |
-| [ ]  | Select-item    | Element of a select element                                                                                                |
-| [x]  | Form-Field     | container for a submittable form. Accepts checkboxes, input fields, and select dropdowns                                   |
-| [x]  | Button         | standard button                                                                                                            |
-| [x]  | Radio          | known as split in guideline, Should bind the buttons together, nothing more                                                |
-| [x]  | Radio-on-off   | toggle switch with text that can indicate "on" or "off", "active" or "inactive", etc.                                      |
-| [x]  | Radio-Switch   | toggle switch without text that can indicate "on" or "off", "active" or "inactive", etc.                                   |
-| [x]  | Chip           | "badge" icon that can be used as a notification component                                                                  |
-| [x]  | Icon           | Give a wrapper of icons to simplify icon manipulation                                                                      |
-| [x]  | Loading        | Create a loading element to be used with cards and widgets                                                                 |
-| [x]  | Visual-Linear  | linear progress bar                                                                                                        |
-| [x]  | Visual-Radial  | circular progress bar                                                                                                      |
-| [x]  | Dropdown       | menu in guideline, a button with a list                                                                                    |
-| [x]  | Card           | design of a card. Can be selected, checked, with multiple layout possible                                                  |
-| [x]  | Card-header    |                                                                                                                            |
-| [x]  | Card-content   |                                                                                                                            |
-| [x]  | Dialog         | design of the Modal, Does not include how to manipulate it (open, close)                                                   |
-| [x]  | Dialog-header  |                                                                                                                            |
-| [x]  | Dialog-content |                                                                                                                            |
-| [x]  | Dialog-footer  |                                                                                                                            |
-| [x]  | sidenav        | ( fly from left. should open at the `se-app` level with css animation                                                      |
-| [x]  | sidenav-item   | selection of the left element with it's content (slot)                                                                     |
-| [x]  | List           | classic                                                                                                                    |
-| [x]  | List-group     | to display a collapsible list groups                                                                                       |
-| [x]  | List-item      | list with slot (start/center/end)                                                                                          |
-| [x]  | Treeview       | use to nest a list within a list, can have multiple treeviews within a treeview                                            |
-| [x]  | Label          | label to be displayed next to an input field or checkbox                                                                   |
-| [x]  | Link           | anchor element that redirects a user to another web page                                                                   |
-| [ ]  | Tab            |                                                                                                                            |
-| [ ]  | Tab-item       |                                                                                                                            |
-| [x]  | Brand          | Authentication page with a slot as content                                                                                 |
-| [x]  | About          | About page that will be used in the menu section                                                                           |
-| [x]  | Snackbar       | Design only. No info about how to show it from service yet                                                                 |
-| [ ]  | Pagination     |                                                                                                                            |
-| [ ]  | Datepicker     |                                                                                                                            |
-| [x]  | Tooltips       |                                                                                                                            |
-| [x]  | FAB            |                                                                                                                            |
+1. Configure your [proxy configuration](https://pages.github.schneider-electric.com/iot/design-system/framework/framework-integration/setup) as needed
+2. Install [yarn](https://yarnpkg.com/). This facilitate caching and workspace.
+3. Run `yarn install` from the root directory.
 
-## Testing in your App
 
-```shell
-# With npm
-npm install @se/web-ui
+## Demo application
 
-# with yarn
-yarn add @se/web-ui
-```
-
-## Capabilities
-
-List of design aspect of this implementation:
-
-**CSS Variable**
-
-Even if not accepted in most browser, it's easy to get a fallback to a regular css parameter. This works exceptionally well with Shadow DOM, which give us a powerful way to customize the style for the whole application from one css variable.
-
-```scss
-.se-button {
-  color: $primary;
-  color: var(--primary, $primary);
-}
-```
-
-Changing `--primary` in one css element, will automatically update all the primary color in the application.
-
-## Contribution
-
-If you want to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more about social coding on Github, new technologies and and their ecosystems and how to make constructive, helpful bug reports, feature requests and the noblest of all contributions: a good, clean pull request.
-
-Each demo has been built around real case, deployment ready, scenarios. This insures that the component library does not impact any performance or encountesr any issues regarding lazy loading modules and such.
-
-### Set up your env
-
-1. Install [NodeJs](https://nodejs.org/en/) if it's not already done.
-2. Install [yarn](https://yarnpkg.com/en/) for better caching. `npm` can be used as well of course.
-3. Follow the [Environment Setup ](https://pages.github.schneider-electric.com/iot/design-system/framework/framework-integration/setup) guide to setup the SE Nexus repository.
-4. Run `yarn install` to install dependencies of the project and each demo in this repository.
-5. Run `yarn build` to create a local build version that will be locally used by each demo
-
-**Note :** Each demo use the hard link to connect to the `/core` and `/angular` folder that are the local version of what will be deployed as `@se/web-ui` and `@se/web-ui-angular`. This let developer create/update component that, once built, will be automatically linked to the demo. It keeps all dependencies aligned. (Links only works with `yarn`)
-
-**Demo with NO Framework**
-
-Open `www/index.html` in your browser.
-This demo shows how the app can be used without any framework.
-
-**Demo with REACT**
-
-The React project built based React reference app.
+Run any demo application: 
 
 ```
-cd demo-react
-yarn install
-yarn start
+yarn start react-demo
+yarn start react-demo-e2e
+yarn start angular-demo
+yarn start angular-demo-e2e
 ```
 
-This demo uses a `Widget` react component as a list to loop through the `se-widget` with different content.
 
-**Demo with VUE**
 
-The Vue project built based Vue reference app.
+**PS :** Only apps in the `apps` folder can be run that way. Any libs should be run with their own command line (see next section) 
 
-```
-cd demo-vue
-yarn install
-yarn start
-```
-
-This demo shows a simple interaction with vue framework.
-
-**Demo with Angular**
-
-Created using [Angular](https://angular.io) framework based on the generated architecture with [EcoStruxure App DSK](https://seappsdk.dev.struxurewarecloud.com) and trying to match with current implementation of the web-framework
+## Storybook
 
 ```
-cd demo-angular
-yarn install
-yarn start
+yarn nx run core:storybook
 ```
 
-This demo shows a simple interaction with vue framework.
+To build the storybook
+```
+yarn nx run core:build-storybook
+```
 
-### How to make a clean pull request
+## Core library (web-ui components)
 
-Look for a project's contribution instructions. If there are any, follow them.
+In a separate shell, run the stencilJs core lib in watch mode:
 
-- Create a personal fork of the project on Github.
-- Clone the fork on your local machine. Your remote repo on Github is called `origin`.
-- Add the original repository as a remote called `upstream`.
-- If you created your fork a while ago be sure to pull upstream changes into your local repository.
-- Create a new branch to work on! Branch from `develop` if it exists, otherwise branch from `master`.
-- Implement/fix your feature, comment your code.
-- Follow the code style of the project, including indentation.
-- If the project has tests run them! (See the section "Writing Unit Tests for your Components" to learn more information.)
-- Write or adapt tests as needed.
-- Add or change the documentation as needed.
-- Squash your commits into a single commit with git's [interactive rebase](https://help.github.com/articles/interactive-rebase). Create a new branch if necessary.
-- Push your branch to your fork on Github, the remote `origin`.
-- From your fork open a pull request in the correct branch. Target the project's `develop` branch if there is one, otherwise target the `master` branch!
-- If the maintainer requests further changes just push them to your branch. The PR will be updated automatically.
-- Once the pull request is approved and merged you can pull the changes from `upstream` to your local repo and delete
-  your extra branch(es).
+```
+yarn web-ui watch
+```
 
-And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
+Any change on the web-component will automatically update the angular and react code that will automatically relaunch the demo app you are working on.
+
+
+## Test or build the libraries 
+
+Each libraries need to be built and tested independently (does not use the `nx` workspace)
+- Test
+    ```
+    yarn web-ui test
+    yarn web-ui-angular test
+    yarn web-ui-react test
+    ```
+- Build
+    ```
+    yarn web-ui build
+    yarn web-ui-angular build
+    yarn web-ui-react build
+    ```
+
+**Note :** Except the core library (web-ui), libraries does not nee to be built to work with the demo application. 
+
+## Connect to your project locally
+
+To connect your project with any library locally, you need first to build them, then:
+1. Create a global link with yarn
+    ```
+    yarn web-ui link
+    yarn web-ui-angular link
+    yarn web-ui-react link
+    ```
+2. In your project folder:
+    ```
+    yarn link @se/web-ui @se/web-ui-angular @se/web-ui-react
+    ```
+
+
+# Adding capabilities to your workspace
+
+Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+
+These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+
+Below are some plugins which you can add to your workspace:
+
+
+- [React](https://reactjs.org)
+  - `yarn add -D @nrwl/react`
+- Web (no framework frontends)
+  - `yarn add -D @nrwl/web`
+- [Angular](https://angular.io)
+  - `yarn add -D @nrwl/angular`
+- [Nest](https://nestjs.com)
+  - `yarn add -D @nrwl/nest`
+- [Express](https://expressjs.com)
+  - `yarn add -D @nrwl/express`
+- [Node](https://nodejs.org)
+  - `yarn add -D @nrwl/node`
+
+## Generate an application
+
+Run `yarn nx g @nrwl/react:app my-app` to generate an application.
+
+> You can use any of the plugins above to generate applications as well.
+
+When using Nx, you can create multiple applications and libraries in the same workspace.
+
+## Generate a library
+
+Run `yarn nx g @nrwl/react:lib my-lib` to generate a library.
+
+> You can also use any of the plugins above to generate libraries as well.
+
+Libraries are sharable across libraries and applications. They can be imported from `@se/mylib`.
+
+## Development server
+
+Run `yarn nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `yarn nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+
+## Build
+
+Run `yarn nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `yarn nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+
+Run `yarn nx affected:test` to execute the unit tests affected by a change.
+
+## Running end-to-end tests
+
+Run `yarn ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+
+Run `yarn nx affected:e2e` to execute the end-to-end tests affected by a change.
+
+## Understand your workspace
+
+Run `yarn nx dep-graph` to see a diagram of the dependencies of your projects.
+
+## Further help
+
+Visit the [Nx Documentation](https://nx.dev) to learn more.

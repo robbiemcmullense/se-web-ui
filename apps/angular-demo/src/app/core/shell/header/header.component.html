@@ -1,0 +1,36 @@
+<se-header [appTitle]="appInfo.title" project="Angular Shell">
+  <se-sidemenu>
+    <se-sidemenu-item item="About">
+      <se-about [appTitle]="appInfo.title" [version]="appInfo.version" [imageUrl]="appInfo.image"></se-about>
+    </se-sidemenu-item>
+    <se-sidemenu-item item="Help">
+      <help-menu></help-menu>
+    </se-sidemenu-item>
+    <se-sidemenu-item item="Section 3">
+      <se-block>
+        <se-block-header>some block design</se-block-header>
+        <se-block-content>
+          <se-chip id="se-chip" value="Chip 01"></se-chip>
+        </se-block-content>
+        <se-block-footer>
+          <se-button option="raised" color="primary">RaisedGreen</se-button>
+        </se-block-footer>
+      </se-block>
+    </se-sidemenu-item>
+  </se-sidemenu>
+  <div slot="end">
+    <se-dropdown alignment="right">
+      <se-button slot="trigger" option="inherit" icon="user_standard" icon-color="primary">{{user.username || user.name || 'test user'}}</se-button>
+      <se-list option="dropdown">
+        <se-list-item item="Logout" (click)="logout()"></se-list-item>
+        <se-divider></se-divider>
+        <se-list-item
+          *ngFor="let lang of supportedLanguages"
+          (click)="selectedLanguage=lang"
+          [item]="lang"
+          [icon]="lang === selectedLanguage ? 'notification_ok' : ''"></se-list-item>
+      </se-list>
+    </se-dropdown>
+    <se-link (click)="settings()">settings</se-link>
+  </div>
+</se-header>

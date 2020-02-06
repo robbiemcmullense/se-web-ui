@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "ESNext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@se/web-ui-angular": ["libs/angular/src/index.ts"],
+      "@se/web-ui-react": ["libs/react/src/index.ts"],
+      "@se/web-ui": ["libs/core"],
+      "@se/web-ui/*": ["libs/core/*"],
+      "@se/utils": ["libs/utils/src/index.ts"],
+      "@se/libreact": ["libs/libreact/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
