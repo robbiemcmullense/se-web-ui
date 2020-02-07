@@ -1,8 +1,7 @@
 import Home         from './views/pages/Home';
-import About        from './views/pages/About';
+import Dashboard    from './views/pages/Dashboard';
 import Error404     from './views/pages/Error404';
-import PostShow     from './views/pages/PostShow';
-import Register     from './views/pages/Register';
+import Icons        from './views/pages/Icons';
 
 import Navbar       from './views/components/Navbar';
 
@@ -17,10 +16,9 @@ applyPolyfills().then(() => {
 
 // List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
-    '/'             : Home
-    , '/about'      : About
-    , '/p/:id'      : PostShow
-    , '/register'   : Register
+    '/'           : Home,
+    '/dashboard'  : Dashboard,
+    '/icons'      : Icons
 };
 
 
@@ -36,14 +34,14 @@ const router = async () => {
     await Navbar.after_render();
 
     // Get the parsed URl from the addressbar
-    let request = Utils.parseRequestURL()
+    const request = Utils.parseRequestURL()
 
     // Parse the URL and if it has an id part, change it with the string ":id"
-    let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
+    const parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
 
     // Get the page from our hash of supported routes.
     // If the parsed URL is not in our list of supported routes, select the 404 page instead
-    let page = routes[parsedURL] ? routes[parsedURL] : Error404
+    const page = routes[parsedURL] ? routes[parsedURL] : Error404
     content.innerHTML = await page.render();
     await page.after_render();
 

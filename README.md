@@ -38,10 +38,17 @@ A quick look at the top-level files and directories you'll see in this repositor
 Run any demo application: 
 
 ```
-yarn start react-demo
+# React demo
+yarn start react-demo               
 yarn start react-demo-e2e
+
+#  Angular demo
 yarn start angular-demo
 yarn start angular-demo-e2e
+
+# Vanilla JS (pure web-component with no framework)
+yarn start web-demo      
+yarn start web-demo-e2e
 ```
 
 

@@ -52,34 +52,18 @@ let Navbar = {
           </se-sidemenu-item>
           <se-sidemenu-item item="About" id="side-about">
             <se-about app-title="Test Advisor" version="1.2.3"
-              image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
+              image-url="url('https://schneider-electric.box.com/shared/static/7hp8f04wj8lclpxn8jonti616lvim3zl.jpg')">
             </se-about>
           </se-sidemenu-item>
           <se-sidemenu-item id="sidemenu-item" item="Close" id="side-close"></se-sidemenu-item>
         </se-sidemenu>
       </se-header>
       <se-tabbar color="primary">
-        <nav slot="start">
-          Site :
-          <se-dropdown alignment="left">
-            <se-button slot="trigger" option="inherit">My Site 1</se-button>
-            <se-list option="dropdown">
-              <se-list-item item="My Site 1"></se-list-item>
-              <se-list-item item="My Site 2"></se-list-item>
-              <se-list-item item="My Site test cool lon ggggg"></se-list-item>
-              <se-list-item item="My Site test cool lon ggggg"></se-list-item>
-              <se-list-item item="My Site test cool lon ggggg"></se-list-item>
-              <se-list-item item="My Site test cool lon ggggg"></se-list-item>
-              <se-list-item item="My Site test cool lon ggggg"></se-list-item>
-              <se-list-item item="My Site test cool lon ggggg"></se-list-item>
-              <se-list-item item="My Site test cool lon ggggg"></se-list-item>
-            </se-list>
-          </se-dropdown>
-        </nav>
         <nav>
           <a class="active">Home</a>
-          <a>Another</a>
-          <a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/icons">Icons</a>
+          <a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a><a disabled>Another</a>
         </nav>
         <nav slot="end">
           <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
