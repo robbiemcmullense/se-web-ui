@@ -36,7 +36,11 @@ A quick look at the top-level files and directories you'll see in this repositor
 ## Demo application
 
 Run any demo application: 
+```
+yarn <nx_script> <application>
+```
 
+For example:
 ```
 # React demo
 yarn start react-demo               
@@ -69,9 +73,14 @@ yarn nx run core:build-storybook
 ## Core library (web-ui components)
 
 In a separate shell, run the stencilJs core lib in watch mode:
+```
+yarn <lib> <script>
+```
+
+For example:
 
 ```
-yarn web-ui watch
+yarn core watch
 ```
 
 Any change on the web-component will automatically update the angular and react code that will automatically relaunch the demo app you are working on.
@@ -82,15 +91,15 @@ Any change on the web-component will automatically update the angular and react 
 Each libraries need to be built and tested independently (does not use the `nx` workspace)
 - Test
     ```
-    yarn web-ui test
-    yarn web-ui-angular test
-    yarn web-ui-react test
+    yarn core test
+    yarn angular test
+    yarn react test
     ```
 - Build
     ```
-    yarn web-ui build
-    yarn web-ui-angular build
-    yarn web-ui-react build
+    yarn core build
+    yarn angular build
+    yarn react build
     ```
 
 **Note :** Except the core library (web-ui), libraries does not nee to be built to work with the demo application. 

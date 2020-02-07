@@ -1,7 +1,7 @@
 import { Component, h, Prop, Element, State } from "@stencil/core";
 import { getFullTitle } from "../../utils/utils";
 import { AppInfo } from "../appInfo";
-import burger_menu from "@se/icons/svg/burger_menu.svg";
+import burgerMenu from "@se/icons/svg/burger_menu.svg";
 
 @Component({
   tag: "se-header",
@@ -13,7 +13,7 @@ export class HeaderComponent {
   /**
    * Sets the title of your application.
    */
-  @Prop() appTitle: string = "";
+  @Prop() appTitle = "";
   /**
    * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
    */
@@ -46,7 +46,7 @@ export class HeaderComponent {
       <div class="d-flex">
         {this.hasMenu ?
           <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
-            <se-icon size="medium" color="primary"><span innerHTML={burger_menu}></span></se-icon>
+            <se-icon size="medium" color="primary"><span innerHTML={burgerMenu}></span></se-icon>
           </span>
         : ''}
         <div class="d-flex-column header-title-wrapper">

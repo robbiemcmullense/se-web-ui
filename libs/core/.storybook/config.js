@@ -2,6 +2,15 @@ import { configure, addDecorator } from '@storybook/html';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
 
+// // Issue: https://github.com/nrwl/nx/issues/2320
+// import './app/app.element.ts';
+// import { applyPolyfills, defineCustomElements } from '@se/web-ui/loader';
+
+// applyPolyfills().then(() => {
+//   return defineCustomElements(window);
+// });
+
+
 addDecorator(withKnobs);
 addDecorator(withA11y);
 

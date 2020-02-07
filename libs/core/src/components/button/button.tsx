@@ -52,7 +52,7 @@ export class ButtonComponent {
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
 
   /**
-   * Optional property to specify if the button contains a text or only an icon. THis will impact how the buttons render. Only necessary when using svg icon instead of the `icon` name property.
+   * Property to specify if the button should only display an icon (no extra spacing).
    */
   @Prop() iconOnly: boolean;
    /**
@@ -65,7 +65,7 @@ export class ButtonComponent {
    /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
-  @Prop() disabled: boolean = false;
+  @Prop() disabled = false;
   /**
    * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
    */
@@ -124,7 +124,7 @@ export class ButtonComponent {
 
   @State() innerId;
   setButtonId() {
-    let id = this.el.getAttribute('id');
+    const id = this.el.getAttribute('id');
     if (id) {
       this.innerId = `wc-${id}`;
     }
@@ -153,15 +153,15 @@ export class ButtonComponent {
 
 
   render() {
-    const hasChild = this.el.innerHTML && this.el.innerHTML !== '<!---->'; // MS Edge still renders innerHTML for icon only buttons
-
-    const iconOnly = this.iconOnly || (this.icon && !hasChild);
     const {color,
       size,
       option,
       icon,
       iconColor,
+      iconOnly,
       selected} = this;
+
+    const isIconOnly = iconOnly || option && option.includes('fab');
 
     return (
       <Host class={{'disabled': this.disabled, 'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab'}}>
@@ -171,12 +171,12 @@ export class ButtonComponent {
             [size]: true,
             [option]: true,
             'selected': selected,
-            'iconOnly': iconOnly}} >
+            'iconOnly': isIconOnly}} >
 
           {icon && <se-icon size={this.grouped && this.size !== 'nano' ? 'medium' : 'small'} color={iconColor}>{icon}</se-icon> }
           <slot name="icon"></slot>
 
-          {!iconOnly && <span class="text"><slot></slot></span>}
+          {!isIconOnly && <span class="text"><slot></slot></span>}
 
         </button>
       </Host>

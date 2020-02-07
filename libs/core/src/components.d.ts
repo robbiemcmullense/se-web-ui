@@ -217,7 +217,7 @@ export namespace Components {
     */
     'iconColor': 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
-    * Optional property to specify if the button contains a text or only an icon. THis will impact how the buttons render. Only necessary when using svg icon instead of the `icon` name property.
+    * Property to specify if the button should only display an icon (no extra spacing).
     */
     'iconOnly': boolean;
     /**
@@ -1467,7 +1467,7 @@ declare namespace LocalJSX {
     */
     'iconColor'?: 'standard' | 'alternative' | 'primary' | 'secondary';
     /**
-    * Optional property to specify if the button contains a text or only an icon. THis will impact how the buttons render. Only necessary when using svg icon instead of the `icon` name property.
+    * Property to specify if the button should only display an icon (no extra spacing).
     */
     'iconOnly'?: boolean;
     /**

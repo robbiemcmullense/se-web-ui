@@ -1,5 +1,0 @@
-@import url(/se/fonts/css/styles.css);
-@import url(/se/icons/css/styles.css);
-/* remove the glitch on display  */
-se-app { display: none; }
-se-app.hydrated { display: inherit; }
