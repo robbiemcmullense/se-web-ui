@@ -101,7 +101,7 @@ se-divider {
       @include color('primary');
     }
     .stepper-item-label {
-      @include background-color('alternative');
+      @include color('alternative');
     }
   }
 }
