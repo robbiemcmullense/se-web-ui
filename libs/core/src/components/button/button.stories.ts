@@ -3,7 +3,6 @@ import {
 } from '@storybook/html';
 
 import {
-  number,
   select,
   withKnobs,
   text
