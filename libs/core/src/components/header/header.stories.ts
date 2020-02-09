@@ -1,21 +1,21 @@
-import {
-  storiesOf
-} from '@storybook/html';
+import { storiesOf } from '@storybook/html';
+import { text } from '@storybook/addon-knobs';
 
-import {
-  withKnobs,
-} from '@storybook/addon-knobs';
+// const TITLE = text('app-title', "My cool advisor")
 
 storiesOf('Header', module)
-  .addDecorator(withKnobs)
   .add('Simple', () => {
+
+    const title = text('app-title', "My cool advisor")
+
     return `
-      <se-header></se-header>
+      <se-header appTitle="${title}"></se-header>
     `;
   })
   .add('Header with side menu', () => {
+    const title = text('app-title', "My cool advisor")
 
     return `
-      <se-header></se-header>
+      <se-header app-title="${title}"></se-header>
     `;
   });
