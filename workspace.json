@@ -341,10 +341,6 @@
         },
         "build-storybook": {
           "builder": "@nrwl/storybook:build",
-          "staticDir": [
-            "libs/core/dist",
-            "node_modules/@se"
-          ],
           "options": {
             "uiFramework": "@storybook/html",
             "outputPath": "dist/storybook/core",
