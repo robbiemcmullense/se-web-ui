@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { Route } from './core';
 
 const routes: Routes = [
@@ -17,12 +17,12 @@ const routes: Routes = [
       loadChildren: './home/home.module#HomeModule'
     },
     {
-      path: 'microapp1',
-      loadChildren: './microapp1/microapp1.module#Microapp1Module'
+      path: 'docs',
+      loadChildren: './docs/docs.module#DocsModule'
     },
     {
-      path: 'microapp2',
-      loadChildren: './microapp2/microapp2.module#Microapp2Module'
+      path: 'banner',
+      loadChildren: './banner/banner.module#BannerModule'
     }
   ]),
   { path: '**', redirectTo: 'login', pathMatch: 'full' },

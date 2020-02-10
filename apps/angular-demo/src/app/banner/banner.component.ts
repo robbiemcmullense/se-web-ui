@@ -2,15 +2,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Logger } from '@se/utils';
 import { AuthenticationService } from '../core';
 
-const log = new Logger('Microapp1Component');
+const log = new Logger('BannerComponent');
 
 @Component({
-  selector: 'app-microapp1',
-  templateUrl: './microapp1.component.html',
-  styleUrls: ['./microapp1.component.scss']
+  selector: 'app-banner',
+  templateUrl: './banner.component.html',
+  styleUrls: ['./banner.component.scss']
 })
 
-export class Microapp1Component implements OnInit, OnDestroy {
+export class BannerComponent implements OnInit, OnDestroy {
+
   public user: any = {};
   public loader = false;
 

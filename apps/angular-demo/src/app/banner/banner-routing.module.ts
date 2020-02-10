@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Route } from '../core';
 
-import { Microapp2Component } from './microapp2.component';
+import { BannerComponent } from './banner.component';
 
 const routes: Routes = [
-  { path: '', component: Microapp2Component, data: { title: 'Microapp2' } }
+  { path: '', component: BannerComponent, data: { title: 'Banner' } }
 ];
 
 @NgModule({
@@ -13,4 +12,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class Microapp2RoutingModule { }
+export class BannerRoutingModule { }

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { SharedModule } from '../shared/shared.module';
-import { Microapp2RoutingModule } from './microapp2-routing.module';
-import { Microapp2Component } from './microapp2.component';
+import { BannerRoutingModule } from './banner-routing.module';
+import { BannerComponent } from './banner.component';
 import { SeWebModule } from '@se/web-ui-angular';
 
 @NgModule({
@@ -13,11 +13,11 @@ import { SeWebModule } from '@se/web-ui-angular';
     TranslateModule,
     SharedModule,
     SeWebModule,
-    Microapp2RoutingModule
+    BannerRoutingModule
   ],
   declarations: [
-    Microapp2Component
+    BannerComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class Microapp2Module { }
+export class BannerModule { }
