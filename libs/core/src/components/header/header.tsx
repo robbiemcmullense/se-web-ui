@@ -29,7 +29,7 @@ export class HeaderComponent {
     this.elLeftNav.toggle();
   }
 
-  async componentDidLoad() {
+  async componentWillLoad() {
     this.elLeftNav = this.el.querySelector("se-sidemenu");
     this.hasMenu = !!this.elLeftNav;
   }

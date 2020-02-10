@@ -86,8 +86,11 @@ export class ListItemComponent {
 
   render() {
     let myDescription = null;
+    let title = this.item;
+
     if (!!this.description) {
-      myDescription = <small>{this.description}</small>
+      myDescription = <small>{this.description}</small>;
+      title = `${title}, ${this.description}`;
     };
     const TagType = this.href === undefined ? 'button' : 'a' as any;
     const attrs = (TagType === 'a') ? { href : this.href } : {};
@@ -113,6 +116,7 @@ export class ListItemComponent {
       <Host role="listitem">
           <TagType
             {...attrs}
+            title={title}
             class={{ "selected": this.selected, ["button"] : true, [this.option] : true, ["se-list-item"] : true }}
             style={{ paddingLeft: `${padding * this.indentation}px`}}
             id={this.innerId} >
@@ -122,7 +126,7 @@ export class ListItemComponent {
               <slot name="icon"></slot>
             </div>
             <div class="nav-content">
-              <div class="list-item-label" title={this.item}>{this.item}</div>
+              <div class="list-item-label">{this.item}</div>
               {myDescription}
             </div>
             <slot></slot>
