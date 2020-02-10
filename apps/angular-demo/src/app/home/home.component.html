@@ -32,10 +32,10 @@
       <se-block>
         <se-block-header id="switch-header">Switches</se-block-header>
         <se-block-content>
-          <se-checkbox option="switch" (didChange)="handleOnOff($event)"></se-checkbox>
-          <se-checkbox option="onoff" (didChange)="handleToggle($event)" style="padding-left: 10px;"></se-checkbox>
-          <li style="padding-top: 10px;">Click the on/off switch to change the header's background color when in the "on" position.</li>
-          <li>Click the toggle switch to change the footer's background color when in the "on" position.</li>
+          <se-checkbox option="switch" (didChange)="myToggleSwitchValue=$event.detail.selected" [selected]="myToggleSwitchValue"></se-checkbox>
+          <se-checkbox option="onoff" (didChange)="myOnOffValue=$event.detail.selected" [selected]="myOnOffValue"></se-checkbox>
+          <li style="padding-top: 10px;">Toggle switch value: <span class="toggle-switch-value">{{myToggleSwitchValue}}</span></li>
+          <li>On/Off switch value: <span class="onoff-switch-value">{{myOnOffValue}}</span></li>
         </se-block-content>
         <se-divider></se-divider>
         <se-block-footer id="switch-footer"></se-block-footer>
@@ -79,5 +79,4 @@
         </se-block>
     </se-container>
   </se-block>
-
 </se-container>

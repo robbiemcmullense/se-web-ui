@@ -3,12 +3,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClient } from '@angular/common/http';
 import { SeWebModule } from '@se/web-ui-angular';
 import { SharedModule } from '../shared/shared.module';
-import { Microapp2Component } from './microapp2.component';
+import { BannerComponent } from './banner.component';
 import { HttpTestingController } from '@angular/common/http/testing';
 
-describe('Microapp2Component', () => {
-  let component: Microapp2Component;
-  let fixture: ComponentFixture<Microapp2Component>;
+describe('BannerComponent', () => {
+  let component: BannerComponent;
+  let fixture: ComponentFixture<BannerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,7 +17,7 @@ describe('Microapp2Component', () => {
           BrowserAnimationsModule,
           SeWebModule
         ],
-        declarations: [Microapp2Component],
+        declarations: [BannerComponent],
         providers: [
           HttpTestingController
         ]
@@ -26,7 +26,7 @@ describe('Microapp2Component', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Microapp2Component);
+    fixture = TestBed.createComponent(BannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

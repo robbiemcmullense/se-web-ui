@@ -11,6 +11,8 @@ const log = new Logger('HomeComponent');
 })
 export class HomeComponent implements OnInit {
 
+  public myToggleSwitchValue = false;
+  public myOnOffValue = true;
   public loader = false;
   public showDialogMessage: string;
 
@@ -18,14 +20,6 @@ export class HomeComponent implements OnInit {
 
   filterChanged(event: any): void {
     console.log(event);
-  }
-
-  handleOnOff($event: any): void {
-    document.getElementById('switch-header').style.backgroundColor = $event.detail.selected ? '#eee' : '#fff';
-  }
-
-  handleToggle($event: any): void {
-    document.getElementById('switch-footer').style.backgroundColor = $event.detail.selected ? '#eee' : '#fff';
   }
 
   startLoading(): void {
