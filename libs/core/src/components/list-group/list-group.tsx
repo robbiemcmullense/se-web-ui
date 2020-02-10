@@ -121,14 +121,18 @@ export class ListGroupComponent {
   }
 
   render() {
+    let title = this.item;
+
     let myDescription = null;
     if (!!this.description) {
-      myDescription = <small>{this.description}</small>
+      myDescription = <small>{this.description}</small>;
+      title = `${title}, ${this.description}`;
+
     }
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
-      <Host role="listitem" option={this.option}>
-        <button aria-expanded={`${this.collapsed}`} id={this.innerId} class={['se-list-group', this.option, this.collapsed ? "collapsed" : '', this.option, this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : '', "button"].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()} disabled={!this.canCollapse}>
+      <Host role="listitem" option={this.option} >
+        <button aria-expanded={`${this.collapsed}`} title={title} id={this.innerId} class={['se-list-group', this.option, this.collapsed ? "collapsed" : '', this.option, this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : '', "button"].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleCollapse()} disabled={!this.canCollapse}>
           {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
           {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon" onClick={() => this.toggleCollapseTreeview()} style={{ paddingLeft: `calc(${8 * this.indentation}px)`}}><span innerHTML={this.collapsed ? arrow2_right : arrow2_down}></span></se-icon> : ''}
           {!!this.icon ?
