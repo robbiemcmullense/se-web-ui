@@ -1,5 +1,4 @@
 {
-  "extends": ["tslint-ionic-rules/strict", "tslint-react"],
   "linterOptions": {
     "exclude": ["**/*.spec.ts", "**/*.spec.tsx"]
   },

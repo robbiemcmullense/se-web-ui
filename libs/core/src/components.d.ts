@@ -829,6 +829,33 @@ export namespace Components {
     */
     'option': "nav" | "content";
   }
+  interface SeTable {}
+  interface SeTableGroup {}
+  interface SeTableHeader {}
+  interface SeTableItem {
+    /**
+    * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
+    */
+    'clickable': boolean;
+    /**
+    * Defines the specific flex-basis of a block.
+    */
+    'flex': string;
+  }
+  interface SeTableItemHeader {
+    /**
+    * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
+    */
+    'clickable': boolean;
+    /**
+    * Defines the specific flex-basis of a block.
+    */
+    'flex': string;
+    /**
+    * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
+    */
+    'sort': "asc" | "desc" | "none";
+  }
   interface SeTooltip {
     /**
     * Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
@@ -1167,6 +1194,36 @@ declare global {
     new (): HTMLSeTabbarElement;
   };
 
+  interface HTMLSeTableElement extends Components.SeTable, HTMLStencilElement {}
+  var HTMLSeTableElement: {
+    prototype: HTMLSeTableElement;
+    new (): HTMLSeTableElement;
+  };
+
+  interface HTMLSeTableGroupElement extends Components.SeTableGroup, HTMLStencilElement {}
+  var HTMLSeTableGroupElement: {
+    prototype: HTMLSeTableGroupElement;
+    new (): HTMLSeTableGroupElement;
+  };
+
+  interface HTMLSeTableHeaderElement extends Components.SeTableHeader, HTMLStencilElement {}
+  var HTMLSeTableHeaderElement: {
+    prototype: HTMLSeTableHeaderElement;
+    new (): HTMLSeTableHeaderElement;
+  };
+
+  interface HTMLSeTableItemElement extends Components.SeTableItem, HTMLStencilElement {}
+  var HTMLSeTableItemElement: {
+    prototype: HTMLSeTableItemElement;
+    new (): HTMLSeTableItemElement;
+  };
+
+  interface HTMLSeTableItemHeaderElement extends Components.SeTableItemHeader, HTMLStencilElement {}
+  var HTMLSeTableItemHeaderElement: {
+    prototype: HTMLSeTableItemHeaderElement;
+    new (): HTMLSeTableItemHeaderElement;
+  };
+
   interface HTMLSeTooltipElement extends Components.SeTooltip, HTMLStencilElement {}
   var HTMLSeTooltipElement: {
     prototype: HTMLSeTooltipElement;
@@ -1246,6 +1303,11 @@ declare global {
     'se-stepper': HTMLSeStepperElement;
     'se-stepper-item': HTMLSeStepperItemElement;
     'se-tabbar': HTMLSeTabbarElement;
+    'se-table': HTMLSeTableElement;
+    'se-table-group': HTMLSeTableGroupElement;
+    'se-table-header': HTMLSeTableHeaderElement;
+    'se-table-item': HTMLSeTableItemElement;
+    'se-table-item-header': HTMLSeTableItemHeaderElement;
     'se-tooltip': HTMLSeTooltipElement;
     'se-tooltip-content': HTMLSeTooltipContentElement;
     'se-tooltip-footer': HTMLSeTooltipFooterElement;
@@ -2097,6 +2159,33 @@ declare namespace LocalJSX {
     */
     'option'?: "nav" | "content";
   }
+  interface SeTable {}
+  interface SeTableGroup {}
+  interface SeTableHeader {}
+  interface SeTableItem {
+    /**
+    * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
+    */
+    'clickable'?: boolean;
+    /**
+    * Defines the specific flex-basis of a block.
+    */
+    'flex'?: string;
+  }
+  interface SeTableItemHeader {
+    /**
+    * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
+    */
+    'clickable'?: boolean;
+    /**
+    * Defines the specific flex-basis of a block.
+    */
+    'flex'?: string;
+    /**
+    * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
+    */
+    'sort'?: "asc" | "desc" | "none";
+  }
   interface SeTooltip {
     /**
     * Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
@@ -2221,6 +2310,11 @@ declare namespace LocalJSX {
     'se-stepper': SeStepper;
     'se-stepper-item': SeStepperItem;
     'se-tabbar': SeTabbar;
+    'se-table': SeTable;
+    'se-table-group': SeTableGroup;
+    'se-table-header': SeTableHeader;
+    'se-table-item': SeTableItem;
+    'se-table-item-header': SeTableItemHeader;
     'se-tooltip': SeTooltip;
     'se-tooltip-content': SeTooltipContent;
     'se-tooltip-footer': SeTooltipFooter;
@@ -2279,6 +2373,11 @@ declare module "@stencil/core" {
       'se-stepper': LocalJSX.SeStepper & JSXBase.HTMLAttributes<HTMLSeStepperElement>;
       'se-stepper-item': LocalJSX.SeStepperItem & JSXBase.HTMLAttributes<HTMLSeStepperItemElement>;
       'se-tabbar': LocalJSX.SeTabbar & JSXBase.HTMLAttributes<HTMLSeTabbarElement>;
+      'se-table': LocalJSX.SeTable & JSXBase.HTMLAttributes<HTMLSeTableElement>;
+      'se-table-group': LocalJSX.SeTableGroup & JSXBase.HTMLAttributes<HTMLSeTableGroupElement>;
+      'se-table-header': LocalJSX.SeTableHeader & JSXBase.HTMLAttributes<HTMLSeTableHeaderElement>;
+      'se-table-item': LocalJSX.SeTableItem & JSXBase.HTMLAttributes<HTMLSeTableItemElement>;
+      'se-table-item-header': LocalJSX.SeTableItemHeader & JSXBase.HTMLAttributes<HTMLSeTableItemHeaderElement>;
       'se-tooltip': LocalJSX.SeTooltip & JSXBase.HTMLAttributes<HTMLSeTooltipElement>;
       'se-tooltip-content': LocalJSX.SeTooltipContent & JSXBase.HTMLAttributes<HTMLSeTooltipContentElement>;
       'se-tooltip-footer': LocalJSX.SeTooltipFooter & JSXBase.HTMLAttributes<HTMLSeTooltipFooterElement>;

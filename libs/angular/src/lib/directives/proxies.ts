@@ -513,6 +513,50 @@ export class SeTabbar {
   }
 }
 
+export declare interface SeTable extends Components.SeTable {}
+
+@Component({ selector: 'se-table', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+export class SeTable {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTableGroup extends Components.SeTableGroup {}
+
+@Component({ selector: 'se-table-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+export class SeTableGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTableItem extends Components.SeTableItem {}
+@ProxyCmp({inputs: ['clickable', 'flex']})
+@Component({ selector: 'se-table-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex'] })
+export class SeTableItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTableItemHeader extends Components.SeTableItemHeader {}
+@ProxyCmp({inputs: ['clickable', 'flex', 'sort']})
+@Component({ selector: 'se-table-item-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'sort'] })
+export class SeTableItemHeader {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 export declare interface SeTooltip extends Components.SeTooltip {}
 @ProxyCmp({inputs: ['action', 'position'], 'methods': ['open', 'close']})
 @Component({ selector: 'se-tooltip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['action', 'position'] })
