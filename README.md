@@ -14,7 +14,6 @@ A quick look at the top-level files and directories you'll see in this repositor
     ├── apps
     │  ├── angular-demo        // Angular specific app
     │  ├── angular-demo-e2e    // Cypress related to the angular-demo app
-    │  ├── storybook           
     ├── libs                  // All libs shared and deployed
     │  ├── core                // @se/web-ui library (StencilJs)
     │  ├── angular             // @se/web-ui-angular
@@ -109,9 +108,9 @@ Each libraries need to be built and tested independently (does not use the `nx` 
 To connect your project with any library locally, you need first to build them, then:
 1. Create a global link with yarn
     ```
-    yarn web-ui link
-    yarn web-ui-angular link
-    yarn web-ui-react link
+    yarn core link              // to create @se/web-ui locally
+    yarn angular link           // to create @se/web-ui-angular locally
+    yarn react link             // to create @se/web-ui-react locally
     ```
 2. In your project folder:
     ```
