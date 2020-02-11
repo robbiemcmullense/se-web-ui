@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint-ionic-rules/strict", "tslint-react"],
+  "extends": ["../../tslint.json", "tslint-ionic-rules/strict", "tslint-react"],
   "linterOptions": {
     "exclude": ["**/*.spec.ts", "**/*.spec.tsx"]
   },
@@ -19,7 +19,8 @@
     "ordered-imports": false,
     "strict-boolean-conditions": false,
     "semicolon": [true, "always", "ignore-bound-class-methods"],
-
+    "directive-selector": [true, "attribute", "se", "camelCase"],
+    "component-selector": [true, "element", "se", "kebab-case"],
     "jsx-key": false,
     "jsx-self-close": false,
     "jsx-curly-spacing": [true, "never"],
