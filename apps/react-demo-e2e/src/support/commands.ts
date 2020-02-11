@@ -8,6 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 // eslint-disable-next-line @typescript-eslint/no-namespace
+import 'cypress-shadow-dom';
+
 declare namespace Cypress {
   interface Chainable<Subject> {
     login(email: string, password: string): void;

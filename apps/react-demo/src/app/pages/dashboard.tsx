@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Route} from "react-router-dom"
-// import { Match } from "@reach/router"
-import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeList, SeListItem, SeListGroup, SeDivider } from '@se/web-ui-react';
+import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeList, SeListItem, SeListGroup, SeDivider, SeStepper, SeStepperItem } from '@se/web-ui-react';
 
 import Widget from '../components/widget';
 
@@ -45,7 +43,7 @@ class Dashboard extends Component<DashboardProps> {
     console.log('ID', this.props)
     return (
       <SeContainer>
-        <SeBlock width="250px">
+        <SeBlock>
           <SeBlockHeader>List classic with expender
             <div slot="end">
             <SeButton onClick={this.removeLastListItem} option="raised">Remove Last List Item</SeButton>
@@ -75,25 +73,14 @@ class Dashboard extends Component<DashboardProps> {
         </SeBlock>
         <SeDivider option="vertical"></SeDivider>
         <SeBlock>
-          <SeList option="treeview">
-              <SeListItem item="Static item"></SeListItem>
-              <SeListGroup item="New Block" id="testing-list-group">
-                {listItems.map( id => {
-                  return(
-                      <SeListItem
-                        key={id}
-                        item={`my item ${id}`}
-                        onClick={() => this.changePage(id)}
-                        icon="user_standard"
-                        selected={this.props.location.pathname === `/dashboard/${id}`}
-                        iconColor="primary"
-                        description={`I have a description ${id}`}
-                      />
-                  );
-                })}
-              </SeListGroup>
-            </SeList>
-          <Route path={`/dashboard/:id`} component={Widget}/>
+          <SeBlockHeader>Stepper Example</SeBlockHeader>
+          <SeBlockContent>
+            <SeStepper linear="false">
+              <SeStepperItem label="Step 1"></SeStepperItem>
+              <SeStepperItem label="Step 2"></SeStepperItem>
+              <SeStepperItem label="Step 3"></SeStepperItem>
+            </SeStepper>
+          </SeBlockContent>
         </SeBlock>
       </SeContainer>
     );

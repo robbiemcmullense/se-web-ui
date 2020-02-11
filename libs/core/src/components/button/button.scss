@@ -141,6 +141,7 @@ button {
 
   &[disabled] {
     cursor: default;
+    opacity: .5;
   }
 
   &.raised {
@@ -180,6 +181,12 @@ button {
     }
   }
 
+  &:active {
+    @include color("selected-contrast");
+    @include background-color("selected");
+  }
+
+
   &.standard {
     @include color("standard-contrast");
     @include background-color("standard");
@@ -187,14 +194,14 @@ button {
       @include color("hover-standard-contrast");
       @include background-color("hover-standard");
     }
-    &:active {
-      @include color("selected-contrast");
-      @include background-color("selected");
-    }
-    &[disabled] {
-      color: $se-light-grey;
-      background-color: $se-ultra-light-grey-2;
-    }
+    // &:active {
+    //   @include color("selected-contrast");
+    //   @include background-color("selected");
+    // }
+    // &[disabled] {
+    //   color: $se-light-grey;
+    //   background-color: $se-ultra-light-grey-2;
+    // }
     &.outline {
       border: 1px solid;
       border-color: $se-anthracite-grey;
@@ -203,15 +210,15 @@ button {
         @include background-color("hover-standard", 0.2);
       }
       &:active {
-        @include color("selected-contrast");
-        @include background-color("selected");
+        // @include color("selected-contrast");
+        // @include background-color("selected");
         @include border-color("selected");
       }
-      &[disabled] {
-        color: $se-light-grey;
-        background-color: transparent;
-        border-color: $se-light-grey;
-      }
+      // &[disabled] {
+      //   color: $se-light-grey;
+      //   background-color: transparent;
+      //   border-color: $se-light-grey;
+      // }
     }
   }
 
@@ -222,14 +229,14 @@ button {
       @include color("hover-alternative-contrast");
       @include background-color("hover-alternative");
     }
-    &:active {
-      @include color("selected-contrast");
-      @include background-color("selected");
-    }
-    &[disabled] {
-      color: $se-light-grey;
-      @include background-color('alternative');
-    }
+    // &:active {
+    //   @include color("selected-contrast");
+    //   @include background-color("selected");
+    // }
+    // &[disabled] {
+    //   color: $se-light-grey;
+    //   @include background-color('alternative');
+    // }
     &.outline {
       border: 1px solid;
       background-color: transparent;
@@ -239,15 +246,15 @@ button {
         @include background-color("hover-alternative", 0.6);
       }
       &:active {
-        @include color("selected-contrast");
-        @include background-color("selected");
+        // @include color("selected-contrast");
+        // @include background-color("selected");
         @include border-color("selected");
       }
-      &[disabled] {
-        color: $se-light-grey;
-        background-color: transparent;
-        border-color: $se-light-grey;
-      }
+      // &[disabled] {
+      //   color: $se-light-grey;
+      //   background-color: transparent;
+      //   border-color: $se-light-grey;
+      // }
     }
   }
 
@@ -258,13 +265,13 @@ button {
       @include color("hover-primary-contrast");
       @include background-color("hover-primary");
     }
-    &:active {
-      @include color("selected-contrast");
-      @include background-color("selected");
-    }
-    &[disabled] {
-      opacity: 0.3;
-    }
+    // &:active {
+    //   @include color("selected-contrast");
+    //   @include background-color("selected");
+    // }
+    // &[disabled] {
+    //   opacity: 0.3;
+    // }
     &.outline {
       border: 1px solid;
       background-color: transparent;
@@ -274,8 +281,8 @@ button {
         @include background-color("primary", 0.3);
       }
       &:active, &.selected {
-        @include color("selected-contrast");
-        @include background-color("selected");
+        // @include color("selected-contrast");
+        // @include background-color("selected");
         @include border-color("selected");
       }
       &[disabled] {
@@ -291,13 +298,13 @@ button {
       @include color("hover-secondary-contrast");
       @include background-color("hover-secondary");
     }
-    &:active {
-      @include color("selected-contrast");
-      @include background-color("selected");
-    }
-    &[disabled] {
-      opacity: 0.3;
-    }
+    // &:active {
+    //   @include color("selected-contrast");
+    //   @include background-color("selected");
+    // }
+    // &[disabled] {
+    //   opacity: 0.3;
+    // }
     &.outline {
       background-color: transparent;
       border: 1px solid;
@@ -307,8 +314,8 @@ button {
         @include background-color("secondary", 0.3);
       }
       &:active, &.selected {
-        @include color("selected-contrast");
-        @include background-color("selected");
+        // @include color("selected-contrast");
+        // @include background-color("selected");
         @include border-color("selected");
       }
       &[disabled] {
@@ -362,9 +369,9 @@ button {
       @include circleShadow(4px);
       @include background-color("hover-standard");
     }
-    &:active {
-      @include background-color("selected");
-    }
+    // &:active {
+    //   @include background-color("selected");
+    // }
     &[data-tooltip] {
       overflow: visible;
       &:before {
