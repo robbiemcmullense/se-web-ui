@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "yarn web-ui build",
+    "postinstall": "yarn core build",
     "nx": "nx",
     "ng": "ng",
     "start": "nx serve",
