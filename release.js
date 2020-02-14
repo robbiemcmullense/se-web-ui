@@ -6,9 +6,9 @@ const Listr = require('listr');
 const rootDir = __dirname;
 
 const packages = [
-  'libs/core',
-  'libs/angular',
-  'libs/react'
+  'dist/libs/core',
+  'dist/libs/angular',
+  'dist/libs/react'
 ];
 
 function packagePath(project) {
