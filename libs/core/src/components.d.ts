@@ -521,6 +521,10 @@ export namespace Components {
     */
     'color': "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled': boolean;
+    /**
     * Optional property to define if the icon should act as a button (clickable).
     */
     'option': "button";
@@ -830,8 +834,17 @@ export namespace Components {
     'option': "nav" | "content";
   }
   interface SeTable {}
-  interface SeTableGroup {}
-  interface SeTableHeader {}
+  interface SeTableGroup {
+    /**
+    * Indicates whether or not the `se-table-group` is selectable.  Set to `false` by default.
+    */
+    'selectable': boolean;
+    /**
+    * Indicates whether or not the `se-table-group` is selected.  Set to `false` by default.
+    */
+    'selected': boolean;
+  }
+  interface SeTableGroupHeader {}
   interface SeTableItem {
     /**
     * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
@@ -841,6 +854,10 @@ export namespace Components {
     * Defines the specific flex-basis of a block.
     */
     'flex': string;
+    /**
+    * Defines the specific width of a block, for items that should not be flexible.
+    */
+    'width': string;
   }
   interface SeTableItemHeader {
     /**
@@ -855,6 +872,10 @@ export namespace Components {
     * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
     */
     'sort': "asc" | "desc" | "none";
+    /**
+    * Defines the specific width of a block, for items that should not be flexible.
+    */
+    'width': string;
   }
   interface SeTooltip {
     /**
@@ -1206,10 +1227,10 @@ declare global {
     new (): HTMLSeTableGroupElement;
   };
 
-  interface HTMLSeTableHeaderElement extends Components.SeTableHeader, HTMLStencilElement {}
-  var HTMLSeTableHeaderElement: {
-    prototype: HTMLSeTableHeaderElement;
-    new (): HTMLSeTableHeaderElement;
+  interface HTMLSeTableGroupHeaderElement extends Components.SeTableGroupHeader, HTMLStencilElement {}
+  var HTMLSeTableGroupHeaderElement: {
+    prototype: HTMLSeTableGroupHeaderElement;
+    new (): HTMLSeTableGroupHeaderElement;
   };
 
   interface HTMLSeTableItemElement extends Components.SeTableItem, HTMLStencilElement {}
@@ -1305,7 +1326,7 @@ declare global {
     'se-tabbar': HTMLSeTabbarElement;
     'se-table': HTMLSeTableElement;
     'se-table-group': HTMLSeTableGroupElement;
-    'se-table-header': HTMLSeTableHeaderElement;
+    'se-table-group-header': HTMLSeTableGroupHeaderElement;
     'se-table-item': HTMLSeTableItemElement;
     'se-table-item-header': HTMLSeTableItemHeaderElement;
     'se-tooltip': HTMLSeTooltipElement;
@@ -1840,6 +1861,10 @@ declare namespace LocalJSX {
     */
     'color'?: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
     /**
+    * Optional property that defines if the button is disabled.  Set to `false` by default.
+    */
+    'disabled'?: boolean;
+    /**
     * Optional property to define if the icon should act as a button (clickable).
     */
     'option'?: "button";
@@ -2160,8 +2185,17 @@ declare namespace LocalJSX {
     'option'?: "nav" | "content";
   }
   interface SeTable {}
-  interface SeTableGroup {}
-  interface SeTableHeader {}
+  interface SeTableGroup {
+    /**
+    * Indicates whether or not the `se-table-group` is selectable.  Set to `false` by default.
+    */
+    'selectable'?: boolean;
+    /**
+    * Indicates whether or not the `se-table-group` is selected.  Set to `false` by default.
+    */
+    'selected'?: boolean;
+  }
+  interface SeTableGroupHeader {}
   interface SeTableItem {
     /**
     * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
@@ -2171,6 +2205,10 @@ declare namespace LocalJSX {
     * Defines the specific flex-basis of a block.
     */
     'flex'?: string;
+    /**
+    * Defines the specific width of a block, for items that should not be flexible.
+    */
+    'width'?: string;
   }
   interface SeTableItemHeader {
     /**
@@ -2185,6 +2223,10 @@ declare namespace LocalJSX {
     * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
     */
     'sort'?: "asc" | "desc" | "none";
+    /**
+    * Defines the specific width of a block, for items that should not be flexible.
+    */
+    'width'?: string;
   }
   interface SeTooltip {
     /**
@@ -2312,7 +2354,7 @@ declare namespace LocalJSX {
     'se-tabbar': SeTabbar;
     'se-table': SeTable;
     'se-table-group': SeTableGroup;
-    'se-table-header': SeTableHeader;
+    'se-table-group-header': SeTableGroupHeader;
     'se-table-item': SeTableItem;
     'se-table-item-header': SeTableItemHeader;
     'se-tooltip': SeTooltip;
@@ -2375,7 +2417,7 @@ declare module "@stencil/core" {
       'se-tabbar': LocalJSX.SeTabbar & JSXBase.HTMLAttributes<HTMLSeTabbarElement>;
       'se-table': LocalJSX.SeTable & JSXBase.HTMLAttributes<HTMLSeTableElement>;
       'se-table-group': LocalJSX.SeTableGroup & JSXBase.HTMLAttributes<HTMLSeTableGroupElement>;
-      'se-table-header': LocalJSX.SeTableHeader & JSXBase.HTMLAttributes<HTMLSeTableHeaderElement>;
+      'se-table-group-header': LocalJSX.SeTableGroupHeader & JSXBase.HTMLAttributes<HTMLSeTableGroupHeaderElement>;
       'se-table-item': LocalJSX.SeTableItem & JSXBase.HTMLAttributes<HTMLSeTableItemElement>;
       'se-table-item-header': LocalJSX.SeTableItemHeader & JSXBase.HTMLAttributes<HTMLSeTableItemHeaderElement>;
       'se-tooltip': LocalJSX.SeTooltip & JSXBase.HTMLAttributes<HTMLSeTooltipElement>;

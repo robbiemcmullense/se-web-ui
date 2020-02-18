@@ -1,10 +1,10 @@
-import { TableItemComponent } from './table-item-header';
+import { TableItemHeaderComponent } from './table-item-header';
 
-describe('table-item', () => {
+describe('table-item-header', () => {
   let tableItem;
 
   beforeEach(() => {
-    tableItem = new TableItemComponent();
+    tableItem = new TableItemHeaderComponent();
   });
 
   it('should build', () => {

@@ -1,4 +1,4 @@
-import { Component, h, Element, Host, State } from "@stencil/core";
+import { Component, h, Prop, Element, Host, State } from "@stencil/core";
 
 @Component({
   tag: "se-table-group",
@@ -7,6 +7,14 @@ import { Component, h, Element, Host, State } from "@stencil/core";
 })
 export class TableGroupComponent {
   @Element() el: HTMLElement;
+  /**
+  * Indicates whether or not the `se-table-group` is selectable.  Set to `false` by default.
+  */
+ @Prop() selectable: boolean = false;
+ /**
+   * Indicates whether or not the `se-table-group` is selected.  Set to `false` by default.
+   */
+  @Prop() selected: boolean = false;
 
   @State() innerId;
 
@@ -23,7 +31,9 @@ export class TableGroupComponent {
 
   render() {
     return (
-      <Host role="row">
+      <Host 
+        role="row"
+        class={{ "selectable": this.selectable, "selected": this.selected}}>
         <div class="table-group-row"><slot/></div>
         <slot name="detail" />
       </Host>

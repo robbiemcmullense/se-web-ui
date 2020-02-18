@@ -6,16 +6,22 @@ const widgetStyle = {
 }
 
 class Docs extends Component {
+  dialog = null;
+  snackbar = null;
+
   openDialog(id) {
-    document.getElementById(id).open = true;
+    // document.getElementById(id).open = true;
+    this.dialog.open = true;
   }
 
   closeDialog(id) {
-    document.getElementById(id).open = false;
+    // document.getElementById(id).open = false;
+    this.dialog.open = false;
   }
 
   openSnackbar = () => {
-    document.getElementById('snackbar').open = true;
+    // document.getElementById('snackbar').open = true;
+    this.snackbar.open = true;
   }
 
   render() {
@@ -27,7 +33,7 @@ class Docs extends Component {
             <SeBanner id="SeBanner">
               <SeBannerItem
                 image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
-                <SeBlock color="none" divider="false">
+                <SeBlock color="none" divider={false}>
                   <SeBlockHeader>Reliable Through the Storm</SeBlockHeader>
                   <SeBlockContent>
                     <div>
@@ -44,7 +50,7 @@ class Docs extends Component {
               </SeBannerItem>
               <SeBannerItem
                 image-url="url(https://images.unsplash.com/photo-1440098334316-9b3afb87b5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)">
-                <SeBlock outline outline-color="primary" clickable margin="xlarge" corner="4" color="standard">
+                <SeBlock outline outline-color="primary" clickable margin="xlarge" corner="small" color="standard">
                   <SeBlockHeader>Header 2</SeBlockHeader>
                   <SeBlockContent>Content 2</SeBlockContent>
                   <SeBlockFooter>Footer 2</SeBlockFooter>
@@ -63,15 +69,15 @@ class Docs extends Component {
           <SeBlockFooter>
             <SeButton option="raised" onClick={() => this.openSnackbar()}>Open Snackbar</SeButton>
             <SeButton onClick={() => this.openDialog('simple')}>Open Dialog Simple</SeButton>
-            <SeButton onClick={() => this.openDialog('complex')} option="text" color="primary">Open Dialog Complex</SeButton>
+            <SeButton onClick={() => this.openDialog('complex')} option="flat" color="primary">Open Dialog Complex</SeButton>
           </SeBlockFooter>
         </SeBlock>
-        <SeSnackbar id="snackbar" message="my snackbar message"></SeSnackbar>
-        <SeDialog id="simple" color="alternative" size="small">
+        <SeSnackbar id="snackbar" message="my snackbar message" ref={this.snackbar}></SeSnackbar>
+        <SeDialog id="simple" color="alternative" size="small" ref={this.dialog}>
           <SeDialogContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.</SeDialogContent>
           <SeDialogFooter>
-            <SeButton onClick={() => this.closeDialog('simple')} option="alternative">cancel</SeButton>
+            <SeButton onClick={() => this.closeDialog('simple')} option="outline">cancel</SeButton>
             <SeButton onClick={() => this.closeDialog('simple')}>OK</SeButton>
           </SeDialogFooter>
         </SeDialog>
@@ -80,7 +86,7 @@ class Docs extends Component {
           <SeDialogContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.</SeDialogContent>
           <SeDialogFooter>
-            <SeButton onClick={() => this.closeDialog('complex')} option="alternative">cancel</SeButton>
+            <SeButton onClick={() => this.closeDialog('complex')} option="outline">cancel</SeButton>
             <SeButton onClick={() => this.closeDialog('complex')}>OK</SeButton>
           </SeDialogFooter>
         </SeDialog>

@@ -1,0 +1,13 @@
+@import "../../theme/theme";
+
+:host {
+  margin: 0;
+  padding: 0;
+  @include display-flex();
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  @include background-color('alternative');
+}

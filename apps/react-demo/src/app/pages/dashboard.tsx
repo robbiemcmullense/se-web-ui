@@ -75,7 +75,7 @@ class Dashboard extends Component<DashboardProps> {
         <SeBlock>
           <SeBlockHeader>Stepper Example</SeBlockHeader>
           <SeBlockContent>
-            <SeStepper linear="false">
+            <SeStepper linear={false}>
               <SeStepperItem label="Step 1"></SeStepperItem>
               <SeStepperItem label="Step 2"></SeStepperItem>
               <SeStepperItem label="Step 3"></SeStepperItem>

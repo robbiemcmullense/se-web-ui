@@ -53,6 +53,7 @@ export const SeStepperItem = /*@__PURE__*/createReactComponent<JSX.SeStepperItem
 export const SeTabbar = /*@__PURE__*/createReactComponent<JSX.SeTabbar, HTMLSeTabbarElement>('se-tabbar');
 export const SeTable = /*@__PURE__*/createReactComponent<JSX.SeTable, HTMLSeTableElement>('se-table');
 export const SeTableGroup = /*@__PURE__*/createReactComponent<JSX.SeTableGroup, HTMLSeTableGroupElement>('se-table-group');
+export const SeTableGroupHeader = /*@__PURE__*/createReactComponent<JSX.SeTableGroupHeader, HTMLSeTableGroupHeaderElement>('se-table-group-header');
 export const SeTableItem = /*@__PURE__*/createReactComponent<JSX.SeTableItem, HTMLSeTableItemElement>('se-table-item');
 export const SeTableItemHeader = /*@__PURE__*/createReactComponent<JSX.SeTableItemHeader, HTMLSeTableItemHeaderElement>('se-table-item-header');
 export const SeTooltip = /*@__PURE__*/createReactComponent<JSX.SeTooltip, HTMLSeTooltipElement>('se-tooltip');

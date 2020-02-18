@@ -52,6 +52,10 @@ export const config: Config = {
       type: 'dist-hydrate-script',
       dir: 'dist/hydrate'
     },
+    {
+      type: 'www',
+      serviceWorker: null // disable service workers
+    },
     angularOutputTarget({
       componentCorePackage: '@se/web-ui',
       directivesProxyFile: '../angular/src/lib/directives/proxies.ts',

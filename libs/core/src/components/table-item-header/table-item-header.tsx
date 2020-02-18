@@ -5,7 +5,7 @@ import { Component, Host, h, Prop, Element, Watch, State } from "@stencil/core";
   styleUrl: "table-item-header.scss",
   shadow: true
 })
-export class TableItemComponent {
+export class TableItemHeaderComponent {
 
   @Element() el: HTMLElement;
   /**
@@ -13,6 +13,13 @@ export class TableItemComponent {
   */
   @Prop() flex: string;
   @Watch("flex") flexDidChange() {
+    this.updateSize();
+  }
+  /**
+  * Defines the specific width of a block, for items that should not be flexible.
+  */
+  @Prop() width: string;
+  @Watch("width") widthDidChange() {
     this.updateSize();
   }
   /**
@@ -43,6 +50,10 @@ export class TableItemComponent {
     this.el.style.flex = '';
     if (this.flex) {
       this.el.style.flex = this.flex;
+    }
+    this.el.style.maxWidth = '';
+    if (!!this.width) {
+      this.el.style.maxWidth = this.width;
     }
   }
 

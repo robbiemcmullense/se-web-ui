@@ -101,7 +101,7 @@ Each libraries need to be built and tested independently (does not use the `nx` 
     yarn react build
     ```
 
-**Note :** Except the core library (web-ui), libraries does not nee to be built to work with the demo application. 
+**Note :** Except the core library (web-ui), libraries does not need to be built to work with the demo application. 
 
 ## Connect to your project locally
 

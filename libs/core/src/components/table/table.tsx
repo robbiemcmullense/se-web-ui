@@ -14,6 +14,6 @@ export class TableComponent {
       <div class="table-rows-wrapper">
         <slot></slot>
       </div>
-      </Host>;
+    </Host>;
   }
 }
