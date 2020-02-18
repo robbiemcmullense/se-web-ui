@@ -6,6 +6,7 @@ import { SeApp } from '@se/web-ui-react';
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
 import Docs from './pages/docs';
+import Table from './pages/table';
 import NoPage from './pages/404';
 import './styles.scss';
 
@@ -27,6 +28,7 @@ class App extends Component {
             <AppRoute exact path="/" layout={ShellLayout} component={Home} />
             <AppRoute path="/dashboard" layout={ShellLayout} component={Dashboard} />
             <AppRoute path="/docs" layout={ShellLayout} component={Docs} />
+            <AppRoute path="/table" layout={ShellLayout} component={Table} />
             <AppRoute path="/*" layout={DefaultLayout} component={NoPage} />
           </Switch>
         </BrowserRouter>

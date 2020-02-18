@@ -17,5 +17,6 @@
 ::slotted(*[slot="detail"]) {
   @include background-color('standard');
   @include color('standard-contrast');
+  padding: 12px 24px !important;
   width: 100%;
 }

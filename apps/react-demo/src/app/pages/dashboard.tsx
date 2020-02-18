@@ -50,7 +50,7 @@ class Dashboard extends Component<DashboardProps> {
             <SeButton onClick={this.addNewListItem} option="raised">Add New List Item</SeButton>
             </div>
           </SeBlockHeader>
-          <SeBlockContent option="fill">
+          <SeBlockContent>
             <SeList option="treeview">
               <SeListItem item="Static item"></SeListItem>
               <SeListGroup item="New Block" id="testing-list-group">
