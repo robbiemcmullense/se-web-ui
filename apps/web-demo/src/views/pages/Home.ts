@@ -150,9 +150,9 @@ let Home = {
                     <se-table-item title="best practice is to provide a title in case all content is not visible">Testing 1 with a very long title that continues on</se-table-item>
                     <se-table-item flex="50%">2nd test</se-table-item>
                     <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
-                    <div slot="detail">
-                      <h4 style="padding:12px 24px">You may put any type of content here</h4>
-                      <p style="padding:0 24px 12px;">You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
+                    <div slot="detail" style="padding:12px 24px">
+                      <h4>You may put any type of content here</h4>
+                      <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
                     </div>
                 </se-table-group>
                 <se-table-group selectable="true">
@@ -161,9 +161,9 @@ let Home = {
                     <se-table-item title="best practice is to provide a title in case all content is not visible">Testing 1.5 - with the detail section hidden</se-table-item>
                     <se-table-item flex="50%">2nd test</se-table-item>
                     <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
-                    <div slot="detail" style="display:none">
-                      <h4 style="padding:12px 24px">You may put any type of content here</h4>
-                      <p style="padding:0 24px 12px;">You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
+                    <div slot="detail" style="display:none;padding:12px 24px">
+                      <h4>You may put any type of content here</h4>
+                      <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
                     </div>
                 </se-table-group>
                 <se-table-group selectable="true">

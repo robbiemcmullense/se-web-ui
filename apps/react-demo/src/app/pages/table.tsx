@@ -33,7 +33,7 @@ class Dashboard extends Component<DashboardProps> {
                   <SeTableItem title="best practice is to provide a title in case all content is not visible">Testing 1 with a very long title that continues on</SeTableItem>
                   <SeTableItem flex="50%">2nd test</SeTableItem>
                   <SeTableItem><SeIcon color="primary">airconditioner_hot_heating</SeIcon>Last test</SeTableItem>
-                  <div slot="detail">
+                  <div slot="detail" style={{padding:"12px 24px"}}>
                     <h4>You may put any type of content here</h4>
                     <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
                   </div>
@@ -44,7 +44,7 @@ class Dashboard extends Component<DashboardProps> {
                   <SeTableItem title="best practice is to provide a title in case all content is not visible">Testing 1.5 - with the detail section hidden</SeTableItem>
                   <SeTableItem flex="50%">2nd test</SeTableItem>
                   <SeTableItem><SeIcon color="primary">airconditioner_hot_heating</SeIcon>Last test</SeTableItem>
-                  <div slot="detail" style={{display:"none"}}>
+                  <div slot="detail" style={{display:"none", padding:"12px 24px"}}>
                     <h4>You may put any type of content here</h4>
                     <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
                   </div>
