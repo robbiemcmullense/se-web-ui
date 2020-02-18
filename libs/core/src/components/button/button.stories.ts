@@ -1,12 +1,13 @@
 import { storiesOf } from '@storybook/html';
-
 import { select, text, boolean } from '@storybook/addon-knobs';
 
+const buttonOption = ['flat', 'raised', 'outline'];
 const sizeOption = ['small', 'medium', 'large'];
 const colorOption = ['standard', 'alternative', 'primary', 'secondary'];
 
 storiesOf('Button', module)
   .add('Button', () => {
+    const option = select('option', buttonOption, 'flat');
     const size = select('size', sizeOption, 'small');
     const color = select('color', colorOption, 'primary');
     const textHtml = text('Text', 'my button');
@@ -14,7 +15,7 @@ storiesOf('Button', module)
     const disabled = boolean('disabled', false)
 
     return `
-      <se-button size=${size} color=${color} icon="${icon}" disabled=${disabled}>${textHtml}</se-button>
+      <se-button option=${option} size=${size} color=${color} icon="${icon}" disabled=${disabled}>${textHtml}</se-button>
     `;
   })
   .add('Button icon-only', () => {

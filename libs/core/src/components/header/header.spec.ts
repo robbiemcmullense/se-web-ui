@@ -45,9 +45,9 @@ describe('HeaderComponent', () => {
 	});
 
 	it('should set the component hasMenu property to true when a sidemenu element is present', () => {
-		let sidemenu = document.createElement('se-sidemenu');
+		const sidemenu = document.createElement('se-sidemenu');
 		header.el.appendChild(sidemenu);
-		header.componentDidLoad();
+		header.componentWillLoad();
 		expect(header.hasMenu).toBeTruthy();
 	});
 });
