@@ -260,7 +260,7 @@
           "options": {
             "jestConfig": "libs/angular/jest.config.js",
             "tsConfig": "libs/angular/tsconfig.spec.json",
-            "setupFile": "libs/angular/src/test.ts"
+            "setupFile": "libs/angular/src/test-setup.ts"
           }
         }
       },
@@ -286,6 +286,16 @@
               "libs/react/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**", "!libs/react/**"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/web:package",
+          "options": {
+            "outputPath": "dist/libs/react",
+            "tsConfig": "libs/react/tsconfig.lib.json",
+            "project": "libs/react/package.json",
+            "entryFile": "libs/react/src/index.ts",
+            "babelConfig": "libs/react/babel.config"
           }
         },
         "test": {
@@ -324,10 +334,7 @@
           "builder": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/html",
-            "staticDir": [
-              "libs/core/dist",
-              "node_modules/@se"
-            ],
+            "staticDir": ["dist/libs/core"],
             "port": 4400,
             "config": {
               "configFolder": "libs/core/.storybook"
