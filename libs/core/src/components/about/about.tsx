@@ -17,10 +17,6 @@ export class AboutComponent {
    */
   @Prop() version: string;
   /**
-   * An external link you would like to provide.
-   */
-  @Prop() link: string = AppInfo.link;
-  /**
    * The domain you want to display.  If set to `ecostruxure`, it renders an EcoStruxure icon.
    */
   @Prop() domain: string = AppInfo.domain;

@@ -334,7 +334,7 @@
           "builder": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/html",
-            "staticDir": ["node_modules/@se"],
+            "staticDir": ["dist/libs/core"],
             "port": 4400,
             "config": {
               "configFolder": "libs/core/.storybook"

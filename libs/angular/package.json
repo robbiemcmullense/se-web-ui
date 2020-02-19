@@ -10,6 +10,10 @@
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },
+  "scripts": {
+    "test": "cd ../.. && yarn test angular",
+    "build": "cd ../.. && yarn build angular"
+  },
   "peerDependencies": {
     "@angular/core": "^8.0.0",
     "@angular/common": "^8.0.0",

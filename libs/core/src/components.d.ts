@@ -28,10 +28,6 @@ export namespace Components {
     */
     'imageUrl': string;
     /**
-    * An external link you would like to provide.
-    */
-    'link': string;
-    /**
     * The version number you want to display.
     */
     'version': string;
@@ -63,14 +59,6 @@ export namespace Components {
     * Sets the background image for your authentication screen.
     */
     'imageUrl': string;
-    /**
-    * An external link you would like to provide.
-    */
-    'link': string;
-    /**
-    * A logo that you wish to display.
-    */
-    'logo': string;
     /**
     * The version number you want to display.
     */
@@ -1274,10 +1262,6 @@ declare namespace LocalJSX {
     */
     'imageUrl'?: string;
     /**
-    * An external link you would like to provide.
-    */
-    'link'?: string;
-    /**
     * The version number you want to display.
     */
     'version'?: string;
@@ -1309,14 +1293,6 @@ declare namespace LocalJSX {
     * Sets the background image for your authentication screen.
     */
     'imageUrl'?: string;
-    /**
-    * An external link you would like to provide.
-    */
-    'link'?: string;
-    /**
-    * A logo that you wish to display.
-    */
-    'logo'?: string;
     /**
     * The version number you want to display.
     */

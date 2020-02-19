@@ -28,7 +28,7 @@ class ShellLayout extends Component {
           </SeSidemenu>
         </SeHeader>
         <SeTabbar color="primary">
-          <nav slot="start">Tenant: <a className="dropdown" href=""> test </a></nav>
+          <nav slot="start"><div>Tenant: </div><a className="dropdown" href=""> test </a></nav>
           <nav>
             <NavLink to="/" exact={true} activeClassName='active'>Home</NavLink>
             <NavLink to='/dashboard' activeClassName='active'>Dashboard</NavLink>

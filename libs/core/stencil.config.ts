@@ -50,7 +50,13 @@ export const config: Config = {
         },
         {
           src: 'theme',
-          dest: `styles`
+          dest: '../styles',
+          warn: true
+        },
+        {
+          src: 'src/**/*.md',
+          dest: '../docs',
+          warn: true
         }
       ]
     },
@@ -73,6 +79,18 @@ export const config: Config = {
       componentCorePackage: '@se/web-ui',
       proxiesFile: '../react/src/components.ts'
     })
+  ],
+  bundles: [
+    { components: ['se-app', 'se-container', 'se-block', 'se-block-header', 'se-block-content', 'se-block-footer'] },
+    { components: ['se-dialog', 'se-dialog-header', 'se-dialog-content', 'se-dialog-footer'] },
+    { components: ['se-list', 'se-list-group', 'se-list-item'] },
+    { components: ['se-tooltip', 'se-tooltip-header', 'se-tooltip-content', 'se-tooltip-footer'] },
+    { components: ['se-header', 'se-sidemenu', 'se-sidemenu-item'] },
+    { components: ['se-stepper', 'se-stepper-item'] },
+    { components: ['se-breadcrumb', 'se-breadcrumb-item'] },
+    { components: ['se-banner', 'se-banner-item'] },
+    { components: ['se-form-field', 'se-radio', 'se-radio-group', 'se-checkbox'] },
+
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
