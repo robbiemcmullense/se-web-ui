@@ -12,8 +12,7 @@ describe('AboutComponent', () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('should populate link, domain, and copyright information from the app info file', () => {
-		expect(component.link).toEqual('www.schneider-electric.com');
+	it('should populate the domain, and copyright information from the app info file', () => {
 		expect(component.domain).toEqual('ecostruxure');
 		expect(component.copyright).toEqual('This application is protected by copyright law and international treaties. © 2020 Schneider Electric Industries SAS. All Rights Reserved.');
 	});
