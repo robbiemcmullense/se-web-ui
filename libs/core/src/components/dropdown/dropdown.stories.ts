@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/html';
-import { text, select, number } from '@storybook/addon-knobs';
+import { select, number } from '@storybook/addon-knobs';
 
 const alignmentOption = ['left', 'right'];
 
