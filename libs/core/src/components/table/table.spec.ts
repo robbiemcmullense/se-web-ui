@@ -12,10 +12,6 @@ describe('table-group', () => {
     expect(table).toBeTruthy();
   });
 
-  it('should be in classic option by default', () => {
-    expect(table.option).toEqual('classic');
-  });
-
   it('should render, with a slot element', async() => {
 		const page = await newSpecPage({
 			components: [TableComponent],
