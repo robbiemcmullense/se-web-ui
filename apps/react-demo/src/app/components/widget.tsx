@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./widget.scss";
-import {  SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeBlockFooter, SeCheckbox, SeIcon, SeDivider } from '@se/web-ui-react';
+import { SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeBlockFooter, SeCheckbox, SeIcon, SeDivider } from '@se/web-ui-react';
 
 interface WidgetProps{
   name: string;
@@ -18,6 +18,7 @@ class Widget extends Component<WidgetProps> {
     return [
       <SeBlock>
         <SeBlockHeader>
+          {this.props.name}
           <div slot="end">
               <SeIcon option="button" color="alternative">favourites_addto</SeIcon>
               <SeIcon option="button" color="alternative">other_vertical</SeIcon>

@@ -33,7 +33,7 @@ export class VisualLinearComponent {
 	 * Set the percentage of the "progress bar" to be "filled".
 	 */
 	@Prop({ mutable: true }) percentage: number;
-	@State() isHexColor: boolean = false;
+	@State() isHexColor = false;
 
 	componentDidLoad() {
 		this.colorDidChange();

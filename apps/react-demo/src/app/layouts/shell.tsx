@@ -33,6 +33,7 @@ class ShellLayout extends Component {
             <NavLink to="/" exact={true} activeClassName='active'>Home</NavLink>
             <NavLink to='/dashboard' activeClassName='active'>Dashboard</NavLink>
             <NavLink to='/docs' activeClassName='active'>Docs</NavLink>
+            <NavLink to='/table' activeClassName='active'>Table</NavLink>
           </nav>
           <nav slot="end">
             <a href="">End</a>

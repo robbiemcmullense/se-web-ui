@@ -17,12 +17,12 @@ export class SliderComponent {
   * Indicates the minimum value of your slider.
   * The default value is `0`.
   */
-  @Prop() min: number = 0;
+  @Prop() min = 0;
   /**
   * Indicates the maximum value of your slider.
   * The default value is `100`.
   */
-  @Prop() max: number = 100;
+  @Prop() max = 100;
   /**
    * The label of the slider that will be attached to the input.
    */
@@ -31,7 +31,7 @@ export class SliderComponent {
   * Indicates if your slider is disabled.
   * The default setting is `false`.
   */
-  @Prop() disabled: boolean = false;
+  @Prop() disabled = false;
   /**
    * Event emitted when the slider has been changed.
    */
@@ -46,9 +46,9 @@ export class SliderComponent {
   }
 
   setInputId() {
-    let id = this.el.getAttribute('id');
+    const id = this.el.getAttribute('id');
     if (id) {
-      let input = this.el.shadowRoot.querySelector('input');
+      const input = this.el.shadowRoot.querySelector('input');
       input.setAttribute('id', 'wc-' + id);
     }
   }

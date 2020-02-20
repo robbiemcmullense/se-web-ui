@@ -36,11 +36,11 @@ export class FormFieldComponent {
 	 * Set to `false` by default.
 	 * Setting this value to `true` will render a red asterisk next to your label.
 	 */
-	@Prop() required: boolean = false;
+	@Prop() required = false;
 	/**
    * Optional property that defines if the form field is disabled.  Set to `false` by default.
    */
-	@Prop() disabled: boolean = false;
+	@Prop() disabled = false;
 	/**
    * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
    */

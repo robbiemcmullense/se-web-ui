@@ -50,7 +50,7 @@ class Dashboard extends Component<DashboardProps> {
             <SeButton onClick={this.addNewListItem} option="raised">Add New List Item</SeButton>
             </div>
           </SeBlockHeader>
-          <SeBlockContent option="fill">
+          <SeBlockContent>
             <SeList option="treeview">
               <SeListItem item="Static item"></SeListItem>
               <SeListGroup item="New Block" id="testing-list-group">
@@ -75,7 +75,7 @@ class Dashboard extends Component<DashboardProps> {
         <SeBlock>
           <SeBlockHeader>Stepper Example</SeBlockHeader>
           <SeBlockContent>
-            <SeStepper linear="false">
+            <SeStepper linear={false}>
               <SeStepperItem label="Step 1"></SeStepperItem>
               <SeStepperItem label="Step 2"></SeStepperItem>
               <SeStepperItem label="Step 3"></SeStepperItem>

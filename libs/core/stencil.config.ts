@@ -52,11 +52,6 @@ export const config: Config = {
           src: 'theme',
           dest: '../styles',
           warn: true
-        },
-        {
-          src: 'src/**/*.md',
-          dest: '../docs',
-          warn: true
         }
       ]
     },
@@ -67,6 +62,10 @@ export const config: Config = {
     {
       type: 'dist-hydrate-script',
       dir: `${distFolder}/hydrate`
+    },
+    {
+      type: 'www',
+      serviceWorker: null // disable service workers
     },
     angularOutputTarget({
       componentCorePackage: '@se/web-ui',

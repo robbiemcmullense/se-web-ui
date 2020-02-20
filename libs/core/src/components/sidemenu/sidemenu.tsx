@@ -16,21 +16,21 @@ export class SidemenuComponent {
   menuItemInnerEl?: HTMLElement;
   observer: any;
   @Element() el: HTMLElement;
-  @State() open: boolean = false;
+  @State() open = false;
   @State() items: HTMLElement[] = [];
   @State() selectedItem?: HTMLElement;
   /**
    * Defines the text displayed in the header of the Sidemenu.
    * The default value is `Menu`.
    */
-  @Prop() label: string = 'Menu';
+  @Prop() label = 'Menu';
   /*
   * Defines the link to be uses in the external-link element of the Sidemenu.
   * The default value is www.se.com, which will generate if no link is defined.
   * If a different url is provided it will replace the default value.
   * If an empty string is provided the external link element will not be generated.
  */
-  @Prop() link: string = 'www.se.com';
+  @Prop() link = 'www.se.com';
   /**
    * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.
    * ex: document.getElementById("main-sidemenu").toggle("side-about");

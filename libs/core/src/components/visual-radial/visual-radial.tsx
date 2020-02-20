@@ -14,7 +14,7 @@ export class VisualRadialComponent {
     this.svgSize = (this.size == 'small') ? 82 : 164;
     this.circleDimensions = (this.size == 'small') ? 41 : 82;
     this.circleRadius = (this.size == 'small') ? 33 : 66;
-    let circumference = (this.size == 'small') ? 66 * Math.PI : 132 * Math.PI;
+    const circumference = (this.size == 'small') ? 66 * Math.PI : 132 * Math.PI;
     this.offset = circumference - this.percentage / 100 * circumference;
   }
 	/**
@@ -30,7 +30,7 @@ export class VisualRadialComponent {
 	 * The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
 	 * By default, the progress bar will have a green color.
 	 */
-  @Prop() secolor: string = 'primary';
+  @Prop() secolor = 'primary';
   @Watch('secolor') colorDidChange() {
     this.isHexColor = (this.secolor && this.secolor.indexOf('#') !== -1) ? true : false;
   }
@@ -38,7 +38,7 @@ export class VisualRadialComponent {
 	 * Set the percentage of the "progress bar" to be "filled".
 	 */
   @Prop({ mutable: true }) percentage: number;
-  @State() isHexColor: boolean = false;
+  @State() isHexColor = false;
   @State() offset: number;
   @State() circleDimensions: number;
   @State() circleRadius: number;

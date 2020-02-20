@@ -34,14 +34,14 @@ export class ListGroupComponent {
   /**
    * Defines if the item group is collapsed/closed. The default setting is `false`.
    */
-  @Prop({ mutable: true }) collapsed: boolean = false;
+  @Prop({ mutable: true }) collapsed = false;
   @Watch("collapsed") collapsedChanged() {
     this.checkSelected();
   }
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
-  @Prop() indentation: number = 0;
+  @Prop() indentation = 0;
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
@@ -49,7 +49,7 @@ export class ListGroupComponent {
   /**
    * Defines if list groups can be collapsed, true by default.
    */
-  @Prop() canCollapse: boolean = true;
+  @Prop() canCollapse = true;
   @Prop() selectedChild: boolean;
   /**
    * Pass the group data to the parent when collapsed.

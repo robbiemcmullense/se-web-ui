@@ -1,0 +1,40 @@
+@import "../../theme/theme";
+
+:host, .table-rows-wrapper {
+  width: 100%;
+  z-index: 0;
+  position: relative;
+  overflow: auto;
+  // @include flex-direction(column);
+  // @include display-flex(); 
+}
+
+// .table-rows-wrapper {
+//   flex: 1;
+// }
+
+// ::slotted(se-table-group-header[slot="start"]) {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+// }
+
+// .table-rows-wrapper:nth-child(even) {
+//   margin-top: 49px;
+// }
+
+// ::slotted(se-table-group:nth-child(even)) {
+//   @include background-color('background');
+// }
+// ::slotted(se-table-group:nth-child(odd)) {
+//   @include background-color('alternative');
+// }
+::slotted(se-table-group.selectable:hover) {
+  @include background-color('hover-standard');
+  @include color('hover-standard-contrast');
+}
+::slotted(se-table-group.selected) {
+  @include background-color('selected');
+  @include color('selected-contrast');
+}

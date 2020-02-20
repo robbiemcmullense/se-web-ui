@@ -17,19 +17,13 @@ class Home extends Component {
       },
       {
           name: 'Last filter!'
-      },
-      {
-          name: 'Last filter!'
       }
     ];
-    const rows = filters.map((row, index) => {
-        return (
-           <Widget name={row.name} key={index}/>
-        );
-    });
     return (
       <SeContainer>
-        {rows}
+        {filters.map((row, index) =>
+           <Widget name={row.name} key={index}/>
+        )}
       </SeContainer>
     );
   }

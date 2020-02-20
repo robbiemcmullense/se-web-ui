@@ -20,7 +20,7 @@ export class ListComponent {
   /**
    * Defines if list groups can be collapsed.  The default setting is `true`.
    */
-  @Prop() canCollapse: boolean = true;
+  @Prop() canCollapse = true;
   @Watch('canCollapse') canCollapseDidChange() {
     Array.from(this.el.querySelectorAll('se-list-group')).forEach((item: any) => {
       item.canCollapse = this.canCollapse;

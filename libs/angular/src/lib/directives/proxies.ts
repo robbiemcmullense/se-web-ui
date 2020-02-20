@@ -299,8 +299,8 @@ export class SeHeader {
 }
 
 export declare interface SeIcon extends Components.SeIcon {}
-@ProxyCmp({inputs: ['color', 'option', 'size']})
-@Component({ selector: 'se-icon', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option', 'size'] })
+@ProxyCmp({inputs: ['color', 'disabled', 'option', 'size']})
+@Component({ selector: 'se-icon', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'option', 'size'] })
 export class SeIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -506,6 +506,61 @@ export declare interface SeTabbar extends Components.SeTabbar {}
 @ProxyCmp({inputs: ['color', 'option']})
 @Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
 export class SeTabbar {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTable extends Components.SeTable {}
+
+@Component({ selector: 'se-table', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+export class SeTable {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTableGroup extends Components.SeTableGroup {}
+@ProxyCmp({inputs: ['selectable', 'selected']})
+@Component({ selector: 'se-table-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['selectable', 'selected'] })
+export class SeTableGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTableGroupHeader extends Components.SeTableGroupHeader {}
+
+@Component({ selector: 'se-table-group-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+export class SeTableGroupHeader {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTableItem extends Components.SeTableItem {}
+@ProxyCmp({inputs: ['clickable', 'flex', 'width']})
+@Component({ selector: 'se-table-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'width'] })
+export class SeTableItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+export declare interface SeTableItemHeader extends Components.SeTableItemHeader {}
+@ProxyCmp({inputs: ['clickable', 'flex', 'sort', 'width']})
+@Component({ selector: 'se-table-item-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'sort', 'width'] })
+export class SeTableItemHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

@@ -10,7 +10,7 @@ export class BreadcrumbItemComponent {
   /**
    * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
    */
-  @Prop() isLast: boolean = false;
+  @Prop() isLast = false;
   /**
    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
    */

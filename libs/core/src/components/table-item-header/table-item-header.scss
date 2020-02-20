@@ -1,0 +1,73 @@
+@import "../../theme/theme";
+
+:host {
+  font-weight: 500;
+  z-index: 0;
+  margin: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0px;
+  width: 0;
+  min-width: 72px;
+  border: 1px solid $divider-color;
+  border-right: none;
+  max-width: 100%;
+}
+:host(:first-child) {
+  border-left: none;
+}
+:host(:not(:first-child)) {
+  margin-left: -1px;
+}
+
+.table-item-content {
+  background: none;
+  box-sizing: border-box;
+  border: none;
+  min-height: 47px;
+  height: 20px;
+  margin: 0;
+  padding: 0 24px;
+  overflow: hidden;
+  @include typology('base');
+  position: relative;
+  outline: none;
+  width: 100%;
+  max-width: 100%;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  @include display-flex();
+  @include align-items(center);
+  text-align: left; // MS Edge does not support "start"
+  text-align: start;
+  text-decoration: none;
+
+  div {
+    @include ellipsis();
+  }
+
+  .table-item-label {
+    line-height: 24px;
+  }
+
+  // &:not([disabled]){
+  //   cursor: pointer;
+  //   &:hover, &:focus{
+  //     background-color: $se-ultra-light-grey-1;
+  //   }
+  // }
+}
+
+button:hover {
+  cursor: pointer;
+}
+se-icon {
+  transition: .3s;
+  &.sort-desc {
+    transform: rotate(180deg);
+  }
+}
+se-icon.sortable {
+  margin-left: calc(#{$spacing} * 1.375);
+}

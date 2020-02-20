@@ -43,7 +43,7 @@ export class DropdownComponent {
    * Event emitted when the dropdown has been closed.
    */
   @Event() didClose: EventEmitter;
-  @State() opened: boolean = false;
+  @State() opened = false;
 
   @Listen('click', { target: 'window' })
   handleClick(ev) {
@@ -51,7 +51,7 @@ export class DropdownComponent {
       this._toggle(ev);
     }
   }
-  
+
   @Listen('touchstart', { target: 'window' })
   handleTouchstart(ev) {
     if (this.opened) {

@@ -44,7 +44,7 @@ export class TooltipComponent {
     this.opened = false;
   }
 
-  @State() opened: boolean = false;
+  @State() opened = false;
 
   @Listen('touchstart', { target: 'window' }) handleTouchstart(ev) {
     this._toggle(ev);

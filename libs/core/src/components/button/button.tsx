@@ -54,7 +54,7 @@ export class ButtonComponent {
   /**
    * Property to specify if the button should only display an icon (no extra spacing).
    */
-  @Prop() iconOnly: boolean;
+  @Prop() iconOnly= false;
    /**
    * Optional property.
    * `button`	is the default setting, creating a clickable button.

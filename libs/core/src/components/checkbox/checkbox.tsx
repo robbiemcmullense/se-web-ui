@@ -24,7 +24,7 @@ export class CheckboxComponent {
   /**
    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
    */
-  @Prop() required: boolean = false;
+  @Prop() required = false;
   /**
    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`.
    * The default value is `primary`, rendering a green color.
@@ -39,24 +39,24 @@ export class CheckboxComponent {
   /**
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
-  @Prop() disabled: boolean = false;
+  @Prop() disabled = false;
   /**
 	 * The "checked" state of the checkbox, `false` by default.
 	 */
-  @Prop({ mutable: true }) selected: boolean = false;
+  @Prop({ mutable: true }) selected = false;
   /**
    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to `onoff`.  Set to `ON` by default.
    */
-  @Prop() textOn: string = 'ON';
+  @Prop() textOn = 'ON';
   /**
    * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to `onoff`.  Set to `OFF` by default.
    */
-  @Prop() textOff: string = 'OFF';
+  @Prop() textOff = 'OFF';
   /**
    * Reduces the visual height of the checkbox when the option is set to `onoff`.
    * Useful if the on/off checkbox is within a header element.
    */
-  @Prop() header: boolean = false;
+  @Prop() header = false;
   /**
    * Sets the position of the label for your checkbox component.
    * The default setting is `right` when the option is set to `checkbox`.

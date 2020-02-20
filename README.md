@@ -107,6 +107,7 @@ yarn core build
 
 All library will build in the `dist/libs` folder as everything else in the nx workspace.
 
+**Note :** Except the core library (web-ui), libraries do not need to be built to work with the demo application. 
 
 ## Connect to your project locally
 

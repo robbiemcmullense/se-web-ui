@@ -21,13 +21,13 @@ export class StepperComponent {
    * The default setting is `true`, each stepper item must be validated before advancing to the next step.
    * `false` allows each step to be selected in any order.
    */
-  @Prop() linear: boolean = true;
+  @Prop() linear = true;
   /**
    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
    * It no step parameter is provided, it will reset to the first stepper item.
    */
   @Method()
-  async reset(step: number = 1) {
+  async reset(step = 1) {
     if (step >= this.getItemStep(this.selectedItem)) {
       return; // don't advance the stepper when clicking the reset button
     }
@@ -45,7 +45,7 @@ export class StepperComponent {
   async previous() {
     // do not trigger this method when the first stepper item is the active item
     if (this.getItemStep(this.selectedItem) > 1) {
-      let index = this.stepperItems.indexOf(this.selectedItem);
+      const index = this.stepperItems.indexOf(this.selectedItem);
       this.selectStep(this.stepperItems[index - 1]);
     }
   }
@@ -59,7 +59,7 @@ export class StepperComponent {
       this.selectedItem.validated = true;
     }
     if (!this.linear || this.selectedItem.validated) {
-      let index = this.stepperItems.indexOf(this.selectedItem);
+      const index = this.stepperItems.indexOf(this.selectedItem);
       this.selectStep(this.stepperItems[index + 1]);
     }
   }
@@ -73,7 +73,7 @@ export class StepperComponent {
   @Listen('didValidate') itemValidated(value) {
     this.validatedChanged = value;
   }
-  
+
   getItemStep(item: any) {
     return this.stepperItems.indexOf(item) + 1;
   }

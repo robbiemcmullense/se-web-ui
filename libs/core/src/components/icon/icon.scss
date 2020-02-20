@@ -58,6 +58,11 @@
   shape-rendering: geometricprecision;
 }
 
+.se-icon-wrapper.disabled {
+  cursor: default;
+  opacity: .5;
+}
+
 // Align icons on MS Edge.
 // Will remove when Chromium-based Edge browser is released.
 @supports (-ms-ime-align:auto) {
@@ -80,7 +85,7 @@
   &.icon-button {
     @include color("standard-contrast");
     @include background-color("standard");
-    &:hover {
+    &:not(.disabled):hover {
       @include color("hover-standard-contrast");
       @include background-color("hover-standard");
     }
@@ -94,7 +99,7 @@
     @include color("alternative-contrast");
     @include background-color("alternative");
 
-    &:hover {
+    &:not(.disabled):hover {
       @include color("hover-alternative-contrast");
       @include background-color("hover-alternative");
     }
@@ -107,7 +112,7 @@
     @include color("primary-contrast");
     @include background-color("primary");
 
-    &:hover {
+    &:not(.disabled):hover {
       @include color("hover-primary-contrast");
       @include background-color("hover-primary");
     }
@@ -120,7 +125,7 @@
     @include color("secondary-contrast");
     @include background-color("secondary");
 
-    &:hover {
+    &:not(.disabled):hover {
       @include color("hover-secondary-contrast");
       @include background-color("hover-secondary");
     }
@@ -133,7 +138,7 @@
     @include color("success-contrast");
     @include background-color("success");
 
-    &:hover {
+    &:not(.disabled):hover {
       @include color("hover-success-contrast");
       @include background-color("hover-success");
     }
@@ -146,7 +151,7 @@
     @include color("warning-contrast");
     @include background-color("warning");
 
-    &:hover {
+    &:not(.disabled):hover {
       @include color("hover-warning-contrast");
       @include background-color("hover-warning");
     }
@@ -159,7 +164,7 @@
     @include color("error-contrast");
     @include background-color("error");
 
-    &:hover {
+    &:not(.disabled):hover {
       @include color("hover-error-contrast");
       @include background-color("hover-error");
     }

@@ -18,7 +18,7 @@ export class RadioComponent {
   /**
    * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
    */
-  @Prop() required: boolean = false;
+  @Prop() required = false;
   /**
    * Defines the color of the checkbox.
    * The default setting is `primary`, rendering a green color.
@@ -28,13 +28,13 @@ export class RadioComponent {
   /**
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
-  @Prop() disabled: boolean = false;
+  @Prop() disabled = false;
   /**
 	 * Determines whether or not the checkbox is checked when you initialize it.
    * The default setting is `false`.
    * Checked if set to `true`.
 	 */
-  @Prop({ mutable: true }) selected: boolean = false;
+  @Prop({ mutable: true }) selected = false;
   /**
    * Sets the position of the label for your checkbox component.
    * The default setting is `right`.
@@ -53,16 +53,16 @@ export class RadioComponent {
   @Event() didCheck: EventEmitter;
 
   setInputId() {
-    let id = this.el.getAttribute('id');
+    const id = this.el.getAttribute('id');
     if (id) {
-      let input = this.el.shadowRoot.querySelector('input');
+      const input = this.el.shadowRoot.querySelector('input');
       input.setAttribute('id', 'wc-' + id);
     }
   }
 
   handleClick() {
     this.selected = !this.selected;
-    let checkboxObject = { value: this.value, selected: this.selected };
+    const checkboxObject = { value: this.value, selected: this.selected };
     this.didCheck.emit(checkboxObject);
   }
 
@@ -78,7 +78,7 @@ export class RadioComponent {
           {this.required ? <span class="required">*</span> : ''}
           <input type="radio" checked={this.selected} disabled={this.disabled} onClick={() => this.handleClick()} />
           <span class="checkdot" data-color={this.color}></span>
-        </label>    
+        </label>
       </div>
     );
   }
