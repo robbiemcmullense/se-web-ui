@@ -2,7 +2,7 @@ import { Component,Output,EventEmitter } from '@angular/core';
 import {SnackbarConfig} from './snackbar-config';
 
 @Component({
-  selector: 'app-snackbar',
+  selector: 'se-ng-snackbar',
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.scss']
 })

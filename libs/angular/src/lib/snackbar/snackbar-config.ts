@@ -35,5 +35,5 @@ export class SnackbarConfig {
   /**
   * @description time duration for which snackbar will be displayed.
   */
-  duration?: number = 5000;
+  duration? = 5000;
 }

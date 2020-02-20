@@ -80,7 +80,7 @@ export const config: Config = {
     })
   ],
   bundles: [
-    { components: ['se-app', 'se-container', 'se-block', 'se-block-header', 'se-block-content', 'se-block-footer'] },
+    { components: ['se-app', 'se-container', 'se-block', 'se-block-header', 'se-block-content', 'se-block-footer', 'se-divider'] },
     { components: ['se-dialog', 'se-dialog-header', 'se-dialog-content', 'se-dialog-footer'] },
     { components: ['se-list', 'se-list-group', 'se-list-item'] },
     { components: ['se-tooltip', 'se-tooltip-header', 'se-tooltip-content', 'se-tooltip-footer'] },
@@ -88,7 +88,9 @@ export const config: Config = {
     { components: ['se-stepper', 'se-stepper-item'] },
     { components: ['se-breadcrumb', 'se-breadcrumb-item'] },
     { components: ['se-banner', 'se-banner-item'] },
-    { components: ['se-form-field', 'se-radio', 'se-radio-group', 'se-checkbox'] },
+    { components: ['se-table', 'se-table-group', 'se-table-group-header', 'se-table-item', 'se-table-item-header'] },
+    { components: ['se-form-field', 'se-radio', 'se-radio-group', 'se-checkbox', 'se-chip'] },
+    { components: ['se-fab', 'se-fab-item'] },
 
   ],
   testing: {

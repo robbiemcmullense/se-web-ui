@@ -4,7 +4,7 @@
     "types": [],
     "allowUnreachableCode": false,
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,

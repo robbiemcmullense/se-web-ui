@@ -295,7 +295,8 @@
             "tsConfig": "libs/react/tsconfig.lib.json",
             "project": "libs/react/package.json",
             "entryFile": "libs/react/src/index.ts",
-            "babelConfig": "libs/react/babel.config"
+            "babelConfig": "libs/react/babel.config",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup"
           }
         },
         "test": {

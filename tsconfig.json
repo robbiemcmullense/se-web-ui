@@ -20,12 +20,8 @@
       "@se/web-ui-react": ["libs/react/src/index.ts"],
       "@se/web-ui": ["dist/libs/core"],
       "@se/web-ui/*": ["dist/libs/core/*"],
-      "@se/utils": ["libs/utils/src/index.ts"],
-      "@se/libreact": ["libs/libreact/src/index.ts"],
-      "@se/react-test": ["libs/react-test/src/index.ts"],
-      "@se/angular-test": ["libs/angular-test/src/index.ts"]
+      "@se/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
 }
-

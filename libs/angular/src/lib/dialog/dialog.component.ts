@@ -16,7 +16,7 @@ import { DialogConfig } from './dialog-config';
 import { DialogDirective } from './dialog.directive';
 
 @Component({
-  selector: 'lib-dialog',
+  selector: 'se-ng-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
@@ -41,7 +41,7 @@ export class DialogComponent {
 }
 
 @Component({
-  selector: 'lib-dialog-modal',
+  selector: 'se-dialog-modal',
   templateUrl: './dialog-modal.component.html'
 })
 export class DialogModalComponent implements AfterViewInit, OnDestroy {
