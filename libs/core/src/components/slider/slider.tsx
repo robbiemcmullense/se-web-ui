@@ -55,7 +55,7 @@ export class SliderComponent {
 
   setSliderPosition() {
     const rangeInterval = (Number(this.max) - Number(this.min));
-    const rangePercent = (Number(this.sliderElement.value) + Math.abs(Number(this.min))) / rangeInterval * 100;
+    const rangePercent = (Number(this.sliderElement.value) - Number(this.min)) / rangeInterval * 100;
     this.sliderElement.style.setProperty('--sx', rangePercent + '%');
   }
 
@@ -68,6 +68,11 @@ export class SliderComponent {
 
   componentDidLoad() {
     this.setInputId();
+    if (this.value < this.min) {
+      this.value = this.min;
+    } else if (this.value > this.max) {
+      this.value = this.max;
+    }
     this.sliderElement.value = this.value;
     this.setSliderPosition();
     this.handleEvent();
