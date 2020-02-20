@@ -3,14 +3,12 @@ import { SeContainer, SeBlock, SeTable, SeIcon, SeCheckbox, SeTableGroup, SeTabl
 
 import Widget from '../components/widget';
 
-import "./dashboard.scss";
-
-interface DashboardProps{
+interface TableProps{
   location: any;
 }
 
 
-class Dashboard extends Component<DashboardProps> {
+class Table extends Component<TableProps> {
 
   render() {
     const rows = [
@@ -139,4 +137,4 @@ class Dashboard extends Component<DashboardProps> {
   }
 }
 
-export default Dashboard;
+export default Table;
