@@ -54,9 +54,7 @@ yarn start web-demo
 yarn start web-demo-e2e
 ```
 
-
-
-**PS :** Only apps in the `apps` folder can be run that way. Any libs should be run with their own command line (see next section) 
+**PS :** Only apps and library that use pure web, angular or react frameworks can be used with the `nx` workspace scripts. The stencilJs (`libs/core`) does not directly work with `nx` workspace, it need to use it's own script (`yarn core <script>`). 
 
 ## Storybook
 
@@ -71,46 +69,55 @@ yarn nx run core:build-storybook
 
 ## Core library (web-ui components)
 
-In a separate shell, run the stencilJs core lib in watch mode:
+Since the core folder is based on StencilJs which is for now not supported by `nx` workspace, we need to run the different commands based on the core script. 
+
 ```
-yarn <lib> <script>
+yarn core <Script>
 ```
 
-For example:
-
+To develope on the web-component library, you then simply need to run:
 ```
 yarn core watch
 ```
-
 Any change on the web-component will automatically update the angular and react code that will automatically relaunch the demo app you are working on.
 
 
 ## Test or build the libraries 
 
-Each libraries need to be built and tested independently (does not use the `nx` workspace)
-- Test
-    ```
-    yarn core test
-    yarn angular test
-    yarn react test
-    ```
-- Build
-    ```
-    yarn core build
-    yarn angular build
-    yarn react build
-    ```
+The `react` an `angular` library follows the same nx workspace convention:
+```sh
+# Test
+yarn test angular
+yarn test react
 
-**Note :** Except the core library (web-ui), libraries does not need to be built to work with the demo application. 
+# Build
+yarn build angular
+yarn build react
+```
+
+To build and test the StencilJs library (core folder), you need to run:
+
+```sh
+# Test
+yarn core test
+
+# Build
+yarn core build
+```
+
+All library will build in the `dist/libs` folder as everything else in the nx workspace.
+
+**Note :** Except the core library (web-ui), libraries do not need to be built to work with the demo application. 
 
 ## Connect to your project locally
 
-To connect your project with any library locally, you need first to build them, then:
+To connect your project with any library locally: 
+1. Build each libraries (previous section),
 1. Create a global link with yarn
     ```
-    yarn core link              // to create @se/web-ui locally
-    yarn angular link           // to create @se/web-ui-angular locally
-    yarn react link             // to create @se/web-ui-react locally
+    yarn link:core              // to create @se/web-ui locally
+    yarn link:angular           // to create @se/web-ui-angular locally
+    yarn link:react             // to create @se/web-ui-react locally
     ```
 2. In your project folder:
     ```

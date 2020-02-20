@@ -1,3 +1,6 @@
+// const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = async ({ config, mode }) => {
   // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -6,6 +9,24 @@ module.exports = async ({ config, mode }) => {
 
   // Make whatever fine-grained changes you need
 
-  // Return the altered config
+  const copyWebpackPlugin = new CopyWebpackPlugin([
+    {
+      from: path.resolve(__dirname, '../dist/libs/core'),
+      to: path.posix.join('static', ''),
+      ignore: ['.*']
+    },
+  ]);
+
+  if (config.plugins) {
+    config.plugins.push(copyWebpackPlugin);
+  } else {
+    config.plugins = [
+      copyWebpackPlugin
+    ];
+  }
+
+
+
   return config;
 };
+

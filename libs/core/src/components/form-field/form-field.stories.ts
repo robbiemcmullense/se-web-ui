@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/html';
-import { select, text, boolean } from '@storybook/addon-knobs';
+import { select, text, boolean, number } from '@storybook/addon-knobs';
 
 const layoutOption = ['inline', 'stacked'];
 const inputTypeOption = ['text', 'date'];
@@ -80,7 +80,7 @@ storiesOf('Form Field', module)
   })
   .add('Form Field Textarea', () => {
     const option = select('option', layoutOption, 'inline')
-    const rows = text('rows', '3')
+    const rows = number('rows', 3)
     const label = text('label', 'Textarea')
     const required = boolean('required', false)
     const disabled = boolean('disabled', false)

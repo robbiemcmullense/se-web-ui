@@ -39,7 +39,7 @@ export class BlockComponent {
   /**
    * Defines the se-block item's ability to appear clickable / selectable.
    * Default setting is `false`, resulting in no hover effects on the block level.
-   * `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block. 
+   * `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
    */
   @Prop() clickable: boolean = false;
   /**
@@ -168,7 +168,7 @@ export class BlockComponent {
 
     return (
       <Host class={[
-        this.display ? `block-${this.display}` : '', 
+        this.display ? `block-${this.display}` : '',
         enlargedClass,
         `block-bg-${this.color}`].join(' ')}>
         <div class={[
@@ -177,7 +177,7 @@ export class BlockComponent {
             this.option,
             this.outline !== undefined ? outline : '',
             this.corner !== undefined ? `corner-${this.corner}` : '',
-            this.margin !== undefined ? `margin-${this.margin}` : '', 
+            this.margin !== undefined ? `margin-${this.margin}` : '',
             this.color !== undefined ? `block-bg-${this.color}` : 'block-bg-alternative'].join(' ')}>
             {this.loading ? <se-loading loading={this.loading} /> : ''}
           <slot></slot>

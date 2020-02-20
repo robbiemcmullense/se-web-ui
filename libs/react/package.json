@@ -1,6 +1,7 @@
 {
   "name": "@se/web-ui-react",
   "version": "3.6.1",
+  "license": "MIT",
   "sideEffects": false,
   "description": "React specific wrapper for component-library",
   "repository": {
@@ -11,30 +12,12 @@
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },
   "scripts": {
-    "build": "npm run clean && npm run compile",
-    "clean": "rm -rf dist",
-    "compile": "npm run tsc",
-    "tsc": "tsc -p tsconfig.lib.json",
-    "rollup": "rollup -c"
+    "test": "cd ../.. && yarn test react",
+    "build": "cd ../.. && yarn build react"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "package.json"
-  ],
   "peerDependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "@se/web-ui": "^3.0.0"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
-    "testPathIgnorePatterns": [
-      "node_modules",
-      "dist"
-    ]
   }
 }

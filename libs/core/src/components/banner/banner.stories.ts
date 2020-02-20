@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/html';
-import { text } from '@storybook/addon-knobs';
+import { number } from '@storybook/addon-knobs';
 
 storiesOf('Banner', module)
   .add('Banner', () => {
-    const duration = text('duration', '6000')
+    const duration = number('duration', 6000)
 
     return `
       <se-banner duration='${duration}'>

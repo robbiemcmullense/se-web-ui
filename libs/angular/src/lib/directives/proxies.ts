@@ -6,8 +6,8 @@ import { ProxyCmp, proxyOutputs } from './proxies-utils';
 import { Components } from '@se/web-ui'
 
 export declare interface SeAbout extends Components.SeAbout {}
-@ProxyCmp({inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'link', 'version']})
-@Component({ selector: 'se-about', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'link', 'version'] })
+@ProxyCmp({inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'version']})
+@Component({ selector: 'se-about', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'version'] })
 export class SeAbout {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -28,8 +28,8 @@ export class SeApp {
 }
 
 export declare interface SeAuthentication extends Components.SeAuthentication {}
-@ProxyCmp({inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'link', 'logo', 'version']})
-@Component({ selector: 'se-authentication', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'link', 'logo', 'version'] })
+@ProxyCmp({inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'version']})
+@Component({ selector: 'se-authentication', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'version'] })
 export class SeAuthentication {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

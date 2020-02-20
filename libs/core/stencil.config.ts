@@ -1,5 +1,5 @@
-import { Config } from "@stencil/core";
-import { sass } from "@stencil/sass";
+import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
@@ -29,28 +29,44 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 //   }
 // ];
 
+const distFolder = '../../dist/libs/core';
 
 export const config: Config = {
   namespace: 'se-components',
-  plugins: [
-    sass(),
-    inlineSvg()
-  ],
+  plugins: [sass(), inlineSvg()],
   outputTargets: [
     {
-      type: "dist",
-      esmLoaderPath: "../loader"
+      type: 'docs-readme'
     },
     {
-      type: "docs-readme"
+      type: 'dist',
+      dir: distFolder,
+      collectionDir: `collection`,
+      typesDir: `types`,
+      esmLoaderPath: `loader`,
+      copy: [
+        {
+          src: '../package.json'
+        },
+        {
+          src: 'theme',
+          dest: '../styles',
+          warn: true
+        },
+        {
+          src: 'src/**/*.md',
+          dest: '../docs',
+          warn: true
+        }
+      ]
     },
     {
       type: 'docs-json',
-      file: 'dist/se-components.json'
+      file: `${distFolder}/se-components.json`
     },
     {
       type: 'dist-hydrate-script',
-      dir: 'dist/hydrate'
+      dir: `${distFolder}/hydrate`
     },
     {
       type: 'www',
@@ -60,21 +76,33 @@ export const config: Config = {
       componentCorePackage: '@se/web-ui',
       directivesProxyFile: '../angular/src/lib/directives/proxies.ts',
       directivesUtilsFile: '../angular/src/lib/directives/proxies-utils.ts',
-      directivesArrayFile: '../angular/src/lib/directives/proxies-list.ts',
+      directivesArrayFile: '../angular/src/lib/directives/proxies-list.ts'
       //   valueAccessorConfigs: angularValueAccessorBindings,
     }),
     reactOutputTarget({
       componentCorePackage: '@se/web-ui',
-      proxiesFile: '../react/src/components.ts',
-    }),
+      proxiesFile: '../react/src/components.ts'
+    })
+  ],
+  bundles: [
+    { components: ['se-app', 'se-container', 'se-block', 'se-block-header', 'se-block-content', 'se-block-footer'] },
+    { components: ['se-dialog', 'se-dialog-header', 'se-dialog-content', 'se-dialog-footer'] },
+    { components: ['se-list', 'se-list-group', 'se-list-item'] },
+    { components: ['se-tooltip', 'se-tooltip-header', 'se-tooltip-content', 'se-tooltip-footer'] },
+    { components: ['se-header', 'se-sidemenu', 'se-sidemenu-item'] },
+    { components: ['se-stepper', 'se-stepper-item'] },
+    { components: ['se-breadcrumb', 'se-breadcrumb-item'] },
+    { components: ['se-banner', 'se-banner-item'] },
+    { components: ['se-form-field', 'se-radio', 'se-radio-group', 'se-checkbox'] },
+
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     transform: {
-      "^.+\\.svg$": "<rootDir>/svgTransform.js"
+      '^.+\\.svg$': '<rootDir>/svgTransform.js'
     },
     transformIgnorePatterns: ['/node_modules/(?!@se/icons/svg)']
   },
-  tsconfig: "./tsconfig.json",
-  globalScript: "src/lib/global/global.ts"
+  tsconfig: './tsconfig.json',
+  globalScript: 'src/lib/global/global.ts'
 };
