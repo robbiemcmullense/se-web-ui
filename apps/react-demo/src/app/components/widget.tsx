@@ -22,6 +22,7 @@ class Widget extends Component<WidgetProps> {
               <SeIcon option="button" color="alternative">favourites_addto</SeIcon>
               <SeIcon option="button" color="alternative">other_vertical</SeIcon>
           </div>
+          {this.props.name}
         </SeBlockHeader>
         <SeBlockContent>
           <div className="mycoolstyle">my content</div>

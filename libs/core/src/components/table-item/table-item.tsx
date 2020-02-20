@@ -38,7 +38,7 @@ export class TableItemComponent {
     }
   }
 
-  private updateSize() {
+  updateSize() {
     // reset all sizes first
     this.el.style.flex = '';
     if (!!this.flex) {

@@ -1,4 +1,4 @@
-import { Component, Host, h, Element} from "@stencil/core";
+import { Component, Host, h} from "@stencil/core";
 
 @Component({
   tag: "se-table",
@@ -6,7 +6,6 @@ import { Component, Host, h, Element} from "@stencil/core";
   shadow: true
 })
 export class TableComponent {
-  @Element() el: HTMLElement;
 
   render() {
     return <Host role="table">
