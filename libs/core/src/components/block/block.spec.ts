@@ -47,7 +47,7 @@ describe('BlockComponent', () => {
 	it('should render with a se-loading icon when the loading property is set to true', async() => {
 		const page = await newSpecPage({
 			components: [BlockComponent],
-			html: `<se-block loading="true"></se-block>`,
+			html: `<se-block loading=true></se-block>`,
 		});
 		expect(page.root.shadowRoot.querySelector('se-loading')).toBeTruthy();
 	});
@@ -55,17 +55,17 @@ describe('BlockComponent', () => {
 	it('should render with a clickable-nobar class when the clickable property is set to true', async() => {
 		const page = await newSpecPage({
 			components: [BlockComponent],
-			html: `<se-block clickable="true"></se-block>`,
+			html: `<se-block clickable=true></se-block>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.clickable')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.clickable-nobar')).toBeTruthy();
 	});
 
 	it('should render with a clickable class when the clickable is true and clickableBar is false', async() => {
 		const page = await newSpecPage({
 			components: [BlockComponent],
-			html: `<se-block clickable="true" clickable-bar="false"></se-block>`,
+			html: `<se-block clickable="true" clickable-bar=true></se-block>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.clickable-nobar')).toBeTruthy();
+		expect(page.root.shadowRoot.querySelector('.clickable')).toBeTruthy();
 	});
 
 	it('should render with a block-grid class on the host element when the display property is set to grid', async() => {
@@ -125,9 +125,9 @@ describe('BlockComponent', () => {
 
 	it('should set the card option to block-header, block-content, and block-footer elements when se-block has the option set to card', () => {
 		block.option = 'card';
-		let header = document.createElement('se-block-header');
-		let content = document.createElement('se-block-content');
-		let footer = document.createElement('se-block-footer');
+		const header = document.createElement('se-block-header');
+		const content = document.createElement('se-block-content');
+		const footer = document.createElement('se-block-footer');
 		block.el.appendChild(header);
 		block.el.appendChild(content);
 		block.el.appendChild(footer);
@@ -139,9 +139,9 @@ describe('BlockComponent', () => {
 
 	it('should set the widget option only to block-content elements when se-block has the option set to widget', () => {
 		block.option = 'widget';
-		let header = document.createElement('se-block-header');
-		let content = document.createElement('se-block-content');
-		let footer = document.createElement('se-block-footer');
+		const header = document.createElement('se-block-header');
+		const content = document.createElement('se-block-content');
+		const footer = document.createElement('se-block-footer');
 		block.el.appendChild(header);
 		block.el.appendChild(content);
 		block.el.appendChild(footer);

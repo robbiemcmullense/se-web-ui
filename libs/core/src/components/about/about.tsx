@@ -30,8 +30,8 @@ export class AboutComponent {
   @Prop() imageUrl: string;
 
   render() {
-    var title = getFullTitle(this.appTitle);
-    var fullCopyright = getFullCopyright(this.copyright);
+    const title = getFullTitle(this.appTitle);
+    const fullCopyright = getFullCopyright(this.copyright);
     let domain;
     if (this.domain.toLowerCase() === `ecostruxure`) {
       domain = <se-icon-ecostruxure size="medium" color="inherited"></se-icon-ecostruxure>;

@@ -12,7 +12,7 @@ export class BlockComponent {
    * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
    * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
    */
-  @Prop() divider: boolean;
+  @Prop() divider= false;
   @Watch("divider") dividerDidChange() {
     this.updateItem();
   }
@@ -21,7 +21,7 @@ export class BlockComponent {
    * Default setting is `false`.
    * Setting this property to `true` will add a 1px border.
    */
-  @Prop() outline: boolean;
+  @Prop() outline= false;
   /**
    * Defines the se-block outline color.
    * Default setting is `standard`, which renders the outline with the `$se-super-light-grey` color.
@@ -41,13 +41,13 @@ export class BlockComponent {
    * Default setting is `false`, resulting in no hover effects on the block level.
    * `true` adds a hover effect on the se-block. The cursor will change to `pointer`, a box-shadow will appear, and a `$se-life-green` bar will appear at the top of the block.
    */
-  @Prop() clickable: boolean = false;
+  @Prop() clickable = false;
   /**
    * Defines clickable se-block item's bar on hover.
    * Default setting is `false`.
    * `true` renders a `$se-life-green` colored bar on a hover.
    */
-  @Prop() clickableBar: boolean;
+  @Prop() clickableBar = false;
   /**
    * Defines the spacing around the outside edge of a block.
    * Default `none` is 0px.
@@ -95,7 +95,7 @@ export class BlockComponent {
   /**
    * Displays the loading icon if set to `true`.  Default setting is `false`.
    */
-  @Prop({ mutable: true }) loading: boolean = false;
+  @Prop({ mutable: true }) loading = false;
   /**
    * Defines the visual appearance of a block.
    * Default setting is `basic`, which will remove any spacing.
@@ -120,7 +120,7 @@ export class BlockComponent {
       } else this.divider = true;
     }
 
-    let childElms = "se-block-header, se-block-content, se-block-footer";
+    const childElms = "se-block-header, se-block-content, se-block-footer";
     Array.from(this.el.querySelectorAll(childElms)).forEach((item:any) => {
       if (item.parentNode === this.el) { // have to do this because otherwise blocks inside other blocks get settings overridden by higher ancestors
         item.divider = this.divider;

@@ -31,10 +31,10 @@ export class AuthenticationComponent {
   /**
    * If set to `true`, this will hide the authentication screen.
    */
-  @Prop() hide: boolean = false;
+  @Prop() hide = false;
 
   renderAuthentication() {
-    var title = getFullTitle(this.appTitle);
+    const title = getFullTitle(this.appTitle);
     let domain;
     if ( this.domain.toLowerCase() === `ecostruxure`) {
       domain = <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>

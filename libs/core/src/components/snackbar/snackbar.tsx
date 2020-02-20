@@ -32,7 +32,7 @@ export class SnackbarComponent {
    * The default setting is `false`.
    * This will be visible if set to `true`.
    */
-  @Prop() canClose: boolean = false;
+  @Prop() canClose = false;
   /**
    * Defines the text you want your custom action button to read.
    */
@@ -40,7 +40,7 @@ export class SnackbarComponent {
   /**
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
-  @Prop({ mutable: true }) open: boolean = false;
+  @Prop({ mutable: true }) open = false;
   @Watch('open') openDidChange() {
     if (this.open) {
       this.el.classList.add(SHOW_SNACKBAR);
@@ -55,7 +55,7 @@ export class SnackbarComponent {
    * Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false.
    * The default setting is 5000.
    */
-  @Prop() duration: number = 5000;
+  @Prop() duration = 5000;
   /**
    * Sends information to the parent component when closing the snackbar.
    */

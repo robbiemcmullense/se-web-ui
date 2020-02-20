@@ -52,11 +52,6 @@ export const config: Config = {
           src: 'theme',
           dest: '../styles',
           warn: true
-        },
-        {
-          src: 'src/**/*.md',
-          dest: '../docs',
-          warn: true
         }
       ]
     },

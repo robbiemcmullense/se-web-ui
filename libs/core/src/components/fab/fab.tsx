@@ -33,7 +33,7 @@ export class FabComponent {
 	* The `alternative` setting renders a white background.
 	*/
 	@Prop() color: 'primary' | 'alternative' = 'primary';
-	@State() toggleIcon: boolean = true;
+	@State() toggleIcon = true;
 	/**
 	 * Use this method to toggle (show/hide) the mini action buttons.
 	 */

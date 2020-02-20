@@ -13,7 +13,7 @@ export class BannerItemComponent {
   /**
    * Indicates the active banner item in your banner component.
    */
-  @Prop({ mutable: true }) active: boolean = false;
+  @Prop({ mutable: true }) active = false;
   @Element() el: HTMLElement;
 
   @Watch('active') activeDidChange() {
@@ -53,8 +53,8 @@ export class BannerItemComponent {
     return (
       <Host class={{ 'active': this.active }}>
         <div class="image-container">
-          <div 
-            class="image-background" 
+          <div
+            class="image-background"
             style={{ backgroundImage: this.imageUrl }} />
           <div class="background-overlay"></div>
         </div>

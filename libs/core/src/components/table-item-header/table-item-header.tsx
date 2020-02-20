@@ -27,7 +27,7 @@ export class TableItemHeaderComponent {
    * Default value `false` defines the tag type as `div`.
    * `true` defines the tag type as a `button`.
    */
-  @Prop() clickable: boolean = false;
+  @Prop() clickable: boolean;
   /**
    * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`.
    * `asc` defines the icon as an upwards arrow in black.
@@ -39,7 +39,7 @@ export class TableItemHeaderComponent {
   @State() innerId;
 
   setButtonId() {
-    let id = this.el.getAttribute('id');
+    const id = this.el.getAttribute('id');
     if (id) {
       this.innerId = `wc-${id}`;
     }
@@ -82,17 +82,17 @@ export class TableItemHeaderComponent {
     }
     const TagType = this.clickable || !!this.sort ? 'button' : 'div' as any;
     return (
-      <Host 
+      <Host
         role="cell"
         class={["se-table-item", !!this.sort ? `sort-${this.sort}` : ''].join(' ')}
         id={this.innerId}
         >
         <TagType class={"table-item-content"} aria-label={ariaLabelSort}>
           <div class="table-item-label"><slot></slot></div>
-          {!!this.sort ? 
-            <se-icon 
+          {!!this.sort ?
+            <se-icon
               class={["sortable", !!this.sort ? `sort-${this.sort}` : ''].join(' ')}
-              aria-hidden="true" 
+              aria-hidden="true"
               size="nano"
               color={color}>
                 arrow4_top

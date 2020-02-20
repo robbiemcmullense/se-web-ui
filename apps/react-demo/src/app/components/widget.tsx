@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./widget.scss";
-import {  SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeBlockFooter, SeCheckbox, SeIcon, SeDivider } from '@se/web-ui-react';
+import { SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeBlockFooter, SeCheckbox, SeIcon, SeDivider } from '@se/web-ui-react';
 
 interface WidgetProps{
   name: string;

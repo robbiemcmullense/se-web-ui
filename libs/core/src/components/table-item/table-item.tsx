@@ -27,7 +27,7 @@ export class TableItemComponent {
    * Default value `false` defines the tag type as `div`.
    * `true` defines the tag type as a `button`.
    */
-  @Prop() clickable: boolean = false;
+  @Prop() clickable = false;
 
   @State() innerId;
 
@@ -61,7 +61,7 @@ export class TableItemComponent {
   render() {
     const TagType = this.clickable ? 'button' : 'div' as any;
     return (
-      <Host 
+      <Host
         role="cell"
         class={["se-table-item"].join(' ')}
         id={this.innerId}

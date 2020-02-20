@@ -28,7 +28,7 @@ export class DialogComponent {
   /**
    * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
    */
-  @Prop({mutable: true}) open: boolean = false;
+  @Prop({mutable: true}) open = false;
   @Watch('open') openDidChange() {
     if(this.open){
       this.addAnimation(null);
@@ -41,7 +41,7 @@ export class DialogComponent {
   /**
    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
    */
-  @Prop() canBackdrop: boolean = true;
+  @Prop() canBackdrop = true;
   /**
    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */
@@ -80,7 +80,7 @@ export class DialogComponent {
       this.backdropClicked();
     }
   }
-  
+
   addAnimation(callback) {
     this.el.classList.add(SHOW);
     if (this.menuInnerEl && this.backdropEl) {

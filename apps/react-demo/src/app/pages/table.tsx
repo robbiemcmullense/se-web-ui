@@ -1,134 +1,171 @@
-import React, { Component } from "react";
-import { SeContainer, SeBlock, SeTable, SeIcon, SeCheckbox, SeTableGroup, SeTableGroupHeader, SeTableItem, SeTableItemHeader, SeBlockHeader, SeButton, SeBlockContent, SeList, SeListItem, SeListGroup, SeDivider, SeStepper, SeStepperItem } from '@se/web-ui-react';
+import React, { Component } from 'react';
+import {
+  SeContainer,
+  SeBlock,
+  SeTable,
+  SeIcon,
+  SeCheckbox,
+  SeTableGroup,
+  SeTableGroupHeader,
+  SeTableItem,
+  SeTableItemHeader,
+  SeBlockHeader,
+  SeBlockContent,
+} from '@se/web-ui-react';
 
-import Widget from '../components/widget';
 
-interface TableProps{
-  location: any;
+interface Row {
+  selected?: boolean;
+  selectable?: boolean;
+  expended?: boolean;
+  data: {
+    title: string;
+    info: string;
+    extra: string;
+  }
 }
 
+interface TableProps {
+  location: any;
+}
+interface TableStates {
+  rows: Row[];
+}
 
-class Table extends Component<TableProps> {
+const rows = [
+  {
+    selectable: true,
+    expended: true,
+    data: {
+      title: 'Test 1',
+      info: 'Test 1 - with "detail" section exposed',
+      extra: 'Last row item'
+    }
+  },
+  {
+    selectable: true,
+    data: {
+       title: 'Test 2' ,
+       info: 'Test 2 - with "detail" section hidden',
+       extra: 'Last row item',
+    }
+  },
+  {
+    selectable: true,
+    data: {
+      title: 'Third test row with more in the title' ,
+      info: 'Test number 3 - no detail section',
+      extra: 'Last row item goes here',
+    }
+  },
+  {
+    selectable: true,
+    data: {
+      title: '4th test' ,
+      info: 'Test number four - no detail section',
+      extra: 'Last',
+    }
+  },
+  {
+    selectable: true,
+    selected: true,
+    data: {
+      title: 'Fith test row' ,
+      info: 'Test number five - with a selected prop and checkbox',
+      extra: 'Last row item',
+    }
+  },
+  {
+    selectable: true,
+    data: {
+      title: '6th test row' ,
+      info: 'Test number 6 - no detail section',
+      extra: 'Last item',
+    }
+  },
+  {
+    selectable: true,
+    data: {
+      title: '7th test row' ,
+      info: 'Test number 7 - no detail section',
+      extra: 'Last item',
+    }
+  }
+];
+
+
+class Table extends Component<TableProps, TableStates> {
+  constructor(props) {
+    super(props);
+    this.state = { rows: rows };
+  }
+
+  selectRow = (index) => {
+    rows[index].selected = !rows[index].selected;
+    this.setState({
+      rows : rows
+    })
+  }
+
+  toggleRow = (index) => {
+    rows[index].expended = !rows[index].expended;
+    this.setState({
+      rows : rows
+    })
+  }
 
   render() {
-    const rows = [
-      { selectable: true,
-        cells: [
-          { content: <SeIcon>arrow2_up</SeIcon>,
-            width: '72px'},
-          { content: <SeCheckbox></SeCheckbox>,
-            width: '72px'},
-          { content: 'Test 1'},
-          { content: 'Test 1 - with "detail" section exposed',
-            flex: '50%'},
-          { content: 'Last row item'}],
-          details: <div slot="detail"><div style={{padding:"12px 24px"}}><h4>Look at this cool detail section</h4><p>You can put whatever you want here as long as the outer wrapper has a slot="detail".</p></div></div>
-        },
-      { selectable: true,
-        cells: [
-          { content: <SeIcon>arrow2_down</SeIcon>,
-            width: '72px'},
-          { content: <SeCheckbox></SeCheckbox>,
-            width: '72px' },
-          { content: 'Test 2'},
-          { content: 'Test 2 - with "detail" section hidden',
-            flex: '50%'},
-          { content: 'Last row item'}],
-          details: <div slot="detail" style={{display:"none"}}><div style={{padding:"12px 24px"}}><h4>You can't see this cool detail section</h4><p>You can put whatever you want here as long as the outer wrapper has a slot="detail".</p></div></div>
-        },
-        { selectable: true,
-          cells: [
-            { content: <SeIcon disabled={true}>arrow2_down</SeIcon>,
-              width: '72px'},
-            { content: <SeCheckbox></SeCheckbox>,
-              width: '72px' },
-            { content: 'Third test row with more in the title'},
-            { content: 'Test number 3 - no detail section',
-              flex: '50%'},
-            { content: 'Last row item goes here'}]},
-          { selectable: true,
-            cells: [
-              { content: <SeIcon disabled={true}>arrow2_down</SeIcon>,
-                width: '72px'},
-              { content: <SeCheckbox></SeCheckbox>,
-                width: '72px' },
-              { content: '4th test'},
-              { content: 'Test number four - no detail section',
-                flex: '50%'},
-              { content: 'Last'}]},
-          { selectable: true,
-            selected: true,
-            cells: [
-              { content: <SeIcon disabled={true}>arrow2_down</SeIcon>,
-                width: '72px'},
-              { content: <SeCheckbox selected={true}></SeCheckbox>,
-                width: '72px' },
-              { content: 'Fith test row'},
-              { content: 'Test number five - with a selected prop and checkbox',
-                flex: '50%'},
-              { content: 'Last row item'}]},
-          { selectable: true,
-            cells: [
-              { content: <SeIcon disabled={true}>arrow2_down</SeIcon>,
-                width: '72px'},
-              { content: <SeCheckbox></SeCheckbox>,
-                width: '72px' },
-              { content: '6th test row'},
-              { content: 'Test number 6 - no detail section',
-                flex: '50%'},
-              { content: 'Last item'}]},
-          { selectable: true,
-            cells: [
-              { content: <SeIcon disabled={true}>arrow2_down</SeIcon>,
-                width: '72px'},
-              { content: <SeCheckbox></SeCheckbox>,
-                width: '72px' },
-              { content: '7th test row'},
-              { content: 'Test number 7 - no detail section',
-                flex: '50%'},
-              { content: 'Last item'}]},
-          { selectable: true,
-            cells: [
-              { content: <SeIcon disabled={true}>arrow2_down</SeIcon>,
-                width: '72px'},
-              { content: <SeCheckbox></SeCheckbox>,
-                width: '72px' },
-              { content: 'Eigth test row'},
-              { content: 'Test number eight - no detail section',
-                flex: '50%'},
-              { content: 'Last item'}]},
-          { selectable: true,
-            cells: [
-              { content: <SeIcon disabled={true}>arrow2_down</SeIcon>,
-                width: '72px'},
-              { content: <SeCheckbox></SeCheckbox>,
-                width: '72px' },
-              { content: 'Last test row'},
-              { content: 'Last test row - no detail section',
-                flex: '50%'},
-              { content: 'Very last item'}]}
-    ];
     return (
       <SeContainer direction="column">
         <SeBlock divider={false}>
           <SeBlockHeader>Table Example</SeBlockHeader>
-          <SeBlockContent option="fill" style={{maxHeight:"400px"}}>
+          <SeBlockContent option="fill" style={{ maxHeight: '400px' }}>
             <SeTable>
               <SeTableGroupHeader>
-                  <SeTableItemHeader width="72px"></SeTableItemHeader>
-                  <SeTableItemHeader width="64px"></SeTableItemHeader>
-                  <SeTableItemHeader sort="asc">Title</SeTableItemHeader>
-                  <SeTableItemHeader clickable={true} flex="50%">Secondary Info</SeTableItemHeader>
-                  <SeTableItemHeader><SeIcon color="primary">airconditioner_hot_heating</SeIcon> - with a lot of extra text to make it as long as possible</SeTableItemHeader>
+                <SeTableItemHeader width="72px"></SeTableItemHeader>
+                <SeTableItemHeader width="64px"></SeTableItemHeader>
+                <SeTableItemHeader sort="asc">Title</SeTableItemHeader>
+                <SeTableItemHeader clickable={true} flex="50%">
+                  Secondary Info
+                </SeTableItemHeader>
+                <SeTableItemHeader>
+                  <SeIcon color="primary">airconditioner_hot_heating</SeIcon> -
+                  with a lot of extra text to make it as long as possible
+                </SeTableItemHeader>
               </SeTableGroupHeader>
-                {rows.map((row, index) => 
-                    <SeTableGroup selectable={row.selectable} selected={row.selected}>
-                      {row.cells.map((cell, index) => 
-                        <SeTableItem width={cell.width} flex={cell.flex}>{cell.content}</SeTableItem>
-                      )}
-                      {row.details}
-                    </SeTableGroup>
-                  )}
+              {this.state.rows.map((row, index) => (
+                <SeTableGroup
+                  key={index}
+                  selectable={row.selectable}
+                  selected={row.selected}>
+                     <SeTableItem width="72px">
+                        <SeIcon option="button" onClick={()=>{ this.toggleRow(index)}}>{ row.expended ? 'arrow2_up' : 'arrow2_down'}</SeIcon>
+                    </SeTableItem>
+                    <SeTableItem width="72px">
+                      <SeCheckbox selected={row.selected} onDidChange={(e) => { this.selectRow(index)}}></SeCheckbox>
+                    </SeTableItem>
+                    <SeTableItem>
+                      {row.data.title}
+                    </SeTableItem>
+                    <SeTableItem flex="50%">
+                      {row.data.info}
+                    </SeTableItem>
+                    <SeTableItem>
+                      {row.data.extra}
+                    </SeTableItem>
+                  {row.expended &&
+                    <div slot="detail" >
+                      <div style={{ padding: '12px 24px' }}>
+                        <h4>{row.data.title}</h4>
+                        <p>
+                          You can put whatever you want here as long as the outer wrapper
+                          has a slot="detail".
+                        </p>
+                      </div>
+                    </div>
+                  }
+                </SeTableGroup>
+              ))}
             </SeTable>
           </SeBlockContent>
         </SeBlock>

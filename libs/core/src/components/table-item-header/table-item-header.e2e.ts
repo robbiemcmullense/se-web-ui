@@ -5,7 +5,7 @@ import { newE2EPage } from '@stencil/core/testing';
 
 	beforeEach(async () => {
 		page = await newE2EPage();
-    await page.setContent('<se-table-header-item></se-table-header-item>');
+    await page.setContent('<se-table-item-header></se-table-item-header>');
     element = await page.find('se-table-item-header');
 	});
 

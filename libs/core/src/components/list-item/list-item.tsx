@@ -31,7 +31,7 @@ export class ListItemComponent {
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
-  @Prop() indentation: number = 0;
+  @Prop() indentation = 0;
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
@@ -53,7 +53,7 @@ export class ListItemComponent {
   @State() innerId;
 
   setButtonId() {
-    let id = this.el.getAttribute('id');
+    const id = this.el.getAttribute('id');
     if (id) {
       this.innerId = `wc-${id}`;
     }
