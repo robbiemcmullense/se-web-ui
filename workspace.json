@@ -289,14 +289,15 @@
           }
         },
         "build": {
-          "builder": "@nrwl/web:package",
+          "builder": "@nrwl/web:bundle",
           "options": {
             "outputPath": "dist/libs/react",
             "tsConfig": "libs/react/tsconfig.lib.json",
             "project": "libs/react/package.json",
             "entryFile": "libs/react/src/index.ts",
             "babelConfig": "libs/react/babel.config",
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup"
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "external": ["@se/web-ui"]
           }
         },
         "test": {

@@ -1,12 +1,25 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "target": "es2015",
-    "declaration": true,
-    "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "allowJs":true,
+    "allowUnreachableCode": false,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es2015"],
+    "module": "es2015",
+    "moduleResolution": "Node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "jsx": "react",
+    "target": "es2015"
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx"],
   "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
