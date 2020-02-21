@@ -244,9 +244,9 @@ export namespace Components {
     */
     'background': 'standard' | 'alternative';
     /**
-    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `primary`, rendering a green color. The `secondary` setting renders a blue color.
+    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
     */
-    'color': 'primary' | 'secondary';
+    'color': 'primary' | 'secondary' | 'success';
     /**
     * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
     */
@@ -1560,9 +1560,9 @@ declare namespace LocalJSX {
     */
     'background'?: 'standard' | 'alternative';
     /**
-    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `primary`, rendering a green color. The `secondary` setting renders a blue color.
+    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
     */
-    'color'?: 'primary' | 'secondary';
+    'color'?: 'primary' | 'secondary' | 'success';
     /**
     * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
     */

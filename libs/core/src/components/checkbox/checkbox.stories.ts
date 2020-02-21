@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/html';
 import { select, text, boolean } from '@storybook/addon-knobs';
 
-const colorOption = ['primary', 'secondary'];
+const colorOption = ['primary', 'secondary', 'success', 'error'];
 const backgroundOption = ['standard', 'alternative'];
 const labelOption = ['right', 'left'];
 
@@ -12,7 +12,7 @@ storiesOf('Checkbox', module)
     const color = select('color', colorOption, 'primary')
     const disabled = boolean('disabled', false)
     const labelPos = select('label position', labelOption, 'right')
-    
+
     return `
       <se-checkbox
         option='checkbox'

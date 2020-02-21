@@ -46,6 +46,11 @@ div {
           border: 1px solid;
           @include border-color('secondary');
         }
+        &[data-color="success"] {
+          @include background-color('success');
+          border: 1px solid;
+          @include border-color('success');
+        }
         &:after {
           display: block;
         }
@@ -167,8 +172,9 @@ div {
       &:checked ~ span {
         &:before {
           border: 1px solid;
-          border-color: $se-life-green;
-          background-color: $se-life-green;
+          @include background-color('success');
+          @include border-color('success');
+
         }
         &:after {
           transform: translate3d(75%, -50%, 0);
@@ -220,7 +226,7 @@ div {
       margin-right: 0;
       &.selected {
         @include color('alternative');
-        background-color: $se-life-green;
+        @include background-color('success');
       }
     }
 
@@ -230,7 +236,7 @@ div {
       margin-left: 0;
       &.selected {
         @include color('alternative');
-        background-color: $se-red;
+        @include background-color('error');
       }
     }
   }
@@ -268,7 +274,7 @@ div {
 
   &.standard {
     button {
-      background-color: $se-ultra-light-grey-2;
+      @include background-color('standard');
     }
   }
 }

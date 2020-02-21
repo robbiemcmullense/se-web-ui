@@ -6,10 +6,10 @@ const inputTypeOption = ['text', 'date'];
 
 storiesOf('Form Field', module)
   .add('Form Field Checkbox', () => {
-    const label = text('label', 'My Checkbox Label')
-    const required = boolean('required', false)
-    const disabled = boolean('disabled', false)
-    
+    const label = text('label', 'My Checkbox Label');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+
     return `
       <se-form-field
         type='checkbox'
@@ -19,13 +19,13 @@ storiesOf('Form Field', module)
         >
         <se-checkbox></se-checkbox>
       </se-form-field>
-    `
+    `;
   })
   .add('Form Field Radio', () => {
-    const label = text('label', 'My Radio Label')
-    const required = boolean('required', false)
-    const disabled = boolean('disabled', false)
-    
+    const label = text('label', 'My Radio Label');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+
     return `
       <se-form-field
         type='radio'
@@ -35,15 +35,15 @@ storiesOf('Form Field', module)
         >
         <se-radio></se-radio>
       </se-form-field>
-    `
+    `;
   })
   .add('Form Field Input', () => {
-    const option = select('option', layoutOption, 'inline')
-    const inputType = select('inputType', inputTypeOption, 'text')
-    const label = text('label', 'Input')
-    const required = boolean('required', false)
-    const disabled = boolean('disabled', false)
-    
+    const option = select('option', layoutOption, 'inline');
+    const inputType = select('inputType', inputTypeOption, 'text');
+    const label = text('label', 'Input');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+
     return `
       <se-form-field
         type='input'
@@ -54,14 +54,14 @@ storiesOf('Form Field', module)
         >
         <input type='${inputType}' />
       </se-form-field>
-    `
+    `;
   })
   .add('Form Field Select', () => {
-    const option = select('option', layoutOption, 'inline')
-    const label = text('label', 'Select')
-    const required = boolean('required', false)
-    const disabled = boolean('disabled', false)
-    
+    const option = select('option', layoutOption, 'inline');
+    const label = text('label', 'Select');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+
     return `
       <se-form-field
         type='select'
@@ -76,15 +76,15 @@ storiesOf('Form Field', module)
           <option>Option 3</option>
         </select>
       </se-form-field>
-    `
+    `;
   })
   .add('Form Field Textarea', () => {
-    const option = select('option', layoutOption, 'inline')
-    const rows = number('rows', 3)
-    const label = text('label', 'Textarea')
-    const required = boolean('required', false)
-    const disabled = boolean('disabled', false)
-    
+    const option = select('option', layoutOption, 'inline');
+    const rows = number('rows', 3);
+    const label = text('label', 'Textarea');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+
     return `
       <se-form-field
         type='input'
@@ -95,30 +95,57 @@ storiesOf('Form Field', module)
         >
         <textarea rows='${rows}'></textarea>
       </se-form-field>
-    `
+    `;
   })
   .add('Form Field Multiple', () => {
-    const option = select('option', layoutOption, 'inline')
-    const disabled = boolean('disabled', false)
-    
+    const option = select('option', layoutOption, 'inline');
+    const disabled = boolean('disabled', false);
+
     return `
+      <se-block>
       <se-form-field
         type='checkbox'
         option='${option}'
-        label='This is my custom Checkbox. It is unique.'
+        label='chekbox'
         required='true'
         disabled='${disabled}'
         >
         <se-checkbox></se-checkbox>
       </se-form-field>
       <se-form-field
-        type='radio'
+        type='another checkbox'
         option='${option}'
-        label='This is my custom radio. It is unique.'
+        label='chekbox'
         required='true'
         disabled='${disabled}'
         >
-        <se-radio></se-radio>
+        <se-checkbox option="switch"></se-checkbox>
+      </se-form-field>
+      <se-form-field
+        type='radio'
+        option='${option}'
+        label='radio!!!'
+        required='true'
+        disabled='${disabled}'
+        >
+        <se-radio-group>
+          <se-radio value="first" label="Radio Label 1"></se-radio>
+          <se-radio value="second" label="Radio Label 2"></se-radio>
+          <se-radio value="third" label="Radio Label 3"></se-radio>
+        </se-radio-group>
+      </se-form-field>
+      <se-form-field
+        option='${option}'
+        label='Some unstyled text'
+        disabled='${disabled}'
+        >
+        <div>Some text alined</div>
+      </se-form-field>
+      <se-form-field
+        option='${option}'
+        label='Some bold text'
+        >
+        <div><b>Some bold text alined with the rest</b></div>
       </se-form-field>
       <se-form-field
         type='input'
@@ -160,5 +187,6 @@ storiesOf('Form Field', module)
         >
         <input type="date" />
       </se-form-field>
-    `
-  })
+      </se-block>
+    `;
+  });

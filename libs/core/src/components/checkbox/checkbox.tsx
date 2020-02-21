@@ -27,10 +27,10 @@ export class CheckboxComponent {
   @Prop() required = false;
   /**
    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`.
-   * The default value is `primary`, rendering a green color.
+   * The default value is `success`, rendering a green color.
    * The `secondary` setting renders a blue color.
    */
-  @Prop() color: 'primary' | 'secondary' = 'primary';
+  @Prop() color: 'primary' | 'secondary' | 'success' = 'success';
   /**
    * Defines the color schema of the checkbox when the option is set to `onoff`.
    * The default value is `standard`.

@@ -27,7 +27,7 @@
     "e2e.screenshot": "stencil test --e2e --screenshot",
     "test.watch": "stencil test --e2e --watchAll",
     "spec.watch": "stencil test --spec --watchAll",
-    "watch": "npm run build && stencil build --watch",
+    "watch": "stencil build --watch",
     "start": "stencil build --dev --watch --serve --port 3344"
   },
   "license": "MIT",

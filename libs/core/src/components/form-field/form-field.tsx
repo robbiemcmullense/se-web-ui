@@ -69,10 +69,9 @@ export class FormFieldComponent {
 	initLabel() {
 		Array.from(this.el.querySelectorAll('input, select, textarea, se-checkbox, se-radio')).forEach((item: any) => {
 			item.disabled = this.disabled;
-			if (this.type === "checkbox" || this.type === "radio") {
-				item.label = this.label;
-				item.required = this.required;
-			}
+			// if (this.type === "checkbox" || this.type === "radio") {
+			// 	item.required = this.required;
+			// }
 		});
 	}
 
@@ -89,9 +88,9 @@ export class FormFieldComponent {
 
 	render() {
 		return (
-			<div class={['se-form-field', this.status, this.option, this.type].join(' ')}>
+			<div class={[this.status, this.option, this.type].join(' ')}>
 				<div class="form-field-wrapper" data-disabled={this.disabled}>
-					{(this.type === 'input' || this.type === 'select') ? <label class={[`se-label`, this.option].join(' ')}><span>{this.label}{this.required ? <span class="required">*</span> : ''}</span><slot></slot></label> : <slot></slot>}
+					<label class={[`se-label`, this.option].join(' ')}><span>{this.label}{this.required ? <span class="required">*</span> : ''}</span><span class="wrapper"><slot></slot></span></label>
 				</div>
 			</div>
 		)

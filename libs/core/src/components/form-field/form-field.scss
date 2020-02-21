@@ -3,203 +3,192 @@
 $max-width-input: 320px;
 
 
-.se-form-field {
-  &.checkbox, &.radio {
-    .form-field-wrapper {
-      @include justify-content(center);
-      &:before {
-        content: '';
-        display: block;
-        flex-basis: 40%;
-        height: 1px;
-        max-width: 140px;
-      }
-    }
-  }
+// .checkbox, .radio {
+//   .form-field-wrapper {
+//     @include justify-content(center);
+//     &:before {
+//       content: '';
+//       display: block;
+//       flex-basis: 40%;
+//       height: 1px;
+//       max-width: 140px;
+//     }
+//   }
+// }
 
-	.form-field-wrapper {
-    @include display-flex();
-    padding: $spacing;
-    @include align-items(center);
-  }
+.form-field-wrapper {
+  @include display-flex();
+  padding: $spacing-small;
+  @include align-items(center);
+}
 
-  label {
-    width: 100%;
-    padding-top: 4px;
-    text-align: center;
-    @include typology('small');
-    @include display-flex;
-    @include justify-content(center);
-    @include align-items(center);
-    >span {
-      @include flex(1, 1, 40%);
-      max-width: 140px;
-      text-align: right;
-    }
-    .required {
-      @include color('error');
-      padding-left: 3px;
-    }
+label {
+  width: 100%;
+  padding-top: 4px;
+  text-align: center;
+  @include typology('small');
+  @include display-flex;
+  @include justify-content(center);
+  @include align-items(center);
+  >span {
+    @include flex(1, 1, 40%);
+    max-width: 140px;
+    text-align: right;
   }
-
-  ::slotted(se-checkbox) {
-    padding-top: 6px;
-    flex-basis: 60%;
-    max-width: $max-width-input;
-  }
-
-  ::slotted(se-radio) {
-    flex-basis: 60%;
-    max-width: $max-width-input;
-  }
-
-  ::slotted(input) {
-    height: 28px;
-    width: 60%;
-    flex-basis: 60%;
-    max-width: $max-width-input;
-    border: 1px solid;
-    @include border-color('hover-standard');
-    font-family: inherit;
-    font-size: 14px;
-    padding-left: 7px;
-    margin-left: 7px;
-    transition: .2s;
-    @include background-color('alternative');
-  }
-
-  ::slotted(input[disabled]) {
-    @include background-color('alternative');
-    opacity: 0.5;
-  }
-
-  ::slotted(textarea[disabled]) {
-    @include background-color('alternative');
-    opacity: 0.5;
-  }
-
-  ::slotted(input:focus) {
-    outline: none;
-    border: 1px solid;
-    @include border-color('primary')
-  }
-
-  ::slotted(input[type="date"]) {
-    height: 20px;
-    padding: 5px;
-  }
-
-  @-moz-document url-prefix() {
-    ::slotted(input[type="date"]) {
-      padding-top: 6px;
-      padding-bottom: 4px;
-      padding-right: 5px;
-    }
-  }
-
-  ::slotted(select) {
-    height: 32px;
-    width: 60%;
-    border-radius: 0;
-    max-width: $max-width-input + 10;
-    border: 1px solid;
-    @include border-color('hover-standard');
-    @include background-color('alternative');
-    font-family: inherit;
-    font-size: 14px;
-    margin-left: 7px;
-    padding-left: 4px;
-  }
-
-  ::slotted(select[disabled]) {
-    opacity: 0.5;
-    cursor: default;
-  }
-
-  ::slotted(textarea) {
-    width: 60%;
-    max-width: $max-width-input;
-    padding-left: 7px;
-    margin-left: 7px;
-    border: 1px solid;
-    @include border-color('hover-standard');
-    font-family: inherit;
-    resize: vertical;
-    cursor: auto;
-  }
-
-  ::slotted(input:focus),
-  ::slotted(select:focus),
-  ::slotted(textarea:focus) {
-    outline: none;
-    border: 1px solid;
-    @include border-color('primary')
-  }
-
-  &.stacked {
-    .form-field-wrapper {
-      flex-direction: column;
-      @include align-items(start);
-    }
-    // on IE 11 browser, set stacked form field to display: block
-    // IE 11 renders slotted se-checkbox and se-radio differently due to lack of shadow DOM
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      .form-field-wrapper {
-        display: block;
-      }
-    }
-    label {
-      padding: 0 8px 4px;
-      text-align: left;
-      line-height: 12px;
-      width: 100%;
-      display: block;
-      >span {
-        display: block;
-        max-width: none;
-        text-align: left;
-        line-height: 1.5;
-      }
-    }
-    ::slotted(se-checkbox) {
-      margin-left: 0;
-    }
-    ::slotted(se-radio) {
-      margin-left: 0;
-    }
-    ::slotted(input) {
-      width: 97%;
-      margin-left: -7px;
-    }
-    ::slotted(select) {
-      width: 100%;
-      margin-left: -7px;
-    }
-    ::slotted(textarea) {
-      width: 97%;
-      max-width: none;
-      margin-left: -7px;
-    }
-  }
-
-  &.error {
-    ::slotted(input) {
-      border: 1px solid;
-      @include border-color('error');
-    }
-  }
-
-  &.warning {
-    ::slotted(input) {
-      border: 1px solid;
-      @include border-color('warning');
-    }
-  }
-
-  &.success {
-    ::slotted(input) {
-      border: 1px solid;
-      @include border-color('success')
-    }
+  .required {
+    @include color('error');
+    padding-left: 3px;
   }
 }
+.wrapper {
+  display: flex;
+  padding-left: $spacing-large;
+  flex-basis: 60%;
+  max-width: $max-width-input;
+  font-size: 16px;
+  width: 100%;
+  @include align-items(left);
+}
+
+
+::slotted(input),::slotted(select), ::slotted(textarea) {
+  width: 100%;
+  padding: $spacing-small;
+  font-size: inherit;
+}
+
+
+::slotted(input) {
+  height: 28px;
+  border: 1px solid;
+  @include border-color('hover-standard');
+  font-family: inherit;
+  transition: .2s;
+  @include background-color('alternative');
+}
+
+::slotted(input[disabled]) {
+  @include background-color('alternative');
+  opacity: 0.5;
+}
+
+::slotted(textarea[disabled]) {
+  @include background-color('alternative');
+  opacity: 0.5;
+}
+
+::slotted(input:focus) {
+  outline: none;
+  border: 1px solid;
+  @include border-color('primary')
+}
+
+::slotted(input[type="date"]) {
+  height: 20px;
+  padding: $spacing-small;
+  height: 28px;
+}
+
+@-moz-document url-prefix() {
+  ::slotted(input[type="date"]) {
+    padding-top: 6px;
+    padding-bottom: 4px;
+    // padding-right: 5px;
+  }
+}
+
+::slotted(select) {
+  height: 32px;
+  width: 103%;
+  border-radius: 0;
+  border: 1px solid;
+  @include border-color('hover-standard');
+  @include background-color('alternative');
+  font-family: inherit;
+}
+
+::slotted(select[disabled]) {
+  opacity: 0.5;
+  cursor: default;
+}
+
+::slotted(textarea) {
+  border: 1px solid;
+  @include border-color('hover-standard');
+  font-family: inherit;
+  resize: vertical;
+  cursor: auto;
+}
+
+::slotted(input:focus),
+::slotted(select:focus),
+::slotted(textarea:focus){
+  outline: none;
+  border: 1px solid;
+  @include border-color('primary')
+}
+
+.stacked {
+  .form-field-wrapper {
+    flex-direction: column;
+    @include align-items(start);
+  }
+  // on IE 11 browser, set stacked form field to display: block
+  // IE 11 renders slotted se-checkbox and se-radio differently due to lack of shadow DOM
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form-field-wrapper {
+      display: block;
+    }
+  }
+  label {
+    // padding: 0 8px 4px ;
+    text-align: left;
+    line-height: 12px;
+    width: 100%;
+    display: block;
+    >span {
+      margin-left: $spacing;
+      display: block;
+      max-width: none;
+      text-align: left;
+      line-height: 1.5;
+    }
+  }
+  .wrapper {
+    max-width: $max-width-input;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  // ::slotted(input) {
+  //   margin-left: -7px;
+  // }
+  // ::slotted(select) {
+  //   margin-left: -7px;
+  // }
+  // ::slotted(textarea) {
+  //   max-width: none;
+  //   margin-left: -7px;
+  // }
+}
+
+.error {
+  ::slotted(input) {
+    border: 1px solid;
+    @include border-color('error');
+  }
+}
+
+.warning {
+  ::slotted(input) {
+    border: 1px solid;
+    @include border-color('warning');
+  }
+}
+
+.success {
+  ::slotted(input) {
+    border: 1px solid;
+    @include border-color('success')
+  }
+}
+
