@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom'
-import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeChip, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter } from '@se/web-ui-react';
+import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeChip, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter, SeIcon } from '@se/web-ui-react';
+
+import './shell.scss';
 
 class ShellLayout extends Component {
   render() {
@@ -28,12 +30,17 @@ class ShellLayout extends Component {
           </SeSidemenu>
         </SeHeader>
         <SeTabbar color="primary">
-          <nav slot="start"><div>Tenant: </div><a className="dropdown" href=""> test </a></nav>
           <nav>
-            <NavLink to="/" exact={true} activeClassName='active'>Home</NavLink>
-            <NavLink to='/dashboard' activeClassName='active'>Dashboard</NavLink>
-            <NavLink to='/docs' activeClassName='active'>Docs</NavLink>
-            <NavLink to='/table' activeClassName='active'>Table</NavLink>
+            <NavLink to="/" exact={true} >Home</NavLink>
+            <NavLink to='/docs' activeClassName="none" className="group-label">
+              Extra
+              <SeIcon size="medium">arrow2_right</SeIcon>
+            </NavLink>
+            <ul className="group-items">
+              <NavLink to='/docs' >Docs</NavLink>
+              <NavLink to='/table' >Table</NavLink>
+            </ul>
+            <NavLink to='/dashboard' >Dashboard</NavLink>
           </nav>
           <nav slot="end">
             <a href="">End</a>
