@@ -13,6 +13,7 @@ storiesOf('Divider', module)
       <se-divider style="padding: 10px;" option='horizontal' color='${color}'></se-divider>
       <div style="width: 500px; height: 100px; border: 1px solid gray;">
       </div>
+      <div>The divider is between the two boxes.</div>
     `
   })
   .add('Divider Vertical', () => {
@@ -26,5 +27,6 @@ storiesOf('Divider', module)
         <div style="width: 100px; height: 100px; border: 1px solid gray;">
         </div>
       </div>
+      <div>The divider is between the two boxes.</div>
     `
   })

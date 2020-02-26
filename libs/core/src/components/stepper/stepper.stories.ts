@@ -19,12 +19,14 @@ storiesOf('Stepper', module)
     const step5Validated = boolean('Step 5 Validated', false)
 
     return `
-      <se-stepper color="${color}" linear="${linear}">
-        <se-stepper-item label="${step1Label}" validated="${step1Validated}"></se-stepper-item>
-        <se-stepper-item label="${step2Label}" validated="${step2Validated}"></se-stepper-item>
-        <se-stepper-item label="${step3Label}" validated="${step3Validated}"></se-stepper-item>
-        <se-stepper-item label="${step4Label}" validated="${step4Validated}"></se-stepper-item>
-        <se-stepper-item label="${step5Label}" validated="${step5Validated}"></se-stepper-item>
-      </se-stepper>
+      <div style="width: 100%; height: 100%; background-color: #42b4e6;">
+        <se-stepper color="${color}" linear="${linear}">
+          <se-stepper-item label="${step1Label}" validated="${step1Validated}"></se-stepper-item>
+          <se-stepper-item label="${step2Label}" validated="${step2Validated}"></se-stepper-item>
+          <se-stepper-item label="${step3Label}" validated="${step3Validated}"></se-stepper-item>
+          <se-stepper-item label="${step4Label}" validated="${step4Validated}"></se-stepper-item>
+          <se-stepper-item label="${step5Label}" validated="${step5Validated}"></se-stepper-item>
+        </se-stepper>
+      </div>
     `
   })

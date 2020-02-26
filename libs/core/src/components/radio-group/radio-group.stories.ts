@@ -28,11 +28,13 @@ storiesOf('Radio Group', module)
     const value = select('value', valueOptions, 'none')
 
     return `
-      <se-radio-group color="${color}" size="${size}" disabled="${disabled}" value="${value}">
-        <se-button value="first">Check1</se-button>
-        <se-button value="second">Check2</se-button>
-        <se-button value="third">Check3</se-button>
-      </se-radio-group>
+      <div style="width: 100%; height: 100%; padding: 20px; background-color: #d0d0d0">
+        <se-radio-group color="${color}" size="${size}" disabled="${disabled}" value="${value}">
+          <se-button value="first">Check1</se-button>
+          <se-button value="second">Check2</se-button>
+          <se-button value="third">Check3</se-button>
+        </se-radio-group>
+      </div>
     `
   })
   .add('Group of Regular Buttons with Icons', () => {
@@ -43,11 +45,13 @@ storiesOf('Radio Group', module)
     const value = select('value', valueOptions, 'none')
 
     return `
-      <se-radio-group color="${color}" size="${size}" disabled="${disabled}" value="${value}">
-        <se-button value="left" icon="arrow2_left"></se-button>
-        <se-button value="up" icon="arrow2_up"></se-button>
-        <se-button value="down" icon="arrow2_down"></se-button>
-        <se-button value="right" icon="arrow2_right"></se-button>
-      </se-radio-group>
+      <div style="width: 100%; height: 100%; padding: 20px; background-color: #d0d0d0">
+        <se-radio-group color="${color}" size="${size}" disabled="${disabled}" value="${value}">
+          <se-button value="left" icon="arrow2_left"></se-button>
+          <se-button value="up" icon="arrow2_up"></se-button>
+          <se-button value="down" icon="arrow2_down"></se-button>
+          <se-button value="right" icon="arrow2_right"></se-button>
+        </se-radio-group>
+      </div>
     `
   })

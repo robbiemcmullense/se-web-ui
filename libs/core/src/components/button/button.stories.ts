@@ -15,7 +15,9 @@ storiesOf('Button', module)
     const disabled = boolean('disabled', false)
 
     return `
-      <se-button option=${option} size=${size} color=${color} icon="${icon}" disabled=${disabled}>${textHtml}</se-button>
+    <div style="width: 100%; height: 100%; padding: 20px; background-color: #ccc">
+        <se-button option=${option} size=${size} color=${color} icon="${icon}" disabled=${disabled}>${textHtml}</se-button>
+      </div>
     `;
   })
   .add('Button icon-only', () => {
@@ -25,6 +27,8 @@ storiesOf('Button', module)
     const disabled = boolean('disabled', false)
 
     return `
-      <se-button icon-only size=${size} color=${color} icon="${icon}" disabled=${disabled}></se-button>
+      <div style="width: 100%; height: 100%; padding: 20px; background-color: #ccc">
+        <se-button icon-only size=${size} color=${color} icon="${icon}" disabled=${disabled}></se-button>
+      </div>
     `;
   });

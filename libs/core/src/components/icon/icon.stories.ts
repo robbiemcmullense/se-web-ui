@@ -10,7 +10,9 @@ storiesOf('Icons', module)
     const icon = text('icon', 'action_settings1')
 
     return `
-      <se-icon size="${size}" color="${color}">${icon}</se-icon>
+      <div style="width: 100%; height: 100%; padding: 20px; background-color: #d0d0d0">
+        <se-icon size="${size}" color="${color}">${icon}</se-icon>
+      </div>
     `
   })
   .add('Ecostruxure icon', () => {
@@ -20,7 +22,9 @@ storiesOf('Icons', module)
     const color= select('color', ecostruxureColors, 'standard')
 
     return `
-      <se-icon-ecostruxure size="${size}" color="${color}"></se-icon-ecostruxure>
+      <div style="width: 100%; height: 100%; padding: 20px; background-color: #d0d0d0">
+        <se-icon-ecostruxure size="${size}" color="${color}"></se-icon-ecostruxure>
+      </div>
     `
   })
   .add('Life Is On icon', () => {
@@ -28,7 +32,9 @@ storiesOf('Icons', module)
     const color= select('color', colorOptions, 'standard')
 
     return `
-      <se-icon-lifeison color="${color}"></se-icon-lifeison>
+      <div style="width: 100%; height: 100%; padding: 20px; background-color: #d0d0d0">
+        <se-icon-lifeison color="${color}"></se-icon-lifeison>
+      </div>
     `
   })
   .add('Schneider icon', () => {

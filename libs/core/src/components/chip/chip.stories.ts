@@ -14,15 +14,22 @@ storiesOf('Chip', module)
     const disabled = boolean('disabled', false)
     const block = boolean('block', false)
 
+    document.addEventListener('didClose', () => {
+      document.getElementById('close-chip-message').innerText = 'se-chip didClose event emitted';
+    })
+
     return `
-      <se-chip
-        value='${value}'
-        size='${size}'
-        color='${color}'
-        can-close='${canClose}'
-        selected='${selected}'
-        disabled='${disabled}'
-        block='${block}'>
-      </se-chip>
+      <div style="width: 100%; height: 100%; padding: 20px; background-color: #aaa">
+        <se-chip
+          value='${value}'
+          size='${size}'
+          color='${color}'
+          can-close='${canClose}'
+          selected='${selected}'
+          disabled='${disabled}'
+          block='${block}'>
+        </se-chip>
+        <div id="close-chip-message"></div>
+      </div>
     `
   })
