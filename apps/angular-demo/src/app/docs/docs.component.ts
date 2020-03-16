@@ -14,7 +14,7 @@ export class DocsComponent implements OnInit, OnDestroy {
   nameValidated: boolean = false;
   addressValidated: boolean = false;
 
-  @ViewChild('stepper', {read: ElementRef, static: false}) stepper: ElementRef<HTMLSeStepperElement>;
+  @ViewChild('stepper', {read: ElementRef, static: false}) stepper: ElementRef<any>;
   
   items: any = [
     {name: 'item 1'},

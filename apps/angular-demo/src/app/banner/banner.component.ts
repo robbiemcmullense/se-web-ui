@@ -15,13 +15,10 @@ export class BannerComponent implements OnInit, OnDestroy {
   public user: any = {};
   public loader = false;
 
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor() {}
 
   ngOnInit() {
     log.debug('component has been initiated');
-    this.authenticationService.getUser().subscribe((user: any) => {
-      this.user = user;
-    });
   }
 
   ngOnDestroy() {

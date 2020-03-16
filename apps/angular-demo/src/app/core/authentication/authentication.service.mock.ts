@@ -20,6 +20,10 @@ export class MockAuthenticationService {
     return of(true);
   }
 
+  getUser(): Observable<string> {
+    return of(this.credentials.username);
+  }
+
   isAuthenticated(): boolean {
     return !!this.credentials;
   }

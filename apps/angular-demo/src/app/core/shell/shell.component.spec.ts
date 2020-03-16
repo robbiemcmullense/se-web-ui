@@ -5,6 +5,7 @@ import { SeWebModule } from '@se/web-ui-angular';
 import { ShellComponent } from './shell.component';
 import { CoreModule } from '../core.module';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { MockAuthenticationService } from '../authentication/authentication.service.mock';
 
 describe('ShellComponent', () => {
   let component: ShellComponent;
@@ -13,7 +14,7 @@ describe('ShellComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, TranslateModule.forRoot(), SeWebModule, CoreModule],
-      providers: [{ provide: AuthenticationService }]
+      providers: [{ provide: AuthenticationService, useClass: MockAuthenticationService }]
     }).compileComponents();
   }));
 
