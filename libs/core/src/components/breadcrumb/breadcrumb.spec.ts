@@ -43,14 +43,6 @@ describe('BreadcrumbComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should assign a mutation observer for Edge browsers when componentDidLoad is called', () => {
-		breadcrumb.observer = {observe: jest.fn()};
-		const eventSpy = jest.spyOn(breadcrumb.observer, 'observe');
-		Object.defineProperty(window.navigator, 'userAgent', {value: 'Edge'});
-		breadcrumb.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
 	it('should disconnect the mutation observer when componentDidUnload is called', () => {
 		breadcrumb.observer = {disconnect: jest.fn()};
 		const eventSpy = jest.spyOn(breadcrumb.observer, 'disconnect');

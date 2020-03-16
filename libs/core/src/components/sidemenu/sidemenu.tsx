@@ -160,10 +160,7 @@ export class SidemenuComponent {
         }
       });
     });
-    // assign mutation observer for all browsers that use Shadow DOM
-    if (navigator.userAgent.indexOf('Edge') === -1) {
-      this.observer.observe(this.el, { childList: true });
-    }
+    this.observer.observe(this.el, { childList: true });
   }
 
   setItemsArray() {
@@ -181,14 +178,6 @@ export class SidemenuComponent {
   componentWillLoad() {
     this.setItemsArray();
     this.watchItemList();
-  }
-
-  componentDidLoad() {
-    // assign mutation observer for MS Edge, as it uses polyfills instead of Shadow DOM
-    if (navigator.userAgent.indexOf('Edge') > -1) {
-      const element = this.el.querySelector('.block-body');
-      this.observer.observe(element, { childList: true });
-    }
   }
 
   componentDidUnload() {

@@ -17,7 +17,7 @@ describe('CheckboxComponent', () => {
 	});
 
 	it('should have its color set to "primary" by default', () => {
-		expect(checkbox.color).toEqual('primary');
+		expect(checkbox.color).toEqual('success');
 	});
 
 	it('should not be disabled by default', () => {

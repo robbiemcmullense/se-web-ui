@@ -57,14 +57,6 @@ describe('SidemenuComponent', () => {
 		expect(arraySpy).toHaveBeenCalled();
 	});
 
-	it('should assign a mutation observer for Edge browsers when componentDidLoad is called', () => {
-		sidemenu.observer = {observe: jest.fn()};
-		const eventSpy = jest.spyOn(sidemenu.observer, 'observe');
-		Object.defineProperty(window.navigator, 'userAgent', {value: 'Edge'});
-		sidemenu.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
 	it('should set the selected item to undefined and return the items length to zero when componentDidUnload is called', () => {
 		sidemenu.items = ['first item', 'second item'];
 		sidemenu.selectedItem = 'selected item';

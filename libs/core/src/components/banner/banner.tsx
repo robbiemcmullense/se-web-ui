@@ -109,10 +109,7 @@ export class BannerComponent {
         }
       });
     });
-    // assign mutation observer for all browsers that use Shadow DOM
-    if (navigator.userAgent.indexOf('Edge') === -1) {
-      this.observer.observe(this.el, {childList: true});
-    }
+		this.observer.observe(this.el, {childList: true});
   }
 
 	renderList() {
@@ -153,9 +150,6 @@ export class BannerComponent {
 		this.setBannerItemWidth();
 		this.setActiveItem(this.items[0]);
 		this.setIconSize();
-		if (navigator.userAgent.indexOf('Edge') > -1) {
-      this.observer.observe(this.bannerIndicatorEl, {childList: true});
-    }
 	}
 
 	componentDidUpdate() {
