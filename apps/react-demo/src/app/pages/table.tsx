@@ -125,10 +125,10 @@ class Table extends Component<TableProps, TableStates> {
                 <SeTableItemHeader width="72px"></SeTableItemHeader>
                 <SeTableItemHeader width="64px"></SeTableItemHeader>
                 <SeTableItemHeader sort="asc">Title</SeTableItemHeader>
-                <SeTableItemHeader clickable={true} flex="50%">
+                <SeTableItemHeader flex="50%" sort="none">
                   Secondary Info
                 </SeTableItemHeader>
-                <SeTableItemHeader>
+                <SeTableItemHeader clickable={true}>
                   <SeIcon color="primary">airconditioner_hot_heating</SeIcon> -
                   with a lot of extra text to make it as long as possible
                 </SeTableItemHeader>

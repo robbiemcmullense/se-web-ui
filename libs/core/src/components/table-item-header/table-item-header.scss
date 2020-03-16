@@ -39,6 +39,7 @@
   font: inherit;
   @include display-flex();
   @include align-items(center);
+  @include justify-content(space-between);
   text-align: left; // MS Edge does not support "start"
   text-align: start;
   text-decoration: none;

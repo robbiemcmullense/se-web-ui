@@ -16,8 +16,8 @@ storiesOf('Table', module)
                 <se-table-item-header width="72px"></se-table-item-header>
                 <se-table-item-header width="72px"></se-table-item-header>
                 <se-table-item-header sort=${sort}>Title</se-table-item-header>
-                <se-table-item-header clickable="true" flex="50%">Secondary Info</se-table-item-header>
-                <se-table-item-header><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
+                <se-table-item-header flex="50%" sort="none">Secondary Info</se-table-item-header>
+                <se-table-item-header clickable="true"><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
             </se-table-group-header>
             <se-table-group selectable="true">
                 <se-table-item width="72px"><se-icon option="button">arrow2_up</se-icon></se-table-item>
