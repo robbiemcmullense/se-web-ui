@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom'
 import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeChip, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter, SeIcon } from '@se/web-ui-react';
 
-import './shell.scss';
-
 class ShellLayout extends Component {
   render() {
     return (
@@ -36,7 +34,7 @@ class ShellLayout extends Component {
               Extra
               <SeIcon size="medium">arrow2_right</SeIcon>
             </NavLink>
-            <ul className="group-items">
+            <ul className="sub-nav">
               <NavLink to='/docs' >Docs</NavLink>
               <NavLink to='/table' >Table</NavLink>
             </ul>

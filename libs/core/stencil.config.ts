@@ -31,6 +31,13 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 
 const distFolder = '../../dist/libs/core';
 
+const copy = [
+  { src: '../../../node_modules/@se/fonts/css', dest: 'fonts/css' },
+  { src: '../../../node_modules/@se/fonts/fonts', dest: 'fonts/fonts' },
+  { src: '../../../node_modules/@se/icons/css', dest: 'icons/css' },
+  { src: '../../../node_modules/@se/icons/fonts', dest: 'icons/fonts' },
+];
+
 export const config: Config = {
   namespace: 'se-components',
   plugins: [sass(), inlineSvg()],
@@ -65,6 +72,7 @@ export const config: Config = {
     },
     {
       type: 'www',
+      copy,
       serviceWorker: null // disable service workers
     },
     angularOutputTarget({
