@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Element, Watch, State } from "@stencil/core";
+import arrow4Top from "@se/icons/svg/arrow4_top.svg";
 
 @Component({
   tag: "se-table-item-header",
@@ -68,7 +69,9 @@ export class TableItemHeaderComponent {
   render() {
     let ariaLabelSort
     let color
-    if (!!this.sort) {
+    const isSortable = !!this.sort as boolean;
+
+    if (isSortable) {
       this.clickable = true;
       if (this.sort === "asc") {
         ariaLabelSort = "sort asc";
@@ -80,22 +83,22 @@ export class TableItemHeaderComponent {
     } else {
       ariaLabelSort = null;
     }
-    const TagType = this.clickable || !!this.sort ? 'button' : 'div' as any;
+    const TagType = this.clickable || isSortable ? 'button' : 'div' as any;
     return (
       <Host
         role="cell"
-        class={["se-table-item", !!this.sort ? `sort-${this.sort}` : ''].join(' ')}
+        class={["se-table-item", isSortable ? `sort-${this.sort}` : ''].join(' ')}
         id={this.innerId}
         >
         <TagType class={"table-item-content"} aria-label={ariaLabelSort}>
           <div class="table-item-label"><slot></slot></div>
-          {!!this.sort ?
+          {isSortable ?
             <se-icon
-              class={["sortable", !!this.sort ? `sort-${this.sort}` : ''].join(' ')}
+              class={["sortable", isSortable ? `sort-${this.sort}` : ''].join(' ')}
               aria-hidden="true"
               size="nano"
               color={color}>
-                arrow4_top
+                <span innerHTML={arrow4Top}></span>
             </se-icon> : ''}
         </TagType>
       </Host>

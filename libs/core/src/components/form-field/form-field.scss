@@ -89,13 +89,15 @@ label {
   height: 28px;
 }
 
-@-moz-document url-prefix() {
+//@-moz-document url-prefix()is deprecated
+@media screen and (min--moz-device-pixel-ratio:0) {
   ::slotted(input[type="date"]) {
     padding-top: 6px;
     padding-bottom: 4px;
     // padding-right: 5px;
   }
 }
+
 
 ::slotted(select) {
   height: 32px;

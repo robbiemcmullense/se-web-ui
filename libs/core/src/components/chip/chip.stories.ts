@@ -19,7 +19,7 @@ storiesOf('Chip', module)
     })
 
     return `
-      <div style="width: 100%; height: 100%; padding: 20px; background-color: #aaa">
+      <div style="padding: 20px">
         <se-chip
           value='${value}'
           size='${size}'

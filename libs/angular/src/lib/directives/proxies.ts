@@ -431,10 +431,12 @@ export declare interface SeSidemenu extends Components.SeSidemenu {}
 @ProxyCmp({inputs: ['label', 'link'], 'methods': ['toggle']})
 @Component({ selector: 'se-sidemenu', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['label', 'link'] })
 export class SeSidemenu {
+  toggled!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggled']);
   }
 }
 

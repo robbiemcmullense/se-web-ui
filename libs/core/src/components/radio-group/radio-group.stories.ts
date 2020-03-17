@@ -28,7 +28,7 @@ storiesOf('Radio Group', module)
     const value = select('value', valueOptions, 'none')
 
     return `
-      <div style="width: 100%; height: 100%; padding: 20px; background-color: #d0d0d0">
+      <div style="padding: 20px;">
         <se-radio-group color="${color}" size="${size}" disabled="${disabled}" value="${value}">
           <se-button value="first">Check1</se-button>
           <se-button value="second">Check2</se-button>
@@ -45,7 +45,7 @@ storiesOf('Radio Group', module)
     const value = select('value', valueOptions, 'none')
 
     return `
-      <div style="width: 100%; height: 100%; padding: 20px; background-color: #d0d0d0">
+      <div style="padding: 20px;">
         <se-radio-group color="${color}" size="${size}" disabled="${disabled}" value="${value}">
           <se-button value="left" icon="arrow2_left"></se-button>
           <se-button value="up" icon="arrow2_up"></se-button>

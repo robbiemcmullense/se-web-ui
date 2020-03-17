@@ -109,5 +109,4 @@ export const config: Config = {
     transformIgnorePatterns: ['/node_modules/(?!@se/icons/svg)']
   },
   tsconfig: './tsconfig.json',
-  globalScript: 'src/lib/global/global.ts'
 };
