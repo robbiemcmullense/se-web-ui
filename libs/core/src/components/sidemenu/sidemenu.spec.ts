@@ -29,7 +29,7 @@ describe('SidemenuComponent', () => {
 	})
 
 	it('should add to the items array when a sidemenu item is added, and not be active by default', () => {
-		let node = document.createElement('se-sidemenu-item');
+		const node = document.createElement('se-sidemenu-item');
 		node.setAttribute('item', 'Close');
     sidemenu.el.appendChild(node);
 		sidemenu.componentWillLoad();
@@ -38,7 +38,7 @@ describe('SidemenuComponent', () => {
 	});
 
 	it('should add to the items array and set it as active when a sidemenu item is added and setActive is called', () => {
-		let node = document.createElement('se-sidemenu-item');
+		const node = document.createElement('se-sidemenu-item');
 		node.setAttribute('item', 'Close');
     sidemenu.el.appendChild(node);
 		sidemenu.componentWillLoad();
@@ -48,7 +48,7 @@ describe('SidemenuComponent', () => {
 			expect(sidemenu.items[0].active).toBeTruthy();
 		}, 200);
 	});
-	
+
 	it('should call the watchItemList and setItemsArray functions when the component is about to load', () => {
 		const listSpy = jest.spyOn(sidemenu, 'watchItemList');
 		const arraySpy = jest.spyOn(sidemenu, 'setItemsArray');
@@ -77,6 +77,7 @@ describe('SidemenuComponent', () => {
 describe('SidemenuComponent toggle method', () => {
   let sidemenu;
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   beforeEach(() => {
     sidemenu = new SidemenuComponent();
     sidemenu.menuInnerEl = {classList: {
@@ -87,17 +88,20 @@ describe('SidemenuComponent toggle method', () => {
       add: (value: any) => { return value;},
       remove: (value: any) => { return value;}
     }};
-	});
-	
+  });
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+
 	it('should open the sidemenu when the toggle method is called', () => {
-		sidemenu.toggle();
-		expect(sidemenu.open).toBeTruthy();
+    sidemenu.toggle();
+    expect(sidemenu.open).toBeTruthy();
+    expect(sidemenu.toggled.emit).toHaveBeenCalledWith({state: 'open'});
 	});
 
 	it('should call the addAnimation method when the toggle method is called and the sidemenu is closed', () => {
-		const eventSpy = jest.spyOn(sidemenu, 'addAnimation');
+    const eventSpy = jest.spyOn(sidemenu, 'addAnimation');
 		sidemenu.toggle(); // user clicks on "X" button
 		expect(eventSpy).toHaveBeenCalled();
+    expect(sidemenu.toggled.emit).toHaveBeenCalledWith({state: 'closed'});
 	});
 
 	it('should add and remove classes to the menu and backdrop elements when the toggle method is called', () => {
@@ -136,8 +140,8 @@ describe('SidemenuComponent toggle method', () => {
 	});
 
   it('should open the menu to a specified menu item and mark it as active', () => {
-    let node1 = document.createElement('se-sidemenu-item');
-    let node2 = document.createElement('se-sidemenu-item');
+    const node1 = document.createElement('se-sidemenu-item');
+    const node2 = document.createElement('se-sidemenu-item');
 		node1.setAttribute('item', 'foo');
     node2.setAttribute('item', 'bar');
     node2.setAttribute('id', 'bar-id');
@@ -155,8 +159,8 @@ describe('SidemenuComponent toggle method', () => {
   });
 
   it('should use default behavior if given item does not exist', () => {
-    let node1 = document.createElement('se-sidemenu-item');
-    let node2 = document.createElement('se-sidemenu-item');
+    const node1 = document.createElement('se-sidemenu-item');
+    const node2 = document.createElement('se-sidemenu-item');
 		node1.setAttribute('item', 'foo');
 		node2.setAttribute('item', 'bar');
     sidemenu.el.appendChild(node1);

@@ -13,12 +13,20 @@
 | `link`   | `link`    |                                                                                        | `string` | `'www.se.com'` |
 
 
+## Events
+
+| Event     | Description                                                                                                                                                                                               | Type               |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `toggled` | When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`. When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`. | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `toggle(itemName?: string) => Promise<void>`
 
 Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.
-ex: document.getElementById("main-sidemenu").toggle("side-about");
+
+ex: `document.getElementById("main-sidemenu").toggle("side-about");`
 
 #### Returns
 

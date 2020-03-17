@@ -704,7 +704,7 @@ export namespace Components {
     'label': string;
     'link': string;
     /**
-    * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item. ex: document.getElementById("main-sidemenu").toggle("side-about");
+    * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.  ex: `document.getElementById("main-sidemenu").toggle("side-about");`
     */
     'toggle': (itemName?: string) => Promise<void>;
   }
@@ -2043,6 +2043,10 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     'link'?: string;
+    /**
+    * When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`. When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`.
+    */
+    'onToggled'?: (event: CustomEvent<any>) => void;
   }
   interface SeSidemenuItem {
     /**

@@ -1,4 +1,4 @@
-import { Component, h, Method, Element, State, Prop } from '@stencil/core';
+import { Component, h, Method, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
 import test_results_nok from "@se/icons/svg/test_results_nok.svg";
 
 const SHOW_MENU = 'show-menu';
@@ -20,6 +20,11 @@ export class SidemenuComponent {
   @State() items: HTMLElement[] = [];
   @State() selectedItem?: HTMLElement;
   /**
+   * When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`.
+   * When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`.
+   */
+  @Event() toggled: EventEmitter<any>;
+  /**
    * Defines the text displayed in the header of the Sidemenu.
    * The default value is `Menu`.
    */
@@ -33,7 +38,8 @@ export class SidemenuComponent {
   @Prop() link = 'www.se.com';
   /**
    * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.
-   * ex: document.getElementById("main-sidemenu").toggle("side-about");
+   *
+   * ex: `document.getElementById("main-sidemenu").toggle("side-about");`
    */
   @Method()
   async toggle(itemName?: string) {
@@ -67,12 +73,16 @@ export class SidemenuComponent {
           console.log(error);
         }
       }
+      // Dispatch the 'opened' event
+      this.toggled.emit({state: 'open'});
     } else {
       // Remove css classes and unselect the active element
       this.removeAnimation(() => {
         this.el.classList.remove(SHOW_MENU);
       });
       this.unselectAll();
+      // Dispatch the 'closed' event
+      this.toggled.emit({state: 'closed'});
     }
   }
 
