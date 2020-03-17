@@ -17,6 +17,13 @@
 	@include slideUp();
 }
 
+// display the snackbar when open on IE 11
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  :host(.show-snackbar) {
+    left: 0;
+  }
+}
+
 .information {
   @include background-color('focus');
 }
