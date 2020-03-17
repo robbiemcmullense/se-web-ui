@@ -92,16 +92,23 @@ describe('SidemenuComponent toggle method', () => {
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
 	it('should open the sidemenu when the toggle method is called', () => {
+    const eventSpyEmit = jest.spyOn(sidemenu.toggled, 'emit');
     sidemenu.toggle();
     expect(sidemenu.open).toBeTruthy();
-    expect(sidemenu.toggled.emit).toHaveBeenCalledWith({state: 'open'});
+    expect(eventSpyEmit).toHaveBeenCalledWith({state: 'open'});
 	});
 
 	it('should call the addAnimation method when the toggle method is called and the sidemenu is closed', () => {
     const eventSpy = jest.spyOn(sidemenu, 'addAnimation');
-		sidemenu.toggle(); // user clicks on "X" button
+    const eventSpyEmit = jest.spyOn(sidemenu.toggled, 'emit');
+
+    // to open
+    sidemenu.toggle();
+    // to close
+    sidemenu.toggle(); // user clicks on "X" button
+
 		expect(eventSpy).toHaveBeenCalled();
-    expect(sidemenu.toggled.emit).toHaveBeenCalledWith({state: 'closed'});
+    expect(eventSpyEmit).toHaveBeenCalledWith({state: 'closed'});
 	});
 
 	it('should add and remove classes to the menu and backdrop elements when the toggle method is called', () => {
