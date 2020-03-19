@@ -20,7 +20,8 @@
       "@se/web-ui-react": ["libs/react/src/index.ts"],
       "@se/web-ui": ["dist/libs/core"],
       "@se/web-ui/*": ["dist/libs/core/*"],
-      "@se/utils": ["libs/utils/src/index.ts"]
+      "@se/utils": ["libs/utils/src/index.ts"],
+      "@se/myangularlib": ["libs/myangularlib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
