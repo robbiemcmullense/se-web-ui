@@ -1,0 +1,7 @@
+loader/
+dist/
+.stencil/
+styles
+docs
+types
+www/

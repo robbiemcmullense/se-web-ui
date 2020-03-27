@@ -48,6 +48,9 @@
     "web-demo-e2e": {
       "tags": [],
       "implicitDependencies": ["web-demo"]
+    },
+    "widget": {
+      "tags": []
     }
   }
 }

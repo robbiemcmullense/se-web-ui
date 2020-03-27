@@ -21,7 +21,8 @@
       "@se/web-ui": ["dist/libs/core"],
       "@se/web-ui/*": ["dist/libs/core/*"],
       "@se/utils": ["libs/utils/src/index.ts"],
-      "@se/myangularlib": ["libs/myangularlib/src/index.ts"]
+      "@se/myangularlib": ["libs/myangularlib/src/index.ts"],
+      "@se/widget": ["libs/widget/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

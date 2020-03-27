@@ -315,6 +315,29 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
+        "serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/core && yarn start"
+              }
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/core && yarn build"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -326,10 +349,16 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "tsConfig": "libs/core/tsconfig.spec.json"
+            "commands": [
+              {
+                "command": "cd libs/core && yarn test"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "storybook": {
@@ -519,6 +548,91 @@
             "config": "apps/web-demo-e2e/.eslintrc",
             "tsConfig": ["apps/web-demo-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/web-demo-e2e/**"]
+          }
+        }
+      }
+    },
+    "widget": {
+      "root": "libs/widget",
+      "sourceRoot": "libs/widget/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/widget && yarn start"
+              }
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/widget && yarn build"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/tsconfig.lib.json",
+              "libs/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/widget && yarn test"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/html",
+            "staticDir": ["dist/libs/widget"],
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/widget/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/html",
+            "outputPath": "dist/storybook/widget",
+            "config": {
+              "configFolder": "libs/widget/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       }
