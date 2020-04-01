@@ -6,10 +6,19 @@ This project was generated using [Nx](https://nx.dev).
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
+## A web-component library based StencilJs
+
+This whole monorepo relies on the [stencilJs](https://stenciljs.com/) web-component compiler to create a core library (`@se/web-ui` located in `libs/core` folder), and use some automatic bundler to create web-component wrapper for angular (`@se/web-ui-angular` located in `libs/angular` folder) and react (`@se/web-ui-react` located in `libs/react` folder).
+The angular and react wrapper are updated every time the core library is being built. 
+
+Each application in the `apps` folder relies on the the local build of the different library (core, angular or rect library) and are simple demo application to insure each build works as expected before any deployment. 
+
+To help out on the testing, we also used [https://storybook.js.org/](https://storybook.js.org/). Each main component in the `libs/core` folder will have a `.storie.ts` file that will show possible options of those component to help testing and developers to use each components.
+
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in this repository.
-
+`
     .
     ├── apps
     │  ├── angular-demo        // Angular specific app
@@ -139,6 +148,15 @@ To connect your project with any library locally:
     yarn link @se/web-ui @se/web-ui-angular @se/web-ui-react
     ```
 
+**PS: ** When in an angular project, you may have an issue of linking yarn locally because of references. To fix it, you need to update your `tsconfig.json` file with:
+  ```
+  "paths": {
+      // When using yarn link
+      "@angular/*": ["../node_modules/@angular/*"],
+      "@se/*": ["../node_modules/@se/*"],
+      // ... any other path you may already have
+    }
+  ```
 
 # Adding capabilities to your workspace
 
