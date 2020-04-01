@@ -315,6 +315,29 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
+        "serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/core && yarn start"
+              }
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/core && yarn build"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -326,10 +349,16 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "tsConfig": "libs/core/tsconfig.spec.json"
+            "commands": [
+              {
+                "command": "cd libs/core && yarn test"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "storybook": {

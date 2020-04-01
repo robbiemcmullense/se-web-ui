@@ -14,10 +14,18 @@ A quick look at the top-level files and directories you'll see in this repositor
     ├── apps
     │  ├── angular-demo        // Angular specific app
     │  ├── angular-demo-e2e    // Cypress related to the angular-demo app
+    │  ├── react-demo        
+    │  ├── react-demo-e2e    
     ├── libs                  // All libs shared and deployed
-    │  ├── core                // @se/web-ui library (StencilJs)
-    │  ├── angular             // @se/web-ui-angular
-    │  ├── react               // @se/web-ui-react 
+    │  ├── base                // core web-ui library
+    │  │  ├── core                // @se/web-ui  (StencilJs)
+    │  │  ├── angular             // @se/web-ui-angular
+    │  │  ├── react               // @se/web-ui-react 
+    │  ├── widget              // core web-ui library
+    │  │  ├── core                // @se/web-ui-widget  (StencilJs)
+    │  │  ├── angular             // @se/web-ui-widget-angular
+    │  │  ├── react               // @se/web-ui-widget-react
+    │  ├── utils
     ├── package.json          // Centralized package.json
     ├── LICENSE
     ├── workspace.json        // Defined all nx apps and libraries
@@ -52,9 +60,16 @@ yarn start angular-demo-e2e
 # Vanilla JS (pure web-component with no framework)
 yarn start web-demo      
 yarn start web-demo-e2e
+
+# Base Core library (web-component with stencilJs)
+yarn start core
+yarn build core
+
+# Storybook (In the core folder)
+yarn Storybook
 ```
 
-**PS :** Only apps and library that use pure web, angular or react frameworks can be used with the `nx` workspace scripts. The stencilJs (`libs/core`) does not directly work with `nx` workspace, it need to use it's own script (`yarn core <script>`). 
+**PS :** All library and app depends on the core lib being built first. make sure you run `yarn build core` before starting to run any apps or storybook
 
 ## Storybook
 
