@@ -61,12 +61,15 @@ yarn start angular-demo-e2e
 yarn start web-demo      
 yarn start web-demo-e2e
 
-# Core build
+# Base Core library (web-component with stencilJs)
 yarn start core
 yarn build core
+
+# Storybook (In the core folder)
+yarn Storybook
 ```
 
-**PS :** Only apps and library that use pure web, angular or react frameworks can be used with the `nx` workspace scripts. The stencilJs (`libs/core`) does not directly work with `nx` workspace, it need to use it's own script (`yarn core <script>`). 
+**PS :** All library and app depends on the core lib being built first. make sure you run `yarn build core` before starting to run any apps or storybook
 
 ## Storybook
 
