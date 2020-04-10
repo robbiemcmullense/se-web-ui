@@ -7,7 +7,7 @@ class ShellLayout extends Component {
     return (
       <SeContainer position="absolute" direction="column">
         <SeHeader appTitle="React Advisor">
-          <SeSidemenu link="google.com">
+          <SeSidemenu link="">
             <SeSidemenuItem item="About">
               <SeAbout appTitle="React Advisor" version="123"></SeAbout>
             </SeSidemenuItem>
@@ -39,6 +39,7 @@ class ShellLayout extends Component {
               <NavLink to='/table' >Table</NavLink>
             </ul>
             <NavLink to='/dashboard' >Dashboard</NavLink>
+            <NavLink to='/tableother' >TableOther</NavLink>
           </nav>
           <nav slot="end">
             <a href="">End</a>

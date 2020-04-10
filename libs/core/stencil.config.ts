@@ -3,6 +3,8 @@ import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { postcss } from '@stencil/postcss';
+import autoprefixer from 'autoprefixer';
 
 // import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
 // const EVENTS = {
@@ -40,7 +42,13 @@ const copy = [
 
 export const config: Config = {
   namespace: 'se-components',
-  plugins: [sass(), inlineSvg()],
+  plugins: [
+    sass(),
+    inlineSvg(),
+    postcss({
+      plugins: [autoprefixer()]
+    })
+  ],
   outputTargets: [
     {
       type: 'docs-readme'

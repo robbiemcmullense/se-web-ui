@@ -1,10 +1,10 @@
 {
   "name": "web-ui",
-  "version": "3.7.2",
+  "version": "3.7.3",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "yarn core build",
+    "postinstall": "yarn build core",
     "nx": "nx",
     "ng": "ng",
     "start": "nx serve",
@@ -31,7 +31,7 @@
     "storybook": "nx run core:storybook",
     "storybook:build": "export NODE_ENV=\"production\" && nx run core:build-storybook",
     "storybook:deploy": "storybook-to-ghpages --existing-output-dir=dist/storybook/core",
-    "libs:build": "yarn core build && yarn build react && yarn build angular",
+    "libs:build": "yarn build core && yarn build react && yarn build angular",
     "libs:release": "node release.js",
     "link:core": "cd dist/libs/core && yarn link",
     "link:angular": "cd dist/libs/angular && yarn link",
@@ -68,9 +68,10 @@
     "@angular-devkit/build-ng-packagr": "0.900.1",
     "@angular/compiler-cli": "^8.2.0",
     "@angular/language-service": "^8.2.0",
-    "@babel/core": "7.8.3",
+    "@babel/compat-data": "^7.9.0",
+    "@babel/core": "^7.8.3",
     "@babel/plugin-transform-destructuring": "^7.8.3",
-    "@babel/preset-react": "7.8.3",
+    "@babel/preset-react": "^7.8.3",
     "@nrwl/angular": "^8.12.0",
     "@nrwl/cypress": "^8.12.0",
     "@nrwl/eslint-plugin-nx": "^8.12.0",
@@ -82,6 +83,7 @@
     "@nrwl/web": "^8.12.0",
     "@nrwl/workspace": "^8.12.0",
     "@stencil/angular-output-target": "^0.0.2",
+    "@stencil/postcss": "^1.0.1",
     "@stencil/react-output-target": "^0.0.2",
     "@stencil/sass": "^1.1.1",
     "@storybook/addon-a11y": "^5.3.12",
@@ -100,6 +102,7 @@
     "@typescript-eslint/eslint-plugin": "2.3.2",
     "@typescript-eslint/parser": "2.3.2",
     "@vue/cli-plugin-eslint": "^3.5.1",
+    "autoprefixer": "^9.7.6",
     "babel-loader": "8.0.6",
     "codelyzer": "~5.0.1",
     "concurrently": "^5.1.0",
@@ -130,5 +133,8 @@
     "tsickle": "^0.38.0",
     "tslint": "~5.11.0",
     "typescript": "~3.5.0"
+  },
+  "resolutions": {
+    "@babel/preset-env": "^7.8.0"
   }
 }

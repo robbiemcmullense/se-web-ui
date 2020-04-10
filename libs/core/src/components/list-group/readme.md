@@ -26,9 +26,10 @@
 
 ## Events
 
-| Event           | Description                                       | Type               |
-| --------------- | ------------------------------------------------- | ------------------ |
-| `didGroupClick` | Pass the group data to the parent when collapsed. | `CustomEvent<any>` |
+| Event              | Description                                           | Type               |
+| ------------------ | ----------------------------------------------------- | ------------------ |
+| `didGroupClick`    | Emitted when the group item is clicked.               | `CustomEvent<any>` |
+| `didGroupCollapse` | Emitted when the group item is collapsed/uncollapsed. | `CustomEvent<any>` |
 
 
 ## Dependencies

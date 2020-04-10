@@ -369,11 +369,12 @@ export declare interface SeListGroup extends Components.SeListGroup {}
 @Component({ selector: 'se-list-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild'] })
 export class SeListGroup {
   didGroupClick!: EventEmitter<CustomEvent>;
+  didGroupCollapse!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didGroupClick']);
+    proxyOutputs(this, this.el, ['didGroupClick', 'didGroupCollapse']);
   }
 }
 
