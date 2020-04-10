@@ -51,6 +51,7 @@ class Dashboard extends Component<DashboardProps> {
             </div>
           </SeBlockHeader>
           <SeBlockContent>
+            <nav>
             <SeList option="treeview">
               <SeListItem item="Static item"></SeListItem>
               <SeListGroup item="New Block" id="testing-list-group">
@@ -69,6 +70,7 @@ class Dashboard extends Component<DashboardProps> {
                 })}
               </SeListGroup>
             </SeList>
+            </nav>
           </SeBlockContent>
         </SeBlock>
         <SeDivider option="vertical"></SeDivider>
