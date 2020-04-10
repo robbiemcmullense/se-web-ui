@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-tabbar',
@@ -28,15 +28,15 @@ export class TabbarComponent {
 
   render() {
     return (
-      <Host class={['tabbar', `tab-${this.color}`, "tabbar-d-flex-main", `tabbar-opt-${this.option}`].join(' ')}>
-        <div class="tabbar-nav-left-wrapper tabbar-centered">
+      <div class={[`tab-${this.color}`, "d-flex-main", `opt-${this.option}`].join(' ')}>
+        <div class="nav-left-wrapper centered">
           <slot name="start" />
         </div>
-        <div class={["tabbar-fill-space", "tabbar-nav-center-wrapper", `tabbar-opt-${this.option}`, !!this.overflow ? this.overflow : ''].join(' ')}>
+        <div class={["fill-space", "nav-center-wrapper", `opt-${this.option}`, !!this.overflow ? this.overflow : ''].join(' ')}>
           <slot />
         </div>
-        <div class={[`tabbar-tab-end-${this.color}`, `tabbar-opt-end-${this.option}`, "tabbar-centered"].join(' ')}><slot name="end" /></div>
-      </Host>
+        <div class={[`tab-end-${this.color}`, `opt-end-${this.option}`, "centered"].join(' ')}><slot name="end" /></div>
+      </div>
     );
   }
 }
