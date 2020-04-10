@@ -6,7 +6,7 @@
   width: 100%;
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
-  white-space: nowrap;
+  // white-space: nowrap;
   @include display-flex();
   @include flex-direction('row');
   @include align-items(center);
@@ -140,6 +140,10 @@ nav, .sub-nav{
     text-decoration: none;
     transition: .2s;
     height: 100%;
+
+    line-height: 1.2;
+    min-height: 40px;
+
     &:focus {
       background-color: transparent;
     }
@@ -245,9 +249,9 @@ nav, .sub-nav{
   nav, .sub-nav{
     height: 44px;
     text-transform: uppercase;
-    > a {
-      line-height: 44px;
-    }
+    // > a {
+    //   line-height: 44px;
+    // }
   }
   .sub-nav{
     text-transform: capitalize;
@@ -288,7 +292,7 @@ nav, .sub-nav{
     @include border-color('standard');
     border-bottom: 0;
     border-left: 0;
-    line-height: 46px;
+    // line-height: 46px;
     @include color('alternative-contrast');
     padding: 0 $spacing-xlarge;
     &:first-child {
@@ -335,5 +339,27 @@ nav, .sub-nav{
     &:not([disabled]):hover {
       @include background-color('hover-standard')
     }
+  }
+}
+.tab-end-primary.opt-end-nav nav {
+  height: calc(100% - 4px);
+}
+.opt-end-content {
+  @include background-color('alternative');
+}
+.opt-end-content.tab-end-alternative {
+  @include background-color('background');
+}
+
+.opt-nav, .opt-content{
+  &.scroll nav {
+    white-space: nowrap;
+  }
+  &.stack nav {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  &.compact nav a{
+    white-space: wrap;
   }
 }

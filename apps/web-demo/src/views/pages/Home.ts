@@ -770,9 +770,39 @@ let Home = {
                 </se-block-header>
                 <se-block-content style="border-right: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED; border-left: 1px solid #EDEDED;">
                   <br>
+                  <se-tabbar overflow="stack">
+                    <nav>
+                      <a class="active">Stacking Home</a>
+                      <a>Another Item</a>
+                      <a disabled>Another Longer Item</a>
+                      <a disabled>Another Longer Item</a>
+                      <a>Another</a>
+                      <a>And Another</a>
+                    </nav>
+                    <nav slot="end">
+                      <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
+                    </nav>
+                  </se-tabbar>  
+                  <br>
                   <se-tabbar color="alternative">
                     <nav>
-                      <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a>
+                      <a class="active">Home</a>
+                      <a>Another</a>
+                      <a disabled>Another</a>
+                      <a>Another</a>
+                      <a>Another</a>
+                      <a>Another</a>
+                      <a>Another</a>
+                      <a>Another</a>
+                      <a>Another</a>
+                      <a>Another</a>
+                      <a>Another</a>
+                    </nav>
+                  </se-tabbar>
+                  <br>
+                  <se-tabbar overflow="stack" color="alternative">
+                    <nav>
+                      <a class="active">Stacking Home</a><a>Another Item</a><a disabled>Another Longer Item</a><a disabled>Another Longer Item</a><a disabled>Another Longer Item</a><a>Another</a><a>And Another</a>
                     </nav>
                   </se-tabbar>
                   <br>
@@ -784,6 +814,29 @@ let Home = {
                         <a>Introduction</a>
                         <a class="active">Installation</a>
                         <a disabled>Maintenance</a>
+                        <a>Another</a>
+                        <a>Another</a>
+                        <a>Another</a>
+                        <a>Glossary</a>
+                      </nav>
+                      <nav slot="end">
+                        <se-link url="www.google.com" option="external">Google</se-link>
+                      </nav>
+                    </se-tabbar>
+                    <se-block color="standard" margin="none" divider="false">
+                      <se-block-header style="border: 1px solid #ededed;border-top:0;border-bottom:0;">Testing</se-block-header>
+                      <se-block-content style="border: 1px solid #ededed;border-top:0;">Testing more content</se-block-content>
+                    </se-block>
+                  </se-container>
+                  <br>
+                  <se-container display="block">
+                    <se-tabbar option="content" color="primary" display="centered" overflow="stack">
+                      <nav>
+                        <a>Stacking Introduction</a>
+                        <a class="active">Installation</a>
+                        <a disabled>Maintenance</a>
+                        <a>Another Longer Item</a>
+                        <a>Another Longer Item</a>
                         <a>Glossary</a>
                       </nav>
                       <nav slot="end">
@@ -804,6 +857,30 @@ let Home = {
                               <a>Introduction</a>
                               <a class="active">Installation</a>
                               <a disabled>Maintenance</a>
+                              <a>Another</a>
+                              <a>Another</a>
+                              <a>Another</a>
+                              <a>Glossary</a>
+                            </nav>
+                            <nav slot="end">
+                              <se-link url="www.google.com" option="external">Google</se-link>
+                            </nav>
+                          </se-tabbar>
+                      </se-block-header>
+                      <se-block-content>Testing<br/><br/>Testing more content</se-block-content>
+                    </se-block>
+                  </se-container>
+                  <br>
+                  <se-container color="standard" padding="large" display="block" style="border: 1px solid #ededed;">
+                    <se-block outline="true" margin="none" divider="false">
+                      <se-block-header option="fill">
+                        <se-tabbar option="content" color="alternative" display="centered" overflow="stack">
+                            <nav>
+                              <a>Stacking Introduction</a>
+                              <a class="active">Installation</a>
+                              <a disabled>Maintenance</a>
+                              <a>Another Longer Item</a>
+                              <a>Another Longer Item</a>
                               <a>Glossary</a>
                             </nav>
                             <nav slot="end">

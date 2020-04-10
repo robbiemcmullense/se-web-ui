@@ -505,8 +505,8 @@ export class SeStepperItem {
 }
 
 export declare interface SeTabbar extends Components.SeTabbar {}
-@ProxyCmp({inputs: ['color', 'option']})
-@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
+@ProxyCmp({inputs: ['color', 'option', 'overflow']})
+@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option', 'overflow'] })
 export class SeTabbar {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
