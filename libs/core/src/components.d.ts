@@ -824,7 +824,7 @@ export namespace Components {
          */
         "option": "nav" | "content";
         /**
-          * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines.
+          * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines. The `compact` setting allows your tabbar content to scroll, but all stack the text together as much as possible.
          */
         "overflow": "compact" | "stack" | "scroll";
     }
@@ -2182,7 +2182,7 @@ declare namespace LocalJSX {
          */
         "option"?: "nav" | "content";
         /**
-          * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines.
+          * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines. The `compact` setting allows your tabbar content to scroll, but all stack the text together as much as possible.
          */
         "overflow"?: "compact" | "stack" | "scroll";
     }

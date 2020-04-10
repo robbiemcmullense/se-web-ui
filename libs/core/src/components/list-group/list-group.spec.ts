@@ -62,19 +62,22 @@ describe('list-group', () => {
 		expect(eventSpy).toHaveBeenCalledTimes(2);
   });
 
-  it('should emit the didGroupClick event when the toggleCollapse method is called', () => {
+  it('should emit the didGroupClick event when the toggleGroupButton method is called', () => {
     listGroup.option = 'classic';
     const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
-    listGroup.toggleCollapse(); // list group button is clicked
+    listGroup.toggleGroupButton(); // list group button is clicked
     expect(eventSpy).toHaveBeenCalled();
   });
 
-  it('should not emit the didGroupClick event when the toggleCollapse method is called in treeview option and the target is the icon', () => {
+  it('should emit the didGroupClick event but not didGroupCollapsed when the toggleGroupButton method is called in treeview option and the target is the icon', () => {
     listGroup.option = 'treeview';
     const event = {target: {nodeName: 'SE-ICON'}};
-    const eventSpy = jest.spyOn(listGroup.didGroupClick, 'emit');
-    listGroup.toggleCollapse(event); // list group button is clicked
-    expect(eventSpy).not.toHaveBeenCalled();
+    const eventSpyClick = jest.spyOn(listGroup.didGroupClick, 'emit');
+    const eventSpyCollapse = jest.spyOn(listGroup.didGroupCollapse, 'emit');
+    listGroup.toggleGroupButton(event); // list group button is clicked
+    expect(eventSpyClick).toHaveBeenCalled();
+    expect(eventSpyCollapse).not.toHaveBeenCalled();
+
   });
 
   it('should inherit the headline option from its parent when specified', () => {

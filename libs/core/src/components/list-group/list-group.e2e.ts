@@ -3,7 +3,7 @@ import { newE2EPage } from '@stencil/core/testing';
  describe('ListGroupComponent', () => {
 
 	const renderComponent = async(attributes = '') => {
-		let result = await newE2EPage();
+		const result = await newE2EPage();
 		await result.setContent(`<se-list-group ${attributes}></se-list-group>`);
 		return result;
 	};
