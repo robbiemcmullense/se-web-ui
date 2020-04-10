@@ -622,5 +622,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "react-demo"
+  "defaultProject": "core"
 }

@@ -1,7 +1,6 @@
 import { configure, addDecorator } from '@storybook/html';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
-
 import '@se/fonts/css/styles.css';
 import '@se/icons/css/styles.css';
 
