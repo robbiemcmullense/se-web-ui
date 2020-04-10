@@ -17,10 +17,11 @@ storiesOf('Header', module)
     const title = text('app-title', "My cool advisor")
     const project = text('project', "Project awesome")
     const domain = select('domain', domainOption, 'ecostruxure')
+    const link = text('link', "www.se.com/en/partners");
 
     return `
       <se-header app-title="${title}" project="${project}" domain="${domain}">
-        <se-sidemenu id="main-sidemenu" link="www.se.com/en/partners">
+        <se-sidemenu id="main-sidemenu" link="${link}">
           <se-sidemenu-item item="About" id="side-about">
             <se-about app-title="Test Advisor" version="1.2.3"
               image-url="url('https://schneider-electric.box.com/shared/static/7hp8f04wj8lclpxn8jonti616lvim3zl.jpg')">
