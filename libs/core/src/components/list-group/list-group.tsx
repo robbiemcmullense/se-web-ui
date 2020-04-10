@@ -95,7 +95,7 @@ export class ListGroupComponent {
   @State() innerId;
 
   setButtonId() {
-    let id = this.el.getAttribute('id');
+    const id = this.el.getAttribute('id');
     if (id) {
       this.innerId = `wc-${id}`;
     }
@@ -140,7 +140,7 @@ export class ListGroupComponent {
       <Host role="listitem" option={this.option} >
         <button aria-expanded={`${this.collapsed}`} title={title} id={this.innerId} class={['se-list-group', this.option, this.collapsed ? "collapsed" : '', this.option, this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : '', "button"].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleGroupButton()} disabled={!this.canCollapse}>
           {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
-          {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon" onClick={() => this.toggleCollapseTreeview()} style={{ paddingLeft: `calc(${8 * this.indentation}px)`}}><span innerHTML={this.collapsed ? arrow2Right : arrow2Down}></span></se-icon> : ''}
+          {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon" onClick={(e) => {e.stopPropagation();this.toggleCollapseTreeview();}} style={{ paddingLeft: `calc(${8 * this.indentation}px)`}}><span innerHTML={this.collapsed ? arrow2Right : arrow2Down}></span></se-icon> : ''}
           {!!this.icon ?
             <div class="nav-icon">
               { this.icon && <se-icon color={this.iconColor}>{this.icon}</se-icon> }

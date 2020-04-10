@@ -81,7 +81,7 @@ describe('list-group', () => {
   });
 
   it('should inherit the headline option from its parent when specified', () => {
-    let parentListElm = document.createElement('se-list');
+    const parentListElm = document.createElement('se-list');
     parentListElm.option = 'headline';
     parentListElm.appendChild(listGroup.el);
     listGroup.componentWillLoad();
@@ -89,7 +89,7 @@ describe('list-group', () => {
   });
 
   it('should set an indentation of 2 when its parent element has an indentation of 1', () => {
-    let parentListElm = document.createElement('se-list-group');
+    const parentListElm = document.createElement('se-list-group');
     parentListElm.indentation = 1;
     parentListElm.appendChild(listGroup.el);
     listGroup.componentWillLoad();

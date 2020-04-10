@@ -22,6 +22,6 @@ describe('TabbarComponent', () => {
       html: `<se-tabbar></se-tabbar>`,
     });
 		expect(page.root.querySelector('.tab-primary')).toBeTruthy();
-		expect(page.root.querySelector('.tabbar-fill-space')).toBeTruthy();
+		expect(page.root.querySelector('.fill-space')).toBeTruthy();
   });
 });
