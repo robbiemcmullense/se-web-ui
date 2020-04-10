@@ -9,10 +9,16 @@ export class DropdownComponent {
   @Element() el: HTMLElement;
   /**
    * Defines how to align the dropdown container.
-   * `left`: Position the container with respect to the left side of the trigger element.
    * `right`: Position the container with respect to the right side of the trigger element.
+   * `left`: Position the container with respect to the left side of the trigger element.
    */
-  @Prop() alignment: 'left' | 'right' = 'left';
+  @Prop() alignment: 'right' | 'left' = 'left';
+  /**
+   * Defines how to vertically align the dropdown container.
+   * `top`: Position the container with respect to the top side of the trigger element.
+   * `bottom`: Position the container with respect to the bottom side of the trigger element.
+   */
+  @Prop() verticalAlignment: 'top' | 'bottom' = 'bottom';
   /**
    * Sets the maximum width of the dropdown.  Default setting is "200px".
    */
@@ -72,7 +78,7 @@ export class DropdownComponent {
 
   render() {
     return (
-      <div class={['se-dropdown', this.alignment].join(' ')}>
+      <div class={['se-dropdown', this.alignment, this.verticalAlignment].join(' ')}>
         <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
           <slot name="trigger"></slot>
         </div>

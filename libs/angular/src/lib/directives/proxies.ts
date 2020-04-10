@@ -237,8 +237,8 @@ export class SeDivider {
 }
 
 export declare interface SeDropdown extends Components.SeDropdown {}
-@ProxyCmp({inputs: ['alignment', 'maxHeight', 'maxWidth'], 'methods': ['open', 'close']})
-@Component({ selector: 'se-dropdown', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignment', 'maxHeight', 'maxWidth'] })
+@ProxyCmp({inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'], 'methods': ['open', 'close']})
+@Component({ selector: 'se-dropdown', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'] })
 export class SeDropdown {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;

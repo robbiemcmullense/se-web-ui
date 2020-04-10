@@ -409,9 +409,9 @@ export namespace Components {
     }
     interface SeDropdown {
         /**
-          * Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element.
+          * Defines how to align the dropdown container. `right`: Position the container with respect to the right side of the trigger element. `left`: Position the container with respect to the left side of the trigger element.
          */
-        "alignment": "left" | "right";
+        "alignment": "right" | "left";
         /**
           * Method to close the dropdown from outside its parent element.
          */
@@ -428,6 +428,10 @@ export namespace Components {
           * Method to open the dropdown from outside its parent element.
          */
         "open": () => Promise<void>;
+        /**
+          * Defines how to vertically align the dropdown container. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
+         */
+        "verticalAlignment": "top" | "bottom";
     }
     interface SeFab {
         /**
@@ -1740,9 +1744,9 @@ declare namespace LocalJSX {
     }
     interface SeDropdown {
         /**
-          * Defines how to align the dropdown container. `left`: Position the container with respect to the left side of the trigger element. `right`: Position the container with respect to the right side of the trigger element.
+          * Defines how to align the dropdown container. `right`: Position the container with respect to the right side of the trigger element. `left`: Position the container with respect to the left side of the trigger element.
          */
-        "alignment"?: "left" | "right";
+        "alignment"?: "right" | "left";
         /**
           * Sets the maximum height of the dropdown.  Default setting is "400px".
          */
@@ -1759,6 +1763,10 @@ declare namespace LocalJSX {
           * Event emitted when the dropdown has been opened.
          */
         "onDidOpen"?: (event: CustomEvent<any>) => void;
+        /**
+          * Defines how to vertically align the dropdown container. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
+         */
+        "verticalAlignment"?: "top" | "bottom";
     }
     interface SeFab {
         /**

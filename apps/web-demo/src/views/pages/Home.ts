@@ -254,7 +254,7 @@ let Home = {
                   </div>
                   Typography
                   <div slot="end">
-                    <se-dropdown alignment="right" max-width="300px">
+                    <se-dropdown alignment="right" vertical-alignment="top" max-width="300px">
                       <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
                       <se-list option="dropdown">
                         <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>

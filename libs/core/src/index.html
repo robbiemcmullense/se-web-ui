@@ -340,12 +340,24 @@
 
 
 
-        <se-container display="grid" padding="large" color="alternative">
-            <se-block>
-              <se-block-header>
-                Typography
+          <se-container color="none" display="grid" column-size="350px" row-size="350px">
+          <se-block option="card-old" color="none" outline="false" corner="none" outline-color="secondary" clickable="false" id="block0">
+            <se-block-header style="padding:20px">
+              <div slot="start">
+                <se-icon color="primary">airconditioner_hot_heating</se-icon>
+              </div>
+              Typography
                 <div slot="end">
-                  <se-icon option="button" color="alternative" onclick="toggle(1)">presentation_mode</se-icon>
+                  <se-dropdown alignment="right" vertical-alignment="top" max-width="300px">
+                    <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
+                    <se-list option="dropdown">
+                      <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
+                      <se-list-item item="my item 2 no description  with a long text long text"></se-list-item>
+                      <se-list-item item="my item 3 no icon"></se-list-item>
+                    </se-list>
+                  </se-dropdown>
+                  <se-icon option="button" color="alternative" onclick="toggle(0)">presentation_mode</se-icon>
+
                 </div>
               </se-block-header>
               <se-block-content>
