@@ -237,8 +237,8 @@ export class SeDivider {
 }
 
 export declare interface SeDropdown extends Components.SeDropdown {}
-@ProxyCmp({inputs: ['alignment', 'maxHeight', 'maxWidth'], 'methods': ['open', 'close']})
-@Component({ selector: 'se-dropdown', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignment', 'maxHeight', 'maxWidth'] })
+@ProxyCmp({inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'], 'methods': ['open', 'close']})
+@Component({ selector: 'se-dropdown', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'] })
 export class SeDropdown {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
@@ -506,8 +506,8 @@ export class SeStepperItem {
 }
 
 export declare interface SeTabbar extends Components.SeTabbar {}
-@ProxyCmp({inputs: ['color', 'option']})
-@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
+@ProxyCmp({inputs: ['color', 'option', 'overflow']})
+@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option', 'overflow'] })
 export class SeTabbar {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

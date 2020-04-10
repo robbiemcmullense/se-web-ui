@@ -340,28 +340,15 @@
 
 
 
-        <se-container padding="large" color="alternative">
-          <se-table style="max-height:350px">
-            <se-table-group-header>
-                <se-table-item-header width="72px"></se-table-item-header>
-                <se-table-item-header width="72px"></se-table-item-header>
-                <se-table-item-header sort="asc">Title</se-table-item-header>
-                <se-table-item-header flex="50%" sort="none">Secondary Info</se-table-item-header>
-                <se-table-item-header clickable={true}><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
-            </se-table-group-header>
-            <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button">arrow2_up</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
-                <se-table-item title="best practice is to provide a title in case all content is not visible">Testing 1 with a very long title that continues on</se-table-item>
-                <se-table-item flex="50%">2nd test</se-table-item>
-                <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
-                <div slot="detail" style="padding:12px 24px">
-                  <h4>You may put any type of content here</h4>
-                  <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
-                </div>
-                Typography
+          <se-container color="none" display="grid" column-size="350px" row-size="350px">
+          <se-block option="card-old" color="none" outline="false" corner="none" outline-color="secondary" clickable="false" id="block0">
+            <se-block-header style="padding:20px">
+              <div slot="start">
+                <se-icon color="primary">airconditioner_hot_heating</se-icon>
+              </div>
+              Typography
                 <div slot="end">
-                  <se-dropdown alignment="right" max-width="300px">
+                  <se-dropdown alignment="right" vertical-alignment="top" max-width="300px">
                     <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
                     <se-list option="dropdown">
                       <se-list-item item="I'm in a 300px wide dropdown"></se-list-item>
@@ -370,6 +357,7 @@
                     </se-list>
                   </se-dropdown>
                   <se-icon option="button" color="alternative" onclick="toggle(0)">presentation_mode</se-icon>
+
                 </div>
               </se-block-header>
               <se-block-content>
@@ -884,6 +872,12 @@
                 <se-tabbar color="alternative">
                   <nav>
                     <a class="active">Home</a><a>Another</a><a disabled>Another</a><a>Another</a><a>Another</a>
+                  </nav>
+                </se-tabbar>
+                <br>
+                <se-tabbar overflow="stack" color="alternative">
+                  <nav>
+                    <a class="active">Stacking Home</a><a>Another Item</a><a disabled>Another Longer Item</a><a disabled>Another Longer Item</a><a disabled>Another Longer Item</a><a disabled>Another Longer Item</a><a>Another</a><a>And Another</a>
                   </nav>
                 </se-tabbar>
                 <br>
