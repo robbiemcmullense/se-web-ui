@@ -7,7 +7,7 @@ import { JSX } from '@se/web-ui';
 
 import { defineCustomElements, applyPolyfills } from '@se/web-ui/loader';
 
-applyPolyfills().then(() => { defineCustomElements(window); });
+applyPolyfills().then(() => defineCustomElements());
 export const SeAbout = /*@__PURE__*/createReactComponent<JSX.SeAbout, HTMLSeAboutElement>('se-about');
 export const SeApp = /*@__PURE__*/createReactComponent<JSX.SeApp, HTMLSeAppElement>('se-app');
 export const SeAuthentication = /*@__PURE__*/createReactComponent<JSX.SeAuthentication, HTMLSeAuthenticationElement>('se-authentication');
