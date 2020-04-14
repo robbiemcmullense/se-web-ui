@@ -1,6 +1,5 @@
 {
   "name": "@se/web-ui",
-  "version": "3.6.3",
   "description": "web-ui library of web-component to build SE application",
   "main": "index.js",
   "module": "index.mjs",
