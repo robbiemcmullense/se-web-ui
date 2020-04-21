@@ -94,7 +94,7 @@ There is different way to develop a component in the core folder (StencilJs).
     #...
     ```
 
-## Update the storybook
+### Update the storybook
 
 The `core` folder also have a [storybook](https://storybook.js.org/) capability to insure that each component can be tested with all the different use case and properties. This will help for development and for QA to insure consistent behavior between version.
 

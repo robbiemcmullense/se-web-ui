@@ -72,15 +72,16 @@ Events in components shold follow 2 rules:
 
 Each component that use the `Host` as root element should be carefull with any classes they us at this level since those classes could be modified by the external css classes. Use very specific classes if needed (.block-full-width)  
 
-### Specs
-
-The purpose of unit tests are to validate individual portions of your source code to ensure that it is functioning correctly.  You will want to test the instantiation of your component, as well as its default property settings and its methods.
-
 ### Stories
 
 The `.stories.ts` file in each component folder follow are used by the `storybook` library that can be started by `yarn storybook`.
 Each stories should represent each properties available that could be modified by a developer and provide different use case of it.
 On case of multiple linked component, only the parent component should have a `.stories.ts` file. Ex: `se-list` component will have all the stories for `se-list-group` and `se-list-item`.
+
+### Specs
+
+The purpose of unit tests are to validate individual portions of your source code to ensure that it is functioning correctly.  You will want to test the instantiation of your component, as well as its default property settings and its methods.
+
 
 **Example Unit Test**
 
