@@ -16,7 +16,8 @@ To help out on the testing, we also used [https://storybook.js.org/](https://sto
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in this repository.
-`
+
+
     .
     ├── apps
     │  ├── angular-demo        // Angular specific app
@@ -24,19 +25,20 @@ A quick look at the top-level files and directories you'll see in this repositor
     │  ├── react-demo        
     │  ├── react-demo-e2e    
     ├── libs                  // All libs shared and deployed
-    │  ├── base                // core web-ui library
+    │  ├── core                // core web-ui library
     │  │  ├── core                // @se/web-ui  (StencilJs)
     │  │  ├── angular             // @se/web-ui-angular
     │  │  ├── react               // @se/web-ui-react 
-    │  ├── widget              // core web-ui library
-    │  │  ├── core                // @se/web-ui-widget  (StencilJs)
-    │  │  ├── angular             // @se/web-ui-widget-angular
-    │  │  ├── react               // @se/web-ui-widget-react
+    │  ├── product              // product / technical library
+    │  │  ├── core                // @se/web-ui-product  (StencilJs)
+    │  │  ├── angular             // @se/web-ui-product-angular
+    │  │  ├── react               // @se/web-ui-product-react
     │  ├── utils
     ├── package.json          // Centralized package.json
     ├── LICENSE
     ├── workspace.json        // Defined all nx apps and libraries
     └── README.md
+
 
 **PS :** To start, the StencilJs (`core`) library needs to be compile to generate the codes in `react` and `angular`. 
 
@@ -47,107 +49,100 @@ A quick look at the top-level files and directories you'll see in this repositor
 3. Run `yarn install` from the root directory.
 
 
-## Demo application
+## Develop
 
-Run any demo application: 
+In the `nx.dev` ecosystem, anything run based on the same convention:
+```sh
+yarn <nx_script> <application|library>
 ```
-yarn <nx_script> <application>
-```
+
+All information about those script can be find in the `workspace.json` file.
+
+
+### Demo application
+
+A set of application test has been created to help debugging and testing each implementation. Make sure that they all have e2e and unit testing passing.
 
 For example:
-```
-# React demo
+```sh
+# Start a demo
 yarn start react-demo               
-yarn start react-demo-e2e
-
-#  Angular demo
 yarn start angular-demo
-yarn start angular-demo-e2e
-
-# Vanilla JS (pure web-component with no framework)
 yarn start web-demo      
-yarn start web-demo-e2e
 
-# Base Core library (web-component with stencilJs)
-yarn start core
-yarn build core
-
-# Storybook (In the core folder)
-yarn Storybook
+#  Run the `apps/<demo>-e2e` project
+yarn e2e react-demo-e2e
+yarn e2e angular-demo-e2e
+yarn e2e web-demo-e2e
 ```
 
-**PS :** All library and app depends on the core lib being built first. make sure you run `yarn build core` before starting to run any apps or storybook
+### Develop in the core library
 
-## Storybook
+There is different way to develop a component in the core folder (StencilJs).
+1. Run a quick env to debug/quick fix. The application test is the `core/src/index.html` file and allow fast reload capability.
+    ```sh 
+    yarn start core
+    ```
+2. Run with another demo/storybook. Open a new terminal and let the script running.
+    ```sh
+    yarn watch
+    ```
+    Then run the application
+    ```sh
+    yarn storybook
+    yarn start react-demo
+    #...
+    ```
 
-```
-yarn nx run core:storybook
-```
+## Update the storybook
 
-To build the storybook
-```
-yarn nx run core:build-storybook
-```
+The `core` folder also have a [storybook](https://storybook.js.org/) capability to insure that each component can be tested with all the different use case and properties. This will help for development and for QA to insure consistent behavior between version.
 
-## Core library (web-ui components)
-
-Since the core folder is based on StencilJs which is for now not supported by `nx` workspace, we need to run the different commands based on the core script. 
-
-```
-yarn core <Script>
-```
-
-To develope on the web-component library, you then simply need to run:
-```
-yarn core watch
-```
-Any change on the web-component will automatically update the angular and react code that will automatically relaunch the demo app you are working on.
+To work with the storybook, first run `yarn build core` (or `watch` if actively developing a web-component), then run `yarn storybook`
 
 
-## Test or build the libraries 
+### Test or build the libraries 
 
-The `react` an `angular` library follows the same nx workspace convention:
+The `core`, `react` and `angular` library follows the same nx workspace convention:
 ```sh
 # Test
+yarn test core
 yarn test angular
 yarn test react
 
 # Build
+yarn build core
 yarn build angular
 yarn build react
 ```
 
-To build and test the StencilJs library (core folder), you need to run:
-
-```sh
-# Test
-yarn core test
-
-# Build
-yarn core build
-```
+The core library need to be run first since it will also automatically generate the proxy for each `react` and `angular` application to work. To have more info, take a look at `core/stencil.conf.ts` file.
 
 All library will build in the `dist/libs` folder as everything else in the nx workspace.
 
-**Note :** Except the core library (web-ui), libraries do not need to be built to work with the demo application. 
+**Note :** Except the core library (web-ui), libraries do not need to be built to work with the demo application, they can all be references by:
+- `@se/web-ui-react` point to `libs/react`
+- `@se/web-ui-angular` point to `libs/angular`
 
-## Connect to your project locally
+All type links are defined in `./tsconfig.json` file.
+
+### Connect to your project locally
 
 To connect your project with any library locally: 
 1. Build each libraries (previous section),
 1. Create a global link with yarn
-    ```
+    ```sh
     yarn link:core              // to create @se/web-ui locally
     yarn link:angular           // to create @se/web-ui-angular locally
     yarn link:react             // to create @se/web-ui-react locally
     ```
 2. In your project folder:
-    ```
+    ```sh
     yarn link @se/web-ui @se/web-ui-angular @se/web-ui-react
     ```
 
-**PS: ** When in an angular project, you may have an issue of linking yarn locally because of references. To fix it, you need to update your `tsconfig.json` file with:
-  ```
+**PS:** When in an angular project, you may have an issue of linking yarn locally because of references. To fix it, you need to update your `tsconfig.json` file with:
+  ```js
   "paths": {
       // When using yarn link
       "@angular/*": ["../node_modules/@angular/*"],
@@ -155,6 +150,24 @@ To connect your project with any library locally:
       // ... any other path you may already have
     }
   ```
+
+# Contribute
+
+Each component in the core library are common to any SE application such as technical or customer facing app (DCX). This is important to keep in mind when contributing to the library when fixing a bug or creating a new feature.
+
+Each creation of a new feature should follow the same process:
+- Look if the issue does not exist in [github](https://github.schneider-electric.com/IoT/web-ui/issues) yet,
+- Create a new [feature/bug issue](https://github.schneider-electric.com/IoT/web-ui/issues/new/choose) that will be approved by the development team or the design team to insure consistencies with patterns,
+- Fork the latest and greatest `develop` branch,
+- Create a feature/bugfix branch that relate to your development,
+- Follow the [convention guideline](./libs/core/readme.md) to improve/fix/create the component,
+- Do your duty in unit test, specs and e2e testing for each component,
+- Upate/make a new story for the [stroybook](https://pages.github.schneider-electric.com/IoT/web-ui/) to help testing the different use case of the components,
+- Test the component in any demo app and insure that there is no breaking changes,
+- Make a PR back to the `develop`,
+- Wait and see your PR being accepted and deployed to the next release!
+
+
 
 # Adding capabilities to your workspace
 
@@ -202,25 +215,16 @@ Run `yarn nx serve my-app` for a dev server. Navigate to http://localhost:4200/.
 
 Run `yarn nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
 
-## Build
-
-Run `yarn nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `yarn nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `yarn nx affected:test` to execute the unit tests affected by a change.
 
 ## Running end-to-end tests
 
-Run `yarn ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+Run `yarn e2e my-app-e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
-Run `yarn nx affected:e2e` to execute the end-to-end tests affected by a change.
+Run `yarn affected:e2e` to execute the end-to-end tests affected by a change.
 
 ## Understand your workspace
 
-Run `yarn nx dep-graph` to see a diagram of the dependencies of your projects.
+Run `yarn dep-graph` to see a diagram of the dependencies of your projects.
 
 ## Further help
 

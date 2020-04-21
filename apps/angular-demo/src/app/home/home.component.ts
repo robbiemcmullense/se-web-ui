@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
 
   showDialog(): void {
     const confirm = this.dialogService.confirm({
+      canBackdrop: false,
       title: 'Dialog Confirm',
       message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     });
