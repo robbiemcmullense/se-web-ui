@@ -8,6 +8,14 @@ import { ComponentInjector } from '../shared/component-injector';
 })
 export class SnackbarService {
 
+  defaultConfig: SnackbarConfig = {
+    type: 'information',
+    icon: 'information_circle',
+    canClose: false,
+    duration: 5000,
+    message: ''
+  }
+
   /**
    * @description ComponentRef of Snackbar Component
    */
@@ -23,7 +31,7 @@ export class SnackbarService {
    */
   appendSnackbarComponentToBody(config: SnackbarConfig) {
 
-    //create a map with the config 
+    //create a map with the config
     const map = new WeakMap();
     map.set(SnackbarConfig, config);
 
@@ -34,7 +42,7 @@ export class SnackbarService {
     document.body.appendChild(domElem);
     this.snackbarComponentRef = componentRef;
 
-    //returning snackbar component refernce
+    //returning snackbar component reference
     return this.snackbarComponentRef;
   }
 
@@ -50,36 +58,28 @@ export class SnackbarService {
   /**
    * @name open
    * @description method to open snackbar
-   * @param config 
+   * @param config
    * @returns reference of snackbar component
    */
   public open(config: SnackbarConfig) {
     if (this.snackbarComponentRef) {
       this.removeSnackBarComponent();
     }
-    if (!config.type) {
-      config.type = 'information';
-    }
-    if (!config.icon) {
-      config.icon = 'information_circle';
-    }
-    if (!config.duration) {
-      config.duration = 5000;
-    }
-    const ref = this.appendSnackbarComponentToBody(config);
-    //subscribing SnackbarComponent instace event while closing snackbar
+    const userConf = {...this.defaultConfig, ...config}
+    const ref = this.appendSnackbarComponentToBody(userConf);
+    //subscribing SnackbarComponent instance event while closing snackbar
     const sub = this.snackbarComponentRef.instance.didClose.subscribe(() => {
       this.removeSnackBarComponent();
       sub.unsubscribe();
     });
-    this.autoDismiss(config.canClose, config.duration);
+    this.autoDismiss(userConf.canClose, userConf.duration);
     return ref;
   }
 
   /**
    * @name autoDismiss
    * @description method called if canClose attribute is false to close the snackbar authomatically
-   * @param canClose 
+   * @param canClose
    */
   autoDismiss(canClose: boolean, duration: number) {
     if (!canClose) {

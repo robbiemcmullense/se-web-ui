@@ -25,7 +25,12 @@ export const MODAL_DATA = new InjectionToken<any>('ModalData');
 })
 export class DialogService {
   closeEvent: any;
-
+  defaultConfig: DialogConfig = {
+    canBackdrop: true,
+    color: 'primary',
+    size: 'medium',
+    data: {}
+  }
   public componentRef: ComponentRef<any>;
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -38,29 +43,14 @@ export class DialogService {
    */
   public createDialogComponent(
     componentType: Type<any>,
-    config?: DialogConfig
+    config: DialogConfig = {}
   ) {
-    if (!config) {
-      config = {
-        canBackdrop: true,
-        color: 'primary',
-        size: 'medium',
-        data: {}
-      }
-    }
-    if (!config.canBackdrop) {
-      config.canBackdrop = true;
-    }
-    if (!config.color) {
-      config.color = 'primary';
-    }
-    if (!config.size) {
-      config.size = 'medium';
-    }
-    const userConf = config || {};
+
+    const userConf: DialogConfig = {...this.defaultConfig, ...config}
+
     // MODAL_DATA added as DI based on config.data
     const map = new WeakMap<any, any>([
-      [MODAL_DATA, config.data ? config.data : {}]
+      [MODAL_DATA, userConf.data]
     ]);
 
     map.set(DialogConfig, userConf);
