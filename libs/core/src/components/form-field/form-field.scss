@@ -49,6 +49,7 @@ label {
 }
 .wrapper-input {
   max-width: $max-width-input;
+  flex-direction: column;
   width: auto;
   @include align-items(left);
   display: flex;
