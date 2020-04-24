@@ -13,15 +13,15 @@ storiesOf('Table', module)
     return `
         <se-table>
             <se-table-group-header>
-                <se-table-item-header width="72px"></se-table-item-header>
-                <se-table-item-header width="72px"></se-table-item-header>
+                <se-table-item-header width="58px"></se-table-item-header>
+                <se-table-item-header width="58px"></se-table-item-header>
                 <se-table-item-header sort=${sort}>Title</se-table-item-header>
                 <se-table-item-header flex="50%" sort="none">Secondary Info</se-table-item-header>
                 <se-table-item-header clickable="true"><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
             </se-table-group-header>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button">arrow2_up</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox selected="false"></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button">arrow2_up</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox selected="false"></se-checkbox></se-table-item>
                 <se-table-item title="best practice is to provide a title in case all content is not visible">Testing 1 with a very long title that continues on</se-table-item>
                 <se-table-item flex="50%">1st test</se-table-item>
                 <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
@@ -31,8 +31,8 @@ storiesOf('Table', module)
                 </div>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item title="best practice is to provide a title in case all content is not visible">Testing 1.5</se-table-item>
                 <se-table-item flex="50%">1st test - with the detail section hidden</se-table-item>
                 <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
@@ -42,57 +42,57 @@ storiesOf('Table', module)
                 </div>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item>Last group with some more info</se-table-item>
                 <se-table-item flex="50%">Test item 2</se-table-item>
                 <se-table-item>Very last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true" selected=${selected}>
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox selected=${selected}></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox selected=${selected}></se-checkbox></se-table-item>
                 <se-table-item>Group 2</se-table-item>
                 <se-table-item flex="50%">Another test item with a lot more content than the other items so that we can see what happens when there is multiple lines of information that needs to be shown</se-table-item>
                 <se-table-item>Last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item>Testing 1</se-table-item>
                 <se-table-item flex="50%">2nd test</se-table-item>
                 <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item>Group 2</se-table-item>
                 <se-table-item flex="50%">Another test item with a lot more content than the other items</se-table-item>
                 <se-table-item>Last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item>Last group with some more info</se-table-item>
                 <se-table-item flex="50%">Test item 2</se-table-item>
                 <se-table-item>Very last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item>Testing 1</se-table-item>
                 <se-table-item flex="50%">2nd test</se-table-item>
                 <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item>Group 2</se-table-item>
                 <se-table-item flex="50%">Another test item with a lot more content than the other items</se-table-item>
                 <se-table-item>Last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-                <se-table-item width="72px"><se-checkbox></se-checkbox></se-table-item>
+                <se-table-item width="58px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="58px"><se-checkbox></se-checkbox></se-table-item>
                 <se-table-item>Last group with some more info</se-table-item>
                 <se-table-item flex="50%">Test item 2</se-table-item>
                 <se-table-item>Very last test item</se-table-item>

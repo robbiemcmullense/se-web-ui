@@ -8,7 +8,7 @@
   flex-shrink: 1;
   flex-basis: 0px;
   width: 0;
-  min-width: 72px;
+  min-width: 58px;
   border: 1px solid $divider-color;
   border-right: none;
   max-width: 100%;
@@ -27,7 +27,7 @@
   min-height: 47px;
   height: 20px;
   margin: 0;
-  padding: 0 24px;
+  padding: 0 16px;
   overflow: hidden;
   @include typology('base');
   position: relative;
