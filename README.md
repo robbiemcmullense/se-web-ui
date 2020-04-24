@@ -85,7 +85,7 @@ There is different way to develop a component in the core folder (StencilJs).
     ```
 2. Run with another demo/storybook. Open a new terminal and let the script running.
     ```sh
-    yarn watch
+    yarn start core
     ```
     Then run the application
     ```sh

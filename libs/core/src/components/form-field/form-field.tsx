@@ -118,7 +118,7 @@ export class FormFieldComponent {
         <div class={[this.status, this.option, this.type, this.block].join(' ')}>
           <div class="form-field-wrapper" data-disabled={this.disabled}>
             <label class={[`se-label`, this.option].join(' ')}>
-              <span style={{'width': this.labelWidth}}>
+              <span style={{'width': this.option !== 'stacked' ? this.labelWidth : '100%'}}>
                 {this.label}
                 {this.required ? <span class="required">*</span> : ''}
               </span>

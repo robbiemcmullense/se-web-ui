@@ -52,6 +52,7 @@ label {
   flex-direction: column;
   width: auto;
   @include align-items(left);
+  text-align: left;
   display: flex;
 }
 
