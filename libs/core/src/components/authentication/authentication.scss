@@ -24,7 +24,9 @@
   .content-wrapper {
     margin: 18px auto;
     max-width: 960px;
-    height: 575px;
+    // Fixes #332
+    min-height: 575px;
+    height: auto;
   }
 }
 
@@ -67,10 +69,16 @@
 main {
   height: 36.5%;
   overflow: hidden;
-  @include flex(0, 0, auto);
+  @include flex(1, 1, auto);
   @include display-flex();
   @include flex-direction(column);
   @include justify-content(flex-end);
+
+  // IE11 behaves differently than the rest of the browsers
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @include flex(0, 0, auto);
+    min-height: 210px; // 36.5% of 575px
+  }
 
   .green-bars {
     z-index: 2;
