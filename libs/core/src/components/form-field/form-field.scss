@@ -1,7 +1,6 @@
-@import "../../theme/theme";
+@import '../../theme/theme';
 
 $max-width-input: 320px;
-
 
 // .checkbox, .radio {
 //   .form-field-wrapper {
@@ -30,10 +29,11 @@ label {
   @include display-flex;
   @include justify-content(center);
   @include align-items(center);
-  >span {
-    @include flex(1, 1, 40%);
-    max-width: 140px;
+  > span {
+    // @include flex(40%);
+    // max-width: 140px;
     text-align: right;
+    min-width: 140px;
   }
   .required {
     @include color('error');
@@ -41,29 +41,65 @@ label {
   }
 }
 .wrapper {
-  display: flex;
-  padding-left: $spacing-large;
-  flex-basis: 60%;
-  max-width: $max-width-input;
+  padding-left: 16px;
+  // flex-basis: 60%;
+  // max-width: 320px;
   font-size: 16px;
   width: 100%;
+}
+.wrapper-input {
+  max-width: $max-width-input;
+  width: auto;
   @include align-items(left);
+  display: flex;
 }
 
-
-::slotted(input),::slotted(select), ::slotted(textarea) {
+::slotted(input),
+::slotted(select),
+::slotted(textarea) {
   width: 100%;
   padding: $spacing-small;
   font-size: inherit;
 }
 
+:host(.ff-block) {
+  label {
+    // justify-content: flex-start;
+    > span {
+      // @include flex(1, 1, 140px);
+      text-align: right;
+    }
+    &.stacked {
+      > span {
+        text-align: left;
+        // margin-left: 0;
+      }
+    }
+  }
+  .wrapper {
+    // @include flex(1, 1, auto);
+    max-width: 100%;
+  }
+  .wrapper-input{
+    max-width: 100%;
+  }
+
+  ::slotted(select) {
+    width: 100%;
+  }
+
+  ::slotted(input),
+  ::slotted(textarea) {
+    width: calc(100% - 10px);
+  }
+}
 
 ::slotted(input) {
   height: 28px;
   border: 1px solid;
   @include border-color('hover-standard');
   font-family: inherit;
-  transition: .2s;
+  transition: 0.2s;
   @include background-color('alternative');
 }
 
@@ -80,24 +116,23 @@ label {
 ::slotted(input:focus) {
   outline: none;
   border: 1px solid;
-  @include border-color('primary')
+  @include border-color('primary');
 }
 
-::slotted(input[type="date"]) {
+::slotted(input[type='date']) {
   height: 20px;
   padding: $spacing-small;
   height: 28px;
 }
 
 //@-moz-document url-prefix()is deprecated
-@media screen and (min--moz-device-pixel-ratio:0) {
-  ::slotted(input[type="date"]) {
+@media screen and (min--moz-device-pixel-ratio: 0) {
+  ::slotted(input[type='date']) {
     padding-top: 6px;
     padding-bottom: 4px;
     // padding-right: 5px;
   }
 }
-
 
 ::slotted(select) {
   height: 32px;
@@ -124,10 +159,10 @@ label {
 
 ::slotted(input:focus),
 ::slotted(select:focus),
-::slotted(textarea:focus){
+::slotted(textarea:focus) {
   outline: none;
   border: 1px solid;
-  @include border-color('primary')
+  @include border-color('primary');
 }
 
 .stacked {
@@ -148,7 +183,7 @@ label {
     line-height: 12px;
     width: 100%;
     display: block;
-    >span {
+    > span {
       margin-left: $spacing;
       display: block;
       max-width: none;
@@ -190,7 +225,6 @@ label {
 .success {
   ::slotted(input) {
     border: 1px solid;
-    @include border-color('success')
+    @include border-color('success');
   }
 }
-

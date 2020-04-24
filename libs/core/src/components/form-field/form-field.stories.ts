@@ -40,9 +40,10 @@ storiesOf('Form Field', module)
   .add('Form Field Input', () => {
     const option = select('option', layoutOption, 'inline');
     const inputType = select('inputType', inputTypeOption, 'text');
-    const label = text('label', 'Input');
+    const label = text('label', 'My label');
     const required = boolean('required', false);
     const disabled = boolean('disabled', false);
+    const block = boolean('block', false)
 
     return `
       <se-form-field
@@ -51,6 +52,7 @@ storiesOf('Form Field', module)
         label='${label}'
         required='${required}'
         disabled='${disabled}'
+        block='${block}'
         >
         <input type='${inputType}' />
       </se-form-field>
@@ -61,6 +63,7 @@ storiesOf('Form Field', module)
     const label = text('label', 'Select');
     const required = boolean('required', false);
     const disabled = boolean('disabled', false);
+    const block = boolean('block', false)
 
     return `
       <se-form-field
@@ -69,6 +72,7 @@ storiesOf('Form Field', module)
         label='${label}'
         required='${required}'
         disabled='${disabled}'
+        block='${block}'
         >
         <select>
           <option>Option 1</option>
@@ -81,9 +85,10 @@ storiesOf('Form Field', module)
   .add('Form Field Textarea', () => {
     const option = select('option', layoutOption, 'inline');
     const rows = number('rows', 3);
-    const label = text('label', 'Textarea');
+    const label = text('label', 'Input');
     const required = boolean('required', false);
     const disabled = boolean('disabled', false);
+    const block = boolean('block', false)
 
     return `
       <se-form-field
@@ -92,6 +97,7 @@ storiesOf('Form Field', module)
         label='${label}'
         required='${required}'
         disabled='${disabled}'
+        block='${block}'
         >
         <textarea rows='${rows}'></textarea>
       </se-form-field>
@@ -100,33 +106,41 @@ storiesOf('Form Field', module)
   .add('Form Field Multiple', () => {
     const option = select('option', layoutOption, 'inline');
     const disabled = boolean('disabled', false);
+    const block = boolean('block', false)
+    const labelWidth = text('label-width', '35%')
 
     return `
       <se-block>
       <se-form-field
+        block='${block}'
         type='checkbox'
         option='${option}'
         label='chekbox'
         required='true'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <se-checkbox></se-checkbox>
       </se-form-field>
       <se-form-field
+        block='${block}'
         type='another checkbox'
         option='${option}'
         label='chekbox'
         required='true'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <se-checkbox option="switch"></se-checkbox>
       </se-form-field>
       <se-form-field
+        block='${block}'
         type='radio'
         option='${option}'
         label='radio!!!'
         required='true'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <se-radio-group>
           <se-radio value="first" label="Radio Label 1"></se-radio>
@@ -135,33 +149,41 @@ storiesOf('Form Field', module)
         </se-radio-group>
       </se-form-field>
       <se-form-field
+        block='${block}'
         option='${option}'
         label='Some unstyled text'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <div>Some text alined</div>
       </se-form-field>
       <se-form-field
+        block='${block}'
         option='${option}'
+        label-width='${labelWidth}'
         label='Some bold text'
         >
         <div><b>Some bold text alined with the rest</b></div>
       </se-form-field>
       <se-form-field
+        block='${block}'
         type='input'
         option='${option}'
         label='Input'
         required='true'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <input type="text" />
       </se-form-field>
       <se-form-field
+        block='${block}'
         type='select'
         option='${option}'
         label='Select'
         required='true'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <select>
           <option>Option 1</option>
@@ -170,20 +192,24 @@ storiesOf('Form Field', module)
         </select>
       </se-form-field>
       <se-form-field
+        block='${block}'
         type='input'
         option='${option}'
         label='Textarea'
         required='true'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <textarea rows='3'></textarea>
       </se-form-field>
       <se-form-field
+        block='${block}'
         type='input'
         option='${option}'
         label='Date'
         required='true'
         disabled='${disabled}'
+        label-width='${labelWidth}'
         >
         <input type="date" />
       </se-form-field>

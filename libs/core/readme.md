@@ -37,8 +37,8 @@ to simplify the use of css variable, you can use the following `scss` mixin like
 
 :host {
   .myElement {
-    @include background-color-property($standard, 'standard');
-    @include color-property($standard-contrast, 'standard-contrast');
+    @include background-color($standard, 'standard');
+    @include color($standard-contrast, 'standard-contrast');
   }
 }
 

@@ -20,6 +20,10 @@ describe('FormFieldComponent', () => {
 		expect(formField.type).toEqual('input');
 	});
 
+	it('should not have an undefined block value', () => {
+		expect(formField.block).toBeUndefined();
+	});
+
 	it('should render in input mode by default', async() => {
 		const page = await newSpecPage({
 			components: [FormFieldComponent],

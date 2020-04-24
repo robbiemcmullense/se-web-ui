@@ -1,15 +1,16 @@
 @import "../../theme/theme";
 
+
+:host{
+  width: 100%;
+}
+
 :root {
   @each $element, $value in $seTheme {
     @include define-custom-property($element, $value);
   }
 }
 
-
-:host{
-  width: 100%;
-}
 .se-app-body {
   overflow: hidden;
   margin: 0 !important;
@@ -18,8 +19,8 @@
   @include display-flex();
   @include flex-direction(column);
   @include background-color('background');
-
 }
+
 body {
   @include background-color('background');
 }

@@ -463,6 +463,10 @@ export namespace Components {
     }
     interface SeFormField {
         /**
+          * Optional property that defines if the field displays as a block in it's container. When set to true, the field will be as wide as its container. both field label auto adjust when it set to inline
+         */
+        "block": boolean;
+        /**
           * Optional property that defines if the form field is disabled.  Set to `false` by default.
          */
         "disabled": boolean;
@@ -470,6 +474,10 @@ export namespace Components {
           * Defines the text value of the label in your form field.
          */
         "label": string;
+        /**
+          * Optional property to define the proportion of the label width. The content (input) will take the rest of if. Defaulted to 40%
+         */
+        "labelWidth": string;
         /**
           * Defines the layout of your form field. `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
          */
@@ -1798,6 +1806,10 @@ declare namespace LocalJSX {
     }
     interface SeFormField {
         /**
+          * Optional property that defines if the field displays as a block in it's container. When set to true, the field will be as wide as its container. both field label auto adjust when it set to inline
+         */
+        "block"?: boolean;
+        /**
           * Optional property that defines if the form field is disabled.  Set to `false` by default.
          */
         "disabled"?: boolean;
@@ -1805,6 +1817,10 @@ declare namespace LocalJSX {
           * Defines the text value of the label in your form field.
          */
         "label"?: string;
+        /**
+          * Optional property to define the proportion of the label width. The content (input) will take the rest of if. Defaulted to 40%
+         */
+        "labelWidth"?: string;
         /**
           * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
          */
