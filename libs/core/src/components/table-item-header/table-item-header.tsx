@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Watch, State } from "@stencil/core";
+import { Component, Host, h, Prop, Element, State } from "@stencil/core";
 import arrow4Top from "@se/icons/svg/arrow4_top.svg";
 
 @Component({
@@ -13,16 +13,16 @@ export class TableItemHeaderComponent {
   * Defines the specific flex-basis of a block.
   */
   @Prop() flex: string;
-  @Watch("flex") flexDidChange() {
-    this.updateSize();
-  }
+
   /**
   * Defines the specific width of a block, for items that should not be flexible.
   */
   @Prop() width: string;
-  @Watch("width") widthDidChange() {
-    this.updateSize();
-  }
+
+  /**
+  * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+  */
+  @Prop() minWidth: string;
 
   /**
    * Optional property defines the tag type within the `se-table-item`.
@@ -47,23 +47,7 @@ export class TableItemHeaderComponent {
     }
   }
 
-  updateSize() {
-    // reset all sizes first
-    this.el.style.flex = '';
-    if (this.flex) {
-      this.el.style.flex = this.flex;
-    }
-    this.el.style.maxWidth = '';
-    if (!!this.width) {
-      this.el.style.maxWidth = this.width;
-    }
-  }
-
   componentWillLoad() {
-    this.updateSize();
-  }
-
-  componentDidLoad() {
     this.setButtonId();
   }
 
@@ -71,6 +55,13 @@ export class TableItemHeaderComponent {
     let ariaLabelSort
     let color
     const isSortable = !!this.sort as boolean;
+
+    const displayStyle = {
+      flex: this.flex || '',
+      maxWidth: this.width || '',
+      width: this.width || '',
+      minWidth: this.minWidth || ''
+    }
 
     if (isSortable) {
       this.clickable = true;
@@ -90,6 +81,7 @@ export class TableItemHeaderComponent {
         role="cell"
         class={["se-table-item", isSortable ? `sort-${this.sort}` : ''].join(' ')}
         id={this.innerId}
+        style={displayStyle}
         >
         <TagType class={"table-item-content"} aria-label={ariaLabelSort}>
           <div class="table-item-label"><slot></slot></div>

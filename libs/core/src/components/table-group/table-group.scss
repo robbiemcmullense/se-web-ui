@@ -2,7 +2,9 @@
 
 :host {
   @include background-color('alternative');
-  display: block;
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 100%;
   margin: 0;
   padding: 0;
   transition: .2s;
@@ -11,7 +13,9 @@
 
 .table-group-row {
   @include display-flex();
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  flex-flow: row;
+
 }
 
 ::slotted(*[slot="detail"]) {

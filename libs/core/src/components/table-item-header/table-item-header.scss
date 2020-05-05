@@ -1,17 +1,12 @@
 @import "../../theme/theme";
+@import "../table-item/table-item";
 
 :host {
   font-weight: 500;
-  margin: 0;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0px;
-  width: 0;
-  min-width: 58px;
   border: 1px solid $divider-color;
   border-right: none;
-  max-width: 100%;
 }
+
 :host(:first-child) {
   border-left: none;
 }
@@ -20,46 +15,15 @@
 }
 
 .table-item-content {
-  overflow: unset;
-  background: none;
-  box-sizing: border-box;
-  border: none;
-  min-height: 47px;
-  height: 20px;
-  margin: 0;
-  padding: 0 16px;
-  @include typology('base');
-  position: relative;
-  outline: none;
-  width: 100%;
-  max-width: 100%;
-  /* inherit font & color from ancestor */
-  color: inherit;
-  font: inherit;
-  @include display-flex();
-  @include align-items(center);
   @include justify-content(space-between);
-  text-align: left; // MS Edge does not support "start"
-  text-align: start;
-  text-decoration: none;
-
-  div {
-    @include ellipsis();
-  }
-
-  .table-item-label {
-    width: 100%;
-    line-height: 24px;
-    // overflow: unset;
-  }
-
-  // &:not([disabled]){
-  //   cursor: pointer;
-  //   &:hover, &:focus{
-  //     background-color: $se-ultra-light-grey-1;
-  //   }
-  // }
 }
+
+// &:not([disabled]){
+//   cursor: pointer;
+//   &:hover, &:focus{
+//     background-color: $se-ultra-light-grey-1;
+//   }
+// }
 
 button:hover {
   cursor: pointer;
@@ -73,3 +37,4 @@ se-icon {
 se-icon.sortable {
   margin-left: calc(#{$spacing} * 1.375);
 }
+

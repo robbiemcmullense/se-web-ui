@@ -9,8 +9,8 @@ export class TableComponent {
 
   render() {
     return <Host role="table">
-      <slot name="start"></slot>
       <div class="table-rows-wrapper">
+      <slot name="start"></slot>
         <slot></slot>
       </div>
     </Host>;

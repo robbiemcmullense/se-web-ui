@@ -2,13 +2,14 @@
 
 :host {
   margin: 0;
-  font-weight: lighter;
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0px;
   width: 0;
   min-width: 58px;
   max-width: 100%;
+
+  font-weight: lighter;
 }
 
 .table-item-content {

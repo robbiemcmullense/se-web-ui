@@ -1,4 +1,4 @@
-import { Component, h, Element, Host, State } from "@stencil/core";
+import { Component, h, Element, Host } from "@stencil/core";
 
 @Component({
   tag: "se-table-group-header",
@@ -7,19 +7,6 @@ import { Component, h, Element, Host, State } from "@stencil/core";
 })
 export class TableGroupHeaderComponent {
   @Element() el: HTMLElement;
-
-  @State() innerId;
-
-  setButtonId() {
-    let id = this.el.getAttribute('id');
-    if (id) {
-      this.innerId = `wc-${id}`;
-    }
-  }
-
-  componentDidLoad() {
-    this.setButtonId();
-  }
 
   render() {
     return (

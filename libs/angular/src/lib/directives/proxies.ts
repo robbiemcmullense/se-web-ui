@@ -551,8 +551,8 @@ export class SeTableGroupHeader {
 }
 
 export declare interface SeTableItem extends Components.SeTableItem {}
-@ProxyCmp({inputs: ['clickable', 'flex', 'option', 'width']})
-@Component({ selector: 'se-table-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'option', 'width'] })
+@ProxyCmp({inputs: ['clickable', 'flex', 'minWidth', 'option', 'width']})
+@Component({ selector: 'se-table-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'minWidth', 'option', 'width'] })
 export class SeTableItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -562,8 +562,8 @@ export class SeTableItem {
 }
 
 export declare interface SeTableItemHeader extends Components.SeTableItemHeader {}
-@ProxyCmp({inputs: ['clickable', 'flex', 'sort', 'width']})
-@Component({ selector: 'se-table-item-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'sort', 'width'] })
+@ProxyCmp({inputs: ['clickable', 'flex', 'minWidth', 'sort', 'width']})
+@Component({ selector: 'se-table-item-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'minWidth', 'sort', 'width'] })
 export class SeTableItemHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

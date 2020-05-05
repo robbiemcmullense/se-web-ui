@@ -19,13 +19,10 @@ export class TableGroupComponent {
   @State() innerId;
 
   setButtonId() {
-    let id = this.el.getAttribute('id');
-    if (id) {
-      this.innerId = `wc-${id}`;
-    }
+    this.innerId = this.el.getAttribute('id') || '';
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.setButtonId();
   }
 
@@ -35,7 +32,7 @@ export class TableGroupComponent {
         role="row"
         class={{ selectable: this.selectable, selected: this.selected }}
       >
-        <div class="table-group-row">
+        <div class="table-group-row" id={`wc-${this.innerId}`}>
           <slot />
         </div>
         <slot name="detail" />

@@ -863,6 +863,10 @@ export namespace Components {
           * Defines the specific flex-basis of a block.
          */
         "flex": string;
+        /**
+          * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+         */
+        "minWidth": string;
         "option": "dropdown" | "text" | "custom";
         /**
           * Defines the specific width of a block, for items that should not be flexible.
@@ -878,6 +882,10 @@ export namespace Components {
           * Defines the specific flex-basis of a block.
          */
         "flex": string;
+        /**
+          * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+         */
+        "minWidth": string;
         /**
           * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
          */
@@ -2238,6 +2246,10 @@ declare namespace LocalJSX {
           * Defines the specific flex-basis of a block.
          */
         "flex"?: string;
+        /**
+          * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+         */
+        "minWidth"?: string;
         "option"?: "dropdown" | "text" | "custom";
         /**
           * Defines the specific width of a block, for items that should not be flexible.
@@ -2253,6 +2265,10 @@ declare namespace LocalJSX {
           * Defines the specific flex-basis of a block.
          */
         "flex"?: string;
+        /**
+          * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+         */
+        "minWidth"?: string;
         /**
           * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
          */

@@ -126,7 +126,7 @@ class Table extends Component<TableProps, TableStates> {
               <SeTableGroupHeader>
                 <SeTableItemHeader width="72px"></SeTableItemHeader>
                 <SeTableItemHeader width="64px"></SeTableItemHeader>
-                <SeTableItemHeader sort="asc">
+                <SeTableItemHeader minWidth="100px" flex="1" sort="asc">
                   <div style={{display:'flex', flexDirection:'column'}}>
                     <span>
                       Cool!!!Cool!!!Cool!! !Cool!!! Cool!!! Cool!!! Cool!!! Cool!!!C ool!!!
@@ -136,10 +136,10 @@ class Table extends Component<TableProps, TableStates> {
                     </small>
                   </div>
                 </SeTableItemHeader>
-                <SeTableItemHeader flex="50%" sort="none">
+                <SeTableItemHeader minWidth="600px" flex="3" sort="none">
                   Secondary Info
                 </SeTableItemHeader>
-                <SeTableItemHeader clickable={true}>
+                <SeTableItemHeader flex="1" clickable={true}>
                   <SeIcon color="primary">airconditioner_hot_heating</SeIcon> -
                   with a lot of extra text to make it as long as possible
                 </SeTableItemHeader>
@@ -155,7 +155,7 @@ class Table extends Component<TableProps, TableStates> {
                     <SeTableItem width="72px">
                       <SeCheckbox selected={row.selected} onDidChange={(e) => { this.selectRow(index)}}></SeCheckbox>
                     </SeTableItem>
-                    <SeTableItem title={row.data.title}>
+                    <SeTableItem  minWidth="100px" flex="1" title={row.data.title}>
                       <div style={{display:'flex', flexDirection:'column'}}>
                         <span>
                           Cool!!!
@@ -165,7 +165,7 @@ class Table extends Component<TableProps, TableStates> {
                         </small>
                       </div>
                     </SeTableItem>
-                    <SeTableItem flex="50%" title={row.data.info}>
+                    <SeTableItem minWidth="600px" flex="3" title={row.data.info}>
                       {/* {row.data.info} */}
                       <div style={{display:'flex', flexDirection:'raw'}}>
                       <SeFormField
@@ -177,7 +177,7 @@ class Table extends Component<TableProps, TableStates> {
                         <SeButton color="secondary" option="outline">Test</SeButton>
                         </div>
                     </SeTableItem>
-                    <SeTableItem>
+                    <SeTableItem flex="1">
                       {row.data.extra}
                     </SeTableItem>
                   {row.expended &&

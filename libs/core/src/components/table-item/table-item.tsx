@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Watch } from "@stencil/core";
+import { Component, Host, h, Prop, Element } from "@stencil/core";
 
 @Component({
   tag: "se-table-item",
@@ -16,16 +16,16 @@ export class TableItemComponent {
   * Defines the specific flex-basis of a block.
   */
   @Prop() flex: string;
-  @Watch("flex") flexDidChange() {
-    this.updateSize();
-  }
   /**
   * Defines the specific width of a block, for items that should not be flexible.
   */
   @Prop() width: string;
-  @Watch("width") widthDidChange() {
-    this.updateSize();
-  }
+
+  /**
+  * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+  */
+  @Prop() minWidth: string;
+
   /**
    * Optional property defines the tag type within the `se-table-item`.
    * Default value `false` defines the tag type as `div`.
@@ -33,28 +33,19 @@ export class TableItemComponent {
    */
   @Prop() clickable = false;
 
-
-  updateSize() {
-    // reset all sizes first
-    this.el.style.flex = '';
-    if (!!this.flex) {
-      this.el.style.flex = this.flex;
-    }
-    this.el.style.maxWidth = '';
-    if (!!this.width) {
-      this.el.style.maxWidth = this.width;
-    }
-  }
-
-  componentWillLoad() {
-    this.updateSize();
-  }
-
   render() {
+    const displayStyle = {
+      flex: this.flex || '',
+      maxWidth: this.width || '',
+      width: this.width || '',
+      minWidth: this.minWidth || ''
+    }
+
     return (
       <Host
         role="cell"
         class={["se-table-item", `opt-${this.option}`].join(' ')}
+        style={displayStyle}
         >
         <div class="table-item-content">
           <div class="table-item-label"><slot></slot></div>
