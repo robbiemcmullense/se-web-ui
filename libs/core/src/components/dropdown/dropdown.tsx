@@ -8,6 +8,10 @@ import { Component, h, Prop, State, Method, Element, Event, EventEmitter, Listen
 export class DropdownComponent {
   @Element() el: HTMLElement;
   /**
+   * Define if we actively manipulate the dropdown
+   */
+  @State() isActive:boolean;
+  /**
    * Defines how to align the dropdown container.
    * `right`: Position the container with respect to the right side of the trigger element.
    * `left`: Position the container with respect to the left side of the trigger element.
@@ -78,26 +82,29 @@ export class DropdownComponent {
 
   @Listen('cancelAllDropdown', { target: 'window' })
   handleCancelAllDropdown() {
-    if (this.opened) {
+    if (!this.isActive && this.opened) {
       this.close();
     }
   }
 
   _toggle(ev: Event) {
-    this.cancelAllDropdown.emit();
     ev.stopPropagation()
+    this.isActive = true;
     if (this.opened) {
       this.close();
     } else {
+      // close others only when trying to open one
+      this.cancelAllDropdown.emit();
       this.open();
     }
+    this.isActive = false;
     // console.log(ev)
   }
 
   render() {
     return (
       <div class={['se-dropdown', this.alignment, this.verticalAlignment].join(' ')}>
-        <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
+        <div aria-haspopup="true" aria-expanded={this.opened} onClick={(ev) => this._toggle(ev)}>
           <slot name="trigger"></slot>
         </div>
         <div class={`${this.opened ? 'show' : ''} dropdown-content`} style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight}}>
