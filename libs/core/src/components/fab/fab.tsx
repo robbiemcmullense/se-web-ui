@@ -1,6 +1,6 @@
 import { Component, h, Prop, State, Method } from '@stencil/core';
-import notification_error from "@se/icons/svg/notification_error.svg";
-import arrow4_top from "@se/icons/svg/arrow4_top.svg";
+import notificationError from "@se/icons/svg/notification_error.svg";
+import arrow4Top from "@se/icons/svg/arrow4_top.svg";
 const SHOW_FAB = 'show';
 
 @Component({
@@ -9,8 +9,8 @@ const SHOW_FAB = 'show';
 	shadow: true
 })
 export class FabComponent {
-	error_icon = notification_error;
-	arrow_up = arrow4_top;
+	error_icon = notificationError;
+	arrow_up = arrow4Top;
 	/**
 	 * Property that determines if an icon is included in the main action button.
 	 */

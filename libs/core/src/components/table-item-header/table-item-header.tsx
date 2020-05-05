@@ -23,6 +23,7 @@ export class TableItemHeaderComponent {
   @Watch("width") widthDidChange() {
     this.updateSize();
   }
+
   /**
    * Optional property defines the tag type within the `se-table-item`.
    * Default value `false` defines the tag type as `div`.

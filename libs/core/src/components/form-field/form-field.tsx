@@ -15,6 +15,7 @@ import {
   shadow: false
 })
 export class FormFieldComponent {
+  formField: HTMLElement;
   @Element() el: HTMLElement;
   /**
    * Defines the layout of your form field.
@@ -31,7 +32,6 @@ export class FormFieldComponent {
    */
   @Prop() padding: 'none' | 'small' | 'medium' = 'small';
 
-
   /**
    * Optional property that defines if the field displays as a block in it's container.
    * When set to true, the field will be as wide as its container.
@@ -44,7 +44,6 @@ export class FormFieldComponent {
    */
 
   @Prop() labelWidth = '35%';
-
 
   /**
    * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`).
@@ -101,12 +100,11 @@ export class FormFieldComponent {
 
   initLabel() {
     Array.from(
-      this.el.querySelectorAll('input, select, textarea, se-checkbox, se-radio')
+      this.formField.querySelectorAll(
+        'input, select, textarea, se-checkbox, se-radio'
+      )
     ).forEach((item: any) => {
       item.disabled = this.disabled;
-      // if (this.type === "checkbox" || this.type === "radio") {
-      // 	item.required = this.required;
-      // }
     });
   }
 
@@ -123,22 +121,30 @@ export class FormFieldComponent {
 
   render() {
     return (
-      <div class={{ 'ff-block': this.block }}>
-        <div class={[this.status, this.option, this.type, this.block, `ff-padding-${this.padding}`].join(' ')}>
-          <div class="form-field-wrapper" data-disabled={this.disabled}>
-            <label class={[this.option].join(' ')}>
-              <span style={{'width': this.option !== 'stacked' ? this.labelWidth : 'auto'}} class={{'with-label': !!this.label}} >
-                {this.label}
-                {this.required ? <span class="required">*</span> : ''}
-              </span>
-              <div class="ff-wrapper">
-                <div class="ff-wrapper-input">
-                  <slot></slot>
-                </div>
-              </div>
-            </label>
+      <div
+        class={{
+          [`ff-${this.status}`]:true,
+          'ff-stacked': this.option === 'stacked',
+          'ff-block': this.block,
+          [`ff-padding-${this.padding}`]: true,
+          'form-field-wrapper': true
+        }}
+        ref={el => (this.formField = el)}>
+        <label data-disabled={this.disabled}>
+          <span
+            style={{
+              width: this.option !== 'stacked' ? this.labelWidth : 'auto'
+            }}
+            class={{ 'with-label': !!this.label }}>
+            {this.label}
+            {this.required ? <span class="required">*</span> : ''}
+          </span>
+          <div class="ff-wrapper">
+            <div class="ff-wrapper-input">
+              <slot></slot>
+            </div>
           </div>
-        </div>
+        </label>
       </div>
     );
   }

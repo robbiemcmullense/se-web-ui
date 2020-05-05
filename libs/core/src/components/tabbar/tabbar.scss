@@ -127,7 +127,7 @@ se-tabbar{
   }
   .sub-nav{
     margin-left: calc(#{$spacing-large} * -1.5);
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(black, $opacity);
   }
   nav, .sub-nav{
     height: 100%;

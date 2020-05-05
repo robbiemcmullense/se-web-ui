@@ -163,9 +163,6 @@ class Table extends Component<TableProps, TableStates> {
                         <small>
                           {row.data.title}
                         </small>
-                        <small>
-                          {row.data.title}
-                        </small>
                       </div>
                     </SeTableItem>
                     <SeTableItem flex="50%" title={row.data.info}>

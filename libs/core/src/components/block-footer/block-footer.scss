@@ -7,16 +7,17 @@
   // border-top: 1px solid $divider-color;
   @include align-items(center);
   @include display-flex();
-
-  .flex {
-    @include flex();
-  }
-
-  &.card {
-    border-top: none;
-  }
-
-  &.column {
-    @include flex-direction(column);
-  }
 }
+
+.flex {
+  @include flex();
+}
+
+.card {
+  border-top: none;
+}
+
+.column {
+  @include flex-direction(column);
+}
+

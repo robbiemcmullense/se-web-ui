@@ -88,7 +88,7 @@ export class DropdownComponent {
   }
 
   _toggle(ev: Event) {
-    ev.stopPropagation()
+    ev.stopPropagation();
     this.isActive = true;
     if (this.opened) {
       this.close();

@@ -23,7 +23,7 @@ se-form-field {
   }
 
   [data-disabled]{
-    .ff-wrapper-input{
+    .ff-wrapper{
       opacity: .5;
     }
   }
@@ -171,7 +171,7 @@ se-form-field {
         // @include flex(1, 1, 140px);
         text-align: right;
       }
-      &.stacked {
+      &.ff-stacked {
         > span {
           text-align: left;
           // margin-left: 0;
@@ -205,7 +205,7 @@ se-form-field {
   }
 
 
-  .stacked {
+  .ff-stacked {
     .form-field-wrapper {
       flex-direction: column;
       @include align-items(start);
@@ -236,19 +236,19 @@ se-form-field {
     }
   }
 
-  .error {
+  .ff-error {
     input {
       @include border-color('error');
     }
   }
 
-  .warning {
+  .ff-warning {
     input {
       @include border-color('warning');
     }
   }
 
-  .success {
+  .ff-success {
     input {
       @include border-color('success');
     }

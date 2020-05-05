@@ -33,24 +33,24 @@ describe('DropdownComponent', () => {
     expect(page.root.shadowRoot.querySelector('.se-dropdown')).toBeTruthy();
   });
 
-  it('should call the _toggle function when a click occurs and the dropdown is open, closing the dropdown', async() => {
+  it('should call the close function when a click occurs and the dropdown is open, closing the dropdown', async() => {
     dropdown.opened = true;
     const event = {stopPropagation: jest.fn()};
-		const eventSpy = jest.spyOn(dropdown, '_toggle');
+		const eventSpy = jest.spyOn(dropdown, 'close');
 		dropdown.handleClick(event); // user clicks outside the dropdown menu or trigger element
     expect(eventSpy).toHaveBeenCalled();
     expect(dropdown.opened).toBeFalsy();
   });
-  
-  it('should call the _toggle function when a touchstart occurs and the dropdown is open', async() => {
+
+  it('should call the close function when a touchstart occurs and the dropdown is open', async() => {
     dropdown.opened = true;
     const event = {stopPropagation: jest.fn()};
-		const eventSpy = jest.spyOn(dropdown, '_toggle');
+		const eventSpy = jest.spyOn(dropdown, 'close');
 		dropdown.handleTouchstart(event); // touchscreen user touches screen outside the dropdown menu or trigger element
     expect(eventSpy).toHaveBeenCalled();
     expect(dropdown.opened).toBeFalsy();
   });
-  
+
   it('should emit the didOpen event when the toggle function is called and the dropdown closed', () => {
     const eventSpy = jest.spyOn(dropdown.didOpen, 'emit');
     const event = {stopPropagation: jest.fn()};

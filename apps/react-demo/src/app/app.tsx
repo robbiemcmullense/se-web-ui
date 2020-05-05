@@ -24,7 +24,7 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 class App extends Component {
   render() {
     return (
-      <SeApp className="se-font-website se-font-dcx">
+      <SeApp>
         <BrowserRouter>
           <Switch>
             <AppRoute exact path="/" layout={ShellLayout} component={Home} />

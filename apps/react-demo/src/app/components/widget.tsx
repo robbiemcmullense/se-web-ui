@@ -16,7 +16,7 @@ class Widget extends Component<WidgetProps> {
   render() {
 
     return [
-      <SeBlock>
+      <SeBlock divider>
         <SeBlockHeader>
           <div slot="end">
               <SeIcon option="button" color="alternative">favourites_addto</SeIcon>

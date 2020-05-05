@@ -28,6 +28,6 @@ export class AppComponent {
   render() {
     const bodyClass = this.option === "technical" ? 'se-font-technical' : 'se-font-website';
     this.updateBodyClass(bodyClass);
-    return <Host class={['se-app-body', this.option].join(' ')}><slot></slot></Host>;
+    return <Host class={['se-app-body', this.option, bodyClass].join(' ')}><slot></slot></Host>;
   }
 }

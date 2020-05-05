@@ -27,7 +27,7 @@ class ShellLayout extends Component {
                   <SeBlockContent option="fill">
                     <SeContainer option="card" display="block">
                     {[1,2,3,4,5,6].map((nextVersion, index) => (
-                      <SeBlock>
+                      <SeBlock height="300px">
                         <SeBlockHeader>
                           H3 Buttons and Form
                           <div slot="end">
@@ -48,7 +48,34 @@ class ShellLayout extends Component {
                             </SeDropdown>
                           </div>
                         </SeBlockHeader>
-                        <SeBlockContent>test</SeBlockContent>
+                        <SeBlockContent>
+                          <SeDropdown alignment="right" verticalAlignment={index > 2 ? 'top' : 'bottom'}>
+                              <SeIcon slot="trigger" option="button" color="alternative">other_vertical</SeIcon>
+                              <SeList option="dropdown">
+                                <SeListItem item="My Site 1"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 3"></SeListItem>
+                              </SeList>
+                            </SeDropdown>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                            <h1> title </h1>
+                          </SeBlockContent>
                       </SeBlock>
                     ))}
 

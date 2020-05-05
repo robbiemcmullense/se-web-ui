@@ -29,7 +29,7 @@ describe('FormFieldComponent', () => {
 			components: [FormFieldComponent],
 			html: `<se-form-field></se-form-field>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.input')).toBeTruthy();
+		expect(page.root.querySelector('.input')).toBeTruthy();
 	});
 
 	it('should render in select mode when the option is set to select, and the required symbol when required is set to true', async() => {
@@ -37,13 +37,13 @@ describe('FormFieldComponent', () => {
 			components: [FormFieldComponent],
 			html: `<se-form-field type="select" label="Label" required="true"></se-form-field>`,
 		});
-		expect(page.root.shadowRoot.querySelector('.select')).toBeTruthy();
-		expect(page.root.shadowRoot.querySelector('span')).toBeTruthy();
+		expect(page.root.querySelector('.select')).toBeTruthy();
+		expect(page.root.querySelector('span')).toBeTruthy();
 	});
 
 	it('should disable the input field when the form field disabled property is true', () => {
 		formField.disabled = true;
-		let input = document.createElement('input');
+		const input = document.createElement('input');
 		input.setAttribute('type', 'text');
 		formField.el.appendChild(input);
 		formField.componentDidLoad();

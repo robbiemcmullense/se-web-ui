@@ -1,6 +1,6 @@
 @import "../../theme/theme";
 
-.se-block-header {
+.se-block-header{
   position: relative;
   padding: $spacing-small $spacing-small 2px $spacing; // 2px to compensate with border bottom
   font-size: 20px;
@@ -8,28 +8,28 @@
   // border-bottom: 1px solid $divider-color;
   @include align-items(center);
   @include display-flex();
+}
+.flex{
+  @include flex();
+}
 
-  .flex{
-    @include flex();
-  }
+div.middle {
+  @include typology('h4');
+  margin: 8px;
+}
 
+.card {
+  // border-bottom: none;
+  padding-bottom: $spacing-small;
+}
+.fill {
+  padding: 0;
   div.middle {
-    @include typology('h4');
-    margin: 8px;
-  }
-
-  &.card {
-    // border-bottom: none;
-    padding-bottom: $spacing-small;
-  }
-  &.fill {
-    padding: 0;
-    div.middle {
-      margin: 0;
-      max-width: 100%;
-    }
+    margin: 0;
+    max-width: 100%;
   }
 }
+
 
 ::slotted(h1), ::slotted(h2), ::slotted(h3),
 ::slotted(h4), ::slotted(h5), ::slotted(h6) {
