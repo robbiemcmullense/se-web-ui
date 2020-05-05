@@ -75,6 +75,7 @@ se-form-field {
     border: 1px solid;
     @include border-color('hover-standard');
     @include background-color('alternative');
+    @include color('alternative-contrast');
     transition: 0.2s;
     padding: $spacing-small;
     font-size: inherit;
