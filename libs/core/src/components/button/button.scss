@@ -306,7 +306,6 @@ button {
     &[data-tooltip] {
       overflow: visible;
       &:before {
-        font-family: arial;
         font-weight: 300;
         border-radius: 23.27px;
         content: attr(data-tooltip);
@@ -328,7 +327,7 @@ button {
       @include background-color("selected");
     }
   }
-  
+
   &.outline {
     &:active, &.selected {
       @include border-color("selected");

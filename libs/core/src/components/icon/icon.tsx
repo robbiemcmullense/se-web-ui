@@ -14,8 +14,8 @@ export class IconComponent {
   /**
    * Defines the size of an icon.
    * `nano` sets the size to 14px.
-   * `small` sets the size to 24px. (default setting)
-   * `medium` sets the size to 32px
+   * `small` sets the size to 24px.(default setting)
+   * `medium` sets the size to 32px.
    * `large` sets the size to 52px.
    * `xlarge` sets the size to 62px.
    */

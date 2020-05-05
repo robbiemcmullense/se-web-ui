@@ -60,14 +60,16 @@ class TableOther extends Component<TableProps, TableStates> {
       <SeContainer direction="column">
         <SeBlock divider={false}>
           <SeBlockHeader>Table Example</SeBlockHeader>
-          <SeBlockContent option="fill" style={{ maxHeight: '400px' }}>
-          <SeTable>
+          <SeBlockContent option="fill" style={{overflow: 'auto' }}>
+            <div style={{minWidth: '1000px'}}>
+              <SeTable>
                 <SeTableGroupHeader>
                   <SeTableItemHeader width='102px'>Version</SeTableItemHeader>
                   <SeTableItemHeader>Created</SeTableItemHeader>
                   <SeTableItemHeader>Modified</SeTableItemHeader>
                   <SeTableItemHeader width='110px' />
                 </SeTableGroupHeader>
+
                 {[1, 2, 3, 4,5,6,7,8,9,12,13,14,15,16,17,12,44,45,56,67,68,79,89,73,75,857,96,65].map((nextVersion, index) => (
                   <SeTableGroup key={index} >
                     <SeTableItem width='102px'>{'nextVersion.versionNumber'}</SeTableItem>
@@ -93,6 +95,7 @@ class TableOther extends Component<TableProps, TableStates> {
                   </SeTableGroup>
                 ))}
               </SeTable>
+              </div>
           </SeBlockContent>
         </SeBlock>
       </SeContainer>

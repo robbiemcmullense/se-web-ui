@@ -4,7 +4,6 @@ import {
   Event,
   EventEmitter,
   h,
-  Host,
   Prop,
   Listen,
   Watch
@@ -13,7 +12,7 @@ import {
 @Component({
   tag: 'se-form-field',
   styleUrl: 'form-field.scss',
-  shadow: true
+  shadow: false
 })
 export class FormFieldComponent {
   @Element() el: HTMLElement;
@@ -23,6 +22,15 @@ export class FormFieldComponent {
    * `stacked` option will render the input or select field below the label.
    */
   @Prop() option: 'inline' | 'stacked' = 'inline';
+
+  /**
+   * Defines the spacing around the inside edge of a container.
+   * `none` is 0px.
+   * `small` is 4px.
+   * `medium` is 8px.
+   */
+  @Prop() padding: 'none' | 'small' | 'medium' = 'small';
+
 
   /**
    * Optional property that defines if the field displays as a block in it's container.
@@ -36,6 +44,7 @@ export class FormFieldComponent {
    */
 
   @Prop() labelWidth = '35%';
+
 
   /**
    * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`).
@@ -114,23 +123,23 @@ export class FormFieldComponent {
 
   render() {
     return (
-      <Host class={{ 'ff-block': this.block }}>
-        <div class={[this.status, this.option, this.type, this.block].join(' ')}>
+      <div class={{ 'ff-block': this.block }}>
+        <div class={[this.status, this.option, this.type, this.block, `ff-padding-${this.padding}`].join(' ')}>
           <div class="form-field-wrapper" data-disabled={this.disabled}>
-            <label class={[`se-label`, this.option].join(' ')}>
-              <span style={{'width': this.option !== 'stacked' ? this.labelWidth : '100%'}}>
+            <label class={[this.option].join(' ')}>
+              <span style={{'width': this.option !== 'stacked' ? this.labelWidth : 'auto'}} class={{'with-label': !!this.label}} >
                 {this.label}
                 {this.required ? <span class="required">*</span> : ''}
               </span>
-              <span class="wrapper">
-                <span class="wrapper-input">
+              <div class="ff-wrapper">
+                <div class="ff-wrapper-input">
                   <slot></slot>
-                </span>
-              </span>
+                </div>
+              </div>
             </label>
           </div>
         </div>
-      </Host>
+      </div>
     );
   }
 }

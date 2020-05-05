@@ -483,6 +483,10 @@ export namespace Components {
          */
         "option": "inline" | "stacked";
         /**
+          * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px.
+         */
+        "padding": "none" | "small" | "medium";
+        /**
           * Determines if the input is required by the application. Set to `false` by default. Setting this value to `true` will render a red asterisk next to your label.
          */
         "required": boolean;
@@ -527,7 +531,7 @@ export namespace Components {
          */
         "option": "button";
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px. (default setting) `medium` sets the size to 32px `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
         "size": "nano" | "small" | "medium" | "large" | "xlarge";
     }
@@ -1835,6 +1839,10 @@ declare namespace LocalJSX {
          */
         "option"?: "inline" | "stacked";
         /**
+          * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px.
+         */
+        "padding"?: "none" | "small" | "medium";
+        /**
           * Determines if the input is required by the application. Set to `false` by default. Setting this value to `true` will render a red asterisk next to your label.
          */
         "required"?: boolean;
@@ -1879,7 +1887,7 @@ declare namespace LocalJSX {
          */
         "option"?: "button";
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px. (default setting) `medium` sets the size to 32px `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
         "size"?: "nano" | "small" | "medium" | "large" | "xlarge";
     }

@@ -276,8 +276,8 @@ export class SeFabItem {
 }
 
 export declare interface SeFormField extends Components.SeFormField {}
-@ProxyCmp({inputs: ['block', 'disabled', 'label', 'labelWidth', 'option', 'required', 'status', 'type', 'value']})
-@Component({ selector: 'se-form-field', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'disabled', 'label', 'labelWidth', 'option', 'required', 'status', 'type', 'value'] })
+@ProxyCmp({inputs: ['block', 'disabled', 'label', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value']})
+@Component({ selector: 'se-form-field', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'disabled', 'label', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value'] })
 export class SeFormField {
   didSubmit!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;

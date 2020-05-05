@@ -36,6 +36,7 @@ export class TabbarComponent {
           <slot />
         </div>
         <div class={[`tab-end-${this.color}`, `opt-end-${this.option}`, "centered"].join(' ')}><slot name="end" /></div>
+        <div class={[`tab-end-${this.color}`, `opt-end-${this.option}`, "centered", "edge"].join(' ')}><slot name="edge" /></div>
       </div>
     );
   }

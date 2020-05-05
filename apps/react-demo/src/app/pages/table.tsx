@@ -11,6 +11,8 @@ import {
   SeTableItemHeader,
   SeBlockHeader,
   SeBlockContent,
+  SeFormField,
+  SeButton,
 } from '@se/web-ui-react';
 
 
@@ -124,7 +126,16 @@ class Table extends Component<TableProps, TableStates> {
               <SeTableGroupHeader>
                 <SeTableItemHeader width="72px"></SeTableItemHeader>
                 <SeTableItemHeader width="64px"></SeTableItemHeader>
-                <SeTableItemHeader sort="asc">Title</SeTableItemHeader>
+                <SeTableItemHeader sort="asc">
+                  <div style={{display:'flex', flexDirection:'column'}}>
+                    <span>
+                      Cool!!!Cool!!!Cool!! !Cool!!! Cool!!! Cool!!! Cool!!! Cool!!!C ool!!!
+                    </span>
+                    <small>
+                      Title
+                    </small>
+                  </div>
+                </SeTableItemHeader>
                 <SeTableItemHeader flex="50%" sort="none">
                   Secondary Info
                 </SeTableItemHeader>
@@ -137,18 +148,37 @@ class Table extends Component<TableProps, TableStates> {
                 <SeTableGroup
                   key={index}
                   selectable={row.selectable}
-                  selected={row.selected}>
+                  >
                      <SeTableItem width="72px">
                         <SeIcon option="button" onClick={()=>{ this.toggleRow(index)}}>{ row.expended ? 'arrow2_up' : 'arrow2_down'}</SeIcon>
                     </SeTableItem>
                     <SeTableItem width="72px">
                       <SeCheckbox selected={row.selected} onDidChange={(e) => { this.selectRow(index)}}></SeCheckbox>
                     </SeTableItem>
-                    <SeTableItem>
-                      {row.data.title}
+                    <SeTableItem title={row.data.title}>
+                      <div style={{display:'flex', flexDirection:'column'}}>
+                        <span>
+                          Cool!!!
+                        </span>
+                        <small>
+                          {row.data.title}
+                        </small>
+                        <small>
+                          {row.data.title}
+                        </small>
+                      </div>
                     </SeTableItem>
-                    <SeTableItem flex="50%">
-                      {row.data.info}
+                    <SeTableItem flex="50%" title={row.data.info}>
+                      {/* {row.data.info} */}
+                      <div style={{display:'flex', flexDirection:'raw'}}>
+                      <SeFormField
+                          option="stacked"
+                          padding='none'
+                          block>
+                          <input type="text" />
+                        </SeFormField>
+                        <SeButton color="secondary" option="outline">Test</SeButton>
+                        </div>
                     </SeTableItem>
                     <SeTableItem>
                       {row.data.extra}
@@ -161,6 +191,16 @@ class Table extends Component<TableProps, TableStates> {
                           You can put whatever you want here as long as the outer wrapper
                           has a slot="detail".
                         </p>
+
+                        <p><small>
+                          You can put whatever you want here as long as the outer wrapper
+                          has a slot="detail".</small>
+                        </p>
+                        <p>
+                          You can put whatever you want here as long as the outer wrapper
+                          has a slot="detail".
+                        </p>
+
                       </div>
                     </div>
                   }

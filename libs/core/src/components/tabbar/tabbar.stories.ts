@@ -41,3 +41,42 @@ storiesOf('Tab Bar', module)
       </se-tabbar>
     `
   })
+  .add('with search', () => {
+    const color = select('color', colorOptions, 'primary')
+    const option = select('option', tabBarOptions, 'nav')
+    const overflow = select('stack', overflowOptions, 'scroll')
+
+    const start = (color === "primary" && option === "nav") ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>` : ''
+
+    return `
+      <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
+        <nav>
+          <a class="active">Overview</a>
+          <a>Analysis</a>
+          <a>Report</a>
+          <a disabled>Glossary & Index</a>
+          <a>Notification</a>
+        </nav>
+        <div slot="edge">
+          <div style="display:flex; align-items: center;">
+            <se-icon size="medium" option="button" style="padding: 0 4px;">
+              action_search_stroke
+            </se-icon>
+            <se-form-field option="stacked" block>
+              <div class="with-icon" style="margin-top:-4px;">
+                <input
+                  style="width:150px"
+                  autoComplete="off"
+                  name="query"
+                  placeholder="Search"
+                  aria-autocomplete="list"
+                  aria-controls="search-menu"
+                />
+                <se-icon option="button" color="alternative">action_close</se-icon>
+              </div>
+            </se-form-field>
+          </div>
+        </div>
+      </se-tabbar>
+    `
+  })

@@ -68,7 +68,7 @@ export class ContainerComponent {
    * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there.
    * Default is `350px`.
    */
-  @Prop() columnSize: string = '350px';
+  @Prop() columnSize = '350px';
   @Watch("columnSize") columnSizeDidChange() {
     if(this.display === 'grid'){
       this.el.style.gridTemplateColumns = `repeat(auto-fit, minmax(${this.columnSize}, 1fr))`;
@@ -77,7 +77,7 @@ export class ContainerComponent {
   /**
    * When in `display="grid"`, defines the height of each container.  Default is `300px`.
    */
-  @Prop() rowSize: string = '300px';
+  @Prop() rowSize = '300px';
   @Watch("rowSize") rowSizeDidChange() {
     if(this.display === 'grid'){
       this.el.style.gridAutoRows = this.rowSize;
@@ -110,10 +110,10 @@ export class ContainerComponent {
   render() {
     return (
       <Host class={[
-        this.option !== "card-old" ? `${this.option}-content` : "card-content", 
-        this.position, 
-        this.color ? `ct-bg-${this.color}` : '', 
-        `${this.direction}-dir`, 
+        this.option !== "card-old" ? `${this.option}-content` : "card-content",
+        this.position,
+        this.color ? `ct-bg-${this.color}` : '',
+        `${this.direction}-dir`,
         `${this.display}-display`,
         this.padding ? `ct-padding-${this.padding}` : '']
         .join(' ')}>

@@ -105,13 +105,15 @@ storiesOf('Form Field', module)
   })
   .add('Form Field Multiple', () => {
     const option = select('option', layoutOption, 'inline');
+    const padding = select('padding', ['none', 'small', 'medium'], 'small');
     const disabled = boolean('disabled', false);
-    const block = boolean('block', false)
-    const labelWidth = text('label-width', '35%')
+    const block = boolean('block', false);
+    const labelWidth = text('label-width', '35%');
 
     return `
       <se-block>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         type='checkbox'
         option='${option}'
@@ -123,6 +125,7 @@ storiesOf('Form Field', module)
         <se-checkbox></se-checkbox>
       </se-form-field>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         type='another checkbox'
         option='${option}'
@@ -134,6 +137,7 @@ storiesOf('Form Field', module)
         <se-checkbox option="switch"></se-checkbox>
       </se-form-field>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         type='radio'
         option='${option}'
@@ -149,6 +153,7 @@ storiesOf('Form Field', module)
         </se-radio-group>
       </se-form-field>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         option='${option}'
         label='Some unstyled text'
@@ -158,6 +163,7 @@ storiesOf('Form Field', module)
         <div>Some text alined</div>
       </se-form-field>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         option='${option}'
         label-width='${labelWidth}'
@@ -166,6 +172,7 @@ storiesOf('Form Field', module)
         <div><b>Some bold text alined with the rest</b></div>
       </se-form-field>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         type='input'
         option='${option}'
@@ -177,6 +184,24 @@ storiesOf('Form Field', module)
         <input type="text" />
       </se-form-field>
       <se-form-field
+        padding='${padding}'
+        block='${block}'
+        type='input'
+        option='${option}'
+        label='Input with button and icon'
+        required='true'
+        disabled='${disabled}'
+        label-width='${labelWidth}'
+        >
+        <div style="display:flex; align-items: center;">
+          <input type="text" />
+          <se-button icon-only color="alternative" disabled=${disabled}>
+            <se-icon slot="icon" size="medium">folder</se-icon>
+          </se-button>
+        </div>
+      </se-form-field>
+      <se-form-field
+        padding='${padding}'
         block='${block}'
         type='select'
         option='${option}'
@@ -192,6 +217,7 @@ storiesOf('Form Field', module)
         </select>
       </se-form-field>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         type='input'
         option='${option}'
@@ -203,6 +229,7 @@ storiesOf('Form Field', module)
         <textarea rows='3'></textarea>
       </se-form-field>
       <se-form-field
+        padding='${padding}'
         block='${block}'
         type='input'
         option='${option}'
@@ -212,6 +239,64 @@ storiesOf('Form Field', module)
         label-width='${labelWidth}'
         >
         <input type="date" />
+      </se-form-field>
+      <se-form-field
+        padding='${padding}'
+        block='${block}'
+        type='input'
+        option='${option}'
+        label='date with button'
+        required='true'
+        disabled='${disabled}'
+        label-width='${labelWidth}'
+        >
+        <div style="display:flex; align-items: center;">
+          <input type="date" />
+          <se-button icon-only icon="folder" color="alternative" disabled=${disabled}></se-button>
+        </div>
+      </se-form-field>
+
+      <se-form-field
+        padding='${padding}'
+        block='${block}'
+        type='input'
+        option='${option}'
+        label='Search with-icon small'
+        required='true'
+        disabled='${disabled}'
+        label-width='${labelWidth}'
+        >
+        <div class="with-icon">
+          <input type="search"/>
+          <se-icon size="small" style="margin-left:4px">action_search_stroke</se-icon>
+        </div>
+      </se-form-field>
+      <se-form-field
+        padding='${padding}'
+        block='${block}'
+        type='input'
+        option='${option}'
+        label='Search no search-wrapper'
+        required='true'
+        disabled='${disabled}'
+        label-width='${labelWidth}'
+        >
+        <input type="search" />
+      </se-form-field>
+      <se-form-field
+        padding='${padding}'
+        block='${block}'
+        type='input'
+        option='${option}'
+        label='input with-icon medium'
+        required='true'
+        disabled='${disabled}'
+        label-width='${labelWidth}'
+        >
+        <div class="with-icon">
+          <input />
+          <se-icon size="medium" option="button" onclick="alert('clicked')">folder</se-icon>
+        </div>
       </se-form-field>
       </se-block>
     `;

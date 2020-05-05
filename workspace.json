@@ -321,6 +321,7 @@
             "commands": [
               {
                 "command": "cd libs/core && yarn watch"
+
               }
             ]
           }
