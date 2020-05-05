@@ -15,7 +15,6 @@ import {
   shadow: false
 })
 export class FormFieldComponent {
-  formField: HTMLElement;
   @Element() el: HTMLElement;
   /**
    * Defines the layout of your form field.
@@ -100,7 +99,7 @@ export class FormFieldComponent {
 
   initLabel() {
     Array.from(
-      this.formField.querySelectorAll(
+      this.el.querySelectorAll(
         'input, select, textarea, se-checkbox, se-radio'
       )
     ).forEach((item: any) => {
@@ -128,8 +127,7 @@ export class FormFieldComponent {
           'ff-block': this.block,
           [`ff-padding-${this.padding}`]: true,
           'form-field-wrapper': true
-        }}
-        ref={el => (this.formField = el)}>
+        }}>
         <label data-disabled={this.disabled}>
           <span
             style={{

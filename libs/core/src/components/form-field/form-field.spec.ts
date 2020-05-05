@@ -24,22 +24,14 @@ describe('FormFieldComponent', () => {
 		expect(formField.block).toBeUndefined();
 	});
 
-	it('should render in input mode by default', async() => {
+	it('should render in input mode by default with no label', async() => {
 		const page = await newSpecPage({
 			components: [FormFieldComponent],
 			html: `<se-form-field></se-form-field>`,
 		});
-		expect(page.root.querySelector('.input')).toBeTruthy();
+		expect(page.root.querySelector('.with-label')).toBeFalsy();
 	});
 
-	it('should render in select mode when the option is set to select, and the required symbol when required is set to true', async() => {
-		const page = await newSpecPage({
-			components: [FormFieldComponent],
-			html: `<se-form-field type="select" label="Label" required="true"></se-form-field>`,
-		});
-		expect(page.root.querySelector('.select')).toBeTruthy();
-		expect(page.root.querySelector('span')).toBeTruthy();
-	});
 
 	it('should disable the input field when the form field disabled property is true', () => {
 		formField.disabled = true;

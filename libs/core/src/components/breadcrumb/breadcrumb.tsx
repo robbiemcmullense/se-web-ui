@@ -7,7 +7,6 @@ import { Component, Element, h, State } from "@stencil/core";
 })
 export class BreadcrumbComponent {
   @Element() el: HTMLElement;
-  listEl?: HTMLElement;
   @State() items: HTMLElement[] = [];
   observer: any;
 
@@ -41,7 +40,7 @@ export class BreadcrumbComponent {
   render() {
     return (
       <nav aria-label="breadcrumb">
-        <ol ref={el => this.listEl = el}>
+        <ol>
           <slot></slot>
         </ol>
       </nav>

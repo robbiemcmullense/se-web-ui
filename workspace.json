@@ -372,6 +372,28 @@
             "production": {}
           }
         },
+        "e2e": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/core && yarn e2e.watch"
+
+              }
+            ]
+          }
+        },
+        "spec": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/core && yarn spec.watch"
+
+              }
+            ]
+          }
+        },
         "storybook": {
           "builder": "@nrwl/storybook:storybook",
           "options": {
