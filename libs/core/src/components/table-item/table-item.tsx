@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Watch, State } from "@stencil/core";
+import { Component, Host, h, Prop, Element, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-table-item",
@@ -8,6 +8,10 @@ import { Component, Host, h, Prop, Element, Watch, State } from "@stencil/core";
 export class TableItemComponent {
 
   @Element() el: HTMLElement;
+
+
+  @Prop() option: 'dropdown' | 'text' | 'custom' = 'text';
+
   /**
   * Defines the specific flex-basis of a block.
   */
@@ -29,14 +33,6 @@ export class TableItemComponent {
    */
   @Prop() clickable = false;
 
-  @State() innerId;
-
-  setButtonId() {
-    let id = this.el.getAttribute('id');
-    if (id) {
-      this.innerId = `wc-${id}`;
-    }
-  }
 
   updateSize() {
     // reset all sizes first
@@ -54,21 +50,15 @@ export class TableItemComponent {
     this.updateSize();
   }
 
-  componentDidLoad() {
-    this.setButtonId();
-  }
-
   render() {
-    const TagType = this.clickable ? 'button' : 'div' as any;
     return (
       <Host
         role="cell"
-        class={["se-table-item"].join(' ')}
-        id={this.innerId}
+        class={["se-table-item", `opt-${this.option}`].join(' ')}
         >
-        <TagType class={"table-item-content"}>
+        <div class="table-item-content">
           <div class="table-item-label"><slot></slot></div>
-        </TagType>
+        </div>
       </Host>
     )
   }

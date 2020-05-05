@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeList, SeListItem, SeListGroup, SeDivider, SeStepper, SeStepperItem } from '@se/web-ui-react';
+import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeBlockContent, SeList, SeListItem, SeListGroup, SeDivider, SeStepper, SeStepperItem, SeFab, SeFabItem } from '@se/web-ui-react';
 
 import Widget from '../components/widget';
 

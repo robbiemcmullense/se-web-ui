@@ -5,7 +5,7 @@
   bottom: 20px;
   display: none;
   align-self: center;
-  z-index: 40;
+  z-index: $zindex-snackbar;
   opacity: 0;
   transition: .2s;
 	@include slideDown();
@@ -29,15 +29,18 @@
 }
 
 .success {
-  @include background-color('primary');
+  @include background-color('success');
+  @include color('success-contrast');
 }
 
 .warning {
-  background-color: $se-honeysuckle-orange;
+  @include background-color('warning');
+  @include background-color('warning-contrast');
 }
 
 .error {
-  background-color: $se-red;
+  @include background-color('error');
+  @include background-color('error-contrast');
 }
 
 .snackbar {

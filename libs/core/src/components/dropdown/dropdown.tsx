@@ -22,17 +22,18 @@ export class DropdownComponent {
   /**
    * Sets the maximum width of the dropdown.  Default setting is "200px".
    */
-  @Prop() maxWidth: string = "200px";
+  @Prop() maxWidth = "200px";
   /**
    * Sets the maximum height of the dropdown.  Default setting is "400px".
    */
-  @Prop() maxHeight: string = "400px";
+  @Prop() maxHeight = "400px";
   /**
    * Method to open the dropdown from outside its parent element.
    */
   @Method()
   async open() {
     this.opened = true;
+    this.didOpen.emit();
   }
   /**
    * Method to close the dropdown from outside its parent element.
@@ -40,6 +41,7 @@ export class DropdownComponent {
   @Method()
   async close() {
     this.opened = false;
+    this.didClose.emit();
   }
   /**
    * Event emitted when the dropdown has been opened.
@@ -49,31 +51,47 @@ export class DropdownComponent {
    * Event emitted when the dropdown has been closed.
    */
   @Event() didClose: EventEmitter;
+
+  /**
+   * Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time.
+   */
+  @Event({
+    composed: false
+  }) cancelAllDropdown: EventEmitter;
+
+
   @State() opened = false;
 
   @Listen('click', { target: 'window' })
-  handleClick(ev) {
+  handleClick() {
     if (this.opened) {
-      this._toggle(ev);
+      this.close();
     }
   }
 
   @Listen('touchstart', { target: 'window' })
-  handleTouchstart(ev) {
+  handleTouchstart() {
     if (this.opened) {
-      this._toggle(ev);
+      this.close();
+    }
+  }
+
+  @Listen('cancelAllDropdown', { target: 'window' })
+  handleCancelAllDropdown() {
+    if (this.opened) {
+      this.close();
     }
   }
 
   _toggle(ev: Event) {
+    this.cancelAllDropdown.emit();
     ev.stopPropagation()
     if (this.opened) {
       this.close();
-      this.didClose.emit();
     } else {
       this.open();
-      this.didOpen.emit();
     }
+    // console.log(ev)
   }
 
   render() {
@@ -82,7 +100,7 @@ export class DropdownComponent {
         <div aria-haspopup="true" aria-expanded="false" onClick={(ev) => this._toggle(ev)}>
           <slot name="trigger"></slot>
         </div>
-        <div class={`${this.opened ? 'show' : ''} dropdown-content`} style={{ maxWidth: this.maxWidth.toString(), maxHeight: this.maxHeight.toString()}}>
+        <div class={`${this.opened ? 'show' : ''} dropdown-content`} style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight}}>
           <slot></slot>
         </div>
       </div>

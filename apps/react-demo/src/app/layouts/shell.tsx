@@ -1,26 +1,63 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom'
-import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeChip, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter, SeIcon } from '@se/web-ui-react';
+import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeChip, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter, SeIcon, SeDropdown, SeList, SeListItem } from '@se/web-ui-react';
 
 class ShellLayout extends Component {
   render() {
     return (
       <SeContainer position="absolute" direction="column">
         <SeHeader appTitle="React Advisor">
+          <div slot="end">
+          <SeDropdown alignment="right">
+            <SeIcon slot="trigger" option="button">action_download_stroke</SeIcon>
+            <SeList option="dropdown">
+              <SeListItem item="My Site 1"></SeListItem>
+              <SeListItem item="My Site 2"></SeListItem>
+              <SeListItem item="My Site 3"></SeListItem>
+            </SeList>
+          </SeDropdown>
+          </div>
           <SeSidemenu link="">
             <SeSidemenuItem item="About">
-              <SeAbout appTitle="React Advisor" version="123"></SeAbout>
+              <SeAbout appTitle="React Advisor" version="123" imageUrl="url('https://schneider-electric.box.com/shared/static/7hp8f04wj8lclpxn8jonti616lvim3zl.jpg')">></SeAbout>
             </SeSidemenuItem>
-            <SeSidemenuItem item="Sidenav 2" active={true}>
-              <SeBlock>
-                <SeBlockHeader>some widget design</SeBlockHeader>
-                <SeBlockContent>
-                  <SeChip id="SeChip" value="Chip 01"></SeChip>
-                </SeBlockContent>
-                <SeBlockFooter>
+            <SeSidemenuItem item="Sidenav 2" active>
+                <SeBlock option="fill">
+                  <SeBlockHeader>some widget design</SeBlockHeader>
+                  <SeBlockContent option="fill">
+                    <SeContainer option="card" display="block">
+                    {[1,2,3,4,5,6].map((nextVersion, index) => (
+                      <SeBlock>
+                        <SeBlockHeader>
+                          H3 Buttons and Form
+                          <div slot="end">
+                            <SeDropdown alignment="right" verticalAlignment={index > 2 ? 'top' : 'bottom'}>
+                              <SeIcon slot="trigger" option="button" color="alternative">other_vertical</SeIcon>
+                              <SeList option="dropdown">
+                                <SeListItem item="My Site 1"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 2"></SeListItem>
+                                <SeListItem item="My Site 3"></SeListItem>
+                              </SeList>
+                            </SeDropdown>
+                          </div>
+                        </SeBlockHeader>
+                        <SeBlockContent>test</SeBlockContent>
+                      </SeBlock>
+                    ))}
+
+                    </SeContainer>
+                  </SeBlockContent>
+                  <SeBlockFooter>
                     <SeButton option="raised" color="primary">RaisedGreen</SeButton>
-                </SeBlockFooter>
-              </SeBlock>
+                  </SeBlockFooter>
+                </SeBlock>
             </SeSidemenuItem>
             <SeSidemenuItem item="Sidenav 3">
               <div>A simple div</div>

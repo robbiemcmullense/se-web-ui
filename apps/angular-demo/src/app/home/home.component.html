@@ -9,6 +9,10 @@
       </se-list>
     </se-block-content>
     <se-block-footer>
+      <se-tooltip position="top">
+        <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
+        Tooltip Top
+        </se-tooltip>
       <se-button option="flat" (click)="showDialog()">Open Dialog</se-button>
     </se-block-footer>
   </se-block>
@@ -16,6 +20,17 @@
   <se-block>
     <se-container option="card" display="grid" column-size="400px" row-size="400px">
       <se-block option="fill">
+        <se-block-header><h4>Cool test</h4>
+        <div slot="end">
+          <se-dropdown alignment="right">
+            <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
+            <se-list option="dropdown">
+              <se-list-item *ngFor="let item of listItem" item="My Site 1"></se-list-item>
+            </se-list>
+          </se-dropdown>
+        </div>
+        </se-block-header>
+        <se-block-content option="fill">
         <se-table style="max-height:350px">
           <se-table-group-header>
               <se-table-item-header width="72px"></se-table-item-header>
@@ -107,9 +122,14 @@
               <se-table-item>Very last test item</se-table-item>
           </se-table-group>
         </se-table>
+      </se-block-content>
       </se-block>
       <se-block class="flex">
         <se-block-content>
+          <se-tooltip position="right">
+            <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
+            Tooltip Top
+            </se-tooltip>
           <se-button option="flat">standard flat</se-button>
           <se-button option="raised">standard raised</se-button>
           <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>

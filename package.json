@@ -8,6 +8,7 @@
     "nx": "nx",
     "ng": "ng",
     "start": "nx serve",
+    "start:dev": "nx serve-dev",
     "build": "nx build",
     "test": "nx test",
     "lint": "nx lint",

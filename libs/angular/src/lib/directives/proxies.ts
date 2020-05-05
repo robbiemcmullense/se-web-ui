@@ -242,11 +242,12 @@ export declare interface SeDropdown extends Components.SeDropdown {}
 export class SeDropdown {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
+  cancelAllDropdown!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didOpen', 'didClose']);
+    proxyOutputs(this, this.el, ['didOpen', 'didClose', 'cancelAllDropdown']);
   }
 }
 
@@ -550,8 +551,8 @@ export class SeTableGroupHeader {
 }
 
 export declare interface SeTableItem extends Components.SeTableItem {}
-@ProxyCmp({inputs: ['clickable', 'flex', 'width']})
-@Component({ selector: 'se-table-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'width'] })
+@ProxyCmp({inputs: ['clickable', 'flex', 'option', 'width']})
+@Component({ selector: 'se-table-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'option', 'width'] })
 export class SeTableItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

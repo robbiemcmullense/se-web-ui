@@ -2,11 +2,10 @@
 
 :host, .table-rows-wrapper {
   width: 100%;
-  z-index: 0;
   position: relative;
   overflow: auto;
   // @include flex-direction(column);
-  // @include display-flex(); 
+  // @include display-flex();
 }
 
 // .table-rows-wrapper {

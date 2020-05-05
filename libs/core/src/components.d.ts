@@ -859,6 +859,7 @@ export namespace Components {
           * Defines the specific flex-basis of a block.
          */
         "flex": string;
+        "option": "dropdown" | "text" | "custom";
         /**
           * Defines the specific width of a block, for items that should not be flexible.
          */
@@ -1764,6 +1765,10 @@ declare namespace LocalJSX {
          */
         "maxWidth"?: string;
         /**
+          * Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time.
+         */
+        "onCancelAllDropdown"?: (event: CustomEvent<any>) => void;
+        /**
           * Event emitted when the dropdown has been closed.
          */
         "onDidClose"?: (event: CustomEvent<any>) => void;
@@ -2225,6 +2230,7 @@ declare namespace LocalJSX {
           * Defines the specific flex-basis of a block.
          */
         "flex"?: string;
+        "option"?: "dropdown" | "text" | "custom";
         /**
           * Defines the specific width of a block, for items that should not be flexible.
          */

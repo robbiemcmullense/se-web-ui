@@ -3,7 +3,7 @@
 
 :host {
   display: none !important;
-  z-index: 100;
+  z-index: $zindex-modal;
   background-color: transparent !important;
   line-height: 1.4;
 }
@@ -41,7 +41,7 @@
 
 .dialog-wrapper {
   position: fixed !important;
-  z-index: 120;
+  z-index: $zindex-modal;
   @include absolute();
   @include display-flex();
   @include align-items(center);
@@ -49,7 +49,7 @@
 }
 
 .dialog {
-  z-index: 170;
+  z-index: $zindex-modal;
   position: relative;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
   @include animated();
@@ -70,7 +70,7 @@
   @include absolute();
   @include animated();
   background-color: rgba(white, 0.6);
-  z-index: 150;
+  z-index: $zindex-modal-backdrop;
   &.show-dialog {
     animation-name: fadeIn;
   }

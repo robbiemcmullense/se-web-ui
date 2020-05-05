@@ -1,9 +1,10 @@
 @import "../../theme/theme";
 
+
 .se-authentication {
   @include absolute(0, 0, 0, 0);
   @include background-color("standard");
-  z-index: 20;
+  z-index: $zindex-authentication;
   &.hide {
     display: none;
   }

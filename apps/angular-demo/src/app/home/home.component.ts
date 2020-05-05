@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   public myOnOffValue = true;
   public loader = false;
   public showDialogMessage: string;
+  public listItem = [1,2,3,4,5,5,6,7,87,8,9,90,23,24,45,46];
 
   constructor(public dialogService: DialogService, private snackbarService: SnackbarService) { }
 

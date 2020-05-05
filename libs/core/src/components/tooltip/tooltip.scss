@@ -33,7 +33,7 @@
   .tooltip.show {
     opacity: 1;
     visibility: visible;
-    z-index: 1;
+    z-index: $zindex-tooltip;
   }
 
   .tooltip-top {
@@ -116,7 +116,6 @@
     top: auto;
     left: auto;
     transform: none;
-    z-index: 10;
   }
   &.tooltip-left {
     .tooltip {
@@ -137,7 +136,6 @@
       .tooltip {
         left: auto;
         transform: none;
-        z-index: 10;
       }
     }
     &.tooltip-left {

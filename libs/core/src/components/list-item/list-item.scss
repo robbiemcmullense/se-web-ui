@@ -1,7 +1,6 @@
 @import "../../theme/theme";
 
 :host {
-  z-index: 0;
   margin: 0;
   font-weight: lighter;
   @include display-flex();

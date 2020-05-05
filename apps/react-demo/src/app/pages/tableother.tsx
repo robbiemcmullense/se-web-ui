@@ -11,8 +11,10 @@ import {
   SeTableItemHeader,
   SeBlockHeader,
   SeBlockContent,
+  SeDropdown,
+  SeListItem,
+  SeList,
 } from '@se/web-ui-react';
-
 
 interface Row {
   selected?: boolean;
@@ -64,10 +66,10 @@ class TableOther extends Component<TableProps, TableStates> {
                   <SeTableItemHeader width='102px'>Version</SeTableItemHeader>
                   <SeTableItemHeader>Created</SeTableItemHeader>
                   <SeTableItemHeader>Modified</SeTableItemHeader>
-                  <SeTableItemHeader width='100px' />
+                  <SeTableItemHeader width='110px' />
                 </SeTableGroupHeader>
-                {[1, 2, 3, 4].map(nextVersion => (
-                  <SeTableGroup key={nextVersion}>
+                {[1, 2, 3, 4,5,6,7,8,9,12,13,14,15,16,17,12,44,45,56,67,68,79,89,73,75,857,96,65].map((nextVersion, index) => (
+                  <SeTableGroup key={index} >
                     <SeTableItem width='102px'>{'nextVersion.versionNumber'}</SeTableItem>
                     <SeTableItem>{`${'nextVersion.versionCreationTime'.replace(/T.*/, '')} ${
                       'nextVersion.versionCreatorFirstName'
@@ -75,13 +77,18 @@ class TableOther extends Component<TableProps, TableStates> {
                     <SeTableItem>{`${'nextVersion.versionCreationTime'.replace(/T.*/, '')} ${
                       'nextVersion.versionCreatorFirstName'
                     } ${'nextVersion.versionCreatorLastName'}`}</SeTableItem>
-                    <SeTableItem width='110px'>
+                    <SeTableItem width='110px' option="dropdown">
                       <SeLink url={'nextVersion.versionStorageURL'}>
                         <SeIcon option='button'>action_delete_stroke</SeIcon>
                       </SeLink>
-                      <SeLink url={'nextVersion.versionStorageURL'}>
-                        <SeIcon option='button'>action_download_stroke</SeIcon>
-                      </SeLink>
+                      <SeDropdown alignment="right" verticalAlignment={index > 20 ? 'top' : 'bottom'}>
+                        <SeIcon slot="trigger" option="button">action_download_stroke</SeIcon>
+                        <SeList option="dropdown">
+                          <SeListItem item="My Site 1"></SeListItem>
+                          <SeListItem item="My Site 2"></SeListItem>
+                          <SeListItem item="My Site 3"></SeListItem>
+                        </SeList>
+                      </SeDropdown>
                     </SeTableItem>
                   </SeTableGroup>
                 ))}

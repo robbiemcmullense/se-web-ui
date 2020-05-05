@@ -1,7 +1,6 @@
 @import "../../theme/theme";
 
 :host {
-  z-index: 0;
   position: relative;
   @include display-flex();
 }
@@ -13,10 +12,16 @@
 :host(.block-block){
   width: auto;
   height: auto;
+  .block-body {
+    overflow: unset;
+  }
 }
 :host(.block-grid){
   width: 100%;
   height: 100%;
+  .block-body {
+    overflow: unset;
+  }
 }
 :host(.grid-large){
   grid-column: span 2;
@@ -39,7 +44,7 @@
     position: relative;
   }
   &:hover, &-nobar:hover {
-    cursor: pointer;     
+    cursor: pointer;
     box-shadow: 0 0 16px 2px rgba(0,0,0,0.15);
   }
   &:not(-nobar):hover:before {
@@ -71,8 +76,8 @@
 }
 
 .block-body {
-  overflow: auto;
   transition: .2s;
+  overflow: auto;
   @include flex();
   @include display-flex();
   @include flex-direction(column);

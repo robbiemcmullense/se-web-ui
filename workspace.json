@@ -320,6 +320,16 @@
           "options": {
             "commands": [
               {
+                "command": "cd libs/core && yarn watch"
+              }
+            ]
+          }
+        },
+        "serve-dev": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
                 "command": "cd libs/core && yarn start"
               }
             ]

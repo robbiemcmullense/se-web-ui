@@ -22,13 +22,13 @@
 
   &.top {
     .dropdown-content{
-      bottom:calc(100% + 10px);
+      bottom:calc(100% + 4px);
     }
   }
 
   &.bottom {
     .dropdown-content{
-      top:calc(100% + 10px);
+      top:calc(100% + 4px);
     }
   }
 }
@@ -79,7 +79,7 @@
 .dropdown-content.show {
   visibility: visible; /* shows sub-menu */
   opacity: 1;
-  z-index: 1;
+  z-index: $zindex-dropdown;
   // transform: translateY(0%);
   // transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
 }

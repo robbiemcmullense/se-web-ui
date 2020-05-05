@@ -20,10 +20,11 @@
 
 ## Events
 
-| Event      | Description                                      | Type               |
-| ---------- | ------------------------------------------------ | ------------------ |
-| `didClose` | Event emitted when the dropdown has been closed. | `CustomEvent<any>` |
-| `didOpen`  | Event emitted when the dropdown has been opened. | `CustomEvent<any>` |
+| Event               | Description                                                                                                                                   | Type               |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `cancelAllDropdown` | Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time. | `CustomEvent<any>` |
+| `didClose`          | Event emitted when the dropdown has been closed.                                                                                              | `CustomEvent<any>` |
+| `didOpen`           | Event emitted when the dropdown has been opened.                                                                                              | `CustomEvent<any>` |
 
 
 ## Methods

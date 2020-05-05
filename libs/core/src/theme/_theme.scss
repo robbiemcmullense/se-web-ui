@@ -1,9 +1,8 @@
 /*
  * Application global variables.
  */
- @import "./mixin";
- @import "./se-variable";
-
+@import './mixin';
+@import './se-variable';
 
 // Spacing element
 // ==========================================================================
@@ -12,7 +11,22 @@ $spacing-small: 4px !default;
 $spacing-large: 16px !default;
 $spacing-xlarge: 32px !default;
 
+// z-index element
+// ==========================================================================
+$zindex-snackbar:           600 !default;
+$zindex-modal:              550 !default;
+$zindex-modal-backdrop:     500 !default;
+$zindex-authentication:     300 !default;
+$zindex-sidemenu:           150 !default;
+$zindex-sidemenu-backdrop:  100 !default;
+$zindex-loading:            25 !default;
+$zindex-loading-backdrop:   20 !default;
+$zindex-tooltip:            10 !default;
+$zindex-header:             5 !default;
+$zindex-dropdown:           5 !default;
+
 // Media Query Ranges
+// ==========================================================================
 $small-screen-up: 601px !default;
 $medium-screen-up: 993px !default;
 $large-screen-up: 1201px !default;
@@ -21,14 +35,12 @@ $medium-screen: 992px !default;
 $large-screen: 1200px !default;
 $centered: 1180px !default;
 
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
-$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
-$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
-$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
-$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
-$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
-
-
+$medium-and-up: 'only screen and (min-width : #{$small-screen-up})' !default;
+$large-and-up: 'only screen and (min-width : #{$medium-screen-up})' !default;
+$extra-large-and-up: 'only screen and (min-width : #{$large-screen-up})' !default;
+$small-and-down: 'only screen and (max-width : #{$small-screen})' !default;
+$medium-and-down: 'only screen and (max-width : #{$medium-screen})' !default;
+$medium-only: 'only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})' !default;
 
 // Typography
 // ==========================================================================
@@ -51,10 +63,9 @@ $h-margin: 16px !default;
 // Flow Text
 // ==========================================================================
 
-$range : $large-screen - $small-screen !default;
+$range: $large-screen - $small-screen !default;
 $intervals: 20 !default;
 $interval-size: $range / $intervals !default;
-
 
 $border-radius: 2px !default;
 $border-radius-card: 4px !default;
@@ -71,4 +82,3 @@ $divider-color: $se-super-light-grey;
 /* width */
 $scrollbar-width: 8px; // 6px for width and 8px for bottom
 $scrollbar-side-padding: $spacing-small;
-
