@@ -53,7 +53,7 @@ export class TableItemHeaderComponent {
 
   render() {
     let ariaLabelSort
-    let color
+    let disabled = false;
     const isSortable = !!this.sort as boolean;
 
     const displayStyle = {
@@ -70,7 +70,7 @@ export class TableItemHeaderComponent {
       } else if (this.sort === "desc") {
         ariaLabelSort = "sort desc";
       } else {
-        color = "standard"
+        disabled = true
       }
     } else {
       ariaLabelSort = null;
@@ -90,7 +90,7 @@ export class TableItemHeaderComponent {
               class={["sortable", isSortable ? `sort-${this.sort}` : ''].join(' ')}
               aria-hidden="true"
               size="nano"
-              color={color}>
+              style={{opacity: disabled ? '.3' : '1'}}>
                 <span innerHTML={arrow4Top}></span>
             </se-icon> : ''}
         </TagType>

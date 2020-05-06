@@ -126,7 +126,7 @@ class Table extends Component<TableProps, TableStates> {
               <SeTableGroupHeader>
                 <SeTableItemHeader width="72px"></SeTableItemHeader>
                 <SeTableItemHeader width="64px"></SeTableItemHeader>
-                <SeTableItemHeader minWidth="100px" flex="1" sort="asc">
+                <SeTableItemHeader minWidth="100px" flex="1" clickable sort="asc">
                   <div style={{display:'flex', flexDirection:'column'}}>
                     <span>
                       Cool!!!Cool!!!Cool!! !Cool!!! Cool!!! Cool!!! Cool!!! Cool!!!C ool!!!
@@ -139,7 +139,7 @@ class Table extends Component<TableProps, TableStates> {
                 <SeTableItemHeader minWidth="600px" flex="3" sort="none">
                   Secondary Info
                 </SeTableItemHeader>
-                <SeTableItemHeader flex="1" clickable={true}>
+                <SeTableItemHeader flex="1" clickable={true} clickable>
                   <SeIcon color="primary">airconditioner_hot_heating</SeIcon> -
                   with a lot of extra text to make it as long as possible
                 </SeTableItemHeader>
