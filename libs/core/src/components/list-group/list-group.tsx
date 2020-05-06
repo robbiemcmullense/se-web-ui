@@ -65,6 +65,8 @@ export class ListGroupComponent {
     this.checkSelected();
   }
 
+  private hasIcon: boolean;
+
   checkSelected(){
     if (!this.collapsed) {
       this.selectedChild = false;
@@ -120,6 +122,8 @@ export class ListGroupComponent {
 
   componentWillLoad() {
     this.getParentConfig();
+
+    this.hasIcon = !!this.icon || !!this.el.querySelector('[slot="icon"]');
   }
 
   componentDidLoad() {
@@ -141,12 +145,12 @@ export class ListGroupComponent {
         <button aria-expanded={`${this.collapsed}`} title={title} id={this.innerId} class={['se-list-group', this.option, this.collapsed ? "collapsed" : '', this.option, this.selected ? "selected" : '', this.selectedChild ? "selectedChild" : '', "button"].join(' ')} style={{ paddingLeft: `${20 * this.indentation}px` }} onClick={() => this.toggleGroupButton()} disabled={!this.canCollapse}>
           {this.option === "nav" && this.selected && <div class="selectedBar"></div>}
           {this.option === 'treeview' ? <se-icon class="treeview-collapse-icon" onClick={(e) => {e.stopPropagation();this.toggleCollapseTreeview();}} style={{ paddingLeft: `calc(${8 * this.indentation}px)`}}><span innerHTML={this.collapsed ? arrow2Right : arrow2Down}></span></se-icon> : ''}
-          {!!this.icon ?
+          {this.hasIcon &&
             <div class="nav-icon">
               { this.icon && <se-icon color={this.iconColor}>{this.icon}</se-icon> }
               <slot name="icon"></slot>
             </div>
-          : ''}
+          }
           <div class="nav-content">
             <div class="list-group-label">{this.item}</div>
             {myDescription}
