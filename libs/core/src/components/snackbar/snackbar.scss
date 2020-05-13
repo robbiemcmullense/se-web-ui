@@ -35,12 +35,12 @@
 
 .warning {
   @include background-color('warning');
-  @include background-color('warning-contrast');
+  @include color('warning-contrast');
 }
 
 .error {
   @include background-color('error');
-  @include background-color('error-contrast');
+  @include color('error-contrast');
 }
 
 .snackbar {
