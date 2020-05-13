@@ -6,7 +6,7 @@
 }
 
 .group-item{
-  overflow: hidden;
+  overflow: unset;
   padding-bottom: 0;
 }
 
@@ -39,7 +39,7 @@
   }
 }
 
-    
+
 .se-list-group.button.classic, .se-list-group.button.nav {
   min-height: 47px;
   height: 20px; // IE fix so flexbox vertical alignment works

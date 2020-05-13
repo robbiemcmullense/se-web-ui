@@ -25,7 +25,6 @@ import { newE2EPage } from '@stencil/core/testing';
 		expect(parentElm).toHaveClass('nav');
 		const iconElm = await page.find('se-list-group >>> se-icon');
 		expect(iconElm).toBeTruthy();
-		expect(iconElm).toEqualText('my group test icon');
 	});
 
 	it('should add a selected class to the button element when the selected property is true', async() => {

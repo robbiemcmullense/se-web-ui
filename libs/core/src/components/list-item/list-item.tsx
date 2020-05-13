@@ -60,9 +60,8 @@ export class ListItemComponent {
   }
 
   getClosestParent() {
-    const closestGroup = this.el.parentElement.closest("se-list-group");
-    const closestList = this.el.parentElement.closest("se-list");
-    return !closestGroup ? closestList : closestGroup;
+    // get the closest between se-list or se-list-group
+    return this.el.parentElement.closest("se-list, se-list-group");
   }
 
   getParentConfig() {

@@ -3,6 +3,7 @@
 :host{
   @include absolute();
   overflow: auto;
+  width: 100%;
 }
 
 .table-rows-wrapper {

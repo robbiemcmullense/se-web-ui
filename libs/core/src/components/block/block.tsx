@@ -122,7 +122,9 @@ export class BlockComponent {
 
     const childElms = "se-block-header, se-block-content, se-block-footer";
     Array.from(this.el.querySelectorAll(childElms)).forEach((item:any) => {
-      if (item.parentNode === this.el) { // have to do this because otherwise blocks inside other blocks get settings overridden by higher ancestors
+      // have to do this because otherwise blocks inside other blocks get settings overridden by higher ancestors
+      // Using "closest" function in case the current element is wrapped inside another one
+      if (item.closest('se-block') === this.el) {
         item.divider = this.divider;
         !item.option ? item.option = this.option : '';
       }

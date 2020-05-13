@@ -13,7 +13,11 @@ export class ListComponent {
   @Prop() option: "nav" | "classic" | "dropdown" | "treeview" | "headline" = "classic";
   @Watch('option') optionDidChange() {
     Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach((item: any) => {
-      item.option = this.option;
+      const closeList = item.closest('se-list');
+      // Make sure we only change the style of the current list. Handy if list has a dropdown with a different list style
+      if(closeList === this.el){
+        item.option = this.option;
+      }
     });
   }
 
