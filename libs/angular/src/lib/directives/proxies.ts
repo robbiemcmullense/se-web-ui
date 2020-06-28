@@ -483,8 +483,8 @@ export class SeSnackbar {
 }
 
 export declare interface SeStepper extends Components.SeStepper {}
-@ProxyCmp({inputs: ['color', 'linear'], 'methods': ['reset', 'previous', 'next']})
-@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'linear'] })
+@ProxyCmp({inputs: ['color', 'interactive', 'linear'], 'methods': ['reset', 'previous', 'next']})
+@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'interactive', 'linear'] })
 export class SeStepper {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -494,8 +494,8 @@ export class SeStepper {
 }
 
 export declare interface SeStepperItem extends Components.SeStepperItem {}
-@ProxyCmp({inputs: ['active', 'label', 'validated']})
-@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'label', 'validated'] })
+@ProxyCmp({inputs: ['active', 'interactive', 'label', 'validated']})
+@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'interactive', 'label', 'validated'] })
 export class SeStepperItem {
   didValidate!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;

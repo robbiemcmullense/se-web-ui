@@ -58,11 +58,19 @@ ol {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  &:hover {
-    cursor: pointer;
+  cursor: pointer;
+  &.readonly {
+    cursor: default;
   }
   &.disabled {
     pointer-events: none;
+  }
+  &:not(.readonly) {
+    .stepper-item-label {
+      &:hover {
+        font-weight: 400;
+      }
+    }
   }
 }
 
@@ -73,9 +81,6 @@ ol {
   font-weight: 700;
   line-height: 19px;
   margin: 0 $spacing;
-  &:hover {
-    font-weight: 400;
-  }
 }
 
 se-divider {

@@ -20,6 +20,10 @@ describe('StepperComponent', () => {
 		expect(stepper.linear).toBeTruthy();
 	});
 
+	it('should be interactive by default', () => {
+		expect(stepper.interactive).toBeTruthy();
+	});
+
 	it('should render with a nav element, and a div element with the class stepper-item-wrapper', async() => {
 		const page = await newSpecPage({
 			components: [StepperComponent],

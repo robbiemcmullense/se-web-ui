@@ -796,6 +796,10 @@ export namespace Components {
          */
         "color": "primary" | "alternative";
         /**
+          * Defines if the stepper items is interactive or not. The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation. `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
+         */
+        "interactive": boolean;
+        /**
           * Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.
          */
         "linear": boolean;
@@ -817,6 +821,10 @@ export namespace Components {
           * Indicates the content for the currently selected step in the stepper.
          */
         "active": boolean;
+        /**
+          * Indicates if the stepper item is interactive or not. The default setting is `true`, the stepper item can be interacted with. `false` disabled the interactivness.
+         */
+        "interactive": boolean;
         /**
           * Indicates the label for your stepper item.
          */
@@ -2187,6 +2195,10 @@ declare namespace LocalJSX {
          */
         "color"?: "primary" | "alternative";
         /**
+          * Defines if the stepper items is interactive or not. The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation. `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
+         */
+        "interactive"?: boolean;
+        /**
           * Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.
          */
         "linear"?: boolean;
@@ -2196,6 +2208,10 @@ declare namespace LocalJSX {
           * Indicates the content for the currently selected step in the stepper.
          */
         "active"?: boolean;
+        /**
+          * Indicates if the stepper item is interactive or not. The default setting is `true`, the stepper item can be interacted with. `false` disabled the interactivness.
+         */
+        "interactive"?: boolean;
         /**
           * Indicates the label for your stepper item.
          */

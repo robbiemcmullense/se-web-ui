@@ -7,6 +7,7 @@ storiesOf('Stepper', module)
   .add('Demo', () => {
     const color = select('color', colorOptions, 'primary')
     const linear = boolean('linear', true)
+    const interactive = boolean('interactive', true)
     const step1Label = text('Step 1 Label', 'Step 1')
     const step2Label = text('Step 2 Label', 'Step 2')
     const step3Label = text('Step 3 Label', 'Step 3')
@@ -20,7 +21,7 @@ storiesOf('Stepper', module)
 
     return `
       <div style="width: 100%; height: 100%;">
-        <se-stepper color="${color}" linear="${linear}">
+        <se-stepper color="${color}" linear="${linear}" interactive="${interactive}">
           <se-stepper-item label="${step1Label}" validated="${step1Validated}"></se-stepper-item>
           <se-stepper-item label="${step2Label}" validated="${step2Validated}"></se-stepper-item>
           <se-stepper-item label="${step3Label}" validated="${step3Validated}"></se-stepper-item>

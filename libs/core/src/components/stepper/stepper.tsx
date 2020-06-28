@@ -23,6 +23,12 @@ export class StepperComponent {
    */
   @Prop() linear = true;
   /**
+   * Defines if the stepper items is interactive or not.
+   * The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation.
+   * `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
+   */
+  @Prop() interactive = true;
+  /**
    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
    * It no step parameter is provided, it will reset to the first stepper item.
    */
@@ -87,9 +93,17 @@ export class StepperComponent {
 
   renderList() {
     return this.stepperItems.map((item: any) => {
+      const isReadOnly = !(this.interactive && item.interactive);
       return [
         <li class={["stepper-item-wrapper", (this.getItemStep(this.selectedItem) === this.getItemStep(item) || item.validated) ? "selected" : ''].join(' ')}>
-          <div class={["stepper-item", this.checkIfPreviousItemValidated(item) ? "disabled" : ''].join(' ')} onClick={() => this.selectStep(item)}>
+          <div class={["stepper-item", this.checkIfPreviousItemValidated(item) ? "disabled" : '', isReadOnly ? 'readonly' : ''].join(' ')} onClick={(event) => {
+              if(isReadOnly) {
+                event.preventDefault();
+                return;
+              }
+              this.selectStep(item);
+            }
+          }>
             <span class={["indicator", item.validated && !item.active ? "se-icon" : ''].join(' ')}>{this.getItemStep(item)}</span>
             <span class="stepper-item-label">{item.label}</span>
           </div>
@@ -102,6 +116,7 @@ export class StepperComponent {
   componentDidLoad() {
     this.stepperItems = Array.from(this.el.querySelectorAll('se-stepper-item'));
     this.stepperItems.forEach((item: any) => {
+      item.interactive = item.interactive === undefined ? true : !!item.interactive;
       if (this.linear && !item.validated) {
         item.validated = false;
       }
