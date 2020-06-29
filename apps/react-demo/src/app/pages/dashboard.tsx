@@ -77,12 +77,42 @@ class Dashboard extends Component<DashboardProps> {
         <SeBlock>
           <SeBlockHeader>Stepper Example</SeBlockHeader>
           <SeBlockContent>
+            <div>Default/Linear</div>
+            <SeStepper>
+              <SeStepperItem label="Step 1"></SeStepperItem>
+              <SeStepperItem label="Step 2"></SeStepperItem>
+              <SeStepperItem label="Step 3"></SeStepperItem>
+            </SeStepper>
+            <div>Non-linear</div>
             <SeStepper linear={false}>
               <SeStepperItem label="Step 1"></SeStepperItem>
               <SeStepperItem label="Step 2"></SeStepperItem>
               <SeStepperItem label="Step 3"></SeStepperItem>
             </SeStepper>
+            <div>Third active + linear (first & second are validated)</div>
+            <SeStepper>
+              <SeStepperItem label="Step 1" validated={true}></SeStepperItem>
+              <SeStepperItem label="Step 2" validated={true}></SeStepperItem>
+              <SeStepperItem label="Step 3" active={true}></SeStepperItem>
+              <SeStepperItem label="Step 4"></SeStepperItem>
+            </SeStepper>
+            <div>Fourth active + linear (second is not validated)</div>
+            <SeStepper>
+              <SeStepperItem label="Step 1" validated={true}></SeStepperItem>
+              <SeStepperItem label="Step 2" validated={false}></SeStepperItem>
+              <SeStepperItem label="Step 3" validated={true}></SeStepperItem>
+              <SeStepperItem label="Step 4" active={true}></SeStepperItem>
+            </SeStepper>
+            <div>Third active + non-linear</div>
+            <SeStepper linear={false}>
+              <SeStepperItem label="Step 1"></SeStepperItem>
+              <SeStepperItem label="Step 2"></SeStepperItem>
+              <SeStepperItem label="Step 3" active={true}></SeStepperItem>
+              <SeStepperItem label="Step 4"></SeStepperItem>
+            </SeStepper>
           </SeBlockContent>
+        </SeBlock>
+        <SeBlock>
         </SeBlock>
       </SeContainer>
     );
