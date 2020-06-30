@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Logger } from '@se/utils';
 import { DialogService, SnackbarService } from '@se/web-ui-angular';
+import { ModalTableComponent } from './modal-example/modal-example.component';
 
 const log = new Logger('HomeComponent');
 
@@ -60,6 +61,24 @@ export class HomeComponent implements OnInit {
     confirm.instance.didConfirm.subscribe(() => {
       this.showDialogMessage ="Confirm Dialog closed & callback function called";
     });
+  }
+
+  modalTable(): void {
+    const modal = this.dialogService.modal(ModalTableComponent, {
+      data: {
+        title: "Login",
+        username: "1234User",
+        password: "mySecret"
+      }
+    });
+    modal.instance.afterClosed.subscribe(
+      (data: any) => {
+        // called when clicked on OK
+      },
+      (err: any) => {
+        // called when clicked on cancel or backdrop click
+      }
+    );
   }
 
   ngOnInit() {

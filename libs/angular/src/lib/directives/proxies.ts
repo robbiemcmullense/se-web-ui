@@ -17,13 +17,15 @@ export class SeAbout {
 }
 
 export declare interface SeApp extends Components.SeApp {}
-@ProxyCmp({inputs: ['option']})
-@Component({ selector: 'se-app', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option'] })
+@ProxyCmp({inputs: ['option', 'theme']})
+@Component({ selector: 'se-app', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option', 'theme'] })
 export class SeApp {
+  themeChanged!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['themeChanged']);
   }
 }
 
@@ -107,8 +109,8 @@ export class SeBlockHeader {
 }
 
 export declare interface SeBreadcrumb extends Components.SeBreadcrumb {}
-
-@Component({ selector: 'se-breadcrumb', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+@ProxyCmp({inputs: ['canSelectLast']})
+@Component({ selector: 'se-breadcrumb', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canSelectLast'] })
 export class SeBreadcrumb {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -118,8 +120,8 @@ export class SeBreadcrumb {
 }
 
 export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
-@ProxyCmp({inputs: ['href', 'isLast']})
-@Component({ selector: 'se-breadcrumb-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['href', 'isLast'] })
+@ProxyCmp({inputs: ['canSelect', 'href', 'isLast']})
+@Component({ selector: 'se-breadcrumb-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canSelect', 'href', 'isLast'] })
 export class SeBreadcrumbItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -252,8 +254,8 @@ export class SeDropdown {
 }
 
 export declare interface SeFab extends Components.SeFab {}
-@ProxyCmp({inputs: ['color', 'icon', 'option', 'position'], 'methods': ['toggleAction']})
-@Component({ selector: 'se-fab', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'icon', 'option', 'position'] })
+@ProxyCmp({inputs: ['color', 'icon', 'option', 'overlay', 'position'], 'methods': ['toggleAction']})
+@Component({ selector: 'se-fab', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'icon', 'option', 'overlay', 'position'] })
 export class SeFab {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -393,8 +395,8 @@ export class SeListItem {
 }
 
 export declare interface SeLoading extends Components.SeLoading {}
-@ProxyCmp({inputs: ['loading', 'option']})
-@Component({ selector: 'se-loading', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['loading', 'option'] })
+@ProxyCmp({inputs: ['color', 'loading', 'option']})
+@Component({ selector: 'se-loading', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'loading', 'option'] })
 export class SeLoading {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -483,8 +485,8 @@ export class SeSnackbar {
 }
 
 export declare interface SeStepper extends Components.SeStepper {}
-@ProxyCmp({inputs: ['color', 'interactive', 'linear'], 'methods': ['reset', 'previous', 'next']})
-@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'interactive', 'linear'] })
+@ProxyCmp({inputs: ['block', 'color', 'interactive', 'linear'], 'methods': ['reset', 'previous', 'next']})
+@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'color', 'interactive', 'linear'] })
 export class SeStepper {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

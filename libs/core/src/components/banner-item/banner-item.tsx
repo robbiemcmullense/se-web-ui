@@ -6,6 +6,7 @@ import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from "@
   shadow: true
 })
 export class BannerItemComponent {
+  @Element() el: HTMLElement;
   /**
    * Sets the background image for your banner item.
    */
@@ -14,8 +15,6 @@ export class BannerItemComponent {
    * Indicates the active banner item in your banner component.
    */
   @Prop({ mutable: true }) active = false;
-  @Element() el: HTMLElement;
-
   @Watch('active') activeDidChange() {
     if (this.active) {
       this.didChange.emit();

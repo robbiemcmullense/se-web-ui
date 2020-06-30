@@ -1,14 +1,15 @@
 @import "../../theme/theme";
 
 :host {
-  @include background-color('alternative');
   display: inline-flex;
   flex-direction: column;
   min-width: 100%;
   margin: 0;
   padding: 0;
   transition: .2s;
-  border-bottom: 1px solid $divider-color
+  border-bottom: 1px solid;
+  @include border-color('divider');
+  @include background-color('background-alternative');
 }
 
 .table-group-row {
@@ -19,7 +20,7 @@
 }
 
 ::slotted(*[slot="detail"]) {
-  @include background-color('standard');
-  @include color('standard-contrast');
+  @include background-color('background-standard');
+  @include color('background-standard-contrast');
   width: 100%;
 }

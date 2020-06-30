@@ -16,7 +16,7 @@
   // Per Material specs a toolbar cannot have multiple lines inside of a single row.
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   white-space: nowrap;
-  @include background-color("alternative");
+  @include background-color("background-alternative");
 }
 
 ::slotted([slot="end"]) {
@@ -45,7 +45,8 @@
 }
 
 .project-section {
-  color: $se-dark-grey;
+  // color: $se-dark-grey;
+  @include color('standard');
   margin: 0 $spacing-large;
   font-size: 16px;
   font-weight: 300;

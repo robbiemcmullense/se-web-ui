@@ -1,4 +1,4 @@
-import { Component, Element, h, State } from "@stencil/core";
+import { Component, Element, h, State, Prop, Watch } from "@stencil/core";
 
 @Component({
   tag: "se-breadcrumb",
@@ -6,14 +6,23 @@ import { Component, Element, h, State } from "@stencil/core";
   shadow: true
 })
 export class BreadcrumbComponent {
+  observer: any;
   @Element() el: HTMLElement;
   @State() items: HTMLElement[] = [];
-  observer: any;
+
+  /**
+   * Indicates whether or not the last breadcrumb item should be selectable. The default setting is `false`.
+   */
+  @Prop() canSelectLast = false;
+  @Watch('canSelectLast')  canSelectLastChanged() {
+    this.updateLastItem();
+  }
 
   updateLastItem() {
     this.items = Array.from(this.el.querySelectorAll('se-breadcrumb-item'));
     this.items.forEach((item: any) => {
       item.isLast = (item === this.items[this.items.length - 1]);
+      item.canSelect = item.isLast ? this.canSelectLast : true;
     });
   }
 
@@ -33,7 +42,7 @@ export class BreadcrumbComponent {
     this.watchItemList();
   }
 
-  componentDidUnload() {
+  componentWillUnload() {
     this.observer.disconnect();
   }
 

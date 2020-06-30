@@ -32,5 +32,6 @@ storiesOf('Header', module)
           </se-sidemenu-item>
         </se-sidemenu>
       </se-header>
+      <se-tabbar></se-tabbar>
       `
   })

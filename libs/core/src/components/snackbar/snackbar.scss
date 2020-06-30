@@ -25,7 +25,8 @@
 }
 
 .information {
-  @include background-color('focus');
+  @include background-color('information');
+  @include color('information-contrast');
 }
 
 .success {

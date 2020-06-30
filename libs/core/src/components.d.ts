@@ -32,7 +32,11 @@ export namespace Components {
         /**
           * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
          */
-        "option": "technical" | "website" | "dcx";
+        "option": 'technical' | 'website' | 'dcx';
+        /**
+          * Define the them of application. Update the `--se-` css variables of the application. - `light`: light mode of the design. - `dark`: dark mode of the application. - `auto`: Will match the OS configuration
+         */
+        "theme": 'light' | 'dark' | 'auto';
     }
     interface SeAuthentication {
         /**
@@ -138,7 +142,7 @@ export namespace Components {
         /**
           * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default. When the option is set to `fill`, the content will fill the whole space of the block-content with no padding.
          */
-        "option": "card" | "widget" | "basic" | "fill";
+        "option": 'card' | 'widget' | 'basic' | 'fill';
     }
     interface SeBlockFooter {
         /**
@@ -152,7 +156,7 @@ export namespace Components {
         /**
           * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
          */
-        "option": "card" | "widget" | "basic";
+        "option": 'card' | 'widget' | 'basic';
     }
     interface SeBlockHeader {
         /**
@@ -162,17 +166,25 @@ export namespace Components {
         /**
           * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
          */
-        "option": "card" | "widget" | "basic" | "fill";
+        "option": 'card' | 'widget' | 'basic' | 'fill';
     }
     interface SeBreadcrumb {
+        /**
+          * Indicates whether or not the last breadcrumb item should be selectable. The default setting is `false`.
+         */
+        "canSelectLast": boolean;
     }
     interface SeBreadcrumbItem {
+        /**
+          * Indicates whether or not the breadcrumb item should be selected.  The default setting is `true`.
+         */
+        "canSelect": boolean;
         /**
           * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
          */
         "href": string;
         /**
-          * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+          * Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`.
          */
         "isLast": boolean;
     }
@@ -188,7 +200,7 @@ export namespace Components {
         /**
           * Defines the background color of the button. The default setting is `standard`.
          */
-        "color": "standard" | "alternative" | "primary" | "secondary";
+        "color": 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -200,7 +212,7 @@ export namespace Components {
         /**
           * Optional property to change the color of the icon when needed. For example, the user dropdown in the header component.
          */
-        "iconColor": "standard" | "alternative" | "primary" | "secondary";
+        "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
           * Property to specify if the button should only display an icon (no extra spacing).
          */
@@ -208,7 +220,7 @@ export namespace Components {
         /**
           * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
          */
-        "option": "flat" | "raised" | "outline" | "login" | "signup" | "inherit" | "fab" | "minifab";
+        "option": 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
         /**
           * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
          */
@@ -225,11 +237,11 @@ export namespace Components {
         /**
           * Defines the size of the button. `nano` sets the font to 12px font and a 24px height.  Used primarily with the `se-radio-group` component. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
          */
-        "size": "nano" | "small" | "medium" | "large";
+        "size": 'nano' | 'small' | 'medium' | 'large';
         /**
           * Optional property. `button`	is the default setting, creating a clickable button. `submit`	creates a "submit" button (useful to submit form-data). `reset`	creates a reset button (useful to reset form-data to its initial values).
          */
-        "type": "button" | "submit" | "reset";
+        "type": 'button' | 'submit' |'reset';
         /**
           * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
          */
@@ -239,11 +251,11 @@ export namespace Components {
         /**
           * Defines the color schema of the checkbox when the option is set to `onoff`. The default value is `standard`.
          */
-        "background": "standard" | "alternative";
+        "background": 'standard' | 'alternative';
         /**
           * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
          */
-        "color": "primary" | "secondary" | "success";
+        "color": 'primary' | 'secondary' | 'success';
         /**
           * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
          */
@@ -259,11 +271,11 @@ export namespace Components {
         /**
           * Sets the position of the label for your checkbox component. The default setting is `right` when the option is set to `checkbox`. The default setting is `left` when the option is set to `switch`.
          */
-        "labelPos": "left" | "right";
+        "labelPos": 'left' | 'right';
         /**
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
-        "option": "checkbox" | "onoff" | "switch";
+        "option": 'checkbox' | 'onoff' | 'switch';
         /**
           * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
          */
@@ -301,7 +313,7 @@ export namespace Components {
         /**
           * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
          */
-        "color": "standard" | "alternative";
+        "color": 'standard' | 'alternative';
         /**
           * Indicates whether or not the chip is disabled.  Set to `false` by default.
          */
@@ -313,7 +325,7 @@ export namespace Components {
         /**
           * Defines the size of the chip. `nano` sets the font to 14px and the height to 24px. `small` is the default option, with a 16px font and a 32px height.
          */
-        "size": "nano" | "small";
+        "size": 'nano' | 'small';
         /**
           * The text you want to display in your chip.
          */
@@ -365,7 +377,7 @@ export namespace Components {
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
          */
-        "color": "alternative" | "primary";
+        "color": 'alternative' | 'primary';
         /**
           * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
          */
@@ -387,7 +399,7 @@ export namespace Components {
         /**
           * When set to `fill`, the content will fill the whole space of the dialog.
          */
-        "option": "fill";
+        "option": 'fill';
     }
     interface SeDialogFooter {
     }
@@ -395,7 +407,7 @@ export namespace Components {
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
          */
-        "color": "primary" | "alternative";
+        "color": 'primary' | 'alternative';
     }
     interface SeDivider {
         /**
@@ -411,7 +423,7 @@ export namespace Components {
         /**
           * Defines how to align the dropdown container. `right`: Position the container with respect to the right side of the trigger element. `left`: Position the container with respect to the left side of the trigger element.
          */
-        "alignment": "right" | "left";
+        "alignment": 'right' | 'left';
         /**
           * Method to close the dropdown from outside its parent element.
          */
@@ -431,13 +443,13 @@ export namespace Components {
         /**
           * Defines how to vertically align the dropdown container. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
          */
-        "verticalAlignment": "top" | "bottom";
+        "verticalAlignment": 'top' | 'bottom';
     }
     interface SeFab {
         /**
-          * Indicates the color of your main action button . The Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+          * Indicates the color of your main action button . The Default setting is `primary` color. The `alternative` button can also be used.
          */
-        "color": "primary" | "alternative";
+        "color": 'primary' | 'alternative';
         /**
           * Property that determines if an icon is included in the main action button.
          */
@@ -445,11 +457,15 @@ export namespace Components {
         /**
           * Property that determines the functionality of the FAB. The default setting is `speeddial`, which will show/hide a dropdown menu when clicking on the FAB. The `backtotop` setting returns you to the top of the page you are viewing when clicking on the FAB.
          */
-        "option": "speeddial" | "backtotop";
+        "option": 'speeddial' | 'backtotop';
+        /**
+          * Indicates if there is an overlay behind the FAB. Used only if in dial mode.
+         */
+        "overlay": boolean;
         /**
           * Property that determines the position of the component. The default setting is `bottom`, rendering a FAB at the bottom right corner. The `top` setting renders the FAB at the top right corner.
          */
-        "position": "bottom" | "top";
+        "position": 'bottom' | 'top';
         /**
           * Use this method to toggle (show/hide) the mini action buttons.
          */
@@ -481,11 +497,11 @@ export namespace Components {
         /**
           * Defines the layout of your form field. `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
          */
-        "option": "inline" | "stacked";
+        "option": 'inline' | 'stacked';
         /**
           * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px.
          */
-        "padding": "none" | "small" | "medium";
+        "padding": 'none' | 'small' | 'medium';
         /**
           * Determines if the input is required by the application. Set to `false` by default. Setting this value to `true` will render a red asterisk next to your label.
          */
@@ -493,11 +509,11 @@ export namespace Components {
         /**
           * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
          */
-        "status": "error" | "warning" | "success";
+        "status": 'error' | 'warning' | 'success';
         /**
           * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`). `input` is the default type.
          */
-        "type": "input" | "checkbox" | "radio" | "select";
+        "type": 'input' | 'checkbox' | 'radio' | 'select';
         /**
           * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
          */
@@ -521,7 +537,7 @@ export namespace Components {
         /**
           * Optional property that defines the background color of the button. The default color will be inherited from its parent.
          */
-        "color": "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+        "color": "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error" | "information";
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -561,7 +577,7 @@ export namespace Components {
         /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
-        "option": "internal" | "external";
+        "option": 'internal' | 'external';
         /**
           * Defines the url the user should get redirected to when clicking on the link.
          */
@@ -651,6 +667,7 @@ export namespace Components {
         "selected": boolean;
     }
     interface SeLoading {
+        "color": 'primary' | 'secondary';
         /**
           * Displays the loading icon on screen when set to `true`.
          */
@@ -658,13 +675,13 @@ export namespace Components {
         /**
           * Defines the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it is within a popup dialog box.
          */
-        "option": "standard" | "dialog";
+        "option": 'standard' | 'dialog';
     }
     interface SeRadio {
         /**
           * Defines the color of the checkbox. The default setting is `primary`, rendering a green color. The `secondary` setting renders a blue color.
          */
-        "color": "primary" | "secondary";
+        "color": 'primary' | 'secondary';
         /**
           * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
          */
@@ -676,7 +693,7 @@ export namespace Components {
         /**
           * Sets the position of the label for your checkbox component. The default setting is `right`.
          */
-        "labelPos": "left" | "right";
+        "labelPos": 'left' | 'right';
         /**
           * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
          */
@@ -698,7 +715,7 @@ export namespace Components {
         /**
           * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
          */
-        "color": "standard" | "alternative" | "primary" | "secondary";
+        "color": 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -706,7 +723,7 @@ export namespace Components {
         /**
           * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
          */
-        "size": "small" | "nano";
+        "size": 'small' | 'nano';
         /**
           * Defines the selected values of the array.
          */
@@ -788,13 +805,17 @@ export namespace Components {
         /**
           * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting
          */
-        "type": "success" | "error" | "warning" | "information";
+        "type": 'success' | 'error' | 'warning' | 'information';
     }
     interface SeStepper {
         /**
-          * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background.
+          * Defines if the stepper takes the whole space.
          */
-        "color": "primary" | "alternative";
+        "block": boolean;
+        /**
+          * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items. This setting is best used against a gray background.
+         */
+        "color": 'primary' | 'alternative';
         /**
           * Defines if the stepper items is interactive or not. The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation. `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
          */
@@ -838,7 +859,7 @@ export namespace Components {
         /**
           * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
          */
-        "color": "primary" | "alternative";
+        "color": 'primary' | 'alternative';
         /**
           * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
          */
@@ -875,7 +896,7 @@ export namespace Components {
           * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
         "minWidth": string;
-        "option": "dropdown" | "text" | "custom";
+        "option": 'dropdown' | 'text' | 'custom';
         /**
           * Defines the specific width of a block, for items that should not be flexible.
          */
@@ -943,7 +964,7 @@ export namespace Components {
         /**
           * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
          */
-        "option": "inline" | "stacked";
+        "option": 'inline' | 'stacked';
         /**
           * Set the percentage of the "progress bar" to be "filled".
          */
@@ -973,7 +994,7 @@ export namespace Components {
         /**
           * Determines the visual size of your circular progress bar.  The default setting is `large`.
          */
-        "size": "small" | "large";
+        "size": 'small' | 'large';
         /**
           * Defines the value of your component.
          */
@@ -1386,10 +1407,15 @@ declare namespace LocalJSX {
         "version"?: string;
     }
     interface SeApp {
+        "onThemeChanged"?: (event: CustomEvent<any>) => void;
         /**
           * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
          */
-        "option"?: "technical" | "website" | "dcx";
+        "option"?: 'technical' | 'website' | 'dcx';
+        /**
+          * Define the them of application. Update the `--se-` css variables of the application. - `light`: light mode of the design. - `dark`: dark mode of the application. - `auto`: Will match the OS configuration
+         */
+        "theme"?: 'light' | 'dark' | 'auto';
     }
     interface SeAuthentication {
         /**
@@ -1499,7 +1525,7 @@ declare namespace LocalJSX {
         /**
           * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default. When the option is set to `fill`, the content will fill the whole space of the block-content with no padding.
          */
-        "option"?: "card" | "widget" | "basic" | "fill";
+        "option"?: 'card' | 'widget' | 'basic' | 'fill';
     }
     interface SeBlockFooter {
         /**
@@ -1513,7 +1539,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
          */
-        "option"?: "card" | "widget" | "basic";
+        "option"?: 'card' | 'widget' | 'basic';
     }
     interface SeBlockHeader {
         /**
@@ -1523,17 +1549,25 @@ declare namespace LocalJSX {
         /**
           * Defines the visual appearance of a header. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design. `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
          */
-        "option"?: "card" | "widget" | "basic" | "fill";
+        "option"?: 'card' | 'widget' | 'basic' | 'fill';
     }
     interface SeBreadcrumb {
+        /**
+          * Indicates whether or not the last breadcrumb item should be selectable. The default setting is `false`.
+         */
+        "canSelectLast"?: boolean;
     }
     interface SeBreadcrumbItem {
+        /**
+          * Indicates whether or not the breadcrumb item should be selected.  The default setting is `true`.
+         */
+        "canSelect"?: boolean;
         /**
           * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
          */
         "href"?: string;
         /**
-          * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+          * Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`.
          */
         "isLast"?: boolean;
     }
@@ -1549,7 +1583,7 @@ declare namespace LocalJSX {
         /**
           * Defines the background color of the button. The default setting is `standard`.
          */
-        "color"?: "standard" | "alternative" | "primary" | "secondary";
+        "color"?: 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -1561,7 +1595,7 @@ declare namespace LocalJSX {
         /**
           * Optional property to change the color of the icon when needed. For example, the user dropdown in the header component.
          */
-        "iconColor"?: "standard" | "alternative" | "primary" | "secondary";
+        "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
           * Property to specify if the button should only display an icon (no extra spacing).
          */
@@ -1573,7 +1607,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
          */
-        "option"?: "flat" | "raised" | "outline" | "login" | "signup" | "inherit" | "fab" | "minifab";
+        "option"?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
         /**
           * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
          */
@@ -1581,11 +1615,11 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the button. `nano` sets the font to 12px font and a 24px height.  Used primarily with the `se-radio-group` component. `small` is the default option, with a 14px font and a 32px height. `medium` sets the font to 16px and the height to 40px. `large` sets the font to 18px and the height to 48px.
          */
-        "size"?: "nano" | "small" | "medium" | "large";
+        "size"?: 'nano' | 'small' | 'medium' | 'large';
         /**
           * Optional property. `button`	is the default setting, creating a clickable button. `submit`	creates a "submit" button (useful to submit form-data). `reset`	creates a reset button (useful to reset form-data to its initial values).
          */
-        "type"?: "button" | "submit" | "reset";
+        "type"?: 'button' | 'submit' |'reset';
         /**
           * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
          */
@@ -1595,11 +1629,11 @@ declare namespace LocalJSX {
         /**
           * Defines the color schema of the checkbox when the option is set to `onoff`. The default value is `standard`.
          */
-        "background"?: "standard" | "alternative";
+        "background"?: 'standard' | 'alternative';
         /**
           * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
          */
-        "color"?: "primary" | "secondary" | "success";
+        "color"?: 'primary' | 'secondary' | 'success';
         /**
           * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
          */
@@ -1615,7 +1649,7 @@ declare namespace LocalJSX {
         /**
           * Sets the position of the label for your checkbox component. The default setting is `right` when the option is set to `checkbox`. The default setting is `left` when the option is set to `switch`.
          */
-        "labelPos"?: "left" | "right";
+        "labelPos"?: 'left' | 'right';
         /**
           * Send the checkbox value to the parent component when clicking on the checkbox.
          */
@@ -1623,7 +1657,7 @@ declare namespace LocalJSX {
         /**
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
-        "option"?: "checkbox" | "onoff" | "switch";
+        "option"?: 'checkbox' | 'onoff' | 'switch';
         /**
           * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
          */
@@ -1657,7 +1691,7 @@ declare namespace LocalJSX {
         /**
           * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
          */
-        "color"?: "standard" | "alternative";
+        "color"?: 'standard' | 'alternative';
         /**
           * Indicates whether or not the chip is disabled.  Set to `false` by default.
          */
@@ -1673,7 +1707,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the chip. `nano` sets the font to 14px and the height to 24px. `small` is the default option, with a 16px font and a 32px height.
          */
-        "size"?: "nano" | "small";
+        "size"?: 'nano' | 'small';
         /**
           * The text you want to display in your chip.
          */
@@ -1721,7 +1755,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
          */
-        "color"?: "alternative" | "primary";
+        "color"?: 'alternative' | 'primary';
         /**
           * Send data to the parent component when the backdrop is clicked.
          */
@@ -1751,7 +1785,7 @@ declare namespace LocalJSX {
         /**
           * When set to `fill`, the content will fill the whole space of the dialog.
          */
-        "option"?: "fill";
+        "option"?: 'fill';
     }
     interface SeDialogFooter {
     }
@@ -1759,7 +1793,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
          */
-        "color"?: "primary" | "alternative";
+        "color"?: 'primary' | 'alternative';
     }
     interface SeDivider {
         /**
@@ -1775,7 +1809,7 @@ declare namespace LocalJSX {
         /**
           * Defines how to align the dropdown container. `right`: Position the container with respect to the right side of the trigger element. `left`: Position the container with respect to the left side of the trigger element.
          */
-        "alignment"?: "right" | "left";
+        "alignment"?: 'right' | 'left';
         /**
           * Sets the maximum height of the dropdown.  Default setting is "400px".
          */
@@ -1799,13 +1833,13 @@ declare namespace LocalJSX {
         /**
           * Defines how to vertically align the dropdown container. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
          */
-        "verticalAlignment"?: "top" | "bottom";
+        "verticalAlignment"?: 'top' | 'bottom';
     }
     interface SeFab {
         /**
-          * Indicates the color of your main action button . The Default setting is `primary`, rendering a green background. The `alternative` setting renders a white background.
+          * Indicates the color of your main action button . The Default setting is `primary` color. The `alternative` button can also be used.
          */
-        "color"?: "primary" | "alternative";
+        "color"?: 'primary' | 'alternative';
         /**
           * Property that determines if an icon is included in the main action button.
          */
@@ -1813,11 +1847,15 @@ declare namespace LocalJSX {
         /**
           * Property that determines the functionality of the FAB. The default setting is `speeddial`, which will show/hide a dropdown menu when clicking on the FAB. The `backtotop` setting returns you to the top of the page you are viewing when clicking on the FAB.
          */
-        "option"?: "speeddial" | "backtotop";
+        "option"?: 'speeddial' | 'backtotop';
+        /**
+          * Indicates if there is an overlay behind the FAB. Used only if in dial mode.
+         */
+        "overlay"?: boolean;
         /**
           * Property that determines the position of the component. The default setting is `bottom`, rendering a FAB at the bottom right corner. The `top` setting renders the FAB at the top right corner.
          */
-        "position"?: "bottom" | "top";
+        "position"?: 'bottom' | 'top';
     }
     interface SeFabItem {
         /**
@@ -1853,11 +1891,11 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of your form field. `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
          */
-        "option"?: "inline" | "stacked";
+        "option"?: 'inline' | 'stacked';
         /**
           * Defines the spacing around the inside edge of a container. `none` is 0px. `small` is 4px. `medium` is 8px.
          */
-        "padding"?: "none" | "small" | "medium";
+        "padding"?: 'none' | 'small' | 'medium';
         /**
           * Determines if the input is required by the application. Set to `false` by default. Setting this value to `true` will render a red asterisk next to your label.
          */
@@ -1865,11 +1903,11 @@ declare namespace LocalJSX {
         /**
           * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
          */
-        "status"?: "error" | "warning" | "success";
+        "status"?: 'error' | 'warning' | 'success';
         /**
           * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`). `input` is the default type.
          */
-        "type"?: "input" | "checkbox" | "radio" | "select";
+        "type"?: 'input' | 'checkbox' | 'radio' | 'select';
         /**
           * Defines the value of your form field to get passed to the parent component. When the type is set to "input", this value will be the default placeholder in your input field.
          */
@@ -1893,7 +1931,7 @@ declare namespace LocalJSX {
         /**
           * Optional property that defines the background color of the button. The default color will be inherited from its parent.
          */
-        "color"?: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+        "color"?: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error" | "information";
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -1933,7 +1971,7 @@ declare namespace LocalJSX {
         /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
-        "option"?: "internal" | "external";
+        "option"?: 'internal' | 'external';
         /**
           * Defines the url the user should get redirected to when clicking on the link.
          */
@@ -2035,6 +2073,7 @@ declare namespace LocalJSX {
         "selected"?: boolean;
     }
     interface SeLoading {
+        "color"?: 'primary' | 'secondary';
         /**
           * Displays the loading icon on screen when set to `true`.
          */
@@ -2042,13 +2081,13 @@ declare namespace LocalJSX {
         /**
           * Defines the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it is within a popup dialog box.
          */
-        "option"?: "standard" | "dialog";
+        "option"?: 'standard' | 'dialog';
     }
     interface SeRadio {
         /**
           * Defines the color of the checkbox. The default setting is `primary`, rendering a green color. The `secondary` setting renders a blue color.
          */
-        "color"?: "primary" | "secondary";
+        "color"?: 'primary' | 'secondary';
         /**
           * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
          */
@@ -2060,7 +2099,7 @@ declare namespace LocalJSX {
         /**
           * Sets the position of the label for your checkbox component. The default setting is `right`.
          */
-        "labelPos"?: "left" | "right";
+        "labelPos"?: 'left' | 'right';
         /**
           * Send the checkbox value to the parent component when clicking on the checkbox.
          */
@@ -2082,7 +2121,7 @@ declare namespace LocalJSX {
         /**
           * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
          */
-        "color"?: "standard" | "alternative" | "primary" | "secondary";
+        "color"?: 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -2094,7 +2133,7 @@ declare namespace LocalJSX {
         /**
           * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
          */
-        "size"?: "small" | "nano";
+        "size"?: 'small' | 'nano';
         /**
           * Defines the selected values of the array.
          */
@@ -2187,13 +2226,17 @@ declare namespace LocalJSX {
         /**
           * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting
          */
-        "type"?: "success" | "error" | "warning" | "information";
+        "type"?: 'success' | 'error' | 'warning' | 'information';
     }
     interface SeStepper {
         /**
-          * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items.  This setting is best used against a gray background.
+          * Defines if the stepper takes the whole space.
          */
-        "color"?: "primary" | "alternative";
+        "block"?: boolean;
+        /**
+          * Sets the background color of your stepper. The default setting is `primary`, implementing a green background for the stepper visual items. The `alternative` setting implements a white background for the stepper visual items. This setting is best used against a gray background.
+         */
+        "color"?: 'primary' | 'alternative';
         /**
           * Defines if the stepper items is interactive or not. The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation. `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
          */
@@ -2229,7 +2272,7 @@ declare namespace LocalJSX {
         /**
           * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
          */
-        "color"?: "primary" | "alternative";
+        "color"?: 'primary' | 'alternative';
         /**
           * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
          */
@@ -2266,7 +2309,7 @@ declare namespace LocalJSX {
           * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
         "minWidth"?: string;
-        "option"?: "dropdown" | "text" | "custom";
+        "option"?: 'dropdown' | 'text' | 'custom';
         /**
           * Defines the specific width of a block, for items that should not be flexible.
          */
@@ -2338,7 +2381,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of your component. `inline` is the default option.  This sets the "progress bar" adjacent to the label. `stacked` option will render the "progress bar" below the label.
          */
-        "option"?: "inline" | "stacked";
+        "option"?: 'inline' | 'stacked';
         /**
           * Set the percentage of the "progress bar" to be "filled".
          */
@@ -2368,7 +2411,7 @@ declare namespace LocalJSX {
         /**
           * Determines the visual size of your circular progress bar.  The default setting is `large`.
          */
-        "size"?: "small" | "large";
+        "size"?: 'small' | 'large';
         /**
           * Defines the value of your component.
          */

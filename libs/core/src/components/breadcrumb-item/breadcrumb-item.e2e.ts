@@ -29,8 +29,9 @@ describe('BreadcrumbItemComponent', () => {
 
   it('should have the selected class on the host element when the isLast property is set to true, and an aria-current property equal to page', async() => {
     element.setProperty('isLast', true);
+    element.setProperty('canSelect', false);
     await page.waitForChanges();
-    expect(element.shadowRoot.querySelector('div')).toHaveClass('selected');
+    expect(element.shadowRoot.querySelector('div')).toHaveClass('disabled');
     expect(listItemElement.getAttribute('aria-current')).toEqual('page');
   });
 });

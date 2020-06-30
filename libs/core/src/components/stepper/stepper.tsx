@@ -22,6 +22,13 @@ export class StepperComponent {
    * `false` allows each step to be selected in any order.
    */
   @Prop() linear = true;
+
+  /**
+   * Defines if the stepper takes the whole space.
+   */
+  @Prop() block = false;
+
+
   /**
    * Defines if the stepper items is interactive or not.
    * The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation.
@@ -114,8 +121,14 @@ export class StepperComponent {
       const itemStep = this.getItemStep(item);
       const isReadOnly = !(this.interactive && item.interactive);
       return [
-        <li class={["stepper-item-wrapper", (this.getItemStep(this.selectedItem) === itemStep || item.validated) ? "selected" : ''].join(' ')}>
-          <div class={["stepper-item", this.checkIfPreviousItemValidated(item) ? '' : "disabled", isReadOnly ? 'readonly' : ''].join(' ')} onClick={(event) => {
+        <li class={{
+          "stepper-item-wrapper": true,
+          "block": this.block,
+          "selected" : (this.getItemStep(this.selectedItem) === itemStep || item.validated)}} >
+          <div class={{
+            "stepper-item": true,
+            "disabled": !this.checkIfPreviousItemValidated(item),
+            "readonly": isReadOnly}} onClick={(event) => {
               if(isReadOnly) {
                 event.preventDefault();
                 return;
@@ -123,10 +136,10 @@ export class StepperComponent {
               this.selectStep(item);
             }
           }>
-            <span class={["indicator", item.validated && !item.active ? "se-icon" : ''].join(' ')}>{itemStep}</span>
+            <span class={{"indicator": true, "se-icon": item.validated && !item.active }}>{itemStep}</span>
             <span class="stepper-item-label">{item.label}</span>
           </div>
-          {itemStep !== this.stepperItems.length ? <se-divider></se-divider> : ''}
+          {itemStep !== this.stepperItems.length ? <se-divider class={{ "block": this.block}}></se-divider> : ''}
         </li>
       ]
     })

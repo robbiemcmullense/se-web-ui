@@ -45,9 +45,9 @@ export const config: Config = {
   plugins: [
     sass(),
     inlineSvg(),
-    postcss({
-      plugins: [autoprefixer()]
-    })
+    // postcss({
+    //   plugins: [autoprefixer()]
+    // })
   ],
   outputTargets: [
     {

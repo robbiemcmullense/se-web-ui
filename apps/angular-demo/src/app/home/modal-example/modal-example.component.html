@@ -1,0 +1,78 @@
+<se-dialog-header>{{data.title}}</se-dialog-header>
+  <se-block height="500px">
+    <se-block-header>
+      <se-form-field label="Enter your address:" required="true">
+        <input  />
+      </se-form-field>
+      <se-form-field label="Enter your Name:" required="true">
+        <input  />
+      </se-form-field>
+     </se-block-header>
+    <se-block-content>
+    <se-table>
+      <se-table-group-header>
+          <se-table-item-header width="53px"></se-table-item-header>
+          <se-table-item-header width="53px"></se-table-item-header>
+          <se-table-item-header flex="1" min-width="100px" sort="asc">Title</se-table-item-header>
+          <se-table-item-header flex="3" min-width="300px" clickable="true">Secondary Info</se-table-item-header>
+          <se-table-item-header flex="1" min-width="100px" ><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
+      </se-table-group-header>
+      <se-table-group selectable="true">
+          <se-table-item width="53px"><se-icon option="button">arrow2_up</se-icon></se-table-item>
+          <se-table-item width="53px"><se-checkbox></se-checkbox></se-table-item>
+          <se-table-item  flex="30%" title="best practice is to provide a title in case all content is not visible">Item with a detail section</se-table-item>
+          <se-table-item >2nd test</se-table-item>
+          <se-table-item ><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
+          <div slot="detail">
+            <div style="padding:12px 24px">
+              <h4>You may put any type of content here</h4>
+              <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
+            </div>
+          </div>
+      </se-table-group>
+      <se-table-group selectable="true">
+          <se-table-item width="53px"><se-icon option="button">arrow2_down</se-icon></se-table-item>
+          <se-table-item width="53px"><se-checkbox></se-checkbox></se-table-item>
+          <se-table-item title="Item with a hided detail section">Item with a hided detail section</se-table-item>
+          <se-table-item>2nd test</se-table-item>
+          <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
+          <div slot="detail" style="display:none;padding:12px 24px">
+            <h4>You may put any type of content here</h4>
+            <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
+          </div>
+      </se-table-group>
+      <se-table-group>
+          <se-table-item width="53px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+          <se-table-item width="53px"><se-checkbox></se-checkbox></se-table-item>
+          <se-table-item flex="1" min-width="100px" title="Item with no hover effect">Item with no hover effect ("selectable=false")</se-table-item>
+          <se-table-item flex="3" min-width="300px">Test item 2</se-table-item>
+          <se-table-item flex="1" min-width="100px">Very last test item</se-table-item>
+      </se-table-group>
+      <se-table-group selectable="true">
+          <se-table-item width="53px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+          <se-table-item width="53px"><se-checkbox selected="true"></se-checkbox></se-table-item>
+          <se-table-item flex="1" min-width="100px" title="Item selected">Item selected</se-table-item>
+          <se-table-item flex="3" min-width="300px">Another test item with a lot more content than the other items so that we can see what happens when there is multiple lines of information that needs to be shown</se-table-item>
+          <se-table-item flex="1" min-width="100px">Last test item</se-table-item>
+      </se-table-group>
+      <se-table-group selectable="true">
+          <se-table-item width="53px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+          <se-table-item width="53px"><se-checkbox></se-checkbox></se-table-item>
+          <se-table-item flex="1" min-width="100px">Last group with some more info</se-table-item>
+          <se-table-item flex="3" min-width="300px">Test item 2</se-table-item>
+          <se-table-item flex="1" min-width="100px">Very last test item</se-table-item>
+      </se-table-group>
+      <se-table-group selectable="true">
+          <se-table-item width="53px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+          <se-table-item width="53px"><se-checkbox></se-checkbox></se-table-item>
+          <se-table-item flex="1" min-width="100px">Testing 1</se-table-item>
+          <se-table-item flex="3" min-width="300px">2nd test</se-table-item>
+          <se-table-item flex="1" min-width="100px"><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
+      </se-table-group>
+    </se-table>
+  </se-block-content>
+  </se-block>
+<se-dialog-footer>
+  <se-button (click)="closeModal()" color="alternative">Cancel</se-button>
+  <se-button (click)="submitModal()">Submit</se-button>
+</se-dialog-footer>

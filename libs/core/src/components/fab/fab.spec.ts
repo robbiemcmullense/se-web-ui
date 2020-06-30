@@ -25,12 +25,12 @@ describe('FabComponent', () => {
   });
 
   it('should be toggleable by default', () => {
-    expect(fab.toggleIcon).toBeTruthy();
+    expect(fab.showDial).toBeFalsy();
   });
 
   it('should change the toggle icon property when the toggle action method is called', () => {
     fab.toggleAction();
-    expect(fab.toggleIcon).toBeFalsy();
+    expect(fab.showDial).toBeTruthy();
   });
 
   it('should render in speeddial mode by default, with an element with the mini-action-button class', async() => {

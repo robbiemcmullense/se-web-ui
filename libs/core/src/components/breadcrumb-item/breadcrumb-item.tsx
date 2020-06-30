@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from "@stencil/core";
-import arrow2_right from "@se/icons/svg/arrow2_right.svg";
+import arrow2Right from "@se/icons/svg/arrow2_right.svg";
 
 @Component({
   tag: "se-breadcrumb-item",
@@ -8,7 +8,7 @@ import arrow2_right from "@se/icons/svg/arrow2_right.svg";
 })
 export class BreadcrumbItemComponent {
   /**
-   * Indicates whether or not the breadcrumb item should be selected.  The default setting is `false`.
+   * Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`.
    */
   @Prop() isLast = false;
   /**
@@ -16,15 +16,20 @@ export class BreadcrumbItemComponent {
    */
   @Prop() href: string;
 
+  /**
+   * Indicates whether or not the breadcrumb item should be selected.  The default setting is `true`.
+   */
+  @Prop() canSelect = true;
+
   render() {
     return (
       <Host role="listitem">
-        <div class={{ 'selected': this.isLast }}>
-          {this.isLast ?
-            <span aria-current='page' class="breadcrumb-item"><slot/></span>
+        <div class={{ 'disabled': !this.canSelect }}>
+          {this.canSelect ?
+            <span class="breadcrumb-item"><a href={this.href}><slot/></a></span>
             :
-            [<span class="breadcrumb-item"><a href={this.href}><slot/></a></span>,
-            <se-icon size="small"><span innerHTML={arrow2_right}></span></se-icon>]}
+            <span aria-current='page' class="breadcrumb-item"><slot/></span>}
+          {!this.isLast && <se-icon size="small"><span innerHTML={arrow2Right}></span></se-icon>}
         </div>
       </Host>
     )

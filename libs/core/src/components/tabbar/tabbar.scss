@@ -70,15 +70,15 @@ se-tabbar{
     }
     &.opt-content {
       nav {
-        @include background-color('alternative');
+        @include background-color('background-alternative');
         box-sizing: border-box;
         height: 46px;
         min-width: 100%;
         max-width: 100%;
         > a, > span {
-          @include background-color('alternative');
+          // @include background-color('alternative');
           border: 1px solid;
-          @include border-color('standard');
+          @include border-color('divider');
           border-bottom: 0;
           border-left: 0;
           line-height: 46px;
@@ -86,10 +86,11 @@ se-tabbar{
           padding: 0 $spacing-xlarge;
           &:first-child {
             border-left: 1px solid;
-            @include border-color('standard');
+            @include border-color('divider');
           }
           &:not([disabled]):hover {
-            @include background-color('hover-standard');
+            // @include background-color('standard-hover');
+            @include background-color('background-standard');
           }
           &:after {
             display: none;
@@ -98,7 +99,7 @@ se-tabbar{
             height: 0;
           }
           &.active {
-            @include background-color('background');
+            @include background-color('background-standard');
             height: 47px;
             @include color('primary');
             &:after {
@@ -114,7 +115,7 @@ se-tabbar{
             }
           }
           &[disabled] {
-            @include color('hover-standard');
+            @include color('standard-hover');
           }
         }
       }
@@ -196,7 +197,7 @@ se-tabbar{
   }
 
   .tab-alternative {
-    @include background-color('alternative');
+    @include background-color('background-alternative');
     @include color('alternative-contrast');
     .nav-left-wrapper {
       [slot="start"] {
@@ -288,15 +289,15 @@ se-tabbar{
     }
   }
   .opt-content nav {
-    @include background-color('alternative');
+    @include background-color('background-alternative');
     box-sizing: border-box;
     height: 46px;
     min-width: 100%;
     max-width: 100%;
     > a, > span {
-      @include background-color('alternative');
+      // @include background-color('alternative');
       border: 1px solid;
-      @include border-color('standard');
+      @include border-color('divider');
       border-bottom: 0;
       border-left: 0;
       // line-height: 46px;
@@ -304,10 +305,10 @@ se-tabbar{
       padding: 0 $spacing-xlarge;
       &:first-child {
         border-left: 1px solid;
-        @include border-color('standard');
+        @include border-color('divider');
       }
       &:not([disabled]):hover {
-        @include background-color('hover-standard')
+        @include background-color('background-standard')
       }
       &:after {
         display: none;
@@ -316,7 +317,7 @@ se-tabbar{
         height: 0;
       }
       &.active {
-        @include background-color('background');
+        @include background-color('background-standard');
         height: 47px;
         @include color('primary');
         &:after {
@@ -332,19 +333,20 @@ se-tabbar{
         }
       }
       &[disabled] {
-        @include color('hover-standard');
+        opacity: .4;
+        // @include color('standard-hover');
       }
     }
   }
   .opt-content.tab-alternative nav {
-    @include background-color('background');
+    @include background-color('background-standard');
     > a, > span {
-      @include background-color('background');
+      // @include background-color('background-standard');
       &.active {
-        @include background-color('alternative');
+        @include background-color('background-alternative');
       }
       &:not([disabled]):hover {
-        @include background-color('hover-standard')
+        @include background-color('background-alternative');
       }
     }
   }
@@ -352,10 +354,10 @@ se-tabbar{
     height: calc(100% - 4px);
   }
   .opt-end-content {
-    @include background-color('alternative');
+    @include background-color('background-alternative');
   }
   .opt-end-content.tab-end-alternative {
-    @include background-color('background');
+    @include background-color('background-standard');
   }
 
   .opt-nav, .opt-content{

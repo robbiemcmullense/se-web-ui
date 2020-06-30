@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
-import { SeContainer, SeButton, SeBlock, SeBlockHeader, SeBlockContent, SeBlockFooter, SeBanner, SeBannerItem, SeSnackbar, SeDialog, SeDialogHeader, SeDialogContent, SeDialogFooter } from '@se/web-ui-react';
+import { SeContainer, SeButton, SeBlock, SeBlockHeader, SeBlockContent, SeBlockFooter, SeBanner, SeBannerItem, SeSnackbar, SeDialog, SeDialogHeader, SeDialogContent, SeDialogFooter, SeLoading } from '@se/web-ui-react';
 
 const widgetStyle = {
   width: '300px'
 }
 
-class Docs extends Component {
-  dialog = null;
-  snackbar = null;
+interface MyState {
+  showDialog: boolean
+  showSnackbar: boolean
+}
+
+
+class Docs extends Component<null, MyState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showDialog: false,
+      showSnackbar: false
+    };
+  }
 
   openDialog(id) {
-    // document.getElementById(id).open = true;
-    this.dialog.open = true;
+    this.setState({
+      showDialog: true
+    });
   }
 
   closeDialog(id) {
-    // document.getElementById(id).open = false;
-    this.dialog.open = false;
+    this.setState({
+      showDialog: false
+    });
   }
 
   openSnackbar = () => {
-    // document.getElementById('snackbar').open = true;
-    this.snackbar.open = true;
+    this.setState({
+      showSnackbar: true
+    });
   }
 
   render() {
@@ -72,8 +86,8 @@ class Docs extends Component {
             <SeButton onClick={() => this.openDialog('complex')} option="flat" color="primary">Open Dialog Complex</SeButton>
           </SeBlockFooter>
         </SeBlock>
-        <SeSnackbar id="snackbar" message="my snackbar message" ref={this.snackbar}></SeSnackbar>
-        <SeDialog id="simple" color="alternative" size="small" ref={this.dialog}>
+        <SeSnackbar id="snackbar" message="my snackbar message" open={this.state.showSnackbar}></SeSnackbar>
+        <SeDialog id="simple" color="alternative" size="small" open={this.state.showDialog}>
           <SeDialogContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.</SeDialogContent>
           <SeDialogFooter>

@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SeWebModule } from '@se/web-ui-angular';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { ModalTableComponent } from './modal-example/modal-example.component';
 
 @NgModule({
   imports: [
@@ -15,8 +16,10 @@ import { HomeComponent } from './home.component';
   ],
   declarations: [
     HomeComponent,
+    ModalTableComponent
   ],
   entryComponents: [
+    ModalTableComponent
   ],
   providers: []
 })

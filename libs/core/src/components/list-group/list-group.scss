@@ -7,82 +7,75 @@
 
 .group-item{
   overflow: unset;
-  padding-bottom: 0;
-}
-
-.se-list-group {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-.se-list-group.button .list-group-label {
-  line-height: 24px;
-}
-.se-list-group.button.collapsed {
-  + .group-item {
-    display: none;
+
+.se-list-group.button {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  .list-group-label {
+    line-height: 24px;
   }
-}
-.se-list-group.button.selected {
-  @include color('selected-contrast');
-  @include background-color('selected');
-  &:hover, &:focus{
-  background-color: $se-ultra-dark-grey;
+  &.collapsed {
+    + .group-item {
+      display: none;
+    }
   }
-}
-// change the background-color when design team decides
-.se-list-group.button.selectedChild {
-  @include color('selected-contrast');
-  @include background-color('selected');
-  &:hover, &:focus{
-    @include background-color('focus');
-  }
-}
-
-
-.se-list-group.button.classic, .se-list-group.button.nav {
-  min-height: 47px;
-  height: 20px; // IE fix so flexbox vertical alignment works
-  max-width: 100%;
-}
-
-
-.se-list-group.button.treeview {
-  border-bottom: 0;
-  padding: 4px 0;
-}
-.se-list-group.button.treeview > *:first-child {
-  padding-left: 4px;
-}
-.se-list-group.button.treeview .nav-icon {
-  margin-right: 0;
-  // + .nav-content {
-  //   padding-left: 2px;
+  // &.selected {
+  //   @include color('primary');
   // }
-}
-.se-list-group.button.treeview .nav-content {
-  padding-left: 8px;
-}
-.se-list-group.button.treeview .treeview-collapse-icon {
-  margin-left: 2px;
-  // + .nav-icon {
-  //   margin-left: 2px;
+
+  &.selectedChild {
+    @include background-color('alternative-hover');
+  }
+
+  &.classic, &.nav {
+    min-height: 47px;
+    height: 20px; // IE fix so flexbox vertical alignment works
+    max-width: 100%;
+    .nav-content{
+      font-weight: bold;
+    }
+  }
+  &.treeview {
+    border-bottom: 0;
+    padding: 4px 0;
+  }
+  &.treeview .nav-icon {
+    margin-right: 0;
+    + .nav-content {
+      padding-left: 2px;
+    }
+  }
+  &.treeview .nav-content {
+    padding-left: 8px;
+  }
+  &.treeview .treeview-collapse-icon {
+    margin-left: 2px;
+    margin-right: -5px;
+    + .nav-icon {
+      margin-left: 4px;
+      margin-right: 2px;
+    }
+  }
+  &.treeview + div se-list-item {
+    padding-left: 6px;
+  }
+  &.headline {
+    height: 47px;
+    @include background-color('alternative-hover');
+    @include color('alternative-contrast');
+  }
+  &.headline .nav-content {
+    font-size: 16px;
+  }
+  &.dropdown {
+    margin-top: -1px;
+  }
+  // &.treeview > *:first-child {
+  //   padding-left: 4px;
   // }
-}
-.se-list-group.button.treeview + div se-list-item {
-  padding-left: 6px;
-}
-
-
-.se-list-group.button.headline {
-  height: 47px;
-  background-color: $se-ultra-light-grey-2;
-}
-.se-list-group.button.headline .nav-content {
-  font-size: 16px;
-}
-
-
-.se-list-group.button.dropdown {
-  margin-top: -1px;
 }

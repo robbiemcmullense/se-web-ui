@@ -1,7 +1,6 @@
 @import "../../theme/theme";
 
 :host{
-  @include absolute();
   overflow: auto;
   width: 100%;
 }
@@ -12,10 +11,10 @@
 }
 
 ::slotted(se-table-group.selectable:hover) {
-  @include background-color('hover-standard');
-  @include color('hover-standard-contrast');
+  @include background-color('standard-hover');
+  @include color('standard-contrast');
 }
 ::slotted(se-table-group.selected) {
-  @include background-color('selected');
-  @include color('selected-contrast');
+  @include background-color('standard-selected');
+  @include color('standard-contrast');
 }

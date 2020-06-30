@@ -18,8 +18,9 @@ $divider-inset-margin: 80px;
   }
   &.standard {
     border-color: $se-super-light-grey;
+    @include border-color('divider')
   }
   &.alternative {
-    @include border-color('alternative');
+    @include border-color('background-alternative');
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Widget from '../components/widget';
-import { SeContainer, SeBlock, SeButton } from '@se/web-ui-react';
+import { SeContainer, SeBlock, SeButton, SeDialog } from '@se/web-ui-react';
 
 class Home extends Component {
 

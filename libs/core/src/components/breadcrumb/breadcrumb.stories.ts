@@ -1,22 +1,19 @@
 import { storiesOf } from '@storybook/html';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 
-storiesOf('Breadcrumb', module)
-  .add('Breadcrumb', () => {
-    const urlOne = text('First Breadcrumb URL', '')
-    const urlTwo = text('Second Breadcrumb URL', '')
-    const urlThree = text('Third Breadcrumb URL', '')
-    const textHtmlOne = text('First Breadcrumb Item Text', 'First');
-    const textHtmlTwo = text('Second Breadcrumb Item Text', 'Second');
-    const textHtmlThree = text('Third Breadcrumb Item Text', 'Third');
-    const textHtmlLast = text('Last Breadcrumb Item Text', 'Last');
+storiesOf('Breadcrumb', module).add('Breadcrumb', () => {
+  const canSelectLast = boolean('canSelectLast', false);
+  const textHtmlOne = text('First Breadcrumb Item Text', 'First Breadcrumb');
+  const textHtmlTwo = text('Second Breadcrumb Item Text', 'Second Breadcrumb');
+  const textHtmlThree = text('Third Breadcrumb Item Text', 'Third Breadcrumb');
+  const textHtmlLast = text('Last Breadcrumb Item Text', 'Last Breadcrumb');
 
-    return `
-      <se-breadcrumb>
-        <se-breadcrumb-item href="${urlOne}">${textHtmlOne}</se-breadcrumb-item>
-        <se-breadcrumb-item href="${urlTwo}">${textHtmlTwo}</se-breadcrumb-item>
-        <se-breadcrumb-item href="${urlThree}">${textHtmlThree}</se-breadcrumb-item>
+  return `
+      <se-breadcrumb can-select-last="${canSelectLast}">
+        <se-breadcrumb-item>${textHtmlOne}</se-breadcrumb-item>
+        <se-breadcrumb-item>${textHtmlTwo}</se-breadcrumb-item>
+        <se-breadcrumb-item>${textHtmlThree}</se-breadcrumb-item>
         <se-breadcrumb-item>${textHtmlLast}</se-breadcrumb-item>
       </se-breadcrumb>
-    `
-  })
+    `;
+});

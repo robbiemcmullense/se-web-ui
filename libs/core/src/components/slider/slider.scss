@@ -56,7 +56,7 @@ $disabled-color: #cbcbcb;
 	-ms-border-radius: 50%;
 	-o-border-radius: 50%;
 	&:hover {
-		@include background-color('hover-standard');
+		@include background-color('standard-hover');
 		border: $spacing-small solid transparent;
 	}
 	&:active {
@@ -124,7 +124,7 @@ input[type='range'] {
 		}
 		&::-moz-range-progress { @include fill('disabled'); }
 		&::-ms-fill-lower { @include fill('disabled'); }
-		
+
 		&::-webkit-slider-thumb {
 			@include thumb('disabled');
 		}

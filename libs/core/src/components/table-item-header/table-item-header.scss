@@ -3,7 +3,8 @@
 
 :host {
   font-weight: 500;
-  border: 1px solid $divider-color;
+  border: 1px solid;
+  @include border-color('divider');
   border-right: none;
 }
 

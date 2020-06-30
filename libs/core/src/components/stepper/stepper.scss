@@ -14,6 +14,9 @@ ol {
 .stepper-item-wrapper {
   display: inline-flex;
   align-items: center;
+  &.block:not(:last-child){
+    flex:1
+  }
 }
 
 .indicator {
@@ -25,7 +28,7 @@ ol {
   height: 24px;
   border-radius: 100%;
   @include color('alternative');
-  @include background-color('hover-standard');
+  @include background-color('standard-hover');
   &.se-icon {
     font-family: 'se-icon';
     font-size: 24px;
@@ -76,7 +79,7 @@ ol {
 
 .stepper-item-label {
   display: inline;
-  @include color('hover-standard');
+  @include color('standard-hover');
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;
@@ -86,6 +89,10 @@ ol {
 se-divider {
   width: 25px;
   margin-right: $spacing;
+
+  &.block {
+    width: 100%;
+  }
 }
 
 .primary {

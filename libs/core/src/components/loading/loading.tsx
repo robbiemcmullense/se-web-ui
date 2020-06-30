@@ -18,12 +18,20 @@ export class LoadingComponent {
    */
   @Prop() option: 'standard' | 'dialog' = 'standard';
 
+  @Prop() color: 'primary' | 'secondary' = 'primary';
+
   render() {
     return (
       <Host class={{'show': this.loading}}>
         <div class="loading-wrapper">
-          <div class={["se-loading", this.option].join(' ')}>
+          <div class={{
+            "se-loading": true,
+            [`${this.option}`]: true,
+            [`color-${this.color}`]: !!this.color}} >
             <div class="loading-icon" innerHTML={spinner}></div>
+            <div class="message">
+              <slot></slot>
+            </div>
           </div>
         </div>
         <div class="loading-background"></div>

@@ -81,7 +81,6 @@
   @include flex();
   @include display-flex();
   @include flex-direction(column);
-  @include background-color('alternative');
   &.basic {
     margin: 0;
   }
@@ -92,7 +91,7 @@
     border-radius: 4px;
     margin: $spacing-large;
     border: 1px solid;
-    border-color: $se-super-light-grey;
+    @include border-color('divider');
     &-old {
       border-radius: 4px;
       margin: $spacing-large;
@@ -141,8 +140,11 @@
       @include border-color('secondary');
     }
   }
+  &.block-bg-alternative {
+    @include background-color('background-alternative');
+  }
   &.block-bg-standard {
-    @include background-color('background');
+    @include background-color('background-standard');
   }
   &.block-bg-none {
     background-color: transparent;

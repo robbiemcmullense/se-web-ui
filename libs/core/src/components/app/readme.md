@@ -10,6 +10,14 @@
 | Property | Attribute | Description                                                                                                                                                                                                                                                       | Type                                | Default       |
 | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ------------- |
 | `option` | `option`  | Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`. | `"dcx" \| "technical" \| "website"` | `'technical'` |
+| `theme`  | `theme`   | Define the them of application. Update the `--se-` css variables of the application. - `light`: light mode of the design. - `dark`: dark mode of the application. - `auto`: Will match the OS configuration                                                       | `"auto" \| "dark" \| "light"`       | `'light'`     |
+
+
+## Events
+
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `themeChanged` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

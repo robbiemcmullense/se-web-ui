@@ -43,16 +43,16 @@ describe('BreadcrumbComponent', () => {
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
-	it('should disconnect the mutation observer when componentDidUnload is called', () => {
+	it('should disconnect the mutation observer when componentWillUnload is called', () => {
 		breadcrumb.observer = {disconnect: jest.fn()};
 		const eventSpy = jest.spyOn(breadcrumb.observer, 'disconnect');
-		breadcrumb.componentDidUnload();
+		breadcrumb.componentWillUnload();
 		expect(eventSpy).toHaveBeenCalled();
 	});
 
 	it('should add to the items array when the component loads', () => {
-		let node = document.createElement('se-breadcrumb-item');
-		let textNode = document.createTextNode('New');
+		const node = document.createElement('se-breadcrumb-item');
+		const textNode = document.createTextNode('New');
 		node.appendChild(textNode);
 		breadcrumb.el.appendChild(node);
 		breadcrumb.componentWillLoad();
@@ -60,11 +60,11 @@ describe('BreadcrumbComponent', () => {
 	});
 
 	it('should add two items array when the component loads, setting isLast=false to the first item and isLast=true for the second', () => {
-		let nodeOne = document.createElement('se-breadcrumb-item');
-		let firstTextNode = document.createTextNode('New 1');
+		const nodeOne = document.createElement('se-breadcrumb-item');
+		const firstTextNode = document.createTextNode('New 1');
 		nodeOne.appendChild(firstTextNode);
-		let nodeTwo = document.createElement('se-breadcrumb-item');
-		let secondTextNode = document.createTextNode('New 2');
+		const nodeTwo = document.createElement('se-breadcrumb-item');
+		const secondTextNode = document.createTextNode('New 2');
 		nodeOne.appendChild(secondTextNode);
 		breadcrumb.el.appendChild(nodeOne);
 		breadcrumb.el.appendChild(nodeTwo);

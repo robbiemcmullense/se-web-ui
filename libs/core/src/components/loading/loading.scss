@@ -9,21 +9,35 @@
   @include display-flex();
   @include align-items(center);
   @include justify-content(center);
-  background-color: rgba(white, 0.6);
+  // background-color: rgba(white, 0.6);
+}
+
+.color-primary {
+  @include color('primary');
+}
+
+.color-secondary {
+  @include color('secondary');
 }
 
 .se-loading {
+  padding: $spacing $spacing 0;
   position: relative;
   z-index: $zindex-loading;
-  line-height: 128px;
   @include animated();
-  @include color("primary");
   @include display-flex();
   @include flex-direction(column);
   &.dialog {
-    @include background-color("alternative");
+    align-items: center;
+    @include background-color("background-alternative");
     box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 8px 1px var(--se-shadow);
   }
+}
+
+.message{
+  padding: 0 $spacing-large $spacing-large;
+  @include color("background-alternative-contrast");
 }
 
 .loading-background {
@@ -33,10 +47,11 @@
 }
 
 .loading-icon {
+  line-height: 128px;
   position: relative;
-  font-size: 128px;
-  height: 128px;
-  width: 128px;
+  font-size: 100px;
+  height: 100px;
+  width: 100px;
   @include loader();
   fill: currentColor;
 }

@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, Watch, Event, EventEmitter, State } from "@stencil/core";
-import arrow2_right from "@se/icons/svg/arrow2_right.svg";
+import arrow2Right from "@se/icons/svg/arrow2_right.svg";
 
 @Component({
   tag: "se-list-item",
@@ -52,6 +52,8 @@ export class ListItemComponent {
 
   @State() innerId;
 
+  @State() paddingIndentation = 24;
+
   setButtonId() {
     const id = this.el.getAttribute('id');
     if (id) {
@@ -87,41 +89,29 @@ export class ListItemComponent {
     let myDescription = null;
     let title = this.item;
 
-    if (!!this.description) {
+    if (!!this.description as boolean) {
       myDescription = <small>{this.description}</small>;
       title = `${title}, ${this.description}`;
     };
     const TagType = this.href === undefined ? 'button' : 'a' as any;
     const attrs = (TagType === 'a') ? { href : this.href } : {};
 
-    const icon = this.option !== "treeview" ?
+    const icon =
       <se-icon color={this.iconColor}>
         {this.icon}
-      </se-icon>
-      :
-      this.indentation !== 0 ?
-        <se-icon color={this.iconColor} style={{ paddingLeft: `8px` }}>
-          {this.icon}
-        </se-icon>
-        :
-        <se-icon color={this.iconColor}>
-          {this.icon}
-        </se-icon>
-      ;
-
-    const padding = this.option !== "treeview" ? 20 : 24;
+      </se-icon>;
 
     return (
       <Host role="listitem">
           <TagType
             {...attrs}
             title={title}
-            class={{ "selected": this.selected, ["button"] : true, [this.option] : true, ["se-list-item"] : true }}
-            style={{ paddingLeft: `${padding * this.indentation}px`}}
+            class={{ "selected": this.selected, "button" : true, [this.option] : true, ["se-list-item"] : true }}
+            style={{ paddingLeft: `${this.paddingIndentation * this.indentation}px`}}
             id={this.innerId} >
-            {(this.option === "nav" && this.selected) ? <div class="selectedBar"></div> : ''}
+            {(this.selected) ? <div class="selectedBar"></div> : ''}
             <div class="nav-icon">
-              {!!this.icon ? icon : ''}
+              {!!this.icon as boolean ? icon : ''}
               <slot name="icon"></slot>
             </div>
             <div class="nav-content">
@@ -129,7 +119,7 @@ export class ListItemComponent {
               {myDescription}
             </div>
             <slot></slot>
-            {this.option === "nav" ? <se-icon size="medium"><span innerHTML={arrow2_right}></span></se-icon> : ''}
+            {this.option === "nav" ? <se-icon size="medium" color="standard"><span innerHTML={arrow2Right}></span></se-icon> : ''}
           </TagType>
       </Host>
     )

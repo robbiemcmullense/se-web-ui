@@ -5,20 +5,21 @@ a {
   margin: $spacing-small;
   line-height: 17px;
   display: inline-block;
-  @include color('secondary');
+  @include color('information');
   text-decoration: none;
   &.external {
-    &:before {
-      content: '>\00a0';
+    &:after {
+      content: '\00a0>\00a0';
     }
   }
   &:hover {
     text-decoration: underline;
-    @include color('hover-secondary');
+    @include color('information', .3);
   }
   &[data-disabled] {
     pointer-events: none;
-    @include color('hover-standard');
+    // @include color('standard-hover');
+    opacity: .5;
   }
 }
 

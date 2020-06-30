@@ -17,7 +17,7 @@ export class ChipComponent {
   * `nano` sets the font to 14px and the height to 24px.
   * `small` is the default option, with a 16px font and a 32px height.
   */
- @Prop() size: 'nano' | 'small' = 'small'
+  @Prop() size: 'nano' | 'small' = 'small'
    /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */

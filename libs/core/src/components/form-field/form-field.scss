@@ -73,9 +73,9 @@ se-form-field {
     height: 28px;
     line-height: 20px;
     border: 1px solid;
-    @include border-color('hover-standard');
-    @include background-color('alternative');
-    @include color('alternative-contrast');
+    @include border-color('border');
+    @include background-color('background-alternative');
+    @include color('background-alternative-contrast');
     transition: 0.2s;
     padding: $spacing-small;
     font-size: inherit;
@@ -99,7 +99,7 @@ se-form-field {
     -moz-appearance: none;
     -ms-appearance: none;
     appearance: none;
-    @include border-color('hover-standard');
+    @include border-color('border');
     border-radius: 0;
     background-image:
       linear-gradient(45deg, transparent 50%, gray 50%),
@@ -245,6 +245,12 @@ se-form-field {
   .ff-warning {
     input {
       @include border-color('warning');
+    }
+  }
+
+  .ff-information {
+    input {
+      @include border-color('information');
     }
   }
 

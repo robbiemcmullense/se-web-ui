@@ -24,7 +24,7 @@ export class IconComponent {
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
    */
-  @Prop() color: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+  @Prop() color: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error" | "information";
   /**
   * Optional property that defines if the button is disabled.  Set to `false` by default.
   */
@@ -32,13 +32,14 @@ export class IconComponent {
 
 
   render() {
+    const size = this.size || 'small';
     return (
-      <Host class={`icon-${this.size || 'small'}`}>
+      <Host class={`icon-${size}`}>
         <div class={{
           'disabled': this.disabled,
           'se-icon-wrapper': true,
           [this.color]: !!this.color,
-          [`icon-${this.option}`] : true}}>
+          [`icon-${this.option}`] : !!this.option}}>
             <slot />
         </div>
       </Host>

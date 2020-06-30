@@ -143,7 +143,7 @@ export class BlockComponent {
     }
     if (this.height) {
       this.el.style.height = this.height;
-      this.el.style.minHeight = this.width;
+      this.el.style.minHeight = this.height;
     }
   }
 
@@ -180,7 +180,7 @@ export class BlockComponent {
             this.outline !== undefined ? outline : '',
             this.corner !== undefined ? `corner-${this.corner}` : '',
             this.margin !== undefined ? `margin-${this.margin}` : '',
-            this.color !== undefined ? `block-bg-${this.color}` : 'block-bg-alternative'].join(' ')}>
+            this.color !== undefined ? `block-bg-${this.color}` : ''].join(' ')}>
             {this.loading ? <se-loading loading={this.loading} /> : ''}
           <slot></slot>
         </div>

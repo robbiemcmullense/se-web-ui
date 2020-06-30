@@ -15,7 +15,7 @@
 :host(.show-menu) {
   display: block;
   .menu-background {
-    background: rgba(255,255,255,.6);
+    @include background-color('overlay');
     height: 100%;
     position: absolute;
     top: 0;
@@ -26,8 +26,9 @@
     z-index: $zindex-sidemenu-backdrop;
   }
   .actual-menu {
-    background-color: $se-white;
+    @include background-color('background-alternative');
     box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px 0px;
+    box-shadow: var(--shadow) 1px 1px 4px 0px;
     height: 100vh;
     max-height: 100%;
     overflow: hidden;
@@ -93,7 +94,7 @@
   }
 }
 .external-link {
-  background-color: $se-ultra-light-grey-2;
+  @include background-color('background-standard');
   padding: 16px;
   text-align: center;
 }

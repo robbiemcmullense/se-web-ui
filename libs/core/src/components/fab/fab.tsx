@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method } from '@stencil/core';
+import { Component, h, Prop, State, Method, Host } from '@stencil/core';
 import notificationError from "@se/icons/svg/notification_error.svg";
 import arrow4Top from "@se/icons/svg/arrow4_top.svg";
 const SHOW_FAB = 'show';
@@ -9,8 +9,8 @@ const SHOW_FAB = 'show';
 	shadow: true
 })
 export class FabComponent {
-	error_icon = notificationError;
-	arrow_up = arrow4Top;
+	closeIcon = notificationError;
+	arrowUp = arrow4Top;
 	/**
 	 * Property that determines if an icon is included in the main action button.
 	 */
@@ -29,18 +29,25 @@ export class FabComponent {
 	@Prop() position: 'bottom' | 'top' = 'bottom';
 	/**
 	* Indicates the color of your main action button .
-	* The Default setting is `primary`, rendering a green background.
-	* The `alternative` setting renders a white background.
+	* The Default setting is `primary` color.
+	* The `alternative` button can also be used.
 	*/
-	@Prop() color: 'primary' | 'alternative' = 'primary';
-	@State() toggleIcon = true;
+  @Prop() color: 'primary' | 'alternative' = 'primary';
+
+  /**
+	* Indicates if there is an overlay behind the FAB. Used only if in dial mode.
+	*/
+  @Prop() overlay: boolean;
+
+
+	@State() showDial = false;
 	/**
 	 * Use this method to toggle (show/hide) the mini action buttons.
 	 */
 	@Method()
 	async toggleAction() {
 		if (this.option == 'speeddial') {
-			this.toggleIcon = !this.toggleIcon;
+			this.showDial = !this.showDial;
 		}
 	}
 
@@ -48,10 +55,11 @@ export class FabComponent {
 		let icon: any;
 		switch (this.option) {
 			case 'speeddial':
-				icon = this.toggleIcon ? this.icon : this.error_icon;
+				icon = !this.showDial ? this.icon : this.closeIcon;
 				break;
 			case 'backtotop':
-				icon = this.arrow_up;
+        icon = this.arrowUp;
+        break;
 			default:
 				break;
 		}
@@ -60,15 +68,18 @@ export class FabComponent {
 
 	render() {
 		return (
-			<div class={['se-fab', `pos-${this.position}`].join(' ')}>
-				<se-button color={this.color} icon-only="true" class={this.option == 'backtotop' ? 'backtotop' : ''} option='fab' onClick={() => this.toggleAction()}>
-          <se-icon slot="icon" size="medium"><span innerHTML={this.getIcon()}></span></se-icon>
-        </se-button>
-				{this.option === 'speeddial' ?
-					<div class={['mini-action-button', !this.toggleIcon ? SHOW_FAB : ''].join(' ')}>
-						<slot></slot>
-					</div> : ''}
-			</div>
+			<Host onClick={() => this.toggleAction()}>
+        {this.overlay && this.showDial && <div class="dialog-background" ></div> }
+        <div class={{ [`pos-${this.position}`]: !!this.position, 'se-fab': true}}>
+          <se-button color={this.color} icon-only="true" class={this.option == 'backtotop' ? 'backtotop' : ''} option='fab'>
+            <se-icon slot="icon" size="medium"><span innerHTML={this.getIcon()}></span></se-icon>
+          </se-button>
+          {this.option === 'speeddial' ?
+            <div class={['mini-action-button', this.showDial ? SHOW_FAB : ''].join(' ')}>
+              <slot></slot>
+            </div> : ''}
+			  </div>
+      </Host>
 		)
 	}
 }

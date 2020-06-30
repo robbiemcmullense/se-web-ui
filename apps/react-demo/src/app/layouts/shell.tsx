@@ -1,8 +1,33 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom'
-import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeChip, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter, SeIcon, SeDropdown, SeList, SeListItem } from '@se/web-ui-react';
+import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockContent, SeLoading, SeTabbar, SeAbout, SeHeader, SeSidemenu, SeBlockFooter, SeIcon, SeDropdown, SeList, SeListItem } from '@se/web-ui-react';
 
 class ShellLayout extends Component {
+
+  light() {
+    const root = document.documentElement;
+    root.style.removeProperty('--se-background-standard');
+    root.style.removeProperty('--se-background-standard-contrast');
+    root.style.removeProperty('--se-background-alternative');
+    root.style.removeProperty('--se-background-alternative-contrast');
+    root.style.removeProperty('--se-background-alternative');
+    root.style.removeProperty('--se-background-alternative-contrast');
+    root.style.removeProperty('--se-overlay');
+    root.style.removeProperty('--se-shadow');
+  }
+  dark() {
+    const root = document.documentElement;
+    root.style.setProperty('--se-background-standard', "#505559");
+    root.style.setProperty('--se-background-standard-contrast', "#ffffff");
+    root.style.setProperty('--se-background-alternative', "#293133");
+    root.style.setProperty('--se-background-alternative-contrast', "#ffffff");
+    root.style.setProperty('--se-alternative', "#293133");
+    root.style.setProperty('--se-alternative-contrast', "#ffffff");
+    root.style.setProperty('--se-alternative-hover', "#ffffff");
+    root.style.setProperty('--se-overlay', "rgba(255,255,255,0.4)");
+    root.style.setProperty('--se-shadow', "#10181A");
+  }
+
   render() {
     return (
       <SeContainer position="absolute" direction="column">
@@ -11,9 +36,8 @@ class ShellLayout extends Component {
           <SeDropdown alignment="right">
             <SeIcon slot="trigger" option="button">action_download_stroke</SeIcon>
             <SeList option="dropdown">
-              <SeListItem item="My Site 1"></SeListItem>
-              <SeListItem item="My Site 2"></SeListItem>
-              <SeListItem item="My Site 3"></SeListItem>
+              <SeListItem item="Dark" onClick={() => this.dark()}></SeListItem>
+              <SeListItem item="Light" onClick={() => this.light()}></SeListItem>
             </SeList>
           </SeDropdown>
           </div>
@@ -22,7 +46,7 @@ class ShellLayout extends Component {
               <SeAbout appTitle="React Advisor" version="123" imageUrl="url('https://schneider-electric.box.com/shared/static/7hp8f04wj8lclpxn8jonti616lvim3zl.jpg')">></SeAbout>
             </SeSidemenuItem>
             <SeSidemenuItem item="Sidenav 2" active>
-                <SeBlock option="fill">
+                <SeBlock>
                   <SeBlockHeader>some widget design</SeBlockHeader>
                   <SeBlockContent option="fill">
                     <SeContainer option="card" display="block">
@@ -110,6 +134,8 @@ class ShellLayout extends Component {
           </nav>
         </SeTabbar>
         {this.props.children}
+        {/* <SeLoading loading color="secondary"></SeLoading> */}
+
       </SeContainer>
     );
   }

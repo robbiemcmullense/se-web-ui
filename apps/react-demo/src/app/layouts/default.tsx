@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { SeApp } from '@se/web-ui-react';
+import { SeApp, SeLoading } from '@se/web-ui-react';
 
 class DefaultLayout extends Component {
   render() {

@@ -81,9 +81,10 @@
 
 :host(.backtotop){
   button.fab {
-    @include color("alternative");
-    background-color:$se-anthracite-grey;
+    @include color("alternative-contrast");
+    @include background-color("border");
     &:hover {
+      @include color("standard");
       @include background-color("standard-contrast")
     }
   }
@@ -185,15 +186,24 @@ button {
     @include color("standard-contrast");
     @include background-color("standard");
     &:hover, &:focus {
-      @include color("hover-standard-contrast");
-      @include background-color("hover-standard");
+      // @include color("standard-hover-contrast");
+      @include background-color("standard-hover");
+    }
+    &:active, &.selected {
+      @include background-color("standard-selected");
     }
     &.outline {
       border: 1px solid;
-      border-color: $se-anthracite-grey;
       background-color: transparent;
+      // @include color("standard");
+      @include border-color("standard");
+      @include color("background-standard-contrast");
+
       &:hover, &:focus {
-        @include background-color("hover-standard", 0.2);
+        @include background-color("standard-hover", 0.2);
+      }
+      &:active, &.selected {
+        @include background-color("standard-selected", 0.2);
       }
     }
   }
@@ -202,16 +212,22 @@ button {
     @include color("alternative-contrast");
     @include background-color("alternative");
     &:hover, &:focus {
-      @include color("hover-alternative-contrast");
-      @include background-color("hover-alternative");
+      // @include color("alternative-hover-contrast");
+      @include background-color("alternative-hover");
+    }
+    &:active, &.selected {
+      @include background-color("alternative-selected");
     }
     &.outline {
       border: 1px solid;
       background-color: transparent;
-      @include color("alternative");
+      // @include color("alternative");
       @include border-color("alternative");
       &:hover, &:focus {
-        @include background-color("hover-alternative", 0.6);
+        @include background-color("alternative-hover", 0.6);
+      }
+      &:active, &.selected {
+        @include background-color("alternative-selected", 0.6);
       }
     }
   }
@@ -220,8 +236,10 @@ button {
     @include color("primary-contrast");
     @include background-color("primary");
     &:hover, &:focus {
-      @include color("hover-primary-contrast");
-      @include background-color("hover-primary");
+      @include background-color("primary-hover");
+    }
+    &:active, &.selected {
+      @include background-color("primary-selected");
     }
     &.outline {
       border: 1px solid;
@@ -230,6 +248,9 @@ button {
       @include border-color("primary");
       &:hover, &:focus {
         @include background-color("primary", 0.3);
+      }
+      &:active, &.selected {
+        @include background-color("primary-selected", 0.3);
       }
       &[disabled] {
         background-color: transparent;
@@ -241,29 +262,26 @@ button {
     @include color("secondary-contrast");
     @include background-color("secondary");
     &:hover, &:focus {
-      @include color("hover-secondary-contrast");
-      @include background-color("hover-secondary");
+      @include background-color("secondary-hover");
+    }
+    &:active, &.selected {
+      @include background-color("secondary-selected");
     }
     &.outline {
-      background-color: transparent;
       border: 1px solid;
+      background-color: transparent;
       @include color("secondary");
       @include border-color("secondary");
       &:hover, &:focus {
         @include background-color("secondary", 0.3);
       }
+      &:active, &.selected {
+        @include background-color("secondary-selected", 0.3);
+      }
       &[disabled] {
         background-color: transparent;
       }
     }
-  }
-
-  &.selected,
-  &.selected:focus,
-  &.outline.selected,
-  &.outline.selected:focus {
-    @include color("selected-contrast");
-    @include background-color("selected");
   }
 
   &.login,
@@ -301,7 +319,7 @@ button {
     @include color("alternative-contrast");
     &:hover, &:focus {
       @include circleShadow(4px);
-      @include background-color("hover-standard");
+      @include background-color("standard-hover");
     }
     &[data-tooltip] {
       overflow: visible;
@@ -321,16 +339,16 @@ button {
     }
   }
 
-  &.standard, &.alternative, &.primary, &.secondary, &.outline, &.minifab {
-    &:active {
-      @include color("selected-contrast");
-      @include background-color("selected");
-    }
-  }
+  // &.standard, &.alternative, &.primary, &.secondary, &.outline, &.minifab {
+  //   &:active {
+  //     @include color("selected-contrast");
+  //     @include background-color("selected");
+  //   }
+  // }
 
-  &.outline {
-    &:active, &.selected {
-      @include border-color("selected");
-    }
-  }
+  // &.outline {
+  //   &:active, &.selected {
+  //     @include border-color("selected");
+  //   }
+  // }
 }

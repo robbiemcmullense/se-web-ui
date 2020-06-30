@@ -93,9 +93,10 @@
 }
 
 :host(.ct-bg-standard) {
-  @include background-color('background');
+  @include background-color('background-standard');
+  @include color("background-standard-contrast");
 }
 :host(.ct-bg-alternative) {
-  @include color("alternative-contrast");
-  @include background-color("alternative");
+  @include color("background-alternative-contrast");
+  @include background-color("background-alternative");
 }

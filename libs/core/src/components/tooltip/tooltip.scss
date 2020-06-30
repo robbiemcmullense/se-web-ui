@@ -4,8 +4,8 @@
   display: inline-block;
 
   .tooltip {
-    @include  color("alternative");
-    @include background-color("secondary");
+    @include color("information-contrast");
+    @include background-color("information");
     max-width: 260px;
     width: -moz-max-content;
     width: -webkit-max-content;
@@ -47,9 +47,9 @@
       top: 100%;
       left: 50%;
       margin-left: -5px;
-      $color: map-get($seTheme, "secondary");
+      $color: map-get($seTheme, "information");
       border-color: $color transparent transparent transparent;
-      border-color: var(#{custom-property-name("secondary")}, $color) transparent transparent transparent;
+      border-color: var(#{custom-property-name("information")}, $color) transparent transparent transparent;
     }
   }
 
@@ -64,9 +64,9 @@
       bottom: 100%;
       left: 50%;
       margin-left: -5px;
-      $color: map-get($seTheme, "secondary");
+      $color: map-get($seTheme, "information");
       border-color: transparent transparent $color transparent;
-      border-color: transparent transparent var(#{custom-property-name("secondary")}, $color) transparent;
+      border-color: transparent transparent var(#{custom-property-name("information")}, $color) transparent;
     }
   }
 
@@ -80,9 +80,9 @@
       top: 50%;
       left: 100%;
       margin-top: -5px;
-      $color: map-get($seTheme, "secondary");
+      $color: map-get($seTheme, "information");
       border-color: transparent transparent transparent $color;
-      border-color: transparent transparent transparent var(#{custom-property-name("secondary")}, $color);
+      border-color: transparent transparent transparent var(#{custom-property-name("information")}, $color);
     }
   }
 
@@ -97,9 +97,9 @@
       top: 50%;
       right: 100%;
       margin-top: -5px;
-      $color: map-get($seTheme, "secondary");
+      $color: map-get($seTheme, "information");
       border-color: transparent $color transparent transparent;
-      border-color: transparent var(#{custom-property-name("secondary")}, $color) transparent transparent;
+      border-color: transparent var(#{custom-property-name("information")}, $color) transparent transparent;
     }
   }
 }

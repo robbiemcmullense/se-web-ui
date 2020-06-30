@@ -15,11 +15,10 @@
 	@include color("alternative-contrast");
 	&:hover, &:focus {
 		@include circleShadow(4px);
-		@include background-color("hover-standard");
+		@include background-color("standard-hover");
 	}
 	&:active {
-		@include background-color("selected");
-		@include color("selected-contrast");
+		@include background-color("standard-selected");
 	}
 	// applies "active" color schema on IE 11
 	&:after {

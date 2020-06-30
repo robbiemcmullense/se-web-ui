@@ -4,6 +4,8 @@
   display: flex;
   cursor: pointer;
   ol {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
   }

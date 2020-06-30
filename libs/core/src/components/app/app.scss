@@ -18,11 +18,9 @@
   @include absolute(0,0,0,0);
   @include display-flex();
   @include flex-direction(column);
-  @include background-color('background');
-}
-
-body {
-  @include background-color('background');
+  a {
+    text-decoration: none;
+  }
 }
 
 // Create all classes to use colors as classes
@@ -32,6 +30,7 @@ body {
                     'secondary',
                     'success',
                     'warning',
+                    'information',
                     'error',
                     'standard-contrast',
                     'alternative-contrast',
@@ -39,15 +38,28 @@ body {
                     'secondary-contrast',
                     'success-contrast',
                     'warning-contrast',
-                    'error-contrast',
-                    'background'
+                    'information-contrast',
+                    'error-contrast'
                     ) {
   .color-#{$element}{
-    @include  color('' + $element);
+    @include color('' + $element);
   }
   .bg-#{$element}{
     @include background-color('' + $element);
   }
+}
+@each $element in ( 'background-standard',
+                    'background-alternative',
+                    'background-footer') {
+  .#{$element}{
+    @include background-color('' + $element);
+  }
+  .#{$element}-contrast{
+    @include color('' + $element + '-contrast');
+  }
+}
+.overlay{
+  @include background-color('overlay');
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -99,14 +111,13 @@ table {
 	border-spacing: 0;
 }
 
-a {
-  text-decoration: none;
-}
+
 
 body, html{
   @include typology('p');
   // color: $off-black;
-  @include color("alternative-contrast");
+  @include background-color("background-alternative");
+  @include color("background-alternative-contrast");
   // Header Styles
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     font-weight: inherit;
@@ -175,13 +186,16 @@ body, html {
   }
 
   ::-webkit-scrollbar-track {
-    background-color: $se-ultra-light-grey-2;
+    // background-color: $se-ultra-light-grey-2;
+    @include background-color('divider');
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: $se-light-grey;
+    // background-color: $se-light-grey;
+    @include background-color('border');
     &:hover {
-      @include background-color('selected');
+      @include background-color('border-focus');
+
       border: $scrollbar-side-padding / 2 solid transparent;
     }
   }

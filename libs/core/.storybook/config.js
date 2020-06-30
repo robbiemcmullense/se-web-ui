@@ -1,5 +1,5 @@
 import { configure, addDecorator } from '@storybook/html';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
 import '@se/fonts/css/styles.css';
 import '@se/icons/css/styles.css';
@@ -11,8 +11,13 @@ import '@se/icons/css/styles.css';
 //   return defineCustomElements(window);
 // });
 
-// addDecorator(story => `<se-app option=${select('Theme', ['technical', 'website'], 'technical')}>${story()}</se-app>`);
-addDecorator(story => `<se-app>${story()}</se-app>`);
+addDecorator(story => `
+  <se-app theme=${select('theme', ['dark', 'light', 'auto'], 'auto')}>
+    <se-container position="absolute" color="standard" display="block">
+      ${story()}
+    </se-container>
+  </se-app>`);
+// addDecorator(story => `<se-app>${story()}</se-app>`);
 addDecorator(withKnobs);
 addDecorator(withA11y);
 

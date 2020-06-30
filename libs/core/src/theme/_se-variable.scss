@@ -38,38 +38,51 @@ $background: $se-ultra-light-grey-2 !default;
 
 // Only the seTheme should be used to change the them of the app
 $seTheme: (
-  'standard': $se-ultra-light-grey-1,
-  'alternative': $se-white,
   'primary': $se-life-green,
   'secondary': $se-sky-blue,
+  'standard': $se-dark-grey,
+  'alternative': $se-white,
+
   'success': $se-life-green,
+  'information': $se-dark-sky-blue,
   'warning': $se-honeysuckle-orange,
   'error': $se-red,
 
-  'standard-contrast': $se-black,
-  'alternative-contrast': $se-black,
+  'border': $se-medium-grey,
+  'border-focus': $se-anthracite-grey,
+
+  'divider': $se-super-light-grey,
+
   'primary-contrast': $se-white,
   'secondary-contrast': $se-white,
+  'standard-contrast': $se-white,
+  'alternative-contrast': $se-black,
+
   'success-contrast': $se-white,
+  'information-contrast': $se-white,
   'warning-contrast': $se-black,
   'error-contrast': $se-white,
 
-  'hover-standard': $se-light-grey,
-  'hover-alternative': $se-light-grey,
-  'hover-primary': $se-medium-green,
-  'hover-secondary': $se-dark-sky-blue,
-  'hover-standard-contrast': $se-black,
-  'hover-alternative-contrast': $se-black,
-  'hover-primary-contrast': $se-white,
-  'hover-secondary-contrast': $se-white,
+  'primary-hover': $se-medium-green,
+  'secondary-hover': $se-dark-sky-blue,
+  'standard-hover': #494B50,
+  'alternative-hover': $se-super-light-grey,
 
-  'selected': $se-dark-grey,
-  'selected-contrast': $se-white,
+  'primary-selected': #0A9A25,
+  'secondary-selected': #0F81B3,
+  'standard-selected': #494B50,
+  'alternative-selected': #CCCCCC,
 
-  'focus': $se-ultra-dark-grey,
-  'focus-contrast': $se-white,
 
-  'background': $background
+
+  'background-standard': $background,
+  'background-standard-contrast': $se-black,
+  'background-alternative': $se-white,
+  'background-alternative-contrast': $se-black,
+  'background-footer': #E7E6E6,
+  'background-footer-contrast': $se-black,
+  'overlay': rgba($se-black, 40%),
+  'shadow': rgba($se-black, 20%)
 ) !default;
 
 

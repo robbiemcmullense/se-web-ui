@@ -1,39 +1,50 @@
 @import "../../theme/theme";
 
-.se-fab {
-	position: fixed;
+.pos-top {
+  z-index: $zindex-fab;
+  position: fixed;
+  top: 76px;
+  right: 17px;
+  & .mini-action-button {
+    top: 70px;
+    left: 12px;
+    text-align: center;
+  }
+}
 
-	&.pos-top {
-		top: 76px;
-		right: 17px;
-		& .mini-action-button {
-			top: 70px;
-			left: 12px;
-			text-align: center;
-		}
-	}
+.pos-bottom {
+  z-index: $zindex-fab;
+  position: fixed;
+  bottom: 17px;
+  right: 17px;
+  & .mini-action-button {
+    bottom: 55px;
+    left: 12px;
+    text-align: center;
+  }
+}
+.dialog-background {
+  position: fixed !important;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include background-color('overlay');
+  z-index: $zindex-fab - 1;
+}
 
-	&.pos-bottom {
-		bottom: 17px;
-		right: 17px;
-		& .mini-action-button {
-			bottom: 55px;
-			left: 12px;
-			text-align: center;
-		}
-	}
 
-	.mini-action-button {
-		cursor: pointer;
-		position: absolute;
-		display: none;
-	}
+.mini-action-button {
+  cursor: pointer;
+  position: absolute;
+  display: none;
+}
 
-	se-icon {
-		margin-right: 0;
-	}
+se-icon {
+  margin-right: 0;
+}
 
-	.show {
-		display: block;
-	}
+.show {
+  display: block;
 }
