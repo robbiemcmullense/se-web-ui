@@ -11,10 +11,10 @@
 }
 
 ::slotted(se-table-group.selectable:hover) {
-  @include background-color('standard-hover');
-  @include color('standard-contrast');
+  @include background-color('alternative-hover');
+  @include color('alternative-contrast');
 }
 ::slotted(se-table-group.selected) {
-  @include background-color('standard-selected');
-  @include color('standard-contrast');
+  @include background-color('alternative-selected');
+  @include color('alternative-contrast');
 }
