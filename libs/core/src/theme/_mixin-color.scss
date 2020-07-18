@@ -26,6 +26,11 @@ $prefix: "--se-"; //Prefix string for custom CSS properties
     );
   }
 }
+@mixin fill($colorTheme) {
+  $color: map-get($seTheme, $colorTheme);
+  fill: $color;
+  fill: var(#{custom-property-name($colorTheme)}, $color);
+}
 
 @mixin background-color($colorTheme, $transparencies: "none") {
   $color: map-get($seTheme, $colorTheme);

@@ -54,7 +54,7 @@ export class VisualRadialComponent {
       <Host class={!this.isHexColor ? `color-${this.secolor}` : ''}>
         <div class={["visual-radial-wrapper", this.size].join(' ')}>
           <svg class="se-visual-radial" height={this.svgSize} width={this.svgSize}>
-            <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke="#f7f7f7" stroke-width="8" fill="transparent"></circle>
+            <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke="currentColor" stroke-width="8" fill="transparent" class="back-circle"></circle>
             <circle cx={this.circleDimensions} cy={this.circleDimensions} r={this.circleRadius} stroke={this.isHexColor ? this.secolor : 'currentColor'} stroke-width="8" fill="transparent" style={{ strokeDashoffset: String(this.offset) }}></circle>
             Sorry, your browser does not support inline SVG.
           </svg>

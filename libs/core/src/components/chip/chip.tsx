@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core";
-import action_delete_cross from "@se/icons/svg/action_delete_cross.svg";
+import actionDeleteCross from "@se/icons/svg/action_delete_cross.svg";
 
 
 @Component({
@@ -53,15 +53,17 @@ export class ChipComponent {
 
   render() {
     return (
-      <div class={[
-        'se-chip',
-        this.size,
-        this.color,
-        this.selected ? 'selected' : '',
-        this.disabled ? 'disabled' : '',
-        this.block ? 'display-block' : ''].join(' ')}>
-        <div class={['value', this.canClose ? 'can-close' : ''].join(' ')}>{this.value}</div>
-        {this.canClose ? <se-icon class="close" onClick={() => this.closeChip()}><span innerHTML={action_delete_cross}></span></se-icon> : ''}
+      <div class={{
+        'se-chip': true,
+        [this.size]: !!this.size,
+        [this.color]: !!this.color,
+        'can-close': this.canClose,
+        'selected' : this.selected,
+        'disabled': this.disabled,
+         'display-block': this.block}}>
+          <slot name="start"></slot>
+          <div class='value'>{this.value}</div>
+          {this.canClose ? <se-icon class="close" onClick={() => this.closeChip()}><span innerHTML={actionDeleteCross}></span></se-icon> : ''}
       </div>
     );
   }

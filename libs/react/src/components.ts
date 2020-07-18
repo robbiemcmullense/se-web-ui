@@ -5,7 +5,7 @@ import { createReactComponent } from './react-component-lib';
 
 import { JSX } from '@se/web-ui';
 
-import { defineCustomElements, applyPolyfills } from '@se/web-ui/loader';
+import { applyPolyfills, defineCustomElements } from '@se/web-ui/loader';
 
 applyPolyfills().then(() => defineCustomElements());
 export const SeAbout = /*@__PURE__*/createReactComponent<JSX.SeAbout, HTMLSeAboutElement>('se-about');

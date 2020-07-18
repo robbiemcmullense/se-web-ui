@@ -77,7 +77,7 @@ export class CheckboxComponent {
   @Element() el: HTMLElement;
 
   setElementId() {
-    let id = this.el.getAttribute('id');
+    const id = this.el.getAttribute('id');
     if (id && this.option === 'onoff') {
       this.el.shadowRoot.querySelector('button.active').setAttribute('id', 'wc-' + id + '-active');
       this.el.shadowRoot.querySelector('button.inactive').setAttribute('id', 'wc-' + id + '-inactive');
@@ -89,7 +89,7 @@ export class CheckboxComponent {
   handleClick() {
     if (!this.disabled) {
       this.selected = !this.selected;
-      let checkboxObject = { value: this.value, selected: this.selected };
+      const checkboxObject = { value: this.value, selected: this.selected };
       this.didChange.emit(checkboxObject);
     }
   }

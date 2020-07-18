@@ -1,7 +1,11 @@
-@import "../../theme/theme";
+
 
 .visual-radial-wrapper {
   position: relative;
+}
+
+.back-circle{
+  @include color('divider');
 }
 
 .se-visual-radial,
@@ -15,7 +19,7 @@
 }
 
 .radial-data {
-  color: $se-anthracite-grey;
+  @include color('background-alternative-contrast');
   @include display-flex();
   @include flex-direction(column);
   @include justify-content(center);

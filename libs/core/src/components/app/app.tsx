@@ -58,14 +58,14 @@ export class AppComponent {
   }
 
   light() {
-    const root = document.body;
+    const root = document.documentElement;
     listDark.forEach(item => {
       root.style.removeProperty(item.name);
     });
     this.themeChanged.emit("light")
   }
   dark() {
-    const root = document.body;
+    const root = document.documentElement;
     listDark.forEach(item => {
       root.style.setProperty(item.name, item.value);
     });

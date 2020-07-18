@@ -42,8 +42,14 @@ const copy = [
 
 export const config: Config = {
   namespace: 'se-components',
+  buildEs5: true,
   plugins: [
-    sass(),
+    sass({
+      injectGlobalPaths: [
+        // Expose all web-ui variables and mixin to each scss files
+        'src/theme/theme',
+      ]
+    }),
     inlineSvg(),
     // postcss({
     //   plugins: [autoprefixer()]
@@ -61,7 +67,8 @@ export const config: Config = {
       esmLoaderPath: `loader`,
       copy: [
         {
-          src: '../package.json'
+          src: '../_package.json',
+          dest: '../package.json'
         },
         {
           src: 'theme',
@@ -92,7 +99,9 @@ export const config: Config = {
     }),
     reactOutputTarget({
       componentCorePackage: '@se/web-ui',
-      proxiesFile: '../react/src/components.ts'
+      proxiesFile: '../react/src/components.ts',
+      includePolyfills: true,
+      includeDefineCustomElements: true
     })
   ],
   bundles: [

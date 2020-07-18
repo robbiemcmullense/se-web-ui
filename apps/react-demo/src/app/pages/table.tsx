@@ -121,7 +121,6 @@ class Table extends Component<TableProps, TableStates> {
       <SeContainer direction="column">
         <SeBlock divider={false}>
           <SeBlockHeader>Table Example</SeBlockHeader>
-          <SeBlockContent option="fill" style={{ maxHeight: '400px' }}>
             <SeTable>
               <SeTableGroupHeader>
                 <SeTableItemHeader width="72px"></SeTableItemHeader>
@@ -139,7 +138,7 @@ class Table extends Component<TableProps, TableStates> {
                 <SeTableItemHeader minWidth="600px" flex="3" sort="none">
                   Secondary Info
                 </SeTableItemHeader>
-                <SeTableItemHeader flex="1" clickable={true} clickable>
+                <SeTableItemHeader flex="1" clickable={true}>
                   <SeIcon color="primary">airconditioner_hot_heating</SeIcon> -
                   with a lot of extra text to make it as long as possible
                 </SeTableItemHeader>
@@ -163,11 +162,14 @@ class Table extends Component<TableProps, TableStates> {
                         <small>
                           {row.data.title}
                         </small>
+                        <small>
+                         And more!!
+                        </small>
                       </div>
                     </SeTableItem>
                     <SeTableItem minWidth="600px" flex="3" title={row.data.info}>
                       {/* {row.data.info} */}
-                      <div style={{display:'flex', flexDirection:'raw'}}>
+                      <div style={{display:'flex', flexDirection:'row'}}>
                       <SeFormField
                           option="stacked"
                           padding='none'
@@ -204,7 +206,6 @@ class Table extends Component<TableProps, TableStates> {
                 </SeTableGroup>
               ))}
             </SeTable>
-          </SeBlockContent>
         </SeBlock>
       </SeContainer>
     );

@@ -443,7 +443,7 @@
             "exclude": ["**/node_modules/**", "!libs/dash/**"]
           }
         },
-        "test": {
+        "_test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/dash/jest.config.js",

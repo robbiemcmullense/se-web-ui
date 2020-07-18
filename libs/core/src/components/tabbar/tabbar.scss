@@ -1,4 +1,4 @@
-@import "../../theme/theme";
+
 
 $opacity: .25 !default;
 
@@ -108,7 +108,7 @@ se-tabbar{
               height: 2px;
             }
             &:hover {
-              color: initial;
+              color: inherit;
               &:after {
                 @include background-color('primary');
               }
@@ -198,7 +198,7 @@ se-tabbar{
 
   .tab-alternative {
     @include background-color('background-alternative');
-    @include color('alternative-contrast');
+    @include color('background-alternative-contrast');
     .nav-left-wrapper {
       [slot="start"] {
         &>*:first-child:not(a){
@@ -308,6 +308,7 @@ se-tabbar{
         @include border-color('divider');
       }
       &:not([disabled]):hover {
+        @include color('background-standard-contrast');
         @include background-color('background-standard')
       }
       &:after {
@@ -326,7 +327,7 @@ se-tabbar{
           height: 2px;
         }
         &:hover {
-          color: initial;
+          color: inherit;
           &:after {
             @include background-color('primary');
           }

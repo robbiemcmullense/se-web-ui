@@ -1,6 +1,11 @@
 # se-chip
 
 
+| Slot      | Description                                                                         |
+| --------- | ----------------------------------------------------------------------------------- |
+| none      | The text of the chip                        |
+| `start` | An element that will appear before the text of the chip (icon, number ...) |
+
 
 <!-- Auto Generated Below -->
 

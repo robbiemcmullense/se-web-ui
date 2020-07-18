@@ -1,5 +1,5 @@
 @import "../../theme/animation";
-@import "../../theme/theme";
+
 
 :host {
   height: 100%;
@@ -65,7 +65,7 @@
   .image-container {
     @include absolute(0,0,0,0);
   }
-  
+
   .banner-section-wrapper {
     padding: 50px 95px;
     height: 250px;

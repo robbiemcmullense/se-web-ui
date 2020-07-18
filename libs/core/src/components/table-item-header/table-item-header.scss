@@ -1,11 +1,12 @@
-@import "../../theme/theme";
+
 @import "../table-item/table-item";
 
 :host {
   font-weight: 500;
-  border: 1px solid;
+  border-left: 1px solid;
   @include border-color('divider');
-  border-right: none;
+  // border-right: none;
+  align-self: center;
 }
 
 :host(:first-child) {

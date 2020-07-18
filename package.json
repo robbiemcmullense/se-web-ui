@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.10.0",
+  "version": "3.10.1",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -48,6 +48,7 @@
     "@angular/platform-browser": "^8.2.0",
     "@angular/platform-browser-dynamic": "^8.2.0",
     "@angular/router": "^8.2.0",
+    "@babel/preset-env": "^7.8.0",
     "@ionic/angular": "^4.11.10",
     "@ngx-translate/core": "^11.0.1",
     "@se/fonts": "^1.1.0",
@@ -85,9 +86,9 @@
     "@nrwl/storybook": "^8.12.0",
     "@nrwl/web": "^8.12.0",
     "@nrwl/workspace": "^8.12.0",
-    "@stencil/angular-output-target": "^0.0.2",
+    "@stencil/angular-output-target": "0.0.2",
     "@stencil/postcss": "^1.0.1",
-    "@stencil/react-output-target": "^0.0.4",
+    "@stencil/react-output-target": "^0.0.7",
     "@stencil/sass": "^1.1.1",
     "@storybook/addon-a11y": "^5.3.12",
     "@storybook/addon-knobs": "^5.2.5",

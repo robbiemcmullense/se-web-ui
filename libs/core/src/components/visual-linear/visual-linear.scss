@@ -1,4 +1,4 @@
-@import "../../theme/theme";
+
 
 :host {
 	margin: $spacing-small;
@@ -37,7 +37,7 @@ svg {
 }
 
 .progress-bar-wrapper {
-  fill: $se-ultra-light-grey-2;
+  @include fill('divider');
   width: 100%;
 }
 
@@ -46,7 +46,7 @@ svg {
 }
 
 text {
-  color: $se-anthracite-grey;
+  @include color('background-alternative-contrast');
 }
 
 .linear-value {

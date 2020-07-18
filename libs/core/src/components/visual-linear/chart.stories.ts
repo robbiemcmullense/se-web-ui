@@ -19,7 +19,7 @@ storiesOf('Chart', module)
     const value = text('value', '')
 
     return `
-      <div style="height: 50px; padding: 10px; background-color: white;">
+      <div style="padding: 40px;">
         <se-visual-linear
           option="${option}"
           label="${label}"
@@ -37,7 +37,7 @@ storiesOf('Chart', module)
     const value = text('value', '')
 
     return `
-      <div style="height: 200px; padding: 10px; background-color: white;">
+      <div style="padding: 40px;">
         <se-visual-radial
           size="${size}"
           label="${label}"

@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
 
   modalTable(): void {
     const modal = this.dialogService.modal(ModalTableComponent, {
+      canBackdrop: false,
       data: {
         title: "Login",
         username: "1234User",

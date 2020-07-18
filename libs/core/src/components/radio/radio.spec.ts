@@ -19,7 +19,7 @@ describe('RadioComponent', () => {
   it('should not be selected by default', () => {
     expect(radio.selected).toBeFalsy();
 	});
-	
+
 	it('should not be required by default in a form field', () => {
 		expect(radio.required).toBeFalsy();
 	});
@@ -45,8 +45,8 @@ describe('RadioComponent', () => {
 
 	it('should assign an id to the input element with the wc prefix when the host element has an id', () => {
 		radio.el.id = 'radio-id';
-		let input = document.createElement('input');
-		let shadow = radio.el.attachShadow({mode: 'open'});
+		const input = document.createElement('input');
+		const shadow = radio.el.attachShadow({mode: 'open'});
 		shadow.appendChild(input);
 		radio.componentDidLoad();
 		expect(input).toHaveAttribute('id');

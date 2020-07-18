@@ -1,4 +1,4 @@
-@import "../../theme/theme";
+
 
 :host {
   margin: 0;
@@ -10,6 +10,8 @@
   display: inline-flex;
   min-width: 100%;
   z-index: 2;
-
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  @include border-color('divider');
   @include background-color('background-alternative');
 }

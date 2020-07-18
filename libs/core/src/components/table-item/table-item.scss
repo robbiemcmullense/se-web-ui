@@ -1,4 +1,4 @@
-@import "../../theme/theme";
+
 
 :host {
   margin: 0;
@@ -8,8 +8,8 @@
   width: 0;
   min-width: 58px;
   max-width: 100%;
-
   font-weight: lighter;
+  @include align-self(center);
 }
 
 .table-item-content {
@@ -18,9 +18,9 @@
   box-sizing: border-box;
   border: none;
   min-height: 47px;
-  height: 20px;
+  height: auto;
   margin: 0;
-  padding: 0 16px;
+  padding: $spacing-small $spacing-large;
   @include typology('base');
   position: relative;
   outline: none;
@@ -29,6 +29,7 @@
   /* inherit font & color from ancestor */
   color: inherit;
   font: inherit;
+
   @include display-flex();
   @include align-items(center);
   text-align: left; // MS Edge does not support "start"
