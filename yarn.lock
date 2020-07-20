@@ -2031,10 +2031,10 @@
   resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/fonts/-/fonts-1.1.1.tgz#559a475b058224b30c89a4d80ed4d98fff5c2ce4"
   integrity sha512-mWg1RUY/EET2lBjLIh1QABZpuU54hmrKxeIRcQBnUHo4msYJlG/TS44xL3mTg8slPYSBPQvaY1TGduueET24kQ==
 
-"@se/icons@^3.5.6":
-  version "3.5.6"
-  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-3.5.6.tgz#bcfecca45d03a95eeed0748da17ab1eb7910e22e"
-  integrity sha512-Bv+v3cVzjIxrfkAItI0Nfe9YD6DJBZnJ/dvBVgsrnnBi64qm1HBh2XnaqnyjmQQ2xjCc42ATcsGPTcoFiIWG2A==
+"@se/icons@^4.0.0":
+  version "4.2.0"
+  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-4.2.0.tgz#108e4af2319e4c98515097b69a59653fe83de842"
+  integrity sha512-BJbLHIdflHGmP9cQnW+uzh0bSNrMbUKz/8Y8A30iC2vu6hrB7JHt5DIe7tRIRB1PKNyXnm6vAhysLZehAD4xug==
 
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
@@ -2052,11 +2052,11 @@
   integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
 
 "@stencil/core@^1.8.1":
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.16.0.tgz#41df3fb13024053c476799597d59d6be5c69c9b3"
-  integrity sha512-wxZD1YYz/j+7L4XRdEw6yO4HHP6iDa3sCGPQ576lx51szPE9+4RBhpzp5ZMf07j/zkFATtbHu2Q4yuc6QNy5cQ==
+  version "1.16.4"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.16.4.tgz#132fcee3bc6c6c0db5af799c8279b42b559877d9"
+  integrity sha512-RN1xoGyzNCXAAzN8HHDDoGEbGrms1YpEnfp86kd37ZHOOwX500GwxjsTOpzFcBOfkUoiuBjKVnONTqWO04H8/Q==
   dependencies:
-    typescript "3.9.6"
+    typescript "3.9.7"
 
 "@stencil/postcss@^1.0.1":
   version "1.0.1"
@@ -16178,10 +16178,10 @@ typescript@3.5.3, typescript@~3.5.0:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
 
-typescript@3.9.6:
-  version "3.9.6"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.6.tgz#8f3e0198a34c3ae17091b35571d3afd31999365a"
-  integrity sha512-Pspx3oKAPJtjNwE92YS05HQoY7z2SFyOpHo9MqJor3BXAGNaPUs83CuVp9VISFkSjyRfiTpmKuAYGJB7S7hOxw==
+typescript@3.9.7:
+  version "3.9.7"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
+  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 uglify-js@3.4.x:
   version "3.4.10"

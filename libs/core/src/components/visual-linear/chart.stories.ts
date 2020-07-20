@@ -12,11 +12,11 @@ const percentageOptions = {
 
 storiesOf('Chart', module)
   .add('Linear', () => {
-    const option = select('option', displayOptions, 'inline')
-    const label = text('label', '')
+    const option = select('option', displayOptions, 'stacked')
+    const label = text('label', 'Done')
     const percent = number('percentage', 50, percentageOptions)
     const color = text('secolor', 'primary')
-    const value = text('value', '')
+    const value = text('value', '40 / 360')
 
     return `
       <div style="padding: 40px;">
@@ -31,10 +31,10 @@ storiesOf('Chart', module)
   })
   .add('Radial', () => {
     const size = select('option', sizeOptions, 'large')
-    const label = text('label', '')
+    const label = text('label', 'Done')
     const percent = number('percentage', 50, percentageOptions)
     const color = text('secolor', 'primary')
-    const value = text('value', '')
+    const value = text('value', '44')
 
     return `
       <div style="padding: 40px;">

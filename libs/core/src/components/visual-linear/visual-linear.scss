@@ -3,10 +3,6 @@
 :host {
 	margin: $spacing-small;
 }
-.se-visual-linear {
-  display: flex;
-}
-
 svg {
   margin-top: $spacing-small;
   margin-bottom: $spacing-small;
@@ -62,13 +58,13 @@ text {
 }
 
 .inline {
-  &.se-visual-linear {
-    flex-direction: row;
-    justify-content: center;
-    @include align-items(start);
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  @include align-items(center);
 
   svg {
+    flex: 1;
     margin-right: $spacing-large;
   }
 
@@ -78,9 +74,10 @@ text {
 }
 
 .stacked {
-  &.se-visual-linear {
-    flex-direction: column-reverse;
-  }
+  display: flex;
+  flex:1;
+  flex-direction: column-reverse;
+
   .linear-value + .linear-label {
     float: right;
   }
