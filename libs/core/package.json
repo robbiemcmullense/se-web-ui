@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "npm-run-all build.*",
-    "build.core": "stencil build --docs --es5 --prod",
+    "build.core": "stencil build --docs --prod",
     "build.export.docs": "cpx \"src/**/*.md\" \"../../dist/libs/core/docs\"",
     "build_.dash": "node scripts/index.js",
     "test": "stencil test --e2e --testTimeout=30000",

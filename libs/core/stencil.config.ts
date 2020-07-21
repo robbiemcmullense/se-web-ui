@@ -105,18 +105,18 @@ export const config: Config = {
     })
   ],
   bundles: [
-    { components: ['se-app', 'se-container', 'se-block', 'se-block-header', 'se-block-content', 'se-block-footer', 'se-divider'] },
+    { components: ['se-app', 'se-button', 'se-container', 'se-block', 'se-block-header', 'se-block-content', 'se-block-footer', 'se-divider', 'se-icon', 'se-loading'] },
     { components: ['se-dialog', 'se-dialog-header', 'se-dialog-content', 'se-dialog-footer'] },
     { components: ['se-list', 'se-list-group', 'se-list-item'] },
     { components: ['se-tooltip', 'se-tooltip-header', 'se-tooltip-content', 'se-tooltip-footer'] },
-    { components: ['se-header', 'se-sidemenu', 'se-sidemenu-item'] },
+    { components: ['se-header', 'se-sidemenu', 'se-sidemenu-item', 'se-icon-ecostruxure', 'se-icon-lifeison', 'se-icon-schneider'] },
     { components: ['se-stepper', 'se-stepper-item'] },
     { components: ['se-breadcrumb', 'se-breadcrumb-item'] },
     { components: ['se-banner', 'se-banner-item'] },
     { components: ['se-table', 'se-table-group', 'se-table-group-header', 'se-table-item', 'se-table-item-header'] },
-    { components: ['se-form-field', 'se-radio', 'se-radio-group', 'se-checkbox', 'se-chip'] },
+    { components: ['se-form-field', 'se-radio', 'se-radio-group', 'se-checkbox', 'se-chip', 'se-dropdown', 'se-slider'] },
     { components: ['se-fab', 'se-fab-item'] },
-
+    { components: ['se-visual-linear', 'se-visual-radial'] },
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],

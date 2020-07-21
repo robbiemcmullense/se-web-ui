@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host, Watch, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Host, Watch, Event, EventEmitter, State } from '@stencil/core';
 
 
 const listDark = [
@@ -57,19 +57,23 @@ export class AppComponent {
     }
   }
 
+  @State() classTheme: string;
+
   light() {
     const root = document.documentElement;
     listDark.forEach(item => {
       root.style.removeProperty(item.name);
     });
-    this.themeChanged.emit("light")
+    this.themeChanged.emit("light");
+    this.classTheme = "isLight";
   }
   dark() {
     const root = document.documentElement;
     listDark.forEach(item => {
       root.style.setProperty(item.name, item.value);
     });
-    this.themeChanged.emit("dark")
+    this.themeChanged.emit("dark");
+    this.classTheme = "isDark";
   }
 
   @Event() themeChanged: EventEmitter;
@@ -108,6 +112,6 @@ export class AppComponent {
   render() {
     const bodyClass = this.option === "technical" ? 'se-font-technical' : 'se-font-website';
     this.updateBodyClass(bodyClass);
-    return <Host class={['se-app-body', bodyClass, this.theme].join(' ')}><slot></slot></Host>;
+    return <Host class={['se-app-body', bodyClass, this.classTheme].join(' ')}><slot></slot></Host>;
   }
 }

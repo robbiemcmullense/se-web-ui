@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element, State } from "@stencil/core";
 import arrow4Top from "@se/icons/svg/arrow4_top.svg";
+import arrowDefault from "@se/icons/svg/arrow2_default.svg";
 
 @Component({
   tag: "se-table-item-header",
@@ -89,9 +90,8 @@ export class TableItemHeaderComponent {
             <se-icon
               class={["sortable", isSortable ? `sort-${this.sort}` : ''].join(' ')}
               aria-hidden="true"
-              size="nano"
-              style={{opacity: disabled ? '.3' : '1'}}>
-                <span innerHTML={arrow4Top}></span>
+              size="nano">
+                {disabled ? <span innerHTML={arrowDefault}></span> : <span innerHTML={arrow4Top}></span>}
             </se-icon> : ''}
         </TagType>
       </Host>
