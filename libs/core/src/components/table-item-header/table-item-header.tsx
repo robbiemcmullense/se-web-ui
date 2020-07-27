@@ -30,7 +30,7 @@ export class TableItemHeaderComponent {
    * Default value `false` defines the tag type as `div`.
    * `true` defines the tag type as a `button`.
    */
-  @Prop() clickable: boolean;
+  @Prop({ mutable: true }) clickable: boolean;
   /**
    * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`.
    * `asc` defines the icon as an upwards arrow in black.

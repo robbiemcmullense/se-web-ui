@@ -52,7 +52,7 @@ export class FormFieldComponent {
   /**
    * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
    */
-  @Prop({ mutable: true }) status: 'error' | 'warning' | 'success';
+  @Prop() status: 'error' | 'warning' | 'success';
   /**
    * Defines the text value of the label in your form field.
    */

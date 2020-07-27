@@ -19,15 +19,13 @@ import { newSpecPage } from "@stencil/core/testing";
 describe('AppComponent', () => {
 	let app;
 
-	beforeEach(() => {
-		app = new AppComponent();
-	});
-
 	it('should build', () => {
+    app = new AppComponent();
 		expect(app).toBeTruthy();
 	});
 
 	it('should have a technical option by default', () => {
+    app = new AppComponent();
 		expect(app.option).toEqual('technical');
 	});
 
@@ -45,5 +43,13 @@ describe('AppComponent', () => {
 			html: `<se-app option="website"></se-app>`,
 		});
     expect(page.body.className).toContain(`se-font-website`);
+  });
+
+  it('should render then update se-app component with class isLight', async() => {
+		const page = await newSpecPage({
+			components: [AppComponent],
+			html: `<se-app option="website"></se-app>`,
+		});
+    expect(page.root.className).toContain(`isLight`);
 	});
 });

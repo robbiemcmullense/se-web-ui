@@ -12,7 +12,7 @@ export class BlockComponent {
    * `true` will add a divider to the se-block-header and se-block-footer, if they are present.
    * `false` will remove dividers on the se-block header and se-block-footer, if they are present.
    */
-  @Prop() divider= false;
+  @Prop({mutable: true}) divider= false;
   @Watch("divider") dividerDidChange() {
     this.updateItem();
   }
@@ -91,11 +91,11 @@ export class BlockComponent {
    * `vertical` spans 2 rows (2/1).
    * `horizontal` spans 2 columns (1/2).
    */
-  @Prop({ mutable: true }) enlarged: "vertical" | "horizontal" | boolean = false;
+  @Prop() enlarged: "vertical" | "horizontal" | boolean = false;
   /**
    * Displays the loading icon if set to `true`.  Default setting is `false`.
    */
-  @Prop({ mutable: true }) loading = false;
+  @Prop() loading = false;
   /**
    * Defines the visual appearance of a block.
    * Default setting is `basic`, which will remove any spacing.

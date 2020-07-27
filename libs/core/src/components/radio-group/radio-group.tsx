@@ -20,7 +20,7 @@ export class RadioGroupComponent {
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
-  @Prop({mutable: true}) disabled = false;
+  @Prop() disabled = false;
   /**
    * Defines the selected values of the array.
    */

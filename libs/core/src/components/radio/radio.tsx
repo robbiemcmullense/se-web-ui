@@ -18,7 +18,7 @@ export class RadioComponent {
   /**
    * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
    */
-  @Prop() required = false;
+  @Prop({ mutable: true }) required = false;
   /**
    * Defines the color of the checkbox.
    * The default setting is `primary`, rendering a green color.

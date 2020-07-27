@@ -40,11 +40,14 @@ export class SnackbarComponent {
   /**
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
+
+  private timeout: any;
+
   @Prop({ mutable: true }) open = false;
   @Watch('open') openDidChange() {
     if (this.open) {
       this.el.classList.add(SHOW_SNACKBAR);
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         if (!this.canClose) {
           this.closeSnackbar();
         }
@@ -77,6 +80,10 @@ export class SnackbarComponent {
 
   componentDidLoad() {
     this.openDidChange();
+  }
+
+  disconnectedCallback() {
+    this.timeout && clearTimeout(this.timeout);
   }
 
   render() {

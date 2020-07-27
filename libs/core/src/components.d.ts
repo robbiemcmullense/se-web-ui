@@ -798,9 +798,6 @@ export namespace Components {
           * The content of the message you want the snackbar to display.
          */
         "message": string;
-        /**
-          * Indicates if the snackbar is open.  Set to `false` (closed) by default.
-         */
         "open": boolean;
         /**
           * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting
@@ -2219,9 +2216,6 @@ declare namespace LocalJSX {
           * Sends information to the parent component when closing the snackbar.
          */
         "onDidClose"?: (event: CustomEvent<any>) => void;
-        /**
-          * Indicates if the snackbar is open.  Set to `false` (closed) by default.
-         */
         "open"?: boolean;
         /**
           * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting

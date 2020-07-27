@@ -12,7 +12,7 @@ export class SliderComponent {
    * Indicates the initial value of your slider component when it loads.
    * The default value is `0`.
    */
-  @Prop() value: any = 0;
+  @Prop({ mutable: true }) value: any = 0;
   /**
   * Indicates the minimum value of your slider.
   * The default value is `0`.
@@ -31,7 +31,7 @@ export class SliderComponent {
   * Indicates if your slider is disabled.
   * The default setting is `false`.
   */
-  @Prop() disabled = false;
+  @Prop({ mutable: true }) disabled = false;
   /**
    * Event emitted when the slider has been changed.
    */

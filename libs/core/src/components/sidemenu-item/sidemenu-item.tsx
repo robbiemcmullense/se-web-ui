@@ -14,7 +14,7 @@ export class SidemenuItemComponent {
    * Defines if the menu item is active or not.
    * The default setting is `false`.
    */
-  @Prop({ mutable: true }) active = false;
+  @Prop() active = false;
   @Watch('active') activeDidChange() {
     if (this.active) {
       this.didClick.emit();

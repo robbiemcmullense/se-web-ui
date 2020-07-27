@@ -47,8 +47,8 @@ describe('VisualRadialComponent', () => {
     element.setProperty('value', '13');
     await page.waitForChanges();
 
-    const label = await page.find('se-visual-radial >>> .radial-label');
-    const value = await page.find('se-visual-radial >>> .radial-value');
+    const label = await page.find('se-visual-radial >>> .label');
+    const value = await page.find('se-visual-radial >>> .value');
     expect(label).toEqualText('test label');
     expect(value).toEqualText('13');
   });
@@ -57,7 +57,7 @@ describe('VisualRadialComponent', () => {
     element.setProperty('size', 'small');
     await page.waitForChanges();
 
-    const svgElement = await page.find('se-visual-radial >>> .se-visual-radial');
+    const svgElement = await page.find('se-visual-radial >>> .radial');
     expect(svgElement.getAttribute('height')).toEqual('82');
     expect(svgElement.getAttribute('width')).toEqual('82');
   });

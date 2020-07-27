@@ -41,16 +41,16 @@ export class ListGroupComponent {
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
-  @Prop() indentation = 0;
+  @Prop({ mutable: true }) indentation = 0;
   /**
    * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
    */
-  @Prop({mutable: true}) option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
+  @Prop({ mutable: true }) option: "nav" | "classic" | "dropdown" | "treeview" | "headline";
   /**
    * Defines if list groups can be collapsed, true by default.
    */
   @Prop() canCollapse = true;
-  @Prop() selectedChild: boolean;
+  @Prop({ mutable: true }) selectedChild: boolean;
   /**
    * Emitted when the group item is clicked.
    */

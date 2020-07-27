@@ -24,7 +24,7 @@ export class CheckboxComponent {
   /**
    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
    */
-  @Prop() required = false;
+  @Prop({mutable: true}) required = false;
   /**
    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`.
    * The default value is `success`, rendering a green color.

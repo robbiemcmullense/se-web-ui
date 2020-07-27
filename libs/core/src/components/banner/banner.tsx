@@ -173,10 +173,10 @@ export class BannerComponent {
 					<ol class="banner-indicators">
 						{this.renderList()}
 					</ol>,
-					<se-icon class="previous-indicator" onClick={() => this.changeActive('previous')}>
+					<se-icon class="previous-indicator" color="alternative" onClick={() => this.changeActive('previous')}>
             <span innerHTML={arrow2_left}></span>
 					</se-icon>,
-					<se-icon class="next-indicator" onClick={() => this.changeActive('next')}>
+					<se-icon class="next-indicator" color="alternative" onClick={() => this.changeActive('next')}>
             <span innerHTML={arrow2_right}></span>
 					</se-icon>]
 					: ''}

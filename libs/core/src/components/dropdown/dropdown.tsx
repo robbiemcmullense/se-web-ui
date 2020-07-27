@@ -7,10 +7,7 @@ import { Component, h, Prop, State, Method, Element, Event, EventEmitter, Listen
 })
 export class DropdownComponent {
   @Element() el: HTMLElement;
-  /**
-   * Define if we actively manipulate the dropdown
-   */
-  @State() isActive:boolean;
+
   /**
    * Defines how to align the dropdown container.
    * `right`: Position the container with respect to the right side of the trigger element.
@@ -63,6 +60,10 @@ export class DropdownComponent {
     composed: false
   }) cancelAllDropdown: EventEmitter;
 
+  /**
+   * Define if we actively manipulate the dropdown
+   */
+  @State() isActive:boolean;
 
   @State() opened = false;
 

@@ -17,7 +17,7 @@
 | `duration`   | `duration`    | Indicates the duration (in milliseconds) that the snackbar will display on screen before auto-closing, if `canClose` is set to false. The default setting is 5000. | `number`                                             | `5000`                 |
 | `icon`       | `icon`        | The name of the icon you wish to display.  The default icon is an information circle.                                                                              | `string`                                             | `'information_circle'` |
 | `message`    | `message`     | The content of the message you want the snackbar to display.                                                                                                       | `string`                                             | `undefined`            |
-| `open`       | `open`        | Indicates if the snackbar is open.  Set to `false` (closed) by default.                                                                                            | `boolean`                                            | `false`                |
+| `open`       | `open`        |                                                                                                                                                                    | `boolean`                                            | `false`                |
 | `type`       | `type`        | Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting                         | `"error" \| "information" \| "success" \| "warning"` | `'information'`        |
 
 

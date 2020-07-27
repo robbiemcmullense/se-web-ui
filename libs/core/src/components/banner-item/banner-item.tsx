@@ -14,7 +14,7 @@ export class BannerItemComponent {
   /**
    * Indicates the active banner item in your banner component.
    */
-  @Prop({ mutable: true }) active = false;
+  @Prop() active = false;
   @Watch('active') activeDidChange() {
     if (this.active) {
       this.didChange.emit();

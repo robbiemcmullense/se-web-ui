@@ -19,7 +19,7 @@ export class VisualLinearComponent {
 	/**
 	 * Defines the value of your component.
 	 */
-	@Prop({ mutable: true }) value: string;
+	@Prop() value: string;
 	/**
 	 * Sets the color of the visual "progress bar".
 	 * The string should be a 6-digit hexadecimal color with a hashtag (example: #3dcd58).
@@ -30,7 +30,7 @@ export class VisualLinearComponent {
 	/**
 	 * Set the percentage of the "progress bar" to be "filled".
 	 */
-	@Prop({ mutable: true }) percentage: number;
+	@Prop() percentage: number;
 
 	render() {
     const isHexColor:boolean = (this.secolor && this.secolor.indexOf('#') !== -1);

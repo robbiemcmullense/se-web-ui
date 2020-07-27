@@ -38,7 +38,7 @@ export class ChipComponent {
    * Optional property that defines if the chip displays as a block in it's container.
    * When set to true, the chip will be as wide as its container.
    */
-  @Prop({mutable: true}) block: boolean;
+  @Prop() block: boolean;
   @Element() el: HTMLElement;
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
