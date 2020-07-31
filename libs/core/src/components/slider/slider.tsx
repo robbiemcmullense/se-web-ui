@@ -12,7 +12,7 @@ export class SliderComponent {
    * Indicates the initial value of your slider component when it loads.
    * The default value is `0`.
    */
-  @Prop({ mutable: true }) value: any = 0;
+  @Prop({ mutable: true }) value = 0;
   /**
   * Indicates the minimum value of your slider.
   * The default value is `0`.
@@ -41,16 +41,8 @@ export class SliderComponent {
    * @param val: boolean, `true` or `false`.
    */
   @Method()
-  async setDisabled(val: boolean) {
-    this.disabled = val;
-  }
-
-  setInputId() {
-    const id = this.el.getAttribute('id');
-    if (id) {
-      const input = this.el.shadowRoot.querySelector('input');
-      input.setAttribute('id', 'wc-' + id);
-    }
+  async setDisabled(disabled: boolean) {
+    this.disabled = disabled;
   }
 
   setSliderPosition() {
@@ -67,22 +59,17 @@ export class SliderComponent {
   }
 
   componentDidLoad() {
-    this.setInputId();
-    if (this.value < this.min) {
-      this.value = this.min;
-    } else if (this.value > this.max) {
-      this.value = this.max;
-    }
-    this.sliderElement.value = this.value;
     this.setSliderPosition();
     this.handleEvent();
   }
 
   render() {
+    const id = this.el.getAttribute('id');
+    const val = Math.min(Math.max(this.value, this.min), this.max);
     return (
       <label class="slider-container">
         {this.label}
-        <input type="range" min={this.min || "0"} max={this.max} value={this.value || "0"} disabled={this.disabled} ref={el => this.sliderElement = el as HTMLInputElement} onChange={() => this.handleEvent()} />
+        <input type="range" min={this.min || "0"} max={this.max} value={val || "0"} disabled={this.disabled} ref={el => this.sliderElement = el as HTMLInputElement} id={id ? `wc-${id}`: ''} onChange={() => this.handleEvent()} />
       </label>
     )
   }

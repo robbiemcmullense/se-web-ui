@@ -32,6 +32,29 @@
 | `didGroupCollapse` | Emitted when the group item is collapsed/uncollapsed. | `CustomEvent<any>` |
 
 
+## Methods
+
+### `focusElement() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `toggleCollapseTreeview() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

@@ -32,7 +32,7 @@ describe('SliderComponent', () => {
     slider.setDisabled(true);
     expect(slider.disabled).toBeTruthy();
   });
-  
+
   it('should render with an input element', async() => {
     const page = await newSpecPage({
       components: [SliderComponent],
@@ -50,7 +50,6 @@ describe('SliderComponent', () => {
     };
     const eventSpy = jest.spyOn(slider, 'setSliderPosition');
     slider.componentDidLoad();
-    expect(slider.sliderElement.value).toEqual(30);
     expect(eventSpy).toHaveBeenCalled();
   });
 

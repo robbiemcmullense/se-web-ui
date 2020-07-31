@@ -107,7 +107,7 @@ export class FormFieldComponent {
     });
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.initLabel();
   }
 

@@ -8,6 +8,7 @@ import actionDeleteCross from "@se/icons/svg/action_delete_cross.svg";
   shadow: true
 })
 export class ChipComponent {
+  @Element() el: HTMLElement;
   /**
    * The text you want to display in your chip.
    */
@@ -39,7 +40,7 @@ export class ChipComponent {
    * When set to true, the chip will be as wide as its container.
    */
   @Prop() block: boolean;
-  @Element() el: HTMLElement;
+
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
    */
@@ -53,18 +54,19 @@ export class ChipComponent {
 
   render() {
     return (
-      <div class={{
+      <button onClick={() => this.el.blur()}
+        disabled={this.disabled}
+        class={{
         'se-chip': true,
         [this.size]: !!this.size,
         [this.color]: !!this.color,
         'can-close': this.canClose,
         'selected' : this.selected,
-        'disabled': this.disabled,
          'display-block': this.block}}>
           <slot name="start"></slot>
           <div class='value'>{this.value}</div>
-          {this.canClose ? <se-icon class="close" onClick={() => this.closeChip()}><span innerHTML={actionDeleteCross}></span></se-icon> : ''}
-      </div>
+          {this.canClose ? <se-icon class="close" option="button" disabled={this.disabled} onClick={() => this.closeChip()}><span innerHTML={actionDeleteCross}></span></se-icon> : ''}
+      </button>
     );
   }
 }

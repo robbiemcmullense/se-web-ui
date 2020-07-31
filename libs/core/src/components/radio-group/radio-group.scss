@@ -1,10 +1,11 @@
 
-
-:host {
-	font-size: 0;
+:host{
+  display: flex;
 }
 
-::slotted(se-radio) {
-	display: block;
-	padding: $spacing-small 0;
+:host(.flex-column){
+  flex-direction: column;
+}
+:host(.flex-row){
+  flex-direction: row;
 }

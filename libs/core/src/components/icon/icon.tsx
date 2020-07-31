@@ -33,15 +33,19 @@ export class IconComponent {
 
   render() {
     const size = this.size || 'small';
+    const TagType = this.option === 'button' ? 'button' : 'div' as any;
+
     return (
       <Host class={`icon-${size}`}>
-        <div class={{
+        <TagType
+          disabled={this.disabled}
+          class={{
           'disabled': this.disabled,
           'se-icon-wrapper': true,
           [this.color]: !!this.color,
           [`icon-${this.option}`] : !!this.option}}>
             <slot />
-        </div>
+        </TagType>
       </Host>
     );
   }

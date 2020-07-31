@@ -1,9 +1,9 @@
 
 
 a {
-  font-size: 14px;
+  font-size: inherit;
   margin: $spacing-small;
-  line-height: 17px;
+  line-height: inherit;
   display: inline-block;
   @include color('information');
   text-decoration: none;
@@ -16,6 +16,15 @@ a {
     text-decoration: underline;
     @include color('information', .3);
   }
+  // transition-property: outline;
+  // transition-duration: .3s;
+
+  // &:focus {
+  //   outline-width: 2px;
+  //   @include outline('button-focus');
+  //   outline-style: solid;
+  // }
+
   &[data-disabled] {
     pointer-events: none;
     // @include color('standard-hover');

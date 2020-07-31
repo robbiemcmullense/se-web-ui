@@ -22,6 +22,14 @@ $chip-height: 30px; // with border it's 32px.
     cursor: default;
     // padding: 2px $spacing-small 0 $spacing-small;
   }
+  // transition-property: outline;
+  // transition-duration: .3s;
+  &:focus{
+    outline-offset: 1px;
+    outline-width: 2px;
+    @include outline('button-focus');
+    outline-style: solid;
+  }
 
   &.nano {
     min-height: $chip-nano-height;
@@ -93,12 +101,10 @@ se-icon {
 //   @include background-color("focus");
 // }
 
-.disabled,
-.disabled.value,
-.disabled:hover,
-.disabled:focus {
-  cursor: default;
-  background-color: inherit;
+[disabled],
+[disabled].value,
+[disabled]:hover,
+[disabled]:focus {
   opacity: .5;
   se-icon {
     cursor: default;

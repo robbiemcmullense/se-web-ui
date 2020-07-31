@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, State } from "@stencil/core";
+import { Component, Host, h, Prop, Element } from "@stencil/core";
 import arrow4Top from "@se/icons/svg/arrow4_top.svg";
 import arrowDefault from "@se/icons/svg/arrow2_default.svg";
 
@@ -39,24 +39,12 @@ export class TableItemHeaderComponent {
    */
   @Prop() sort: "asc" | "desc" | "none";
 
-  @State() innerId;
-
-  setButtonId() {
-    const id = this.el.getAttribute('id');
-    if (id) {
-      this.innerId = `wc-${id}`;
-    }
-  }
-
-  componentWillLoad() {
-    this.setButtonId();
-  }
-
   render() {
     let ariaLabelSort
     let disabled = false;
     const isSortable = !!this.sort as boolean;
 
+    const id = this.el.getAttribute('id');
     const displayStyle = {
       flex: this.flex || '',
       maxWidth: this.width || '',
@@ -81,7 +69,7 @@ export class TableItemHeaderComponent {
       <Host
         role="cell"
         class={["se-table-item", isSortable ? `sort-${this.sort}` : ''].join(' ')}
-        id={this.innerId}
+        id={id ? `wc-${id}` : ''}
         style={displayStyle}
         >
         <TagType class={"table-item-content"} aria-label={ariaLabelSort}>

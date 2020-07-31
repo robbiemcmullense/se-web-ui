@@ -88,18 +88,7 @@ describe('ButtonComponent', () => {
 		expect(button.block).toBeTruthy();
 	});
 
-	it('should call the setButtonId function when the componentDidLoad function is called', async() => {
-		const eventSpy = jest.spyOn(button, 'setButtonId');
-		button.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
-	});
 
-	it('should set the innerId property when the host element has a defined id', () => {
-    button.el.id = 'button-id';
-    button.componentDidLoad();
-    expect(button.innerId).toEqual('wc-button-id');
-	});
-	
 	it('should append a separate button element to submit a form when an se-button component is a child of an HTML form element', () => {
 		const event = {preventDefault: jest.fn()};
 		const form = document.createElement('form');

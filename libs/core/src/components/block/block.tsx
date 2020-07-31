@@ -103,7 +103,7 @@ export class BlockComponent {
    * `card` will create a card look and feel with rounded corners, and with a `large` margin around it.
    * Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
    */
-  @Prop() option: "basic" | "card" | "card-old" | "widget" = "basic";
+  @Prop() option: "basic" | "card" | "card-old" | "widget" | "fill" = "basic";
   @Watch("option") optionDidChange() {
     this.updateItem();
   }

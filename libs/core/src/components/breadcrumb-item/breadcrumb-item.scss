@@ -21,6 +21,11 @@ a {
   color: inherit;
   text-decoration: inherit;
   cursor: inherit;
+  // &:focus {
+  //   outline-width: 2px;
+  //   @include outline('button-focus');
+  //   outline-style: solid;
+  // }
 }
 se-icon {
   cursor: default;

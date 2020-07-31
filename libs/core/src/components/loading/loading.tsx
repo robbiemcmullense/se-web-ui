@@ -17,13 +17,20 @@ export class LoadingComponent {
    * `dialog` gives the loading icon a look-and-feel that it is within a popup dialog box.
    */
   @Prop() option: 'standard' | 'dialog' = 'standard';
-
+  /**
+   * Defines the color of the loading spinner.
+   */
   @Prop() color: 'primary' | 'secondary' = 'primary';
+
+  /**
+   * Defines if we want the loading to take the full page of the browser. default the browser will stay in the container.
+   */
+  @Prop() fullPage: boolean;
 
   render() {
     return (
       <Host class={{'show': this.loading}}>
-        <div class="loading-wrapper">
+        <div class={{"loading-wrapper": true, 'isFixed': this.fullPage}} >
           <div class={{
             "se-loading": true,
             [`${this.option}`]: true,

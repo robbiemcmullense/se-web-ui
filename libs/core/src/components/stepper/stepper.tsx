@@ -7,6 +7,7 @@ import { Component, Element, h, Listen, State, Prop, Method } from "@stencil/cor
 })
 export class StepperComponent {
   @Element() el: HTMLElement;
+  observer: any;
   @State() stepperItems: HTMLSeStepperItemElement[] = [];
   @State() selectedItem: HTMLSeStepperItemElement;
   @State() validatedChanged: boolean;
@@ -145,7 +146,21 @@ export class StepperComponent {
     })
   }
 
-  componentDidLoad() {
+  watchItemList() {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          this.setItemsArray();
+        }
+        if (mutation.removedNodes.length) {
+          this.setItemsArray();
+        }
+      });
+    });
+    this.observer.observe(this.el, { childList: true });
+  }
+
+  setItemsArray(){
     this.stepperItems = Array.from(this.el.querySelectorAll('se-stepper-item'));
     let previousItemValidated = true;
     this.stepperItems.forEach((item: any) => {
@@ -161,6 +176,17 @@ export class StepperComponent {
       item.active = selectedItem === item;
     });
     this.selectStep(selectedItem);
+  }
+
+  componentDidLoad() {
+    this.setItemsArray();
+    this.watchItemList();
+  }
+
+  componentDidUnload() {
+    this.stepperItems.length = 0;
+    this.selectedItem = undefined;
+    this.observer.disconnect();
   }
 
   render() {

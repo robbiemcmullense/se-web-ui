@@ -4,30 +4,6 @@ import { SeContainer, SeBlock, SeBlockHeader, SeButton, SeSidemenuItem, SeBlockC
 
 class ShellLayout extends Component {
 
-  light() {
-    const root = document.documentElement;
-    root.style.removeProperty('--se-background-standard');
-    root.style.removeProperty('--se-background-standard-contrast');
-    root.style.removeProperty('--se-background-alternative');
-    root.style.removeProperty('--se-background-alternative-contrast');
-    root.style.removeProperty('--se-background-alternative');
-    root.style.removeProperty('--se-background-alternative-contrast');
-    root.style.removeProperty('--se-overlay');
-    root.style.removeProperty('--se-shadow');
-  }
-  dark() {
-    const root = document.documentElement;
-    root.style.setProperty('--se-background-standard', "#505559");
-    root.style.setProperty('--se-background-standard-contrast', "#ffffff");
-    root.style.setProperty('--se-background-alternative', "#293133");
-    root.style.setProperty('--se-background-alternative-contrast', "#ffffff");
-    root.style.setProperty('--se-alternative', "#293133");
-    root.style.setProperty('--se-alternative-contrast', "#ffffff");
-    root.style.setProperty('--se-alternative-hover', "#ffffff");
-    root.style.setProperty('--se-overlay', "rgba(255,255,255,0.4)");
-    root.style.setProperty('--se-shadow', "#10181A");
-  }
-
   render() {
     return (
       <SeContainer position="absolute" direction="column">
@@ -35,10 +11,6 @@ class ShellLayout extends Component {
           <div slot="end">
           <SeDropdown alignment="right">
             <SeIcon slot="trigger" option="button">action_download_stroke</SeIcon>
-            <SeList option="dropdown">
-              <SeListItem item="Dark" onClick={() => this.dark()}></SeListItem>
-              <SeListItem item="Light" onClick={() => this.light()}></SeListItem>
-            </SeList>
           </SeDropdown>
           </div>
           <SeSidemenu link="">

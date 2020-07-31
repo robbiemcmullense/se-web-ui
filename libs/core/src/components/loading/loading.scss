@@ -12,6 +12,15 @@
   // background-color: rgba(white, 0.6);
 }
 
+.isFixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $zindex-loading;
+}
+
 .color-primary {
   @include color('primary');
 }

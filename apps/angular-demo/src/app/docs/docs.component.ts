@@ -13,9 +13,10 @@ export class DocsComponent implements OnInit, OnDestroy {
   address: string = '';
   nameValidated: boolean = false;
   addressValidated: boolean = false;
+  bisStep = false;
 
   @ViewChild('stepper', {read: ElementRef, static: false}) stepper: ElementRef<any>;
-  
+
   items: any = [
     {name: 'item 1'},
     {name: 'item 2'},
@@ -26,17 +27,17 @@ export class DocsComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    
+
   }
 
   ngOnDestroy() {
-    
+
   }
-  
+
   removeLastListItem = () => {
     this.items.pop();
   }
-  
+
   addNewListItem = () => {
     this.items.push({name: `New Item - Test ${Math.floor((Math.random() * 100) + 1)}`});
   }

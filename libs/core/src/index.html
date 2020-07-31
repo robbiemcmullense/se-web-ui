@@ -99,7 +99,7 @@
           <se-icon>folder</se-icon>
           Another
         </a>
-        <a disabled>Another</a>
+        <span disabled>Another</span>
         <a>
           Another
           <se-icon size="medium">arrow2_right</se-icon>
@@ -107,9 +107,11 @@
         <ul class="sub-nav">
           <a href='/docs'>Docs</a>
           <a href='/table'>Table</a>
+          <a href='/table' class="disabled">disabled</a>
+          <a href='/table' disabled>another disabled</a>
         </ul>
 
-        <a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
+        <a>Another</a><a>Another</a><a >Another</a><a>Another</a><a class="disabled">Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a><a>Another</a>
       </nav>
       <nav slot="end">
         <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
@@ -140,8 +142,8 @@
               </se-list-item>
               <se-list-item item="my item 3 no icon" icon="action_settings2" description="I'm here too">
               </se-list-item>
-              <se-list-item item="Check me!" icon="action_settings2" selected="false">
-                <se-checkbox label="Check me"></se-checkbox>
+              <se-list-item item="Check me!" icon="action_settings2" selected="false" id="myIdListItem">
+                <se-checkbox label="Check me" id="myIdCheckbox"></se-checkbox>
               </se-list-item>
               <se-list-item item="Click the button!" icon="action_settings2">
                 <se-button>Select</se-button>

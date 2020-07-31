@@ -124,7 +124,7 @@ export namespace Components {
         /**
           * Defines the visual appearance of a block. Default setting is `basic`, which will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
          */
-        "option": "basic" | "card" | "card-old" | "widget";
+        "option": "basic" | "card" | "card-old" | "widget" | "fill";
         /**
           * Defines the se-block outline. Default setting is `false`. Setting this property to `true` will add a 1px border.
          */
@@ -156,7 +156,7 @@ export namespace Components {
         /**
           * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
          */
-        "option": 'card' | 'widget' | 'basic';
+        "option": 'card' | 'widget' | 'basic' | "fill";
     }
     interface SeBlockHeader {
         /**
@@ -222,6 +222,10 @@ export namespace Components {
          */
         "option": 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
         /**
+          * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
+         */
+        "padding": 'none' | 'small' |'medium' | 'large';
+        /**
           * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
          */
         "selected": boolean;
@@ -249,10 +253,6 @@ export namespace Components {
     }
     interface SeCheckbox {
         /**
-          * Defines the color schema of the checkbox when the option is set to `onoff`. The default value is `standard`.
-         */
-        "background": 'standard' | 'alternative';
-        /**
           * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
          */
         "color": 'primary' | 'secondary' | 'success';
@@ -276,6 +276,10 @@ export namespace Components {
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option": 'checkbox' | 'onoff' | 'switch';
+        /**
+          * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
+         */
+        "padding": 'none' | 'small' |'medium' | 'large';
         /**
           * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
          */
@@ -591,7 +595,7 @@ export namespace Components {
         /**
           * Defines the style of the list.  The default setting is `classic`.
          */
-        "option": "nav" | "classic" | "dropdown" | "treeview" | "headline";
+        "option": 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
     }
     interface SeListGroup {
         /**
@@ -606,6 +610,7 @@ export namespace Components {
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        "focusElement": () => Promise<void>;
         /**
           * Places an icon on the left side of the item list.
          */
@@ -613,7 +618,7 @@ export namespace Components {
         /**
           * Optional property to define the color of the icon. The default color will be inherited from it's parent.
          */
-        "iconColor": "primary" | "secondary";
+        "iconColor": 'primary' | 'secondary';
         /**
           * Defines the group indentation to add paddings to the list item (used with multiple list groups).
          */
@@ -625,18 +630,24 @@ export namespace Components {
         /**
           * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
          */
-        "option": "nav" | "classic" | "dropdown" | "treeview" | "headline";
+        "option": | 'nav'
+    | 'classic'
+    | 'dropdown'
+    | 'treeview'
+    | 'headline';
         /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected": boolean;
         "selectedChild": boolean;
+        "toggleCollapseTreeview": () => Promise<void>;
     }
     interface SeListItem {
         /**
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        "focusElement": () => Promise<void>;
         /**
           * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
          */
@@ -648,7 +659,13 @@ export namespace Components {
         /**
           * Optional property to define the color of the icon. The default color will be inherited from it's parent.
          */
-        "iconColor": "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+        "iconColor": | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'error';
         /**
           * Defines the group indentation to add paddings to the list item (used with multiple list groups).
          */
@@ -660,14 +677,25 @@ export namespace Components {
         /**
           * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
          */
-        "option": "nav" | "classic" | "dropdown" | "treeview" | "headline";
+        "option": | 'nav'
+    | 'classic'
+    | 'dropdown'
+    | 'treeview'
+    | 'headline';
         /**
           * Defines if the list element should be selected or not.
          */
         "selected": boolean;
     }
     interface SeLoading {
+        /**
+          * Defines the color of the loading spinner.
+         */
         "color": 'primary' | 'secondary';
+        /**
+          * Defines if we want the loading to take the full page of the browser. default the browser will stay in the container.
+         */
+        "fullPage": boolean;
         /**
           * Displays the loading icon on screen when set to `true`.
          */
@@ -695,6 +723,10 @@ export namespace Components {
          */
         "labelPos": 'left' | 'right';
         /**
+          * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
+         */
+        "padding": 'none' | 'small' |'medium' | 'large';
+        /**
           * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
          */
         "required": boolean;
@@ -716,6 +748,10 @@ export namespace Components {
           * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
          */
         "color": 'standard' | 'alternative' | 'primary' | 'secondary';
+        /**
+          * Defines the direction of the flex element. `row` is the default if used with `se-button`. `column` is the default if used with `se-radio`.
+         */
+        "direction": "column" | "row";
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -771,11 +807,11 @@ export namespace Components {
           * Sets the disabled property for slider component.
           * @param val : boolean, `true` or `false`.
          */
-        "setDisabled": (val: boolean) => Promise<void>;
+        "setDisabled": (disabled: boolean) => Promise<void>;
         /**
           * Indicates the initial value of your slider component when it loads. The default value is `0`.
          */
-        "value": any;
+        "value": number;
     }
     interface SeSnackbar {
         /**
@@ -1504,7 +1540,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visual appearance of a block. Default setting is `basic`, which will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
          */
-        "option"?: "basic" | "card" | "card-old" | "widget";
+        "option"?: "basic" | "card" | "card-old" | "widget" | "fill";
         /**
           * Defines the se-block outline. Default setting is `false`. Setting this property to `true` will add a 1px border.
          */
@@ -1536,7 +1572,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visual appearance of a footer. Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the footer with respect to the card design.
          */
-        "option"?: 'card' | 'widget' | 'basic';
+        "option"?: 'card' | 'widget' | 'basic' | "fill";
     }
     interface SeBlockHeader {
         /**
@@ -1606,6 +1642,10 @@ declare namespace LocalJSX {
          */
         "option"?: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab';
         /**
+          * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
+         */
+        "padding"?: 'none' | 'small' |'medium' | 'large';
+        /**
           * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
          */
         "selected"?: boolean;
@@ -1623,10 +1663,6 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface SeCheckbox {
-        /**
-          * Defines the color schema of the checkbox when the option is set to `onoff`. The default value is `standard`.
-         */
-        "background"?: 'standard' | 'alternative';
         /**
           * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
          */
@@ -1655,6 +1691,10 @@ declare namespace LocalJSX {
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option"?: 'checkbox' | 'onoff' | 'switch';
+        /**
+          * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
+         */
+        "padding"?: 'none' | 'small' |'medium' | 'large';
         /**
           * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
          */
@@ -1982,7 +2022,7 @@ declare namespace LocalJSX {
         /**
           * Defines the style of the list.  The default setting is `classic`.
          */
-        "option"?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
+        "option"?: 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
     }
     interface SeListGroup {
         /**
@@ -2004,7 +2044,7 @@ declare namespace LocalJSX {
         /**
           * Optional property to define the color of the icon. The default color will be inherited from it's parent.
          */
-        "iconColor"?: "primary" | "secondary";
+        "iconColor"?: 'primary' | 'secondary';
         /**
           * Defines the group indentation to add paddings to the list item (used with multiple list groups).
          */
@@ -2024,7 +2064,11 @@ declare namespace LocalJSX {
         /**
           * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
          */
-        "option"?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
+        "option"?: | 'nav'
+    | 'classic'
+    | 'dropdown'
+    | 'treeview'
+    | 'headline';
         /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
@@ -2047,7 +2091,13 @@ declare namespace LocalJSX {
         /**
           * Optional property to define the color of the icon. The default color will be inherited from it's parent.
          */
-        "iconColor"?: "standard" | "alternative" | "primary" | "secondary" | "success" | "warning" | "error";
+        "iconColor"?: | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'error';
         /**
           * Defines the group indentation to add paddings to the list item (used with multiple list groups).
          */
@@ -2063,14 +2113,25 @@ declare namespace LocalJSX {
         /**
           * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
          */
-        "option"?: "nav" | "classic" | "dropdown" | "treeview" | "headline";
+        "option"?: | 'nav'
+    | 'classic'
+    | 'dropdown'
+    | 'treeview'
+    | 'headline';
         /**
           * Defines if the list element should be selected or not.
          */
         "selected"?: boolean;
     }
     interface SeLoading {
+        /**
+          * Defines the color of the loading spinner.
+         */
         "color"?: 'primary' | 'secondary';
+        /**
+          * Defines if we want the loading to take the full page of the browser. default the browser will stay in the container.
+         */
+        "fullPage"?: boolean;
         /**
           * Displays the loading icon on screen when set to `true`.
          */
@@ -2102,6 +2163,10 @@ declare namespace LocalJSX {
          */
         "onDidCheck"?: (event: CustomEvent<any>) => void;
         /**
+          * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
+         */
+        "padding"?: 'none' | 'small' |'medium' | 'large';
+        /**
           * Adds a red asterisk if the radio button is required when used in a form field.  Default setting is `false`.
          */
         "required"?: boolean;
@@ -2119,6 +2184,10 @@ declare namespace LocalJSX {
           * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
          */
         "color"?: 'standard' | 'alternative' | 'primary' | 'secondary';
+        /**
+          * Defines the direction of the flex element. `row` is the default if used with `se-button`. `column` is the default if used with `se-radio`.
+         */
+        "direction"?: "column" | "row";
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
@@ -2185,7 +2254,7 @@ declare namespace LocalJSX {
         /**
           * Indicates the initial value of your slider component when it loads. The default value is `0`.
          */
-        "value"?: any;
+        "value"?: number;
     }
     interface SeSnackbar {
         /**

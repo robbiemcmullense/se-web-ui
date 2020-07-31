@@ -1,7 +1,6 @@
 import {
   APP_INITIALIZER,
   NgModule,
-  ModuleWithProviders
 } from "@angular/core";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { appInitialize } from "./initialize";
@@ -34,7 +33,7 @@ export * from './directives/proxies';
   ],
 })
 export class SeWebModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot() {
     return {
       ngModule: SeWebModule,
       providers: [
