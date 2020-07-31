@@ -61,14 +61,6 @@ describe('ChipComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.selected')).toBeTruthy();
 	});
 
-	it('should render with a disabled class when the disabled property is true', async() => {
-		const page = await newSpecPage({
-			components: [ChipComponent],
-			html: `<se-chip value="my chip value" disabled="true"></se-chip>`,
-		});
-		expect(page.root.shadowRoot.querySelector('.disabled')).toBeTruthy();
-	});
-
 	it('should render with a display-block class when the block property is true', async() => {
 		const page = await newSpecPage({
 			components: [ChipComponent],
