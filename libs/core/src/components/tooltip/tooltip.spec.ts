@@ -64,7 +64,7 @@ describe('TooltipComponent', () => {
   it('should call the _toggle method twice, when the mouseover and mouseleave hover events occur', () => {
     eventSpy = jest.spyOn(tooltip, '_toggle');
     tooltip.action = 'hover';
-    tooltip.handleMouseOver(mockEvent);
+    tooltip.handleMouseEnter(mockEvent);
     tooltip.handleMouseLeave(mockEvent);
     expect(eventSpy).toHaveBeenCalledTimes(2);
   });
