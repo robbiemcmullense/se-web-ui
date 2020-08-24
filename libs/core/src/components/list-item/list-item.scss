@@ -95,7 +95,7 @@
   padding: 0;
   overflow: visible;
   position: relative;
-  outline: none;
+  // outline: none;
   background: transparent;
   width: 100%;
   /* inherit font & color from ancestor */
@@ -112,10 +112,18 @@
   text-decoration: none;
   &:not([disabled]){
     cursor: pointer;
-    &:hover, &:focus{
+    &:hover {
       @include background-color('alternative-hover');
       @include color('alternative-contrast');
     }
+  }
+  // transition-property: outline;
+  // transition-duration: .3s;
+  &:focus{
+    outline-width: 2px;
+    outline-offset: -1px;
+    @include outline('button-focus');
+    outline-style: solid;
   }
 }
 

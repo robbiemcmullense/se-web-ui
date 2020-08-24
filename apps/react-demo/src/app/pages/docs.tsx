@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { SeContainer, SeButton, SeBlock, SeBlockHeader, SeBlockContent, SeBlockFooter, SeBanner, SeBannerItem, SeSnackbar, SeDialog, SeDialogHeader, SeDialogContent, SeDialogFooter, SeLoading } from '@se/web-ui-react';
 
-const widgetStyle = {
-  width: '300px'
-}
 
 interface MyState {
   showDialog: boolean
@@ -41,7 +38,7 @@ class Docs extends Component<null, MyState> {
   render() {
     return (
       <SeContainer direction="column">
-        <SeBlock style={widgetStyle}>
+        <SeBlock>
           <SeBlockHeader>Banner Example</SeBlockHeader>
           <SeBlockContent>
             <SeBanner id="SeBanner">

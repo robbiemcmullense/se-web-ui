@@ -38,7 +38,7 @@ describe('FormFieldComponent', () => {
 		const input = document.createElement('input');
 		input.setAttribute('type', 'text');
 		formField.el.appendChild(input);
-		formField.componentDidLoad();
+		formField.componentWillLoad();
 		expect(input.disabled).toBeTruthy();
 	});
 

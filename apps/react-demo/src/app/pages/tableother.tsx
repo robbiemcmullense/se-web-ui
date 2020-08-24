@@ -74,9 +74,7 @@ class TableOther extends Component<TableProps, TableStates> {
                     'nextVersion.versionCreatorFirstName'
                   } ${'nextVersion.versionCreatorLastName'}`}</SeTableItem>
                   <SeTableItem width='110px' option="dropdown">
-                    <SeLink url={'nextVersion.versionStorageURL'}>
-                      <SeIcon option='button'>action_delete_stroke</SeIcon>
-                    </SeLink>
+                    <SeIcon option='button'>action_delete_stroke</SeIcon>
                     <SeDropdown alignment="right" verticalAlignment={index > 20 ? 'top' : 'bottom'}>
                       <SeIcon slot="trigger" option="button">action_download_stroke</SeIcon>
                       <SeList option="dropdown">

@@ -72,18 +72,6 @@ describe('list-item', () => {
     listItem.componentWillLoad();
     expect(listItem.indentation).toEqual(2);
   });
-  
-  it('should call the setButtonId function when the component loads', async() => {
-		const eventSpy = jest.spyOn(listItem, 'setButtonId');
-		listItem.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
-  });
-
-  it('should set the innerId property when the host element has a defined id', () => {
-    listItem.el.id = 'list-item-id';
-    listItem.componentDidLoad();
-    expect(listItem.innerId).toEqual('wc-list-item-id');
-  });
 
   it('should emit the didSelectedChange event when the selected property changes', () => {
     const eventSpy = jest.spyOn(listItem.didSelectedChange, 'emit');

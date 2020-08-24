@@ -37,10 +37,6 @@ describe('CheckboxComponent', () => {
 		expect(checkbox.required).toBeTruthy();
 	});
 
-	it('should have the "standard" background by default', () => {
-		expect(checkbox.background).toEqual('standard');
-	});
-
 	it('should have textOn and textOff values equal to "ON" and "OFF" initially', () => {
 		expect(checkbox.textOn).toEqual('ON');
 		expect(checkbox.textOff).toEqual('OFF');
@@ -93,44 +89,24 @@ describe('CheckboxComponent', () => {
 	});
 
 	it('should call the setElementId function when the component loads, and set label-pos to right by default', async() => {
-		const eventSpy = jest.spyOn(checkbox, 'setElementId');
-		checkbox.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
+		checkbox.componentWillLoad();
 		expect(checkbox.labelPos).toEqual('right');
 	});
 
 	it('should set label-pos to left when option is set to switch', async() => {
 		checkbox.option = 'switch';
-		checkbox.componentDidLoad();
+		checkbox.componentWillLoad();
 		expect(checkbox.labelPos).toEqual('left');
 	});
 
-	it('should assign an id to the input element with the wc prefix when the host element has an id', () => {
-		checkbox.el.id = 'checkbox-id';
-		let input = document.createElement('input');
-		let shadow = checkbox.el.attachShadow({mode: 'open'});
-		shadow.appendChild(input);
-		checkbox.componentDidLoad();
-		expect(input).toHaveAttribute('id');
-		expect(input.getAttribute('id')).toEqual('wc-checkbox-id');
-	});
 
-	it('should assign an id to the button elements with the wc prefix when the host element has an id and the option is set to onoff', () => {
-		checkbox.option = 'onoff';
-		checkbox.el.id = 'onoff-id';
-
-		let activeBtn = document.createElement('button');
-		activeBtn.classList.add('active');
-		let inactiveBtn = document.createElement('button')
-		inactiveBtn.classList.add('inactive');
-		let shadow = checkbox.el.attachShadow({mode: 'open'});
-
-		shadow.appendChild(activeBtn);
-		shadow.appendChild(inactiveBtn);
-
-		checkbox.componentDidLoad();
-		expect(activeBtn.getAttribute('id')).toEqual('wc-onoff-id-active');
-		expect(inactiveBtn.getAttribute('id')).toEqual('wc-onoff-id-inactive');
+	it('should assign an id to the button elements with the wc prefix when the host element has an id and the option is set to onoff', async () => {
+    const page = await newSpecPage({
+			components: [CheckboxComponent],
+			html: `<se-checkbox option="onoff" id="onoff-id" label="my label" required="true"></se-checkbox>`,
+		});
+    expect(page.root.shadowRoot.querySelector('#wc-onoff-id-active')).toBeTruthy()
+    expect(page.root.shadowRoot.querySelector('#wc-onoff-id-inactive')).toBeTruthy()
 	});
 
 	it('should emit the didChange event when the handleClick function is executed', async() => {

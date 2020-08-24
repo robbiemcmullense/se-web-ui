@@ -1,17 +1,28 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('RadioComponent', () => {
-  let page, element;
+  let page, element, label;
 
   beforeEach(async() => {
     page = await newE2EPage();
     await page.setContent('<se-radio value="my value"></se-radio>');
     element = await page.find('se-radio');
+    label = await page.find('se-radio >>> label');
   });
 
   it('renders', async() => {
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
+  });
+
+  it('emits an event when clicked on', async() => {
+    const eventSpy = await page.spyOnEvent('didCheck');
+    await label.click();
+    expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail({
+      value: 'my value',
+      selected: true
+    })
   });
 
   it('renders with a disabled input element when the parent element has disabled=true', async() => {
@@ -21,15 +32,6 @@ describe('RadioComponent', () => {
     expect(inputElm.disabled).toBeTruthy();
   });
 
-  it('emits an event when clicked on', async() => {
-    const eventSpy = await page.spyOnEvent('didCheck');
-    await element.click();
-    expect(eventSpy).toHaveReceivedEvent();
-    expect(eventSpy).toHaveReceivedEventDetail({
-      value: 'my value',
-      selected: true
-    })
-  });
 });
 
 describe('Radio with ID Element', () => {

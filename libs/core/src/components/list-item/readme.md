@@ -28,6 +28,19 @@
 | `didSelectedChange` | Event emitted to notify the list-group component that the selected state has changed. | `CustomEvent<void>` |
 
 
+## Methods
+
+### `focusElement() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by

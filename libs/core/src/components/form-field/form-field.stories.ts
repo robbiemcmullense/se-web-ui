@@ -5,104 +5,6 @@ const layoutOption = ['inline', 'stacked'];
 const inputTypeOption = ['text', 'date'];
 
 storiesOf('Form Field', module)
-  .add('Form Field Checkbox', () => {
-    const label = text('label', 'My Checkbox Label');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-
-    return `
-      <se-form-field
-        type='checkbox'
-        label='${label}'
-        required='${required}'
-        disabled='${disabled}'
-        >
-        <se-checkbox></se-checkbox>
-      </se-form-field>
-    `;
-  })
-  .add('Form Field Radio', () => {
-    const label = text('label', 'My Radio Label');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-
-    return `
-      <se-form-field
-        type='radio'
-        label='${label}'
-        required='${required}'
-        disabled='${disabled}'
-        >
-        <se-radio></se-radio>
-      </se-form-field>
-    `;
-  })
-  .add('Form Field Input', () => {
-    const option = select('option', layoutOption, 'inline');
-    const inputType = select('inputType', inputTypeOption, 'text');
-    const label = text('label', 'My label');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-    const block = boolean('block', false)
-
-    return `
-      <se-form-field
-        type='input'
-        option='${option}'
-        label='${label}'
-        required='${required}'
-        disabled='${disabled}'
-        block='${block}'
-        >
-        <input type='${inputType}' />
-      </se-form-field>
-    `;
-  })
-  .add('Form Field Select', () => {
-    const option = select('option', layoutOption, 'inline');
-    const label = text('label', 'Select');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-    const block = boolean('block', false)
-
-    return `
-      <se-form-field
-        type='select'
-        option='${option}'
-        label='${label}'
-        required='${required}'
-        disabled='${disabled}'
-        block='${block}'
-        >
-        <select>
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </select>
-      </se-form-field>
-    `;
-  })
-  .add('Form Field Textarea', () => {
-    const option = select('option', layoutOption, 'inline');
-    const rows = number('rows', 3);
-    const label = text('label', 'Input');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-    const block = boolean('block', false)
-
-    return `
-      <se-form-field
-        type='input'
-        option='${option}'
-        label='${label}'
-        required='${required}'
-        disabled='${disabled}'
-        block='${block}'
-        >
-        <textarea rows='${rows}'></textarea>
-      </se-form-field>
-    `;
-  })
   .add('Form Field Multiple', () => {
     const option = select('option', layoutOption, 'inline');
     const padding = select('padding', ['none', 'small', 'medium'], 'small');
@@ -111,7 +13,7 @@ storiesOf('Form Field', module)
     const labelWidth = text('label-width', '35%');
 
     return `
-      <se-block>
+    <se-block>
       <se-form-field
         padding='${padding}'
         block='${block}'
@@ -135,6 +37,17 @@ storiesOf('Form Field', module)
         label-width='${labelWidth}'
         >
         <se-checkbox option="switch"></se-checkbox>
+      </se-form-field>
+      <se-form-field
+        padding='${padding}'
+        block='${block}'
+        option='${option}'
+        label='Save automatically'
+        required='true'
+        disabled='${disabled}'
+        label-width='${labelWidth}'
+        >
+        <se-checkbox option="onoff"></se-checkbox>
       </se-form-field>
       <se-form-field
         padding='${padding}'
@@ -298,6 +211,104 @@ storiesOf('Form Field', module)
           <se-icon size="medium" option="button" onclick="alert('clicked')">folder</se-icon>
         </div>
       </se-form-field>
-      </se-block>
+    </se-block>
+  `;
+  })
+  .add('Form Field Checkbox', () => {
+    const label = text('label', 'My Checkbox Label');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+
+    return `
+      <se-form-field
+        type='checkbox'
+        label='${label}'
+        required='${required}'
+        disabled='${disabled}'
+        >
+        <se-checkbox></se-checkbox>
+      </se-form-field>
+    `;
+  })
+  .add('Form Field Radio', () => {
+    const label = text('label', 'My Radio Label');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+
+    return `
+      <se-form-field
+        type='radio'
+        label='${label}'
+        required='${required}'
+        disabled='${disabled}'
+        >
+        <se-radio></se-radio>
+      </se-form-field>
+    `;
+  })
+  .add('Form Field Input', () => {
+    const option = select('option', layoutOption, 'inline');
+    const inputType = select('inputType', inputTypeOption, 'text');
+    const label = text('label', 'My label');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+    const block = boolean('block', false);
+
+    return `
+      <se-form-field
+        type='input'
+        option='${option}'
+        label='${label}'
+        required='${required}'
+        disabled='${disabled}'
+        block='${block}'
+        >
+        <input type='${inputType}' />
+      </se-form-field>
+    `;
+  })
+  .add('Form Field Select', () => {
+    const option = select('option', layoutOption, 'inline');
+    const label = text('label', 'Select');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+    const block = boolean('block', false);
+
+    return `
+      <se-form-field
+        type='select'
+        option='${option}'
+        label='${label}'
+        required='${required}'
+        disabled='${disabled}'
+        block='${block}'
+        >
+        <select>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </se-form-field>
+    `;
+  })
+  .add('Form Field Textarea', () => {
+    const option = select('option', layoutOption, 'inline');
+    const rows = number('rows', 3);
+    const label = text('label', 'Input');
+    const required = boolean('required', false);
+    const disabled = boolean('disabled', false);
+    const block = boolean('block', false);
+
+    return `
+      <se-form-field
+        type='input'
+        option='${option}'
+        label='${label}'
+        required='${required}'
+        disabled='${disabled}'
+        block='${block}'
+        >
+        <textarea rows='${rows}'></textarea>
+      </se-form-field>
     `;
   });

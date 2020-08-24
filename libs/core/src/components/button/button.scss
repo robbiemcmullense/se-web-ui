@@ -4,6 +4,15 @@
   min-width: 0;
   display: inline-flex;
 }
+:host(.p-small) {
+  padding: $spacing-small;
+}
+:host(.p-medium) {
+  padding: $spacing;
+}
+:host(.p-large) {
+  padding: $spacing-large;
+}
 
 :host(.disabled) {
   pointer-events: none;
@@ -13,7 +22,6 @@
   display: flex;
   button {
     width: 100%;
-    margin-top: $spacing;
     margin-left: 0;
     margin-right: 0;
   }
@@ -48,17 +56,16 @@
 
 :host(.grouped) {
   button {
-    margin: $spacing-small 0;
+    // margin: $spacing-small 0;
     height: 32px;
     font-size: $base-fontsize;
-    padding: 0 $spacing;
     @include typology("nano");
     border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;
 
-    &.iconOnly {
-      padding: 0 $spacing-small;
-    }
+    // &.iconOnly {
+    //   padding: 0 $spacing-small;
+    // }
   }
 }
 
@@ -120,7 +127,6 @@
 
 button {
   padding: 0 $spacing-large;
-  margin: $spacing-small;
   border: none;
   border-radius: $border-radius;
   outline: none;
@@ -132,6 +138,15 @@ button {
   @include align-items(center);
   @include ellipsis();
   @include justify-content(center);
+
+
+
+  &:focus{
+    outline-style: solid;
+    outline-offset: 1px;
+    outline-width: 2px;
+    @include outline('button-focus')
+  }
 
   &.iconOnly {
     padding: 0 $spacing-small;
@@ -185,8 +200,7 @@ button {
   &.standard {
     @include color("standard-contrast");
     @include background-color("standard");
-    &:hover, &:focus {
-      // @include color("standard-hover-contrast");
+    &:hover {
       @include background-color("standard-hover");
     }
     &:active, &.selected {
@@ -199,7 +213,7 @@ button {
       @include border-color("standard");
       @include color("background-standard-contrast");
 
-      &:hover, &:focus {
+      &:hover {
         @include background-color("standard-hover", 0.2);
       }
       &:active, &.selected {
@@ -211,7 +225,7 @@ button {
   &.alternative {
     @include color("alternative-contrast");
     @include background-color("alternative");
-    &:hover, &:focus {
+    &:hover {
       // @include color("alternative-hover-contrast");
       @include background-color("alternative-hover");
     }
@@ -223,7 +237,7 @@ button {
       background-color: transparent;
       // @include color("alternative");
       @include border-color("alternative");
-      &:hover, &:focus {
+      &:hover {
         @include background-color("alternative-hover", 0.6);
       }
       &:active, &.selected {
@@ -235,7 +249,7 @@ button {
   &.primary {
     @include color("primary-contrast");
     @include background-color("primary");
-    &:hover, &:focus {
+    &:hover {
       @include background-color("primary-hover");
     }
     &:active, &.selected {
@@ -246,7 +260,7 @@ button {
       background-color: transparent;
       @include color("primary");
       @include border-color("primary");
-      &:hover, &:focus {
+      &:hover {
         @include background-color("primary", 0.3);
       }
       &:active, &.selected {
@@ -261,7 +275,7 @@ button {
   &.secondary {
     @include color("secondary-contrast");
     @include background-color("secondary");
-    &:hover, &:focus {
+    &:hover {
       @include background-color("secondary-hover");
     }
     &:active, &.selected {
@@ -272,7 +286,7 @@ button {
       background-color: transparent;
       @include color("secondary");
       @include border-color("secondary");
-      &:hover, &:focus {
+      &:hover {
         @include background-color("secondary", 0.3);
       }
       &:active, &.selected {
@@ -298,7 +312,7 @@ button {
     width: 56px;
     height: 56px;
     @include circleShadow(4px);
-    &:hover, &:focus {
+    &:hover {
       @include circleShadow(8px);
     }
     &.alternative {
@@ -317,7 +331,7 @@ button {
     @include circleShadow(4px);
     @include background-color("alternative");
     @include color("alternative-contrast");
-    &:hover, &:focus {
+    &:hover {
       @include circleShadow(4px);
       @include background-color("standard-hover");
     }
@@ -338,13 +352,6 @@ button {
       }
     }
   }
-
-  // &.standard, &.alternative, &.primary, &.secondary, &.outline, &.minifab {
-  //   &:active {
-  //     @include color("selected-contrast");
-  //     @include background-color("selected");
-  //   }
-  // }
 
   // &.outline {
   //   &:active, &.selected {

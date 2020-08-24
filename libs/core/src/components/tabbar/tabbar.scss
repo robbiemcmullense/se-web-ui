@@ -50,7 +50,6 @@ se-tabbar{
   .tab-alternative {
     font-size: 16px;
     width: 100%;
-
     &.opt-nav {
       nav {
         > a, > span {
@@ -60,11 +59,6 @@ se-tabbar{
       .sub-nav {
         > a, > span {
           margin: 0 $spacing-large;
-        }
-      }
-      nav, .sub-nav {
-        > a[disabled] {
-          opacity: 0.5;
         }
       }
     }
@@ -88,7 +82,7 @@ se-tabbar{
             border-left: 1px solid;
             @include border-color('divider');
           }
-          &:not([disabled]):hover {
+          &:not([disabled]):hover, &:not(.disabled):hover {
             // @include background-color('standard-hover');
             @include background-color('background-standard');
           }
@@ -114,7 +108,7 @@ se-tabbar{
               }
             }
           }
-          &[disabled] {
+          &[disabled], &.disabled {
             @include color('standard-hover');
           }
         }
@@ -133,9 +127,6 @@ se-tabbar{
     height: 100%;
     @include display-flex();
     @include align-items(center);
-    > a[disabled] {
-      cursor: default;
-    }
     > a, > span {
       display: flex;
       align-items: center;
@@ -152,9 +143,6 @@ se-tabbar{
       line-height: 1.2;
       min-height: 40px;
 
-      &:focus {
-        background-color: transparent;
-      }
       &:hover {
         text-decoration: none;
         background-color: transparent;
@@ -184,7 +172,7 @@ se-tabbar{
     nav, .sub-nav{
       > a, > span {
         @include color('primary-contrast');
-        &:not([disabled]):hover {
+        &:not([disabled]):hover,&:not(.disabled):hover {
           &:after {
             @include background-color('primary-contrast');
           }
@@ -229,9 +217,6 @@ se-tabbar{
       > a, > span {
         margin: 0 calc(#{$spacing-large} * 1.5);
       }
-      > a[disabled] {
-        opacity: .5;
-      }
     }
   }
   .opt-nav.tab-primary {
@@ -270,18 +255,14 @@ se-tabbar{
       height: 40px;
       > a {
         line-height: 40px;
-        &[disabled] {
-          // @include color('primary');
-          opacity: .4;
-        }
-        &:not([disabled]):hover, &.active {
+        &:not([disabled]):hover,&:not(.disabled):hover &.active {
           @include color('primary')
         }
         &:after {
           bottom: 0;
           display: inline-block;
         }
-        &:hover:not([disabled]):after {
+        &:hover:not([disabled]):after, &:hover:not(.disabled):after {
           @include background-color('primary');
           height: 4px;
         }
@@ -307,7 +288,7 @@ se-tabbar{
         border-left: 1px solid;
         @include border-color('divider');
       }
-      &:not([disabled]):hover {
+      &:not([disabled]):hover, &:not(.disabled):hover {
         @include color('background-standard-contrast');
         @include background-color('background-standard')
       }
@@ -316,6 +297,11 @@ se-tabbar{
         bottom: auto;
         top: 0;
         height: 0;
+      }
+      // transition-property: outline;
+      // transition-duration: .3s;
+      &:focus{
+        outline-offset: -2px;
       }
       &.active {
         @include background-color('background-standard');
@@ -333,10 +319,6 @@ se-tabbar{
           }
         }
       }
-      &[disabled] {
-        opacity: .4;
-        // @include color('standard-hover');
-      }
     }
   }
   .opt-content.tab-alternative nav {
@@ -346,7 +328,7 @@ se-tabbar{
       &.active {
         @include background-color('background-alternative');
       }
-      &:not([disabled]):hover {
+      &:not([disabled]):hover,&:not(.disabled):hover {
         @include background-color('background-alternative');
       }
     }
@@ -373,4 +355,19 @@ se-tabbar{
       white-space: wrap;
     }
   }
+
+  // Will come on top of the others
+  .tab-primary, .tab-alternative {
+    nav, .sub-nav {
+      > a[disabled], > a.disabled, > span[disabled], > span.disabled {
+        opacity: 0.5;
+        cursor: default;
+        &::after{
+          display: none;
+        }
+      }
+    }
+  }
 }
+
+

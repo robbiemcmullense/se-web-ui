@@ -49,12 +49,6 @@ describe('list-group', () => {
   });
 
 
-  it('should call the setButtonId function when the component loads', async() => {
-		const eventSpy = jest.spyOn(listGroup, 'setButtonId');
-		listGroup.componentDidLoad();
-		expect(eventSpy).toHaveBeenCalled();
-  });
-
   it('should call the checkSelected function twice, when the collapsed property changes or a child becomes selected', async() => {
 		const eventSpy = jest.spyOn(listGroup, 'checkSelected');
     listGroup.collapsedChanged(); // list group is collapsed

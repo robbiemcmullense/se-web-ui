@@ -1,4 +1,4 @@
-import { Component, h, Watch, Element, Event, EventEmitter, Prop, Listen } from '@stencil/core';
+import { Component, h, Watch, Element, Event, EventEmitter, Prop, Listen, Host } from '@stencil/core';
 
 @Component({
   tag: 'se-radio-group',
@@ -17,6 +17,14 @@ export class RadioGroupComponent {
    * `nano` sets the height to 24px and the font size to 12px.
    */
   @Prop() size: 'small' | 'nano' = 'small';
+
+   /**
+   * Defines the direction of the flex element.
+   * `row` is the default if used with `se-button`.
+   * `column` is the default if used with `se-radio`.
+   */
+  @Prop({mutable: true}) direction: "column" | "row" ;
+
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
@@ -35,8 +43,8 @@ export class RadioGroupComponent {
     this.updateItemMode()
   }
 
-  @Watch('value') valueDidChange(value: any) {
-    this.selectChild(this.children, value);
+  @Watch('value') valueDidChange() {
+    this.selectChild();
     this.didChange.emit(this.value);
   }
 
@@ -67,25 +75,36 @@ export class RadioGroupComponent {
   handleChildClicked(event: CustomEvent) {
     let buttonInfo = event.detail;
     this.value = buttonInfo.value;
-    this.selectChild(this.children, this.value);
+    this.selectChild();
     this.didChange.emit(this.value);
   }
 
-  selectChild(children: any, value: any) {
-    children.forEach((child: any) => {
-      child.selected = child.value === value;
+  selectChild() {
+    this.children.forEach((child: any) => {
+      child.selected = child.value === this.value;
     });
   }
 
   componentDidLoad() {
     this.children = this.el.querySelectorAll('se-button, se-radio');
+    if (!this.direction && this.children && this.children.length){
+      switch(this.children[0].nodeName){
+        case 'SE-BUTTON': {
+          this.direction = 'row';
+          break;
+        }
+        case 'SE-RADIO': {
+          this.direction = 'column';
+        }
+      }
+    }
     this.updateItemMode();
-    this.selectChild(this.children, this.value);
+    this.selectChild();
   }
 
   render() {
     return (
-      <slot></slot>
+      <Host class={{[`flex-${this.direction}`]: !!this.direction}}><slot></slot></Host>
     )
   }
 }

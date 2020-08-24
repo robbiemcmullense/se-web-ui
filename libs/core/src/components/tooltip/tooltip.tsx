@@ -54,7 +54,7 @@ export class TooltipComponent {
     this._toggle(ev);
   }
 
-  @Listen("mouseover") handleMouseOver(ev) {
+  @Listen("mouseenter") handleMouseEnter(ev) {
     if (this.action === "hover") {
       this._toggle(ev);
     }

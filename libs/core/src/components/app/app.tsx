@@ -90,7 +90,7 @@ export class AppComponent {
     }
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     // Add listener for future change
     this.prefersDark.addListener((mediaQuery) => this.toggleDarkTheme(mediaQuery.matches));

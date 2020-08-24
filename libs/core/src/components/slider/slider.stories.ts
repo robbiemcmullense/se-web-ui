@@ -10,14 +10,14 @@ const valueOptions = {
 
 storiesOf('Slider', module)
   .add('Demo', () => {
-    const value = number('value', 30, valueOptions)
-    const minValue = number('min value', 30)
+    const value = number('value', 0, valueOptions)
+    const minValue = number('min value', 0)
     const maxValue = number('max value', 100)
     const label = text('label', '')
     const disabled = boolean('disabled', false)
 
     return `
-      <div style="padding: 10px; background-color: white; height: 50px;">
+      <div style="padding: 10px;">
         <se-slider
           value="${value}"
           min="${minValue}"

@@ -5,10 +5,6 @@ const colorOption = ['primary', 'secondary', 'success', 'error'];
 const backgroundOption = ['standard', 'alternative'];
 const labelOption = ['right', 'left'];
 
-document.addEventListener('didChange', () => {
-  document.getElementById('did-change-message').innerText = 'you have changed the checkbox selected property';
-})
-
 storiesOf('Checkbox', module)
   .add('Checkbox', () => {
     const label = text('label', 'This is a standard checkbox.')
@@ -53,7 +49,6 @@ storiesOf('Checkbox', module)
     const header = boolean('header', false)
 
     return `
-      <div style="width: 100%; height: 100%; padding: 20px; background-color: #ccc">
         <se-checkbox
           option='onoff'
           selected='${selected}'
@@ -62,7 +57,5 @@ storiesOf('Checkbox', module)
           text-on='${onText}'
           text-off='${offText}'
           header='${header}'></se-checkbox>
-        <div id="did-change-message"></div>
-      </div>
     `
   })

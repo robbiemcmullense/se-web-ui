@@ -134,7 +134,15 @@ input[type='range'] {
 		&::-ms-thumb {
 			@include thumb('disabled');
 		}
-	}
+  }
+  // transition-property: outline;
+  // transition-duration: .3s;
+  &:focus {
+    outline-offset: 1px;
+    outline-width: 2px;
+    @include outline('button-focus');
+    outline-style: solid;
+  }
 }
 
 @mixin ms-thumb-hover() {

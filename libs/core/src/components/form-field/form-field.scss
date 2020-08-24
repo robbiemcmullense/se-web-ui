@@ -80,8 +80,9 @@ se-form-field {
     padding: $spacing-small;
     font-size: inherit;
     &:focus {
-      outline: none;
-      @include border-color('primary');
+      outline-width: 2px;
+      @include outline('button-focus');
+      outline-style: solid;
     }
   }
 

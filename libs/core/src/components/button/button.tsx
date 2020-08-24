@@ -62,6 +62,18 @@ export class ButtonComponent {
    * `reset`	creates a reset button (useful to reset form-data to its initial values).
    */
   @Prop() type: 'button' | 'submit' |'reset' = 'button';
+
+
+  /**
+   * optional property. define the padding around the button
+   * `none` no padding.
+   * `small` 4px padding: default
+   * `medium` 8px padding.
+   * `large` 16px padding.
+   */
+  @Prop({mutable: true}) padding: 'none' | 'small' |'medium' | 'large' = 'small';
+
+
    /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
@@ -99,6 +111,7 @@ export class ButtonComponent {
   @Method()
   async setGrouped() {
     this.grouped = true;
+    this.padding = 'none';
   }
 
   @Listen('click')
@@ -122,14 +135,6 @@ export class ButtonComponent {
     }
   }
 
-  @State() innerId;
-  setButtonId() {
-    const id = this.el.getAttribute('id');
-    if (id) {
-      this.innerId = `wc-${id}`;
-    }
-  }
-
   toggle() {
     if (this.disabled) return;
 
@@ -147,11 +152,6 @@ export class ButtonComponent {
     this.optionDidChange();
   }
 
-  componentDidLoad(){
-    this.setButtonId();
-  }
-
-
   render() {
     const {color,
       size,
@@ -162,10 +162,11 @@ export class ButtonComponent {
       selected} = this;
 
     const isIconOnly = iconOnly || option && option.includes('fab');
+    const id = this.el.getAttribute('id');
 
     return (
-      <Host class={{'disabled': this.disabled, 'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab'}}>
-        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type} id={this.innerId} onClick={() => this.toggle()}
+      <Host class={{'disabled': this.disabled, 'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab', [`p-${this.padding}`]: !!this.padding}} onClick={() => this.el.blur()}>
+        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type} id={id ? `wc-${id}` : ''} onClick={() => this.toggle()}
           class={{
             [color]: true,
             [size]: true,

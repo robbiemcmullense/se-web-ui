@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Host, State } from '@stencil/core';
+import { Component, h, Prop, Element, Host } from '@stencil/core';
 
 @Component({
   tag: 'se-table-group',
@@ -16,26 +16,15 @@ export class TableGroupComponent {
    */
   @Prop() selected = false;
 
-  @State() innerId;
-
-  setButtonId() {
-    const id = this.el.getAttribute('id');
-    if (id) {
-      this.innerId = `wc-${id}`;
-    }
-  }
-
-  componentWillLoad() {
-    this.setButtonId();
-  }
 
   render() {
+    const id = this.el.getAttribute('id');
     return (
       <Host
         role="row"
         class={{ selectable: this.selectable, selected: this.selected }}
       >
-        <div class="table-group-row" id={this.innerId}>
+        <div class="table-group-row" id={id ? `wc-${id}` : ''}>
           <slot />
         </div>
         <slot name="detail" />

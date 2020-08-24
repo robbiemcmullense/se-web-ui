@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Method, Prop, Host } from "@stencil/core";
 
 @Component({
   tag: "se-radio",
@@ -25,6 +25,16 @@ export class RadioComponent {
    * The `secondary` setting renders a blue color.
    */
   @Prop() color: 'primary' | 'secondary' = 'primary';
+
+  /**
+   * optional property. define the padding around the button
+   * `none` no padding.
+   * `small` 4px padding: default
+   * `medium` 8px padding.
+   * `large` 16px padding.
+   */
+  @Prop({mutable: true}) padding: 'none' | 'small' |'medium' | 'large' = 'small';
+
   /**
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
@@ -52,34 +62,24 @@ export class RadioComponent {
    */
   @Event() didCheck: EventEmitter;
 
-  setInputId() {
-    const id = this.el.getAttribute('id');
-    if (id) {
-      const input = this.el.shadowRoot.querySelector('input');
-      input.setAttribute('id', 'wc-' + id);
-    }
-  }
-
   handleClick() {
     this.selected = !this.selected;
     const checkboxObject = { value: this.value, selected: this.selected };
     this.didCheck.emit(checkboxObject);
   }
 
-  componentDidLoad() {
-    this.setInputId();
-  }
-
   render() {
+    const id = this.el.getAttribute('id');
+
     return (
-      <div class="se-radio">
-        <label class={["radio-container", `checkdot-label-${this.labelPos}`].join(' ')} data-disabled={this.disabled}>
+      <Host class={{[`p-${this.padding}`]: !!this.padding}}>
+        <label class={{ [`label-${this.labelPos}`] : !!this.labelPos }} data-disabled={this.disabled}  onClick={() => this.handleClick()}>
           {this.label}
           {this.required ? <span class="required">*</span> : ''}
-          <input type="radio" checked={this.selected} disabled={this.disabled} onClick={() => this.handleClick()} />
-          <span class="checkdot" data-color={this.color}></span>
+          <input type="radio" tabindex="-1" checked={this.selected} disabled={this.disabled} id={id ? `wc-${id}` : ''}/>
+          <button class={{[this.color]: !!this.color, 'checked': this.selected}} disabled={this.disabled} ></button>
         </label>
-      </div>
+      </Host>
     );
   }
 }

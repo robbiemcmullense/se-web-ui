@@ -27,7 +27,7 @@ describe('ChipComponent', () => {
   it('should have a disabled class when the disabled property is set to true', async() => {
     hostElement.setProperty('disabled', true);
     await page.waitForChanges();
-    expect(childElement).toHaveClass('disabled');
+    expect(childElement).toHaveAttribute('disabled');
   });
 
   it('should have a display-block class when the block property is set to true', async() => {
@@ -59,7 +59,7 @@ describe('ChipComponent Screenshots', () => {
   let page, element;
 
   beforeEach(async() => {
-    page = await newE2EPage(); 
+    page = await newE2EPage();
   });
 
   it('renders without a close icon by default', async() => {

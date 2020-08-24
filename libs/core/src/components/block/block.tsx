@@ -75,14 +75,16 @@ export class BlockComponent {
    */
   @Prop() width: string;
   @Watch("width") widthDidChange() {
-    this.updateSize();
+    this.el.style.width = this.width || 'auto';
+    this.el.style.minWidth = this.width || 'auto';
   }
   /**
    * Defines the specific height of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.
    */
   @Prop() height: string;
   @Watch("height") heightDidChange() {
-    this.updateSize();
+    this.el.style.height = this.height || 'auto';
+    this.el.style.minHeight = this.height || 'auto';
   }
   /**
    * When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item.
@@ -103,7 +105,7 @@ export class BlockComponent {
    * `card` will create a card look and feel with rounded corners, and with a `large` margin around it.
    * Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
    */
-  @Prop() option: "basic" | "card" | "card-old" | "widget" = "basic";
+  @Prop() option: "basic" | "card" | "card-old" | "widget" | "fill" = "basic";
   @Watch("option") optionDidChange() {
     this.updateItem();
   }
@@ -132,11 +134,7 @@ export class BlockComponent {
   }
 
   updateSize() {
-    // reset all sizes first
-    this.el.style.width = '';
-    this.el.style.minWidth = '';
-    this.el.style.height = '';
-    this.el.style.minHeight = '';
+
     if (this.width) {
       this.el.style.width = this.width;
       this.el.style.minWidth = this.width;
@@ -169,10 +167,10 @@ export class BlockComponent {
     }
 
     return (
-      <Host class={[
-        this.display ? `block-${this.display}` : '',
-        enlargedClass,
-        `block-bg-${this.color}`].join(' ')}>
+      <Host class={{
+        [`block-${this.display}`] : !!this.display,
+        [enlargedClass]: true,
+        [`block-bg-${this.color}`]: !!this.color}}>
         <div class={[
             'block-body',
             this.clickable === true ? `${this.clickableBar !== false ? "clickable" : "clickable-nobar"}` : '',
