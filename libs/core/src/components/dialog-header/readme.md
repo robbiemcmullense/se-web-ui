@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description                                                                                                                                     | Type                         | Default     |
 | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
-| `color`  | `color`   | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. | `"alternative" \| "primary"` | `'primary'` |
+| `color`  | `color`   | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. | `"alternative" \| "primary"` | `undefined` |
 
 
 ----------------------------------------------

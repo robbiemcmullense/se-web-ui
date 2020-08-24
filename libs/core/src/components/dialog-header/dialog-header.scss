@@ -16,11 +16,11 @@
     margin: 8px;
   }
 
-  &.primary {
-    min-height: 44px;
-    @include background-color('primary');
-    @include color('primary-contrast');
-  }
+  // &.primary {
+  min-height: 44px;
+  @include background-color('primary');
+  @include color('primary-contrast');
+  // }
 
   &.alternative {
     @include background-color('alternative');
