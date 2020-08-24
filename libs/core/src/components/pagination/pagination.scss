@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  color: var(--se-black, #000);
+  /* outline: 1px solid teal;*/
+}
+
+.flexed, .pages{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.pages{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.se-pagination{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: baseline;
+  padding: 0 32px; /*xlarge*/
+}
+.pages, .slot{
+  /* box-shadow: 0 0 5px red; */
+}
+.per-page{
+
+}
+.se-pagination input{
+  width: 3em;  /* 4 chars. make it number of chars+1 */
+  text-align: center;
+}
+.se-pagination label{
+  margin: 0 16px; /*mixin: large*/
+}
