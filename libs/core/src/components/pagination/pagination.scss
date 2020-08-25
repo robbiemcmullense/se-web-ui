@@ -1,38 +1,31 @@
 :host {
-  display: block;
-  color: var(--se-black, #000);
-  /* outline: 1px solid teal;*/
+  display: inline-block;
 }
 
-.flexed, .pages{
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: baseline;
+.edge {
+  padding: 0 4px;
 }
-.pages{
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.se-pagination{
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: baseline;
-  padding: 0 32px; /*xlarge*/
-}
-.pages, .slot{
-  /* box-shadow: 0 0 5px red; */
-}
-.per-page{
 
+.left {
+  transform: rotate(180deg);
 }
-.se-pagination input{
-  width: 3em;  /* 4 chars. make it number of chars+1 */
-  text-align: center;
+
+.perPage{
+  display: flex;
 }
-.se-pagination label{
-  margin: 0 16px; /*mixin: large*/
+
+.flexed{
+  display: flex;
+}
+
+.pagination {
+  padding: 0 $spacing-xlarge;
+  display: flex;
+  align-items: center;
+  .form-field-wrapper{
+    display: inline-block;
+    width: 70px;
+    margin-right: 8px;
+    margin-left: 12px;
+  }
 }

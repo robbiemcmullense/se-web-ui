@@ -28,6 +28,19 @@
 | `didSubmit` | Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus. | `CustomEvent<any>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [se-pagination](../pagination)
+
+### Graph
+```mermaid
+graph TD;
+  se-pagination --> se-form-field
+  style se-form-field fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/html';
-import { text, select, number } from '@storybook/addon-knobs';
+import { text, select, number, boolean } from '@storybook/addon-knobs';
 
 const totalItemsOpts = {
   range: false,
@@ -10,23 +10,24 @@ const totalItemsOpts = {
 
 storiesOf('Pagination', module)
   .add('Simple pagination', () => {
-    const totalItems = number('total items', 30)
+    const totalItems = number('number of pages', 30)
+    const hideEdge = boolean('Hide Edges', false)
 
     return `
-      <div style="padding: 10px; background-color: white; height: 50px;">      ${totalItems}
-        <se-pagination total="${totalItems}"></se-pagination>
+      <div style="padding: 10px;">
+        <se-pagination nb-page="${totalItems}" hide-edge=${hideEdge} ></se-pagination>
       </div>
     `
   })
   .add('Custom labels', () => {
-    const totalItems = number('total items', 30, totalItemsOpts)
+    const nbPage = number('nb pages', 30, totalItemsOpts)
 
     const labelFirstPage = text('First Page Label','Go back to first page')
     const labelPrevPage = text('Prev Page Label','One page back')
     const labelNextPage = text('Next Page Label','One page forth')
     const labelLastPage = text('Last Page Label','Go to last page')
-    const perPageLabel = text('PerPage Label','Items in single page')
-    const pageLabel = text('Page Label','Current page')
+    const labelPerPage = text('PerPage Label','Items in single page')
+    const labelPage = text('Page Label','Current page')
 
     const perPageOpts = [
       "10",
@@ -37,15 +38,17 @@ storiesOf('Pagination', module)
     const perPageSelect = select('Items per page',perPageOpts,"10;20;50")
 
     return `
-      <div style="padding: 10px; background-color: white; height: 50px;">
+      <div style="padding: 10px;">
         <se-pagination
-          total-items="${totalItems}"
+          slot="start"
+          nb-page="${nbPage}"
           label-first-page="${labelFirstPage}"
           label-prev-page="${labelPrevPage}"
           label-next-page="${labelNextPage}"
           label-last-page="${labelLastPage}"
-          per-page-label="${perPageLabel}"
-          page-label="${pageLabel}"
+          label-per-page="${labelPerPage}"
+          label-page="${labelPage}"
+
           per-page-list="${perPageSelect}"
           ></se-pagination>
       </div>

@@ -31,6 +31,7 @@
  - [se-header](../header)
  - [se-list-group](../list-group)
  - [se-list-item](../list-item)
+ - [se-pagination](../pagination)
  - [se-sidemenu](../sidemenu)
  - [se-snackbar](../snackbar)
  - [se-table-item-header](../table-item-header)
@@ -50,6 +51,7 @@ graph TD;
   se-header --> se-icon
   se-list-group --> se-icon
   se-list-item --> se-icon
+  se-pagination --> se-icon
   se-sidemenu --> se-icon
   se-snackbar --> se-icon
   se-table-item-header --> se-icon
