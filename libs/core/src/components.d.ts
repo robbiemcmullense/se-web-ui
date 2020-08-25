@@ -705,6 +705,19 @@ export namespace Components {
          */
         "option": 'standard' | 'dialog';
     }
+    interface SePagination {
+        "hideEdge": boolean;
+        "labelFirstPage": string;
+        "labelLastPage": string;
+        "labelNextPage": string;
+        "labelPage": string;
+        "labelPageSize": string;
+        "labelPrevPage": string;
+        "nbPage": number;
+        "page": number;
+        "pageSize": number;
+        "pageSizeList": string;
+    }
     interface SeRadio {
         /**
           * Defines the color of the checkbox. The default setting is `primary`, rendering a green color. The `secondary` setting renders a blue color.
@@ -1239,6 +1252,12 @@ declare global {
         prototype: HTMLSeLoadingElement;
         new (): HTMLSeLoadingElement;
     };
+    interface HTMLSePaginationElement extends Components.SePagination, HTMLStencilElement {
+    }
+    var HTMLSePaginationElement: {
+        prototype: HTMLSePaginationElement;
+        new (): HTMLSePaginationElement;
+    };
     interface HTMLSeRadioElement extends Components.SeRadio, HTMLStencilElement {
     }
     var HTMLSeRadioElement: {
@@ -1394,6 +1413,7 @@ declare global {
         "se-list-group": HTMLSeListGroupElement;
         "se-list-item": HTMLSeListItemElement;
         "se-loading": HTMLSeLoadingElement;
+        "se-pagination": HTMLSePaginationElement;
         "se-radio": HTMLSeRadioElement;
         "se-radio-group": HTMLSeRadioGroupElement;
         "se-sidemenu": HTMLSeSidemenuElement;
@@ -2141,6 +2161,20 @@ declare namespace LocalJSX {
          */
         "option"?: 'standard' | 'dialog';
     }
+    interface SePagination {
+        "hideEdge"?: boolean;
+        "labelFirstPage"?: string;
+        "labelLastPage"?: string;
+        "labelNextPage"?: string;
+        "labelPage"?: string;
+        "labelPageSize"?: string;
+        "labelPrevPage"?: string;
+        "nbPage"?: number;
+        "onDidChange"?: (event: CustomEvent<any>) => void;
+        "page"?: number;
+        "pageSize"?: number;
+        "pageSizeList"?: string;
+    }
     interface SeRadio {
         /**
           * Defines the color of the checkbox. The default setting is `primary`, rendering a green color. The `secondary` setting renders a blue color.
@@ -2515,6 +2549,7 @@ declare namespace LocalJSX {
         "se-list-group": SeListGroup;
         "se-list-item": SeListItem;
         "se-loading": SeLoading;
+        "se-pagination": SePagination;
         "se-radio": SeRadio;
         "se-radio-group": SeRadioGroup;
         "se-sidemenu": SeSidemenu;
@@ -2575,6 +2610,7 @@ declare module "@stencil/core" {
             "se-list-group": LocalJSX.SeListGroup & JSXBase.HTMLAttributes<HTMLSeListGroupElement>;
             "se-list-item": LocalJSX.SeListItem & JSXBase.HTMLAttributes<HTMLSeListItemElement>;
             "se-loading": LocalJSX.SeLoading & JSXBase.HTMLAttributes<HTMLSeLoadingElement>;
+            "se-pagination": LocalJSX.SePagination & JSXBase.HTMLAttributes<HTMLSePaginationElement>;
             "se-radio": LocalJSX.SeRadio & JSXBase.HTMLAttributes<HTMLSeRadioElement>;
             "se-radio-group": LocalJSX.SeRadioGroup & JSXBase.HTMLAttributes<HTMLSeRadioGroupElement>;
             "se-sidemenu": LocalJSX.SeSidemenu & JSXBase.HTMLAttributes<HTMLSeSidemenuElement>;

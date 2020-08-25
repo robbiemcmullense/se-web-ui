@@ -42,6 +42,7 @@ export const SeList = /*@__PURE__*/createReactComponent<JSX.SeList, HTMLSeListEl
 export const SeListGroup = /*@__PURE__*/createReactComponent<JSX.SeListGroup, HTMLSeListGroupElement>('se-list-group');
 export const SeListItem = /*@__PURE__*/createReactComponent<JSX.SeListItem, HTMLSeListItemElement>('se-list-item');
 export const SeLoading = /*@__PURE__*/createReactComponent<JSX.SeLoading, HTMLSeLoadingElement>('se-loading');
+export const SePagination = /*@__PURE__*/createReactComponent<JSX.SePagination, HTMLSePaginationElement>('se-pagination');
 export const SeRadio = /*@__PURE__*/createReactComponent<JSX.SeRadio, HTMLSeRadioElement>('se-radio');
 export const SeRadioGroup = /*@__PURE__*/createReactComponent<JSX.SeRadioGroup, HTMLSeRadioGroupElement>('se-radio-group');
 export const SeSidemenu = /*@__PURE__*/createReactComponent<JSX.SeSidemenu, HTMLSeSidemenuElement>('se-sidemenu');

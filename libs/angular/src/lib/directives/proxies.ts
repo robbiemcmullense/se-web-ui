@@ -405,6 +405,19 @@ export class SeLoading {
   }
 }
 
+export declare interface SePagination extends Components.SePagination {}
+@ProxyCmp({inputs: ['hideEdge', 'labelFirstPage', 'labelLastPage', 'labelNextPage', 'labelPage', 'labelPageSize', 'labelPrevPage', 'nbPage', 'page', 'pageSize', 'pageSizeList']})
+@Component({ selector: 'se-pagination', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideEdge', 'labelFirstPage', 'labelLastPage', 'labelNextPage', 'labelPage', 'labelPageSize', 'labelPrevPage', 'nbPage', 'page', 'pageSize', 'pageSizeList'] })
+export class SePagination {
+  didChange!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didChange']);
+  }
+}
+
 export declare interface SeRadio extends Components.SeRadio {}
 @ProxyCmp({inputs: ['color', 'disabled', 'label', 'labelPos', 'padding', 'required', 'selected', 'value'], 'methods': ['setRequired']})
 @Component({ selector: 'se-radio', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'label', 'labelPos', 'padding', 'required', 'selected', 'value'] })

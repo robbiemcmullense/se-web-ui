@@ -1,0 +1,31 @@
+:host {
+  display: inline-block;
+}
+
+.edge {
+  padding: 0 4px;
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.perPage{
+  display: flex;
+}
+
+.flexed{
+  display: flex;
+}
+
+.pagination {
+  padding: 0 $spacing-xlarge;
+  display: flex;
+  align-items: center;
+  .form-field-wrapper{
+    display: inline-block;
+    width: 70px;
+    margin-right: 8px;
+    margin-left: 12px;
+  }
+}
