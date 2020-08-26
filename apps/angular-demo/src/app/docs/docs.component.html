@@ -45,6 +45,35 @@
       <div fxFlex>This is the se-block body. It can be modified to the user's liking.</div>
       <se-button (click)="removeLastListItem()" option="raised">Remove Last List Item</se-button>
       <se-button (click)="addNewListItem()" option="raised">Add New List Item</se-button>
+
+      <se-form-field
+      label="cool label"
+      type="input"
+      required="true">
+      <se-radio-group
+        class="smartAlarmDataSource"
+        (didChange)="radioChanged($event)">
+          <se-radio
+            label="label1"
+            id="label1"
+            name="smartAlarmDataSource"
+            value="label1"
+          ></se-radio>
+          <se-radio
+            label="label2"
+            id="label2"
+            name="smartAlarmDataSource"
+            value="label2"
+          ></se-radio>
+          <se-radio
+            label="label3"
+            id="label3"
+            name="smartAlarmDataSource"
+            value="label3"
+          ></se-radio>
+      </se-radio-group>
+    </se-form-field>
+
     </se-block-content>
     <se-block-footer>
       <se-button option="raised">Apply</se-button>

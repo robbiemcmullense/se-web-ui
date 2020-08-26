@@ -45,6 +45,12 @@ export class FormFieldComponent {
   @Prop() labelWidth = '35%';
 
   /**
+   * Optional property to define how to align the label
+   */
+
+  @Prop() labelAlign: 'left' | 'right'= 'right';
+
+  /**
    * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`).
    * `input` is the default type.
    */
@@ -133,7 +139,10 @@ export class FormFieldComponent {
             style={{
               width: this.option !== 'stacked' ? this.labelWidth : 'auto'
             }}
-            class={{ 'with-label': !!this.label }}>
+            class={{
+              'with-label': !!this.label,
+              [`align-${this.labelAlign}`]:true
+            }}>
             {this.label}
             {this.required ? <span class="required">*</span> : ''}
           </span>

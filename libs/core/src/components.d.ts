@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { PageEvent } from "./components/pagination/pagination";
 export namespace Components {
     interface SeAbout {
         /**
@@ -495,6 +496,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Optional property to define how to align the label
+         */
+        "labelAlign": 'left' | 'right';
+        /**
           * Optional property to define the proportion of the label width. The content (input) will take the rest of if. Defaulted to 40%
          */
         "labelWidth": string;
@@ -532,6 +537,10 @@ export namespace Components {
           * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
          */
         "domain": string;
+        /**
+          * to remove the "Schneider electric" logo at the end of the header.
+         */
+        "hideSeLogo": boolean;
         /**
           * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
          */
@@ -707,16 +716,16 @@ export namespace Components {
     }
     interface SePagination {
         "hideEdge": boolean;
-        "labelFirstPage": string;
-        "labelLastPage": string;
-        "labelNextPage": string;
-        "labelPage": string;
-        "labelPageSize": string;
-        "labelPrevPage": string;
-        "nbPage": number;
-        "page": number;
-        "pageSize": number;
-        "pageSizeList": string;
+        "labelFirst": string;
+        "labelLast": string;
+        "labelNext": string;
+        "labelPerPage": string;
+        "labelPrev": string;
+        "labelValue": string;
+        "perPage": number;
+        "perPageList": string;
+        "total": number;
+        "value": number;
     }
     interface SeRadio {
         /**
@@ -735,6 +744,10 @@ export namespace Components {
           * Sets the position of the label for your checkbox component. The default setting is `right`.
          */
         "labelPos": 'left' | 'right';
+        /**
+          * Defines the name of the form field to attach the .
+         */
+        "name": string;
         /**
           * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
          */
@@ -909,11 +922,11 @@ export namespace Components {
         /**
           * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
          */
-        "option": "nav" | "content";
+        "option": 'nav' | 'content';
         /**
           * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines. The `compact` setting allows your tabbar content to scroll, but all stack the text together as much as possible.
          */
-        "overflow": "compact" | "stack" | "scroll";
+        "overflow": 'compact' | 'stack' | 'scroll';
     }
     interface SeTable {
     }
@@ -1938,6 +1951,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Optional property to define how to align the label
+         */
+        "labelAlign"?: 'left' | 'right';
+        /**
           * Optional property to define the proportion of the label width. The content (input) will take the rest of if. Defaulted to 40%
          */
         "labelWidth"?: string;
@@ -1979,6 +1996,10 @@ declare namespace LocalJSX {
           * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
          */
         "domain"?: string;
+        /**
+          * to remove the "Schneider electric" logo at the end of the header.
+         */
+        "hideSeLogo"?: boolean;
         /**
           * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
          */
@@ -2163,17 +2184,17 @@ declare namespace LocalJSX {
     }
     interface SePagination {
         "hideEdge"?: boolean;
-        "labelFirstPage"?: string;
-        "labelLastPage"?: string;
-        "labelNextPage"?: string;
-        "labelPage"?: string;
-        "labelPageSize"?: string;
-        "labelPrevPage"?: string;
-        "nbPage"?: number;
-        "onDidChange"?: (event: CustomEvent<any>) => void;
-        "page"?: number;
-        "pageSize"?: number;
-        "pageSizeList"?: string;
+        "labelFirst"?: string;
+        "labelLast"?: string;
+        "labelNext"?: string;
+        "labelPerPage"?: string;
+        "labelPrev"?: string;
+        "labelValue"?: string;
+        "onDidChange"?: (event: CustomEvent<PageEvent>) => void;
+        "perPage"?: number;
+        "perPageList"?: string;
+        "total"?: number;
+        "value"?: number;
     }
     interface SeRadio {
         /**
@@ -2192,6 +2213,10 @@ declare namespace LocalJSX {
           * Sets the position of the label for your checkbox component. The default setting is `right`.
          */
         "labelPos"?: 'left' | 'right';
+        /**
+          * Defines the name of the form field to attach the .
+         */
+        "name"?: string;
         /**
           * Send the checkbox value to the parent component when clicking on the checkbox.
          */
@@ -2373,11 +2398,11 @@ declare namespace LocalJSX {
         /**
           * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
          */
-        "option"?: "nav" | "content";
+        "option"?: 'nav' | 'content';
         /**
           * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines. The `compact` setting allows your tabbar content to scroll, but all stack the text together as much as possible.
          */
-        "overflow"?: "compact" | "stack" | "scroll";
+        "overflow"?: 'compact' | 'stack' | 'scroll';
     }
     interface SeTable {
     }

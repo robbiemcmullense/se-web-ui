@@ -22,6 +22,12 @@ export class HeaderComponent {
    * Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title.
    */
   @Prop() project: string;
+
+  /**
+   * to remove the "Schneider electric" logo at the end of the header.
+   */
+  @Prop() hideSeLogo: boolean;
+
   @State() hasMenu: boolean;
   elLeftNav;
 
@@ -66,7 +72,7 @@ export class HeaderComponent {
       </div>,
       <div class="padding-container d-flex">
         <slot name="end" />
-        <se-icon-schneider class="header-title-type" />
+        {!this.hideSeLogo && <se-icon-schneider class="header-title-type" />}
       </div>
     ];
   }

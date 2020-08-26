@@ -5,43 +5,46 @@ describe('PaginationComponent', () => {
 
   beforeEach(async() => {
     page = await newE2EPage();
-    await page.setContent('<se-chip></se-chip>');
+    await page.setContent('<se-pagination total="10" value="3"></se-pagination>');
     hostElement = await page.find('se-pagination');
-    childElement = await page.find('se-pagination >>> .se-pagination');
   });
 
   it('renders', async() => {
-    expect(childElement).toBeTruthy();
+    expect(hostElement).toBeTruthy();
+    expect(hostElement).toHaveClass('hydrated');
   });
 
-  it('should have a class equal to standard to reflect its default color', () => {
-    expect(childElement).toHaveClass('standard');
+
+  it('should render 10 pages and have selected page 3', async() => {
+    const item = await page.find('se-pagination >>> .pagination select');
+    const value = await item.getProperty('value');
+    expect(value).toBe('3');
   });
 
-  it('should have a disabled class when the disabled property is set to true', async() => {
-    hostElement.setProperty('disabled', true);
+  it('should have all icon not disabled', async() => {
+    const pageSizeSection = await page.find('se-pagination >>> .pageSize');
+    const disabledIcons = await page.find('se-pagination >>> se-icon[disabled]');
+    expect(disabledIcons).toBeNull();
+    expect(pageSizeSection).toBeNull();
+
+  });
+
+  it('should update the selected value if value changed', async() => {
+    hostElement.setProperty('value', '6');
     await page.waitForChanges();
-    expect(childElement).toHaveClass('disabled');
+    const item = await page.find('se-pagination >>> .pagination select');
+    const value = await item.getProperty('value');
+    expect(value).toBe('6');
   });
 
-
-  it('should render HTML with the passed value', async() => {
-    hostElement.setProperty('value', 'My Value');
+  it('should update the selected value if value changed', async() => {
+    hostElement.setProperty('perPage', '33');
+    hostElement.setProperty('perPageList', '22;33;44;55');
     await page.waitForChanges();
-    const valueElm = await page.find('se-pagination >>> div.value');
-    expect(valueElm.innerText).toEqual('My Value');
+    const item = await page.find('se-pagination >>> .pageSize select');
+    const value = await item.getProperty('value');
+    expect(value).toBe('33');
   });
-
-  // it('should emit a close event when the chip is clicked and the canClose property is true', async() => {
-  //   hostElement.setProperty('value', 'My Value');
-  //   hostElement.setProperty('canClose', true);
-  //   await page.waitForChanges();
-  //   const eventSpy = await page.spyOnEvent('didClose');
-  //   const closeElm = await page.find('se-pagination >>> se-icon.close');
-  //   await closeElm.click();
-  //   expect(eventSpy).toHaveReceivedEvent();
-  //   expect(eventSpy).toHaveReceivedEventDetail('My Value');
-  // });
 });
 
 describe('PaginationComponent Screenshots', () => {
@@ -52,7 +55,7 @@ describe('PaginationComponent Screenshots', () => {
   });
 
   it('renders without a close icon by default', async() => {
-    await page.setContent('<se-pagination totalItems="100"></se-pagination>');
+    await page.setContent('<se-pagination total="10"></se-pagination>');
     element = await page.find('se-pagination');
     expect(element).toBeTruthy();
     await page.compareScreenshot('Default Pagination', {fullPage: false});

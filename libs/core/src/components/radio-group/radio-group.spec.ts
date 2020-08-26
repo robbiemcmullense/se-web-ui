@@ -51,7 +51,7 @@ describe('RadioGroupComponent', () => {
 	it('passes a nano size and primary color value to se-button child elements when specified', () => {
 		radioGroup.size = 'nano';
 		radioGroup.color = 'primary';
-		let buttonElm = document.createElement('se-button');
+		const buttonElm = document.createElement('se-button');
 		radioGroup.el.appendChild(buttonElm);
 		radioGroup.componentDidLoad();
 		expect(buttonElm.size).toEqual('nano');
@@ -60,7 +60,7 @@ describe('RadioGroupComponent', () => {
 
 	it('passes a secondary color value to se-radio child elements when specified', () => {
 		radioGroup.color = 'secondary';
-		let radioElm = document.createElement('se-radio');
+		const radioElm = document.createElement('se-radio');
 		radioGroup.el.appendChild(radioElm);
 		radioGroup.componentDidLoad();
 		expect(radioElm.color).toEqual('secondary');
@@ -68,7 +68,7 @@ describe('RadioGroupComponent', () => {
 
 	it('passes a disabled property value to se-button child elements when specified', () => {
 		radioGroup.disabled = true;
-		let buttonElm = document.createElement('se-button');
+		const buttonElm = document.createElement('se-button');
 		radioGroup.el.appendChild(buttonElm);
 		radioGroup.componentDidLoad();
 		expect(buttonElm.disabled).toBeTruthy();
@@ -81,12 +81,12 @@ describe('RadioGroupComponent', () => {
 		expect(eventSpy).toHaveBeenCalledTimes(2);
 	});
 
-	it('emits the didChange event when a child element in the radio group is clicked on', () => {
-		const event = {detail: {value: 'my value'}};
-		const eventSpy = jest.spyOn(radioGroup.didChange, 'emit');
-		radioGroup.componentDidLoad();
-		radioGroup.buttonClickedHandler(event);
-		radioGroup.radioButtonCheckedHandler(event);
-		expect(eventSpy).toHaveBeenCalledTimes(2);
-	});
+	// it('emits the didChange event when a child element in the radio group is clicked on', () => {
+	// 	const event = {detail: {value: 'my value'}};
+	// 	const eventSpy = jest.spyOn(radioGroup.didChange, 'emit');
+	// 	radioGroup.componentDidLoad();
+	// 	radioGroup.buttonClickedHandler(event);
+	// 	radioGroup.radioButtonCheckedHandler(event);
+	// 	expect(eventSpy).toHaveBeenCalledTimes(2);
+	// });
 });

@@ -22,6 +22,7 @@ describe('BannerComponent', () => {
 
   it('should render two indicator elements with previous-indicator and next-indicator classes', async() => {
     page = await renderComponent('<se-banner-item></se-banner-item><se-banner-item></se-banner-item>');
+    await page.waitForChanges();
     element = await page.find('se-banner');
     const prevIndicator = element.shadowRoot.querySelector('.previous-indicator');
     const nextIndicator = element.shadowRoot.querySelector('.next-indicator');
@@ -32,6 +33,8 @@ describe('BannerComponent', () => {
   it('should render two list item elements when there are two se-banner-item elements', async() => {
     page = await renderComponent('<se-banner-item></se-banner-item><se-banner-item></se-banner-item>');
     const listItems = await page.findAll('se-banner >>> li');
+    await page.waitForChanges();
+
     expect(listItems.length).toEqual(2);
   });
 

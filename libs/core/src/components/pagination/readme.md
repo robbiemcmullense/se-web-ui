@@ -7,26 +7,26 @@
 
 ## Properties
 
-| Property         | Attribute          | Description | Type      | Default           |
-| ---------------- | ------------------ | ----------- | --------- | ----------------- |
-| `hideEdge`       | `hide-edge`        |             | `boolean` | `undefined`       |
-| `labelFirstPage` | `label-first-page` |             | `string`  | `'First Page'`    |
-| `labelLastPage`  | `label-last-page`  |             | `string`  | `'Last Page'`     |
-| `labelNextPage`  | `label-next-page`  |             | `string`  | `'Next Page'`     |
-| `labelPage`      | `label-page`       |             | `string`  | `'Page'`          |
-| `labelPageSize`  | `label-page-size`  |             | `string`  | `'Show rows:'`    |
-| `labelPrevPage`  | `label-prev-page`  |             | `string`  | `'Previous Page'` |
-| `nbPage`         | `nb-page`          |             | `number`  | `1`               |
-| `page`           | `page`             |             | `number`  | `1`               |
-| `pageSize`       | `page-size`        |             | `number`  | `15`              |
-| `pageSizeList`   | `page-size-list`   |             | `string`  | `'15'`            |
+| Property       | Attribute        | Description | Type      | Default            |
+| -------------- | ---------------- | ----------- | --------- | ------------------ |
+| `hideEdge`     | `hide-edge`      |             | `boolean` | `undefined`        |
+| `labelFirst`   | `label-first`    |             | `string`  | `'First Page'`     |
+| `labelLast`    | `label-last`     |             | `string`  | `'Last Page'`      |
+| `labelNext`    | `label-next`     |             | `string`  | `'Next Page'`      |
+| `labelPerPage` | `label-per-page` |             | `string`  | `'Items per page'` |
+| `labelPrev`    | `label-prev`     |             | `string`  | `'Previous Page'`  |
+| `labelValue`   | `label-value`    |             | `string`  | `'Page'`           |
+| `perPage`      | `per-page`       |             | `number`  | `15`               |
+| `perPageList`  | `per-page-list`  |             | `string`  | `'15'`             |
+| `total`        | `total`          |             | `number`  | `1`                |
+| `value`        | `value`          |             | `number`  | `1`                |
 
 
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `didChange` |             | `CustomEvent<any>` |
+| Event       | Description | Type                     |
+| ----------- | ----------- | ------------------------ |
+| `didChange` |             | `CustomEvent<PageEvent>` |
 
 
 ## Dependencies

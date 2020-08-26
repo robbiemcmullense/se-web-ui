@@ -3,11 +3,9 @@
 :host {
   @include align-items(center);
   display: block;
-}
-
-:host(.p-small) {
   padding: $spacing-small;
 }
+
 :host(.p-medium) {
   padding: $spacing;
 }
@@ -26,7 +24,7 @@ button {
   /* inherit font & color from ancestor */
 
   position: absolute;
-  top: 1px;
+  top: 0;
   left: -8px;
   height: 14px;
   width: 14px;
@@ -60,13 +58,12 @@ button {
 .radio-label {
   @include typology('small');
   padding-left: 6px;
-}
-label {
+
   position: relative;
   padding-left: $spacing-large;
   @include typology('small');
-  margin: $spacing;
-  margin-right: 0;
+  margin: 0;
+  margin-left: $spacing;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

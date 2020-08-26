@@ -7,7 +7,7 @@ describe('RadioComponent', () => {
     page = await newE2EPage();
     await page.setContent('<se-radio value="my value"></se-radio>');
     element = await page.find('se-radio');
-    label = await page.find('se-radio >>> label');
+    label = await page.find('se-radio >>> button');
   });
 
   it('renders', async() => {

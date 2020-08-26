@@ -25,7 +25,14 @@ module.exports = async ({ config, mode }) => {
     ];
   }
 
-
+  // config.rules = [{
+  //   test: /\.md$/,
+  //   use: [
+  //     {
+  //       loader: 'markdown-loader',
+  //     }
+  //   ]
+  // }]
 
   return config;
 };

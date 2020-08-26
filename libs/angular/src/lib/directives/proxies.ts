@@ -278,8 +278,8 @@ export class SeFabItem {
 }
 
 export declare interface SeFormField extends Components.SeFormField {}
-@ProxyCmp({inputs: ['block', 'disabled', 'label', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value']})
-@Component({ selector: 'se-form-field', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'disabled', 'label', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value'] })
+@ProxyCmp({inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value']})
+@Component({ selector: 'se-form-field', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value'] })
 export class SeFormField {
   didSubmit!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -291,8 +291,8 @@ export class SeFormField {
 }
 
 export declare interface SeHeader extends Components.SeHeader {}
-@ProxyCmp({inputs: ['appTitle', 'domain', 'project']})
-@Component({ selector: 'se-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'domain', 'project'] })
+@ProxyCmp({inputs: ['appTitle', 'domain', 'hideSeLogo', 'project']})
+@Component({ selector: 'se-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'domain', 'hideSeLogo', 'project'] })
 export class SeHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -406,8 +406,8 @@ export class SeLoading {
 }
 
 export declare interface SePagination extends Components.SePagination {}
-@ProxyCmp({inputs: ['hideEdge', 'labelFirstPage', 'labelLastPage', 'labelNextPage', 'labelPage', 'labelPageSize', 'labelPrevPage', 'nbPage', 'page', 'pageSize', 'pageSizeList']})
-@Component({ selector: 'se-pagination', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideEdge', 'labelFirstPage', 'labelLastPage', 'labelNextPage', 'labelPage', 'labelPageSize', 'labelPrevPage', 'nbPage', 'page', 'pageSize', 'pageSizeList'] })
+@ProxyCmp({inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value']})
+@Component({ selector: 'se-pagination', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value'] })
 export class SePagination {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -419,8 +419,8 @@ export class SePagination {
 }
 
 export declare interface SeRadio extends Components.SeRadio {}
-@ProxyCmp({inputs: ['color', 'disabled', 'label', 'labelPos', 'padding', 'required', 'selected', 'value'], 'methods': ['setRequired']})
-@Component({ selector: 'se-radio', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'label', 'labelPos', 'padding', 'required', 'selected', 'value'] })
+@ProxyCmp({inputs: ['color', 'disabled', 'label', 'labelPos', 'name', 'padding', 'required', 'selected', 'value'], 'methods': ['setRequired']})
+@Component({ selector: 'se-radio', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'label', 'labelPos', 'name', 'padding', 'required', 'selected', 'value'] })
 export class SeRadio {
   didCheck!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;

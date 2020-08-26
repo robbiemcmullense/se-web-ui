@@ -7,6 +7,12 @@ import { Component, Element, Event, EventEmitter, h, Method, Prop, Host } from "
 })
 export class RadioComponent {
   @Element() el: HTMLElement;
+
+  /**
+   * Defines the name of the form field to attach the .
+   */
+  @Prop() name: string;
+
   /**
    * Defines the value you want to pass to the parent component when the radio button is checked.
    */
@@ -73,12 +79,21 @@ export class RadioComponent {
 
     return (
       <Host class={{[`p-${this.padding}`]: !!this.padding}}>
-        <label class={{ [`label-${this.labelPos}`] : !!this.labelPos }} data-disabled={this.disabled}  onClick={() => this.handleClick()}>
-          {this.label}
-          {this.required ? <span class="required">*</span> : ''}
-          <input type="radio" tabindex="-1" checked={this.selected} disabled={this.disabled} id={id ? `wc-${id}` : ''}/>
-          <button class={{[this.color]: !!this.color, 'checked': this.selected}} disabled={this.disabled} ></button>
-        </label>
+        <div
+          role="radio"
+          aria-disabled={this.disabled ? 'true' : null}
+          aria-checked={`${this.selected}`}
+          aria-label={this.label}
+          aria-required={this.required}
+          class={{ [`label-${this.labelPos}`] : !!this.labelPos, 'radio-label': true }}
+          data-disabled={this.disabled? true : null}
+          onClick={() => this.handleClick()}
+          >
+            {this.label}
+            {this.required ? <span class="required">*</span> : ''}
+            <input type="radio" tabindex="-1" name={this.name} checked={this.selected} disabled={this.disabled ? true : null} id={id ? `wc-${id}` : ''}/>
+            <button class={{[this.color]: !!this.color, 'checked': this.selected}} disabled={this.disabled ? true : null} ></button>
+        </div>
       </Host>
     );
   }

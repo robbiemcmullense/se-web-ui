@@ -24,12 +24,13 @@ describe('RadioGroupComponent', () => {
 });
 
 describe('RadioComponent with an initialized value', () => {
-  let page, firstButtonElement, secondButtonElement;
+  let page, firstButtonElement, secondButtonElement, parentElement;
 
   beforeEach(async () => {
     page = await newE2EPage();
     await page.setContent('<se-radio-group value="first"><se-button id="first" value="first">Primary</se-button><se-button id="second" value="second">Secondary</se-button></se-radio-group>');
     await page.waitForChanges();
+    parentElement = await page.find('se-radio-group');
     firstButtonElement = await page.find('se-radio-group se-button#first >>> button');
     secondButtonElement = await page.find('se-radio-group se-button#second >>> button');
   });
@@ -42,17 +43,14 @@ describe('RadioComponent with an initialized value', () => {
     const eventSpy = await page.spyOnEvent('didClick');
     await secondButtonElement.click();
     expect(secondButtonElement).toHaveClass('selected');
-    expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail({
       selected: true,
       value: 'second'});
   });
 
-  it('should emit an event with the value of the first button item when clicked on', async() => {
-    const eventSpy = await page.spyOnEvent('didChange');
-    await firstButtonElement.click();
-    expect(eventSpy).toHaveReceivedEvent();
-    expect(eventSpy).toHaveReceivedEventDetail('first');
+  it('should emit an event with the value of the second button item when clicked on', async() => {
+    await secondButtonElement.click();
+    expect(parentElement).toHaveAttribute('value','second');
   });
 });
 
@@ -66,18 +64,35 @@ describe('RadioComponent with an initialized disabled property', () => {
   });
 
   it('should mark the radio elements as disabled, and render a label for each child radio component', async() => {
-    const radioOne = await page.find('se-radio-group se-radio#first >>> label');
-    const radioTwo = await page.find('se-radio-group se-radio#second >>> label');
-    expect(radioOne).toHaveAttribute('data-disabled');
-    expect(radioTwo).toHaveAttribute('data-disabled');
+    const radioOne = await page.find('se-radio-group se-radio#first >>> .radio-label');
+    const radioTwo = await page.find('se-radio-group se-radio#second >>> .radio-label');
+    expect(radioOne).toHaveAttribute('aria-disabled');
+    expect(radioTwo).toHaveAttribute('aria-disabled');
   });
 
   it('should render a label for each child component', async() => {
-    const radioOne = await page.find('se-radio-group se-radio#first >>> label');
-    const radioTwo = await page.find('se-radio-group se-radio#second >>> label');
+    const radioOne = await page.find('se-radio-group se-radio#first >>> .radio-label');
+    const radioTwo = await page.find('se-radio-group se-radio#second >>> .radio-label');
     expect(radioOne.innerText).toEqual('Radio One');
     expect(radioTwo.innerText).toEqual('Radio Two');
   });
+});
+describe('RadioComponent with se-radio', () => {
+  let page;
+
+  beforeEach(async() => {
+    page = await newE2EPage();
+    await page.setContent('<se-radio-group><se-radio id="first" value="first" label="Radio One"></se-radio><se-radio id="second" value="second" label="Radio Two"></se-radio></se-radio-group>');
+    await page.waitForChanges();
+  });
+
+  it('should mark the radio elements as disabled, and render a label for each child radio component', async() => {
+    const radioOne = await page.find('se-radio-group se-radio#first >>> .radio-label');
+    const radioTwo = await page.find('se-radio-group se-radio#second >>> .radio-label');
+    expect(radioOne).not.toHaveAttribute('aria-disabled');
+    expect(radioTwo).not.toHaveAttribute('aria-disabled');
+  });
+
 });
 
 describe('Radio Group Screenshots', () => {

@@ -10,16 +10,18 @@
   transform: rotate(180deg);
 }
 
-.perPage{
+.pageSize{
   display: flex;
+  padding-right: $spacing-large;
 }
+
 
 .flexed{
   display: flex;
 }
 
 .pagination {
-  padding: 0 $spacing-xlarge;
+  padding: 0 $spacing-small;
   display: flex;
   align-items: center;
   .form-field-wrapper{

@@ -11,7 +11,7 @@ export class DialogHeaderComponent {
    * `alternative`: Alternative background with primary color for the text.
    * `primary`: Primary color schema.
    */
-  @Prop() color:  'primary' | 'alternative';
+  @Prop() color:  'primary' | 'alternative' = 'primary';
 
   render() {
     return (

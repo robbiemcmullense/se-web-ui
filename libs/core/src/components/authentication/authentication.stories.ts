@@ -1,10 +1,19 @@
 import { storiesOf } from '@storybook/html';
 import { text, select } from '@storybook/addon-knobs';
+import readme from './readme.md';
 
 const domainOption = ['ecostruxure', 'MySchneider'];
 const copyrightText = 'This application is protected by copyright law and international treaties. © 2020 Schneider Electric Industries SAS. All Rights Reserved.';
 
 storiesOf('Authentication', module)
+  // .addParameters({
+  //   readme: {
+  //     // Show readme before story
+  //     content: readme,
+  //     // Show readme at the addons panel
+  //     sidebar: readme,
+  //   },
+  // })
   .add('Demo', () => {
     const title = text('app-title', "My app Advisor")
     const version = text('version', "1.2.3")
@@ -26,7 +35,7 @@ storiesOf('Authentication', module)
             <input type="password">
           </se-form-field>
           <se-button option="login" type="submit">Login</se-button>
-        </form>  
+        </form>
       </se-authentication>
     `;
   })

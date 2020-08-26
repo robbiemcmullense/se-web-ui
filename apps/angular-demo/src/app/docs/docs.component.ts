@@ -6,13 +6,13 @@ import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/co
   styleUrls: ['./docs.component.scss']
 })
 
-export class DocsComponent implements OnInit, OnDestroy {
+export class DocsComponent {
 
-  public loader = false;
-  name: string = '';
-  address: string = '';
-  nameValidated: boolean = false;
-  addressValidated: boolean = false;
+  loader = false;
+  name = '';
+  address = '';
+  nameValidated = false;
+  addressValidated = false;
   bisStep = false;
 
   @ViewChild('stepper', {read: ElementRef, static: false}) stepper: ElementRef<any>;
@@ -26,12 +26,10 @@ export class DocsComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
-  ngOnInit() {
 
-  }
 
-  ngOnDestroy() {
-
+  radioChanged(event) {
+    console.log('radio changed', event)
   }
 
   removeLastListItem = () => {

@@ -39,13 +39,18 @@ se-form-field {
     > span {
       // @include flex(40%);
       // max-width: 140px;
-      text-align: right;
       min-width: 140px;
     }
     .required {
       @include color('error');
       padding-left: 3px;
     }
+  }
+  .align-left {
+    text-align: left;
+  }
+  .align-right {
+    text-align: right;
   }
 
   .ff-wrapper {

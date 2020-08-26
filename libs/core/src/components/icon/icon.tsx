@@ -34,7 +34,6 @@ export class IconComponent {
   render() {
     const size = this.size || 'small';
     const TagType = this.option === 'button' ? 'button' : 'div' as any;
-
     return (
       <Host class={`icon-${size}`}>
         <TagType

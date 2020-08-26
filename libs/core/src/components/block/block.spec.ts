@@ -100,29 +100,6 @@ describe('BlockComponent', () => {
 		expect(page.root).toHaveClass('grid-large');
 	});
 
-	it('should set the element style width, height, minWidth, and minHeight properties when width and height are specified as component properties', () => {
-		block.width = '350px';
-		block.height = '350px';
-		block.componentWillLoad();
-		expect(block.el.style.width).toEqual(block.width);
-		expect(block.el.style.minWidth).toEqual(block.width);
-		expect(block.el.style.height).toEqual(block.height);
-		expect(block.el.style.minHeight).toEqual(block.height);
-	});
-
-	it('should set the element style width, height, minWidth, and minHeight properties when width and height are specified as component properties', () => {
-		const eventSpy = jest.spyOn(block, 'updateSize');
-		block.widthDidChange();
-		block.heightDidChange();
-		expect(eventSpy).toHaveBeenCalledTimes(2);
-	});
-
-	it('should set the element style width, height, minWidth, and minHeight properties when width and height are specified as component properties', () => {
-		const eventSpy = jest.spyOn(block, 'updateItem');
-		block.optionDidChange();
-		expect(eventSpy).toHaveBeenCalled();
-	});
-
 	it('should set the card option to block-header, block-content, and block-footer elements when se-block has the option set to card', () => {
 		block.option = 'card';
 		const header = document.createElement('se-block-header');

@@ -44,16 +44,20 @@ export class RadioGroupComponent {
   }
 
   @Watch('value') valueDidChange() {
-    this.selectChild();
+    console.log("emit group")
     this.didChange.emit(this.value);
   }
 
   @Listen('didClick') buttonClickedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
+    // in a select group, at least one selection need to be made. clicking twice on the same radio should keep it selected.
+    this.selectChild();
   }
 
   @Listen('didCheck') radioButtonCheckedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
+    // in a select group, at least one selection need to be made. clicking twice on the same radio should keep it selected.
+    this.selectChild();
   }
 
   updateItemMode() {
@@ -73,10 +77,8 @@ export class RadioGroupComponent {
   }
 
   handleChildClicked(event: CustomEvent) {
-    let buttonInfo = event.detail;
+    const buttonInfo = event.detail;
     this.value = buttonInfo.value;
-    this.selectChild();
-    this.didChange.emit(this.value);
   }
 
   selectChild() {

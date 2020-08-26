@@ -1,6 +1,12 @@
 import { Component, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import arrowStep from '@se/icons/svg/arrow5_step.svg';
 import arrowEdge from '@se/icons/svg/arrow5_edge.svg';
+
+export interface PageEvent {
+  value: number;
+  perPage: number;
+}
+
 @Component({
   tag: 'se-pagination',
   styleUrl: 'pagination.scss',
@@ -9,43 +15,43 @@ import arrowEdge from '@se/icons/svg/arrow5_edge.svg';
 export class PaginationComponent {
   defaultPageSizeList = 15;
 
-  @Prop({ mutable: true }) pageSize = 15;
-  @Prop() pageSizeList = '15'; //'10;15;25;50';
+  @Prop({ mutable: true }) perPage = 15;
+  @Prop() perPageList = '15'; //'10;15;25;50';
 
-  @Prop({ mutable: true}) page = 1;
-  @Prop() nbPage = 1;
+  @Prop({ mutable: true}) value = 1;
+  @Prop() total = 1;
 
   @Prop() hideEdge: boolean;
 
-  @Prop() labelFirstPage = 'First Page';
-  @Prop() labelPrevPage = 'Previous Page';
-  @Prop() labelNextPage = 'Next Page';
-  @Prop() labelLastPage = 'Last Page';
-  @Prop() labelPageSize = 'Show rows:';
-  @Prop() labelPage = 'Page';
+  @Prop() labelFirst = 'First Page';
+  @Prop() labelPrev = 'Previous Page';
+  @Prop() labelNext = 'Next Page';
+  @Prop() labelLast = 'Last Page';
+  @Prop() labelPerPage = 'Items per page';
+  @Prop() labelValue = 'Page';
 
 
-  @Event({ eventName: 'didChange' }) eventEmitter: EventEmitter;
+  @Event({ eventName: 'didChange' }) eventEmitter: EventEmitter<PageEvent>;
 
   public componentDidLoad() {
-    if (this.nbPage === null) {
+    if (this.total === null) {
       console.warn(
         "[se-pagination] component needs to have 'total-items' attribute configured."
       );
     }
 
-    console.log('pagination mounted', this.pageSize);
-    if (this.pageSize == null) {
-      this.pageSize = this.__pageSizeList()[0];
+    console.log('pagination mounted', this.perPage);
+    if (this.perPage == null) {
+      this.perPage = this.__parPageSizeList()[0];
     }
   }
 
-  private __pageSizeList(): Array<number> {
+  private __parPageSizeList(): Array<number> {
     try {
-      const r = this.pageSizeList.split(';').map(n => parseInt(n));
+      const r = this.perPageList.split(';').map(n => parseInt(n));
       if (r.length === 0) {
         console.warn(
-          `[se-pagination] pageSizeList must have at least one element. Assuming: [${this.defaultPageSizeList}]`
+          `[se-pagination] pageSizeList must have at least one element. page sizes are ';' separated. ex: '10;15;20'. Assuming: [${this.defaultPageSizeList}]`
         );
         return [this.defaultPageSizeList];
       }
@@ -58,7 +64,7 @@ export class PaginationComponent {
       return [this.defaultPageSizeList];
     }
   }
-  private __pageList(): Array<number> {
+  private __perPageList(): Array<number> {
     const arrayNumber = [];
     const max = this.maxPage();
     for (let index = 1; index <= max; index++) {
@@ -70,43 +76,43 @@ export class PaginationComponent {
   private __pageSizeChanged(e): void {
     const target = e.target as any;
     //console.log(e, target, target.value);
-    this.page = 1;
-    this.pageSize = Math.floor(target.value); // in case someone types a fraction
+    this.value = 1;
+    this.perPage = Math.floor(target.value); // in case someone types a fraction
     this.eventEmitter.emit({
-      page: 1,
-      pageSize: this.pageSize
+      value: 1,
+      perPage: this.perPage
     });
   }
 
   private __goToFirstPage() {
-    this.page = 1;
+    this.value = 1;
     this.eventEmitter.emit({
-      page: 1,
-      pageSize: this.pageSize
+      value: 1,
+      perPage: this.perPage
     });
   }
 
   private __goToPrevPage() {
-    this.page = Math.max(1, this.page - 1);
+    this.value = Math.max(1, this.value - 1);
     this.eventEmitter.emit({
-      page: this.page,
-      pageSize: this.pageSize
+      value: this.value,
+      perPage: this.perPage
     });
   }
 
   private __goToNextPage() {
-    this.page = Math.min(this.maxPage(), this.page + 1);
+    this.value = Math.min(this.maxPage(), this.value + 1);
     this.eventEmitter.emit({
-      page: this.page,
-      pageSize: this.pageSize
+      value: this.value,
+      perPage: this.perPage
     });
   }
 
   private __goToLastPage() {
-    this.page = this.maxPage();
+    this.value = this.maxPage();
     this.eventEmitter.emit({
-      page: this.page,
-      pageSize: this.pageSize
+      value: this.value,
+      perPage: this.perPage
     });
   }
 
@@ -114,37 +120,37 @@ export class PaginationComponent {
     // console.log(e, e.target);
     const target = e.target as any;
     // console.log("Goto page", e, e.target, target.value)
-    this.page = Math.floor(target.value);
+    this.value = Math.floor(target.value);
     this.eventEmitter.emit({
-      page: this.page,
-      pageSize: this.pageSize
+      value: this.value,
+      perPage: this.perPage
     });
   }
 
   private maxPage(): number {
-    return Math.max(this.nbPage, 1);
+    return Math.max(this.total, 1);
   }
 
   render() {
 
-    const isFirst = this.page === 1;
-    const isLast = this.page === this.maxPage();
+    const isFirst = this.value === 1;
+    const isLast = this.value === this.maxPage();
 
     return (
       <Host>
         <div class="flexed">
-          {this.__pageSizeList().length > 1 ? (
+          {this.__parPageSizeList().length > 1 ? (
             <div class="pageSize">
               <se-form-field
                 type="select"
                 padding="none"
-                label={this.labelPageSize}
+                label={this.labelPerPage}
               >
                 <select onChange={e => this.__pageSizeChanged(e)}>
-                  {this.__pageSizeList().map(i => (
+                  {this.__parPageSizeList().map(i => (
                     <option
                       value={i}
-                      selected={i == (this.pageSize || this.defaultPageSizeList)}
+                      selected={i == (this.perPage || this.defaultPageSizeList)}
                     >
                       {i}
                     </option>
@@ -164,7 +170,8 @@ export class PaginationComponent {
                 option="button"
                 disabled={isFirst}
                 onClick={() => !isFirst && this.__goToFirstPage()}
-                title={this.labelFirstPage}
+                title={this.labelFirst}
+                arial-label={this.labelFirst}
                 innerHTML={arrowEdge}
               ></se-icon>
             )}
@@ -174,11 +181,12 @@ export class PaginationComponent {
               option="button"
               disabled={isFirst}
               onClick={() => !isFirst && this.__goToPrevPage()}
-              title={this.labelPrevPage}
+              title={this.labelPrev}
+              arial-label={this.labelPrev}
               innerHTML={arrowStep}
             ></se-icon>
             <label style={{padding: "0 12px"}}>
-              <span>{this.labelPage}</span>
+              <span>{this.labelValue}</span>
               <se-form-field
                 type="select"
                 padding="none"
@@ -186,8 +194,8 @@ export class PaginationComponent {
                 option="stacked"
               >
                 <select onChange={e => this.__goToPage(e)}>
-                  {this.__pageList().map(i => (
-                    <option value={i} selected={i === this.page}>
+                  {this.__perPageList().map(i => (
+                    <option value={i} selected={i === this.value}>
                       {i}
                     </option>
                   ))}
@@ -200,7 +208,8 @@ export class PaginationComponent {
               option="button"
               disabled={isLast}
               onClick={() => !isLast && this.__goToNextPage()}
-              title={this.labelNextPage}
+              title={this.labelNext}
+              arial-label={this.labelNext}
               innerHTML={arrowStep}
             ></se-icon>
             {!this.hideEdge && (
@@ -210,7 +219,8 @@ export class PaginationComponent {
                 option="button"
                 disabled={isLast}
                 onClick={() => !isLast && this.__goToLastPage()}
-                title={this.labelLastPage}
+                title={this.labelLast}
+                arial-label={this.labelLast}
                 innerHTML={arrowEdge}
               ></se-icon>
             )}
