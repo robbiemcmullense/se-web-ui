@@ -58,12 +58,12 @@ describe('DialogComponent', () => {
 		expect(page.root.shadowRoot.querySelector('.dialog-wrapper.large')).toBeTruthy();
 	});
 
-	it('should call the colorDidChange and openDidChange functions when the component loads', async() => {
+	it('should call the colorDidChange function when the component loads', async() => {
 		const colorEventSpy = jest.spyOn(dialogComponent, 'assignDialogHeaderColor');
 		const openEventSpy = jest.spyOn(dialogComponent, 'openDidChange');
 		dialogComponent.componentDidLoad();
 		expect(colorEventSpy).toHaveBeenCalled();
-		expect(openEventSpy).toHaveBeenCalled();
+		expect(openEventSpy).not.toHaveBeenCalled();
 	});
 
 	it('should call the addAnimation function when openDidChange is called and the dialog is open', async() => {
@@ -89,7 +89,7 @@ describe('DialogComponent', () => {
 
 	it('should set the alternative color property to the dialog header when the se-dialog color is set to alternative', () => {
 		dialogComponent.color = 'alternative';
-		let header = document.createElement('se-dialog-header');
+		const header = document.createElement('se-dialog-header');
 		dialogComponent.el.appendChild(header);
 		dialogComponent.componentDidLoad();
 		expect(header.color).toEqual('alternative');
