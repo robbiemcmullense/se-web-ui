@@ -107,7 +107,6 @@ export class DialogComponent {
 
   componentDidLoad() {
     this.assignDialogHeaderColor();
-    this.openDidChange();
   }
 
   render(){
