@@ -1,10 +1,10 @@
-import { Component, Host, h, Prop } from "@stencil/core";
-import arrow2Right from "@se/icons/svg/arrow2_right.svg";
+import { Component, Host, h, Prop } from '@stencil/core';
+import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
 @Component({
-  tag: "se-breadcrumb-item",
-  styleUrl: "breadcrumb-item.scss",
-  shadow: true
+  tag: 'se-breadcrumb-item',
+  styleUrl: 'breadcrumb-item.scss',
+  shadow: true,
 })
 export class BreadcrumbItemComponent {
   /**
@@ -24,14 +24,25 @@ export class BreadcrumbItemComponent {
   render() {
     return (
       <Host role="listitem">
-        <div class={{ 'disabled': !this.canSelect }}>
-          {this.canSelect ?
-            <span class="breadcrumb-item"><a href={this.href}><slot/></a></span>
-            :
-            <span aria-current='page' class="breadcrumb-item"><slot/></span>}
-          {!this.isLast && <se-icon size="small"><span innerHTML={arrow2Right}></span></se-icon>}
+        <div class={{ disabled: !this.canSelect }}>
+          {this.canSelect ? (
+            <span class="breadcrumb-item">
+              <a href={this.href}>
+                <slot />
+              </a>
+            </span>
+          ) : (
+            <span aria-current="page" class="breadcrumb-item">
+              <slot />
+            </span>
+          )}
+          {!this.isLast && (
+            <se-icon size="small">
+              <span innerHTML={arrow2Right}></span>
+            </se-icon>
+          )}
         </div>
       </Host>
-    )
+    );
   }
 }

@@ -1,6 +1,6 @@
-let Navbar = {
-    render: async () => {
-        let view =  /*html*/`
+const Navbar = {
+  render: async () => {
+    const view = /*html*/ `
         <se-header app-title="Test Advisor" project="Project name">
         <div slot="end">
           <se-link url="http://google.com" option="external" style="display:inline-block;">External Link to Google</se-link>
@@ -69,11 +69,10 @@ let Navbar = {
           <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
         </nav>
       </se-tabbar>
-        `
-        return view
-    },
-    after_render: async () => { }
-
-}
+        `;
+    return view;
+  },
+  after_render: async () => {},
+};
 
 export default Navbar;

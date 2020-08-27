@@ -1,30 +1,29 @@
 import { newE2EPage } from '@stencil/core/testing';
 
- describe('TableComponent', () => {
-	let page;
+describe('TableComponent', () => {
+  let page;
 
-	beforeEach(async() => {
-		page = await newE2EPage();
-	});
+  beforeEach(async () => {
+    page = await newE2EPage();
+  });
 
-  it('renders', async() => {
-		await page.setContent('<se-table></se-table>');
+  it('renders', async () => {
+    await page.setContent('<se-table></se-table>');
     const element = await page.find('se-table');
-		expect(element).toBeTruthy();
-		expect(element).toHaveClass('hydrated');
-	});
-
+    expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
+  });
 });
 
 describe('Table Screenshots', () => {
-	let page;
+  let page;
 
-	beforeEach(async() => {
-		page = await newE2EPage();
-	});
+  beforeEach(async () => {
+    page = await newE2EPage();
+  });
 
-	it('should render by default', async() => {
-		await page.setContent(`
+  it('should render by default', async () => {
+    await page.setContent(`
 			<se-table>
 				<se-table-group item="My table Group">
 					<se-table-item item="No icon, not selected" selected="false">
@@ -38,6 +37,6 @@ describe('Table Screenshots', () => {
 				</se-table-group>
 			</se-table>
 		`);
-		await page.compareScreenshot('Table', {fullPage: false});
-	});
+    await page.compareScreenshot('Table', { fullPage: false });
+  });
 });

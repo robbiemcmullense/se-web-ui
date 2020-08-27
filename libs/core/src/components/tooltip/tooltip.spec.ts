@@ -6,7 +6,7 @@ describe('TooltipComponent', () => {
 
   beforeEach(() => {
     tooltip = new TooltipComponent();
-    mockEvent = {stopPropagation: jest.fn()};
+    mockEvent = { stopPropagation: jest.fn() };
   });
 
   it('should build', () => {
@@ -32,7 +32,7 @@ describe('TooltipComponent', () => {
     expect(tooltip.opened).toBeFalsy();
   });
 
-  it('should render, with a tooltip class', async() => {
+  it('should render, with a tooltip class', async () => {
     const page = await newSpecPage({
       components: [TooltipComponent],
       html: `<se-tooltip></se-tooltip>`,
@@ -40,7 +40,7 @@ describe('TooltipComponent', () => {
     expect(page.root.shadowRoot.querySelector('.tooltip')).toBeTruthy();
   });
 
-  it('should render, with a tooltip-top class to reflect the position property set to top', async() => {
+  it('should render, with a tooltip-top class to reflect the position property set to top', async () => {
     const page = await newSpecPage({
       components: [TooltipComponent],
       html: `<se-tooltip position="top"></se-tooltip>`,

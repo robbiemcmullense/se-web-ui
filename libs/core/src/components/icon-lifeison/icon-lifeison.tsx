@@ -1,10 +1,10 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop } from '@stencil/core';
 import IconLifeison from './icon-lifeison.svg';
 
 @Component({
-  tag: "se-icon-lifeison",
-  styleUrl: "icon-lifeison.scss",
-  shadow: true
+  tag: 'se-icon-lifeison',
+  styleUrl: 'icon-lifeison.scss',
+  shadow: true,
 })
 export class IconLifeisonComponent {
   /**
@@ -12,9 +12,9 @@ export class IconLifeisonComponent {
    * `standard`: displays a light green / dark green conventional SE logo.
    * `inherited`: default option, which takes the color from it's parent.
    */
-  @Prop() color: "standard" | "inherited" = "inherited";
+  @Prop() color: 'standard' | 'inherited' = 'inherited';
 
   render() {
-    return <span class={this.color} innerHTML={IconLifeison}/>;
+    return <span class={this.color} innerHTML={IconLifeison} />;
   }
 }

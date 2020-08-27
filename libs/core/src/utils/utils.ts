@@ -1,33 +1,32 @@
-
 export function getFullTitle(appTitle: string): any {
   let last = '';
   let first = '';
-  if(appTitle && appTitle.length) {
-    const titleArray = appTitle.split(" ");
-    if(titleArray.length > 1){
+  if (appTitle && appTitle.length) {
+    const titleArray = appTitle.split(' ');
+    if (titleArray.length > 1) {
       last = titleArray.pop();
     }
-    first = titleArray.length ? titleArray.join(" ") : '';
+    first = titleArray.length ? titleArray.join(' ') : '';
   }
   return {
     first,
-    last
+    last,
   };
 }
 
 export function getFullCopyright(copyright: string): any {
   let last = '';
   let first = '';
-  if(copyright && copyright.length) {
-    const titleArray = copyright.split(" ©");
-    if(titleArray.length > 1){
-      last = "©" + titleArray.pop();
+  if (copyright && copyright.length) {
+    const titleArray = copyright.split(' ©');
+    if (titleArray.length > 1) {
+      last = '©' + titleArray.pop();
     }
-    first = titleArray.length ? titleArray.join(" ") : '';
+    first = titleArray.length ? titleArray.join(' ') : '';
   }
   return {
     first,
-    last
+    last,
   };
 }
 
@@ -52,11 +51,19 @@ export function isVisible(el, screenReader, recursed) {
 
   const hasNoHeight = !el.offsetParent;
   const isDisplayNone = style.getPropertyValue('display') === 'none';
-  const isInvisibleTag = nodeName.toUpperCase() === 'STYLE' || nodeName.toUpperCase() === 'SCRIPT';
+  const isInvisibleTag =
+    nodeName.toUpperCase() === 'STYLE' || nodeName.toUpperCase() === 'SCRIPT';
   const srHidden = screenReader && el.getAttribute('aria-hidden') === 'true';
-  const isInvisible = !recursed && style.getPropertyValue('visibility') === 'hidden';
+  const isInvisible =
+    !recursed && style.getPropertyValue('visibility') === 'hidden';
 
-  if (hasNoHeight || isDisplayNone || isInvisibleTag || srHidden || isInvisible ) {
+  if (
+    hasNoHeight ||
+    isDisplayNone ||
+    isInvisibleTag ||
+    srHidden ||
+    isInvisible
+  ) {
     return false;
   }
 

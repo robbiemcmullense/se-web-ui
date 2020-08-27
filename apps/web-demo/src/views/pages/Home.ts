@@ -2,9 +2,9 @@
 //  Define Data Sources
 // --------------------------------
 
-let Home = {
-    render : async () => {
-        let view =  `
+const Home = {
+  render: async () => {
+    const view = `
         <se-container>
           <se-block width="250px">
             <se-list option="classic">
@@ -935,12 +935,10 @@ let Home = {
           </se-container>
         </se-container>
 
-        `
-        return view
-    }
-    , after_render: async () => {
-    }
-
-}
+        `;
+    return view;
+  },
+  after_render: async () => {},
+};
 
 export default Home;

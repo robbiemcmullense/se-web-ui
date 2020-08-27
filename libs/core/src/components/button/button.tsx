@@ -1,9 +1,21 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Method, Watch, Listen } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+  State,
+  Method,
+  Watch,
+  Listen,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-button',
   styleUrl: 'button.scss',
-  shadow: true
+  shadow: true,
 })
 export class ButtonComponent {
   @Element() el: HTMLElement;
@@ -14,13 +26,21 @@ export class ButtonComponent {
    * `outline` adds a border to the button.
    * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
    */
-  @Prop() option: 'flat' | 'raised' | 'outline' | 'login' | 'signup' | 'inherit' |'fab'| 'minifab' = 'flat';
+  @Prop() option:
+    | 'flat'
+    | 'raised'
+    | 'outline'
+    | 'login'
+    | 'signup'
+    | 'inherit'
+    | 'fab'
+    | 'minifab' = 'flat';
   @Watch('option') optionDidChange() {
-    if (this.option === 'login'){
+    if (this.option === 'login') {
       this.color = 'primary';
       this.block = true;
     }
-    if (this.option === 'signup'){
+    if (this.option === 'signup') {
       this.color = 'secondary';
       this.block = true;
     }
@@ -36,7 +56,11 @@ export class ButtonComponent {
   /**
    * Defines the background color of the button. The default setting is `standard`.
    */
-  @Prop({mutable: true}) color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard'
+  @Prop({ mutable: true }) color:
+    | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary' = 'standard';
   /**
    * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
    */
@@ -54,15 +78,14 @@ export class ButtonComponent {
   /**
    * Property to specify if the button should only display an icon (no extra spacing).
    */
-  @Prop() iconOnly= false;
-   /**
+  @Prop() iconOnly = false;
+  /**
    * Optional property.
    * `button`	is the default setting, creating a clickable button.
    * `submit`	creates a "submit" button (useful to submit form-data).
    * `reset`	creates a reset button (useful to reset form-data to its initial values).
    */
-  @Prop() type: 'button' | 'submit' |'reset' = 'button';
-
+  @Prop() type: 'button' | 'submit' | 'reset' = 'button';
 
   /**
    * optional property. define the padding around the button
@@ -71,18 +94,18 @@ export class ButtonComponent {
    * `medium` 8px padding.
    * `large` 16px padding.
    */
-  @Prop({mutable: true}) padding: 'none' | 'small' |'medium' | 'large' = 'small';
+  @Prop({ mutable: true }) padding: 'none' | 'small' | 'medium' | 'large' =
+    'small';
 
-
-   /**
+  /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
   @Prop() disabled = false;
   /**
    * Optional property that defines if the button should be shown as selected. Used with the `se-radio-group` component.
    */
-  @Prop({mutable: true}) selected: boolean;
-   /**
+  @Prop({ mutable: true }) selected: boolean;
+  /**
    * Optional property that defines if the button has a caption or tooltip text.
    */
   @Prop() caption: string;
@@ -90,7 +113,7 @@ export class ButtonComponent {
    * Optional property that defines if the button displays as a block in it's container.
    * When set to true, the button will be as wide as its container.
    */
-  @Prop({mutable: true}) block: boolean;
+  @Prop({ mutable: true }) block: boolean;
 
   @State() grouped: boolean;
   /**
@@ -136,15 +159,17 @@ export class ButtonComponent {
   }
 
   toggle() {
-    if (this.disabled) return;
+    if (this.disabled) {
+      return;
+    }
 
     if (this.grouped) {
       this.selected = !this.selected;
-      this.didClick.emit({selected: this.selected, value: this.value});
+      this.didClick.emit({ selected: this.selected, value: this.value });
     }
 
     if (this.option === 'minifab') {
-      this.didClick.emit({value: this.caption});
+      this.didClick.emit({ value: this.caption });
     }
   }
 
@@ -153,34 +178,53 @@ export class ButtonComponent {
   }
 
   render() {
-    const {color,
-      size,
-      option,
-      icon,
-      iconColor,
-      iconOnly,
-      selected} = this;
+    const { color, size, option, icon, iconColor, iconOnly, selected } = this;
 
-    const isIconOnly = iconOnly || option && option.includes('fab');
+    const isIconOnly = iconOnly || (option && option.includes('fab'));
     const id = this.el.getAttribute('id');
 
     return (
-      <Host class={{'disabled': this.disabled, 'grouped': this.grouped, 'display-block': this.block, 'minifab': this.option === 'minifab', [`p-${this.padding}`]: !!this.padding}} onClick={() => this.el.blur()}>
-        <button disabled={this.disabled} data-tooltip={this.caption} type={this.type} id={id ? `wc-${id}` : ''} onClick={() => this.toggle()}
+      <Host
+        class={{
+          disabled: this.disabled,
+          grouped: this.grouped,
+          'display-block': this.block,
+          minifab: this.option === 'minifab',
+          [`p-${this.padding}`]: !!this.padding,
+        }}
+        onClick={() => this.el.blur()}
+      >
+        <button
+          disabled={this.disabled}
+          data-tooltip={this.caption}
+          type={this.type}
+          id={id ? `wc-${id}` : ''}
+          onClick={() => this.toggle()}
           class={{
             [color]: true,
             [size]: true,
             [option]: true,
-            'selected': selected,
-            'iconOnly': isIconOnly}} >
-
-          {icon && <se-icon size={this.grouped && this.size !== 'nano' ? 'medium' : 'small'} color={iconColor}>{icon}</se-icon> }
+            selected: selected,
+            iconOnly: isIconOnly,
+          }}
+        >
+          {icon && (
+            <se-icon
+              size={this.grouped && this.size !== 'nano' ? 'medium' : 'small'}
+              color={iconColor}
+            >
+              {icon}
+            </se-icon>
+          )}
           <slot name="icon"></slot>
 
-          {!isIconOnly && <span class="text"><slot></slot></span>}
-
+          {!isIconOnly && (
+            <span class="text">
+              <slot></slot>
+            </span>
+          )}
         </button>
       </Host>
-    )
+    );
   }
 }

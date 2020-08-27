@@ -5,7 +5,7 @@ describe('SliderComponent', () => {
   let slider;
 
   beforeEach(() => {
-  slider = new SliderComponent();
+    slider = new SliderComponent();
   });
 
   it('should build', () => {
@@ -33,7 +33,7 @@ describe('SliderComponent', () => {
     expect(slider.disabled).toBeTruthy();
   });
 
-  it('should render with an input element', async() => {
+  it('should render with an input element', async () => {
     const page = await newSpecPage({
       components: [SliderComponent],
       html: `<se-slider></se-slider>`,
@@ -45,8 +45,8 @@ describe('SliderComponent', () => {
     slider.value = 30;
     slider.sliderElement = {
       value: '',
-      style: {setProperty: jest.fn()},
-      addEventListener: jest.fn()
+      style: { setProperty: jest.fn() },
+      addEventListener: jest.fn(),
     };
     const eventSpy = jest.spyOn(slider, 'setSliderPosition');
     slider.componentDidLoad();
@@ -55,7 +55,7 @@ describe('SliderComponent', () => {
 
   it('should emit the didChange event when the slider value changes', () => {
     const eventSpy = jest.spyOn(slider.didChange, 'emit');
-    slider.sliderElement = {addEventListener: jest.fn()};
+    slider.sliderElement = { addEventListener: jest.fn() };
     slider.handleEvent(); // slider value changes from user interaction
     expect(eventSpy).toHaveBeenCalled();
   });

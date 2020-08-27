@@ -1,11 +1,10 @@
 import { storiesOf } from '@storybook/html';
 import { number } from '@storybook/addon-knobs';
 
-storiesOf('Banner', module)
-  .add('Banner', () => {
-    const duration = number('duration', 6000)
+storiesOf('Banner', module).add('Banner', () => {
+  const duration = number('duration', 6000);
 
-    return `
+  return `
       <se-banner duration='${duration}'>
         <se-banner-item
           image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
@@ -41,5 +40,5 @@ storiesOf('Banner', module)
           </se-block>
         </se-banner-item>
       </se-banner>
-    `
-  })
+    `;
+});

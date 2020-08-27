@@ -1,6 +1,6 @@
-let Dashboard = {
-    render : async () => {
-        let view =  /*html*/`
+const Dashboard = {
+  render: async () => {
+    const view = /*html*/ `
         <se-container position="absolute">
         <se-block>
           <se-block-header>Filter</se-block-header>
@@ -26,11 +26,10 @@ let Dashboard = {
         </se-block>
       </se-container>
 
-        `
-        return view
-    },
-    after_render: async () => {}
-
-}
+        `;
+    return view;
+  },
+  after_render: async () => {},
+};
 
 export default Dashboard;

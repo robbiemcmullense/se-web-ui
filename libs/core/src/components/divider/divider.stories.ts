@@ -5,7 +5,7 @@ const colorOption = ['standard', 'alternative'];
 
 storiesOf('Divider', module)
   .add('Divider Horizontal', () => {
-    const color = select('color', colorOption, 'standard')
+    const color = select('color', colorOption, 'standard');
 
     return `
       <div style="width: 500px; height: 100px; border: 1px solid gray;">
@@ -14,10 +14,10 @@ storiesOf('Divider', module)
       <div style="width: 500px; height: 100px; border: 1px solid gray;">
       </div>
       <div>The divider is between the two boxes.</div>
-    `
+    `;
   })
   .add('Divider Vertical', () => {
-    const color = select('color', colorOption, 'standard')
+    const color = select('color', colorOption, 'standard');
 
     return `
       <div style="display: flex; flex-direction: row;">
@@ -28,5 +28,5 @@ storiesOf('Divider', module)
         </div>
       </div>
       <div>The divider is between the two boxes.</div>
-    `
-  })
+    `;
+  });

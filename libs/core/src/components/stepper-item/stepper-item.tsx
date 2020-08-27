@@ -1,9 +1,17 @@
-import { Component, Event, EventEmitter, h, Host, Prop, Watch } from "@stencil/core";
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+  Watch,
+} from '@stencil/core';
 
 @Component({
-  tag: "se-stepper-item",
-  styleUrl: "stepper-item.scss",
-  shadow: true
+  tag: 'se-stepper-item',
+  styleUrl: 'stepper-item.scss',
+  shadow: true,
 })
 export class StepperItemComponent {
   /**
@@ -36,10 +44,9 @@ export class StepperItemComponent {
 
   render() {
     return (
-      <Host
-        class={[this.active ? 'active' : 'navitem-hidden'].join(' ')}>
+      <Host class={[this.active ? 'active' : 'navitem-hidden'].join(' ')}>
         <slot></slot>
       </Host>
-    )
+    );
   }
 }

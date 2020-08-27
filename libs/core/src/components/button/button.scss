@@ -1,24 +1,22 @@
-
-
 :host {
   min-width: 0;
   display: inline-flex;
 }
 :host(.p-small) {
-  padding: $spacing-small;
+  margin: $spacing-small;
 }
 :host(.p-medium) {
-  padding: $spacing;
+  margin: $spacing;
 }
 :host(.p-large) {
-  padding: $spacing-large;
+  margin: $spacing-large;
 }
 
 :host(.disabled) {
   pointer-events: none;
 }
 
-:host(.display-block){
+:host(.display-block) {
   display: flex;
   button {
     width: 100%;
@@ -86,13 +84,13 @@
   }
 }
 
-:host(.backtotop){
+:host(.backtotop) {
   button.fab {
     @include color("alternative-contrast");
     @include background-color("border");
     &:hover {
       @include color("standard");
-      @include background-color("standard-contrast")
+      @include background-color("standard-contrast");
     }
   }
 }
@@ -115,7 +113,8 @@
   }
 }
 
-::slotted(se-icon[slot="icon"]), se-icon {
+::slotted(se-icon[slot="icon"]),
+se-icon {
   margin-right: $spacing;
 }
 
@@ -130,34 +129,33 @@ button {
   border: none;
   border-radius: $border-radius;
   outline: none;
-  transition: .2s;
+  transition: 0.2s;
   cursor: pointer;
-  font-family:inherit;
+  font-family: inherit;
   font-weight: 300;
   @include display-flex();
   @include align-items(center);
   @include ellipsis();
   @include justify-content(center);
 
-
-
-  &:focus{
+  &:focus {
     outline-style: solid;
     outline-offset: 1px;
     outline-width: 2px;
-    @include outline('button-focus')
+    @include outline("button-focus");
   }
 
   &.iconOnly {
     padding: 0 $spacing-small;
-    ::slotted(se-icon[slot="icon"]), se-icon {
+    ::slotted(se-icon[slot="icon"]),
+    se-icon {
       margin-right: 0;
     }
   }
 
   &[disabled] {
     cursor: default;
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &.raised {
@@ -203,7 +201,8 @@ button {
     &:hover {
       @include background-color("standard-hover");
     }
-    &:active, &.selected {
+    &:active,
+    &.selected {
       @include background-color("standard-selected");
     }
     &.outline {
@@ -216,7 +215,8 @@ button {
       &:hover {
         @include background-color("standard-hover", 0.2);
       }
-      &:active, &.selected {
+      &:active,
+      &.selected {
         @include background-color("standard-selected", 0.2);
       }
     }
@@ -229,7 +229,8 @@ button {
       // @include color("alternative-hover-contrast");
       @include background-color("alternative-hover");
     }
-    &:active, &.selected {
+    &:active,
+    &.selected {
       @include background-color("alternative-selected");
     }
     &.outline {
@@ -240,7 +241,8 @@ button {
       &:hover {
         @include background-color("alternative-hover", 0.6);
       }
-      &:active, &.selected {
+      &:active,
+      &.selected {
         @include background-color("alternative-selected", 0.6);
       }
     }
@@ -252,7 +254,8 @@ button {
     &:hover {
       @include background-color("primary-hover");
     }
-    &:active, &.selected {
+    &:active,
+    &.selected {
       @include background-color("primary-selected");
     }
     &.outline {
@@ -263,7 +266,8 @@ button {
       &:hover {
         @include background-color("primary", 0.3);
       }
-      &:active, &.selected {
+      &:active,
+      &.selected {
         @include background-color("primary-selected", 0.3);
       }
       &[disabled] {
@@ -278,7 +282,8 @@ button {
     &:hover {
       @include background-color("secondary-hover");
     }
-    &:active, &.selected {
+    &:active,
+    &.selected {
       @include background-color("secondary-selected");
     }
     &.outline {
@@ -289,7 +294,8 @@ button {
       &:hover {
         @include background-color("secondary", 0.3);
       }
-      &:active, &.selected {
+      &:active,
+      &.selected {
         @include background-color("secondary-selected", 0.3);
       }
       &[disabled] {
@@ -317,7 +323,7 @@ button {
     }
     &.alternative {
       @include background-color("alternative");
-      @include color('primary');
+      @include color("primary");
     }
   }
 

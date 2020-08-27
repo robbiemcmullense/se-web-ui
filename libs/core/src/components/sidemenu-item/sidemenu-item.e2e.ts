@@ -3,7 +3,7 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('SidemenuItemComponent', () => {
   let page, element;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
     await page.setContent('<se-sidemenu-item></se-sidemenu-item>');
     element = await page.find('se-sidemenu-item');
@@ -24,7 +24,7 @@ describe('SidemenuItemComponent', () => {
     expect(element).not.toHaveClass('navitem-hidden');
   });
 
-  it('emits the didClick event when a sidemenu item is clicked', async() => {
+  it('emits the didClick event when a sidemenu item is clicked', async () => {
     const eventSpy = await page.spyOnEvent('didClick');
     element.setProperty('active', true);
     await page.waitForChanges();

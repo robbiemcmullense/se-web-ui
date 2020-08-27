@@ -5,26 +5,26 @@ describe('TooltipContentComponent', () => {
   let tooltipContent;
 
   beforeEach(() => {
-  tooltipContent = new TooltipContentComponent();
+    tooltipContent = new TooltipContentComponent();
   });
 
   it('should build', () => {
     expect(tooltipContent).toBeTruthy();
   });
 
-  it('should render with a tooltip-content class', async() => {
+  it('should render with a tooltip-content class', async () => {
     const page = await newSpecPage({
-			components: [TooltipContentComponent],
-			html: `<se-tooltip-content></se-tooltip-content>`,
-		});
-		expect(page.root.shadowRoot.querySelector('.tooltip-content')).toBeTruthy();
+      components: [TooltipContentComponent],
+      html: `<se-tooltip-content></se-tooltip-content>`,
+    });
+    expect(page.root.shadowRoot.querySelector('.tooltip-content')).toBeTruthy();
   });
 
-  it('should render with an se-icon component when an icon property is specified', async() => {
+  it('should render with an se-icon component when an icon property is specified', async () => {
     const page = await newSpecPage({
-			components: [TooltipContentComponent],
-			html: `<se-tooltip-content icon="my icon"></se-tooltip-content>`,
-		});
-		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
+      components: [TooltipContentComponent],
+      html: `<se-tooltip-content icon="my icon"></se-tooltip-content>`,
+    });
+    expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
   });
 });

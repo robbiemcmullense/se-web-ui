@@ -1,17 +1,16 @@
 import { newE2EPage } from '@stencil/core/testing';
 
- describe('TableGroupComponent', () => {
+describe('TableGroupComponent', () => {
+  const renderComponent = async (attributes = '') => {
+    const result = await newE2EPage();
+    await result.setContent(`<se-table-group ${attributes}></se-table-group>`);
+    return result;
+  };
 
-	const renderComponent = async(attributes = '') => {
-		let result = await newE2EPage();
-		await result.setContent(`<se-table-group ${attributes}></se-table-group>`);
-		return result;
-	};
-
-  it('renders', async() => {
+  it('renders', async () => {
     const page = await renderComponent();
     const element = await page.find('se-table-group');
-		expect(element).toBeTruthy();
-		expect(element).toHaveClass('hydrated');
-	});
+    expect(element).toBeTruthy();
+    expect(element).toHaveClass('hydrated');
+  });
 });

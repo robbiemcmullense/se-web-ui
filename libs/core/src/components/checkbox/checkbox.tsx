@@ -5,13 +5,13 @@ import {
   EventEmitter,
   h,
   Method,
-  Prop
+  Prop,
 } from '@stencil/core';
 
 @Component({
   tag: 'se-checkbox',
   styleUrl: 'checkbox.scss',
-  shadow: true
+  shadow: true,
 })
 export class CheckboxComponent {
   /**
@@ -62,7 +62,6 @@ export class CheckboxComponent {
    */
   @Prop() header = false;
 
-
   /**
    * optional property. define the padding around the button
    * `none` no padding.
@@ -70,7 +69,8 @@ export class CheckboxComponent {
    * `medium` 8px padding.
    * `large` 16px padding.
    */
-  @Prop({mutable: true}) padding: 'none' | 'small' |'medium' | 'large' = 'small';
+  @Prop({ mutable: true }) padding: 'none' | 'small' | 'medium' | 'large' =
+    'small';
 
   /**
    * Sets the position of the label for your checkbox component.
@@ -90,7 +90,6 @@ export class CheckboxComponent {
    */
   @Event() didChange: EventEmitter;
   @Element() el: HTMLElement;
-
 
   handleClick(state: boolean) {
     if (!this.disabled) {
@@ -116,7 +115,7 @@ export class CheckboxComponent {
     if (this.option === 'switch' && this.required) {
       switchMarkup = [
         <span class="checkbox-label">{this.label}</span>,
-        <span class="required">*</span>
+        <span class="required">*</span>,
       ];
     } else if (this.option === 'switch' && !this.required) {
       switchMarkup = <span class="checkbox-label">{this.label}</span>;
@@ -142,7 +141,7 @@ export class CheckboxComponent {
       );
     } else {
       markup = (
-        <div class={{'checkbox-wrapper': true, [`opt-${this.option}`]: true}}>
+        <div class={{ 'checkbox-wrapper': true, [`opt-${this.option}`]: true }}>
           {this.option === 'switch' && this.labelPos === 'left'
             ? switchMarkup
             : ''}
@@ -150,9 +149,10 @@ export class CheckboxComponent {
             class={{
               'checkbox-container': true,
               [`checkbox-label-${this.labelPos}`]: !!this.labelPos,
-              disabled: this.disabled
+              disabled: this.disabled,
             }}
-            onClick={() => this.toggleSelect()}>
+            onClick={() => this.toggleSelect()}
+          >
             {this.option === 'checkbox' ? this.label : ''}
             {this.option === 'checkbox' && this.required ? (
               <span class="required">*</span>
@@ -165,12 +165,13 @@ export class CheckboxComponent {
               checked={this.selected}
               disabled={this.disabled}
               value={this.value}
-              id={id ? `wc-${id}` : ''}/>
+              id={id ? `wc-${id}` : ''}
+            />
             <button
               class={{
                 checkmark: true,
                 [this.color]: !!this.color,
-                checked: this.selected
+                checked: this.selected,
               }}
               disabled={this.disabled}
             ></button>
@@ -186,8 +187,8 @@ export class CheckboxComponent {
         class={{
           [`p-${this.padding}`]: !!this.padding,
           [this.option]: !!this.option,
-          'header': !!this.header,
-          'disabled': this.disabled
+          header: !!this.header,
+          disabled: this.disabled,
         }}
       >
         {markup}

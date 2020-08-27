@@ -15,7 +15,7 @@
     "no-floating-promises": false,
     "no-invalid-template-strings": true,
     "ban-export-const-enum": true,
-    "only-arrow-functions": true,
+    "only-arrow-functions": [true, "allow-declarations"],
     "ordered-imports": false,
     "strict-boolean-conditions": false,
     "semicolon": [true, "always", "ignore-bound-class-methods"],

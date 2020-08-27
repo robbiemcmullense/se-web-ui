@@ -10,15 +10,15 @@ export interface PageEvent {
 @Component({
   tag: 'se-pagination',
   styleUrl: 'pagination.scss',
-  shadow: true
+  shadow: true,
 })
 export class PaginationComponent {
   defaultPageSizeList = 15;
 
   @Prop({ mutable: true }) perPage = 15;
-  @Prop() perPageList = '15'; //'10;15;25;50';
+  @Prop() perPageList = '15'; // '10;15;25;50';
 
-  @Prop({ mutable: true}) value = 1;
+  @Prop({ mutable: true }) value = 1;
   @Prop() total = 1;
 
   @Prop() hideEdge: boolean;
@@ -30,10 +30,9 @@ export class PaginationComponent {
   @Prop() labelPerPage = 'Items per page';
   @Prop() labelValue = 'Page';
 
-
   @Event({ eventName: 'didChange' }) eventEmitter: EventEmitter<PageEvent>;
 
-  public componentDidLoad() {
+  componentDidLoad() {
     if (this.total === null) {
       console.warn(
         "[se-pagination] component needs to have 'total-items' attribute configured."
@@ -46,9 +45,9 @@ export class PaginationComponent {
     }
   }
 
-  private __parPageSizeList(): Array<number> {
+  private __parPageSizeList(): number[] {
     try {
-      const r = this.perPageList.split(';').map(n => parseInt(n));
+      const r = this.perPageList.split(';').map((n) => parseInt(n));
       if (r.length === 0) {
         console.warn(
           `[se-pagination] pageSizeList must have at least one element. page sizes are ';' separated. ex: '10;15;20'. Assuming: [${this.defaultPageSizeList}]`
@@ -64,7 +63,7 @@ export class PaginationComponent {
       return [this.defaultPageSizeList];
     }
   }
-  private __perPageList(): Array<number> {
+  private __perPageList(): number[] {
     const arrayNumber = [];
     const max = this.maxPage();
     for (let index = 1; index <= max; index++) {
@@ -75,12 +74,12 @@ export class PaginationComponent {
 
   private __pageSizeChanged(e): void {
     const target = e.target as any;
-    //console.log(e, target, target.value);
+    // console.log(e, target, target.value);
     this.value = 1;
     this.perPage = Math.floor(target.value); // in case someone types a fraction
     this.eventEmitter.emit({
       value: 1,
-      perPage: this.perPage
+      perPage: this.perPage,
     });
   }
 
@@ -88,7 +87,7 @@ export class PaginationComponent {
     this.value = 1;
     this.eventEmitter.emit({
       value: 1,
-      perPage: this.perPage
+      perPage: this.perPage,
     });
   }
 
@@ -96,7 +95,7 @@ export class PaginationComponent {
     this.value = Math.max(1, this.value - 1);
     this.eventEmitter.emit({
       value: this.value,
-      perPage: this.perPage
+      perPage: this.perPage,
     });
   }
 
@@ -104,7 +103,7 @@ export class PaginationComponent {
     this.value = Math.min(this.maxPage(), this.value + 1);
     this.eventEmitter.emit({
       value: this.value,
-      perPage: this.perPage
+      perPage: this.perPage,
     });
   }
 
@@ -112,7 +111,7 @@ export class PaginationComponent {
     this.value = this.maxPage();
     this.eventEmitter.emit({
       value: this.value,
-      perPage: this.perPage
+      perPage: this.perPage,
     });
   }
 
@@ -123,7 +122,7 @@ export class PaginationComponent {
     this.value = Math.floor(target.value);
     this.eventEmitter.emit({
       value: this.value,
-      perPage: this.perPage
+      perPage: this.perPage,
     });
   }
 
@@ -132,7 +131,6 @@ export class PaginationComponent {
   }
 
   render() {
-
     const isFirst = this.value === 1;
     const isLast = this.value === this.maxPage();
 
@@ -146,8 +144,8 @@ export class PaginationComponent {
                 padding="none"
                 label={this.labelPerPage}
               >
-                <select onChange={e => this.__pageSizeChanged(e)}>
-                  {this.__parPageSizeList().map(i => (
+                <select onChange={(e) => this.__pageSizeChanged(e)}>
+                  {this.__parPageSizeList().map((i) => (
                     <option
                       value={i}
                       selected={i == (this.perPage || this.defaultPageSizeList)}
@@ -185,7 +183,7 @@ export class PaginationComponent {
               arial-label={this.labelPrev}
               innerHTML={arrowStep}
             ></se-icon>
-            <label style={{padding: "0 12px"}}>
+            <label style={{ padding: '0 12px' }}>
               <span>{this.labelValue}</span>
               <se-form-field
                 type="select"
@@ -193,8 +191,8 @@ export class PaginationComponent {
                 block
                 option="stacked"
               >
-                <select onChange={e => this.__goToPage(e)}>
-                  {this.__perPageList().map(i => (
+                <select onChange={(e) => this.__goToPage(e)}>
+                  {this.__perPageList().map((i) => (
                     <option value={i} selected={i === this.value}>
                       {i}
                     </option>

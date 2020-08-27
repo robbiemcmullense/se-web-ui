@@ -1,11 +1,18 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('CheckboxComponent', () => {
-  let page, hostElement, checkboxElement, inputElement, wrapperElement, labelElement;
+  let page,
+    hostElement,
+    checkboxElement,
+    inputElement,
+    wrapperElement,
+    labelElement;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-checkbox id="my-checkbox" value="my value"></se-checkbox>');
+    await page.setContent(
+      '<se-checkbox id="my-checkbox" value="my value"></se-checkbox>'
+    );
     hostElement = await page.find('se-checkbox');
     wrapperElement = await page.find('se-checkbox >>> div');
     checkboxElement = await page.find('se-checkbox >>> button');
@@ -13,33 +20,33 @@ describe('CheckboxComponent', () => {
     labelElement = await page.find('se-checkbox >>> label');
   });
 
-  it('renders', async() => {
+  it('renders', async () => {
     expect(hostElement).toBeTruthy();
     expect(hostElement).toHaveClass('hydrated');
   });
 
-  it('should render with the checkbox and standard classes to reflect the default option and background properties', async() => {
+  it('should render with the checkbox and standard classes to reflect the default option and background properties', async () => {
     expect(wrapperElement).toHaveClass('checkbox');
   });
 
-  it('renders with an id on the input element with the wc prefix', async() => {
+  it('renders with an id on the input element with the wc prefix', async () => {
     expect(inputElement).toHaveAttribute('id');
     expect(inputElement.getAttribute('id')).toEqual('wc-my-checkbox');
   });
 
-  it('renders with a disabled class and a disabled input element when the parent element has disabled=true', async() => {
+  it('renders with a disabled class and a disabled input element when the parent element has disabled=true', async () => {
     hostElement.setProperty('disabled', true);
     await page.waitForChanges();
     expect(checkboxElement.getAttribute('disabled')).toEqual('');
   });
 
-  it('emits an event when clicked on', async() => {
+  it('emits an event when clicked on', async () => {
     const eventSpy = await page.spyOnEvent('didChange');
     await hostElement.click();
     expect(eventSpy).toHaveReceivedEvent();
     expect(eventSpy).toHaveReceivedEventDetail({
       value: 'my value',
-      selected: true
+      selected: true,
     });
   });
 });
@@ -47,29 +54,31 @@ describe('CheckboxComponent', () => {
 describe('CheckboxComponent in Switch Mode', () => {
   let page, hostElement, wrapperElement, inputElement;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-checkbox id="my-switch" option="switch" label="my label"></se-checkbox>');
+    await page.setContent(
+      '<se-checkbox id="my-switch" option="switch" label="my label"></se-checkbox>'
+    );
     hostElement = await page.find('se-checkbox');
     wrapperElement = await page.find('se-checkbox >>> div');
     inputElement = await page.find('se-checkbox >>> input');
   });
 
-  it('renders', async() => {
+  it('renders', async () => {
     expect(hostElement).toBeTruthy();
   });
 
-  it('should render with the switch class', async() => {
+  it('should render with the switch class', async () => {
     expect(wrapperElement).toHaveClass('switch');
   });
 
-  it('renders with an id on the input element with the wc prefix', async() => {
+  it('renders with an id on the input element with the wc prefix', async () => {
     expect(inputElement).toHaveAttribute('id');
     expect(inputElement.getAttribute('id')).toEqual('wc-my-switch');
   });
 
-  it('should render a label element within the checkbox-label span element', async() => {
-    let labelElement = await page.find('se-checkbox >>> span.checkbox-label');
+  it('should render a label element within the checkbox-label span element', async () => {
+    const labelElement = await page.find('se-checkbox >>> span.checkbox-label');
     expect(labelElement.innerText).toEqual('my label');
   });
 });
@@ -77,53 +86,64 @@ describe('CheckboxComponent in Switch Mode', () => {
 describe('CheckboxComponent in OnOff Mode', () => {
   let page, hostElement, onOffElement;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-checkbox id="on-off-switch" option="onoff" header="true"></se-checkbox>');
+    await page.setContent(
+      '<se-checkbox id="on-off-switch" option="onoff" header="true"></se-checkbox>'
+    );
     hostElement = await page.find('se-checkbox');
     onOffElement = await page.find('se-checkbox >>> div');
   });
 
-  it('renders', async() => {
+  it('renders', async () => {
     expect(hostElement).toBeTruthy();
   });
 
-
-  it('should render two button elements with "ON" and "OFF" values', async() => {
-    let onButton = await page.find('se-checkbox >>> button.active');
-    let offButton = await page.find('se-checkbox >>> button.inactive');
+  it('should render two button elements with "ON" and "OFF" values', async () => {
+    const onButton = await page.find('se-checkbox >>> button.active');
+    const offButton = await page.find('se-checkbox >>> button.inactive');
     expect(onButton.innerText).toEqual('ON');
     expect(offButton.innerText).toEqual('OFF');
   });
 
-  it('should render id attributes on the two button elements based on its parent id', async() => {
-    let onButton = await page.find('se-checkbox >>> button.active');
-    let offButton = await page.find('se-checkbox >>> button.inactive');
+  it('should render id attributes on the two button elements based on its parent id', async () => {
+    const onButton = await page.find('se-checkbox >>> button.active');
+    const offButton = await page.find('se-checkbox >>> button.inactive');
     expect(onButton.getAttribute('id')).toEqual('wc-on-off-switch-active');
     expect(offButton.getAttribute('id')).toEqual('wc-on-off-switch-inactive');
   });
 });
 
 describe('Checkbox Screenshots', () => {
-  it('renders in standard checkbox option', async() => {
-    let page = await newE2EPage();
-    await page.setContent('<se-checkbox label="Label"></se-checkbox><se-checkbox selected="true" label="Label"></se-checkbox>');
-    await page.compareScreenshot('Checkbox Checked and Unchecked', {fullPage: false});
+  it('renders in standard checkbox option', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<se-checkbox label="Label"></se-checkbox><se-checkbox selected="true" label="Label"></se-checkbox>'
+    );
+    await page.compareScreenshot('Checkbox Checked and Unchecked', {
+      fullPage: false,
+    });
   });
 });
 
 describe('Switch Screenshots', () => {
-  it('renders in the toggle switch option', async() => {
-    let page = await newE2EPage();
-    await page.setContent('<se-checkbox option="switch" label="Label"></se-checkbox><se-checkbox option="switch" selected="true" label="Label"></se-checkbox>');
-    await page.compareScreenshot('Switch Checked and Unchecked', {fullPage: false});
+  it('renders in the toggle switch option', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<se-checkbox option="switch" label="Label"></se-checkbox><se-checkbox option="switch" selected="true" label="Label"></se-checkbox>'
+    );
+    await page.compareScreenshot('Switch Checked and Unchecked', {
+      fullPage: false,
+    });
   });
 });
 
 describe('OnOff Screenshots', () => {
-  it('renders as an on/off switch', async() => {
-    let page = await newE2EPage();
-    await page.setContent('<se-checkbox option="onoff" label="Label"></se-checkbox><se-checkbox option="onoff" selected="true" label="Label"></se-checkbox>');
-    await page.compareScreenshot('On Off Switch', {fullPage: false});
+  it('renders as an on/off switch', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<se-checkbox option="onoff" label="Label"></se-checkbox><se-checkbox option="onoff" selected="true" label="Label"></se-checkbox>'
+    );
+    await page.compareScreenshot('On Off Switch', { fullPage: false });
   });
 });

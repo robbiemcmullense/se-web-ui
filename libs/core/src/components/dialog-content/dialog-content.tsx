@@ -1,9 +1,9 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: "se-dialog-content",
-  styleUrl: "dialog-content.scss",
-  shadow: true
+  tag: 'se-dialog-content',
+  styleUrl: 'dialog-content.scss',
+  shadow: true,
 })
 export class DialogContentComponent {
   /**
@@ -17,17 +17,30 @@ export class DialogContentComponent {
   /**
    * Indicates what color schema you want to render in your dialog.
    */
-  @Prop() iconColor: "standard" | "alternative" | "primary" | "secondary";
+  @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
 
   render() {
     return (
-      <div class={['se-dialog-content', this.option === 'fill' ? 'full-content' : ''].join(' ')}>
+      <div
+        class={[
+          'se-dialog-content',
+          this.option === 'fill' ? 'full-content' : '',
+        ].join(' ')}
+      >
         <span class="se-icon-wrapper">
-          {this.icon ? <se-icon size="large" color={this.iconColor}><span innerHTML={this.icon}></span></se-icon>: ''}
+          {this.icon ? (
+            <se-icon size="large" color={this.iconColor}>
+              <span innerHTML={this.icon}></span>
+            </se-icon>
+          ) : (
+            ''
+          )}
           <slot name="icon"></slot>
         </span>
-        <div class="inner-content"><slot></slot></div>
+        <div class="inner-content">
+          <slot></slot>
+        </div>
       </div>
-    )
+    );
   }
 }

@@ -1,11 +1,17 @@
-import { Component, Element, Event, EventEmitter, h, Prop } from "@stencil/core";
-import actionDeleteCross from "@se/icons/svg/action_delete_cross.svg";
-
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Prop,
+} from '@stencil/core';
+import actionDeleteCross from '@se/icons/svg/action_delete_cross.svg';
 
 @Component({
-  tag: "se-chip",
-  styleUrl: "chip.scss",
-  shadow: true
+  tag: 'se-chip',
+  styleUrl: 'chip.scss',
+  shadow: true,
 })
 export class ChipComponent {
   @Element() el: HTMLElement;
@@ -14,12 +20,12 @@ export class ChipComponent {
    */
   @Prop() value: string;
   /**
-  * Defines the size of the chip.
-  * `nano` sets the font to 14px and the height to 24px.
-  * `small` is the default option, with a 16px font and a 32px height.
-  */
-  @Prop() size: 'nano' | 'small' = 'small'
-   /**
+   * Defines the size of the chip.
+   * `nano` sets the font to 14px and the height to 24px.
+   * `small` is the default option, with a 16px font and a 32px height.
+   */
+  @Prop() size: 'nano' | 'small' = 'small';
+  /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
   @Prop() color: 'standard' | 'alternative' = 'standard';
@@ -54,18 +60,32 @@ export class ChipComponent {
 
   render() {
     return (
-      <button onClick={() => this.el.blur()}
+      <button
+        onClick={() => this.el.blur()}
         disabled={this.disabled}
         class={{
-        'se-chip': true,
-        [this.size]: !!this.size,
-        [this.color]: !!this.color,
-        'can-close': this.canClose,
-        'selected' : this.selected,
-         'display-block': this.block}}>
-          <slot name="start"></slot>
-          <div class='value'>{this.value}</div>
-          {this.canClose ? <se-icon class="close" option="button" disabled={this.disabled} onClick={() => this.closeChip()}><span innerHTML={actionDeleteCross}></span></se-icon> : ''}
+          'se-chip': true,
+          [this.size]: !!this.size,
+          [this.color]: !!this.color,
+          'can-close': this.canClose,
+          selected: this.selected,
+          'display-block': this.block,
+        }}
+      >
+        <slot name="start"></slot>
+        <div class="value">{this.value}</div>
+        {this.canClose ? (
+          <se-icon
+            class="close"
+            option="button"
+            disabled={this.disabled}
+            onClick={() => this.closeChip()}
+          >
+            <span innerHTML={actionDeleteCross}></span>
+          </se-icon>
+        ) : (
+          ''
+        )}
       </button>
     );
   }

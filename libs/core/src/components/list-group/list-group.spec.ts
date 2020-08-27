@@ -24,36 +24,37 @@ describe('list-group', () => {
     expect(listGroup.canCollapse).toBe(true);
   });
 
-  it('should render in classic mode, with a se-icon element by default', async() => {
-		const page = await newSpecPage({
-			components: [ListGroupComponent],
-			html: `<se-list-group></se-list-group>`,
-		});
-		expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
+  it('should render in classic mode, with a se-icon element by default', async () => {
+    const page = await newSpecPage({
+      components: [ListGroupComponent],
+      html: `<se-list-group></se-list-group>`,
+    });
+    expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
   });
 
-  it('should render the button with attribute "disabled" true when canCollapse is false', async() => {
-		const page = await newSpecPage({
-			components: [ListGroupComponent],
-			html: `<se-list-group can-collapse="false"></se-list-group>`,
-		});
-		expect(page.root.shadowRoot.querySelector('button').getAttribute('disabled')).toBe('');
+  it('should render the button with attribute "disabled" true when canCollapse is false', async () => {
+    const page = await newSpecPage({
+      components: [ListGroupComponent],
+      html: `<se-list-group can-collapse="false"></se-list-group>`,
+    });
+    expect(
+      page.root.shadowRoot.querySelector('button').getAttribute('disabled')
+    ).toBe('');
   });
 
-  it('should render the button without an arrow when canCollapse is false', async() => {
-		const page = await newSpecPage({
-			components: [ListGroupComponent],
-			html: `<se-list-group can-collapse="false"></se-list-group>`,
-		});
-		expect(page.root.shadowRoot.querySelector('se-icon')).toBe(null);
+  it('should render the button without an arrow when canCollapse is false', async () => {
+    const page = await newSpecPage({
+      components: [ListGroupComponent],
+      html: `<se-list-group can-collapse="false"></se-list-group>`,
+    });
+    expect(page.root.shadowRoot.querySelector('se-icon')).toBe(null);
   });
 
-
-  it('should call the checkSelected function twice, when the collapsed property changes or a child becomes selected', async() => {
-		const eventSpy = jest.spyOn(listGroup, 'checkSelected');
+  it('should call the checkSelected function twice, when the collapsed property changes or a child becomes selected', async () => {
+    const eventSpy = jest.spyOn(listGroup, 'checkSelected');
     listGroup.collapsedChanged(); // list group is collapsed
     listGroup.ChildUpdated(); // child list item becomes selected/deselected
-		expect(eventSpy).toHaveBeenCalledTimes(2);
+    expect(eventSpy).toHaveBeenCalledTimes(2);
   });
 
   it('should emit the didGroupClick event when the toggleGroupButton method is called', () => {
@@ -65,13 +66,12 @@ describe('list-group', () => {
 
   it('should emit the didGroupClick event but not didGroupCollapsed when the toggleGroupButton method is called in treeview option and the target is the icon', () => {
     listGroup.option = 'treeview';
-    const event = {target: {nodeName: 'SE-ICON'}};
+    const event = { target: { nodeName: 'SE-ICON' } };
     const eventSpyClick = jest.spyOn(listGroup.didGroupClick, 'emit');
     const eventSpyCollapse = jest.spyOn(listGroup.didGroupCollapse, 'emit');
     listGroup.toggleGroupButton(event); // list group button is clicked
     expect(eventSpyClick).toHaveBeenCalled();
     expect(eventSpyCollapse).not.toHaveBeenCalled();
-
   });
 
   it('should inherit the headline option from its parent when specified', () => {

@@ -1,10 +1,10 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import spinner from "@se/icons/svg/spinner.svg";
+import spinner from '@se/icons/svg/spinner.svg';
 
 @Component({
   tag: 'se-loading',
   styleUrl: 'loading.scss',
-  shadow: true
+  shadow: true,
 })
 export class LoadingComponent {
   /**
@@ -23,18 +23,32 @@ export class LoadingComponent {
   @Prop() color: 'primary' | 'secondary' = 'primary';
 
   /**
+   * Defines ig there is a dimming overlay effect on behind the loading spinner.
+   */
+  @Prop() overlay: boolean;
+
+  /**
    * Defines if we want the loading to take the full page of the browser. default the browser will stay in the container.
    */
   @Prop() fullPage: boolean;
 
   render() {
     return (
-      <Host class={{'show': this.loading}}>
-        <div class={{"loading-wrapper": true, 'isFixed': this.fullPage}} >
-          <div class={{
-            "se-loading": true,
-            [`${this.option}`]: true,
-            [`color-${this.color}`]: !!this.color}} >
+      <Host class={{ show: this.loading }}>
+        <div
+          class={{
+            'loading-wrapper': true,
+            isFixed: this.fullPage,
+            overlay: this.overlay,
+          }}
+        >
+          <div
+            class={{
+              'se-loading': true,
+              [`${this.option}`]: true,
+              [`color-${this.color}`]: !!this.color,
+            }}
+          >
             <div class="loading-icon" innerHTML={spinner}></div>
             <div class="message">
               <slot></slot>
@@ -43,6 +57,6 @@ export class LoadingComponent {
         </div>
         <div class="loading-background"></div>
       </Host>
-    )
+    );
   }
 }

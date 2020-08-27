@@ -5,14 +5,14 @@ import {
   Prop,
   Watch,
   Element,
-  Listen
+  Listen,
 } from '@stencil/core';
 import { isVisible } from '../../utils';
 
 @Component({
   tag: 'se-list',
   styleUrl: 'list.scss',
-  shadow: true
+  shadow: true,
 })
 export class ListComponent {
   @Element() el: HTMLElement;
@@ -60,24 +60,24 @@ export class ListComponent {
       case 'ArrowRight': {
         ev.preventDefault();
         const elm = document.activeElement;
-        if(elm.nodeName.toUpperCase() ===  'SE-LIST-GROUP'){
+        if (elm.nodeName.toUpperCase() === 'SE-LIST-GROUP') {
           (elm as HTMLSeListGroupElement).toggleCollapseTreeview();
-        };
+        }
         break;
       }
     }
   }
 
   focusElement(step) {
-    //add all elements we want to include in our selection
-    const elms: HTMLSeListItemElement[] = Array.from(this.el.querySelectorAll('se-list-group, se-list-item'));
+    // add all elements we want to include in our selection
+    const elms: HTMLSeListItemElement[] = Array.from(
+      this.el.querySelectorAll('se-list-group, se-list-item')
+    );
     const visibles = elms.filter((item) => isVisible(item, true, true));
     const index = visibles.findIndex((el) => el === document.activeElement);
-    const nextStep = Math.min( Math.max(0, index + step), visibles.length);
+    const nextStep = Math.min(Math.max(0, index + step), visibles.length);
     visibles[nextStep].focusElement();
   }
-
-
 
   componentWillLoad() {
     this.optionDidChange();

@@ -1,9 +1,9 @@
-import { Component, Element, h, Prop } from "@stencil/core";
+import { Component, Element, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: "se-block-content",
-  styleUrl: "block-content.scss",
-  shadow: true
+  tag: 'se-block-content',
+  styleUrl: 'block-content.scss',
+  shadow: true,
 })
 export class BlockContent {
   @Element() el: HTMLElement;
@@ -15,7 +15,12 @@ export class BlockContent {
 
   render() {
     return (
-      <div class={['se-block-content', this.option ? `${this.option}-content` : ''].join(' ')}>
+      <div
+        class={[
+          'se-block-content',
+          this.option ? `${this.option}-content` : '',
+        ].join(' ')}
+      >
         <slot />
       </div>
     );

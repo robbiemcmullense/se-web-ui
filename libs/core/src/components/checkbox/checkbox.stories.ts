@@ -7,11 +7,11 @@ const labelOption = ['right', 'left'];
 
 storiesOf('Checkbox', module)
   .add('Checkbox', () => {
-    const label = text('label', 'This is a standard checkbox.')
-    const selected = boolean('selected', true)
-    const color = select('color', colorOption, 'primary')
-    const disabled = boolean('disabled', false)
-    const labelPos = select('label position', labelOption, 'right')
+    const label = text('label', 'This is a standard checkbox.');
+    const selected = boolean('selected', true);
+    const color = select('color', colorOption, 'primary');
+    const disabled = boolean('disabled', false);
+    const labelPos = select('label position', labelOption, 'right');
 
     return `
       <se-checkbox
@@ -22,13 +22,13 @@ storiesOf('Checkbox', module)
         disabled='${disabled}'
         label-pos='${labelPos}'></se-checkbox>
       <div id="did-change-message"></div>
-    `
+    `;
   })
   .add('Checkbox toggle switch', () => {
-    const label = text('label', '')
-    const selected = boolean('selected', true)
-    const disabled = boolean('disabled', false)
-    const labelPos = select('label position', labelOption, 'left')
+    const label = text('label', '');
+    const selected = boolean('selected', true);
+    const disabled = boolean('disabled', false);
+    const labelPos = select('label position', labelOption, 'left');
 
     return `
     <se-checkbox
@@ -38,15 +38,15 @@ storiesOf('Checkbox', module)
       disabled='${disabled}'
       label-pos='${labelPos}'></se-checkbox>
     <div id="did-change-message"></div>
-    `
+    `;
   })
   .add('Checkbox on/off switch', () => {
-    const selected = boolean('selected', false)
+    const selected = boolean('selected', false);
     const background = select('background', backgroundOption, 'standard');
-    const disabled = boolean('disabled', false)
-    const onText = text('"ON" Text', "ON")
-    const offText = text('"OFF" Text', "OFF")
-    const header = boolean('header', false)
+    const disabled = boolean('disabled', false);
+    const onText = text('"ON" Text', 'ON');
+    const offText = text('"OFF" Text', 'OFF');
+    const header = boolean('header', false);
 
     return `
         <se-checkbox
@@ -57,5 +57,5 @@ storiesOf('Checkbox', module)
           text-on='${onText}'
           text-off='${offText}'
           header='${header}'></se-checkbox>
-    `
-  })
+    `;
+  });

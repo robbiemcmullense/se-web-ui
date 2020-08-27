@@ -1,9 +1,17 @@
-import { Component, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+  Watch,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-sidemenu-item',
   styleUrl: 'sidemenu-item.scss',
-  shadow: true
+  shadow: true,
 })
 export class SidemenuItemComponent {
   /**
@@ -29,10 +37,11 @@ export class SidemenuItemComponent {
     return (
       <Host
         role={'sidenavpanel'}
-        aria-hidden={{'true': !this.active}}
-        class={[this.active ? 'active' : 'navitem-hidden'].join(' ')}>
+        aria-hidden={{ true: !this.active }}
+        class={[this.active ? 'active' : 'navitem-hidden'].join(' ')}
+      >
         <slot></slot>
       </Host>
-    )
+    );
   }
 }

@@ -20,12 +20,12 @@ describe('list-group', () => {
     expect(list.canCollapse).toBe(true);
   });
 
-  it('should render, with a slot element', async() => {
-		const page = await newSpecPage({
-			components: [ListComponent],
-			html: `<se-list></se-list>`,
-		});
-		expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
+  it('should render, with a slot element', async () => {
+    const page = await newSpecPage({
+      components: [ListComponent],
+      html: `<se-list></se-list>`,
+    });
+    expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
   });
 
   it('should pass its option property to se-list-group child elements', () => {
@@ -43,7 +43,7 @@ describe('list-group', () => {
     list.option = 'nav';
     const listGroup = document.createElement('se-list-group');
     const listItem = document.createElement('se-list-item');
-    listGroup.setAttribute("selected", "true");
+    listGroup.setAttribute('selected', 'true');
     listGroup.appendChild(listItem);
     list.el.appendChild(listGroup);
     list.componentWillLoad();

@@ -1,9 +1,19 @@
-import { Component, h, Prop, State, Method, Element, Event, EventEmitter, Listen } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  State,
+  Method,
+  Element,
+  Event,
+  EventEmitter,
+  Listen,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-dropdown',
   styleUrl: 'dropdown.scss',
-  shadow: true
+  shadow: true,
 })
 export class DropdownComponent {
   @Element() el: HTMLElement;
@@ -23,11 +33,11 @@ export class DropdownComponent {
   /**
    * Sets the maximum width of the dropdown.  Default setting is "200px".
    */
-  @Prop() maxWidth = "200px";
+  @Prop() maxWidth = '200px';
   /**
    * Sets the maximum height of the dropdown.  Default setting is "400px".
    */
-  @Prop() maxHeight = "400px";
+  @Prop() maxHeight = '400px';
   /**
    * Method to open the dropdown from outside its parent element.
    */
@@ -57,13 +67,14 @@ export class DropdownComponent {
    * Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time.
    */
   @Event({
-    composed: false
-  }) cancelAllDropdown: EventEmitter;
+    composed: false,
+  })
+  cancelAllDropdown: EventEmitter;
 
   /**
    * Define if we actively manipulate the dropdown
    */
-  @State() isActive:boolean;
+  @State() isActive: boolean;
 
   @State() opened = false;
 
@@ -104,14 +115,25 @@ export class DropdownComponent {
 
   render() {
     return (
-      <div class={['se-dropdown', this.alignment, this.verticalAlignment].join(' ')}>
-        <div aria-haspopup="true" aria-expanded={this.opened} onClick={(ev) => this._toggle(ev)}>
+      <div
+        class={['se-dropdown', this.alignment, this.verticalAlignment].join(
+          ' '
+        )}
+      >
+        <div
+          aria-haspopup="true"
+          aria-expanded={this.opened}
+          onClick={(ev) => this._toggle(ev)}
+        >
           <slot name="trigger"></slot>
         </div>
-        <div class={`${this.opened ? 'show' : ''} dropdown-content`} style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight}}>
+        <div
+          class={`${this.opened ? 'show' : ''} dropdown-content`}
+          style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight }}
+        >
           <slot></slot>
         </div>
       </div>
-    )
+    );
   }
 }

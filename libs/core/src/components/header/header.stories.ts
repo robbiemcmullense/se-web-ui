@@ -5,19 +5,19 @@ const domainOption = ['ecostruxure', 'MySchneider'];
 
 storiesOf('Header', module)
   .add('Simple', () => {
-    const title = text('app-title', "My cool advisor")
-    const project = text('project', "Project awesome")
-    const domain = select('domain', domainOption, 'ecostruxure')
+    const title = text('app-title', 'My cool advisor');
+    const project = text('project', 'Project awesome');
+    const domain = select('domain', domainOption, 'ecostruxure');
 
     return `
       <se-header app-title="${title}" project="${project}" domain="${domain}"></se-header>
-    `
+    `;
   })
   .add('Header with side menu', () => {
-    const title = text('app-title', "My cool advisor")
-    const project = text('project', "Project awesome")
-    const domain = select('domain', domainOption, 'ecostruxure')
-    const link = text('link', "www.se.com/en/partners");
+    const title = text('app-title', 'My cool advisor');
+    const project = text('project', 'Project awesome');
+    const domain = select('domain', domainOption, 'ecostruxure');
+    const link = text('link', 'www.se.com/en/partners');
 
     return `
       <se-header app-title="${title}" project="${project}" domain="${domain}">
@@ -33,5 +33,5 @@ storiesOf('Header', module)
         </se-sidemenu>
       </se-header>
       <se-tabbar></se-tabbar>
-      `
-  })
+      `;
+  });

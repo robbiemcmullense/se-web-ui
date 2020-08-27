@@ -1,9 +1,9 @@
-import { Component, h, Host, Prop, Watch, Element } from "@stencil/core";
+import { Component, h, Host, Prop, Watch, Element } from '@stencil/core';
 
 @Component({
-  tag: "se-container",
-  styleUrl: "container.scss",
-  shadow: true
+  tag: 'se-container',
+  styleUrl: 'container.scss',
+  shadow: true,
 })
 export class ContainerComponent {
   @Element() el: HTMLElement;
@@ -16,14 +16,20 @@ export class ContainerComponent {
    * Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated.
    * `inherited` will insure that no specific style is applied to the container.
    */
-  @Prop() option: "fill" | "widget" | "card" | "card-old" | "centered" | "inherited" = "fill";
-  @Watch("option") optionDidChange() {
+  @Prop() option:
+    | 'fill'
+    | 'widget'
+    | 'card'
+    | 'card-old'
+    | 'centered'
+    | 'inherited' = 'fill';
+  @Watch('option') optionDidChange() {
     if (this.color === undefined || this.color === null) {
-      if (this.option === "widget") {
-        this.color = "standard";
+      if (this.option === 'widget') {
+        this.color = 'standard';
         this.setProps();
-      } else if (this.option === "card") {
-        this.color = "alternative";
+      } else if (this.option === 'card') {
+        this.color = 'alternative';
         this.setProps();
       }
     }
@@ -33,22 +39,22 @@ export class ContainerComponent {
    * `relative` is the default position. This is perfect to use with flex content.
    * `absolute` is useful in specific cases. Make sure you know what you are doing.
    */
-  @Prop() position: "relative" | "absolute" = "relative";
+  @Prop() position: 'relative' | 'absolute' = 'relative';
   /**
    * Defines the direction of the flex element.
    * `row` is the default direction. This is perfect to use with flex content.
    * `column` is useful in specific cases. Make sure you know what you are doing.
    */
-  @Prop() direction: "column" | "row" = "row";
+  @Prop() direction: 'column' | 'row' = 'row';
   /**
    * Defines how to display the element.
    * `flex` is the default display.
    * `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element to have "display: block".
    */
-  @Prop() display: "flex" | "block" | "grid" = "flex";
-  @Watch("display") displayDidChange() {
+  @Prop() display: 'flex' | 'block' | 'grid' = 'flex';
+  @Watch('display') displayDidChange() {
     // Only direct children will be impacted by the display property
-    Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
+    Array.from(this.el.querySelectorAll('se-container > se-block')).forEach(
       (item: any) => {
         item.display = this.display;
       }
@@ -62,15 +68,15 @@ export class ContainerComponent {
    * `large` is 16px.
    * `xlarge` is 32px.
    */
-  @Prop() padding: "none" | "small" | "medium" | "large" | "xlarge";
+  @Prop() padding: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
 
   /**
    * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there.
    * Default is `350px`.
    */
   @Prop() columnSize = '350px';
-  @Watch("columnSize") columnSizeDidChange() {
-    if(this.display === 'grid'){
+  @Watch('columnSize') columnSizeDidChange() {
+    if (this.display === 'grid') {
       this.el.style.gridTemplateColumns = `repeat(auto-fit, minmax(${this.columnSize}, 1fr))`;
     }
   }
@@ -78,8 +84,8 @@ export class ContainerComponent {
    * When in `display="grid"`, defines the height of each container.  Default is `300px`.
    */
   @Prop() rowSize = '300px';
-  @Watch("rowSize") rowSizeDidChange() {
-    if(this.display === 'grid'){
+  @Watch('rowSize') rowSizeDidChange() {
+    if (this.display === 'grid') {
       this.el.style.gridAutoRows = this.rowSize;
     }
   }
@@ -89,12 +95,18 @@ export class ContainerComponent {
    * `standard` is `se-background`, light gray.
    * `alternative` is a white background.
    */
-  @Prop({ mutable: true }) color: "none" | "standard" | "alternative";
+  @Prop({ mutable: true }) color: 'none' | 'standard' | 'alternative';
 
   setProps() {
-    Array.from(this.el.querySelectorAll("se-container > se-block")).forEach(
+    Array.from(this.el.querySelectorAll('se-container > se-block')).forEach(
       (item: any) => {
-        if (this.option === "widget" || this.option === "card" || this.option === "card-old") item.option = this.option;
+        if (
+          this.option === 'widget' ||
+          this.option === 'card' ||
+          this.option === 'card-old'
+        ) {
+          item.option = this.option;
+        }
       }
     );
   }
@@ -109,16 +121,26 @@ export class ContainerComponent {
 
   render() {
     return (
-      <Host class={[
-        this.option !== "card-old" ? `${this.option}-content` : "card-content",
-        this.position,
-        this.color ? `ct-bg-${this.color}` : '',
-        `${this.direction}-dir`,
-        `${this.display}-display`,
-        this.padding ? `ct-padding-${this.padding}` : '']
-        .join(' ')}>
-        {this.option === "centered" ? <div class="wrapper-center"><slot></slot></div> : <slot></slot>}
+      <Host
+        class={[
+          this.option !== 'card-old'
+            ? `${this.option}-content`
+            : 'card-content',
+          this.position,
+          this.color ? `ct-bg-${this.color}` : '',
+          `${this.direction}-dir`,
+          `${this.display}-display`,
+          this.padding ? `ct-padding-${this.padding}` : '',
+        ].join(' ')}
+      >
+        {this.option === 'centered' ? (
+          <div class="wrapper-center">
+            <slot></slot>
+          </div>
+        ) : (
+          <slot></slot>
+        )}
       </Host>
-    )
+    );
   }
 }

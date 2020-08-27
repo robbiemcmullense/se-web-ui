@@ -1,11 +1,11 @@
-import { Component, h, Prop } from "@stencil/core";
-import { getFullTitle } from "../../utils/utils";
-import { AppInfo } from "../appInfo";
+import { Component, h, Prop } from '@stencil/core';
+import { getFullTitle } from '../../utils/utils';
+import { AppInfo } from '../appInfo';
 
 @Component({
-  tag: "se-authentication",
-  styleUrl: "authentication.scss",
-  shadow: true
+  tag: 'se-authentication',
+  styleUrl: 'authentication.scss',
+  shadow: true,
 })
 export class AuthenticationComponent {
   /**
@@ -36,15 +36,18 @@ export class AuthenticationComponent {
   renderAuthentication() {
     const title = getFullTitle(this.appTitle);
     let domain;
-    if ( this.domain.toLowerCase() === `ecostruxure`) {
-      domain = <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>
+    if (this.domain.toLowerCase() === `ecostruxure`) {
+      domain = <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>;
     } else if (this.domain.toLowerCase() !== 'none') {
-      domain = <span class="header-title-type">{this.domain}</span>
+      domain = <span class="header-title-type">{this.domain}</span>;
     }
     return (
       <div class="content-wrapper">
         <div class="image-container">
-          <img class="image-background" style={{'backgroundImage': this.imageUrl}}></img>
+          <img
+            class="image-background"
+            style={{ backgroundImage: this.imageUrl }}
+          ></img>
         </div>
         <main>
           <div class="green-bars">
@@ -82,6 +85,6 @@ export class AuthenticationComponent {
       <div class={['se-authentication', this.hide ? 'hide' : ''].join(' ')}>
         {!this.hide ? this.renderAuthentication() : ''}
       </div>
-      )
+    );
   }
 }

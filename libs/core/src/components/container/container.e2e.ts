@@ -3,40 +3,46 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('ContainerComponent', () => {
   let page, element;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
     await page.setContent('<se-container></se-container>');
     element = await page.find('se-container');
   });
 
-  it('renders', async() => {
+  it('renders', async () => {
     expect(element).toBeTruthy();
   });
 
-  it('renders the "fill-content", "flex-display", "relative", and "row-dir" classes based on default properties', async() => {		
-    expect(element).toHaveClasses(['fill-content', 'flex-display', 'relative', 'hydrated', 'row-dir']);	
+  it('renders the "fill-content", "flex-display", "relative", and "row-dir" classes based on default properties', async () => {
+    expect(element).toHaveClasses([
+      'fill-content',
+      'flex-display',
+      'relative',
+      'hydrated',
+      'row-dir',
+    ]);
   });
 
-  it('renders the "block-display" and "absolute" classes when the component has these properties for option and position', async() => {	
+  it('renders the "block-display" and "absolute" classes when the component has these properties for option and position', async () => {
     element.setProperty('display', 'block');
     element.setProperty('position', 'absolute');
-    await page.waitForChanges();	
+    await page.waitForChanges();
     expect(element).toHaveClass('block-display');
     expect(element).toHaveClass('absolute');
   });
 
-  it('renders the "column-dir" and "alternative" classes when the component has these properties for direction and color', async() => {	
+  it('renders the "column-dir" and "alternative" classes when the component has these properties for direction and color', async () => {
     element.setProperty('direction', 'column');
     element.setProperty('color', 'alternative');
-    await page.waitForChanges();	
+    await page.waitForChanges();
     expect(element).toHaveClass('ct-bg-alternative');
     expect(element).toHaveClass('column-dir');
   });
 
-  it('renders a div element with class wrapper-center when the option is set to centered', async() => {
+  it('renders a div element with class wrapper-center when the option is set to centered', async () => {
     element.setProperty('option', 'centered');
-    await page.waitForChanges();	
-    let divElm = await page.find('se-container >>> div.wrapper-center');
+    await page.waitForChanges();
+    const divElm = await page.find('se-container >>> div.wrapper-center');
     expect(element).toHaveClass('centered-content');
     expect(divElm).toBeTruthy();
   });
@@ -45,11 +51,11 @@ describe('ContainerComponent', () => {
 describe('Container Screenshots', () => {
   let page;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
   });
-  
-  it('should render a block in its default fill option with no spacing', async() => {
+
+  it('should render a block in its default fill option with no spacing', async () => {
     await page.setContent(`
       <se-container>
         <se-block>
@@ -57,10 +63,10 @@ describe('Container Screenshots', () => {
         </se-block>
       </se-container>
     `);
-    await page.compareScreenshot('Fill Container', {fullPage: false});
+    await page.compareScreenshot('Fill Container', { fullPage: false });
   });
 
-  it('should render a block in widget option with spacing', async() => {
+  it('should render a block in widget option with spacing', async () => {
     await page.setContent(`
       <se-container option="widget">
         <se-block>
@@ -68,10 +74,10 @@ describe('Container Screenshots', () => {
         </se-block>
       </se-container>
     `);
-    await page.compareScreenshot('Widget Container', {fullPage: false});
+    await page.compareScreenshot('Widget Container', { fullPage: false });
   });
 
-  it('should render a block in card option', async() => {
+  it('should render a block in card option', async () => {
     await page.setContent(`
       <se-container option="card">
         <se-block>
@@ -79,10 +85,10 @@ describe('Container Screenshots', () => {
         </se-block>
       </se-container>
     `);
-    await page.compareScreenshot('Card Container', {fullPage: false});
+    await page.compareScreenshot('Card Container', { fullPage: false });
   });
 
-  it('should render a block in centered option', async() => {
+  it('should render a block in centered option', async () => {
     await page.setContent(`
       <se-container option="centered">
         <se-block>
@@ -90,6 +96,6 @@ describe('Container Screenshots', () => {
         </se-block>
       </se-container>
     `);
-    await page.compareScreenshot('Centered Container', {fullPage: false});
+    await page.compareScreenshot('Centered Container', { fullPage: false });
   });
 });

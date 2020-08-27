@@ -1,9 +1,9 @@
-import { Component, h, Element, Host } from "@stencil/core";
+import { Component, h, Element, Host } from '@stencil/core';
 
 @Component({
-  tag: "se-table-group-header",
-  styleUrl: "table-group-header.scss",
-  shadow: true
+  tag: 'se-table-group-header',
+  styleUrl: 'table-group-header.scss',
+  shadow: true,
 })
 export class TableGroupHeaderComponent {
   @Element() el: HTMLElement;
@@ -11,8 +11,8 @@ export class TableGroupHeaderComponent {
   render() {
     return (
       <Host role="row" slot="start">
-        <slot/>
+        <slot />
       </Host>
-    )
+    );
   }
 }

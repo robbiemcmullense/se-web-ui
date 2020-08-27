@@ -1,7 +1,5 @@
-
-
 :host {
-	display: none;
+  display: none;
   overflow: hidden;
 }
 .loading-wrapper {
@@ -10,6 +8,10 @@
   @include align-items(center);
   @include justify-content(center);
   // background-color: rgba(white, 0.6);
+}
+
+.overlay {
+  @include background-color("overlay-loading");
 }
 
 .isFixed {
@@ -22,11 +24,11 @@
 }
 
 .color-primary {
-  @include color('primary');
+  @include color("primary");
 }
 
 .color-secondary {
-  @include color('secondary');
+  @include color("secondary");
 }
 
 .se-loading {
@@ -44,7 +46,7 @@
   }
 }
 
-.message{
+.message {
   padding: 0 $spacing-large $spacing-large;
   @include color("background-alternative-contrast");
 }
@@ -65,7 +67,6 @@
   fill: currentColor;
 }
 
-
 :host(.show) {
-	display: block;
+  display: block;
 }

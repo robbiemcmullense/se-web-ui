@@ -1,18 +1,17 @@
 import { storiesOf } from '@storybook/html';
 import { text, select, boolean, number } from '@storybook/addon-knobs';
 
-const displayOptions = ['information', 'success', 'warning', 'error']
+const displayOptions = ['information', 'success', 'warning', 'error'];
 
-storiesOf('Snackbar', module)
-  .add('Demo', () => {
-    const type = select('type', displayOptions, 'information')
-    const canClose = boolean('can close', true)
-    const open = boolean('open', true);
-    const duration = number('duration', 5000)
-    const icon = text('icon', 'information_circle')
-    const message = text('message', 'My message that explains everything!')
+storiesOf('Snackbar', module).add('Demo', () => {
+  const type = select('type', displayOptions, 'information');
+  const canClose = boolean('can close', true);
+  const open = boolean('open', true);
+  const duration = number('duration', 5000);
+  const icon = text('icon', 'information_circle');
+  const message = text('message', 'My message that explains everything!');
 
-    return `
+  return `
     <se-snackbar
       open="${open}"
       type="${type}"
@@ -20,5 +19,5 @@ storiesOf('Snackbar', module)
       message="${message}"
       icon="${icon}"
       duration="${duration}"></se-snackbar>
-    `
-  })
+    `;
+});

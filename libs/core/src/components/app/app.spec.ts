@@ -1,7 +1,6 @@
-
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -14,42 +13,42 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 import { AppComponent } from './app';
-import { newSpecPage } from "@stencil/core/testing";
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('AppComponent', () => {
-	let app;
+  let app;
 
-	it('should build', () => {
+  it('should build', () => {
     app = new AppComponent();
-		expect(app).toBeTruthy();
-	});
+    expect(app).toBeTruthy();
+  });
 
-	it('should have a technical option by default', () => {
+  it('should have a technical option by default', () => {
     app = new AppComponent();
-		expect(app.option).toEqual('technical');
-	});
+    expect(app.option).toEqual('technical');
+  });
 
-	it('should render and update the body with the se-font-technical class by default', async() => {
-		const page = await newSpecPage({
-			components: [AppComponent],
-			html: `<se-app></se-app>`,
-		});
-		expect(page.body.className).toContain(`se-font-technical`);
-	});
+  it('should render and update the body with the se-font-technical class by default', async () => {
+    const page = await newSpecPage({
+      components: [AppComponent],
+      html: `<se-app></se-app>`,
+    });
+    expect(page.body.className).toContain(`se-font-technical`);
+  });
 
-	it('should render then update body with the se-font-website class when app.option is set to website', async() => {
-		const page = await newSpecPage({
-			components: [AppComponent],
-			html: `<se-app option="website"></se-app>`,
-		});
+  it('should render then update body with the se-font-website class when app.option is set to website', async () => {
+    const page = await newSpecPage({
+      components: [AppComponent],
+      html: `<se-app option="website"></se-app>`,
+    });
     expect(page.body.className).toContain(`se-font-website`);
   });
 
-  it('should render then update se-app component with class isLight', async() => {
-		const page = await newSpecPage({
-			components: [AppComponent],
-			html: `<se-app option="website"></se-app>`,
-		});
+  it('should render then update se-app component with class isLight', async () => {
+    const page = await newSpecPage({
+      components: [AppComponent],
+      html: `<se-app option="website"></se-app>`,
+    });
     expect(page.root.className).toContain(`isLight`);
-	});
+  });
 });

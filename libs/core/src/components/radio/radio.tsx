@@ -1,9 +1,18 @@
-import { Component, Element, Event, EventEmitter, h, Method, Prop, Host } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Method,
+  Prop,
+  Host,
+} from '@stencil/core';
 
 @Component({
-  tag: "se-radio",
-  styleUrl: "radio.scss",
-  shadow: true
+  tag: 'se-radio',
+  styleUrl: 'radio.scss',
+  shadow: true,
 })
 export class RadioComponent {
   @Element() el: HTMLElement;
@@ -39,17 +48,18 @@ export class RadioComponent {
    * `medium` 8px padding.
    * `large` 16px padding.
    */
-  @Prop({mutable: true}) padding: 'none' | 'small' |'medium' | 'large' = 'small';
+  @Prop({ mutable: true }) padding: 'none' | 'small' | 'medium' | 'large' =
+    'small';
 
   /**
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
   @Prop() disabled = false;
   /**
-	 * Determines whether or not the checkbox is checked when you initialize it.
+   * Determines whether or not the checkbox is checked when you initialize it.
    * The default setting is `false`.
    * Checked if set to `true`.
-	 */
+   */
   @Prop({ mutable: true }) selected = false;
   /**
    * Sets the position of the label for your checkbox component.
@@ -78,21 +88,34 @@ export class RadioComponent {
     const id = this.el.getAttribute('id');
 
     return (
-      <Host class={{[`p-${this.padding}`]: !!this.padding}}>
+      <Host class={{ [`p-${this.padding}`]: !!this.padding }}>
         <div
           role="radio"
           aria-disabled={this.disabled ? 'true' : null}
           aria-checked={`${this.selected}`}
           aria-label={this.label}
           aria-required={this.required}
-          class={{ [`label-${this.labelPos}`] : !!this.labelPos, 'radio-label': true }}
-          data-disabled={this.disabled? true : null}
+          class={{
+            [`label-${this.labelPos}`]: !!this.labelPos,
+            'radio-label': true,
+          }}
+          data-disabled={this.disabled ? true : null}
           onClick={() => this.handleClick()}
-          >
-            {this.label}
-            {this.required ? <span class="required">*</span> : ''}
-            <input type="radio" tabindex="-1" name={this.name} checked={this.selected} disabled={this.disabled ? true : null} id={id ? `wc-${id}` : ''}/>
-            <button class={{[this.color]: !!this.color, 'checked': this.selected}} disabled={this.disabled ? true : null} ></button>
+        >
+          {this.label}
+          {this.required ? <span class="required">*</span> : ''}
+          <input
+            type="radio"
+            tabindex="-1"
+            name={this.name}
+            checked={this.selected}
+            disabled={this.disabled ? true : null}
+            id={id ? `wc-${id}` : ''}
+          />
+          <button
+            class={{ [this.color]: !!this.color, checked: this.selected }}
+            disabled={this.disabled ? true : null}
+          ></button>
         </div>
       </Host>
     );

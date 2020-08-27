@@ -6,13 +6,13 @@ import {
   h,
   Prop,
   Listen,
-  Watch
+  Watch,
 } from '@stencil/core';
 
 @Component({
   tag: 'se-form-field',
   styleUrl: 'form-field.scss',
-  shadow: false
+  shadow: false,
 })
 export class FormFieldComponent {
   @Element() el: HTMLElement;
@@ -48,7 +48,7 @@ export class FormFieldComponent {
    * Optional property to define how to align the label
    */
 
-  @Prop() labelAlign: 'left' | 'right'= 'right';
+  @Prop() labelAlign: 'left' | 'right' = 'right';
 
   /**
    * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`).
@@ -105,9 +105,7 @@ export class FormFieldComponent {
 
   initLabel() {
     Array.from(
-      this.el.querySelectorAll(
-        'input, select, textarea, se-checkbox, se-radio'
-      )
+      this.el.querySelectorAll('input, select, textarea, se-checkbox, se-radio')
     ).forEach((item: any) => {
       item.disabled = this.disabled;
     });
@@ -128,21 +126,23 @@ export class FormFieldComponent {
     return (
       <div
         class={{
-          [`ff-${this.status}`]:true,
+          [`ff-${this.status}`]: true,
           'ff-stacked': this.option === 'stacked',
           'ff-block': this.block,
           [`ff-padding-${this.padding}`]: true,
-          'form-field-wrapper': true
-        }}>
+          'form-field-wrapper': true,
+        }}
+      >
         <label data-disabled={this.disabled}>
           <span
             style={{
-              width: this.option !== 'stacked' ? this.labelWidth : 'auto'
+              width: this.option !== 'stacked' ? this.labelWidth : 'auto',
             }}
             class={{
               'with-label': !!this.label,
-              [`align-${this.labelAlign}`]:true
-            }}>
+              [`align-${this.labelAlign}`]: true,
+            }}
+          >
             {this.label}
             {this.required ? <span class="required">*</span> : ''}
           </span>

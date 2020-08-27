@@ -2,7 +2,15 @@ import { storiesOf } from '@storybook/html';
 import { select, number, boolean } from '@storybook/addon-knobs';
 
 const listOption = ['nav', 'classic', 'treeview', 'headline'];
-const iconColorOptions = ["standard",  "alternative",  "primary",  "secondary",  "success",  "warning",  "error"]
+const iconColorOptions = [
+  'standard',
+  'alternative',
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'error',
+];
 
 storiesOf('List', module)
   .add('all', () => {
@@ -91,7 +99,7 @@ storiesOf('List', module)
         </se-list>
       </se-block>
     </se-container>
-    `
+    `;
   })
   .add('responsive', () => {
     const list = select('option', listOption, 'nav');
@@ -102,8 +110,8 @@ storiesOf('List', module)
       step: 50,
     };
     const value = number('Block Width', 300, valueOptions);
-    const canCollapse = boolean('can collapse', true)
-    const iconColor = select('icon color', iconColorOptions, 'standard')
+    const canCollapse = boolean('can collapse', true);
+    const iconColor = select('icon color', iconColorOptions, 'standard');
 
     return `
         <se-block width="${value}px" option="fill">
@@ -129,4 +137,4 @@ storiesOf('List', module)
         </se-list>
       </se-block>
     `;
-});
+  });

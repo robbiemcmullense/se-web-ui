@@ -7,11 +7,14 @@ const overflowOptions = ['scroll', 'stack', 'compact'];
 
 storiesOf('Tab Bar', module)
   .add('Demo', () => {
-    const color = select('color', colorOptions, 'primary')
-    const option = select('option', tabBarOptions, 'nav')
-    const overflow = select('stack', overflowOptions, 'scroll')
+    const color = select('color', colorOptions, 'primary');
+    const option = select('option', tabBarOptions, 'nav');
+    const overflow = select('stack', overflowOptions, 'scroll');
 
-    const start = (color === "primary" && option === "nav") ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>` : ''
+    const start =
+      color === 'primary' && option === 'nav'
+        ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
+        : '';
 
     return `
       <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
@@ -28,14 +31,17 @@ storiesOf('Tab Bar', module)
           <se-button>open project</se-button>
         </nav>
       </se-tabbar>
-    `
+    `;
   })
   .add('with search', () => {
-    const color = select('color', colorOptions, 'primary')
-    const option = select('option', tabBarOptions, 'nav')
-    const overflow = select('stack', overflowOptions, 'scroll')
+    const color = select('color', colorOptions, 'primary');
+    const option = select('option', tabBarOptions, 'nav');
+    const overflow = select('stack', overflowOptions, 'scroll');
 
-    const start = (color === "primary" && option === "nav") ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>` : ''
+    const start =
+      color === 'primary' && option === 'nav'
+        ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
+        : '';
 
     return `
       <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
@@ -67,5 +73,5 @@ storiesOf('Tab Bar', module)
           </div>
         </div>
       </se-tabbar>
-    `
-  })
+    `;
+  });

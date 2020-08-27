@@ -1,16 +1,27 @@
-import { Component, h, Watch, Element, Event, EventEmitter, Prop, Listen, Host } from '@stencil/core';
+import {
+  Component,
+  h,
+  Watch,
+  Element,
+  Event,
+  EventEmitter,
+  Prop,
+  Listen,
+  Host,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-radio-group',
   styleUrl: 'radio-group.scss',
-  shadow: true
+  shadow: true,
 })
 export class RadioGroupComponent {
   @Element() el: HTMLElement;
   /**
    * Defines the background color of each button in the group.  The default setting is `standard`, rendering a light gray background.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' = 'standard';
+  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' =
+    'standard';
   /**
    * Defines the height of each button in the group.
    * `small` is the default setting, rendering a 32px height and a 14px font size.
@@ -18,12 +29,12 @@ export class RadioGroupComponent {
    */
   @Prop() size: 'small' | 'nano' = 'small';
 
-   /**
+  /**
    * Defines the direction of the flex element.
    * `row` is the default if used with `se-button`.
    * `column` is the default if used with `se-radio`.
    */
-  @Prop({mutable: true}) direction: "column" | "row" ;
+  @Prop({ mutable: true }) direction: 'column' | 'row';
 
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
@@ -32,7 +43,7 @@ export class RadioGroupComponent {
   /**
    * Defines the selected values of the array.
    */
-  @Prop({mutable: true}) value: string;
+  @Prop({ mutable: true }) value: string;
   /**
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */
@@ -40,11 +51,11 @@ export class RadioGroupComponent {
   children: NodeList;
 
   @Watch('disabled') disabledDidChange() {
-    this.updateItemMode()
+    this.updateItemMode();
   }
 
   @Watch('value') valueDidChange() {
-    console.log("emit group")
+    console.log('emit group');
     this.didChange.emit(this.value);
   }
 
@@ -68,9 +79,7 @@ export class RadioGroupComponent {
           child.iconOnly = true;
         }
       }
-      if (this.disabled) {
-        child.disabled = true;
-      }
+      child.disabled = this.disabled;
       child.size = this.size;
       child.color = this.color;
     });
@@ -89,8 +98,8 @@ export class RadioGroupComponent {
 
   componentDidLoad() {
     this.children = this.el.querySelectorAll('se-button, se-radio');
-    if (!this.direction && this.children && this.children.length){
-      switch(this.children[0].nodeName){
+    if (!this.direction && this.children && this.children.length) {
+      switch (this.children[0].nodeName) {
         case 'SE-BUTTON': {
           this.direction = 'row';
           break;
@@ -106,7 +115,9 @@ export class RadioGroupComponent {
 
   render() {
     return (
-      <Host class={{[`flex-${this.direction}`]: !!this.direction}}><slot></slot></Host>
-    )
+      <Host class={{ [`flex-${this.direction}`]: !!this.direction }}>
+        <slot></slot>
+      </Host>
+    );
   }
 }

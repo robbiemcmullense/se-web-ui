@@ -8,7 +8,7 @@ import {
   Element,
   Listen,
   Host,
-  Method
+  Method,
 } from '@stencil/core';
 import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
@@ -17,7 +17,7 @@ import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 @Component({
   tag: 'se-list-group',
   styleUrl: 'list-group.scss',
-  shadow: true
+  shadow: true,
 })
 export class ListGroupComponent {
   private buttonElm?: HTMLElement;
@@ -112,20 +112,22 @@ export class ListGroupComponent {
     if (this.option !== 'treeview') {
       this.toggleItems();
     } else {
-      this.buttonElm && this.buttonElm.blur()
+      this.buttonElm && this.buttonElm.blur();
     }
     this.didGroupClick.emit();
   }
 
-  private toggleItems(){
+  private toggleItems() {
     this.collapsed = !this.collapsed;
     this.didGroupCollapse.emit({ collapsed: this.collapsed });
   }
 
-
   getClosestParent() {
     // get the closest between se-list or se-list-group
-    return this.el.parentElement && this.el.parentElement.closest('se-list, se-list-group');
+    return (
+      this.el.parentElement &&
+      this.el.parentElement.closest('se-list, se-list-group')
+    );
   }
 
   getParentConfig() {
@@ -144,7 +146,6 @@ export class ListGroupComponent {
     this.hasIcon = !!this.icon || !!this.el.querySelector('[slot="icon"]');
   }
 
-
   render() {
     let title = this.item;
     let myDescription = null;
@@ -156,26 +157,26 @@ export class ListGroupComponent {
     const id = this.el.getAttribute('id');
     // The button section is a copy of the list item. External component cannot be used inside a component (DOM issue)
     return (
-
       <Host role="listitem" option={this.option}>
         <button
           aria-expanded={this.collapsed}
           title={title}
           id={id ? `wc-${id}` : ''}
-          ref={el => (this.buttonElm = el)}
+          ref={(el) => (this.buttonElm = el)}
           class={{
             'se-list-group': true,
             [this.option]: !!this.option,
             button: true,
             collapsed: this.collapsed,
             selected: this.selected,
-            selectedChild: this.selectedChild
+            selectedChild: this.selectedChild,
           }}
           style={{
-            paddingLeft: `${this.paddingIndentation * this.indentation}px`
+            paddingLeft: `${this.paddingIndentation * this.indentation}px`,
           }}
           onClick={() => this.toggleGroupButton()}
-          disabled={!this.canCollapse}>
+          disabled={!this.canCollapse}
+        >
           {(this.selected || this.selectedChild) && (
             <div class="selectedBar"></div>
           )}
@@ -186,7 +187,8 @@ export class ListGroupComponent {
               onClick={(e) => {
                 e.stopPropagation();
                 this.toggleCollapseTreeview();
-              }}>
+              }}
+            >
               <span
                 innerHTML={this.collapsed ? arrow2Right : arrow2Down}
               ></span>
@@ -214,7 +216,10 @@ export class ListGroupComponent {
             ''
           )}
         </button>
-        <div role="list" class={{'group-item': true, [this.option]: !!this.option}}>
+        <div
+          role="list"
+          class={{ 'group-item': true, [this.option]: !!this.option }}
+        >
           <slot />
         </div>
       </Host>

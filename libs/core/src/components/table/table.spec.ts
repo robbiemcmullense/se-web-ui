@@ -12,11 +12,11 @@ describe('table-group', () => {
     expect(table).toBeTruthy();
   });
 
-  it('should render, with a slot element', async() => {
-		const page = await newSpecPage({
-			components: [TableComponent],
-			html: `<se-table></se-table>`,
-		});
-		expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
+  it('should render, with a slot element', async () => {
+    const page = await newSpecPage({
+      components: [TableComponent],
+      html: `<se-table></se-table>`,
+    });
+    expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
   });
 });

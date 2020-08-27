@@ -1,9 +1,6 @@
-
-let PostShow = {
-
-    render : async () => {
-
-        return /*html*/`
+const PostShow = {
+  render: async () => {
+    return /*html*/ `
         <se-container position="absolute">
         <se-block>
           <se-block-header>Icons</se-block-header>
@@ -27,10 +24,9 @@ let PostShow = {
         </se-block>
       </se-container>
 
-        `
-    }
-    , after_render: async () => {
-    }
-}
+        `;
+  },
+  after_render: async () => {},
+};
 
 export default PostShow;

@@ -1,9 +1,17 @@
-import { Component, Element, h, Listen, State, Prop, Method } from "@stencil/core";
+import {
+  Component,
+  Element,
+  h,
+  Listen,
+  State,
+  Prop,
+  Method,
+} from '@stencil/core';
 
 @Component({
-  tag: "se-stepper",
-  styleUrl: "stepper.scss",
-  shadow: true
+  tag: 'se-stepper',
+  styleUrl: 'stepper.scss',
+  shadow: true,
 })
 export class StepperComponent {
   @Element() el: HTMLElement;
@@ -29,7 +37,6 @@ export class StepperComponent {
    */
   @Prop() block = false;
 
-
   /**
    * Defines if the stepper items is interactive or not.
    * The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation.
@@ -50,7 +57,7 @@ export class StepperComponent {
         item.validated = false;
       }
     });
-    this.selectStep(this.stepperItems[step-1]);
+    this.selectStep(this.stepperItems[step - 1]);
   }
   /**
    * Call the `previous` method to navigate to the previous step from the step that is currently selected.
@@ -79,14 +86,14 @@ export class StepperComponent {
   }
 
   onItemClicked(item: any) {
-    if(!this.canItemBeSelected(item)) {
+    if (!this.canItemBeSelected(item)) {
       return;
     }
     this.selectStep(item);
   }
 
   selectStep(item: any) {
-    if(this.selectedItem) {
+    if (this.selectedItem) {
       this.selectedItem.active = false;
     }
     this.selectedItem = item;
@@ -103,13 +110,13 @@ export class StepperComponent {
 
   checkIfPreviousItemValidated(item: any) {
     if (this.getItemStep(item) > 1 && this.linear) {
-      return this.stepperItems[this.stepperItems.indexOf(item)-1].validated;
+      return this.stepperItems[this.stepperItems.indexOf(item) - 1].validated;
     }
     return true;
   }
 
   canItemBeSelected(item: any) {
-    if(!this.linear || item.validated || this.getItemStep(item) === 1) {
+    if (!this.linear || item.validated || this.getItemStep(item) === 1) {
       return true;
     }
     const itemIndex = this.stepperItems.indexOf(item);
@@ -122,28 +129,47 @@ export class StepperComponent {
       const itemStep = this.getItemStep(item);
       const isReadOnly = !(this.interactive && item.interactive);
       return [
-        <li class={{
-          "stepper-item-wrapper": true,
-          "block": this.block,
-          "selected" : (this.getItemStep(this.selectedItem) === itemStep || item.validated)}} >
-          <div class={{
-            "stepper-item": true,
-            "disabled": !this.checkIfPreviousItemValidated(item),
-            "readonly": isReadOnly}} onClick={(event) => {
-              if(isReadOnly) {
+        <li
+          class={{
+            'stepper-item-wrapper': true,
+            block: this.block,
+            selected:
+              this.getItemStep(this.selectedItem) === itemStep ||
+              item.validated,
+          }}
+        >
+          <div
+            class={{
+              'stepper-item': true,
+              disabled: !this.checkIfPreviousItemValidated(item),
+              readonly: isReadOnly,
+            }}
+            onClick={(event) => {
+              if (isReadOnly) {
                 event.preventDefault();
                 return;
               }
               this.selectStep(item);
-            }
-          }>
-            <span class={{"indicator": true, "se-icon": item.validated && !item.active }}>{itemStep}</span>
+            }}
+          >
+            <span
+              class={{
+                indicator: true,
+                'se-icon': item.validated && !item.active,
+              }}
+            >
+              {itemStep}
+            </span>
             <span class="stepper-item-label">{item.label}</span>
           </div>
-          {itemStep !== this.stepperItems.length ? <se-divider class={{ "block": this.block}}></se-divider> : ''}
-        </li>
-      ]
-    })
+          {itemStep !== this.stepperItems.length ? (
+            <se-divider class={{ block: this.block }}></se-divider>
+          ) : (
+            ''
+          )}
+        </li>,
+      ];
+    });
   }
 
   watchItemList() {
@@ -160,18 +186,24 @@ export class StepperComponent {
     this.observer.observe(this.el, { childList: true });
   }
 
-  setItemsArray(){
+  setItemsArray() {
     this.stepperItems = Array.from(this.el.querySelectorAll('se-stepper-item'));
     let previousItemValidated = true;
     this.stepperItems.forEach((item: any) => {
-      item.interactive = item.interactive === undefined ? true : !!item.interactive;
+      item.interactive =
+        item.interactive === undefined ? true : !!item.interactive;
       if (this.linear) {
         item.validated = !!item.validated && previousItemValidated;
       }
       previousItemValidated = item.validated;
     });
-    const selectionnableItems = this.stepperItems.filter(this.canItemBeSelected.bind(this));
-    const selectedItem = selectionnableItems.reverse().find((item: any) => item.active) || selectionnableItems.find((item: any) => !item.validated) || this.stepperItems[0];
+    const selectionnableItems = this.stepperItems.filter(
+      this.canItemBeSelected.bind(this)
+    );
+    const selectedItem =
+      selectionnableItems.reverse().find((item: any) => item.active) ||
+      selectionnableItems.find((item: any) => !item.validated) ||
+      this.stepperItems[0];
     this.stepperItems.forEach((item: any) => {
       item.active = selectedItem === item;
     });
@@ -192,11 +224,9 @@ export class StepperComponent {
   render() {
     return [
       <nav class={this.color}>
-        <ol>
-          {this.renderList()}
-        </ol>
+        <ol>{this.renderList()}</ol>
       </nav>,
-      <slot></slot>
-    ]
+      <slot></slot>,
+    ];
   }
 }

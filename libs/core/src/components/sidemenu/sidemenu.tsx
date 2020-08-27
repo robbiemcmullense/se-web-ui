@@ -1,5 +1,14 @@
-import { Component, h, Method, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
-import test_results_nok from "@se/icons/svg/test_results_nok.svg";
+import {
+  Component,
+  h,
+  Method,
+  Element,
+  State,
+  Prop,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
+import test_results_nok from '@se/icons/svg/test_results_nok.svg';
 
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
@@ -8,7 +17,7 @@ const OPEN_ITEM = 'open-item';
 @Component({
   tag: 'se-sidemenu',
   styleUrl: 'sidemenu.scss',
-  shadow: true
+  shadow: true,
 })
 export class SidemenuComponent {
   backdropEl?: HTMLElement;
@@ -30,11 +39,11 @@ export class SidemenuComponent {
    */
   @Prop() label = 'Menu';
   /*
-  * Defines the link to be uses in the external-link element of the Sidemenu.
-  * The default value is www.se.com, which will generate if no link is defined.
-  * If a different url is provided it will replace the default value.
-  * If an empty string is provided the external link element will not be generated.
- */
+   * Defines the link to be uses in the external-link element of the Sidemenu.
+   * The default value is www.se.com, which will generate if no link is defined.
+   * If a different url is provided it will replace the default value.
+   * If an empty string is provided the external link element will not be generated.
+   */
   @Prop() link = 'www.se.com';
   /**
    * Toggle the sidemenu. Optionally, pass the `item` or `id` of a sidemenu-item to open that particular menu item.
@@ -44,14 +53,17 @@ export class SidemenuComponent {
   @Method()
   async toggle(itemName?: string) {
     // Only perform toggle if no item name is passed or menu is closed
-    if (!this.open || !itemName || itemName && !this.open) {
+    if (!this.open || !itemName || (itemName && !this.open)) {
       // Only perform open animation if menu is closed
       if (!this.open) {
         this.el.classList.add(SHOW_MENU);
         this.addAnimation(null);
       }
       this.open = !this.open;
-    } else if (this.selectedItem && this.isItemElement(this.selectedItem, itemName)) {
+    } else if (
+      this.selectedItem &&
+      this.isItemElement(this.selectedItem, itemName)
+    ) {
       // Deselect the active item if a new item name is passed
       this.unselectAll();
     }
@@ -66,7 +78,7 @@ export class SidemenuComponent {
         }
       } else {
         try {
-          if (this.items.find(x => x.classList.contains('active'))) {
+          if (this.items.find((x) => x.classList.contains('active'))) {
             this.el.classList.add(OPEN_ITEM);
           }
         } catch (error) {
@@ -74,7 +86,7 @@ export class SidemenuComponent {
         }
       }
       // Dispatch the 'opened' event
-      this.toggled.emit({state: 'open'});
+      this.toggled.emit({ state: 'open' });
     } else {
       // Remove css classes and unselect the active element
       this.removeAnimation(() => {
@@ -82,12 +94,12 @@ export class SidemenuComponent {
       });
       this.unselectAll();
       // Dispatch the 'closed' event
-      this.toggled.emit({state: 'closed'});
+      this.toggled.emit({ state: 'closed' });
     }
   }
 
   noSelectedItem() {
-    return !this.items.find(x => x === this.selectedItem)
+    return !this.items.find((x) => x === this.selectedItem);
   }
 
   unselectAll(): void {
@@ -101,11 +113,11 @@ export class SidemenuComponent {
   }
 
   getItemElement(name: string): HTMLElement {
-    return this.items.find(i => this.isItemElement(i, name));
+    return this.items.find((i) => this.isItemElement(i, name));
   }
 
   isItemElement(elm: HTMLElement, name: string): boolean {
-    return elm.getAttribute('item') === name || elm.getAttribute('id') === name
+    return elm.getAttribute('item') === name || elm.getAttribute('id') === name;
   }
 
   setActive(item: any): void {
@@ -117,7 +129,7 @@ export class SidemenuComponent {
         item.active = true;
         this.selectedItem = item;
         this.el.classList.add(OPEN_ITEM);
-      }, 100)
+      }, 100);
     }
   }
 
@@ -131,7 +143,7 @@ export class SidemenuComponent {
         callback && callback();
       }, 200);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -145,7 +157,7 @@ export class SidemenuComponent {
         callback && callback();
       }, 200);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -180,9 +192,19 @@ export class SidemenuComponent {
   renderList() {
     return this.items.map((item: any) => {
       return [
-        <se-list-item class={[!item.childElementCount ? 'hide-nav-icon' : '', 'sidemenu-list-item'].join(' ')} option="nav" onClick={() => this.setActive(item)} selected={item.active} item={item.item} id={item.id ? `list-${item.id}` : ''} />,
-      ]
-    })
+        <se-list-item
+          class={[
+            !item.childElementCount ? 'hide-nav-icon' : '',
+            'sidemenu-list-item',
+          ].join(' ')}
+          option="nav"
+          onClick={() => this.setActive(item)}
+          selected={item.active}
+          item={item.item}
+          id={item.id ? `list-${item.id}` : ''}
+        />,
+      ];
+    });
   }
 
   componentWillLoad() {
@@ -198,34 +220,46 @@ export class SidemenuComponent {
 
   render() {
     return [
-      <div class="menu-background animated d-flex-row flex" onClick={() => this.toggle()} ref={el => this.backdropEl = el} />,
-      <div class="actual-menu animated full-content d-flex-column flex" ref={el => this.menuInnerEl = el}>
+      <div
+        class="menu-background animated d-flex-row flex"
+        onClick={() => this.toggle()}
+        ref={(el) => (this.backdropEl = el)}
+      />,
+      <div
+        class="actual-menu animated full-content d-flex-column flex"
+        ref={(el) => (this.menuInnerEl = el)}
+      >
         <div class="d-flex flex">
           <se-block width="250px">
             <div class="d-flex-center flex">
               <span class="menu-sidenav" onClick={() => this.toggle()}>
-                <se-icon size="large" color="primary"><span innerHTML={test_results_nok}></span></se-icon>
+                <se-icon size="large" color="primary">
+                  <span innerHTML={test_results_nok}></span>
+                </se-icon>
               </span>
               <h3 class="header-title">{this.label}</h3>
             </div>
             <se-divider />
             <se-block-content option="fill">
-              <se-list option="nav">
-                {this.renderList()}
-              </se-list>
+              <se-list option="nav">{this.renderList()}</se-list>
             </se-block-content>
             <se-icon-lifeison class="footer-icon" color="standard" />
-            {this.link ?
+            {this.link ? (
               <div class="external-link">
-                <se-link class="sidemenu-link" url={`http://${this.link}`}>{this.link}</se-link>
-              </div> : ''}
+                <se-link class="sidemenu-link" url={`http://${this.link}`}>
+                  {this.link}
+                </se-link>
+              </div>
+            ) : (
+              ''
+            )}
           </se-block>
           <se-divider option="vertical"></se-divider>
-          <se-block ref={el => this.menuItemInnerEl = el}>
+          <se-block ref={(el) => (this.menuItemInnerEl = el)}>
             <slot />
           </se-block>
         </div>
-      </div>
-    ]
+      </div>,
+    ];
   }
 }

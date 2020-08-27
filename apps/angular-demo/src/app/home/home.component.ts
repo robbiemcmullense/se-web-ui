@@ -8,17 +8,19 @@ const log = new Logger('HomeComponent');
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   public myToggleSwitchValue = false;
   public myOnOffValue = true;
   public loader = false;
   public showDialogMessage: string;
-  public listItem = [1,2,3,4,5,5,6,7,87,8,9,90,23,24,45,46];
+  public listItem = [1, 2, 3, 4, 5, 5, 6, 7, 87, 8, 9, 90, 23, 24, 45, 46];
 
-  constructor(public dialogService: DialogService, private snackbarService: SnackbarService) { }
+  constructor(
+    public dialogService: DialogService,
+    private snackbarService: SnackbarService
+  ) {}
 
   filterChanged(event: any): void {
     console.log(event);
@@ -35,7 +37,7 @@ export class HomeComponent implements OnInit {
     const snackbar = this.snackbarService.open({
       message: 'This is some info',
       type: 'information',
-      canClose: true
+      canClose: true,
     });
 
     snackbar.instance.didClose.subscribe(() => {
@@ -44,33 +46,35 @@ export class HomeComponent implements OnInit {
   }
 
   showDialog(): void {
-    const confirm = this.dialogService.confirm({
+    const modal = this.dialogService.confirm({
       canBackdrop: false,
       title: 'Dialog Confirm',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+      message:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     });
 
-    confirm.instance.didClose.subscribe(() => {
-      this.showDialogMessage = "Confirm Dialog closed & callback function called";
-    });
-
-    confirm.instance.backdrop.subscribe(() => {
-      this.showDialogMessage ="Confirm Dialog backdrop closed & callback function called";
-    });
-
-    confirm.instance.didConfirm.subscribe(() => {
-      this.showDialogMessage ="Confirm Dialog closed & callback function called";
-    });
+    modal.instance.afterClosed.subscribe(
+      (data: any) => {
+        // called when clicked on OK
+        this.showDialogMessage =
+          'Confirm Dialog closed & callback function called';
+      },
+      (err: any) => {
+        // called when clicked on cancel or backdrop click
+        this.showDialogMessage =
+          'cancel or backdrop Dialog closed & callback function called';
+      }
+    );
   }
 
   modalTable(): void {
     const modal = this.dialogService.modal(ModalTableComponent, {
       canBackdrop: false,
       data: {
-        title: "Login",
-        username: "1234User",
-        password: "mySecret"
-      }
+        title: 'Login',
+        username: '1234User',
+        password: 'mySecret',
+      },
     });
     modal.instance.afterClosed.subscribe(
       (data: any) => {
@@ -82,7 +86,5 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }

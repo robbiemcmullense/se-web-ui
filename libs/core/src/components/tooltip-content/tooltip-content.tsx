@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'se-tooltip-content',
   styleUrl: 'tooltip-content.scss',
-  shadow: true
+  shadow: true,
 })
 export class TooltipContentComponent {
   /**
@@ -12,10 +12,14 @@ export class TooltipContentComponent {
   render() {
     return (
       <div class="tooltip-content">
-        {this.icon && <se-icon class="se-icon" size="small">{this.icon}</se-icon>}
+        {this.icon && (
+          <se-icon class="se-icon" size="small">
+            {this.icon}
+          </se-icon>
+        )}
         <slot name="icon"></slot>
         <slot />
       </div>
-    )
+    );
   }
 }

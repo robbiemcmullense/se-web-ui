@@ -1,11 +1,11 @@
-import { Component, h, Prop } from "@stencil/core";
-import { getFullTitle, getFullCopyright } from "../../utils/utils";
-import { AppInfo } from "../appInfo";
+import { Component, h, Prop } from '@stencil/core';
+import { getFullTitle, getFullCopyright } from '../../utils/utils';
+import { AppInfo } from '../appInfo';
 
 @Component({
-  tag: "se-about",
-  styleUrl: "about.scss",
-  shadow: true
+  tag: 'se-about',
+  styleUrl: 'about.scss',
+  shadow: true,
 })
 export class AboutComponent {
   /**
@@ -34,13 +34,21 @@ export class AboutComponent {
     const fullCopyright = getFullCopyright(this.copyright);
     let domain;
     if (this.domain.toLowerCase() === `ecostruxure`) {
-      domain = <se-icon-ecostruxure size="medium" color="inherited"></se-icon-ecostruxure>;
-    } else if (this.domain.toLowerCase() !== "none") {
+      domain = (
+        <se-icon-ecostruxure
+          size="medium"
+          color="inherited"
+        ></se-icon-ecostruxure>
+      );
+    } else if (this.domain.toLowerCase() !== 'none') {
       domain = <span class="header-title-type">{this.domain}</span>;
     }
     return [
       <div class="image-container">
-        <div class="image-background" style={{ backgroundImage: this.imageUrl }}/>
+        <div
+          class="image-background"
+          style={{ backgroundImage: this.imageUrl }}
+        />
       </div>,
       <div class="about-section-wrapper">
         <div class="information">
@@ -54,7 +62,7 @@ export class AboutComponent {
           <div class="copyright-info-first">{fullCopyright.first}</div>
           <div class="copyright-info-last">{fullCopyright.last}</div>
         </div>
-      </div>
+      </div>,
     ];
   }
 }

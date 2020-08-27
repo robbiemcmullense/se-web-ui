@@ -7,164 +7,306 @@
         <se-list-item item="My Site 2"></se-list-item>
         <se-list-item item="My Site 3"></se-list-item>
       </se-list>
+      <se-tooltip position="top">
+        <se-button option="raised" color="primary" slot="tooltip"
+          >Tooltip Top</se-button
+        >
+        Tooltip Top
+      </se-tooltip>
     </se-block-content>
     <se-block-footer>
-      <se-tooltip position="top">
-        <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
-        Tooltip Top
-        </se-tooltip>
-      <se-button option="flat" (click)="showDialog()">Open Dialog</se-button>
+      <se-button option="flat" (click)="showDialog()">Open confirm</se-button>
+      <se-button option="flat" (click)="modalTable()">Open table</se-button>
     </se-block-footer>
   </se-block>
   <se-divider option="vertical"></se-divider>
   <se-block>
-    <se-container option="card" display="grid" column-size="400px" row-size="400px">
+    <se-container
+      option="card"
+      display="grid"
+      column-size="400px"
+      row-size="400px"
+    >
       <se-block option="fill">
-        <se-block-header><h4>Cool test</h4>
-        <div slot="end">
-          <se-dropdown alignment="right">
-            <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
-            <se-list option="dropdown">
-              <se-list-item *ngFor="let item of listItem" item="My Site 1"></se-list-item>
-            </se-list>
-          </se-dropdown>
-        </div>
+        <se-block-header
+          ><h4>Cool test</h4>
+          <div slot="end">
+            <se-dropdown alignment="right">
+              <se-icon slot="trigger" option="button" color="alternative"
+                >other_vertical</se-icon
+              >
+              <se-list option="dropdown">
+                <se-list-item
+                  *ngFor="let item of listItem"
+                  item="My Site 1"
+                ></se-list-item>
+              </se-list>
+            </se-dropdown>
+          </div>
         </se-block-header>
         <se-block-content option="fill">
-        <se-table style="max-height:350px">
-          <se-table-group-header>
+          <se-table style="max-height: 350px">
+            <se-table-group-header>
               <se-table-item-header width="72px"></se-table-item-header>
               <se-table-item-header width="64px"></se-table-item-header>
               <se-table-item-header sort="asc">Title</se-table-item-header>
-              <se-table-item-header clickable="true" flex="50%">Secondary Info</se-table-item-header>
-              <se-table-item-header><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
-          </se-table-group-header>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button">arrow2_up</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
-              <se-table-item title="best practice is to provide a title in case all content is not visible">Testing 1 with a very long title that continues on</se-table-item>
+              <se-table-item-header clickable="true" flex="50%"
+                >Secondary Info</se-table-item-header
+              >
+              <se-table-item-header
+                ><se-icon color="primary">airconditioner_hot_heating</se-icon> -
+                with a lot of extra text to make it as long as
+                possible</se-table-item-header
+              >
+            </se-table-group-header>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button">arrow2_up</se-icon></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
+              <se-table-item
+                title="best practice is to provide a title in case all content is not visible"
+                >Testing 1 with a very long title that continues
+                on</se-table-item
+              >
               <se-table-item flex="50%">2nd test</se-table-item>
-              <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
+              <se-table-item
+                ><se-icon color="primary">airconditioner_hot_heating</se-icon
+                >Last test</se-table-item
+              >
               <div slot="detail">
-                <div style="padding:12px 24px;">
+                <div style="padding: 12px 24px">
                   <h4>You may put any type of content here</h4>
-                  <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
+                  <p>
+                    You can format whatever details you want e.g. if each/some
+                    rows have a + icon to click to expand to expose more info
+                  </p>
                 </div>
               </div>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
-              <se-table-item title="best practice is to provide a title in case all content is not visible">Testing 1.5 - with the detail section hidden</se-table-item>
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button">arrow2_down</se-icon></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
+              <se-table-item
+                title="best practice is to provide a title in case all content is not visible"
+                >Testing 1.5 - with the detail section hidden</se-table-item
+              >
               <se-table-item flex="50%">2nd test</se-table-item>
-              <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
+              <se-table-item
+                ><se-icon color="primary">airconditioner_hot_heating</se-icon
+                >Last test</se-table-item
+              >
               <div slot="detail">
-                <div style="display:none;padding:12px 24px">
+                <div style="display: none; padding: 12px 24px">
                   <h4>You may put any type of content here</h4>
-                  <p>You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
+                  <p>
+                    You can format whatever details you want e.g. if each/some
+                    rows have a + icon to click to expand to expose more info
+                  </p>
                 </div>
               </div>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
               <se-table-item>Last group with some more info</se-table-item>
               <se-table-item flex="50%">Test item 2</se-table-item>
               <se-table-item>Very last test item</se-table-item>
-          </se-table-group>
-          <se-table-group selectable="true" selected="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox selected="true"></se-checkbox></se-table-item>
+            </se-table-group>
+            <se-table-group selectable="true" selected="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox selected="true"></se-checkbox
+              ></se-table-item>
               <se-table-item>Group 2</se-table-item>
-              <se-table-item flex="50%">Another test item with a lot more content than the other items so that we can see what happens when there is multiple lines of information that needs to be shown</se-table-item>
+              <se-table-item flex="50%"
+                >Another test item with a lot more content than the other items
+                so that we can see what happens when there is multiple lines of
+                information that needs to be shown</se-table-item
+              >
               <se-table-item>Last test item</se-table-item>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
               <se-table-item>Testing 1</se-table-item>
               <se-table-item flex="50%">2nd test</se-table-item>
-              <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
+              <se-table-item
+                ><se-icon color="primary">airconditioner_hot_heating</se-icon
+                >Last test</se-table-item
+              >
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
               <se-table-item>Group 2</se-table-item>
-              <se-table-item flex="50%">Another test item with a lot more content than the other items</se-table-item>
+              <se-table-item flex="50%"
+                >Another test item with a lot more content than the other
+                items</se-table-item
+              >
               <se-table-item>Last test item</se-table-item>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
               <se-table-item>Last group with some more info</se-table-item>
               <se-table-item flex="50%">Test item 2</se-table-item>
               <se-table-item>Very last test item</se-table-item>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
               <se-table-item>Testing 1</se-table-item>
               <se-table-item flex="50%">2nd test</se-table-item>
-              <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
+              <se-table-item
+                ><se-icon color="primary">airconditioner_hot_heating</se-icon
+                >Last test</se-table-item
+              >
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
               <se-table-item>Group 2</se-table-item>
-              <se-table-item flex="50%">Another test item with a lot more content than the other items</se-table-item>
+              <se-table-item flex="50%"
+                >Another test item with a lot more content than the other
+                items</se-table-item
+              >
               <se-table-item>Last test item</se-table-item>
-          </se-table-group>
-          <se-table-group selectable="true">
-              <se-table-item width="72px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
-              <se-table-item width="64px"><se-checkbox></se-checkbox></se-table-item>
+            </se-table-group>
+            <se-table-group selectable="true">
+              <se-table-item width="72px"
+                ><se-icon option="button" disabled="true"
+                  >arrow2_down</se-icon
+                ></se-table-item
+              >
+              <se-table-item width="64px"
+                ><se-checkbox></se-checkbox
+              ></se-table-item>
               <se-table-item>Last group with some more info</se-table-item>
               <se-table-item flex="50%">Test item 2</se-table-item>
               <se-table-item>Very last test item</se-table-item>
-          </se-table-group>
-        </se-table>
-      </se-block-content>
+            </se-table-group>
+          </se-table>
+        </se-block-content>
       </se-block>
       <se-block class="flex">
         <se-block-content>
           <se-tooltip position="right">
-            <se-button option="raised" color="primary" slot="tooltip">Tooltip Top</se-button>
+            <se-button option="raised" color="primary" slot="tooltip"
+              >Tooltip Top</se-button
+            >
             Tooltip Top
-            </se-tooltip>
+          </se-tooltip>
           <se-button option="flat">standard flat</se-button>
           <se-button option="raised">standard raised</se-button>
-          <se-button id="flatBtn1" option="flat" color="alternative">alternative</se-button>
+          <se-button id="flatBtn1" option="flat" color="alternative"
+            >alternative</se-button
+          >
           <se-button option="flat" color="primary">primary</se-button>
           <se-button option="flat" color="secondary">secondary</se-button>
           <se-button icon="action_resize">Resize</se-button>
           <se-button option="outline">Outline</se-button>
-          <se-button option="outline" color="alternative">Outline alternative</se-button>
-          <se-button option="outline" color="primary">Outline primary</se-button>
-          <se-button option="outline" color="secondary" (click)="modalTable()">Open table</se-button>
+          <se-button option="outline" color="alternative"
+            >Outline alternative</se-button
+          >
+          <se-button option="outline" color="primary"
+            >Outline primary</se-button
+          >
+          <se-button option="outline" color="secondary" (click)="modalTable()"
+            >Open table</se-button
+          >
         </se-block-content>
       </se-block>
       <se-block>
         <se-block-header id="switch-header">Switches</se-block-header>
         <se-block-content>
-          <se-checkbox option="switch" (didChange)="myToggleSwitchValue=$event.detail.selected" [selected]="myToggleSwitchValue"></se-checkbox>
-          <se-checkbox option="onoff" (didChange)="myOnOffValue=$event.detail.selected" [selected]="myOnOffValue"></se-checkbox>
-          <li style="padding-top: 10px;">Toggle switch value: <span class="toggle-switch-value">{{myToggleSwitchValue}}</span></li>
-          <li>On/Off switch value: <span class="onoff-switch-value">{{myOnOffValue}}</span></li>
+          <se-checkbox
+            option="switch"
+            (didChange)="myToggleSwitchValue = $event.detail.selected"
+            [selected]="myToggleSwitchValue"
+          ></se-checkbox>
+          <se-checkbox
+            option="onoff"
+            (didChange)="myOnOffValue = $event.detail.selected"
+            [selected]="myOnOffValue"
+          ></se-checkbox>
+          <li style="padding-top: 10px">
+            Toggle switch value:
+            <span class="toggle-switch-value">{{ myToggleSwitchValue }}</span>
+          </li>
+          <li>
+            On/Off switch value:
+            <span class="onoff-switch-value">{{ myOnOffValue }}</span>
+          </li>
         </se-block-content>
         <se-divider></se-divider>
         <se-block-footer id="switch-footer"></se-block-footer>
       </se-block>
       <se-block>
-        <se-block-header>
-          Form Field
-        </se-block-header>
+        <se-block-header> Form Field </se-block-header>
         <se-block-content>
-          <se-form-field label="This is my custom Checkbox.  It is unique." type="checkbox" required="true">
+          <se-form-field
+            label="This is my custom Checkbox.  It is unique."
+            type="checkbox"
+            required="true"
+          >
             <se-checkbox></se-checkbox>
           </se-form-field>
           <se-form-field id="input-form" label="Input" required="true">
             <input type="text" />
           </se-form-field>
-          <se-form-field id="select-form" label="Select" required="true" type="select">
+          <se-form-field
+            id="select-form"
+            label="Select"
+            required="true"
+            type="select"
+          >
             <select>
               <option>Option 1</option>
               <option>Option 2</option>
@@ -173,21 +315,39 @@
           </se-form-field>
         </se-block-content>
         <se-block-footer>
-          <se-button option="raised" (click)="showSnackbar()">Open Snackbar</se-button>
+          <se-button option="raised" (click)="showSnackbar()"
+            >Open Snackbar</se-button
+          >
         </se-block-footer>
       </se-block>
       <se-block>
         <se-block-header>Linear Graphs</se-block-header>
         <se-block-content>
-          <se-visual-linear id="progBar" percentage="33" value="8" label="Labels"></se-visual-linear>
-          <se-visual-linear secolor="#0011aa" percentage="89" option="stacked" value="59" label="Labels"></se-visual-linear>
+          <se-visual-linear
+            id="progBar"
+            percentage="33"
+            value="8"
+            label="Labels"
+          ></se-visual-linear>
+          <se-visual-linear
+            secolor="#0011aa"
+            percentage="89"
+            option="stacked"
+            value="59"
+            label="Labels"
+          ></se-visual-linear>
         </se-block-content>
       </se-block>
       <se-block>
         <se-block-header>Circular Graphs</se-block-header>
-        <se-block-content style="display: flex;">
+        <se-block-content style="display: flex">
           <se-visual-radial percentage="30" label="units"></se-visual-radial>
-          <se-visual-radial percentage="30" secolor="#ee0014" label="Label" value="8"></se-visual-radial>
+          <se-visual-radial
+            percentage="30"
+            secolor="#ee0014"
+            label="Label"
+            value="8"
+          ></se-visual-radial>
         </se-block-content>
       </se-block>
       <se-block>

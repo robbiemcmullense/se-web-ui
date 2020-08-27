@@ -7,14 +7,14 @@ import {
   Watch,
   Event,
   EventEmitter,
-  Method
+  Method,
 } from '@stencil/core';
 import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
 @Component({
   tag: 'se-list-item',
   styleUrl: 'list-item.scss',
-  shadow: true
+  shadow: true,
 })
 export class ListItemComponent {
   buttonElm?: HTMLElement;
@@ -74,9 +74,7 @@ export class ListItemComponent {
     this.didSelectedChange.emit();
   }
 
-
   paddingIndentation = 24;
-
 
   @Method()
   async focusElement() {
@@ -85,7 +83,10 @@ export class ListItemComponent {
 
   getClosestParent() {
     // get the closest between se-list or se-list-group
-    return this.el.parentElement && this.el.parentElement.closest('se-list, se-list-group');
+    return (
+      this.el.parentElement &&
+      this.el.parentElement.closest('se-list, se-list-group')
+    );
   }
 
   getParentConfig() {
@@ -123,21 +124,26 @@ export class ListItemComponent {
       <Host role="listitem" onClick={() => this.buttonElm.blur()}>
         <TagType
           {...attrs}
-          ref={el => (this.buttonElm = el)}
+          ref={(el) => (this.buttonElm = el)}
           title={title}
           class={{
             selected: this.selected,
             button: true,
             [this.option]: true,
-            ['se-list-item']: true
+            ['se-list-item']: true,
           }}
           style={{
-            paddingLeft: `${this.paddingIndentation * this.indentation}px`
+            paddingLeft: `${this.paddingIndentation * this.indentation}px`,
           }}
-          id={id ? `wc-${id}` : ''}>
+          id={id ? `wc-${id}` : ''}
+        >
           {this.selected ? <div class="selectedBar"></div> : ''}
           <div class="nav-icon">
-            {(!!this.icon as boolean) ? <se-icon color={this.iconColor}>{this.icon}</se-icon> : ''}
+            {(!!this.icon as boolean) ? (
+              <se-icon color={this.iconColor}>{this.icon}</se-icon>
+            ) : (
+              ''
+            )}
             <slot name="icon"></slot>
           </div>
           <div class="nav-content">

@@ -1,16 +1,17 @@
-import { Component, h } from "@stencil/core";
+import { Component, h } from '@stencil/core';
 
 @Component({
-  tag: "se-dialog-footer",
-  styleUrl: "dialog-footer.scss",
-  shadow: true
+  tag: 'se-dialog-footer',
+  styleUrl: 'dialog-footer.scss',
+  shadow: true,
 })
 export class DialogFooterComponent {
-
   render() {
     return [
-      <div class="flex"><slot name="start"></slot></div>,
-      <slot></slot>
+      <div class="flex">
+        <slot name="start"></slot>
+      </div>,
+      <slot></slot>,
     ];
   }
 }

@@ -1,6 +1,5 @@
 @import "../../theme/animation";
 
-
 :host {
   display: none !important;
   z-index: $zindex-modal;
@@ -71,8 +70,7 @@
   position: fixed !important;
   @include absolute();
   @include animated();
-  // background-color: rgba(white, 0.6);
-  @include background-color('overlay');
+  @include background-color("overlay");
   z-index: $zindex-modal-backdrop;
   &.show-dialog {
     animation-name: fadeIn;
@@ -84,6 +82,6 @@
 
 @media only screen and (max-width: 600px) {
   .dialog {
-    max-height: calc(100% - $spacing-large *2);
+    max-height: calc(100% - $spacing-large * 2);
   }
 }

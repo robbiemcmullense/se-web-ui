@@ -3,13 +3,13 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('FormFieldComponent', () => {
   let page, element;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
     await page.setContent('<se-form-field></se-form-field>');
     element = await page.find('se-form-field');
   });
 
-  it('renders', async() => {
+  it('renders', async () => {
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
   });
@@ -18,12 +18,14 @@ describe('FormFieldComponent', () => {
 describe('FormFieldComponent with Checkbox type', () => {
   let page, element;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-form-field type="checkbox" label="checkbox label"><se-checkbox value="my checkbox value"></se-checkbox></se-form-field>');
+    await page.setContent(
+      '<se-form-field type="checkbox" label="checkbox label"><se-checkbox value="my checkbox value"></se-checkbox></se-form-field>'
+    );
   });
 
-  it('emits an event with the value "true" when the checkbox is clicked', async() => {
+  it('emits an event with the value "true" when the checkbox is clicked', async () => {
     element = await page.find('se-form-field se-checkbox >>> button');
     const eventSpy = await page.spyOnEvent('didSubmit');
     await element.click();
@@ -35,12 +37,14 @@ describe('FormFieldComponent with Checkbox type', () => {
 describe('FormFieldComponent with Input type', () => {
   let page, element;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-form-field label="input label"><input type="text" /></se-form-field>');
+    await page.setContent(
+      '<se-form-field label="input label"><input type="text" /></se-form-field>'
+    );
   });
 
-  it('renders a label with an inner text equal to the se-form-field label property', async() => {
+  it('renders a label with an inner text equal to the se-form-field label property', async () => {
     element = await page.find('se-form-field label');
     expect(element).toEqualText('input label');
   });
@@ -49,11 +53,11 @@ describe('FormFieldComponent with Input type', () => {
 describe('Form Field Screenshots', () => {
   let page;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
   });
 
-  it('should render the checkbox, radio, input, select, and textarea form fields all in inline mode', async() => {
+  it('should render the checkbox, radio, input, select, and textarea form fields all in inline mode', async () => {
     await page.setContent(`
       <se-form-field label="checkbox label" type="checkbox" required="true">
         <se-checkbox></se-checkbox>
@@ -75,10 +79,10 @@ describe('Form Field Screenshots', () => {
         <textarea rows="5"></textarea>
       </se-form-field>
     `);
-    await page.compareScreenshot('Inline Form Fields', {fullPage: false});
+    await page.compareScreenshot('Inline Form Fields', { fullPage: false });
   });
 
-  it('should render the input, select, and textarea form fields all in stacked mode', async() => {
+  it('should render the input, select, and textarea form fields all in stacked mode', async () => {
     await page.setContent(`
       <se-form-field option="stacked" label="Input" required="true">
         <input type="text" />
@@ -94,6 +98,6 @@ describe('Form Field Screenshots', () => {
         <textarea rows="5"></textarea>
       </se-form-field>
     `);
-    await page.compareScreenshot('Stacked Form Fields', {fullPage: false});
+    await page.compareScreenshot('Stacked Form Fields', { fullPage: false });
   });
 });

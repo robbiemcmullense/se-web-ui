@@ -3,7 +3,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'se-link',
   styleUrl: 'link.scss',
-  shadow: true
+  shadow: true,
 })
 export class LinkComponent {
   /**
@@ -23,10 +23,14 @@ export class LinkComponent {
 
   render() {
     return (
-      <a href={this.url}
+      <a
+        href={this.url}
         data-disabled={this.disabled}
         class={this.option == 'external' ? 'external' : ''}
-        target={this.option == 'external' ? '_blank' : ''}><slot/></a>
-    )
+        target={this.option == 'external' ? '_blank' : ''}
+      >
+        <slot />
+      </a>
+    );
   }
 }

@@ -3,34 +3,38 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('BlockContentComponent', () => {
   let page, element;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
     await page.setContent('<se-block-content></se-block-content>');
     element = await page.find('se-block-content');
   });
 
-  it('renders', async() => {
+  it('renders', async () => {
     expect(element).toBeTruthy();
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with the fill-content class whenever the option is set to fill', async() => {
+  it('renders with the fill-content class whenever the option is set to fill', async () => {
     element.setProperty('option', 'fill');
     await page.waitForChanges();
-    expect(element.shadowRoot.querySelector('.se-block-content')).toHaveClass('fill-content');
+    expect(element.shadowRoot.querySelector('.se-block-content')).toHaveClass(
+      'fill-content'
+    );
   });
 });
 
 describe('BlockContentComponent with Block parents set to card option', () => {
   let page, element;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-block option="card"><se-block-content></se-block-content><se-block>');
+    await page.setContent(
+      '<se-block option="card"><se-block-content></se-block-content><se-block>'
+    );
     element = await page.find('se-block-content >>> .se-block-content');
   });
 
-  it('should have the card-content class, inherited from its block parent', async() => {
+  it('should have the card-content class, inherited from its block parent', async () => {
     expect(element).toHaveClass('card-content');
   });
 });

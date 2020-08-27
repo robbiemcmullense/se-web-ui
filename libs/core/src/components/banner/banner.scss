@@ -1,5 +1,3 @@
-
-
 .banner-items {
   @include display-flex();
   @include flex-direction(row);
@@ -30,8 +28,7 @@
     margin-right: 5px;
 
     &.active {
-
-      @include background-color('primary');
+      @include background-color("primary");
       opacity: 1;
     }
 
@@ -43,18 +40,18 @@
   }
 }
 
-.previous-indicator,
-.next-indicator {
+.indicator {
   display: flex;
   position: absolute;
+  color: $se-white;
   top: 45px;
-  font-family: 'se-icon';
+  font-family: "se-icon";
   cursor: pointer;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   z-index: 3;
-  @include color('border-focus');
+  // @include color('border-focus');
   &:hover {
     color: $se-white;
   }
@@ -67,11 +64,11 @@
   overflow: hidden;
 }
 
-.previous-indicator {
+.previous {
   left: -5px;
 }
 
-.next-indicator {
+.next {
   right: -5px;
 }
 
@@ -81,8 +78,7 @@
     top: 345px;
   }
 
-  .previous-indicator,
-  .next-indicator {
+  .indicator {
     top: 165px;
   }
 }
@@ -100,8 +96,7 @@
     top: 340px;
   }
 
-  .previous-indicator,
-  .next-indicator {
+  .indicator {
     top: 160px;
   }
 }

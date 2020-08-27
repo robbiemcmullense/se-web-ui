@@ -6,10 +6,14 @@ const verticalAlignmentOption = ['top', 'bottom'];
 
 storiesOf('Dropdown', module)
   .add('Dropdown Button', () => {
-    const alignment = select('alignment', alignmentOption, 'left')
-    const verticalAlignment = select('vertical alignment', verticalAlignmentOption, 'bottom')
-    const maxWidth = number('max width', 200)
-    const maxHeight = number('max height', 400)
+    const alignment = select('alignment', alignmentOption, 'left');
+    const verticalAlignment = select(
+      'vertical alignment',
+      verticalAlignmentOption,
+      'bottom'
+    );
+    const maxWidth = number('max width', 200);
+    const maxHeight = number('max height', 400);
 
     return `
       <div style="padding:100px;">
@@ -23,13 +27,17 @@ storiesOf('Dropdown', module)
           </se-list>
         </se-dropdown>
       </div>
-    `
+    `;
   })
   .add('Dropdown Icon', () => {
-    const alignment = select('alignment', alignmentOption, 'left')
-    const verticalAlignment = select('vertical alignment', verticalAlignmentOption, 'bottom')
-    const maxWidth = number('max width', 200)
-    const maxHeight = number('max height', 400)
+    const alignment = select('alignment', alignmentOption, 'left');
+    const verticalAlignment = select(
+      'vertical alignment',
+      verticalAlignmentOption,
+      'bottom'
+    );
+    const maxWidth = number('max width', 200);
+    const maxHeight = number('max height', 400);
 
     return `
       <div style="padding:100px;">
@@ -44,5 +52,5 @@ storiesOf('Dropdown', module)
           </se-list>
         </se-dropdown>
       </div>
-    `
-  })
+    `;
+  });

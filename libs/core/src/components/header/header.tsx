@@ -1,19 +1,19 @@
-import { Component, h, Prop, Element, State } from "@stencil/core";
-import { getFullTitle } from "../../utils/utils";
-import { AppInfo } from "../appInfo";
-import burgerMenu from "@se/icons/svg/burger_menu.svg";
+import { Component, h, Prop, Element, State } from '@stencil/core';
+import { getFullTitle } from '../../utils/utils';
+import { AppInfo } from '../appInfo';
+import burgerMenu from '@se/icons/svg/burger_menu.svg';
 
 @Component({
-  tag: "se-header",
-  styleUrl: "header.scss",
-  shadow: true
+  tag: 'se-header',
+  styleUrl: 'header.scss',
+  shadow: true,
 })
 export class HeaderComponent {
   @Element() el: HTMLElement;
   /**
    * Sets the title of your application.
    */
-  @Prop() appTitle = "";
+  @Prop() appTitle = '';
   /**
    * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
    */
@@ -36,7 +36,7 @@ export class HeaderComponent {
   }
 
   async componentWillLoad() {
-    this.elLeftNav = this.el.querySelector("se-sidemenu");
+    this.elLeftNav = this.el.querySelector('se-sidemenu');
     this.hasMenu = !!this.elLeftNav;
   }
 
@@ -45,16 +45,20 @@ export class HeaderComponent {
     let domain;
     if (this.domain.toLowerCase() === `ecostruxure`) {
       domain = <se-icon-ecostruxure class="header-title-type" />;
-    } else if (this.domain.toLowerCase() !== "none") {
+    } else if (this.domain.toLowerCase() !== 'none') {
       domain = <span class="header-title-type">{this.domain}</span>;
     }
     return [
       <div class="d-flex">
-        {this.hasMenu ?
+        {this.hasMenu ? (
           <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
-            <se-icon size="medium" color="primary"><span innerHTML={burgerMenu}></span></se-icon>
+            <se-icon size="medium" color="primary">
+              <span innerHTML={burgerMenu}></span>
+            </se-icon>
           </span>
-        : ''}
+        ) : (
+          ''
+        )}
         <div class="d-flex-column header-title-wrapper">
           {domain}
           <h1 class="header-title no-margin">
@@ -62,7 +66,11 @@ export class HeaderComponent {
             <span class="light">&nbsp;{title.last}</span>
           </h1>
         </div>
-        {this.project ? <span class="project-section">{this.project}</span> : ''}
+        {this.project ? (
+          <span class="project-section">{this.project}</span>
+        ) : (
+          ''
+        )}
       </div>,
       <div class="padding-container d-flex">
         <slot name="start" />
@@ -73,7 +81,7 @@ export class HeaderComponent {
       <div class="padding-container d-flex">
         <slot name="end" />
         {!this.hideSeLogo && <se-icon-schneider class="header-title-type" />}
-      </div>
+      </div>,
     ];
   }
 }

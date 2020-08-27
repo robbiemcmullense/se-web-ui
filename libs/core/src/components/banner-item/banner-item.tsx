@@ -1,9 +1,18 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+  Watch,
+} from '@stencil/core';
 
 @Component({
-  tag: "se-banner-item",
-  styleUrl: "banner-item.scss",
-  shadow: true
+  tag: 'se-banner-item',
+  styleUrl: 'banner-item.scss',
+  shadow: true,
 })
 export class BannerItemComponent {
   @Element() el: HTMLElement;
@@ -48,13 +57,13 @@ export class BannerItemComponent {
   }
 
   render() {
-
     return (
-      <Host class={{ 'active': this.active }}>
+      <Host class={{ active: this.active }}>
         <div class="image-container">
           <div
             class="image-background"
-            style={{ backgroundImage: this.imageUrl }} />
+            style={{ backgroundImage: this.imageUrl }}
+          />
           <div class="background-overlay"></div>
         </div>
         <div class="banner-section-wrapper">

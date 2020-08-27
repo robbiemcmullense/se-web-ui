@@ -1,13 +1,27 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+} from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './proxies-utils';
 
-import { Components } from '@se/web-ui'
+import { Components } from '@se/web-ui';
 
 export declare interface SeAbout extends Components.SeAbout {}
-@ProxyCmp({inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'version']})
-@Component({ selector: 'se-about', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'version'] })
+@ProxyCmp({
+  inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'version'],
+})
+@Component({
+  selector: 'se-about',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'version'],
+})
 export class SeAbout {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -17,8 +31,13 @@ export class SeAbout {
 }
 
 export declare interface SeApp extends Components.SeApp {}
-@ProxyCmp({inputs: ['option', 'theme']})
-@Component({ selector: 'se-app', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option', 'theme'] })
+@ProxyCmp({ inputs: ['option', 'theme'] })
+@Component({
+  selector: 'se-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['option', 'theme'],
+})
 export class SeApp {
   themeChanged!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -30,8 +49,15 @@ export class SeApp {
 }
 
 export declare interface SeAuthentication extends Components.SeAuthentication {}
-@ProxyCmp({inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'version']})
-@Component({ selector: 'se-authentication', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'version'] })
+@ProxyCmp({
+  inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'version'],
+})
+@Component({
+  selector: 'se-authentication',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'version'],
+})
 export class SeAuthentication {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -41,8 +67,13 @@ export class SeAuthentication {
 }
 
 export declare interface SeBanner extends Components.SeBanner {}
-@ProxyCmp({inputs: ['duration']})
-@Component({ selector: 'se-banner', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['duration'] })
+@ProxyCmp({ inputs: ['duration'] })
+@Component({
+  selector: 'se-banner',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['duration'],
+})
 export class SeBanner {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -52,8 +83,13 @@ export class SeBanner {
 }
 
 export declare interface SeBannerItem extends Components.SeBannerItem {}
-@ProxyCmp({inputs: ['active', 'imageUrl']})
-@Component({ selector: 'se-banner-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'imageUrl'] })
+@ProxyCmp({ inputs: ['active', 'imageUrl'] })
+@Component({
+  selector: 'se-banner-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['active', 'imageUrl'],
+})
 export class SeBannerItem {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -65,8 +101,45 @@ export class SeBannerItem {
 }
 
 export declare interface SeBlock extends Components.SeBlock {}
-@ProxyCmp({inputs: ['clickable', 'clickableBar', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width']})
-@Component({ selector: 'se-block', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'clickableBar', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width'] })
+@ProxyCmp({
+  inputs: [
+    'clickable',
+    'clickableBar',
+    'color',
+    'corner',
+    'display',
+    'divider',
+    'enlarged',
+    'height',
+    'loading',
+    'margin',
+    'option',
+    'outline',
+    'outlineColor',
+    'width',
+  ],
+})
+@Component({
+  selector: 'se-block',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'clickable',
+    'clickableBar',
+    'color',
+    'corner',
+    'display',
+    'divider',
+    'enlarged',
+    'height',
+    'loading',
+    'margin',
+    'option',
+    'outline',
+    'outlineColor',
+    'width',
+  ],
+})
 export class SeBlock {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -76,8 +149,13 @@ export class SeBlock {
 }
 
 export declare interface SeBlockContent extends Components.SeBlockContent {}
-@ProxyCmp({inputs: ['option']})
-@Component({ selector: 'se-block-content', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['option'] })
+@ProxyCmp({ inputs: ['option'] })
+@Component({
+  selector: 'se-block-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['option'],
+})
 export class SeBlockContent {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -87,8 +165,13 @@ export class SeBlockContent {
 }
 
 export declare interface SeBlockFooter extends Components.SeBlockFooter {}
-@ProxyCmp({inputs: ['direction', 'divider', 'option']})
-@Component({ selector: 'se-block-footer', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['direction', 'divider', 'option'] })
+@ProxyCmp({ inputs: ['direction', 'divider', 'option'] })
+@Component({
+  selector: 'se-block-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['direction', 'divider', 'option'],
+})
 export class SeBlockFooter {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -98,8 +181,13 @@ export class SeBlockFooter {
 }
 
 export declare interface SeBlockHeader extends Components.SeBlockHeader {}
-@ProxyCmp({inputs: ['divider', 'option']})
-@Component({ selector: 'se-block-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['divider', 'option'] })
+@ProxyCmp({ inputs: ['divider', 'option'] })
+@Component({
+  selector: 'se-block-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['divider', 'option'],
+})
 export class SeBlockHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -109,8 +197,13 @@ export class SeBlockHeader {
 }
 
 export declare interface SeBreadcrumb extends Components.SeBreadcrumb {}
-@ProxyCmp({inputs: ['canSelectLast']})
-@Component({ selector: 'se-breadcrumb', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canSelectLast'] })
+@ProxyCmp({ inputs: ['canSelectLast'] })
+@Component({
+  selector: 'se-breadcrumb',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['canSelectLast'],
+})
 export class SeBreadcrumb {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -120,8 +213,13 @@ export class SeBreadcrumb {
 }
 
 export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
-@ProxyCmp({inputs: ['canSelect', 'href', 'isLast']})
-@Component({ selector: 'se-breadcrumb-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canSelect', 'href', 'isLast'] })
+@ProxyCmp({ inputs: ['canSelect', 'href', 'isLast'] })
+@Component({
+  selector: 'se-breadcrumb-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['canSelect', 'href', 'isLast'],
+})
 export class SeBreadcrumbItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -131,8 +229,44 @@ export class SeBreadcrumbItem {
 }
 
 export declare interface SeButton extends Components.SeButton {}
-@ProxyCmp({inputs: ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'iconOnly', 'option', 'padding', 'selected', 'size', 'type', 'value'], 'methods': ['setDisabled', 'setGrouped']})
-@Component({ selector: 'se-button', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'iconOnly', 'option', 'padding', 'selected', 'size', 'type', 'value'] })
+@ProxyCmp({
+  inputs: [
+    'block',
+    'caption',
+    'color',
+    'disabled',
+    'icon',
+    'iconColor',
+    'iconOnly',
+    'option',
+    'padding',
+    'selected',
+    'size',
+    'type',
+    'value',
+  ],
+  methods: ['setDisabled', 'setGrouped'],
+})
+@Component({
+  selector: 'se-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'block',
+    'caption',
+    'color',
+    'disabled',
+    'icon',
+    'iconColor',
+    'iconOnly',
+    'option',
+    'padding',
+    'selected',
+    'size',
+    'type',
+    'value',
+  ],
+})
 export class SeButton {
   didClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -144,8 +278,42 @@ export class SeButton {
 }
 
 export declare interface SeCheckbox extends Components.SeCheckbox {}
-@ProxyCmp({inputs: ['color', 'disabled', 'header', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'], 'methods': ['setRequired']})
-@Component({ selector: 'se-checkbox', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'header', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'] })
+@ProxyCmp({
+  inputs: [
+    'color',
+    'disabled',
+    'header',
+    'label',
+    'labelPos',
+    'option',
+    'padding',
+    'required',
+    'selected',
+    'textOff',
+    'textOn',
+    'value',
+  ],
+  methods: ['setRequired'],
+})
+@Component({
+  selector: 'se-checkbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'color',
+    'disabled',
+    'header',
+    'label',
+    'labelPos',
+    'option',
+    'padding',
+    'required',
+    'selected',
+    'textOff',
+    'textOn',
+    'value',
+  ],
+})
 export class SeCheckbox {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -157,8 +325,31 @@ export class SeCheckbox {
 }
 
 export declare interface SeChip extends Components.SeChip {}
-@ProxyCmp({inputs: ['block', 'canClose', 'color', 'disabled', 'selected', 'size', 'value']})
-@Component({ selector: 'se-chip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'canClose', 'color', 'disabled', 'selected', 'size', 'value'] })
+@ProxyCmp({
+  inputs: [
+    'block',
+    'canClose',
+    'color',
+    'disabled',
+    'selected',
+    'size',
+    'value',
+  ],
+})
+@Component({
+  selector: 'se-chip',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'block',
+    'canClose',
+    'color',
+    'disabled',
+    'selected',
+    'size',
+    'value',
+  ],
+})
 export class SeChip {
   didClose!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -170,8 +361,33 @@ export class SeChip {
 }
 
 export declare interface SeContainer extends Components.SeContainer {}
-@ProxyCmp({inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'padding', 'position', 'rowSize']})
-@Component({ selector: 'se-container', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'padding', 'position', 'rowSize'] })
+@ProxyCmp({
+  inputs: [
+    'color',
+    'columnSize',
+    'direction',
+    'display',
+    'option',
+    'padding',
+    'position',
+    'rowSize',
+  ],
+})
+@Component({
+  selector: 'se-container',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'color',
+    'columnSize',
+    'direction',
+    'display',
+    'option',
+    'padding',
+    'position',
+    'rowSize',
+  ],
+})
 export class SeContainer {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -181,8 +397,16 @@ export class SeContainer {
 }
 
 export declare interface SeDialog extends Components.SeDialog {}
-@ProxyCmp({inputs: ['canBackdrop', 'color', 'open', 'size'], 'methods': ['backdropClicked']})
-@Component({ selector: 'se-dialog', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canBackdrop', 'color', 'open', 'size'] })
+@ProxyCmp({
+  inputs: ['canBackdrop', 'color', 'open', 'size'],
+  methods: ['backdropClicked'],
+})
+@Component({
+  selector: 'se-dialog',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['canBackdrop', 'color', 'open', 'size'],
+})
 export class SeDialog {
   backdrop!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
@@ -195,8 +419,13 @@ export class SeDialog {
 }
 
 export declare interface SeDialogContent extends Components.SeDialogContent {}
-@ProxyCmp({inputs: ['icon', 'iconColor', 'option']})
-@Component({ selector: 'se-dialog-content', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['icon', 'iconColor', 'option'] })
+@ProxyCmp({ inputs: ['icon', 'iconColor', 'option'] })
+@Component({
+  selector: 'se-dialog-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['icon', 'iconColor', 'option'],
+})
 export class SeDialogContent {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -207,7 +436,11 @@ export class SeDialogContent {
 
 export declare interface SeDialogFooter extends Components.SeDialogFooter {}
 
-@Component({ selector: 'se-dialog-footer', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+@Component({
+  selector: 'se-dialog-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+})
 export class SeDialogFooter {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -217,8 +450,13 @@ export class SeDialogFooter {
 }
 
 export declare interface SeDialogHeader extends Components.SeDialogHeader {}
-@ProxyCmp({inputs: ['color']})
-@Component({ selector: 'se-dialog-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color'] })
+@ProxyCmp({ inputs: ['color'] })
+@Component({
+  selector: 'se-dialog-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color'],
+})
 export class SeDialogHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -228,8 +466,13 @@ export class SeDialogHeader {
 }
 
 export declare interface SeDivider extends Components.SeDivider {}
-@ProxyCmp({inputs: ['color', 'option']})
-@Component({ selector: 'se-divider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option'] })
+@ProxyCmp({ inputs: ['color', 'option'] })
+@Component({
+  selector: 'se-divider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'option'],
+})
 export class SeDivider {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -239,8 +482,16 @@ export class SeDivider {
 }
 
 export declare interface SeDropdown extends Components.SeDropdown {}
-@ProxyCmp({inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'], 'methods': ['open', 'close']})
-@Component({ selector: 'se-dropdown', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'] })
+@ProxyCmp({
+  inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'],
+  methods: ['open', 'close'],
+})
+@Component({
+  selector: 'se-dropdown',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'],
+})
 export class SeDropdown {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
@@ -254,8 +505,16 @@ export class SeDropdown {
 }
 
 export declare interface SeFab extends Components.SeFab {}
-@ProxyCmp({inputs: ['color', 'icon', 'option', 'overlay', 'position'], 'methods': ['toggleAction']})
-@Component({ selector: 'se-fab', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'icon', 'option', 'overlay', 'position'] })
+@ProxyCmp({
+  inputs: ['color', 'icon', 'option', 'overlay', 'position'],
+  methods: ['toggleAction'],
+})
+@Component({
+  selector: 'se-fab',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'icon', 'option', 'overlay', 'position'],
+})
 export class SeFab {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -265,8 +524,13 @@ export class SeFab {
 }
 
 export declare interface SeFabItem extends Components.SeFabItem {}
-@ProxyCmp({inputs: ['icon']})
-@Component({ selector: 'se-fab-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['icon'] })
+@ProxyCmp({ inputs: ['icon'] })
+@Component({
+  selector: 'se-fab-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['icon'],
+})
 export class SeFabItem {
   didClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -278,8 +542,39 @@ export class SeFabItem {
 }
 
 export declare interface SeFormField extends Components.SeFormField {}
-@ProxyCmp({inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value']})
-@Component({ selector: 'se-form-field', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value'] })
+@ProxyCmp({
+  inputs: [
+    'block',
+    'disabled',
+    'label',
+    'labelAlign',
+    'labelWidth',
+    'option',
+    'padding',
+    'required',
+    'status',
+    'type',
+    'value',
+  ],
+})
+@Component({
+  selector: 'se-form-field',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'block',
+    'disabled',
+    'label',
+    'labelAlign',
+    'labelWidth',
+    'option',
+    'padding',
+    'required',
+    'status',
+    'type',
+    'value',
+  ],
+})
 export class SeFormField {
   didSubmit!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -291,8 +586,13 @@ export class SeFormField {
 }
 
 export declare interface SeHeader extends Components.SeHeader {}
-@ProxyCmp({inputs: ['appTitle', 'domain', 'hideSeLogo', 'project']})
-@Component({ selector: 'se-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['appTitle', 'domain', 'hideSeLogo', 'project'] })
+@ProxyCmp({ inputs: ['appTitle', 'domain', 'hideSeLogo', 'project'] })
+@Component({
+  selector: 'se-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['appTitle', 'domain', 'hideSeLogo', 'project'],
+})
 export class SeHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -302,8 +602,13 @@ export class SeHeader {
 }
 
 export declare interface SeIcon extends Components.SeIcon {}
-@ProxyCmp({inputs: ['color', 'disabled', 'option', 'size']})
-@Component({ selector: 'se-icon', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'option', 'size'] })
+@ProxyCmp({ inputs: ['color', 'disabled', 'option', 'size'] })
+@Component({
+  selector: 'se-icon',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'disabled', 'option', 'size'],
+})
 export class SeIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -312,9 +617,15 @@ export class SeIcon {
   }
 }
 
-export declare interface SeIconEcostruxure extends Components.SeIconEcostruxure {}
-@ProxyCmp({inputs: ['color', 'size']})
-@Component({ selector: 'se-icon-ecostruxure', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'size'] })
+export declare interface SeIconEcostruxure
+  extends Components.SeIconEcostruxure {}
+@ProxyCmp({ inputs: ['color', 'size'] })
+@Component({
+  selector: 'se-icon-ecostruxure',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'size'],
+})
 export class SeIconEcostruxure {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -324,8 +635,13 @@ export class SeIconEcostruxure {
 }
 
 export declare interface SeIconLifeison extends Components.SeIconLifeison {}
-@ProxyCmp({inputs: ['color']})
-@Component({ selector: 'se-icon-lifeison', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color'] })
+@ProxyCmp({ inputs: ['color'] })
+@Component({
+  selector: 'se-icon-lifeison',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color'],
+})
 export class SeIconLifeison {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -336,7 +652,11 @@ export class SeIconLifeison {
 
 export declare interface SeIconSchneider extends Components.SeIconSchneider {}
 
-@Component({ selector: 'se-icon-schneider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+@Component({
+  selector: 'se-icon-schneider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+})
 export class SeIconSchneider {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -346,8 +666,13 @@ export class SeIconSchneider {
 }
 
 export declare interface SeLink extends Components.SeLink {}
-@ProxyCmp({inputs: ['disabled', 'option', 'url']})
-@Component({ selector: 'se-link', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'option', 'url'] })
+@ProxyCmp({ inputs: ['disabled', 'option', 'url'] })
+@Component({
+  selector: 'se-link',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['disabled', 'option', 'url'],
+})
 export class SeLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -357,8 +682,13 @@ export class SeLink {
 }
 
 export declare interface SeList extends Components.SeList {}
-@ProxyCmp({inputs: ['canCollapse', 'option']})
-@Component({ selector: 'se-list', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'option'] })
+@ProxyCmp({ inputs: ['canCollapse', 'option'] })
+@Component({
+  selector: 'se-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['canCollapse', 'option'],
+})
 export class SeList {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -368,8 +698,38 @@ export class SeList {
 }
 
 export declare interface SeListGroup extends Components.SeListGroup {}
-@ProxyCmp({inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild'], 'methods': ['toggleCollapseTreeview', 'focusElement']})
-@Component({ selector: 'se-list-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild'] })
+@ProxyCmp({
+  inputs: [
+    'canCollapse',
+    'collapsed',
+    'description',
+    'icon',
+    'iconColor',
+    'indentation',
+    'item',
+    'option',
+    'selected',
+    'selectedChild',
+  ],
+  methods: ['toggleCollapseTreeview', 'focusElement'],
+})
+@Component({
+  selector: 'se-list-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'canCollapse',
+    'collapsed',
+    'description',
+    'icon',
+    'iconColor',
+    'indentation',
+    'item',
+    'option',
+    'selected',
+    'selectedChild',
+  ],
+})
 export class SeListGroup {
   didGroupClick!: EventEmitter<CustomEvent>;
   didGroupCollapse!: EventEmitter<CustomEvent>;
@@ -382,8 +742,34 @@ export class SeListGroup {
 }
 
 export declare interface SeListItem extends Components.SeListItem {}
-@ProxyCmp({inputs: ['description', 'href', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'], 'methods': ['focusElement']})
-@Component({ selector: 'se-list-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['description', 'href', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'] })
+@ProxyCmp({
+  inputs: [
+    'description',
+    'href',
+    'icon',
+    'iconColor',
+    'indentation',
+    'item',
+    'option',
+    'selected',
+  ],
+  methods: ['focusElement'],
+})
+@Component({
+  selector: 'se-list-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'description',
+    'href',
+    'icon',
+    'iconColor',
+    'indentation',
+    'item',
+    'option',
+    'selected',
+  ],
+})
 export class SeListItem {
   didSelectedChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -395,8 +781,13 @@ export class SeListItem {
 }
 
 export declare interface SeLoading extends Components.SeLoading {}
-@ProxyCmp({inputs: ['color', 'fullPage', 'loading', 'option']})
-@Component({ selector: 'se-loading', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'fullPage', 'loading', 'option'] })
+@ProxyCmp({ inputs: ['color', 'fullPage', 'loading', 'option', 'overlay'] })
+@Component({
+  selector: 'se-loading',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'fullPage', 'loading', 'option', 'overlay'],
+})
 export class SeLoading {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -406,8 +797,39 @@ export class SeLoading {
 }
 
 export declare interface SePagination extends Components.SePagination {}
-@ProxyCmp({inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value']})
-@Component({ selector: 'se-pagination', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value'] })
+@ProxyCmp({
+  inputs: [
+    'hideEdge',
+    'labelFirst',
+    'labelLast',
+    'labelNext',
+    'labelPerPage',
+    'labelPrev',
+    'labelValue',
+    'perPage',
+    'perPageList',
+    'total',
+    'value',
+  ],
+})
+@Component({
+  selector: 'se-pagination',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'hideEdge',
+    'labelFirst',
+    'labelLast',
+    'labelNext',
+    'labelPerPage',
+    'labelPrev',
+    'labelValue',
+    'perPage',
+    'perPageList',
+    'total',
+    'value',
+  ],
+})
 export class SePagination {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -419,8 +841,36 @@ export class SePagination {
 }
 
 export declare interface SeRadio extends Components.SeRadio {}
-@ProxyCmp({inputs: ['color', 'disabled', 'label', 'labelPos', 'name', 'padding', 'required', 'selected', 'value'], 'methods': ['setRequired']})
-@Component({ selector: 'se-radio', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'disabled', 'label', 'labelPos', 'name', 'padding', 'required', 'selected', 'value'] })
+@ProxyCmp({
+  inputs: [
+    'color',
+    'disabled',
+    'label',
+    'labelPos',
+    'name',
+    'padding',
+    'required',
+    'selected',
+    'value',
+  ],
+  methods: ['setRequired'],
+})
+@Component({
+  selector: 'se-radio',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'color',
+    'disabled',
+    'label',
+    'labelPos',
+    'name',
+    'padding',
+    'required',
+    'selected',
+    'value',
+  ],
+})
 export class SeRadio {
   didCheck!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -432,8 +882,13 @@ export class SeRadio {
 }
 
 export declare interface SeRadioGroup extends Components.SeRadioGroup {}
-@ProxyCmp({inputs: ['color', 'direction', 'disabled', 'size', 'value']})
-@Component({ selector: 'se-radio-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'direction', 'disabled', 'size', 'value'] })
+@ProxyCmp({ inputs: ['color', 'direction', 'disabled', 'size', 'value'] })
+@Component({
+  selector: 'se-radio-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'direction', 'disabled', 'size', 'value'],
+})
 export class SeRadioGroup {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -445,8 +900,13 @@ export class SeRadioGroup {
 }
 
 export declare interface SeSidemenu extends Components.SeSidemenu {}
-@ProxyCmp({inputs: ['label', 'link'], 'methods': ['toggle']})
-@Component({ selector: 'se-sidemenu', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['label', 'link'] })
+@ProxyCmp({ inputs: ['label', 'link'], methods: ['toggle'] })
+@Component({
+  selector: 'se-sidemenu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['label', 'link'],
+})
 export class SeSidemenu {
   toggled!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -458,8 +918,13 @@ export class SeSidemenu {
 }
 
 export declare interface SeSidemenuItem extends Components.SeSidemenuItem {}
-@ProxyCmp({inputs: ['active', 'item']})
-@Component({ selector: 'se-sidemenu-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'item'] })
+@ProxyCmp({ inputs: ['active', 'item'] })
+@Component({
+  selector: 'se-sidemenu-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['active', 'item'],
+})
 export class SeSidemenuItem {
   didClick!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -471,8 +936,16 @@ export class SeSidemenuItem {
 }
 
 export declare interface SeSlider extends Components.SeSlider {}
-@ProxyCmp({inputs: ['disabled', 'label', 'max', 'min', 'value'], 'methods': ['setDisabled']})
-@Component({ selector: 'se-slider', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['disabled', 'label', 'max', 'min', 'value'] })
+@ProxyCmp({
+  inputs: ['disabled', 'label', 'max', 'min', 'value'],
+  methods: ['setDisabled'],
+})
+@Component({
+  selector: 'se-slider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['disabled', 'label', 'max', 'min', 'value'],
+})
 export class SeSlider {
   didChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -484,8 +957,31 @@ export class SeSlider {
 }
 
 export declare interface SeSnackbar extends Components.SeSnackbar {}
-@ProxyCmp({inputs: ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type']})
-@Component({ selector: 'se-snackbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type'] })
+@ProxyCmp({
+  inputs: [
+    'actionText',
+    'canClose',
+    'duration',
+    'icon',
+    'message',
+    'open',
+    'type',
+  ],
+})
+@Component({
+  selector: 'se-snackbar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: [
+    'actionText',
+    'canClose',
+    'duration',
+    'icon',
+    'message',
+    'open',
+    'type',
+  ],
+})
 export class SeSnackbar {
   didClose!: EventEmitter<CustomEvent>;
   actionClicked!: EventEmitter<CustomEvent>;
@@ -498,8 +994,16 @@ export class SeSnackbar {
 }
 
 export declare interface SeStepper extends Components.SeStepper {}
-@ProxyCmp({inputs: ['block', 'color', 'interactive', 'linear'], 'methods': ['reset', 'previous', 'next']})
-@Component({ selector: 'se-stepper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['block', 'color', 'interactive', 'linear'] })
+@ProxyCmp({
+  inputs: ['block', 'color', 'interactive', 'linear'],
+  methods: ['reset', 'previous', 'next'],
+})
+@Component({
+  selector: 'se-stepper',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['block', 'color', 'interactive', 'linear'],
+})
 export class SeStepper {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -509,8 +1013,13 @@ export class SeStepper {
 }
 
 export declare interface SeStepperItem extends Components.SeStepperItem {}
-@ProxyCmp({inputs: ['active', 'interactive', 'label', 'validated']})
-@Component({ selector: 'se-stepper-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['active', 'interactive', 'label', 'validated'] })
+@ProxyCmp({ inputs: ['active', 'interactive', 'label', 'validated'] })
+@Component({
+  selector: 'se-stepper-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['active', 'interactive', 'label', 'validated'],
+})
 export class SeStepperItem {
   didValidate!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
@@ -522,8 +1031,13 @@ export class SeStepperItem {
 }
 
 export declare interface SeTabbar extends Components.SeTabbar {}
-@ProxyCmp({inputs: ['color', 'option', 'overflow']})
-@Component({ selector: 'se-tabbar', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['color', 'option', 'overflow'] })
+@ProxyCmp({ inputs: ['color', 'option', 'overflow'] })
+@Component({
+  selector: 'se-tabbar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'option', 'overflow'],
+})
 export class SeTabbar {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -534,7 +1048,11 @@ export class SeTabbar {
 
 export declare interface SeTable extends Components.SeTable {}
 
-@Component({ selector: 'se-table', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+@Component({
+  selector: 'se-table',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+})
 export class SeTable {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -544,8 +1062,13 @@ export class SeTable {
 }
 
 export declare interface SeTableGroup extends Components.SeTableGroup {}
-@ProxyCmp({inputs: ['selectable', 'selected']})
-@Component({ selector: 'se-table-group', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['selectable', 'selected'] })
+@ProxyCmp({ inputs: ['selectable', 'selected'] })
+@Component({
+  selector: 'se-table-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['selectable', 'selected'],
+})
 export class SeTableGroup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -554,9 +1077,14 @@ export class SeTableGroup {
   }
 }
 
-export declare interface SeTableGroupHeader extends Components.SeTableGroupHeader {}
+export declare interface SeTableGroupHeader
+  extends Components.SeTableGroupHeader {}
 
-@Component({ selector: 'se-table-group-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+@Component({
+  selector: 'se-table-group-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+})
 export class SeTableGroupHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -566,8 +1094,13 @@ export class SeTableGroupHeader {
 }
 
 export declare interface SeTableItem extends Components.SeTableItem {}
-@ProxyCmp({inputs: ['clickable', 'flex', 'minWidth', 'option', 'width']})
-@Component({ selector: 'se-table-item', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'minWidth', 'option', 'width'] })
+@ProxyCmp({ inputs: ['clickable', 'flex', 'minWidth', 'option', 'width'] })
+@Component({
+  selector: 'se-table-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['clickable', 'flex', 'minWidth', 'option', 'width'],
+})
 export class SeTableItem {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -576,9 +1109,15 @@ export class SeTableItem {
   }
 }
 
-export declare interface SeTableItemHeader extends Components.SeTableItemHeader {}
-@ProxyCmp({inputs: ['clickable', 'flex', 'minWidth', 'sort', 'width']})
-@Component({ selector: 'se-table-item-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'flex', 'minWidth', 'sort', 'width'] })
+export declare interface SeTableItemHeader
+  extends Components.SeTableItemHeader {}
+@ProxyCmp({ inputs: ['clickable', 'flex', 'minWidth', 'sort', 'width'] })
+@Component({
+  selector: 'se-table-item-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['clickable', 'flex', 'minWidth', 'sort', 'width'],
+})
 export class SeTableItemHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -588,8 +1127,13 @@ export class SeTableItemHeader {
 }
 
 export declare interface SeTooltip extends Components.SeTooltip {}
-@ProxyCmp({inputs: ['action', 'position'], 'methods': ['open', 'close']})
-@Component({ selector: 'se-tooltip', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['action', 'position'] })
+@ProxyCmp({ inputs: ['action', 'position'], methods: ['open', 'close'] })
+@Component({
+  selector: 'se-tooltip',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['action', 'position'],
+})
 export class SeTooltip {
   didOpen!: EventEmitter<CustomEvent>;
   didClose!: EventEmitter<CustomEvent>;
@@ -603,8 +1147,13 @@ export class SeTooltip {
 }
 
 export declare interface SeTooltipContent extends Components.SeTooltipContent {}
-@ProxyCmp({inputs: ['icon']})
-@Component({ selector: 'se-tooltip-content', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['icon'] })
+@ProxyCmp({ inputs: ['icon'] })
+@Component({
+  selector: 'se-tooltip-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['icon'],
+})
 export class SeTooltipContent {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -615,7 +1164,11 @@ export class SeTooltipContent {
 
 export declare interface SeTooltipFooter extends Components.SeTooltipFooter {}
 
-@Component({ selector: 'se-tooltip-footer', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' })
+@Component({
+  selector: 'se-tooltip-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+})
 export class SeTooltipFooter {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -625,8 +1178,13 @@ export class SeTooltipFooter {
 }
 
 export declare interface SeTooltipHeader extends Components.SeTooltipHeader {}
-@ProxyCmp({inputs: ['icon']})
-@Component({ selector: 'se-tooltip-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['icon'] })
+@ProxyCmp({ inputs: ['icon'] })
+@Component({
+  selector: 'se-tooltip-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['icon'],
+})
 export class SeTooltipHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -636,8 +1194,13 @@ export class SeTooltipHeader {
 }
 
 export declare interface SeVisualLinear extends Components.SeVisualLinear {}
-@ProxyCmp({inputs: ['label', 'option', 'percentage', 'secolor', 'value']})
-@Component({ selector: 'se-visual-linear', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['label', 'option', 'percentage', 'secolor', 'value'] })
+@ProxyCmp({ inputs: ['label', 'option', 'percentage', 'secolor', 'value'] })
+@Component({
+  selector: 'se-visual-linear',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['label', 'option', 'percentage', 'secolor', 'value'],
+})
 export class SeVisualLinear {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
@@ -647,8 +1210,13 @@ export class SeVisualLinear {
 }
 
 export declare interface SeVisualRadial extends Components.SeVisualRadial {}
-@ProxyCmp({inputs: ['label', 'percentage', 'secolor', 'size', 'value']})
-@Component({ selector: 'se-visual-radial', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['label', 'percentage', 'secolor', 'size', 'value'] })
+@ProxyCmp({ inputs: ['label', 'percentage', 'secolor', 'size', 'value'] })
+@Component({
+  selector: 'se-visual-radial',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['label', 'percentage', 'secolor', 'size', 'value'],
+})
 export class SeVisualRadial {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

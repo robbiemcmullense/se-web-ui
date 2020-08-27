@@ -1,9 +1,17 @@
-import { Component, Element, h, Prop, Event, EventEmitter, Method } from '@stencil/core';
+import {
+  Component,
+  Element,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  Method,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-slider',
   styleUrl: 'slider.scss',
-  shadow: true
+  shadow: true,
 })
 export class SliderComponent {
   sliderElement?: HTMLInputElement;
@@ -14,23 +22,23 @@ export class SliderComponent {
    */
   @Prop({ mutable: true }) value = 0;
   /**
-  * Indicates the minimum value of your slider.
-  * The default value is `0`.
-  */
+   * Indicates the minimum value of your slider.
+   * The default value is `0`.
+   */
   @Prop() min = 0;
   /**
-  * Indicates the maximum value of your slider.
-  * The default value is `100`.
-  */
+   * Indicates the maximum value of your slider.
+   * The default value is `100`.
+   */
   @Prop() max = 100;
   /**
    * The label of the slider that will be attached to the input.
    */
   @Prop() label: string;
   /**
-  * Indicates if your slider is disabled.
-  * The default setting is `false`.
-  */
+   * Indicates if your slider is disabled.
+   * The default setting is `false`.
+   */
   @Prop({ mutable: true }) disabled = false;
   /**
    * Event emitted when the slider has been changed.
@@ -46,8 +54,10 @@ export class SliderComponent {
   }
 
   setSliderPosition() {
-    const rangeInterval = (Number(this.max) - Number(this.min));
-    const rangePercent = (Number(this.sliderElement.value) - Number(this.min)) / rangeInterval * 100;
+    const rangeInterval = Number(this.max) - Number(this.min);
+    const rangePercent =
+      ((Number(this.sliderElement.value) - Number(this.min)) / rangeInterval) *
+      100;
     this.sliderElement.style.setProperty('--sx', rangePercent + '%');
   }
 
@@ -69,8 +79,17 @@ export class SliderComponent {
     return (
       <label class="slider-container">
         {this.label}
-        <input type="range" min={this.min || "0"} max={this.max} value={val || "0"} disabled={this.disabled} ref={el => this.sliderElement = el as HTMLInputElement} id={id ? `wc-${id}`: ''} onChange={() => this.handleEvent()} />
+        <input
+          type="range"
+          min={this.min || '0'}
+          max={this.max}
+          value={val || '0'}
+          disabled={this.disabled}
+          ref={(el) => (this.sliderElement = el as HTMLInputElement)}
+          id={id ? `wc-${id}` : ''}
+          onChange={() => this.handleEvent()}
+        />
       </label>
-    )
+    );
   }
 }

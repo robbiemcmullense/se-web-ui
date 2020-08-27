@@ -1,9 +1,9 @@
-import { Component, Element, h, Prop, Host } from "@stencil/core";
+import { Component, Element, h, Prop, Host } from '@stencil/core';
 
 @Component({
-  tag: "se-block-header",
-  styleUrl: "block-header.scss",
-  shadow: true
+  tag: 'se-block-header',
+  styleUrl: 'block-header.scss',
+  shadow: true,
 })
 export class BlockHeader {
   @Element() el: HTMLElement;
@@ -24,11 +24,13 @@ export class BlockHeader {
       <Host>
         <div class={['se-block-header', this.option].join(' ')}>
           <slot name="start"></slot>
-          <div class="flex middle"><slot></slot></div>
+          <div class="flex middle">
+            <slot></slot>
+          </div>
           <slot name="end"></slot>
         </div>
         {this.divider ? <se-divider></se-divider> : null}
       </Host>
-    )
+    );
   }
 }
