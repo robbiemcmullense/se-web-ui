@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalExampleComponent } from './modal-example.component';
-import { MatDialogRef } from '@angular/material/dialog';
+import { ModalTableComponent } from './modal-example.component';
+import { SeWebModule, DialogService } from '@se/web-ui-angular';
 
-describe('ModalExampleComponent', () => {
-  let component: ModalExampleComponent;
-  let fixture: ComponentFixture<ModalExampleComponent>;
+describe('ModalTableComponent', () => {
+  let component: ModalTableComponent;
+  let fixture: ComponentFixture<ModalTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ModalExampleComponent],
-      imports: [],
-      providers: [{ provide: MatDialogRef }]
+      declarations: [ModalTableComponent],
+      imports: [SeWebModule],
+      providers: [{ provide: DialogService }],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalExampleComponent);
+    fixture = TestBed.createComponent(ModalTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
