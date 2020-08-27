@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                                                                                                                                                          | Type                                                    | Default         |
@@ -13,26 +14,26 @@
 | `display`      | `display`       | Defines how to display the element. `flex` is the default display. `block` helps in specific cases. Make sure you know what you are doing.                                                                                                                                                                                                                                                           | `"block" \| "flex" \| "grid"`                           | `'flex'`        |
 | `divider`      | `divider`       | Defines whether or not a divider will be applied to the se-block header and footer. `true` will add a divider to the se-block-header and se-block-footer, if they are present. `false` will remove dividers on the se-block header and se-block-footer, if they are present.                                                                                                                         | `boolean`                                               | `false`         |
 | `enlarged`     | `enlarged`      | When the display is set to `grid`, this property determines if the block should have double the width and height of a standard grid item. Default setting is `false`, spanning 1 row and 1 column (1/1). `true` spans 2 rows and 2 columns (2/2). `vertical` spans 2 rows (2/1). `horizontal` spans 2 columns (1/2).                                                                                 | `"horizontal" \| "vertical" \| boolean`                 | `false`         |
-| `height`       | `height`        | Defines the specific height of a block. Useful to create easy layouts under `se-container` which uses `flex` by default.                                                                                                                                                                                                                                                                             | `string`                                                | `undefined`     |
-| `loading`      | `loading`       | Displays the loading icon if set to `true`. Default setting is `false`.                                                                                                                                                                                                                                                                                                                              | `boolean`                                               | `false`         |
+| `height`       | `height`        | Defines the specific height of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.                                                                                                                                                                                                                                                                            | `string`                                                | `undefined`     |
+| `loading`      | `loading`       | Displays the loading icon if set to `true`.  Default setting is `false`.                                                                                                                                                                                                                                                                                                                             | `boolean`                                               | `false`         |
 | `margin`       | `margin`        | Defines the spacing around the outside edge of a block. Default `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.                                                                                                                                                                                                                                                   | `"large" \| "medium" \| "none" \| "small" \| "xlarge"`  | `undefined`     |
 | `option`       | `option`        | Defines the visual appearance of a block. Default setting is `basic`, which will remove any spacing. `widget` will create a flat widget look and feel with a `medium` margin around it. `card` will create a card look and feel with rounded corners, and with a `large` margin around it. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated. | `"basic" \| "card" \| "card-old" \| "fill" \| "widget"` | `'basic'`       |
 | `outline`      | `outline`       | Defines the se-block outline. Default setting is `false`. Setting this property to `true` will add a 1px border.                                                                                                                                                                                                                                                                                     | `boolean`                                               | `false`         |
 | `outlineColor` | `outline-color` | Defines the se-block outline color. Default setting is `standard`, which renders the outline with the `$se-super-light-grey` color. `primary` defines the outline color as `$se-life-green`, used primarily for technical applications when the block is selected. `secondary` defines the outline color as `$se-sky-blue`.                                                                          | `"primary" \| "secondary" \| "standard"`                | `'standard'`    |
-| `width`        | `width`         | Defines the specific width of a block. Useful to create easy layouts under `se-container` which uses `flex` by default.                                                                                                                                                                                                                                                                              | `string`                                                | `undefined`     |
+| `width`        | `width`         | Defines the specific width of a block.  Useful to create easy layouts under `se-container` which uses `flex` by default.                                                                                                                                                                                                                                                                             | `string`                                                | `undefined`     |
+
 
 ## Dependencies
 
 ### Used by
 
-- [se-sidemenu](../sidemenu)
+ - [se-sidemenu](../sidemenu)
 
 ### Depends on
 
 - [se-loading](../loading)
 
 ### Graph
-
 ```mermaid
 graph TD;
   se-block --> se-loading
@@ -40,6 +41,6 @@ graph TD;
   style se-block fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

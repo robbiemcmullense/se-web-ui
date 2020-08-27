@@ -6,6 +6,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property   | Attribute   | Description                                                                                                                                                                                             | Type                       | Default      |
@@ -16,20 +17,20 @@
 | `option`   | `option`    | Defines the visual display of the loader. `standard` is the default option, and displays a spinning green circle. `dialog` gives the loading icon a look-and-feel that it is within a popup dialog box. | `"dialog" \| "standard"`   | `'standard'` |
 | `overlay`  | `overlay`   | Defines ig there is a dimming overlay effect on behind the loading spinner.                                                                                                                             | `boolean`                  | `undefined`  |
 
+
 ## Dependencies
 
 ### Used by
 
-- [se-block](../block)
+ - [se-block](../block)
 
 ### Graph
-
 ```mermaid
 graph TD;
   se-block --> se-loading
   style se-loading fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
