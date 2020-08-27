@@ -204,7 +204,7 @@ export class ButtonComponent {
             [color]: true,
             [size]: true,
             [option]: true,
-            selected: selected,
+            selected,
             iconOnly: isIconOnly,
           }}
         >
