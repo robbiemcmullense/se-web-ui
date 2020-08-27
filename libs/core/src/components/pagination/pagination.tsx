@@ -35,7 +35,7 @@ export class PaginationComponent {
   componentDidLoad() {
     if (this.total === null) {
       console.warn(
-        "[se-pagination] component needs to have 'total-items' attribute configured."
+        `[se-pagination] component needs to have [total] attribute configured.`
       );
     }
 
