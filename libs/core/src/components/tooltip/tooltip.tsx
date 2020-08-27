@@ -147,8 +147,8 @@ export class TooltipComponent {
       >
         <div
           onClick={
-            this.action == 'click'
-              ? (ev) => {
+            this.action === 'click'
+              ? ev => {
                   this._toggle(ev);
                 }
               : () => {}

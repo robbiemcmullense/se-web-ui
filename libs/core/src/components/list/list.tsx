@@ -73,8 +73,8 @@ export class ListComponent {
     const elms: HTMLSeListItemElement[] = Array.from(
       this.el.querySelectorAll('se-list-group, se-list-item')
     );
-    const visibles = elms.filter((item) => isVisible(item, true, true));
-    const index = visibles.findIndex((el) => el === document.activeElement);
+    const visibles = elms.filter(item => isVisible(item, true, true));
+    const index = visibles.findIndex(el => el === document.activeElement);
     const nextStep = Math.min(Math.max(0, index + step), visibles.length);
     visibles[nextStep].focusElement();
   }

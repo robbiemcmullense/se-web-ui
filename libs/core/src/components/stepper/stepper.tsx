@@ -144,7 +144,7 @@ export class StepperComponent {
               disabled: !this.checkIfPreviousItemValidated(item),
               readonly: isReadOnly,
             }}
-            onClick={(event) => {
+            onClick={event => {
               if (isReadOnly) {
                 event.preventDefault();
                 return;
@@ -173,8 +173,8 @@ export class StepperComponent {
   }
 
   watchItemList() {
-    this.observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
+    this.observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
         if (mutation.addedNodes.length) {
           this.setItemsArray();
         }

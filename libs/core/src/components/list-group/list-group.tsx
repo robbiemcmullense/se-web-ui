@@ -162,7 +162,7 @@ export class ListGroupComponent {
           aria-expanded={this.collapsed}
           title={title}
           id={id ? `wc-${id}` : ''}
-          ref={(el) => (this.buttonElm = el)}
+          ref={el => (this.buttonElm = el)}
           class={{
             'se-list-group': true,
             [this.option]: !!this.option,
@@ -184,7 +184,7 @@ export class ListGroupComponent {
             <se-icon
               class="treeview-collapse-icon"
               color="standard"
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation();
                 this.toggleCollapseTreeview();
               }}

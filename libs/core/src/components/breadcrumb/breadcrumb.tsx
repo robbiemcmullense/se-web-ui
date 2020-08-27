@@ -27,8 +27,8 @@ export class BreadcrumbComponent {
   }
 
   watchItemList() {
-    this.observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
+    this.observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
         if (mutation.addedNodes.length || mutation.removedNodes.length) {
           this.updateLastItem();
         }

@@ -78,7 +78,7 @@ export class SidemenuComponent {
         }
       } else {
         try {
-          if (this.items.find((x) => x.classList.contains('active'))) {
+          if (this.items.find(x => x.classList.contains('active'))) {
             this.el.classList.add(OPEN_ITEM);
           }
         } catch (error) {
@@ -99,7 +99,7 @@ export class SidemenuComponent {
   }
 
   noSelectedItem() {
-    return !this.items.find((x) => x === this.selectedItem);
+    return !this.items.find(x => x === this.selectedItem);
   }
 
   unselectAll(): void {
@@ -113,7 +113,7 @@ export class SidemenuComponent {
   }
 
   getItemElement(name: string): HTMLElement {
-    return this.items.find((i) => this.isItemElement(i, name));
+    return this.items.find(i => this.isItemElement(i, name));
   }
 
   isItemElement(elm: HTMLElement, name: string): boolean {
@@ -162,9 +162,9 @@ export class SidemenuComponent {
   }
 
   watchItemList() {
-    this.observer = new MutationObserver((mutations) => {
+    this.observer = new MutationObserver(mutations => {
       let activeItem = false;
-      mutations.forEach((mutation) => {
+      mutations.forEach(mutation => {
         if (mutation.addedNodes.length) {
           this.setItemsArray();
         }
@@ -223,11 +223,11 @@ export class SidemenuComponent {
       <div
         class="menu-background animated d-flex-row flex"
         onClick={() => this.toggle()}
-        ref={(el) => (this.backdropEl = el)}
+        ref={el => (this.backdropEl = el)}
       />,
       <div
         class="actual-menu animated full-content d-flex-column flex"
-        ref={(el) => (this.menuInnerEl = el)}
+        ref={el => (this.menuInnerEl = el)}
       >
         <div class="d-flex flex">
           <se-block width="250px">
@@ -255,7 +255,7 @@ export class SidemenuComponent {
             )}
           </se-block>
           <se-divider option="vertical"></se-divider>
-          <se-block ref={(el) => (this.menuItemInnerEl = el)}>
+          <se-block ref={el => (this.menuItemInnerEl = el)}>
             <slot />
           </se-block>
         </div>

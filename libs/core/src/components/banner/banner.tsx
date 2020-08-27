@@ -98,8 +98,8 @@ export class BannerComponent {
   }
 
   watchItemList() {
-    this.observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
+    this.observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
         if (mutation.addedNodes.length) {
           clearInterval(this.interval);
           this.setBannerItemWidth();
@@ -177,7 +177,7 @@ export class BannerComponent {
       <div class="se-banner">
         <div
           class="banner-items"
-          ref={(el) => (this.bannerIndicatorEl = el)}
+          ref={el => (this.bannerIndicatorEl = el)}
           style={{ width: '' + this.items.length * 100 + '%' }}
         >
           <slot></slot>

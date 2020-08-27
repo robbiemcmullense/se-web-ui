@@ -47,7 +47,7 @@ export class PaginationComponent {
 
   private __parPageSizeList(): number[] {
     try {
-      const r = this.perPageList.split(';').map((n) => parseInt(n));
+      const r = this.perPageList.split(';').map(n => parseInt(n));
       if (r.length === 0) {
         console.warn(
           `[se-pagination] pageSizeList must have at least one element. page sizes are ';' separated. ex: '10;15;20'. Assuming: [${this.defaultPageSizeList}]`
@@ -144,8 +144,8 @@ export class PaginationComponent {
                 padding="none"
                 label={this.labelPerPage}
               >
-                <select onChange={(e) => this.__pageSizeChanged(e)}>
-                  {this.__parPageSizeList().map((i) => (
+                <select onChange={e => this.__pageSizeChanged(e)}>
+                  {this.__parPageSizeList().map(i => (
                     <option
                       value={i}
                       selected={i == (this.perPage || this.defaultPageSizeList)}
@@ -191,8 +191,8 @@ export class PaginationComponent {
                 block
                 option="stacked"
               >
-                <select onChange={(e) => this.__goToPage(e)}>
-                  {this.__perPageList().map((i) => (
+                <select onChange={e => this.__goToPage(e)}>
+                  {this.__perPageList().map(i => (
                     <option value={i} selected={i === this.value}>
                       {i}
                     </option>

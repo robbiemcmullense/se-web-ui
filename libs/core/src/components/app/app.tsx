@@ -69,7 +69,7 @@ export class AppComponent {
 
   light() {
     const root = document.documentElement;
-    listDark.forEach((item) => {
+    listDark.forEach(item => {
       root.style.removeProperty(item.name);
     });
     this.themeChanged.emit('light');
@@ -77,7 +77,7 @@ export class AppComponent {
   }
   dark() {
     const root = document.documentElement;
-    listDark.forEach((item) => {
+    listDark.forEach(item => {
       root.style.setProperty(item.name, item.value);
     });
     this.themeChanged.emit('dark');
@@ -90,7 +90,7 @@ export class AppComponent {
     // Update the body class to make sure all component affected by the framework are affected by the font family
     if (document && document.body) {
       // Remove the class if already there
-      ['se-font-technical', 'se-font-website'].forEach((classItem) => {
+      ['se-font-technical', 'se-font-website'].forEach(classItem => {
         document.body.classList.remove(classItem);
       });
       // Add the new class
@@ -101,7 +101,7 @@ export class AppComponent {
   componentWillLoad() {
     this.prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     // Add listener for future change
-    this.prefersDark.addListener((mediaQuery) =>
+    this.prefersDark.addListener(mediaQuery =>
       this.toggleDarkTheme(mediaQuery.matches)
     );
 

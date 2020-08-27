@@ -123,7 +123,7 @@ export class DropdownComponent {
         <div
           aria-haspopup="true"
           aria-expanded={this.opened}
-          onClick={(ev) => this._toggle(ev)}
+          onClick={ev => this._toggle(ev)}
         >
           <slot name="trigger"></slot>
         </div>

@@ -153,6 +153,7 @@
   },
   "prettier": {
     "singleQuote": true,
+    "arrowParens": "avoid",
     "overrides": [
       {
         "files": "*.scss",

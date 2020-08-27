@@ -124,7 +124,7 @@ export class ListItemComponent {
       <Host role="listitem" onClick={() => this.buttonElm.blur()}>
         <TagType
           {...attrs}
-          ref={(el) => (this.buttonElm = el)}
+          ref={el => (this.buttonElm = el)}
           title={title}
           class={{
             selected: this.selected,

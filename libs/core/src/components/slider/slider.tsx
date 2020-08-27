@@ -85,7 +85,7 @@ export class SliderComponent {
           max={this.max}
           value={val || '0'}
           disabled={this.disabled}
-          ref={(el) => (this.sliderElement = el as HTMLInputElement)}
+          ref={el => (this.sliderElement = el as HTMLInputElement)}
           id={id ? `wc-${id}` : ''}
           onChange={() => this.handleEvent()}
         />
