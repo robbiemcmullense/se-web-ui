@@ -3,3 +3,5 @@
 /dist
 /coverage
 *.md
+libs/angular/src/lib/directives
+libs/core/src/components.d.ts
