@@ -309,6 +309,40 @@
         }
       }
     },
+    "vue": {
+      "root": "libs/vue",
+      "sourceRoot": "libs/vue/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/vue/.eslintrc",
+            "tsConfig": [
+              "libs/vue/tsconfig.lib.json",
+              "libs/vue/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/vue/**"]
+          }
+        },
+        "build": {
+          "builder": "@nx-plus/vue:library",
+          "options": {
+            "dest": "dist/libs/vue",
+            "entry": "libs/vue/src/index.ts",
+            "tsConfig": "libs/vue/tsconfig.lib.json"
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/vue/jest.config.js",
+            "tsConfig": "libs/vue/tsconfig.spec.json"
+          }
+        }
+      }
+    },
     "core": {
       "root": "libs/core",
       "sourceRoot": "libs/core/src",

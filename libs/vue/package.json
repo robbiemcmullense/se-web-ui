@@ -1,0 +1,14 @@
+{
+  "name": "@se/web-ui-react",
+  "version": "3.11.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "description": "Vue specific wrapper for component-library",
+  "publishConfig": {
+    "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.11",
+    "@se/web-ui": "^3.11.0"
+  }
+}
