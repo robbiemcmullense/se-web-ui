@@ -327,11 +327,13 @@
           }
         },
         "build": {
-          "builder": "@nx-plus/vue:library",
+          "builder": "@nrwl/web:bundle",
           "options": {
-            "dest": "dist/libs/vue",
-            "entry": "libs/vue/src/index.ts",
-            "tsConfig": "libs/vue/tsconfig.lib.json"
+            "outputPath": "dist/libs/vue",
+            "tsConfig": "libs/vue/tsconfig.lib.json",
+            "project": "libs/vue/package.json",
+            "entryFile": "libs/vue/src/index.ts",
+            "external": ["@se/web-ui"]
           }
         },
         "test": {
