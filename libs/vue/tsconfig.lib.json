@@ -1,8 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "types": ["webpack-env", "node"]
+    "types": []
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx"],
   "include": ["**/*.ts", "**/*.tsx", "**/*.vue"]
