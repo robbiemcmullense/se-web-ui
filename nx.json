@@ -33,6 +33,10 @@
       "tags": [],
       "implicitDependencies": ["core"]
     },
+    "vue": {
+      "tags": [],
+      "implicitDependencies": ["core"]
+    },
     "core": {
       "tags": []
     },
