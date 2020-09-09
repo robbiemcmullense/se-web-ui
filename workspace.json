@@ -243,6 +243,11 @@
           "options": {
             "tsConfig": "libs/angular/tsconfig.lib.json",
             "project": "libs/angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/angular/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -289,7 +294,7 @@
           }
         },
         "build": {
-          "builder": "@nrwl/web:bundle",
+          "builder": "@nrwl/web:package",
           "options": {
             "outputPath": "dist/libs/react",
             "tsConfig": "libs/react/tsconfig.lib.json",
@@ -305,6 +310,42 @@
           "options": {
             "jestConfig": "libs/react/jest.config.js",
             "tsConfig": "libs/react/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "vue": {
+      "root": "libs/vue",
+      "sourceRoot": "libs/vue/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/vue/.eslintrc",
+            "tsConfig": [
+              "libs/vue/tsconfig.lib.json",
+              "libs/vue/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/vue/**"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/web:package",
+          "options": {
+            "outputPath": "dist/libs/vue",
+            "tsConfig": "libs/vue/tsconfig.lib.json",
+            "project": "libs/vue/package.json",
+            "entryFile": "libs/vue/src/index.ts",
+            "external": ["@se/web-ui"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/vue/jest.config.js",
+            "tsConfig": "libs/vue/tsconfig.spec.json"
           }
         }
       }

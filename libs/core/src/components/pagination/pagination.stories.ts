@@ -40,7 +40,6 @@ storiesOf('Pagination', module)
     return `
       <div style="padding: 10px;">
         <se-pagination
-          slot="start"
           total="${total}"
           per-page="20"
           per-page-list="${pageSizeList}"

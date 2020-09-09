@@ -1,0 +1,22 @@
+{
+  "name": "@se/web-ui-react",
+  "version": "1.0.0",
+  "description": "Vue specific wrapper for component-library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionic-team/ionic.git"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "cd ../.. && yarn build vue",
+    "test": "cd ../.. && yarn test vue"
+  },
+  "peerDependencies": {
+    "@se/web-ui": "^3.0.0",
+    "vue": "^2.6.11"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
+  }
+}

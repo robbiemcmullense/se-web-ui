@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleReactProps } from '../interfaces';
+import type { StyleReactProps } from '../interfaces';
 
 type Mutable<T> = { -readonly [P in keyof T]-?: T[P] }; // Remove readonly and ?
 
@@ -10,9 +10,9 @@ export type StencilReactExternalProps<PropType, ElementType> = PropType &
 
 // The comma in the type is to trick typescript because it things a single generic in a tsx file is jsx
 export const mergeRefs = <ElementType,>(...refs: React.Ref<ElementType>[]) => (
-  value: ElementType,
+  value: ElementType
 ) =>
-  refs.forEach((ref) => {
+  refs.forEach(ref => {
     if (typeof ref === 'function') {
       ref(value);
     } else if (ref != null) {
@@ -23,11 +23,11 @@ export const mergeRefs = <ElementType,>(...refs: React.Ref<ElementType>[]) => (
 
 export const createForwardRef = <PropType, ElementType>(
   ReactComponent: any,
-  displayName: string,
+  displayName: string
 ) => {
   const forwardRef = (
     props: StencilReactExternalProps<PropType, ElementType>,
-    ref: React.Ref<ElementType>,
+    ref: React.Ref<ElementType>
   ) => {
     return <ReactComponent {...props} forwardedRef={ref} />;
   };
