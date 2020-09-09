@@ -14,8 +14,8 @@
     "build": "cd ../.. && yarn build angular"
   },
   "peerDependencies": {
-    "@angular/core": "^8.0.0",
-    "@angular/common": "^8.0.0",
+    "@angular/core": ">8.0.0",
+    "@angular/common": ">8.0.0",
     "@se/web-ui": "^3.0.0"
   }
 }

@@ -243,6 +243,11 @@
           "options": {
             "tsConfig": "libs/angular/tsconfig.lib.json",
             "project": "libs/angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/angular/tsconfig.lib.prod.json"
+            }
           }
         },
         "lint": {
@@ -289,7 +294,7 @@
           }
         },
         "build": {
-          "builder": "@nrwl/web:bundle",
+          "builder": "@nrwl/web:package",
           "options": {
             "outputPath": "dist/libs/react",
             "tsConfig": "libs/react/tsconfig.lib.json",
@@ -327,7 +332,7 @@
           }
         },
         "build": {
-          "builder": "@nrwl/web:bundle",
+          "builder": "@nrwl/web:package",
           "options": {
             "outputPath": "dist/libs/vue",
             "tsConfig": "libs/vue/tsconfig.lib.json",

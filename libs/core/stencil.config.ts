@@ -1,36 +1,60 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
-import { angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
-import { vueOutputTarget } from '@stencil/vue-output-target';
-import { postcss } from '@stencil/postcss';
-import autoprefixer from 'autoprefixer';
+import {
+  vueOutputTarget,
+  ComponentModelConfig,
+} from '@stencil/vue-output-target';
+// import { postcss } from '@stencil/postcss';
+// import autoprefixer from 'autoprefixer';
 
-// import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
-// const EVENTS = {
-//   Change: "didChange",
-// };
+import {
+  angularOutputTarget,
+  ValueAccessorConfig,
+} from '@stencil/angular-output-target';
+const EVENTS = {
+  Change: 'didChange',
+};
 
-// const ATTRS = {
-//   Value: "value",
-//   Selected: "selected"
-// };
+const ATTRS = {
+  Value: 'value',
+  Selected: 'selected',
+};
 
-// const angularValueAccessorBindings: ValueAccessorConfig[] = [
-//   {
-//     elementSelectors: [ "se-checkbox", "se-radio"],
-//     event: EVENTS.Change,
-//     targetAttr: ATTRS.Selected,
-//     type: "boolean"
-//   },
-//   {
-//     elementSelectors: [ "se-radio-group" ],
-//     event: EVENTS.Change,
-//     targetAttr: ATTRS.Value,
-//     type: "text"
-//   }
-// ];
+const angularValueAccessorBindings: ValueAccessorConfig[] = [
+  {
+    elementSelectors: ['se-checkbox', 'se-radio'],
+    event: EVENTS.Change,
+    targetAttr: ATTRS.Selected,
+    type: 'boolean',
+  },
+  {
+    elementSelectors: ['se-radio-group'],
+    event: EVENTS.Change,
+    targetAttr: ATTRS.Value,
+    type: 'text',
+  },
+  {
+    elementSelectors: ['se-slider'],
+    event: EVENTS.Change,
+    targetAttr: ATTRS.Value,
+    type: 'number',
+  },
+];
+
+const vueComponentModels: ComponentModelConfig[] = [
+  {
+    elements: ['se-checkbox', 'se-radio'],
+    event: EVENTS.Change,
+    targetAttr: ATTRS.Selected,
+  },
+  {
+    elements: ['se-radio-group', 'se-slider'],
+    event: EVENTS.Change,
+    targetAttr: ATTRS.Value,
+  },
+];
 
 const distFolder = '../../dist/libs/core';
 
@@ -93,22 +117,26 @@ export const config: Config = {
     },
     angularOutputTarget({
       componentCorePackage: '@se/web-ui',
+      loaderDir: 'loader',
       directivesProxyFile: '../angular/src/lib/directives/proxies.ts',
       directivesUtilsFile: '../angular/src/lib/directives/proxies-utils.ts',
       directivesArrayFile: '../angular/src/lib/directives/proxies-list.ts',
-      //   valueAccessorConfigs: angularValueAccessorBindings,
+      valueAccessorConfigs: angularValueAccessorBindings,
     }),
     reactOutputTarget({
       componentCorePackage: '@se/web-ui',
+      loaderDir: 'loader',
       proxiesFile: '../react/src/components.ts',
       includePolyfills: true,
       includeDefineCustomElements: true,
     }),
     vueOutputTarget({
       componentCorePackage: '@se/web-ui',
+      loaderDir: 'loader',
       proxiesFile: '../vue/src/components.ts',
       includePolyfills: true,
       includeDefineCustomElements: true,
+      componentModels: vueComponentModels,
     }),
   ],
   bundles: [
