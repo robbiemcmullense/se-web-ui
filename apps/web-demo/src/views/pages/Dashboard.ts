@@ -29,7 +29,6 @@ const Dashboard = {
         `;
     return view;
   },
-  after_render: async () => {},
 };
 
 export default Dashboard;

@@ -7,6 +7,5 @@ const Error404 = {
         `;
     return view;
   },
-  after_render: async () => {},
 };
 export default Error404;

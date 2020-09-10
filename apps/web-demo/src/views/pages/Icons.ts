@@ -26,7 +26,6 @@ const PostShow = {
 
         `;
   },
-  after_render: async () => {},
 };
 
 export default PostShow;

@@ -40,7 +40,7 @@
           <SeButton option="raised" color="secondary"
             >Raised secondary</SeButton
           >
-          <SeIcon size="small" :icon="userStandard"></SeIcon>
+          <!-- <SeIcon size="small" :icon="userStandard"></SeIcon> -->
         </div>
         <div class="button-row">
           <SeButton option="raised">Raised</SeButton>
@@ -75,24 +75,22 @@ import {
   SeDivider,
   SeCheckbox,
 } from '@se/web-ui-vue';
-import userStandard from '@se/icons/svg/user_standard.svg';
+// import userStandard from '@se/icons/svg/user_standard.svg';
 
 export default {
   components: {
     SeContainer,
     SeRadioGroup,
-    SeIcon,
     SeButton,
     SeBlockFooter,
     SeBlock,
     SeBlockContent,
     SeBlockHeader,
-    SeDivider,
     SeCheckbox,
   },
   data() {
     return {
-      userStandard: userStandard,
+      // userStandard: userStandard,
       loading: true,
       posts: null,
       myValue: true,

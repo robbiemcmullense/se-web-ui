@@ -140,10 +140,10 @@ const Home = {
                 <se-table-group-header id="table-row">
                     <se-table-item-header width="72px"></se-table-item-header>
                     <se-table-item-header width="64px"></se-table-item-header>
-                    <se-table-item-header 
+                    <se-table-item-header
                       onClick="(function(caller){
                         switch (caller.sort) {
-                          case 'asc': 
+                          case 'asc':
                             caller.sort = 'desc'
                             break
                           case 'desc':
@@ -154,8 +154,8 @@ const Home = {
                             break
                         }
                         return false;
-                      })(this);return false;" 
-                      sort="asc" 
+                      })(this);return false;"
+                      sort="asc"
                       id="table-sort-1">Title</se-table-item-header>
                     <se-table-item-header flex="50%" sort="none">Secondary Info</se-table-item-header>
                     <se-table-item-header clickable="true"><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
@@ -782,7 +782,7 @@ const Home = {
                     <nav slot="end">
                       <se-button color="alternative" option="outline" onclick="openmenu('side-about')">open project</se-button>
                     </nav>
-                  </se-tabbar>  
+                  </se-tabbar>
                   <br>
                   <se-tabbar color="alternative">
                     <nav>
@@ -938,7 +938,6 @@ const Home = {
         `;
     return view;
   },
-  after_render: async () => {},
 };
 
 export default Home;
