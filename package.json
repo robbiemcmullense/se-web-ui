@@ -34,11 +34,12 @@
     "storybook:build": "export NODE_ENV=\"production\" && nx build-storybook",
     "storybook:deploy": "storybook-to-ghpages --existing-output-dir=dist/storybook/core",
     "libs:build": "yarn build core && yarn build react && yarn build vue && yarn build angular --prod",
-    "libs:release": "node release.js",
+    "libs:release": "node .scripts/release.js",
     "link:core": "cd dist/libs/core && yarn link",
     "link:angular": "cd dist/libs/angular && yarn link",
     "link:react": "cd dist/libs/react && yarn link",
-    "link:vue": "cd dist/libs/vue && yarn link"
+    "link:vue": "cd dist/libs/vue && yarn link",
+    "postpostinstall": "node node_modules/@nx-plus/vue/patch-nx-dep-graph.js"
   },
   "dependencies": {
     "@angular/animations": "^9.0.0",
@@ -53,7 +54,7 @@
     "@ionic/angular": "^4.11.10",
     "@ngx-translate/core": "^11.0.1",
     "@se/fonts": "^1.1.0",
-    "@se/icons": "^4.0.0",
+    "@se/icons": "4.2.0",
     "@stencil/core": "^1.8.1",
     "@storybook/addon-actions": "^6.0.19",
     "@testing-library/cypress": "^5.2.1",
@@ -68,6 +69,7 @@
     "rxjs": "~6.6.3",
     "tslib": "^1.10.0",
     "vue": "^2.6.11",
+    "vue-router": "^3.0.1",
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
@@ -89,6 +91,7 @@
     "@nrwl/storybook": "9.0.0",
     "@nrwl/web": "9.0.0",
     "@nrwl/workspace": "9.0.0",
+    "@nx-plus/vue": "^10.0.0",
     "@stencil/angular-output-target": "0.0.5",
     "@stencil/postcss": "^1.0.1",
     "@stencil/react-output-target": "0.0.9",
@@ -112,9 +115,11 @@
     "@types/react-dom": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "2.3.2",
     "@typescript-eslint/parser": "2.3.2",
+    "@vue/cli-plugin-babel": "^3.5.1",
     "@vue/cli-plugin-eslint": "^3.5.1",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^1.0.3",
     "autoprefixer": "^9.7.6",
@@ -129,6 +134,7 @@
     "eslint-config-prettier": "6.0.0",
     "eslint-plugin-import": "2.19.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "7.17.0",
     "eslint-plugin-react-hooks": "2.3.0",
     "eslint-plugin-vue": "^6.2.2",
@@ -144,6 +150,7 @@
     "listr": "^0.14.3",
     "markdown-loader": "^5.1.0",
     "ng-packagr": "^9.1.5",
+    "node-sass": "^4.9.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.2",
     "pretty-quick": "^2.0.1",
@@ -159,7 +166,11 @@
     "tslint-react": "^5.0.0",
     "typescript": "~3.8.0",
     "vue-jest": "^3.0.5",
+    "vue-svg-loader": "^0.15.0",
     "vue-template-compiler": "^2.6.11"
+  },
+  "peerDependencies": {
+    "@se/icons": "4.0.0"
   },
   "resolutions": {
     "@babel/preset-env": "^7.8.0"

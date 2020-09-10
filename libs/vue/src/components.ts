@@ -236,6 +236,11 @@ export const SeCheckbox = /*@__PURE__*/ Vue.extend({
     labelPos: {} as PropOptions<Components.SeCheckbox['labelPos']>,
   },
 
+  model: {
+    prop: 'selected',
+    event: 'didChange',
+  },
+
   methods: {
     setRequired: createCommonMethod(
       'setRequired'
@@ -537,6 +542,11 @@ export const SeRadio = /*@__PURE__*/ Vue.extend({
     labelPos: {} as PropOptions<Components.SeRadio['labelPos']>,
   },
 
+  model: {
+    prop: 'selected',
+    event: 'didChange',
+  },
+
   methods: {
     setRequired: createCommonMethod(
       'setRequired'
@@ -552,6 +562,11 @@ export const SeRadioGroup = /*@__PURE__*/ Vue.extend({
     direction: {} as PropOptions<Components.SeRadioGroup['direction']>,
     disabled: {} as PropOptions<Components.SeRadioGroup['disabled']>,
     value: {} as PropOptions<Components.SeRadioGroup['value']>,
+  },
+
+  model: {
+    prop: 'value',
+    event: 'didChange',
   },
 
   render: createCommonRender('se-radio-group', ['didChange']),
@@ -585,6 +600,11 @@ export const SeSlider = /*@__PURE__*/ Vue.extend({
     max: {} as PropOptions<Components.SeSlider['max']>,
     label: {} as PropOptions<Components.SeSlider['label']>,
     disabled: {} as PropOptions<Components.SeSlider['disabled']>,
+  },
+
+  model: {
+    prop: 'value',
+    event: 'didChange',
   },
 
   methods: {

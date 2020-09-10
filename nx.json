@@ -52,6 +52,13 @@
     "web-demo-e2e": {
       "tags": [],
       "implicitDependencies": ["web-demo"]
+    },
+    "vue-demo": {
+      "tags": []
+    },
+    "vue-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["vue-demo"]
     }
   }
 }

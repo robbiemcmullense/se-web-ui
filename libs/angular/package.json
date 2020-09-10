@@ -1,5 +1,6 @@
 {
   "name": "@se/web-ui-angular",
+  "version": "0.0.0",
   "description": "Angular specific wrapper for @se/web-ui library",
   "license": "MIT",
   "repository": {

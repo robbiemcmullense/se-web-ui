@@ -1,6 +1,6 @@
 {
-  "name": "@se/web-ui-react",
-  "version": "1.0.0",
+  "name": "@se/web-ui-vue",
+  "version": "0.0.0",
   "description": "Vue specific wrapper for component-library",
   "repository": {
     "type": "git",
