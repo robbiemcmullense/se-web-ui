@@ -29,7 +29,7 @@ export class DialogComponent {
    * `medium`: default setting, used by other apps
    * `fill`: takes the full space of the screen
    */
-  @Prop() size: 'small' | 'medium' | 'large' | 'fill' = 'medium';
+  @Prop() size: 'small' | 'medium' | 'large' | 'xlarge' | 'fill' = 'medium';
   /**
    * Defines the color of the dialog header.
    * `alternative`: Alternative background with primary color for the text

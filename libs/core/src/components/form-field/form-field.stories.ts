@@ -11,10 +11,12 @@ storiesOf('Form Field', module)
     const disabled = boolean('disabled', false);
     const block = boolean('block', false);
     const labelWidth = text('label-width', '35%');
+    const labelAlign = select('label-align', ['left', 'right'], 'right');
 
     return `
     <se-block>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='checkbox'
@@ -27,6 +29,7 @@ storiesOf('Form Field', module)
         <se-checkbox></se-checkbox>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='another checkbox'
@@ -39,6 +42,7 @@ storiesOf('Form Field', module)
         <se-checkbox option="switch"></se-checkbox>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         option='${option}'
@@ -50,6 +54,7 @@ storiesOf('Form Field', module)
         <se-checkbox option="onoff"></se-checkbox>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='radio'
@@ -66,6 +71,7 @@ storiesOf('Form Field', module)
         </se-radio-group>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         option='${option}'
@@ -76,6 +82,7 @@ storiesOf('Form Field', module)
         <div>Some text alined</div>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         option='${option}'
@@ -85,6 +92,7 @@ storiesOf('Form Field', module)
         <div><b>Some bold text alined with the rest</b></div>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -97,6 +105,7 @@ storiesOf('Form Field', module)
         <input type="text" />
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -114,6 +123,7 @@ storiesOf('Form Field', module)
         </div>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='select'
@@ -130,6 +140,7 @@ storiesOf('Form Field', module)
         </select>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -142,6 +153,7 @@ storiesOf('Form Field', module)
         <textarea rows='3'></textarea>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -154,6 +166,7 @@ storiesOf('Form Field', module)
         <input type="date" />
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -170,6 +183,7 @@ storiesOf('Form Field', module)
       </se-form-field>
 
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -185,6 +199,7 @@ storiesOf('Form Field', module)
         </div>
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -197,6 +212,7 @@ storiesOf('Form Field', module)
         <input type="search" />
       </se-form-field>
       <se-form-field
+        label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
         type='input'
@@ -242,7 +258,11 @@ storiesOf('Form Field', module)
         required='${required}'
         disabled='${disabled}'
         >
-        <se-radio></se-radio>
+        <se-radio-group>
+          <se-radio value="first" label="Radio Label 1"></se-radio>
+          <se-radio value="second" label="Radio Label 2"></se-radio>
+          <se-radio value="third" label="Radio Label 3"></se-radio>
+        </se-radio-group>
       </se-form-field>
     `;
   })

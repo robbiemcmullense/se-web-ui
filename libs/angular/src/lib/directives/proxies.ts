@@ -718,7 +718,8 @@ export declare interface SePagination extends Components.SePagination {}
   outputs: ['didChange']
 })
 export class SePagination {
-  /**  */
+  /** Event emitted when the selected page or the number of item per page changed.
+Return `{value: number; perPage: number;}`. */
   didChange!: IPaginationComponent['eventEmitter'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

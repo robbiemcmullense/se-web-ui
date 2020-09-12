@@ -70,7 +70,7 @@ export class CheckboxComponent {
    * `large` 16px padding.
    */
   @Prop({ mutable: true }) padding: 'none' | 'small' | 'medium' | 'large' =
-    'small';
+    'none';
 
   /**
    * Sets the position of the label for your checkbox component.
@@ -91,7 +91,11 @@ export class CheckboxComponent {
   @Event() didChange: EventEmitter;
   @Element() el: HTMLElement;
 
-  handleClick(state: boolean) {
+  handleClick(state: boolean, event = null) {
+    if (event !== null) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
     if (!this.disabled) {
       this.selected = state;
       const checkboxObject = { value: this.value, selected: this.selected };
@@ -105,60 +109,38 @@ export class CheckboxComponent {
 
   componentWillLoad() {
     if (!this.labelPos) {
-      this.labelPos = this.option === 'switch' ? 'left' : 'right';
+      this.labelPos = this.option === 'checkbox' ? 'right' : 'left';
     }
   }
 
   render() {
-    let markup, switchMarkup: any;
+    let markup: any;
     const id = this.el.getAttribute('id');
-    if (this.option === 'switch' && this.required) {
-      switchMarkup = [
-        <span class="checkbox-label">{this.label}</span>,
-        <span class="required">*</span>,
-      ];
-    } else if (this.option === 'switch' && !this.required) {
-      switchMarkup = <span class="checkbox-label">{this.label}</span>;
-    }
-    if (this.option === 'onoff') {
-      markup = (
-        <div class="on-off-wrapper">
-          <button
-            class={['active', this.selected ? ' selected' : ''].join(' ')}
-            onClick={() => this.handleClick(true)}
-            id={id ? `wc-${id}-active` : ''}
-          >
-            {this.textOn}
-          </button>
-          <button
-            class={['inactive', !this.selected ? ' selected' : ''].join(' ')}
-            onClick={() => this.handleClick(false)}
-            id={id ? `wc-${id}-inactive` : ''}
-          >
-            {this.textOff}
-          </button>
-        </div>
-      );
-    } else {
-      markup = (
-        <div class={{ 'checkbox-wrapper': true, [`opt-${this.option}`]: true }}>
-          {this.option === 'switch' && this.labelPos === 'left'
-            ? switchMarkup
-            : ''}
-          <label
-            class={{
-              'checkbox-container': true,
-              [`checkbox-label-${this.labelPos}`]: !!this.labelPos,
-              disabled: this.disabled,
-            }}
-            onClick={() => this.toggleSelect()}
-          >
-            {this.option === 'checkbox' ? this.label : ''}
-            {this.option === 'checkbox' && this.required ? (
-              <span class="required">*</span>
-            ) : (
-              ''
-            )}
+
+    switch (this.option) {
+      case 'onoff':
+        markup = (
+          <div class="on-off-wrapper">
+            <button
+              class={{ active: true, selected: this.selected }}
+              onClick={e => this.handleClick(true, e)}
+              id={id ? `wc-${id}-active` : ''}
+            >
+              {this.textOn}
+            </button>
+            <button
+              class={{ inactive: true, selected: !this.selected }}
+              onClick={e => this.handleClick(false, e)}
+              id={id ? `wc-${id}-inactive` : ''}
+            >
+              {this.textOff}
+            </button>
+          </div>
+        );
+        break;
+      default:
+        markup = (
+          <span class="checkbox-container" onClick={() => this.toggleSelect()}>
             <input
               type="checkbox"
               tabindex="-1"
@@ -175,24 +157,28 @@ export class CheckboxComponent {
               }}
               disabled={this.disabled}
             ></button>
-          </label>
-          {this.option === 'switch' && this.labelPos === 'right'
-            ? switchMarkup
-            : ''}
-        </div>
-      );
+          </span>
+        );
+        break;
     }
+
     return (
-      <div
+      <label
         class={{
-          [`p-${this.padding}`]: !!this.padding,
-          [this.option]: !!this.option,
-          header: !!this.header,
+          [`checkbox-label-${this.labelPos}`]: !!this.labelPos,
           disabled: this.disabled,
+          'checkbox-wrapper': true,
+          [`opt-${this.option}`]: true,
+          [`p-${this.padding}`]: !!this.padding,
+          header: !!this.header,
         }}
       >
+        <span>
+          <span class="checkbox-label">{this.label}</span>
+          {this.required && <span class="required">*</span>}
+        </span>
         {markup}
-      </div>
+      </label>
     );
   }
 }

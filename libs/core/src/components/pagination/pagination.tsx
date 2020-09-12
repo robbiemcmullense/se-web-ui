@@ -15,21 +15,58 @@ export interface PageEvent {
 export class PaginationComponent {
   defaultPageSizeList = 15;
 
+  /**
+   * Number of item per page
+   */
   @Prop({ mutable: true }) perPage = 15;
+  /**
+   * List of per page options to select from as a string separated by `;`. Default is `"15"` but does not affect the component if not used. ex: `"15;20;25;30"`.
+   */
   @Prop() perPageList = '15'; // '10;15;25;50';
 
+  /**
+   * Selected page
+   */
   @Prop({ mutable: true }) value = 1;
+  /**
+   * Total number of pages. Used to go to the last page and in the page selection dropdown.
+   */
   @Prop() total = 1;
 
+  /**
+   * Hide the "go to first page" and "go to last page" icons.
+   */
   @Prop() hideEdge: boolean;
 
+  /**
+   * Label used when hover the "Go to first page" icon.
+   */
   @Prop() labelFirst = 'First Page';
+  /**
+   * Label used when hover the "Go to previous page" icon.
+   */
   @Prop() labelPrev = 'Previous Page';
+  /**
+   * Label used when hover the "Go to next page" icon.
+   */
   @Prop() labelNext = 'Next Page';
+  /**
+   * Label used when hover the "Go to last page" icon.
+   */
   @Prop() labelLast = 'Last Page';
+  /**
+   * Text before the number of item per page selection dropdown.
+   */
   @Prop() labelPerPage = 'Items per page';
+  /**
+   * Text before the page selection dropdown.
+   */
   @Prop() labelValue = 'Page';
 
+  /**
+   * Event emitted when the selected page or the number of item per page changed.
+   * Return `{value: number; perPage: number;}`.
+   */
   @Event({ eventName: 'didChange' }) eventEmitter: EventEmitter<PageEvent>;
 
   componentDidLoad() {
@@ -47,6 +84,7 @@ export class PaginationComponent {
 
   private __parPageSizeList(): number[] {
     try {
+      // tslint:disable-next-line: radix
       const r = this.perPageList.split(';').map(n => parseInt(n));
       if (r.length === 0) {
         console.warn(

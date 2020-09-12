@@ -1,32 +1,26 @@
-
-
 :host {
-  display: inline-block;
+  display: inline-flex;
+  @include typology("small");
 }
 
-.p-small{
+.p-small {
   padding: $spacing-small;
-
 }
 .p-medium {
   padding: $spacing;
-
 }
 .p-large {
   padding: $spacing-large;
-
 }
 
 .required {
-  @include color('error');
+  @include color("error");
   padding-left: 3px;
 }
 
 .checkbox-label {
-  font-weight: 300;
-  padding-left: $spacing;
+  padding-right: $spacing;
 }
-
 
 input {
   height: 0;
@@ -37,45 +31,53 @@ input {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-.checkbox {
+.checkbox-label-right {
+  flex-flow: row-reverse;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.opt-checkbox {
   @include align-items(center);
   .checkbox-container {
-		position: relative;
-		padding-left: $spacing-large;
-    @include typology('small');
-    margin: $spacing;
-    margin-right: 0;
+    position: relative;
+    padding-left: $spacing-large;
+    margin-left: $spacing;
+    // margin-top: $spacing-small;
 
     .checkmark {
-
       position: absolute;
       margin: 0;
+      margin-top: -$spacing;
       // outline: none;
       padding: 0;
-      top: 2px;
-      left: -8px;
+      // top: 4px;
+      left: -$spacing-small;
       height: 14px;
       width: 14px;
       @include background-color("background-alternative");
       border: 1px solid;
-      @include border-color('border');
+      @include border-color("border");
       border-radius: 2px;
-      transition: .2s;
+      transition: 0.2s;
       &.checked {
         &.primary {
-          @include background-color('primary');
+          @include background-color("primary");
           border: 1px solid;
-          @include border-color('primary');
+          @include border-color("primary");
         }
         &.secondary {
-          @include background-color('secondary');
+          @include background-color("secondary");
           border: 1px solid;
-          @include border-color('secondary');
+          @include border-color("secondary");
         }
         &.success {
-          @include background-color('success');
+          @include background-color("success");
           border: 1px solid;
-          @include border-color('success');
+          @include border-color("success");
         }
         &:after {
           display: block;
@@ -96,7 +98,7 @@ input {
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
       }
-      &[disabled]{
+      &[disabled] {
         opacity: 0.5;
       }
       &:focus {
@@ -115,96 +117,84 @@ input {
   }
 }
 
-.switch {
-  .checkbox-label {
-    padding-left: 0;
-    vertical-align: middle;
-  }
-
+.opt-switch {
   .checkbox-container {
     width: 44px;
     height: 26px;
     display: inline-block;
     position: relative;
+  }
 
-    &.checkbox-label-right {
-      margin-left: 0;
-      ~.checkbox-label {
-        padding-left: 6px;
-      }
+  .checkmark {
+    display: block;
+    margin: 0;
+    padding: 0;
+    // outline: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    &:before,
+    &:after {
+      top: 0;
+      left: 0;
+      content: "";
+      position: absolute;
     }
-
-    .checkmark {
-      display: block;
-      margin: 0;
-      padding: 0;
-      // outline: none;
+    &:before {
       width: 100%;
       height: 100%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      border: 1px solid;
+      @include border-color("border");
+      @include background-color("background-alternative");
+      border-radius: 13px;
+      transition: all 0.2s ease-out 0.1s;
+      transform: scale(1);
+    }
+    &:after {
+      top: 50%;
+      left: 1px;
+      z-index: 3;
+      transition: transform 0.1s linear;
+      width: 24px;
+      height: 24px;
+      transform: translate3d(0, -50%, 0);
+      background-color: #fff;
       border-radius: 100%;
-      &:before, &:after {
-        top: 0;
-        left: 0;
-        content: "";
-        position: absolute;
-      }
+      box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+    }
+    &.checked {
       &:before {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
         border: 1px solid;
-        @include border-color('border');
-        @include background-color("background-alternative");
-        border-radius: 13px;
-        transition: all .2s ease-out .1s;
-        transform: scale(1);
+        @include background-color("success");
+        @include border-color("success");
       }
       &:after {
-        top: 50%;
-        left: 1px;
-        z-index: 3;
-        transition: transform .1s linear;
-        width: 24px;
-        height: 24px;
-        transform: translate3d(0, -50%, 0);
-        background-color: #fff;
-        border-radius: 100%;
-        box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+        transform: translate3d(75%, -50%, 0);
       }
-      &.checked {
-        &:before {
-          border: 1px solid;
-          @include background-color('success');
-          @include border-color('success');
-
-        }
-        &:after {
-          transform: translate3d(75%, -50%, 0);
-        }
+    }
+    &[disabled] {
+      &:before {
+        opacity: 0.5;
       }
-      &[disabled] {
-        &:before {
-          opacity: 0.5;
-        }
-      }
-      &:focus {
-        outline-offset: -1px;
-      }
+    }
+    &:focus {
+      outline-offset: -1px;
     }
   }
 }
 
-.onoff {
+.opt-onoff {
   .on-off-wrapper {
     display: inline-flex;
     border: 1px solid;
-    @include border-color('border');
+    @include border-color("border");
     border-radius: 3px;
   }
   button {
-    @include color('background-alternative-contrast');
+    @include color("background-alternative-contrast");
     @include background-color("background-alternative");
     padding: 6px 8px;
     border: none;
@@ -215,15 +205,15 @@ input {
     line-height: 13px;
     font-weight: 300;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
 
     &.active {
       border-top-left-radius: 2px;
       border-bottom-left-radius: 2px;
       margin-right: 0;
       &.selected {
-        @include color('success-contrast');
-        @include background-color('success');
+        @include color("success-contrast");
+        @include background-color("success");
       }
     }
 
@@ -232,8 +222,8 @@ input {
       border-bottom-right-radius: 2px;
       margin-left: 0;
       &.selected {
-        @include color('error-contrast');
-        @include background-color('error');
+        @include color("error-contrast");
+        @include background-color("error");
       }
     }
     &:focus {
@@ -249,7 +239,6 @@ input {
   }
 }
 
-
 .disabled {
   button {
     cursor: default;
@@ -257,7 +246,7 @@ input {
     opacity: 0.5;
     &.active.selected,
     &.inactive.selected {
-      @include color('alternative');
+      @include color("alternative");
     }
   }
 }
@@ -265,7 +254,7 @@ input {
 button {
   &:focus {
     outline-width: 2px;
-    @include outline('button-focus');
+    @include outline("button-focus");
     outline-style: solid;
   }
 }

@@ -55,7 +55,6 @@ export class RadioGroupComponent {
   }
 
   @Watch('value') valueDidChange() {
-    console.log('emit group');
     this.didChange.emit(this.value);
   }
 

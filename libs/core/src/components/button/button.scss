@@ -54,16 +54,8 @@
 
 :host(.grouped) {
   button {
-    // margin: $spacing-small 0;
-    height: 32px;
-    font-size: $base-fontsize;
-    @include typology("nano");
     border-radius: 0;
     border-left: 1px solid $se-anthracite-grey;
-
-    // &.iconOnly {
-    //   padding: 0 $spacing-small;
-    // }
   }
 }
 

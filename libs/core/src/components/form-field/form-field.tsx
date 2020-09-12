@@ -143,8 +143,10 @@ export class FormFieldComponent {
               [`align-${this.labelAlign}`]: true,
             }}
           >
-            {this.label}
-            {this.required ? <span class="required">*</span> : ''}
+            <span>
+              {this.label}
+              {this.required ? <span class="required">*</span> : ''}
+            </span>
           </span>
           <div class="ff-wrapper">
             <div class="ff-wrapper-input">

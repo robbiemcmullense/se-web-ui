@@ -405,7 +405,7 @@ export namespace Components {
         /**
           * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
          */
-        "size": 'small' | 'medium' | 'large' | 'fill';
+        "size": 'small' | 'medium' | 'large' | 'xlarge' | 'fill';
     }
     interface SeDialogContent {
         /**
@@ -741,16 +741,49 @@ export namespace Components {
         "overlay": boolean;
     }
     interface SePagination {
+        /**
+          * Hide the "go to first page" and "go to last page" icons.
+         */
         "hideEdge": boolean;
+        /**
+          * Label used when hover the "Go to first page" icon.
+         */
         "labelFirst": string;
+        /**
+          * Label used when hover the "Go to last page" icon.
+         */
         "labelLast": string;
+        /**
+          * Label used when hover the "Go to next page" icon.
+         */
         "labelNext": string;
+        /**
+          * Text before the number of item per page selection dropdown.
+         */
         "labelPerPage": string;
+        /**
+          * Label used when hover the "Go to previous page" icon.
+         */
         "labelPrev": string;
+        /**
+          * Text before the page selection dropdown.
+         */
         "labelValue": string;
+        /**
+          * Number of item per page
+         */
         "perPage": number;
+        /**
+          * List of per page options to select from as a string separated by `;`. Default is `"15"` but does not affect the component if not used. ex: `"15;20;25;30"`.
+         */
         "perPageList": string;
+        /**
+          * Total number of pages. Used to go to the last page and in the page selection dropdown.
+         */
         "total": number;
+        /**
+          * Selected page
+         */
         "value": number;
     }
     interface SeRadio {
@@ -1882,7 +1915,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
          */
-        "size"?: 'small' | 'medium' | 'large' | 'fill';
+        "size"?: 'small' | 'medium' | 'large' | 'xlarge' | 'fill';
     }
     interface SeDialogContent {
         /**
@@ -2235,17 +2268,53 @@ declare namespace LocalJSX {
         "overlay"?: boolean;
     }
     interface SePagination {
+        /**
+          * Hide the "go to first page" and "go to last page" icons.
+         */
         "hideEdge"?: boolean;
+        /**
+          * Label used when hover the "Go to first page" icon.
+         */
         "labelFirst"?: string;
+        /**
+          * Label used when hover the "Go to last page" icon.
+         */
         "labelLast"?: string;
+        /**
+          * Label used when hover the "Go to next page" icon.
+         */
         "labelNext"?: string;
+        /**
+          * Text before the number of item per page selection dropdown.
+         */
         "labelPerPage"?: string;
+        /**
+          * Label used when hover the "Go to previous page" icon.
+         */
         "labelPrev"?: string;
+        /**
+          * Text before the page selection dropdown.
+         */
         "labelValue"?: string;
+        /**
+          * Event emitted when the selected page or the number of item per page changed. Return `{value: number; perPage: number;}`.
+         */
         "onDidChange"?: (event: CustomEvent<PageEvent>) => void;
+        /**
+          * Number of item per page
+         */
         "perPage"?: number;
+        /**
+          * List of per page options to select from as a string separated by `;`. Default is `"15"` but does not affect the component if not used. ex: `"15;20;25;30"`.
+         */
         "perPageList"?: string;
+        /**
+          * Total number of pages. Used to go to the last page and in the page selection dropdown.
+         */
         "total"?: number;
+        /**
+          * Selected page
+         */
         "value"?: number;
     }
     interface SeRadio {

@@ -6,7 +6,7 @@
 @mixin typology($value) {
   font-weight: 300; //`normal` default to 400
   @if $value == "h1" {
-    line-height: 50px ;
+    line-height: 50px;
     font-size: $h1-fontsize;
   } @else if $value == "h2" {
     line-height: 45px;
@@ -31,8 +31,9 @@
     .bold {
       font-weight: bold;
     }
-    &.small, small {
-      line-height: $line-height-sm !important;
+    &.small,
+    small {
+      line-height: $line-height-sm;
       font-size: $p-fontsize - 2;
     }
     &.nano {
@@ -42,10 +43,10 @@
       font-size: $p-fontsize + 2;
     }
   } @else if $value == "small" {
-    line-height: $line-height-sm !important;
+    line-height: $line-height-sm;
     font-size: $p-fontsize - 2;
   } @else if $value == "nano" {
-    line-height: $line-height-sm !important;
+    line-height: $line-height-sm;
     font-size: $p-fontsize - 4;
   } @else if $value == "base" {
     font-size: $base-fontsize;
@@ -105,5 +106,10 @@
 }
 
 @mixin circleShadow($vertical) {
-  @include  box-shadow((0 0 $vertical rgba(0,0,0,.14),0 $vertical $vertical*2 rgba(0,0,0,.28)))
+  @include box-shadow(
+    (
+      0 0 $vertical rgba(0, 0, 0, 0.14),
+      0 $vertical $vertical * 2 rgba(0, 0, 0, 0.28)
+    )
+  );
 }

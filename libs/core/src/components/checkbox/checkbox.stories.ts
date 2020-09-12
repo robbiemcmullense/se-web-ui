@@ -25,7 +25,7 @@ storiesOf('Checkbox', module)
     `;
   })
   .add('Checkbox toggle switch', () => {
-    const label = text('label', '');
+    const label = text('label', 'This is a standard checkbox.');
     const selected = boolean('selected', true);
     const disabled = boolean('disabled', false);
     const labelPos = select('label position', labelOption, 'left');
@@ -41,6 +41,8 @@ storiesOf('Checkbox', module)
     `;
   })
   .add('Checkbox on/off switch', () => {
+    const label = text('label', 'This is a standard checkbox.');
+
     const selected = boolean('selected', false);
     const background = select('background', backgroundOption, 'standard');
     const disabled = boolean('disabled', false);
@@ -50,6 +52,7 @@ storiesOf('Checkbox', module)
 
     return `
         <se-checkbox
+          label='${label}'
           option='onoff'
           selected='${selected}'
           background='${background}'
