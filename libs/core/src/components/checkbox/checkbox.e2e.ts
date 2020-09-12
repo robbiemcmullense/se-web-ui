@@ -14,7 +14,7 @@ describe('CheckboxComponent', () => {
       '<se-checkbox id="my-checkbox" value="my value"></se-checkbox>'
     );
     hostElement = await page.find('se-checkbox');
-    wrapperElement = await page.find('se-checkbox >>> div');
+    wrapperElement = await page.find('se-checkbox >>> .checkbox-wrapper');
     checkboxElement = await page.find('se-checkbox >>> button');
     inputElement = await page.find('se-checkbox >>> input');
     labelElement = await page.find('se-checkbox >>> label');
@@ -26,7 +26,7 @@ describe('CheckboxComponent', () => {
   });
 
   it('should render with the checkbox and standard classes to reflect the default option and background properties', async () => {
-    expect(wrapperElement).toHaveClass('checkbox');
+    expect(wrapperElement).toHaveClass('opt-checkbox');
   });
 
   it('renders with an id on the input element with the wc prefix', async () => {
@@ -60,7 +60,7 @@ describe('CheckboxComponent in Switch Mode', () => {
       '<se-checkbox id="my-switch" option="switch" label="my label"></se-checkbox>'
     );
     hostElement = await page.find('se-checkbox');
-    wrapperElement = await page.find('se-checkbox >>> div');
+    wrapperElement = await page.find('se-checkbox >>> .checkbox-wrapper');
     inputElement = await page.find('se-checkbox >>> input');
   });
 
@@ -69,7 +69,7 @@ describe('CheckboxComponent in Switch Mode', () => {
   });
 
   it('should render with the switch class', async () => {
-    expect(wrapperElement).toHaveClass('switch');
+    expect(wrapperElement).toHaveClass('opt-switch');
   });
 
   it('renders with an id on the input element with the wc prefix', async () => {
@@ -78,7 +78,7 @@ describe('CheckboxComponent in Switch Mode', () => {
   });
 
   it('should render a label element within the checkbox-label span element', async () => {
-    const labelElement = await page.find('se-checkbox >>> span.checkbox-label');
+    const labelElement = await page.find('se-checkbox >>> .checkbox-label');
     expect(labelElement.innerText).toEqual('my label');
   });
 });
