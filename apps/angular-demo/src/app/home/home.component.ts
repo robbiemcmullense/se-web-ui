@@ -44,7 +44,10 @@ export class HomeComponent implements OnInit {
       log.debug('closed');
     });
   }
-
+  checkdidChange(event) {
+    console.log('GRRRRR');
+    this.myToggleSwitchValue = event.detail.selected;
+  }
   showDialog(): void {
     const modal = this.dialogService.confirm({
       canBackdrop: false,

@@ -55,24 +55,23 @@ export class RadioGroupComponent {
   }
 
   @Watch('value') valueDidChange() {
+    console.log('this.didChange.emit(this.value);', this.value);
     this.didChange.emit(this.value);
   }
 
   @Listen('didClick') buttonClickedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
-    // in a select group, at least one selection need to be made. clicking twice on the same radio should keep it selected.
     this.selectChild();
   }
 
   @Listen('didCheck') radioButtonCheckedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
-    // in a select group, at least one selection need to be made. clicking twice on the same radio should keep it selected.
     this.selectChild();
   }
 
   updateItemMode() {
     this.children.forEach((child: any) => {
-      if (child.localName == 'se-button') {
+      if (child.localName === 'se-button') {
         child.setGrouped();
         if (child.icon) {
           child.iconOnly = true;

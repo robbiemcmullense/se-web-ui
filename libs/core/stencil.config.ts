@@ -24,16 +24,22 @@ const ATTRS = {
 
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
-    elementSelectors: ['se-checkbox', 'se-radio'],
+    elementSelectors: ['se-checkbox'],
     event: EVENTS.Change,
     targetAttr: ATTRS.Selected,
     type: 'boolean',
   },
   {
+    elementSelectors: ['se-radio'],
+    event: EVENTS.Change,
+    targetAttr: ATTRS.Selected,
+    type: 'radio',
+  },
+  {
     elementSelectors: ['se-radio-group'],
     event: EVENTS.Change,
     targetAttr: ATTRS.Value,
-    type: 'text',
+    type: 'select',
   },
   {
     elementSelectors: ['se-slider'],
@@ -56,7 +62,7 @@ const vueComponentModels: ComponentModelConfig[] = [
   },
 ];
 
-const distFolder = '../../dist/libs/core';
+const distFolder = 'dist';
 
 const copy = [
   { src: '../../../node_modules/@se/fonts/css', dest: 'fonts/css' },
@@ -68,6 +74,14 @@ const copy = [
 export const config: Config = {
   namespace: 'se-components',
   buildEs5: true,
+  extras: {
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    initializeNextTick: true,
+    safari10: true,
+    scriptDataOpts: true,
+    shadowDomShim: true,
+  },
   plugins: [
     sass({
       injectGlobalPaths: [
@@ -88,7 +102,7 @@ export const config: Config = {
       type: 'dist',
       dir: distFolder,
       collectionDir: `collection`,
-      typesDir: `types`,
+      typesDir: `../types`,
       esmLoaderPath: `loader`,
       copy: [
         {
@@ -117,7 +131,6 @@ export const config: Config = {
     },
     angularOutputTarget({
       componentCorePackage: '@se/web-ui',
-      loaderDir: 'loader',
       directivesProxyFile: '../angular/src/lib/directives/proxies.ts',
       directivesUtilsFile: '../angular/src/lib/directives/proxies-utils.ts',
       directivesArrayFile: '../angular/src/lib/directives/proxies-list.ts',

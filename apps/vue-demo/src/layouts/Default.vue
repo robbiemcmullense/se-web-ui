@@ -3,7 +3,7 @@
     <slot />
   </SeApp>
 </template>
-<script lang="ts">
+<script>
 import { SeApp } from '@se/web-ui-vue';
 export default {
   components: { SeApp },

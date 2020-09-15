@@ -2,6 +2,6 @@ loader/
 dist/
 .stencil/
 styles
-docs
-types
+docs/
+types/
 www/

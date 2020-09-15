@@ -72,7 +72,7 @@
   </SeContainer>
 </template>
 
-<script lang="ts">
+<script>
 import {
   SeContainer,
   SeBlock,

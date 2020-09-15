@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
@@ -18,5 +18,6 @@
     "types": ["node", "jest"]
   },
   "include": ["src", "types/jsx.d.ts"],
-  "exclude": ["node_modules", "src/**/*.stories.ts"]
+  "exclude": ["node_modules", "src/**/*.stories.ts"],
+  "files": []
 }

@@ -1,10 +1,13 @@
 module.exports = {
-  name: 'react-demo',
+  name: 'reacttestapp',
   preset: '../../jest.config.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
-    '^.+\\.[tj]sx?$': 'ts-jest'
+    '^.+\\.[tj]sx?$': [
+      'babel-jest',
+      { cwd: __dirname, configFile: './babel-jest.config.json' },
+    ],
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/apps/react-demo'
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/apps/reacttestapp',
 };

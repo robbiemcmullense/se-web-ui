@@ -6,9 +6,9 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
     "tslint.json": "*",
-    "nx.json": "*"
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
   },
   "projects": {
     "react-demo": {
@@ -60,5 +60,8 @@
       "tags": [],
       "implicitDependencies": ["vue-demo"]
     }
+  },
+  "affected": {
+    "defaultBase": "develop"
   }
 }

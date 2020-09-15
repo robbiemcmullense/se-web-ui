@@ -268,7 +268,7 @@
         <se-block-content>
           <se-checkbox
             option="switch"
-            (didChange)="myToggleSwitchValue = $event.detail.selected"
+            (didChange)="checkdidChange($event)"
             [selected]="myToggleSwitchValue"
           ></se-checkbox>
           <se-checkbox

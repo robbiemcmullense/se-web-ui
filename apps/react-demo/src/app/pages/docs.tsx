@@ -16,7 +16,8 @@ import {
 } from '@se/web-ui-react';
 
 interface MyState {
-  showDialog: boolean;
+  showDialogSimple: boolean;
+  showDialogComplex: boolean;
   showSnackbar: boolean;
 }
 
@@ -24,26 +25,16 @@ class Docs extends Component<null, MyState> {
   constructor(props) {
     super(props);
     this.state = {
-      showDialog: false,
+      showDialogSimple: false,
+      showDialogComplex: false,
       showSnackbar: false,
     };
   }
 
-  openDialog(id) {
+  closeDialog = () => {
     this.setState({
-      showDialog: true,
-    });
-  }
-
-  closeDialog(id) {
-    this.setState({
-      showDialog: false,
-    });
-  }
-
-  openSnackbar = () => {
-    this.setState({
-      showSnackbar: true,
+      showDialogSimple: false,
+      showDialogComplex: false,
     });
   };
 
@@ -54,8 +45,11 @@ class Docs extends Component<null, MyState> {
           <SeBlockHeader>Banner Example</SeBlockHeader>
           <SeBlockContent>
             <SeBanner id="SeBanner">
-              <SeBannerItem image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)">
-                <SeBlock color="none" divider={false}>
+              <SeBannerItem
+                key="SeBanner1"
+                image-url="url(https://www.nozominetworks.com/wp-content/uploads/2019/01/Nozomi-Networks-and-Schneider-Electric-Partner-Secure-Industrial-Infrastructure.jpg)"
+              >
+                <SeBlock color="none">
                   <SeBlockHeader>Reliable Through the Storm</SeBlockHeader>
                   <SeBlockContent>
                     <div>
@@ -75,7 +69,10 @@ class Docs extends Component<null, MyState> {
                   </SeBlockFooter>
                 </SeBlock>
               </SeBannerItem>
-              <SeBannerItem image-url="url(https://images.unsplash.com/photo-1440098334316-9b3afb87b5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)">
+              <SeBannerItem
+                key="SeBanner2"
+                image-url="url(https://images.unsplash.com/photo-1440098334316-9b3afb87b5fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)"
+              >
                 <SeBlock
                   outline
                   outline-color="primary"
@@ -89,7 +86,10 @@ class Docs extends Component<null, MyState> {
                   <SeBlockFooter>Footer 2</SeBlockFooter>
                 </SeBlock>
               </SeBannerItem>
-              <SeBannerItem image-url="url(https://images.freeimages.com/images/large-previews/199/sunflowers-6-1392951.jpg)">
+              <SeBannerItem
+                key="SeBanner3"
+                image-url="url(https://images.freeimages.com/images/large-previews/199/sunflowers-6-1392951.jpg)"
+              >
                 <SeBlock>
                   <SeBlockHeader>Header 3</SeBlockHeader>
                   <SeBlockContent>Content 3</SeBlockContent>
@@ -99,14 +99,17 @@ class Docs extends Component<null, MyState> {
             </SeBanner>
           </SeBlockContent>
           <SeBlockFooter>
-            <SeButton option="raised" onClick={() => this.openSnackbar()}>
+            <SeButton
+              option="raised"
+              onClick={() => this.setState({ showSnackbar: true })}
+            >
               Open Snackbar
             </SeButton>
-            <SeButton onClick={() => this.openDialog('simple')}>
+            <SeButton onClick={() => this.setState({ showDialogSimple: true })}>
               Open Dialog Simple
             </SeButton>
             <SeButton
-              onClick={() => this.openDialog('complex')}
+              onClick={() => this.setState({ showDialogComplex: true })}
               option="flat"
               color="primary"
             >
@@ -123,7 +126,7 @@ class Docs extends Component<null, MyState> {
           id="simple"
           color="alternative"
           size="small"
-          open={this.state.showDialog}
+          open={this.state.showDialogSimple}
         >
           <SeDialogContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -131,15 +134,19 @@ class Docs extends Component<null, MyState> {
           </SeDialogContent>
           <SeDialogFooter>
             <SeButton
-              onClick={() => this.closeDialog('simple')}
+              onClick={() => this.setState({ showDialogSimple: false })}
               option="outline"
             >
               cancel
             </SeButton>
-            <SeButton onClick={() => this.closeDialog('simple')}>OK</SeButton>
+            <SeButton
+              onClick={() => this.setState({ showDialogSimple: false })}
+            >
+              OK
+            </SeButton>
           </SeDialogFooter>
         </SeDialog>
-        <SeDialog id="complex">
+        <SeDialog id="complex" open={this.state.showDialogComplex}>
           <SeDialogHeader>My awesome title</SeDialogHeader>
           <SeDialogContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -147,12 +154,16 @@ class Docs extends Component<null, MyState> {
           </SeDialogContent>
           <SeDialogFooter>
             <SeButton
-              onClick={() => this.closeDialog('complex')}
+              onClick={() => this.setState({ showDialogComplex: false })}
               option="outline"
             >
               cancel
             </SeButton>
-            <SeButton onClick={() => this.closeDialog('complex')}>OK</SeButton>
+            <SeButton
+              onClick={() => this.setState({ showDialogComplex: false })}
+            >
+              OK
+            </SeButton>
           </SeDialogFooter>
         </SeDialog>
       </SeContainer>

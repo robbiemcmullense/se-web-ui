@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'vue-demo',
+  name: 'vueapp',
   preset: '../../jest.config.js',
   transform: {
     '^.+\\.vue$': 'vue-jest',

@@ -62,7 +62,7 @@
 }
 </style>
 
-<script lang="ts">
+<script>
 import {
   SeContainer,
   SeRadioGroup,

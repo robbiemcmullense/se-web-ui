@@ -34,7 +34,7 @@
   </SeContainer>
 </template>
 
-<script lang="ts">
+<script>
 import { SeContainer, SeTabbar } from '@se/web-ui-vue';
 export default {
   components: { SeContainer, SeTabbar },

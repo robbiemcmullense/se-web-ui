@@ -5,23 +5,20 @@ import { ValueAccessor } from './value-accessor';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'se-checkbox',
+  selector: 'se-radio',
   host: {
     '(didChange)': 'handleChangeEvent($event.target.selected)'
   },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: BooleanValueAccessor,
+      useExisting: RadioValueAccessor,
       multi: true
     }
   ]
 })
-export class BooleanValueAccessor extends ValueAccessor {
+export class RadioValueAccessor extends ValueAccessor {
   constructor(el: ElementRef) {
     super(el);
-  }
-  writeValue(value: any) {
-    this.el.nativeElement.checked = this.lastValue = value == null ? false : value;
   }
 }

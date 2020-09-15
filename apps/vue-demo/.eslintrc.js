@@ -1,12 +1,11 @@
 module.exports = {
+  rules: {},
   extends: [
     '../../.eslintrc',
     'plugin:vue/essential',
     '@vue/typescript/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
   ],
-  rules: {},
   env: {
     node: true,
   },

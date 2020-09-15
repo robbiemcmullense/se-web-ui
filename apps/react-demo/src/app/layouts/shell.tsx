@@ -44,7 +44,7 @@ class ShellLayout extends Component {
                 <SeBlockContent option="fill">
                   <SeContainer option="card" display="block">
                     {[1, 2, 3, 4, 5, 6].map((nextVersion, index) => (
-                      <SeBlock height="300px">
+                      <SeBlock key={index} height="300px">
                         <SeBlockHeader>
                           H3 Buttons and Form
                           <div slot="end">

@@ -6,7 +6,7 @@
   </se-app>
 </template>
 
-<script lang="ts">
+<script>
 import { SeApp } from '@se/web-ui-vue';
 
 const defaultLayout = 'default';

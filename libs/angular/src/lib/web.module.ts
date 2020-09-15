@@ -1,5 +1,5 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { appInitialize } from './initialize';
 import { SnackbarModule } from './snackbar/snackbar.module';
 import { DialogModule } from './dialog/dialog.module';
@@ -37,7 +37,6 @@ export class SeWebModule {
           provide: APP_INITIALIZER,
           useFactory: appInitialize,
           multi: true,
-          deps: [DOCUMENT],
         },
       ],
     };

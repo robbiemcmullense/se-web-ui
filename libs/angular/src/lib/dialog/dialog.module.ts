@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogComponent, DialogModalComponent } from './dialog.component';
 import { DialogDirective } from './dialog.directive';
@@ -9,6 +9,6 @@ import { ProxiesModule } from '../directives/proxies.module';
   imports: [CommonModule, ProxiesModule],
   declarations: [DialogComponent, DialogModalComponent, DialogDirective],
   entryComponents: [DialogComponent, DialogModalComponent],
-  providers: [DialogService]
+  providers: [DialogService],
 })
 export class DialogModule {}

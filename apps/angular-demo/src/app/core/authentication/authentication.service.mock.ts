@@ -1,17 +1,19 @@
 import { Observable, of } from 'rxjs';
 
 import { Credentials, LoginContext } from './authentication.service';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class MockAuthenticationService {
   credentials: Credentials | null = {
     username: 'test',
-    token: '123'
+    token: '123',
   };
 
   login(context: LoginContext): Observable<Credentials> {
     return of({
       username: context.username,
-      token: '123456'
+      token: '123456',
     });
   }
 

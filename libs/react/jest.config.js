@@ -1,9 +1,12 @@
 module.exports = {
-  name: 'react',
+  name: 'reacttest',
   preset: '../../jest.config.js',
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
+    '^.+\\.[tj]sx?$': [
+      'babel-jest',
+      { cwd: __dirname, configFile: './babel-jest.config.json' },
+    ],
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/react'
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/react',
 };

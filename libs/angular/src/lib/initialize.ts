@@ -1,6 +1,6 @@
 import { applyPolyfills, defineCustomElements } from '@se/web-ui/loader';
 
-export function appInitialize(doc: Document) {
+export function appInitialize() {
   return (): any => {
     return applyPolyfills().then(() => {
       return defineCustomElements();
