@@ -20,10 +20,6 @@ $prefix: "--se-"; //Prefix string for custom CSS properties
     color: var(#{custom-property-name($colorTheme)}, $color);
   } @else {
     color: rgba($color, $transparencies);
-    color: rgba(
-      var(#{custom-property-name($colorTheme)}, $color),
-      $transparencies
-    );
   }
 }
 @mixin fill($colorTheme) {
@@ -60,4 +56,3 @@ $prefix: "--se-"; //Prefix string for custom CSS properties
     );
   }
 }
-

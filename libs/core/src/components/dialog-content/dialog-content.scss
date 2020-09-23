@@ -1,5 +1,3 @@
-
-
 :host {
   overflow-x: auto;
   flex: auto;
@@ -9,7 +7,7 @@
   height: 60px;
 }
 
-.inner-content{
+.inner-content {
   @include flex();
   margin: 0 $spacing;
 }
@@ -24,8 +22,25 @@
 
   &.full-content {
     padding: 0;
-    .inner-content{
+    .inner-content {
       margin: 0;
+    }
+  }
+
+  &.alternative-indents {
+    padding: $spacing-medium $spacing-s-medium $spacing-s-medium;
+
+    @include for-desktop-only {
+      padding: $spacing-medium $spacing-medium $spacing-s-medium;
+    }
+
+    .inner-content {
+      margin: 0 $spacing-s-medium;
+
+      @include for-desktop-only {
+        margin-right: $spacing-m-large;
+        margin-left: $spacing-m-large;
+      }
     }
   }
 }

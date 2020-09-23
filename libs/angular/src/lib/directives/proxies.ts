@@ -342,13 +342,13 @@ The modal can then be safely removed from the DOM. */
 
 export declare interface SeDialogContent extends Components.SeDialogContent {}
 @ProxyCmp({
-  inputs: ['icon', 'iconColor', 'option']
+  inputs: ['icon', 'iconColor', 'indents', 'option']
 })
 @Component({
   selector: 'se-dialog-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'iconColor', 'option']
+  inputs: ['icon', 'iconColor', 'indents', 'option']
 })
 export class SeDialogContent {
   protected el: HTMLElement;
@@ -374,22 +374,27 @@ export class SeDialogFooter {
   }
 }
 
-
+import { DialogHeaderComponent as IDialogHeaderComponent } from '@se/web-ui/types/components/dialog-header/dialog-header';
 export declare interface SeDialogHeader extends Components.SeDialogHeader {}
 @ProxyCmp({
-  inputs: ['color']
+  inputs: ['closeIcon', 'color', 'indents']
 })
 @Component({
   selector: 'se-dialog-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color']
+  inputs: ['closeIcon', 'color', 'indents'],
+  outputs: ['didCloseDialog']
 })
 export class SeDialogHeader {
+  /** Send data to the parent component when clicking an element within the dialog to close it.
+The modal can then be safely removed from the DOM. */
+  didCloseDialog!: IDialogHeaderComponent['didCloseDialog'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didCloseDialog']);
   }
 }
 

@@ -48,7 +48,7 @@
 
 @mixin flex-flow(
   $values: (
-    row nowrap
+    row nowrap,
   )
 ) {
   // No Webkit Box fallback.
@@ -134,9 +134,9 @@
 // auto | flex-start | flex-end | center | baseline | stretch
 @mixin align-self($align: center) {
   -webkit-align-self: $align;
-     -moz-align-self: $align;
-      -ms-align-self: $align;
-          align-self: $align;
+  -moz-align-self: $align;
+  -ms-align-self: $align;
+  align-self: $align;
 }
 
 @mixin linearGradient($top, $bottom) {
@@ -166,4 +166,16 @@
   background: -ms-linear-gradient(top, #{$top} 0%, #{$bottom} 100%); /* IE10+ */
   background: linear-gradient(to bottom, #{$top} 0%, #{$bottom} 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$top}', endColorstr='#{$bottom}', GradientType=0 ); /* IE6-9 */
+}
+
+@mixin for-desktop-only {
+  @media screen and (min-width : #{$desktop-min-width}) {
+    @content;
+  }
+}
+
+@mixin for-mobile-only {
+  @media screen and (max-width : #{$mobile-max-width}) {
+    @content;
+  }
 }

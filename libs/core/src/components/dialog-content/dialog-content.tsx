@@ -18,6 +18,12 @@ export class DialogContentComponent {
    * Indicates what color schema you want to render in your dialog.
    */
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
+  /**
+   * Defines the indents (margins and paddings) of the dialog content.
+   * `alternative-indents`: Alternative margins and paddings.
+   * `primary-indents`: Primary indents schema.
+   */
+  @Prop() indents: 'primary-indents' | 'alternative-indents';
 
   render() {
     return (
@@ -25,6 +31,7 @@ export class DialogContentComponent {
         class={[
           'se-dialog-content',
           this.option === 'fill' ? 'full-content' : '',
+          this.indents === 'alternative-indents' ? 'alternative-indents' : '',
         ].join(' ')}
       >
         <span class="se-icon-wrapper">

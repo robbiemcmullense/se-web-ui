@@ -14,12 +14,13 @@ export class IconComponent {
   /**
    * Defines the size of an icon.
    * `nano` sets the size to 14px.
+   * `micro` sets the size to 18px.
    * `small` sets the size to 24px.(default setting)
    * `medium` sets the size to 32px.
    * `large` sets the size to 52px.
    * `xlarge` sets the size to 62px.
    */
-  @Prop() size: 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+  @Prop() size: 'nano' | 'micro' | 'small' | 'medium' | 'large' | 'xlarge';
   /**
    * Optional property that defines the background color of the button.
    * The default color will be inherited from its parent.
@@ -29,6 +30,7 @@ export class IconComponent {
     | 'alternative'
     | 'primary'
     | 'secondary'
+    | 'dark'
     | 'success'
     | 'warning'
     | 'error'

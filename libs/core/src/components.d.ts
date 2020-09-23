@@ -417,6 +417,10 @@ export namespace Components {
          */
         "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
+          * Defines the indents (margins and paddings) of the dialog content. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+         */
+        "indents": 'primary-indents' | 'alternative-indents';
+        /**
           * When set to `fill`, the content will fill the whole space of the dialog.
          */
         "option": 'fill';
@@ -425,9 +429,17 @@ export namespace Components {
     }
     interface SeDialogHeader {
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
+          * Display the close icon to close the dialog. Default setting is `false`.
+         */
+        "closeIcon": boolean;
+        /**
+          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
          */
         "color": 'primary' | 'alternative';
+        /**
+          * Defines the indents (margins and paddings) of the dialog header. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+         */
+        "indents": 'primary-indents' | 'alternative-indents';
     }
     interface SeDivider {
         /**
@@ -569,6 +581,7 @@ export namespace Components {
     | 'alternative'
     | 'primary'
     | 'secondary'
+    | 'dark'
     | 'success'
     | 'warning'
     | 'error'
@@ -582,9 +595,9 @@ export namespace Components {
          */
         "option": 'button';
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
-        "size": 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        "size": 'nano' | 'micro' | 'small' | 'medium' | 'large' | 'xlarge';
     }
     interface SeIconEcostruxure {
         /**
@@ -1927,6 +1940,10 @@ declare namespace LocalJSX {
          */
         "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
+          * Defines the indents (margins and paddings) of the dialog content. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+         */
+        "indents"?: 'primary-indents' | 'alternative-indents';
+        /**
           * When set to `fill`, the content will fill the whole space of the dialog.
          */
         "option"?: 'fill';
@@ -1935,9 +1952,21 @@ declare namespace LocalJSX {
     }
     interface SeDialogHeader {
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
+          * Display the close icon to close the dialog. Default setting is `false`.
+         */
+        "closeIcon"?: boolean;
+        /**
+          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
          */
         "color"?: 'primary' | 'alternative';
+        /**
+          * Defines the indents (margins and paddings) of the dialog header. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+         */
+        "indents"?: 'primary-indents' | 'alternative-indents';
+        /**
+          * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
+         */
+        "onDidCloseDialog"?: (event: CustomEvent<any>) => void;
     }
     interface SeDivider {
         /**
@@ -2087,6 +2116,7 @@ declare namespace LocalJSX {
     | 'alternative'
     | 'primary'
     | 'secondary'
+    | 'dark'
     | 'success'
     | 'warning'
     | 'error'
@@ -2100,9 +2130,9 @@ declare namespace LocalJSX {
          */
         "option"?: 'button';
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
-        "size"?: 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        "size"?: 'nano' | 'micro' | 'small' | 'medium' | 'large' | 'xlarge';
     }
     interface SeIconEcostruxure {
         /**

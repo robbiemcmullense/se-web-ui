@@ -7,10 +7,32 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                                     | Type                         | Default     |
-| -------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
-| `color`  | `color`   | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. | `"alternative" \| "primary"` | `'primary'` |
+| Property    | Attribute    | Description                                                                                                                                                                              | Type                                         | Default     |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ----------- |
+| `closeIcon` | `close-icon` | Display the close icon to close the dialog. Default setting is `false`.                                                                                                                  | `boolean`                                    | `false`     |
+| `color`     | `color`      | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color. | `"alternative" \| "primary"`                 | `undefined` |
+| `indents`   | `indents`    | Defines the indents (margins and paddings) of the dialog header. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.                     | `"alternative-indents" \| "primary-indents"` | `undefined` |
 
+
+## Events
+
+| Event            | Description                                                                                                                                  | Type               |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `didCloseDialog` | Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM. | `CustomEvent<any>` |
+
+
+## Dependencies
+
+### Depends on
+
+- [se-icon](../icon)
+
+### Graph
+```mermaid
+graph TD;
+  se-dialog-header --> se-icon
+  style se-dialog-header fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

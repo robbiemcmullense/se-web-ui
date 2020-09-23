@@ -14,12 +14,6 @@ describe('DialogHeaderComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders with the primary class to indicate the default primary color property', async () => {
-    expect(element.shadowRoot.querySelector('.se-dialog-header')).toHaveClass(
-      'primary'
-    );
-  });
-
   it('renders a div element with a flex class and a slot element with the "end" attribute', async () => {
     const headerElm = await page.find(
       'se-dialog-header >>> .se-dialog-header div'
