@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { groupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
 export namespace Components {
     interface SeAbout {
@@ -333,6 +334,10 @@ export namespace Components {
           * Indicates whether or not the chip is disabled.  Set to `false` by default.
          */
         "disabled": boolean;
+        /**
+          * Indicates whether or not the chip can changed state when hover or clicked on.  Set to `false` by default.
+         */
+        "readonly": boolean;
         /**
           * Indicates whether or not the chip is selected.  Set to `false` by default.
          */
@@ -1840,6 +1845,10 @@ declare namespace LocalJSX {
          */
         "onDidClose"?: (event: CustomEvent<any>) => void;
         /**
+          * Indicates whether or not the chip can changed state when hover or clicked on.  Set to `false` by default.
+         */
+        "readonly"?: boolean;
+        /**
           * Indicates whether or not the chip is selected.  Set to `false` by default.
          */
         "selected"?: boolean;
@@ -2178,11 +2187,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the group item is clicked.
          */
-        "onDidGroupClick"?: (event: CustomEvent<any>) => void;
+        "onDidGroupClick"?: (event: CustomEvent<boolean>) => void;
         /**
           * Emitted when the group item is collapsed/uncollapsed.
          */
-        "onDidGroupCollapse"?: (event: CustomEvent<any>) => void;
+        "onDidGroupCollapse"?: (event: CustomEvent<groupCollapseEvent>) => void;
         /**
           * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
          */

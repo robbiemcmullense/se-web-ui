@@ -1,14 +1,17 @@
 {
   "name": "@se/web-ui",
   "description": "web-ui library of web-component to build SE application",
-  "main": "index.js",
-  "module": "index.mjs",
-  "es2015": "esm/index.mjs",
-  "es2017": "esm/index.mjs",
+  "unpkg": "se-components/se-components.js",
+  "jsnext:main": "esm/index.js",
+  "main": "index.cjs.js",
+  "_module": "custom-elements/index.js",
+  "module": "esm/index.js",
+  "es2015": "esm/index.js",
+  "es2017": "esm/index.js",
   "types": "types/components.d.ts",
   "collection": "collection/collection-manifest.json",
   "collection:main": "collection/index.js",
-  "unpkg": "se-components/se-components.js",
+
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },

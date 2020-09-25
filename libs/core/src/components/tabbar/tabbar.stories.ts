@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { select } from '@storybook/addon-knobs';
 
 const colorOptions = ['primary', 'alternative'];
@@ -6,17 +7,19 @@ const tabBarOptions = ['nav', 'content'];
 const overflowOptions = ['scroll', 'stack', 'compact'];
 
 storiesOf('Tab Bar', module)
-  .add('Demo', () => {
-    const color = select('color', colorOptions, 'primary');
-    const option = select('option', tabBarOptions, 'nav');
-    const overflow = select('stack', overflowOptions, 'scroll');
+  .add(
+    'Demo',
+    () => {
+      const color = select('color', colorOptions, 'primary');
+      const option = select('option', tabBarOptions, 'nav');
+      const overflow = select('stack', overflowOptions, 'scroll');
 
-    const start =
-      color === 'primary' && option === 'nav'
-        ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
-        : '';
+      const start =
+        color === 'primary' && option === 'nav'
+          ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
+          : '';
 
-    return `
+      return `
       <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
         ${start}
         <nav>
@@ -32,18 +35,26 @@ storiesOf('Tab Bar', module)
         </nav>
       </se-tabbar>
     `;
-  })
-  .add('with search', () => {
-    const color = select('color', colorOptions, 'primary');
-    const option = select('option', tabBarOptions, 'nav');
-    const overflow = select('stack', overflowOptions, 'scroll');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'with search',
+    () => {
+      const color = select('color', colorOptions, 'primary');
+      const option = select('option', tabBarOptions, 'nav');
+      const overflow = select('stack', overflowOptions, 'scroll');
 
-    const start =
-      color === 'primary' && option === 'nav'
-        ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
-        : '';
+      const start =
+        color === 'primary' && option === 'nav'
+          ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
+          : '';
 
-    return `
+      return `
       <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
         <nav>
           <a class="active">Overview</a>
@@ -74,4 +85,10 @@ storiesOf('Tab Bar', module)
         </div>
       </se-tabbar>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );

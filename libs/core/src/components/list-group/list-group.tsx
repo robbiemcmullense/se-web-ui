@@ -14,6 +14,10 @@ import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
 import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
+export interface groupCollapseEvent {
+  collapsed: boolean;
+}
+
 @Component({
   tag: 'se-list-group',
   styleUrl: 'list-group.scss',
@@ -71,12 +75,12 @@ export class ListGroupComponent {
   /**
    * Emitted when the group item is clicked.
    */
-  @Event() didGroupClick: EventEmitter<any>;
+  @Event() didGroupClick: EventEmitter<boolean>;
 
   /**
    * Emitted when the group item is collapsed/uncollapsed.
    */
-  @Event() didGroupCollapse: EventEmitter<any>;
+  @Event() didGroupCollapse: EventEmitter<groupCollapseEvent>;
 
   @Listen('didSelectedChange') ChildUpdated() {
     this.checkSelected();
@@ -114,7 +118,7 @@ export class ListGroupComponent {
     } else {
       this.buttonElm && this.buttonElm.blur();
     }
-    this.didGroupClick.emit();
+    this.didGroupClick.emit(true);
   }
 
   private toggleItems() {

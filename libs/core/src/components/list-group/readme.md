@@ -26,10 +26,10 @@
 
 ## Events
 
-| Event              | Description                                           | Type               |
-| ------------------ | ----------------------------------------------------- | ------------------ |
-| `didGroupClick`    | Emitted when the group item is clicked.               | `CustomEvent<any>` |
-| `didGroupCollapse` | Emitted when the group item is collapsed/uncollapsed. | `CustomEvent<any>` |
+| Event              | Description                                           | Type                              |
+| ------------------ | ----------------------------------------------------- | --------------------------------- |
+| `didGroupClick`    | Emitted when the group item is clicked.               | `CustomEvent<boolean>`            |
+| `didGroupCollapse` | Emitted when the group item is collapsed/uncollapsed. | `CustomEvent<groupCollapseEvent>` |
 
 
 ## Methods

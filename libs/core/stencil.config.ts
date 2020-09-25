@@ -62,7 +62,7 @@ const vueComponentModels: ComponentModelConfig[] = [
   },
 ];
 
-const distFolder = 'dist';
+const distFolder = '../../dist/libs/core';
 
 const copy = [
   { src: '../../../node_modules/@se/fonts/css', dest: 'fonts/css' },
@@ -99,10 +99,14 @@ export const config: Config = {
       type: 'docs-readme',
     },
     {
+      type: 'dist-custom-elements-bundle',
+      dir: `${distFolder}/custom-elements`,
+    },
+    {
       type: 'dist',
       dir: distFolder,
       collectionDir: `collection`,
-      typesDir: `../types`,
+      typesDir: `types`,
       esmLoaderPath: `loader`,
       copy: [
         {

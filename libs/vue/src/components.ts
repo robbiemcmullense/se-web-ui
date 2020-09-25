@@ -257,6 +257,7 @@ export const SeChip = /*@__PURE__*/ Vue.extend({
     canClose: {} as PropOptions<Components.SeChip['canClose']>,
     selected: {} as PropOptions<Components.SeChip['selected']>,
     disabled: {} as PropOptions<Components.SeChip['disabled']>,
+    readonly: {} as PropOptions<Components.SeChip['readonly']>,
     block: {} as PropOptions<Components.SeChip['block']>,
   },
 

@@ -56,10 +56,10 @@ describe('BannerComponent', () => {
     expect(eventSpy).toHaveBeenCalled();
   });
 
-  it('should set the selectedItem and selectedItemIndex to undefined when componentDidUnload is called', () => {
+  it('should set the selectedItem and selectedItemIndex to undefined when disconnectedCallback is called', () => {
     banner.selectedItem = 'selected item';
     banner.selectedItemIndex = 2;
-    banner.componentDidUnload();
+    banner.disconnectedCallback();
     expect(banner.selectedItem).toBeUndefined();
     expect(banner.selectedItemIndex).toBeUndefined();
   });

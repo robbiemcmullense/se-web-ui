@@ -1,11 +1,12 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { select, boolean } from '@storybook/addon-knobs';
 
 const sortOption = ['asc', 'desc', 'none'];
 
-storiesOf('Table', module)
-  .add('Table', () => {
-
+storiesOf('Table', module).add(
+  'Table',
+  () => {
     const sort = select('Sort Order Example', sortOption, 'asc');
 
     const selected = boolean('Selected Row Example', true);
@@ -99,4 +100,10 @@ storiesOf('Table', module)
             </se-table-group>
         </se-table>
     `;
-});
+  },
+  {
+    notes: {
+      markdown: readme,
+    },
+  }
+);

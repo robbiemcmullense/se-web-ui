@@ -17,7 +17,7 @@ se-form-field {
     padding: 0;
   }
   .with-label {
-    font-weight: bold;
+    font-weight: 500;
     width: 35%;
     display: flex;
     @include align-items(flex-start);
@@ -242,6 +242,7 @@ se-form-field {
         max-width: none;
         text-align: left;
         line-height: 1.5;
+        margin: $spacing-small 0;
       }
     }
     .ff-wrapper {

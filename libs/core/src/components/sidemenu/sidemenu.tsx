@@ -212,7 +212,7 @@ export class SidemenuComponent {
     this.watchItemList();
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     this.items.length = 0;
     this.selectedItem = undefined;
     this.observer.disconnect();
