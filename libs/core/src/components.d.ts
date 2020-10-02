@@ -993,6 +993,10 @@ export namespace Components {
         "overflow": 'compact' | 'stack' | 'scroll';
     }
     interface SeTable {
+        /**
+          * Define if we should show a compact view of the table, vs a version with larger spacing and font
+         */
+        "compact": boolean;
     }
     interface SeTableGroup {
         /**
@@ -2535,6 +2539,10 @@ declare namespace LocalJSX {
         "overflow"?: 'compact' | 'stack' | 'scroll';
     }
     interface SeTable {
+        /**
+          * Define if we should show a compact view of the table, vs a version with larger spacing and font
+         */
+        "compact"?: boolean;
     }
     interface SeTableGroup {
         /**

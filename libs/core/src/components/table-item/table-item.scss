@@ -1,27 +1,25 @@
-
-
 :host {
   margin: 0;
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0px;
   width: 0;
-  min-width: 58px;
+  min-width: var(--se-table-item-min-width);
   max-width: 100%;
   font-weight: lighter;
-  @include align-self(center);
+  // @include align-self(center);
 }
 
 .table-item-content {
+  min-height: var(--se-table-item-min-height);
+  padding: var(--se-table-item-padding);
+
   overflow: hidden;
   background: none;
   box-sizing: border-box;
   border: none;
-  min-height: 47px;
   height: auto;
   margin: 0;
-  padding: $spacing-small $spacing-large;
-  @include typology('base');
   position: relative;
   outline: none;
   width: 100%;
@@ -39,13 +37,13 @@
 
 .table-item-label {
   width: 100%;
-  line-height: 24px;
+  line-height: inherit;
+  font-size: inherit;
 }
 
 div {
   @include ellipsis();
 }
-
 
 :host(.opt-dropdown) {
   .table-item-content {

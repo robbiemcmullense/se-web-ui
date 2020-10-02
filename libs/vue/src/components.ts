@@ -670,6 +670,10 @@ export const SeTabbar = /*@__PURE__*/ Vue.extend({
 });
 
 export const SeTable = /*@__PURE__*/ Vue.extend({
+  props: {
+    compact: {} as PropOptions<Components.SeTable['compact']>,
+  },
+
   render: createCommonRender('se-table', []),
 });
 
