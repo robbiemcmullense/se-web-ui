@@ -81,7 +81,7 @@ export class DialogComponent {
           item.color = this.color;
         }
         if (this.size === 'fill') {
-          item.indents = 'alternative-indents';
+          item.indents = 'alternative';
         }
       }
     );
@@ -90,8 +90,8 @@ export class DialogComponent {
   assignDialogContentProps() {
     Array.from(this.el.querySelectorAll('se-dialog-content')).forEach(
       (item: any) => {
-        if (this.size === 'fill') {
-          item.indents = 'alternative-indents';
+        if (!item.option && this.size === 'fill') {
+          item.option = 'indent';
         }
       }
     );

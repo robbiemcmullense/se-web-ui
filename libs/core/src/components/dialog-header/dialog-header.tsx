@@ -16,10 +16,10 @@ export class DialogHeaderComponent {
   @Prop() color: 'primary' | 'alternative';
   /**
    * Defines the indents (margins and paddings) of the dialog header.
-   * `alternative-indents`: Alternative margins and paddings.
-   * `primary-indents`: Primary indents schema.
+   * `alternative`: Alternative margins and paddings.
+   * `primary`: Primary indents schema.
    */
-  @Prop() indents: 'primary-indents' | 'alternative-indents';
+  @Prop() indents: 'primary' | 'alternative';
   /**
    * Display the close icon to close the dialog.
    * Default setting is `false`.
@@ -41,7 +41,7 @@ export class DialogHeaderComponent {
         class={[
           'se-dialog-header',
           this.color,
-          this.indents === 'alternative-indents' ? 'alternative-indents' : '',
+          this.indents === 'alternative' ? 'alternative-indents' : '',
         ].join(' ')}
       >
         <div class="flex middle">
@@ -53,7 +53,6 @@ export class DialogHeaderComponent {
             class="icon-close"
             option="button"
             size="micro"
-            color="dark"
             onClick={() => this.closeDialogClicked()}
           >
             <span innerHTML={actionDeleteCross}></span>

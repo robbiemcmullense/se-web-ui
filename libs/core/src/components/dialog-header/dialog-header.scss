@@ -24,6 +24,10 @@
     @include background-color("alternative");
     @include color("primary");
     margin-bottom: -$spacing-large;
+
+    .icon-close {
+      color: rgba($se-anthracite-grey, 0.5);
+    }
   }
 
   &.alternative-indents {

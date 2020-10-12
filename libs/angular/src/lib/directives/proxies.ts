@@ -342,13 +342,13 @@ The modal can then be safely removed from the DOM. */
 
 export declare interface SeDialogContent extends Components.SeDialogContent {}
 @ProxyCmp({
-  inputs: ['icon', 'iconColor', 'indents', 'option']
+  inputs: ['icon', 'iconColor', 'option']
 })
 @Component({
   selector: 'se-dialog-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'iconColor', 'indents', 'option']
+  inputs: ['icon', 'iconColor', 'option']
 })
 export class SeDialogContent {
   protected el: HTMLElement;

@@ -9,12 +9,11 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                                                                           | Type                                                      | Default     |
-| ----------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
-| `icon`      | `icon`       | Indicates an icon you want to display in your dialog.                                                                                                                 | `string`                                                  | `undefined` |
-| `iconColor` | `icon-color` | Indicates what color schema you want to render in your dialog.                                                                                                        | `"alternative" \| "primary" \| "secondary" \| "standard"` | `undefined` |
-| `indents`   | `indents`    | Defines the indents (margins and paddings) of the dialog content. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema. | `"alternative-indents" \| "primary-indents"`              | `undefined` |
-| `option`    | `option`     | When set to `fill`, the content will fill the whole space of the dialog.                                                                                              | `"fill"`                                                  | `undefined` |
+| Property    | Attribute    | Description                                                                                                                                       | Type                                                      | Default     |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
+| `icon`      | `icon`       | Indicates an icon you want to display in your dialog.                                                                                             | `string`                                                  | `undefined` |
+| `iconColor` | `icon-color` | Indicates what color schema you want to render in your dialog.                                                                                    | `"alternative" \| "primary" \| "secondary" \| "standard"` | `undefined` |
+| `option`    | `option`     | When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings. | `"fill" \| "indent"`                                      | `undefined` |
 
 
 ## Dependencies

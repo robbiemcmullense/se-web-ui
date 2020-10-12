@@ -30,7 +30,6 @@ export class IconComponent {
     | 'alternative'
     | 'primary'
     | 'secondary'
-    | 'dark'
     | 'success'
     | 'warning'
     | 'error'

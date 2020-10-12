@@ -8,8 +8,9 @@ import { Component, h, Prop } from '@stencil/core';
 export class DialogContentComponent {
   /**
    * When set to `fill`, the content will fill the whole space of the dialog.
+   * When set to `indent`, the content will alternative margins and paddings.
    */
-  @Prop() option: 'fill';
+  @Prop() option: 'fill' | 'indent';
   /**
    * Indicates an icon you want to display in your dialog.
    */
@@ -18,12 +19,6 @@ export class DialogContentComponent {
    * Indicates what color schema you want to render in your dialog.
    */
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
-  /**
-   * Defines the indents (margins and paddings) of the dialog content.
-   * `alternative-indents`: Alternative margins and paddings.
-   * `primary-indents`: Primary indents schema.
-   */
-  @Prop() indents: 'primary-indents' | 'alternative-indents';
 
   render() {
     return (
@@ -31,7 +26,7 @@ export class DialogContentComponent {
         class={[
           'se-dialog-content',
           this.option === 'fill' ? 'full-content' : '',
-          this.indents === 'alternative-indents' ? 'alternative-indents' : '',
+          this.option === 'indent' ? 'alternative-indents' : '',
         ].join(' ')}
       >
         <span class="se-icon-wrapper">

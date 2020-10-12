@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                                                                                              | Type                                         | Default     |
-| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ----------- |
-| `closeIcon` | `close-icon` | Display the close icon to close the dialog. Default setting is `false`.                                                                                                                  | `boolean`                                    | `false`     |
-| `color`     | `color`      | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color. | `"alternative" \| "primary"`                 | `undefined` |
-| `indents`   | `indents`    | Defines the indents (margins and paddings) of the dialog header. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.                     | `"alternative-indents" \| "primary-indents"` | `undefined` |
+| Property    | Attribute    | Description                                                                                                                                                                              | Type                         | Default     |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
+| `closeIcon` | `close-icon` | Display the close icon to close the dialog. Default setting is `false`.                                                                                                                  | `boolean`                    | `false`     |
+| `color`     | `color`      | Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color. | `"alternative" \| "primary"` | `undefined` |
+| `indents`   | `indents`    | Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.                                     | `"alternative" \| "primary"` | `undefined` |
 
 
 ## Events

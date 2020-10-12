@@ -417,13 +417,9 @@ export namespace Components {
          */
         "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
-          * Defines the indents (margins and paddings) of the dialog content. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
-        "indents": 'primary-indents' | 'alternative-indents';
-        /**
-          * When set to `fill`, the content will fill the whole space of the dialog.
-         */
-        "option": 'fill';
+        "option": 'fill' | 'indent';
     }
     interface SeDialogFooter {
     }
@@ -437,9 +433,9 @@ export namespace Components {
          */
         "color": 'primary' | 'alternative';
         /**
-          * Defines the indents (margins and paddings) of the dialog header. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
          */
-        "indents": 'primary-indents' | 'alternative-indents';
+        "indents": 'primary' | 'alternative';
     }
     interface SeDivider {
         /**
@@ -581,7 +577,6 @@ export namespace Components {
     | 'alternative'
     | 'primary'
     | 'secondary'
-    | 'dark'
     | 'success'
     | 'warning'
     | 'error'
@@ -1940,13 +1935,9 @@ declare namespace LocalJSX {
          */
         "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
-          * Defines the indents (margins and paddings) of the dialog content. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
-        "indents"?: 'primary-indents' | 'alternative-indents';
-        /**
-          * When set to `fill`, the content will fill the whole space of the dialog.
-         */
-        "option"?: 'fill';
+        "option"?: 'fill' | 'indent';
     }
     interface SeDialogFooter {
     }
@@ -1960,9 +1951,9 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'alternative';
         /**
-          * Defines the indents (margins and paddings) of the dialog header. `alternative-indents`: Alternative margins and paddings. `primary-indents`: Primary indents schema.
+          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
          */
-        "indents"?: 'primary-indents' | 'alternative-indents';
+        "indents"?: 'primary' | 'alternative';
         /**
           * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
          */
@@ -2116,7 +2107,6 @@ declare namespace LocalJSX {
     | 'alternative'
     | 'primary'
     | 'secondary'
-    | 'dark'
     | 'success'
     | 'warning'
     | 'error'

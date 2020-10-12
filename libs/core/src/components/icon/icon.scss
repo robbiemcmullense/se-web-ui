@@ -126,30 +126,6 @@ button {
   }
 }
 
-.dark {
-  @include color("dark", 0.5);
-
-  &.icon-button {
-    background-color: inherit;
-
-    &:active,
-    &.button:active,
-    &.selected {
-      @include background-color("alternative-selected");
-    }
-
-    &:focus,
-    &.button:focus {
-      @include background-color("alternative-focus");
-    }
-
-    &:not(.disabled):hover {
-      @include color("dark");
-      @include background-color("alternative");
-    }
-  }
-}
-
 .alternative {
   @include color("alternative");
 
