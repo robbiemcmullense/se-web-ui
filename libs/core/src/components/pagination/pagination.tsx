@@ -222,7 +222,7 @@ export class PaginationComponent {
               innerHTML={arrowStep}
             ></se-icon>
             <label style={{ padding: '0 12px' }}>
-              <span>{this.labelValue}</span>
+              <span class="label">{this.labelValue}</span>
               <se-form-field
                 type="select"
                 padding="none"
@@ -237,7 +237,7 @@ export class PaginationComponent {
                   ))}
                 </select>
               </se-form-field>
-              <span>/ {this.maxPage()}</span>
+              <span class="label">/ {this.maxPage()}</span>
             </label>
             <se-icon
               slot="icon"

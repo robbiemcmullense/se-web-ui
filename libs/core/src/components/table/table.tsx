@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-table',
@@ -6,10 +6,14 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class TableComponent {
+  /**
+   * Define if we should show a compact view of the table, vs a version with larger spacing and font
+   */
+  @Prop() compact: boolean;
   render() {
     return (
-      <Host role="table">
-        <div class="table-rows-wrapper">
+      <Host role="table" class={{ compact: this.compact }}>
+        <div class={{ 'table-rows-wrapper': true }}>
           <slot name="start"></slot>
           <slot></slot>
         </div>

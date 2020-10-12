@@ -17,11 +17,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@se/web-ui": ["dist/libs/core"],
+      "@se/web-ui/*": ["dist/libs/core/*"],
       "@se/web-ui-angular": ["libs/angular/src/index.ts"],
       "@se/web-ui-react": ["libs/react/src/index.ts"],
       "@se/web-ui-vue": ["libs/vue/src/index.ts"],
-      "@se/web-ui": ["dist/libs/core"],
-      "@se/web-ui/*": ["dist/libs/core/*"],
       "@se/utils": ["libs/utils/src/index.ts"]
     }
   },

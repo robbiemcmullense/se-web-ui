@@ -6,16 +6,9 @@ const domainOption = ['ecostruxure', 'MySchneider'];
 const copyrightText =
   'This application is protected by copyright law and international treaties. © 2020 Schneider Electric Industries SAS. All Rights Reserved.';
 
-storiesOf('Authentication', module)
-  // .addParameters({
-  //   readme: {
-  //     // Show readme before story
-  //     content: readme,
-  //     // Show readme at the addons panel
-  //     sidebar: readme,
-  //   },
-  // })
-  .add('Demo', () => {
+storiesOf('Authentication', module).add(
+  'Demo',
+  () => {
     const title = text('app-title', 'My app Advisor');
     const version = text('version', '1.2.3');
     const domain = select('domain', domainOption, 'ecostruxure');
@@ -39,4 +32,10 @@ storiesOf('Authentication', module)
         </form>
       </se-authentication>
     `;
-  });
+  },
+  {
+    notes: {
+      markdown: readme,
+    },
+  }
+);

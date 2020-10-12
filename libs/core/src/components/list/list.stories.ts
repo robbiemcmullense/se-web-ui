@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { select, number, boolean } from '@storybook/addon-knobs';
 
 const listOption = ['nav', 'classic', 'treeview', 'headline'];
@@ -13,8 +14,10 @@ const iconColorOptions = [
 ];
 
 storiesOf('List', module)
-  .add('all', () => {
-    return `
+  .add(
+    'all',
+    () => {
+      return `
     <se-container >
       <se-block width="250px" option="fill" divider>
         <se-block-header>
@@ -100,20 +103,28 @@ storiesOf('List', module)
       </se-block>
     </se-container>
     `;
-  })
-  .add('responsive', () => {
-    const list = select('option', listOption, 'nav');
-    const valueOptions = {
-      range: true,
-      min: 200,
-      max: 700,
-      step: 50,
-    };
-    const value = number('Block Width', 300, valueOptions);
-    const canCollapse = boolean('can collapse', true);
-    const iconColor = select('icon color', iconColorOptions, 'standard');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'responsive',
+    () => {
+      const list = select('option', listOption, 'nav');
+      const valueOptions = {
+        range: true,
+        min: 200,
+        max: 700,
+        step: 50,
+      };
+      const value = number('Block Width', 300, valueOptions);
+      const canCollapse = boolean('can collapse', true);
+      const iconColor = select('icon color', iconColorOptions, 'standard');
 
-    return `
+      return `
         <se-block width="${value}px" option="fill">
         <se-list option="${list}" can-collapse="${canCollapse}">
           <se-list-group item="My Example List">
@@ -137,4 +148,10 @@ storiesOf('List', module)
         </se-list>
       </se-block>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );

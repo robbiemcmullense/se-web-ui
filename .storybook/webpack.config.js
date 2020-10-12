@@ -9,20 +9,19 @@ module.exports = async ({ config, mode }) => {
 
   // Make whatever fine-grained changes you need
 
-  const copyWebpackPlugin = new CopyWebpackPlugin([
-    {
-      from: path.resolve(__dirname, '../dist/libs/core'),
-      to: path.posix.join('static', ''),
-      ignore: ['.*']
-    },
-  ]);
+  const copyWebpackPlugin = new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: path.resolve(__dirname, '../dist/libs/core'),
+        to: path.posix.join('static', ''),
+      },
+    ],
+  });
 
   if (config.plugins) {
     config.plugins.push(copyWebpackPlugin);
   } else {
-    config.plugins = [
-      copyWebpackPlugin
-    ];
+    config.plugins = [copyWebpackPlugin];
   }
 
   // config.rules = [{
@@ -36,4 +35,3 @@ module.exports = async ({ config, mode }) => {
 
   return config;
 };
-

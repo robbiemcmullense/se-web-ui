@@ -35,6 +35,12 @@ export class DocsComponent {
   radioChanged(event) {
     console.log('radio changed', event);
   }
+  didGroupClick(event) {
+    console.log('didGroupClick changed', event);
+  }
+  checkboxChanged(event) {
+    console.log('checkboxChanged changed', event.detail);
+  }
 
   removeLastListItem = () => {
     this.items.pop();

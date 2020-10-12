@@ -40,33 +40,31 @@ export class RadioGroupComponent {
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
   @Prop() disabled = false;
+  @Watch('disabled') disabledDidChange() {
+    this.updateItemMode();
+  }
   /**
    * Defines the selected values of the array.
    */
   @Prop({ mutable: true }) value: string;
+  @Watch('value') valueDidChange() {
+    this.selectChild();
+  }
+
   /**
    * Passes the selected button value to the parent component when clicking on a button in the group.
    */
   @Event() didChange: EventEmitter;
   children: NodeList;
 
-  @Watch('disabled') disabledDidChange() {
-    this.updateItemMode();
-  }
-
-  @Watch('value') valueDidChange() {
-    console.log('this.didChange.emit(this.value);', this.value);
-    this.didChange.emit(this.value);
-  }
-
   @Listen('didClick') buttonClickedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
-    this.selectChild();
+    this.didChange.emit(this.value);
   }
 
   @Listen('didCheck') radioButtonCheckedHandler(event: CustomEvent) {
     this.handleChildClicked(event);
-    this.selectChild();
+    this.didChange.emit(this.value);
   }
 
   updateItemMode() {
@@ -89,12 +87,13 @@ export class RadioGroupComponent {
   }
 
   selectChild() {
-    this.children.forEach((child: any) => {
-      child.selected = child.value === this.value;
-    });
+    this.children &&
+      this.children.forEach((child: any) => {
+        child.selected = child.value === this.value;
+      });
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.children = this.el.querySelectorAll('se-button, se-radio');
     if (!this.direction && this.children && this.children.length) {
       switch (this.children[0].nodeName) {

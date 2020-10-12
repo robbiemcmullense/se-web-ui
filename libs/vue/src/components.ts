@@ -257,6 +257,7 @@ export const SeChip = /*@__PURE__*/ Vue.extend({
     canClose: {} as PropOptions<Components.SeChip['canClose']>,
     selected: {} as PropOptions<Components.SeChip['selected']>,
     disabled: {} as PropOptions<Components.SeChip['disabled']>,
+    readonly: {} as PropOptions<Components.SeChip['readonly']>,
     block: {} as PropOptions<Components.SeChip['block']>,
   },
 
@@ -669,6 +670,10 @@ export const SeTabbar = /*@__PURE__*/ Vue.extend({
 });
 
 export const SeTable = /*@__PURE__*/ Vue.extend({
+  props: {
+    compact: {} as PropOptions<Components.SeTable['compact']>,
+  },
+
   render: createCommonRender('se-table', []),
 });
 

@@ -1,11 +1,10 @@
-
 @import "../list-item/list-item";
 
 :host {
   @include flex-direction(column);
 }
 
-.group-item{
+.group-item {
   overflow: unset;
   list-style-type: none;
   margin: 0;
@@ -29,15 +28,16 @@
   // }
 
   &.selectedChild {
-    @include background-color('alternative-hover');
+    @include background-color("alternative-hover");
   }
 
-  &.classic, &.nav {
+  &.classic,
+  &.nav {
     min-height: 47px;
     height: 20px; // IE fix so flexbox vertical alignment works
     max-width: 100%;
-    .nav-content{
-      font-weight: bold;
+    .nav-content {
+      font-weight: 500;
     }
   }
   &.treeview {
@@ -66,8 +66,8 @@
   }
   &.headline {
     height: 47px;
-    @include background-color('alternative-hover');
-    @include color('alternative-contrast');
+    @include background-color("alternative-hover");
+    @include color("alternative-contrast");
   }
   &.headline .nav-content {
     font-size: 16px;

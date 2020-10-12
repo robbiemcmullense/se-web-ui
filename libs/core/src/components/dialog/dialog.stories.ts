@@ -1,9 +1,11 @@
 import { storiesOf } from '@storybook/html';
 import { select, boolean, text, object } from '@storybook/addon-knobs';
+import readme from './readme.md';
 
 const configurationGroup = 'Configuration';
 const mainTitleGroup = 'Main slot title';
 const endTitleGroup = 'End slot title';
+
 
 const sizeOptions = ['medium', 'small', 'large', 'fill'];
 const colorOptions = ['primary', 'alternative'];
@@ -78,4 +80,10 @@ storiesOf('Dialog', module).add('Demo', () => {
         </se-dialog-footer>
       </se-dialog>
     `;
-});
+  },
+  {
+    notes: {
+      markdown: readme,
+    },
+  }
+);

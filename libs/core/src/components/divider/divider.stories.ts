@@ -1,13 +1,16 @@
 import { storiesOf } from '@storybook/html';
 import { select } from '@storybook/addon-knobs';
+import readme from './readme.md';
 
 const colorOption = ['standard', 'alternative'];
 
 storiesOf('Divider', module)
-  .add('Divider Horizontal', () => {
-    const color = select('color', colorOption, 'standard');
+  .add(
+    'Divider Horizontal',
+    () => {
+      const color = select('color', colorOption, 'standard');
 
-    return `
+      return `
       <div style="width: 500px; height: 100px; border: 1px solid gray;">
       </div>
       <se-divider style="padding: 10px;" option='horizontal' color='${color}'></se-divider>
@@ -15,11 +18,19 @@ storiesOf('Divider', module)
       </div>
       <div>The divider is between the two boxes.</div>
     `;
-  })
-  .add('Divider Vertical', () => {
-    const color = select('color', colorOption, 'standard');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Divider Vertical',
+    () => {
+      const color = select('color', colorOption, 'standard');
 
-    return `
+      return `
       <div style="display: flex; flex-direction: row;">
         <div style="width: 100px; height: 100px; border: 1px solid gray;">
         </div>
@@ -29,4 +40,10 @@ storiesOf('Divider', module)
       </div>
       <div>The divider is between the two boxes.</div>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );
