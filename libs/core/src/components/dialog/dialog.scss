@@ -50,20 +50,22 @@
   @include display-flex();
   @include align-items(center);
   @include justify-content(center);
+  overflow-y: auto;
+  height: auto !important;
 }
 
 .dialog {
   margin: $spacing-large;
   z-index: $zindex-modal;
-  max-height: 90%;
-
-  position: relative;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
   @include animated();
   @include background-color("background-alternative");
   @include color("background-alternative-contrast");
   @include display-flex();
   @include flex-direction(column);
+  height: auto;
+  position: relative;
+  top: 2em;
   &.show-dialog {
     animation-name: fadeIn;
   }
@@ -77,6 +79,7 @@
   @include absolute();
   @include animated();
   @include background-color("overlay");
+  padding-top: 4%;
   z-index: $zindex-modal-backdrop;
   &.show-dialog {
     animation-name: fadeIn;

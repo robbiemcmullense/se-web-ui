@@ -11,6 +11,12 @@ import {
   SeDivider,
   SeStepper,
   SeStepperItem,
+  SeDialogHeader,
+  SeDialog,
+  SeDialogContent,
+  SeIcon,
+  SeDialogFooter,
+  SeFormField,
 } from '@se/web-ui-react';
 
 // import Widget from '../components/widget';
@@ -26,6 +32,26 @@ const listItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 class Dashboard extends Component<DashboardProps> {
   state = {
     listItems,
+    isDlgOpen: false,
+    formFields: [
+      { id: 'firstname', label: 'First Name', hint: 'enter first name' },
+      { id: 'lastname', label: 'Last Name', hint: 'enter last name' },
+      { id: 'city', label: 'City', hint: 'enter city' },
+      { id: 'postalcode', label: 'Postal Code', hint: 'enter postal code' },
+      {
+        id: 'primaryskill',
+        label: 'Primary Skill',
+        hint: 'enter primary skill',
+      },
+      { id: 'otherskills', label: 'Other Skills', hint: 'enter other skills' },
+      { id: 'jobtitle', label: 'Job Title', hint: 'job title' },
+      { id: 'graduation', label: 'Graduation', hint: 'graduation' },
+      {
+        id: 'postgraduation',
+        label: 'Post Graduation',
+        hint: 'post graduation',
+      },
+    ],
   };
 
   changePage(i) {
@@ -43,6 +69,13 @@ class Dashboard extends Component<DashboardProps> {
     listItems.push('New Item - Test');
     this.setState({ listItems: listItems });
     console.log('After Add New List Item was run', listItems);
+  };
+
+  openDialog = () => {
+    this.setState({ isDlgOpen: true });
+  };
+  closeDialog = () => {
+    this.setState({ isDlgOpen: false });
   };
 
   render() {
@@ -66,7 +99,7 @@ class Dashboard extends Component<DashboardProps> {
               <SeList option="treeview">
                 <SeListItem item="Static item"></SeListItem>
                 <SeListGroup item="New Block" id="testing-list-group">
-                  {listItems.map((id) => {
+                  {listItems.map(id => {
                     return (
                       <SeListItem
                         key={id}
@@ -125,7 +158,48 @@ class Dashboard extends Component<DashboardProps> {
             </SeStepper>
           </SeBlockContent>
         </SeBlock>
-        <SeBlock></SeBlock>
+        <SeBlock>
+          <h4>Dialog Demo</h4>
+          <SeButton
+            icon="notification_ok_wired"
+            onClick={() => this.openDialog()}
+          >
+            Open Dialog
+          </SeButton>
+          <SeDialog id="dlg1" canBackdrop={false} open={this.state.isDlgOpen}>
+            <SeDialogHeader>
+              Personal Information
+              <div slot="end">
+                <SeButton
+                  onClick={() => this.closeDialog()}
+                  iconOnly
+                  icon="action_close"
+                ></SeButton>
+              </div>
+            </SeDialogHeader>
+            <SeDialogContent>
+              <SeContainer>
+                <SeBlock>
+                  {this.state.formFields.map(f => (
+                    <SeFormField
+                      option="stacked"
+                      id={f.id}
+                      label={f.label}
+                      type="input"
+                    >
+                      <input type="text" placeholder={f.hint} />
+                    </SeFormField>
+                  ))}
+                </SeBlock>
+              </SeContainer>
+            </SeDialogContent>
+            <SeDialogFooter>
+              <SeButton onClick={() => this.closeDialog()} icon="action_close">
+                Cancel
+              </SeButton>
+            </SeDialogFooter>
+          </SeDialog>
+        </SeBlock>
       </SeContainer>
     );
   }
