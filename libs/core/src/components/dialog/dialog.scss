@@ -65,7 +65,7 @@
   @include flex-direction(column);
   height: auto;
   position: relative;
-  top: 2em;
+  margin: auto;
   &.show-dialog {
     animation-name: fadeIn;
   }
@@ -87,6 +87,8 @@
   &.hide-dialog {
     animation-name: fadeOut;
   }
+  overflow-y: auto;
+  height: 100% !important;
 }
 
 @media only screen and (max-width: 600px) {
