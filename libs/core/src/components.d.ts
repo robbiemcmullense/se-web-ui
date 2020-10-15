@@ -497,6 +497,11 @@ export namespace Components {
          */
         "icon": string;
     }
+    interface SeFiltration {
+        "data": any;
+        "label": string;
+        "multiselect": boolean;
+    }
     interface SeFormField {
         /**
           * Optional property that defines if the field displays as a block in it's container. When set to true, the field will be as wide as its container. both field label auto adjust when it set to inline
@@ -1258,6 +1263,12 @@ declare global {
         prototype: HTMLSeFabItemElement;
         new (): HTMLSeFabItemElement;
     };
+    interface HTMLSeFiltrationElement extends Components.SeFiltration, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationElement: {
+        prototype: HTMLSeFiltrationElement;
+        new (): HTMLSeFiltrationElement;
+    };
     interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {
     }
     var HTMLSeFormFieldElement: {
@@ -1474,6 +1485,7 @@ declare global {
         "se-dropdown": HTMLSeDropdownElement;
         "se-fab": HTMLSeFabElement;
         "se-fab-item": HTMLSeFabItemElement;
+        "se-filtration": HTMLSeFiltrationElement;
         "se-form-field": HTMLSeFormFieldElement;
         "se-header": HTMLSeHeaderElement;
         "se-icon": HTMLSeIconElement;
@@ -2010,6 +2022,11 @@ declare namespace LocalJSX {
           * Send the value of the caption to the parent when clicking on the item.
          */
         "onDidClick"?: (event: CustomEvent<any>) => void;
+    }
+    interface SeFiltration {
+        "data"?: any;
+        "label"?: string;
+        "multiselect"?: boolean;
     }
     interface SeFormField {
         /**
@@ -2684,6 +2701,7 @@ declare namespace LocalJSX {
         "se-dropdown": SeDropdown;
         "se-fab": SeFab;
         "se-fab-item": SeFabItem;
+        "se-filtration": SeFiltration;
         "se-form-field": SeFormField;
         "se-header": SeHeader;
         "se-icon": SeIcon;
@@ -2745,6 +2763,7 @@ declare module "@stencil/core" {
             "se-dropdown": LocalJSX.SeDropdown & JSXBase.HTMLAttributes<HTMLSeDropdownElement>;
             "se-fab": LocalJSX.SeFab & JSXBase.HTMLAttributes<HTMLSeFabElement>;
             "se-fab-item": LocalJSX.SeFabItem & JSXBase.HTMLAttributes<HTMLSeFabItemElement>;
+            "se-filtration": LocalJSX.SeFiltration & JSXBase.HTMLAttributes<HTMLSeFiltrationElement>;
             "se-form-field": LocalJSX.SeFormField & JSXBase.HTMLAttributes<HTMLSeFormFieldElement>;
             "se-header": LocalJSX.SeHeader & JSXBase.HTMLAttributes<HTMLSeHeaderElement>;
             "se-icon": LocalJSX.SeIcon & JSXBase.HTMLAttributes<HTMLSeIconElement>;
