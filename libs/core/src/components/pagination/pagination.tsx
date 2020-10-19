@@ -76,7 +76,7 @@ export class PaginationComponent {
       );
     }
 
-    console.log('pagination mounted', this.perPage);
+    // console.log('pagination mounted', this.perPage);
     if (this.perPage == null) {
       this.perPage = this.__parPageSizeList()[0];
     }
