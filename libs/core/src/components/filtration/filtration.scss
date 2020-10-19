@@ -1,11 +1,54 @@
-.dropdown {
-  box-shadow: 0 0 4px #666666;
-  width: 16em;
+:host {
+  background-color: blue;
+  color: white;
 }
-.li {
-  padding: 4px 8px;
-  cursor: pointer;
+.dropdown {
+  box-shadow: 0 0 2px #666666;
+  width: 18em;
+  margin-left: 4px;
+}
+.dropdown-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding-left: 10px;
+}
+.listview {
+  box-shadow: 0 0 4px #666666;
+  position: absolute;
+  z-index: 9999;
+  display: block;
+  min-height: calc(30px * 6);
+  max-height: calc(30px * 11);
+  width: inherit;
+  background-color: #f7f7f7;
+}
+.listview.active {
+  display: block;
+}
+.listbox {
+  box-sizing: border-box;
+  min-height: 100px;
+  max-height: 300px;
+  overflow-y: auto;
+  width: inherit;
+}
+.listbox-footer {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.list-item {
+  padding: 2px 4px;
+  margin: 0;
+  background-color: #eeeeee;
+  margin-bottom: 2px;
   &:hover {
-    background-color: #eeeeee;
+    background-color: #cccccc;
+    cursor: pointer;
+  }
+  &.active {
+    background-color: #666666;
+    color: #ffffee;
   }
 }
