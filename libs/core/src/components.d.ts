@@ -500,7 +500,7 @@ export namespace Components {
     interface SeFiltration {
         "data": any;
         "label": string;
-        "multiselect": boolean;
+        "multiSelect": boolean;
     }
     interface SeFormField {
         /**
@@ -2026,7 +2026,8 @@ declare namespace LocalJSX {
     interface SeFiltration {
         "data"?: any;
         "label"?: string;
-        "multiselect"?: boolean;
+        "multiSelect"?: boolean;
+        "onSelected"?: (event: CustomEvent<any>) => void;
     }
     interface SeFormField {
         /**
