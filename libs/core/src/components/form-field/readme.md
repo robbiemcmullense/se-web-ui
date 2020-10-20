@@ -33,11 +33,13 @@
 
 ### Used by
 
+ - [se-filtration](../filtration)
  - [se-pagination](../pagination)
 
 ### Graph
 ```mermaid
 graph TD;
+  se-filtration --> se-form-field
   se-pagination --> se-form-field
   style se-form-field fill:#f9f,stroke:#333,stroke-width:4px
 ```

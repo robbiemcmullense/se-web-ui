@@ -5,6 +5,7 @@ import {
   SeBlockHeader,
   SeButton,
   SeBlockContent,
+  SeCheckbox,
   SeList,
   SeListItem,
   SeListGroup,
@@ -33,6 +34,7 @@ class Dashboard extends Component<DashboardProps> {
   state = {
     listItems,
     isDlgOpen: false,
+    scrollPage: false,
     formFields: [
       { id: 'firstname', label: 'First Name', hint: 'enter first name' },
       { id: 'lastname', label: 'Last Name', hint: 'enter last name' },
@@ -160,13 +162,25 @@ class Dashboard extends Component<DashboardProps> {
         </SeBlock>
         <SeBlock>
           <h4>Dialog Demo</h4>
+          <SeCheckbox
+            selected={this.state.scrollPage}
+            onDidChange={e =>
+              this.setState({ scrollPage: !this.state.scrollPage })
+            }
+            label="Scroll Page?"
+          />
           <SeButton
             icon="notification_ok_wired"
             onClick={() => this.openDialog()}
           >
             Open Dialog
           </SeButton>
-          <SeDialog id="dlg1" canBackdrop={false} open={this.state.isDlgOpen}>
+          <SeDialog
+            id="dlg1"
+            canBackdrop={false}
+            open={this.state.isDlgOpen}
+            pageScroll={this.state.scrollPage}
+          >
             <SeDialogHeader>
               Personal Information
               <div slot="end">

@@ -37,6 +37,7 @@ const customElementTags: string[] = [
   'se-dropdown',
   'se-fab',
   'se-fab-item',
+  'se-filtration',
   'se-form-field',
   'se-header',
   'se-icon',
@@ -284,6 +285,7 @@ export const SeDialog = /*@__PURE__*/ Vue.extend({
     color: {} as PropOptions<Components.SeDialog['color']>,
     open: {} as PropOptions<Components.SeDialog['open']>,
     canBackdrop: {} as PropOptions<Components.SeDialog['canBackdrop']>,
+    pageScroll: {} as PropOptions<Components.SeDialog['pageScroll']>,
   },
 
   methods: {
@@ -369,6 +371,16 @@ export const SeFabItem = /*@__PURE__*/ Vue.extend({
   },
 
   render: createCommonRender('se-fab-item', ['didClick']),
+});
+
+export const SeFiltration = /*@__PURE__*/ Vue.extend({
+  props: {
+    multiSelect: {} as PropOptions<Components.SeFiltration['multiSelect']>,
+    data: {} as PropOptions<Components.SeFiltration['data']>,
+    label: {} as PropOptions<Components.SeFiltration['label']>,
+  },
+
+  render: createCommonRender('se-filtration', ['selected']),
 });
 
 export const SeFormField = /*@__PURE__*/ Vue.extend({

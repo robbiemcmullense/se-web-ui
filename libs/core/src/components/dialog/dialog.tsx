@@ -74,6 +74,11 @@ export class DialogComponent {
    */
   @Event() didClose: EventEmitter<any>;
 
+  /**
+   * Option to scroll page in browser window if set to `true`.
+   */
+  @Prop() pageScroll: boolean = false;
+
   assignDialogHeaderColor() {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
       (item: any) => {
@@ -125,11 +130,18 @@ export class DialogComponent {
   render() {
     return (
       <Host class={{ 'show-dialog': this.showModal }}>
-        <div class={{ [this.size]: !!this.size, 'dialog-wrapper': true }}>
+        <div
+          class={{
+            [this.size]: !!this.size,
+            'dialog-wrapper': true,
+            'scroll-page': this.pageScroll,
+          }}
+        >
           <div
             class={{
               'dialog-background': true,
               [this.modalAnimation]: !!this.modalAnimation,
+              'scroll-page': this.pageScroll,
             }}
             onClick={() => this.backdropClicked()}
           ></div>
@@ -137,6 +149,7 @@ export class DialogComponent {
             class={{
               dialog: true,
               [this.modalAnimation]: !!this.modalAnimation,
+              'scroll-content': !this.pageScroll,
             }}
           >
             <slot></slot>

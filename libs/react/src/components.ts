@@ -100,6 +100,10 @@ export const SeFabItem = /*@__PURE__*/ createReactComponent<
   JSX.SeFabItem,
   HTMLSeFabItemElement
 >('se-fab-item');
+export const SeFiltration = /*@__PURE__*/ createReactComponent<
+  JSX.SeFiltration,
+  HTMLSeFiltrationElement
+>('se-filtration');
 export const SeFormField = /*@__PURE__*/ createReactComponent<
   JSX.SeFormField,
   HTMLSeFormFieldElement

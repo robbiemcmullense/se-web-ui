@@ -315,14 +315,14 @@ export class SeContainer {
 import { DialogComponent as IDialogComponent } from '@se/web-ui/types/components/dialog/dialog';
 export declare interface SeDialog extends Components.SeDialog {}
 @ProxyCmp({
-  inputs: ['canBackdrop', 'color', 'open', 'size'],
+  inputs: ['canBackdrop', 'color', 'open', 'pageScroll', 'size'],
   methods: ['backdropClicked']
 })
 @Component({
   selector: 'se-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canBackdrop', 'color', 'open', 'size'],
+  inputs: ['canBackdrop', 'color', 'open', 'pageScroll', 'size'],
   outputs: ['backdrop', 'didClose']
 })
 export class SeDialog {
@@ -480,6 +480,29 @@ export class SeFabItem {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['didClick']);
+  }
+}
+
+import { FiltrationComponent as IFiltrationComponent } from '@se/web-ui/types/components/filtration/filtration';
+export declare interface SeFiltration extends Components.SeFiltration {}
+@ProxyCmp({
+  inputs: ['data', 'label', 'multiSelect']
+})
+@Component({
+  selector: 'se-filtration',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['data', 'label', 'multiSelect'],
+  outputs: ['selected']
+})
+export class SeFiltration {
+  /**  */
+  selected!: IFiltrationComponent['selected'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['selected']);
   }
 }
 
