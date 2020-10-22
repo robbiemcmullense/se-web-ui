@@ -273,13 +273,13 @@ export class SeCheckbox {
 import { ChipComponent as IChipComponent } from '@se/web-ui/types/components/chip/chip';
 export declare interface SeChip extends Components.SeChip {}
 @ProxyCmp({
-  inputs: ['block', 'canClose', 'color', 'disabled', 'selected', 'size', 'value']
+  inputs: ['block', 'canClose', 'color', 'disabled', 'readonly', 'selected', 'size', 'value']
 })
 @Component({
   selector: 'se-chip',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['block', 'canClose', 'color', 'disabled', 'selected', 'size', 'value'],
+  inputs: ['block', 'canClose', 'color', 'disabled', 'readonly', 'selected', 'size', 'value'],
   outputs: ['didClose']
 })
 export class SeChip {
@@ -943,11 +943,14 @@ export class SeTabbar {
 
 
 export declare interface SeTable extends Components.SeTable {}
-
+@ProxyCmp({
+  inputs: ['compact']
+})
 @Component({
   selector: 'se-table',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['compact']
 })
 export class SeTable {
   protected el: HTMLElement;

@@ -1,8 +1,23 @@
-
-
-:host{
+:host {
   overflow: auto;
   width: 100%;
+
+  // will be evaluated by StencilJs automatically but need to exist at the host level(https://stenciljs.com/docs/styling)
+  // We need to let SCSS interpret the variable or it will be used as a string
+  /**
+    * @prop --se-table-item-min-height: Min height of a row. Default: `47px`; Compact mode: `32px`.
+    * @prop --se-table-item-padding: Padding of both `se-table-item` and `se-table-item-header` to insure they align correctly. Default: `4px 8px`, Compact mode: `4px`.
+    * @prop --se-table-item-min-width: Min width of a column. Small enough to just see a single icon or checkbox. Default: `58px`; Compact mode: `32px`.
+    */
+  --se-table-item-min-height: 47px;
+  --se-table-item-padding: #{$spacing-small} #{$spacing-large};
+  --se-table-item-min-width: 58px;
+}
+
+:host(.compact) {
+  --se-table-item-min-height: 32px;
+  --se-table-item-padding: #{$spacing-small};
+  --se-table-item-min-width: 32px;
 }
 
 .table-rows-wrapper {
@@ -11,10 +26,14 @@
 }
 
 ::slotted(se-table-group.selectable:hover) {
-  @include background-color('alternative-hover');
-  @include color('alternative-contrast');
+  @include background-color("alternative-hover");
+  @include color("alternative-contrast");
 }
 ::slotted(se-table-group.selected) {
-  @include background-color('alternative-selected');
-  @include color('alternative-contrast');
+  @include background-color("alternative-selected");
+  @include color("alternative-contrast");
 }
+
+// .compact{
+
+// }

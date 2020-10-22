@@ -47,7 +47,7 @@ export class CheckboxComponent {
   /**
    * The "checked" state of the checkbox, `false` by default.
    */
-  @Prop({ mutable: true }) selected = false;
+  @Prop({ mutable: true }) selected: boolean;
   /**
    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to `onoff`.  Set to `ON` by default.
    */
@@ -108,6 +108,10 @@ export class CheckboxComponent {
   }
 
   componentWillLoad() {
+    // to take care of angular bundling issue:
+    this.selected =
+      this.selected === undefined ? !!this.el['checked'] : this.selected;
+
     if (!this.labelPos) {
       this.labelPos = this.option === 'checkbox' ? 'right' : 'left';
     }
@@ -122,6 +126,7 @@ export class CheckboxComponent {
         markup = (
           <div class="on-off-wrapper">
             <button
+              disabled={this.disabled}
               class={{ active: true, selected: this.selected }}
               onClick={e => this.handleClick(true, e)}
               id={id ? `wc-${id}-active` : ''}
@@ -129,6 +134,7 @@ export class CheckboxComponent {
               {this.textOn}
             </button>
             <button
+              disabled={this.disabled}
               class={{ inactive: true, selected: !this.selected }}
               onClick={e => this.handleClick(false, e)}
               id={id ? `wc-${id}-inactive` : ''}

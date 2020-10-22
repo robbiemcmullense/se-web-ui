@@ -215,7 +215,7 @@ export class StepperComponent {
     this.watchItemList();
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     this.stepperItems.length = 0;
     this.selectedItem = undefined;
     this.observer.disconnect();

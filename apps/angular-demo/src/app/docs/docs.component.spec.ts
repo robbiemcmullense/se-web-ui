@@ -11,16 +11,15 @@ describe('DocsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          SeWebModule,
-          FormsModule,
-          SharedModule,
-          BrowserAnimationsModule
-        ],
-        declarations: [DocsComponent],
-        providers: []
-      })
-      .compileComponents();
+      imports: [
+        SeWebModule,
+        FormsModule,
+        SharedModule,
+        BrowserAnimationsModule,
+      ],
+      declarations: [DocsComponent],
+      providers: [],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -31,5 +30,15 @@ describe('DocsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should only receive one event when clicked on', () => {
+    spyOn(component, 'didGroupClick');
+    const nativeElement = fixture.nativeElement;
+
+    const listGroup = nativeElement.querySelector('#listToClick');
+    listGroup.dispatchEvent(new Event('click'));
+
+    expect(component.didGroupClick).toHaveBeenCalledTimes(1);
   });
 });

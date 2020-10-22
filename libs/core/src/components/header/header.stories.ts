@@ -1,25 +1,36 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { text, select } from '@storybook/addon-knobs';
 
 const domainOption = ['ecostruxure', 'MySchneider'];
 
 storiesOf('Header', module)
-  .add('Simple', () => {
-    const title = text('app-title', 'My cool advisor');
-    const project = text('project', 'Project awesome');
-    const domain = select('domain', domainOption, 'ecostruxure');
+  .add(
+    'Simple',
+    () => {
+      const title = text('app-title', 'My cool advisor');
+      const project = text('project', 'Project awesome');
+      const domain = select('domain', domainOption, 'ecostruxure');
 
-    return `
+      return `
       <se-header app-title="${title}" project="${project}" domain="${domain}"></se-header>
     `;
-  })
-  .add('Header with side menu', () => {
-    const title = text('app-title', 'My cool advisor');
-    const project = text('project', 'Project awesome');
-    const domain = select('domain', domainOption, 'ecostruxure');
-    const link = text('link', 'www.se.com/en/partners');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Header with side menu',
+    () => {
+      const title = text('app-title', 'My cool advisor');
+      const project = text('project', 'Project awesome');
+      const domain = select('domain', domainOption, 'ecostruxure');
+      const link = text('link', 'www.se.com/en/partners');
 
-    return `
+      return `
       <se-header app-title="${title}" project="${project}" domain="${domain}">
         <se-sidemenu id="main-sidemenu" link="${link}">
           <se-sidemenu-item item="About" id="side-about">
@@ -34,4 +45,10 @@ storiesOf('Header', module)
       </se-header>
       <se-tabbar></se-tabbar>
       `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );
