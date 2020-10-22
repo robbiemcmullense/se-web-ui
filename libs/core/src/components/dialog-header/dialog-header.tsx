@@ -52,7 +52,6 @@ export class DialogHeaderComponent {
           <se-icon
             class="icon-close"
             option="button"
-            size="micro"
             onClick={() => this.closeDialogClicked()}
           >
             <span innerHTML={actionDeleteCross}></span>

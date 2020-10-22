@@ -28,18 +28,17 @@
   }
 
   &.alternative-indents {
-    padding: $spacing-medium $spacing-s-medium $spacing-s-medium;
+    padding: $spacing-large $spacing-large $spacing-xlarge;
 
     @include for-desktop-only {
-      padding: $spacing-medium $spacing-medium $spacing-s-medium;
+      padding: $spacing-large $spacing-xlarge $spacing-m-large;
     }
 
     .inner-content {
-      margin: 0 $spacing-s-medium;
+      margin: 0 $spacing $spacing-small;
 
       @include for-desktop-only {
-        margin-right: $spacing-m-large;
-        margin-left: $spacing-m-large;
+        margin: 0 $spacing-small $spacing-m-large;
       }
     }
   }
