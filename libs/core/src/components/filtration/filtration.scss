@@ -3,8 +3,9 @@
   color: white;
 }
 .dropdown {
+  box-sizing: border-box;
   box-shadow: 0 0 2px #666666;
-  width: 18em;
+  width: 19em;
   margin-left: 4px;
 }
 .dropdown-header {
@@ -17,9 +18,9 @@
   box-shadow: 0 0 4px #666666;
   position: absolute;
   z-index: 9999;
-  display: block;
+  display: none;
   min-height: calc(30px * 6);
-  max-height: calc(30px * 11);
+  overflow-x: hidden;
   width: inherit;
   background-color: #f7f7f7;
 }
@@ -28,27 +29,32 @@
 }
 .listbox {
   box-sizing: border-box;
-  min-height: 100px;
-  max-height: 300px;
-  overflow-y: auto;
+  overflow: hidden;
   width: inherit;
+  padding: 10px;
+  &.scroll {
+    overflow-y: auto;
+    height: calc(47px * 8);
+  }
 }
 .listbox-footer {
   height: 30px;
   display: flex;
   align-items: center;
+  padding: 10px;
 }
 .list-item {
-  padding: 2px 4px;
+  display: flex;
+  padding: 2px 10px;
   margin: 0;
-  background-color: #eeeeee;
   margin-bottom: 2px;
+  height: 30px;
+  align-items: center;
+  border-left: 4px solid inherit;
   &:hover {
-    background-color: #cccccc;
     cursor: pointer;
   }
   &.active {
-    background-color: #666666;
-    color: #ffffee;
+    border-left: 4px solid #009900;
   }
 }

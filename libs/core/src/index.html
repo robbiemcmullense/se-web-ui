@@ -1359,46 +1359,7 @@
                 </div>
               </se-block-content>
             </se-block>
-            <se-block option="fill" id="block12">
-              <se-block-header>
-                Filtration test
-                <div slot="end">
-                  <se-icon
-                    option="button"
-                    color="alternative"
-                    onclick="toggle(12)"
-                    >presentation_mode</se-icon
-                  >
-                </div>
-              </se-block-header>
-              <se-block-content>
-                <se-list-group item="Single">
-                  <se-filtration
-                    id="singleselect"
-                    label="Single select"
-                    data='[
-                    "Basic", "Cobol","Foxpro","Visual Basic","Visual C++","PHP","Angular","Svelte", "StencilJS"
-                  ]'
-                  >
-                  </se-filtration>
-                </se-list-group>
-              </se-block-content>
-              <div id="singleSelected"></div>
-            </se-block>
-            <se-block>
-              <se-block-content>
-                <se-list-group item="Multi" collapsed>
-                  <se-filtration
-                    id="multiselect"
-                    label="Multi Select"
-                    multi-select="true"
-                    data='["Basic", "Cobol","Foxpro","Visual Basic","Visual C++","PHP","Angular","React", "Vue", "Svelte", "StencilJS"]'
-                  >
-                  </se-filtration>
-                </se-list-group>
-              </se-block-content>
-              <div id="multiSelected"></div>
-            </se-block>
+
             <se-block
               outline="true"
               color="alternative"
@@ -1860,6 +1821,64 @@
               </se-list>
             </se-block>
           </se-container>
+          <se-container option="fill" display="grid" row-size="400px">
+            <se-block option="fill" id="block12">
+              <se-block-content>
+                <se-filtration id="singleselect" label="Product type">
+                  <se-list option="dropdown">
+                    <se-list-item
+                      item="Basic"
+                      description="Simple programming language"
+                    ></se-list-item>
+                    <se-list-item
+                      item="Cobol"
+                      description="COmmon Business Oriented Language"
+                    ></se-list-item>
+                    <se-list-item
+                      item="Foxpro"
+                      description="The DBMS of the 90s"
+                    ></se-list-item>
+                    <se-list-item
+                      item="Visual Basic"
+                      description="MDI based UI software"
+                    ></se-list-item>
+                    <se-list-item
+                      item="Angular"
+                      description="Super heroic JavaScript framework"
+                    ></se-list-item>
+                    <se-list-item
+                      item="React"
+                      description="View library from FaceBook"
+                    ></se-list-item>
+                  </se-list>
+                </se-filtration>
+              </se-block-content>
+              <div id="singleSelected"></div>
+            </se-block>
+            <se-block option="fill">
+              <se-block-content>
+                <se-filtration id="multiselect" label="Category" />
+              </se-block-content>
+              <div id="multiSelected"></div>
+            </se-block>
+          </se-container>
+          <se-container display="grid" option="fill" row-size="400px">
+            <se-block option="fill">
+              <se-block-content>
+                <se-filtration id="dateRangeSelect" label="Date Range" />
+              </se-block-content>
+              <div id="dateRangeSelected"></div>
+            </se-block>
+            <se-block option="fill">
+              <se-block-content>
+                <se-filtration
+                  id="dateRangeSelect"
+                  label="Search Order Details"
+                />
+              </se-block-content>
+              <div id="orderSelected"></div>
+            </se-block>
+          </se-container>
         </se-container>
       </se-container>
       <se-dialog id="dialog-simple-notitle" color="alternative" size="small">
@@ -1958,13 +1977,13 @@
       const multiSelect = document.querySelector('#multiselect');
 
       singleSelect.addEventListener('selected', e => {
-        console.log('> singleSelect: ', e.detail);
-        document.querySelector('#singleSelected').innerHTML = `[${e.detail}]`;
+        document.querySelector(
+          '#singleSelected'
+        ).innerHTML = `=> [${e.detail}]`;
       });
 
       multiSelect.addEventListener('selected', e => {
-        console.log('> multiSelect:', e.detail);
-        document.querySelector('#multiSelected').innerHTML = `[${e.detail}]`;
+        document.querySelector('#multiSelected').innerHTML = `=> [${e.detail}]`;
       });
 
       function showfab(text) {

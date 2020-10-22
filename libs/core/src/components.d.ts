@@ -498,9 +498,10 @@ export namespace Components {
         "icon": string;
     }
     interface SeFiltration {
-        "data": any;
         "label": string;
-        "multiSelect": boolean;
+        "moreItems": number;
+        "scrollable": boolean;
+        "searchable": boolean;
     }
     interface SeFormField {
         /**
@@ -2024,10 +2025,12 @@ declare namespace LocalJSX {
         "onDidClick"?: (event: CustomEvent<any>) => void;
     }
     interface SeFiltration {
-        "data"?: any;
         "label"?: string;
-        "multiSelect"?: boolean;
-        "onSelected"?: (event: CustomEvent<any>) => void;
+        "moreItems"?: number;
+        "onDidSearch"?: (event: CustomEvent<any>) => void;
+        "onDidViewMore"?: (event: CustomEvent<any>) => void;
+        "scrollable"?: boolean;
+        "searchable"?: boolean;
     }
     interface SeFormField {
         /**

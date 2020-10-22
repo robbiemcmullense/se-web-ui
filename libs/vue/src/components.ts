@@ -37,6 +37,7 @@ const customElementTags: string[] = [
   'se-dropdown',
   'se-fab',
   'se-fab-item',
+  'se-filtration',
   'se-form-field',
   'se-header',
   'se-icon',
@@ -369,6 +370,17 @@ export const SeFabItem = /*@__PURE__*/ Vue.extend({
   },
 
   render: createCommonRender('se-fab-item', ['didClick']),
+});
+
+export const SeFiltration = /*@__PURE__*/ Vue.extend({
+  props: {
+    label: {} as PropOptions<Components.SeFiltration['label']>,
+    searchable: {} as PropOptions<Components.SeFiltration['searchable']>,
+    scrollable: {} as PropOptions<Components.SeFiltration['scrollable']>,
+    moreItems: {} as PropOptions<Components.SeFiltration['moreItems']>,
+  },
+
+  render: createCommonRender('se-filtration', ['didSearch', 'didViewMore']),
 });
 
 export const SeFormField = /*@__PURE__*/ Vue.extend({

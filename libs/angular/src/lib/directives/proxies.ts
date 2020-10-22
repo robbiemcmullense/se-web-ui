@@ -483,6 +483,31 @@ export class SeFabItem {
   }
 }
 
+import { FiltrationComponent as IFiltrationComponent } from '@se/web-ui/types/components/filtration/filtration';
+export declare interface SeFiltration extends Components.SeFiltration {}
+@ProxyCmp({
+  inputs: ['label', 'moreItems', 'scrollable', 'searchable']
+})
+@Component({
+  selector: 'se-filtration',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['label', 'moreItems', 'scrollable', 'searchable'],
+  outputs: ['didSearch', 'didViewMore']
+})
+export class SeFiltration {
+  /**  */
+  didSearch!: IFiltrationComponent['didSearch'];
+  /**  */
+  didViewMore!: IFiltrationComponent['didViewMore'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didSearch', 'didViewMore']);
+  }
+}
+
 import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({

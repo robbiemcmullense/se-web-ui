@@ -28,6 +28,7 @@
  - [se-dialog-content](../dialog-content)
  - [se-fab](../fab)
  - [se-fab-item](../fab-item)
+ - [se-filtration](../filtration)
  - [se-header](../header)
  - [se-list-group](../list-group)
  - [se-list-item](../list-item)
@@ -48,6 +49,7 @@ graph TD;
   se-dialog-content --> se-icon
   se-fab --> se-icon
   se-fab-item --> se-icon
+  se-filtration --> se-icon
   se-header --> se-icon
   se-list-group --> se-icon
   se-list-item --> se-icon
