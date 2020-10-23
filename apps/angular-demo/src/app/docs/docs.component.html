@@ -119,6 +119,63 @@
   </se-block>
   <se-divider option="vertical"></se-divider>
   <se-block>
+    <se-block-header> Dialog Demo </se-block-header>
+    <se-block-content>
+      <se-button icon="folder" (click)="openDialog()">Open Dialog</se-button>
+      <se-dialog [open]="isDlgOpen">
+        <se-dialog-header>Dialog Demo</se-dialog-header>
+        <se-dialog-content>
+          <se-container>
+            <se-block>
+              <se-form-field type="input" label="First Name" option="stacked">
+                <input type="text" placeholder="first name" />
+              </se-form-field>
+              <se-form-field type="input" label="Last Name" option="stacked">
+                <input type="text" placeholder="last name" />
+              </se-form-field>
+              <se-form-field type="input" label="City" option="stacked">
+                <input type="text" placeholder="city" />
+              </se-form-field>
+              <se-form-field type="input" label="Postal Code" option="stacked">
+                <input type="text" placeholder="postal code" />
+              </se-form-field>
+              <se-form-field type="input" label="Graduation" option="stacked">
+                <input type="text" placeholder="enter graduation degree" />
+              </se-form-field>
+              <se-form-field
+                type="input"
+                label="Post Graduation"
+                option="stacked"
+              >
+                <input type="text" placeholder="enter post graduation degree" />
+              </se-form-field>
+              <se-form-field
+                type="input"
+                label="Primary Skill"
+                option="stacked"
+              >
+                <input type="text" placeholder="primary skill" />
+              </se-form-field>
+              <se-form-field
+                type="input"
+                label="Secondary Skills"
+                option="stacked"
+              >
+                <input type="text" placeholder="scondary skills" />
+              </se-form-field>
+            </se-block>
+          </se-container>
+        </se-dialog-content>
+        <se-dialog-footer>
+          <se-button icon="action_close" (click)="closeDialog()"
+            >Close Dialog</se-button
+          >
+        </se-dialog-footer>
+      </se-dialog>
+    </se-block-content>
+  </se-block>
+  <se-divider option="vertical"></se-divider>
+  <se-block>
     <se-block-header
       >Stepper Component
       <se-button slot="end" (click)="bisStep = !bisStep"

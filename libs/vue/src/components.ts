@@ -286,6 +286,7 @@ export const SeDialog = /*@__PURE__*/ Vue.extend({
     color: {} as PropOptions<Components.SeDialog['color']>,
     open: {} as PropOptions<Components.SeDialog['open']>,
     canBackdrop: {} as PropOptions<Components.SeDialog['canBackdrop']>,
+    pageScroll: {} as PropOptions<Components.SeDialog['pageScroll']>,
   },
 
   methods: {

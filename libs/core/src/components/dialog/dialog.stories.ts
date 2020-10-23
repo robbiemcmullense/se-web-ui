@@ -38,6 +38,12 @@ storiesOf('Dialog', module).add(
     const size = select('size', sizeOptions, 'medium', configurationGroup);
     const color = select('color', colorOptions, 'primary', configurationGroup);
     const open = boolean('open', true, configurationGroup);
+    const pageScroll = boolean('pageScroll', false, configurationGroup);
+    const showMoreContent = boolean(
+      'Show more content to scroll',
+      false,
+      configurationGroup
+    );
     const canBackdrop = boolean('can backdrop', true, configurationGroup);
     const closeIcon = boolean('close icon', false, configurationGroup);
 
@@ -58,7 +64,7 @@ storiesOf('Dialog', module).add(
     );
 
     return `
-      <se-dialog open=${open} can-backdrop="${canBackdrop}" size="${size}" color="${color}" >
+      <se-dialog open=${open} can-backdrop="${canBackdrop}" page-scroll="${pageScroll}" size="${size}" color="${color}" >
         <se-dialog-header close-icon="${closeIcon}">
           ${createElement(mainTitleTagName, mainTitle, mainTitleAttributes)}
           ${
@@ -71,9 +77,27 @@ storiesOf('Dialog', module).add(
             )
           }
         </se-dialog-header>
-        <se-dialog-content
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.
+        <se-dialog-content>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          ${
+            showMoreContent &&
+            `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>`
+          }
         </se-dialog-content>
         <se-dialog-footer>
           <se-button>OK</se-button>

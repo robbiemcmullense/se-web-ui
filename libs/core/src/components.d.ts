@@ -408,6 +408,10 @@ export namespace Components {
          */
         "open": boolean;
         /**
+          * Option to scroll page in browser window if set to `true`.
+         */
+        "pageScroll": boolean;
+        /**
           * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
          */
         "size": 'small' | 'medium' | 'large' | 'xlarge' | 'fill';
@@ -1963,6 +1967,10 @@ declare namespace LocalJSX {
           * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
          */
         "open"?: boolean;
+        /**
+          * Option to scroll page in browser window if set to `true`.
+         */
+        "pageScroll"?: boolean;
         /**
           * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
          */
