@@ -413,7 +413,7 @@
             "production": {}
           }
         },
-        "_e2e": {
+        "e2e": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [

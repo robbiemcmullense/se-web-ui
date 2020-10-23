@@ -24,7 +24,7 @@ export class SeAbout {
   }
 }
 
-import { AppComponent as IAppComponent } from '@se/web-ui/types/components/app/app';
+import { AppComponent as IAppComponent } from 'dist/libs/core/types/components/app/app';
 export declare interface SeApp extends Components.SeApp {}
 @ProxyCmp({
   inputs: ['option', 'theme']
@@ -85,7 +85,7 @@ export class SeBanner {
   }
 }
 
-import { BannerItemComponent as IBannerItemComponent } from '@se/web-ui/types/components/banner-item/banner-item';
+import { BannerItemComponent as IBannerItemComponent } from 'dist/libs/core/types/components/banner-item/banner-item';
 export declare interface SeBannerItem extends Components.SeBannerItem {}
 @ProxyCmp({
   inputs: ['active', 'imageUrl']
@@ -222,7 +222,7 @@ export class SeBreadcrumbItem {
   }
 }
 
-import { ButtonComponent as IButtonComponent } from '@se/web-ui/types/components/button/button';
+import { ButtonComponent as IButtonComponent } from 'dist/libs/core/types/components/button/button';
 export declare interface SeButton extends Components.SeButton {}
 @ProxyCmp({
   inputs: ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'iconOnly', 'option', 'padding', 'selected', 'size', 'type', 'value'],
@@ -246,7 +246,7 @@ export class SeButton {
   }
 }
 
-import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
+import { CheckboxComponent as ICheckboxComponent } from 'dist/libs/core/types/components/checkbox/checkbox';
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @ProxyCmp({
   inputs: ['color', 'disabled', 'header', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'],
@@ -270,7 +270,7 @@ export class SeCheckbox {
   }
 }
 
-import { ChipComponent as IChipComponent } from '@se/web-ui/types/components/chip/chip';
+import { ChipComponent as IChipComponent } from 'dist/libs/core/types/components/chip/chip';
 export declare interface SeChip extends Components.SeChip {}
 @ProxyCmp({
   inputs: ['block', 'canClose', 'color', 'disabled', 'readonly', 'selected', 'size', 'value']
@@ -312,7 +312,7 @@ export class SeContainer {
   }
 }
 
-import { DialogComponent as IDialogComponent } from '@se/web-ui/types/components/dialog/dialog';
+import { DialogComponent as IDialogComponent } from 'dist/libs/core/types/components/dialog/dialog';
 export declare interface SeDialog extends Components.SeDialog {}
 @ProxyCmp({
   inputs: ['canBackdrop', 'color', 'open', 'size'],
@@ -374,22 +374,27 @@ export class SeDialogFooter {
   }
 }
 
-
+import { DialogHeaderComponent as IDialogHeaderComponent } from 'dist/libs/core/types/components/dialog-header/dialog-header';
 export declare interface SeDialogHeader extends Components.SeDialogHeader {}
 @ProxyCmp({
-  inputs: ['color']
+  inputs: ['closeIcon', 'color', 'indents']
 })
 @Component({
   selector: 'se-dialog-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color']
+  inputs: ['closeIcon', 'color', 'indents'],
+  outputs: ['didCloseDialog']
 })
 export class SeDialogHeader {
+  /** Send data to the parent component when clicking an element within the dialog to close it.
+The modal can then be safely removed from the DOM. */
+  didCloseDialog!: IDialogHeaderComponent['didCloseDialog'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didCloseDialog']);
   }
 }
 
@@ -412,7 +417,7 @@ export class SeDivider {
   }
 }
 
-import { DropdownComponent as IDropdownComponent } from '@se/web-ui/types/components/dropdown/dropdown';
+import { DropdownComponent as IDropdownComponent } from 'dist/libs/core/types/components/dropdown/dropdown';
 export declare interface SeDropdown extends Components.SeDropdown {}
 @ProxyCmp({
   inputs: ['alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'],
@@ -460,7 +465,7 @@ export class SeFab {
   }
 }
 
-import { FabItemComponent as IFabItemComponent } from '@se/web-ui/types/components/fab-item/fab-item';
+import { FabItemComponent as IFabItemComponent } from 'dist/libs/core/types/components/fab-item/fab-item';
 export declare interface SeFabItem extends Components.SeFabItem {}
 @ProxyCmp({
   inputs: ['icon']
@@ -483,7 +488,7 @@ export class SeFabItem {
   }
 }
 
-import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
+import { FormFieldComponent as IFormFieldComponent } from 'dist/libs/core/types/components/form-field/form-field';
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({
   inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'option', 'padding', 'required', 'status', 'type', 'value']
@@ -564,6 +569,25 @@ export class SeIconEcostruxure {
 }
 
 
+export declare interface SeIconFile extends Components.SeIconFile {}
+@ProxyCmp({
+  inputs: ['color', 'disabled', 'option', 'size', 'value']
+})
+@Component({
+  selector: 'se-icon-file',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'disabled', 'option', 'size', 'value']
+})
+export class SeIconFile {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface SeIconLifeison extends Components.SeIconLifeison {}
 @ProxyCmp({
   inputs: ['color']
@@ -620,13 +644,13 @@ export class SeLink {
 
 export declare interface SeList extends Components.SeList {}
 @ProxyCmp({
-  inputs: ['canCollapse', 'option']
+  inputs: ['canCollapse', 'option', 'selectedColor']
 })
 @Component({
   selector: 'se-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canCollapse', 'option']
+  inputs: ['canCollapse', 'option', 'selectedColor']
 })
 export class SeList {
   protected el: HTMLElement;
@@ -636,17 +660,17 @@ export class SeList {
   }
 }
 
-import { ListGroupComponent as IListGroupComponent } from '@se/web-ui/types/components/list-group/list-group';
+import { ListGroupComponent as IListGroupComponent } from 'dist/libs/core/types/components/list-group/list-group';
 export declare interface SeListGroup extends Components.SeListGroup {}
 @ProxyCmp({
-  inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild'],
-  methods: ['toggleCollapseTreeview', 'focusElement']
+  inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
+  methods: ['toggleCollapseTreeview', 'focusElement', 'setOption']
 })
 @Component({
   selector: 'se-list-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canCollapse', 'collapsed', 'description', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected', 'selectedChild'],
+  inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
   outputs: ['didGroupClick', 'didGroupCollapse']
 })
 export class SeListGroup {
@@ -662,17 +686,17 @@ export class SeListGroup {
   }
 }
 
-import { ListItemComponent as IListItemComponent } from '@se/web-ui/types/components/list-item/list-item';
+import { ListItemComponent as IListItemComponent } from 'dist/libs/core/types/components/list-item/list-item';
 export declare interface SeListItem extends Components.SeListItem {}
 @ProxyCmp({
-  inputs: ['description', 'href', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'],
-  methods: ['focusElement']
+  inputs: ['description', 'disabled', 'href', 'icon', 'iconColor', 'item', 'selected'],
+  methods: ['focusElement', 'blurElement', 'setOption']
 })
 @Component({
   selector: 'se-list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['description', 'href', 'icon', 'iconColor', 'indentation', 'item', 'option', 'selected'],
+  inputs: ['description', 'disabled', 'href', 'icon', 'iconColor', 'item', 'selected'],
   outputs: ['didSelectedChange']
 })
 export class SeListItem {
@@ -705,7 +729,7 @@ export class SeLoading {
   }
 }
 
-import { PaginationComponent as IPaginationComponent } from '@se/web-ui/types/components/pagination/pagination';
+import { PaginationComponent as IPaginationComponent } from 'dist/libs/core/types/components/pagination/pagination';
 export declare interface SePagination extends Components.SePagination {}
 @ProxyCmp({
   inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value']
@@ -729,7 +753,7 @@ Return `{value: number; perPage: number;}`. */
   }
 }
 
-import { RadioComponent as IRadioComponent } from '@se/web-ui/types/components/radio/radio';
+import { RadioComponent as IRadioComponent } from 'dist/libs/core/types/components/radio/radio';
 export declare interface SeRadio extends Components.SeRadio {}
 @ProxyCmp({
   inputs: ['color', 'disabled', 'label', 'labelPos', 'name', 'padding', 'required', 'selected', 'value'],
@@ -753,7 +777,7 @@ export class SeRadio {
   }
 }
 
-import { RadioGroupComponent as IRadioGroupComponent } from '@se/web-ui/types/components/radio-group/radio-group';
+import { RadioGroupComponent as IRadioGroupComponent } from 'dist/libs/core/types/components/radio-group/radio-group';
 export declare interface SeRadioGroup extends Components.SeRadioGroup {}
 @ProxyCmp({
   inputs: ['color', 'direction', 'disabled', 'size', 'value']
@@ -776,7 +800,7 @@ export class SeRadioGroup {
   }
 }
 
-import { SidemenuComponent as ISidemenuComponent } from '@se/web-ui/types/components/sidemenu/sidemenu';
+import { SidemenuComponent as ISidemenuComponent } from 'dist/libs/core/types/components/sidemenu/sidemenu';
 export declare interface SeSidemenu extends Components.SeSidemenu {}
 @ProxyCmp({
   inputs: ['label', 'link'],
@@ -801,7 +825,7 @@ When the menu is closed, it will trigger a `toggled` event with `event.detail.st
   }
 }
 
-import { SidemenuItemComponent as ISidemenuItemComponent } from '@se/web-ui/types/components/sidemenu-item/sidemenu-item';
+import { SidemenuItemComponent as ISidemenuItemComponent } from 'dist/libs/core/types/components/sidemenu-item/sidemenu-item';
 export declare interface SeSidemenuItem extends Components.SeSidemenuItem {}
 @ProxyCmp({
   inputs: ['active', 'item']
@@ -824,7 +848,7 @@ export class SeSidemenuItem {
   }
 }
 
-import { SliderComponent as ISliderComponent } from '@se/web-ui/types/components/slider/slider';
+import { SliderComponent as ISliderComponent } from 'dist/libs/core/types/components/slider/slider';
 export declare interface SeSlider extends Components.SeSlider {}
 @ProxyCmp({
   inputs: ['disabled', 'label', 'max', 'min', 'value'],
@@ -848,7 +872,7 @@ export class SeSlider {
   }
 }
 
-import { SnackbarComponent as ISnackbarComponent } from '@se/web-ui/types/components/snackbar/snackbar';
+import { SnackbarComponent as ISnackbarComponent } from 'dist/libs/core/types/components/snackbar/snackbar';
 export declare interface SeSnackbar extends Components.SeSnackbar {}
 @ProxyCmp({
   inputs: ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type']
@@ -893,7 +917,7 @@ export class SeStepper {
   }
 }
 
-import { StepperItemComponent as IStepperItemComponent } from '@se/web-ui/types/components/stepper-item/stepper-item';
+import { StepperItemComponent as IStepperItemComponent } from 'dist/libs/core/types/components/stepper-item/stepper-item';
 export declare interface SeStepperItem extends Components.SeStepperItem {}
 @ProxyCmp({
   inputs: ['active', 'interactive', 'label', 'validated']
@@ -1028,7 +1052,7 @@ export class SeTableItemHeader {
   }
 }
 
-import { TooltipComponent as ITooltipComponent } from '@se/web-ui/types/components/tooltip/tooltip';
+import { TooltipComponent as ITooltipComponent } from 'dist/libs/core/types/components/tooltip/tooltip';
 export declare interface SeTooltip extends Components.SeTooltip {}
 @ProxyCmp({
   inputs: ['action', 'position'],

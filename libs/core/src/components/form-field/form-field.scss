@@ -17,7 +17,7 @@ se-form-field {
     padding: 0;
   }
   .with-label {
-    font-weight: 500;
+    font-weight: 550;
     width: 35%;
     display: flex;
     @include align-items(flex-start);
@@ -256,25 +256,33 @@ se-form-field {
   }
 
   .ff-error {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("error");
     }
   }
 
   .ff-warning {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("warning");
     }
   }
 
   .ff-information {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("information");
     }
   }
 
   .ff-success {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("success");
     }
   }

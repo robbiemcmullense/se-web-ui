@@ -74,11 +74,24 @@ export class DialogComponent {
    */
   @Event() didClose: EventEmitter<any>;
 
-  assignDialogHeaderColor() {
+  assignDialogHeaderProps() {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
       (item: any) => {
         if (!item.color) {
           item.color = this.color;
+        }
+        if (this.size === 'fill') {
+          item.indents = 'alternative';
+        }
+      }
+    );
+  }
+
+  assignDialogContentProps() {
+    Array.from(this.el.querySelectorAll('se-dialog-content')).forEach(
+      (item: any) => {
+        if (!item.option && this.size === 'fill') {
+          item.option = 'indent';
         }
       }
     );
@@ -89,9 +102,21 @@ export class DialogComponent {
    */
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
-    if (ev.key === 'Escape' && this.open) {
+    const { key } = ev;
+
+    // IE11 uses 'Esc'
+    if (key === 'Escape' || (key === 'Esc' && this.open)) {
       this.backdropClicked();
     }
+  }
+
+  @Listen('didCloseDialog', { target: 'document' })
+  handleCloseDialog(ev: CustomEvent) {
+    Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
+      (item: any) => {
+        if (item === ev.target) this.open = false;
+      }
+    );
   }
 
   @State() modalAnimation: string;
@@ -116,7 +141,8 @@ export class DialogComponent {
   }
 
   componentDidLoad() {
-    this.assignDialogHeaderColor();
+    this.assignDialogHeaderProps();
+    this.assignDialogContentProps();
     if (this.open) {
       this.addAnimation();
     }

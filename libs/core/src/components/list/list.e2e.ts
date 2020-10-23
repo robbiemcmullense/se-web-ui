@@ -14,21 +14,13 @@ describe('ListComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders a list item passing the "classic" option by default', async () => {
+  it('renders a list group and showing the selected bar status', async () => {
     await page.setContent(
-      '<se-list><se-list-item item="list title" description="my description"></se-list-item></se-list>'
+      '<se-list option="nav"><se-list-group item="group title" selected></se-list-group></se-list>'
     );
-    const element = await page.find('se-list se-list-item >>> .se-list-item');
-    expect(element).toHaveClass('classic');
-  });
-
-  it('renders a list group passing the "nav" option from its parent', async () => {
-    await page.setContent(
-      '<se-list option="nav"><se-list-group item="group title" selected="true"></se-list-group></se-list>'
-    );
-    const element = await page.find('se-list se-list-group >>> .se-list-group');
-    expect(element).toHaveClass('nav');
-    expect(element.querySelector('.selectedBar')).toBeTruthy();
+    const element = await page.find('se-list se-list-group >>> se-list-item');
+    const value = await element.getProperty('selected');
+    expect(value).toBe(true);
   });
 
   it('renders a list group passing the "canCollapse" value from its parent', async () => {

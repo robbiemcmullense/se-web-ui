@@ -9,12 +9,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                               | Type                                                                                                            | Default     |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ----------- |
-| `color`    | `color`    | Optional property that defines the background color of the button. The default color will be inherited from its parent.                                                                                   | `"alternative" \| "error" \| "information" \| "primary" \| "secondary" \| "standard" \| "success" \| "warning"` | `undefined` |
-| `disabled` | `disabled` | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                                     | `boolean`                                                                                                       | `false`     |
-| `option`   | `option`   | Optional property to define if the icon should act as a button (clickable).                                                                                                                               | `"button"`                                                                                                      | `undefined` |
-| `size`     | `size`     | Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px. | `"large" \| "medium" \| "nano" \| "small" \| "xlarge"`                                                          | `undefined` |
+| Property   | Attribute  | Description                                                                                                                                                                                                                              | Type                                                                                                            | Default     |
+| ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ----------- |
+| `color`    | `color`    | Optional property that defines the background color of the button. The default color will be inherited from its parent.                                                                                                                  | `"alternative" \| "error" \| "information" \| "primary" \| "secondary" \| "standard" \| "success" \| "warning"` | `undefined` |
+| `disabled` | `disabled` | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                                                                    | `boolean`                                                                                                       | `false`     |
+| `option`   | `option`   | Optional property to define if the icon should act as a button (clickable).                                                                                                                                                              | `"button"`                                                                                                      | `undefined` |
+| `size`     | `size`     | Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px. | `"large" \| "medium" \| "micro" \| "nano" \| "small" \| "xlarge"`                                               | `undefined` |
 
 
 ## Dependencies
@@ -26,9 +26,11 @@
  - [se-button](../button)
  - [se-chip](../chip)
  - [se-dialog-content](../dialog-content)
+ - [se-dialog-header](../dialog-header)
  - [se-fab](../fab)
  - [se-fab-item](../fab-item)
  - [se-header](../header)
+ - [se-icon-file](../icon-file)
  - [se-list-group](../list-group)
  - [se-list-item](../list-item)
  - [se-pagination](../pagination)
@@ -46,9 +48,11 @@ graph TD;
   se-button --> se-icon
   se-chip --> se-icon
   se-dialog-content --> se-icon
+  se-dialog-header --> se-icon
   se-fab --> se-icon
   se-fab-item --> se-icon
   se-header --> se-icon
+  se-icon-file --> se-icon
   se-list-group --> se-icon
   se-list-item --> se-icon
   se-pagination --> se-icon

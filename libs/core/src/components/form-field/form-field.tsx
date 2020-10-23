@@ -145,7 +145,13 @@ export class FormFieldComponent {
           >
             <span>
               {this.label}
-              {this.required ? <span class="required">*</span> : ''}
+              {this.required ? (
+                <span class="required" title="required">
+                  *
+                </span>
+              ) : (
+                ''
+              )}
             </span>
           </span>
           <div class="ff-wrapper">

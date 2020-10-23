@@ -33,6 +33,37 @@ storiesOf('Icons', module)
     }
   )
   .add(
+    'Icon-file',
+    () => {
+      const sizeOption = ['nano', 'small', 'medium', 'large', 'xlarge'];
+      const colorOption = [
+        'standard',
+        'alternative',
+        'primary',
+        'secondary',
+        'success',
+        'warning',
+        'error',
+      ];
+      const size = select('size', sizeOption, 'large');
+      const color = select('color', colorOption, 'standard');
+      const value1 = text('value first icon', 'PDF');
+      const value2 = text('value second icon', 'DOCX');
+
+      return `
+      <div style="padding: 20px">
+        <se-icon-file value=${value1} size=${size} color=${color}></se-icon-file>
+        <se-icon-file value=${value2} size=${size} color=${color}></se-icon-file>
+      </div>
+    `;
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
     'Ecostruxure icon',
     () => {
       const ecostruxureSizes = ['small', 'medium'];

@@ -83,7 +83,7 @@ export class ContainerComponent {
   /**
    * When in `display="grid"`, defines the height of each container.  Default is `300px`.
    */
-  @Prop() rowSize = '300px';
+  @Prop() rowSize = 'auto';
   @Watch('rowSize') rowSizeDidChange() {
     if (this.display === 'grid') {
       this.el.style.gridAutoRows = this.rowSize;

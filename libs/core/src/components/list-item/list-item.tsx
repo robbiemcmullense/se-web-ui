@@ -1,6 +1,5 @@
 import {
   Component,
-  Host,
   h,
   Prop,
   Element,
@@ -8,6 +7,7 @@ import {
   Event,
   EventEmitter,
   Method,
+  State,
 } from '@stencil/core';
 import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
@@ -32,6 +32,12 @@ export class ListItemComponent {
    * Defines if the list element should be selected or not.
    */
   @Prop() selected: boolean;
+
+  /**
+   * Disable the item for any interaction.
+   */
+  @Prop() disabled: boolean;
+
   /**
    * Places an icon on the left side of the item list.
    */
@@ -50,16 +56,8 @@ export class ListItemComponent {
   /**
    * Defines the group indentation to add paddings to the list item (used with multiple list groups).
    */
-  @Prop({ mutable: true }) indentation = 0;
-  /**
-   * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-   */
-  @Prop({ mutable: true }) option:
-    | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
+  // @Prop({ mutable: true }) indentation = 0;
+
   /**
    * Determines if se-item configures an `a` tag with an `href` attibute.
    * Default when href is blank configures as a `button` tag.
@@ -74,29 +72,33 @@ export class ListItemComponent {
     this.didSelectedChange.emit();
   }
 
-  paddingIndentation = 24;
+  // paddingIndentation = 24;
 
   @Method()
   async focusElement() {
     this.buttonElm.focus();
   }
+  @Method()
+  async blurElement() {
+    this.buttonElm.blur();
+  }
+
+  @Method()
+  async setOption(option) {
+    this.showNavIcon = option === 'nav';
+  }
+
+  @State() showNavIcon: boolean;
 
   getClosestParent() {
     // get the closest between se-list or se-list-group
-    return (
-      this.el.parentElement &&
-      this.el.parentElement.closest('se-list, se-list-group')
-    );
+    return this.el.parentElement && this.el.parentElement.closest('se-list');
   }
 
   getParentConfig() {
     const closest: any = this.getClosestParent() || {};
-    const indentation = closest.indentation;
-    if (indentation !== null && indentation !== undefined) {
-      this.indentation = indentation + 1;
-    }
-    if (closest.option) {
-      this.option = closest.option;
+    if (closest.option && closest.option === 'nav') {
+      this.showNavIcon = true;
     }
   }
 
@@ -121,45 +123,47 @@ export class ListItemComponent {
     }
 
     return (
-      <Host role="listitem" onClick={() => this.buttonElm.blur()}>
-        <TagType
-          {...attrs}
-          ref={el => (this.buttonElm = el)}
-          title={title}
-          class={{
-            selected: this.selected,
-            button: true,
-            [this.option]: true,
-            ['se-list-item']: true,
-          }}
-          style={{
-            paddingLeft: `${this.paddingIndentation * this.indentation}px`,
-          }}
-          id={id ? `wc-${id}` : ''}
-        >
-          {this.selected ? <div class="selectedBar"></div> : ''}
-          <div class="nav-icon">
-            {(!!this.icon as boolean) ? (
-              <se-icon color={this.iconColor}>{this.icon}</se-icon>
-            ) : (
-              ''
-            )}
-            <slot name="icon"></slot>
-          </div>
-          <div class="nav-content">
-            <div class="list-item-label">{this.item}</div>
-            {myDescription}
-          </div>
-          <slot></slot>
-          {this.option === 'nav' ? (
-            <se-icon size="medium" color="standard">
-              <span innerHTML={arrow2Right}></span>
-            </se-icon>
+      <TagType
+        role="listitem"
+        onClick={() => this.buttonElm.blur()}
+        {...attrs}
+        ref={el => (this.buttonElm = el)}
+        title={title}
+        class={{
+          selected: this.selected,
+          button: true,
+          disabled: this.disabled,
+        }}
+        id={id ? `wc-${id}` : ''}
+      >
+        {this.selected ? <div class="selectedBar"></div> : ''}
+        <slot name="start"></slot>
+        <div class="nav-icon">
+          {(!!this.icon as boolean) ? (
+            <se-icon color={this.iconColor}>{this.icon}</se-icon>
           ) : (
             ''
           )}
-        </TagType>
-      </Host>
+          <slot name="icon"></slot>
+        </div>
+        <div class="nav-content">
+          <div class="list-item-label">
+            {this.item}
+            <slot name="item"></slot>
+          </div>
+          <small>{myDescription}</small>
+          <slot name="description"></slot>
+        </div>
+        <slot></slot>
+        <slot name="end"></slot>
+        {this.showNavIcon ? (
+          <se-icon size="medium" color="standard">
+            <span innerHTML={arrow2Right}></span>
+          </se-icon>
+        ) : (
+          ''
+        )}
+      </TagType>
     );
   }
 }

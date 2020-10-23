@@ -21,7 +21,7 @@ describe('list-item', () => {
       components: [ListItemComponent],
       html: `<se-list-item></se-list-item>`,
     });
-    expect(page.root.shadowRoot.querySelector('.se-list-item')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.button')).toBeTruthy();
   });
 
   it('should render, with a small element when there is a defined description property', async () => {
@@ -51,28 +51,9 @@ describe('list-item', () => {
   it('should render, with an element with the selectedBar class and an se-icon with size medium when option equals nav and selected is true', async () => {
     const page = await newSpecPage({
       components: [ListItemComponent],
-      html: `<se-list-item option="nav" selected="true"></se-list-item>`,
+      html: `<se-list-item selected="true"></se-list-item>`,
     });
-    expect(
-      page.root.shadowRoot.querySelector('se-icon[size="medium"]')
-    ).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('.selectedBar')).toBeTruthy();
-  });
-
-  it('should inherit the nav option from its parent when specified', () => {
-    const parentListElm = document.createElement('se-list');
-    parentListElm.option = 'nav';
-    parentListElm.appendChild(listItem.el);
-    listItem.componentWillLoad();
-    expect(listItem.option).toEqual('nav');
-  });
-
-  it('should set an indentation of 2 when its parent element has an indentation of 1', () => {
-    const parentListElm = document.createElement('se-list-group');
-    parentListElm.indentation = 1;
-    parentListElm.appendChild(listItem.el);
-    listItem.componentWillLoad();
-    expect(listItem.indentation).toEqual(2);
   });
 
   it('should emit the didSelectedChange event when the selected property changes', () => {

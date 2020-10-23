@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { groupCollapseEvent } from "./components/list-group/list-group";
+import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
 export namespace Components {
     interface SeAbout {
@@ -422,17 +422,25 @@ export namespace Components {
          */
         "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
-          * When set to `fill`, the content will fill the whole space of the dialog.
+          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
-        "option": 'fill';
+        "option": 'fill' | 'indent';
     }
     interface SeDialogFooter {
     }
     interface SeDialogHeader {
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
+          * Display the close icon to close the dialog. Default setting is `false`.
+         */
+        "closeIcon": boolean;
+        /**
+          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
          */
         "color": 'primary' | 'alternative';
+        /**
+          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
+         */
+        "indents": 'primary' | 'alternative';
     }
     interface SeDivider {
         /**
@@ -587,9 +595,9 @@ export namespace Components {
          */
         "option": 'button';
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
-        "size": 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        "size": 'nano' | 'micro' | 'small' | 'medium' | 'large' | 'xlarge';
     }
     interface SeIconEcostruxure {
         /**
@@ -600,6 +608,35 @@ export namespace Components {
           * Sets the size of the EcoStruxure icon.  The default setting is `small`.
          */
         "size": 'small' | 'medium';
+    }
+    interface SeIconFile {
+        /**
+          * Optional property that defines the background color of the button. The default color will be inherited from its parent.
+         */
+        "color": | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'information';
+        /**
+          * Optional property that defines if the button is disabled.  Set to `false` by default.
+         */
+        "disabled": boolean;
+        /**
+          * Optional property to define if the icon should act as a button (clickable).
+         */
+        "option": 'button';
+        /**
+          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+         */
+        "size": 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        /**
+          * Text displayed inside the SVG icon. The text cannot be longer than 4 character.
+         */
+        "value": string;
     }
     interface SeIconLifeison {
         /**
@@ -632,6 +669,10 @@ export namespace Components {
           * Defines the style of the list.  The default setting is `classic`.
          */
         "option": 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selectedColor": 'primary' | 'standard';
     }
     interface SeListGroup {
         /**
@@ -646,6 +687,10 @@ export namespace Components {
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled": boolean;
         "focusElement": () => Promise<void>;
         /**
           * Places an icon on the left side of the item list.
@@ -664,25 +709,22 @@ export namespace Components {
          */
         "item": string;
         /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option": | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
-        /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected": boolean;
-        "selectedChild": boolean;
+        "setOption": (option: any) => Promise<void>;
         "toggleCollapseTreeview": () => Promise<void>;
     }
     interface SeListItem {
+        "blurElement": () => Promise<void>;
         /**
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled": boolean;
         "focusElement": () => Promise<void>;
         /**
           * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
@@ -703,25 +745,14 @@ export namespace Components {
     | 'warning'
     | 'error';
         /**
-          * Defines the group indentation to add paddings to the list item (used with multiple list groups).
-         */
-        "indentation": number;
-        /**
           * Defines the title of the item.
          */
         "item": string;
         /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option": | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
-        /**
           * Defines if the list element should be selected or not.
          */
         "selected": boolean;
+        "setOption": (option: any) => Promise<void>;
     }
     interface SeLoading {
         /**
@@ -1291,6 +1322,12 @@ declare global {
         prototype: HTMLSeIconEcostruxureElement;
         new (): HTMLSeIconEcostruxureElement;
     };
+    interface HTMLSeIconFileElement extends Components.SeIconFile, HTMLStencilElement {
+    }
+    var HTMLSeIconFileElement: {
+        prototype: HTMLSeIconFileElement;
+        new (): HTMLSeIconFileElement;
+    };
     interface HTMLSeIconLifeisonElement extends Components.SeIconLifeison, HTMLStencilElement {
     }
     var HTMLSeIconLifeisonElement: {
@@ -1487,6 +1524,7 @@ declare global {
         "se-header": HTMLSeHeaderElement;
         "se-icon": HTMLSeIconElement;
         "se-icon-ecostruxure": HTMLSeIconEcostruxureElement;
+        "se-icon-file": HTMLSeIconFileElement;
         "se-icon-lifeison": HTMLSeIconLifeisonElement;
         "se-icon-schneider": HTMLSeIconSchneiderElement;
         "se-link": HTMLSeLinkElement;
@@ -1940,17 +1978,29 @@ declare namespace LocalJSX {
          */
         "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
-          * When set to `fill`, the content will fill the whole space of the dialog.
+          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
-        "option"?: 'fill';
+        "option"?: 'fill' | 'indent';
     }
     interface SeDialogFooter {
     }
     interface SeDialogHeader {
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
+          * Display the close icon to close the dialog. Default setting is `false`.
+         */
+        "closeIcon"?: boolean;
+        /**
+          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
          */
         "color"?: 'primary' | 'alternative';
+        /**
+          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
+         */
+        "indents"?: 'primary' | 'alternative';
+        /**
+          * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
+         */
+        "onDidCloseDialog"?: (event: CustomEvent<any>) => void;
     }
     interface SeDivider {
         /**
@@ -2113,9 +2163,9 @@ declare namespace LocalJSX {
          */
         "option"?: 'button';
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
-        "size"?: 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        "size"?: 'nano' | 'micro' | 'small' | 'medium' | 'large' | 'xlarge';
     }
     interface SeIconEcostruxure {
         /**
@@ -2126,6 +2176,35 @@ declare namespace LocalJSX {
           * Sets the size of the EcoStruxure icon.  The default setting is `small`.
          */
         "size"?: 'small' | 'medium';
+    }
+    interface SeIconFile {
+        /**
+          * Optional property that defines the background color of the button. The default color will be inherited from its parent.
+         */
+        "color"?: | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'information';
+        /**
+          * Optional property that defines if the button is disabled.  Set to `false` by default.
+         */
+        "disabled"?: boolean;
+        /**
+          * Optional property to define if the icon should act as a button (clickable).
+         */
+        "option"?: 'button';
+        /**
+          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+         */
+        "size"?: 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        /**
+          * Text displayed inside the SVG icon. The text cannot be longer than 4 character.
+         */
+        "value"?: string;
     }
     interface SeIconLifeison {
         /**
@@ -2158,6 +2237,10 @@ declare namespace LocalJSX {
           * Defines the style of the list.  The default setting is `classic`.
          */
         "option"?: 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selectedColor"?: 'primary' | 'standard';
     }
     interface SeListGroup {
         /**
@@ -2172,6 +2255,10 @@ declare namespace LocalJSX {
           * Defines the description of the item, placed under its title.
          */
         "description"?: string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled"?: boolean;
         /**
           * Places an icon on the left side of the item list.
          */
@@ -2195,26 +2282,21 @@ declare namespace LocalJSX {
         /**
           * Emitted when the group item is collapsed/uncollapsed.
          */
-        "onDidGroupCollapse"?: (event: CustomEvent<groupCollapseEvent>) => void;
-        /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option"?: | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
+        "onDidGroupCollapse"?: (event: CustomEvent<GroupCollapseEvent>) => void;
         /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected"?: boolean;
-        "selectedChild"?: boolean;
     }
     interface SeListItem {
         /**
           * Defines the description of the item, placed under its title.
          */
         "description"?: string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled"?: boolean;
         /**
           * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
          */
@@ -2234,10 +2316,6 @@ declare namespace LocalJSX {
     | 'warning'
     | 'error';
         /**
-          * Defines the group indentation to add paddings to the list item (used with multiple list groups).
-         */
-        "indentation"?: number;
-        /**
           * Defines the title of the item.
          */
         "item"?: string;
@@ -2245,14 +2323,6 @@ declare namespace LocalJSX {
           * Event emitted to notify the list-group component that the selected state has changed.
          */
         "onDidSelectedChange"?: (event: CustomEvent<void>) => void;
-        /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option"?: | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
         /**
           * Defines if the list element should be selected or not.
          */
@@ -2705,6 +2775,7 @@ declare namespace LocalJSX {
         "se-header": SeHeader;
         "se-icon": SeIcon;
         "se-icon-ecostruxure": SeIconEcostruxure;
+        "se-icon-file": SeIconFile;
         "se-icon-lifeison": SeIconLifeison;
         "se-icon-schneider": SeIconSchneider;
         "se-link": SeLink;
@@ -2766,6 +2837,7 @@ declare module "@stencil/core" {
             "se-header": LocalJSX.SeHeader & JSXBase.HTMLAttributes<HTMLSeHeaderElement>;
             "se-icon": LocalJSX.SeIcon & JSXBase.HTMLAttributes<HTMLSeIconElement>;
             "se-icon-ecostruxure": LocalJSX.SeIconEcostruxure & JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement>;
+            "se-icon-file": LocalJSX.SeIconFile & JSXBase.HTMLAttributes<HTMLSeIconFileElement>;
             "se-icon-lifeison": LocalJSX.SeIconLifeison & JSXBase.HTMLAttributes<HTMLSeIconLifeisonElement>;
             "se-icon-schneider": LocalJSX.SeIconSchneider & JSXBase.HTMLAttributes<HTMLSeIconSchneiderElement>;
             "se-link": LocalJSX.SeLink & JSXBase.HTMLAttributes<HTMLSeLinkElement>;
