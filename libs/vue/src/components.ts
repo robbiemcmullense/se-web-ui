@@ -459,6 +459,7 @@ export const SeLink = /*@__PURE__*/ Vue.extend({
 export const SeList = /*@__PURE__*/ Vue.extend({
   props: {
     option: {} as PropOptions<Components.SeList['option']>,
+    selectedColor: {} as PropOptions<Components.SeList['selectedColor']>,
     canCollapse: {} as PropOptions<Components.SeList['canCollapse']>,
   },
 
@@ -474,9 +475,8 @@ export const SeListGroup = /*@__PURE__*/ Vue.extend({
     iconColor: {} as PropOptions<Components.SeListGroup['iconColor']>,
     collapsed: {} as PropOptions<Components.SeListGroup['collapsed']>,
     indentation: {} as PropOptions<Components.SeListGroup['indentation']>,
-    option: {} as PropOptions<Components.SeListGroup['option']>,
+    disabled: {} as PropOptions<Components.SeListGroup['disabled']>,
     canCollapse: {} as PropOptions<Components.SeListGroup['canCollapse']>,
-    selectedChild: {} as PropOptions<Components.SeListGroup['selectedChild']>,
   },
 
   methods: {
@@ -486,6 +486,9 @@ export const SeListGroup = /*@__PURE__*/ Vue.extend({
     focusElement: createCommonMethod(
       'focusElement'
     ) as Components.SeListGroup['focusElement'],
+    setOption: createCommonMethod(
+      'setOption'
+    ) as Components.SeListGroup['setOption'],
   },
   render: createCommonRender('se-list-group', [
     'didGroupClick',
@@ -498,10 +501,9 @@ export const SeListItem = /*@__PURE__*/ Vue.extend({
     item: {} as PropOptions<Components.SeListItem['item']>,
     description: {} as PropOptions<Components.SeListItem['description']>,
     selected: {} as PropOptions<Components.SeListItem['selected']>,
+    disabled: {} as PropOptions<Components.SeListItem['disabled']>,
     icon: {} as PropOptions<Components.SeListItem['icon']>,
     iconColor: {} as PropOptions<Components.SeListItem['iconColor']>,
-    indentation: {} as PropOptions<Components.SeListItem['indentation']>,
-    option: {} as PropOptions<Components.SeListItem['option']>,
     href: {} as PropOptions<Components.SeListItem['href']>,
   },
 
@@ -509,6 +511,12 @@ export const SeListItem = /*@__PURE__*/ Vue.extend({
     focusElement: createCommonMethod(
       'focusElement'
     ) as Components.SeListItem['focusElement'],
+    blurElement: createCommonMethod(
+      'blurElement'
+    ) as Components.SeListItem['blurElement'],
+    setOption: createCommonMethod(
+      'setOption'
+    ) as Components.SeListItem['setOption'],
   },
   render: createCommonRender('se-list-item', ['didSelectedChange']),
 });

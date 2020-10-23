@@ -27,27 +27,4 @@ describe('list-group', () => {
     });
     expect(page.root.shadowRoot.querySelector('slot')).toBeTruthy();
   });
-
-  it('should pass its option property to se-list-group child elements', () => {
-    list.option = 'dropdown';
-    const listGroup = document.createElement('se-list-group');
-    const listItem = document.createElement('se-list-item');
-    listGroup.appendChild(listItem);
-    list.el.appendChild(listGroup);
-    list.componentWillLoad();
-    expect(listGroup.option).toEqual('dropdown');
-    expect(listItem.option).toEqual('dropdown');
-  });
-
-  it('should render a div element with the selectedBar class when selected is true and option is set to nav', () => {
-    list.option = 'nav';
-    const listGroup = document.createElement('se-list-group');
-    const listItem = document.createElement('se-list-item');
-    listGroup.setAttribute('selected', 'true');
-    listGroup.appendChild(listItem);
-    list.el.appendChild(listGroup);
-    list.componentWillLoad();
-    expect(listGroup.option).toEqual('nav');
-    expect(listItem.option).toEqual('nav');
-  });
 });

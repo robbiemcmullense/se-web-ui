@@ -1,9 +1,53 @@
-
-
 :host {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: auto;
   @include flex-direction(column);
+  /**
+    * @prop --se-list-group-height: Min height of a row. Default: `47px`; Compact mode: `32px`.
+    * @prop --se-list-group-background: background color of the se-item-list.
+    * @prop --se-list-group-indentation : level of indentation of the se-list-group calculated automatically by the se-list-group component.
+    * @prop --se-list-group-font-weight : font-weight of the se-list-group to separate from the se-list-item
+    * @prop --se-list-item-height : height of the se-list-item row
+    * @prop --se-list-item-border-bottom : border-bottom of the se-list-item
+    * @prop --se-list-item-selected-bar : selected-bar color when item is selected
+    * @prop --se-list-item-selected-background : selected-background color when the item is selected
+    * @prop --se-list-item-selected-color : selected-color color of the text when the item is selected
+    * @prop --se-list-item-indentation-padding : padding indentation of the se-list-item under a group
+    */
+  --se-list-group-height: 47px;
+  --se-list-group-background: inherit;
+  --se-list-group-indentation: 0;
+  --se-list-group-font-weight: inherit;
+  --se-list-item-height: 47px;
+  --se-list-item-border-bottom: 1px solid;
+  --se-list-item-selected-bar: var(--se-standard);
+  --se-list-item-selected-background: var(--se-alternative-selected);
+  --se-list-item-selected-color: inherit;
+  --se-list-item-indentation-padding: 24px;
+}
+
+:host(.selected-primary) {
+  --se-list-item-selected-bar: var(--se-primary);
+}
+
+:host(.classic) {
+  --se-list-group-font-weight: 500;
+}
+:host(.dropdown) {
+  --se-list-item-height: 32px;
+  --se-list-group-height: 32px;
+  --se-list-item-border-bottom: none;
+}
+
+:host(.treeview) {
+  --se-list-item-height: 32px;
+  --se-list-group-height: 32px;
+  --se-list-item-border-bottom: none;
+}
+
+:host(.headline) {
+  --se-list-group-height: 48px;
+  --se-list-group-background: var(--se-alternative-hover);
 }

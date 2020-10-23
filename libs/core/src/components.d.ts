@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { groupCollapseEvent } from "./components/list-group/list-group";
+import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
 export namespace Components {
     interface SeAbout {
@@ -669,6 +669,10 @@ export namespace Components {
           * Defines the style of the list.  The default setting is `classic`.
          */
         "option": 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selectedColor": 'primary' | 'standard';
     }
     interface SeListGroup {
         /**
@@ -683,6 +687,10 @@ export namespace Components {
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled": boolean;
         "focusElement": () => Promise<void>;
         /**
           * Places an icon on the left side of the item list.
@@ -701,25 +709,22 @@ export namespace Components {
          */
         "item": string;
         /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option": | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
-        /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected": boolean;
-        "selectedChild": boolean;
+        "setOption": (option: any) => Promise<void>;
         "toggleCollapseTreeview": () => Promise<void>;
     }
     interface SeListItem {
+        "blurElement": () => Promise<void>;
         /**
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled": boolean;
         "focusElement": () => Promise<void>;
         /**
           * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
@@ -740,25 +745,14 @@ export namespace Components {
     | 'warning'
     | 'error';
         /**
-          * Defines the group indentation to add paddings to the list item (used with multiple list groups).
-         */
-        "indentation": number;
-        /**
           * Defines the title of the item.
          */
         "item": string;
         /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option": | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
-        /**
           * Defines if the list element should be selected or not.
          */
         "selected": boolean;
+        "setOption": (option: any) => Promise<void>;
     }
     interface SeLoading {
         /**
@@ -2243,6 +2237,10 @@ declare namespace LocalJSX {
           * Defines the style of the list.  The default setting is `classic`.
          */
         "option"?: 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selectedColor"?: 'primary' | 'standard';
     }
     interface SeListGroup {
         /**
@@ -2257,6 +2255,10 @@ declare namespace LocalJSX {
           * Defines the description of the item, placed under its title.
          */
         "description"?: string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled"?: boolean;
         /**
           * Places an icon on the left side of the item list.
          */
@@ -2280,26 +2282,21 @@ declare namespace LocalJSX {
         /**
           * Emitted when the group item is collapsed/uncollapsed.
          */
-        "onDidGroupCollapse"?: (event: CustomEvent<groupCollapseEvent>) => void;
-        /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option"?: | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
+        "onDidGroupCollapse"?: (event: CustomEvent<GroupCollapseEvent>) => void;
         /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected"?: boolean;
-        "selectedChild"?: boolean;
     }
     interface SeListItem {
         /**
           * Defines the description of the item, placed under its title.
          */
         "description"?: string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled"?: boolean;
         /**
           * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
          */
@@ -2319,10 +2316,6 @@ declare namespace LocalJSX {
     | 'warning'
     | 'error';
         /**
-          * Defines the group indentation to add paddings to the list item (used with multiple list groups).
-         */
-        "indentation"?: number;
-        /**
           * Defines the title of the item.
          */
         "item"?: string;
@@ -2330,14 +2323,6 @@ declare namespace LocalJSX {
           * Event emitted to notify the list-group component that the selected state has changed.
          */
         "onDidSelectedChange"?: (event: CustomEvent<void>) => void;
-        /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option"?: | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
         /**
           * Defines if the list element should be selected or not.
          */

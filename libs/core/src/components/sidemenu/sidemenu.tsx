@@ -8,7 +8,7 @@ import {
   Event,
   EventEmitter,
 } from '@stencil/core';
-import test_results_nok from '@se/icons/svg/test_results_nok.svg';
+import testResultsNok from '@se/icons/svg/test_results_nok.svg';
 
 const SHOW_MENU = 'show-menu';
 const HIDE_MENU = 'hide-menu';
@@ -197,7 +197,6 @@ export class SidemenuComponent {
             !item.childElementCount ? 'hide-nav-icon' : '',
             'sidemenu-list-item',
           ].join(' ')}
-          option="nav"
           onClick={() => this.setActive(item)}
           selected={item.active}
           item={item.item}
@@ -234,7 +233,7 @@ export class SidemenuComponent {
             <div class="d-flex-center flex">
               <span class="menu-sidenav" onClick={() => this.toggle()}>
                 <se-icon size="large" color="primary">
-                  <span innerHTML={test_results_nok}></span>
+                  <span innerHTML={testResultsNok}></span>
                 </se-icon>
               </span>
               <h3 class="header-title">{this.label}</h3>
