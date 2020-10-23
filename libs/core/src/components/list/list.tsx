@@ -27,11 +27,16 @@ export class ListComponent {
         const closeList = item.closest('se-list');
         // Make sure we only change the style of the current list. Handy if list has a dropdown with a different list style
         if (closeList === this.el) {
-          item.option = this.option;
+          item.setOption(this.option);
         }
       }
     );
   }
+
+  /**
+   * Defines if the list element should be selected or not.
+   */
+  @Prop() selectedColor: 'primary' | 'standard' = 'standard';
 
   /**
    * Defines if list groups can be collapsed.  The default setting is `true`.
@@ -85,8 +90,16 @@ export class ListComponent {
   }
 
   render() {
+    const selectedColor =
+      this.option === 'nav' ? 'primary' : this.selectedColor;
     return (
-      <Host role="list">
+      <Host
+        role="list"
+        class={{
+          [this.option]: true,
+          [`selected-${selectedColor}`]: true,
+        }}
+      >
         <slot></slot>
       </Host>
     );

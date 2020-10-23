@@ -1,128 +1,55 @@
-
-
-:host {
-  margin: 0;
-  // font-weight: lighter;
-  @include display-flex();
-}
-
-:host(.hide-nav-icon) {
-  se-icon {
-    display: none;
-  }
-}
-
-:host(.sidemenu-list-item) {
-  // .nav-content {
-  //   font-weight: 500;
-  // }
-  .button {
-    border-bottom: 1px solid;
-    border-bottom-color: $divider-color;
-    border-bottom-color: var(--se-divider);
-  }
-}
-
-.se-list-item {
-  width: 100%;
-  width: -webkit-fill-available;
-  transition: .2s;
-}
-.se-list-item.button.classic, .se-list-item.button.nav {
-  min-height: 47px;
-  height: 20px; // IE fix so flexbox vertical alignment works
-  max-width: 100%;
-}
-// .se-list-item.classic.selected, .se-list-item.dropdown.selected {
-  // @include color('standard-contrast');
-  // @include background-color('standard-selected');
-  // &:hover, &:focus {
-  //   @include background-color('standard')
-  // }
-// }
-.se-list-item.selected {
-  // @include color('primary');
-  @include background-color('alternative-selected');
-}
-.se-list-item.treeview {
-  border-bottom: 0;
-  padding: 4px 0;
-  .nav-content {
-    padding-left: 12px;
-  }
-  .nav-icon {
-    margin-left: 2px;
-    margin-right: -8px;
-  }
-}
-// .se-list-item.treeview.selected {
-//   @include color('standard-contrast');
-//   @include background-color('standard-selected');
-//   &:hover, &:focus{
-//     @include background-color('standard-hover');
-//   }
-// }
-.se-list-item.dropdown {
-  min-height: 32px;
-  max-width: 100%;
-  border-bottom: none;
-  padding-left: 0;
-  .nav-content{
-    // height: 20px; // IE fix so flexbox vertical alignment works
-    padding: 6px 10px;
-    .list-item-label {
-      font-size: $base-fontsize;
-      line-height: 20px;
-    }
-  }
-  .nav-icon {
-    margin-right: 0;
-    margin-left: 4px;
-  }
-}
-.se-list-item.headline {
-  min-height: 42px;
-  height: 42px; // IE fix so flexbox vertical alignment works
-  .nav-content small {
-    padding-bottom: 2px;
-  }
-}
-
 .button {
-  box-sizing: border-box;
+  // font-weight: lighter;
+  // padding: 0;
   border: none;
   margin: 0;
-  padding: 0;
-  overflow: visible;
+  overflow: none;
   position: relative;
-  // outline: none;
-  background: transparent;
-  width: 100%;
+  width: -webkit-fill-available;
+  transition: 0.2s;
+  max-width: 100%;
+  min-width: 100%;
   /* inherit font & color from ancestor */
+  background-color: inherit;
   color: inherit;
   font: inherit;
+
+  padding-left: calc(
+    var(--se-list-group-indentation) * var(--se-list-item-indentation-padding)
+  );
+  min-height: var(--se-list-item-height);
+  // height: var(
+  //   --se-list-item-height
+  // ); // IE fix so flexbox vertical alignment works
+  border-bottom: var(--se-list-item-border-bottom);
+  box-sizing: border-box;
   @include display-flex();
   @include align-items(center);
   @include flex();
   text-align: left; // MS Edge does not support "start"
   text-align: start;
-  border-bottom: 1px solid;
   border-bottom-color: $divider-color;
   border-bottom-color: var(--se-divider);
   text-decoration: none;
-  &:not([disabled]){
+  &.selected {
+    background-color: var(--se-list-item-selected-background);
+    color: var(--se-list-item-selected-color);
+  }
+  cursor: default;
+  &:not([disabled]),
+  &:not(.disabled) {
     cursor: pointer;
     &:hover {
-      @include background-color('alternative-hover');
-      @include color('alternative-contrast');
+      @include background-color("alternative-hover");
+      @include color("alternative-contrast");
     }
   }
   // transition-property: outline;
   // transition-duration: .3s;
-  &:focus{
+  &:focus {
     outline-width: 2px;
     outline-offset: -1px;
-    @include outline('button-focus');
+    @include outline("button-focus");
     outline-style: solid;
   }
 }
@@ -133,30 +60,26 @@
   bottom: 0;
   left: 0;
   width: 5px;
-  @include background-color("standard-selected");
-}
-.selected.nav, .selectedChild.nav{
-  .selectedBar {
-    @include background-color("primary");
-  }
+  background-color: var(--se-list-item-selected-bar);
 }
 
 .nav-icon {
-  margin: -1px -12px 0 8px;
+  margin: 0;
+  margin-left: 8px;
 }
 
 .nav-content {
   min-width: 0;
-  padding: 0 16px;
+  padding: 0 $spacing-small;
   margin: 0;
   overflow: hidden;
-  @include typology('base');
   @include flex();
   @include display-flex();
   @include flex-direction(column);
   @include align-items(start center);
 
-  div, small {
+  div,
+  small {
     @include ellipsis();
   }
 
@@ -168,7 +91,4 @@
     font-size: $small-fontsize;
     line-height: $small-fontsize;
   }
-}
-se-list-item .nav-icon {
-  margin-left: 18px;
 }
