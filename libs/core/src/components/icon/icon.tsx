@@ -41,6 +41,9 @@ export class IconComponent {
   render() {
     const size = this.size || 'small';
     const TagType = this.option === 'button' ? 'button' : ('div' as any);
+    // if contain svg, we don't use se-icon font-family in case there svg <text> is used
+    const isSVG = !!this.el.querySelector('svg');
+
     return (
       <Host class={`icon-${size}`}>
         <TagType
@@ -48,6 +51,7 @@ export class IconComponent {
           class={{
             disabled: this.disabled,
             'se-icon-wrapper': true,
+            'icon-family': !isSVG,
             [this.color]: !!this.color,
             [`icon-${this.option}`]: !!this.option,
           }}
