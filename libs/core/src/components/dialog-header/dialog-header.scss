@@ -5,28 +5,18 @@
   @include align-items(center);
   @include display-flex();
 
-  .flex {
-    @include flex();
-  }
-
-  div.middle {
-    @include typology("h4");
-    margin: 8px;
-  }
-
-  // &.primary {
   min-height: 44px;
   @include background-color("primary");
   @include color("primary-contrast");
-  // }
 
   &.alternative {
-    @include background-color("alternative");
+    @include background-color("background-alternative");
     @include color("primary");
     margin-bottom: -$spacing-large;
 
     .icon-close {
-      color: rgba($se-anthracite-grey, 0.5);
+      @include color("background-alternative-contrast");
+      opacity: 0.5;
     }
   }
 
@@ -57,6 +47,17 @@
       }
     }
   }
+}
+.icon-close {
+  margin-right: $spacing;
+}
+.flex {
+  @include flex();
+}
+
+.middle {
+  @include typology("h4");
+  margin: 8px;
 }
 
 ::slotted(h1),

@@ -374,7 +374,7 @@ export class SeDialogFooter {
   }
 }
 
-import { DialogHeaderComponent as IDialogHeaderComponent } from '@se/web-ui/types/components/dialog-header/dialog-header';
+import { DialogHeaderComponent as IDialogHeaderComponent } from 'dist/libs/core/types/components/dialog-header/dialog-header';
 export declare interface SeDialogHeader extends Components.SeDialogHeader {}
 @ProxyCmp({
   inputs: ['closeIcon', 'color', 'indents']
