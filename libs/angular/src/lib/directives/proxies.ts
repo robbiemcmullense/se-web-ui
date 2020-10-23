@@ -569,6 +569,25 @@ export class SeIconEcostruxure {
 }
 
 
+export declare interface SeIconFile extends Components.SeIconFile {}
+@ProxyCmp({
+  inputs: ['color', 'disabled', 'option', 'size', 'value']
+})
+@Component({
+  selector: 'se-icon-file',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'disabled', 'option', 'size', 'value']
+})
+export class SeIconFile {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface SeIconLifeison extends Components.SeIconLifeison {}
 @ProxyCmp({
   inputs: ['color']

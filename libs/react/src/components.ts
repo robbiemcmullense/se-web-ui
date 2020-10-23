@@ -116,6 +116,10 @@ export const SeIconEcostruxure = /*@__PURE__*/ createReactComponent<
   JSX.SeIconEcostruxure,
   HTMLSeIconEcostruxureElement
 >('se-icon-ecostruxure');
+export const SeIconFile = /*@__PURE__*/ createReactComponent<
+  JSX.SeIconFile,
+  HTMLSeIconFileElement
+>('se-icon-file');
 export const SeIconLifeison = /*@__PURE__*/ createReactComponent<
   JSX.SeIconLifeison,
   HTMLSeIconLifeisonElement

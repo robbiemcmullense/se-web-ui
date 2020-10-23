@@ -20,6 +20,12 @@
   }
 }
 
+@media print {
+  .se-app-body {
+    position: relative;
+  }
+}
+
 // Create all classes to use colors as classes
 @each $element
   in (
@@ -264,6 +270,7 @@ small {
   @include border-color("background-footer");
   color: $se-anthracite-grey;
 }
+
 
 .flow-text {
   $i: 0;

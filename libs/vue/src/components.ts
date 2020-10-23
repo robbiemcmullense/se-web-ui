@@ -41,6 +41,7 @@ const customElementTags: string[] = [
   'se-header',
   'se-icon',
   'se-icon-ecostruxure',
+  'se-icon-file',
   'se-icon-lifeison',
   'se-icon-schneider',
   'se-link',
@@ -419,6 +420,18 @@ export const SeIconEcostruxure = /*@__PURE__*/ Vue.extend({
   },
 
   render: createCommonRender('se-icon-ecostruxure', []),
+});
+
+export const SeIconFile = /*@__PURE__*/ Vue.extend({
+  props: {
+    value: {} as PropOptions<Components.SeIconFile['value']>,
+    option: {} as PropOptions<Components.SeIconFile['option']>,
+    size: {} as PropOptions<Components.SeIconFile['size']>,
+    color: {} as PropOptions<Components.SeIconFile['color']>,
+    disabled: {} as PropOptions<Components.SeIconFile['disabled']>,
+  },
+
+  render: createCommonRender('se-icon-file', []),
 });
 
 export const SeIconLifeison = /*@__PURE__*/ Vue.extend({

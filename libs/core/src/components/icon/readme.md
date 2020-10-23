@@ -30,6 +30,7 @@
  - [se-fab](../fab)
  - [se-fab-item](../fab-item)
  - [se-header](../header)
+ - [se-icon-file](../icon-file)
  - [se-list-group](../list-group)
  - [se-list-item](../list-item)
  - [se-pagination](../pagination)
@@ -51,6 +52,7 @@ graph TD;
   se-fab --> se-icon
   se-fab-item --> se-icon
   se-header --> se-icon
+  se-icon-file --> se-icon
   se-list-group --> se-icon
   se-list-item --> se-icon
   se-pagination --> se-icon
