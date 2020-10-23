@@ -315,14 +315,14 @@ export class SeContainer {
 import { DialogComponent as IDialogComponent } from 'dist/libs/core/types/components/dialog/dialog';
 export declare interface SeDialog extends Components.SeDialog {}
 @ProxyCmp({
-  inputs: ['canBackdrop', 'color', 'open', 'size'],
+  inputs: ['canBackdrop', 'color', 'open', 'pageScroll', 'size'],
   methods: ['backdropClicked']
 })
 @Component({
   selector: 'se-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canBackdrop', 'color', 'open', 'size'],
+  inputs: ['canBackdrop', 'color', 'open', 'pageScroll', 'size'],
   outputs: ['backdrop', 'didClose']
 })
 export class SeDialog {

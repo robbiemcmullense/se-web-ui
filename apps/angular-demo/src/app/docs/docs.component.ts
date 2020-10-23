@@ -30,6 +30,20 @@ export class DocsComponent {
     { name: 'item 4' },
   ];
 
+  isDlgOpen = false;
+
+  formFields: [
+    { id: 'firstname'; label: 'First Name'; hint: 'enter first name' },
+    { id: 'lastname'; label: 'Last Name'; hint: 'enter last name' },
+    { id: 'city'; label: 'City'; hint: 'enter city' },
+    { id: 'postalcode'; label: 'Postal Code'; hint: 'enter postal code' },
+    { id: 'primaryskill'; label: 'Primary Skill'; hint: 'enter primary skill' },
+    { id: 'otherskills'; label: 'Other Skills'; hint: 'enter other skills' },
+    { id: 'jobtitle'; label: 'Job Title'; hint: 'job title' },
+    { id: 'graduation'; label: 'Graduation'; hint: 'graduation' },
+    { id: 'postgraduation'; label: 'Post Graduation'; hint: 'post graduation' }
+  ];
+
   constructor() {}
 
   radioChanged(event) {
@@ -74,5 +88,12 @@ export class DocsComponent {
     this.nameValidated = false;
     this.addressValidated = false;
     await this.stepper.nativeElement.reset();
+  };
+
+  openDialog = () => {
+    this.isDlgOpen = true;
+  };
+  closeDialog = () => {
+    this.isDlgOpen = false;
   };
 }
