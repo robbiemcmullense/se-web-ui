@@ -137,8 +137,8 @@ export class ListItemComponent {
         id={id ? `wc-${id}` : ''}
       >
         {this.selected ? <div class="selectedBar"></div> : ''}
-        <slot name="start"></slot>
-        <div class="nav-icon">
+        <div class="start">
+          <slot name="start"></slot>
           {(!!this.icon as boolean) ? (
             <se-icon color={this.iconColor}>{this.icon}</se-icon>
           ) : (
@@ -146,7 +146,7 @@ export class ListItemComponent {
           )}
           <slot name="icon"></slot>
         </div>
-        <div class="nav-content">
+        <div class="content">
           <div class="list-item-label">
             {this.item}
             <slot name="item"></slot>

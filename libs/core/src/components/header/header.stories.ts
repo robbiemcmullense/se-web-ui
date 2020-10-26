@@ -1,5 +1,7 @@
 import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
+import readmesidemenu from '../sidemenu/readme.md';
+import readmesidemenuitem from '../sidemenu-item/readme.md';
 import { text, select } from '@storybook/addon-knobs';
 
 const domainOption = ['ecostruxure', 'MySchneider'];
@@ -48,7 +50,11 @@ storiesOf('Header', module)
     },
     {
       notes: {
-        markdown: readme,
+        markdown: {
+          'se-header': readme,
+          'se-sidemenu': readmesidemenu,
+          'se-sidemenu-item': readmesidemenuitem,
+        },
       },
     }
   );

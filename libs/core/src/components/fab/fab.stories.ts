@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
+import readmeItem from '../fab-item/readme.md';
 import { select } from '@storybook/addon-knobs';
 
 const fabOption = ['speeddial', 'backtotop'];
@@ -25,7 +26,7 @@ storiesOf('Fab', module).add(
   },
   {
     notes: {
-      markdown: readme,
+      markdown: { 'se-fab': readme, 'se-fab-item': readmeItem },
     },
   }
 );

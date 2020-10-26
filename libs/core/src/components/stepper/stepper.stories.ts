@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
+import readmeitem from '../stepper-item/readme.md';
 import { text, select, boolean } from '@storybook/addon-knobs';
 
 const colorOptions = ['primary', 'alternative'];
@@ -31,7 +32,7 @@ storiesOf('Stepper', module).add(
   },
   {
     notes: {
-      markdown: readme,
+      markdown: { 'se-stepper': readme, 'se-stepper-item': readmeitem },
     },
   }
 );

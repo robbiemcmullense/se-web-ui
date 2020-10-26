@@ -911,6 +911,12 @@ export namespace Components {
          */
         "item": string;
     }
+    interface SeSkeleton {
+        "circle": boolean;
+        "count": 1;
+        "height": any;
+        "width": any;
+    }
     interface SeSlider {
         /**
           * Indicates if your slider is disabled. The default setting is `false`.
@@ -1404,6 +1410,12 @@ declare global {
         prototype: HTMLSeSidemenuItemElement;
         new (): HTMLSeSidemenuItemElement;
     };
+    interface HTMLSeSkeletonElement extends Components.SeSkeleton, HTMLStencilElement {
+    }
+    var HTMLSeSkeletonElement: {
+        prototype: HTMLSeSkeletonElement;
+        new (): HTMLSeSkeletonElement;
+    };
     interface HTMLSeSliderElement extends Components.SeSlider, HTMLStencilElement {
     }
     var HTMLSeSliderElement: {
@@ -1541,6 +1553,7 @@ declare global {
         "se-radio-group": HTMLSeRadioGroupElement;
         "se-sidemenu": HTMLSeSidemenuElement;
         "se-sidemenu-item": HTMLSeSidemenuItemElement;
+        "se-skeleton": HTMLSeSkeletonElement;
         "se-slider": HTMLSeSliderElement;
         "se-snackbar": HTMLSeSnackbarElement;
         "se-stepper": HTMLSeStepperElement;
@@ -2501,6 +2514,12 @@ declare namespace LocalJSX {
          */
         "onDidClick"?: (event: CustomEvent<any>) => void;
     }
+    interface SeSkeleton {
+        "circle"?: boolean;
+        "count"?: 1;
+        "height"?: any;
+        "width"?: any;
+    }
     interface SeSlider {
         /**
           * Indicates if your slider is disabled. The default setting is `false`.
@@ -2796,6 +2815,7 @@ declare namespace LocalJSX {
         "se-radio-group": SeRadioGroup;
         "se-sidemenu": SeSidemenu;
         "se-sidemenu-item": SeSidemenuItem;
+        "se-skeleton": SeSkeleton;
         "se-slider": SeSlider;
         "se-snackbar": SeSnackbar;
         "se-stepper": SeStepper;
@@ -2858,6 +2878,7 @@ declare module "@stencil/core" {
             "se-radio-group": LocalJSX.SeRadioGroup & JSXBase.HTMLAttributes<HTMLSeRadioGroupElement>;
             "se-sidemenu": LocalJSX.SeSidemenu & JSXBase.HTMLAttributes<HTMLSeSidemenuElement>;
             "se-sidemenu-item": LocalJSX.SeSidemenuItem & JSXBase.HTMLAttributes<HTMLSeSidemenuItemElement>;
+            "se-skeleton": LocalJSX.SeSkeleton & JSXBase.HTMLAttributes<HTMLSeSkeletonElement>;
             "se-slider": LocalJSX.SeSlider & JSXBase.HTMLAttributes<HTMLSeSliderElement>;
             "se-snackbar": LocalJSX.SeSnackbar & JSXBase.HTMLAttributes<HTMLSeSnackbarElement>;
             "se-stepper": LocalJSX.SeStepper & JSXBase.HTMLAttributes<HTMLSeStepperElement>;

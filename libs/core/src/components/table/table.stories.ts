@@ -1,5 +1,9 @@
 import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
+import readmegroup from '../table-group/readme.md';
+import readmegroupheader from '../table-group-header/readme.md';
+import readmeitem from '../table-item/readme.md';
+import readmeitemheader from '../table-item-header/readme.md';
 import { select, boolean } from '@storybook/addon-knobs';
 
 const sortOption = ['asc', 'desc', 'none'];
@@ -186,7 +190,13 @@ storiesOf('Table', module).add(
   },
   {
     notes: {
-      markdown: readme,
+      markdown: {
+        'se-table': readme,
+        'se-table-group-header': readmegroupheader,
+        'se-table-item-header': readmeitemheader,
+        'se-table-group': readmegroup,
+        'se-table-item': readmeitem,
+      },
     },
   }
 );

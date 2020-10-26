@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
+import readmeradial from '../visual-radial/readme.md';
 import { text, select, number } from '@storybook/addon-knobs';
 
 const displayOptions = ['inline', 'stacked'];
@@ -60,7 +61,7 @@ storiesOf('Chart', module)
     },
     {
       notes: {
-        markdown: readme,
+        markdown: readmeradial,
       },
     }
   );

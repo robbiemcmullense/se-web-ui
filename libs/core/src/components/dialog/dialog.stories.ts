@@ -1,6 +1,9 @@
 import { storiesOf } from '@storybook/html';
 import { select, boolean, text, object } from '@storybook/addon-knobs';
 import readme from './readme.md';
+import readmeContent from '../dialog-content/readme.md';
+import readmeFooter from '../dialog-footer/readme.md';
+import readmeHeader from '../dialog-header/readme.md';
 
 const configurationGroup = 'Configuration';
 const mainTitleGroup = 'Main slot title';
@@ -33,7 +36,7 @@ const createElement = (
 };
 
 storiesOf('Dialog', module).add(
-  'Demo',
+  'Dialog',
   () => {
     const size = select('size', sizeOptions, 'medium', configurationGroup);
     const color = select('color', colorOptions, 'primary', configurationGroup);
@@ -108,7 +111,12 @@ storiesOf('Dialog', module).add(
   },
   {
     notes: {
-      markdown: readme,
+      markdown: {
+        'se-dialog': readme,
+        'se-dialog-content': readmeContent,
+        'se-dialog-header': readmeHeader,
+        'se-dialog-footer': readmeFooter,
+      },
     },
   }
 );

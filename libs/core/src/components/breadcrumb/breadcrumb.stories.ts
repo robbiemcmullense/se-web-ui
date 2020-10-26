@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/html';
 import { text, boolean } from '@storybook/addon-knobs';
 import readme from './readme.md';
+import readmeitem from '../breadcrumb-item/readme.md';
 
 storiesOf('Breadcrumb', module).add(
   'Breadcrumb',
@@ -28,7 +29,7 @@ storiesOf('Breadcrumb', module).add(
   },
   {
     notes: {
-      markdown: readme,
+      markdown: { 'se-breadcrumb': readme, 'se-breadcrumb-item': readmeitem },
     },
   }
 );

@@ -168,6 +168,10 @@ export const SeSidemenuItem = /*@__PURE__*/ createReactComponent<
   JSX.SeSidemenuItem,
   HTMLSeSidemenuItemElement
 >('se-sidemenu-item');
+export const SeSkeleton = /*@__PURE__*/ createReactComponent<
+  JSX.SeSkeleton,
+  HTMLSeSkeletonElement
+>('se-skeleton');
 export const SeSlider = /*@__PURE__*/ createReactComponent<
   JSX.SeSlider,
   HTMLSeSliderElement
