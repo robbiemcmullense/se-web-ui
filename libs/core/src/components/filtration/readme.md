@@ -9,15 +9,15 @@
 
 | Property | Attribute | Description | Type     | Default    |
 | -------- | --------- | ----------- | -------- | ---------- |
-| `label`  | `label`   |             | `string` | `'Select'` |
+| `label`  | `label`   | Label for the filtration | `string` | `'Select'` |
 
 
 ## Events
 
 | Event         | Description | Type               |
 | ------------- | ----------- | ------------------ |
-| `didSearch`   |             | `CustomEvent<any>` |
-| `didViewMore` |             | `CustomEvent<any>` |
+| `didSearch`   | Custom event to send the searched text to parent | `CustomEvent<any>` |
+| `didViewMore` | Custom event to send `yes` if the user clicked `View More (n)` <br>else, send `no` if the user clicked `View Less` | `CustomEvent<any>` |
 
 
 ## Dependencies
