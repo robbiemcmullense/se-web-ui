@@ -375,9 +375,6 @@ export const SeFabItem = /*@__PURE__*/ Vue.extend({
 export const SeFiltration = /*@__PURE__*/ Vue.extend({
   props: {
     label: {} as PropOptions<Components.SeFiltration['label']>,
-    searchable: {} as PropOptions<Components.SeFiltration['searchable']>,
-    scrollable: {} as PropOptions<Components.SeFiltration['scrollable']>,
-    moreItems: {} as PropOptions<Components.SeFiltration['moreItems']>,
   },
 
   render: createCommonRender('se-filtration', ['didSearch', 'didViewMore']),

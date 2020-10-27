@@ -499,9 +499,6 @@ export namespace Components {
     }
     interface SeFiltration {
         "label": string;
-        "moreItems": number;
-        "scrollable": boolean;
-        "searchable": boolean;
     }
     interface SeFormField {
         /**
@@ -2026,11 +2023,8 @@ declare namespace LocalJSX {
     }
     interface SeFiltration {
         "label"?: string;
-        "moreItems"?: number;
         "onDidSearch"?: (event: CustomEvent<any>) => void;
         "onDidViewMore"?: (event: CustomEvent<any>) => void;
-        "scrollable"?: boolean;
-        "searchable"?: boolean;
     }
     interface SeFormField {
         /**

@@ -19,6 +19,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [se-filtration](../filtration)
+
 ### Depends on
 
 - [se-divider](../divider)
@@ -27,6 +31,7 @@
 ```mermaid
 graph TD;
   se-block-header --> se-divider
+  se-filtration --> se-block-header
   style se-block-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

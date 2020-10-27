@@ -1541,7 +1541,110 @@
               </se-block-content>
             </se-block>
           </se-container>
-          <se-container option="fill" style="border: 1px solid black">
+          <se-container>
+            <se-block height="800px">
+              <se-block-content>
+                <se-filtration label="Product type">
+                  <se-list option="treeview">
+                    <se-list-item item="Apple"></se-list-item>
+                    <se-list-item item="Orange"></se-list-item>
+                    <se-list-item item="Pineapple"></se-list-item>
+                    <se-list-item item="Fig"></se-list-item>
+                    <se-list-item item="Pear"></se-list-item>
+                    <se-list-item item="Custard Apple"></se-list-item>
+                    <se-list-item item="Lemon"></se-list-item>
+                    <se-list-item item="Mango"></se-list-item>
+                    <se-list-item item="Grapes"></se-list-item>
+                    <se-list-item item="Carrot"></se-list-item>
+                    <se-list-item item="Radish"></se-list-item>
+                    <se-list-item item="Pumpkin"></se-list-item>
+                  </se-list>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+            <se-block>
+              <se-block-content>
+                <se-filtration label="Category">
+                  <se-list option="treeview">
+                    <se-list-item item="Software"></se-list-item>
+                    <se-list-item item="Hardware"></se-list-item>
+                    <se-list-item item="Infrastructure"></se-list-item>
+                    <se-list-item item="Mechanical"></se-list-item>
+                    <se-list-item item="Electrical"></se-list-item>
+                    <se-list-item item="Information"></se-list-item>
+                    <se-list-item item="Telecommunication"></se-list-item>
+                    <se-list-item item="Healthcare"></se-list-item>
+                    <se-list-item item="Food"></se-list-item>
+                  </se-list>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+            <se-block>
+              <se-block-content>
+                <se-filtration label="Date range">
+                  <se-form-field
+                    option="stacked"
+                    block
+                    label="Start date"
+                    type="input"
+                  >
+                    <input type="date" id="startdate" />
+                  </se-form-field>
+                  <se-form-field
+                    option="stacked"
+                    block
+                    label="End date"
+                    type="input"
+                  >
+                    <input type="date" id="enddate" />
+                  </se-form-field>
+                  <se-button color="secondary" option="outline">Ok</se-button>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+            <se-block>
+              <se-block-content>
+                <se-filtration label="Search order results">
+                  <se-block margin="medium">
+                    <se-form-field
+                      label="Order number"
+                      option="stacked"
+                      type="input"
+                      block
+                    >
+                      <input id="ordernumber" name="ordernumber" type="text" />
+                    </se-form-field>
+                    <se-form-field
+                      label="Purchase order number"
+                      option="stacked"
+                      type="input"
+                      block
+                    >
+                      <input
+                        id="purchaseordernumber"
+                        name="purchaseordernumber"
+                        type="text"
+                      />
+                    </se-form-field>
+                    <se-form-field
+                      label="Catalog number"
+                      option="stacked"
+                      type="input"
+                      block
+                    >
+                      <input
+                        id="catalognumber"
+                        name="catalognumber"
+                        type="text"
+                      />
+                    </se-form-field>
+                    <se-button color="secondary" option="outline">OK</se-button>
+                  </se-block>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+          </se-container>
+          <!-- <se-container option="fill" style="border: 1px solid black">
             <se-block width="250px" option="fill">
               <se-list>
                 <se-list-item
@@ -1820,64 +1923,9 @@
                 </se-list-group>
               </se-list>
             </se-block>
-          </se-container>
+          </se-container> -->
           <se-container option="fill" display="grid" row-size="400px">
-            <se-block option="fill" id="block12">
-              <se-block-content>
-                <se-filtration id="singleselect" label="Product type">
-                  <se-list option="dropdown">
-                    <se-list-item
-                      item="Basic"
-                      description="Simple programming language"
-                    ></se-list-item>
-                    <se-list-item
-                      item="Cobol"
-                      description="COmmon Business Oriented Language"
-                    ></se-list-item>
-                    <se-list-item
-                      item="Foxpro"
-                      description="The DBMS of the 90s"
-                    ></se-list-item>
-                    <se-list-item
-                      item="Visual Basic"
-                      description="MDI based UI software"
-                    ></se-list-item>
-                    <se-list-item
-                      item="Angular"
-                      description="Super heroic JavaScript framework"
-                    ></se-list-item>
-                    <se-list-item
-                      item="React"
-                      description="View library from FaceBook"
-                    ></se-list-item>
-                  </se-list>
-                </se-filtration>
-              </se-block-content>
-              <div id="singleSelected"></div>
-            </se-block>
-            <se-block option="fill">
-              <se-block-content>
-                <se-filtration id="multiselect" label="Category" />
-              </se-block-content>
-              <div id="multiSelected"></div>
-            </se-block>
-          </se-container>
-          <se-container display="grid" option="fill" row-size="400px">
-            <se-block option="fill">
-              <se-block-content>
-                <se-filtration id="dateRangeSelect" label="Date Range" />
-              </se-block-content>
-              <div id="dateRangeSelected"></div>
-            </se-block>
-            <se-block option="fill">
-              <se-block-content>
-                <se-filtration
-                  id="dateRangeSelect"
-                  label="Search Order Details"
-                />
-              </se-block-content>
-              <div id="orderSelected"></div>
-            </se-block>
+            <!-- Filtration examples -->
           </se-container>
         </se-container>
       </se-container>
@@ -1973,19 +2021,6 @@
     </se-app>
 
     <script>
-      const singleSelect = document.querySelector('#singleselect');
-      const multiSelect = document.querySelector('#multiselect');
-
-      singleSelect.addEventListener('selected', e => {
-        document.querySelector(
-          '#singleSelected'
-        ).innerHTML = `=> [${e.detail}]`;
-      });
-
-      multiSelect.addEventListener('selected', e => {
-        document.querySelector('#multiSelected').innerHTML = `=> [${e.detail}]`;
-      });
-
       function showfab(text) {
         alert(text);
       }

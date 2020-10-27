@@ -27,6 +27,7 @@
 
 ### Used by
 
+ - [se-filtration](../filtration)
  - [se-sidemenu](../sidemenu)
 
 ### Depends on
@@ -37,6 +38,7 @@
 ```mermaid
 graph TD;
   se-block --> se-loading
+  se-filtration --> se-block
   se-sidemenu --> se-block
   style se-block fill:#f9f,stroke:#333,stroke-width:4px
 ```

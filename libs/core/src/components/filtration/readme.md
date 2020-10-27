@@ -7,37 +7,45 @@
 
 ## Properties
 
-| Property     | Attribute    | Description                  | Type      | Default    |
-| ------------ | ------------ | ---------------------------- | --------- | ---------- |
-| `label`      | `label`      | Label for the filtration box | `string`  | `'Select'` |
-| `moreItems`  | `more-items` | Number of more items that will be displayed in the footer if `scrollable` is set to `true` | `number`  | `0`        |
-| `scrollable` | `scrollable` | Optional value to set the list to be scrollable | `boolean` | `false`    |
-| `searchable` | `searchable` | Optional if the filtration box needs to have search box | `boolean` | `false`    |
+| Property | Attribute | Description | Type     | Default    |
+| -------- | --------- | ----------- | -------- | ---------- |
+| `label`  | `label`   |             | `string` | `'Select'` |
 
 
 ## Events
 
 | Event         | Description | Type               |
 | ------------- | ----------- | ------------------ |
-| `didSearch`   | Optional callback event that is fired if the user enters text to search | `CustomEvent<any>` |
-| `didViewMore` |  Optional callback event that is fired if the user clicks the `View More|Less` link | `CustomEvent<any>` |
+| `didSearch`   |             | `CustomEvent<any>` |
+| `didViewMore` |             | `CustomEvent<any>` |
 
 
 ## Dependencies
 
 ### Depends on
 
+- [se-block](../block)
+- [se-block-header](../block-header)
 - [se-button](../button)
+- [se-block-content](../block-content)
 - [se-form-field](../form-field)
 - [se-icon](../icon)
+- [se-block-footer](../block-footer)
 
 ### Graph
 ```mermaid
 graph TD;
+  se-filtration --> se-block
+  se-filtration --> se-block-header
   se-filtration --> se-button
+  se-filtration --> se-block-content
   se-filtration --> se-form-field
   se-filtration --> se-icon
+  se-filtration --> se-block-footer
+  se-block --> se-loading
+  se-block-header --> se-divider
   se-button --> se-icon
+  se-block-footer --> se-divider
   style se-filtration fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -3,6 +3,7 @@ import {
   SeContainer,
   SeBlock,
   SeBlockHeader,
+  SeBlockFooter,
   SeButton,
   SeBlockContent,
   SeList,
@@ -11,6 +12,7 @@ import {
   SeDivider,
   SeStepper,
   SeStepperItem,
+  SeIcon,
   SeFiltration,
   SeCheckbox,
   SeFormField,
@@ -41,6 +43,17 @@ const demoItems = [
   'Pumpkin',
 ];
 
+const categories = [
+  'Software',
+  'Hardware',
+  'Infrastructure',
+  'Mechanical',
+  'Electrical',
+  'Information',
+  'Telecommunication',
+  'Healthcare',
+  'Food',
+];
 const minItems = 5;
 
 class Dashboard extends Component<DashboardProps> {
@@ -48,7 +61,13 @@ class Dashboard extends Component<DashboardProps> {
     listItems,
     searchText: '',
     scrollable: false,
+    scrollCategories: false,
+    scrollProducts: true,
+    canViewProducts: false,
+    viewMoreProducts: true,
     numItems: minItems,
+    listHeight: '220px',
+    selectedItem: '',
   };
 
   changePage(i) {
@@ -76,6 +95,24 @@ class Dashboard extends Component<DashboardProps> {
     const ok = evt.detail === 'yes';
     this.setState({ numItems: ok ? demoItems.length : minItems });
     // console.log('handleViewMore: evt:', evt ,' | ', this.state.numItems);
+  };
+  setListHeight = () => {
+    const listht = this.state.listHeight === '220px' ? '400px' : '220px';
+    this.setState({ listHeight: listht });
+    this.setState({
+      numItems: listht === '400px' ? demoItems.length : minItems,
+    });
+  };
+
+  handleSelect = li => {
+    console.log('> handleSelect: li: ', li);
+    this.setState({ selectedItem: li });
+  };
+  handleViewMoreProducts = () => {
+    this.setState({ viewMoreProducts: !this.state.viewMoreProducts });
+    this.setState({
+      numItems: this.state.viewMoreProducts ? demoItems.length : minItems,
+    });
   };
   render() {
     console.log('ID', this.props);
@@ -160,90 +197,93 @@ class Dashboard extends Component<DashboardProps> {
         <SeDivider option="vertical"></SeDivider>
         <SeBlock>
           <div>Filtration demo</div>
-          <SeCheckbox
-            label="Scroll?"
-            onDidChange={() =>
-              this.setState({ scrollable: !this.state.scrollable })
-            }
-          />
           <SeFiltration
-            label={`Product category`}
-            searchable
-            more-items={demoItems.length - this.state.numItems}
-            scrollable={this.state.scrollable}
-            onDidViewMore={this.handleViewMore}
+            label={`Product type`}
             onDidSearch={this.handleDidSearch}
           >
-            <div slot="content">
-              <SeList option="dropdown">
-                {demoItems
-                  .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
-                  .slice(0, this.state.numItems)
-                  .map((li, idx) => (
-                    <SeListItem key={li} item={`${idx + 1} ${li}`} />
-                  ))}
-              </SeList>
-            </div>
+            <SeList option="treeview">
+              {demoItems
+                .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
+                .map((li, idx) => (
+                  <SeListItem
+                    selected={this.state.selectedItem === li}
+                    onDidSelectedChange={() => this.handleSelect(li)}
+                    key={li}
+                    item={li}
+                  />
+                ))}
+            </SeList>
           </SeFiltration>
-          <SeFiltration label={`Date Range`}>
-            <div slot="content">
+          {/** Category */}
+          <SeFiltration label={`Category`} onDidSearch={this.handleDidSearch}>
+            <SeList option="treeview">
+              {categories
+                .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
+                .map((li, idx) => (
+                  <SeListItem
+                    selected={this.state.selectedItem === li}
+                    onDidSelectedChange={() => this.handleSelect(li)}
+                    key={li}
+                    item={li}
+                  />
+                ))}
+            </SeList>
+          </SeFiltration>
+
+          {/** Date range */}
+          <SeFiltration label="Date Range">
+            <SeBlock margin="medium">
               <SeFormField
+                label="Start date"
+                option="stacked"
                 type="input"
                 block
-                option="stacked"
-                label="From Date"
               >
-                <input type="date" id="fromdate" name="fromdate" />
+                <input id="startdate" name="startdate" type="date" />
               </SeFormField>
-              <SeFormField type="input" block option="stacked" label="To Date">
-                <input type="date" id="todate" name="todate" />
+              <SeFormField label="End date" option="stacked" type="input" block>
+                <input id="enddate" name="enddate" type="date" />
               </SeFormField>
-              <SeButton color="secondary">OK</SeButton>
-            </div>
+              <SeButton color="secondary" option="outline">
+                OK
+              </SeButton>
+            </SeBlock>
           </SeFiltration>
-          <SeFiltration label={`Search order results`}>
-            <div slot="content">
+          {/** Search order results */}
+          <SeFiltration label="Search order results">
+            <SeBlock margin="medium">
               <SeFormField
-                type="input"
-                block
-                option="stacked"
                 label="Order number"
-              >
-                <input
-                  type="text"
-                  id="ordernumber"
-                  name="ordernumber"
-                  placeholder="return number"
-                />
-              </SeFormField>
-              <SeFormField
+                option="stacked"
                 type="input"
                 block
+              >
+                <input id="ordernumber" name="ordernumber" type="text" />
+              </SeFormField>
+              <SeFormField
+                label="Purchase order number"
                 option="stacked"
-                label="Purchase Order number"
+                type="input"
+                block
               >
                 <input
-                  type="text"
                   id="purchaseordernumber"
                   name="purchaseordernumber"
-                  placeholder="purchase order number"
+                  type="text"
                 />
               </SeFormField>
               <SeFormField
+                label="Catalog number"
+                option="stacked"
                 type="input"
                 block
-                option="stacked"
-                label="Catalog number"
               >
-                <input
-                  type="text"
-                  id="catalognumber"
-                  name="catalognumber"
-                  placeholder="catalog number"
-                />
+                <input id="catalognumber" name="catalognumber" type="text" />
               </SeFormField>
-              <SeButton color="secondary">OK</SeButton>
-            </div>
+              <SeButton color="secondary" option="outline">
+                OK
+              </SeButton>
+            </SeBlock>
           </SeFiltration>
         </SeBlock>
       </SeContainer>

@@ -486,13 +486,13 @@ export class SeFabItem {
 import { FiltrationComponent as IFiltrationComponent } from '@se/web-ui/types/components/filtration/filtration';
 export declare interface SeFiltration extends Components.SeFiltration {}
 @ProxyCmp({
-  inputs: ['label', 'moreItems', 'scrollable', 'searchable']
+  inputs: ['label']
 })
 @Component({
   selector: 'se-filtration',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['label', 'moreItems', 'scrollable', 'searchable'],
+  inputs: ['label'],
   outputs: ['didSearch', 'didViewMore']
 })
 export class SeFiltration {
