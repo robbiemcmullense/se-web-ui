@@ -79,7 +79,7 @@ export class RadioComponent {
   @Event() didCheck: EventEmitter;
 
   handleClick() {
-    console.log('radio handleClick');
+    // console.log('radio handleClick');
     this.selected = !this.selected;
     const checkboxObject = { value: this.value, selected: this.selected };
     this.didCheck.emit(checkboxObject);

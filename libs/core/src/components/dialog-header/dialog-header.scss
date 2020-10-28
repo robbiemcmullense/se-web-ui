@@ -57,7 +57,7 @@
 
 .middle {
   @include typology("h4");
-  margin: 8px;
+  margin: 8px 0;
 }
 
 ::slotted(h1),

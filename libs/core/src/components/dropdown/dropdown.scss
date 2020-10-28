@@ -1,5 +1,4 @@
 .se-dropdown {
-  display: block;
   position: relative;
 
   &[hidden] {
@@ -20,13 +19,13 @@
 
   &.top {
     .dropdown-content {
-      bottom: calc(100% + 4px);
+      bottom: calc(100% + $spacing-small);
     }
   }
 
   &.bottom {
     .dropdown-content {
-      top: calc(100% + 4px);
+      top: calc(100% + $spacing-small);
     }
   }
 }

@@ -15,6 +15,9 @@ a {
     text-decoration: underline;
     @include color("information", 0.3);
   }
+  &:visited {
+    @include color("link-visited");
+  }
   // transition-property: outline;
   // transition-duration: .3s;
 

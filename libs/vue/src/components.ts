@@ -55,6 +55,7 @@ const customElementTags: string[] = [
   'se-radio-group',
   'se-sidemenu',
   'se-sidemenu-item',
+  'se-skeleton',
   'se-slider',
   'se-snackbar',
   'se-stepper',
@@ -625,6 +626,17 @@ export const SeSidemenuItem = /*@__PURE__*/ Vue.extend({
   },
 
   render: createCommonRender('se-sidemenu-item', ['didClick']),
+});
+
+export const SeSkeleton = /*@__PURE__*/ Vue.extend({
+  props: {
+    count: {} as PropOptions<Components.SeSkeleton['count']>,
+    width: {} as PropOptions<Components.SeSkeleton['width']>,
+    height: {} as PropOptions<Components.SeSkeleton['height']>,
+    circle: {} as PropOptions<Components.SeSkeleton['circle']>,
+  },
+
+  render: createCommonRender('se-skeleton', []),
 });
 
 export const SeSlider = /*@__PURE__*/ Vue.extend({

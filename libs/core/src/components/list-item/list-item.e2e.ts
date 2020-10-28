@@ -21,8 +21,8 @@ describe('ListItemComponent', () => {
     element.setProperty('description', 'sample list item');
     await page.waitForChanges();
 
-    const titleElm = await page.find('se-list-item >>> .nav-content div');
-    const description = await page.find('se-list-item >>> .nav-content small');
+    const titleElm = await page.find('se-list-item >>> .content div');
+    const description = await page.find('se-list-item >>> .content small');
     expect(titleElm.innerText).toEqual('My List Item');
     expect(description.innerText).toEqual('sample list item');
   });
@@ -39,7 +39,7 @@ describe('ListItemComponent', () => {
     element.setProperty('icon', 'my test icon');
     await page.waitForChanges();
 
-    const iconElm = await page.find('se-list-item >>> .nav-icon ');
+    const iconElm = await page.find('se-list-item >>> .start ');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('my test icon');
   });

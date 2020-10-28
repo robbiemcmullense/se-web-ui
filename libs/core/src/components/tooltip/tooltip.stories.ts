@@ -1,5 +1,8 @@
 import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
+import readmecontent from '../tooltip-content/readme.md';
+import readmeheader from '../tooltip-header/readme.md';
+import readmefooter from '../tooltip-footer/readme.md';
 import { select } from '@storybook/addon-knobs';
 
 const positionOptions = ['bottom', 'top', 'left', 'right'];
@@ -22,7 +25,12 @@ storiesOf('Tooltip', module).add(
   },
   {
     notes: {
-      markdown: readme,
+      markdown: {
+        'se-tooltip': readme,
+        'se-tooltip-content': readmecontent,
+        'se-tooltip-header': readmeheader,
+        'se-tooltip-footer': readmefooter,
+      },
     },
   }
 );

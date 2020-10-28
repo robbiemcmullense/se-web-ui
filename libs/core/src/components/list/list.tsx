@@ -63,7 +63,7 @@ export class ListComponent {
       }
       case 'ArrowLeft':
       case 'ArrowRight': {
-        ev.preventDefault();
+        // ev.preventDefault();
         const elm = document.activeElement;
         if (elm.nodeName.toUpperCase() === 'SE-LIST-GROUP') {
           (elm as HTMLSeListGroupElement).toggleCollapseTreeview();

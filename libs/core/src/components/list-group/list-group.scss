@@ -21,6 +21,6 @@ se-list-item {
   display: none;
 }
 .treeview-icon {
-  margin-left: 6px;
-  margin-right: -8px;
+  margin-left: -$spacing-small;
+  margin-right: -$spacing-small;
 }

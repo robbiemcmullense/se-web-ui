@@ -1,0 +1,29 @@
+@keyframes skeletonMove {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  /* Component styles go here */
+  @include background-color("divider");
+  background-image: linear-gradient(
+    90deg,
+    var(--se-divider),
+    var(--se-background-standard),
+    var(--se-divider)
+  );
+  animation: skeletonMove 1.2s ease-in-out infinite;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  border-radius: $border-radius;
+  display: inline-block;
+  line-height: 1;
+  width: 100%;
+}
+.rounded {
+  border-radius: 50%;
+}

@@ -1,5 +1,9 @@
 # se-dialog-header
 
+| Slot      | Description                                                                          |
+| --------- | ------------------------------------------------------------------------------------ |
+| none      | Slot with no name will be used in the main area of the header                        |
+| `end`     | Will be display at the end between the title and the close icon                      |
 
 
 <!-- Auto Generated Below -->

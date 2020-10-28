@@ -1,5 +1,10 @@
 import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
+import readmefile from '../icon-file/readme.md';
+import readmeecostruxure from '../icon-ecostruxure/readme.md';
+import readmelifeison from '../icon-lifeison/readme.md';
+import readmeschneider from '../icon-schneider/readme.md';
+
 import { text, select } from '@storybook/addon-knobs';
 
 storiesOf('Icons', module)
@@ -59,7 +64,7 @@ storiesOf('Icons', module)
     },
     {
       notes: {
-        markdown: readme,
+        markdown: readmefile,
       },
     }
   )
@@ -79,7 +84,7 @@ storiesOf('Icons', module)
     },
     {
       notes: {
-        markdown: readme,
+        markdown: readmeecostruxure,
       },
     }
   )
@@ -97,7 +102,7 @@ storiesOf('Icons', module)
     },
     {
       notes: {
-        markdown: readme,
+        markdown: { readmelifeison },
       },
     }
   )
@@ -110,7 +115,7 @@ storiesOf('Icons', module)
     },
     {
       notes: {
-        markdown: readme,
+        markdown: readmeschneider,
       },
     }
   );

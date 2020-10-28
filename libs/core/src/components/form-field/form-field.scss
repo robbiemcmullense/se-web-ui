@@ -20,11 +20,12 @@ se-form-field {
     font-weight: 550;
     width: 35%;
     display: flex;
+    margin-left: $spacing;
     @include align-items(flex-start);
     // min-height: 38px;
     > span {
       display: flex;
-      min-height: 38px;
+      min-height: 40px;
       @include align-items(center);
     }
   }
