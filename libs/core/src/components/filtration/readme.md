@@ -27,9 +27,9 @@
 - [se-block](../block)
 - [se-block-header](../block-header)
 - [se-button](../button)
-- [se-block-content](../block-content)
 - [se-form-field](../form-field)
 - [se-icon](../icon)
+- [se-list](../list)
 - [se-block-footer](../block-footer)
 
 ### Graph
@@ -38,9 +38,9 @@ graph TD;
   se-filtration --> se-block
   se-filtration --> se-block-header
   se-filtration --> se-button
-  se-filtration --> se-block-content
   se-filtration --> se-form-field
   se-filtration --> se-icon
+  se-filtration --> se-list
   se-filtration --> se-block-footer
   se-block --> se-loading
   se-block-header --> se-divider

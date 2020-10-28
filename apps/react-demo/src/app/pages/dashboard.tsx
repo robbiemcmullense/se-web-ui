@@ -18,6 +18,7 @@ import {
   SeDialogContent,
   SeIcon,
   SeDialogFooter,
+  SeFiltration,
   SeFormField,
 } from '@se/web-ui-react';
 
@@ -74,6 +75,10 @@ class Dashboard extends Component<DashboardProps> {
     selectedCategories: [],
     isDlgOpen: false,
     scrollPage: false,
+    dateRange: {
+      startDate: null,
+      endDate: null,
+    },
     formFields: [
       { id: 'firstname', label: 'First Name', hint: 'enter first name' },
       { id: 'lastname', label: 'Last Name', hint: 'enter last name' },
@@ -176,6 +181,18 @@ class Dashboard extends Component<DashboardProps> {
     this.setState({ isDlgOpen: false });
   };
 
+  setRangeDate = e => {
+    const dateRange = this.state.dateRange;
+    dateRange[e.target.name] = e.target.value;
+    this.setState({ dateRange: dateRange });
+    console.log('dateRange:', this.state.dateRange);
+  };
+
+  isValidDateRange = () =>
+    this.state.dateRange.startDate !== null &&
+    this.state.dateRange.endDate !== null &&
+    this.state.dateRange.startDate < this.state.dateRange.endDate;
+
   render() {
     console.log('ID', this.props);
     return (
@@ -259,6 +276,7 @@ class Dashboard extends Component<DashboardProps> {
         <SeDivider option="vertical"></SeDivider>
         <SeBlock>
           <div>Filtration demo</div>
+          {/** Single Select */}
           <SeFiltration
             label={`Product type - single select`}
             onDidSearch={this.handleDidSearch}
@@ -270,17 +288,11 @@ class Dashboard extends Component<DashboardProps> {
                   <SeListItem
                     selected={this.state.selectedProduct === li}
                     onClick={() => this.selectProduct(li)}
-                    key={li}
+                    key={idx}
                     item={li}
                   >
                     {this.state.selectedProduct === li && (
-                      <div>
-                        <SeButton
-                          color="alternative"
-                          iconOnly
-                          icon="action_delete_cross"
-                        />
-                      </div>
+                      <SeIcon option="button">action_delete_cross</SeIcon>
                     )}
                   </SeListItem>
                 ))}
@@ -291,35 +303,32 @@ class Dashboard extends Component<DashboardProps> {
             label={`Category - Mullti select`}
             onDidSearch={this.handleDidSearch}
           >
-            <SeList>
-              <SeListItem
-                item="Select All"
-                onClick={() => this.selectAllCategories()}
-              >
-                <SeCheckbox
-                  slot="start"
-                  selected={
-                    this.state.selectedCategories.length === categories.length
-                  }
-                ></SeCheckbox>
-              </SeListItem>
-              {categories
-                .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
-                .map((li, idx) => (
-                  <SeListItem
+            <SeListItem
+              item="Select All"
+              onClick={() => this.selectAllCategories()}
+            >
+              <SeCheckbox
+                slot="start"
+                selected={
+                  this.state.selectedCategories.length === categories.length
+                }
+              ></SeCheckbox>
+            </SeListItem>
+            {categories
+              .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
+              .map((li, idx) => (
+                <SeListItem
+                  onClick={() => this.selectCategory(li)}
+                  key={idx}
+                  item={`${li}`}
+                >
+                  <SeCheckbox
+                    slot="start"
+                    value={li}
                     selected={this.isSelectedCategory(li)}
-                    onClick={() => this.selectCategory(li)}
-                    key={li}
-                    item={`${li}`}
-                  >
-                    <SeCheckbox
-                      slot="start"
-                      value={li}
-                      selected={this.isSelectedCategory(li)}
-                    ></SeCheckbox>
-                  </SeListItem>
-                ))}
-            </SeList>
+                  />
+                </SeListItem>
+              ))}
           </SeFiltration>
 
           {/** Date range */}
@@ -331,12 +340,26 @@ class Dashboard extends Component<DashboardProps> {
                 type="input"
                 block
               >
-                <input id="startdate" name="startdate" type="date" />
+                <input
+                  id="startdate"
+                  name="startDate"
+                  type="date"
+                  onChange={this.setRangeDate}
+                />
               </SeFormField>
               <SeFormField label="End date" option="stacked" type="input" block>
-                <input id="enddate" name="enddate" type="date" />
+                <input
+                  id="enddate"
+                  name="endDate"
+                  type="date"
+                  onChange={this.setRangeDate}
+                />
               </SeFormField>
-              <SeButton color="secondary" option="outline">
+              <SeButton
+                disabled={!this.isValidDateRange()}
+                color="secondary"
+                option="outline"
+              >
                 OK
               </SeButton>
             </SeBlock>

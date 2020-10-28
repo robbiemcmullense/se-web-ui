@@ -49,7 +49,7 @@ export class FiltrationComponent {
     if (this.searchable) {
       this.minItems = this.isViewingMore ? 20 : 5;
       setTimeout(() => {
-        for (var el in listitems) {
+        for (let el in listitems) {
           if (n > this.minItems) {
             break;
           }
@@ -63,7 +63,7 @@ export class FiltrationComponent {
       this.listboxHeight = 'auto';
     }
     return (
-      <se-block outline option="card">
+      <se-block outline option="card-old">
         <se-block-header>
           {this.label}
           <div slot="end">
@@ -76,21 +76,22 @@ export class FiltrationComponent {
             />
           </div>
         </se-block-header>
-        <se-block-content>
-          {this.searchable && this.isExpanded && (
-            <se-form-field option="stacked" block>
-              <div class="with-icon">
-                <input
-                  type="search"
-                  placeholder={this.hint}
-                  onInput={this.setSearch}
-                />
-                <se-icon size="small" style={{ marginLeft: '4px' }}>
-                  action_search_stroke
-                </se-icon>
-              </div>
-            </se-form-field>
-          )}
+
+        {this.searchable && this.isExpanded && (
+          <se-form-field option="stacked" block>
+            <div class="with-icon">
+              <input
+                type="search"
+                placeholder={this.hint}
+                onInput={this.setSearch}
+              />
+              <se-icon size="small" style={{ marginLeft: '4px' }}>
+                action_search_stroke
+              </se-icon>
+            </div>
+          </se-form-field>
+        )}
+        <se-list option="dropdown">
           <div
             style={{
               height: this.isViewingMore ? '300px' : this.listboxHeight,
@@ -103,7 +104,7 @@ export class FiltrationComponent {
           >
             <slot></slot>
           </div>
-        </se-block-content>
+        </se-list>
         {this.isExpanded && this.searchable && (
           <se-block-footer>
             <div

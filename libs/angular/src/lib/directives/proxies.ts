@@ -488,7 +488,7 @@ export class SeFabItem {
   }
 }
 
-import { FiltrationComponent as IFiltrationComponent } from '@se/web-ui/types/components/filtration/filtration';
+import { FiltrationComponent as IFiltrationComponent } from 'dist/libs/core/types/components/filtration/filtration';
 export declare interface SeFiltration extends Components.SeFiltration {}
 @ProxyCmp({
   inputs: ['label']
@@ -513,7 +513,6 @@ export class SeFiltration {
   }
 }
 
-import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
 import { FormFieldComponent as IFormFieldComponent } from 'dist/libs/core/types/components/form-field/form-field';
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({

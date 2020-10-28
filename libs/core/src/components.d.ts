@@ -514,6 +514,9 @@ export namespace Components {
          */
         "icon": string;
     }
+    interface SeFiltration {
+        "label": string;
+    }
     interface SeFormField {
         /**
           * Optional property that defines if the field displays as a block in it's container. When set to true, the field will be as wide as its container. both field label auto adjust when it set to inline
@@ -612,6 +615,35 @@ export namespace Components {
           * Sets the size of the EcoStruxure icon.  The default setting is `small`.
          */
         "size": 'small' | 'medium';
+    }
+    interface SeIconFile {
+        /**
+          * Optional property that defines the background color of the button. The default color will be inherited from its parent.
+         */
+        "color": | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'information';
+        /**
+          * Optional property that defines if the button is disabled.  Set to `false` by default.
+         */
+        "disabled": boolean;
+        /**
+          * Optional property to define if the icon should act as a button (clickable).
+         */
+        "option": 'button';
+        /**
+          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+         */
+        "size": 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        /**
+          * Text displayed inside the SVG icon. The text cannot be longer than 4 character.
+         */
+        "value": string;
     }
     interface SeIconLifeison {
         /**
@@ -1273,6 +1305,12 @@ declare global {
         prototype: HTMLSeFabItemElement;
         new (): HTMLSeFabItemElement;
     };
+    interface HTMLSeFiltrationElement extends Components.SeFiltration, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationElement: {
+        prototype: HTMLSeFiltrationElement;
+        new (): HTMLSeFiltrationElement;
+    };
     interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {
     }
     var HTMLSeFormFieldElement: {
@@ -1296,6 +1334,12 @@ declare global {
     var HTMLSeIconEcostruxureElement: {
         prototype: HTMLSeIconEcostruxureElement;
         new (): HTMLSeIconEcostruxureElement;
+    };
+    interface HTMLSeIconFileElement extends Components.SeIconFile, HTMLStencilElement {
+    }
+    var HTMLSeIconFileElement: {
+        prototype: HTMLSeIconFileElement;
+        new (): HTMLSeIconFileElement;
     };
     interface HTMLSeIconLifeisonElement extends Components.SeIconLifeison, HTMLStencilElement {
     }
@@ -1489,10 +1533,12 @@ declare global {
         "se-dropdown": HTMLSeDropdownElement;
         "se-fab": HTMLSeFabElement;
         "se-fab-item": HTMLSeFabItemElement;
+        "se-filtration": HTMLSeFiltrationElement;
         "se-form-field": HTMLSeFormFieldElement;
         "se-header": HTMLSeHeaderElement;
         "se-icon": HTMLSeIconElement;
         "se-icon-ecostruxure": HTMLSeIconEcostruxureElement;
+        "se-icon-file": HTMLSeIconFileElement;
         "se-icon-lifeison": HTMLSeIconLifeisonElement;
         "se-icon-schneider": HTMLSeIconSchneiderElement;
         "se-link": HTMLSeLinkElement;
@@ -2046,6 +2092,11 @@ declare namespace LocalJSX {
          */
         "onDidClick"?: (event: CustomEvent<any>) => void;
     }
+    interface SeFiltration {
+        "label"?: string;
+        "onDidSearch"?: (event: CustomEvent<any>) => void;
+        "onDidViewMore"?: (event: CustomEvent<any>) => void;
+    }
     interface SeFormField {
         /**
           * Optional property that defines if the field displays as a block in it's container. When set to true, the field will be as wide as its container. both field label auto adjust when it set to inline
@@ -2148,6 +2199,35 @@ declare namespace LocalJSX {
           * Sets the size of the EcoStruxure icon.  The default setting is `small`.
          */
         "size"?: 'small' | 'medium';
+    }
+    interface SeIconFile {
+        /**
+          * Optional property that defines the background color of the button. The default color will be inherited from its parent.
+         */
+        "color"?: | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'information';
+        /**
+          * Optional property that defines if the button is disabled.  Set to `false` by default.
+         */
+        "disabled"?: boolean;
+        /**
+          * Optional property to define if the icon should act as a button (clickable).
+         */
+        "option"?: 'button';
+        /**
+          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+         */
+        "size"?: 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        /**
+          * Text displayed inside the SVG icon. The text cannot be longer than 4 character.
+         */
+        "value"?: string;
     }
     interface SeIconLifeison {
         /**
@@ -2714,10 +2794,12 @@ declare namespace LocalJSX {
         "se-dropdown": SeDropdown;
         "se-fab": SeFab;
         "se-fab-item": SeFabItem;
+        "se-filtration": SeFiltration;
         "se-form-field": SeFormField;
         "se-header": SeHeader;
         "se-icon": SeIcon;
         "se-icon-ecostruxure": SeIconEcostruxure;
+        "se-icon-file": SeIconFile;
         "se-icon-lifeison": SeIconLifeison;
         "se-icon-schneider": SeIconSchneider;
         "se-link": SeLink;
@@ -2775,10 +2857,12 @@ declare module "@stencil/core" {
             "se-dropdown": LocalJSX.SeDropdown & JSXBase.HTMLAttributes<HTMLSeDropdownElement>;
             "se-fab": LocalJSX.SeFab & JSXBase.HTMLAttributes<HTMLSeFabElement>;
             "se-fab-item": LocalJSX.SeFabItem & JSXBase.HTMLAttributes<HTMLSeFabItemElement>;
+            "se-filtration": LocalJSX.SeFiltration & JSXBase.HTMLAttributes<HTMLSeFiltrationElement>;
             "se-form-field": LocalJSX.SeFormField & JSXBase.HTMLAttributes<HTMLSeFormFieldElement>;
             "se-header": LocalJSX.SeHeader & JSXBase.HTMLAttributes<HTMLSeHeaderElement>;
             "se-icon": LocalJSX.SeIcon & JSXBase.HTMLAttributes<HTMLSeIconElement>;
             "se-icon-ecostruxure": LocalJSX.SeIconEcostruxure & JSXBase.HTMLAttributes<HTMLSeIconEcostruxureElement>;
+            "se-icon-file": LocalJSX.SeIconFile & JSXBase.HTMLAttributes<HTMLSeIconFileElement>;
             "se-icon-lifeison": LocalJSX.SeIconLifeison & JSXBase.HTMLAttributes<HTMLSeIconLifeisonElement>;
             "se-icon-schneider": LocalJSX.SeIconSchneider & JSXBase.HTMLAttributes<HTMLSeIconSchneiderElement>;
             "se-link": LocalJSX.SeLink & JSXBase.HTMLAttributes<HTMLSeLinkElement>;
