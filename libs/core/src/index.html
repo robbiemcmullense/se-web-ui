@@ -1545,7 +1545,7 @@
             <se-block height="800px">
               <se-block-content>
                 <se-filtration label="Product type">
-                  <se-list option="treeview">
+                  <se-list option="dropdown">
                     <se-list-item item="Apple"></se-list-item>
                     <se-list-item item="Orange"></se-list-item>
                     <se-list-item item="Pineapple"></se-list-item>
@@ -1565,16 +1565,42 @@
             <se-block>
               <se-block-content>
                 <se-filtration label="Category">
-                  <se-list option="treeview">
-                    <se-list-item item="Software"></se-list-item>
-                    <se-list-item item="Hardware"></se-list-item>
-                    <se-list-item item="Infrastructure"></se-list-item>
-                    <se-list-item item="Mechanical"></se-list-item>
-                    <se-list-item item="Electrical"></se-list-item>
-                    <se-list-item item="Information"></se-list-item>
-                    <se-list-item item="Telecommunication"></se-list-item>
-                    <se-list-item item="Healthcare"></se-list-item>
-                    <se-list-item item="Food"></se-list-item>
+                  <se-list option="dropdown">
+                    <se-list-item item="Select all"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Software">
+                      <se-checkbox slot="start"></se-checkbox>
+                      <se-button
+                        color="alternative"
+                        icon-only
+                        icon="action_delete_cross"
+                      />
+                    </se-list-item>
+                    <se-list-item item="Hardware"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Infrastructure"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Mechanical"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Electrical"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Information"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Telecommunication"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Healthcare"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Food"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
                   </se-list>
                 </se-filtration>
               </se-block-content>

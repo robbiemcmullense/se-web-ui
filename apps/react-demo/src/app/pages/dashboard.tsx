@@ -67,7 +67,8 @@ class Dashboard extends Component<DashboardProps> {
     viewMoreProducts: true,
     numItems: minItems,
     listHeight: '220px',
-    selectedItem: '',
+    selectedProduct: '',
+    selectedCategories: [],
   };
 
   changePage(i) {
@@ -104,10 +105,40 @@ class Dashboard extends Component<DashboardProps> {
     });
   };
 
-  handleSelect = li => {
-    console.log('> handleSelect: li: ', li);
-    this.setState({ selectedItem: li });
+  selectProduct = (li: any) => {
+    this.setState({
+      selectedProduct: this.state.selectedProduct === li ? null : li,
+    });
   };
+
+  selectCategory = (li: any) => {
+    let selectedCategories = this.state.selectedCategories;
+    const idx = selectedCategories.indexOf(li);
+    if (idx < 0) {
+      selectedCategories = [...selectedCategories, li];
+    } else {
+      selectedCategories = [
+        ...selectedCategories.slice(0, idx),
+        ...selectedCategories.slice(idx + 1),
+      ];
+    }
+    this.setState({ selectedCategories: selectedCategories });
+  };
+
+  selectAllCategories() {
+    let selectedCategories = [];
+    if (this.state.selectedCategories.length !== categories.length) {
+      selectedCategories = [...categories];
+    } else {
+      selectedCategories = [];
+    }
+    this.setState({ selectedCategories: selectedCategories });
+  }
+
+  isSelectedCategory = (li: any) => {
+    return this.state.selectedCategories.filter(f => f === li).length > 0;
+  };
+
   handleViewMoreProducts = () => {
     this.setState({ viewMoreProducts: !this.state.viewMoreProducts });
     this.setState({
@@ -198,34 +229,62 @@ class Dashboard extends Component<DashboardProps> {
         <SeBlock>
           <div>Filtration demo</div>
           <SeFiltration
-            label={`Product type`}
+            label={`Product type - single select`}
             onDidSearch={this.handleDidSearch}
           >
-            <SeList option="treeview">
+            <SeList>
               {demoItems
                 .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
                 .map((li, idx) => (
                   <SeListItem
-                    selected={this.state.selectedItem === li}
-                    onDidSelectedChange={() => this.handleSelect(li)}
+                    selected={this.state.selectedProduct === li}
+                    onClick={() => this.selectProduct(li)}
                     key={li}
                     item={li}
-                  />
+                  >
+                    {this.state.selectedProduct === li && (
+                      <div>
+                        <SeButton
+                          color="alternative"
+                          iconOnly
+                          icon="action_delete_cross"
+                        />
+                      </div>
+                    )}
+                  </SeListItem>
                 ))}
             </SeList>
           </SeFiltration>
           {/** Category */}
-          <SeFiltration label={`Category`} onDidSearch={this.handleDidSearch}>
-            <SeList option="treeview">
+          <SeFiltration
+            label={`Category - Mullti select`}
+            onDidSearch={this.handleDidSearch}
+          >
+            <SeList>
+              <SeListItem
+                item="Select All"
+                onClick={() => this.selectAllCategories()}
+              >
+                <SeCheckbox
+                  selected={
+                    this.state.selectedCategories.length === categories.length
+                  }
+                ></SeCheckbox>
+              </SeListItem>
               {categories
                 .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
                 .map((li, idx) => (
                   <SeListItem
-                    selected={this.state.selectedItem === li}
-                    onDidSelectedChange={() => this.handleSelect(li)}
+                    selected={this.isSelectedCategory(li)}
+                    onClick={() => this.selectCategory(li)}
                     key={li}
-                    item={li}
-                  />
+                    item={`${li}`}
+                  >
+                    <SeCheckbox
+                      value={li}
+                      selected={this.isSelectedCategory(li)}
+                    ></SeCheckbox>
+                  </SeListItem>
                 ))}
             </SeList>
           </SeFiltration>
