@@ -266,6 +266,7 @@ class Dashboard extends Component<DashboardProps> {
                 onClick={() => this.selectAllCategories()}
               >
                 <SeCheckbox
+                  slot="start"
                   selected={
                     this.state.selectedCategories.length === categories.length
                   }
@@ -281,6 +282,7 @@ class Dashboard extends Component<DashboardProps> {
                     item={`${li}`}
                   >
                     <SeCheckbox
+                      slot="start"
                       value={li}
                       selected={this.isSelectedCategory(li)}
                     ></SeCheckbox>
