@@ -1,20 +1,19 @@
-
-
 a {
   font-size: inherit;
   margin: $spacing-small;
   line-height: inherit;
   display: inline-block;
-  @include color('information');
+  cursor: pointer;
+  @include color("information");
   text-decoration: none;
   &.external {
     &:after {
-      content: '\00a0>\00a0';
+      content: "\00a0>\00a0";
     }
   }
   &:hover {
     text-decoration: underline;
-    @include color('information', .3);
+    @include color("information", 0.3);
   }
   // transition-property: outline;
   // transition-duration: .3s;
@@ -28,7 +27,7 @@ a {
   &[data-disabled] {
     pointer-events: none;
     // @include color('standard-hover');
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 

@@ -1,5 +1,3 @@
-
-
 .se-dialog-header {
   position: relative;
   padding: $spacing-small $spacing-small $spacing-small $spacing-large; // 2px to compensate with border bottom
@@ -7,30 +5,90 @@
   @include align-items(center);
   @include display-flex();
 
-  .flex{
-    @include flex();
-  }
-
-  div.middle {
-    @include typology('h4');
-    margin: 8px;
-  }
-
-  // &.primary {
   min-height: 44px;
-  @include background-color('primary');
-  @include color('primary-contrast');
-  // }
+  @include background-color("primary");
+  @include color("primary-contrast");
 
   &.alternative {
-    @include background-color('alternative');
-    @include color('primary');
+    @include background-color("background-alternative");
+    @include color("primary");
     margin-bottom: -$spacing-large;
+
+    .icon-close {
+      @include color("background-alternative-contrast");
+      opacity: 0.5;
+    }
+  }
+
+  &.alternative-indents {
+    min-height: 35px;
+    padding: $spacing-m-large $spacing-m-large 0;
+    margin-bottom: 0;
+
+    @include for-desktop-only {
+      @include align-items(flex-start);
+      padding: $spacing-m-large $spacing-xlarge 0;
+    }
+
+    div.middle {
+      margin: 0;
+      overflow: hidden;
+
+      @include for-desktop-only {
+        margin: 0 $spacing-small $spacing-small;
+      }
+    }
+
+    .icon-close {
+      margin: 0;
+
+      @include for-desktop-only {
+        margin-left: $spacing-large;
+      }
+    }
+  }
+}
+.icon-close {
+  margin-right: $spacing;
+}
+.flex {
+  @include flex();
+}
+
+.middle {
+  @include typology("h4");
+  margin: 8px;
+}
+
+::slotted(h1),
+::slotted(h2),
+::slotted(h3),
+::slotted(h4),
+::slotted(h5),
+::slotted(h6) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+::slotted(h3) {
+  color: $se-anthracite-grey;
+
+  @include for-mobile-only {
+    height: 35px;
+    font-size: 25px !important;
+    line-height: 35px !important;
+    @include ellipsis;
   }
 }
 
-::slotted(h1), ::slotted(h2), ::slotted(h3),
-::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+::slotted(.label) {
+  display: none;
+
+  @include for-desktop-only {
+    display: block;
+    flex-shrink: 0;
+    margin-left: $spacing-large !important;
+    line-height: 30px;
+    color: $se-medium-grey;
+  }
 }

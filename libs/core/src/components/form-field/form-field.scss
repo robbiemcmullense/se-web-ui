@@ -17,7 +17,7 @@ se-form-field {
     padding: 0;
   }
   .with-label {
-    font-weight: bold;
+    font-weight: 550;
     width: 35%;
     display: flex;
     @include align-items(flex-start);
@@ -89,7 +89,7 @@ se-form-field {
     font-family: inherit;
     width: 100%;
     font-size: 16px;
-    height: 28px;
+    height: 30px;
     line-height: 20px;
     border: 1px solid;
     @include border-color("border");
@@ -237,11 +237,12 @@ se-form-field {
       text-align: left;
       width: 100%;
       display: block;
-      > span {
+      .with-label {
         display: block;
         max-width: none;
         text-align: left;
         line-height: 1.5;
+        margin: $spacing-small 0;
       }
     }
     .ff-wrapper {
@@ -255,25 +256,33 @@ se-form-field {
   }
 
   .ff-error {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("error");
     }
   }
 
   .ff-warning {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("warning");
     }
   }
 
   .ff-information {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("information");
     }
   }
 
   .ff-success {
-    input {
+    input,
+    select,
+    textarea {
       @include border-color("success");
     }
   }

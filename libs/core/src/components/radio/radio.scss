@@ -1,5 +1,3 @@
-
-
 :host {
   @include align-items(center);
   display: block;
@@ -18,6 +16,7 @@ button {
   margin: 0;
   padding: 0;
   outline: none;
+  cursor: pointer;
   // overflow: visible;
   // background: transparent;
   // text-decoration: none;
@@ -28,40 +27,41 @@ button {
   left: -8px;
   height: 14px;
   width: 14px;
-  @include background-color('background-alternative');
+  @include background-color("background-alternative");
   border: 1px solid;
-  @include border-color('border');
+  @include border-color("border");
   border-radius: 50%;
 
   &:focus {
     outline-width: 2px;
-    @include outline('button-focus');
+    @include outline("button-focus");
     outline-style: solid;
   }
 
-  &.checked{
+  &.checked {
     border: 4px solid;
-    @include border-color('primary');
-    &.secondary{
-      @include border-color('secondary');
+    @include border-color("primary");
+    &.secondary {
+      @include border-color("secondary");
     }
   }
   &[disabled] {
+    cursor: default;
     opacity: 0.5;
   }
 }
 
 .required {
-  @include color('error');
+  @include color("error");
   padding-left: 3px;
 }
 .radio-label {
-  @include typology('small');
+  @include typology("small");
   padding-left: 6px;
 
   position: relative;
   padding-left: $spacing-large;
-  @include typology('small');
+  @include typology("small");
   margin: 0;
   margin-left: $spacing;
   -webkit-user-select: none;
@@ -90,5 +90,3 @@ button {
     }
   }
 }
-
-

@@ -165,7 +165,7 @@ export class BannerComponent {
     this.setIconSize();
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     clearInterval(this.interval);
     this.items.length = 0;
     this.selectedItem = undefined;

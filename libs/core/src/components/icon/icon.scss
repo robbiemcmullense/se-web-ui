@@ -1,5 +1,3 @@
-
-
 // Defines a custom property
 @mixin size-icon($sizeFont) {
   font-size: $sizeFont;
@@ -15,23 +13,26 @@
   display: inline-flex;
 }
 
-:host(.icon-nano){
-  @include size-icon(14px)
+:host(.icon-nano) {
+  @include size-icon(14px);
 }
-:host(.icon-small){
-  @include size-icon(24px)
+:host(.icon-micro) {
+  @include size-icon(18px);
 }
-:host(.icon-medium){
+:host(.icon-small) {
+  @include size-icon(24px);
+}
+:host(.icon-medium) {
   @include size-icon(32px);
 }
-:host(.icon-large){
+:host(.icon-large) {
   @include size-icon(52px);
 }
-:host(.icon-xlarge){
-  @include size-icon(62px)
+:host(.icon-xlarge) {
+  @include size-icon(62px);
 }
 
-button{
+button {
   box-sizing: border-box;
   border: none;
   margin: 0;
@@ -52,14 +53,16 @@ button{
   &:focus {
     outline-offset: 1px;
     outline-width: 2px;
-    @include outline('button-focus');
+    @include outline("button-focus");
     outline-style: solid;
   }
 }
 
+.icon-family {
+  font-family: "se-icon";
+}
 .se-icon-wrapper {
   display: inline-block;
-  font-family: "se-icon";
   font-style: normal;
   position: relative;
   font-weight: normal;
@@ -86,12 +89,12 @@ button{
 
 .se-icon-wrapper.disabled {
   cursor: default;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 // Align icons on MS Edge.
 // Will remove when Chromium-based Edge browser is released.
-@supports (-ms-ime-align:auto) {
+@supports (-ms-ime-align: auto) {
   .se-icon-wrapper {
     vertical-align: top;
     top: 0;
@@ -141,7 +144,6 @@ button{
     &.button:focus {
       @include background-color("alternative-focus");
     }
-
   }
 }
 
@@ -160,7 +162,6 @@ button{
     &.button:focus {
       @include background-color("primary-focus");
     }
-
   }
 }
 

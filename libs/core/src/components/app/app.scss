@@ -1,7 +1,4 @@
-
-
-
-:host{
+:host {
   width: 100%;
 }
 
@@ -15,7 +12,7 @@
   overflow: hidden;
   margin: 0 !important;
   padding: 0;
-  @include absolute(0,0,0,0);
+  @include absolute(0, 0, 0, 0);
   @include display-flex();
   @include flex-direction(column);
   a {
@@ -23,43 +20,52 @@
   }
 }
 
+@media print {
+  .se-app-body {
+    position: relative;
+  }
+}
+
 // Create all classes to use colors as classes
-@each $element in ( 'standard',
-                    'alternative',
-                    'primary',
-                    'secondary',
-                    'success',
-                    'warning',
-                    'information',
-                    'error',
-                    'standard-contrast',
-                    'alternative-contrast',
-                    'primary-contrast',
-                    'secondary-contrast',
-                    'success-contrast',
-                    'warning-contrast',
-                    'information-contrast',
-                    'error-contrast'
-                    ) {
-  .color-#{$element}{
-    @include color('' + $element);
+@each $element
+  in (
+    "standard",
+    "alternative",
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "information",
+    "error",
+    "standard-contrast",
+    "alternative-contrast",
+    "primary-contrast",
+    "secondary-contrast",
+    "success-contrast",
+    "warning-contrast",
+    "information-contrast",
+    "error-contrast"
+  )
+{
+  .color-#{$element} {
+    @include color("" + $element);
   }
-  .bg-#{$element}{
-    @include background-color('' + $element);
-  }
-}
-@each $element in ( 'background-standard',
-                    'background-alternative',
-                    'background-footer') {
-  .#{$element}{
-    @include background-color('' + $element);
-  }
-  .#{$element}-contrast{
-    @include color('' + $element + '-contrast');
+  .bg-#{$element} {
+    @include background-color("" + $element);
   }
 }
-.overlay{
-  @include background-color('overlay');
+@each $element
+  in ("background-standard", "background-alternative", "background-footer")
+{
+  .#{$element} {
+    @include background-color("" + $element);
+  }
+  .#{$element}-contrast {
+    @include color("" + $element + "-contrast");
+  }
+}
+.overlay {
+  @include background-color("overlay");
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -67,99 +73,209 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	//font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  //font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 // body {
 // 	 line-height: 1.4;
 // }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 // input:focus, textarea:focus, select:focus, button:focus, a:focus{
 //   outline: none;
 // }
 
-
-body, html{
-  @include typology('p');
+body,
+html {
+  @include typology("p");
   // color: $off-black;
   @include background-color("background-alternative");
   @include color("background-alternative-contrast");
   // Header Styles
-  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
     font-weight: inherit;
   }
   h1 {
-    @include typology('h1');
+    @include typology("h1");
   }
   h2 {
-    @include typology('h2');
+    @include typology("h2");
   }
   h3 {
-    @include typology('h3');
+    @include typology("h3");
   }
   h4 {
-    @include typology('h4');
+    @include typology("h4");
   }
   h5 {
-    @include typology('h5');
+    @include typology("h5");
   }
   h6 {
-    @include typology('h6');
+    @include typology("h6");
   }
   p {
-    @include typology('p');
+    @include typology("p");
   }
 
   // Text Styles
-  em { font-style: italic; }
+  em {
+    font-style: italic;
+  }
 }
 
-strong, .bold { font-weight: 500; }
-small { font-size: 75%; }
-.light { font-weight: 300; }
-.thin { font-weight: 200; }
+strong,
+.bold {
+  font-weight: 500;
+}
+.normal {
+  font-weight: normal;
+}
+.light {
+  font-weight: 300;
+}
+.thin {
+  font-weight: 200;
+}
 
-.flow-text{
+small {
+  font-size: 75%;
+}
+
+.frame-text {
+  padding: 2.5px 10px;
+  margin-right: 10px;
+  border: 1px solid;
+  @include border-radius(2);
+  @include border-color("background-footer");
+  color: $se-anthracite-grey;
+}
+
+.flow-text {
   $i: 0;
   @while $i <= $intervals {
-    @media only screen and (min-width : 360 + ($i * $interval-size)) {
-      font-size: 1.2rem * (1 + (.02 * $i));
+    @media only screen and (min-width: 360 + ($i * $interval-size)) {
+      font-size: 1.2rem * (1 + (0.02 * $i));
     }
     $i: $i + 1;
   }
@@ -170,14 +286,15 @@ small { font-size: 75%; }
   }
 }
 
-.uppercase{
+.uppercase {
   text-transform: uppercase;
 }
 
-body, html {
+body,
+html {
   ::-webkit-scrollbar {
-    height: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
-    width: ((2*$scrollbar-side-padding) +  $scrollbar-side-padding);
+    height: ((2 * $scrollbar-side-padding) + $scrollbar-side-padding);
+    width: ((2 * $scrollbar-side-padding) + $scrollbar-side-padding);
   }
 
   ::-webkit-scrollbar-track,
@@ -189,14 +306,14 @@ body, html {
 
   ::-webkit-scrollbar-track {
     // background-color: $se-ultra-light-grey-2;
-    @include background-color('divider');
+    @include background-color("divider");
   }
 
   ::-webkit-scrollbar-thumb {
     // background-color: $se-light-grey;
-    @include background-color('border');
+    @include background-color("border");
     &:hover {
-      @include background-color('border-focus');
+      @include background-color("border-focus");
 
       border: $scrollbar-side-padding / 2 solid transparent;
     }

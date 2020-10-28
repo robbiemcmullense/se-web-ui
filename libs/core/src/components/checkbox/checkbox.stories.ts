@@ -1,19 +1,22 @@
 import { storiesOf } from '@storybook/html';
 import { select, text, boolean } from '@storybook/addon-knobs';
+import readme from './readme.md';
 
 const colorOption = ['primary', 'secondary', 'success', 'error'];
 const backgroundOption = ['standard', 'alternative'];
 const labelOption = ['right', 'left'];
 
 storiesOf('Checkbox', module)
-  .add('Checkbox', () => {
-    const label = text('label', 'This is a standard checkbox.');
-    const selected = boolean('selected', true);
-    const color = select('color', colorOption, 'primary');
-    const disabled = boolean('disabled', false);
-    const labelPos = select('label position', labelOption, 'right');
+  .add(
+    'Checkbox',
+    () => {
+      const label = text('label', 'This is a standard checkbox.');
+      const selected = boolean('selected', true);
+      const color = select('color', colorOption, 'primary');
+      const disabled = boolean('disabled', false);
+      const labelPos = select('label position', labelOption, 'right');
 
-    return `
+      return `
       <se-checkbox
         option='checkbox'
         label='${label}'
@@ -23,14 +26,22 @@ storiesOf('Checkbox', module)
         label-pos='${labelPos}'></se-checkbox>
       <div id="did-change-message"></div>
     `;
-  })
-  .add('Checkbox toggle switch', () => {
-    const label = text('label', 'This is a standard checkbox.');
-    const selected = boolean('selected', true);
-    const disabled = boolean('disabled', false);
-    const labelPos = select('label position', labelOption, 'left');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Checkbox toggle switch',
+    () => {
+      const label = text('label', 'This is a standard checkbox.');
+      const selected = boolean('selected', true);
+      const disabled = boolean('disabled', false);
+      const labelPos = select('label position', labelOption, 'left');
 
-    return `
+      return `
     <se-checkbox
       option='switch'
       label='${label}'
@@ -39,18 +50,26 @@ storiesOf('Checkbox', module)
       label-pos='${labelPos}'></se-checkbox>
     <div id="did-change-message"></div>
     `;
-  })
-  .add('Checkbox on/off switch', () => {
-    const label = text('label', 'This is a standard checkbox.');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Checkbox on/off switch',
+    () => {
+      const label = text('label', 'This is a standard checkbox.');
 
-    const selected = boolean('selected', false);
-    const background = select('background', backgroundOption, 'standard');
-    const disabled = boolean('disabled', false);
-    const onText = text('"ON" Text', 'ON');
-    const offText = text('"OFF" Text', 'OFF');
-    const header = boolean('header', false);
+      const selected = boolean('selected', false);
+      const background = select('background', backgroundOption, 'standard');
+      const disabled = boolean('disabled', false);
+      const onText = text('"ON" Text', 'ON');
+      const offText = text('"OFF" Text', 'OFF');
+      const header = boolean('header', false);
 
-    return `
+      return `
         <se-checkbox
           label='${label}'
           option='onoff'
@@ -61,4 +80,10 @@ storiesOf('Checkbox', module)
           text-off='${offText}'
           header='${header}'></se-checkbox>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );

@@ -1,81 +1,26 @@
-
-@import "../list-item/list-item";
-
 :host {
   @include flex-direction(column);
 }
+se-list-item {
+  background-color: var(--se-list-group-background);
+  font-weight: var(--se-list-group-font-weight);
+  --se-list-item-height: var(--se-list-group-height);
+}
 
-.group-item{
+.group-item {
+  --se-list-group-indentation: 0;
   overflow: unset;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-
-.se-list-group.button {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  .list-group-label {
-    line-height: 24px;
-  }
-  &.collapsed {
-    + .group-item {
-      display: none;
-    }
-  }
-  // &.selected {
-  //   @include color('primary');
-  // }
-
-  &.selectedChild {
-    @include background-color('alternative-hover');
-  }
-
-  &.classic, &.nav {
-    min-height: 47px;
-    height: 20px; // IE fix so flexbox vertical alignment works
-    max-width: 100%;
-    .nav-content{
-      font-weight: bold;
-    }
-  }
-  &.treeview {
-    border-bottom: 0;
-    padding: 4px 0;
-  }
-  &.treeview .nav-icon {
-    margin-right: 0;
-    + .nav-content {
-      padding-left: 2px;
-    }
-  }
-  &.treeview .nav-content {
-    padding-left: 8px;
-  }
-  &.treeview .treeview-collapse-icon {
-    margin-left: 2px;
-    margin-right: -5px;
-    + .nav-icon {
-      margin-left: 4px;
-      margin-right: 2px;
-    }
-  }
-  &.treeview + div se-list-item {
-    padding-left: 6px;
-  }
-  &.headline {
-    height: 47px;
-    @include background-color('alternative-hover');
-    @include color('alternative-contrast');
-  }
-  &.headline .nav-content {
-    font-size: 16px;
-  }
-  &.dropdown {
-    margin-top: -1px;
-  }
-  // &.treeview > *:first-child {
-  //   padding-left: 4px;
-  // }
+.selectedChild {
+  --se-list-item-selected-background: transparent;
+}
+.collapsed {
+  display: none;
+}
+.treeview-icon {
+  margin-left: 6px;
+  margin-right: -8px;
 }

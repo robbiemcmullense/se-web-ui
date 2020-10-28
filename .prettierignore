@@ -5,3 +5,5 @@
 *.md
 libs/angular/src/lib/directives
 libs/core/src/components.d.ts
+libs/core/.scripts/dash/template-component.js
+libs/core/.scripts/dash/template-index.js

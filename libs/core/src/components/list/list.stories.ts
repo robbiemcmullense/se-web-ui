@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { select, number, boolean } from '@storybook/addon-knobs';
 
 const listOption = ['nav', 'classic', 'treeview', 'headline'];
@@ -13,18 +14,27 @@ const iconColorOptions = [
 ];
 
 storiesOf('List', module)
-  .add('all', () => {
-    return `
+  .add(
+    'all',
+    () => {
+      return `
     <se-container >
-      <se-block width="250px" option="fill" divider>
+      <se-block width="250px" divider>
         <se-block-header>
           <h5>classic</h5>
         </se-block-header>
         <se-list>
-          <se-list-item item="my classic list item" icon="user_standard"  description="I have a description"></se-list-item>
+          <se-list-item >
+            <div slot="item">my classic list item</div>
+            <small slot="description">I have a description</small>
+            <se-icon slot="icon">user_standard</se-icon>
+          </se-list-item>
           <se-list-item item="my item 2 no description with a long text" icon="user_standard" ></se-list-item>
           <se-list-item item="Basic Item"></se-list-item>
-          <se-list-group item="I have a selected child">
+          <se-list-group disabled>
+            <div slot="item">I have a child slot</div>
+            <small slot="description">why not</small>
+            <se-icon slot="icon">user_standard</se-icon>
             <se-list-item item="my item 1" icon="action_settings2"  description="I have a description"></se-list-item>
             <se-list-item item="my item 2 no description" selected="true" icon="action_settings2" ></se-list-item>
             <se-list-item item="my item 3 no icon" description="I'm here too"></se-list-item>
@@ -35,7 +45,7 @@ storiesOf('List', module)
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
-      <se-block width="250px" option="fill" divider>
+      <se-block width="250px" divider>
         <se-block-header>
           <h5>nav</h5>
         </se-block-header>
@@ -47,19 +57,19 @@ storiesOf('List', module)
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
-      <se-block width="250px" option="fill" divider>
+      <se-block width="250px" divider>
         <se-block-header>
           <h5>treeview</h5>
         </se-block-header>
-        <se-list option="treeview">
-          <se-list-item item="First treeview item"></se-list-item>
+        <se-list option="treeview" selected-color="primary">
+          <se-list-item selected item="First treeview item"></se-list-item>
           <se-list-group item="Treeview Example">
             <se-list-item item="First treeview child"></se-list-item>
             <se-list-group item="Second treeview child">
               <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
               <se-list-item item="I'm the second treeview grandchild!"></se-list-item>
               <se-list-group item="Second treeview child">
-                <se-list-item item="I'm the first treeview grandchild!"></se-list-item>
+                <se-list-item disabled item="I'm the first treeview grandchild!"></se-list-item>
                 <se-list-item item="I'm the second treeview grandchild!" selected="true"></se-list-item>
               </se-list-group>
             </se-list-group>
@@ -69,7 +79,7 @@ storiesOf('List', module)
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
-      <se-block width="250px" option="fill" divider>
+      <se-block width="250px" divider>
         <se-block-header>
           <h5>dropdown</h5>
         </se-block-header>
@@ -82,7 +92,7 @@ storiesOf('List', module)
         </se-list>
       </se-block>
       <se-divider option="vertical"></se-divider>
-      <se-block width="250px" option="fill" divider>
+      <se-block width="250px" divider>
         <se-block-header>
           <h5>headline</h5>
         </se-block-header>
@@ -100,21 +110,29 @@ storiesOf('List', module)
       </se-block>
     </se-container>
     `;
-  })
-  .add('responsive', () => {
-    const list = select('option', listOption, 'nav');
-    const valueOptions = {
-      range: true,
-      min: 200,
-      max: 700,
-      step: 50,
-    };
-    const value = number('Block Width', 300, valueOptions);
-    const canCollapse = boolean('can collapse', true);
-    const iconColor = select('icon color', iconColorOptions, 'standard');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'responsive',
+    () => {
+      const list = select('option', listOption, 'nav');
+      const valueOptions = {
+        range: true,
+        min: 200,
+        max: 700,
+        step: 50,
+      };
+      const value = number('Block Width', 300, valueOptions);
+      const canCollapse = boolean('can collapse', true);
+      const iconColor = select('icon color', iconColorOptions, 'standard');
 
-    return `
-        <se-block width="${value}px" option="fill">
+      return `
+        <se-block width="${value}px">
         <se-list option="${list}" can-collapse="${canCollapse}">
           <se-list-group item="My Example List">
             <se-list-item item="my classic list item" icon="user_standard" description="I have a description"></se-list-item>
@@ -137,4 +155,10 @@ storiesOf('List', module)
         </se-list>
       </se-block>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );

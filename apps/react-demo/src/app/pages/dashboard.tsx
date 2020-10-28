@@ -6,15 +6,18 @@ import {
   SeBlockFooter,
   SeButton,
   SeBlockContent,
+  SeCheckbox,
   SeList,
   SeListItem,
   SeListGroup,
   SeDivider,
   SeStepper,
   SeStepperItem,
+  SeDialogHeader,
+  SeDialog,
+  SeDialogContent,
   SeIcon,
-  SeFiltration,
-  SeCheckbox,
+  SeDialogFooter,
   SeFormField,
 } from '@se/web-ui-react';
 
@@ -69,6 +72,27 @@ class Dashboard extends Component<DashboardProps> {
     listHeight: '220px',
     selectedProduct: '',
     selectedCategories: [],
+    isDlgOpen: false,
+    scrollPage: false,
+    formFields: [
+      { id: 'firstname', label: 'First Name', hint: 'enter first name' },
+      { id: 'lastname', label: 'Last Name', hint: 'enter last name' },
+      { id: 'city', label: 'City', hint: 'enter city' },
+      { id: 'postalcode', label: 'Postal Code', hint: 'enter postal code' },
+      {
+        id: 'primaryskill',
+        label: 'Primary Skill',
+        hint: 'enter primary skill',
+      },
+      { id: 'otherskills', label: 'Other Skills', hint: 'enter other skills' },
+      { id: 'jobtitle', label: 'Job Title', hint: 'job title' },
+      { id: 'graduation', label: 'Graduation', hint: 'graduation' },
+      {
+        id: 'postgraduation',
+        label: 'Post Graduation',
+        hint: 'post graduation',
+      },
+    ],
   };
 
   changePage(i) {
@@ -145,6 +169,13 @@ class Dashboard extends Component<DashboardProps> {
       numItems: this.state.viewMoreProducts ? demoItems.length : minItems,
     });
   };
+  openDialog = () => {
+    this.setState({ isDlgOpen: true });
+  };
+  closeDialog = () => {
+    this.setState({ isDlgOpen: false });
+  };
+
   render() {
     console.log('ID', this.props);
     return (

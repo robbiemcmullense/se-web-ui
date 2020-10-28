@@ -74,11 +74,29 @@ export class DialogComponent {
    */
   @Event() didClose: EventEmitter<any>;
 
-  assignDialogHeaderColor() {
+  /**
+   * Option to scroll page in browser window if set to `true`.
+   */
+  @Prop() pageScroll: boolean;
+
+  assignDialogHeaderProps() {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
       (item: any) => {
         if (!item.color) {
           item.color = this.color;
+        }
+        if (this.size === 'fill') {
+          item.indents = 'alternative';
+        }
+      }
+    );
+  }
+
+  assignDialogContentProps() {
+    Array.from(this.el.querySelectorAll('se-dialog-content')).forEach(
+      (item: any) => {
+        if (!item.option && this.size === 'fill') {
+          item.option = 'indent';
         }
       }
     );
@@ -89,9 +107,21 @@ export class DialogComponent {
    */
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
-    if (ev.key === 'Escape' && this.open) {
+    const { key } = ev;
+
+    // IE11 uses 'Esc'
+    if (key === 'Escape' || (key === 'Esc' && this.open)) {
       this.backdropClicked();
     }
+  }
+
+  @Listen('didCloseDialog', { target: 'document' })
+  handleCloseDialog(ev: CustomEvent) {
+    Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
+      (item: any) => {
+        if (item === ev.target) this.open = false;
+      }
+    );
   }
 
   @State() modalAnimation: string;
@@ -116,7 +146,8 @@ export class DialogComponent {
   }
 
   componentDidLoad() {
-    this.assignDialogHeaderColor();
+    this.assignDialogHeaderProps();
+    this.assignDialogContentProps();
     if (this.open) {
       this.addAnimation();
     }
@@ -125,11 +156,18 @@ export class DialogComponent {
   render() {
     return (
       <Host class={{ 'show-dialog': this.showModal }}>
-        <div class={{ [this.size]: !!this.size, 'dialog-wrapper': true }}>
+        <div
+          class={{
+            [this.size]: !!this.size,
+            'dialog-wrapper': true,
+            'scroll-page': this.pageScroll,
+          }}
+        >
           <div
             class={{
               'dialog-background': true,
               [this.modalAnimation]: !!this.modalAnimation,
+              'scroll-page': this.pageScroll,
             }}
             onClick={() => this.backdropClicked()}
           ></div>
@@ -137,6 +175,7 @@ export class DialogComponent {
             class={{
               dialog: true,
               [this.modalAnimation]: !!this.modalAnimation,
+              'scroll-content': !this.pageScroll,
             }}
           >
             <slot></slot>

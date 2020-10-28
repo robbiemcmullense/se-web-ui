@@ -5,7 +5,9 @@ describe('ListItemComponent', () => {
 
   beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-list-item></se-list-item>');
+    await page.setContent(
+      '<se-list option="nav"><se-list-item></se-list-item></se-list>'
+    );
     element = await page.find('se-list-item');
   });
 
@@ -26,7 +28,7 @@ describe('ListItemComponent', () => {
   });
 
   it('should render an se-icon element when the option is set to nav', async () => {
-    element.setProperty('option', 'nav');
+    await element.callMethod('setOption', 'nav');
     await page.waitForChanges();
 
     const iconElm = await page.find('se-list-item >>> se-icon');

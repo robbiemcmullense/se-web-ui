@@ -41,6 +41,12 @@ export class ChipComponent {
    * Indicates whether or not the chip is disabled.  Set to `false` by default.
    */
   @Prop() disabled = false;
+
+  /**
+   * Indicates whether or not the chip can changed state when hover or clicked on.  Set to `false` by default.
+   */
+  @Prop() readonly = false;
+
   /**
    * Optional property that defines if the chip displays as a block in it's container.
    * When set to true, the chip will be as wide as its container.
@@ -68,6 +74,7 @@ export class ChipComponent {
           [this.size]: !!this.size,
           [this.color]: !!this.color,
           'can-close': this.canClose,
+          clickable: !(this.readonly || this.disabled),
           selected: this.selected,
           'display-block': this.block,
         }}

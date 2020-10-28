@@ -66,14 +66,25 @@ describe('DialogComponent', () => {
     ).toBeTruthy();
   });
 
-  it('should call the colorDidChange function when the component loads', async () => {
-    const colorEventSpy = jest.spyOn(
+  it('should call the headerPropsDidChange function when the component loads', async () => {
+    const propsEventSpy = jest.spyOn(
       dialogComponent,
-      'assignDialogHeaderColor'
+      'assignDialogHeaderProps'
     );
     const openEventSpy = jest.spyOn(dialogComponent, 'openDidChange');
     dialogComponent.componentDidLoad();
-    expect(colorEventSpy).toHaveBeenCalled();
+    expect(propsEventSpy).toHaveBeenCalled();
+    expect(openEventSpy).not.toHaveBeenCalled();
+  });
+
+  it('should call the contentPropsDidChange function when the component loads', async () => {
+    const propsEventSpy = jest.spyOn(
+      dialogComponent,
+      'assignDialogContentProps'
+    );
+    const openEventSpy = jest.spyOn(dialogComponent, 'openDidChange');
+    dialogComponent.componentDidLoad();
+    expect(propsEventSpy).toHaveBeenCalled();
     expect(openEventSpy).not.toHaveBeenCalled();
   });
 

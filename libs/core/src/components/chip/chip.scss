@@ -1,10 +1,7 @@
-
-
 $chip-nano-height: 22px; // with border it's 24px.
 $chip-height: 30px; // with border it's 32px.
 
 .se-chip {
-  cursor: pointer;
   display: inline-flex;
   margin: $spacing-small;
   min-height: $chip-height;
@@ -18,32 +15,37 @@ $chip-height: 30px; // with border it's 32px.
   border-radius: 16px;
   @include align-items(center);
   transition: 0.2s;
-  &.can-close {
-    cursor: default;
-    // padding: 2px $spacing-small 0 $spacing-small;
-  }
-  // transition-property: outline;
-  // transition-duration: .3s;
-  &:focus{
+}
+.clickable.can-close,
+.can-close {
+  cursor: default;
+  // padding: 2px $spacing-small 0 $spacing-small;
+}
+// transition-property: outline;
+// transition-duration: .3s;
+.clickable {
+  cursor: pointer;
+
+  &:focus {
     outline-offset: 1px;
     outline-width: 2px;
-    @include outline('button-focus');
+    @include outline("button-focus");
     outline-style: solid;
   }
+}
 
-  &.nano {
-    min-height: $chip-nano-height;
-    font-size: 14px;
-    line-height: 17px;
-    se-icon {
-      font-size: 22px;
-      margin-right: -6px;
-    }
+.nano {
+  min-height: $chip-nano-height;
+  font-size: 14px;
+  line-height: 17px;
+  se-icon {
+    font-size: 22px;
+    margin-right: -6px;
   }
 }
 
 .value {
-    padding: 0 $spacing-small 0 $spacing-small;
+  padding: 0 $spacing-small 0 $spacing-small;
 }
 
 se-icon {
@@ -68,14 +70,18 @@ se-icon {
   border: 1px solid;
   @include border-color("standard");
   @include color("standard");
-  &:hover, &:focus {
-    @include color('standard-contrast');
-    @include background-color('standard-hover');
+  &.clickable {
+    &:hover,
+    &:focus {
+      @include color("standard-contrast");
+      @include background-color("standard-hover");
+    }
   }
-  &:active, &.selected {
+  &:active,
+  &.selected {
     @include color("standard-contrast");
     @include background-color("standard-selected");
-    @include border-color('border-focus');
+    @include border-color("border-focus");
   }
 }
 
@@ -83,17 +89,20 @@ se-icon {
   border: 1px solid;
   @include border-color("alternative");
   @include color("alternative");
-  &:hover, &:focus {
-    @include color("alternative-contrast");
-    @include background-color('alternative-hover');
+  &.clickable {
+    &:hover,
+    &:focus {
+      @include color("alternative-contrast");
+      @include background-color("alternative-hover");
+    }
   }
-  &:active, &.selected {
+  &:active,
+  &.selected {
     @include color("alternative-contrast");
     @include background-color("alternative-selected");
-    @include border-color('border-focus');
+    @include border-color("border-focus");
   }
 }
-
 
 // .standard:focus,
 // .alternative:focus {
@@ -101,11 +110,13 @@ se-icon {
 //   @include background-color("focus");
 // }
 
+.disabled,
 [disabled],
 [disabled].value,
 [disabled]:hover,
 [disabled]:focus {
-  opacity: .5;
+  opacity: 0.5;
+  cursor: default;
   se-icon {
     cursor: default;
   }
@@ -117,7 +128,7 @@ se-icon {
   margin-left: 0;
   margin-right: 0;
   padding: 0;
-  cursor: pointer;
+  // cursor: pointer;
   @include display-flex();
   @include flex(1);
   @include justify-content(space-between);

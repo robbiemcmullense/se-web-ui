@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { text, select, number } from '@storybook/addon-knobs';
 
 const displayOptions = ['inline', 'stacked'];
@@ -11,14 +12,16 @@ const percentageOptions = {
 };
 
 storiesOf('Chart', module)
-  .add('Linear', () => {
-    const option = select('option', displayOptions, 'stacked');
-    const label = text('label', 'Done');
-    const percent = number('percentage', 50, percentageOptions);
-    const color = text('secolor', 'primary');
-    const value = text('value', '40 / 360');
+  .add(
+    'Linear',
+    () => {
+      const option = select('option', displayOptions, 'stacked');
+      const label = text('label', 'Done');
+      const percent = number('percentage', 50, percentageOptions);
+      const color = text('secolor', 'primary');
+      const value = text('value', '40 / 360');
 
-    return `
+      return `
       <div style="padding: 40px;">
         <se-visual-linear
           option="${option}"
@@ -28,15 +31,23 @@ storiesOf('Chart', module)
           value="${value}"></se-visual-linear>
       </div>
     `;
-  })
-  .add('Radial', () => {
-    const size = select('option', sizeOptions, 'large');
-    const label = text('label', 'Done');
-    const percent = number('percentage', 50, percentageOptions);
-    const color = text('secolor', 'primary');
-    const value = text('value', '44');
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Radial',
+    () => {
+      const size = select('option', sizeOptions, 'large');
+      const label = text('label', 'Done');
+      const percent = number('percentage', 50, percentageOptions);
+      const color = text('secolor', 'primary');
+      const value = text('value', '44');
 
-    return `
+      return `
       <div style="padding: 40px;">
         <se-visual-radial
           size="${size}"
@@ -46,4 +57,10 @@ storiesOf('Chart', module)
           value="${value}"></se-visual-radial>
       </div>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );

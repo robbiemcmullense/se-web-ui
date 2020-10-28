@@ -57,19 +57,19 @@ describe('SidemenuComponent', () => {
     expect(arraySpy).toHaveBeenCalled();
   });
 
-  it('should set the selected item to undefined and return the items length to zero when componentDidUnload is called', () => {
+  it('should set the selected item to undefined and return the items length to zero when disconnectedCallback is called', () => {
     sidemenu.items = ['first item', 'second item'];
     sidemenu.selectedItem = 'selected item';
     sidemenu.observer = { disconnect: jest.fn() };
-    sidemenu.componentDidUnload();
+    sidemenu.disconnectedCallback();
     expect(sidemenu.selectedItem).toBeUndefined();
     expect(sidemenu.items.length).toEqual(0);
   });
 
-  it('should disconnect the mutation observer when componentDidUnload is called', () => {
+  it('should disconnect the mutation observer when disconnectedCallback is called', () => {
     sidemenu.observer = { disconnect: jest.fn() };
     const eventSpy = jest.spyOn(sidemenu.observer, 'disconnect');
-    sidemenu.componentDidUnload();
+    sidemenu.disconnectedCallback();
     expect(eventSpy).toHaveBeenCalled();
   });
 });

@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { select } from '@storybook/addon-knobs';
 
 const colorOptions = ['primary', 'alternative'];
@@ -6,48 +7,30 @@ const tabBarOptions = ['nav', 'content'];
 const overflowOptions = ['scroll', 'stack', 'compact'];
 
 storiesOf('Tab Bar', module)
-  .add('Demo', () => {
-    const color = select('color', colorOptions, 'primary');
-    const option = select('option', tabBarOptions, 'nav');
-    const overflow = select('stack', overflowOptions, 'scroll');
+  .add(
+    'with search',
+    () => {
+      const color = select('color', colorOptions, 'primary');
+      const option = select('option', tabBarOptions, 'nav');
+      const overflow = select('stack', overflowOptions, 'scroll');
 
-    const start =
-      color === 'primary' && option === 'nav'
-        ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
-        : '';
+      const start =
+        color === 'primary' && option === 'nav'
+          ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
+          : '';
 
-    return `
-      <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
-        ${start}
-        <nav>
-          <a class="active">Overview</a>
-          <a>Analysis</a>
-          <a>Report</a>
-          <a disabled>Glossary & Index</a>
-          <a>Notification</a>
-          <a>Notification and other stuff</a>
-        </nav>
-        <nav slot="end">
-          <se-button>open project</se-button>
-        </nav>
-      </se-tabbar>
-    `;
-  })
-  .add('with search', () => {
-    const color = select('color', colorOptions, 'primary');
-    const option = select('option', tabBarOptions, 'nav');
-    const overflow = select('stack', overflowOptions, 'scroll');
-
-    const start =
-      color === 'primary' && option === 'nav'
-        ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
-        : '';
-
-    return `
+      return `
       <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
         <nav>
-          <a class="active">Overview</a>
-          <a>Analysis</a>
+          <a>Overview</a>
+          <a class="active">
+            Analysis
+            <se-icon size="medium">arrow2_right</se-icon>
+          </a>
+          <div class="sub-nav">
+            <a class="active">Domain</a>
+            <a>technique</a>
+          </div>
           <a>Report</a>
           <a disabled>Glossary & Index</a>
           <a>Notification</a>
@@ -74,4 +57,45 @@ storiesOf('Tab Bar', module)
         </div>
       </se-tabbar>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Edge buttons',
+    () => {
+      const color = select('color', colorOptions, 'primary');
+      const option = select('option', tabBarOptions, 'nav');
+      const overflow = select('stack', overflowOptions, 'scroll');
+
+      const start =
+        color === 'primary' && option === 'nav'
+          ? `<nav slot="start"> <se-button option="inherit" icon="arrow2_left"> Back </se-button></nav>`
+          : '';
+
+      return `
+      <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
+        ${start}
+        <nav>
+          <a class="active">Overview</a>
+          <a>Analysis</a>
+          <a>Report</a>
+          <a disabled>Glossary & Index</a>
+          <a>Notification</a>
+          <a>Notification and other stuff</a>
+        </nav>
+        <nav slot="end">
+          <se-button>open project</se-button>
+        </nav>
+      </se-tabbar>
+    `;
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );

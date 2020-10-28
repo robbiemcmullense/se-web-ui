@@ -15,28 +15,14 @@ import '@se/icons/css/styles.css';
 //   return defineCustomElements(window);
 // });
 
-addDecorator(story => `
+addDecorator(
+  story => `
   <se-app theme=${select('theme', ['dark', 'light', 'auto'], 'auto')}>
     <se-container position="absolute" color="standard" display="block">
       ${story()}
     </se-container>
-  </se-app>`);
-// addDecorator(story => `<se-app>${story()}</se-app>`);
+  </se-app>`
+);
+
 addDecorator(withKnobs);
 addDecorator(withA11y);
-// addDecorator(addReadme);
-
-// addParameters()
-
-// automatically import all files ending in *.stories.ts
-const req = require.context('../src', true, /.stories.ts$/);
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
-}
-
-configure(loadStories, module);
-
-export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  themes:  themes.light
-};

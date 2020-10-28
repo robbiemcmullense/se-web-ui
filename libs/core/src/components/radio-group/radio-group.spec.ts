@@ -53,7 +53,7 @@ describe('RadioGroupComponent', () => {
     radioGroup.color = 'primary';
     const buttonElm = document.createElement('se-button');
     radioGroup.el.appendChild(buttonElm);
-    radioGroup.componentDidLoad();
+    radioGroup.componentWillLoad();
     expect(buttonElm.size).toEqual('nano');
     expect(buttonElm.color).toEqual('primary');
   });
@@ -62,7 +62,7 @@ describe('RadioGroupComponent', () => {
     radioGroup.color = 'secondary';
     const radioElm = document.createElement('se-radio');
     radioGroup.el.appendChild(radioElm);
-    radioGroup.componentDidLoad();
+    radioGroup.componentWillLoad();
     expect(radioElm.color).toEqual('secondary');
   });
 
@@ -70,13 +70,13 @@ describe('RadioGroupComponent', () => {
     radioGroup.disabled = true;
     const buttonElm = document.createElement('se-button');
     radioGroup.el.appendChild(buttonElm);
-    radioGroup.componentDidLoad();
+    radioGroup.componentWillLoad();
     expect(buttonElm.disabled).toBeTruthy();
   });
 
   it('calls the updateItemMode function when the component loads or the disabled value changes', () => {
     const eventSpy = jest.spyOn(radioGroup, 'updateItemMode');
-    radioGroup.componentDidLoad();
+    radioGroup.componentWillLoad();
     radioGroup.disabledDidChange();
     expect(eventSpy).toHaveBeenCalledTimes(2);
   });
@@ -84,7 +84,7 @@ describe('RadioGroupComponent', () => {
   // it('emits the didChange event when a child element in the radio group is clicked on', () => {
   // 	const event = {detail: {value: 'my value'}};
   // 	const eventSpy = jest.spyOn(radioGroup.didChange, 'emit');
-  // 	radioGroup.componentDidLoad();
+  // 	radioGroup.componentWillLoad();
   // 	radioGroup.buttonClickedHandler(event);
   // 	radioGroup.radioButtonCheckedHandler(event);
   // 	expect(eventSpy).toHaveBeenCalledTimes(2);

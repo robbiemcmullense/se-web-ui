@@ -394,7 +394,8 @@
           "options": {
             "tsConfig": [
               "libs/core/tsconfig.lib.json",
-              "libs/core/tsconfig.spec.json"
+              "libs/core/tsconfig.spec.json",
+              "libs/core/.storybook/tsconfig.json"
             ],
             "exclude": ["**/node_modules/**", "!libs/core/**"]
           }
@@ -412,7 +413,7 @@
             "production": {}
           }
         },
-        "_e2e": {
+        "e2e": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [

@@ -1,30 +1,31 @@
 /*
  * Application global variables.
  */
-@import './mixin';
-@import './se-variable';
+@import "./mixin";
+@import "./se-variable";
 
 // Spacing element
 // ==========================================================================
 $spacing: 8px !default;
 $spacing-small: 4px !default;
 $spacing-large: 16px !default;
+$spacing-m-large: 24px !default;
 $spacing-xlarge: 32px !default;
 
 // z-index element
 // ==========================================================================
-$zindex-snackbar:           600 !default;
-$zindex-modal:              550 !default;
-$zindex-modal-backdrop:     500 !default;
-$zindex-authentication:     300 !default;
-$zindex-sidemenu:           150 !default;
-$zindex-sidemenu-backdrop:  100 !default;
-$zindex-loading:            25 !default;
-$zindex-loading-backdrop:   20 !default;
-$zindex-tooltip:            10 !default;
-$zindex-fab:                10 !default;
-$zindex-header:             5 !default;
-$zindex-dropdown:           5 !default;
+$zindex-snackbar: 600 !default;
+$zindex-modal: 550 !default;
+$zindex-modal-backdrop: 500 !default;
+$zindex-authentication: 300 !default;
+$zindex-sidemenu: 150 !default;
+$zindex-sidemenu-backdrop: 100 !default;
+$zindex-loading: 25 !default;
+$zindex-loading-backdrop: 20 !default;
+$zindex-tooltip: 10 !default;
+$zindex-fab: 10 !default;
+$zindex-header: 5 !default;
+$zindex-dropdown: 5 !default;
 
 // Media Query Ranges
 // ==========================================================================
@@ -36,12 +37,15 @@ $medium-screen: 992px !default;
 $large-screen: 1200px !default;
 $centered: 1180px !default;
 
-$medium-and-up: 'only screen and (min-width : #{$small-screen-up})' !default;
-$large-and-up: 'only screen and (min-width : #{$medium-screen-up})' !default;
-$extra-large-and-up: 'only screen and (min-width : #{$large-screen-up})' !default;
-$small-and-down: 'only screen and (max-width : #{$small-screen})' !default;
-$medium-and-down: 'only screen and (max-width : #{$medium-screen})' !default;
-$medium-only: 'only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})' !default;
+$mobile-max-width: 979px !default;
+$desktop-min-width: 980px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
 // Typography
 // ==========================================================================

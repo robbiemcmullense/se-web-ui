@@ -1,19 +1,22 @@
 import { storiesOf } from '@storybook/html';
+import readme from './readme.md';
 import { select, text, boolean, number } from '@storybook/addon-knobs';
 
 const layoutOption = ['inline', 'stacked'];
 const inputTypeOption = ['text', 'date'];
 
 storiesOf('Form Field', module)
-  .add('Form Field Multiple', () => {
-    const option = select('option', layoutOption, 'inline');
-    const padding = select('padding', ['none', 'small', 'medium'], 'small');
-    const disabled = boolean('disabled', false);
-    const block = boolean('block', false);
-    const labelWidth = text('label-width', '35%');
-    const labelAlign = select('label-align', ['left', 'right'], 'right');
+  .add(
+    'Form Field Multiple',
+    () => {
+      const option = select('option', layoutOption, 'inline');
+      const padding = select('padding', ['none', 'small', 'medium'], 'small');
+      const disabled = boolean('disabled', false);
+      const block = boolean('block', false);
+      const labelWidth = text('label-width', '35%');
+      const labelAlign = select('label-align', ['left', 'right'], 'right');
 
-    return `
+      return `
     <se-block>
       <se-form-field
         label-align='${labelAlign}'
@@ -229,13 +232,21 @@ storiesOf('Form Field', module)
       </se-form-field>
     </se-block>
   `;
-  })
-  .add('Form Field Checkbox', () => {
-    const label = text('label', 'My Checkbox Label');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Form Field Checkbox',
+    () => {
+      const label = text('label', 'My Checkbox Label');
+      const required = boolean('required', false);
+      const disabled = boolean('disabled', false);
 
-    return `
+      return `
       <se-form-field
         type='checkbox'
         label='${label}'
@@ -245,13 +256,21 @@ storiesOf('Form Field', module)
         <se-checkbox></se-checkbox>
       </se-form-field>
     `;
-  })
-  .add('Form Field Radio', () => {
-    const label = text('label', 'My Radio Label');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Form Field Radio',
+    () => {
+      const label = text('label', 'My Radio Label');
+      const required = boolean('required', false);
+      const disabled = boolean('disabled', false);
 
-    return `
+      return `
       <se-form-field
         type='radio'
         label='${label}'
@@ -265,16 +284,24 @@ storiesOf('Form Field', module)
         </se-radio-group>
       </se-form-field>
     `;
-  })
-  .add('Form Field Input', () => {
-    const option = select('option', layoutOption, 'inline');
-    const inputType = select('inputType', inputTypeOption, 'text');
-    const label = text('label', 'My label');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-    const block = boolean('block', false);
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Form Field Input',
+    () => {
+      const option = select('option', layoutOption, 'inline');
+      const inputType = select('inputType', inputTypeOption, 'text');
+      const label = text('label', 'My label');
+      const required = boolean('required', false);
+      const disabled = boolean('disabled', false);
+      const block = boolean('block', false);
 
-    return `
+      return `
       <se-form-field
         type='input'
         option='${option}'
@@ -286,15 +313,23 @@ storiesOf('Form Field', module)
         <input type='${inputType}' />
       </se-form-field>
     `;
-  })
-  .add('Form Field Select', () => {
-    const option = select('option', layoutOption, 'inline');
-    const label = text('label', 'Select');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-    const block = boolean('block', false);
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Form Field Select',
+    () => {
+      const option = select('option', layoutOption, 'inline');
+      const label = text('label', 'Select');
+      const required = boolean('required', false);
+      const disabled = boolean('disabled', false);
+      const block = boolean('block', false);
 
-    return `
+      return `
       <se-form-field
         type='select'
         option='${option}'
@@ -310,16 +345,24 @@ storiesOf('Form Field', module)
         </select>
       </se-form-field>
     `;
-  })
-  .add('Form Field Textarea', () => {
-    const option = select('option', layoutOption, 'inline');
-    const rows = number('rows', 3);
-    const label = text('label', 'Input');
-    const required = boolean('required', false);
-    const disabled = boolean('disabled', false);
-    const block = boolean('block', false);
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Form Field Textarea',
+    () => {
+      const option = select('option', layoutOption, 'inline');
+      const rows = number('rows', 3);
+      const label = text('label', 'Input');
+      const required = boolean('required', false);
+      const disabled = boolean('disabled', false);
+      const block = boolean('block', false);
 
-    return `
+      return `
       <se-form-field
         type='input'
         option='${option}'
@@ -331,4 +374,10 @@ storiesOf('Form Field', module)
         <textarea rows='${rows}'></textarea>
       </se-form-field>
     `;
-  });
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  );

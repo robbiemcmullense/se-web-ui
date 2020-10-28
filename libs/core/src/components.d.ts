@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
 export namespace Components {
     interface SeAbout {
@@ -334,6 +335,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Indicates whether or not the chip can changed state when hover or clicked on.  Set to `false` by default.
+         */
+        "readonly": boolean;
+        /**
           * Indicates whether or not the chip is selected.  Set to `false` by default.
          */
         "selected": boolean;
@@ -403,6 +408,10 @@ export namespace Components {
          */
         "open": boolean;
         /**
+          * Option to scroll page in browser window if set to `true`.
+         */
+        "pageScroll": boolean;
+        /**
           * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
          */
         "size": 'small' | 'medium' | 'large' | 'xlarge' | 'fill';
@@ -417,17 +426,25 @@ export namespace Components {
          */
         "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
-          * When set to `fill`, the content will fill the whole space of the dialog.
+          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
-        "option": 'fill';
+        "option": 'fill' | 'indent';
     }
     interface SeDialogFooter {
     }
     interface SeDialogHeader {
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
+          * Display the close icon to close the dialog. Default setting is `false`.
+         */
+        "closeIcon": boolean;
+        /**
+          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
          */
         "color": 'primary' | 'alternative';
+        /**
+          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
+         */
+        "indents": 'primary' | 'alternative';
     }
     interface SeDivider {
         /**
@@ -582,9 +599,9 @@ export namespace Components {
          */
         "option": 'button';
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
-        "size": 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        "size": 'nano' | 'micro' | 'small' | 'medium' | 'large' | 'xlarge';
     }
     interface SeIconEcostruxure {
         /**
@@ -627,6 +644,10 @@ export namespace Components {
           * Defines the style of the list.  The default setting is `classic`.
          */
         "option": 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selectedColor": 'primary' | 'standard';
     }
     interface SeListGroup {
         /**
@@ -641,6 +662,10 @@ export namespace Components {
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled": boolean;
         "focusElement": () => Promise<void>;
         /**
           * Places an icon on the left side of the item list.
@@ -659,25 +684,22 @@ export namespace Components {
          */
         "item": string;
         /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option": | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
-        /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected": boolean;
-        "selectedChild": boolean;
+        "setOption": (option: any) => Promise<void>;
         "toggleCollapseTreeview": () => Promise<void>;
     }
     interface SeListItem {
+        "blurElement": () => Promise<void>;
         /**
           * Defines the description of the item, placed under its title.
          */
         "description": string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled": boolean;
         "focusElement": () => Promise<void>;
         /**
           * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
@@ -698,25 +720,14 @@ export namespace Components {
     | 'warning'
     | 'error';
         /**
-          * Defines the group indentation to add paddings to the list item (used with multiple list groups).
-         */
-        "indentation": number;
-        /**
           * Defines the title of the item.
          */
         "item": string;
         /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option": | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
-        /**
           * Defines if the list element should be selected or not.
          */
         "selected": boolean;
+        "setOption": (option: any) => Promise<void>;
     }
     interface SeLoading {
         /**
@@ -988,6 +999,10 @@ export namespace Components {
         "overflow": 'compact' | 'stack' | 'scroll';
     }
     interface SeTable {
+        /**
+          * Define if we should show a compact view of the table, vs a version with larger spacing and font
+         */
+        "compact": boolean;
     }
     interface SeTableGroup {
         /**
@@ -1840,6 +1855,10 @@ declare namespace LocalJSX {
          */
         "onDidClose"?: (event: CustomEvent<any>) => void;
         /**
+          * Indicates whether or not the chip can changed state when hover or clicked on.  Set to `false` by default.
+         */
+        "readonly"?: boolean;
+        /**
           * Indicates whether or not the chip is selected.  Set to `false` by default.
          */
         "selected"?: boolean;
@@ -1913,6 +1932,10 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
+          * Option to scroll page in browser window if set to `true`.
+         */
+        "pageScroll"?: boolean;
+        /**
           * Defines the size of the modal. `small`: used in alerts and messages `medium`: default setting, used by other apps `fill`: takes the full space of the screen
          */
         "size"?: 'small' | 'medium' | 'large' | 'xlarge' | 'fill';
@@ -1927,17 +1950,29 @@ declare namespace LocalJSX {
          */
         "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
         /**
-          * When set to `fill`, the content will fill the whole space of the dialog.
+          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
-        "option"?: 'fill';
+        "option"?: 'fill' | 'indent';
     }
     interface SeDialogFooter {
     }
     interface SeDialogHeader {
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema.
+          * Display the close icon to close the dialog. Default setting is `false`.
+         */
+        "closeIcon"?: boolean;
+        /**
+          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
          */
         "color"?: 'primary' | 'alternative';
+        /**
+          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
+         */
+        "indents"?: 'primary' | 'alternative';
+        /**
+          * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
+         */
+        "onDidCloseDialog"?: (event: CustomEvent<any>) => void;
     }
     interface SeDivider {
         /**
@@ -2100,9 +2135,9 @@ declare namespace LocalJSX {
          */
         "option"?: 'button';
         /**
-          * Defines the size of an icon. `nano` sets the size to 14px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
+          * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
-        "size"?: 'nano' | 'small' | 'medium' | 'large' | 'xlarge';
+        "size"?: 'nano' | 'micro' | 'small' | 'medium' | 'large' | 'xlarge';
     }
     interface SeIconEcostruxure {
         /**
@@ -2145,6 +2180,10 @@ declare namespace LocalJSX {
           * Defines the style of the list.  The default setting is `classic`.
          */
         "option"?: 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selectedColor"?: 'primary' | 'standard';
     }
     interface SeListGroup {
         /**
@@ -2159,6 +2198,10 @@ declare namespace LocalJSX {
           * Defines the description of the item, placed under its title.
          */
         "description"?: string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled"?: boolean;
         /**
           * Places an icon on the left side of the item list.
          */
@@ -2178,30 +2221,25 @@ declare namespace LocalJSX {
         /**
           * Emitted when the group item is clicked.
          */
-        "onDidGroupClick"?: (event: CustomEvent<any>) => void;
+        "onDidGroupClick"?: (event: CustomEvent<boolean>) => void;
         /**
           * Emitted when the group item is collapsed/uncollapsed.
          */
-        "onDidGroupCollapse"?: (event: CustomEvent<any>) => void;
-        /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option"?: | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
+        "onDidGroupCollapse"?: (event: CustomEvent<GroupCollapseEvent>) => void;
         /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected"?: boolean;
-        "selectedChild"?: boolean;
     }
     interface SeListItem {
         /**
           * Defines the description of the item, placed under its title.
          */
         "description"?: string;
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled"?: boolean;
         /**
           * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
          */
@@ -2221,10 +2259,6 @@ declare namespace LocalJSX {
     | 'warning'
     | 'error';
         /**
-          * Defines the group indentation to add paddings to the list item (used with multiple list groups).
-         */
-        "indentation"?: number;
-        /**
           * Defines the title of the item.
          */
         "item"?: string;
@@ -2232,14 +2266,6 @@ declare namespace LocalJSX {
           * Event emitted to notify the list-group component that the selected state has changed.
          */
         "onDidSelectedChange"?: (event: CustomEvent<void>) => void;
-        /**
-          * Defines the style of the list. The default setting is `classic`, and the style will be handled and modified by the parent element.
-         */
-        "option"?: | 'nav'
-    | 'classic'
-    | 'dropdown'
-    | 'treeview'
-    | 'headline';
         /**
           * Defines if the list element should be selected or not.
          */
@@ -2526,6 +2552,10 @@ declare namespace LocalJSX {
         "overflow"?: 'compact' | 'stack' | 'scroll';
     }
     interface SeTable {
+        /**
+          * Define if we should show a compact view of the table, vs a version with larger spacing and font
+         */
+        "compact"?: boolean;
     }
     interface SeTableGroup {
         /**

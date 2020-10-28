@@ -1,6 +1,6 @@
 <se-container position="absolute">
   <se-block width="250px">
-    <se-list option="treeview">
+    <se-list>
       <se-list-item
         item="my item 1"
         selected="false"
@@ -19,9 +19,11 @@
       </se-list-item>
       <se-list-item item="Basic Item"> </se-list-item>
       <se-list-group
+        id="listToClick"
         item="I have a selected child"
         icon-color="primary"
         description="I'm selected if collapsed"
+        (didGroupClick)="didGroupClick()"
       >
         <se-list-item
           item="my item 1"
@@ -73,7 +75,7 @@
         <se-radio-group
           name="smartAlarmDataSource"
           class="smartAlarmDataSource"
-          (didChange)="radioChanged($event)"
+          [(ngModel)]="myValue"
         >
           <se-radio
             label="label1"
@@ -95,14 +97,18 @@
           ></se-radio>
         </se-radio-group>
       </se-form-field>
-      <se-radio-group [(value)]="myValue">
+      <se-radio-group [(ngModel)]="myValue">
         <se-button value="label1" title="title1">text 1</se-button>
         <se-button value="label2" title="title2">text 2</se-button>
       </se-radio-group>
       selected value: {{ myValue }}
 
       <p>
-        <se-checkbox [(selected)]="selected" label="cool"></se-checkbox>
+        <se-checkbox
+          [(ngModel)]="selected"
+          (didChange)="checkboxChanged($event)"
+          label="cool"
+        ></se-checkbox>
         checkbox selected: {{ selected }}
       </p></se-block-content
     >
@@ -110,6 +116,63 @@
     <se-block-footer>
       <se-button option="raised" title="title2" icon="folder">Apply</se-button>
     </se-block-footer>
+  </se-block>
+  <se-divider option="vertical"></se-divider>
+  <se-block>
+    <se-block-header> Dialog Demo </se-block-header>
+    <se-block-content>
+      <se-button icon="folder" (click)="openDialog()">Open Dialog</se-button>
+      <se-dialog [open]="isDlgOpen">
+        <se-dialog-header>Dialog Demo</se-dialog-header>
+        <se-dialog-content>
+          <se-container>
+            <se-block>
+              <se-form-field type="input" label="First Name" option="stacked">
+                <input type="text" placeholder="first name" />
+              </se-form-field>
+              <se-form-field type="input" label="Last Name" option="stacked">
+                <input type="text" placeholder="last name" />
+              </se-form-field>
+              <se-form-field type="input" label="City" option="stacked">
+                <input type="text" placeholder="city" />
+              </se-form-field>
+              <se-form-field type="input" label="Postal Code" option="stacked">
+                <input type="text" placeholder="postal code" />
+              </se-form-field>
+              <se-form-field type="input" label="Graduation" option="stacked">
+                <input type="text" placeholder="enter graduation degree" />
+              </se-form-field>
+              <se-form-field
+                type="input"
+                label="Post Graduation"
+                option="stacked"
+              >
+                <input type="text" placeholder="enter post graduation degree" />
+              </se-form-field>
+              <se-form-field
+                type="input"
+                label="Primary Skill"
+                option="stacked"
+              >
+                <input type="text" placeholder="primary skill" />
+              </se-form-field>
+              <se-form-field
+                type="input"
+                label="Secondary Skills"
+                option="stacked"
+              >
+                <input type="text" placeholder="scondary skills" />
+              </se-form-field>
+            </se-block>
+          </se-container>
+        </se-dialog-content>
+        <se-dialog-footer>
+          <se-button icon="action_close" (click)="closeDialog()"
+            >Close Dialog</se-button
+          >
+        </se-dialog-footer>
+      </se-dialog>
+    </se-block-content>
   </se-block>
   <se-divider option="vertical"></se-divider>
   <se-block>

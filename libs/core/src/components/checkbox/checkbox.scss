@@ -38,6 +38,29 @@ input {
 .checkbox-wrapper {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  &.disabled,
+  &[disabled] {
+    cursor: default;
+  }
+}
+
+button {
+  cursor: pointer;
+  &:focus {
+    outline-width: 2px;
+    @include outline("button-focus");
+    outline-style: solid;
+  }
+  &[disabled] {
+    cursor: default;
+    color: $se-light-grey;
+    opacity: 0.5;
+    &.active.selected,
+    &.inactive.selected {
+      @include color("alternative");
+    }
+  }
 }
 
 .opt-checkbox {
@@ -204,7 +227,6 @@ input {
     font-family: inherit;
     line-height: 13px;
     font-weight: 300;
-    cursor: pointer;
     transition: 0.2s;
 
     &.active {
@@ -236,25 +258,5 @@ input {
   button {
     height: 24px;
     font-size: 12px;
-  }
-}
-
-.disabled {
-  button {
-    cursor: default;
-    color: $se-light-grey;
-    opacity: 0.5;
-    &.active.selected,
-    &.inactive.selected {
-      @include color("alternative");
-    }
-  }
-}
-
-button {
-  &:focus {
-    outline-width: 2px;
-    @include outline("button-focus");
-    outline-style: solid;
   }
 }
