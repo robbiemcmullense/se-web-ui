@@ -381,6 +381,7 @@ export const SeFabItem = /*@__PURE__*/ Vue.extend({
 export const SeFiltration = /*@__PURE__*/ Vue.extend({
   props: {
     label: {} as PropOptions<Components.SeFiltration['label']>,
+    collapsed: {} as PropOptions<Components.SeFiltration['collapsed']>,
   },
 
   render: createCommonRender('se-filtration', ['didSearch', 'didViewMore']),

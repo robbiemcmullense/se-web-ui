@@ -18,8 +18,6 @@ import {
   SeDialogContent,
   SeIcon,
   SeDialogFooter,
-  SeFiltration,
-  SeFormField,
 } from '@se/web-ui-react';
 
 // import Widget from '../components/widget';
@@ -32,34 +30,6 @@ interface DashboardProps {
 
 const listItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 
-const demoItems = [
-  'Apple',
-  'Orange',
-  'Pineapple',
-  'Fig',
-  'Pear',
-  'Custard Apple',
-  'Lemon',
-  'Mango',
-  'Grapes',
-  'Carrot',
-  'Radish',
-  'Pumpkin',
-];
-
-const categories = [
-  'Software',
-  'Hardware',
-  'Infrastructure',
-  'Mechanical',
-  'Electrical',
-  'Information',
-  'Telecommunication',
-  'Healthcare',
-  'Food',
-];
-const minItems = 5;
-
 class Dashboard extends Component<DashboardProps> {
   state = {
     listItems,
@@ -69,16 +39,6 @@ class Dashboard extends Component<DashboardProps> {
     scrollProducts: true,
     canViewProducts: false,
     viewMoreProducts: true,
-    numItems: minItems,
-    listHeight: '220px',
-    selectedProduct: '',
-    selectedCategories: [],
-    isDlgOpen: false,
-    scrollPage: false,
-    dateRange: {
-      startDate: null,
-      endDate: null,
-    },
     formFields: [
       { id: 'firstname', label: 'First Name', hint: 'enter first name' },
       { id: 'lastname', label: 'Last Name', hint: 'enter last name' },
@@ -98,6 +58,7 @@ class Dashboard extends Component<DashboardProps> {
         hint: 'post graduation',
       },
     ],
+    showDialog: false,
   };
 
   changePage(i) {
@@ -134,64 +95,12 @@ class Dashboard extends Component<DashboardProps> {
     });
   };
 
-  selectProduct = (li: any) => {
-    this.setState({
-      selectedProduct: this.state.selectedProduct === li ? null : li,
-    });
-  };
-
-  selectCategory = (li: any) => {
-    let selectedCategories = this.state.selectedCategories;
-    const idx = selectedCategories.indexOf(li);
-    if (idx < 0) {
-      selectedCategories = [...selectedCategories, li];
-    } else {
-      selectedCategories = [
-        ...selectedCategories.slice(0, idx),
-        ...selectedCategories.slice(idx + 1),
-      ];
-    }
-    this.setState({ selectedCategories: selectedCategories });
-  };
-
-  selectAllCategories() {
-    let selectedCategories = [];
-    if (this.state.selectedCategories.length !== categories.length) {
-      selectedCategories = [...categories];
-    } else {
-      selectedCategories = [];
-    }
-    this.setState({ selectedCategories: selectedCategories });
-  }
-
-  isSelectedCategory = (li: any) => {
-    return this.state.selectedCategories.filter(f => f === li).length > 0;
-  };
-
-  handleViewMoreProducts = () => {
-    this.setState({ viewMoreProducts: !this.state.viewMoreProducts });
-    this.setState({
-      numItems: this.state.viewMoreProducts ? demoItems.length : minItems,
-    });
-  };
   openDialog = () => {
-    this.setState({ isDlgOpen: true });
+    this.setState({ isDlgOpen: !this.state.isDlgOpen });
   };
   closeDialog = () => {
     this.setState({ isDlgOpen: false });
   };
-
-  setRangeDate = e => {
-    const dateRange = this.state.dateRange;
-    dateRange[e.target.name] = e.target.value;
-    this.setState({ dateRange: dateRange });
-    console.log('dateRange:', this.state.dateRange);
-  };
-
-  isValidDateRange = () =>
-    this.state.dateRange.startDate !== null &&
-    this.state.dateRange.endDate !== null &&
-    this.state.dateRange.startDate < this.state.dateRange.endDate;
 
   render() {
     console.log('ID', this.props);
@@ -274,133 +183,6 @@ class Dashboard extends Component<DashboardProps> {
           </SeBlockContent>
         </SeBlock>
         <SeDivider option="vertical"></SeDivider>
-        <SeBlock>
-          <div>Filtration demo</div>
-          {/** Single Select */}
-          <SeFiltration
-            label={`Product type - single select`}
-            onDidSearch={this.handleDidSearch}
-          >
-            <SeList>
-              {demoItems
-                .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
-                .map((li, idx) => (
-                  <SeListItem
-                    selected={this.state.selectedProduct === li}
-                    onClick={() => this.selectProduct(li)}
-                    key={idx}
-                    item={li}
-                  >
-                    {this.state.selectedProduct === li && (
-                      <SeIcon option="button">action_delete_cross</SeIcon>
-                    )}
-                  </SeListItem>
-                ))}
-            </SeList>
-          </SeFiltration>
-          {/** Category */}
-          <SeFiltration
-            label={`Category - Mullti select`}
-            onDidSearch={this.handleDidSearch}
-          >
-            <SeListItem
-              item="Select All"
-              onClick={() => this.selectAllCategories()}
-            >
-              <SeCheckbox
-                slot="start"
-                selected={
-                  this.state.selectedCategories.length === categories.length
-                }
-              ></SeCheckbox>
-            </SeListItem>
-            {categories
-              .filter(f => new RegExp(this.state.searchText, 'gi').test(f))
-              .map((li, idx) => (
-                <SeListItem
-                  onClick={() => this.selectCategory(li)}
-                  key={idx}
-                  item={`${li}`}
-                >
-                  <SeCheckbox
-                    slot="start"
-                    value={li}
-                    selected={this.isSelectedCategory(li)}
-                  />
-                </SeListItem>
-              ))}
-          </SeFiltration>
-
-          {/** Date range */}
-          <SeFiltration label="Date Range">
-            <SeBlock margin="medium">
-              <SeFormField
-                label="Start date"
-                option="stacked"
-                type="input"
-                block
-              >
-                <input
-                  id="startdate"
-                  name="startDate"
-                  type="date"
-                  onChange={this.setRangeDate}
-                />
-              </SeFormField>
-              <SeFormField label="End date" option="stacked" type="input" block>
-                <input
-                  id="enddate"
-                  name="endDate"
-                  type="date"
-                  onChange={this.setRangeDate}
-                />
-              </SeFormField>
-              <SeButton
-                disabled={!this.isValidDateRange()}
-                color="secondary"
-                option="outline"
-              >
-                OK
-              </SeButton>
-            </SeBlock>
-          </SeFiltration>
-          {/** Search order results */}
-          <SeFiltration label="Search order results">
-            <SeBlock margin="medium">
-              <SeFormField
-                label="Order number"
-                option="stacked"
-                type="input"
-                block
-              >
-                <input id="ordernumber" name="ordernumber" type="text" />
-              </SeFormField>
-              <SeFormField
-                label="Purchase order number"
-                option="stacked"
-                type="input"
-                block
-              >
-                <input
-                  id="purchaseordernumber"
-                  name="purchaseordernumber"
-                  type="text"
-                />
-              </SeFormField>
-              <SeFormField
-                label="Catalog number"
-                option="stacked"
-                type="input"
-                block
-              >
-                <input id="catalognumber" name="catalognumber" type="text" />
-              </SeFormField>
-              <SeButton color="secondary" option="outline">
-                OK
-              </SeButton>
-            </SeBlock>
-          </SeFiltration>
-        </SeBlock>
       </SeContainer>
     );
   }

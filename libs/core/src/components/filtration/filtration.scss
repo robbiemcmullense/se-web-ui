@@ -1,5 +1,11 @@
 .panel {
   display: none;
+  &.active {
+    display: block;
+  }
+}
+.content {
+  display: none;
   height: 120px;
   &.active {
     display: block;
@@ -7,17 +13,22 @@
     height: 120px;
   }
   &.scroll {
-    // height: 320px;
     overflow-y: auto;
     padding-bottom: 2em;
   }
 }
 .viewmore {
   display: block;
-  padding-left: 20px;
+  margin-left: 10px;
   color: blue;
   cursor: pointer;
   &.active {
     display: block;
   }
+}
+.search-box {
+  display: none;
+}
+.search-box.active {
+  display: active;
 }

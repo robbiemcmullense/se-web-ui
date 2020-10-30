@@ -8,6 +8,7 @@ import { EventEmitter } from 'events';
 export class FiltrationComponent {
   @Element() el: HTMLElement;
   @Prop() label = 'Select';
+  @Prop() collapsed = false;
 
   @Event() didSearch: EventEmitter;
   @Event() didViewMore: EventEmitter;
@@ -16,7 +17,7 @@ export class FiltrationComponent {
   @State() hint = 'enter text';
   @State() searchText = '';
   @State() viewMoreText = 'More';
-  @State() isExpanded = false;
+  @State() isCollapsed = this.collapsed;
   @State() isViewingMore = false;
   @State() listboxHeight = '';
   @State() minItems = 5;
@@ -33,9 +34,9 @@ export class FiltrationComponent {
   };
 
   setExpanded() {
-    this.isExpanded = !this.isExpanded;
+    this.isCollapsed = !this.isCollapsed;
     this.isViewingMore = false;
-    console.log('setExpanded: ', this.isExpanded || 'No');
+    console.log('setExpanded: ', this.isCollapsed || 'No');
   }
 
   setViewMore() {
@@ -63,7 +64,7 @@ export class FiltrationComponent {
       this.listboxHeight = 'auto';
     }
     return (
-      <se-block outline option="card-old">
+      <se-block divider margin="small" option="card">
         <se-block-header>
           {this.label}
           <div slot="end">
@@ -71,49 +72,55 @@ export class FiltrationComponent {
               option="flat"
               color="alternative"
               icon-only
-              icon={this.isExpanded ? 'arrow2_up' : 'arrow2_down'}
+              icon={this.isCollapsed ? 'arrow2_up' : 'arrow2_down'}
               onClick={() => this.setExpanded()}
             />
           </div>
         </se-block-header>
-
-        {this.searchable && this.isExpanded && (
-          <se-form-field option="stacked" block>
-            <div class="with-icon">
-              <input
-                type="search"
-                placeholder={this.hint}
-                onInput={this.setSearch}
-              />
-              <se-icon size="small" style={{ marginLeft: '4px' }}>
-                action_search_stroke
-              </se-icon>
+        <se-block-content option="fill">
+          <div class={{ panel: true, active: this.isCollapsed }}>
+            {this.searchable && (
+              <div>
+                <se-form-field type="input" option="stacked" block>
+                  <div class="with-icon">
+                    <input
+                      type="search"
+                      placeholder={this.hint + ' ' + this.searchable}
+                      onInput={this.setSearch}
+                    />
+                    <se-icon size="small" style={{ marginLeft: '4px' }}>
+                      action_search_stroke
+                    </se-icon>
+                  </div>
+                </se-form-field>
+              </div>
+            )}
+            <div
+              style={{
+                height: this.isViewingMore ? '300px' : this.listboxHeight,
+              }}
+              class={{
+                content: true,
+                active: this.isCollapsed && this.isCollapsed,
+                scroll: this.isViewingMore,
+              }}
+            >
+              <slot></slot>
             </div>
-          </se-form-field>
-        )}
-        <se-list option="dropdown">
-          <div
-            style={{
-              height: this.isViewingMore ? '300px' : this.listboxHeight,
-            }}
-            class={{
-              panel: true,
-              active: this.isExpanded,
-              scroll: this.isViewingMore,
-            }}
-          >
-            <slot></slot>
           </div>
-        </se-list>
-        {this.isExpanded && this.searchable && (
+        </se-block-content>
+        {this.isCollapsed && this.searchable && (
           <se-block-footer>
             <div
-              class={{ viewmore: true, active: this.isExpanded }}
+              class={{ viewmore: true, active: this.isCollapsed }}
               slot="start"
               onClick={() => this.setViewMore()}
             >
               View{' '}
               {this.isViewingMore ? `Less` : `More (${this.viewMoreCount})`}
+              <se-icon>
+                {this.isViewingMore ? 'arrow2_up' : 'arrow2_down'}
+              </se-icon>
             </div>
           </se-block-footer>
         )}

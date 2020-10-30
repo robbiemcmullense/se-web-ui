@@ -2,19 +2,151 @@
 import { storiesOf } from '@storybook/html';
 import { select, text, boolean, number } from '@storybook/addon-knobs';
 
-const layoutOption = ['inline', 'stacked'];
-const inputTypeOption = ['text', 'date'];
+const selectionOptions = ['all', 'multiple'];
 
-storiesOf('Filtration', module).add('Filtration Multiple', () => {
-  // const option = select('option', layoutOption, 'inline');
-  // const padding = select('padding', ['none', 'small', 'medium'], 'small');
-  // const disabled = boolean('disabled', false);
-  // const block = boolean('block', false);
-  // const labelWidth = text('label-width', '35%');
-  // const labelAlign = select('label-align', ['left', 'right'], 'right');
+storiesOf('Filtration', module).add('Filtration', () => {
+  const selectedOption = select('Select Multiple', selectionOptions, 'single');
+  const selectedSingle = boolean('Select Single', false);
+  const validInfo = boolean('Valid Info', false);
+  const validInfoText = `${validInfo ? 'enabled' : 'disabled '}`;
+
+  let deleteIcon = '';
+
+  const selectedMultiple = selectedOption === 'multiple';
+  const selectedAll = selectedOption === 'all';
+
+  deleteIcon = selectedSingle
+    ? `<se-icon option="button">action_delete_cross</se-icon>`
+    : '';
 
   return `
-    <se-block>
-    </se-block>
+    <se-container option="fill">
+      <se-block option="fill">
+        <se-filtration label="Single Select">
+          <se-list option="dropdown" selected-color="primary">
+            <se-list-item item="Apple" selected=${selectedSingle}>
+              ${deleteIcon}
+            </se-list-item>
+            <se-list-item item="Orange"></se-list-item>
+            <se-list-item item="Pineapple"></se-list-item>
+            <se-list-item item="Fig"></se-list-item>
+            <se-list-item item="Pear"></se-list-item>
+            <se-list-item item="Custard Apple"></se-list-item>
+            <se-list-item item="Lemon"></se-list-item>
+            <se-list-item item="Mango"></se-list-item>
+            <se-list-item item="Grapes"></se-list-item>
+            <se-list-item item="Carrot"></se-list-item>
+            <se-list-item item="Radish"></se-list-item>
+            <se-list-item item="Pumpkin"></se-list-item>
+          </se-list>
+        </se-filtration>
+      </se-block>
+      <se-block>
+        <se-filtration label="Multi Select">
+          <se-list option="dropdown" selected-color="primary">
+            <se-list-item item="Select all">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Software">
+              <se-checkbox selected=${
+                selectedSingle || selectedMultiple || selectedAll
+              } slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Hardware"
+              ><se-checkbox selected=${
+                selectedMultiple || selectedAll
+              } slot="start"></se-checkbox
+            ></se-list-item>
+            <se-list-item item="Infrastructure"
+              ><se-checkbox selected=${
+                selectedMultiple || selectedAll
+              } slot="start"></se-checkbox
+            ></se-list-item>
+            <se-list-item item="Mechanical"
+              ><se-checkbox selected=${selectedAll} slot="start"></se-checkbox
+            ></se-list-item>
+            <se-list-item item="Electrical">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Information">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Telecommunication">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Healthcare">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Food">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+          </se-list>
+        </se-filtration>
+      </se-block>
+      <se-block>
+        <se-block-header>
+          Form Input
+        </se-block-header>
+        <se-block-content option="fill">
+          <se-filtration label="Date Range">
+            <se-form-field
+              option="stacked"
+              block
+              label="Start date"
+              type="input"
+            >
+              <input type="date" id="startdate" />
+            </se-form-field>
+            <se-form-field
+              option="stacked"
+              block
+              label="End date"
+              type="input"
+            >
+              <input type="date" id="enddate" />
+            </se-form-field>
+            <se-button color="secondary" disabled=${!validInfo} option="outline">Ok</se-button>
+            <i>&laquo; Button is ${validInfoText}</i>
+          </se-filtration>
+          <se-filtration label="Search order results">
+            <se-block margin="medium">
+              <se-form-field
+                label="Order number"
+                option="stacked"
+                type="input"
+                block
+              >
+                <input id="ordernumber" name="ordernumber" type="text" />
+              </se-form-field>
+              <se-form-field
+                label="Purchase order number"
+                option="stacked"
+                type="input"
+                block
+              >
+                <input
+                  id="purchaseordernumber"
+                  name="purchaseordernumber"
+                  type="text"
+                />
+              </se-form-field>
+              <se-form-field
+                label="Catalog number"
+                option="stacked"
+                type="input"
+                block
+              >
+                <input
+                  id="catalognumber"
+                  name="catalognumber"
+                  type="text"
+                />
+              </se-form-field>
+              <se-button color="secondary" option="outline">OK</se-button>
+            </se-block>
+          </se-filtration>
+        </se-block-content>
+      </se-block>
+    </se-container>
   `;
 });

@@ -515,6 +515,7 @@ export namespace Components {
         "icon": string;
     }
     interface SeFiltration {
+        "collapsed": boolean;
         "label": string;
     }
     interface SeFormField {
@@ -2106,6 +2107,7 @@ declare namespace LocalJSX {
         "onDidClick"?: (event: CustomEvent<any>) => void;
     }
     interface SeFiltration {
+        "collapsed"?: boolean;
         "label"?: string;
         "onDidSearch"?: (event: CustomEvent<any>) => void;
         "onDidViewMore"?: (event: CustomEvent<any>) => void;
