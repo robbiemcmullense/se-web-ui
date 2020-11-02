@@ -384,7 +384,7 @@ export const SeFiltration = /*@__PURE__*/ Vue.extend({
     collapsed: {} as PropOptions<Components.SeFiltration['collapsed']>,
   },
 
-  render: createCommonRender('se-filtration', ['didSearch', 'didViewMore']),
+  render: createCommonRender('se-filtration', ['didSearch']),
 });
 
 export const SeFormField = /*@__PURE__*/ Vue.extend({

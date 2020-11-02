@@ -39,6 +39,7 @@ class Dashboard extends Component<DashboardProps> {
     scrollProducts: true,
     canViewProducts: false,
     viewMoreProducts: true,
+    isDlgOpen: false,
     formFields: [
       { id: 'firstname', label: 'First Name', hint: 'enter first name' },
       { id: 'lastname', label: 'Last Name', hint: 'enter last name' },
@@ -76,23 +77,6 @@ class Dashboard extends Component<DashboardProps> {
     listItems.push('New Item - Test');
     this.setState({ listItems: listItems });
     console.log('After Add New List Item was run', listItems);
-  };
-
-  handleDidSearch = evt => {
-    this.setState({ searchText: evt.detail });
-  };
-
-  handleViewMore = evt => {
-    const ok = evt.detail === 'yes';
-    this.setState({ numItems: ok ? demoItems.length : minItems });
-    // console.log('handleViewMore: evt:', evt ,' | ', this.state.numItems);
-  };
-  setListHeight = () => {
-    const listht = this.state.listHeight === '220px' ? '400px' : '220px';
-    this.setState({ listHeight: listht });
-    this.setState({
-      numItems: listht === '400px' ? demoItems.length : minItems,
-    });
   };
 
   openDialog = () => {

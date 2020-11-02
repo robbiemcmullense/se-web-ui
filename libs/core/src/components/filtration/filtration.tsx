@@ -7,12 +7,12 @@ import { EventEmitter } from 'events';
 })
 export class FiltrationComponent {
   @Element() el: HTMLElement;
+  // properties
   @Prop() label = 'Select';
   @Prop() collapsed = false;
-
+  // event
   @Event() didSearch: EventEmitter;
-  @Event() didViewMore: EventEmitter;
-
+  // local variables
   @State() searchable = false;
   @State() hint = 'enter text';
   @State() searchText = '';
@@ -28,20 +28,30 @@ export class FiltrationComponent {
     this.didSearch.emit(this.searchText);
   };
 
+  /**
+   * @description function to clear search text
+   */
   clearSearch = () => {
     this.searchText = '';
     this.didSearch.emit('');
   };
 
+  /**
+   * @description to set the dropdown expanded
+   */
   setExpanded() {
     this.isCollapsed = !this.isCollapsed;
     this.isViewingMore = false;
     console.log('setExpanded: ', this.isCollapsed || 'No');
   }
 
+  /**
+   * @description to set flag when user clicked `View More` or `Veiw Less`
+   */
   setViewMore() {
     this.isViewingMore = !this.isViewingMore;
   }
+
   render() {
     const listitems = this.el.querySelectorAll('se-list-item');
     this.searchable = listitems.length > 0;
@@ -64,9 +74,14 @@ export class FiltrationComponent {
       this.listboxHeight = 'auto';
     }
     return (
-      <se-block divider margin="small" option="card">
+      <se-block divider margin="none" option="card">
         <se-block-header>
-          {this.label}
+          <div>
+            {this.label}
+            <div class="selected-values">
+              <slot name="selectedItem"></slot>
+            </div>
+          </div>
           <div slot="end">
             <se-button
               option="flat"
@@ -78,6 +93,7 @@ export class FiltrationComponent {
           </div>
         </se-block-header>
         <se-block-content option="fill">
+          <slot name="selected"></slot>
           <div class={{ panel: true, active: this.isCollapsed }}>
             {this.searchable && (
               <div>
@@ -85,7 +101,7 @@ export class FiltrationComponent {
                   <div class="with-icon">
                     <input
                       type="search"
-                      placeholder={this.hint + ' ' + this.searchable}
+                      placeholder={this.hint}
                       onInput={this.setSearch}
                     />
                     <se-icon size="small" style={{ marginLeft: '4px' }}>

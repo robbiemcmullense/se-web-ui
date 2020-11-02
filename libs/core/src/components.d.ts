@@ -2110,7 +2110,6 @@ declare namespace LocalJSX {
         "collapsed"?: boolean;
         "label"?: string;
         "onDidSearch"?: (event: CustomEvent<any>) => void;
-        "onDidViewMore"?: (event: CustomEvent<any>) => void;
     }
     interface SeFormField {
         /**

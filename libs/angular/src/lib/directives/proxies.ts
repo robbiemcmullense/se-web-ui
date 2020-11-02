@@ -498,18 +498,16 @@ export declare interface SeFiltration extends Components.SeFiltration {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['collapsed', 'label'],
-  outputs: ['didSearch', 'didViewMore']
+  outputs: ['didSearch']
 })
 export class SeFiltration {
   /**  */
   didSearch!: IFiltrationComponent['didSearch'];
-  /**  */
-  didViewMore!: IFiltrationComponent['didViewMore'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didSearch', 'didViewMore']);
+    proxyOutputs(this, this.el, ['didSearch']);
   }
 }
 

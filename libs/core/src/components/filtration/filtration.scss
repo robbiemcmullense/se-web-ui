@@ -32,3 +32,18 @@
 .search-box.active {
   display: active;
 }
+.selected-values {
+  color: var(--se-standard);
+  font-size: $small-fontsize;
+  line-height: 18px;
+  max-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media only screen and (max-width: 360px) {
+  .se-block-header,
+  .se-block-content,
+  .se-block-footer {
+    padding: 0 !important;
+  }
+}

@@ -3,7 +3,6 @@ import {
   SeContainer,
   SeBlock,
   SeBlockHeader,
-  SeBlockFooter,
   SeIcon,
   SeLink,
   SeButton,
@@ -14,7 +13,10 @@ import {
   SeFiltration,
   SeFormField,
   SeDivider,
+  SeChip,
 } from '@se/web-ui-react';
+
+import './filtration.scss';
 
 const demoItems = [
   'Apple',
@@ -48,9 +50,6 @@ class Filtration extends Component {
   state = {
     selectedProduct: '',
     selectedCategories: [],
-    isCollapsed: false,
-    scrollPage: false,
-    canViewProducts: false,
     viewMoreProducts: true,
     dateRange: {
       startDate: null,
@@ -58,7 +57,7 @@ class Filtration extends Component {
     },
   };
 
-  selectProduct = (li: any) => {
+  selectProduct = (li: any = null) => {
     this.setState({
       selectedProduct: this.state.selectedProduct === li ? null : li,
     });
@@ -110,8 +109,7 @@ class Filtration extends Component {
   setRangeDate = e => {
     const dateRange = this.state.dateRange;
     dateRange[e.target.name] = e.target.value;
-    this.setState({ dateRange: dateRange });
-    console.log('dateRange:', this.state.dateRange);
+    this.setState({ dateRange });
   };
 
   isValidDateRange = () =>
@@ -121,7 +119,7 @@ class Filtration extends Component {
 
   resetAll = () => {
     this.setState({
-      isCollapsed: false,
+      isExpanded: false,
       selectedCategories: [],
       selectedProduct: '',
       dateRange: {
@@ -133,7 +131,7 @@ class Filtration extends Component {
   render() {
     return (
       <SeContainer>
-        <SeBlock width="30vw">
+        <SeBlock>
           <SeBlockHeader>
             Filter by:
             <div slot="end">
@@ -143,10 +141,8 @@ class Filtration extends Component {
             </div>
           </SeBlockHeader>
           {/** Single Select */}
-          <SeFiltration
-            label="Products - single select"
-            collapsed={this.state.isCollapsed}
-          >
+          <SeFiltration label="Products - single select">
+            <div slot="selectedItem">{this.state.selectedProduct}</div>
             <SeList option="dropdown" selected-color="primary">
               {demoItems.map(li => (
                 <SeListItem
@@ -162,10 +158,10 @@ class Filtration extends Component {
             </SeList>
           </SeFiltration>
           {/** Multi select */}
-          <SeFiltration
-            label="Categories - multi select"
-            collapsed={this.state.isCollapsed}
-          >
+          <SeFiltration label="Categories - multi select">
+            <div slot="selectedItem">
+              {this.state.selectedCategories.join(', ')}
+            </div>
             <SeList option="dropdown" selected-color="primary">
               <SeListItem
                 item="Select All"
@@ -187,7 +183,10 @@ class Filtration extends Component {
             </SeList>
           </SeFiltration>
           {/** Date range */}
-          <SeFiltration label="Date Range" collapsed={this.state.isCollapsed}>
+          <SeFiltration label="Date Range" collapsed={this.state.isExpanded}>
+            <div slot="selectedItem">{`start-date: ${
+              this.state.dateRange.startDate || '??'
+            } | end-date: ${this.state.dateRange.endDate || '??'}`}</div>
             <SeBlock margin="medium">
               <SeFormField
                 label="Start date"
@@ -208,6 +207,7 @@ class Filtration extends Component {
                   id="enddate"
                   name="endDate"
                   type="date"
+                  value={this.state.dateRange.endDate}
                   onChange={this.setRangeDate}
                 />
               </SeFormField>
@@ -221,10 +221,7 @@ class Filtration extends Component {
             </SeBlock>
           </SeFiltration>
           {/** Search order results */}
-          <SeFiltration
-            label="Search order results"
-            collapsed={this.state.isCollapsed}
-          >
+          <SeFiltration label="Search order results">
             <SeBlock margin="medium">
               <SeFormField
                 label="Order number"
@@ -264,29 +261,47 @@ class Filtration extends Component {
         <SeBlock>
           <SeBlockHeader>Result</SeBlockHeader>
           <SeBlockContent>
-            <div>
-              <h4>Selected Product</h4> ::{' '}
-              {this.state.selectedProduct || 'Nothing selected'}
-            </div>
-            <div>
-              <h4>Selected Categories:</h4>
-              {this.state.selectedCategories.length ? (
-                <ul>
-                  {this.state.selectedCategories.map((item: any) => (
-                    <li>&raquo; {item}</li>
-                  ))}
-                </ul>
-              ) : (
-                <div>No categories selected</div>
-              )}
-            </div>
-            <div>
-              <h4>Date Range:</h4>
-              <div>
+            <SeBlock>
+              <SeBlockHeader>Selected Product</SeBlockHeader>
+              <SeBlockContent>
+                {this.state.selectedProduct ? (
+                  <SeChip
+                    canClose
+                    onDidClose={() => this.selectProduct()}
+                    value={this.state.selectedProduct}
+                  />
+                ) : (
+                  'Nothing selected'
+                )}
+              </SeBlockContent>
+            </SeBlock>
+            <SeDivider></SeDivider>
+            <SeBlock>
+              <SeBlockHeader>Selected Categories:</SeBlockHeader>
+              <SeBlockContent>
+                {this.state.selectedCategories.length ? (
+                  <>
+                    {this.state.selectedCategories.map((item: any) => (
+                      <SeChip
+                        canClose
+                        onDidClose={() => this.selectCategory(item)}
+                        value={item}
+                      ></SeChip>
+                    ))}
+                  </>
+                ) : (
+                  <div>No categories selected</div>
+                )}
+              </SeBlockContent>
+            </SeBlock>
+            <SeDivider></SeDivider>
+            <SeBlock>
+              <SeBlockHeader>Date Range:</SeBlockHeader>
+              <SeBlockContent>
                 Start date: <code>{this.state.dateRange.startDate}</code> | End
                 date: <code>{this.state.dateRange.endDate}</code>
-              </div>
-            </div>
+              </SeBlockContent>
+            </SeBlock>
           </SeBlockContent>
         </SeBlock>
       </SeContainer>

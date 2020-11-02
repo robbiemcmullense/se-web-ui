@@ -15,10 +15,9 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `didSearch`   |             | `CustomEvent<any>` |
-| `didViewMore` |             | `CustomEvent<any>` |
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `didSearch` |             | `CustomEvent<any>` |
 
 
 ## Dependencies
