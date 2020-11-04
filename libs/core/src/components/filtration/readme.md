@@ -7,17 +7,19 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type      | Default    |
-| ----------- | ----------- | ----------- | --------- | ---------- |
-| `collapsed` | `collapsed` |             | `boolean` | `false`    |
-| `label`     | `label`     |             | `string`  | `'Select'` |
+| Property    | Attribute   | Description | Type      | Default        |
+| ----------- | ----------- | ----------- | --------- | -------------- |
+| `collapsed` | `collapsed` | `true` or `false` | `boolean` | `true`         |
+| `hint`      | `hint`      | text for placeholder | `string`  | `'enter text'` |
+| `label`     | `label`     | text for the component | `string`  | `'Select'`     |
+| `shadow`    | `shadow`    | `true` if want a shadow; `false` otherwise | `boolean` | `false`        |
 
 
 ## Events
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
-| `didSearch` |             | `CustomEvent<any>` |
+| `didSearch` | Callback | `CustomEvent<any>` |
 
 
 ## Dependencies
@@ -30,6 +32,7 @@
 - [se-block-content](../block-content)
 - [se-form-field](../form-field)
 - [se-icon](../icon)
+- [se-list](../list)
 - [se-block-footer](../block-footer)
 
 ### Graph
@@ -41,6 +44,7 @@ graph TD;
   se-filtration --> se-block-content
   se-filtration --> se-form-field
   se-filtration --> se-icon
+  se-filtration --> se-list
   se-filtration --> se-block-footer
   se-block --> se-loading
   se-block-header --> se-divider

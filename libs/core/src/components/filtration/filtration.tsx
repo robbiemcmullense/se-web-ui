@@ -9,18 +9,20 @@ export class FiltrationComponent {
   @Element() el: HTMLElement;
   // properties
   @Prop() label = 'Select';
-  @Prop() collapsed = false;
+  @Prop({ mutable: true }) collapsed = true;
+  @Prop() hint = 'enter text';
+  @Prop() shadow = false;
   // event
   @Event() didSearch: EventEmitter;
   // local variables
   @State() searchable = false;
-  @State() hint = 'enter text';
   @State() searchText = '';
-  @State() viewMoreText = 'More';
-  @State() isCollapsed = this.collapsed;
+  @State() labelViewMore = 'View more';
+  @State() labelViewLess = 'View less';
   @State() isViewingMore = false;
   @State() listboxHeight = '';
   @State() minItems = 5;
+  @State() maxItems = 20;
   @State() viewMoreCount = 0;
 
   setSearch = e => {
@@ -40,9 +42,8 @@ export class FiltrationComponent {
    * @description to set the dropdown expanded
    */
   setExpanded() {
-    this.isCollapsed = !this.isCollapsed;
+    this.collapsed = !this.collapsed;
     this.isViewingMore = false;
-    console.log('setExpanded: ', this.isCollapsed || 'No');
   }
 
   /**
@@ -58,15 +59,14 @@ export class FiltrationComponent {
     let lbHeight = 0;
     let n = 0;
     if (this.searchable) {
-      this.minItems = this.isViewingMore ? 20 : 5;
+      this.minItems = this.isViewingMore ? this.maxItems : this.minItems;
       setTimeout(() => {
-        for (let el in listitems) {
-          if (n > this.minItems) {
-            break;
+        listitems.forEach((_, idx) => {
+          if (n < this.minItems + 2) {
+            n++;
+            lbHeight += listitems[idx].offsetHeight;
           }
-          n++;
-          lbHeight += listitems[el].offsetHeight;
-        }
+        });
         this.viewMoreCount = listitems.length - n;
         this.listboxHeight = `${lbHeight}px`;
       }, 10);
@@ -74,7 +74,7 @@ export class FiltrationComponent {
       this.listboxHeight = 'auto';
     }
     return (
-      <se-block divider margin="none" option="card">
+      <se-block divider margin="none" option={this.shadow ? 'card' : 'fill'}>
         <se-block-header>
           <div>
             {this.label}
@@ -87,14 +87,13 @@ export class FiltrationComponent {
               option="flat"
               color="alternative"
               icon-only
-              icon={this.isCollapsed ? 'arrow2_up' : 'arrow2_down'}
+              icon={this.collapsed ? 'arrow2_up' : 'arrow2_down'}
               onClick={() => this.setExpanded()}
             />
           </div>
         </se-block-header>
         <se-block-content option="fill">
-          <slot name="selected"></slot>
-          <div class={{ panel: true, active: this.isCollapsed }}>
+          <div class={{ panel: true, active: this.collapsed }}>
             {this.searchable && (
               <div>
                 <se-form-field type="input" option="stacked" block>
@@ -117,23 +116,26 @@ export class FiltrationComponent {
               }}
               class={{
                 content: true,
-                active: this.isCollapsed && this.isCollapsed,
+                active: this.collapsed && this.collapsed,
                 scroll: this.isViewingMore,
               }}
             >
-              <slot></slot>
+              <se-list option="dropdown" selected-color="primary">
+                <slot></slot>
+              </se-list>
             </div>
           </div>
         </se-block-content>
-        {this.isCollapsed && this.searchable && (
+        {this.collapsed && this.searchable && (
           <se-block-footer>
             <div
-              class={{ viewmore: true, active: this.isCollapsed }}
+              class={{ viewmore: true, active: this.collapsed }}
               slot="start"
               onClick={() => this.setViewMore()}
             >
-              View{' '}
-              {this.isViewingMore ? `Less` : `More (${this.viewMoreCount})`}
+              {this.isViewingMore
+                ? this.labelViewLess
+                : `${this.labelViewMore} (${this.viewMoreCount})`}
               <se-icon>
                 {this.isViewingMore ? 'arrow2_up' : 'arrow2_down'}
               </se-icon>

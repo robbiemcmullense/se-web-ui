@@ -20,7 +20,7 @@
 .viewmore {
   display: block;
   margin-left: 10px;
-  color: blue;
+  @include color(--se-secondary);
   cursor: pointer;
   &.active {
     display: block;

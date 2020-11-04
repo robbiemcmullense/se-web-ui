@@ -141,9 +141,9 @@ class Filtration extends Component {
             </div>
           </SeBlockHeader>
           {/** Single Select */}
-          <SeFiltration label="Products - single select">
+          <SeFiltration label="Products - single select" shadow={false}>
             <div slot="selectedItem">{this.state.selectedProduct}</div>
-            <SeList option="dropdown" selected-color="primary">
+            <div>
               {demoItems.map(li => (
                 <SeListItem
                   item={li}
@@ -155,14 +155,14 @@ class Filtration extends Component {
                   )}
                 </SeListItem>
               ))}
-            </SeList>
+            </div>
           </SeFiltration>
           {/** Multi select */}
           <SeFiltration label="Categories - multi select">
             <div slot="selectedItem">
               {this.state.selectedCategories.join(', ')}
             </div>
-            <SeList option="dropdown" selected-color="primary">
+            <div>
               <SeListItem
                 item="Select All"
                 onClick={() => this.selectAllCategories()}
@@ -180,7 +180,7 @@ class Filtration extends Component {
                   ></SeCheckbox>
                 </SeListItem>
               ))}
-            </SeList>
+            </div>
           </SeFiltration>
           {/** Date range */}
           <SeFiltration label="Date Range" collapsed={this.state.isExpanded}>

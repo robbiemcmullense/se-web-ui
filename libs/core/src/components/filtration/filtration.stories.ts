@@ -14,6 +14,7 @@ storiesOf('Filtration', module)
     const selectedSingle = boolean('Select Single', false);
     const validInfo = boolean('Valid Info', false);
     const validInfoText = `${validInfo ? 'enabled' : 'disabled '}`;
+    const shadow = boolean('Shadow', false);
 
     let deleteIcon = '';
 
@@ -27,69 +28,65 @@ storiesOf('Filtration', module)
     return `
     <se-container direction="column">
       <se-container>
-        <se-block option="fill">
+        <se-block option=${shadow ? 'card' : 'fill'}>
           <se-filtration label="Single Select">
-            <se-list option="dropdown" selected-color="primary">
-              <se-list-item item="Apple" selected=${selectedSingle}>
-                ${deleteIcon}
-              </se-list-item>
-              <se-list-item item="Orange"></se-list-item>
-              <se-list-item item="Pineapple"></se-list-item>
-              <se-list-item item="Fig"></se-list-item>
-              <se-list-item item="Pear"></se-list-item>
-              <se-list-item item="Custard Apple"></se-list-item>
-              <se-list-item item="Lemon"></se-list-item>
-              <se-list-item item="Mango"></se-list-item>
-              <se-list-item item="Grapes"></se-list-item>
-              <se-list-item item="Carrot"></se-list-item>
-              <se-list-item item="Radish"></se-list-item>
-              <se-list-item item="Pumpkin"></se-list-item>
-            </se-list>
+            <se-list-item item="Apple" selected=${selectedSingle}>
+              ${deleteIcon}
+            </se-list-item>
+            <se-list-item item="Orange"></se-list-item>
+            <se-list-item item="Pineapple"></se-list-item>
+            <se-list-item item="Fig"></se-list-item>
+            <se-list-item item="Pear"></se-list-item>
+            <se-list-item item="Custard Apple"></se-list-item>
+            <se-list-item item="Lemon"></se-list-item>
+            <se-list-item item="Mango"></se-list-item>
+            <se-list-item item="Grapes"></se-list-item>
+            <se-list-item item="Carrot"></se-list-item>
+            <se-list-item item="Radish"></se-list-item>
+            <se-list-item item="Pumpkin"></se-list-item>
           </se-filtration>
         </se-block>
-        <se-block>
+        <se-block option=${shadow ? 'card' : 'fill'}>
           <se-filtration label="Multi Select">
-            <se-list option="dropdown" selected-color="primary">
-              <se-list-item item="Select all">
-                <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
-              </se-list-item>
-              <se-list-item item="Software">
-                <se-checkbox selected=${
-                  selectedSingle || selectedMultiple || selectedAll
-                } slot="start"></se-checkbox>
-              </se-list-item>
-              <se-list-item item="Hardware"
-                ><se-checkbox selected=${
-                  selectedMultiple || selectedAll
-                } slot="start"></se-checkbox
-              ></se-list-item>
-              <se-list-item item="Infrastructure"
-                ><se-checkbox selected=${
-                  selectedMultiple || selectedAll
-                } slot="start"></se-checkbox
-              ></se-list-item>
-              <se-list-item item="Mechanical"
-                ><se-checkbox selected=${selectedAll} slot="start"></se-checkbox
-              ></se-list-item>
-              <se-list-item item="Electrical">
-                <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
-              </se-list-item>
-              <se-list-item item="Information">
-                <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
-              </se-list-item>
-              <se-list-item item="Telecommunication">
-                <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
-              </se-list-item>
-              <se-list-item item="Healthcare">
-                <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
-              </se-list-item>
-              <se-list-item item="Food">
-                <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
-              </se-list-item>
-            </se-list>
+            <se-list-item item="Select all">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Software">
+              <se-checkbox selected=${
+                selectedSingle || selectedMultiple || selectedAll
+              } slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Hardware"
+              ><se-checkbox selected=${
+                selectedMultiple || selectedAll
+              } slot="start"></se-checkbox
+            ></se-list-item>
+            <se-list-item item="Infrastructure"
+              ><se-checkbox selected=${
+                selectedMultiple || selectedAll
+              } slot="start"></se-checkbox
+            ></se-list-item>
+            <se-list-item item="Mechanical"
+              ><se-checkbox selected=${selectedAll} slot="start"></se-checkbox
+            ></se-list-item>
+            <se-list-item item="Electrical">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Information">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Telecommunication">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Healthcare">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="Food">
+              <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
+            </se-list-item>
           </se-filtration>
         </se-block>
-        <se-block>
+        <se-block option=${shadow ? 'card' : 'fill'}>
           <se-block-header>
             Form Input
           </se-block-header>
@@ -153,9 +150,6 @@ storiesOf('Filtration', module)
             </se-filtration>
           </se-block-content>
         </se-block>
-      </se-container>
-      <se-container>
-                  right
       </se-container>
     </se-container>
   `;
