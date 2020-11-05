@@ -29,7 +29,7 @@ storiesOf('Filtration', module)
     <se-container direction="column">
       <se-container>
         <se-block option=${shadow ? 'card' : 'fill'}>
-          <se-filtration label="Single Select">
+          <se-filtration label-select="Single Select">
             <se-list-item item="Apple" selected=${selectedSingle}>
               ${deleteIcon}
             </se-list-item>
@@ -47,7 +47,7 @@ storiesOf('Filtration', module)
           </se-filtration>
         </se-block>
         <se-block option=${shadow ? 'card' : 'fill'}>
-          <se-filtration label="Multi Select">
+          <se-filtration label-select="Multi Select">
             <se-list-item item="Select all">
               <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
             </se-list-item>
@@ -91,7 +91,7 @@ storiesOf('Filtration', module)
             Form Input
           </se-block-header>
           <se-block-content option="fill">
-            <se-filtration label="Date Range">
+            <se-filtration label-select="Date Range">
               <se-form-field
                 option="stacked"
                 block
@@ -111,7 +111,7 @@ storiesOf('Filtration', module)
               <se-button color="secondary" disabled=${!validInfo} option="outline">Ok</se-button>
               <i>&laquo; Button is ${validInfoText}</i>
             </se-filtration>
-            <se-filtration label="Search order results">
+            <se-filtration label-select="Search order results">
               <se-block margin="medium">
                 <se-form-field
                   label="Order number"

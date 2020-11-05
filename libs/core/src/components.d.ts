@@ -516,8 +516,11 @@ export namespace Components {
     }
     interface SeFiltration {
         "collapsed": boolean;
-        "hint": string;
-        "label": string;
+        "labelHint": string;
+        "labelSelect": string;
+        "labelViewMore": string;
+        "searchText": string;
+        "searchable": boolean;
         "shadow": boolean;
     }
     interface SeFormField {
@@ -2110,9 +2113,12 @@ declare namespace LocalJSX {
     }
     interface SeFiltration {
         "collapsed"?: boolean;
-        "hint"?: string;
-        "label"?: string;
+        "labelHint"?: string;
+        "labelSelect"?: string;
+        "labelViewMore"?: string;
         "onDidSearch"?: (event: CustomEvent<any>) => void;
+        "searchText"?: string;
+        "searchable"?: boolean;
         "shadow"?: boolean;
     }
     interface SeFormField {

@@ -1,6 +1,10 @@
 import { Component, h, Prop, State, Event, Element } from '@stencil/core';
 import { EventEmitter } from 'events';
 
+import arrow2Up from '@se/icons/svg/arrow2_up.svg';
+import arrow2Down from '@se/icons/svg/arrow2_down.svg';
+import actionSearchStroke from '@se/icons/svg/action_search_stroke.svg';
+
 @Component({
   tag: 'se-filtration',
   styleUrl: 'filtration.scss',
@@ -8,16 +12,16 @@ import { EventEmitter } from 'events';
 export class FiltrationComponent {
   @Element() el: HTMLElement;
   // properties
-  @Prop() label = 'Select';
+  @Prop() labelSelect = 'Select';
+  @Prop() labelHint = 'enter text';
   @Prop({ mutable: true }) collapsed = true;
-  @Prop() hint = 'enter text';
   @Prop() shadow = false;
+  @Prop() searchable = false;
+  @Prop() searchText = '';
+  @Prop() labelViewMore = 'View more';
   // event
   @Event() didSearch: EventEmitter;
   // local variables
-  @State() searchable = false;
-  @State() searchText = '';
-  @State() labelViewMore = 'View more';
   @State() labelViewLess = 'View less';
   @State() isViewingMore = false;
   @State() listboxHeight = '';
@@ -74,22 +78,29 @@ export class FiltrationComponent {
       this.listboxHeight = 'auto';
     }
     return (
-      <se-block divider margin="none" option={this.shadow ? 'card' : 'fill'}>
+      <se-block
+        divider
+        margin="none"
+        option={this.shadow ? 'card-old' : 'fill'}
+      >
         <se-block-header>
           <div>
-            {this.label}
+            {this.labelSelect}
             <div class="selected-values">
               <slot name="selectedItem"></slot>
             </div>
           </div>
           <div slot="end">
-            <se-button
-              option="flat"
-              color="alternative"
+            <se-icon
+              color="standard"
               icon-only
-              icon={this.collapsed ? 'arrow2_up' : 'arrow2_down'}
               onClick={() => this.setExpanded()}
-            />
+            >
+              <span
+                class="link"
+                innerHTML={this.collapsed ? arrow2Up : arrow2Down}
+              ></span>
+            </se-icon>
           </div>
         </se-block-header>
         <se-block-content option="fill">
@@ -100,11 +111,11 @@ export class FiltrationComponent {
                   <div class="with-icon">
                     <input
                       type="search"
-                      placeholder={this.hint}
+                      placeholder={this.labelHint}
                       onInput={this.setSearch}
                     />
                     <se-icon size="small" style={{ marginLeft: '4px' }}>
-                      action_search_stroke
+                      <span innerHTML={actionSearchStroke}></span>
                     </se-icon>
                   </div>
                 </se-form-field>
@@ -127,9 +138,9 @@ export class FiltrationComponent {
           </div>
         </se-block-content>
         {this.collapsed && this.searchable && (
-          <se-block-footer>
+          <se-block-footer divider={false}>
             <div
-              class={{ viewmore: true, active: this.collapsed }}
+              class={{ 'view-more': true, active: this.collapsed }}
               slot="start"
               onClick={() => this.setViewMore()}
             >
@@ -137,7 +148,9 @@ export class FiltrationComponent {
                 ? this.labelViewLess
                 : `${this.labelViewMore} (${this.viewMoreCount})`}
               <se-icon>
-                {this.isViewingMore ? 'arrow2_up' : 'arrow2_down'}
+                <span
+                  innerHTML={this.isViewingMore ? arrow2Up : arrow2Down}
+                ></span>
               </se-icon>
             </div>
           </se-block-footer>

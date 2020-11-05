@@ -141,7 +141,11 @@ class Filtration extends Component {
             </div>
           </SeBlockHeader>
           {/** Single Select */}
-          <SeFiltration label="Products - single select" shadow={false}>
+          <SeFiltration
+            label-select="Products - single select"
+            label-hint="product"
+            shadow={false}
+          >
             <div slot="selectedItem">{this.state.selectedProduct}</div>
             <div>
               {demoItems.map(li => (
@@ -158,7 +162,10 @@ class Filtration extends Component {
             </div>
           </SeFiltration>
           {/** Multi select */}
-          <SeFiltration label="Categories - multi select">
+          <SeFiltration
+            label-select="Categories - multi select"
+            label-hint="category"
+          >
             <div slot="selectedItem">
               {this.state.selectedCategories.join(', ')}
             </div>
@@ -183,7 +190,10 @@ class Filtration extends Component {
             </div>
           </SeFiltration>
           {/** Date range */}
-          <SeFiltration label="Date Range" collapsed={this.state.isExpanded}>
+          <SeFiltration
+            label-select="Date Range"
+            collapsed={this.state.isExpanded}
+          >
             <div slot="selectedItem">{`start-date: ${
               this.state.dateRange.startDate || '??'
             } | end-date: ${this.state.dateRange.endDate || '??'}`}</div>
@@ -221,7 +231,7 @@ class Filtration extends Component {
             </SeBlock>
           </SeFiltration>
           {/** Search order results */}
-          <SeFiltration label="Search order results">
+          <SeFiltration label-select="Search order results">
             <SeBlock margin="medium">
               <SeFormField
                 label="Order number"
@@ -244,7 +254,7 @@ class Filtration extends Component {
                 />
               </SeFormField>
               <SeFormField
-                label="Catalog number"
+                label-select="Catalog number"
                 option="stacked"
                 type="input"
                 block
