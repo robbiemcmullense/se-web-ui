@@ -491,23 +491,25 @@ export class SeFabItem {
 import { FiltrationComponent as IFiltrationComponent } from 'dist/libs/core/types/components/filtration/filtration';
 export declare interface SeFiltration extends Components.SeFiltration {}
 @ProxyCmp({
-  inputs: ['collapsed', 'labelHint', 'labelSelect', 'labelViewMore', 'searchText', 'searchable', 'shadow']
+  inputs: ['collapsed', 'labelHint', 'labelSelect', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'selectAll', 'shadow']
 })
 @Component({
   selector: 'se-filtration',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['collapsed', 'labelHint', 'labelSelect', 'labelViewMore', 'searchText', 'searchable', 'shadow'],
-  outputs: ['didSearch']
+  inputs: ['collapsed', 'labelHint', 'labelSelect', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'selectAll', 'shadow'],
+  outputs: ['didSearch', 'didSelectAll']
 })
 export class SeFiltration {
-  /**  */
+  /** Event emitter for callback with the searched text */
   didSearch!: IFiltrationComponent['didSearch'];
+  /** Event emitter for callback to select all items */
+  didSelectAll!: IFiltrationComponent['didSelectAll'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didSearch']);
+    proxyOutputs(this, this.el, ['didSearch', 'didSelectAll']);
   }
 }
 

@@ -384,12 +384,14 @@ export const SeFiltration = /*@__PURE__*/ Vue.extend({
     labelHint: {} as PropOptions<Components.SeFiltration['labelHint']>,
     collapsed: {} as PropOptions<Components.SeFiltration['collapsed']>,
     shadow: {} as PropOptions<Components.SeFiltration['shadow']>,
-    searchable: {} as PropOptions<Components.SeFiltration['searchable']>,
-    searchText: {} as PropOptions<Components.SeFiltration['searchText']>,
     labelViewMore: {} as PropOptions<Components.SeFiltration['labelViewMore']>,
+    labelViewLess: {} as PropOptions<Components.SeFiltration['labelViewLess']>,
+    minItems: {} as PropOptions<Components.SeFiltration['minItems']>,
+    maxItems: {} as PropOptions<Components.SeFiltration['maxItems']>,
+    selectAll: {} as PropOptions<Components.SeFiltration['selectAll']>,
   },
 
-  render: createCommonRender('se-filtration', ['didSearch']),
+  render: createCommonRender('se-filtration', ['didSearch', 'didSelectAll']),
 });
 
 export const SeFormField = /*@__PURE__*/ Vue.extend({

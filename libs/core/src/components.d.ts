@@ -515,12 +515,41 @@ export namespace Components {
         "icon": string;
     }
     interface SeFiltration {
+        /**
+          * Boolean property to indicate if the content will be visible or hidden collapsed = `true` => content is shown collapsed = `false` => content is hidden
+         */
         "collapsed": boolean;
+        /**
+          * Text for the placeholder. the default is `enter text`
+         */
         "labelHint": string;
+        /**
+          * text to display in the header
+         */
         "labelSelect": string;
+        /**
+          * Default text to display for viewing less content
+         */
+        "labelViewLess": string;
+        /**
+          * Default value to display for viewing more content
+         */
         "labelViewMore": string;
-        "searchText": string;
-        "searchable": boolean;
+        /**
+          * Maximum number of items to be displayed when expanded. Default is `20`
+         */
+        "maxItems": number;
+        /**
+          * Minimum number of items to be displayed when collapsed. Default is `5`
+         */
+        "minItems": number;
+        /**
+          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+         */
+        "selectAll": boolean;
+        /**
+          * Boolean property to indicate if there should be a shadow around the box valid values are `true` or `false`
+         */
         "shadow": boolean;
     }
     interface SeFormField {
@@ -2112,13 +2141,49 @@ declare namespace LocalJSX {
         "onDidClick"?: (event: CustomEvent<any>) => void;
     }
     interface SeFiltration {
+        /**
+          * Boolean property to indicate if the content will be visible or hidden collapsed = `true` => content is shown collapsed = `false` => content is hidden
+         */
         "collapsed"?: boolean;
+        /**
+          * Text for the placeholder. the default is `enter text`
+         */
         "labelHint"?: string;
+        /**
+          * text to display in the header
+         */
         "labelSelect"?: string;
+        /**
+          * Default text to display for viewing less content
+         */
+        "labelViewLess"?: string;
+        /**
+          * Default value to display for viewing more content
+         */
         "labelViewMore"?: string;
+        /**
+          * Maximum number of items to be displayed when expanded. Default is `20`
+         */
+        "maxItems"?: number;
+        /**
+          * Minimum number of items to be displayed when collapsed. Default is `5`
+         */
+        "minItems"?: number;
+        /**
+          * Event emitter for callback with the searched text
+         */
         "onDidSearch"?: (event: CustomEvent<any>) => void;
-        "searchText"?: string;
-        "searchable"?: boolean;
+        /**
+          * Event emitter for callback to select all items
+         */
+        "onDidSelectAll"?: (event: CustomEvent<any>) => void;
+        /**
+          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+         */
+        "selectAll"?: boolean;
+        /**
+          * Boolean property to indicate if there should be a shadow around the box valid values are `true` or `false`
+         */
         "shadow"?: boolean;
     }
     interface SeFormField {

@@ -51,9 +51,12 @@ class Filtration extends Component {
     selectedProduct: '',
     selectedCategories: [],
     viewMoreProducts: true,
+    isCollapsed: true,
+    searchProductText: '',
+    searchCategoryText: '',
     dateRange: {
-      startDate: null,
-      endDate: null,
+      startDate: '',
+      endDate: '',
     },
   };
 
@@ -61,6 +64,14 @@ class Filtration extends Component {
     this.setState({
       selectedProduct: this.state.selectedProduct === li ? null : li,
     });
+  };
+
+  setProductSearch = evt => {
+    this.setState({ searchProductText: evt.detail });
+  };
+
+  setCategorySearch = evt => {
+    this.setState({ searchCategoryText: evt.detail });
   };
 
   selectCategory = (li: any) => {
@@ -131,7 +142,7 @@ class Filtration extends Component {
   render() {
     return (
       <SeContainer>
-        <SeBlock>
+        <SeBlock width="400px" margin="small">
           <SeBlockHeader>
             Filter by:
             <div slot="end">
@@ -144,55 +155,63 @@ class Filtration extends Component {
           <SeFiltration
             label-select="Products - single select"
             label-hint="product"
-            shadow={false}
+            shadow
+            onDidSearch={this.setProductSearch}
           >
             <div slot="selectedItem">{this.state.selectedProduct}</div>
             <div>
-              {demoItems.map(li => (
-                <SeListItem
-                  item={li}
-                  selected={this.isSelectedProduct(li)}
-                  onClick={() => this.selectProduct(li)}
-                >
-                  {this.isSelectedProduct(li) && (
-                    <SeIcon option="button">action_delete_cross</SeIcon>
-                  )}
-                </SeListItem>
-              ))}
+              {demoItems
+                .filter(f =>
+                  new RegExp(this.state.searchProductText, 'gi').test(f)
+                )
+                .map(li => (
+                  <SeListItem
+                    key={li}
+                    item={li}
+                    selected={this.isSelectedProduct(li)}
+                    onClick={() => this.selectProduct(li)}
+                  >
+                    {this.isSelectedProduct(li) && (
+                      <SeIcon option="button">action_delete_cross</SeIcon>
+                    )}
+                  </SeListItem>
+                ))}
             </div>
           </SeFiltration>
           {/** Multi select */}
           <SeFiltration
             label-select="Categories - multi select"
             label-hint="category"
+            select-all
+            onDidSearch={this.setCategorySearch}
+            onDidSelectAll={() => this.selectAllCategories()}
           >
             <div slot="selectedItem">
               {this.state.selectedCategories.join(', ')}
             </div>
             <div>
-              <SeListItem
-                item="Select All"
-                onClick={() => this.selectAllCategories()}
-              >
-                <SeCheckbox
-                  selected={this.areAllCategoriesSelected()}
-                  slot="start"
-                ></SeCheckbox>
-              </SeListItem>
-              {categories.map(li => (
-                <SeListItem item={li} onClick={() => this.selectCategory(li)}>
-                  <SeCheckbox
-                    selected={this.isSelectedCategory(li)}
-                    slot="start"
-                  ></SeCheckbox>
-                </SeListItem>
-              ))}
+              {categories
+                .filter(f =>
+                  new RegExp(this.state.searchCategoryText, 'gi').test(f)
+                )
+                .map(li => (
+                  <SeListItem
+                    key={li}
+                    item={li}
+                    onClick={() => this.selectCategory(li)}
+                  >
+                    <SeCheckbox
+                      selected={this.isSelectedCategory(li)}
+                      slot="start"
+                    ></SeCheckbox>
+                  </SeListItem>
+                ))}
             </div>
           </SeFiltration>
           {/** Date range */}
           <SeFiltration
             label-select="Date Range"
-            collapsed={this.state.isExpanded}
+            collapsed={this.state.isCollapsed}
           >
             <div slot="selectedItem">{`start-date: ${
               this.state.dateRange.startDate || '??'

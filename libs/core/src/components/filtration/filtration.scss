@@ -6,11 +6,10 @@
 }
 .content {
   display: none;
-  height: auto;
+  height: 120px;
   &.active {
     display: block;
     overflow: hidden;
-    height: auto;
   }
   &.scroll {
     overflow-y: auto;
@@ -21,6 +20,15 @@
   margin-left: 10px;
   @include color("secondary");
   cursor: pointer;
+}
+.select-all {
+  display: none;
+  margin-right: $spacing-large;
+  @include color("secondary");
+  cursor: pointer;
+  &.active {
+    display: block;
+  }
 }
 .search-box {
   display: none;
@@ -33,6 +41,7 @@
   @include typology("small");
   overflow: hidden;
   text-overflow: ellipsis;
+  max-height: calc($spacing-large * 2);
 }
 .link {
   cursor: pointer;

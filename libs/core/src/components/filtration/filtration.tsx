@@ -11,64 +11,132 @@ import actionSearchStroke from '@se/icons/svg/action_search_stroke.svg';
 })
 export class FiltrationComponent {
   @Element() el: HTMLElement;
-  // properties
+  /**
+   * text to display in the header
+   */
   @Prop() labelSelect = 'Select';
+  /**
+   * Text for the placeholder. the default is `enter text`
+   */
   @Prop() labelHint = 'enter text';
+  /**
+   * Boolean property to indicate if the content will be visible or hidden
+   * collapsed = `true` => content is shown
+   * collapsed = `false` => content is hidden
+   */
   @Prop({ mutable: true }) collapsed = true;
+  /**
+   * Boolean property to indicate if there should be a shadow around the box
+   * valid values are `true` or `false`
+   */
   @Prop() shadow = false;
-  @Prop() searchable = false;
-  @Prop() searchText = '';
-  @Prop() labelViewMore = 'View more';
-  // event
+  /**
+   * Default value to display for viewing more content
+   */
+  @Prop() labelViewMore = 'View More';
+  /**
+   * Default text to display for viewing less content
+   */
+  @Prop() labelViewLess = 'View Less';
+  /**
+   * Minimum number of items to be displayed when collapsed. Default is `5`
+   */
+  @Prop() minItems = 5;
+  /**
+   * Maximum number of items to be displayed when expanded. Default is `20`
+   */
+  @Prop() maxItems = 20;
+  /**
+   * Optional property to indicate if multiple selections will be made
+   * `true` = multiple selection | `false` = single selection
+   */
+  @Prop() selectAll = false;
+  /**
+   * Event emitter for callback with the searched text
+   */
   @Event() didSearch: EventEmitter;
-  // local variables
-  @State() labelViewLess = 'View less';
+  /**
+   * Event emitter for callback to select all items
+   */
+  @Event() didSelectAll: EventEmitter;
+  /**
+   * Variable to store the text to search
+   */
+  @State() searchText = '';
+  /**
+   * Boolean variable to denote if there are list items and search box can be shown.
+   * If there are no list items, then the search box will not be displayed.
+   */
+  @State() searchable = false;
+  /**
+   * Boolean variable to denote if the user has clicked `View More` or `View Less`
+   * `true` would mean the user has clicked `View More` and the component is expanded
+   * `false` would mean the user has clicked `View Less` and the component is collapsed
+   */
   @State() isViewingMore = false;
+  /**
+   * Variable to store the height of the content area when expanded and collapsed. It is
+   * computed based on the `minItems` and `maxItems` computed at run time.
+   */
   @State() listboxHeight = '';
-  @State() minItems = 5;
-  @State() maxItems = 20;
+  /**
+   * Variable to store how many more items the user would see when he clicks `View More` link
+   */
   @State() viewMoreCount = 0;
-
+  /**
+   * Variable to show 'Select all'
+   */
+  @State() selectAllLink = 'Select All';
+  /**
+   * Function to set the text that user would enter to search
+   * @param e Object
+   */
   setSearch = e => {
     this.searchText = e.target.value;
     this.didSearch.emit(this.searchText);
   };
-
   /**
-   * @description function to clear search text
+   * Function to clear search text
    */
   clearSearch = () => {
     this.searchText = '';
     this.didSearch.emit('');
   };
-
   /**
-   * @description to set the dropdown expanded
+   * Function to set the dropdown expanded
    */
   setExpanded() {
     this.collapsed = !this.collapsed;
     this.isViewingMore = false;
   }
-
   /**
-   * @description to set flag when user clicked `View More` or `Veiw Less`
+   * Function to set flag when user clicked `View More` or `Veiw Less`
    */
   setViewMore() {
     this.isViewingMore = !this.isViewingMore;
+  }
+  /**
+   * Function to emit event to select all items
+   */
+  selectAllItems() {
+    this.didSelectAll.emit('all');
   }
 
   render() {
     const listitems = this.el.querySelectorAll('se-list-item');
     this.searchable = listitems.length > 0;
-    let lbHeight = 0;
-    let n = 0;
+    let lbHeight = 0; // - effective list box height -
+    let n = 0; // - to store number of items initially displayed -
+    /**
+     * to compute the height of the content when expanded and collapsed
+     */
     if (this.searchable) {
-      this.minItems = this.isViewingMore ? this.maxItems : this.minItems;
+      const minItems = this.isViewingMore ? this.maxItems : this.minItems;
       setTimeout(() => {
-        listitems.forEach((_, idx) => {
-          if (n < this.minItems + 2) {
+        listitems.forEach(li => {
+          if (n < minItems) {
             n++;
-            lbHeight += listitems[idx].offsetHeight;
+            lbHeight += li.offsetHeight;
           }
         });
         this.viewMoreCount = listitems.length - n;
@@ -77,6 +145,7 @@ export class FiltrationComponent {
     } else {
       this.listboxHeight = 'auto';
     }
+    console.log('> viewMoreCount: ', this.viewMoreCount);
     return (
       <se-block
         divider
@@ -152,6 +221,12 @@ export class FiltrationComponent {
                   innerHTML={this.isViewingMore ? arrow2Up : arrow2Down}
                 ></span>
               </se-icon>
+            </div>
+            <div
+              class={{ 'select-all': true, active: this.selectAll }}
+              onClick={() => this.selectAllItems()}
+            >
+              {this.selectAllLink}
             </div>
           </se-block-footer>
         )}
