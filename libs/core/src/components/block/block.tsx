@@ -117,11 +117,7 @@ export class BlockComponent {
 
   updateItem() {
     if (this.option !== undefined && this.divider === undefined) {
-      if (this.option === 'card' || this.option === 'card-old') {
-        this.divider = false;
-      } else {
-        this.divider = true;
-      }
+      this.divider = this.option === 'card' || this.option === 'card-old';
     }
 
     const childElms = 'se-block-header, se-block-content, se-block-footer';
@@ -129,8 +125,12 @@ export class BlockComponent {
       // have to do this because otherwise blocks inside other blocks get settings overridden by higher ancestors
       // Using "closest" function in case the current element is wrapped inside another one
       if (item.closest('se-block') === this.el) {
-        item.divider = this.divider;
-        !item.option ? (item.option = this.option) : '';
+        if (item.divider === undefined || item.divider === null) {
+          item.divider = this.divider;
+        }
+        if (!item.option) {
+          item.option = this.option;
+        }
       }
     });
   }
