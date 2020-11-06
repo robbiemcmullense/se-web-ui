@@ -202,7 +202,8 @@ table {
 // }
 
 body,
-html {
+html,
+se-app {
   @include typology("p");
   // color: $off-black;
   @include background-color("background-alternative");

@@ -37,6 +37,7 @@ const customElementTags: string[] = [
   'se-dropdown',
   'se-fab',
   'se-fab-item',
+  'se-filtration',
   'se-form-field',
   'se-header',
   'se-icon',
@@ -377,6 +378,26 @@ export const SeFabItem = /*@__PURE__*/ Vue.extend({
   render: createCommonRender('se-fab-item', ['didClick']),
 });
 
+export const SeFiltration = /*@__PURE__*/ Vue.extend({
+  props: {
+    item: {} as PropOptions<Components.SeFiltration['item']>,
+    labelHint: {} as PropOptions<Components.SeFiltration['labelHint']>,
+    collapsed: {} as PropOptions<Components.SeFiltration['collapsed']>,
+    shadow: {} as PropOptions<Components.SeFiltration['shadow']>,
+    labelViewMore: {} as PropOptions<Components.SeFiltration['labelViewMore']>,
+    labelViewLess: {} as PropOptions<Components.SeFiltration['labelViewLess']>,
+    labelSelectAll: {} as PropOptions<
+      Components.SeFiltration['labelSelectAll']
+    >,
+    minItems: {} as PropOptions<Components.SeFiltration['minItems']>,
+    maxItems: {} as PropOptions<Components.SeFiltration['maxItems']>,
+    showSelectAll: {} as PropOptions<Components.SeFiltration['showSelectAll']>,
+    searchable: {} as PropOptions<Components.SeFiltration['searchable']>,
+  },
+
+  render: createCommonRender('se-filtration', ['didSearch', 'didSelectAll']),
+});
+
 export const SeFormField = /*@__PURE__*/ Vue.extend({
   props: {
     option: {} as PropOptions<Components.SeFormField['option']>,
@@ -454,6 +475,7 @@ export const SeLink = /*@__PURE__*/ Vue.extend({
   props: {
     url: {} as PropOptions<Components.SeLink['url']>,
     disabled: {} as PropOptions<Components.SeLink['disabled']>,
+    download: {} as PropOptions<Components.SeLink['download']>,
     option: {} as PropOptions<Components.SeLink['option']>,
   },
 

@@ -34,11 +34,13 @@
 
 ### Used by
 
+ - [se-filtration](../filtration)
  - [se-sidemenu](../sidemenu)
 
 ### Graph
 ```mermaid
 graph TD;
+  se-filtration --> se-list
   se-sidemenu --> se-list
   style se-list fill:#f9f,stroke:#333,stroke-width:4px
 ```

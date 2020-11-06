@@ -514,6 +514,52 @@ export namespace Components {
          */
         "icon": string;
     }
+    interface SeFiltration {
+        /**
+          * Boolean property to indicate if the content will be visible or hidden collapsed = `true` => content is shown collapsed = `false` => content is hidden
+         */
+        "collapsed": boolean;
+        /**
+          * text to display in the header
+         */
+        "item": any;
+        /**
+          * Text for the placeholder. the default is `enter text`
+         */
+        "labelHint": string;
+        /**
+          * Variable to show 'Select all'
+         */
+        "labelSelectAll": string;
+        /**
+          * Default text to display for viewing less content
+         */
+        "labelViewLess": string;
+        /**
+          * Default value to display for viewing more content
+         */
+        "labelViewMore": string;
+        /**
+          * Maximum number of items to be displayed when expanded. Default is `10`
+         */
+        "maxItems": number;
+        /**
+          * Minimum number of items to be displayed when collapsed. Default is `5`
+         */
+        "minItems": number;
+        /**
+          * Optional property to show a search box inside the form
+         */
+        "searchable": boolean;
+        /**
+          * Boolean property to indicate if there should be a shadow around the box valid values are `true` or `false`
+         */
+        "shadow": boolean;
+        /**
+          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+         */
+        "showSelectAll": boolean;
+    }
     interface SeFormField {
         /**
           * Optional property that defines if the field displays as a block in it's container. When set to true, the field will be as wide as its container. both field label auto adjust when it set to inline
@@ -655,6 +701,10 @@ export namespace Components {
           * Determines whether or not the link is disabled.
          */
         "disabled": boolean;
+        /**
+          * Determines whether it's a download link or a url.
+         */
+        "download": boolean;
         /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
@@ -1308,6 +1358,12 @@ declare global {
         prototype: HTMLSeFabItemElement;
         new (): HTMLSeFabItemElement;
     };
+    interface HTMLSeFiltrationElement extends Components.SeFiltration, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationElement: {
+        prototype: HTMLSeFiltrationElement;
+        new (): HTMLSeFiltrationElement;
+    };
     interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {
     }
     var HTMLSeFormFieldElement: {
@@ -1536,6 +1592,7 @@ declare global {
         "se-dropdown": HTMLSeDropdownElement;
         "se-fab": HTMLSeFabElement;
         "se-fab-item": HTMLSeFabItemElement;
+        "se-filtration": HTMLSeFiltrationElement;
         "se-form-field": HTMLSeFormFieldElement;
         "se-header": HTMLSeHeaderElement;
         "se-icon": HTMLSeIconElement;
@@ -2095,6 +2152,57 @@ declare namespace LocalJSX {
          */
         "onDidClick"?: (event: CustomEvent<any>) => void;
     }
+    interface SeFiltration {
+        /**
+          * Boolean property to indicate if the content will be visible or hidden collapsed = `true` => content is shown collapsed = `false` => content is hidden
+         */
+        "collapsed"?: boolean;
+        /**
+          * text to display in the header
+         */
+        "item"?: any;
+        /**
+          * Text for the placeholder. the default is `enter text`
+         */
+        "labelHint"?: string;
+        /**
+          * Variable to show 'Select all'
+         */
+        "labelSelectAll"?: string;
+        /**
+          * Default text to display for viewing less content
+         */
+        "labelViewLess"?: string;
+        /**
+          * Default value to display for viewing more content
+         */
+        "labelViewMore"?: string;
+        /**
+          * Maximum number of items to be displayed when expanded. Default is `10`
+         */
+        "maxItems"?: number;
+        /**
+          * Minimum number of items to be displayed when collapsed. Default is `5`
+         */
+        "minItems"?: number;
+        "onDidSearch"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event emitter for callback to select all items
+         */
+        "onDidSelectAll"?: (event: CustomEvent<any>) => void;
+        /**
+          * Optional property to show a search box inside the form
+         */
+        "searchable"?: boolean;
+        /**
+          * Boolean property to indicate if there should be a shadow around the box valid values are `true` or `false`
+         */
+        "shadow"?: boolean;
+        /**
+          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+         */
+        "showSelectAll"?: boolean;
+    }
     interface SeFormField {
         /**
           * Optional property that defines if the field displays as a block in it's container. When set to true, the field will be as wide as its container. both field label auto adjust when it set to inline
@@ -2240,6 +2348,10 @@ declare namespace LocalJSX {
           * Determines whether or not the link is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Determines whether it's a download link or a url.
+         */
+        "download"?: boolean;
         /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
@@ -2798,6 +2910,7 @@ declare namespace LocalJSX {
         "se-dropdown": SeDropdown;
         "se-fab": SeFab;
         "se-fab-item": SeFabItem;
+        "se-filtration": SeFiltration;
         "se-form-field": SeFormField;
         "se-header": SeHeader;
         "se-icon": SeIcon;
@@ -2861,6 +2974,7 @@ declare module "@stencil/core" {
             "se-dropdown": LocalJSX.SeDropdown & JSXBase.HTMLAttributes<HTMLSeDropdownElement>;
             "se-fab": LocalJSX.SeFab & JSXBase.HTMLAttributes<HTMLSeFabElement>;
             "se-fab-item": LocalJSX.SeFabItem & JSXBase.HTMLAttributes<HTMLSeFabItemElement>;
+            "se-filtration": LocalJSX.SeFiltration & JSXBase.HTMLAttributes<HTMLSeFiltrationElement>;
             "se-form-field": LocalJSX.SeFormField & JSXBase.HTMLAttributes<HTMLSeFormFieldElement>;
             "se-header": LocalJSX.SeHeader & JSXBase.HTMLAttributes<HTMLSeHeaderElement>;
             "se-icon": LocalJSX.SeIcon & JSXBase.HTMLAttributes<HTMLSeIconElement>;

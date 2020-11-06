@@ -14,6 +14,12 @@ export class LinkComponent {
    * Determines whether or not the link is disabled.
    */
   @Prop() disabled: boolean;
+
+  /**
+   * Determines whether it's a download link or a url.
+   */
+  @Prop() download: boolean;
+
   /**
    * Adds visual and function properties to your link component.
    * The default setting is `internal`, which redirects you to the specified URL in the same page.
@@ -26,8 +32,9 @@ export class LinkComponent {
       <a
         href={this.url}
         data-disabled={this.disabled}
-        class={this.option == 'external' ? 'external' : ''}
-        target={this.option == 'external' ? '_blank' : ''}
+        class={this.option === 'external' ? 'external' : ''}
+        target={this.option === 'external' ? '_blank' : ''}
+        download={this.download}
       >
         <slot />
       </a>

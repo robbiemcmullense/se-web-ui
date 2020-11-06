@@ -1545,6 +1545,136 @@
               </se-block-content>
             </se-block>
           </se-container>
+          <se-container>
+            <se-block height="800px">
+              <se-block-content>
+                <se-filtration label="Product type">
+                  <se-list option="dropdown">
+                    <se-list-item item="Apple"></se-list-item>
+                    <se-list-item item="Orange"></se-list-item>
+                    <se-list-item item="Pineapple"></se-list-item>
+                    <se-list-item item="Fig"></se-list-item>
+                    <se-list-item item="Pear"></se-list-item>
+                    <se-list-item item="Custard Apple"></se-list-item>
+                    <se-list-item item="Lemon"></se-list-item>
+                    <se-list-item item="Mango"></se-list-item>
+                    <se-list-item item="Grapes"></se-list-item>
+                    <se-list-item item="Carrot"></se-list-item>
+                    <se-list-item item="Radish"></se-list-item>
+                    <se-list-item item="Pumpkin"></se-list-item>
+                  </se-list>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+            <se-block>
+              <se-block-content>
+                <se-filtration label="Category">
+                  <se-list option="dropdown">
+                    <se-list-item item="Select all"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Software">
+                      <se-checkbox slot="start"></se-checkbox>
+                      <se-button
+                        color="alternative"
+                        icon-only
+                        icon="action_delete_cross"
+                      />
+                    </se-list-item>
+                    <se-list-item item="Hardware"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Infrastructure"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Mechanical"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Electrical"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Information"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Telecommunication"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Healthcare"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                    <se-list-item item="Food"
+                      ><se-checkbox slot="start"></se-checkbox
+                    ></se-list-item>
+                  </se-list>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+            <se-block>
+              <se-block-content>
+                <se-filtration label="Date range">
+                  <se-form-field
+                    option="stacked"
+                    block
+                    label="Start date"
+                    type="input"
+                  >
+                    <input type="date" id="startdate" />
+                  </se-form-field>
+                  <se-form-field
+                    option="stacked"
+                    block
+                    label="End date"
+                    type="input"
+                  >
+                    <input type="date" id="enddate" />
+                  </se-form-field>
+                  <se-button color="secondary" option="outline">Ok</se-button>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+            <se-block>
+              <se-block-content>
+                <se-filtration label="Search order results">
+                  <se-block margin="medium">
+                    <se-form-field
+                      label="Order number"
+                      option="stacked"
+                      type="input"
+                      block
+                    >
+                      <input id="ordernumber" name="ordernumber" type="text" />
+                    </se-form-field>
+                    <se-form-field
+                      label="Purchase order number"
+                      option="stacked"
+                      type="input"
+                      block
+                    >
+                      <input
+                        id="purchaseordernumber"
+                        name="purchaseordernumber"
+                        type="text"
+                      />
+                    </se-form-field>
+                    <se-form-field
+                      label="Catalog number"
+                      option="stacked"
+                      type="input"
+                      block
+                    >
+                      <input
+                        id="catalognumber"
+                        name="catalognumber"
+                        type="text"
+                      />
+                    </se-form-field>
+                    <se-button color="secondary" option="outline">OK</se-button>
+                  </se-block>
+                </se-filtration>
+              </se-block-content>
+            </se-block>
+          </se-container>
+          <!-- <se-container option="fill" style="border: 1px solid black">
           <se-container option="fill" style="border: 1px solid black">
             <se-block width="250px" option="fill">
               <se-list>
@@ -1824,6 +1954,9 @@
                 </se-list-group>
               </se-list>
             </se-block>
+          </se-container> -->
+          <se-container option="fill" display="grid" row-size="400px">
+            <!-- Filtration examples -->
           </se-container>
         </se-container>
       </se-container>
@@ -2079,6 +2212,135 @@
           document.getElementById('slider-value').innerText =
             'Slider Value: ' + event.detail.value;
         });
+
+      document
+        .getElementById('sidemenu-item')
+        .addEventListener('didClick', function (event) {
+          document.querySelector('se-sidemenu').toggle();
+          //alert('this has been clicked');
+          if (document.getElementById('sidemenu-message')) {
+            document.getElementById('sidemenu-message').innerText =
+              'clicked sidemenu close';
+          }
+        });
+
+      document
+        .getElementById('se-chip')
+        .addEventListener('didClose', function (event) {
+          document.getElementById('chip-info').innerText =
+            'you have clicked the chip with value: ' + event.detail;
+        });
+      document
+        .getElementById('on-off-switch-el')
+        .addEventListener('didChange', function (event) {
+          document.getElementById(
+            'switch-message'
+          ).firstElementChild.innerText = event.detail.selected;
+        });
+      document
+        .getElementById('toggle-switch-el')
+        .addEventListener('didChange', function (event) {
+          document.getElementById(
+            'toggle-switch-message'
+          ).firstElementChild.innerText = event.detail.selected;
+        });
+      document
+        .getElementById('RadioGroup1')
+        .addEventListener('didChange', function (event) {
+          document.getElementById('radio-message').firstElementChild.innerText =
+            event.detail;
+        });
+      document
+        .getElementById('btnGroup1')
+        .addEventListener('didChange', function (event) {
+          let checkboxMsg = document.getElementById('checkbox-button-message');
+          checkboxMsg.firstElementChild.innerText = event.detail;
+        });
+      document
+        .getElementById('checkbox-form')
+        .addEventListener('didSubmit', function (event) {
+          document.getElementById(
+            'form-field-message'
+          ).firstElementChild.innerText = 'checkbox, ' + event.detail;
+        });
+      document
+        .getElementById('radio-form')
+        .addEventListener('didSubmit', function (event) {
+          document.getElementById(
+            'form-field-message'
+          ).firstElementChild.innerText = 'radio, ' + event.detail;
+        });
+      document
+        .getElementById('input-form')
+        .addEventListener('didSubmit', function (event) {
+          document.getElementById(
+            'form-field-message'
+          ).firstElementChild.innerText = 'input, ' + event.detail;
+          if (event.detail == 'warning') {
+            document.getElementById('input-form').status = 'warning';
+          } else if (event.detail == 'error') {
+            document.getElementById('input-form').status = 'error';
+          } else if (event.detail == 'success') {
+            document.getElementById('input-form').status = 'success';
+          } else {
+            document.getElementById('input-form').status = '';
+          }
+        });
+      document
+        .getElementById('select-form')
+        .addEventListener('didSubmit', function (event) {
+          document.getElementById(
+            'form-field-message'
+          ).firstElementChild.innerText = 'select, ' + event.detail;
+        });
+      document
+        .getElementById('textarea-form')
+        .addEventListener('didSubmit', function (event) {
+          document.getElementById(
+            'form-field-message'
+          ).firstElementChild.innerText = 'textarea, ' + event.detail;
+        });
+      document
+        .getElementById('radio-button-dot-group')
+        .addEventListener('didCheck', function (event) {
+          document.getElementById('se-radio-value').innerText =
+            event.detail.value;
+        });
+
+      // Stepper
+
+      function toggleStepperMode() {
+        stepperReset();
+        let stepper = document.getElementById('se-stepper');
+        let stepperText = document.getElementById('stepper-mode');
+        if (stepper.linear) {
+          stepper.linear = false;
+          stepperText.innerText = 'non-linear';
+        } else if (!stepper.linear) {
+          stepper.linear = true;
+          stepperText.innerText = 'linear';
+        }
+        console.log(document.getElementById('stepper-mode').innerHTML);
+      }
+
+      function toggleStepperColor() {
+        const stepper = document.getElementById('se-stepper');
+        const stepperColorText = document.getElementById('stepper-color');
+        const stepperContent = document.getElementById('stepper-content');
+        if (stepper.color == 'primary') {
+          stepper.color = 'alternative';
+          stepperColorText.innerText = 'Alternative';
+          stepperContent.classList.add('dark');
+        } else if (stepper.color == 'alternative') {
+          stepper.color = 'primary';
+          stepperColorText.innerText = 'Primary';
+          stepperContent.classList.remove('dark');
+        }
+      }
+
+      function validateStepperItem(value) {
+        document.getElementById(value).validated = true;
+      }
 
       document
         .getElementById('sidemenu-item')

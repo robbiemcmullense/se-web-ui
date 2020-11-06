@@ -3,6 +3,7 @@ import {
   SeContainer,
   SeBlock,
   SeBlockHeader,
+  SeBlockFooter,
   SeButton,
   SeBlockContent,
   SeCheckbox,
@@ -17,7 +18,6 @@ import {
   SeDialogContent,
   SeIcon,
   SeDialogFooter,
-  SeFormField,
 } from '@se/web-ui-react';
 
 // import Widget from '../components/widget';
@@ -33,8 +33,13 @@ const listItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 class Dashboard extends Component<DashboardProps> {
   state = {
     listItems,
+    searchText: '',
+    scrollable: false,
+    scrollCategories: false,
+    scrollProducts: true,
+    canViewProducts: false,
+    viewMoreProducts: true,
     isDlgOpen: false,
-    scrollPage: false,
     formFields: [
       { id: 'firstname', label: 'First Name', hint: 'enter first name' },
       { id: 'lastname', label: 'Last Name', hint: 'enter last name' },
@@ -54,6 +59,7 @@ class Dashboard extends Component<DashboardProps> {
         hint: 'post graduation',
       },
     ],
+    showDialog: false,
   };
 
   changePage(i) {
@@ -74,7 +80,7 @@ class Dashboard extends Component<DashboardProps> {
   };
 
   openDialog = () => {
-    this.setState({ isDlgOpen: true });
+    this.setState({ isDlgOpen: !this.state.isDlgOpen });
   };
   closeDialog = () => {
     this.setState({ isDlgOpen: false });
@@ -160,60 +166,7 @@ class Dashboard extends Component<DashboardProps> {
             </SeStepper>
           </SeBlockContent>
         </SeBlock>
-        <SeBlock>
-          <h4>Dialog Demo</h4>
-          <SeCheckbox
-            selected={this.state.scrollPage}
-            onDidChange={e =>
-              this.setState({ scrollPage: !this.state.scrollPage })
-            }
-            label="Scroll Page?"
-          />
-          <SeButton
-            icon="notification_ok_wired"
-            onClick={() => this.openDialog()}
-          >
-            Open Dialog
-          </SeButton>
-          <SeDialog
-            id="dlg1"
-            canBackdrop={false}
-            open={this.state.isDlgOpen}
-            pageScroll={this.state.scrollPage}
-          >
-            <SeDialogHeader>
-              Personal Information
-              <div slot="end">
-                <SeButton
-                  onClick={() => this.closeDialog()}
-                  iconOnly
-                  icon="action_close"
-                ></SeButton>
-              </div>
-            </SeDialogHeader>
-            <SeDialogContent>
-              <SeContainer>
-                <SeBlock>
-                  {this.state.formFields.map(f => (
-                    <SeFormField
-                      option="stacked"
-                      id={f.id}
-                      label={f.label}
-                      type="input"
-                    >
-                      <input type="text" placeholder={f.hint} />
-                    </SeFormField>
-                  ))}
-                </SeBlock>
-              </SeContainer>
-            </SeDialogContent>
-            <SeDialogFooter>
-              <SeButton onClick={() => this.closeDialog()} icon="action_close">
-                Cancel
-              </SeButton>
-            </SeDialogFooter>
-          </SeDialog>
-        </SeBlock>
+        <SeDivider option="vertical"></SeDivider>
       </SeContainer>
     );
   }

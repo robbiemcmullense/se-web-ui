@@ -149,8 +149,18 @@ class Docs extends Component<null, MyState> {
         <SeDialog id="complex" open={this.state.showDialogComplex}>
           <SeDialogHeader>My awesome title</SeDialogHeader>
           <SeDialogContent>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
           </SeDialogContent>
           <SeDialogFooter>
             <SeButton
