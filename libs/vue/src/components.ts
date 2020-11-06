@@ -380,15 +380,19 @@ export const SeFabItem = /*@__PURE__*/ Vue.extend({
 
 export const SeFiltration = /*@__PURE__*/ Vue.extend({
   props: {
-    labelSelect: {} as PropOptions<Components.SeFiltration['labelSelect']>,
+    item: {} as PropOptions<Components.SeFiltration['item']>,
     labelHint: {} as PropOptions<Components.SeFiltration['labelHint']>,
     collapsed: {} as PropOptions<Components.SeFiltration['collapsed']>,
     shadow: {} as PropOptions<Components.SeFiltration['shadow']>,
     labelViewMore: {} as PropOptions<Components.SeFiltration['labelViewMore']>,
     labelViewLess: {} as PropOptions<Components.SeFiltration['labelViewLess']>,
+    labelSelectAll: {} as PropOptions<
+      Components.SeFiltration['labelSelectAll']
+    >,
     minItems: {} as PropOptions<Components.SeFiltration['minItems']>,
     maxItems: {} as PropOptions<Components.SeFiltration['maxItems']>,
-    selectAll: {} as PropOptions<Components.SeFiltration['selectAll']>,
+    showSelectAll: {} as PropOptions<Components.SeFiltration['showSelectAll']>,
+    searchable: {} as PropOptions<Components.SeFiltration['searchable']>,
   },
 
   render: createCommonRender('se-filtration', ['didSearch', 'didSelectAll']),
@@ -471,6 +475,7 @@ export const SeLink = /*@__PURE__*/ Vue.extend({
   props: {
     url: {} as PropOptions<Components.SeLink['url']>,
     disabled: {} as PropOptions<Components.SeLink['disabled']>,
+    download: {} as PropOptions<Components.SeLink['download']>,
     option: {} as PropOptions<Components.SeLink['option']>,
   },
 

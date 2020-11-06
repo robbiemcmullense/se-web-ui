@@ -520,13 +520,17 @@ export namespace Components {
          */
         "collapsed": boolean;
         /**
+          * text to display in the header
+         */
+        "item": any;
+        /**
           * Text for the placeholder. the default is `enter text`
          */
         "labelHint": string;
         /**
-          * text to display in the header
+          * Variable to show 'Select all'
          */
-        "labelSelect": string;
+        "labelSelectAll": string;
         /**
           * Default text to display for viewing less content
          */
@@ -536,7 +540,7 @@ export namespace Components {
          */
         "labelViewMore": string;
         /**
-          * Maximum number of items to be displayed when expanded. Default is `20`
+          * Maximum number of items to be displayed when expanded. Default is `10`
          */
         "maxItems": number;
         /**
@@ -544,13 +548,17 @@ export namespace Components {
          */
         "minItems": number;
         /**
-          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+          * Optional property to show a search box inside the form
          */
-        "selectAll": boolean;
+        "searchable": boolean;
         /**
           * Boolean property to indicate if there should be a shadow around the box valid values are `true` or `false`
          */
         "shadow": boolean;
+        /**
+          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+         */
+        "showSelectAll": boolean;
     }
     interface SeFormField {
         /**
@@ -693,6 +701,10 @@ export namespace Components {
           * Determines whether or not the link is disabled.
          */
         "disabled": boolean;
+        /**
+          * Determines whether it's a download link or a url.
+         */
+        "download": boolean;
         /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
@@ -2146,13 +2158,17 @@ declare namespace LocalJSX {
          */
         "collapsed"?: boolean;
         /**
+          * text to display in the header
+         */
+        "item"?: any;
+        /**
           * Text for the placeholder. the default is `enter text`
          */
         "labelHint"?: string;
         /**
-          * text to display in the header
+          * Variable to show 'Select all'
          */
-        "labelSelect"?: string;
+        "labelSelectAll"?: string;
         /**
           * Default text to display for viewing less content
          */
@@ -2162,29 +2178,30 @@ declare namespace LocalJSX {
          */
         "labelViewMore"?: string;
         /**
-          * Maximum number of items to be displayed when expanded. Default is `20`
+          * Maximum number of items to be displayed when expanded. Default is `10`
          */
         "maxItems"?: number;
         /**
           * Minimum number of items to be displayed when collapsed. Default is `5`
          */
         "minItems"?: number;
-        /**
-          * Event emitter for callback with the searched text
-         */
         "onDidSearch"?: (event: CustomEvent<any>) => void;
         /**
           * Event emitter for callback to select all items
          */
         "onDidSelectAll"?: (event: CustomEvent<any>) => void;
         /**
-          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+          * Optional property to show a search box inside the form
          */
-        "selectAll"?: boolean;
+        "searchable"?: boolean;
         /**
           * Boolean property to indicate if there should be a shadow around the box valid values are `true` or `false`
          */
         "shadow"?: boolean;
+        /**
+          * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
+         */
+        "showSelectAll"?: boolean;
     }
     interface SeFormField {
         /**
@@ -2331,6 +2348,10 @@ declare namespace LocalJSX {
           * Determines whether or not the link is disabled.
          */
         "disabled"?: boolean;
+        /**
+          * Determines whether it's a download link or a url.
+         */
+        "download"?: boolean;
         /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */

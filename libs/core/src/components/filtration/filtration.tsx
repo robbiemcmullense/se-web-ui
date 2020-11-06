@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Event, Element } from '@stencil/core';
+import { Component, h, Prop, State, Event, Element, Host } from '@stencil/core';
 import { EventEmitter } from 'events';
 
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
@@ -8,13 +8,18 @@ import actionSearchStroke from '@se/icons/svg/action_search_stroke.svg';
 @Component({
   tag: 'se-filtration',
   styleUrl: 'filtration.scss',
+  shadow: true,
 })
 export class FiltrationComponent {
   @Element() el: HTMLElement;
+  observer;
+  mobileMedia;
+  nbItemOffset = 2;
+
   /**
    * text to display in the header
    */
-  @Prop() labelSelect = 'Select';
+  @Prop() item;
   /**
    * Text for the placeholder. the default is `enter text`
    */
@@ -24,6 +29,7 @@ export class FiltrationComponent {
    * collapsed = `true` => content is shown
    * collapsed = `false` => content is hidden
    */
+
   @Prop({ mutable: true }) collapsed = true;
   /**
    * Boolean property to indicate if there should be a shadow around the box
@@ -39,67 +45,49 @@ export class FiltrationComponent {
    */
   @Prop() labelViewLess = 'View Less';
   /**
+   * Variable to show 'Select all'
+   */
+  @Prop() labelSelectAll = 'Select All';
+  /**
    * Minimum number of items to be displayed when collapsed. Default is `5`
    */
   @Prop() minItems = 5;
   /**
-   * Maximum number of items to be displayed when expanded. Default is `20`
+   * Maximum number of items to be displayed when expanded. Default is `10`
    */
-  @Prop() maxItems = 20;
+  @Prop() maxItems = 10;
   /**
    * Optional property to indicate if multiple selections will be made
    * `true` = multiple selection | `false` = single selection
    */
-  @Prop() selectAll = false;
+  @Prop() showSelectAll = false;
+
   /**
-   * Event emitter for callback with the searched text
+   * Optional property to show a search box inside the form
    */
+  @Prop() searchable = false;
+
   @Event() didSearch: EventEmitter;
   /**
    * Event emitter for callback to select all items
    */
   @Event() didSelectAll: EventEmitter;
-  /**
-   * Variable to store the text to search
-   */
-  @State() searchText = '';
-  /**
-   * Boolean variable to denote if there are list items and search box can be shown.
-   * If there are no list items, then the search box will not be displayed.
-   */
-  @State() searchable = false;
-  /**
-   * Boolean variable to denote if the user has clicked `View More` or `View Less`
-   * `true` would mean the user has clicked `View More` and the component is expanded
-   * `false` would mean the user has clicked `View Less` and the component is collapsed
-   */
-  @State() isViewingMore = false;
-  /**
-   * Variable to store the height of the content area when expanded and collapsed. It is
-   * computed based on the `minItems` and `maxItems` computed at run time.
-   */
-  @State() listboxHeight = '';
-  /**
-   * Variable to store how many more items the user would see when he clicks `View More` link
-   */
-  @State() viewMoreCount = 0;
-  /**
-   * Variable to show 'Select all'
-   */
-  @State() selectAllLink = 'Select All';
-  /**
-   * Function to set the text that user would enter to search
-   * @param e Object
-   */
+
+  @State() searchValue = '';
+  @State() canViewMore = false;
+  @State() isViewMore = false;
+  @State() items: HTMLElement[] = [];
+  @State() isMobile: boolean;
+
   setSearch = e => {
-    this.searchText = e.target.value;
-    this.didSearch.emit(this.searchText);
+    this.searchValue = e.target.value;
+    this.didSearch.emit(this.searchValue);
   };
   /**
    * Function to clear search text
    */
   clearSearch = () => {
-    this.searchText = '';
+    this.searchValue = '';
     this.didSearch.emit('');
   };
   /**
@@ -107,13 +95,61 @@ export class FiltrationComponent {
    */
   setExpanded() {
     this.collapsed = !this.collapsed;
-    this.isViewingMore = false;
+    this.isViewMore = false;
   }
   /**
    * Function to set flag when user clicked `View More` or `Veiw Less`
    */
   setViewMore() {
-    this.isViewingMore = !this.isViewingMore;
+    this.isViewMore = !this.isViewMore;
+  }
+
+  watchItemList() {
+    // If we add a list of item after the component is loaded, we need
+    // to update the node and re-calculate the show more/less feature
+    this.observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.addedNodes.length || mutation.removedNodes.length) {
+          this.setItemsArray();
+        }
+      });
+    });
+    this.observer.observe(this.el, { childList: true });
+  }
+
+  setItemsArray() {
+    this.items = Array.from(this.el.querySelectorAll('se-list-item')).filter(
+      (item: any) => {
+        // const closeList = item.closest('se-list');
+        // Make sure we only change the style of the current list.
+        // If there is a another list like a dropdown, we should ignore it.
+        return item.parentElement === this.el;
+      }
+    );
+    console.log('this.items.length', this.items.length);
+    this.canViewMore = this.items.length > this.minItems + this.nbItemOffset;
+  }
+
+  componentDidLoad() {
+    this.setItemsArray();
+  }
+
+  componentWillLoad() {
+    this.mobileMedia = window.matchMedia('only screen and (max-width: 601px)');
+    // Initialize isMobile variable
+    this.isMobile = this.mobileMedia.matches;
+    // Add listener for future change
+    this.mobileMedia.addListener(
+      mediaQuery => (this.isMobile = mediaQuery.matches)
+    );
+    this.watchItemList();
+  }
+
+  componentWillUnload() {
+    if (this.mobileMedia) {
+      this.mobileMedia.removeListener();
+    }
+    this.observer.disconnect();
   }
   /**
    * Function to emit event to select all items
@@ -123,57 +159,58 @@ export class FiltrationComponent {
   }
 
   render() {
-    const listitems = this.el.querySelectorAll('se-list-item');
-    this.searchable = listitems.length > 0;
-    let lbHeight = 0; // - effective list box height -
-    let n = 0; // - to store number of items initially displayed -
-    /**
-     * to compute the height of the content when expanded and collapsed
-     */
-    if (this.searchable) {
-      const minItems = this.isViewingMore ? this.maxItems : this.minItems;
-      setTimeout(() => {
-        listitems.forEach(li => {
-          if (n < minItems) {
-            n++;
-            lbHeight += li.offsetHeight;
-          }
-        });
-        this.viewMoreCount = listitems.length - n;
-        this.listboxHeight = `${lbHeight}px`;
-      }, 10);
-    } else {
-      this.listboxHeight = 'auto';
+    const nbItems = this.items?.length;
+    let listboxHeight = 'auto';
+
+    if (nbItems) {
+      // calculate height of an element
+      const firstItemHeight = window
+        .getComputedStyle(this.items[0])
+        .getPropertyValue('--se-list-item-height');
+      const height = parseInt(firstItemHeight, 10);
+      if (this.isViewMore) {
+        // if we have a bit more item, than max item, we still show all item
+        listboxHeight = `${height * this.maxItems}px`;
+      } else if (nbItems > this.minItems + this.nbItemOffset) {
+        listboxHeight = `${height * this.minItems}px`;
+      }
     }
-    console.log('> viewMoreCount: ', this.viewMoreCount);
     return (
-      <se-block
-        divider
-        margin="none"
-        option={this.shadow ? 'card-old' : 'fill'}
-      >
-        <se-block-header>
-          <div>
-            {this.labelSelect}
-            <div class="selected-values">
-              <slot name="selectedItem"></slot>
+      <Host class={{ isMobile: this.isMobile }}>
+        <se-block
+          class={{ shadow: this.shadow, isMobile: this.isMobile }}
+          corner={this.isMobile ? 'none' : 'small'}
+          margin={this.isMobile ? 'none' : this.shadow ? 'medium' : 'small'}
+          option={this.shadow && !this.isMobile ? 'card-old' : 'card'}
+        >
+          <se-block-header option="fill" divider>
+            <h5 class="header-title">
+              <bold>{this.item}</bold>
+              <div class="selected-values">
+                <slot name="selectedItem"></slot>
+              </div>
+            </h5>
+            <div slot="end">
+              <se-icon
+                color="standard"
+                icon-only
+                size="medium"
+                onClick={() => this.setExpanded()}
+              >
+                <span
+                  class="link"
+                  innerHTML={this.collapsed ? arrow2Up : arrow2Down}
+                ></span>
+              </se-icon>
             </div>
-          </div>
-          <div slot="end">
-            <se-icon
-              color="standard"
-              icon-only
-              onClick={() => this.setExpanded()}
-            >
-              <span
-                class="link"
-                innerHTML={this.collapsed ? arrow2Up : arrow2Down}
-              ></span>
-            </se-icon>
-          </div>
-        </se-block-header>
-        <se-block-content option="fill">
-          <div class={{ panel: true, active: this.collapsed }}>
+          </se-block-header>
+          <div
+            class={{
+              panel: true,
+              active: this.collapsed,
+              'background-standard': this.isMobile,
+            }}
+          >
             {this.searchable && (
               <div>
                 <se-form-field type="input" option="stacked" block>
@@ -183,7 +220,7 @@ export class FiltrationComponent {
                       placeholder={this.labelHint}
                       onInput={this.setSearch}
                     />
-                    <se-icon size="small" style={{ marginLeft: '4px' }}>
+                    <se-icon class="icon-collapse">
                       <span innerHTML={actionSearchStroke}></span>
                     </se-icon>
                   </div>
@@ -192,12 +229,12 @@ export class FiltrationComponent {
             )}
             <div
               style={{
-                height: this.isViewingMore ? '300px' : this.listboxHeight,
+                height: listboxHeight,
               }}
               class={{
                 content: true,
-                active: this.collapsed && this.collapsed,
-                scroll: this.isViewingMore,
+                active: this.collapsed,
+                scroll: this.isViewMore,
               }}
             >
               <se-list option="dropdown" selected-color="primary">
@@ -205,32 +242,38 @@ export class FiltrationComponent {
               </se-list>
             </div>
           </div>
-        </se-block-content>
-        {this.collapsed && this.searchable && (
-          <se-block-footer divider={false}>
-            <div
-              class={{ 'view-more': true, active: this.collapsed }}
-              slot="start"
-              onClick={() => this.setViewMore()}
-            >
-              {this.isViewingMore
-                ? this.labelViewLess
-                : `${this.labelViewMore} (${this.viewMoreCount})`}
-              <se-icon>
-                <span
-                  innerHTML={this.isViewingMore ? arrow2Up : arrow2Down}
-                ></span>
-              </se-icon>
-            </div>
-            <div
-              class={{ 'select-all': true, active: this.selectAll }}
-              onClick={() => this.selectAllItems()}
-            >
-              {this.selectAllLink}
-            </div>
-          </se-block-footer>
-        )}
-      </se-block>
+          {(this.canViewMore || this.showSelectAll) && (
+            <se-block-footer>
+              {this.canViewMore ? (
+                <div
+                  class={{ 'view-more': true, active: this.collapsed }}
+                  slot="start"
+                  onClick={() => this.setViewMore()}
+                >
+                  {this.isViewMore
+                    ? this.labelViewLess
+                    : `${this.labelViewMore} (${nbItems - this.minItems})`}
+                  <se-icon>
+                    <span
+                      innerHTML={this.isViewMore ? arrow2Up : arrow2Down}
+                    ></span>
+                  </se-icon>
+                </div>
+              ) : (
+                ''
+              )}
+              {this.showSelectAll ? (
+                <div class="select-all" onClick={() => this.selectAllItems()}>
+                  {this.labelSelectAll}
+                  {this.searchValue.length ? `(${nbItems})` : ''}
+                </div>
+              ) : (
+                ''
+              )}
+            </se-block-footer>
+          )}
+        </se-block>
+      </Host>
     );
   }
 }

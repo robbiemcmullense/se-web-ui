@@ -16,13 +16,11 @@
 
 ### Used by
 
- - [se-filtration](../filtration)
  - [se-sidemenu](../sidemenu)
 
 ### Graph
 ```mermaid
 graph TD;
-  se-filtration --> se-block-content
   se-sidemenu --> se-block-content
   style se-block-content fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -491,17 +491,17 @@ export class SeFabItem {
 import { FiltrationComponent as IFiltrationComponent } from 'dist/libs/core/types/components/filtration/filtration';
 export declare interface SeFiltration extends Components.SeFiltration {}
 @ProxyCmp({
-  inputs: ['collapsed', 'labelHint', 'labelSelect', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'selectAll', 'shadow']
+  inputs: ['collapsed', 'item', 'labelHint', 'labelSelectAll', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'searchable', 'shadow', 'showSelectAll']
 })
 @Component({
   selector: 'se-filtration',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['collapsed', 'labelHint', 'labelSelect', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'selectAll', 'shadow'],
+  inputs: ['collapsed', 'item', 'labelHint', 'labelSelectAll', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'searchable', 'shadow', 'showSelectAll'],
   outputs: ['didSearch', 'didSelectAll']
 })
 export class SeFiltration {
-  /** Event emitter for callback with the searched text */
+  /**  */
   didSearch!: IFiltrationComponent['didSearch'];
   /** Event emitter for callback to select all items */
   didSelectAll!: IFiltrationComponent['didSelectAll'];
@@ -650,13 +650,13 @@ export class SeIconSchneider {
 
 export declare interface SeLink extends Components.SeLink {}
 @ProxyCmp({
-  inputs: ['disabled', 'option', 'url']
+  inputs: ['disabled', 'download', 'option', 'url']
 })
 @Component({
   selector: 'se-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'option', 'url']
+  inputs: ['disabled', 'download', 'option', 'url']
 })
 export class SeLink {
   protected el: HTMLElement;
