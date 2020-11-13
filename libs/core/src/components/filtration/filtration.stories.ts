@@ -47,9 +47,6 @@ storiesOf('Filtration', module)
               <se-list-item item="Pumpkin"></se-list-item>
             </se-filtration>
             <se-filtration shadow=${shadow} item="Multi Select" show-select-all searchable=${searchable}>
-              <se-list-item item="Select all">
-                <se-checkbox selected=${selectedAll} slot="start"></se-checkbox>
-              </se-list-item>
               <se-list-item item="Software">
                 <se-checkbox selected=${
                   selectedMultiple || selectedAll

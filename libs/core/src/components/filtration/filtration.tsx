@@ -66,6 +66,10 @@ export class FiltrationComponent {
    * Optional property to show a search box inside the form
    */
   @Prop() searchable = false;
+  /**
+   * The search value in the search field. Mostly used to clear the search box when needed.
+   */
+  @Prop({ mutable: true }) search: string;
 
   @Event() didSearch: EventEmitter;
   /**
@@ -73,22 +77,14 @@ export class FiltrationComponent {
    */
   @Event() didSelectAll: EventEmitter;
 
-  @State() searchValue = '';
   @State() canViewMore = false;
   @State() isViewMore = false;
   @State() items: HTMLElement[] = [];
   @State() isMobile: boolean;
 
   setSearch = e => {
-    this.searchValue = e.target.value;
-    this.didSearch.emit(this.searchValue);
-  };
-  /**
-   * Function to clear search text
-   */
-  clearSearch = () => {
-    this.searchValue = '';
-    this.didSearch.emit('');
+    this.search = e.target.value;
+    this.didSearch.emit(this.search);
   };
   /**
    * Function to set the dropdown expanded
@@ -123,10 +119,12 @@ export class FiltrationComponent {
         // const closeList = item.closest('se-list');
         // Make sure we only change the style of the current list.
         // If there is a another list like a dropdown, we should ignore it.
-        return item.parentElement === this.el;
+        return (
+          item.closest('se-filtration, se-list, se-list-group') === this.el
+        );
       }
     );
-    console.log('this.items.length', this.items.length);
+    // console.log('this.items.length', this.items.length);
     this.canViewMore = this.items.length > this.minItems + this.nbItemOffset;
   }
 
@@ -184,7 +182,7 @@ export class FiltrationComponent {
           option={this.shadow && !this.isMobile ? 'card-old' : 'card'}
         >
           <se-block-header option="fill" divider>
-            <h5 class="header-title">
+            <h5>
               <bold>{this.item}</bold>
               <div class="selected-values">
                 <slot name="selectedItem"></slot>
@@ -228,50 +226,44 @@ export class FiltrationComponent {
               </div>
             )}
             <div
-              style={{
-                height: listboxHeight,
-              }}
-              class={{
-                content: true,
-                active: this.collapsed,
-                scroll: this.isViewMore,
-              }}
+              style={{ height: listboxHeight }}
+              class={{ content: true, scroll: this.isViewMore }}
             >
               <se-list option="dropdown" selected-color="primary">
                 <slot></slot>
               </se-list>
             </div>
+            {(this.canViewMore || this.showSelectAll) && (
+              <se-block-footer>
+                {this.canViewMore ? (
+                  <div
+                    class={{ 'view-more': true, active: this.collapsed }}
+                    slot="start"
+                    onClick={() => this.setViewMore()}
+                  >
+                    {this.isViewMore
+                      ? this.labelViewLess
+                      : `${this.labelViewMore} (${nbItems - this.minItems})`}
+                    <se-icon>
+                      <span
+                        innerHTML={this.isViewMore ? arrow2Up : arrow2Down}
+                      ></span>
+                    </se-icon>
+                  </div>
+                ) : (
+                  ''
+                )}
+                {this.showSelectAll ? (
+                  <div class="select-all" onClick={() => this.selectAllItems()}>
+                    {this.labelSelectAll}
+                    {this.search.length ? `(${nbItems})` : ''}
+                  </div>
+                ) : (
+                  ''
+                )}
+              </se-block-footer>
+            )}
           </div>
-          {(this.canViewMore || this.showSelectAll) && (
-            <se-block-footer>
-              {this.canViewMore ? (
-                <div
-                  class={{ 'view-more': true, active: this.collapsed }}
-                  slot="start"
-                  onClick={() => this.setViewMore()}
-                >
-                  {this.isViewMore
-                    ? this.labelViewLess
-                    : `${this.labelViewMore} (${nbItems - this.minItems})`}
-                  <se-icon>
-                    <span
-                      innerHTML={this.isViewMore ? arrow2Up : arrow2Down}
-                    ></span>
-                  </se-icon>
-                </div>
-              ) : (
-                ''
-              )}
-              {this.showSelectAll ? (
-                <div class="select-all" onClick={() => this.selectAllItems()}>
-                  {this.labelSelectAll}
-                  {this.searchValue.length ? `(${nbItems})` : ''}
-                </div>
-              ) : (
-                ''
-              )}
-            </se-block-footer>
-          )}
         </se-block>
       </Host>
     );

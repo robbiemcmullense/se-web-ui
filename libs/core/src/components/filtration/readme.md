@@ -22,6 +22,7 @@
 | `labelViewMore`  | `label-view-more`  | Default value to display for viewing more content                                                                                                     | `string`  | `'View More'`  |
 | `maxItems`       | `max-items`        | Maximum number of items to be displayed when expanded. Default is `10`                                                                                | `number`  | `10`           |
 | `minItems`       | `min-items`        | Minimum number of items to be displayed when collapsed. Default is `5`                                                                                | `number`  | `5`            |
+| `search`         | `search`           | The search value in the search field. Mostly used to clear the search box when needed.                                                                | `string`  | `undefined`    |
 | `searchable`     | `searchable`       | Optional property to show a search box inside the form                                                                                                | `boolean` | `false`        |
 | `shadow`         | `shadow`           | Boolean property to indicate if there should be a shadow around the box valid values are `true` or `false`                                            | `boolean` | `false`        |
 | `showSelectAll`  | `show-select-all`  | Optional property to indicate if multiple selections will be made `true` = multiple selection \| `false` = single selection                           | `boolean` | `false`        |

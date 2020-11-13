@@ -153,66 +153,61 @@ class Filtration extends Component {
           </SeBlockHeader>
           {/** Single Select */}
           <SeFiltration
-            label-select="Products - single select"
+            item="Single select"
             label-hint="product"
             shadow
+            searchable
             onDidSearch={this.setProductSearch}
           >
             <div slot="selectedItem">{this.state.selectedProduct}</div>
-            <div>
-              {demoItems
-                .filter(f =>
-                  new RegExp(this.state.searchProductText, 'gi').test(f)
-                )
-                .map(li => (
-                  <SeListItem
-                    key={li}
-                    item={li}
-                    selected={this.isSelectedProduct(li)}
-                    onClick={() => this.selectProduct(li)}
-                  >
-                    {this.isSelectedProduct(li) && (
-                      <SeIcon option="button">action_delete_cross</SeIcon>
-                    )}
-                  </SeListItem>
-                ))}
-            </div>
+            {demoItems
+              .filter(f =>
+                new RegExp(this.state.searchProductText, 'gi').test(f)
+              )
+              .map(li => (
+                <SeListItem
+                  key={li}
+                  item={li}
+                  selected={this.isSelectedProduct(li)}
+                  onClick={() => this.selectProduct(li)}
+                >
+                  {this.isSelectedProduct(li) && (
+                    <SeIcon option="button">action_delete_cross</SeIcon>
+                  )}
+                </SeListItem>
+              ))}
           </SeFiltration>
           {/** Multi select */}
           <SeFiltration
-            label-select="Categories - multi select"
+            item="Multi select"
             label-hint="category"
-            select-all
+            showSelectAll
+            searchable
             onDidSearch={this.setCategorySearch}
             onDidSelectAll={() => this.selectAllCategories()}
           >
             <div slot="selectedItem">
               {this.state.selectedCategories.join(', ')}
             </div>
-            <div>
-              {categories
-                .filter(f =>
-                  new RegExp(this.state.searchCategoryText, 'gi').test(f)
-                )
-                .map(li => (
-                  <SeListItem
-                    key={li}
-                    item={li}
-                    onClick={() => this.selectCategory(li)}
-                  >
-                    <SeCheckbox
-                      selected={this.isSelectedCategory(li)}
-                      slot="start"
-                    ></SeCheckbox>
-                  </SeListItem>
-                ))}
-            </div>
+            {categories
+              .filter(f =>
+                new RegExp(this.state.searchCategoryText, 'gi').test(f)
+              )
+              .map(li => (
+                <SeListItem
+                  key={li}
+                  item={li}
+                  onClick={() => this.selectCategory(li)}
+                >
+                  <SeCheckbox
+                    selected={this.isSelectedCategory(li)}
+                    slot="start"
+                  ></SeCheckbox>
+                </SeListItem>
+              ))}
           </SeFiltration>
           {/** Date range */}
-          <SeFiltration
-            label-select="Date Range"
-            collapsed={this.state.isCollapsed}
-          >
+          <SeFiltration item="Date Range" collapsed={this.state.isCollapsed}>
             <div slot="selectedItem">{`start-date: ${
               this.state.dateRange.startDate || '??'
             } | end-date: ${this.state.dateRange.endDate || '??'}`}</div>
@@ -250,7 +245,7 @@ class Filtration extends Component {
             </SeBlock>
           </SeFiltration>
           {/** Search order results */}
-          <SeFiltration label-select="Search order results">
+          <SeFiltration item="Search order results">
             <SeBlock margin="medium">
               <SeFormField
                 label="Order number"

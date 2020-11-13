@@ -548,6 +548,10 @@ export namespace Components {
          */
         "minItems": number;
         /**
+          * The search value in the search field. Mostly used to clear the search box when needed.
+         */
+        "search": string;
+        /**
           * Optional property to show a search box inside the form
          */
         "searchable": boolean;
@@ -2190,6 +2194,10 @@ declare namespace LocalJSX {
           * Event emitter for callback to select all items
          */
         "onDidSelectAll"?: (event: CustomEvent<any>) => void;
+        /**
+          * The search value in the search field. Mostly used to clear the search box when needed.
+         */
+        "search"?: string;
         /**
           * Optional property to show a search box inside the form
          */

@@ -393,6 +393,7 @@ export const SeFiltration = /*@__PURE__*/ Vue.extend({
     maxItems: {} as PropOptions<Components.SeFiltration['maxItems']>,
     showSelectAll: {} as PropOptions<Components.SeFiltration['showSelectAll']>,
     searchable: {} as PropOptions<Components.SeFiltration['searchable']>,
+    search: {} as PropOptions<Components.SeFiltration['search']>,
   },
 
   render: createCommonRender('se-filtration', ['didSearch', 'didSelectAll']),

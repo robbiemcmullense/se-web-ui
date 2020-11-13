@@ -8,11 +8,7 @@
   }
 }
 .content {
-  display: none;
-  &.active {
-    display: block;
-    overflow: hidden;
-  }
+  overflow: hidden;
   &.scroll {
     overflow-y: auto;
   }
@@ -49,10 +45,9 @@
   margin-left: $spacing-small;
 }
 
-.header-title {
-  padding: $spacing-small $spacing-small $spacing-small $spacing-large;
-}
 h5 {
+  padding: $spacing-small $spacing-small $spacing-small
+    ($spacing-large - $spacing-small);
   @include typology("h5");
 }
 

@@ -46,13 +46,13 @@ storiesOf('Skeleton', module)
 
       return `
       <se-block width="300px">
-      <se-list>
-        ${item}
-        ${item}
-        ${item}
-        ${item}
-        ${item}
-        <se-list
+        <se-list>
+          ${item}
+          ${item}
+          ${item}
+          ${item}
+          ${item}
+        </se-list>
       </div>
     `;
     },

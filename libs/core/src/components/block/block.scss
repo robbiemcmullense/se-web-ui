@@ -1,29 +1,28 @@
-
-
 :host {
   position: relative;
   @include display-flex();
-}
-:host(.block-flex){
   width: 100%;
   height: 100%;
+}
+:host(.block-flex) {
   @include flex-direction(column);
 }
-:host(.block-block){
+
+:host(.block-block),
+:host([display="block"]) {
   width: auto;
   height: auto;
   .block-body {
     overflow: unset;
   }
 }
-:host(.block-grid){
-  width: 100%;
-  height: 100%;
+:host(.block-grid),
+:host([display="grid"]) {
   .block-body {
     overflow: unset;
   }
 }
-:host(.grid-large){
+:host(.grid-large) {
   grid-column: span 2;
   grid-row: span 2;
 }
@@ -40,27 +39,29 @@
 }
 
 .clickable {
-  &, &-nobar {
+  &,
+  &-nobar {
     position: relative;
   }
-  &:hover, &-nobar:hover {
+  &:hover,
+  &-nobar:hover {
     cursor: pointer;
-    box-shadow: 0 0 16px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.15);
   }
   &:not(-nobar):hover:before {
-    @include background-color('primary');
+    @include background-color("primary");
     height: 3px;
   }
   &:not(-nobar):before {
-    content: '';
-    background: rgba(255,255,255,0);
+    content: "";
+    background: rgba(255, 255, 255, 0);
     position: absolute;
     top: 0;
     left: 0;
     width: calc(100%);
     max-width: calc(100%);
     text-align: center;
-    transition: .2s;
+    transition: 0.2s;
   }
   &.corner {
     &-none:before {
@@ -76,7 +77,7 @@
 }
 
 .block-body {
-  transition: .2s;
+  transition: 0.2s;
   overflow: auto;
   @include flex();
   @include display-flex();
@@ -91,11 +92,12 @@
     border-radius: 4px;
     margin: $spacing-large;
     border: 1px solid;
-    @include border-color('divider');
+    @include border-color("divider");
     &-old {
       border-radius: 4px;
       margin: $spacing-large;
-      box-shadow: 0 0 1px 0 rgba(51,51,51,0.14), 0 2px 7px 0 rgba(51,51,51,0.2);
+      box-shadow: 0 0 1px 0 rgba(51, 51, 51, 0.14),
+        0 2px 7px 0 rgba(51, 51, 51, 0.2);
     }
   }
   &.corner {
@@ -133,22 +135,20 @@
     }
     &-primary {
       border: 1px solid;
-      @include border-color('primary');
+      @include border-color("primary");
     }
     &-secondary {
       border: 1px solid;
-      @include border-color('secondary');
+      @include border-color("secondary");
     }
   }
   &.block-bg-alternative {
-    @include background-color('background-alternative');
+    @include background-color("background-alternative");
   }
   &.block-bg-standard {
-    @include background-color('background-standard');
+    @include background-color("background-standard");
   }
   &.block-bg-none {
     background-color: transparent;
   }
 }
-
-

@@ -1,24 +1,23 @@
-
-
 :host {
   box-sizing: border-box;
   overflow: auto;
 }
-
-:host(.absolute) {
-  @include absolute();
-}
-
 :host(.relative) {
   position: relative;
 }
 
-:host(.column-dir) {
-  @include flex-direction(column);
+:host(.absolute),
+:host([position="absolute"]) {
+  @include absolute();
 }
 
 :host(.row-dir) {
   @include flex-direction(row);
+}
+
+:host(.column-dir),
+:host([direction="column"]) {
+  @include flex-direction(column);
 }
 
 :host(.flex-display) {
@@ -27,12 +26,14 @@
   @include display-flex();
 }
 
-:host(.block-display) {
+:host(.block-display),
+:host([display="block"]) {
   display: block !important;
   width: 100%;
 }
 
-:host(.grid-display) {
+:host(.grid-display),
+:host([display="grid"]) {
   display: grid;
   width: 100%;
   width: -webkit-fill-available;
@@ -79,8 +80,8 @@
 :host(.centered-content) {
   display: block;
   .wrapper-center {
-    padding-right: $spacing-large;
-    padding-left: $spacing-large;
+    padding-right: $spacing;
+    padding-left: $spacing;
     margin-right: auto;
     margin-left: auto;
   }
@@ -93,7 +94,7 @@
 }
 
 :host(.ct-bg-standard) {
-  @include background-color('background-standard');
+  @include background-color("background-standard");
   @include color("background-standard-contrast");
 }
 :host(.ct-bg-alternative) {

@@ -86,7 +86,7 @@ export const config: Config = {
     sass({
       injectGlobalPaths: [
         // Expose all web-ui variables and mixin to each scss files
-        'src/theme/theme',
+        ['src/theme/_theme.scss', '*'],
       ],
     }),
     inlineSvg(),
@@ -169,6 +169,7 @@ export const config: Config = {
         'se-divider',
         'se-icon',
         'se-loading',
+        'se-skeleton',
       ],
     },
     {
@@ -223,6 +224,7 @@ export const config: Config = {
     },
     { components: ['se-fab', 'se-fab-item'] },
     { components: ['se-visual-linear', 'se-visual-radial'] },
+    { components: ['se-filtration'] },
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],

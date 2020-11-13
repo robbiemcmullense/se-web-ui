@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Host } from '@stencil/core';
 
 @Component({
   tag: 'se-skeleton',
@@ -32,13 +32,13 @@ export class Skeleton {
     }
 
     return (
-      <span>
+      <Host>
         {countArray.map(() => (
-          <span class={{ skeleton: true, rounded: this.circle }} style={style}>
+          <div class={{ skeleton: true, rounded: this.circle }} style={style}>
             &zwnj;
-          </span>
+          </div>
         ))}
-      </span>
+      </Host>
     );
   }
 }
