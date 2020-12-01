@@ -7,7 +7,7 @@ describe('DropdownComponent', () => {
     page = await newE2EPage();
     await page.setContent('<se-dropdown></se-dropdown>');
     hostElement = await page.find('se-dropdown');
-    dropdownElement = await page.find('se-dropdown >>> .se-dropdown');
+    dropdownElement = await page.find('se-dropdown >>> div');
   });
 
   it('renders', async () => {

@@ -19,6 +19,19 @@
 | `overflow` | `overflow` | Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines. The `compact` setting allows your tabbar content to scroll, but all stack the text together as much as possible. | `"compact" \| "scroll" \| "stack"` | `'scroll'`  |
 
 
+## Dependencies
+
+### Depends on
+
+- [se-icon](../icon)
+
+### Graph
+```mermaid
+graph TD;
+  se-tabbar --> se-icon
+  style se-tabbar fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

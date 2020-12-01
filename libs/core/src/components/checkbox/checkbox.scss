@@ -1,6 +1,5 @@
 :host {
   display: inline-flex;
-  @include typology("small");
 }
 
 .p-small {
@@ -18,8 +17,9 @@
   padding-left: 3px;
 }
 
-.checkbox-label {
-  padding-right: $spacing;
+.label-wrap {
+  margin-right: $spacing;
+  margin-left: $spacing;
 }
 
 input {
@@ -221,7 +221,6 @@ button {
     @include background-color("background-alternative");
     padding: 6px 8px;
     border: none;
-    outline: none;
     height: 32px;
     font-size: 14px;
     font-family: inherit;

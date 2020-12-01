@@ -46,6 +46,12 @@ export class AppComponent {
   @Prop() option: 'technical' | 'website' | 'dcx' = 'technical';
 
   /**
+   * Define if the content of the page should scroll with the header (usefull on website context).
+   * The header can then have the style sticky to stay in the top of the page if needed.
+   */
+  @Prop() pageScroll: boolean;
+
+  /**
    * Define the them of application. Update the `--se-` css variables of the application.
    * - `light`: light mode of the design.
    * - `dark`: dark mode of the application.
@@ -124,7 +130,13 @@ export class AppComponent {
       this.option === 'technical' ? 'se-font-technical' : 'se-font-website';
     this.updateBodyClass(bodyClass);
     return (
-      <Host class={['se-app-body', bodyClass, this.classTheme].join(' ')}>
+      <Host
+        class={{
+          'se-app-body': !this.pageScroll,
+          [bodyClass]: true,
+          [this.classTheme]: true,
+        }}
+      >
         <slot></slot>
       </Host>
     );

@@ -1,6 +1,4 @@
-
-
-$opacity: .25 !default;
+$opacity: 0.25 !default;
 
 :host {
   box-sizing: border-box;
@@ -10,12 +8,12 @@ $opacity: .25 !default;
   // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
   // white-space: nowrap;
   @include display-flex();
-  @include flex-direction('row');
+  @include flex-direction("row");
   @include align-items(center);
 }
 
-se-tabbar{
-  .edge{
+se-tabbar {
+  .edge {
     background-color: rgba(black, $opacity);
     white-space: nowrap;
   }
@@ -25,26 +23,47 @@ se-tabbar{
     @include flex-direction(row);
     width: 100%;
   }
+  .hide {
+    display: none;
+  }
+
+  .arrow {
+    cursor: pointer;
+    background-color: rgb(190 190 190 / 40%);
+    z-index: 1;
+    padding-top: 6px;
+  }
+
+  .arrowLeft {
+    margin-right: -32px;
+    se-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .arrowRight {
+    margin-left: -32px;
+  }
 
   .fill-space {
     @include flex(1);
     min-height: 4px;
   }
-  .centered{
+  .centered {
     @include display-flex();
     @include align-items(center);
   }
 
   .nav-center-wrapper {
+    position: relative;
     overflow-y: hidden;
     scrollbar-width: none;
     overflow-x: auto;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
-      height: 0 !important
+      height: 0 !important;
     }
   }
-
 
   .tab-primary,
   .tab-alternative {
@@ -52,39 +71,43 @@ se-tabbar{
     width: 100%;
     &.opt-nav {
       nav {
-        > a, > span {
+        > a,
+        > span {
           margin: 0 calc(#{$spacing-large} * 1.5);
         }
       }
       .sub-nav {
-        > a, > span {
+        > a,
+        > span {
           margin: 0 $spacing-large;
         }
       }
     }
     &.opt-content {
       nav {
-        @include background-color('background-alternative');
+        @include background-color("background-alternative");
         box-sizing: border-box;
         height: 46px;
         min-width: 100%;
         max-width: 100%;
-        > a, > span {
+        > a,
+        > span {
           // @include background-color('alternative');
           border: 1px solid;
-          @include border-color('divider');
+          @include border-color("divider");
           border-bottom: 0;
           border-left: 0;
           line-height: 46px;
-          @include color('alternative-contrast');
+          @include color("alternative-contrast");
           padding: 0 $spacing-xlarge;
           &:first-child {
             border-left: 1px solid;
-            @include border-color('divider');
+            @include border-color("divider");
           }
-          &:not([disabled]):hover, &:not(.disabled):hover {
+          &:not([disabled]):hover,
+          &:not(.disabled):hover {
             // @include background-color('standard-hover');
-            @include background-color('background-standard');
+            @include background-color("background-standard");
           }
           &:after {
             display: none;
@@ -93,23 +116,24 @@ se-tabbar{
             height: 0;
           }
           &.active {
-            @include background-color('background-standard');
+            @include background-color("background-standard");
             height: 47px;
-            @include color('primary');
+            @include color("primary");
             &:after {
               display: inline-block;
-              @include background-color('primary');
+              @include background-color("primary");
               height: 2px;
             }
             &:hover {
               color: inherit;
               &:after {
-                @include background-color('primary');
+                @include background-color("primary");
               }
             }
           }
-          &[disabled], &.disabled {
-            @include color('standard-hover');
+          &[disabled],
+          &.disabled {
+            @include color("standard-hover");
           }
         }
       }
@@ -119,15 +143,17 @@ se-tabbar{
     width: fit-content;
     min-width: 100%;
   }
-  .sub-nav{
+  .sub-nav {
     margin-left: calc(#{$spacing-large} * -1.5);
     background-color: rgba(black, $opacity);
   }
-  nav, .sub-nav{
+  nav,
+  .sub-nav {
     height: 100%;
     @include display-flex();
     @include align-items(center);
-    > a, > span {
+    > a,
+    > span {
       display: flex;
       align-items: center;
       font-weight: 500;
@@ -137,7 +163,7 @@ se-tabbar{
       padding-right: 0;
       padding-left: 0;
       text-decoration: none;
-      transition: .2s;
+      transition: 0.2s;
       height: 100%;
 
       line-height: 1.2;
@@ -154,10 +180,10 @@ se-tabbar{
         left: 0;
         bottom: -4px;
         height: 4px;
-        transition: .2s;
+        transition: 0.2s;
         width: 100%;
       }
-      &.active:after{
+      &.active:after {
         height: 4px;
       }
       &.label {
@@ -169,128 +195,142 @@ se-tabbar{
   }
 
   .tab-primary {
-    nav, .sub-nav{
-      > a, > span {
-        @include color('primary-contrast');
-        &:not([disabled]):hover,&:not(.disabled):hover {
+    nav,
+    .sub-nav {
+      > a,
+      > span {
+        @include color("primary-contrast");
+        &:not([disabled]):hover,
+        &:not(.disabled):hover {
           &:after {
-            @include background-color('primary-contrast');
+            @include background-color("primary-contrast");
           }
         }
         &.active:after {
-          @include background-color('primary-contrast');
+          @include background-color("primary-contrast");
         }
       }
     }
   }
 
   .tab-alternative {
-    @include background-color('background-alternative');
-    @include color('background-alternative-contrast');
+    @include background-color("background-alternative");
+    @include color("background-alternative-contrast");
     .nav-left-wrapper {
       [slot="start"] {
-        &>*:first-child:not(a){
+        & > *:first-child:not(a) {
           padding-left: $spacing-large;
         }
-        &>*:last-child:not(a){
+        & > *:last-child:not(a) {
           padding-right: $spacing-large;
         }
       }
     }
-    nav,.sub-nav{
-      > a, > span {
-        @include color('alternative-contrast');
+    nav,
+    .sub-nav {
+      > a,
+      > span {
+        @include color("alternative-contrast");
         &.active:after {
-          @include background-color('primary');
+          @include background-color("primary");
         }
       }
     }
   }
 
-  .opt-nav, .opt-content {
+  .opt-nav,
+  .opt-content {
     font-size: 16px;
     width: 100%;
   }
 
   .opt-nav {
-    nav,.sub-nav{
-      > a, > span {
+    nav,
+    .sub-nav {
+      > a,
+      > span {
         margin: 0 calc(#{$spacing-large} * 1.5);
       }
     }
   }
   .opt-nav.tab-primary {
-    @include background-color('primary');
-    @include color('primary-contrast');
+    @include background-color("primary");
+    @include color("primary-contrast");
     // box-shadow: $inner-shadow-top;
     // border-bottom: 4px solid rgba(black, 0.25);
-    nav:not([slot='start']) {
+    nav:not([slot="start"]) {
       border-bottom: 4px solid rgba(black, $opacity);
     }
     .nav-left-wrapper {
       background-color: rgba(black, $opacity);
       white-space: nowrap;
       [slot="start"] {
-        &>*:first-child:not(a) {
+        & > *:first-child:not(a) {
           padding-left: $spacing-large;
         }
-        &>*:last-child:not(a) {
+        & > *:last-child:not(a) {
           padding-right: $spacing-large;
         }
       }
     }
-    nav, .sub-nav{
+    nav,
+    .sub-nav {
       height: 44px;
       text-transform: uppercase;
       // > a {
       //   line-height: 44px;
       // }
     }
-    .sub-nav{
+    .sub-nav {
       text-transform: capitalize;
     }
   }
   .opt-nav.tab-alternative {
-    nav, .sub-nav {
-      height: 40px;
+    nav,
+    .sub-nav {
+      min-height: 40px;
       > a {
         line-height: 40px;
-        &:not([disabled]):hover,&:not(.disabled):hover &.active {
-          @include color('primary')
+        &:not([disabled]):hover,
+        &:not(.disabled):hover &.active {
+          @include color("primary");
         }
         &:after {
           bottom: 0;
           display: inline-block;
         }
-        &:hover:not([disabled]):after, &:hover:not(.disabled):after {
-          @include background-color('primary');
+        &:hover:not([disabled]):after,
+        &:hover:not(.disabled):after {
+          @include background-color("primary");
           height: 4px;
         }
       }
     }
   }
   .opt-content nav {
-    @include background-color('background-alternative');
+    @include background-color("background-alternative");
     box-sizing: border-box;
     height: 46px;
     min-width: 100%;
     max-width: 100%;
-    > a, > span {
+    > a,
+    > span {
       // @include background-color('alternative');
       border: 1px solid;
-      @include border-color('divider');
+      @include border-color("divider");
       border-bottom: 0;
       border-left: 0;
       // line-height: 46px;
-      @include color('alternative-contrast');
+      @include color("alternative-contrast");
       padding: 0 $spacing-xlarge;
       &:first-child {
         border-left: 1px solid;
-        @include border-color('divider');
+        @include border-color("divider");
       }
-      &:not([disabled]):hover, &:not(.disabled):hover {
-        @include color('background-standard-contrast');
-        @include background-color('background-standard')
+      &:not([disabled]):hover,
+      &:not(.disabled):hover {
+        @include color("background-standard-contrast");
+        @include background-color("background-standard");
       }
       &:after {
         display: none;
@@ -300,36 +340,41 @@ se-tabbar{
       }
       // transition-property: outline;
       // transition-duration: .3s;
-      &:focus{
+      &:focus {
         outline-offset: -2px;
       }
       &.active {
-        @include background-color('background-standard');
-        height: 47px;
-        @include color('primary');
+        @include background-color("background-standard");
+        // height: 47px;
+        @include color("primary");
         &:after {
           display: inline-block;
-          @include background-color('primary');
+          @include background-color("primary");
           height: 2px;
         }
         &:hover {
           color: inherit;
           &:after {
-            @include background-color('primary');
+            @include background-color("primary");
           }
         }
       }
     }
   }
+  .opt-content.tab-alternative {
+    @include background-color("background-standard");
+  }
   .opt-content.tab-alternative nav {
-    @include background-color('background-standard');
-    > a, > span {
+    @include background-color("background-standard");
+    > a,
+    > span {
       // @include background-color('background-standard');
       &.active {
-        @include background-color('background-alternative');
+        @include background-color("background-alternative");
       }
-      &:not([disabled]):hover,&:not(.disabled):hover {
-        @include background-color('background-alternative');
+      &:not([disabled]):hover,
+      &:not(.disabled):hover {
+        @include background-color("background-alternative");
       }
     }
   }
@@ -337,13 +382,14 @@ se-tabbar{
     height: calc(100% - 4px);
   }
   .opt-end-content {
-    @include background-color('background-alternative');
+    @include background-color("background-alternative");
   }
   .opt-end-content.tab-end-alternative {
-    @include background-color('background-standard');
+    @include background-color("background-standard");
   }
 
-  .opt-nav, .opt-content{
+  .opt-nav,
+  .opt-content {
     &.scroll nav {
       white-space: nowrap;
     }
@@ -351,23 +397,26 @@ se-tabbar{
       flex-wrap: wrap;
       height: auto;
     }
-    &.compact nav a{
+    &.compact nav a {
       white-space: wrap;
     }
   }
 
   // Will come on top of the others
-  .tab-primary, .tab-alternative {
-    nav, .sub-nav {
-      > a[disabled], > a.disabled, > span[disabled], > span.disabled {
+  .tab-primary,
+  .tab-alternative {
+    nav,
+    .sub-nav {
+      > a[disabled],
+      > a.disabled,
+      > span[disabled],
+      > span.disabled {
         opacity: 0.5;
         cursor: default;
-        &::after{
+        &::after {
           display: none;
         }
       }
     }
   }
 }
-
-

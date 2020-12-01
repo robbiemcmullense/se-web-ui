@@ -27,13 +27,13 @@ export class SeAbout {
 import { AppComponent as IAppComponent } from '@se/web-ui/types/components/app/app';
 export declare interface SeApp extends Components.SeApp {}
 @ProxyCmp({
-  inputs: ['option', 'theme']
+  inputs: ['option', 'pageScroll', 'theme']
 })
 @Component({
   selector: 'se-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['option', 'theme'],
+  inputs: ['option', 'pageScroll', 'theme'],
   outputs: ['themeChanged']
 })
 export class SeApp {

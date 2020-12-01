@@ -179,10 +179,12 @@ export class CheckboxComponent {
           header: !!this.header,
         }}
       >
-        <span>
-          <span class="checkbox-label">{this.label}</span>
-          {this.required && <span class="required">*</span>}
-        </span>
+        {this.label && (
+          <span class="label-wrap">
+            {this.label}
+            {this.required && <i class="required">*</i>}
+          </span>
+        )}
         {markup}
       </label>
     );

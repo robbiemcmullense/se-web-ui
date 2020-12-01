@@ -85,13 +85,6 @@ export class DropdownComponent {
     }
   }
 
-  @Listen('touchstart', { target: 'window' })
-  handleTouchstart() {
-    if (this.opened) {
-      this.close();
-    }
-  }
-
   @Listen('cancelAllDropdown', { target: 'window' })
   handleCancelAllDropdown() {
     if (!this.isActive && this.opened) {
@@ -115,11 +108,7 @@ export class DropdownComponent {
 
   render() {
     return (
-      <div
-        class={['se-dropdown', this.alignment, this.verticalAlignment].join(
-          ' '
-        )}
-      >
+      <div class={{ [this.alignment]: true, [this.verticalAlignment]: true }}>
         <div
           aria-haspopup="true"
           aria-expanded={this.opened}

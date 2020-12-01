@@ -36,6 +36,10 @@ export namespace Components {
          */
         "option": 'technical' | 'website' | 'dcx';
         /**
+          * Define if the content of the page should scroll with the header (usefull on website context). The header can then have the style sticky to stay in the top of the page if needed.
+         */
+        "pageScroll": boolean;
+        /**
           * Define the them of application. Update the `--se-` css variables of the application. - `light`: light mode of the design. - `dark`: dark mode of the application. - `auto`: Will match the OS configuration
          */
         "theme": 'light' | 'dark' | 'auto';
@@ -1662,6 +1666,10 @@ declare namespace LocalJSX {
           * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
          */
         "option"?: 'technical' | 'website' | 'dcx';
+        /**
+          * Define if the content of the page should scroll with the header (usefull on website context). The header can then have the style sticky to stay in the top of the page if needed.
+         */
+        "pageScroll"?: boolean;
         /**
           * Define the them of application. Update the `--se-` css variables of the application. - `light`: light mode of the design. - `dark`: dark mode of the application. - `auto`: Will match the OS configuration
          */

@@ -50,11 +50,11 @@ se-form-field {
     }
   }
   .align-left {
-    // text-align: left;
+    text-align: left !important;
     flex-flow: row;
   }
   .align-right {
-    // text-align: right;
+    text-align: right;
     flex-flow: row-reverse;
   }
 
@@ -154,12 +154,12 @@ se-form-field {
   // }
 
   //@-moz-document url-prefix()is deprecated
-  @media screen and (min--moz-device-pixel-ratio: 0) {
-    input[type="date"] {
-      padding-top: 6px;
-      padding-bottom: 4px;
-    }
-  }
+  // @media screen and (min--moz-device-pixel-ratio: 0) {
+  //   input[type="date"] {
+  //     padding-top: 6px;
+  //     padding-bottom: 4px;
+  //   }
+  // }
   .with-icon {
     display: block;
     position: relative;

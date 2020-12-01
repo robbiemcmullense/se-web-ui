@@ -43,4 +43,12 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# remove file that are re-generated at every build
 libs/core/package-lock.json
+libs/angular/src/lib/directives/proxies.ts
+libs/angular/src/lib/directives/angular-component-lib/utils.ts
+libs/react/src/react-component-lib/createComponent.tsx
+libs/react/src/react-component-lib/utils/index.tsx
+libs/vue/src/components.ts
+libs/vue/src/vue-component-lib/utils.ts

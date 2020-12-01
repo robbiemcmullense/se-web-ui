@@ -174,23 +174,6 @@ storiesOf('Form Field', module)
         block='${block}'
         type='input'
         option='${option}'
-        label='date with button'
-        required='true'
-        disabled='${disabled}'
-        label-width='${labelWidth}'
-        >
-        <div style="display:flex; align-items: center;">
-          <input type="date" />
-          <se-button icon-only icon="folder" color="alternative" disabled=${disabled}></se-button>
-        </div>
-      </se-form-field>
-
-      <se-form-field
-        label-align='${labelAlign}'
-        padding='${padding}'
-        block='${block}'
-        type='input'
-        option='${option}'
         label='Search with-icon small'
         required='true'
         disabled='${disabled}'
@@ -372,6 +355,39 @@ storiesOf('Form Field', module)
         block='${block}'
         >
         <textarea rows='${rows}'></textarea>
+      </se-form-field>
+    `;
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Form Field with icon',
+    () => {
+      const option = select('option', layoutOption, 'inline');
+      const label = text('label', 'Input');
+      const required = boolean('required', false);
+      const disabled = boolean('disabled', false);
+      const block = boolean('block', false);
+
+      return `
+      <se-form-field
+        type='input'
+        option='${option}'
+        label='${label}'
+        required=${required}
+        disabled='${disabled}'
+        block=${block}
+        >
+        <div style="display:flex; align-items: center;">
+          <input type="text" />
+          <se-button icon-only color="alternative" disabled=${disabled}>
+            <se-icon slot="icon" size="medium">folder</se-icon>
+          </se-button>
+        </div>
       </se-form-field>
     `;
     },

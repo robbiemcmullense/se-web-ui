@@ -78,7 +78,7 @@ export const config: Config = {
     cssVarsShim: true,
     dynamicImportShim: true,
     initializeNextTick: true,
-    safari10: true,
+    safari10: false,
     scriptDataOpts: true,
     shadowDomShim: true,
   },
@@ -86,7 +86,7 @@ export const config: Config = {
     sass({
       injectGlobalPaths: [
         // Expose all web-ui variables and mixin to each scss files
-        ['src/theme/_theme.scss', '*'],
+        'src/theme/theme.scss',
       ],
     }),
     inlineSvg(),

@@ -1,11 +1,15 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
+import ResizeObserver from 'resize-observer-polyfill';
 
 @Component({
   tag: 'se-tabbar',
   styleUrl: 'tabbar.scss',
-  shadow: false
+  shadow: false,
 })
 export class TabbarComponent {
+  private navbar?: HTMLElement;
+  private minOffset = 20;
+
   /**
    * Defines the function of the tabbar.
    * Default `nav` creates a tab bar that functions as a nav-bar.
@@ -26,33 +30,84 @@ export class TabbarComponent {
    */
   @Prop() color: 'primary' | 'alternative' = 'primary';
 
+  @State() showLeftArrow: boolean;
+  @State() showRightArrow: boolean;
+
+  ro: ResizeObserver;
+  componentDidLoad() {
+    this.ro = new ResizeObserver(_ => {
+      this.displayArrow();
+    });
+    this.ro.observe(this.navbar);
+
+    this.navbar.addEventListener('scroll', () => this.displayArrow());
+  }
+
+  disconnectedCallback() {
+    this.ro.disconnect();
+    this.navbar.removeEventListener('scroll', () => this.displayArrow());
+  }
+
+  displayArrow() {
+    if (this.navbar) {
+      const { offsetWidth, scrollWidth, scrollLeft } = this.navbar;
+      const showArrow = offsetWidth < scrollWidth;
+      this.showLeftArrow = showArrow && scrollLeft > 0;
+      this.showRightArrow =
+        showArrow && offsetWidth + scrollLeft < scrollWidth - this.minOffset;
+    }
+
+    // this.navbar.scrollLeft > 0
+    //  // extrem left -> don't display left arrow
+  }
+
+  scroll(direction: number) {
+    this.navbar.scrollBy({
+      left: direction * 200,
+      behavior: 'smooth',
+    });
+  }
+
   render() {
     return (
       <div
         class={{
           'd-flex-main': true,
           [`tab-${this.color}`]: !!this.color,
-          [`opt-${this.option}`]: !!this.option
+          [`opt-${this.option}`]: !!this.option,
         }}
       >
         <div class="nav-left-wrapper centered">
           <slot name="start" />
         </div>
+        <span
+          class={{ arrow: true, arrowLeft: true, hide: !this.showLeftArrow }}
+          onClick={() => this.scroll(-1)}
+        >
+          <se-icon size="medium">arrow5_step</se-icon>
+        </span>
         <div
+          ref={el => (this.navbar = el)}
           class={{
             'fill-space': true,
             'nav-center-wrapper': true,
             [`opt-${this.option}`]: !!this.option,
-            [this.overflow]: !!this.overflow
+            [this.overflow]: !!this.overflow,
           }}
         >
           <slot />
         </div>
+        <span
+          class={{ arrow: true, arrowRight: true, hide: !this.showRightArrow }}
+          onClick={() => this.scroll(1)}
+        >
+          <se-icon size="medium">arrow5_step</se-icon>
+        </span>
         <div
           class={{
             [`tab-end-${this.color}`]: !!this.color,
             [`opt-end-${this.option}`]: !!this.option,
-            centered: true
+            centered: true,
           }}
         >
           <slot name="end" />
@@ -62,7 +117,7 @@ export class TabbarComponent {
             [`tab-end-${this.color}`]: !!this.color,
             [`opt-end-${this.option}`]: !!this.option,
             centered: true,
-            edge: true
+            edge: true,
           }}
         >
           <slot name="edge" />

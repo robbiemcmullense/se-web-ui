@@ -7,7 +7,9 @@ import {
   Prop,
   Listen,
   Watch,
+  State,
 } from '@stencil/core';
+import ResizeObserver from 'resize-observer-polyfill';
 
 @Component({
   tag: 'se-form-field',
@@ -15,6 +17,10 @@ import {
   shadow: false,
 })
 export class FormFieldComponent {
+  private inputWrapper?: HTMLElement;
+  private sizeSmall = 360;
+  private sizeMedium = 500;
+
   @Element() el: HTMLElement;
   /**
    * Defines the layout of your form field.
@@ -110,9 +116,23 @@ export class FormFieldComponent {
       item.disabled = this.disabled;
     });
   }
+  @State() isSmall: boolean;
+  @State() isMedium: boolean;
 
+  ro: ResizeObserver;
+  componentDidLoad() {
+    this.ro = new ResizeObserver(_ => {
+      this.isSmall = this.inputWrapper.clientWidth < this.sizeSmall;
+      this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;
+    });
+    this.ro.observe(this.inputWrapper);
+  }
   componentWillLoad() {
     this.initLabel();
+  }
+
+  disconnectedCallback() {
+    this.ro.disconnect();
   }
 
   handleEvent(event: any) {
@@ -123,34 +143,37 @@ export class FormFieldComponent {
   }
 
   render() {
+    const isStacked = this.option === 'stacked' || this.isSmall;
     return (
       <div
         class={{
           [`ff-${this.status}`]: true,
-          'ff-stacked': this.option === 'stacked',
-          'ff-block': this.block,
+          'ff-stacked': isStacked,
+          'ff-block': this.isSmall || this.isMedium || this.block,
           [`ff-padding-${this.padding}`]: true,
           'form-field-wrapper': true,
         }}
       >
-        <label data-disabled={this.disabled}>
+        <label
+          data-disabled={this.disabled}
+          ref={el => (this.inputWrapper = el)}
+        >
           <span
             style={{
-              width: this.option !== 'stacked' ? this.labelWidth : 'auto',
+              width: !isStacked ? this.labelWidth : 'auto',
             }}
             class={{
               'with-label': !!this.label,
               [`align-${this.labelAlign}`]: true,
             }}
           >
+            {' '}
             <span>
               {this.label}
-              {this.required ? (
+              {this.required && (
                 <span class="required" title="required">
                   *
                 </span>
-              ) : (
-                ''
               )}
             </span>
           </span>

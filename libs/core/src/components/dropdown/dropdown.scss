@@ -1,32 +1,31 @@
-.se-dropdown {
+:host {
   position: relative;
+}
+[hidden] {
+  display: none;
+}
 
-  &[hidden] {
-    display: none;
+.left {
+  .dropdown-content {
+    left: 0;
   }
+}
 
-  &.left {
-    .dropdown-content {
-      left: 0;
-    }
+.right {
+  .dropdown-content {
+    right: 0;
   }
+}
 
-  &.right {
-    .dropdown-content {
-      right: 0;
-    }
+.top {
+  .dropdown-content {
+    bottom: calc(100% + $spacing-small);
   }
+}
 
-  &.top {
-    .dropdown-content {
-      bottom: calc(100% + $spacing-small);
-    }
-  }
-
-  &.bottom {
-    .dropdown-content {
-      top: calc(100% + $spacing-small);
-    }
+.bottom {
+  .dropdown-content {
+    top: calc(100% + $spacing-small);
   }
 }
 

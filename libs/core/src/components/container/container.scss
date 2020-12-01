@@ -1,11 +1,8 @@
 :host {
   box-sizing: border-box;
   overflow: auto;
-}
-:host(.relative) {
   position: relative;
 }
-
 :host(.absolute),
 :host([position="absolute"]) {
   @include absolute();

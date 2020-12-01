@@ -93,6 +93,7 @@ export const SeAbout = /*@__PURE__*/ Vue.extend({
 export const SeApp = /*@__PURE__*/ Vue.extend({
   props: {
     option: {} as PropOptions<Components.SeApp['option']>,
+    pageScroll: {} as PropOptions<Components.SeApp['pageScroll']>,
     theme: {} as PropOptions<Components.SeApp['theme']>,
   },
 

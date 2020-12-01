@@ -37,6 +37,7 @@
  - [se-pagination](../pagination)
  - [se-sidemenu](../sidemenu)
  - [se-snackbar](../snackbar)
+ - [se-tabbar](../tabbar)
  - [se-table-item-header](../table-item-header)
  - [se-tooltip-content](../tooltip-content)
  - [se-tooltip-header](../tooltip-header)
@@ -60,6 +61,7 @@ graph TD;
   se-pagination --> se-icon
   se-sidemenu --> se-icon
   se-snackbar --> se-icon
+  se-tabbar --> se-icon
   se-table-item-header --> se-icon
   se-tooltip-content --> se-icon
   se-tooltip-header --> se-icon

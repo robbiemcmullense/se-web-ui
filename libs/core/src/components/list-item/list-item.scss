@@ -11,7 +11,7 @@
   min-width: 100%;
   /* inherit font & color from ancestor */
   background-color: inherit;
-  color: inherit;
+  color: var(--se-background-alternative-contrast);
   font: inherit;
 
   padding-left: calc(

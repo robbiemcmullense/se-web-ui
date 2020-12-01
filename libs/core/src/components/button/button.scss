@@ -92,9 +92,9 @@
     padding-right: 22px;
     &:after {
       content: "";
-      position: absolute;
-      top: 50%;
-      right: 12px;
+      margin-top: 4px;
+      margin-right: -8px;
+      margin-left: 12px;
       transform: translateY(-50%);
       width: 0;
       height: 0;
