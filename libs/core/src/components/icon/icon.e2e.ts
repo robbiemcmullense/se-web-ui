@@ -19,7 +19,7 @@ describe('IconComponent', () => {
     element.setProperty('color', 'warn');
     await page.waitForChanges();
     expect(element).toHaveClass('icon-small');
-    expect(element.shadowRoot.querySelector('.se-icon-wrapper')).toHaveClasses([
+    expect(element.shadowRoot.querySelector('.wrapper')).toHaveClasses([
       'warn',
     ]);
   });

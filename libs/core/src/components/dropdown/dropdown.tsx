@@ -8,6 +8,7 @@ import {
   Event,
   EventEmitter,
   Listen,
+  Host,
 } from '@stencil/core';
 
 @Component({
@@ -108,21 +109,26 @@ export class DropdownComponent {
 
   render() {
     return (
-      <div class={{ [this.alignment]: true, [this.verticalAlignment]: true }}>
-        <div
+      <Host>
+        <span
           aria-haspopup="true"
           aria-expanded={this.opened}
           onClick={ev => this._toggle(ev)}
         >
           <slot name="trigger"></slot>
-        </div>
+        </span>
         <div
-          class={`${this.opened ? 'show' : ''} dropdown-content`}
+          class={{
+            [this.alignment]: true,
+            [this.verticalAlignment]: true,
+            show: this.opened,
+            content: true,
+          }}
           style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight }}
         >
           <slot></slot>
         </div>
-      </div>
+      </Host>
     );
   }
 }

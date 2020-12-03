@@ -23,9 +23,6 @@ se-tabbar {
     @include flex-direction(row);
     width: 100%;
   }
-  .hide {
-    display: none;
-  }
 
   .arrow {
     cursor: pointer;

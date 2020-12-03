@@ -11,6 +11,7 @@ import {
   Host,
   State,
 } from '@stencil/core';
+import { debounce } from '../../utils';
 
 @Component({
   tag: 'se-dialog',
@@ -41,13 +42,15 @@ export class DialogComponent {
    */
   @Prop({ mutable: true }) open: boolean;
   @Watch('open') openDidChange() {
-    if (this.open) {
-      this.addAnimation();
-    } else {
-      this.removeAnimation(() => {
-        this.didClose.emit();
-      });
-    }
+    debounce(() => {
+      if (this.open) {
+        this.addAnimation();
+      } else {
+        this.removeAnimation(() => {
+          this.didClose.emit();
+        });
+      }
+    });
   }
   /**
    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.

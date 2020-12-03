@@ -178,6 +178,7 @@ export class CheckboxComponent {
           [`opt-${this.option}`]: true,
           [`p-${this.padding}`]: !!this.padding,
           header: !!this.header,
+          'no-label': !this.label,
         }}
       >
         {this.label && (

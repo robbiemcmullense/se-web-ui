@@ -436,6 +436,8 @@ export const SeIcon = /*@__PURE__*/ Vue.extend({
     size: {} as PropOptions<Components.SeIcon['size']>,
     color: {} as PropOptions<Components.SeIcon['color']>,
     disabled: {} as PropOptions<Components.SeIcon['disabled']>,
+    rotate: {} as PropOptions<Components.SeIcon['rotate']>,
+    mirror: {} as PropOptions<Components.SeIcon['mirror']>,
   },
 
   render: createCommonRender('se-icon', []),

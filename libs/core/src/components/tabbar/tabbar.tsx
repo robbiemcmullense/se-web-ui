@@ -80,12 +80,14 @@ export class TabbarComponent {
         <div class="nav-left-wrapper centered">
           <slot name="start" />
         </div>
-        <span
-          class={{ arrow: true, arrowLeft: true, hide: !this.showLeftArrow }}
-          onClick={() => this.scroll(-1)}
-        >
-          <se-icon size="medium">arrow5_step</se-icon>
-        </span>
+        {this.showLeftArrow && (
+          <span
+            class={{ arrow: true, arrowLeft: true }}
+            onClick={() => this.scroll(-1)}
+          >
+            <se-icon size="medium">arrow5_step</se-icon>
+          </span>
+        )}
         <div
           ref={el => (this.navbar = el)}
           class={{
@@ -97,12 +99,14 @@ export class TabbarComponent {
         >
           <slot />
         </div>
-        <span
-          class={{ arrow: true, arrowRight: true, hide: !this.showRightArrow }}
-          onClick={() => this.scroll(1)}
-        >
-          <se-icon size="medium">arrow5_step</se-icon>
-        </span>
+        {this.showRightArrow && (
+          <span
+            class={{ arrow: true, arrowRight: true }}
+            onClick={() => this.scroll(1)}
+          >
+            <se-icon size="medium">arrow5_step</se-icon>
+          </span>
+        )}
         <div
           class={{
             [`tab-end-${this.color}`]: !!this.color,

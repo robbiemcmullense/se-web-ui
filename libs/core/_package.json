@@ -14,5 +14,8 @@
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "resize-observer-polyfill": "^1.5.1"
+  }
 }

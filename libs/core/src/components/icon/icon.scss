@@ -2,7 +2,7 @@
 @mixin size-icon($sizeFont) {
   font-size: $sizeFont;
   line-height: $sizeFont;
-  .se-icon-wrapper {
+  .wrapper {
     height: $sizeFont;
     width: $sizeFont;
   }
@@ -11,6 +11,7 @@
 :host {
   fill: currentColor;
   display: inline-flex;
+  transition: 0.3s;
 }
 
 :host(.icon-nano) {
@@ -61,7 +62,8 @@ button {
 .icon-family {
   font-family: "se-icon";
 }
-.se-icon-wrapper {
+.wrapper {
+  cursor: default;
   display: inline-block;
   font-style: normal;
   position: relative;
@@ -85,9 +87,11 @@ button {
   overflow: hidden;
   fill: currentColor;
   shape-rendering: geometricprecision;
+
+  transition: 0.3s;
 }
 
-.se-icon-wrapper.disabled {
+.wrapper.disabled {
   cursor: default;
   opacity: 0.5;
 }
@@ -95,7 +99,7 @@ button {
 // Align icons on MS Edge.
 // Will remove when Chromium-based Edge browser is released.
 @supports (-ms-ime-align: auto) {
-  .se-icon-wrapper {
+  .wrapper {
     vertical-align: top;
     top: 0;
   }
@@ -103,7 +107,7 @@ button {
 
 // Align icons on IE 11.
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .se-icon-wrapper {
+  .wrapper {
     vertical-align: top;
     top: 0;
   }
@@ -111,107 +115,46 @@ button {
 
 .standard {
   @include color("standard");
-  &.icon-button {
-    @include color("standard-contrast");
-    @include background-color("standard");
-
-    &:active,
-    &.button:active,
-    &.selected {
-      @include background-color("standard-selected");
-    }
-
-    &:focus,
-    &.button:focus {
-      @include background-color("standard-focus");
-    }
-  }
 }
 
 .alternative {
   @include color("alternative");
-
-  &.icon-button {
-    @include color("alternative-contrast");
-    @include background-color("alternative");
-    &:active,
-    &.button:active,
-    &.selected {
-      @include background-color("alternative-selected");
-    }
-
-    &:focus,
-    &.button:focus {
-      @include background-color("alternative-focus");
-    }
-  }
 }
 
 .primary {
   @include color("primary");
-  &.icon-button {
-    @include color("primary-contrast");
-    @include background-color("primary");
-    &:active,
-    &.button:active,
-    &.selected {
-      @include background-color("primary-selected");
-    }
-
-    &:focus,
-    &.button:focus {
-      @include background-color("primary-focus");
-    }
-  }
 }
 
 .secondary {
   @include color("secondary");
-  &.icon-button {
-    @include color("secondary-contrast");
-    @include background-color("secondary");
-    &:active,
-    &.button:active,
-    &.selected {
-      @include background-color("secondary-selected");
-    }
-
-    &:focus,
-    &.button:focus {
-      @include background-color("secondary-focus");
-    }
-  }
 }
 
 .success {
   @include color("success");
-  &.icon-button {
-    @include color("success-contrast");
-    @include background-color("success");
-  }
 }
 
 .warning {
   @include color("warning");
-  &.icon-button {
-    @include color("warning-contrast");
-    @include background-color("warning");
-  }
 }
 
 .information {
   @include color("information");
-  &.icon-button {
-    @include color("information-contrast");
-    @include background-color("information");
-  }
 }
 
 .error {
   @include color("error");
-  &.icon-button {
-    @include color("error-contrast");
-    @include background-color("error");
+}
+
+.standard,
+.alternative,
+.primary,
+.secondary,
+.success,
+.warning,
+.information,
+.error {
+  &.icon-button:not(.disabled):hover {
+    @include background-color("alternative-selected");
   }
 }
 
@@ -220,24 +163,4 @@ button {
   border-radius: $border-radius;
   line-height: inherit;
   border-radius: 2px;
-  &:not(.disabled):hover {
-    @include color("standard-contrast");
-    @include background-color("standard-hover");
-  }
-  // &.selected {
-  //   @include color("selected-contrast");
-  //   @include background-color("selected");
-  // }
-
-  // &:active,
-  // &.button:active {
-  //   @include color("selected-contrast");
-  //   @include background-color("selected");
-  // }
-
-  // &:focus,
-  // &.button:focus {
-  //   @include  color("focus-contrast");
-  //   @include background-color("focus");
-  // }
 }

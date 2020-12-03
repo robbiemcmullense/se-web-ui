@@ -21,13 +21,49 @@ storiesOf('Icons', module)
         'warning',
         'error',
       ];
+      const size = select('size', sizeOption, 'large');
+      const color = select('color', colorOption, 'primary');
+      const icon = text('icon', 'action_search_stroke');
+      const mirror = select(
+        'mirror',
+        ['horizontal', 'vertical', 'both', 'none'],
+        'none'
+      );
+      const rotate = select('rotate', [45, -45, 90, '-90deg', '180deg', 0], 0);
+
+      return `
+      <div style="padding: 20px">
+        <se-icon size="${size}" color="${color}" mirror="${mirror}" rotate="${rotate}">${icon}</se-icon>
+      </div>
+    `;
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Button icons',
+    () => {
+      const sizeOption = ['nano', 'small', 'medium', 'large', 'xlarge'];
+      const colorOption = [
+        'standard',
+        'alternative',
+        'primary',
+        'secondary',
+        'success',
+        'warning',
+        'error',
+        'none',
+      ];
       const size = select('size', sizeOption, 'small');
       const color = select('color', colorOption, 'primary');
       const icon = text('icon', 'action_settings1');
 
       return `
       <div style="padding: 20px">
-        <se-icon size="${size}" color="${color}">${icon}</se-icon>
+        <se-icon size="${size}" option="button" color="${color}">${icon}</se-icon>
       </div>
     `;
     },

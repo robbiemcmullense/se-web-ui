@@ -647,15 +647,21 @@ export namespace Components {
     | 'success'
     | 'warning'
     | 'error'
-    | 'information';
+    | 'information'
+    | 'none';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
         "disabled": boolean;
+        "mirror": 'horizontal' | 'vertical' | 'both';
         /**
           * Optional property to define if the icon should act as a button (clickable).
          */
         "option": 'button';
+        /**
+          * Optional property that defines if the button is disabled.  Set to `false` by default.
+         */
+        "rotate": number | string;
         /**
           * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */
@@ -2306,15 +2312,21 @@ declare namespace LocalJSX {
     | 'success'
     | 'warning'
     | 'error'
-    | 'information';
+    | 'information'
+    | 'none';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
         "disabled"?: boolean;
+        "mirror"?: 'horizontal' | 'vertical' | 'both';
         /**
           * Optional property to define if the icon should act as a button (clickable).
          */
         "option"?: 'button';
+        /**
+          * Optional property that defines if the button is disabled.  Set to `false` by default.
+         */
+        "rotate"?: number | string;
         /**
           * Defines the size of an icon. `nano` sets the size to 14px. `micro` sets the size to 18px. `small` sets the size to 24px.(default setting) `medium` sets the size to 32px. `large` sets the size to 52px. `xlarge` sets the size to 62px.
          */

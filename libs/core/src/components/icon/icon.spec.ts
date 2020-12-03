@@ -12,11 +12,11 @@ describe('se-icon', () => {
     expect(icon).toBeTruthy();
   });
 
-  it('should render, with an se-icon-wrapper class', async () => {
+  it('should render, with an wrapper class', async () => {
     const page = await newSpecPage({
       components: [IconComponent],
       html: `<se-icon></se-icon>`,
     });
-    expect(page.root.shadowRoot.querySelector('.se-icon-wrapper')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.wrapper')).toBeTruthy();
   });
 });

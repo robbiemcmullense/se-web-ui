@@ -33,25 +33,54 @@ export class IconComponent {
     | 'success'
     | 'warning'
     | 'error'
-    | 'information';
+    | 'information'
+    | 'none';
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
   @Prop() disabled = false;
+
+  /**
+   * Optional property that defines if the button is disabled.  Set to `false` by default.
+   */
+  @Prop() rotate: number | string = 0;
+
+  @Prop() mirror: 'horizontal' | 'vertical' | 'both';
 
   render() {
     const size = this.size || 'small';
     const TagType = this.option === 'button' ? 'button' : ('div' as any);
     // if contain svg, we don't use se-icon font-family in case there svg <text> is used
     const isSVG = !!this.el.querySelector('svg');
+    let transform = '';
+
+    switch (this.mirror) {
+      case 'both':
+        transform += 'scale(-1)';
+        break;
+      case 'horizontal':
+        transform += 'scaleX(-1)';
+        break;
+      case 'vertical':
+        transform += 'scaleY(-1)';
+        break;
+    }
+    if (this.rotate) {
+      transform += ` rotate(${
+        this.rotate.toString().includes('deg')
+          ? this.rotate
+          : `${this.rotate}deg`
+      })`;
+    }
 
     return (
       <Host class={`icon-${size}`}>
         <TagType
           disabled={this.disabled}
+          style={{ transform }}
           class={{
             disabled: this.disabled,
-            'se-icon-wrapper': true,
+            wrapper: true,
             'icon-family': !isSVG,
             [this.color]: !!this.color,
             [`icon-${this.option}`]: !!this.option,
