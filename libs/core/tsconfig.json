@@ -17,7 +17,7 @@
     "jsxFactory": "h",
     "types": ["node", "jest"]
   },
-  "include": ["src", "types/jsx.d.ts"],
+  "include": ["src", "types/jsx.d.ts", "mock/mutation-observer-mock.ts"],
   "exclude": ["node_modules", "src/**/*.stories.ts"],
   "files": []
 }

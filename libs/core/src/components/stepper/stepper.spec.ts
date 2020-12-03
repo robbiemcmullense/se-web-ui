@@ -1,5 +1,5 @@
 import { StepperComponent } from './stepper';
-import '../mutation-observer-mock';
+import '../../../mock/mutation-observer-mock';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('StepperComponent', () => {

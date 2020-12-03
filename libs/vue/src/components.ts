@@ -413,6 +413,7 @@ export const SeFormField = /*@__PURE__*/ Vue.extend({
     value: {} as PropOptions<Components.SeFormField['value']>,
     required: {} as PropOptions<Components.SeFormField['required']>,
     disabled: {} as PropOptions<Components.SeFormField['disabled']>,
+    notResponsive: {} as PropOptions<Components.SeFormField['notResponsive']>,
   },
 
   render: createCommonRender('se-form-field', ['didSubmit']),

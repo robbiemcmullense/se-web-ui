@@ -25,12 +25,12 @@ describe('DropdownComponent', () => {
     expect(dropdown.opened).toBeTruthy();
   });
 
-  it('should render, with a se-dropdown class', async () => {
+  it('should render, with a aria-haspopup aria property', async () => {
     const page = await newSpecPage({
       components: [DropdownComponent],
       html: `<se-dropdown></se-dropdown>`,
     });
-    expect(page.root.shadowRoot.querySelector('.se-dropdown')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('[aria-haspopup]')).toBeTruthy();
   });
 
   it('should call the close function when a click occurs and the dropdown is open, closing the dropdown', async () => {
@@ -38,15 +38,6 @@ describe('DropdownComponent', () => {
     const event = { stopPropagation: jest.fn() };
     const eventSpy = jest.spyOn(dropdown, 'close');
     dropdown.handleClick(event); // user clicks outside the dropdown menu or trigger element
-    expect(eventSpy).toHaveBeenCalled();
-    expect(dropdown.opened).toBeFalsy();
-  });
-
-  it('should call the close function when a touchstart occurs and the dropdown is open', async () => {
-    dropdown.opened = true;
-    const event = { stopPropagation: jest.fn() };
-    const eventSpy = jest.spyOn(dropdown, 'close');
-    dropdown.handleTouchstart(event); // touchscreen user touches screen outside the dropdown menu or trigger element
     expect(eventSpy).toHaveBeenCalled();
     expect(dropdown.opened).toBeFalsy();
   });

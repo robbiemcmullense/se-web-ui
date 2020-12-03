@@ -74,7 +74,7 @@ export class TabbarComponent {
         class={{
           'd-flex-main': true,
           [`tab-${this.color}`]: !!this.color,
-          [`opt-${this.option}`]: !!this.option,
+          [`wrapper-${this.option}`]: !!this.option,
         }}
       >
         <div class="nav-left-wrapper centered">

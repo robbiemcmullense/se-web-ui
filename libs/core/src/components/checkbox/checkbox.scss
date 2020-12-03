@@ -31,11 +31,11 @@ input {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-.checkbox-label-right {
+.label-right {
   flex-flow: row-reverse;
 }
 
-.checkbox-wrapper {
+.wrapper {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -65,7 +65,7 @@ button {
 
 .opt-checkbox {
   @include align-items(center);
-  .checkbox-container {
+  .container {
     position: relative;
     padding-left: $spacing-large;
     margin-left: $spacing;
@@ -129,7 +129,7 @@ button {
       }
     }
 
-    &.checkbox-label-left {
+    &.label-left {
       padding-left: 0;
       margin: 0;
       .checkmark {
@@ -141,7 +141,7 @@ button {
 }
 
 .opt-switch {
-  .checkbox-container {
+  .container {
     width: 44px;
     height: 26px;
     display: inline-block;

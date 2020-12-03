@@ -52,9 +52,7 @@ describe('CheckboxComponent', () => {
       html: `<se-checkbox label="my label" required="true"></se-checkbox>`,
     });
     expect(page.root.shadowRoot.querySelector('input')).toBeTruthy();
-    expect(
-      page.root.shadowRoot.querySelector('.checkbox-label-right')
-    ).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.label-right')).toBeTruthy();
   });
 
   it('should render "value" property as an input attribute', async () => {
@@ -67,15 +65,13 @@ describe('CheckboxComponent', () => {
     ).toBe('my value');
   });
 
-  it('should render in switch mode with a checkbox-label class, and the label left-positioned', async () => {
+  it('should render in switch mode with a .label class, and the label left-positioned', async () => {
     const page = await newSpecPage({
       components: [CheckboxComponent],
       html: `<se-checkbox option="switch" label="my label"></se-checkbox>`,
     });
-    expect(page.root.shadowRoot.querySelector('.checkbox-label')).toBeTruthy();
-    expect(
-      page.root.shadowRoot.querySelector('.checkbox-label-left')
-    ).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.label-wrap')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.label-left')).toBeTruthy();
   });
 
   it('should render with a required asterisk', async () => {

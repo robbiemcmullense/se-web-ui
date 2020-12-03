@@ -1,4 +1,4 @@
-import '../mutation-observer-mock';
+import '../../../mock/mutation-observer-mock';
 import { SidemenuComponent } from './sidemenu';
 
 describe('SidemenuComponent', () => {

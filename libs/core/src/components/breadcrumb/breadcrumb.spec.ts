@@ -1,4 +1,4 @@
-import '../mutation-observer-mock';
+import '../../../mock/mutation-observer-mock';
 import { BreadcrumbComponent } from './breadcrumb';
 import { newSpecPage } from '@stencil/core/testing';
 

@@ -1,3 +1,4 @@
+import '../../../mock/resize-observer-mock';
 import { TabbarComponent } from './tabbar';
 import { newSpecPage } from '@stencil/core/testing';
 

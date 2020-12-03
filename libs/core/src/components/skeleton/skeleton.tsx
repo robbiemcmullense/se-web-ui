@@ -34,9 +34,9 @@ export class Skeleton {
     return (
       <Host>
         {countArray.map(() => (
-          <div class={{ skeleton: true, rounded: this.circle }} style={style}>
+          <span class={{ skeleton: true, rounded: this.circle }} style={style}>
             &zwnj;
-          </div>
+          </span>
         ))}
       </Host>
     );

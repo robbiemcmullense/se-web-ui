@@ -25,6 +25,7 @@ export class CheckboxComponent {
    * The value you want to pass to the parent component when the checkbox is checked.
    */
   @Prop() value: string;
+
   /**
    * The label of the checkbox that will be attached to the box.
    */
@@ -146,7 +147,7 @@ export class CheckboxComponent {
         break;
       default:
         markup = (
-          <span class="checkbox-container" onClick={() => this.toggleSelect()}>
+          <span class="container" onClick={() => this.toggleSelect()}>
             <input
               type="checkbox"
               tabindex="-1"
@@ -171,9 +172,9 @@ export class CheckboxComponent {
     return (
       <label
         class={{
-          [`checkbox-label-${this.labelPos}`]: !!this.labelPos,
+          [`label-${this.labelPos}`]: !!this.labelPos,
           disabled: this.disabled,
-          'checkbox-wrapper': true,
+          wrapper: true,
           [`opt-${this.option}`]: true,
           [`p-${this.padding}`]: !!this.padding,
           header: !!this.header,

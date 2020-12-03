@@ -69,7 +69,7 @@ se-tabbar {
   .tab-alternative {
     font-size: 16px;
     width: 100%;
-    &.opt-nav {
+    .opt-nav {
       nav {
         > a,
         > span {
@@ -83,7 +83,7 @@ se-tabbar {
         }
       }
     }
-    &.opt-content {
+    .opt-content {
       nav {
         @include background-color("background-alternative");
         box-sizing: border-box;
@@ -253,14 +253,9 @@ se-tabbar {
       }
     }
   }
-  .opt-nav.tab-primary {
+  .wrapper-nav.tab-primary {
     @include background-color("primary");
     @include color("primary-contrast");
-    // box-shadow: $inner-shadow-top;
-    // border-bottom: 4px solid rgba(black, 0.25);
-    nav:not([slot="start"]) {
-      border-bottom: 4px solid rgba(black, $opacity);
-    }
     .nav-left-wrapper {
       background-color: rgba(black, $opacity);
       white-space: nowrap;
@@ -273,6 +268,14 @@ se-tabbar {
         }
       }
     }
+  }
+  .tab-primary.wrapper-nav {
+    // box-shadow: $inner-shadow-top;
+    // border-bottom: 4px solid rgba(black, 0.25);
+    nav:not([slot="start"]) {
+      border-bottom: 4px solid rgba(black, $opacity);
+    }
+
     nav,
     .sub-nav {
       height: 44px;
@@ -285,7 +288,7 @@ se-tabbar {
       text-transform: capitalize;
     }
   }
-  .opt-nav.tab-alternative {
+  .tab-alternative .opt-nav {
     nav,
     .sub-nav {
       min-height: 40px;
@@ -306,6 +309,9 @@ se-tabbar {
         }
       }
     }
+  }
+  .wrapper-content {
+    @include background-color("background-alternative");
   }
   .opt-content nav {
     @include background-color("background-alternative");
@@ -361,10 +367,10 @@ se-tabbar {
       }
     }
   }
-  .opt-content.tab-alternative {
+  .wrapper-content.tab-alternative {
     @include background-color("background-standard");
   }
-  .opt-content.tab-alternative nav {
+  .tab-alternative .opt-content nav {
     @include background-color("background-standard");
     > a,
     > span {

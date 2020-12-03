@@ -14,7 +14,7 @@ describe('CheckboxComponent', () => {
       '<se-checkbox id="my-checkbox" value="my value"></se-checkbox>'
     );
     hostElement = await page.find('se-checkbox');
-    wrapperElement = await page.find('se-checkbox >>> .checkbox-wrapper');
+    wrapperElement = await page.find('se-checkbox >>> .wrapper');
     checkboxElement = await page.find('se-checkbox >>> button');
     inputElement = await page.find('se-checkbox >>> input');
     labelElement = await page.find('se-checkbox >>> label');
@@ -25,10 +25,18 @@ describe('CheckboxComponent', () => {
     expect(hostElement).toHaveClass('hydrated');
   });
 
+  it('emits an event when clicked on', async () => {
+    const eventSpy = await page.spyOnEvent('didChange');
+    await checkboxElement.click();
+    expect(eventSpy).toHaveReceivedEvent();
+    expect(eventSpy).toHaveReceivedEventDetail({
+      value: 'my value',
+      selected: true,
+    });
+  });
   it('should render with the checkbox and standard classes to reflect the default option and background properties', async () => {
     expect(wrapperElement).toHaveClass('opt-checkbox');
   });
-
   it('renders with an id on the input element with the wc prefix', async () => {
     expect(inputElement).toHaveAttribute('id');
     expect(inputElement.getAttribute('id')).toEqual('wc-my-checkbox');
@@ -38,16 +46,6 @@ describe('CheckboxComponent', () => {
     hostElement.setProperty('disabled', true);
     await page.waitForChanges();
     expect(checkboxElement.getAttribute('disabled')).toEqual('');
-  });
-
-  it('emits an event when clicked on', async () => {
-    const eventSpy = await page.spyOnEvent('didChange');
-    await hostElement.click();
-    expect(eventSpy).toHaveReceivedEvent();
-    expect(eventSpy).toHaveReceivedEventDetail({
-      value: 'my value',
-      selected: true,
-    });
   });
 });
 
@@ -60,7 +58,7 @@ describe('CheckboxComponent in Switch Mode', () => {
       '<se-checkbox id="my-switch" option="switch" label="my label"></se-checkbox>'
     );
     hostElement = await page.find('se-checkbox');
-    wrapperElement = await page.find('se-checkbox >>> .checkbox-wrapper');
+    wrapperElement = await page.find('se-checkbox >>> .wrapper');
     inputElement = await page.find('se-checkbox >>> input');
   });
 
@@ -78,7 +76,7 @@ describe('CheckboxComponent in Switch Mode', () => {
   });
 
   it('should render a label element within the checkbox-label span element', async () => {
-    const labelElement = await page.find('se-checkbox >>> .checkbox-label');
+    const labelElement = await page.find('se-checkbox >>> .label-wrap');
     expect(labelElement.innerText).toEqual('my label');
   });
 });

@@ -84,6 +84,12 @@ export class FormFieldComponent {
    * Optional property that defines if the form field is disabled.  Set to `false` by default.
    */
   @Prop() disabled = false;
+
+  /**
+   * Optional property that defines if the form-filed should be responsive. when responsive: - if container size < 500px, the content input will be 'block' to avoid weird spacing; - If the container size < 330, the form-field is stacked.
+   */
+  @Prop() notResponsive = false;
+
   /**
    * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
    */
@@ -143,13 +149,15 @@ export class FormFieldComponent {
   }
 
   render() {
-    const isStacked = this.option === 'stacked' || this.isSmall;
+    const isSmall = !this.notResponsive && this.isSmall;
+    const isMedium = !this.notResponsive && this.isMedium;
+    const isStacked = this.option === 'stacked' || isSmall;
     return (
       <div
         class={{
           [`ff-${this.status}`]: true,
           'ff-stacked': isStacked,
-          'ff-block': this.isSmall || this.isMedium || this.block,
+          'ff-block': isSmall || isMedium || this.block,
           [`ff-padding-${this.padding}`]: true,
           'form-field-wrapper': true,
         }}

@@ -1,3 +1,5 @@
+import '../../../mock/resize-observer-mock';
+
 import { FormFieldComponent } from './form-field';
 import { newSpecPage } from '@stencil/core/testing';
 
