@@ -1,9 +1,6 @@
 import Vue, { VNode, CreateElement } from 'vue';
 
-export const createCommonRender = (
-  tagName: string,
-  eventNames: string[] = []
-) =>
+export const createCommonRender = (tagName: string, eventNames: string[] = []) =>
   function (createElement: CreateElement): VNode {
     const vueElement = this as Vue;
     const allListeners = eventNames.reduce((listeners, eventName) => {
@@ -26,7 +23,7 @@ export const createCommonRender = (
         domProps: vueElement.$props,
         on: allListeners,
       },
-      [vueElement.$slots.default]
+      [vueElement.$slots.default],
     );
   };
 

@@ -36,7 +36,7 @@ export namespace Components {
          */
         "option": 'technical' | 'website' | 'dcx';
         /**
-          * Define if the content of the page should scroll with the header (usefull on website context). The header can then have the style sticky to stay in the top of the page if needed.
+          * Define if the content of the page should scroll with the header (useful on website context). The header can then have the style sticky to stay in the top of the page if needed.
          */
         "pageScroll": boolean;
         /**
@@ -638,6 +638,10 @@ export namespace Components {
     }
     interface SeIcon {
         /**
+          * Optional property that defines if the icon should animate when changing states (rotation for example).
+         */
+        "animation": boolean;
+        /**
           * Optional property that defines the background color of the button. The default color will be inherited from its parent.
          */
         "color": | 'standard'
@@ -653,13 +657,16 @@ export namespace Components {
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
         "disabled": boolean;
+        /**
+          * Optional property that defines if the icon should be mirrored.
+         */
         "mirror": 'horizontal' | 'vertical' | 'both';
         /**
           * Optional property to define if the icon should act as a button (clickable).
          */
         "option": 'button';
         /**
-          * Optional property that defines if the button is disabled.  Set to `false` by default.
+          * Optional property that defines the icon should be rotated.
          */
         "rotate": number | string;
         /**
@@ -1677,7 +1684,7 @@ declare namespace LocalJSX {
          */
         "option"?: 'technical' | 'website' | 'dcx';
         /**
-          * Define if the content of the page should scroll with the header (usefull on website context). The header can then have the style sticky to stay in the top of the page if needed.
+          * Define if the content of the page should scroll with the header (useful on website context). The header can then have the style sticky to stay in the top of the page if needed.
          */
         "pageScroll"?: boolean;
         /**
@@ -2303,6 +2310,10 @@ declare namespace LocalJSX {
     }
     interface SeIcon {
         /**
+          * Optional property that defines if the icon should animate when changing states (rotation for example).
+         */
+        "animation"?: boolean;
+        /**
           * Optional property that defines the background color of the button. The default color will be inherited from its parent.
          */
         "color"?: | 'standard'
@@ -2318,13 +2329,16 @@ declare namespace LocalJSX {
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
         "disabled"?: boolean;
+        /**
+          * Optional property that defines if the icon should be mirrored.
+         */
         "mirror"?: 'horizontal' | 'vertical' | 'both';
         /**
           * Optional property to define if the icon should act as a button (clickable).
          */
         "option"?: 'button';
         /**
-          * Optional property that defines if the button is disabled.  Set to `false` by default.
+          * Optional property that defines the icon should be rotated.
          */
         "rotate"?: number | string;
         /**

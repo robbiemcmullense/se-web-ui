@@ -41,10 +41,18 @@ export class IconComponent {
   @Prop() disabled = false;
 
   /**
-   * Optional property that defines if the button is disabled.  Set to `false` by default.
+   * Optional property that defines if the icon should animate when changing states (rotation for example).
+   */
+  @Prop() animation = false;
+
+  /**
+   * Optional property that defines the icon should be rotated.
    */
   @Prop() rotate: number | string = 0;
 
+  /**
+   * Optional property that defines if the icon should be mirrored.
+   */
   @Prop() mirror: 'horizontal' | 'vertical' | 'both';
 
   render() {
@@ -81,6 +89,7 @@ export class IconComponent {
           class={{
             disabled: this.disabled,
             wrapper: true,
+            animation: this.animation,
             'icon-family': !isSVG,
             [this.color]: !!this.color,
             [`icon-${this.option}`]: !!this.option,

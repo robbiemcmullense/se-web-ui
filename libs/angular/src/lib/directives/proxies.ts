@@ -558,13 +558,13 @@ export class SeHeader {
 
 export declare interface SeIcon extends Components.SeIcon {}
 @ProxyCmp({
-  inputs: ['color', 'disabled', 'mirror', 'option', 'rotate', 'size']
+  inputs: ['animation', 'color', 'disabled', 'mirror', 'option', 'rotate', 'size']
 })
 @Component({
   selector: 'se-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'disabled', 'mirror', 'option', 'rotate', 'size']
+  inputs: ['animation', 'color', 'disabled', 'mirror', 'option', 'rotate', 'size']
 })
 export class SeIcon {
   protected el: HTMLElement;

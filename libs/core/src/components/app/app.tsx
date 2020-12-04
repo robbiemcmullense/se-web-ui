@@ -46,7 +46,7 @@ export class AppComponent {
   @Prop() option: 'technical' | 'website' | 'dcx' = 'technical';
 
   /**
-   * Define if the content of the page should scroll with the header (usefull on website context).
+   * Define if the content of the page should scroll with the header (useful on website context).
    * The header can then have the style sticky to stay in the top of the page if needed.
    */
   @Prop() pageScroll: boolean;
