@@ -23,6 +23,8 @@ const customElementTags: string[] = [
  'se-breadcrumb',
  'se-breadcrumb-item',
  'se-button',
+ 'se-carousel',
+ 'se-carousel-item',
  'se-checkbox',
  'se-chip',
  'se-container',
@@ -251,6 +253,26 @@ export const SeButton = /*@__PURE__*/ Vue.extend({
 });
 
 
+export const SeCarousel = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    minWidth: {} as PropOptions<Components.SeCarousel['minWidth']>,
+    minItems: {} as PropOptions<Components.SeCarousel['minItems']>,
+  },
+
+
+  render: createCommonRender('se-carousel', []),
+});
+
+
+export const SeCarouselItem = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('se-carousel-item', []),
+});
+
+
 export const SeCheckbox = /*@__PURE__*/ Vue.extend({
 
   props: {
@@ -463,7 +485,7 @@ export const SeFormField = /*@__PURE__*/ Vue.extend({
     value: {} as PropOptions<Components.SeFormField['value']>,
     required: {} as PropOptions<Components.SeFormField['required']>,
     disabled: {} as PropOptions<Components.SeFormField['disabled']>,
-    notResponsive: {} as PropOptions<Components.SeFormField['notResponsive']>,
+    noStacking: {} as PropOptions<Components.SeFormField['noStacking']>,
   },
 
 

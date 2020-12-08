@@ -8,13 +8,13 @@ se-form-field {
     @include align-items(center);
   }
   .ff-padding-small {
-    padding: $spacing-small;
+    padding: $spacing-small 0;
   }
   .ff-padding-medium {
-    padding: $spacing;
+    padding: $spacing 0;
   }
   .ff-padding-none {
-    padding: 0;
+    padding: 1px 0; // to account for selected field
   }
   .with-label {
     font-weight: 550;
@@ -97,7 +97,7 @@ se-form-field {
     @include background-color("background-alternative");
     @include color("background-alternative-contrast");
     transition: 0.2s;
-    padding: $spacing-small;
+    padding: $spacing-small $spacing-small $spacing-small $spacing;
     font-size: inherit;
     &:focus {
       outline-width: 2px;
@@ -114,7 +114,7 @@ se-form-field {
 
   select {
     border-radius: 0;
-    padding: 10px 30px 10px 10px;
+    padding: 10px $spacing-xlarge 10px $spacing;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -132,7 +132,7 @@ se-form-field {
   input[type="search"],
   select {
     height: 40px;
-    width: 103%;
+    width: calc(100% + 14px);
   }
 
   // .ff-size-small {
@@ -200,11 +200,12 @@ se-form-field {
     }
     .ff-wrapper-input {
       max-width: 100%;
+      margin-right: 4px;
     }
 
     select,
     input[type="search"] {
-      width: 100%;
+      width: calc(100% + 4px);
     }
 
     input:not([type="search"]),

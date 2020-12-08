@@ -516,13 +516,13 @@ export class SeFiltration {
 import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({
-  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'notResponsive', 'option', 'padding', 'required', 'status', 'type', 'value']
+  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'type', 'value']
 })
 @Component({
   selector: 'se-form-field',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'notResponsive', 'option', 'padding', 'required', 'status', 'type', 'value'],
+  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'type', 'value'],
   outputs: ['didSubmit']
 })
 export class SeFormField {

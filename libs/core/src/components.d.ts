@@ -590,9 +590,9 @@ export namespace Components {
          */
         "labelWidth": string;
         /**
-          * Optional property that defines if the form-filed should be responsive. when responsive: - if container size < 500px, the content input will be 'block' to avoid weird spacing; - If the container size < 330, the form-field is stacked.
+          * Optional property that defines if the form-filed should not stack even if the container is small (it won't be responsive).
          */
-        "notResponsive": boolean;
+        "noStacking": boolean;
         /**
           * Defines the layout of your form field. `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
          */
@@ -2258,9 +2258,9 @@ declare namespace LocalJSX {
          */
         "labelWidth"?: string;
         /**
-          * Optional property that defines if the form-filed should be responsive. when responsive: - if container size < 500px, the content input will be 'block' to avoid weird spacing; - If the container size < 330, the form-field is stacked.
+          * Optional property that defines if the form-filed should not stack even if the container is small (it won't be responsive).
          */
-        "notResponsive"?: boolean;
+        "noStacking"?: boolean;
         /**
           * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
          */

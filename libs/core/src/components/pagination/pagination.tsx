@@ -178,6 +178,7 @@ export class PaginationComponent {
           {this.__parPageSizeList().length > 1 ? (
             <div class="pageSize">
               <se-form-field
+                no-stacking
                 type="select"
                 padding="none"
                 label={this.labelPerPage}
@@ -186,7 +187,9 @@ export class PaginationComponent {
                   {this.__parPageSizeList().map(i => (
                     <option
                       value={i}
-                      selected={i == (this.perPage || this.defaultPageSizeList)}
+                      selected={
+                        i === (this.perPage || this.defaultPageSizeList)
+                      }
                     >
                       {i}
                     </option>
