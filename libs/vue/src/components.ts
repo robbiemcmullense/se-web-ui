@@ -23,6 +23,8 @@ const customElementTags: string[] = [
  'se-breadcrumb',
  'se-breadcrumb-item',
  'se-button',
+ 'se-carousel',
+ 'se-carousel-item',
  'se-checkbox',
  'se-chip',
  'se-container',
@@ -248,6 +250,25 @@ export const SeButton = /*@__PURE__*/ Vue.extend({
     setGrouped: createCommonMethod('setGrouped') as Components.SeButton['setGrouped'],
   },
   render: createCommonRender('se-button', ['didClick']),
+});
+
+
+export const SeCarousel = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    itemMinWidth: {} as PropOptions<Components.SeCarousel['itemMinWidth']>,
+  },
+
+
+  render: createCommonRender('se-carousel', []),
+});
+
+
+export const SeCarouselItem = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('se-carousel-item', []),
 });
 
 

@@ -169,6 +169,7 @@ export class FormFieldComponent {
           <span
             style={{
               width: !isStacked ? this.labelWidth : 'auto',
+              minWidth: !isStacked ? this.labelWidth : '140px',
             }}
             class={{
               'with-label': !!this.label,

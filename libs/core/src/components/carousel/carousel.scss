@@ -1,0 +1,46 @@
+:host {
+  /**
+  * @prop --se-carousel-item-width: Default width of se-carousel-item (275px)
+  */
+  --se-carousel-item-width: 275px;
+  position: relative;
+  margin: 0;
+}
+
+.content {
+  @include flex(1);
+  @include display-flex();
+  @include flex-direction("row");
+  @include align-items(center);
+  flex-wrap: nowrap;
+
+  position: relative;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    height: 0 !important;
+  }
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.arrow {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 28px / 2);
+  background-color: var(--se-alternative);
+  padding: 2px;
+  box-shadow: 1px 1px 4px 0 var(--se-shadow);
+  &.icon-medium {
+    padding: 4px;
+    top: calc(50% - 40px / 2);
+  }
+  &.left {
+    left: $spacing;
+  }
+  &.right {
+    right: $spacing;
+  }
+}

@@ -109,10 +109,10 @@ export const config: Config = {
       typesDir: `types`,
       esmLoaderPath: `loader`,
       copy: [
-        {
-          src: '../_package.json',
-          dest: '../package.json',
-        },
+        // {
+        //   src: '../_package.json',
+        //   dest: '../package.json',
+        // },
         {
           src: 'theme',
           dest: '../styles',

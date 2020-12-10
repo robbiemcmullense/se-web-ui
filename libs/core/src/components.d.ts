@@ -267,6 +267,14 @@ export namespace Components {
          */
         "value": string;
     }
+    interface SeCarousel {
+        /**
+          * minimum width of the carousel item. The number of item displayed will be based on it.
+         */
+        "itemMinWidth": number;
+    }
+    interface SeCarouselItem {
+    }
     interface SeCheckbox {
         /**
           * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
@@ -1317,6 +1325,18 @@ declare global {
         prototype: HTMLSeButtonElement;
         new (): HTMLSeButtonElement;
     };
+    interface HTMLSeCarouselElement extends Components.SeCarousel, HTMLStencilElement {
+    }
+    var HTMLSeCarouselElement: {
+        prototype: HTMLSeCarouselElement;
+        new (): HTMLSeCarouselElement;
+    };
+    interface HTMLSeCarouselItemElement extends Components.SeCarouselItem, HTMLStencilElement {
+    }
+    var HTMLSeCarouselItemElement: {
+        prototype: HTMLSeCarouselItemElement;
+        new (): HTMLSeCarouselItemElement;
+    };
     interface HTMLSeCheckboxElement extends Components.SeCheckbox, HTMLStencilElement {
     }
     var HTMLSeCheckboxElement: {
@@ -1606,6 +1626,8 @@ declare global {
         "se-breadcrumb": HTMLSeBreadcrumbElement;
         "se-breadcrumb-item": HTMLSeBreadcrumbItemElement;
         "se-button": HTMLSeButtonElement;
+        "se-carousel": HTMLSeCarouselElement;
+        "se-carousel-item": HTMLSeCarouselItemElement;
         "se-checkbox": HTMLSeCheckboxElement;
         "se-chip": HTMLSeChipElement;
         "se-container": HTMLSeContainerElement;
@@ -1913,6 +1935,14 @@ declare namespace LocalJSX {
           * Optional property that defines the value of your button, which gets passed to the parent component when clicking the button.
          */
         "value"?: string;
+    }
+    interface SeCarousel {
+        /**
+          * minimum width of the carousel item. The number of item displayed will be based on it.
+         */
+        "itemMinWidth"?: number;
+    }
+    interface SeCarouselItem {
     }
     interface SeCheckbox {
         /**
@@ -2949,6 +2979,8 @@ declare namespace LocalJSX {
         "se-breadcrumb": SeBreadcrumb;
         "se-breadcrumb-item": SeBreadcrumbItem;
         "se-button": SeButton;
+        "se-carousel": SeCarousel;
+        "se-carousel-item": SeCarouselItem;
         "se-checkbox": SeCheckbox;
         "se-chip": SeChip;
         "se-container": SeContainer;
@@ -3013,6 +3045,8 @@ declare module "@stencil/core" {
             "se-breadcrumb": LocalJSX.SeBreadcrumb & JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement>;
             "se-breadcrumb-item": LocalJSX.SeBreadcrumbItem & JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement>;
             "se-button": LocalJSX.SeButton & JSXBase.HTMLAttributes<HTMLSeButtonElement>;
+            "se-carousel": LocalJSX.SeCarousel & JSXBase.HTMLAttributes<HTMLSeCarouselElement>;
+            "se-carousel-item": LocalJSX.SeCarouselItem & JSXBase.HTMLAttributes<HTMLSeCarouselItemElement>;
             "se-checkbox": LocalJSX.SeCheckbox & JSXBase.HTMLAttributes<HTMLSeCheckboxElement>;
             "se-chip": LocalJSX.SeChip & JSXBase.HTMLAttributes<HTMLSeChipElement>;
             "se-container": LocalJSX.SeContainer & JSXBase.HTMLAttributes<HTMLSeContainerElement>;

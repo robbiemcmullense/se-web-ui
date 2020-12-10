@@ -27,6 +27,7 @@
 
 ### Used by
 
+ - [se-carousel-item](../carousel-item)
  - [se-filtration](../filtration)
  - [se-sidemenu](../sidemenu)
 
@@ -38,6 +39,7 @@
 ```mermaid
 graph TD;
   se-block --> se-loading
+  se-carousel-item --> se-block
   se-filtration --> se-block
   se-sidemenu --> se-block
   style se-block fill:#f9f,stroke:#333,stroke-width:4px

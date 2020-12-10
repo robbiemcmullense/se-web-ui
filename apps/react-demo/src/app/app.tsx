@@ -9,6 +9,7 @@ import Docs from './pages/docs';
 import Table from './pages/table';
 import TableOther from './pages/tableother';
 import Filtration from './pages/filtration';
+import Carousel from './pages/carousel';
 
 import NoPage from './pages/404';
 import './styles.scss';
@@ -47,6 +48,11 @@ class App extends Component {
               path="/filtration"
               layout={ShellLayout}
               component={Filtration}
+            />
+            <AppRoute
+              path="/carousel"
+              layout={ShellLayout}
+              component={Carousel}
             />
 
             <AppRoute path="/*" layout={DefaultLayout} component={NoPage} />
