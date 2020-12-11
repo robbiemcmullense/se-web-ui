@@ -18,8 +18,8 @@ import ResizeObserver from 'resize-observer-polyfill';
 })
 export class FormFieldComponent {
   private inputWrapper?: HTMLElement;
-  private sizeSmall = 360;
-  private sizeMedium = 500;
+  private sizeSmall = 321;
+  private sizeMedium = 501;
 
   @Element() el: HTMLElement;
   /**
@@ -69,6 +69,12 @@ export class FormFieldComponent {
    * Defines the text value of the label in your form field.
    */
   @Prop() label: string;
+
+  /**
+   * Defines if the field is a text, to add a padding and better align with other fields.
+   */
+  @Prop() textOnly: boolean;
+
   /**
    * Defines the value of your form field to get passed to the parent component.
    * When the type is set to "input", this value will be the default placeholder in your input field.
@@ -168,6 +174,7 @@ export class FormFieldComponent {
           <span
             style={{
               width: !shouldStack ? this.labelWidth : 'auto',
+              minWidth: !shouldStack ? this.labelWidth : '140px',
             }}
             class={{
               'with-label': !!this.label,
@@ -184,7 +191,7 @@ export class FormFieldComponent {
               )}
             </span>
           </span>
-          <div class="ff-wrapper">
+          <div class={{ 'ff-wrapper': true, textOnly: this.textOnly }}>
             <div class="ff-wrapper-input">
               <slot></slot>
             </div>

@@ -267,6 +267,14 @@ export namespace Components {
          */
         "value": string;
     }
+    interface SeCarousel {
+        /**
+          * minimum width of the carousel item. The number of item displayed will be based on it.
+         */
+        "itemMinWidth": number;
+    }
+    interface SeCarouselItem {
+    }
     interface SeCheckbox {
         /**
           * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
@@ -396,17 +404,18 @@ export namespace Components {
     }
     interface SeDialog {
         /**
-          * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
-         */
-        "backdropClicked": () => Promise<void>;
-        /**
           * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
+          * @deprecated use noBackdrop='true' instead
          */
         "canBackdrop": boolean;
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
          */
         "color": 'alternative' | 'primary';
+        /**
+          * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `false`.
+         */
+        "noBackdrop": boolean;
         /**
           * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
          */
@@ -609,6 +618,10 @@ export namespace Components {
           * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
          */
         "status": 'error' | 'warning' | 'success';
+        /**
+          * Defines if the field is a text, to add a padding and better align with other fields.
+         */
+        "textOnly": boolean;
         /**
           * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`). `input` is the default type.
          */
@@ -1317,6 +1330,18 @@ declare global {
         prototype: HTMLSeButtonElement;
         new (): HTMLSeButtonElement;
     };
+    interface HTMLSeCarouselElement extends Components.SeCarousel, HTMLStencilElement {
+    }
+    var HTMLSeCarouselElement: {
+        prototype: HTMLSeCarouselElement;
+        new (): HTMLSeCarouselElement;
+    };
+    interface HTMLSeCarouselItemElement extends Components.SeCarouselItem, HTMLStencilElement {
+    }
+    var HTMLSeCarouselItemElement: {
+        prototype: HTMLSeCarouselItemElement;
+        new (): HTMLSeCarouselItemElement;
+    };
     interface HTMLSeCheckboxElement extends Components.SeCheckbox, HTMLStencilElement {
     }
     var HTMLSeCheckboxElement: {
@@ -1606,6 +1631,8 @@ declare global {
         "se-breadcrumb": HTMLSeBreadcrumbElement;
         "se-breadcrumb-item": HTMLSeBreadcrumbItemElement;
         "se-button": HTMLSeButtonElement;
+        "se-carousel": HTMLSeCarouselElement;
+        "se-carousel-item": HTMLSeCarouselItemElement;
         "se-checkbox": HTMLSeCheckboxElement;
         "se-chip": HTMLSeChipElement;
         "se-container": HTMLSeContainerElement;
@@ -1914,6 +1941,14 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface SeCarousel {
+        /**
+          * minimum width of the carousel item. The number of item displayed will be based on it.
+         */
+        "itemMinWidth"?: number;
+    }
+    interface SeCarouselItem {
+    }
     interface SeCheckbox {
         /**
           * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`. The default value is `success`, rendering a green color. The `secondary` setting renders a blue color.
@@ -2048,12 +2083,17 @@ declare namespace LocalJSX {
     interface SeDialog {
         /**
           * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
+          * @deprecated use noBackdrop='true' instead
          */
         "canBackdrop"?: boolean;
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
          */
         "color"?: 'alternative' | 'primary';
+        /**
+          * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `false`.
+         */
+        "noBackdrop"?: boolean;
         /**
           * Send data to the parent component when the backdrop is clicked.
          */
@@ -2281,6 +2321,10 @@ declare namespace LocalJSX {
           * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
          */
         "status"?: 'error' | 'warning' | 'success';
+        /**
+          * Defines if the field is a text, to add a padding and better align with other fields.
+         */
+        "textOnly"?: boolean;
         /**
           * Defines whether the form field's input is a text field (`input`), a checkbox (`checkbox`), a radio button (`radio`), or a dropdown menu (`select`). `input` is the default type.
          */
@@ -2949,6 +2993,8 @@ declare namespace LocalJSX {
         "se-breadcrumb": SeBreadcrumb;
         "se-breadcrumb-item": SeBreadcrumbItem;
         "se-button": SeButton;
+        "se-carousel": SeCarousel;
+        "se-carousel-item": SeCarouselItem;
         "se-checkbox": SeCheckbox;
         "se-chip": SeChip;
         "se-container": SeContainer;
@@ -3013,6 +3059,8 @@ declare module "@stencil/core" {
             "se-breadcrumb": LocalJSX.SeBreadcrumb & JSXBase.HTMLAttributes<HTMLSeBreadcrumbElement>;
             "se-breadcrumb-item": LocalJSX.SeBreadcrumbItem & JSXBase.HTMLAttributes<HTMLSeBreadcrumbItemElement>;
             "se-button": LocalJSX.SeButton & JSXBase.HTMLAttributes<HTMLSeButtonElement>;
+            "se-carousel": LocalJSX.SeCarousel & JSXBase.HTMLAttributes<HTMLSeCarouselElement>;
+            "se-carousel-item": LocalJSX.SeCarouselItem & JSXBase.HTMLAttributes<HTMLSeCarouselItemElement>;
             "se-checkbox": LocalJSX.SeCheckbox & JSXBase.HTMLAttributes<HTMLSeCheckboxElement>;
             "se-chip": LocalJSX.SeChip & JSXBase.HTMLAttributes<HTMLSeChipElement>;
             "se-container": LocalJSX.SeContainer & JSXBase.HTMLAttributes<HTMLSeContainerElement>;

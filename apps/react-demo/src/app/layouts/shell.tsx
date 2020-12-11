@@ -143,6 +143,7 @@ class ShellLayout extends Component {
             <NavLink to="/dashboard">Dashboard</NavLink>
             <NavLink to="/tableother">TableOther</NavLink>
             <NavLink to="/filtration">Filtration</NavLink>
+            <NavLink to="/carousel">Carousel</NavLink>
           </nav>
           <nav slot="end">
             <a href="/">End</a>

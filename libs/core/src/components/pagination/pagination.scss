@@ -13,10 +13,16 @@
 .pageSize {
   display: flex;
   padding-right: $spacing-large;
+  align-items: center;
+  > span {
+    padding-right: $spacing;
+    @include typology("small");
+    font-weight: 550;
+  }
 }
 
 .label {
-  font-weight: 500;
+  font-weight: 550;
   font-size: 14px;
 }
 

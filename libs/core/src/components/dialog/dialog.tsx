@@ -3,7 +3,6 @@ import {
   h,
   Prop,
   Element,
-  Method,
   Event,
   EventEmitter,
   Watch,
@@ -51,19 +50,15 @@ export class DialogComponent {
   }
   /**
    * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
+   * @deprecated use noBackdrop='true' instead
    */
   @Prop() canBackdrop = true;
+
   /**
-   * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
+   * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `false`.
    */
-  @Method()
-  async backdropClicked() {
-    if (this.canBackdrop) {
-      // Only emit if canBackdrop was clicked
-      this.backdrop.emit();
-      this.open = false;
-    }
-  }
+  @Prop() noBackdrop = false;
+
   /**
    * Send data to the parent component when the backdrop is clicked.
    */
@@ -79,6 +74,29 @@ export class DialogComponent {
    */
   @Prop() pageScroll: boolean;
 
+  /**
+   * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
+   */
+  backdropClicked() {
+    // we shuold not quit if the animation has no completed (many click on a button open/close the dialog)
+    if (!this.modalAnimation) {
+      /*
+        |                          | canBackdrop | noBackdrop | result         |
+        | ---                      | ----------- | ---------- | -------------- |
+        | default :                | true        | false      | emit & close   |
+        | we use canBackrop:       | false       | false      | don't emit     |
+        | we use noBackdrop:       | true        | true       | don't emit     |
+        | unlikely we modify both: | false       | true      | don't emit     |
+      */
+
+      if (this.canBackdrop && !this.noBackdrop) {
+        // This should be deprecated
+        // Only emit if canBackdrop was clicked
+        this.backdrop.emit();
+        this.open = false;
+      }
+    }
+  }
   assignDialogHeaderProps() {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
       (item: any) => {

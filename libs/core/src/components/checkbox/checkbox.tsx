@@ -181,11 +181,13 @@ export class CheckboxComponent {
           'no-label': !this.label,
         }}
       >
-        {this.label && (
+        {this.label ? (
           <span class="label-wrap">
             {this.label}
             {this.required && <i class="required">*</i>}
           </span>
+        ) : (
+          <span>&nbsp;</span>
         )}
         {markup}
       </label>

@@ -177,12 +177,8 @@ export class PaginationComponent {
         <div class="flexed">
           {this.__parPageSizeList().length > 1 ? (
             <div class="pageSize">
-              <se-form-field
-                no-stacking
-                type="select"
-                padding="none"
-                label={this.labelPerPage}
-              >
+              <span>{this.labelPerPage}</span>
+              <se-form-field type="select" option="stacked" padding="none">
                 <select onChange={e => this.__pageSizeChanged(e)}>
                   {this.__parPageSizeList().map(i => (
                     <option

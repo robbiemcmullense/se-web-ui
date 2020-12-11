@@ -5,6 +5,7 @@
   (didClose)="closeDialog()"
   (backdrop)="backdropClick()"
   [canBackdrop]="dialog.canBackdrop"
+  [noBackdrop]="dialog.noBackdrop"
 >
   <se-dialog-header *ngIf="dialog.title">{{ dialog.title }}</se-dialog-header>
   <se-dialog-content

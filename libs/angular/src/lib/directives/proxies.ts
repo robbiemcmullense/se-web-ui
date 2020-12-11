@@ -246,6 +246,41 @@ export class SeButton {
   }
 }
 
+
+export declare interface SeCarousel extends Components.SeCarousel {}
+@ProxyCmp({
+  inputs: ['itemMinWidth']
+})
+@Component({
+  selector: 'se-carousel',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['itemMinWidth']
+})
+export class SeCarousel {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SeCarouselItem extends Components.SeCarouselItem {}
+
+@Component({
+  selector: 'se-carousel-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class SeCarouselItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @ProxyCmp({
@@ -315,14 +350,13 @@ export class SeContainer {
 import { DialogComponent as IDialogComponent } from '@se/web-ui/types/components/dialog/dialog';
 export declare interface SeDialog extends Components.SeDialog {}
 @ProxyCmp({
-  inputs: ['canBackdrop', 'color', 'open', 'pageScroll', 'size'],
-  methods: ['backdropClicked']
+  inputs: ['canBackdrop', 'color', 'noBackdrop', 'open', 'pageScroll', 'size']
 })
 @Component({
   selector: 'se-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canBackdrop', 'color', 'open', 'pageScroll', 'size'],
+  inputs: ['canBackdrop', 'color', 'noBackdrop', 'open', 'pageScroll', 'size'],
   outputs: ['backdrop', 'didClose']
 })
 export class SeDialog {
@@ -516,13 +550,13 @@ export class SeFiltration {
 import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({
-  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'type', 'value']
+  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'textOnly', 'type', 'value']
 })
 @Component({
   selector: 'se-form-field',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'type', 'value'],
+  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'textOnly', 'type', 'value'],
   outputs: ['didSubmit']
 })
 export class SeFormField {

@@ -40,8 +40,13 @@ export class DialogConfig {
   option?: string;
   /**
    * @description option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
+   * @deprecated use noBackdrop instead
    */
   canBackdrop?: boolean;
+  /**
+   * @description option to enable click on backdrop.  Default setting is `false`.
+   */
+  noBackdrop?: boolean;
   /**
    * @description option to pass any data to the custom dialog component.
    */

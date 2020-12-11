@@ -77,17 +77,19 @@ storiesOf('Form Field', module)
         label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
+        text-only
         option='${option}'
         label='Some unstyled text'
         disabled='${disabled}'
         label-width='${labelWidth}'
         >
-        <div>Some text alined</div>
+        <div>Some text alined and really long Some text alined and really long Some text alined and really long Some text alined and really long Some text alined and really long Some text alined and really long</div>
       </se-form-field>
       <se-form-field
         label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
+        text-only
         option='${option}'
         label-width='${labelWidth}'
         label='Some bold text'

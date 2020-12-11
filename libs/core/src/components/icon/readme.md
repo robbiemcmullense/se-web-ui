@@ -27,6 +27,7 @@
  - [se-banner](../banner)
  - [se-breadcrumb-item](../breadcrumb-item)
  - [se-button](../button)
+ - [se-carousel](../carousel)
  - [se-chip](../chip)
  - [se-dialog-content](../dialog-content)
  - [se-dialog-header](../dialog-header)
@@ -51,6 +52,7 @@ graph TD;
   se-banner --> se-icon
   se-breadcrumb-item --> se-icon
   se-button --> se-icon
+  se-carousel --> se-icon
   se-chip --> se-icon
   se-dialog-content --> se-icon
   se-dialog-header --> se-icon

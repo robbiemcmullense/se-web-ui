@@ -8,13 +8,13 @@ se-form-field {
     @include align-items(center);
   }
   .ff-padding-small {
-    padding: $spacing-small 0;
+    padding: $spacing-small 1px;
   }
   .ff-padding-medium {
-    padding: $spacing 0;
+    padding: $spacing 1px;
   }
   .ff-padding-none {
-    padding: 1px 0; // to account for selected field
+    padding: 1px; // to account for selected field
   }
   .with-label {
     font-weight: 550;
@@ -22,7 +22,8 @@ se-form-field {
     display: flex;
     margin-left: $spacing;
     @include align-items(flex-start);
-    // min-height: 38px;
+    @include typology("small");
+    font-weight: bold;
     > span {
       display: flex;
       min-height: 40px;
@@ -33,10 +34,9 @@ se-form-field {
   label {
     width: 100%;
     text-align: center;
-    line-height: 12px;
-    @include typology("small");
     @include display-flex;
     @include justify-content(center);
+
     // @include align-items(flex-start);
     > span {
       // @include flex(40%);
@@ -178,6 +178,11 @@ se-form-field {
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
+  }
+  .textOnly {
+    padding-top: 8px;
+    min-height: auto;
+    @include align-items(baseline);
   }
 
   .ff-block {

@@ -256,8 +256,7 @@ export const SeButton = /*@__PURE__*/ Vue.extend({
 export const SeCarousel = /*@__PURE__*/ Vue.extend({
 
   props: {
-    minWidth: {} as PropOptions<Components.SeCarousel['minWidth']>,
-    minItems: {} as PropOptions<Components.SeCarousel['minItems']>,
+    itemMinWidth: {} as PropOptions<Components.SeCarousel['itemMinWidth']>,
   },
 
 
@@ -345,13 +344,11 @@ export const SeDialog = /*@__PURE__*/ Vue.extend({
     color: {} as PropOptions<Components.SeDialog['color']>,
     open: {} as PropOptions<Components.SeDialog['open']>,
     canBackdrop: {} as PropOptions<Components.SeDialog['canBackdrop']>,
+    noBackdrop: {} as PropOptions<Components.SeDialog['noBackdrop']>,
     pageScroll: {} as PropOptions<Components.SeDialog['pageScroll']>,
   },
 
 
-  methods: {
-    backdropClicked: createCommonMethod('backdropClicked') as Components.SeDialog['backdropClicked'],
-  },
   render: createCommonRender('se-dialog', ['backdrop', 'didClose']),
 });
 
@@ -482,6 +479,7 @@ export const SeFormField = /*@__PURE__*/ Vue.extend({
     type: {} as PropOptions<Components.SeFormField['type']>,
     status: {} as PropOptions<Components.SeFormField['status']>,
     label: {} as PropOptions<Components.SeFormField['label']>,
+    textOnly: {} as PropOptions<Components.SeFormField['textOnly']>,
     value: {} as PropOptions<Components.SeFormField['value']>,
     required: {} as PropOptions<Components.SeFormField['required']>,
     disabled: {} as PropOptions<Components.SeFormField['disabled']>,

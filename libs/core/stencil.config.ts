@@ -78,7 +78,7 @@ export const config: Config = {
     cssVarsShim: true,
     dynamicImportShim: true,
     initializeNextTick: true,
-    safari10: false,
+    safari10: true,
     scriptDataOpts: true,
     shadowDomShim: true,
   },

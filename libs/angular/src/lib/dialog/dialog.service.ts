@@ -6,12 +6,12 @@ import {
   EmbeddedViewRef,
   ComponentRef,
   ApplicationRef,
-  Type
+  Type,
 } from '@angular/core';
 
 import {
   DialogComponent,
-  DialogModalComponent
+  DialogModalComponent,
 } from '../dialog/dialog.component';
 import { DialogConfig } from '../dialog/dialog-config';
 import { ComponentInjector } from '../shared/component-injector';
@@ -19,18 +19,18 @@ import { ComponentInjector } from '../shared/component-injector';
 /** Injection token that can be used to access the data that was passed in to a dialog. */
 export const MODAL_DATA = new InjectionToken<any>('ModalData');
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DialogService {
   closeEvent: any;
   defaultConfig: DialogConfig = {
     canBackdrop: true,
+    noBackdrop: false,
     color: 'primary',
     size: 'medium',
-    data: {}
-  }
+    data: {},
+  };
   public componentRef: ComponentRef<any>;
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -45,13 +45,10 @@ export class DialogService {
     componentType: Type<any>,
     config: DialogConfig = {}
   ) {
-
-    const userConf: DialogConfig = {...this.defaultConfig, ...config}
+    const userConf: DialogConfig = { ...this.defaultConfig, ...config };
 
     // MODAL_DATA added as DI based on config.data
-    const map = new WeakMap<any, any>([
-      [MODAL_DATA, userConf.data]
-    ]);
+    const map = new WeakMap<any, any>([[MODAL_DATA, userConf.data]]);
 
     map.set(DialogConfig, userConf);
     this.componentRef = this.componentFactoryResolver
@@ -72,7 +69,7 @@ export class DialogService {
     const dialogRef = this.createDialogComponent(DialogComponent, config);
     dialogRef.instance.type = 'alert';
     this.closeEvent = dialogRef.instance.closeEvent.subscribe(
-      (data) => {
+      data => {
         this.close(data);
       },
       (err: any) => {
@@ -88,7 +85,7 @@ export class DialogService {
     const dialogRef = this.createDialogComponent(DialogComponent, config);
     dialogRef.instance.type = 'confirm';
     this.closeEvent = dialogRef.instance.closeEvent.subscribe(
-      (data) => {
+      data => {
         this.close(data);
       },
       (err: any) => {
@@ -102,12 +99,9 @@ export class DialogService {
    */
 
   public modal(componentType: Type<any>, config?: DialogConfig) {
-    const dialogRef = this.createDialogComponent(
-      DialogModalComponent,
-      config
-    );
+    const dialogRef = this.createDialogComponent(DialogModalComponent, config);
     this.closeEvent = dialogRef.instance.closeEvent.subscribe(
-      (data) => {
+      data => {
         this.close(data);
       },
       (err: any) => {
