@@ -256,7 +256,7 @@ export class FiltrationComponent {
                 {this.showSelectAll ? (
                   <div class="select-all" onClick={() => this.selectAllItems()}>
                     {this.labelSelectAll}
-                    {this.search.length ? `(${nbItems})` : ''}
+                    {this.search?.length ? `(${nbItems})` : ''}
                   </div>
                 ) : (
                   ''
