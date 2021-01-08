@@ -76,65 +76,6 @@ button {
     padding-left: $spacing-large;
     margin-left: $spacing;
     // margin-top: $spacing-small;
-
-    .checkmark {
-      position: absolute;
-      margin: 0;
-      margin-top: -$spacing;
-      // outline: none;
-      padding: 0;
-      // top: 4px;
-      left: -$spacing-small;
-      height: 14px;
-      width: 14px;
-      @include background-color("background-alternative");
-      border: 1px solid;
-      @include border-color("border");
-      border-radius: 2px;
-      transition: 0.2s;
-      &.checked {
-        &.primary {
-          @include background-color("primary");
-          border: 1px solid;
-          @include border-color("primary");
-        }
-        &.secondary {
-          @include background-color("secondary");
-          border: 1px solid;
-          @include border-color("secondary");
-        }
-        &.success {
-          @include background-color("success");
-          border: 1px solid;
-          @include border-color("success");
-        }
-        &:after {
-          display: block;
-        }
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        display: none;
-        bottom: 3px;
-        left: 5px;
-        width: 3px;
-        height: 9px;
-        border: solid;
-        border-color: $se-white;
-        border-width: 0 1px 1px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
-      &[disabled] {
-        opacity: 0.5;
-      }
-      &:focus {
-        outline-offset: 1px;
-      }
-    }
-
     &.label-left {
       padding-left: 0;
       margin: 0;
@@ -142,6 +83,78 @@ button {
         left: auto;
         margin-left: 8px;
       }
+    }
+  }
+  .checkmark {
+    position: absolute;
+    margin: 0;
+    margin-top: -$spacing;
+    // outline: none;
+    padding: 0;
+    // top: 4px;
+    left: -$spacing-small;
+    height: 14px;
+    width: 14px;
+    @include background-color("background-alternative");
+    border: 1px solid;
+    @include border-color("border");
+    border-radius: 2px;
+    transition: 0.2s;
+    &.checked,
+    &.indeterminate {
+      &.primary {
+        @include background-color("primary");
+        border: 1px solid;
+        @include border-color("primary");
+      }
+      &.secondary {
+        @include background-color("secondary");
+        border: 1px solid;
+        @include border-color("secondary");
+      }
+      &.success {
+        @include background-color("success");
+        border: 1px solid;
+        @include border-color("success");
+      }
+      &:after {
+        display: block;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    &.checked:after {
+      bottom: 3px;
+      left: 5px;
+      width: 3px;
+      height: 9px;
+      border: solid;
+      border-color: $se-white;
+      border-width: 0 1px 1px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    &.indeterminate:after {
+      bottom: 1px;
+      left: 6px;
+      height: 10px;
+      border-style: solid;
+      border-image: initial;
+      border-color: rgb(255, 255, 255);
+      border-width: 0px 1px 0px 0px;
+      transform: rotate(90deg);
+    }
+    &[disabled] {
+      opacity: 0.5;
+    }
+    &:focus {
+      outline-offset: 1px;
     }
   }
 }

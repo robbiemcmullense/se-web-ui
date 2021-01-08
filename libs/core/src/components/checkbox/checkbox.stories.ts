@@ -14,6 +14,7 @@ storiesOf('Checkbox', module)
       const selected = boolean('selected', true);
       const color = select('color', colorOption, 'primary');
       const disabled = boolean('disabled', false);
+      const indeterminate = boolean('indeterminate', false);
       const labelPos = select('label position', labelOption, 'right');
 
       return `
@@ -21,6 +22,7 @@ storiesOf('Checkbox', module)
         option='checkbox'
         label='${label}'
         selected='${selected}'
+        indeterminate='${indeterminate}'
         color='${color}'
         disabled='${disabled}'
         label-pos='${labelPos}'></se-checkbox>

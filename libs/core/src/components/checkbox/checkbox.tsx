@@ -46,6 +46,10 @@ export class CheckboxComponent {
    */
   @Prop() disabled = false;
   /**
+   * Optional property that defines if the checkbox is in indeterminate state (only work with option="checkbox").  Set to `false` by default.
+   */
+  @Prop() indeterminate = false;
+  /**
    * The "checked" state of the checkbox, `false` by default.
    */
   @Prop({ mutable: true }) selected: boolean;
@@ -153,6 +157,7 @@ export class CheckboxComponent {
               tabindex="-1"
               checked={this.selected}
               disabled={this.disabled}
+              indeterminate={this.indeterminate}
               value={this.value}
               id={id ? `wc-${id}` : ''}
             />
@@ -160,7 +165,8 @@ export class CheckboxComponent {
               class={{
                 checkmark: true,
                 [this.color]: !!this.color,
-                checked: this.selected,
+                checked: this.selected && !this.indeterminate,
+                indeterminate: this.indeterminate,
               }}
               disabled={this.disabled}
             ></button>
