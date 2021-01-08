@@ -3,6 +3,7 @@ a {
   margin: $spacing-small;
   line-height: inherit;
   display: inline-block;
+  outline: none;
   cursor: pointer;
   @include color("information");
   text-decoration: none;
@@ -18,14 +19,14 @@ a {
   &:visited {
     @include color("link-visited");
   }
-  // transition-property: outline;
-  // transition-duration: .3s;
+  transition-property: outline-width;
+  transition-duration: 0.2s;
 
-  // &:focus {
-  //   outline-width: 2px;
-  //   @include outline('button-focus');
-  //   outline-style: solid;
-  // }
+  &:focus {
+    outline-width: 2px;
+    @include outline("button-focus");
+    outline-style: solid;
+  }
 
   &[data-disabled] {
     pointer-events: none;

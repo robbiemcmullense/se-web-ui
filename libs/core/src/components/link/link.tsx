@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Host, Element } from '@stencil/core';
 
 @Component({
   tag: 'se-link',
@@ -6,6 +6,8 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class LinkComponent {
+  @Element() el: HTMLElement;
+
   /**
    * Defines the url the user should get redirected to when clicking on the link.
    */
@@ -29,15 +31,17 @@ export class LinkComponent {
 
   render() {
     return (
-      <a
-        href={this.url}
-        data-disabled={this.disabled}
-        class={this.option === 'external' ? 'external' : ''}
-        target={this.option === 'external' ? '_blank' : ''}
-        download={this.download}
-      >
-        <slot />
-      </a>
+      <Host onClick={() => this.el.blur()}>
+        <a
+          href={this.url}
+          data-disabled={this.disabled}
+          class={this.option === 'external' ? 'external' : ''}
+          target={this.option === 'external' ? '_blank' : ''}
+          download={this.download}
+        >
+          <slot />
+        </a>
+      </Host>
     );
   }
 }
