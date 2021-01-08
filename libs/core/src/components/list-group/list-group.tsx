@@ -11,9 +11,7 @@ import {
   Method,
   State,
 } from '@stencil/core';
-import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
-import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
 export interface GroupCollapseEvent {
   collapsed: boolean;
@@ -65,7 +63,10 @@ export class ListGroupComponent {
    * Disable the item for any interaction.
    */
   @Prop() disabled: boolean;
-
+  /**
+   * define the flex behavior of the group
+   */
+  @Prop() flex: number;
   /**
    * Defines if list groups can be collapsed, true by default.
    */
@@ -165,7 +166,10 @@ export class ListGroupComponent {
     }
     const id = this.el.getAttribute('id');
     return (
-      <Host role="listitem">
+      <Host
+        role="listitem"
+        style={{ flex: `${!this.collapsed && this.flex ? this.flex : 0}` }}
+      >
         <se-list-item
           id={id ? `group-${id}` : null}
           ref={el => (this.listItem = el)}
@@ -192,10 +196,9 @@ export class ListGroupComponent {
                 e.stopPropagation();
                 this.toggleCollapseTreeview();
               }}
+              rotate={this.collapsed ? 90 : 180}
             >
-              <span
-                innerHTML={this.collapsed ? arrow2Right : arrow2Down}
-              ></span>
+              <span innerHTML={arrow2Up}></span>
             </se-icon>
           ) : (
             ''
@@ -209,8 +212,13 @@ export class ListGroupComponent {
           <slot name="end" slot="end"></slot>
 
           {!this.isTreeview && this.canCollapse ? (
-            <se-icon slot="end" size="medium" color="standard">
-              <span innerHTML={this.collapsed ? arrow2Down : arrow2Up}></span>
+            <se-icon
+              slot="end"
+              size="medium"
+              color="standard"
+              rotate={this.collapsed ? 180 : 0}
+            >
+              <span innerHTML={arrow2Up}></span>
             </se-icon>
           ) : (
             ''

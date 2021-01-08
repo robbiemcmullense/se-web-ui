@@ -4,6 +4,7 @@
   position: relative;
   overflow: auto;
   @include flex-direction(column);
+  @include display-flex();
   /**
     * @prop --se-list-group-height: Min height of a row. Default: `47px`; Compact mode: `32px`.
     * @prop --se-list-group-background: background color of the se-item-list.
@@ -44,6 +45,7 @@
 :host(.treeview) {
   --se-list-item-height: 32px;
   --se-list-group-height: 32px;
+  --se-list-item-indentation-padding: 36px;
   --se-list-item-border-bottom: none;
 }
 

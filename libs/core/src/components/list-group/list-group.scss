@@ -1,5 +1,6 @@
 :host {
   @include flex-direction(column);
+  @include display-flex();
 }
 se-list-item {
   background-color: var(--se-list-group-background);
@@ -13,6 +14,7 @@ se-list-item {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  flex: 1;
 }
 .selectedChild {
   --se-list-item-selected-background: transparent;
