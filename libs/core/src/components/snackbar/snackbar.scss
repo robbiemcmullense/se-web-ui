@@ -1,5 +1,3 @@
-
-
 :host {
   position: fixed;
   bottom: 20px;
@@ -7,14 +5,14 @@
   align-self: center;
   z-index: $zindex-snackbar;
   opacity: 0;
-  transition: .2s;
-	@include slideDown();
+  transition: 0.2s;
+  @include slideDown();
 }
 
 :host(.show-snackbar) {
   display: block;
   opacity: 1;
-	@include slideUp();
+  @include slideUp();
 }
 
 // display the snackbar when open on IE 11
@@ -25,30 +23,33 @@
 }
 
 .information {
-  @include background-color('information');
-  @include color('information-contrast');
+  @include background-color("information");
+  @include color("information-contrast");
 }
 
 .success {
-  @include background-color('success');
-  @include color('success-contrast');
+  @include background-color("success");
+  @include color("success-contrast");
 }
 
 .warning {
-  @include background-color('warning');
-  @include color('warning-contrast');
+  @include background-color("warning");
+  @include color("warning-contrast");
 }
 
 .error {
-  @include background-color('error');
-  @include color('error-contrast');
+  @include background-color("error");
+  @include color("error-contrast");
 }
 
 .snackbar {
-  height: 48px;
-  line-height: 48px;
   @include display-flex();
-  @include  color('primary-contrast');
+  @include color("primary-contrast");
+  font-size: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 32px;
+  align-items: center;
 }
 
 .snackbar-icon {
@@ -74,9 +75,9 @@
   padding: 8px 16px;
   margin: 8px 12px 8px 0;
   line-height: 16px;
-  transition: .2s;
+  transition: 0.2s;
   &:hover {
-    background: rgba(255,255,255,.2);
+    background: rgba(255, 255, 255, 0.2);
   }
 }
 
