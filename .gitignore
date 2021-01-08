@@ -53,3 +53,5 @@ libs/react/src/react-component-lib/utils/index.tsx
 libs/vue/src/components.ts
 libs/vue/src/vue-component-lib/utils.ts
 libs/react/src/components.ts
+libs/angular/src/lib/directives/proxies.ts
+libs/angular/src/lib/directives/proxies.ts

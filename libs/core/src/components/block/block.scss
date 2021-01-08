@@ -131,7 +131,7 @@
   &.outline {
     &-standard {
       border: 1px solid;
-      border-color: $se-super-light-grey;
+      @include border-color("divider");
     }
     &-primary {
       border: 1px solid;

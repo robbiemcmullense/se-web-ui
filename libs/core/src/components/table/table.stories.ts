@@ -51,7 +51,7 @@ storiesOf('Table', module).add(
                 }
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
@@ -70,7 +70,7 @@ storiesOf('Table', module).add(
                 </div>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
@@ -105,7 +105,7 @@ storiesOf('Table', module).add(
                 }
             </se-table-group>
             <se-table-group selectable="true" selected=${selected}>
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox selected=${selected}></se-checkbox></se-table-item>'
@@ -116,7 +116,7 @@ storiesOf('Table', module).add(
                 <se-table-item>Last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
@@ -127,7 +127,7 @@ storiesOf('Table', module).add(
                 <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
@@ -138,7 +138,7 @@ storiesOf('Table', module).add(
                 <se-table-item>Last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
@@ -149,7 +149,7 @@ storiesOf('Table', module).add(
                 <se-table-item>Very last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
@@ -164,7 +164,7 @@ storiesOf('Table', module).add(
                 <se-table-item><se-icon color="primary">airconditioner_hot_heating</se-icon>Last test</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
@@ -175,7 +175,7 @@ storiesOf('Table', module).add(
                 <se-table-item>Last test item</se-table-item>
             </se-table-group>
             <se-table-group selectable="true">
-                <se-table-item width="32px"><se-icon option="button" disabled="true">arrow2_down</se-icon></se-table-item>
+                <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
                 ${
                   !hideCheckboxColumn
                     ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'

@@ -284,14 +284,14 @@ export class SeCarouselItem {
 import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @ProxyCmp({
-  inputs: ['color', 'disabled', 'header', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'],
+  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'],
   methods: ['setRequired']
 })
 @Component({
   selector: 'se-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'disabled', 'header', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'],
+  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'],
   outputs: ['didChange']
 })
 export class SeCheckbox {
@@ -550,13 +550,13 @@ export class SeFiltration {
 import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({
-  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'textOnly', 'type', 'value']
+  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'minWidth', 'noStacking', 'option', 'padding', 'required', 'stacked', 'status', 'textOnly', 'type', 'value']
 })
 @Component({
   selector: 'se-form-field',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'noStacking', 'option', 'padding', 'required', 'status', 'textOnly', 'type', 'value'],
+  inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'minWidth', 'noStacking', 'option', 'padding', 'required', 'stacked', 'status', 'textOnly', 'type', 'value'],
   outputs: ['didSubmit']
 })
 export class SeFormField {
@@ -722,14 +722,14 @@ export class SeList {
 import { ListGroupComponent as IListGroupComponent } from '@se/web-ui/types/components/list-group/list-group';
 export declare interface SeListGroup extends Components.SeListGroup {}
 @ProxyCmp({
-  inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
+  inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'flex', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
   methods: ['toggleCollapseTreeview', 'focusElement', 'setOption']
 })
 @Component({
   selector: 'se-list-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
+  inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'flex', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
   outputs: ['didGroupClick', 'didGroupCollapse']
 })
 export class SeListGroup {

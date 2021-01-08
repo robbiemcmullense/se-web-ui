@@ -289,6 +289,10 @@ export namespace Components {
          */
         "header": boolean;
         /**
+          * Optional property that defines if the checkbox is in indeterminate state (only work with option="checkbox").  Set to `false` by default.
+         */
+        "indeterminate": boolean;
+        /**
           * The label of the checkbox that will be attached to the box.
          */
         "label": string;
@@ -599,11 +603,16 @@ export namespace Components {
          */
         "labelWidth": string;
         /**
+          * Optional property that defines the minumum width after witch the form field will move to stacked mode.
+         */
+        "minWidth": number;
+        /**
           * Optional property that defines if the form-filed should not stack even if the container is small (it won't be responsive).
          */
         "noStacking": boolean;
         /**
           * Defines the layout of your form field. `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
+          * @deprecated use `stacked` property instead
          */
         "option": 'inline' | 'stacked';
         /**
@@ -614,6 +623,10 @@ export namespace Components {
           * Determines if the input is required by the application. Set to `false` by default. Setting this value to `true` will render a red asterisk next to your label.
          */
         "required": boolean;
+        /**
+          * Defines the layout of your form field. If `true`, the input field will render bellow the label.
+         */
+        "stacked": boolean;
         /**
           * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
          */
@@ -783,6 +796,10 @@ export namespace Components {
           * Disable the item for any interaction.
          */
         "disabled": boolean;
+        /**
+          * define the flex behavior of the group
+         */
+        "flex": number;
         "focusElement": () => Promise<void>;
         /**
           * Places an icon on the left side of the item list.
@@ -1963,6 +1980,10 @@ declare namespace LocalJSX {
          */
         "header"?: boolean;
         /**
+          * Optional property that defines if the checkbox is in indeterminate state (only work with option="checkbox").  Set to `false` by default.
+         */
+        "indeterminate"?: boolean;
+        /**
           * The label of the checkbox that will be attached to the box.
          */
         "label"?: string;
@@ -2298,6 +2319,10 @@ declare namespace LocalJSX {
          */
         "labelWidth"?: string;
         /**
+          * Optional property that defines the minumum width after witch the form field will move to stacked mode.
+         */
+        "minWidth"?: number;
+        /**
           * Optional property that defines if the form-filed should not stack even if the container is small (it won't be responsive).
          */
         "noStacking"?: boolean;
@@ -2307,6 +2332,7 @@ declare namespace LocalJSX {
         "onDidSubmit"?: (event: CustomEvent<any>) => void;
         /**
           * Defines the layout of your form field. `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
+          * @deprecated use `stacked` property instead
          */
         "option"?: 'inline' | 'stacked';
         /**
@@ -2317,6 +2343,10 @@ declare namespace LocalJSX {
           * Determines if the input is required by the application. Set to `false` by default. Setting this value to `true` will render a red asterisk next to your label.
          */
         "required"?: boolean;
+        /**
+          * Defines the layout of your form field. If `true`, the input field will render bellow the label.
+         */
+        "stacked"?: boolean;
         /**
           * Sets a red border on an input field if there's an error, an orange border if there's a warning, and a green border if a successful input.
          */
@@ -2486,6 +2516,10 @@ declare namespace LocalJSX {
           * Disable the item for any interaction.
          */
         "disabled"?: boolean;
+        /**
+          * define the flex behavior of the group
+         */
+        "flex"?: number;
         /**
           * Places an icon on the left side of the item list.
          */

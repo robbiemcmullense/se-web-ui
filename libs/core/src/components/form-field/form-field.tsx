@@ -18,7 +18,6 @@ import ResizeObserver from 'resize-observer-polyfill';
 })
 export class FormFieldComponent {
   private inputWrapper?: HTMLElement;
-  private sizeSmall = 321;
   private sizeMedium = 501;
 
   @Element() el: HTMLElement;
@@ -26,8 +25,14 @@ export class FormFieldComponent {
    * Defines the layout of your form field.
    * `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label.
    * `stacked` option will render the input or select field below the label.
+   * @deprecated use `stacked` property instead
    */
   @Prop() option: 'inline' | 'stacked' = 'inline';
+
+  /**
+   * Defines the layout of your form field. If `true`, the input field will render bellow the label.
+   */
+  @Prop() stacked = false;
 
   /**
    * Defines the spacing around the inside edge of a container.
@@ -95,6 +100,10 @@ export class FormFieldComponent {
    * Optional property that defines if the form-filed should not stack even if the container is small (it won't be responsive).
    */
   @Prop() noStacking = false;
+  /**
+   * Optional property that defines the minumum width after witch the form field will move to stacked mode.
+   */
+  @Prop() minWidth = 321;
 
   /**
    * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
@@ -134,7 +143,7 @@ export class FormFieldComponent {
   ro: ResizeObserver;
   componentDidLoad() {
     this.ro = new ResizeObserver(_ => {
-      this.isSmall = this.inputWrapper.clientWidth < this.sizeSmall;
+      this.isSmall = this.inputWrapper.clientWidth < this.minWidth;
       this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;
     });
     this.ro.observe(this.inputWrapper);
@@ -156,7 +165,9 @@ export class FormFieldComponent {
 
   render() {
     const shouldStack =
-      this.option === 'stacked' || (this.isSmall && !this.noStacking);
+      this.option === 'stacked' ||
+      this.stacked ||
+      (this.isSmall && !this.noStacking);
     return (
       <div
         class={{

@@ -22,6 +22,7 @@
 | `collapsed`   | `collapsed`    | Defines if the item group is collapsed/closed. The default setting is `false`.                                       | `boolean`                  | `false`     |
 | `description` | `description`  | Defines the description of the item, placed under its title.                                                         | `string`                   | `undefined` |
 | `disabled`    | `disabled`     | Disable the item for any interaction.                                                                                | `boolean`                  | `undefined` |
+| `flex`        | `flex`         | define the flex behavior of the group                                                                                | `number`                   | `undefined` |
 | `icon`        | `icon`         | Places an icon on the left side of the item list.                                                                    | `string`                   | `undefined` |
 | `iconColor`   | `icon-color`   | Optional property to define the color of the icon. The default color will be inherited from it's parent.             | `"primary" \| "secondary"` | `undefined` |
 | `indentation` | `indentation`  | Defines the group indentation to add paddings to the list item (used with multiple list groups).                     | `number`                   | `1`         |

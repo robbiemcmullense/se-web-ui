@@ -1,4 +1,4 @@
-# se-carousel-copy
+# se-carousel
 
 
 

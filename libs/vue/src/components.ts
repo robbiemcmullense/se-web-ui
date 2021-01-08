@@ -281,6 +281,7 @@ export const SeCheckbox = /*@__PURE__*/ Vue.extend({
     required: {} as PropOptions<Components.SeCheckbox['required']>,
     color: {} as PropOptions<Components.SeCheckbox['color']>,
     disabled: {} as PropOptions<Components.SeCheckbox['disabled']>,
+    indeterminate: {} as PropOptions<Components.SeCheckbox['indeterminate']>,
     selected: {} as PropOptions<Components.SeCheckbox['selected']>,
     textOn: {} as PropOptions<Components.SeCheckbox['textOn']>,
     textOff: {} as PropOptions<Components.SeCheckbox['textOff']>,
@@ -472,6 +473,7 @@ export const SeFormField = /*@__PURE__*/ Vue.extend({
 
   props: {
     option: {} as PropOptions<Components.SeFormField['option']>,
+    stacked: {} as PropOptions<Components.SeFormField['stacked']>,
     padding: {} as PropOptions<Components.SeFormField['padding']>,
     block: {} as PropOptions<Components.SeFormField['block']>,
     labelWidth: {} as PropOptions<Components.SeFormField['labelWidth']>,
@@ -484,6 +486,7 @@ export const SeFormField = /*@__PURE__*/ Vue.extend({
     required: {} as PropOptions<Components.SeFormField['required']>,
     disabled: {} as PropOptions<Components.SeFormField['disabled']>,
     noStacking: {} as PropOptions<Components.SeFormField['noStacking']>,
+    minWidth: {} as PropOptions<Components.SeFormField['minWidth']>,
   },
 
 
@@ -606,6 +609,7 @@ export const SeListGroup = /*@__PURE__*/ Vue.extend({
     collapsed: {} as PropOptions<Components.SeListGroup['collapsed']>,
     indentation: {} as PropOptions<Components.SeListGroup['indentation']>,
     disabled: {} as PropOptions<Components.SeListGroup['disabled']>,
+    flex: {} as PropOptions<Components.SeListGroup['flex']>,
     canCollapse: {} as PropOptions<Components.SeListGroup['canCollapse']>,
   },
 

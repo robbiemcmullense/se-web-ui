@@ -54,6 +54,8 @@ export class ContainerComponent {
   @Prop() display: 'flex' | 'block' | 'grid' = 'flex';
   @Watch('display') displayDidChange() {
     // Only direct children will be impacted by the display property
+
+    // TODO: DO we need that???
     Array.from(this.el.querySelectorAll('se-container > se-block')).forEach(
       (item: any) => {
         item.display = this.display;
