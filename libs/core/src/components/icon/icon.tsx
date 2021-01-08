@@ -82,7 +82,7 @@ export class IconComponent {
     }
 
     return (
-      <Host class={`icon-${size}`}>
+      <Host class={`icon-${size}`} onClick={() => this.el.blur()}>
         <TagType
           disabled={this.disabled}
           style={{ transform }}

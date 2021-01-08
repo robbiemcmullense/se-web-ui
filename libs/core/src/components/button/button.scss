@@ -121,7 +121,6 @@ button {
   border: none;
   border-radius: $border-radius;
   outline: none;
-  transition: 0.2s;
   cursor: pointer;
   font-family: inherit;
   font-weight: 300;
@@ -130,6 +129,14 @@ button {
   @include ellipsis();
   @include justify-content(center);
 
+  transition-property: outline-width;
+  transition-duration: 0.2s;
+
+  &:focus {
+    outline-width: 2px;
+    @include outline("button-focus");
+    outline-style: solid;
+  }
   &:focus {
     outline-style: solid;
     outline-offset: 1px;
