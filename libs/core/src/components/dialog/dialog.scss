@@ -47,9 +47,9 @@
   position: fixed !important;
   z-index: $zindex-modal;
   @include absolute();
-  @include display-flex();
-  @include align-items(center);
-  @include justify-content(center);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   overflow-y: auto;
   height: auto !important;
 }
