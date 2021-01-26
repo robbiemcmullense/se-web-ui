@@ -18,7 +18,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 })
 export class FormFieldComponent {
   private inputWrapper?: HTMLElement;
-  private sizeMedium = 501;
+  // private sizeMedium = 501;
 
   @Element() el: HTMLElement;
   /**
@@ -138,22 +138,26 @@ export class FormFieldComponent {
     });
   }
   @State() isSmall: boolean;
-  @State() isMedium: boolean;
+  // @State() isMedium: boolean;
 
   ro: ResizeObserver;
   componentDidLoad() {
     this.ro = new ResizeObserver(_ => {
       this.isSmall = this.inputWrapper.clientWidth < this.minWidth;
-      this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;
+      // this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;
     });
-    this.ro.observe(this.inputWrapper);
+    if (this.ro) {
+      this.ro.observe(this.inputWrapper);
+    }
   }
   componentWillLoad() {
     this.initLabel();
   }
 
   disconnectedCallback() {
-    this.ro.disconnect();
+    if (this.ro) {
+      this.ro.disconnect();
+    }
   }
 
   handleEvent(event: any) {
@@ -173,7 +177,7 @@ export class FormFieldComponent {
         class={{
           [`ff-${this.status}`]: true,
           'ff-stacked': shouldStack,
-          'ff-block': this.isSmall || this.isMedium || this.block,
+          'ff-block': this.block,
           [`ff-padding-${this.padding}`]: true,
           'form-field-wrapper': true,
         }}

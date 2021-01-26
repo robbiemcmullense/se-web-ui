@@ -382,8 +382,8 @@ export const SeDialogFooter = /*@__PURE__*/ Vue.extend({
 export const SeDialogHeader = /*@__PURE__*/ Vue.extend({
 
   props: {
+    option: {} as PropOptions<Components.SeDialogHeader['option']>,
     color: {} as PropOptions<Components.SeDialogHeader['color']>,
-    indents: {} as PropOptions<Components.SeDialogHeader['indents']>,
     closeIcon: {} as PropOptions<Components.SeDialogHeader['closeIcon']>,
   },
 

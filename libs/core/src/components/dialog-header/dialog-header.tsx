@@ -8,18 +8,19 @@ import actionDeleteCross from '@se/icons/svg/action_delete_cross.svg';
 })
 export class DialogHeaderComponent {
   /**
+   * Defaulted to a small padding.
+   * When set to `indent`, the header will have an alternative margins and paddings.
+   */
+  @Prop() option: 'indent';
+
+  /**
    * Defines the color of the dialog header.
    * `alternative`: Alternative background with primary color for the text.
    * `primary`: Primary color schema.
    * By default is the parent's dialog color.
    */
   @Prop() color: 'primary' | 'alternative';
-  /**
-   * Defines the indents (margins and paddings) of the dialog header.
-   * `primary`: Primary indents schema.
-   * `alternative`: Alternative margins and paddings.
-   */
-  @Prop() indents: 'primary' | 'alternative';
+
   /**
    * Display the close icon to close the dialog.
    * Default setting is `false`.
@@ -42,7 +43,7 @@ export class DialogHeaderComponent {
         class={[
           'se-dialog-header',
           this.color,
-          this.indents === 'alternative' ? 'alternative-indents' : '',
+          this.option === 'indent' ? 'alternative-indents' : '',
         ].join(' ')}
       >
         <div class="flex middle">

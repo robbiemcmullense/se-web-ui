@@ -7,6 +7,7 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class DialogContentComponent {
   /**
+   * Defaulted to a small padding.
    * When set to `fill`, the content will fill the whole space of the dialog.
    * When set to `indent`, the content will alternative margins and paddings.
    */

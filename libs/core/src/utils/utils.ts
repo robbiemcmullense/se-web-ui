@@ -84,3 +84,19 @@ export function debounce(func, timeout?: number) {
     timer = setTimeout(next, timeout > 0 ? timeout : 300);
   };
 }
+
+export function isTouchDevice() {
+  return (
+    !!(
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window ||
+        (window['DocumentTouch'] &&
+          typeof document !== 'undefined' &&
+          document instanceof window['DocumentTouch']))
+    ) ||
+    !!(
+      typeof navigator !== 'undefined' &&
+      (navigator.maxTouchPoints || navigator.msMaxTouchPoints)
+    )
+  );
+}

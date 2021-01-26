@@ -9,6 +9,8 @@ import {
   Listen,
   Prop,
 } from '@stencil/core';
+
+import { isTouchDevice } from '../../utils';
 @Component({
   tag: 'se-tooltip',
   styleUrl: 'tooltip.scss',
@@ -65,13 +67,15 @@ export class TooltipComponent {
   }
 
   @Listen('mouseenter') handleMouseEnter(ev) {
-    if (this.action === 'hover') {
+    // On touch device, we remove hover or the tooltip keep open and closing
+    if (!isTouchDevice() && this.action === 'hover') {
       this._toggle(ev);
     }
   }
 
   @Listen('mouseleave') handleMouseLeave(ev) {
-    if (this.action === 'hover' && this.opened) {
+    // On touch device, we remove hover or the tooltip keep open and closing
+    if (!isTouchDevice() && this.action === 'hover' && this.opened) {
       this._toggle(ev);
     }
   }

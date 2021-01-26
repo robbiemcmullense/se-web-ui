@@ -69,16 +69,9 @@ storiesOf('Dialog', module).add(
     );
 
     const showFooter = boolean('Enable footer', false, configurationGroup);
-    const enableAlernativeIndents = select(
-      'Indents',
-      indentOptions,
-      'primary',
-      configurationGroup
-    );
-    const contentIndents = select(
-      'Content indents',
-      ['unset', 'fill', 'indent'],
-      'unset',
+    const enableAlernativeIndents = boolean(
+      'Indent',
+      false,
       configurationGroup
     );
 
@@ -88,7 +81,9 @@ storiesOf('Dialog', module).add(
 
     return `
       <se-dialog open=${open} can-backdrop="${canBackdrop}" page-scroll="${pageScroll}" size="${size}" color="${color}" >
-        <se-dialog-header indents="${enableAlernativeIndents}" close-icon="${closeIcon}">
+        <se-dialog-header option="${
+          enableAlernativeIndents ? 'indent' : null
+        }" close-icon="${closeIcon}">
           ${createElement(mainTitleTagName, mainTitle, mainTitleAttributes)}
           ${
             endTitleTagName &&
@@ -100,7 +95,9 @@ storiesOf('Dialog', module).add(
             )
           }
         </se-dialog-header>
-        <se-dialog-content option="${contentIndents}" iconColor="${color}">
+        <se-dialog-content option="${
+          enableAlernativeIndents ? 'indent' : null
+        }" iconColor="${color}">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</p>
           ${

@@ -78,8 +78,7 @@ export class DialogComponent {
   /**
    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */
-  @Method()
-  async backdropClicked() {
+  backdropClicked() {
     // we should not quit if the animation has no completed (many click on a button open/close the dialog)
     if (!this.modalAnimation) {
       /*
@@ -106,9 +105,6 @@ export class DialogComponent {
         if (!item.color) {
           item.color = this.color;
         }
-        if (this.size === 'fill') {
-          item.indents = 'alternative';
-        }
       }
     );
   }
@@ -118,9 +114,6 @@ export class DialogComponent {
       (item: HTMLSeDialogContentElement) => {
         if (item.nextElementSibling) {
           item.isLastChild = false;
-        }
-        if (!item.option && this.size === 'fill') {
-          item.option = 'indent';
         }
       }
     );
@@ -141,6 +134,7 @@ export class DialogComponent {
 
   @Listen('didCloseDialog', { target: 'document' })
   handleCloseDialog(ev: CustomEvent) {
+    // Mke sure the even is coming from the same dialog
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
       (item: HTMLSeDialogHeaderElement) => {
         if (item === ev.target) {

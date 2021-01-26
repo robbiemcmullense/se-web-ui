@@ -3,11 +3,13 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('DialogComponent', () => {
   let page;
   let element;
+  let background;
 
   beforeEach(async () => {
     page = await newE2EPage();
-    await page.setContent('<se-dialog></se-dialog>');
+    await page.setContent('<se-dialog open></se-dialog>');
     element = await page.find('se-dialog');
+    background = await page.find('se-dialog >>> .dialog-background');
   });
 
   it('renders', async () => {
@@ -22,7 +24,8 @@ describe('DialogComponent', () => {
   it('emits the backdrop event when clicking on the background', async () => {
     const backdropEventSpy = await page.spyOnEvent('backdrop');
     const didCloseEventSpy = await page.spyOnEvent('didClose');
-    await element.callMethod('backdropClicked');
+    await background.click();
+    jest.runAllTimers();
     expect(backdropEventSpy).toHaveReceivedEvent();
     expect(didCloseEventSpy).toHaveReceivedEvent();
   });

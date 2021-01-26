@@ -11,6 +11,7 @@
 :host {
   fill: currentColor;
   display: inline-flex;
+  user-select: none;
 }
 
 :host(.icon-nano) {

@@ -408,10 +408,6 @@ export namespace Components {
     }
     interface SeDialog {
         /**
-          * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
-         */
-        "backdropClicked": () => Promise<void>;
-        /**
           * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
           * @deprecated use noBackdrop='true' instead
          */
@@ -451,7 +447,7 @@ export namespace Components {
          */
         "isLastChild": boolean;
         /**
-          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
+          * Defaulted to a small padding. When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
         "option": 'fill' | 'indent';
     }
@@ -467,9 +463,9 @@ export namespace Components {
          */
         "color": 'primary' | 'alternative';
         /**
-          * Defines the indents (margins and paddings) of the dialog header. `primary`: Primary indents schema. `alternative`: Alternative margins and paddings.
+          * Defaulted to a small padding. When set to `indent`, the header will have an alternative margins and paddings.
          */
-        "indents": 'primary' | 'alternative';
+        "option": 'indent';
     }
     interface SeDivider {
         /**
@@ -2158,7 +2154,7 @@ declare namespace LocalJSX {
          */
         "isLastChild"?: boolean;
         /**
-          * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
+          * Defaulted to a small padding. When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
         "option"?: 'fill' | 'indent';
     }
@@ -2174,13 +2170,13 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'alternative';
         /**
-          * Defines the indents (margins and paddings) of the dialog header. `primary`: Primary indents schema. `alternative`: Alternative margins and paddings.
-         */
-        "indents"?: 'primary' | 'alternative';
-        /**
           * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
          */
         "onDidCloseDialog"?: (event: CustomEvent<any>) => void;
+        /**
+          * Defaulted to a small padding. When set to `indent`, the header will have an alternative margins and paddings.
+         */
+        "option"?: 'indent';
     }
     interface SeDivider {
         /**

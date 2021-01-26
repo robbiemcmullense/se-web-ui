@@ -63,12 +63,8 @@ addParameters({
 addDecorator(
   story => `
   <se-app
-    theme=${select('theme', ['dark', 'light', 'auto'], 'auto')}
-    option=${select(
-      'application type',
-      ['technical', 'website', 'dcx'],
-      'technical'
-    )}>
+    theme=${select('application theme', ['dark', 'light', 'auto'], 'auto')}
+    option=${select('application type', ['technical', 'website'], 'technical')}>
     <se-container position="absolute" color="standard" display="block">
       ${story()}
     </se-container>

@@ -50,7 +50,9 @@ export class Carousel {
       this.calculateWidth();
       this.displayArrow();
     });
-    this.ro.observe(this.el);
+    if (this.ro) {
+      this.ro.observe(this.el);
+    }
 
     this.contentEl.addEventListener('scroll', this.onScroll);
 
@@ -107,7 +109,9 @@ export class Carousel {
   }
 
   disconnectedCallback() {
-    this.ro.disconnect();
+    if (this.ro) {
+      this.ro.disconnect();
+    }
     this.contentEl.removeEventListener('scroll', this.onScroll);
   }
 

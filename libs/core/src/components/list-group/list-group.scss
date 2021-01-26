@@ -13,7 +13,7 @@ se-list-item {
   overflow: unset;
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  // padding: 0;
   flex: 1;
 }
 .selectedChild {
@@ -23,6 +23,6 @@ se-list-item {
   display: none;
 }
 .treeview-icon {
-  margin-left: -$spacing-small;
-  margin-right: -$spacing-small;
+  margin-left: -$spacing;
+  margin-right: -$spacing;
 }

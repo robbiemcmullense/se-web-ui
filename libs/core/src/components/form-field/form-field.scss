@@ -82,6 +82,8 @@ se-form-field {
     @include align-items(left);
     text-align: left;
     display: flex;
+    flex: 1;
+    margin-right: $spacing-large;
   }
 
   input,
@@ -205,7 +207,6 @@ se-form-field {
     }
     .ff-wrapper-input {
       max-width: 100%;
-      margin-right: 4px;
     }
 
     select,
@@ -252,6 +253,7 @@ se-form-field {
         margin: $spacing-small 0;
       }
     }
+
     .ff-wrapper {
       max-width: 100%;
       margin-left: 0;

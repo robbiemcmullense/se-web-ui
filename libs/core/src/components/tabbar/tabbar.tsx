@@ -38,13 +38,17 @@ export class TabbarComponent {
     this.ro = new ResizeObserver(_ => {
       this.displayArrow();
     });
-    this.ro.observe(this.navbar);
+    if (this.ro) {
+      this.ro.observe(this.navbar);
+    }
 
     this.navbar.addEventListener('scroll', () => this.displayArrow());
   }
 
   disconnectedCallback() {
-    this.ro.disconnect();
+    if (this.ro) {
+      this.ro.disconnect();
+    }
     this.navbar.removeEventListener('scroll', () => this.displayArrow());
   }
 
