@@ -32,6 +32,14 @@ export class Carousel {
   itemWidth = 0;
   minOffset = 10;
 
+  constructor() {
+    this.onScroll = this.onScroll.bind(this);
+  }
+
+  private onScroll() {
+    this.displayArrow();
+  }
+
   componentDidLoad() {
     // Make a first render of the UI
     this.calculateWidth();
@@ -44,7 +52,7 @@ export class Carousel {
     });
     this.ro.observe(this.el);
 
-    this.contentEl.addEventListener('scroll', () => this.displayArrow());
+    this.contentEl.addEventListener('scroll', this.onScroll);
 
     this.size = window.matchMedia('(hover: none) and (pointer: coarse)').matches
       ? 'medium'
@@ -100,7 +108,7 @@ export class Carousel {
 
   disconnectedCallback() {
     this.ro.disconnect();
-    this.contentEl.removeEventListener('scroll', () => this.displayArrow());
+    this.contentEl.removeEventListener('scroll', this.onScroll);
   }
 
   render() {

@@ -13,39 +13,48 @@ describe('se-carousel', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  // it('Should have an arrow right since more item than with width of the se-carousel', async () => {
-  //   await page.setContent(`
-  //     <se-carousel style="width: 400px">
-  //       <se-carousel-item>1</se-carousel-item>
-  //       <se-carousel-item>2</se-carousel-item>
-  //       <se-carousel-item>3</se-carousel-item>
-  //     </se-carousel>`);
-  //   const element = await page.find('se-carousel >>> se-icon.right');
-  //   expect(element).toBeTruthy();
-  // });
+  it('Should have an arrow right since more item than with width of the se-carousel', async () => {
+    await page.setContent(`
+      <se-carousel style="width: 400px">
+        <se-carousel-item>1</se-carousel-item>
+        <se-carousel-item>2</se-carousel-item>
+        <se-carousel-item>3</se-carousel-item>
+      </se-carousel>`);
+    const element = await page.find('se-carousel >>> se-icon.right');
+    expect(element).toBeTruthy();
+  });
 
-  // it('Should not display arrow right if less item than width', async () => {
-  //   await page.setContent(`
-  //     <se-carousel style="width: 800px">
-  //       <se-carousel-item>1</se-carousel-item>
-  //       <se-carousel-item>2</se-carousel-item>
-  //     </se-carousel>`);
-  //   const element = await page.find('se-carousel >>> se-icon.right');
-  //   expect(element).toBeFalsy();
-  // });
+  it('Should not display arrow right if less item than width', async () => {
+    await page.setContent(`
+      <se-carousel style="width: 800px">
+        <se-carousel-item>1</se-carousel-item>
+        <se-carousel-item>2</se-carousel-item>
+      </se-carousel>`);
+    const element = await page.find('se-carousel >>> se-icon.right');
+    expect(element).toBeFalsy();
+  });
 
-  // it('Should click an arrow right and scroll the content. arrow left should display', async () => {
-  //   page = await newE2EPage();
+  it('Should click an arrow right and scroll the content. arrow left should display', async () => {
+    page = await newE2EPage();
 
-  //   await page.setContent(`
-  //     <se-carousel style="width: 400px">
-  //       <se-carousel-item>1</se-carousel-item>
-  //       <se-carousel-item>2</se-carousel-item>
-  //       <se-carousel-item>3</se-carousel-item>
-  //     </se-carousel>`);
-  //   const rightArrow = await page.find('se-carousel >>> se-icon.right');
-  //   await rightArrow.click();
-  //   const element = await page.find('se-carousel >>> se-icon.left');
-  //   expect(element).toBeTruthy();
-  // });
+    await page.setContent(`
+      <se-carousel style="width: 400px">
+        <se-carousel-item>1</se-carousel-item>
+        <se-carousel-item>2</se-carousel-item>
+        <se-carousel-item>3</se-carousel-item>
+        <se-carousel-item>4</se-carousel-item>
+      </se-carousel>`);
+    const rightArrow = await page.find('se-carousel >>> se-icon.right');
+    const contentContainer = await page.find('se-carousel >>> .content');
+    const carouselScroll = await contentContainer.spyOnEvent('scroll');
+    await rightArrow.click();
+
+    await page.waitForChanges();
+
+    expect(carouselScroll).toHaveReceivedEvent();
+
+    await page.waitForChanges();
+    const element = await page.find('se-carousel >>> se-icon.left');
+    expect(element).toBeTruthy();
+  });
 });
