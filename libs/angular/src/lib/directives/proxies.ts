@@ -350,7 +350,8 @@ export class SeContainer {
 import { DialogComponent as IDialogComponent } from '@se/web-ui/types/components/dialog/dialog';
 export declare interface SeDialog extends Components.SeDialog {}
 @ProxyCmp({
-  inputs: ['canBackdrop', 'color', 'noBackdrop', 'open', 'pageScroll', 'size']
+  inputs: ['canBackdrop', 'color', 'noBackdrop', 'open', 'pageScroll', 'size'],
+  methods: ['backdropClicked']
 })
 @Component({
   selector: 'se-dialog',
@@ -376,13 +377,13 @@ The modal can then be safely removed from the DOM. */
 
 export declare interface SeDialogContent extends Components.SeDialogContent {}
 @ProxyCmp({
-  inputs: ['icon', 'iconColor', 'option']
+  inputs: ['icon', 'iconColor', 'isLastChild', 'option']
 })
 @Component({
   selector: 'se-dialog-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'iconColor', 'option']
+  inputs: ['icon', 'iconColor', 'isLastChild', 'option']
 })
 export class SeDialogContent {
   protected el: HTMLElement;

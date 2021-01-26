@@ -168,14 +168,56 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$top}', endColorstr='#{$bottom}', GradientType=0 ); /* IE6-9 */
 }
 
-@mixin for-desktop-only {
-  @media screen and (min-width : #{$desktop-min-width}) {
+// Basic media queries mixins.
+// Used only for creation of more advanced mixins.
+@mixin media-up-to($to) {
+  @media screen and (max-width: map-get($breakpoints, $to) - 1) {
     @content;
   }
 }
 
+@mixin media-include-and-up($from) {
+  @media screen and (min-width: map-get($breakpoints, $from)) {
+    @content;
+  }
+}
+
+@mixin media-from-up-to($from, $to) {
+  @media screen and (min-width: map-get($breakpoints, $from)) and (max-width: map-get($breakpoints, $to)) {
+    @content;
+  }
+}
+
+// "Only" media queries mixins.
+// Used to target only a particular device.
 @mixin for-mobile-only {
-  @media screen and (max-width : #{$mobile-max-width}) {
+  @include media-up-to("tablet") {
+    @content;
+  }
+}
+
+@mixin for-tablet-only {
+  @include media-from-up-to("tablet", "desktop") {
+    @content;
+  }
+}
+
+@mixin for-desktop-only {
+  @include media-include-and-up("desktop") {
+    @content;
+  }
+}
+
+// "Up" and "Down" media queries mixins.
+// Used to target not only a particular device, but all that have bigger ("Up") or smaller ("Down") resolution.
+@mixin for-tablet-and-up {
+  @include media-include-and-up("tablet") {
+    @content;
+  }
+}
+
+@mixin for-tablet-and-down {
+  @include media-up-to("desktop") {
     @content;
   }
 }

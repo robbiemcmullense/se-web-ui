@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/html';
 import { select, boolean, text, object } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import readme from './readme.md';
 import readmeContent from '../dialog-content/readme.md';
 import readmeFooter from '../dialog-footer/readme.md';
@@ -10,6 +11,7 @@ const mainTitleGroup = 'Main slot title';
 const endTitleGroup = 'End slot title';
 
 const sizeOptions = ['medium', 'small', 'large', 'fill'];
+const indentOptions = ['primary', 'alternative'];
 const colorOptions = ['primary', 'alternative'];
 const defaultAttributes = { class: 'example-class' };
 
@@ -66,9 +68,27 @@ storiesOf('Dialog', module).add(
       endTitleGroup
     );
 
+    const showFooter = boolean('Enable footer', false, configurationGroup);
+    const enableAlernativeIndents = select(
+      'Indents',
+      indentOptions,
+      'primary',
+      configurationGroup
+    );
+    const contentIndents = select(
+      'Content indents',
+      ['unset', 'fill', 'indent'],
+      'unset',
+      configurationGroup
+    );
+
+    document.addEventListener('didClose', e =>
+      action('didClose')((e as CustomEvent).detail)
+    );
+
     return `
       <se-dialog open=${open} can-backdrop="${canBackdrop}" page-scroll="${pageScroll}" size="${size}" color="${color}" >
-        <se-dialog-header close-icon="${closeIcon}">
+        <se-dialog-header indents="${enableAlernativeIndents}" close-icon="${closeIcon}">
           ${createElement(mainTitleTagName, mainTitle, mainTitleAttributes)}
           ${
             endTitleTagName &&
@@ -80,12 +100,12 @@ storiesOf('Dialog', module).add(
             )
           }
         </se-dialog-header>
-        <se-dialog-content>
+        <se-dialog-content option="${contentIndents}" iconColor="${color}">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</p>
           ${
-            showMoreContent &&
-            `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            showMoreContent
+              ? `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -100,12 +120,17 @@ storiesOf('Dialog', module).add(
           tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</p>`
+              : ''
           }
         </se-dialog-content>
-        <se-dialog-footer>
-          <se-button>OK</se-button>
-          <se-button option="outline">Cancel</se-button>
-        </se-dialog-footer>
+        ${
+          showFooter
+            ? `<se-dialog-footer>
+            <se-button>OK</se-button>
+            <se-button option="outline">Cancel</se-button>
+          </se-dialog-footer>`
+            : ''
+        }
       </se-dialog>
     `;
   },

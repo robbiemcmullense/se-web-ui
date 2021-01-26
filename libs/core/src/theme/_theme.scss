@@ -11,6 +11,7 @@ $spacing-small: 4px !default;
 $spacing-large: 16px !default;
 $spacing-m-large: 24px !default;
 $spacing-xlarge: 32px !default;
+$spacing-xxlarge: 36px !default;
 
 // z-index element
 // ==========================================================================
@@ -33,12 +34,15 @@ $small-screen-up: 601px !default;
 $medium-screen-up: 993px !default;
 $large-screen-up: 1201px !default;
 $small-screen: 600px !default;
-$medium-screen: 992px !default;
+$medium-screen: 720px !default;
 $large-screen: 1200px !default;
 $centered: 1180px !default;
 
-$mobile-max-width: 979px !default;
-$desktop-min-width: 980px !default;
+$breakpoints: (
+  tablet: 720px,
+  desktop: 980px,
+  wide-desktop: 1300px,
+);
 
 $medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
 $large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;

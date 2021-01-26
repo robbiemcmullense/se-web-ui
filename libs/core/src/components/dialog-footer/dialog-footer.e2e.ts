@@ -1,7 +1,8 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('DialogFooterComponent', () => {
-  let page, element;
+  let page;
+  let element;
 
   beforeEach(async () => {
     page = await newE2EPage();

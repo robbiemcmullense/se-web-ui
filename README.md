@@ -7,9 +7,9 @@ This project uses the [Nx](https://nx.dev) monorepo.
 ## A web-component library based StencilJs
 
 This whole monorepo relies on the [stencilJs](https://stenciljs.com/) web-component compiler to create a core library (`@se/web-ui` located in `libs/core` folder), and use some automatic bundler to create web-component wrapper for angular (`@se/web-ui-angular` located in `libs/angular` folder) and react (`@se/web-ui-react` located in `libs/react` folder).
-The angular and react wrapper are updated every time the core library is being built. 
+The angular and react wrapper are updated every time the core library is being built.
 
-Each application in the `apps` folder relies on the the local build of the different library (core, angular or rect library) and are simple demo application to insure each build works as expected before any deployment. 
+Each application in the `apps` folder relies on the the local build of the different library (core, angular or rect library) and are simple demo application to insure each build works as expected before any deployment.
 
 To help out on the testing, we also used [https://storybook.js.org/](https://storybook.js.org/). Each main component in the `libs/core` folder will have a `.storie.ts` file that will show possible options of those component to help testing and developers to use each components.
 
@@ -22,13 +22,13 @@ A quick look at the top-level files and directories you'll see in this repositor
     ├── apps
     │  ├── angular-demo        // Angular specific app
     │  ├── angular-demo-e2e    // Cypress related to the angular-demo app
-    │  ├── react-demo        
-    │  ├── react-demo-e2e    
+    │  ├── react-demo
+    │  ├── react-demo-e2e
     ├── libs                  // All libs shared and deployed
     │  ├── core                // core web-ui library
     │  │  ├── core                // @se/web-ui  (StencilJs)
     │  │  ├── angular             // @se/web-ui-angular
-    │  │  ├── react               // @se/web-ui-react 
+    │  │  ├── react               // @se/web-ui-react
     │  ├── product              // product / technical library
     │  │  ├── core                // @se/web-ui-product  (StencilJs)
     │  │  ├── angular             // @se/web-ui-product-angular
@@ -40,7 +40,7 @@ A quick look at the top-level files and directories you'll see in this repositor
     └── README.md
 
 
-**PS :** To start, the StencilJs (`core`) library needs to be compile to generate the codes in `react` and `angular`. 
+**PS :** To start, the StencilJs (`core`) library needs to be compile to generate the codes in `react` and `angular`.
 
 ## Environment setup
 
@@ -66,9 +66,9 @@ A set of application test has been created to help debugging and testing each im
 For example:
 ```sh
 # Start a demo
-yarn start react-demo               
+yarn start react-demo
 yarn start angular-demo
-yarn start web-demo      
+yarn start web-demo
 
 #  Run the `apps/<demo>-e2e` project
 yarn e2e react-demo-e2e
@@ -80,7 +80,7 @@ yarn e2e web-demo-e2e
 
 There is different way to develop a component in the core folder (StencilJs).
 1. Run a quick env to debug/quick fix. The application test is the `core/src/index.html` file and allow fast reload capability.
-    ```sh 
+    ```sh
     yarn start core
     ```
 2. Run with another demo/storybook. Open a new terminal and let the script running.
@@ -101,7 +101,7 @@ The `core` folder also have a [storybook](https://storybook.js.org/) capability 
 To work with the storybook, first run `yarn build core` (or `watch` if actively developing a web-component), then run `yarn storybook`
 
 
-### Test or build the libraries 
+### Test or build the libraries
 
 The `core`, `react` and `angular` library follows the same nx workspace convention:
 ```sh
@@ -128,7 +128,7 @@ All type links are defined in `./tsconfig.json` file.
 
 ### Connect to your project locally
 
-To connect your project with any library locally: 
+To connect your project with any library locally:
 1. Build each libraries (previous section),
 1. Create a global link with yarn
     ```sh
@@ -162,7 +162,7 @@ Each creation of a new feature should follow the same process:
 - Create a feature/bugfix branch that relate to your development,
 - Follow the [convention guideline](./libs/core/readme.md) to improve/fix/create the component,
 - Do your duty in unit test, specs and e2e testing for each component,
-- Upate/make a new story for the [stroybook](https://pages.github.schneider-electric.com/IoT/web-ui/) to help testing the different use case of the components,
+- Upate/make a new story for the [storybook](https://pages.github.schneider-electric.com/IoT/web-ui/) to help testing the different use case of the components,
 - Test the component in any demo app and insure that there is no breaking changes,
 - Make a PR back to the `develop`,
 - Wait and see your PR being accepted and deployed to the next release!

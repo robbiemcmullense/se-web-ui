@@ -86,6 +86,7 @@ export class IconComponent {
         <TagType
           disabled={this.disabled}
           style={{ transform }}
+          type={this.option === 'button' ? 'button' : null}
           class={{
             disabled: this.disabled,
             wrapper: true,

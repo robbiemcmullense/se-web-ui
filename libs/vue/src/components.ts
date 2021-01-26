@@ -350,6 +350,9 @@ export const SeDialog = /*@__PURE__*/ Vue.extend({
   },
 
 
+  methods: {
+    backdropClicked: createCommonMethod('backdropClicked') as Components.SeDialog['backdropClicked'],
+  },
   render: createCommonRender('se-dialog', ['backdrop', 'didClose']),
 });
 
@@ -360,6 +363,7 @@ export const SeDialogContent = /*@__PURE__*/ Vue.extend({
     option: {} as PropOptions<Components.SeDialogContent['option']>,
     icon: {} as PropOptions<Components.SeDialogContent['icon']>,
     iconColor: {} as PropOptions<Components.SeDialogContent['iconColor']>,
+    isLastChild: {} as PropOptions<Components.SeDialogContent['isLastChild']>,
   },
 
 

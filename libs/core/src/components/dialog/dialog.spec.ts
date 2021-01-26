@@ -101,12 +101,14 @@ describe('DialogComponent', () => {
     expect(eventSpy).toHaveBeenCalled();
   });
 
-  it('should call the backdropClicked method, emitting the backdrop event when the handleKeyDown event occurs', () => {
+  it('should call the backdropClicked method, emitting the backdrop and didClose events when the handleKeyDown event occurs', () => {
     dialogComponent.open = true;
     const event = { key: 'Escape' };
-    const eventSpy = jest.spyOn(dialogComponent.backdrop, 'emit');
+    const backdropEventSpy = jest.spyOn(dialogComponent.backdrop, 'emit');
+    const didCloseEventSpy = jest.spyOn(dialogComponent.didClose, 'emit');
     dialogComponent.handleKeyDown(event); // user presses ESC button when dialog is open
-    expect(eventSpy).toHaveBeenCalled();
+    expect(backdropEventSpy).toHaveBeenCalled();
+    expect(didCloseEventSpy).toHaveBeenCalled();
   });
 
   it('should set the alternative color property to the dialog header when the se-dialog color is set to alternative', () => {

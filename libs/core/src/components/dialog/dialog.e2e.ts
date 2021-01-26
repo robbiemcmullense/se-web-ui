@@ -1,7 +1,8 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('DialogComponent', () => {
-  let page, element;
+  let page;
+  let element;
 
   beforeEach(async () => {
     page = await newE2EPage();
@@ -19,9 +20,11 @@ describe('DialogComponent', () => {
   });
 
   it('emits the backdrop event when clicking on the background', async () => {
-    const eventSpy = await page.spyOnEvent('backdrop');
+    const backdropEventSpy = await page.spyOnEvent('backdrop');
+    const didCloseEventSpy = await page.spyOnEvent('didClose');
     await element.callMethod('backdropClicked');
-    expect(eventSpy).toHaveReceivedEvent();
+    expect(backdropEventSpy).toHaveReceivedEvent();
+    expect(didCloseEventSpy).toHaveReceivedEvent();
   });
 });
 

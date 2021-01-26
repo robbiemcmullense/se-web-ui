@@ -9,6 +9,7 @@ import {
   Listen,
   Host,
   State,
+  Method,
 } from '@stencil/core';
 
 @Component({
@@ -77,29 +78,31 @@ export class DialogComponent {
   /**
    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */
-  backdropClicked() {
-    // we shuold not quit if the animation has no completed (many click on a button open/close the dialog)
+  @Method()
+  async backdropClicked() {
+    // we should not quit if the animation has no completed (many click on a button open/close the dialog)
     if (!this.modalAnimation) {
       /*
         |                          | canBackdrop | noBackdrop | result         |
-        | ---                      | ----------- | ---------- | -------------- |
+        | ------------------------ | ----------- | ---------- | -------------- |
         | default :                | true        | false      | emit & close   |
         | we use canBackrop:       | false       | false      | don't emit     |
         | we use noBackdrop:       | true        | true       | don't emit     |
-        | unlikely we modify both: | false       | true      | don't emit     |
+        | unlikely we modify both: | false       | true       | don't emit     |
       */
 
       if (this.canBackdrop && !this.noBackdrop) {
         // This should be deprecated
         // Only emit if canBackdrop was clicked
         this.backdrop.emit();
+        this.didClose.emit();
         this.open = false;
       }
     }
   }
   assignDialogHeaderProps() {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
-      (item: any) => {
+      (item: HTMLSeDialogHeaderElement) => {
         if (!item.color) {
           item.color = this.color;
         }
@@ -112,7 +115,10 @@ export class DialogComponent {
 
   assignDialogContentProps() {
     Array.from(this.el.querySelectorAll('se-dialog-content')).forEach(
-      (item: any) => {
+      (item: HTMLSeDialogContentElement) => {
+        if (item.nextElementSibling) {
+          item.isLastChild = false;
+        }
         if (!item.option && this.size === 'fill') {
           item.option = 'indent';
         }
@@ -136,8 +142,10 @@ export class DialogComponent {
   @Listen('didCloseDialog', { target: 'document' })
   handleCloseDialog(ev: CustomEvent) {
     Array.from(this.el.querySelectorAll('se-dialog-header')).forEach(
-      (item: any) => {
-        if (item === ev.target) this.open = false;
+      (item: HTMLSeDialogHeaderElement) => {
+        if (item === ev.target) {
+          this.open = false;
+        }
       }
     );
   }
@@ -145,7 +153,11 @@ export class DialogComponent {
   @State() modalAnimation: string;
   @State() showModal: boolean;
 
-  addAnimation(callback = () => {}) {
+  addAnimation(
+    callback = () => {
+      // do nothing.
+    }
+  ) {
     this.showModal = true;
     this.modalAnimation = this.SHOW;
     setTimeout(() => {
@@ -154,7 +166,11 @@ export class DialogComponent {
     }, 500);
   }
 
-  removeAnimation(callback = () => {}) {
+  removeAnimation(
+    callback = () => {
+      // do nothing.
+    }
+  ) {
     this.modalAnimation = this.HIDE;
     setTimeout(() => {
       this.modalAnimation = null;

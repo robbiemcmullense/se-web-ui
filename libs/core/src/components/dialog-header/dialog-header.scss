@@ -9,48 +9,62 @@
   @include background-color("primary");
   @include color("primary-contrast");
 
+  &.alternative-indents {
+    padding: $spacing-small $spacing-large $spacing-small $spacing-large;
+    min-height: 40px;
+
+    @include for-tablet-and-up {
+      padding: $spacing $spacing-xxlarge $spacing $spacing-xxlarge;
+      min-height: 44px;
+    }
+  }
+
   &.alternative {
     @include background-color("background-alternative");
     @include color("primary");
     margin-bottom: -$spacing-large;
 
-    .icon-close {
-      @include color("background-alternative-contrast");
-      opacity: 0.5;
-    }
-  }
+    &.alternative-indents {
+      min-height: 35px;
+      padding: $spacing-m-large $spacing-m-large 0;
+      margin-bottom: 0;
 
-  &.alternative-indents {
-    min-height: 35px;
-    padding: $spacing-m-large $spacing-m-large 0;
-    margin-bottom: 0;
-
-    @include for-desktop-only {
-      @include align-items(flex-start);
-      padding: $spacing-m-large $spacing-xlarge 0;
-    }
-
-    div.middle {
-      margin: 0;
-      overflow: hidden;
-
-      @include for-desktop-only {
-        margin: 0 $spacing-small $spacing-small;
+      @include for-tablet-and-up {
+        @include align-items(flex-start);
+        padding: $spacing-m-large $spacing-xxlarge 0;
       }
-    }
 
-    .icon-close {
-      margin: 0;
+      div.middle {
+        margin: 0;
+        overflow: hidden;
 
-      @include for-desktop-only {
-        margin-left: $spacing-large;
+        @include for-tablet-and-up {
+          margin: 0 $spacing-small $spacing-small;
+        }
       }
     }
   }
 }
+
 .icon-close {
   margin-right: $spacing;
+
+  .alternative & {
+    @include color("background-alternative-contrast");
+    opacity: 0.5;
+  }
+
+  .alternative-indents & {
+    margin: 0;
+  }
+
+  .alternative.alternative-indents & {
+    @include for-tablet-and-up {
+      margin-left: $spacing-large;
+    }
+  }
 }
+
 .flex {
   @include flex();
 }
@@ -58,6 +72,24 @@
 .middle {
   @include typology("h4");
   margin: 8px 0;
+
+  .alternative-indents & {
+    margin: 8px 0;
+    @include modal-heading("primary");
+
+    @include for-tablet-and-up {
+      margin: 6px 0;
+      @include modal-heading("primary", "large");
+    }
+  }
+
+  .alternative.alternative-indents & {
+    @include modal-heading("alternative");
+
+    @include for-tablet-and-up {
+      @include modal-heading("alternative", "large");
+    }
+  }
 }
 
 ::slotted(h1),
@@ -84,7 +116,7 @@
 ::slotted(.label) {
   display: none;
 
-  @include for-desktop-only {
+  @include for-tablet-and-up {
     display: block;
     flex-shrink: 0;
     margin-left: $spacing-large !important;

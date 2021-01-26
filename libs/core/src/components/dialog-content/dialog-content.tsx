@@ -16,9 +16,13 @@ export class DialogContentComponent {
    */
   @Prop() icon: string;
   /**
-   * Indicates what color schema you want to render in your dialog.
+   * Indicates what icon color schema you want to render in your dialog.
    */
   @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary';
+  /**
+   * Indicates if se-dialog-content is the last child of the dialog component.
+   */
+  @Prop() isLastChild = true;
 
   render() {
     return (
@@ -27,6 +31,7 @@ export class DialogContentComponent {
           'se-dialog-content',
           this.option === 'fill' ? 'full-content' : '',
           this.option === 'indent' ? 'alternative-indents' : '',
+          this.isLastChild ? 'last-child' : '',
         ].join(' ')}
       >
         <span class="se-icon-wrapper">

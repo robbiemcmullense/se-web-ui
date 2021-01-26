@@ -16,8 +16,8 @@ export class DialogHeaderComponent {
   @Prop() color: 'primary' | 'alternative';
   /**
    * Defines the indents (margins and paddings) of the dialog header.
-   * `alternative`: Alternative margins and paddings.
    * `primary`: Primary indents schema.
+   * `alternative`: Alternative margins and paddings.
    */
   @Prop() indents: 'primary' | 'alternative';
   /**
@@ -25,6 +25,7 @@ export class DialogHeaderComponent {
    * Default setting is `false`.
    */
   @Prop() closeIcon = false;
+
   /**
    * Send data to the parent component when clicking an element within the dialog to close it.
    * The modal can then be safely removed from the DOM.

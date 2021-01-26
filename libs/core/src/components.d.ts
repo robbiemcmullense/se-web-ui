@@ -408,6 +408,10 @@ export namespace Components {
     }
     interface SeDialog {
         /**
+          * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
+         */
+        "backdropClicked": () => Promise<void>;
+        /**
           * Option to enable clicking on the dialog's backdrop. Will automatically close the modal.  Default setting is `true`.
           * @deprecated use noBackdrop='true' instead
          */
@@ -439,9 +443,13 @@ export namespace Components {
          */
         "icon": string;
         /**
-          * Indicates what color schema you want to render in your dialog.
+          * Indicates what icon color schema you want to render in your dialog.
          */
         "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary';
+        /**
+          * Indicates if se-dialog-content is the last child of the dialog component.
+         */
+        "isLastChild": boolean;
         /**
           * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
@@ -459,7 +467,7 @@ export namespace Components {
          */
         "color": 'primary' | 'alternative';
         /**
-          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
+          * Defines the indents (margins and paddings) of the dialog header. `primary`: Primary indents schema. `alternative`: Alternative margins and paddings.
          */
         "indents": 'primary' | 'alternative';
     }
@@ -2142,9 +2150,13 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Indicates what color schema you want to render in your dialog.
+          * Indicates what icon color schema you want to render in your dialog.
          */
         "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
+        /**
+          * Indicates if se-dialog-content is the last child of the dialog component.
+         */
+        "isLastChild"?: boolean;
         /**
           * When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
          */
@@ -2162,7 +2174,7 @@ declare namespace LocalJSX {
          */
         "color"?: 'primary' | 'alternative';
         /**
-          * Defines the indents (margins and paddings) of the dialog header. `alternative`: Alternative margins and paddings. `primary`: Primary indents schema.
+          * Defines the indents (margins and paddings) of the dialog header. `primary`: Primary indents schema. `alternative`: Alternative margins and paddings.
          */
         "indents"?: 'primary' | 'alternative';
         /**

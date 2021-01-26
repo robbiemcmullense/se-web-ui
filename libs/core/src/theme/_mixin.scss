@@ -52,6 +52,28 @@
     font-size: $base-fontsize;
   }
 }
+
+@mixin modal-heading($type: "primary", $screen: "small") {
+  @if $type == "primary" and $screen == "small" {
+    font-size: 18px;
+    line-height: 24px;
+  } @else if $type == "primary" and $screen == "large" {
+    font-size: 22px;
+    line-height: 32px;
+  } @else if $type == "alternative" and $screen == "small" {
+    font-size: 25px;
+  } @else if $type == "alternative" and $screen == "large" {
+    font-size: 30px;
+  }
+
+  @if $type == "primary" {
+    font-weight: bold;
+  } @else if $type == "alternative" {
+    font-weight: normal;
+    line-height: 36px;
+  }
+}
+
 @mixin ellipsis() {
   white-space: nowrap;
   overflow: hidden;

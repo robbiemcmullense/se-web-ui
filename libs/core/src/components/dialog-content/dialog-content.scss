@@ -10,6 +10,12 @@
 .inner-content {
   @include flex();
   margin: 0 $spacing;
+
+  .alternative-indents & {
+    @include for-tablet-and-up {
+      margin: $spacing $spacing-small $spacing-large;
+    }
+  }
 }
 
 .se-dialog-content {
@@ -28,17 +34,14 @@
   }
 
   &.alternative-indents {
-    padding: $spacing-large $spacing-large $spacing-xlarge;
+    padding-right: $spacing-xlarge;
+    padding-left: $spacing-xlarge;
 
-    @include for-desktop-only {
-      padding: $spacing-large $spacing-xlarge $spacing-m-large;
-    }
+    &.last-child {
+      padding-bottom: $spacing-m-large;
 
-    .inner-content {
-      margin: 0 $spacing $spacing-small;
-
-      @include for-desktop-only {
-        margin: 0 $spacing-small $spacing-m-large;
+      @include for-tablet-and-up {
+        padding-bottom: $spacing-xlarge;
       }
     }
   }
