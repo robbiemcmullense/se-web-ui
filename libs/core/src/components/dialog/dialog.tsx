@@ -9,7 +9,6 @@ import {
   Listen,
   Host,
   State,
-  Method,
 } from '@stencil/core';
 
 @Component({

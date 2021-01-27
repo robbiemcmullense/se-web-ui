@@ -350,9 +350,6 @@ export const SeDialog = /*@__PURE__*/ Vue.extend({
   },
 
 
-  methods: {
-    backdropClicked: createCommonMethod('backdropClicked') as Components.SeDialog['backdropClicked'],
-  },
   render: createCommonRender('se-dialog', ['backdrop', 'didClose']),
 });
 
