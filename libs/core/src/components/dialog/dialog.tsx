@@ -185,27 +185,23 @@ export class DialogComponent {
       <Host class={{ 'show-dialog': this.showModal }}>
         <div
           class={{
-            [this.size]: !!this.size,
             'dialog-wrapper': true,
             'scroll-page': this.pageScroll,
+            'scroll-content': !this.pageScroll,
+            [this.size]: !!this.size,
+            [this.modalAnimation]: !!this.modalAnimation,
           }}
         >
           <div
-            class={{
-              'dialog-background': true,
-              [this.modalAnimation]: !!this.modalAnimation,
-              'scroll-page': this.pageScroll,
-            }}
+            class="dialog-background"
             onClick={() => this.backdropClicked()}
-          ></div>
-          <div
-            class={{
-              dialog: true,
-              [this.modalAnimation]: !!this.modalAnimation,
-              'scroll-content': !this.pageScroll,
-            }}
-          >
-            <slot></slot>
+          />
+          <div class="dialog">
+            <div class="dialog-body">
+              <div class="dialog-body-inner">
+                <slot></slot>
+              </div>
+            </div>
           </div>
         </div>
       </Host>

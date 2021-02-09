@@ -10,36 +10,47 @@
 :host(.show-dialog) {
   display: block !important;
 }
-.small {
-  .dialog {
+
+.dialog-background {
+  position: fixed !important;
+  @include absolute();
+  @include background-color("overlay");
+  z-index: $zindex-modal-backdrop;
+}
+
+.dialog {
+  z-index: $zindex-modal;
+  @include display-flex();
+  @include justify-content(center);
+  position: relative;
+  margin: 0 auto;
+
+  &.scroll-content {
+    height: 100%;
+  }
+
+  &.scroll-page {
+    min-height: 100%;
+  }
+
+  .small & {
     width: 400px;
   }
-}
 
-.medium {
-  .dialog {
+  .medium & {
     width: 600px;
   }
-}
 
-.large {
-  .dialog {
+  .large & {
     width: 800px;
   }
-}
 
-.xlarge {
-  .dialog {
+  .xlarge & {
     width: 1100px;
   }
-}
 
-.fill {
-  .dialog {
-    margin: 0;
+  .fill & {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
   }
 }
 
@@ -47,55 +58,40 @@
   position: fixed !important;
   z-index: $zindex-modal;
   @include absolute();
-  @include display-flex();
-  @include align-items(center);
-  @include justify-content(space-around);
+  @include animated();
   overflow-y: auto;
-  height: auto !important;
+
+  &.show-dialog {
+    animation-name: fadeIn;
+  }
+
+  &.hide-dialog {
+    animation-name: fadeOut;
+  }
+}
+.dialog-body {
+  width: 100%;
+  min-height: 100vh;
+  @include display-flex();
+  @include justify-content(center);
+  @include flex-direction(column);
 }
 
-.dialog {
-  margin: $spacing-large;
-  z-index: $zindex-modal;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
-  @include animated();
-  @include background-color("background-alternative");
-  @include color("background-alternative-contrast");
+.dialog-body-inner {
+  width: 100%;
   @include display-flex();
   @include flex-direction(column);
-  height: auto;
-  position: relative;
-  margin: auto;
-  &.show-dialog {
-    animation-name: fadeIn;
-  }
-  &.hide-dialog {
-    animation-name: fadeOut;
-  }
-}
+  @include align-items(stretch);
+  @include background-color("background-alternative");
+  @include color("background-alternative-contrast");
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
 
-.dialog-background {
-  position: fixed !important;
-  @include absolute();
-  @include animated();
-  @include background-color("overlay");
-  padding-top: 4%;
-  z-index: $zindex-modal-backdrop;
-  &.show-dialog {
-    animation-name: fadeIn;
+  .dialog-wrapper.scroll-content & {
+    max-height: 90vh;
   }
-  &.hide-dialog {
-    animation-name: fadeOut;
-  }
-  overflow-y: auto;
-  height: 100% !important;
-}
 
-.scroll-content {
-  max-height: 90%;
-}
-@media only screen and (max-width: 600px) {
-  .dialog {
-    max-height: calc(100% - $spacing-large * 2);
+  .dialog-wrapper.fill & {
+    height: 100vh;
+    max-height: none;
   }
 }

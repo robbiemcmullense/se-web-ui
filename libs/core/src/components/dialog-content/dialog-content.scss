@@ -21,7 +21,6 @@
 .se-dialog-content {
   padding: $spacing-large $spacing;
   padding-bottom: 0;
-  position: relative;
   @include flex(1);
   @include align-items(center);
   @include display-flex();
