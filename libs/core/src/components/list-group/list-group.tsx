@@ -176,7 +176,7 @@ export class ListGroupComponent {
           aria-expanded={this.collapsed}
           onClick={() => this.toggleGroupButton()}
           class={{
-            selectedChild: this.selectedChild,
+            selectedChild: !this.selected && this.selectedChild,
           }}
           selected={this.selectedChild || this.selected}
           disabled={this.disabled}
