@@ -1,21 +1,28 @@
 import { storiesOf } from '@storybook/html';
 import { select, text, boolean } from '@storybook/addon-knobs';
 import readme from './readme.md';
+import { size } from './contstants';
 
-const colorOption = ['primary', 'secondary', 'success', 'error'];
-const backgroundOption = ['standard', 'alternative'];
+const colorOption = ['primary', 'secondary', 'success'];
 const labelOption = ['right', 'left'];
+const checkboxSizeOptions = Object.values(size);
 
 storiesOf('Checkbox', module)
   .add(
     'Checkbox',
     () => {
       const label = text('label', 'This is a standard checkbox.');
+      const labelSuffix = text('label suffix', '321');
       const selected = boolean('selected', true);
       const color = select('color', colorOption, 'primary');
       const disabled = boolean('disabled', false);
       const indeterminate = boolean('indeterminate', false);
       const labelPos = select('label position', labelOption, 'right');
+      const checkboxSize = select(
+        'checkbox size',
+        checkboxSizeOptions,
+        size.MEDIUM
+      );
 
       return `
       <se-checkbox
@@ -25,7 +32,10 @@ storiesOf('Checkbox', module)
         indeterminate='${indeterminate}'
         color='${color}'
         disabled='${disabled}'
-        label-pos='${labelPos}'></se-checkbox>
+        label-pos='${labelPos}'
+        label-suffix='${labelSuffix}'
+        size='${checkboxSize}'
+      ></se-checkbox>
       <div id="did-change-message"></div>
     `;
     },
@@ -65,22 +75,22 @@ storiesOf('Checkbox', module)
       const label = text('label', 'This is a standard checkbox.');
 
       const selected = boolean('selected', false);
-      const background = select('background', backgroundOption, 'standard');
       const disabled = boolean('disabled', false);
       const onText = text('"ON" Text', 'ON');
       const offText = text('"OFF" Text', 'OFF');
       const header = boolean('header', false);
+      const labelPos = select('label position', labelOption, 'right');
 
       return `
         <se-checkbox
           label='${label}'
           option='onoff'
           selected='${selected}'
-          background='${background}'
           disabled='${disabled}'
           text-on='${onText}'
           text-off='${offText}'
-          header='${header}'></se-checkbox>
+          header='${header}'
+          label-pos='${labelPos}'></se-checkbox>
     `;
     },
     {

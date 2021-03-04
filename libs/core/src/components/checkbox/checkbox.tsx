@@ -7,6 +7,8 @@ import {
   Method,
   Prop,
 } from '@stencil/core';
+import { size } from './contstants';
+import { Size } from './types';
 
 @Component({
   tag: 'se-checkbox',
@@ -30,6 +32,12 @@ export class CheckboxComponent {
    * The label of the checkbox that will be attached to the box.
    */
   @Prop() label: string;
+
+  /**
+   * Sets suffix of the label shown with semi-transparent text just after the label.
+   */
+  @Prop() labelSuffix: string;
+
   /**
    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
    */
@@ -86,6 +94,20 @@ export class CheckboxComponent {
   /**
    * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
    */
+
+  /**
+   * Defines the size of the control. So far it's only supported by checkbox.
+   *
+   * There are two options:
+   * `s`: 16px
+   * `m`: 20px (default)
+   *
+   * Also affects the font size of the checkbox text label:
+   * `s`: 14px
+   * `m`: 16px (default)
+   */
+  @Prop() size: Size = size.MEDIUM;
+
   @Method()
   async setRequired() {
     this.required = true;
@@ -93,7 +115,7 @@ export class CheckboxComponent {
   /**
    * Send the checkbox value to the parent component when clicking on the checkbox.
    */
-  @Event() didChange: EventEmitter;
+  @Event() didChange: EventEmitter<{ value: string; selected: boolean }>;
   @Element() el: HTMLElement;
 
   handleClick(state: boolean, event = null) {
@@ -164,7 +186,7 @@ export class CheckboxComponent {
             <button
               class={{
                 checkmark: true,
-                [this.color]: !!this.color,
+                [`color-${this.color}`]: !!this.color,
                 checked: this.selected && !this.indeterminate,
                 indeterminate: this.indeterminate,
               }}
@@ -184,16 +206,17 @@ export class CheckboxComponent {
           [`opt-${this.option}`]: true,
           [`p-${this.padding}`]: !!this.padding,
           header: !!this.header,
-          'no-label': !this.label,
+          [`size-${this.size}`]: true,
         }}
       >
-        {this.label ? (
+        {this.label && (
           <span class="label-wrap">
             {this.label}
+            {this.labelSuffix && (
+              <span class="label-suffix">&nbsp;({this.labelSuffix})</span>
+            )}
             {this.required && <i class="required">*</i>}
           </span>
-        ) : (
-          <span>&nbsp;</span>
         )}
         {markup}
       </label>

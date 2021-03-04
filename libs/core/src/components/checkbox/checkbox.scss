@@ -1,15 +1,34 @@
+$root-paddings: (
+  small: $spacing-small,
+  medium: $spacing,
+  large: $spacing-large,
+);
+
+$checkbox-sizes: (
+  small: 16px,
+  medium: 20px,
+);
+
+$checkbox-font-sizes: (
+  small: 14px,
+  medium: 16px,
+);
+
+$checkbox-colors: "primary", "secondary", "success";
+
 :host {
   display: inline-flex;
+  vertical-align: top;
 }
 
-.p-small {
-  padding: $spacing-small;
+input {
+  @include visually-hidden();
 }
-.p-medium {
-  padding: $spacing;
-}
-.p-large {
-  padding: $spacing-large;
+
+@each $p-name, $p-value in $root-paddings {
+  .p-#{$p-name} {
+    padding: $p-value;
+  }
 }
 
 .required {
@@ -18,23 +37,25 @@
 }
 
 .label-wrap {
-  margin-right: $spacing;
-  margin-left: $spacing;
+  font-weight: 400;
+
+  .label-left & {
+    margin-right: $spacing;
+  }
+
+  .label-right & {
+    margin-left: $spacing;
+  }
+
+  @each $font-size-name, $size in $checkbox-font-sizes {
+    .size-#{$font-size-name} & {
+      font-size: $size;
+    }
+  }
 }
 
-// .no-label.opt-checkbox {
-//   .container {
-//     top: -5px;
-//   }
-// }
-
-input {
-  height: 0;
-  width: 0;
-  opacity: 0;
-  margin: 0;
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
+.label-suffix {
+  opacity: 0.6;
 }
 
 .label-right {
@@ -45,9 +66,14 @@ input {
   display: flex;
   align-items: center;
   cursor: pointer;
-  &.disabled,
-  &[disabled] {
+  &.disabled {
     cursor: default;
+  }
+
+  &:not(.opt-checkbox) {
+    button[disabled] {
+      opacity: 0.5;
+    }
   }
 }
 
@@ -60,101 +86,144 @@ button {
   }
   &[disabled] {
     cursor: default;
-    color: $se-light-grey;
-    opacity: 0.5;
-    &.active.selected,
-    &.inactive.selected {
-      @include color("alternative");
-    }
   }
 }
 
 .opt-checkbox {
-  @include align-items(center);
+  @include align-items(flex-start);
+  position: relative;
+
   .container {
-    position: relative;
-    padding-left: $spacing-large;
-    margin-left: $spacing;
-    // margin-top: $spacing-small;
-    &.label-left {
-      padding-left: 0;
-      margin: 0;
-      .checkmark {
-        left: auto;
-        margin-left: 8px;
-      }
-    }
+    line-height: 0;
   }
+
   .checkmark {
-    position: absolute;
-    margin: 0;
-    margin-top: -$spacing;
-    // outline: none;
-    padding: 0;
-    // top: 4px;
-    left: -$spacing-small;
-    height: 14px;
-    width: 14px;
+    position: relative;
     @include background-color("background-alternative");
     border: 1px solid;
     @include border-color("border");
     border-radius: 2px;
     transition: 0.2s;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+
     &.checked,
     &.indeterminate {
-      &.primary {
-        @include background-color("primary");
-        border: 1px solid;
-        @include border-color("primary");
-      }
-      &.secondary {
-        @include background-color("secondary");
-        border: 1px solid;
-        @include border-color("secondary");
-      }
-      &.success {
-        @include background-color("success");
-        border: 1px solid;
-        @include border-color("success");
-      }
-      &:after {
-        display: block;
+      border: 0;
+
+      @each $color in $checkbox-colors {
+        &.color-#{$color} {
+          @include background-color($color);
+        }
       }
     }
 
-    &:after {
+    &::after {
       content: "";
-      position: absolute;
-      display: none;
+      @include absolute(50%, auto, auto, 50%);
+      transform: translate(-50%, -50%);
     }
 
-    &.checked:after {
-      bottom: 3px;
-      left: 5px;
-      width: 3px;
-      height: 9px;
-      border: solid;
-      border-color: $se-white;
-      border-width: 0 1px 1px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
+    &.checked::after {
+      width: 16px;
+      height: 12px;
+      background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath fill='%23FFF' d='M14 0l-1 1-8 7-2-2H0v2l4 4h2l1-1 8-8 1-1-1-2h-1z'/%3E%3C/svg%3E");
     }
-    &.indeterminate:after {
-      bottom: 1px;
-      left: 6px;
-      height: 10px;
-      border-style: solid;
-      border-image: initial;
-      border-color: rgb(255, 255, 255);
-      border-width: 0px 1px 0px 0px;
-      transform: rotate(90deg);
+
+    &.indeterminate::after {
+      width: 12px;
+      height: 4px;
+      background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 4'%3E%3Crect width='12' height='4' x='0' y='0' fill='%23FFF' rx='2'/%3E%3C/svg%3E");
     }
-    &[disabled] {
-      opacity: 0.5;
+  }
+
+  &.size-small .checkmark {
+    &.checked,
+    &.indeterminate {
+      &::after {
+        transform: translate(-50%, -50%) scale(0.8);
+      }
     }
-    &:focus {
-      outline-offset: 1px;
+  }
+
+  &.disabled {
+    .checkmark {
+      @include border-color("disabled");
+
+      &.checked,
+      &.indeterminate {
+        border: 0;
+        background-color: $se-ultra-light-grey-1;
+      }
+
+      &.checked::after {
+        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath fill='%239FA0A4' d='M14 0l-1 1-8 7-2-2H0v2l4 4h2l1-1 8-8 1-1-1-2h-1z'/%3E%3C/svg%3E");
+      }
+
+      &.indeterminate::after {
+        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 4'%3E%3Crect width='12' height='4' x='0' y='0' fill='%239FA0A4' rx='2'/%3E%3C/svg%3E");
+      }
+    }
+
+    .label-wrap {
+      @include color("disabled");
+    }
+  }
+
+  @each $size-name, $size in $checkbox-sizes {
+    &.size-#{$size-name} .checkmark {
+      width: $size;
+      height: $size;
+    }
+
+    &.size-#{$size-name}:hover .checkmark:not(.checked):not(.indeterminate),
+    &.size-#{$size-name} .checkmark:not(.checked):not(.indeterminate):focus {
+      &::after {
+        width: ($size / 2) - 2;
+        height: ($size / 2) - 2;
+      }
+    }
+
+    &.size-#{$size-name}:active .checkmark:not(.checked):not(.indeterminate) {
+      &::after {
+        width: ($size / 2) - 3;
+        height: ($size / 2) - 3;
+      }
+    }
+  }
+
+  @each $color in $checkbox-colors {
+    &:not(.disabled):hover .checkmark.color-#{$color},
+    &:not(.disabled) .checkmark.color-#{$color}:focus {
+      &.checked,
+      &.indeterminate {
+        background-image: linear-gradient(
+          lighten(map-get($seTheme, $color), 5%),
+          map-get($seTheme, $color)
+        );
+      }
+    }
+
+    &:not(.disabled):hover:active .checkmark.color-#{$color} {
+      &.checked,
+      &.indeterminate {
+        background-color: darken(map-get($seTheme, $color), 23);
+      }
+    }
+
+    &:hover .checkmark.color-#{$color}:not(.checked):not(.indeterminate)::after,
+    &:active
+      .checkmark.color-#{$color}:not(.checked):not(.indeterminate)::after,
+    &
+      .checkmark.color-#{$color}:not(.checked):not(.indeterminate):focus::after {
+      background-color: rgba(map-get($seTheme, $color), 0.5);
+    }
+  }
+
+  &:not(.disabled):hover:active .checkmark {
+    &.checked,
+    &.indeterminate {
+      background-image: none;
     }
   }
 }
@@ -169,7 +238,6 @@ button {
 
   .checkmark {
     display: block;
-    margin: 0;
     padding: 0;
     // outline: none;
     width: 100%;
@@ -186,8 +254,6 @@ button {
       width: 100%;
       height: 100%;
       box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
       border: 1px solid;
       @include border-color("border");
       @include background-color("background-alternative");
@@ -209,7 +275,6 @@ button {
     }
     &.checked {
       &:before {
-        border: 1px solid;
         @include background-color("success");
         @include border-color("success");
       }
@@ -250,7 +315,6 @@ button {
     &.active {
       border-top-left-radius: 2px;
       border-bottom-left-radius: 2px;
-      margin-right: 0;
       &.selected {
         @include color("success-contrast");
         @include background-color("success");
@@ -260,7 +324,6 @@ button {
     &.inactive {
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
-      margin-left: 0;
       &.selected {
         @include color("error-contrast");
         @include background-color("error");
@@ -270,11 +333,11 @@ button {
       outline-offset: -1px;
     }
   }
-}
 
-.header {
-  button {
-    height: 24px;
-    font-size: 12px;
+  &.header {
+    button {
+      height: 24px;
+      font-size: 12px;
+    }
   }
 }

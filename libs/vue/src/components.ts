@@ -278,6 +278,7 @@ export const SeCheckbox = /*@__PURE__*/ Vue.extend({
     option: {} as PropOptions<Components.SeCheckbox['option']>,
     value: {} as PropOptions<Components.SeCheckbox['value']>,
     label: {} as PropOptions<Components.SeCheckbox['label']>,
+    labelSuffix: {} as PropOptions<Components.SeCheckbox['labelSuffix']>,
     required: {} as PropOptions<Components.SeCheckbox['required']>,
     color: {} as PropOptions<Components.SeCheckbox['color']>,
     disabled: {} as PropOptions<Components.SeCheckbox['disabled']>,
@@ -288,6 +289,7 @@ export const SeCheckbox = /*@__PURE__*/ Vue.extend({
     header: {} as PropOptions<Components.SeCheckbox['header']>,
     padding: {} as PropOptions<Components.SeCheckbox['padding']>,
     labelPos: {} as PropOptions<Components.SeCheckbox['labelPos']>,
+    size: {} as PropOptions<Components.SeCheckbox['size']>,
   },
 
   model: {

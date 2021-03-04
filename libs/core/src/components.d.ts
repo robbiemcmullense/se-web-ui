@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Size } from "./components/checkbox/types";
 import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
 export namespace Components {
@@ -301,6 +302,10 @@ export namespace Components {
          */
         "labelPos": 'left' | 'right';
         /**
+          * Sets suffix of the label shown with semi-transparent text just after the label.
+         */
+        "labelSuffix": string;
+        /**
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option": 'checkbox' | 'onoff' | 'switch';
@@ -316,10 +321,11 @@ export namespace Components {
           * The "checked" state of the checkbox, `false` by default.
          */
         "selected": boolean;
-        /**
-          * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
-         */
         "setRequired": () => Promise<void>;
+        /**
+          * Defines the size of the control. So far it's only supported by checkbox.  There are two options: `s`: 16px `m`: 20px (default)  Also affects the font size of the checkbox text label: `s`: 14px `m`: 16px (default)
+         */
+        "size": Size;
         /**
           * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to `onoff`.  Set to `OFF` by default.
          */
@@ -1996,9 +2002,13 @@ declare namespace LocalJSX {
          */
         "labelPos"?: 'left' | 'right';
         /**
+          * Sets suffix of the label shown with semi-transparent text just after the label.
+         */
+        "labelSuffix"?: string;
+        /**
           * Send the checkbox value to the parent component when clicking on the checkbox.
          */
-        "onDidChange"?: (event: CustomEvent<any>) => void;
+        "onDidChange"?: (event: CustomEvent<{ value: string; selected: boolean }>) => void;
         /**
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
@@ -2015,6 +2025,10 @@ declare namespace LocalJSX {
           * The "checked" state of the checkbox, `false` by default.
          */
         "selected"?: boolean;
+        /**
+          * Defines the size of the control. So far it's only supported by checkbox.  There are two options: `s`: 16px `m`: 20px (default)  Also affects the font size of the checkbox text label: `s`: 14px `m`: 16px (default)
+         */
+        "size"?: Size;
         /**
           * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to `onoff`.  Set to `OFF` by default.
          */
