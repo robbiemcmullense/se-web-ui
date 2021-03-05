@@ -21,7 +21,7 @@ storiesOf('Checkbox', module)
       const checkboxSize = select(
         'checkbox size',
         checkboxSizeOptions,
-        size.MEDIUM
+        size.SMALL
       );
 
       return `

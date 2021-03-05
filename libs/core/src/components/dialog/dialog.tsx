@@ -77,7 +77,11 @@ export class DialogComponent {
   /**
    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */
-  backdropClicked() {
+  backdropClicked(e?: Event) {
+    // Don't bubble up the backdrop click event in case we close the dialog on top of another dialog or button/link
+    if (e) {
+      e.stopPropagation();
+    }
     // we should not quit if the animation has no completed (many click on a button open/close the dialog)
     if (!this.modalAnimation) {
       /*

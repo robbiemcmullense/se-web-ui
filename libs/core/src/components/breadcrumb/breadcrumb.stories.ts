@@ -20,10 +20,10 @@ storiesOf('Breadcrumb', module).add(
 
     return `
       <se-breadcrumb can-select-last="${canSelectLast}">
-        <se-breadcrumb-item>${textHtmlOne}</se-breadcrumb-item>
-        <se-breadcrumb-item>${textHtmlTwo}</se-breadcrumb-item>
-        <se-breadcrumb-item>${textHtmlThree}</se-breadcrumb-item>
-        <se-breadcrumb-item>${textHtmlLast}</se-breadcrumb-item>
+        <se-breadcrumb-item url="google.com">${textHtmlOne}</se-breadcrumb-item>
+        <se-breadcrumb-item url="bing.com">${textHtmlTwo}</se-breadcrumb-item>
+        <se-breadcrumb-item >${textHtmlThree}</se-breadcrumb-item>
+        <se-breadcrumb-item >${textHtmlLast}</se-breadcrumb-item>
       </se-breadcrumb>
     `;
   },

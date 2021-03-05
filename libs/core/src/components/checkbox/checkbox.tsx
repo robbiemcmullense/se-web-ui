@@ -106,7 +106,7 @@ export class CheckboxComponent {
    * `s`: 14px
    * `m`: 16px (default)
    */
-  @Prop() size: Size = size.MEDIUM;
+  @Prop() size: Size = size.SMALL;
 
   @Method()
   async setRequired() {
