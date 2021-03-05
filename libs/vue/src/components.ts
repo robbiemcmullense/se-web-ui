@@ -206,6 +206,9 @@ export const SeBreadcrumb = /*@__PURE__*/ Vue.extend({
 
   props: {
     canSelectLast: {} as PropOptions<Components.SeBreadcrumb['canSelectLast']>,
+    ariaLabel: {} as PropOptions<Components.SeBreadcrumb['ariaLabel']>,
+    withMicrodata: {} as PropOptions<Components.SeBreadcrumb['withMicrodata']>,
+    breakpoint: {} as PropOptions<Components.SeBreadcrumb['breakpoint']>,
   },
 
 
@@ -219,10 +222,12 @@ export const SeBreadcrumbItem = /*@__PURE__*/ Vue.extend({
     isLast: {} as PropOptions<Components.SeBreadcrumbItem['isLast']>,
     href: {} as PropOptions<Components.SeBreadcrumbItem['href']>,
     canSelect: {} as PropOptions<Components.SeBreadcrumbItem['canSelect']>,
+    withMicrodata: {} as PropOptions<Components.SeBreadcrumbItem['withMicrodata']>,
+    position: {} as PropOptions<Components.SeBreadcrumbItem['position']>,
   },
 
 
-  render: createCommonRender('se-breadcrumb-item', []),
+  render: createCommonRender('se-breadcrumb-item', ['didNavigate']),
 });
 
 

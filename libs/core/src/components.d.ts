@@ -177,9 +177,21 @@ export namespace Components {
     }
     interface SeBreadcrumb {
         /**
+          * Provides a label that describes the type of navigation for assistive technologies. The default value is `breadcrumb`.
+         */
+        "ariaLabel": string;
+        /**
+          * Setting allowing to transform breadcrumb into a backlink on screen sizes smaller than specified.
+         */
+        "breakpoint": 'tablet' | 'desktop' | 'wide-desktop';
+        /**
           * Indicates whether or not the last breadcrumb item should be selectable. The default setting is `false`.
          */
         "canSelectLast": boolean;
+        /**
+          * Indicates whether or not microdata attributes referencing https://schema.org/BreadcrumbList dictionary are added to markup. The default setting is `false`. Microdata is a standardized format for providing structured information about a page and classifying the page content. It helps search engines understand a webpage.
+         */
+        "withMicrodata": boolean;
     }
     interface SeBreadcrumbItem {
         /**
@@ -194,6 +206,14 @@ export namespace Components {
           * Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`.
          */
         "isLast": boolean;
+        /**
+          * Indicates the position of an item in a series or sequence of items. Property is used when `withMicrodata` is set to `true` only.
+         */
+        "position": string;
+        /**
+          * Indicates whether or not microdata attributes are added to markup. The default setting is `false`.
+         */
+        "withMicrodata": boolean;
     }
     interface SeButton {
         /**
@@ -1882,9 +1902,21 @@ declare namespace LocalJSX {
     }
     interface SeBreadcrumb {
         /**
+          * Provides a label that describes the type of navigation for assistive technologies. The default value is `breadcrumb`.
+         */
+        "ariaLabel"?: string;
+        /**
+          * Setting allowing to transform breadcrumb into a backlink on screen sizes smaller than specified.
+         */
+        "breakpoint"?: 'tablet' | 'desktop' | 'wide-desktop';
+        /**
           * Indicates whether or not the last breadcrumb item should be selectable. The default setting is `false`.
          */
         "canSelectLast"?: boolean;
+        /**
+          * Indicates whether or not microdata attributes referencing https://schema.org/BreadcrumbList dictionary are added to markup. The default setting is `false`. Microdata is a standardized format for providing structured information about a page and classifying the page content. It helps search engines understand a webpage.
+         */
+        "withMicrodata"?: boolean;
     }
     interface SeBreadcrumbItem {
         /**
@@ -1899,6 +1931,18 @@ declare namespace LocalJSX {
           * Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`.
          */
         "isLast"?: boolean;
+        /**
+          * Event firing when breadcrumbs link is clicked.
+         */
+        "onDidNavigate"?: (event: CustomEvent<HTMLAnchorElement>) => void;
+        /**
+          * Indicates the position of an item in a series or sequence of items. Property is used when `withMicrodata` is set to `true` only.
+         */
+        "position"?: string;
+        /**
+          * Indicates whether or not microdata attributes are added to markup. The default setting is `false`.
+         */
+        "withMicrodata"?: boolean;
     }
     interface SeButton {
         /**

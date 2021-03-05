@@ -187,13 +187,13 @@ export class SeBlockHeader {
 
 export declare interface SeBreadcrumb extends Components.SeBreadcrumb {}
 @ProxyCmp({
-  inputs: ['canSelectLast']
+  inputs: ['ariaLabel', 'breakpoint', 'canSelectLast', 'withMicrodata']
 })
 @Component({
   selector: 'se-breadcrumb',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canSelectLast']
+  inputs: ['ariaLabel', 'breakpoint', 'canSelectLast', 'withMicrodata']
 })
 export class SeBreadcrumb {
   protected el: HTMLElement;
@@ -203,22 +203,26 @@ export class SeBreadcrumb {
   }
 }
 
-
+import { BreadcrumbItemComponent as IBreadcrumbItemComponent } from '@se/web-ui/types/components/breadcrumb-item/breadcrumb-item';
 export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
 @ProxyCmp({
-  inputs: ['canSelect', 'href', 'isLast']
+  inputs: ['canSelect', 'href', 'isLast', 'position', 'withMicrodata']
 })
 @Component({
   selector: 'se-breadcrumb-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['canSelect', 'href', 'isLast']
+  inputs: ['canSelect', 'href', 'isLast', 'position', 'withMicrodata'],
+  outputs: ['didNavigate']
 })
 export class SeBreadcrumbItem {
+  /** Event firing when breadcrumbs link is clicked. */
+  didNavigate!: IBreadcrumbItemComponent['didNavigate'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didNavigate']);
   }
 }
 
@@ -284,14 +288,14 @@ export class SeCarouselItem {
 import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @ProxyCmp({
-  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'],
+  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
   methods: ['setRequired']
 })
 @Component({
   selector: 'se-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'option', 'padding', 'required', 'selected', 'textOff', 'textOn', 'value'],
+  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
   outputs: ['didChange']
 })
 export class SeCheckbox {
