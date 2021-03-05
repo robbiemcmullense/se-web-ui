@@ -150,11 +150,7 @@ export class DialogComponent {
   @State() modalAnimation: string;
   @State() showModal: boolean;
 
-  addAnimation(
-    callback = () => {
-      // do nothing.
-    }
-  ) {
+  addAnimation(callback = () => {}) {
     this.showModal = true;
     this.modalAnimation = this.SHOW;
     setTimeout(() => {
@@ -163,11 +159,7 @@ export class DialogComponent {
     }, 500);
   }
 
-  removeAnimation(
-    callback = () => {
-      // do nothing.
-    }
-  ) {
+  removeAnimation(callback = () => {}) {
     this.modalAnimation = this.HIDE;
     setTimeout(() => {
       this.modalAnimation = null;

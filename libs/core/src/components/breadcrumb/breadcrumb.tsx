@@ -18,6 +18,17 @@ export class BreadcrumbComponent {
     this.updateLastItem();
   }
 
+  /**
+   * Provides a label that describes the type of navigation for assistive technologies.
+   * The default value is `breadcrumb`.
+   */
+  @Prop() ariaLabel = 'breadcrumb';
+
+  /**
+   * Setting allowing to transform breadcrumb into a backlink on screen sizes smaller than specified.
+   */
+  @Prop() breakpoint: 'tablet' | 'desktop' | 'wide-desktop';
+
   updateLastItem() {
     this.items = Array.from(this.el.querySelectorAll('se-breadcrumb-item'));
     this.items.forEach((item: any) => {
@@ -26,11 +37,18 @@ export class BreadcrumbComponent {
     });
   }
 
+  updateChildMicrodataAttributes() {
+    this.items.forEach((item, index) => {
+      item.setAttribute('position', (index + 1).toString());
+    });
+  }
+
   watchItemList() {
     this.observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
         if (mutation.addedNodes.length || mutation.removedNodes.length) {
           this.updateLastItem();
+          this.updateChildMicrodataAttributes();
         }
       });
     });
@@ -40,6 +58,7 @@ export class BreadcrumbComponent {
   componentWillLoad() {
     this.updateLastItem();
     this.watchItemList();
+    this.updateChildMicrodataAttributes();
   }
 
   componentWillUnload() {
@@ -48,8 +67,11 @@ export class BreadcrumbComponent {
 
   render() {
     return (
-      <nav aria-label="breadcrumb">
-        <ol>
+      <nav
+        aria-label={this.ariaLabel}
+        class={this.breakpoint && `backlink--${this.breakpoint}`}
+      >
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
           <slot></slot>
         </ol>
       </nav>

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
 import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
 @Component({
@@ -21,23 +21,73 @@ export class BreadcrumbItemComponent {
    */
   @Prop() canSelect = true;
 
+  /**
+   * Indicates the position of an item in a series or sequence of items.
+   */
+  @Prop() position: string;
+
+  /**
+   * Event firing when breadcrumbs link is clicked.
+   */
+  @Event({
+    bubbles: true,
+    cancelable: true,
+  })
+  didNavigate: EventEmitter<HTMLAnchorElement>;
+
+  private handleNavigation = event => {
+    const navigationEvent = this.didNavigate.emit(event.currentTarget);
+    if (navigationEvent.defaultPrevented) {
+      event.preventDefault();
+    }
+  };
+
+  getMicrodataAttr(itemprop: string, itemtype?: string) {
+    return {
+      itemprop,
+      ...(itemtype && { itemscope: false, itemtype }),
+    };
+  }
+
+  microdataMetaPosition() {
+    if (this.position !== undefined) {
+      return <meta itemprop="position" content={this.position} />;
+    }
+  }
+
   render() {
     return (
-      <Host role="listitem">
+      <Host
+        role="listitem"
+        {...this.getMicrodataAttr(
+          'itemListElement',
+          'https://schema.org/ListItem'
+        )}
+      >
         <div class={{ disabled: !this.canSelect }}>
           {this.canSelect ? (
             <span class="breadcrumb-item">
-              <a href={this.href}>
-                <slot />
+              <a
+                href={this.href}
+                onClick={this.handleNavigation}
+                {...this.getMicrodataAttr('item')}
+              >
+                <span {...this.getMicrodataAttr('name')}>
+                  <slot />
+                </span>
               </a>
+              {this.microdataMetaPosition()}
             </span>
           ) : (
             <span aria-current="page" class="breadcrumb-item">
-              <slot />
+              <span {...this.getMicrodataAttr('name')}>
+                <slot />
+              </span>
+              {this.microdataMetaPosition()}
             </span>
           )}
           {!this.isLast && (
-            <se-icon size="small">
+            <se-icon size="small" aria-hidden="true">
               <span innerHTML={arrow2Right}></span>
             </se-icon>
           )}

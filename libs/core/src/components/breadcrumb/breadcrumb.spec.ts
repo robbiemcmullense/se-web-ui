@@ -73,4 +73,45 @@ describe('BreadcrumbComponent', () => {
     expect(breadcrumb.items[0].isLast).toBeFalsy();
     expect(breadcrumb.items[1].isLast).toBeTruthy();
   });
+
+  it('should allow aria-label on navigation landmark to be configured', async () => {
+    const page = await newSpecPage({
+      components: [BreadcrumbComponent],
+      html: `<se-breadcrumb></se-breadcrumb>`,
+    });
+    const nav = page.root.shadowRoot.querySelector('nav');
+    expect(nav.getAttribute('aria-label')).toEqual('breadcrumb');
+
+    page.root.ariaLabel = 'breadcrumb translation';
+    await page.waitForChanges();
+    expect(nav.getAttribute('aria-label')).toEqual('breadcrumb translation');
+  });
+
+  it('should add microdata attributes to itself and children if `withMicrodata` is true', async () => {
+    const page = await newSpecPage({
+      components: [BreadcrumbComponent],
+      html: `<se-breadcrumb with-microdata="true">
+              <se-breadcrumb-item href="/">Home</se-breadcrumb-item>
+            </se-breadcrumb>`,
+    });
+
+    expect(
+      page.root.shadowRoot.querySelector('ol').getAttribute('itemscope')
+    ).toEqual('');
+    expect(
+      page.root.shadowRoot.querySelector('ol').getAttribute('itemtype')
+    ).toEqual('https://schema.org/BreadcrumbList');
+
+    const children = [...page.root.querySelectorAll('se-breadcrumb-item')];
+    children.forEach((node, index) => {
+      expect(node.getAttribute('with-microdata')).toEqual('true');
+      expect(node.getAttribute('position')).toEqual(index + 1 + '');
+    });
+  });
+
+  it('should keep microdata attributes up to date', async () => {
+    const spy = jest.spyOn(breadcrumb, 'updateChildMicrodataAttributes');
+    breadcrumb.componentWillLoad();
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
 });

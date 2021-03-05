@@ -12,6 +12,14 @@
 | `canSelect` | `can-select` | Indicates whether or not the breadcrumb item should be selected.  The default setting is `true`.                 | `boolean` | `true`      |
 | `href`      | `href`       | Indicates the URL you wish to navigate to when clicking on your breadcrumb item.                                 | `string`  | `undefined` |
 | `isLast`    | `is-last`    | Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`. | `boolean` | `false`     |
+| `position`  | `position`   | Indicates the position of an item in a series or sequence of items.                                              | `string`  | `undefined` |
+
+
+## Events
+
+| Event         | Description                                    | Type                             |
+| ------------- | ---------------------------------------------- | -------------------------------- |
+| `didNavigate` | Event firing when breadcrumbs link is clicked. | `CustomEvent<HTMLAnchorElement>` |
 
 
 ## Dependencies

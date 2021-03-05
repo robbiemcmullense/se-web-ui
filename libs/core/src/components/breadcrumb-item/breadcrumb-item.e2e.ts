@@ -34,4 +34,18 @@ describe('BreadcrumbItemComponent', () => {
     expect(element.shadowRoot.querySelector('div')).toHaveClass('disabled');
     expect(listItemElement.getAttribute('aria-current')).toEqual('page');
   });
+
+  it('should emit didNavigate event if anchor element is clicked', async () => {
+    element.setProperty('href', '/');
+    const didNavigateEvent = await page.spyOnEvent('didNavigate', 'document');
+    await page.waitForChanges();
+
+    await page.evaluate(() =>
+      document
+        .querySelector('se-breadcrumb-item')
+        .shadowRoot.querySelector('a')
+        .click()
+    );
+    expect(didNavigateEvent).toHaveReceivedEvent();
+  });
 });
