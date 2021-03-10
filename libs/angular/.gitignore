@@ -1,1 +1,3 @@
-coverage
+/coverage
+/src/lib/directives/proxies.ts
+/src/lib/directives/angular-component-lib/utils.ts
