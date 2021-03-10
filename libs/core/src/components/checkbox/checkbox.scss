@@ -10,7 +10,7 @@ $checkbox-sizes: (
 );
 
 $checkbox-font-sizes: (
-  small: 14px,
+  small: 16px,
   medium: 16px,
 );
 
@@ -18,7 +18,7 @@ $checkbox-colors: "primary", "secondary", "success";
 
 :host {
   display: inline-flex;
-  vertical-align: top;
+  align-items: center;
 }
 
 input {
@@ -37,7 +37,7 @@ input {
 }
 
 .label-wrap {
-  font-weight: 400;
+  // font-weight: 400;
 
   .label-left & {
     margin-right: $spacing;
@@ -50,6 +50,7 @@ input {
   @each $font-size-name, $size in $checkbox-font-sizes {
     .size-#{$font-size-name} & {
       font-size: $size;
+      line-height: $size;
     }
   }
 }

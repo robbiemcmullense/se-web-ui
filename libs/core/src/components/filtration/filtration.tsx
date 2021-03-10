@@ -210,29 +210,28 @@ export class FiltrationComponent {
             }}
           >
             {this.searchable && (
-              <div>
-                <se-form-field type="input" option="stacked" block>
-                  <div class="with-icon">
-                    <input
-                      type="search"
-                      placeholder={this.labelHint}
-                      onInput={this.setSearch}
-                    />
-                    <se-icon class="icon-collapse">
-                      <span innerHTML={actionSearchStroke}></span>
-                    </se-icon>
-                  </div>
-                </se-form-field>
-              </div>
+              <se-form-field type="input" option="stacked" block padding="none">
+                <div class="with-icon">
+                  <input
+                    type="search"
+                    placeholder={this.labelHint}
+                    onInput={this.setSearch}
+                  />
+                  <se-icon class="icon-collapse">
+                    <span innerHTML={actionSearchStroke}></span>
+                  </se-icon>
+                </div>
+              </se-form-field>
             )}
-            <div
+
+            <se-list
               style={{ height: listboxHeight }}
               class={{ content: true, scroll: this.isViewMore }}
+              option="dropdown"
+              selected-color="primary"
             >
-              <se-list option="dropdown" selected-color="primary">
-                <slot></slot>
-              </se-list>
-            </div>
+              <slot></slot>
+            </se-list>
             {(this.canViewMore || this.showSelectAll) && (
               <se-block-footer>
                 {this.canViewMore ? (

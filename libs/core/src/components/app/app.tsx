@@ -61,7 +61,9 @@ export class AppComponent {
   @Watch('theme') themeDidChange() {
     switch (this.theme) {
       case 'auto':
-        this.prefersDark && this.toggleDarkTheme(this.prefersDark.matches);
+        if (this.prefersDark) {
+          this.toggleDarkTheme(this.prefersDark.matches);
+        }
         break;
       case 'dark':
         this.dark();
@@ -116,7 +118,9 @@ export class AppComponent {
   }
 
   componentWillUnload() {
-    this.prefersDark && this.prefersDark.removeListener();
+    if (this.prefersDark) {
+      this.prefersDark.removeListener();
+    }
   }
 
   toggleDarkTheme(shouldAdd) {

@@ -87,10 +87,11 @@ export class RadioGroupComponent {
   }
 
   selectChild() {
-    this.children &&
+    if (this.children) {
       this.children.forEach((child: any) => {
         child.selected = child.value === this.value;
       });
+    }
   }
 
   componentWillLoad() {

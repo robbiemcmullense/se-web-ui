@@ -6,6 +6,9 @@
   overflow: none;
   position: relative;
   width: -webkit-fill-available;
+
+  gap: $spacing;
+
   // transition: 0.2s;
   max-width: 100%;
   min-width: 100%;
@@ -15,7 +18,7 @@
   font: inherit;
 
   padding-left: calc(
-    var(--se-list-group-indentation) * var(--se-list-item-indentation-padding)
+    #{$spacing} + var(--se-list-group-indentation) * var(--se-list-item-indentation-padding)
   );
   min-height: var(--se-list-item-height);
   // height: var(
@@ -61,12 +64,6 @@
   left: 0;
   width: 5px;
   background-color: var(--se-list-item-selected-bar);
-}
-
-.start {
-  margin: 0;
-  margin-left: $spacing;
-  @include display-flex();
 }
 
 .content {

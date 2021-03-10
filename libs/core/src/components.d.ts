@@ -188,10 +188,6 @@ export namespace Components {
           * Indicates whether or not the last breadcrumb item should be selectable. The default setting is `false`.
          */
         "canSelectLast": boolean;
-        /**
-          * Indicates whether or not microdata attributes referencing https://schema.org/BreadcrumbList dictionary are added to markup. The default setting is `false`. Microdata is a standardized format for providing structured information about a page and classifying the page content. It helps search engines understand a webpage.
-         */
-        "withMicrodata": boolean;
     }
     interface SeBreadcrumbItem {
         /**
@@ -207,13 +203,9 @@ export namespace Components {
          */
         "isLast": boolean;
         /**
-          * Indicates the position of an item in a series or sequence of items. Property is used when `withMicrodata` is set to `true` only.
+          * Indicates the position of an item in a series or sequence of items.
          */
         "position": string;
-        /**
-          * Indicates whether or not microdata attributes are added to markup. The default setting is `false`.
-         */
-        "withMicrodata": boolean;
     }
     interface SeButton {
         /**
@@ -1913,10 +1905,6 @@ declare namespace LocalJSX {
           * Indicates whether or not the last breadcrumb item should be selectable. The default setting is `false`.
          */
         "canSelectLast"?: boolean;
-        /**
-          * Indicates whether or not microdata attributes referencing https://schema.org/BreadcrumbList dictionary are added to markup. The default setting is `false`. Microdata is a standardized format for providing structured information about a page and classifying the page content. It helps search engines understand a webpage.
-         */
-        "withMicrodata"?: boolean;
     }
     interface SeBreadcrumbItem {
         /**
@@ -1936,13 +1924,9 @@ declare namespace LocalJSX {
          */
         "onDidNavigate"?: (event: CustomEvent<HTMLAnchorElement>) => void;
         /**
-          * Indicates the position of an item in a series or sequence of items. Property is used when `withMicrodata` is set to `true` only.
+          * Indicates the position of an item in a series or sequence of items.
          */
         "position"?: string;
-        /**
-          * Indicates whether or not microdata attributes are added to markup. The default setting is `false`.
-         */
-        "withMicrodata"?: boolean;
     }
     interface SeButton {
         /**

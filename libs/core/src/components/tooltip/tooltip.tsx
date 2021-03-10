@@ -91,14 +91,16 @@ export class TooltipComponent {
   }
 
   _toggle(ev: Event) {
-    ev.stopPropagation();
-    if (this.opened) {
-      this.close();
-      this.didClose.emit(ev);
-    } else {
-      this.closeTooltips.emit(); // close other tooltips before opening target tooltip
-      this.open();
-      this.didOpen.emit(ev);
+    if (this.action === 'click') {
+      ev.stopPropagation();
+      if (this.opened) {
+        this.close();
+        this.didClose.emit(ev);
+      } else {
+        this.closeTooltips.emit(); // close other tooltips before opening target tooltip
+        this.open();
+        this.didOpen.emit(ev);
+      }
     }
   }
 
@@ -107,7 +109,7 @@ export class TooltipComponent {
     const tooltipPosition = this.el.getAttribute('position');
 
     if (
-      !!this.el.shadowRoot.querySelector('div .tooltip') &&
+      this.el.shadowRoot.querySelector('div .tooltip') &&
       containsFab &&
       containsFab.getAttribute('position') === 'top'
     ) {
@@ -118,14 +120,14 @@ export class TooltipComponent {
       const fabHeight = this.el
         .querySelector('se-fab')
         .shadowRoot.querySelector('div').offsetTop;
-      if (!!tooltipPosition && tooltipPosition === 'left') {
+      if (tooltipPosition && tooltipPosition === 'left') {
         this.el.shadowRoot
           .querySelector('.tooltip')
           .setAttribute(
             'style',
             `top: calc(${fabHeight}px + ${fabButtonHeight.offsetTop}px + (${fabButtonHeight.offsetHeight}px / 2))`
           );
-      } else if (!!tooltipPosition && tooltipPosition === 'top') {
+      } else if (tooltipPosition && tooltipPosition === 'top') {
         this.el.shadowRoot
           .querySelector('.tooltip')
           .setAttribute('style', `bottom: calc(100vh - ${fabHeight}px - 8px `);
@@ -150,13 +152,9 @@ export class TooltipComponent {
         ].join(' ')}
       >
         <div
-          onClick={
-            this.action === 'click'
-              ? ev => {
-                  this._toggle(ev);
-                }
-              : () => {}
-          }
+          onClick={ev => {
+            this._toggle(ev);
+          }}
         >
           <slot name="tooltip" />
         </div>

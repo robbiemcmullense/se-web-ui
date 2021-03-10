@@ -199,4 +199,38 @@ storiesOf('List', module)
         },
       },
     }
+  )
+  .add(
+    'checkbox nested',
+    () => {
+      return `
+      <se-container >
+        <se-block width="250px" option="fill">
+          <se-list option="treeview">
+            <se-list-item >
+              <se-checkbox selected="true" slot="start" label="I'm the first treeview"></se-checkbox>
+            </se-list-item>
+            <se-list-item item="I'm the second treeview grandchild!"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+            <se-list-item item="First treeview item"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+            <se-list-item item="First treeview child"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+            <se-list-group item="my new section" >
+              <se-list-item item="I'm the first treeview grandchild!"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+              <se-list-item item="I'm the second treeview grandchild!" selected="true"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+              <se-list-item item="Third treeview child"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+              <se-list-item item="Third treeview child"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+            </se-list-group>
+          </se-list>
+        </se-block>
+      </se-container>
+    `;
+    },
+    {
+      notes: {
+        markdown: {
+          'se-list': readme,
+          'se-list-group': readmeGroup,
+          'se-list-item': readmeItem,
+        },
+      },
+    }
   );

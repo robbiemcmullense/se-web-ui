@@ -42,22 +42,22 @@ export class BannerComponent {
     this.setIconSize();
   }
 
-  setActiveItem(item: any): void {
+  setActiveItem(activeItem: any): void {
     if (this.items.length) {
       this.items.forEach((item: any) => {
         item.active = false;
         item.isThreeAway = false;
         item.isFourAway = false;
       });
-      item.active = true;
-      this.activeIndex = this.items.indexOf(item);
+      activeItem.active = true;
+      this.activeIndex = this.items.indexOf(activeItem);
       this.items.forEach((item: any) => {
         const diff = Math.abs(this.items.indexOf(item) - this.activeIndex);
         if (diff === 3) {
           item.isThreeAway = true;
         }
       });
-      this.assignSelectedItem(item);
+      this.assignSelectedItem(activeItem);
     }
   }
 

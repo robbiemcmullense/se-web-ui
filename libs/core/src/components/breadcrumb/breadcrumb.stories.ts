@@ -7,7 +7,6 @@ storiesOf('Breadcrumb', module).add(
   'Breadcrumb',
   () => {
     const canSelectLast = boolean('canSelectLast', false);
-    const withMicrodata = boolean('with microdata', false);
     const breakpoints = {
       none: undefined,
       tablet: 'tablet',
@@ -31,9 +30,8 @@ storiesOf('Breadcrumb', module).add(
     const textHtmlLast = text('Last Breadcrumb Item Text', 'Last Breadcrumb');
 
     return `
-      <se-breadcrumb 
-        can-select-last="${canSelectLast}" 
-        with-microdata="${withMicrodata}"
+      <se-breadcrumb
+        can-select-last="${canSelectLast}"
         breakpoint="${breakpoint}"
       >
         <se-breadcrumb-item>${textHtmlOne}</se-breadcrumb-item>

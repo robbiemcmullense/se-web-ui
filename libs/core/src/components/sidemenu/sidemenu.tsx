@@ -120,14 +120,14 @@ export class SidemenuComponent {
     return elm.getAttribute('item') === name || elm.getAttribute('id') === name;
   }
 
-  setActive(item: any): void {
+  setActive(itemActive: any): void {
     if (this.items.length) {
       this.items.forEach((item: any) => {
         item.active = false;
       });
       setTimeout(() => {
-        item.active = true;
-        this.selectedItem = item;
+        itemActive.active = true;
+        this.selectedItem = itemActive;
         this.el.classList.add(OPEN_ITEM);
       }, 100);
     }
@@ -140,7 +140,9 @@ export class SidemenuComponent {
       setTimeout(() => {
         this.menuInnerEl.classList.remove(SHOW_MENU);
         this.backdropEl.classList.remove(SHOW_MENU);
-        callback && callback();
+        if (callback) {
+          callback();
+        }
       }, 200);
     } catch (error) {
       console.log(error);
@@ -154,7 +156,9 @@ export class SidemenuComponent {
       setTimeout(() => {
         this.menuInnerEl.classList.remove(HIDE_MENU);
         this.backdropEl.classList.remove(HIDE_MENU);
-        callback && callback();
+        if (callback) {
+          callback();
+        }
       }, 200);
     } catch (error) {
       console.log(error);

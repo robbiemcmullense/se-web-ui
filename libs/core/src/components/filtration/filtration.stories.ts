@@ -33,23 +33,23 @@ storiesOf('Filtration', module)
             <se-list-item item="Pumpkin"></se-list-item>
           </se-filtration>
           <se-filtration shadow=${shadow} item="Multi Select" show-select-all search="" searchable=${searchable}>
-            <se-list-item item="Software">
-              <se-checkbox slot="start" selected="true" id="Software"></se-checkbox>
+            <se-list-item>
+              <se-checkbox slot="start" label="Software" selected="true" id="Software"></se-checkbox>
             </se-list-item>
-            <se-list-item item="Hardware">
-              <se-checkbox slot="start" selected="true" id="Hardware"></se-checkbox>
+            <se-list-item>
+              <se-checkbox slot="start" label="Hardware" selected="true" id="Hardware"></se-checkbox>
             </se-list-item>
-            <se-list-item item="Infrastructure">
-              <se-checkbox slot="start" id="Infrastructure"></se-checkbox>
+            <se-list-item>
+              <se-checkbox slot="start" label="Infrastructure" id="Infrastructure"></se-checkbox>
             </se-list-item>
-            <se-list-item item="Mechanical">
-              <se-checkbox slot="start" id="Mechanical"></se-checkbox>
+            <se-list-item>
+              <se-checkbox slot="start" label="Mechanical" id="Mechanical"></se-checkbox>
             </se-list-item>
-            <se-list-item item="Electrical">
-              <se-checkbox slot="start" id="Electrical"></se-checkbox>
+            <se-list-item>
+              <se-checkbox slot="start" label="Electrical" id="Electrical"></se-checkbox>
             </se-list-item>
-            <se-list-item item="Information">
-              <se-checkbox slot="start" id="Information"></se-checkbox>
+            <se-list-item>
+              <se-checkbox slot="start" label="Information" id="Information"></se-checkbox>
             </se-list-item>
           </se-filtration>
           <se-filtration shadow=${shadow} item="Date Range">
@@ -75,7 +75,7 @@ storiesOf('Filtration', module)
                 <se-block-header>
                   <div slot="end">
                     <se-dropdown alignment="right">
-                      <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
+                      <se-icon slot="trigger" option="button">other_vertical</se-icon>
                       <se-list option="dropdown">
                         <se-list-item item="I'm selected"></se-list-item>
                         <se-list-item item="my item 3 no icon"></se-list-item>

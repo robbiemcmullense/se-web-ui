@@ -77,7 +77,11 @@ export class DialogComponent {
   /**
    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */
-  backdropClicked() {
+  backdropClicked(e?: Event) {
+    // Don't bubble up the backdrop click event in case we close the dialog on top of another dialog or button/link
+    if (e) {
+      e.stopPropagation();
+    }
     // we should not quit if the animation has no completed (many click on a button open/close the dialog)
     if (!this.modalAnimation) {
       /*
@@ -146,11 +150,7 @@ export class DialogComponent {
   @State() modalAnimation: string;
   @State() showModal: boolean;
 
-  addAnimation(
-    callback = () => {
-      // do nothing.
-    }
-  ) {
+  addAnimation(callback = () => {}) {
     this.showModal = true;
     this.modalAnimation = this.SHOW;
     setTimeout(() => {
@@ -159,11 +159,7 @@ export class DialogComponent {
     }, 500);
   }
 
-  removeAnimation(
-    callback = () => {
-      // do nothing.
-    }
-  ) {
+  removeAnimation(callback = () => {}) {
     this.modalAnimation = this.HIDE;
     setTimeout(() => {
       this.modalAnimation = null;

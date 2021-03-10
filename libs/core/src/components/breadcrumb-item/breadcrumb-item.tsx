@@ -22,13 +22,7 @@ export class BreadcrumbItemComponent {
   @Prop() canSelect = true;
 
   /**
-   * Indicates whether or not microdata attributes are added to markup. The default setting is `false`.
-   */
-  @Prop() withMicrodata = false;
-
-  /**
    * Indicates the position of an item in a series or sequence of items.
-   * Property is used when `withMicrodata` is set to `true` only.
    */
   @Prop() position: string;
 
@@ -49,17 +43,14 @@ export class BreadcrumbItemComponent {
   };
 
   getMicrodataAttr(itemprop: string, itemtype?: string) {
-    if (this.withMicrodata) {
-      return {
-        itemprop,
-        ...(itemtype && { itemscope: '', itemtype }),
-      };
-    }
-    return {};
+    return {
+      itemprop,
+      ...(itemtype && { itemscope: false, itemtype }),
+    };
   }
 
   microdataMetaPosition() {
-    if (this.position !== undefined && this.withMicrodata) {
+    if (this.position !== undefined) {
       return <meta itemprop="position" content={this.position} />;
     }
   }

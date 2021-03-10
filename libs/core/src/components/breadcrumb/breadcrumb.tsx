@@ -25,18 +25,6 @@ export class BreadcrumbComponent {
   @Prop() ariaLabel = 'breadcrumb';
 
   /**
-   * Indicates whether or not microdata attributes referencing https://schema.org/BreadcrumbList
-   * dictionary are added to markup. The default setting is `false`.
-   * Microdata is a standardized format for providing structured information about
-   * a page and classifying the page content. It helps search engines understand a webpage.
-   */
-  @Prop() withMicrodata = false;
-  @Watch('withMicrodata')
-  withMicrodataOptionChanged() {
-    this.updateChildMicrodataAttributes();
-  }
-
-  /**
    * Setting allowing to transform breadcrumb into a backlink on screen sizes smaller than specified.
    */
   @Prop() breakpoint: 'tablet' | 'desktop' | 'wide-desktop';
@@ -51,13 +39,7 @@ export class BreadcrumbComponent {
 
   updateChildMicrodataAttributes() {
     this.items.forEach((item, index) => {
-      if (this.withMicrodata) {
-        item.setAttribute('with-microdata', 'true');
-        item.setAttribute('position', (index + 1).toString());
-      } else {
-        item.removeAttribute('with-microdata');
-        item.removeAttribute('position');
-      }
+      item.setAttribute('position', (index + 1).toString());
     });
   }
 
@@ -84,18 +66,12 @@ export class BreadcrumbComponent {
   }
 
   render() {
-    const microdataAttributes = this.withMicrodata
-      ? {
-          itemscope: true,
-          itemtype: 'https://schema.org/BreadcrumbList',
-        }
-      : {};
     return (
       <nav
         aria-label={this.ariaLabel}
         class={this.breakpoint && `backlink--${this.breakpoint}`}
       >
-        <ol {...microdataAttributes}>
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
           <slot></slot>
         </ol>
       </nav>

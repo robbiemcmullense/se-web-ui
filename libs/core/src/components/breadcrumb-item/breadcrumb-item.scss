@@ -38,7 +38,7 @@ se-icon {
       @include media-up-to($name) {
         order: -1;
         transform: rotate(180deg);
-        color: rgba($se-anthracite-grey, 0.5);
+        color: inherit;
       }
     }
   }
