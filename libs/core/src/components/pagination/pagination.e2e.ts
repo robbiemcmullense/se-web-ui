@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('PaginationComponent', () => {
-  let page, hostElement, childElement;
+  let page, hostElement;
 
   beforeEach(async () => {
     page = await newE2EPage();

@@ -39,7 +39,7 @@ describe('ListItemComponent', () => {
     element.setProperty('icon', 'my test icon');
     await page.waitForChanges();
 
-    const iconElm = await page.find('se-list-item >>> .start ');
+    const iconElm = await page.find('se-list-item >>> .icon');
     expect(iconElm).toBeTruthy();
     expect(iconElm.innerText).toEqual('my test icon');
   });

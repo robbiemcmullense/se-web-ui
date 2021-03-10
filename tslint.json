@@ -40,6 +40,7 @@
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
+    "no-unbound-method": false,
     "no-switch-case-fall-through": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,

@@ -45,7 +45,7 @@ export class FabComponent {
    */
   @Method()
   async toggleAction() {
-    if (this.option == 'speeddial') {
+    if (this.option === 'speeddial') {
       this.showDial = !this.showDial;
     }
   }
@@ -75,7 +75,7 @@ export class FabComponent {
           <se-button
             color={this.color}
             icon-only="true"
-            class={this.option == 'backtotop' ? 'backtotop' : ''}
+            class={this.option === 'backtotop' ? 'backtotop' : ''}
             option="fab"
           >
             <se-icon slot="icon" size="medium">

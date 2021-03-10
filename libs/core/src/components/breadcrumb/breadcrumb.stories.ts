@@ -30,8 +30,13 @@ storiesOf('Breadcrumb', module).add(
     const textHtmlLast = text('Last Breadcrumb Item Text', 'Last Breadcrumb');
 
     return `
+<<<<<<< HEAD
       <se-breadcrumb 
         can-select-last="${canSelectLast}" 
+=======
+      <se-breadcrumb
+        can-select-last="${canSelectLast}"
+>>>>>>> 0c80f7977d667920e4d09aae3adeb03c6ca182d1
         breakpoint="${breakpoint}"
       >
         <se-breadcrumb-item>${textHtmlOne}</se-breadcrumb-item>

@@ -91,7 +91,9 @@ export class SnackbarComponent {
   }
 
   disconnectedCallback() {
-    this.timeout && clearTimeout(this.timeout);
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
   }
 
   render() {

@@ -75,7 +75,7 @@ storiesOf('Filtration', module)
                 <se-block-header>
                   <div slot="end">
                     <se-dropdown alignment="right">
-                      <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
+                      <se-icon slot="trigger" option="button">other_vertical</se-icon>
                       <se-list option="dropdown">
                         <se-list-item item="I'm selected"></se-list-item>
                         <se-list-item item="my item 3 no icon"></se-list-item>

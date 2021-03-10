@@ -13,7 +13,7 @@
 
 div.middle {
   @include typology("h4");
-  margin: 8px;
+  margin: $spacing-small;
 }
 
 .card {
