@@ -34,22 +34,22 @@ storiesOf('Filtration', module)
           </se-filtration>
           <se-filtration shadow=${shadow} item="Multi Select" show-select-all search="" searchable=${searchable}>
             <se-list-item>
-              <se-checkbox slot="start" label="Software" selected="true" id="Software"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Software" selected="true" id="Software"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" label="Hardware" selected="true" id="Hardware"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Hardware" selected="true" id="Hardware"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" label="Infrastructure" id="Infrastructure"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Infrastructure" id="Infrastructure"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" label="Mechanical" id="Mechanical"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Mechanical" id="Mechanical"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" label="Electrical" id="Electrical"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Electrical" id="Electrical"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" label="Information" id="Information"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Information" id="Information"></se-checkbox>
             </se-list-item>
           </se-filtration>
           <se-filtration shadow=${shadow} item="Date Range">

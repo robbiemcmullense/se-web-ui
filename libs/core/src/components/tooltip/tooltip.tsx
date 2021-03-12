@@ -91,16 +91,20 @@ export class TooltipComponent {
   }
 
   _toggle(ev: Event) {
+    ev.stopPropagation();
+    if (this.opened) {
+      this.close();
+      this.didClose.emit(ev);
+    } else {
+      this.closeTooltips.emit(); // close other tooltips before opening target tooltip
+      this.open();
+      this.didOpen.emit(ev);
+    }
+  }
+
+  _toggleClick(ev: Event) {
     if (this.action === 'click') {
-      ev.stopPropagation();
-      if (this.opened) {
-        this.close();
-        this.didClose.emit(ev);
-      } else {
-        this.closeTooltips.emit(); // close other tooltips before opening target tooltip
-        this.open();
-        this.didOpen.emit(ev);
-      }
+      this._toggle(ev);
     }
   }
 
@@ -153,7 +157,7 @@ export class TooltipComponent {
       >
         <div
           onClick={ev => {
-            this._toggle(ev);
+            this._toggleClick(ev);
           }}
         >
           <slot name="tooltip" />

@@ -25,18 +25,31 @@ storiesOf('Checkbox', module)
       );
 
       return `
-      <se-checkbox
-        option='checkbox'
-        label='${label}'
-        selected='${selected}'
-        indeterminate='${indeterminate}'
-        color='${color}'
-        disabled='${disabled}'
-        label-pos='${labelPos}'
-        label-suffix='${labelSuffix}'
-        size='${checkboxSize}'
-      ></se-checkbox>
-      <div id="did-change-message"></div>
+      <se-block width="300px" color="none">
+        <se-checkbox
+          option='checkbox'
+          label='${label}'
+          selected='${selected}'
+          indeterminate='${indeterminate}'
+          color='${color}'
+          disabled='${disabled}'
+          label-pos='${labelPos}'
+          label-suffix='${labelSuffix}'
+          size='${checkboxSize}'
+        ></se-checkbox>
+        <se-divider></se-divider>
+        <se-checkbox
+          option='checkbox'
+          label='This is a standard checkbox with a very long text that goes to the next line!!!'
+          selected='${selected}'
+          indeterminate='${indeterminate}'
+          color='${color}'
+          disabled='${disabled}'
+          label-pos='${labelPos}'
+          label-suffix='${labelSuffix}'
+          size='${checkboxSize}'
+        ></se-checkbox>
+      </se-block>
     `;
     },
     {

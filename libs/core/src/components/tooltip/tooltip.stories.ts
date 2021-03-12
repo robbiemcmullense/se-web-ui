@@ -15,7 +15,7 @@ storiesOf('Tooltip', module).add(
     const action = select('action', actionOptions, 'hover');
 
     return `
-      <div style=" margin-top: 20%; margin-left: 50%;">
+      <div style=" margin-top: 200px; margin-left: 400px;">
         <se-tooltip position="${position}" action="${action}">
           <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>

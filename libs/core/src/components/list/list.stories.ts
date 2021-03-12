@@ -4,6 +4,7 @@ import readmeGroup from '../list-group/readme.md';
 import readmeItem from '../list-item/readme.md';
 import { select, number, boolean } from '@storybook/addon-knobs';
 
+const group = 'Configurations';
 const listOption = ['nav', 'classic', 'treeview', 'headline'];
 const iconColorOptions = [
   'standard',
@@ -126,16 +127,21 @@ storiesOf('List', module)
   .add(
     'responsive',
     () => {
-      const list = select('option', listOption, 'nav');
+      const list = select('option', listOption, 'nav', group);
       const valueOptions = {
         range: true,
         min: 200,
         max: 700,
         step: 50,
       };
-      const value = number('Block Width', 300, valueOptions);
-      const canCollapse = boolean('can collapse', true);
-      const iconColor = select('icon color', iconColorOptions, 'standard');
+      const value = number('Block Width', 300, valueOptions, group);
+      const canCollapse = boolean('can collapse', true, group);
+      const iconColor = select(
+        'icon color',
+        iconColorOptions,
+        'standard',
+        group
+      );
 
       return `
         <se-block width="${value}px">
@@ -175,49 +181,33 @@ storiesOf('List', module)
   .add(
     'checkbox',
     () => {
-      return `
-      <se-container >
-        <se-block width="300px">
-          <se-list option="dropdown">
-            <se-list-item item="my classic list item" icon="user_standard" description="I have a description"><se-checkbox slot="start"></se-checkbox> </se-list-item>
-            <se-list-item item="my classic list item" description="I have a description"><se-icon slot="icon">user_standard</se-icon><se-checkbox slot="start"></se-checkbox> </se-list-item>
-            <se-list-item item="you can change my icon color color color" icon="user_standard" ><se-checkbox slot="start"></se-checkbox> </se-list-item>
-            <se-list-item item="Basic Item"> <se-checkbox slot="start"></se-checkbox></se-list-item>
-            <se-list-item item="Check me!" icon="action_settings2" selected="false"> <se-checkbox slot="start"></se-checkbox> </se-list-item>
-            <se-list-item item="Click the button!" icon="action_settings2"> <se-checkbox slot="start"></se-checkbox>  </se-list-item>
-          </se-list>
-        </se-block>
-      </se-container>
-    `;
-    },
-    {
-      notes: {
-        markdown: {
-          'se-list': readme,
-          'se-list-group': readmeGroup,
-          'se-list-item': readmeItem,
-        },
-      },
-    }
-  )
-  .add(
-    'checkbox nested',
-    () => {
+      const withGroupCheckbox = boolean('With group checkbox', false, group);
+
       return `
       <se-container >
         <se-block width="250px" option="fill">
           <se-list option="treeview">
             <se-list-item >
-              <se-checkbox selected="true" slot="start" label="I'm the first treeview"></se-checkbox>
+              <se-checkbox size="medium" selected="true" slot="start" label="I'm the first treeview"></se-checkbox>
             </se-list-item>
-            <se-list-item item="I'm the second treeview grandchild!"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
-            <se-list-item item="First treeview item"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
-            <se-list-item item="First treeview child"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+            <se-list-item>
+              <se-checkbox size="medium" selected="true" slot="start"></se-checkbox>
+              <div slot="item" >
+                I'm the second treeview grandchild I'm the second treeview grandchild!
+              </div>
+            </se-list-item>
+            <se-list-item item="First treeview item"><se-checkbox size="medium" slot="start"></se-checkbox></se-list-item>
+            <se-list-item item="First treeview child"><se-checkbox size="medium" selected="true" slot="start"></se-checkbox></se-list-item>
             <se-list-group item="my new section" >
-              <se-list-item item="I'm the first treeview grandchild!"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
-              <se-list-item item="I'm the second treeview grandchild!" selected="true"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
-              <se-list-item item="Third treeview child"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
-              <se-list-item item="Third treeview child"><se-checkbox selected="true" slot="start"></se-checkbox></se-list-item>
+              ${
+                withGroupCheckbox
+                  ? `<se-checkbox size="medium" selected="true" slot="start"></se-checkbox>`
+                  : ''
+              }
+              <se-list-item item="I'm the first treeview grandchild!"><se-checkbox size="medium" selected="true" slot="start"></se-checkbox></se-list-item>
+              <se-list-item item="I'm the second treeview grandchild!"><se-checkbox size="medium" slot="start"></se-checkbox></se-list-item>
+              <se-list-item item="Third treeview child"><se-checkbox size="medium" selected="true" slot="start"></se-checkbox></se-list-item>
+              <se-list-item item="Third treeview child"><se-checkbox size="medium" slot="start"></se-checkbox></se-list-item>
             </se-list-group>
           </se-list>
         </se-block>

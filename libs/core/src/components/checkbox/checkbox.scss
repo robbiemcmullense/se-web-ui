@@ -6,12 +6,14 @@ $root-paddings: (
 
 $checkbox-sizes: (
   small: 16px,
-  medium: 20px,
+  medium: 16px,
+  large: 20px,
 );
 
 $checkbox-font-sizes: (
-  small: 16px,
+  small: 14px,
   medium: 16px,
+  large: 16px,
 );
 
 $checkbox-colors: "primary", "secondary", "success";
@@ -40,18 +42,23 @@ input {
   // font-weight: 400;
 
   .label-left & {
-    margin-right: $spacing;
+    margin-right: $spacing + $spacing-small;
   }
 
   .label-right & {
-    margin-left: $spacing;
+    margin-left: $spacing + $spacing-small;
   }
 
-  @each $font-size-name, $size in $checkbox-font-sizes {
-    .size-#{$font-size-name} & {
+  @each $size-name, $size in $checkbox-font-sizes {
+    .size-#{$size-name} & {
       font-size: $size;
-      line-height: $size;
+      line-height: map-get($checkbox-sizes, $size-name);
     }
+  }
+
+  .size-small & {
+    padding-top: 1px;
+    margin-bottom: -1px;
   }
 }
 
@@ -138,7 +145,8 @@ button {
     }
   }
 
-  &.size-small .checkmark {
+  &.size-small .checkmark,
+  &.size-medium .checkmark {
     &.checked,
     &.indeterminate {
       &::after {
