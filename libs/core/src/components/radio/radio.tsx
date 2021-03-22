@@ -97,6 +97,7 @@ export class RadioComponent {
           aria-label={this.label}
           aria-required={this.required}
           class={{
+            [`disabled`]: this.disabled,
             [`label-${this.labelPos}`]: !!this.labelPos,
             'radio-label': true,
           }}

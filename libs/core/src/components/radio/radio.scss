@@ -45,10 +45,12 @@ button {
       @include border-color("secondary");
     }
   }
-  &[disabled] {
-    cursor: default;
-    opacity: 0.5;
-  }
+}
+
+.disabled {
+  cursor: default;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .required {
