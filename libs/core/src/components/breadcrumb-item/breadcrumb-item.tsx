@@ -1,4 +1,12 @@
-import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
+import {
+  Component,
+  Host,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  Element,
+} from '@stencil/core';
 import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
 @Component({
@@ -7,6 +15,8 @@ import arrow2Right from '@se/icons/svg/arrow2_right.svg';
   shadow: true,
 })
 export class BreadcrumbItemComponent {
+  @Element() el: HTMLElement;
+
   /**
    * Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`.
    */
@@ -55,10 +65,19 @@ export class BreadcrumbItemComponent {
     }
   }
 
+  private breadcrumbEl: HTMLElement | null;
+
+  componentWillLoad() {
+    this.breadcrumbEl =
+      this.el.assignedSlot?.closest('se-breadcrumb') ||
+      this.el.closest('se-breadcrumb');
+  }
+
   render() {
     return (
       <Host
         role="listitem"
+        class={`backlink--${this.breadcrumbEl?.dataset.breakpoint}`}
         {...this.getMicrodataAttr(
           'itemListElement',
           'https://schema.org/ListItem'

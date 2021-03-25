@@ -87,10 +87,10 @@ describe('BreadcrumbComponent', () => {
     expect(nav.getAttribute('aria-label')).toEqual('breadcrumb translation');
   });
 
-  it('should add microdata attributes to itself and children if `withMicrodata` is true', async () => {
+  it('should add microdata attributes to itself and children', async () => {
     const page = await newSpecPage({
       components: [BreadcrumbComponent],
-      html: `<se-breadcrumb with-microdata="true">
+      html: `<se-breadcrumb>
               <se-breadcrumb-item href="/">Home</se-breadcrumb-item>
             </se-breadcrumb>`,
     });
@@ -104,7 +104,6 @@ describe('BreadcrumbComponent', () => {
 
     const children = [...page.root.querySelectorAll('se-breadcrumb-item')];
     children.forEach((node, index) => {
-      expect(node.getAttribute('with-microdata')).toEqual('true');
       expect(node.getAttribute('position')).toEqual(index + 1 + '');
     });
   });

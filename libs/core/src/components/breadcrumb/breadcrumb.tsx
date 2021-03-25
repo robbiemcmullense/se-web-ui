@@ -1,4 +1,4 @@
-import { Component, Element, h, State, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, State, Prop, Watch, Host } from '@stencil/core';
 
 @Component({
   tag: 'se-breadcrumb',
@@ -67,14 +67,16 @@ export class BreadcrumbComponent {
 
   render() {
     return (
-      <nav
-        aria-label={this.ariaLabel}
-        class={this.breakpoint && `backlink--${this.breakpoint}`}
-      >
-        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-          <slot></slot>
-        </ol>
-      </nav>
+      <Host data-breakpoint={this.breakpoint}>
+        <nav
+          aria-label={this.ariaLabel}
+          class={this.breakpoint && `backlink--${this.breakpoint}`}
+        >
+          <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+            <slot></slot>
+          </ol>
+        </nav>
+      </Host>
     );
   }
 }

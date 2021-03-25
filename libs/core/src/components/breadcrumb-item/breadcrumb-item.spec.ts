@@ -40,16 +40,15 @@ describe('BreadcrumbItemComponent', () => {
     expect(page.root.shadowRoot.querySelector('se-icon')).toBeFalsy();
   });
 
-  it('should add microdata attributes if `withMicrodata` is set to true', async () => {
+  it('should add microdata attributes', async () => {
     const page = await newSpecPage({
       components: [BreadcrumbItemComponent],
-      html: `<se-breadcrumb-item with-microdata="true" position="1"></se-breadcrumb>`,
+      html: `<se-breadcrumb-item position="1"></se-breadcrumb>`,
     });
     expect(page.root.getAttribute('itemprop')).toEqual('itemListElement');
     expect(page.root.getAttribute('itemtype')).toEqual(
       'https://schema.org/ListItem'
     );
-    expect(page.root.getAttribute('itemscope')).toEqual('');
 
     const linkEl = page.root.shadowRoot.querySelector('.breadcrumb-item a');
     expect(linkEl.getAttribute('itemprop')).toEqual('item');
@@ -58,19 +57,5 @@ describe('BreadcrumbItemComponent', () => {
     const metaEl = page.root.shadowRoot.querySelector('.breadcrumb-item meta');
     expect(metaEl.getAttribute('itemprop')).toEqual('position');
     expect(metaEl.getAttribute('content')).toEqual('1');
-  });
-
-  it('should not have any microdata attributes if `withMicrodata` is not set', async () => {
-    const page = await newSpecPage({
-      components: [BreadcrumbItemComponent],
-      html: `<se-breadcrumb-item></se-breadcrumb>`,
-    });
-
-    expect(
-      page.root.shadowRoot.querySelector('[itemprop], [itemscope], [itemtype]')
-    ).toEqual(null);
-    expect(page.root.matches('[itemprop]')).toEqual(false);
-    expect(page.root.matches('[itemtype]')).toEqual(false);
-    expect(page.root.matches('[itemscope]')).toEqual(false);
   });
 });

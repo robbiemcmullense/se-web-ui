@@ -4,6 +4,21 @@
     align-items: center;
   }
 }
+
+@each $name, $value in $breakpoints {
+  :host(.backlink--#{$name}) {
+    @include media-up-to($name) {
+      se-icon {
+        order: -1;
+        transform: rotate(180deg);
+        color: inherit;
+      }
+
+      color: $se-sky-blue;
+    }
+  }
+}
+
 .breadcrumb-item {
   display: inline;
   // color: $se-anthracite-grey;
@@ -25,22 +40,13 @@ a {
   //   outline-style: solid;
   // }
 }
+
 se-icon {
   cursor: default;
   &:active,
   &:focus {
     color: inherit;
     background-color: inherit;
-  }
-
-  @each $name, $value in $breakpoints {
-    :host-context(.backlink--#{$name}) & {
-      @include media-up-to($name) {
-        order: -1;
-        transform: rotate(180deg);
-        color: inherit;
-      }
-    }
   }
 
   :host-context([dir="rtl"]) & {
