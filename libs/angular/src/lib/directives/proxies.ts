@@ -130,13 +130,13 @@ export class SeBlock {
 
 export declare interface SeBlockContent extends Components.SeBlockContent {}
 @ProxyCmp({
-  inputs: ['option']
+  inputs: ['maxHeight', 'option']
 })
 @Component({
   selector: 'se-block-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['option']
+  inputs: ['maxHeight', 'option']
 })
 export class SeBlockContent {
   protected el: HTMLElement;

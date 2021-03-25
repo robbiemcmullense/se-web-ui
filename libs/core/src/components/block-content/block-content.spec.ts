@@ -1,5 +1,5 @@
-import { BlockContent } from './block-content';
 import { newSpecPage } from '@stencil/core/testing';
+import { BlockContent } from './block-content';
 
 describe('BlockContent', () => {
   let blockContent;

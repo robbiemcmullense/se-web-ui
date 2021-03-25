@@ -1,15 +1,69 @@
-
+@import "../../theme/theme";
+@import "../../theme/se-variable";
 
 :host {
   overflow-x: hidden;
   position: relative;
   @include flex(1);
-  // overflow: unset;
 }
 
 .se-block-content {
   padding: $spacing $spacing-large;
+
+  &.fill-content {
+    padding: 0;
+  }
+
+  &.scrollable {
+    overflow-y: hidden;
+
+    &::before,
+    &::after {
+      content: "";
+      height: 30px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    &::before {
+      background-image: linear-gradient(
+        $se-white,
+        rgba($se-white, 0.7) 70%,
+        transparent
+      );
+      top: 0;
+    }
+
+    &::after {
+      background-image: linear-gradient(
+        transparent,
+        rgba($se-white, 0.7) 30%,
+        $se-white
+      );
+      bottom: 0;
+    }
+
+    &.has-overlay-top {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &.has-overlay-bottom {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
 }
-.fill-content {
-  padding: 0;
+
+.se-block-content-body {
+  .se-block-content.scrollable & {
+    overflow-y: auto;
+  }
 }

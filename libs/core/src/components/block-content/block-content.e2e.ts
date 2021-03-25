@@ -1,4 +1,4 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('BlockContentComponent', () => {
   let page, element;
@@ -36,5 +36,54 @@ describe('BlockContentComponent with Block parents set to card option', () => {
 
   it('should have the card-content class, inherited from its block parent', async () => {
     expect(element).toHaveClass('card-content');
+  });
+});
+
+describe('BlockContentComponent ability to scroll', () => {
+  let page: E2EPage;
+  let componentRoot: E2EElement;
+
+  beforeEach(async () => {
+    page = await newE2EPage();
+    await page.setContent(
+      '<se-block-content max-height="200"><div style="height: 600px" /></se-block-content>'
+    );
+    componentRoot = await page.find('se-block-content >>> .se-block-content');
+  });
+
+  it('should have overlay only in the bottom if the block is in the default position', async () => {
+    expect(componentRoot).toHaveClasses(['scrollable', 'has-overlay-bottom']);
+    expect(componentRoot).not.toHaveClass('has-overlay-top');
+  });
+
+  it('should have overlay both in the bottom and in the top if the block have been scrolled', async () => {
+    await page.evaluate(() => {
+      document
+        .querySelector('se-block-content')
+        .shadowRoot.querySelector('.se-block-content-body')
+        .scrollBy(0, 100);
+    });
+
+    await page.waitForChanges();
+
+    expect(componentRoot).toHaveClasses([
+      'scrollable',
+      'has-overlay-bottom',
+      'has-overlay-top',
+    ]);
+  });
+
+  it('should have overlay only in the top if the block have been scrolled all the way down', async () => {
+    await page.evaluate(() => {
+      document
+        .querySelector('se-block-content')
+        .shadowRoot.querySelector('.se-block-content-body')
+        .scrollBy(0, 700);
+    });
+
+    await page.waitForChanges();
+
+    expect(componentRoot).toHaveClasses(['scrollable', 'has-overlay-top']);
+    expect(componentRoot).not.toHaveClass('has-overlay-bottom');
   });
 });

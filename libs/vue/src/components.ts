@@ -170,6 +170,7 @@ export const SeBlockContent = /*@__PURE__*/ Vue.extend({
 
   props: {
     option: {} as PropOptions<Components.SeBlockContent['option']>,
+    maxHeight: {} as PropOptions<Components.SeBlockContent['maxHeight']>,
   },
 
 
