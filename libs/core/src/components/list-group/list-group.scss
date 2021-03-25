@@ -19,6 +19,11 @@ se-list-item {
 .selectedChild {
   --se-list-item-selected-background: transparent;
 }
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
 .collapsed {
   display: none;
 }

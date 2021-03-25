@@ -177,6 +177,7 @@ export class ListGroupComponent {
           onClick={() => this.toggleGroupButton()}
           class={{
             selectedChild: !this.selected && this.selectedChild,
+            disabled: this.disabled,
           }}
           selected={this.selectedChild || this.selected}
           disabled={this.disabled}
