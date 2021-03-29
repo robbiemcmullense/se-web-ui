@@ -1,3 +1,6 @@
+@import "../../theme/mixin";
+@import "../../theme/theme";
+
 .button {
   // font-weight: lighter;
   // padding: 0;
@@ -18,7 +21,8 @@
   font: inherit;
 
   padding-left: calc(
-    #{$spacing} + var(--se-list-group-indentation) * var(--se-list-item-indentation-padding)
+    var(--se-list-item-root-padding) + var(--se-list-group-indentation) *
+      var(--se-list-item-indentation-padding)
   );
   min-height: var(--se-list-item-height);
   // height: var(
@@ -34,26 +38,35 @@
   border-bottom-color: $divider-color;
   border-bottom-color: var(--se-divider);
   text-decoration: none;
+  cursor: pointer;
+
   &.selected {
-    background-color: var(--se-list-item-selected-background);
     color: var(--se-list-item-selected-color);
+    font-weight: var(--se-list-item-selected-font-weight);
   }
-  cursor: default;
-  &:not([disabled]),
-  &:not(.disabled) {
-    cursor: pointer;
-    &:hover {
-      @include background-color("alternative-hover");
-      @include color("alternative-contrast");
-    }
-  }
-  // transition-property: outline;
-  // transition-duration: .3s;
+
+  &:hover,
   &:focus {
-    outline-width: 2px;
-    outline-offset: -1px;
-    @include outline("button-focus");
-    outline-style: solid;
+    @include background-color("alternative-hover");
+    @include color("alternative-contrast");
+  }
+
+  &:focus {
+    @include interactive-element-outline(2px, -1px);
+  }
+
+  &.disabled,
+  &[disabled] {
+    cursor: default;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
@@ -62,8 +75,9 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: 5px;
-  background-color: var(--se-list-item-selected-bar);
+  width: 4px;
+  background-color: var(--se-list-item-selected-bar, $se-life-green);
+  border-radius: 0 2px 2px 0;
 }
 
 .content {
@@ -76,6 +90,7 @@
   @include flex-direction(column);
   @include align-items(start center);
   @include ellipsis();
+
   div,
   small {
     @include ellipsis();

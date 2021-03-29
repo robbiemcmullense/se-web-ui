@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property        | Attribute        | Description                                                              | Type                                                           | Default      |
-| --------------- | ---------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------- | ------------ |
-| `canCollapse`   | `can-collapse`   | Defines if list groups can be collapsed.  The default setting is `true`. | `boolean`                                                      | `true`       |
-| `option`        | `option`         | Defines the style of the list.  The default setting is `classic`.        | `"classic" \| "dropdown" \| "headline" \| "nav" \| "treeview"` | `'classic'`  |
-| `selectedColor` | `selected-color` | Defines if the list element should be selected or not.                   | `"primary" \| "standard"`                                      | `'standard'` |
+| Property        | Attribute        | Description                                                              | Type                                                                       | Default              |
+| --------------- | ---------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------- | -------------------- |
+| `canCollapse`   | `can-collapse`   | Defines if list groups can be collapsed.  The default setting is `true`. | `boolean`                                                                  | `true`               |
+| `option`        | `option`         | Defines the style of the list.  The default setting is `classic`.        | `"classic" \| "dropdown" \| "filter" \| "headline" \| "nav" \| "treeview"` | `listOption.CLASSIC` |
+| `selectedColor` | `selected-color` | Defines if the list element should be selected or not.                   | `"primary" \| "standard"`                                                  | `'standard'`         |
 
 
 ## CSS Custom Properties

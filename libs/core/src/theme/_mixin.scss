@@ -147,3 +147,10 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+@mixin interactive-element-outline($width: 2px, $offset: 2px) {
+  outline-width: $width;
+  outline-offset: $offset;
+  outline-style: solid;
+  @include outline("button-focus");
+}

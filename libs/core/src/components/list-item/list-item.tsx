@@ -72,8 +72,6 @@ export class ListItemComponent {
     this.didSelectedChange.emit();
   }
 
-  // paddingIndentation = 24;
-
   @Method()
   async focusElement() {
     this.buttonElm.focus();
@@ -130,11 +128,13 @@ export class ListItemComponent {
         ref={el => (this.buttonElm = el)}
         title={title}
         class={{
-          selected: this.selected,
           button: true,
+          selected: this.selected,
           disabled: this.disabled,
         }}
         id={id ? `wc-${id}` : ''}
+        tabindex={this.disabled && -1}
+        disabled={!this.href && this.disabled}
       >
         {this.selected ? <div class="selectedBar"></div> : ''}
         <slot name="start"></slot>

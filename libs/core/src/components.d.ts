@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Size } from "./components/checkbox/types";
+import { ListOption } from "./components/list/types";
 import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
 export namespace Components {
@@ -799,7 +800,7 @@ export namespace Components {
         /**
           * Defines the style of the list.  The default setting is `classic`.
          */
-        "option": 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        "option": ListOption;
         /**
           * Defines if the list element should be selected or not.
          */
@@ -847,7 +848,7 @@ export namespace Components {
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
         "selected": boolean;
-        "setOption": (option: any) => Promise<void>;
+        "setOption": (option: ListOption) => Promise<void>;
         "toggleCollapseTreeview": () => Promise<void>;
     }
     interface SeListItem {
@@ -2551,7 +2552,7 @@ declare namespace LocalJSX {
         /**
           * Defines the style of the list.  The default setting is `classic`.
          */
-        "option"?: 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline';
+        "option"?: ListOption;
         /**
           * Defines if the list element should be selected or not.
          */

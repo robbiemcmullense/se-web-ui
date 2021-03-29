@@ -8,6 +8,8 @@ import {
   Listen,
 } from '@stencil/core';
 import { isVisible } from '../../utils';
+import { ListOption } from './types';
+import { listOption } from './constants';
 
 @Component({
   tag: 'se-list',
@@ -19,18 +21,19 @@ export class ListComponent {
   /**
    * Defines the style of the list.  The default setting is `classic`.
    */
-  @Prop() option: 'nav' | 'classic' | 'dropdown' | 'treeview' | 'headline' =
-    'classic';
-  @Watch('option') optionDidChange() {
-    Array.from(this.el.querySelectorAll('se-list-item, se-list-group')).forEach(
-      (item: any) => {
+  @Prop() option: ListOption = listOption.CLASSIC;
+  @Watch('option') optionDidChange(): void {
+    this.el
+      .querySelectorAll<HTMLSeListItemElement | HTMLSeListGroupElement>(
+        'se-list-item, se-list-group'
+      )
+      .forEach(item => {
         const closeList = item.closest('se-list');
         // Make sure we only change the style of the current list. Handy if list has a dropdown with a different list style
         if (closeList === this.el) {
           item.setOption(this.option);
         }
-      }
-    );
+      });
   }
 
   /**
@@ -43,11 +46,9 @@ export class ListComponent {
    */
   @Prop() canCollapse = true;
   @Watch('canCollapse') canCollapseDidChange() {
-    Array.from(this.el.querySelectorAll('se-list-group')).forEach(
-      (item: any) => {
-        item.canCollapse = this.canCollapse;
-      }
-    );
+    this.el.querySelectorAll('se-list-group').forEach(item => {
+      item.canCollapse = this.canCollapse;
+    });
   }
 
   @Listen('keydown')
@@ -91,7 +92,8 @@ export class ListComponent {
 
   render() {
     const selectedColor =
-      this.option === 'nav' ? 'primary' : this.selectedColor;
+      this.option === listOption.NAV ? 'primary' : this.selectedColor;
+
     return (
       <Host
         role="list"

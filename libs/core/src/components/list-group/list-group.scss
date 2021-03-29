@@ -1,7 +1,11 @@
+@import "../../theme/mixin";
+@import "../../theme/theme";
+
 :host {
   @include flex-direction(column);
   @include display-flex();
 }
+
 se-list-item {
   background-color: var(--se-list-group-background);
   font-weight: var(--se-list-group-font-weight);
@@ -13,21 +17,59 @@ se-list-item {
   overflow: unset;
   list-style-type: none;
   margin: 0;
-  // padding: 0;
   flex: 1;
 }
+
 .selectedChild {
   --se-list-item-selected-background: transparent;
 }
+
 .disabled {
   pointer-events: none;
   opacity: 0.5;
   cursor: default;
 }
+
 .collapsed {
   display: none;
 }
+
 .treeview-icon {
   margin: -$spacing;
   margin-right: -$spacing-large;
+}
+
+.list-group-trigger {
+  font-weight: var(--se-list-item-group-trigger-font-weight);
+}
+
+.list-group-trigger-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+
+  &::before,
+  &::after {
+    display: block;
+    width: 14px;
+    height: 2px;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    @include background-color("background-standard-contrast");
+  }
+
+  &::after {
+    transform: rotate(90deg);
+  }
+
+  &::before {
+    content: "";
+  }
+
+  &--collapsed {
+    &::after {
+      content: "";
+    }
+  }
 }

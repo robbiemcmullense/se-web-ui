@@ -11,7 +11,11 @@ import {
   Method,
   State,
 } from '@stencil/core';
-import arrow2Up from '@se/icons/svg/arrow2_up.svg';
+import { ListGroupTriggerFilter } from './list-group-trigger-filter';
+import { ListGroupTriggerCommon } from './list-group-trigger-common';
+import { ListGroupTriggerTreeview } from './list-group-trigger-treeview';
+import { listOption } from '../list/constants';
+import { ListOption } from '../list/types';
 
 export interface GroupCollapseEvent {
   collapsed: boolean;
@@ -63,6 +67,7 @@ export class ListGroupComponent {
    * Disable the item for any interaction.
    */
   @Prop() disabled: boolean;
+
   /**
    * define the flex behavior of the group
    */
@@ -96,11 +101,12 @@ export class ListGroupComponent {
     this.listItem.focusElement();
   }
 
-  @State() isTreeview: boolean;
+  @State()
+  option: ListOption;
 
   @Method()
-  async setOption(option) {
-    this.isTreeview = option === 'treeview';
+  async setOption(option: ListOption) {
+    this.option = option;
   }
 
   private checkSelected() {
@@ -120,7 +126,7 @@ export class ListGroupComponent {
   }
 
   private toggleGroupButton() {
-    if (!this.isTreeview) {
+    if (this.option !== listOption.TREEVIEW) {
       this.toggleItems();
     } else if (this.listItem) {
       this.listItem.blurElement();
@@ -140,7 +146,7 @@ export class ListGroupComponent {
   getParentConfig() {
     const closestList: HTMLSeListElement = this.getClosestParent('se-list');
     if (closestList?.option) {
-      this.isTreeview = closestList.option === 'treeview';
+      this.option = closestList.option;
     }
     const closestGroup: HTMLSeListGroupElement = this.getClosestParent(
       'se-list, se-list-group'
@@ -161,16 +167,31 @@ export class ListGroupComponent {
   }
   render() {
     let title = this.item;
+
     if (!!this.description as boolean) {
       title = `${title}, ${this.description}`;
     }
+
     const id = this.el.getAttribute('id');
+
+    const Tag = ((option: ListOption) => {
+      if (option === listOption.TREEVIEW) {
+        return ListGroupTriggerTreeview;
+      }
+
+      if (option === listOption.FILTER) {
+        return ListGroupTriggerFilter;
+      }
+
+      return ListGroupTriggerCommon;
+    })(this.option);
+
     return (
       <Host
         role="listitem"
         style={{ flex: `${!this.collapsed && this.flex ? this.flex : 0}` }}
       >
-        <se-list-item
+        <Tag
           id={id ? `group-${id}` : null}
           ref={el => (this.listItem = el)}
           aria-expanded={this.collapsed}
@@ -178,6 +199,7 @@ export class ListGroupComponent {
           class={{
             selectedChild: !this.selected && this.selectedChild,
             disabled: this.disabled,
+            'list-group-trigger': true,
           }}
           selected={this.selectedChild || this.selected}
           disabled={this.disabled}
@@ -185,46 +207,19 @@ export class ListGroupComponent {
           title={title}
           description={this.description}
           item={this.item}
+          collapsed={this.collapsed}
+          canCollapse={this.canCollapse}
+          toggleCollapseTreeview={
+            this.option === 'treeview' && this.toggleCollapseTreeview.bind(this)
+          }
         >
-          {this.isTreeview ? (
-            <se-icon
-              slot="start"
-              class="treeview-icon"
-              size="medium"
-              color="standard"
-              onClick={e => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.toggleCollapseTreeview();
-              }}
-              rotate={this.collapsed ? 90 : 180}
-            >
-              <span innerHTML={arrow2Up}></span>
-            </se-icon>
-          ) : (
-            ''
-          )}
-
           {/* Pass down the slot to the child */}
-          <slot name="start" slot="start"></slot>
-          <slot name="icon" slot="icon"></slot>
-          <slot name="item" slot="item"></slot>
-          <slot name="description" slot="description"></slot>
-          <slot name="end" slot="end"></slot>
-
-          {!this.isTreeview && this.canCollapse ? (
-            <se-icon
-              slot="end"
-              size="medium"
-              color="standard"
-              rotate={this.collapsed ? 180 : 0}
-            >
-              <span innerHTML={arrow2Up}></span>
-            </se-icon>
-          ) : (
-            ''
-          )}
-        </se-list-item>
+          <slot name="start" slot="start" />
+          <slot name="icon" slot="icon" />
+          <slot name="item" slot="item" />
+          <slot name="description" slot="description" />
+          <slot name="end" slot="end" />
+        </Tag>
         <div
           ref={el => (this.groupItem = el)}
           role="list"

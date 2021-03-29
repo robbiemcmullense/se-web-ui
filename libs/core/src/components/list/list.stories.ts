@@ -3,9 +3,9 @@ import readme from './readme.md';
 import readmeGroup from '../list-group/readme.md';
 import readmeItem from '../list-item/readme.md';
 import { select, number, boolean } from '@storybook/addon-knobs';
+import { listOption } from './constants';
 
 const group = 'Configurations';
-const listOption = ['nav', 'classic', 'treeview', 'headline'];
 const iconColorOptions = [
   'standard',
   'alternative',
@@ -127,7 +127,7 @@ storiesOf('List', module)
   .add(
     'responsive',
     () => {
-      const list = select('option', listOption, 'nav', group);
+      const list = select('option', listOption, listOption.NAV, group);
       const valueOptions = {
         range: true,
         min: 200,

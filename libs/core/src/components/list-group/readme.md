@@ -50,7 +50,7 @@ Type: `Promise<void>`
 
 
 
-### `setOption(option: any) => Promise<void>`
+### `setOption(option: ListOption) => Promise<void>`
 
 
 
