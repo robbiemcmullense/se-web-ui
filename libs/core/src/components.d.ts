@@ -323,9 +323,9 @@ export namespace Components {
          */
         "labelSuffix": string;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
-        "option": 'checkbox' | 'onoff' | 'switch';
+        "option": Option;
         /**
           * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
          */
@@ -338,6 +338,9 @@ export namespace Components {
           * The "checked" state of the checkbox, `false` by default.
          */
         "selected": boolean;
+        /**
+          * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
+         */
         "setRequired": () => Promise<void>;
         /**
           * Defines the size of the control. So far it's only supported by checkbox.  There are two options: `s`: 16px `m`: 20px (default)  Also affects the font size of the checkbox text label: `s`: 14px `m`: 16px (default)
@@ -2047,9 +2050,9 @@ declare namespace LocalJSX {
          */
         "onDidChange"?: (event: CustomEvent<{ value: string; selected: boolean }>) => void;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
-        "option"?: 'checkbox' | 'onoff' | 'switch';
+        "option"?: Option;
         /**
           * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
          */

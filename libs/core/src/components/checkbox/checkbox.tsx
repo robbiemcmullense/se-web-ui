@@ -7,8 +7,11 @@ import {
   Method,
   Prop,
 } from '@stencil/core';
-import { size } from './contstants';
-import { Size } from './types';
+import { option, size } from './contstants';
+import { CommonProps, Option, Size } from './types';
+import { CheckboxOnOff } from './checkbox-onoff';
+import { CheckboxFake } from './checkbox-fake';
+import { CheckboxCommon } from './checkbox-common';
 
 @Component({
   tag: 'se-checkbox',
@@ -16,13 +19,18 @@ import { Size } from './types';
   shadow: true,
 })
 export class CheckboxComponent {
+  @Element() el: HTMLElement;
+
   /**
    * Determines the visual appearance of the component.
    * `checkbox` is the default option, which will render the component like a standard HTML checkbox.
+   * `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.
+   *    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component.
    * `switch` renders the component like a toggle switch.
    * `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
    */
-  @Prop() option: 'checkbox' | 'onoff' | 'switch' = 'checkbox';
+  @Prop({ mutable: true }) option: Option = option.CHECKBOX;
+
   /**
    * The value you want to pass to the parent component when the checkbox is checked.
    */
@@ -42,38 +50,45 @@ export class CheckboxComponent {
    * Adds a red asterisk if the checkbox is required when used in a form field.  Default is `false`.
    */
   @Prop({ mutable: true }) required = false;
+
   /**
    * Defines the color of the checkbox for when the option is set to `checkbox` or `switch`.
    * The default value is `success`, rendering a green color.
    * The `secondary` setting renders a blue color.
    */
-  @Prop() color: 'primary' | 'secondary' | 'success' = 'success';
+  @Prop({ mutable: true }) color: 'primary' | 'secondary' | 'success' =
+    'success';
 
   /**
    * Optional property that defines if the checkbox is disabled.  Set to `false` by default.
    */
-  @Prop() disabled = false;
+  @Prop({ mutable: true }) disabled = false;
+
   /**
    * Optional property that defines if the checkbox is in indeterminate state (only work with option="checkbox").  Set to `false` by default.
    */
-  @Prop() indeterminate = false;
+  @Prop({ mutable: true }) indeterminate = false;
+
   /**
    * The "checked" state of the checkbox, `false` by default.
    */
   @Prop({ mutable: true }) selected: boolean;
+
   /**
    * Defines the text the user will see for the "on" or "active" part of the checkbox when option is set to `onoff`.  Set to `ON` by default.
    */
-  @Prop() textOn = 'ON';
+  @Prop({ mutable: true }) textOn = 'ON';
+
   /**
    * Defines the text the user will see for the "off" or "inactive" part of the checkbox when option is set to `onoff`.  Set to `OFF` by default.
    */
-  @Prop() textOff = 'OFF';
+  @Prop({ mutable: true }) textOff = 'OFF';
+
   /**
    * Reduces the visual height of the checkbox when the option is set to `onoff`.
    * Useful if the on/off checkbox is within a header element.
    */
-  @Prop() header = false;
+  @Prop({ mutable: true }) header = false;
 
   /**
    * optional property. define the padding around the button
@@ -91,9 +106,6 @@ export class CheckboxComponent {
    * The default setting is `left` when the option is set to `switch`.
    */
   @Prop({ mutable: true }) labelPos: 'left' | 'right';
-  /**
-   * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
-   */
 
   /**
    * Defines the size of the control. So far it's only supported by checkbox.
@@ -106,19 +118,22 @@ export class CheckboxComponent {
    * `s`: 14px
    * `m`: 16px (default)
    */
-  @Prop() size: Size = size.SMALL;
+  @Prop({ mutable: true }) size: Size = size.SMALL;
 
+  /**
+   * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
+   */
   @Method()
-  async setRequired() {
+  async setRequired(): Promise<void> {
     this.required = true;
   }
+
   /**
    * Send the checkbox value to the parent component when clicking on the checkbox.
    */
   @Event() didChange: EventEmitter<{ value: string; selected: boolean }>;
-  @Element() el: HTMLElement;
 
-  handleClick(state: boolean, event = null) {
+  handleClick(state: boolean, event = null): void {
     if (event !== null) {
       event.stopPropagation();
       event.preventDefault();
@@ -130,96 +145,72 @@ export class CheckboxComponent {
     }
   }
 
-  toggleSelect() {
+  toggleSelect = (): void => {
     this.handleClick(!this.selected);
-  }
+  };
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     // to take care of angular bundling issue:
     this.selected =
       this.selected === undefined ? !!this.el['checked'] : this.selected;
 
     if (!this.labelPos) {
-      this.labelPos = this.option === 'checkbox' ? 'right' : 'left';
+      this.labelPos =
+        this.option === option.CHECKBOX || this.option === option.CHECKBOX_FAKE
+          ? 'right'
+          : 'left';
     }
   }
 
-  render() {
-    let markup: any;
-    const id = this.el.getAttribute('id');
+  render(): HTMLElement {
+    const commonProps: CommonProps = {
+      option: this.option,
+      label: this.label,
+      labelPos: this.labelPos,
+      labelSuffix: this.labelSuffix,
+      required: this.required,
+      disabled: this.disabled,
+      selected: this.selected,
+      header: this.header,
+      padding: this.padding,
+      size: this.size,
+    };
 
     switch (this.option) {
-      case 'onoff':
-        markup = (
-          <div class="on-off-wrapper">
-            <button
-              disabled={this.disabled}
-              class={{ active: true, selected: this.selected }}
-              onClick={e => this.handleClick(true, e)}
-              id={id ? `wc-${id}-active` : ''}
-            >
-              {this.textOn}
-            </button>
-            <button
-              disabled={this.disabled}
-              class={{ inactive: true, selected: !this.selected }}
-              onClick={e => this.handleClick(false, e)}
-              id={id ? `wc-${id}-inactive` : ''}
-            >
-              {this.textOff}
-            </button>
-          </div>
+      case option.ONOFF: {
+        return (
+          <CheckboxOnOff
+            {...commonProps}
+            id={this.el.getAttribute('id')}
+            textOn={this.textOn}
+            textOff={this.textOff}
+            onOnClick={e => this.handleClick(true, e)}
+            onOffClick={e => this.handleClick(false, e)}
+          />
         );
-        break;
-      default:
-        markup = (
-          <span class="container" onClick={() => this.toggleSelect()}>
-            <input
-              type="checkbox"
-              tabindex="-1"
-              checked={this.selected}
-              disabled={this.disabled}
-              indeterminate={this.indeterminate}
-              value={this.value}
-              id={id ? `wc-${id}` : ''}
-            />
-            <button
-              class={{
-                checkmark: true,
-                [`color-${this.color}`]: !!this.color,
-                checked: this.selected && !this.indeterminate,
-                indeterminate: this.indeterminate,
-              }}
-              disabled={this.disabled}
-            ></button>
-          </span>
+      }
+      case option.CHECKBOX_FAKE: {
+        return (
+          <CheckboxFake
+            {...commonProps}
+            value={this.value}
+            color={this.color}
+            indeterminate={this.indeterminate}
+          />
         );
-        break;
+      }
+      default: {
+        return (
+          <CheckboxCommon
+            {...commonProps}
+            id={this.el.getAttribute('id')}
+            onToggle={this.toggleSelect}
+            value={this.value}
+            color={this.color}
+            indeterminate={this.indeterminate}
+          />
+        );
+      }
     }
-
-    return (
-      <label
-        class={{
-          [`label-${this.labelPos}`]: !!this.labelPos,
-          disabled: this.disabled,
-          wrapper: true,
-          [`opt-${this.option}`]: true,
-          [`p-${this.padding}`]: !!this.padding,
-          header: !!this.header,
-          [`size-${this.size}`]: true,
-        }}
-      >
-        {this.label && (
-          <span class="label-wrap">
-            {this.label}
-            {this.labelSuffix && (
-              <span class="label-suffix">&nbsp;({this.labelSuffix})</span>
-            )}
-            {this.required && <i class="required">*</i>}
-          </span>
-        )}
-        {markup}
-      </label>
-    );
   }
 }

@@ -1,3 +1,7 @@
+@import "../../theme/se-variable";
+@import "../../theme/mixin";
+@import "../../theme/theme";
+
 $root-paddings: (
   small: $spacing-small,
   medium: $spacing,
@@ -78,26 +82,26 @@ input {
     cursor: default;
   }
 
-  &:not(.opt-checkbox) {
-    button[disabled] {
+  &:not(.opt-checkbox),
+  &:not(.opt-checkbox-fake) {
+    .button.disabled {
       opacity: 0.5;
     }
   }
 }
 
-button {
+.button {
   cursor: pointer;
   &:focus {
-    outline-width: 2px;
-    @include outline("button-focus");
-    outline-style: solid;
+    @include interactive-element-outline(2px, 1px);
   }
-  &[disabled] {
+  &.disabled {
     cursor: default;
   }
 }
 
-.opt-checkbox {
+.opt-checkbox,
+.opt-checkbox-fake {
   @include align-items(flex-start);
   position: relative;
 
@@ -184,7 +188,11 @@ button {
       width: $size;
       height: $size;
     }
+  }
+}
 
+.opt-checkbox {
+  @each $size-name, $size in $checkbox-sizes {
     &.size-#{$size-name}:hover .checkmark:not(.checked):not(.indeterminate),
     &.size-#{$size-name} .checkmark:not(.checked):not(.indeterminate):focus {
       &::after {
@@ -291,7 +299,7 @@ button {
         transform: translate3d(75%, -50%, 0);
       }
     }
-    &[disabled] {
+    &.disabled {
       &:before {
         opacity: 0.5;
       }
@@ -309,7 +317,7 @@ button {
     @include border-color("border");
     border-radius: 3px;
   }
-  button {
+  .button {
     @include color("background-alternative-contrast");
     @include background-color("background-alternative");
     padding: 6px 8px;
@@ -344,7 +352,7 @@ button {
   }
 
   &.header {
-    button {
+    .button {
       height: 24px;
       font-size: 12px;
     }
