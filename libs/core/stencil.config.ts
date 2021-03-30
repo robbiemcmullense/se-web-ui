@@ -6,8 +6,8 @@ import {
   vueOutputTarget,
   ComponentModelConfig,
 } from '@stencil/vue-output-target';
-// import { postcss } from '@stencil/postcss';
-// import autoprefixer from 'autoprefixer';
+import { postcss } from '@stencil/postcss';
+import autoprefixer from 'autoprefixer';
 
 import {
   angularOutputTarget,
@@ -90,9 +90,9 @@ export const config: Config = {
       ],
     }),
     inlineSvg(),
-    // postcss({
-    //   plugins: [autoprefixer()]
-    // })
+    postcss({
+      plugins: [autoprefixer({ grid: 'no-autoplace' })],
+    }),
   ],
   outputTargets: [
     {

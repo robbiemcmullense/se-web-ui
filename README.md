@@ -11,7 +11,7 @@ The angular and react wrapper are updated every time the core library is being b
 
 Each application in the `apps` folder relies on the the local build of the different library (core, angular or rect library) and are simple demo application to insure each build works as expected before any deployment.
 
-To help out on the testing, we also used [https://storybook.js.org/](https://storybook.js.org/). Each main component in the `libs/core` folder will have a `.storie.ts` file that will show possible options of those component to help testing and developers to use each components.
+To help out on the testing, we also used [https://storybook.js.org/](https://storybook.js.org/). Each main component in the `libs/core` folder will have a `.stories.ts` file that will show possible options of those component to help testing and developers to use each components.
 
 ## 🧐 What's inside?
 
