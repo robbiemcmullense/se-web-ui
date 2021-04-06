@@ -1,4 +1,4 @@
-import { option, size } from './contstants';
+import { option, size } from './constants';
 
 export type Size = typeof size[keyof typeof size];
 

@@ -35,7 +35,7 @@
   @include typology("small");
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: calc($spacing-large * 2);
+  max-height: calc(#{$spacing-large} * 2);
 }
 .link {
   cursor: pointer;

@@ -19,7 +19,7 @@ storiesOf('Dropdown', module)
       const maxHeight = number('max height', 400);
 
       return `
-      <div style="padding:100px;">
+      <div style="padding:150px;">
         <se-dropdown id="button-dropdown" alignment="${alignment}" vertical-alignment="${verticalAlignment}" max-width="${maxWidth}px" max-height="${maxHeight}px">
           <se-button slot="trigger">My Site 1</se-button>
           <se-list option="dropdown">
@@ -51,7 +51,7 @@ storiesOf('Dropdown', module)
       const maxHeight = number('max height', 400);
 
       return `
-      <div style="padding:100px;">
+      <div style="padding:150px;">
         <se-dropdown id="icon-dropdown" alignment="${alignment}" vertical-alignment="${verticalAlignment}" max-width="${maxWidth}px" max-height="${maxHeight}px">
           <se-icon slot="trigger" option="button" color="alternative">other_vertical</se-icon>
           <se-list option="dropdown">

@@ -15,7 +15,7 @@ const proxiesFile = path.join(
   'angular/src/lib/directives/proxies.ts'
 );
 
-function fixUtilsEvent() {
+const fixUtilsEvent = () => {
   let content = fs.readFileSync(utilsFile, 'utf8');
   // this should not be needed and would go away once:
   // - https://github.com/ionic-team/stencil-ds-output-targets/pull/82
@@ -26,13 +26,15 @@ function fixUtilsEvent() {
   content = content.replace('fromEvent(el, eventName)', 'new EventEmitter()');
 
   fs.writeFileSync(utilsFile, content);
-}
+};
 
-function fixTypesLocation() {
+const fixTypesLocation = () => {
   let content = fs.readFileSync(proxiesFile, 'utf8');
   content = content.replace(new RegExp('dist/libs/core/', 'g'), '@se/web-ui/');
   fs.writeFileSync(proxiesFile, content);
-}
+};
 
-fixUtilsEvent();
-fixTypesLocation();
+module.exports = {
+  fixUtilsEvent,
+  fixTypesLocation,
+};

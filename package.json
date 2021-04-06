@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.16.6",
+  "version": "3.17.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -42,7 +42,9 @@
     "postinstall": "node node_modules/@nx-plus/vue/patch-nx-dep-graph.js",
     "sass": "node-sass --version"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tsconfig-paths-webpack-plugin": "^3.5.1"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1000.8",
     "@angular-devkit/build-ng-packagr": "0.1000.8",

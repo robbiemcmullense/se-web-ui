@@ -1,6 +1,3 @@
-@import "../../theme/mixin";
-@import "../../theme/theme";
-
 :host {
   @include flex-direction(column);
   @include display-flex();

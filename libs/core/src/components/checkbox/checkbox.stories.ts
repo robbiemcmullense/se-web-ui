@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/html';
 import { select, text, boolean } from '@storybook/addon-knobs';
 import readme from './readme.md';
-import { option, size } from './contstants';
+import { option, size } from './constants';
 
 const colorOption = ['primary', 'secondary', 'success'];
 const labelOption = ['right', 'left'];

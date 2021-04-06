@@ -15,11 +15,11 @@
 }
 
 .top {
-  bottom: calc(100% + $spacing-small);
+  bottom: calc(100% + #{$spacing-small});
 }
 
 .bottom {
-  top: calc(100% + $spacing-small);
+  top: calc(100% + #{$spacing-small});
 }
 
 .dropdown-toggle ::slotted(*) {

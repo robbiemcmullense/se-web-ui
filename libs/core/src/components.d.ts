@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Size } from "./components/checkbox/types";
+import { Option, Size } from "./components/checkbox/types";
 import { ListOption } from "./components/list/types";
 import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";

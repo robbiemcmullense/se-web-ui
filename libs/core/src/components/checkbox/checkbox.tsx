@@ -7,7 +7,7 @@ import {
   Method,
   Prop,
 } from '@stencil/core';
-import { option, size } from './contstants';
+import { option, size } from './constants';
 import { CommonProps, Option, Size } from './types';
 import { CheckboxOnOff } from './checkbox-onoff';
 import { CheckboxFake } from './checkbox-fake';

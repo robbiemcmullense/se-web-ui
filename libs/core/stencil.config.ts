@@ -111,7 +111,6 @@ export const config: Config = {
       copy: [
         {
           src: '../_package.json',
-          dest: '../package.json',
         },
         {
           src: 'theme',

@@ -30,7 +30,7 @@ export class SnackbarComponent {
   /**
    * The name of the icon you wish to display.  The default icon is an information circle.
    */
-  @Prop() icon: string | 'none' = 'information_circle';
+  @Prop({ mutable: true }) icon: string | 'none' = 'information_circle';
   /**
    * The content of the message you want the snackbar to display.
    */

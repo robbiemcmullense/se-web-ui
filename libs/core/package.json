@@ -17,7 +17,7 @@
   "scripts": {
     "build": "npm-run-all build.*",
     "build.core": "stencil build --docs --prod",
-    "build.clean.angular": "node .scripts/clean-ng-proxy.js",
+    "build.scripts": "node .scripts/main.js",
     "build.export.docs": "cpx \"src/**/*.md\" \"../../dist/libs/core/docs\"",
     "build.loader.noop": "cpx \".scripts/templates/node-main.js\" \"../../dist/libs/core/loader\"",
     "build.dash": "node .scripts/dash/index.js",

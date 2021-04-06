@@ -1,37 +1,28 @@
-// const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+// Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
-  // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-  // You can change the configuration based on that.
-  // 'PRODUCTION' is used when building the static version of storybook.
+  config.resolve.extensions.push('.tsx');
+  config.resolve.extensions.push('.ts');
 
-  // Make whatever fine-grained changes you need
-
-  const copyWebpackPlugin = new CopyWebpackPlugin({
-    patterns: [
-      {
-        from: path.resolve(__dirname, '../dist/libs/core'),
-        to: path.posix.join('static', ''),
-      },
-    ],
+  const tsPaths = new TsconfigPathsPlugin({
+    configFile: path.resolve(__dirname, '../.storybook/tsconfig.json'),
   });
 
-  if (config.plugins) {
-    config.plugins.push(copyWebpackPlugin);
-  } else {
-    config.plugins = [copyWebpackPlugin];
-  }
+  config.resolve.plugins
+    ? config.resolve.plugins.push(tsPaths)
+    : (config.resolve.plugins = [tsPaths]);
 
-  // config.rules = [{
-  //   test: /\.md$/,
-  //   use: [
-  //     {
-  //       loader: 'markdown-loader',
-  //     }
-  //   ]
-  // }]
-
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    loader: require.resolve('babel-loader'),
+    options: {
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react',
+        '@babel/preset-typescript',
+      ],
+    },
+  });
   return config;
 };
