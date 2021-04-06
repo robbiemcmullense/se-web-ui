@@ -30,7 +30,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "storybook:build": "export NODE_ENV=\"production\" && nx build-storybook",
+    "storybook:build": "nx build-storybook --prod",
     "storybook:deploy": "storybook-to-ghpages --existing-output-dir=dist/storybook/core",
     "libs:build": "yarn build core && yarn build angular --prod && yarn build react && yarn build vue",
     "libs:release": "node .scripts/release.js",
