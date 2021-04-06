@@ -373,6 +373,10 @@ export namespace Components {
          */
         "color": 'standard' | 'alternative';
         /**
+          * Indicates whether or not the chip has dashed border. Set to `false` by default.
+         */
+        "dashed": boolean;
+        /**
           * Indicates whether or not the chip is disabled.  Set to `false` by default.
          */
         "disabled": boolean;
@@ -2095,6 +2099,10 @@ declare namespace LocalJSX {
           * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
          */
         "color"?: 'standard' | 'alternative';
+        /**
+          * Indicates whether or not the chip has dashed border. Set to `false` by default.
+         */
+        "dashed"?: boolean;
         /**
           * Indicates whether or not the chip is disabled.  Set to `false` by default.
          */

@@ -54,6 +54,11 @@ export class ChipComponent {
   @Prop() block: boolean;
 
   /**
+   * Indicates whether or not the chip has dashed border. Set to `false` by default.
+   */
+  @Prop({ mutable: true }) dashed = false;
+
+  /**
    * Send the chip value to the parent component when clicking the close button of a chip.
    */
   @Event() didClose: EventEmitter;
@@ -77,6 +82,7 @@ export class ChipComponent {
           clickable: !(this.readonly || this.disabled),
           selected: this.selected,
           'display-block': this.block,
+          dashed: this.dashed,
         }}
       >
         <slot name="start"></slot>

@@ -319,6 +319,7 @@ export const SeChip = /*@__PURE__*/ Vue.extend({
     disabled: {} as PropOptions<Components.SeChip['disabled']>,
     readonly: {} as PropOptions<Components.SeChip['readonly']>,
     block: {} as PropOptions<Components.SeChip['block']>,
+    dashed: {} as PropOptions<Components.SeChip['dashed']>,
   },
 
 

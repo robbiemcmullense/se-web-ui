@@ -16,6 +16,7 @@ storiesOf('Chip', module).add(
     const disabled = boolean('disabled', false);
     const block = boolean('block', false);
     const readonly = boolean('readonly', false);
+    const dashed = boolean('dashed', false);
 
     document.addEventListener('didClose', () => {
       document.getElementById('close-chip-message').innerText =
@@ -32,7 +33,8 @@ storiesOf('Chip', module).add(
           selected='${selected}'
           disabled='${disabled}'
           readonly='${readonly}'
-          block='${block}'>
+          block='${block}'
+          dashed='${dashed}'>
         </se-chip>
         <div id="close-chip-message"></div>
       </div>
