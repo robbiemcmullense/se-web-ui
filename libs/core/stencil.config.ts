@@ -110,9 +110,6 @@ export const config: Config = {
       esmLoaderPath: `loader`,
       copy: [
         {
-          src: '../_package.json',
-        },
-        {
           src: 'theme',
           dest: '../styles',
           warn: true,
