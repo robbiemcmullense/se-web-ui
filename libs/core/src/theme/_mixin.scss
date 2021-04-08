@@ -4,7 +4,6 @@
 @import "./mixin-layout";
 
 @mixin typology($value) {
-  font-weight: 300; //`normal` default to 400
   @if $value == "h1" {
     line-height: 50px;
     font-size: $h1-fontsize;
