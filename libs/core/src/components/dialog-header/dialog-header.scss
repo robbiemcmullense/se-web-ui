@@ -22,7 +22,6 @@
   &.alternative {
     @include background-color("background-alternative");
     @include color("primary");
-    margin-bottom: -$spacing-large;
 
     &.alternative-indents {
       min-height: 35px;
