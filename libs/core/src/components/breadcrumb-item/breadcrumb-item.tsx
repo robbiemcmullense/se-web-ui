@@ -55,7 +55,7 @@ export class BreadcrumbItemComponent {
   getMicrodataAttr(itemprop: string, itemtype?: string) {
     return {
       itemprop,
-      ...(itemtype && { itemscope: false, itemtype }),
+      ...(itemtype && { itemscope: '', itemtype }),
     };
   }
 
