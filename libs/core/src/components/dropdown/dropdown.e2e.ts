@@ -15,10 +15,6 @@ describe('DropdownComponent', () => {
     expect(hostElement).toHaveClass('hydrated');
   });
 
-  it('has the "left" class because it is left-aligned by default', async () => {
-    expect(dropdownElement).toHaveClass('left');
-  });
-
   it('adds a "show" class to a div hostElement with class dropdown-content when open is set to true', async () => {
     await hostElement.callMethod('open');
     await page.waitForChanges();

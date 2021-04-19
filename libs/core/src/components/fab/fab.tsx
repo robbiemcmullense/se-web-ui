@@ -68,31 +68,38 @@ export class FabComponent {
   render() {
     return (
       <Host onClick={() => this.toggleAction()}>
-        {this.overlay && this.showDial && <div class="dialog-background"></div>}
+        {this.showDial && (
+          <div
+            class={{
+              'dialog-background': true,
+              overlay: this.overlay,
+            }}
+          ></div>
+        )}
         <div
           class={{ [`pos-${this.position}`]: !!this.position, 'se-fab': true }}
         >
           <se-button
             color={this.color}
             icon-only="true"
-            class={this.option === 'backtotop' ? 'backtotop' : ''}
             option="fab"
+            class={{
+              backtotop: this.option === 'backtotop',
+              'fab-button': true,
+            }}
           >
             <se-icon slot="icon" size="medium">
               <span innerHTML={this.getIcon()}></span>
             </se-icon>
           </se-button>
-          {this.option === 'speeddial' ? (
-            <div
-              class={['mini-action-button', this.showDial ? SHOW_FAB : ''].join(
-                ' '
-              )}
-            >
-              <slot></slot>
-            </div>
-          ) : (
-            ''
-          )}
+          <div
+            class={{
+              'mini-action-button': true,
+              [SHOW_FAB]: this.option === 'speeddial' && this.showDial,
+            }}
+          >
+            <slot></slot>
+          </div>
         </div>
       </Host>
     );

@@ -509,9 +509,9 @@ export namespace Components {
     }
     interface SeDropdown {
         /**
-          * Defines how to align the dropdown container. `right`: Position the container with respect to the right side of the trigger element. `left`: Position the container with respect to the left side of the trigger element.
+          * Defines how to align the dropdown container. `end`: Position the container with respect to the end side (right) of the trigger element. `start`: Position the container with respect to the right side of the trigger element. `right` (deprecated): Position the container with respect to the right side of the trigger element. `left` (deprecated): Position the container with respect to the left side of the trigger element.
          */
-        "alignment": 'right' | 'left';
+        "alignment": 'end' | 'start' | 'right' | 'left';
         /**
           * Method to close the dropdown from outside its parent element.
          */
@@ -529,7 +529,7 @@ export namespace Components {
          */
         "open": () => Promise<void>;
         /**
-          * Defines how to vertically align the dropdown container. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
+          * Defines the preferred vertically align of the dropdown. It will automatically re-position if the there is not enough space. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
          */
         "verticalAlignment": 'top' | 'bottom';
     }
@@ -1233,13 +1233,17 @@ export namespace Components {
     }
     interface SeTooltip {
         /**
-          * Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
+          * @deprecated only `hover` action should be allowed for tooltips Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
          */
         "action": 'click' | 'hover';
         /**
           * Method to close the tooltip separate from hovering or clicking the parent element.
          */
         "close": () => Promise<void>;
+        /**
+          * Indicates the color of the tooltip
+         */
+        "color": 'alternative' | 'information';
         /**
           * Method to open the tooltip separate from hovering or clicking the parent element.
          */
@@ -2252,9 +2256,9 @@ declare namespace LocalJSX {
     }
     interface SeDropdown {
         /**
-          * Defines how to align the dropdown container. `right`: Position the container with respect to the right side of the trigger element. `left`: Position the container with respect to the left side of the trigger element.
+          * Defines how to align the dropdown container. `end`: Position the container with respect to the end side (right) of the trigger element. `start`: Position the container with respect to the right side of the trigger element. `right` (deprecated): Position the container with respect to the right side of the trigger element. `left` (deprecated): Position the container with respect to the left side of the trigger element.
          */
-        "alignment"?: 'right' | 'left';
+        "alignment"?: 'end' | 'start' | 'right' | 'left';
         /**
           * Sets the maximum height of the dropdown.  Default setting is "400px".
          */
@@ -2276,7 +2280,7 @@ declare namespace LocalJSX {
          */
         "onDidOpen"?: (event: CustomEvent<any>) => void;
         /**
-          * Defines how to vertically align the dropdown container. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
+          * Defines the preferred vertically align of the dropdown. It will automatically re-position if the there is not enough space. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
          */
         "verticalAlignment"?: 'top' | 'bottom';
     }
@@ -3006,9 +3010,13 @@ declare namespace LocalJSX {
     }
     interface SeTooltip {
         /**
-          * Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
+          * @deprecated only `hover` action should be allowed for tooltips Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
          */
         "action"?: 'click' | 'hover';
+        /**
+          * Indicates the color of the tooltip
+         */
+        "color"?: 'alternative' | 'information';
         /**
           * Closes the tooltip when another tooltip is opened.
          */

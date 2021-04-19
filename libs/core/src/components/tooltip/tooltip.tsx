@@ -6,9 +6,11 @@ import {
   Event,
   Element,
   EventEmitter,
-  Listen,
+  Host,
   Prop,
+  Listen,
 } from '@stencil/core';
+import { createPopper } from '@popperjs/core';
 
 import { isTouchDevice } from '../../utils';
 @Component({
@@ -17,6 +19,9 @@ import { isTouchDevice } from '../../utils';
   shadow: true,
 })
 export class TooltipComponent {
+  elmButton: HTMLDivElement;
+  elmTooltip: HTMLDivElement;
+
   @Element() el: HTMLElement;
   /**
    * Indicates the position of your tooltip.
@@ -24,11 +29,16 @@ export class TooltipComponent {
    */
   @Prop() position: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
   /**
+   * @deprecated only `hover` action should be allowed for tooltips
    * Indicates the action of your tooltip.
    * The default setting is `hover`, triggering the tooltip when hovering over the parent element.
    * The `click` action triggers the tooltip when you click on the parent element.
    */
   @Prop() action: 'click' | 'hover' = 'hover';
+  /**
+   * Indicates the color of the tooltip
+   */
+  @Prop() color: 'alternative' | 'information' = 'information';
   /**
    * Event emitted when the tooltip has been opened.
    */
@@ -96,8 +106,6 @@ export class TooltipComponent {
 
   _toggle(ev: Event) {
     ev.stopPropagation();
-    console.log(ev.type);
-    console.log('open: ' + this.opened);
     if (this.opened) {
       this.close();
       this.didClose.emit(ev);
@@ -110,69 +118,49 @@ export class TooltipComponent {
 
   _toggleClick(ev: Event) {
     if (this.action === 'click' || isTouchDevice()) {
-      console.log(ev.type);
       this._toggle(ev);
     }
   }
 
-  render() {
+  componentDidLoad(): void {
     const containsFab = (this.el as HTMLElement).querySelector('se-fab');
-    const tooltipPosition = this.el.getAttribute('position');
+    let elmButton = this.elmButton;
 
-    if (
-      this.el.shadowRoot.querySelector('div .tooltip') &&
-      containsFab &&
-      containsFab.getAttribute('position') === 'top'
-    ) {
-      const fabButtonHeight = this.el
-        .querySelector('se-fab')
-        .shadowRoot.querySelector('se-button')
-        .shadowRoot.querySelector('button');
-      const fabHeight = this.el
-        .querySelector('se-fab')
-        .shadowRoot.querySelector('div').offsetTop;
-      if (tooltipPosition && tooltipPosition === 'left') {
-        this.el.shadowRoot
-          .querySelector('.tooltip')
-          .setAttribute(
-            'style',
-            `top: calc(${fabHeight}px + ${fabButtonHeight.offsetTop}px + (${fabButtonHeight.offsetHeight}px / 2))`
-          );
-      } else if (tooltipPosition && tooltipPosition === 'top') {
-        this.el.shadowRoot
-          .querySelector('.tooltip')
-          .setAttribute('style', `bottom: calc(100vh - ${fabHeight}px - 8px `);
-      } else if (tooltipPosition === null || tooltipPosition === 'bottom') {
-        this.el.shadowRoot
-          .querySelector('.tooltip')
-          .setAttribute(
-            'style',
-            `top: calc(${fabHeight}px + ${fabButtonHeight.offsetHeight}px + 8px`
-          );
-      }
+    if (containsFab) {
+      elmButton = containsFab.shadowRoot.querySelector('.fab-button');
     }
+
+    createPopper(elmButton, this.elmTooltip, {
+      strategy: 'fixed',
+      placement: this.position,
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8],
+          },
+        },
+      ],
+    });
+  }
+
+  render() {
     return (
-      <div
-        class={[
-          this.position ? `tooltip-${this.position}` : 'tooltip-bottom',
-          containsFab
-            ? `tooltip-fab${
-                containsFab.getAttribute('position') === 'top' ? '-top' : ''
-              }`
-            : '',
-        ].join(' ')}
-      >
-        <div
-          onClick={ev => {
-            this._toggleClick(ev);
-          }}
-        >
+      <Host>
+        <div ref={el => (this.elmButton = el)}>
           <slot name="tooltip" />
         </div>
-        <div class={`${this.opened ? 'show' : ''} tooltip`}>
+        <div
+          ref={el => (this.elmTooltip = el)}
+          class={{
+            show: this.opened,
+            tooltip: true,
+            [this.color]: true,
+          }}
+        >
           <slot />
         </div>
-      </div>
+      </Host>
     );
   }
 }

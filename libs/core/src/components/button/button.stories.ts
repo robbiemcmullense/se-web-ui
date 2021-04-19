@@ -32,15 +32,16 @@ storiesOf('Button', module)
   .add(
     'Button icon-only',
     () => {
+      const option = select('option', buttonOption, 'flat');
       const size = select('size', sizeOption, 'small');
       const color = select('color', colorOption, 'primary');
       const icon = text('Icon', 'about');
 
       return `
       <div style="padding: 20px;display: flex; flex-flow: wrap;">
-        <se-button icon-only size=${size} color=${color} icon="${icon}"></se-button>
-        <se-button icon-only size=${size} color=${color} selected icon="${icon}"></se-button>
-        <se-button icon-only size=${size} color=${color} icon="${icon}" disabled></se-button>
+        <se-button option=${option} icon-only size=${size} color=${color} icon="${icon}"></se-button>
+        <se-button option=${option} icon-only size=${size} color=${color} selected icon="${icon}"></se-button>
+        <se-button option=${option} icon-only size=${size} color=${color} icon="${icon}" disabled></se-button>
       </div>
     `;
     },

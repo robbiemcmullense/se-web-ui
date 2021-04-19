@@ -1,164 +1,36 @@
-
 :host {
   position: relative;
   display: inline-block;
+}
+.tooltip {
+  @include color("information-contrast");
+  @include background-color("information");
+  max-width: 260px;
+  width: max-content;
 
-  .tooltip {
-    @include color("information-contrast");
-    @include background-color("information");
-    max-width: 260px;
-    width: -moz-max-content;
-    width: -webkit-max-content;
-    width: max-content;
+  visibility: hidden;
+  position: absolute;
+  padding: $spacing $spacing;
+  font-size: 12px;
+  display: inline-table;
+  line-height: 14px;
+  z-index: -1;
+  @include border-radius($border-radius);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: 0.2s;
+}
+.show {
+  opacity: 1;
+  visibility: visible;
+  z-index: $zindex-tooltip;
+}
 
-    visibility: hidden;
-    position: absolute;
-    padding: $spacing $spacing;
-    font-size: 12px;
-    display:inline-table;
-    line-height: 14px;
-    z-index: -1;
-    @include border-radius($border-radius);
-    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transition: .2s;
-  }
-
-  .tooltip::after {
-    content: "";
-    position: absolute;
-    border: 5px solid;
-  }
-
-  .tooltip.show {
-    opacity: 1;
-    visibility: visible;
-    z-index: $zindex-tooltip;
-  }
-
-  .tooltip-top {
-    .tooltip {
-      margin-bottom: 8px;
-      bottom: 100%;
-      left: 50%;
-      @include transform(-50%, 0%);
-    }
-    .tooltip::after {
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      $color: map-get($seTheme, "information");
-      border-color: $color transparent transparent transparent;
-      border-color: var(#{custom-property-name("information")}, $color) transparent transparent transparent;
-    }
-  }
-
-  .tooltip-bottom {
-    .tooltip {
-      margin-top: 8px;
-      top: 100%;
-      left: 50%;
-      @include transform(-50%, 0%);
-    }
-    .tooltip::after {
-      bottom: 100%;
-      left: 50%;
-      margin-left: -5px;
-      $color: map-get($seTheme, "information");
-      border-color: transparent transparent $color transparent;
-      border-color: transparent transparent var(#{custom-property-name("information")}, $color) transparent;
-    }
-  }
-
-  .tooltip-left {
-    .tooltip {
-      left: -8px;
-      top: 50%;
-      @include transform(-100%,-50%);
-    }
-    .tooltip::after {
-      top: 50%;
-      left: 100%;
-      margin-top: -5px;
-      $color: map-get($seTheme, "information");
-      border-color: transparent transparent transparent $color;
-      border-color: transparent transparent transparent var(#{custom-property-name("information")}, $color);
-    }
-  }
-
-  .tooltip-right {
-    .tooltip {
-      margin-left: 8px;
-      left: 100%;
-      top: 50%;
-      @include transform(-0%,-50%);
-    }
-    .tooltip::after {
-      top: 50%;
-      right: 100%;
-      margin-top: -5px;
-      $color: map-get($seTheme, "information");
-      border-color: transparent $color transparent transparent;
-      border-color: transparent var(#{custom-property-name("information")}, $color) transparent transparent;
-    }
-  }
+.alternative {
+  @include color("alternative-contrast");
+  @include background-color("alternative");
 }
 
 :host([hidden]) {
   display: none;
-}
-
-.tooltip-fab {
-  .tooltip, &-top .tooltip {
-    position: fixed;
-  }
-  &.tooltip-top .tooltip, &.tooltip-left .tooltip {
-    top: auto;
-    left: auto;
-    transform: none;
-  }
-  &.tooltip-left {
-    .tooltip {
-      right: 104px;
-      bottom: calc((56px / 2) + 16px);
-      transform: translateY(50%);
-    }
-  }
-  &.tooltip-top {
-    .tooltip {
-      right: 16px;
-      bottom: 72px;
-      min-width: 80px;
-    }
-  }
-  &-top {
-    &.tooltip-top, &.tooltip-left, &.tooltip-bottom {
-      .tooltip {
-        left: auto;
-        transform: none;
-      }
-    }
-    &.tooltip-left {
-      .tooltip {
-        top: calc(-100vh + 64px + 48px);
-        right: 104px;
-        transform: translateY(-50%);
-      }
-    }
-    &.tooltip-top {
-      .tooltip {
-        top: auto;
-        right: 16px;
-        bottom: calc(100vh - 64px - 16px);
-        min-width: 80px;
-      }
-    }
-    &.tooltip-bottom {
-      .tooltip {
-        top: calc(-100vh + 64px + 24px + 56px);
-        right: 16px;
-        min-width: 80px;
-      }
-    }
-  }
 }

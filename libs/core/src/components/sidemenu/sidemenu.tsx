@@ -82,7 +82,7 @@ export class SidemenuComponent {
             this.el.classList.add(OPEN_ITEM);
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
       // Dispatch the 'opened' event
@@ -145,7 +145,7 @@ export class SidemenuComponent {
         }
       }, 200);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -161,7 +161,7 @@ export class SidemenuComponent {
         }
       }, 200);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

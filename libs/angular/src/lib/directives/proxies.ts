@@ -1137,14 +1137,14 @@ export class SeTableItemHeader {
 import { TooltipComponent as ITooltipComponent } from 'dist/libs/core/types/components/tooltip/tooltip';
 export declare interface SeTooltip extends Components.SeTooltip {}
 @ProxyCmp({
-  inputs: ['action', 'position'],
+  inputs: ['action', 'color', 'position'],
   methods: ['open', 'close']
 })
 @Component({
   selector: 'se-tooltip',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['action', 'position'],
+  inputs: ['action', 'color', 'position'],
   outputs: ['didOpen', 'didClose', 'closeTooltips']
 })
 export class SeTooltip {

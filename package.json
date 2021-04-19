@@ -47,6 +47,7 @@
     "sass": "node-sass --version"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "tsconfig-paths-webpack-plugin": "^3.5.1"
   },
   "devDependencies": {

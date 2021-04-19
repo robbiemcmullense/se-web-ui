@@ -1,6 +1,8 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import ResizeObserver from 'resize-observer-polyfill';
 
+import arrow5Step from '@se/icons/svg/arrow5_step.svg';
+
 @Component({
   tag: 'se-tabbar',
   styleUrl: 'tabbar.scss',
@@ -89,7 +91,9 @@ export class TabbarComponent {
             class={{ arrow: true, arrowLeft: true }}
             onClick={() => this.scroll(-1)}
           >
-            <se-icon size="medium">arrow5_step</se-icon>
+            <se-icon size="medium" mirror="vertical">
+              <span innerHTML={arrow5Step}></span>
+            </se-icon>
           </span>
         )}
         <div
@@ -108,7 +112,9 @@ export class TabbarComponent {
             class={{ arrow: true, arrowRight: true }}
             onClick={() => this.scroll(1)}
           >
-            <se-icon size="medium">arrow5_step</se-icon>
+            <se-icon size="medium">
+              <span innerHTML={arrow5Step}></span>
+            </se-icon>
           </span>
         )}
         <div

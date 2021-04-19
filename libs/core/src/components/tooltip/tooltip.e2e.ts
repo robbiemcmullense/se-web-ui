@@ -14,12 +14,6 @@ describe('ToooltipComponent', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('has the "bottom" class because it is bottom-aligned by default', async () => {
-    expect(element.shadowRoot.querySelector('div')).toHaveClass(
-      'tooltip-bottom'
-    );
-  });
-
   it('adds a "show" class to a div element with class tooltip when open is set to true', async () => {
     await element.callMethod('open');
     await page.waitForChanges();

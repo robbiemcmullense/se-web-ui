@@ -10,6 +10,7 @@ import {
   Listen,
   Host,
 } from '@stencil/core';
+import { createPopper, Placement } from '@popperjs/core';
 
 @Component({
   tag: 'se-dropdown',
@@ -17,16 +18,20 @@ import {
   shadow: true,
 })
 export class DropdownComponent {
+  elmButton: HTMLSpanElement;
+  elmDropdown: HTMLDivElement;
   @Element() el: HTMLElement;
 
   /**
    * Defines how to align the dropdown container.
-   * `right`: Position the container with respect to the right side of the trigger element.
-   * `left`: Position the container with respect to the left side of the trigger element.
+   * `end`: Position the container with respect to the end side (right) of the trigger element.
+   * `start`: Position the container with respect to the right side of the trigger element.
+   * `right` (deprecated): Position the container with respect to the right side of the trigger element.
+   * `left` (deprecated): Position the container with respect to the left side of the trigger element.
    */
-  @Prop() alignment: 'right' | 'left' = 'left';
+  @Prop() alignment: 'end' | 'start' | 'right' | 'left' = 'start';
   /**
-   * Defines how to vertically align the dropdown container.
+   * Defines the preferred vertically align of the dropdown. It will automatically re-position if the there is not enough space.
    * `top`: Position the container with respect to the top side of the trigger element.
    * `bottom`: Position the container with respect to the bottom side of the trigger element.
    */
@@ -104,13 +109,39 @@ export class DropdownComponent {
       this.open();
     }
     this.isActive = false;
-    // console.log(ev)
+  }
+
+  componentDidLoad(): void {
+    const alignment = ['left', 'start'].includes(this.alignment)
+      ? 'start'
+      : 'end';
+    const verticalAlignmentOpposite =
+      this.verticalAlignment === 'bottom' ? 'top' : 'bottom';
+    createPopper(this.elmButton, this.elmDropdown, {
+      strategy: 'fixed',
+      placement: `${this.verticalAlignment}-${alignment}` as Placement,
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8],
+          },
+        },
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: [`${verticalAlignmentOpposite}-${alignment}`],
+          },
+        },
+      ],
+    });
   }
 
   render() {
     return (
       <Host>
         <span
+          ref={el => (this.elmButton = el)}
           aria-haspopup="true"
           aria-expanded={this.opened}
           onClick={ev => this._toggle(ev)}
@@ -118,9 +149,8 @@ export class DropdownComponent {
           <slot name="trigger"></slot>
         </span>
         <div
+          ref={el => (this.elmDropdown = el)}
           class={{
-            [this.alignment]: true,
-            [this.verticalAlignment]: true,
             show: this.opened,
             content: true,
           }}

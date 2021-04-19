@@ -7,6 +7,7 @@ import { select } from '@storybook/addon-knobs';
 
 const positionOptions = ['bottom', 'top', 'left', 'right'];
 const actionOptions = ['hover', 'click'];
+const colorOptions = ['alternative', 'information'];
 
 storiesOf('Tooltip', module)
   .add(
@@ -14,10 +15,11 @@ storiesOf('Tooltip', module)
     () => {
       const position = select('position', positionOptions, 'bottom');
       const action = select('action', actionOptions, 'hover');
+      const color = select('color', colorOptions, 'information');
 
       return `
-      <div style=" margin-top: 200px; margin-left: 400px;">
-        <se-tooltip position="${position}" action="${action}">
+      <div style=" margin-top: 200px; margin-left: 200px;">
+        <se-tooltip position="${position}" action="${action}" color="${color}">
           <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
@@ -36,28 +38,48 @@ storiesOf('Tooltip', module)
     }
   )
   .add(
-    'Multiple Tooltips',
+    'In layout',
     () => {
       const position = select('position', positionOptions, 'bottom');
       const action = select('action', actionOptions, 'hover');
 
       return `
-      <div style=" margin-top: 200px; margin-left: 200px;">
-        <se-tooltip position="bottom" action="${action}">
+    <se-container position="absolute" direction="row">
+    <se-block width="300px">
+      <se-block-header>
+        Left Column
+        <se-tooltip slot="end">
           <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
-          <se-tooltip-content>This is my tooltip1.</se-tooltip-content>
+          <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
-        <br><br>
-        <se-tooltip position="left" action="${action}">
+      </se-block-header>
+      <se-block-content>
+        This is my block content. My width is 300px.
+        <br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <se-tooltip ac>
           <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
-          <se-tooltip-content>This is my tooltip2.</se-tooltip-content>
+          <se-tooltip-content> This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip.</se-tooltip-content>
         </se-tooltip>
-        <br><br>
-        <se-tooltip position="top" action="${action}">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </se-block-content>
+    </se-block>
+    <se-divider option="vertical"></se-divider>
+    <se-block>
+      <se-block-header>
+        Right Column
+      </se-block-header>
+      <se-block-content>
+        This is my block content. My width is content-based.
+      </se-block-content>
+      <se-block-footer>
+      <se-tooltip>
           <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
-          <se-tooltip-content>This is my tooltip3.</se-tooltip-content>
+          <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
-      </div>
+      </se-block-footer>
+    </se-block>
+  </se-container>        
     `;
     },
     {

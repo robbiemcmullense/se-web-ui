@@ -926,6 +926,7 @@ export const SeTooltip = /*@__PURE__*/ Vue.extend({
   props: {
     position: {} as PropOptions<Components.SeTooltip['position']>,
     action: {} as PropOptions<Components.SeTooltip['action']>,
+    color: {} as PropOptions<Components.SeTooltip['color']>,
   },
 
 
