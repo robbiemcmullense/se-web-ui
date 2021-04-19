@@ -1,17 +1,16 @@
-
 :host {
   position: relative;
-}
-
-.tooltip-header{
-  @include flex();
+  padding-bottom: $spacing-small; // 2px to compensate with border bottom
   @include display-flex();
-  position: relative;
   font-weight: 600;
-  font-size:14px;
+  font-size: 14px;
   line-height: 17px;
 }
+
+.start {
+  @include flex();
+}
 .se-icon {
-  font-family: 'se-icon';
+  font-family: "se-icon";
   padding-right: 5px;
 }

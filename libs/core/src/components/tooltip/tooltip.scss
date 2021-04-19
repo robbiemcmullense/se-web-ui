@@ -7,7 +7,6 @@
   @include background-color("information");
   max-width: 260px;
   width: max-content;
-
   visibility: hidden;
   position: absolute;
   padding: $spacing $spacing;
@@ -16,7 +15,7 @@
   line-height: 14px;
   z-index: -1;
   @include border-radius($border-radius);
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: 0.2s;
 }
@@ -25,6 +24,47 @@
   visibility: visible;
   z-index: $zindex-tooltip;
 }
+
+.arrow,
+.arrow::before,
+.arrow::after {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+}
+.arrow {
+  visibility: hidden;
+  &::after {
+    visibility: visible;
+    content: "";
+    transform: rotate(45deg);
+  }
+}
+[data-popper-placement^="top"] > .arrow {
+  bottom: -4px;
+}
+[data-popper-placement^="bottom"] > .arrow {
+  top: -4px;
+}
+[data-popper-placement^="left"] > .arrow {
+  right: -4px;
+}
+[data-popper-placement^="right"] > .arrow {
+  left: -4px;
+}
+
+// .tooltip::after {
+//   content: "";
+//   position: absolute;
+//   border: 5px solid;
+//   top: 100%;
+//   left: 50%;
+//   margin-left: -5px;
+//   $color: map-get($seTheme, "information");
+//   border-color: $color transparent transparent transparent;
+//   border-color: var(#{custom-property-name("information")}, $color) transparent transparent transparent;
+// }
 
 .alternative {
   @include color("alternative-contrast");

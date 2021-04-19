@@ -29,10 +29,7 @@ export class TooltipComponent {
    */
   @Prop() position: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
   /**
-   * @deprecated only `hover` action should be allowed for tooltips
-   * Indicates the action of your tooltip.
-   * The default setting is `hover`, triggering the tooltip when hovering over the parent element.
-   * The `click` action triggers the tooltip when you click on the parent element.
+   * @deprecated only `hover` action should be used for tooltips
    */
   @Prop() action: 'click' | 'hover' = 'hover';
   /**
@@ -82,20 +79,14 @@ export class TooltipComponent {
 
   @Listen('mouseenter') handleMouseEnter(ev) {
     // On touch device, we remove hover or the tooltip keep open and closing
-    if (!isTouchDevice() && this.action === 'hover') {
+    if (!isTouchDevice()) {
       this._toggle(ev);
     }
   }
 
   @Listen('mouseleave') handleMouseLeave(ev) {
     // On touch device, we remove hover or the tooltip keep open and closing
-    if (!isTouchDevice() && this.action === 'hover' && this.opened) {
-      this._toggle(ev);
-    }
-  }
-
-  @Listen('click', { target: 'window' }) handleMouseClick(ev) {
-    if (this.action === 'click' && this.opened) {
+    if (!isTouchDevice() && this.opened) {
       this._toggle(ev);
     }
   }
@@ -117,7 +108,7 @@ export class TooltipComponent {
   }
 
   _toggleClick(ev: Event) {
-    if (this.action === 'click' || isTouchDevice()) {
+    if (isTouchDevice()) {
       this._toggle(ev);
     }
   }
@@ -158,6 +149,7 @@ export class TooltipComponent {
             [this.color]: true,
           }}
         >
+          <div class="arrow" data-popper-arrow></div>
           <slot />
         </div>
       </Host>

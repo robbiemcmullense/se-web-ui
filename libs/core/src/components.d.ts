@@ -1233,7 +1233,7 @@ export namespace Components {
     }
     interface SeTooltip {
         /**
-          * @deprecated only `hover` action should be allowed for tooltips Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
+          * @deprecated only `hover` action should be used for tooltips
          */
         "action": 'click' | 'hover';
         /**
@@ -3010,7 +3010,7 @@ declare namespace LocalJSX {
     }
     interface SeTooltip {
         /**
-          * @deprecated only `hover` action should be allowed for tooltips Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.
+          * @deprecated only `hover` action should be used for tooltips
          */
         "action"?: 'click' | 'hover';
         /**

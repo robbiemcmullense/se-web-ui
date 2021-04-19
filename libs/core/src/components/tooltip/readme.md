@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                                                                                                                                                                                                                    | Type                                     | Default         |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- | --------------- |
-| `action`   | `action`   | <span style="color:red">**[DEPRECATED]**</span> only `hover` action should be allowed for tooltips Indicates the action of your tooltip. The default setting is `hover`, triggering the tooltip when hovering over the parent element. The `click` action triggers the tooltip when you click on the parent element.<br/><br/> | `"click" \| "hover"`                     | `'hover'`       |
-| `color`    | `color`    | Indicates the color of the tooltip                                                                                                                                                                                                                                                                                             | `"alternative" \| "information"`         | `'information'` |
-| `position` | `position` | Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent.                                                                                                                                                                                                               | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'`      |
+| Property   | Attribute  | Description                                                                                                      | Type                                     | Default         |
+| ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------- |
+| `action`   | `action`   | <span style="color:red">**[DEPRECATED]**</span> only `hover` action should be used for tooltips<br/><br/>        | `"click" \| "hover"`                     | `'hover'`       |
+| `color`    | `color`    | Indicates the color of the tooltip                                                                               | `"alternative" \| "information"`         | `'information'` |
+| `position` | `position` | Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent. | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'`      |
 
 
 ## Events

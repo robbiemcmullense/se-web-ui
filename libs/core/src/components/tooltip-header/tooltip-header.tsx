@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 @Component({
   tag: 'se-tooltip-header',
   styleUrl: 'tooltip-header.scss',
@@ -11,17 +11,19 @@ export class TooltipHeaderComponent {
   @Prop() icon: string;
 
   render() {
-    return [
-      <div class="tooltip-header">
-        {this.icon && (
-          <se-icon class="se-icon" size="small">
-            {this.icon}
-          </se-icon>
-        )}
-        <slot name="icon"></slot>
-        <slot />
-      </div>,
-      <slot name="end" />,
-    ];
+    return (
+      <Host>
+        <div class="start">
+          {this.icon && (
+            <se-icon class="se-icon" size="small">
+              {this.icon}
+            </se-icon>
+          )}
+          <slot name="icon"></slot>
+          <slot />
+        </div>
+        <slot name="end" />
+      </Host>
+    );
   }
 }

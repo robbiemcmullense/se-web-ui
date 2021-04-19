@@ -14,14 +14,43 @@ storiesOf('Tooltip', module)
     'Demo',
     () => {
       const position = select('position', positionOptions, 'bottom');
-      const action = select('action', actionOptions, 'hover');
       const color = select('color', colorOptions, 'information');
 
       return `
       <div style=" margin-top: 200px; margin-left: 200px;">
-        <se-tooltip position="${position}" action="${action}" color="${color}">
+        <se-tooltip position="${position}" color="${color}">
           <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
+        </se-tooltip>
+      </div>
+    `;
+    },
+    {
+      notes: {
+        markdown: {
+          'se-tooltip': readme,
+          'se-tooltip-content': readmecontent,
+          'se-tooltip-header': readmeheader,
+          'se-tooltip-footer': readmefooter,
+        },
+      },
+    }
+  )
+  .add(
+    'complex',
+    () => {
+      const position = select('position', positionOptions, 'bottom');
+      const color = select('color', colorOptions, 'information');
+
+      return `
+      <div style=" margin-top: 100px; margin-left: 200px;">
+        <se-tooltip position="${position}" color="${color}">
+          <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+          <se-tooltip-header>my tooltips</se-tooltip-header>
+          <se-tooltip-content>This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip.</se-tooltip-content>
+          <se-tooltip-footer>
+            <se-button option="outline" color="alternative">Call</se-button>
+          </se-tooltip-footer>
         </se-tooltip>
       </div>
     `;
@@ -41,7 +70,6 @@ storiesOf('Tooltip', module)
     'In layout',
     () => {
       const position = select('position', positionOptions, 'bottom');
-      const action = select('action', actionOptions, 'hover');
 
       return `
     <se-container position="absolute" direction="row">
