@@ -59,11 +59,15 @@ export class TooltipComponent {
   @State() opened = false;
 
   @Listen('touchstart', { target: 'window' }) handleTouchstart(ev) {
-    this._toggle(ev);
+    if (this.opened) {
+      this._toggle(ev);
+    }
   }
 
   @Listen('touchend', { target: 'window' }) handleTouchEnd(ev) {
-    this._toggle(ev);
+    if (this.opened) {
+      this._toggle(ev);
+    }
   }
 
   @Listen('mouseenter') handleMouseEnter(ev) {
@@ -92,6 +96,8 @@ export class TooltipComponent {
 
   _toggle(ev: Event) {
     ev.stopPropagation();
+    console.log(ev.type);
+    console.log('open: ' + this.opened);
     if (this.opened) {
       this.close();
       this.didClose.emit(ev);
@@ -103,7 +109,8 @@ export class TooltipComponent {
   }
 
   _toggleClick(ev: Event) {
-    if (this.action === 'click') {
+    if (this.action === 'click' || isTouchDevice()) {
+      console.log(ev.type);
       this._toggle(ev);
     }
   }
