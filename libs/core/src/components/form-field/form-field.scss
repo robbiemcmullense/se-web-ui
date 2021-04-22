@@ -1,6 +1,7 @@
 $max-width-input: 320px;
 
 se-form-field {
+  display: block;
   .form-field-wrapper {
     @include display-flex();
     @include align-items(center);

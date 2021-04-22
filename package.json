@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.18.1",
+  "version": "3.18.2",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -39,11 +39,11 @@
     "libs:build:vue": "npm run build vue",
     "libs:release": "node .scripts/release.js",
     "libs:link": "run-p link:*",
+    "libs:link-npm": "run-p link-npm:*",
     "link:core": "cd dist/libs/core && yarn link",
     "link:angular": "cd dist/libs/angular && yarn link",
     "link:react": "cd dist/libs/react && yarn link",
     "link:vue": "cd dist/libs/vue && yarn link",
-    "libs-npm:link": "run-p link:*",
     "link-npm:core": "cd dist/libs/core && npm link",
     "link-npm:angular": "cd dist/libs/angular && npm link",
     "link-npm:react": "cd dist/libs/react && npm link",
