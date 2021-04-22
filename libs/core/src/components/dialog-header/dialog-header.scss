@@ -25,12 +25,12 @@
 
     &.alternative-indents {
       min-height: 35px;
-      padding: $spacing-m-large $spacing-m-large 0;
+      padding: $spacing-mlarge $spacing-mlarge 0;
       margin-bottom: 0;
 
       @include for-tablet-and-up {
         @include align-items(flex-start);
-        padding: $spacing-m-large $spacing-xxlarge 0;
+        padding: $spacing-mlarge $spacing-xxlarge 0;
       }
 
       div.middle {

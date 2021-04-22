@@ -37,7 +37,7 @@
     padding-left: $spacing-xlarge;
 
     &.last-child {
-      padding-bottom: $spacing-m-large;
+      padding-bottom: $spacing-mlarge;
 
       @include for-tablet-and-up {
         padding-bottom: $spacing-xlarge;

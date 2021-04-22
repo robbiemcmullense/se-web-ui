@@ -21,6 +21,7 @@ import { isTouchDevice } from '../../utils';
 export class TooltipComponent {
   elmButton: HTMLDivElement;
   elmTooltip: HTMLDivElement;
+  popperInstance;
 
   @Element() el: HTMLElement;
   /**
@@ -54,6 +55,14 @@ export class TooltipComponent {
   @Method()
   async open() {
     this.opened = true;
+
+    // Enable the event listeners
+    this.popperInstance.setOptions({
+      modifiers: [{ name: 'eventListeners', enabled: true }],
+    });
+
+    // Update its position
+    this.popperInstance.update();
   }
   /**
    * Method to close the tooltip separate from hovering or clicking the parent element.
@@ -61,6 +70,11 @@ export class TooltipComponent {
   @Method()
   async close() {
     this.opened = false;
+
+    // Disable the event listeners
+    this.popperInstance.setOptions({
+      modifiers: [{ name: 'eventListeners', enabled: false }],
+    });
   }
 
   @State() opened = false;
@@ -121,7 +135,7 @@ export class TooltipComponent {
       elmButton = containsFab.shadowRoot.querySelector('.fab-button');
     }
 
-    createPopper(elmButton, this.elmTooltip, {
+    this.popperInstance = createPopper(elmButton, this.elmTooltip, {
       strategy: 'fixed',
       placement: this.position,
       modifiers: [

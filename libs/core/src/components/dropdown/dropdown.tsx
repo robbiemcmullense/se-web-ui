@@ -20,6 +20,7 @@ import { createPopper, Placement } from '@popperjs/core';
 export class DropdownComponent {
   elmButton: HTMLSpanElement;
   elmDropdown: HTMLDivElement;
+  popperInstance;
   @Element() el: HTMLElement;
 
   /**
@@ -51,6 +52,14 @@ export class DropdownComponent {
   async open() {
     this.opened = true;
     this.didOpen.emit();
+
+    // Enable the event listeners
+    this.popperInstance.setOptions({
+      modifiers: [{ name: 'eventListeners', enabled: true }],
+    });
+
+    // Update its position
+    this.popperInstance.update();
   }
   /**
    * Method to close the dropdown from outside its parent element.
@@ -59,6 +68,11 @@ export class DropdownComponent {
   async close() {
     this.opened = false;
     this.didClose.emit();
+
+    // Disable the event listeners
+    this.popperInstance.setOptions({
+      modifiers: [{ name: 'eventListeners', enabled: false }],
+    });
   }
   /**
    * Event emitted when the dropdown has been opened.
@@ -117,7 +131,7 @@ export class DropdownComponent {
       : 'end';
     const verticalAlignmentOpposite =
       this.verticalAlignment === 'bottom' ? 'top' : 'bottom';
-    createPopper(this.elmButton, this.elmDropdown, {
+    this.popperInstance = createPopper(this.elmButton, this.elmDropdown, {
       strategy: 'fixed',
       placement: `${this.verticalAlignment}-${alignment}` as Placement,
       modifiers: [

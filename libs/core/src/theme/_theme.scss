@@ -6,12 +6,14 @@
 
 // Spacing element
 // ==========================================================================
-$spacing: 8px !default;
 $spacing-small: 4px !default;
+$spacing-base: 8px !default;
 $spacing-large: 16px !default;
-$spacing-m-large: 24px !default;
+$spacing-mlarge: 24px !default;
 $spacing-xlarge: 32px !default;
 $spacing-xxlarge: 36px !default;
+
+$spacing: $spacing-base !default;
 
 // z-index element
 // ==========================================================================
@@ -67,6 +69,7 @@ $base-fontsize: 16px !default;
 $nano-fontsize: 12px !default;
 $small-fontsize: 14px !default;
 $large-fontsize: 18px !default;
+
 $h-margin: 16px !default;
 
 // Flow Text

@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.18.0",
+  "version": "3.18.1",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -43,12 +43,13 @@
     "link:angular": "cd dist/libs/angular && yarn link",
     "link:react": "cd dist/libs/react && yarn link",
     "link:vue": "cd dist/libs/vue && yarn link",
+    "libs-npm:link": "run-p link:*",
+    "link-npm:core": "cd dist/libs/core && npm link",
+    "link-npm:angular": "cd dist/libs/angular && npm link",
+    "link-npm:react": "cd dist/libs/react && npm link",
+    "link-npm:vue": "cd dist/libs/vue && npm link",
     "postinstall": "node node_modules/@nx-plus/vue/patch-nx-dep-graph.js",
     "sass": "node-sass --version"
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.9.2",
-    "tsconfig-paths-webpack-plugin": "^3.5.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1000.8",
@@ -87,6 +88,7 @@
     "@nrwl/web": "10.2.0",
     "@nrwl/workspace": "10.2.0",
     "@nx-plus/vue": "^10.0.0",
+    "@popperjs/core": "^2.9.2",
     "@se/fonts": "^1.1.0",
     "@se/icons": "4.2.0",
     "@stencil/angular-output-target": "0.0.5",
@@ -174,6 +176,7 @@
     "storybook-readme": "^5.0.8",
     "ts-jest": "26.1.4",
     "ts-node": "~7.0.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "tsickle": "^0.38.0",
     "tslib": "^2.0.1",
     "tslint": "~5.11.0",
