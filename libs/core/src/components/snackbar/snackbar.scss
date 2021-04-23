@@ -7,6 +7,7 @@
   opacity: 0;
   transition: 0.2s;
   @include slideDown();
+  width: 100%;
 }
 
 :host(.show-snackbar) {
@@ -45,11 +46,12 @@
 .snackbar {
   @include display-flex();
   @include color("primary-contrast");
-  font-size: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: $spacing-small;
   min-height: 32px;
   align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: fit-content;
 }
 
 .snackbar-icon {
@@ -63,30 +65,13 @@
 }
 
 .message {
-  font-size: 16px;
-  padding-right: 16px;
-  margin-left: 16px;
-}
-
-.action {
-  cursor: pointer;
-  font-size: 14px;
-  border: 1px solid $se-white;
-  padding: 8px 16px;
-  margin: 8px 12px 8px 0;
-  line-height: 16px;
-  transition: 0.2s;
-  &:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
+  padding-right: $spacing-large;
+  margin-left: $spacing-large;
 }
 
 .close {
-  cursor: pointer;
-  padding-right: 10px;
+  padding-right: $spacing;
   margin-left: -2px;
-  se-icon {
-    vertical-align: middle;
-    top: 0; // aligns snackbar icons on Edge, IE 11
-  }
+  vertical-align: middle;
+  top: 0; // aligns snackbar icons on Edge, IE 11
 }

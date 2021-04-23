@@ -22,6 +22,7 @@ export class TooltipComponent {
   elmButton: HTMLDivElement;
   elmTooltip: HTMLDivElement;
   popperInstance;
+  containsFab;
 
   @Element() el: HTMLElement;
   /**
@@ -56,13 +57,27 @@ export class TooltipComponent {
   async open() {
     this.opened = true;
 
-    // Enable the event listeners
-    this.popperInstance.setOptions({
-      modifiers: [{ name: 'eventListeners', enabled: true }],
-    });
+    if (!this.containsFab) {
+      // only maintain update when not on fab (glitch issue)
+      // Enable the event listeners
+      this.popperInstance.setOptions({
+        modifiers: [
+          {
+            name: 'eventListeners',
+            enabled: true,
+          },
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 8],
+            },
+          },
+        ],
+      });
 
-    // Update its position
-    this.popperInstance.update();
+      // Update its position
+      this.popperInstance.update();
+    }
   }
   /**
    * Method to close the tooltip separate from hovering or clicking the parent element.
@@ -71,10 +86,12 @@ export class TooltipComponent {
   async close() {
     this.opened = false;
 
-    // Disable the event listeners
-    this.popperInstance.setOptions({
-      modifiers: [{ name: 'eventListeners', enabled: false }],
-    });
+    if (!this.containsFab) {
+      // Disable the event listeners
+      this.popperInstance.setOptions({
+        modifiers: [{ name: 'eventListeners', enabled: false }],
+      });
+    }
   }
 
   @State() opened = false;
@@ -128,24 +145,24 @@ export class TooltipComponent {
   }
 
   componentDidLoad(): void {
-    const containsFab = (this.el as HTMLElement).querySelector('se-fab');
-    let elmButton = this.elmButton;
-
-    if (containsFab) {
-      elmButton = containsFab.shadowRoot.querySelector('.fab-button');
-    }
+    this.containsFab = (this.el as HTMLElement).querySelector('se-fab');
+    let elmButton =
+      this.containsFab?.shadowRoot?.querySelector('.fab-button') ||
+      this.elmButton;
 
     this.popperInstance = createPopper(elmButton, this.elmTooltip, {
       strategy: 'fixed',
       placement: this.position,
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 8],
+      modifiers:
+        (this.containsFab && [
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 8],
+            },
           },
-        },
-      ],
+        ]) ||
+        [],
     });
   }
 

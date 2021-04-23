@@ -222,8 +222,8 @@ button {
   }
 
   &.alternative {
-    @include color("alternative-contrast");
-    @include background-color("alternative");
+    @include color("background-alternative-contrast");
+    @include background-color("background-alternative");
     &:hover {
       // @include color("alternative-hover-contrast");
       @include background-color("alternative-hover");
@@ -235,13 +235,14 @@ button {
     &.outline {
       border: 1px solid;
       background-color: transparent;
-      // @include color("alternative");
-      @include border-color("alternative");
+      @include color("background-alternative");
+      @include border-color("background-alternative");
       &:hover {
         @include background-color("alternative-hover", 0.6);
       }
       &:active,
       &.selected {
+        @include color("background-alternative-contrast");
         @include background-color("alternative-selected", 0.6);
       }
     }

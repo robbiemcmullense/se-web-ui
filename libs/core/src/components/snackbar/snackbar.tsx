@@ -5,6 +5,7 @@ import {
   EventEmitter,
   h,
   Prop,
+  Host,
   Watch,
 } from '@stencil/core';
 import information_circle from '@se/icons/svg/information_circle.svg';
@@ -103,8 +104,8 @@ export class SnackbarComponent {
       renderIcon = false;
     }
     return (
-      <div class={this.type}>
-        <div class="snackbar" role="alert">
+      <Host>
+        <div class={{ snackbar: true, [this.type]: true }} role="alert">
           <span class="snackbar-icon">
             {renderIcon && (
               <se-icon>
@@ -118,23 +119,29 @@ export class SnackbarComponent {
             <slot></slot>
           </span>
           {this.actionText ? (
-            <span class="action" onClick={() => this.submitData()}>
+            <se-button
+              color="alternative"
+              option="outline"
+              onClick={() => this.submitData()}
+            >
               {this.actionText}
-            </span>
+            </se-button>
           ) : (
             ''
           )}
           {this.canClose ? (
-            <span class="close">
-              <se-icon onClick={() => this.closeSnackbar()}>
-                <span innerHTML={action_delete_cross}></span>
-              </se-icon>
-            </span>
+            <se-icon
+              option="button"
+              class="close"
+              onClick={() => this.closeSnackbar()}
+            >
+              <span innerHTML={action_delete_cross}></span>
+            </se-icon>
           ) : (
             ''
           )}
         </div>
-      </div>
+      </Host>
     );
   }
 }

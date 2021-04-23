@@ -20,7 +20,10 @@
     font-weight: 550;
   }
 }
-
+label {
+  display: flex;
+  align-items: center;
+}
 .label {
   font-weight: 550;
   font-size: 14px;

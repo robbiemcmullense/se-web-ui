@@ -62,6 +62,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [se-fab](../fab)
+ - [se-snackbar](../snackbar)
 
 ### Depends on
 
@@ -72,6 +73,7 @@ Type: `Promise<void>`
 graph TD;
   se-button --> se-icon
   se-fab --> se-button
+  se-snackbar --> se-button
   style se-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

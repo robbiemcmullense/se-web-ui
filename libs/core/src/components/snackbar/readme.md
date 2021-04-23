@@ -34,11 +34,14 @@
 ### Depends on
 
 - [se-icon](../icon)
+- [se-button](../button)
 
 ### Graph
 ```mermaid
 graph TD;
   se-snackbar --> se-icon
+  se-snackbar --> se-button
+  se-button --> se-icon
   style se-snackbar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -9,6 +9,7 @@ import {
   EventEmitter,
   Listen,
   Host,
+  Watch,
 } from '@stencil/core';
 import { createPopper, Placement } from '@popperjs/core';
 
@@ -21,6 +22,7 @@ export class DropdownComponent {
   elmButton: HTMLSpanElement;
   elmDropdown: HTMLDivElement;
   popperInstance;
+
   @Element() el: HTMLElement;
 
   /**
@@ -30,13 +32,20 @@ export class DropdownComponent {
    * `right` (deprecated): Position the container with respect to the right side of the trigger element.
    * `left` (deprecated): Position the container with respect to the left side of the trigger element.
    */
+  @State() _alignment;
   @Prop() alignment: 'end' | 'start' | 'right' | 'left' = 'start';
+  @Watch('alignment') alignmentChange() {
+    this._alignment = ['left', 'start'].includes(this.alignment)
+      ? 'start'
+      : 'end';
+  }
   /**
    * Defines the preferred vertically align of the dropdown. It will automatically re-position if the there is not enough space.
    * `top`: Position the container with respect to the top side of the trigger element.
    * `bottom`: Position the container with respect to the bottom side of the trigger element.
    */
   @Prop() verticalAlignment: 'top' | 'bottom' = 'bottom';
+
   /**
    * Sets the maximum width of the dropdown.  Default setting is "200px".
    */
@@ -55,7 +64,28 @@ export class DropdownComponent {
 
     // Enable the event listeners
     this.popperInstance.setOptions({
-      modifiers: [{ name: 'eventListeners', enabled: true }],
+      modifiers: [
+        {
+          name: 'eventListeners',
+          enabled: true,
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8],
+          },
+        },
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: [
+              `${this.verticalAlignment === 'bottom' ? 'top' : 'bottom'}-${
+                this._alignment
+              }`,
+            ],
+          },
+        },
+      ],
     });
 
     // Update its position
@@ -71,7 +101,18 @@ export class DropdownComponent {
 
     // Disable the event listeners
     this.popperInstance.setOptions({
-      modifiers: [{ name: 'eventListeners', enabled: false }],
+      modifiers: [
+        {
+          name: 'eventListeners',
+          enabled: false,
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
     });
   }
   /**
@@ -125,26 +166,19 @@ export class DropdownComponent {
     this.isActive = false;
   }
 
+  componentWillLoad(): void {
+    this.alignmentChange();
+  }
+
   componentDidLoad(): void {
-    const alignment = ['left', 'start'].includes(this.alignment)
-      ? 'start'
-      : 'end';
-    const verticalAlignmentOpposite =
-      this.verticalAlignment === 'bottom' ? 'top' : 'bottom';
     this.popperInstance = createPopper(this.elmButton, this.elmDropdown, {
       strategy: 'fixed',
-      placement: `${this.verticalAlignment}-${alignment}` as Placement,
+      placement: `${this.verticalAlignment}-${this._alignment}` as Placement,
       modifiers: [
         {
           name: 'offset',
           options: {
-            offset: [0, 8],
-          },
-        },
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: [`${verticalAlignmentOpposite}-${alignment}`],
+            offset: [0, 4],
           },
         },
       ],

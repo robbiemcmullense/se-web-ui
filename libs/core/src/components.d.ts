@@ -508,9 +508,6 @@ export namespace Components {
         "option": 'horizontal' | 'vertical' | 'inset';
     }
     interface SeDropdown {
-        /**
-          * Defines how to align the dropdown container. `end`: Position the container with respect to the end side (right) of the trigger element. `start`: Position the container with respect to the right side of the trigger element. `right` (deprecated): Position the container with respect to the right side of the trigger element. `left` (deprecated): Position the container with respect to the left side of the trigger element.
-         */
         "alignment": 'end' | 'start' | 'right' | 'left';
         /**
           * Method to close the dropdown from outside its parent element.
@@ -2255,9 +2252,6 @@ declare namespace LocalJSX {
         "option"?: 'horizontal' | 'vertical' | 'inset';
     }
     interface SeDropdown {
-        /**
-          * Defines how to align the dropdown container. `end`: Position the container with respect to the end side (right) of the trigger element. `start`: Position the container with respect to the right side of the trigger element. `right` (deprecated): Position the container with respect to the right side of the trigger element. `left` (deprecated): Position the container with respect to the left side of the trigger element.
-         */
         "alignment"?: 'end' | 'start' | 'right' | 'left';
         /**
           * Sets the maximum height of the dropdown.  Default setting is "400px".
