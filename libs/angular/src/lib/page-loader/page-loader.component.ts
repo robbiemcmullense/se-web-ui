@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageLoaderConfig } from './page-loader-config';
 
 @Component({
   selector: 'se-page-loader',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageLoaderComponent implements OnInit {
 
-  constructor() {}
+  constructor(public config: PageLoaderConfig) {}
 
   ngOnInit() {}
 

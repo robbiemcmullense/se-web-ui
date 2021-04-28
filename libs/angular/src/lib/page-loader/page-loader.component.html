@@ -1,1 +1,8 @@
-<se-loading loading="true" fullPage></se-loading>
+<se-loading
+  loading="true"
+  [fullPage]="config.fullPage"
+  [overlay]="config.overlay"
+  [color]="config.color"
+  [option]="config.option"
+  >{{ config.message }}</se-loading
+>
