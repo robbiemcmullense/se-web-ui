@@ -21,7 +21,7 @@
   overflow: auto;
   border-radius: $border-radius;
   z-index: -1;
-  transition: 0.3s;
+  transition: opacity 0.3s;
 
   &.show {
     visibility: visible; /* shows sub-menu */
