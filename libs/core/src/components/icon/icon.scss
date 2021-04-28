@@ -147,22 +147,12 @@ button {
   @include color("error");
 }
 
-.standard,
-.alternative,
-.primary,
-.secondary,
-.success,
-.warning,
-.information,
-.error {
-  &.icon-button:not(.disabled):hover {
-    @include background-color("alternative-selected");
-  }
-}
-
 .icon-button {
   cursor: pointer;
   border-radius: $border-radius;
   line-height: inherit;
   border-radius: 2px;
+  &:not(.disabled):hover {
+    @include background-color("alternative-selected");
+  }
 }
