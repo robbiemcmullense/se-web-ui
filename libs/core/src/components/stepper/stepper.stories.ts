@@ -22,7 +22,11 @@ storiesOf('Stepper', module).add(
     return `
       <div style="width: 100%; height: 100%;">
         <se-stepper color="${color}" linear="${linear}" block="${block}" interactive="${interactive}">
-          
+          <se-stepper-item label="Step 1" validated="${step1Validated}"></se-stepper-item>
+          <se-stepper-item label="Step 2" validated="${step2Validated}"></se-stepper-item>
+          <se-stepper-item label="Step 3" validated="${step3Validated}"></se-stepper-item>
+          <se-stepper-item label="Step 4" validated="${step4Validated}"></se-stepper-item>
+          <se-stepper-item label="Step 5" validated="${step5Validated}"></se-stepper-item>
           ${
             addStepper
               ? '<se-stepper-item label="Step 6" ></se-stepper-item>'
