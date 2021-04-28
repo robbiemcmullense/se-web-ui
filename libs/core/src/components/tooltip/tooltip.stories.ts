@@ -107,7 +107,7 @@ storiesOf('Tooltip', module)
         </se-tooltip>
       </se-block-footer>
     </se-block>
-  </se-container>        
+  </se-container>
     `;
     },
     {

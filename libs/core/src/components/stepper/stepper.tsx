@@ -97,7 +97,9 @@ export class StepperComponent {
       this.selectedItem.active = false;
     }
     this.selectedItem = item;
-    this.selectedItem.active = true;
+    if (item) {
+      this.selectedItem.active = true;
+    }
   }
 
   @Listen('didValidate') itemValidated(value) {
@@ -187,7 +189,8 @@ export class StepperComponent {
   }
 
   setItemsArray() {
-    this.stepperItems = Array.from(this.el.querySelectorAll('se-stepper-item'));
+    this.stepperItems =
+      Array.from(this.el.querySelectorAll('se-stepper-item')) || [];
     let previousItemValidated = true;
     this.stepperItems.forEach((item: any) => {
       item.interactive =
@@ -203,7 +206,8 @@ export class StepperComponent {
     const selectedItem =
       selectionnableItems.reverse().find((item: any) => item.active) ||
       selectionnableItems.find((item: any) => !item.validated) ||
-      this.stepperItems[0];
+      this.stepperItems[0] ||
+      null;
     this.stepperItems.forEach((item: any) => {
       item.active = selectedItem === item;
     });

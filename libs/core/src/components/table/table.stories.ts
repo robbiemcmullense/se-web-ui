@@ -34,7 +34,7 @@ storiesOf('Table', module).add(
                 <se-table-item-header clickable="true"><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
                 <se-table-item-header width="54px"></se-table-item-header>
             </se-table-group-header>
-            
+
             ${[...Array(minItems || 0)]
               .map(
                 (_, key) =>
@@ -65,7 +65,7 @@ storiesOf('Table', module).add(
               `
               )
               .join('')}
-            
+
         </se-table>
         </se-block>
     `;

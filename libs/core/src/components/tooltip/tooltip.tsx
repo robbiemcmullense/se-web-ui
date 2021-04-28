@@ -146,7 +146,7 @@ export class TooltipComponent {
 
   componentDidLoad(): void {
     this.containsFab = (this.el as HTMLElement).querySelector('se-fab');
-    let elmButton =
+    const elmButton =
       this.containsFab?.shadowRoot?.querySelector('.fab-button') ||
       this.elmButton;
 

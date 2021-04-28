@@ -26,7 +26,7 @@ storiesOf('Fab', module).add(
         </se-fab>
         <se-tooltip-content>test</se-tooltip-content>
        </se-tooltip>
-      
+
     `;
   },
   {
