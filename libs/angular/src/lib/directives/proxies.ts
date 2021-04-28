@@ -253,13 +253,13 @@ export class SeButton {
 
 export declare interface SeCarousel extends Components.SeCarousel {}
 @ProxyCmp({
-  inputs: ['itemMinWidth']
+  inputs: ['arrowsOverlay', 'hintWidth', 'itemMinWidth', 'pagination']
 })
 @Component({
   selector: 'se-carousel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['itemMinWidth']
+  inputs: ['arrowsOverlay', 'hintWidth', 'itemMinWidth', 'pagination']
 })
 export class SeCarousel {
   protected el: HTMLElement;
@@ -285,7 +285,30 @@ export class SeCarouselItem {
   }
 }
 
+<<<<<<< HEAD
 import { CheckboxComponent as ICheckboxComponent } from 'dist/libs/core/types/components/checkbox/checkbox';
+=======
+
+export declare interface SeCarouselPagination extends Components.SeCarouselPagination {}
+@ProxyCmp({
+  inputs: ['activeIndex', 'size']
+})
+@Component({
+  selector: 'se-carousel-pagination',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['activeIndex', 'size']
+})
+export class SeCarouselPagination {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
+>>>>>>> 7d300d36f1c529e480e7d3016ef492d8e338c1f0
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @ProxyCmp({
   inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],

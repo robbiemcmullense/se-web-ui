@@ -8,6 +8,40 @@
   display: block;
 }
 
+@mixin carousel-overlay() {
+  content: "";
+  width: 56px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+:host(.arrows-overlay.left-hidden) {
+  &::before {
+    @include carousel-overlay;
+    left: 0;
+    background: linear-gradient(
+      to right,
+      var(--se-background-standard, $se-white),
+      rgba($se-white, 0)
+    );
+  }
+}
+
+:host(.arrows-overlay.right-hidden) {
+  &::after {
+    @include carousel-overlay;
+    right: 0;
+    background: linear-gradient(
+      to right,
+      rgba($se-white, 0),
+      var(--se-background-standard, $se-white)
+    );
+  }
+}
+
 .content {
   @include flex(1);
   @include display-flex();
@@ -28,20 +62,38 @@
 }
 
 .arrow {
-  position: absolute;
-  z-index: 1;
-  top: calc(50% - 28px / 2);
-  background-color: var(--se-alternative);
-  padding: 2px;
-  box-shadow: 1px 1px 4px 0 var(--se-shadow);
-  &.icon-medium {
-    padding: 4px;
-    top: calc(50% - 40px / 2);
+  display: none;
+}
+
+@include for-desktop-only {
+  .arrow {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: calc(50% - 28px / 2);
+    color: var(--se-alternative-contrast, rgba($se-anthracite-grey, 0.5));
+    padding: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 0px;
+
+    &.left {
+      left: -$spacing-mlarge;
+    }
+
+    &.right {
+      right: -$spacing-mlarge;
+    }
   }
-  &.left {
-    left: $spacing;
-  }
-  &.right {
-    right: $spacing;
+}
+
+:host(.arrows-overlay) {
+  .arrow {
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+    }
   }
 }

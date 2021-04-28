@@ -17,9 +17,10 @@ storiesOf('Carousel', module)
     () => {
       const minWidth = number('Item-min-width', 275, valueOptions);
       const minItems = number('Number of items', 15);
+      const withPagination = boolean('Add pagination', true);
       return `
       <se-container position="absolute" color="standard" direction="column" display="flex">
-        <se-carousel item-min-width=${minWidth}>
+        <se-carousel item-min-width=${minWidth} pagination=${withPagination}>
         ${[...Array(minItems || 0)]
           .map(
             (_, key) =>

@@ -172,6 +172,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.1",
     "rxjs": "6.5.5",
+    "smoothscroll-polyfill": "^0.4.4",
     "stencil-inline-svg": "^1.0.1",
     "storybook-readme": "^5.0.8",
     "ts-jest": "26.1.4",

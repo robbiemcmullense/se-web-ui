@@ -22,6 +22,7 @@ export const SeBreadcrumbItem = /*@__PURE__*/createReactComponent<JSX.SeBreadcru
 export const SeButton = /*@__PURE__*/createReactComponent<JSX.SeButton, HTMLSeButtonElement>('se-button');
 export const SeCarousel = /*@__PURE__*/createReactComponent<JSX.SeCarousel, HTMLSeCarouselElement>('se-carousel');
 export const SeCarouselItem = /*@__PURE__*/createReactComponent<JSX.SeCarouselItem, HTMLSeCarouselItemElement>('se-carousel-item');
+export const SeCarouselPagination = /*@__PURE__*/createReactComponent<JSX.SeCarouselPagination, HTMLSeCarouselPaginationElement>('se-carousel-pagination');
 export const SeCheckbox = /*@__PURE__*/createReactComponent<JSX.SeCheckbox, HTMLSeCheckboxElement>('se-checkbox');
 export const SeChip = /*@__PURE__*/createReactComponent<JSX.SeChip, HTMLSeChipElement>('se-chip');
 export const SeContainer = /*@__PURE__*/createReactComponent<JSX.SeContainer, HTMLSeContainerElement>('se-container');
