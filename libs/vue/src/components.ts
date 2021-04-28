@@ -25,6 +25,7 @@ const customElementTags: string[] = [
  'se-button',
  'se-carousel',
  'se-carousel-item',
+ 'se-carousel-pagination',
  'se-checkbox',
  'se-chip',
  'se-container',
@@ -261,6 +262,9 @@ export const SeCarousel = /*@__PURE__*/ Vue.extend({
 
   props: {
     itemMinWidth: {} as PropOptions<Components.SeCarousel['itemMinWidth']>,
+    arrowsOverlay: {} as PropOptions<Components.SeCarousel['arrowsOverlay']>,
+    hintWidth: {} as PropOptions<Components.SeCarousel['hintWidth']>,
+    pagination: {} as PropOptions<Components.SeCarousel['pagination']>,
   },
 
 
@@ -273,6 +277,18 @@ export const SeCarouselItem = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('se-carousel-item', []),
+});
+
+
+export const SeCarouselPagination = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    size: {} as PropOptions<Components.SeCarouselPagination['size']>,
+    activeIndex: {} as PropOptions<Components.SeCarouselPagination['activeIndex']>,
+  },
+
+
+  render: createCommonRender('se-carousel-pagination', []),
 });
 
 

@@ -287,11 +287,33 @@ export namespace Components {
     }
     interface SeCarousel {
         /**
+          * configures position of arrows. When `arrowsOverlay` is `false` arrows are positioned outside of component bounds
+         */
+        "arrowsOverlay": boolean;
+        /**
+          * Show a hint of the next item if more item to be seen. if 0, then no hint will be displayed.
+         */
+        "hintWidth": number;
+        /**
           * minimum width of the carousel item. The number of item displayed will be based on it.
          */
         "itemMinWidth": number;
+        /**
+          * Configures if pagination dots are shown (https://zeroheight.com/6dbc9efe1/p/045938-pagination/b/934eef)
+         */
+        "pagination": boolean;
     }
     interface SeCarouselItem {
+    }
+    interface SeCarouselPagination {
+        /**
+          * Index of active/selected pagination bullet
+         */
+        "activeIndex": number;
+        /**
+          * Number of pagination bullets
+         */
+        "size": number;
     }
     interface SeCheckbox {
         /**
@@ -323,7 +345,7 @@ export namespace Components {
          */
         "labelSuffix": string;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.     It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option": Option;
         /**
@@ -1394,6 +1416,12 @@ declare global {
         prototype: HTMLSeCarouselItemElement;
         new (): HTMLSeCarouselItemElement;
     };
+    interface HTMLSeCarouselPaginationElement extends Components.SeCarouselPagination, HTMLStencilElement {
+    }
+    var HTMLSeCarouselPaginationElement: {
+        prototype: HTMLSeCarouselPaginationElement;
+        new (): HTMLSeCarouselPaginationElement;
+    };
     interface HTMLSeCheckboxElement extends Components.SeCheckbox, HTMLStencilElement {
     }
     var HTMLSeCheckboxElement: {
@@ -1685,6 +1713,7 @@ declare global {
         "se-button": HTMLSeButtonElement;
         "se-carousel": HTMLSeCarouselElement;
         "se-carousel-item": HTMLSeCarouselItemElement;
+        "se-carousel-pagination": HTMLSeCarouselPaginationElement;
         "se-checkbox": HTMLSeCheckboxElement;
         "se-chip": HTMLSeChipElement;
         "se-container": HTMLSeContainerElement;
@@ -2015,11 +2044,33 @@ declare namespace LocalJSX {
     }
     interface SeCarousel {
         /**
+          * configures position of arrows. When `arrowsOverlay` is `false` arrows are positioned outside of component bounds
+         */
+        "arrowsOverlay"?: boolean;
+        /**
+          * Show a hint of the next item if more item to be seen. if 0, then no hint will be displayed.
+         */
+        "hintWidth"?: number;
+        /**
           * minimum width of the carousel item. The number of item displayed will be based on it.
          */
         "itemMinWidth"?: number;
+        /**
+          * Configures if pagination dots are shown (https://zeroheight.com/6dbc9efe1/p/045938-pagination/b/934eef)
+         */
+        "pagination"?: boolean;
     }
     interface SeCarouselItem {
+    }
+    interface SeCarouselPagination {
+        /**
+          * Index of active/selected pagination bullet
+         */
+        "activeIndex"?: number;
+        /**
+          * Number of pagination bullets
+         */
+        "size"?: number;
     }
     interface SeCheckbox {
         /**
@@ -2055,7 +2106,7 @@ declare namespace LocalJSX {
          */
         "onDidChange"?: (event: CustomEvent<{ value: string; selected: boolean }>) => void;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.     It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option"?: Option;
         /**
@@ -3101,6 +3152,7 @@ declare namespace LocalJSX {
         "se-button": SeButton;
         "se-carousel": SeCarousel;
         "se-carousel-item": SeCarouselItem;
+        "se-carousel-pagination": SeCarouselPagination;
         "se-checkbox": SeCheckbox;
         "se-chip": SeChip;
         "se-container": SeContainer;
@@ -3167,6 +3219,7 @@ declare module "@stencil/core" {
             "se-button": LocalJSX.SeButton & JSXBase.HTMLAttributes<HTMLSeButtonElement>;
             "se-carousel": LocalJSX.SeCarousel & JSXBase.HTMLAttributes<HTMLSeCarouselElement>;
             "se-carousel-item": LocalJSX.SeCarouselItem & JSXBase.HTMLAttributes<HTMLSeCarouselItemElement>;
+            "se-carousel-pagination": LocalJSX.SeCarouselPagination & JSXBase.HTMLAttributes<HTMLSeCarouselPaginationElement>;
             "se-checkbox": LocalJSX.SeCheckbox & JSXBase.HTMLAttributes<HTMLSeCheckboxElement>;
             "se-chip": LocalJSX.SeChip & JSXBase.HTMLAttributes<HTMLSeChipElement>;
             "se-container": LocalJSX.SeContainer & JSXBase.HTMLAttributes<HTMLSeContainerElement>;

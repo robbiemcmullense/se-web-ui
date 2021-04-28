@@ -253,13 +253,13 @@ export class SeButton {
 
 export declare interface SeCarousel extends Components.SeCarousel {}
 @ProxyCmp({
-  inputs: ['itemMinWidth']
+  inputs: ['arrowsOverlay', 'hintWidth', 'itemMinWidth', 'pagination']
 })
 @Component({
   selector: 'se-carousel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['itemMinWidth']
+  inputs: ['arrowsOverlay', 'hintWidth', 'itemMinWidth', 'pagination']
 })
 export class SeCarousel {
   protected el: HTMLElement;
@@ -278,6 +278,25 @@ export declare interface SeCarouselItem extends Components.SeCarouselItem {}
   template: '<ng-content></ng-content>'
 })
 export class SeCarouselItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SeCarouselPagination extends Components.SeCarouselPagination {}
+@ProxyCmp({
+  inputs: ['activeIndex', 'size']
+})
+@Component({
+  selector: 'se-carousel-pagination',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['activeIndex', 'size']
+})
+export class SeCarouselPagination {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

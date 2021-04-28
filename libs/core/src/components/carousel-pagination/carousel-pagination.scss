@@ -1,0 +1,44 @@
+.pagination-container {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-block {
+  max-width: 55px;
+  display: block;
+  height: 6px;
+  line-height: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-bottom: 1px;
+
+  > div {
+    transform: translateX(0);
+    transition: all 0.25s;
+  }
+}
+
+.pagination-bullet {
+  display: inline-table;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $se-light-grey;
+  margin: 0 2.5px;
+
+  &--active {
+    background-color: $se-life-green;
+  }
+
+  &--prev-hidden,
+  &--next-hidden {
+    transform: scale(0.5);
+  }
+
+  &--hidden {
+    transform: scale(0);
+  }
+}
