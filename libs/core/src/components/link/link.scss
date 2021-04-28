@@ -7,18 +7,23 @@ a {
   cursor: pointer;
   @include color("information");
   text-decoration: none;
+
   &.external {
     &:after {
       content: "\00a0>\00a0";
     }
   }
+
   &:hover {
-    text-decoration: underline;
+    text-decoration-line: underline;
+    text-decoration-thickness: from-font;
     @include color("information", 0.3);
   }
+
   &:visited {
     @include color("link-visited");
   }
+
   transition-property: outline-width;
   transition-duration: 0.2s;
 
