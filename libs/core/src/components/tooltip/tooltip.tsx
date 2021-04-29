@@ -14,7 +14,6 @@ import { createPopper } from '@popperjs/core';
 
 import { isTouchDevice } from '../../utils';
 
-var delayTimer;
 @Component({
   tag: 'se-tooltip',
   styleUrl: 'tooltip.scss',
@@ -25,6 +24,7 @@ export class TooltipComponent {
   elmTooltip: HTMLDivElement;
   popperInstance;
   containsFab;
+  delayTimer;
   popperDefault = [
     {
       name: 'offset',
@@ -67,25 +67,28 @@ export class TooltipComponent {
    */
   @Method()
   async open() {
-    delayTimer = setTimeout(() => {
-      if (!this.containsFab) {
-        // only maintain update when not on fab (glitch issue)
-        // Enable the event listeners
-        this.popperInstance?.setOptions({
-          modifiers: [
-            {
-              name: 'eventListeners',
-              enabled: true,
-            },
-            ...this.popperDefault,
-          ],
-        });
-        // Update its position
-        this.popperInstance?.update();
-      }
-      this.opened = true;
-      this.didOpen.emit();
-    }, !isTouchDevice() && this.showDelay);
+    this.delayTimer = setTimeout(
+      () => {
+        if (!this.containsFab) {
+          // only maintain update when not on fab (glitch issue)
+          // Enable the event listeners
+          this.popperInstance?.setOptions({
+            modifiers: [
+              {
+                name: 'eventListeners',
+                enabled: true,
+              },
+              ...this.popperDefault,
+            ],
+          });
+          // Update its position
+          this.popperInstance?.update();
+        }
+        this.opened = true;
+        this.didOpen.emit();
+      },
+      !isTouchDevice() ? this.showDelay : 0
+    );
   }
 
   /**
@@ -93,7 +96,7 @@ export class TooltipComponent {
    */
   @Method()
   async close() {
-    clearTimeout(delayTimer);
+    clearTimeout(this.delayTimer);
     if (!this.containsFab) {
       // Disable the event listeners
       this.popperInstance.setOptions({
@@ -112,14 +115,7 @@ export class TooltipComponent {
   @State() opened = false;
 
   @Listen('touchstart', { target: 'window' }) handleTouchstart(ev) {
-    if (ev?.path?.includes(this.el) && !this.opened) {
-      this.open();
-    }
-  }
-
-  @Listen('touchend', { target: 'window' }) handleTouchEnd() {
-    clearTimeout(delayTimer);
-    if (this.opened) {
+    if (!ev?.path?.includes(this.el) && this.opened) {
       this.close();
     }
   }
@@ -132,9 +128,19 @@ export class TooltipComponent {
   }
 
   @Listen('mouseleave') handleMouseLeave() {
-    clearTimeout(delayTimer);
+    clearTimeout(this.delayTimer);
     if (!isTouchDevice() && this.opened) {
       this.close();
+    }
+  }
+
+  _toggleClick() {
+    if (isTouchDevice()) {
+      if (this.opened) {
+        this.close();
+      } else {
+        this.open();
+      }
     }
   }
 
@@ -152,13 +158,18 @@ export class TooltipComponent {
   }
 
   disconnectedCallback() {
-    clearTimeout(delayTimer);
+    clearTimeout(this.delayTimer);
   }
 
   render() {
     return (
       <Host>
-        <div ref={el => (this.elmButton = el)}>
+        <div
+          ref={el => (this.elmButton = el)}
+          onClick={() => {
+            this._toggleClick();
+          }}
+        >
           <slot name="tooltip" />
         </div>
         <div

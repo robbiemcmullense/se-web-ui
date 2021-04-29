@@ -17,8 +17,6 @@ describe('TooltipHeaderComponent', () => {
   it('renders with an div element with a flex class and a slot element with the "end" attribute', async () => {
     const headerElm = await page.find('se-tooltip-header >>> div');
     expect(headerElm).toBeTruthy();
-    expect(headerElm).toHaveClass('tooltip-header');
-
     const slotElm = await page.find('se-tooltip-header >>> slot[name="end"]');
     expect(slotElm).toBeTruthy();
   });

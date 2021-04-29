@@ -1,19 +1,22 @@
 :host {
   position: fixed;
-  bottom: 20px;
-  display: none;
+  bottom: 4px;
+  visibility: hidden;
   align-self: center;
-  z-index: $zindex-snackbar;
   opacity: 0;
+  z-index: -1;
   transition: 0.2s;
-  @include slideDown();
-  width: 100%;
+  transform: translate3d(50vw, 50px, 0);
+  height: 0;
 }
 
 :host(.show-snackbar) {
-  display: block;
+  visibility: visible;
+  height: auto;
+  z-index: $zindex-snackbar;
   opacity: 1;
   @include slideUp();
+  transform: translate3d(50vw, 0, 0px);
 }
 
 // display the snackbar when open on IE 11
@@ -48,10 +51,14 @@
   @include color("primary-contrast");
   padding: $spacing-small;
   min-height: 32px;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
   width: fit-content;
+  align-items: center;
+  margin-left: -50%;
+  max-width: 100%;
+  top: -20px;
+  position: relative;
+  margin-bottom: 8px;
+  top: -16px;
 }
 
 .snackbar-icon {

@@ -17,7 +17,7 @@ describe('TooltipContentComponent', () => {
       components: [TooltipHeaderComponent],
       html: `<se-tooltip-header></se-tooltip-header>`,
     });
-    expect(page.root.shadowRoot.querySelector('.tooltip-header')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.start')).toBeTruthy();
   });
 
   it('should render with an se-icon component when an icon property is specified', async () => {

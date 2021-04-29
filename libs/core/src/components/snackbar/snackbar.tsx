@@ -11,8 +11,6 @@ import {
 import information_circle from '@se/icons/svg/information_circle.svg';
 import action_delete_cross from '@se/icons/svg/action_delete_cross.svg';
 
-const SHOW_SNACKBAR = 'show-snackbar';
-
 @Component({
   tag: 'se-snackbar',
   styleUrl: 'snackbar.scss',
@@ -49,13 +47,11 @@ export class SnackbarComponent {
   /**
    * Indicates if the snackbar is open.  Set to `false` (closed) by default.
    */
-
   private timeout: any;
 
   @Prop({ mutable: true }) open = false;
   @Watch('open') openDidChange() {
     if (this.open) {
-      this.el.classList.add(SHOW_SNACKBAR);
       this.timeout = setTimeout(() => {
         if (!this.canClose) {
           this.closeSnackbar();
@@ -79,8 +75,9 @@ export class SnackbarComponent {
 
   closeSnackbar() {
     this.open = false;
-    this.el.classList.remove(SHOW_SNACKBAR);
-    this.didClose.emit();
+    setTimeout(() => {
+      this.didClose.emit();
+    }, 500);
   }
 
   submitData() {
@@ -104,7 +101,7 @@ export class SnackbarComponent {
       renderIcon = false;
     }
     return (
-      <Host>
+      <Host class={{ 'show-snackbar': this.open }}>
         <div class={{ snackbar: true, [this.type]: true }} role="alert">
           <span class="snackbar-icon">
             {renderIcon && (
