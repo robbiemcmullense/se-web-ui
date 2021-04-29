@@ -14,6 +14,8 @@ storiesOf('Link', module).add(
 
     return `
       <se-link option='${option}' disabled='${disabled}' url='${url}'>${textHtml}</se-link>
+      <br>
+      <se-link option='${option}' disabled='${disabled}' url='${url}'><se-icon>folder</se-icon>${textHtml}</se-link>
     `;
   },
   {

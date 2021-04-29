@@ -3,7 +3,7 @@ import readme from './readme.md';
 import readmecontent from '../tooltip-content/readme.md';
 import readmeheader from '../tooltip-header/readme.md';
 import readmefooter from '../tooltip-footer/readme.md';
-import { select } from '@storybook/addon-knobs';
+import { select, number } from '@storybook/addon-knobs';
 
 const positionOptions = ['bottom', 'top', 'left', 'right'];
 const actionOptions = ['hover', 'click'];
@@ -15,11 +15,22 @@ storiesOf('Tooltip', module)
     () => {
       const position = select('position', positionOptions, 'bottom');
       const color = select('color', colorOptions, 'information');
+      const delay = number('showDelay', 0);
 
       return `
       <div style=" margin-top: 200px; margin-left: 200px;">
-        <se-tooltip position="${position}" color="${color}">
+        <se-tooltip position="${position}" color="${color}" show-delay="${delay}">
           <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+          <se-tooltip-content>This is my tooltip.</se-tooltip-content>
+        </se-tooltip>
+        <br><br><br><br>
+        <se-tooltip position="${position}" color="${color}" show-delay="${delay}">
+          <se-icon color="primary" slot="tooltip">folder</se-icon>
+          <se-tooltip-content>This is my tooltip.</se-tooltip-content>
+        </se-tooltip>
+        <br><br><br><br>
+        <se-tooltip position="${position}" color="${color}" show-delay="${delay}">
+          <se-icon slot="tooltip">folder</se-icon>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
       </div>

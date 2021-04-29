@@ -15,7 +15,7 @@ storiesOf('Filtration', module)
 
       return `
       <se-block color="none" width="300px" color="none">
-        <se-container direction="column">
+        <se-container direction="column" style="max-width: 300px">
           <se-filtration shadow=${shadow} item="Single Select" searchable=${searchable}>
             <se-list-item item="Orange"></se-list-item>
             <se-list-item item="Apple" selected>
@@ -37,13 +37,13 @@ storiesOf('Filtration', module)
               <se-checkbox slot="start" size="medium" label="Software" selected="true" id="Software"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Hardware" selected="true" id="Hardware"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="mylongemailaddress.whynot@se.com" selected="true" id="Hardware"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Infrastructure" id="Infrastructure"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Infrastructure with some more into it" label-suffix="100" id="Infrastructure"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Mechanical" id="Mechanical"></se-checkbox>
+              <se-checkbox slot="start" size="medium" label="Mechanical" label-suffix="10" id="Mechanical"></se-checkbox>
             </se-list-item>
             <se-list-item>
               <se-checkbox slot="start" size="medium" label="Electrical" id="Electrical"></se-checkbox>

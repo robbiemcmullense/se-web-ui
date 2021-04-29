@@ -13,6 +13,8 @@ import {
 import { createPopper } from '@popperjs/core';
 
 import { isTouchDevice } from '../../utils';
+
+var delayTimer;
 @Component({
   tag: 'se-tooltip',
   styleUrl: 'tooltip.scss',
@@ -23,6 +25,14 @@ export class TooltipComponent {
   elmTooltip: HTMLDivElement;
   popperInstance;
   containsFab;
+  popperDefault = [
+    {
+      name: 'offset',
+      options: {
+        offset: [0, 8],
+      },
+    },
+  ];
 
   @Element() el: HTMLElement;
   /**
@@ -38,6 +48,11 @@ export class TooltipComponent {
    * Indicates the color of the tooltip
    */
   @Prop() color: 'alternative' | 'information' = 'information';
+
+  /**
+   * Add a delay to display the tooltip in millisecond.
+   */
+  @Prop() showDelay = 0;
   /**
    * Event emitted when the tooltip has been opened.
    */
@@ -46,101 +61,80 @@ export class TooltipComponent {
    * Event emitted when the tooltip has been closed.
    */
   @Event() didClose: EventEmitter;
-  /**
-   * Closes the tooltip when another tooltip is opened.
-   */
-  @Event() closeTooltips: EventEmitter;
+
   /**
    * Method to open the tooltip separate from hovering or clicking the parent element.
    */
   @Method()
   async open() {
-    this.opened = true;
-
-    if (!this.containsFab) {
-      // only maintain update when not on fab (glitch issue)
-      // Enable the event listeners
-      this.popperInstance.setOptions({
-        modifiers: [
-          {
-            name: 'eventListeners',
-            enabled: true,
-          },
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 8],
+    delayTimer = setTimeout(() => {
+      if (!this.containsFab) {
+        // only maintain update when not on fab (glitch issue)
+        // Enable the event listeners
+        this.popperInstance?.setOptions({
+          modifiers: [
+            {
+              name: 'eventListeners',
+              enabled: true,
             },
-          },
-        ],
-      });
-
-      // Update its position
-      this.popperInstance.update();
-    }
+            ...this.popperDefault,
+          ],
+        });
+        // Update its position
+        this.popperInstance?.update();
+      }
+      this.opened = true;
+      this.didOpen.emit();
+    }, !isTouchDevice() && this.showDelay);
   }
+
   /**
    * Method to close the tooltip separate from hovering or clicking the parent element.
    */
   @Method()
   async close() {
-    this.opened = false;
-
+    clearTimeout(delayTimer);
     if (!this.containsFab) {
       // Disable the event listeners
       this.popperInstance.setOptions({
-        modifiers: [{ name: 'eventListeners', enabled: false }],
+        modifiers: [
+          {
+            name: 'eventListeners',
+            enabled: false,
+          },
+        ],
       });
     }
+    this.opened = false;
+    this.didClose.emit();
   }
 
   @State() opened = false;
 
   @Listen('touchstart', { target: 'window' }) handleTouchstart(ev) {
-    if (this.opened) {
-      this._toggle(ev);
+    if (ev?.path?.includes(this.el) && !this.opened) {
+      this.open();
     }
   }
 
-  @Listen('touchend', { target: 'window' }) handleTouchEnd(ev) {
-    if (this.opened) {
-      this._toggle(ev);
-    }
-  }
-
-  @Listen('mouseenter') handleMouseEnter(ev) {
-    // On touch device, we remove hover or the tooltip keep open and closing
-    if (!isTouchDevice()) {
-      this._toggle(ev);
-    }
-  }
-
-  @Listen('mouseleave') handleMouseLeave(ev) {
-    // On touch device, we remove hover or the tooltip keep open and closing
-    if (!isTouchDevice() && this.opened) {
-      this._toggle(ev);
-    }
-  }
-
-  @Listen('closeTooltips', { target: 'document' }) handleCloseTooltip() {
-    this.close();
-  }
-
-  _toggle(ev: Event) {
-    ev.stopPropagation();
+  @Listen('touchend', { target: 'window' }) handleTouchEnd() {
+    clearTimeout(delayTimer);
     if (this.opened) {
       this.close();
-      this.didClose.emit(ev);
-    } else {
-      this.closeTooltips.emit(); // close other tooltips before opening target tooltip
-      this.open();
-      this.didOpen.emit(ev);
     }
   }
 
-  _toggleClick(ev: Event) {
-    if (isTouchDevice()) {
-      this._toggle(ev);
+  @Listen('mouseenter') handleMouseEnter() {
+    // On touch device, we remove hover or the tooltip keep open and closing
+    if (!isTouchDevice()) {
+      this.open();
+    }
+  }
+
+  @Listen('mouseleave') handleMouseLeave() {
+    clearTimeout(delayTimer);
+    if (!isTouchDevice() && this.opened) {
+      this.close();
     }
   }
 
@@ -153,17 +147,12 @@ export class TooltipComponent {
     this.popperInstance = createPopper(elmButton, this.elmTooltip, {
       strategy: 'fixed',
       placement: this.position,
-      modifiers:
-        (this.containsFab && [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ]) ||
-        [],
+      modifiers: (this.containsFab && this.popperDefault) || [],
     });
+  }
+
+  disconnectedCallback() {
+    clearTimeout(delayTimer);
   }
 
   render() {
@@ -180,8 +169,8 @@ export class TooltipComponent {
             [this.color]: true,
           }}
         >
-          <div class="arrow" data-popper-arrow></div>
           <slot />
+          <div class="arrow" data-popper-arrow></div>
         </div>
       </Host>
     );

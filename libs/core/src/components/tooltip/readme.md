@@ -5,20 +5,20 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                      | Type                                     | Default         |
-| ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------- |
-| `action`   | `action`   | <span style="color:red">**[DEPRECATED]**</span> only `hover` action should be used for tooltips<br/><br/>        | `"click" \| "hover"`                     | `'hover'`       |
-| `color`    | `color`    | Indicates the color of the tooltip                                                                               | `"alternative" \| "information"`         | `'information'` |
-| `position` | `position` | Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent. | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'`      |
+| Property    | Attribute    | Description                                                                                                      | Type                                     | Default         |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------- |
+| `action`    | `action`     | <span style="color:red">**[DEPRECATED]**</span> only `hover` action should be used for tooltips<br/><br/>        | `"click" \| "hover"`                     | `'hover'`       |
+| `color`     | `color`      | Indicates the color of the tooltip                                                                               | `"alternative" \| "information"`         | `'information'` |
+| `position`  | `position`   | Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent. | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'`      |
+| `showDelay` | `show-delay` | Add a delay to display the tooltip in millisecond.                                                               | `number`                                 | `0`             |
 
 
 ## Events
 
-| Event           | Description                                        | Type               |
-| --------------- | -------------------------------------------------- | ------------------ |
-| `closeTooltips` | Closes the tooltip when another tooltip is opened. | `CustomEvent<any>` |
-| `didClose`      | Event emitted when the tooltip has been closed.    | `CustomEvent<any>` |
-| `didOpen`       | Event emitted when the tooltip has been opened.    | `CustomEvent<any>` |
+| Event      | Description                                     | Type               |
+| ---------- | ----------------------------------------------- | ------------------ |
+| `didClose` | Event emitted when the tooltip has been closed. | `CustomEvent<any>` |
+| `didOpen`  | Event emitted when the tooltip has been opened. | `CustomEvent<any>` |
 
 
 ## Methods

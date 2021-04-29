@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1",
-    "@popperjs/core": "^2.9.2"
+    "@popperjs/core": "^2.9.2",
+    "smoothscroll-polyfill": "^0.4.4"
   }
 }

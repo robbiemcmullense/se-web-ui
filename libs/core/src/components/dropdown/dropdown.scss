@@ -21,11 +21,15 @@
   overflow: auto;
   border-radius: $border-radius;
   z-index: -1;
-  transition: opacity 0.3s;
+  transition: opacity 0.5s;
+}
+.show {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  z-index: $zindex-dropdown;
+}
 
-  &.show {
-    visibility: visible; /* shows sub-menu */
-    opacity: 1;
-    z-index: $zindex-dropdown;
-  }
+[data-popper-reference-hidden] {
+  visibility: hidden;
+  pointer-events: none;
 }

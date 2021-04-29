@@ -943,6 +943,7 @@ export const SeTooltip = /*@__PURE__*/ Vue.extend({
     position: {} as PropOptions<Components.SeTooltip['position']>,
     action: {} as PropOptions<Components.SeTooltip['action']>,
     color: {} as PropOptions<Components.SeTooltip['color']>,
+    showDelay: {} as PropOptions<Components.SeTooltip['showDelay']>,
   },
 
 
@@ -950,7 +951,7 @@ export const SeTooltip = /*@__PURE__*/ Vue.extend({
     open: createCommonMethod('open') as Components.SeTooltip['open'],
     close: createCommonMethod('close') as Components.SeTooltip['close'],
   },
-  render: createCommonRender('se-tooltip', ['didOpen', 'didClose', 'closeTooltips']),
+  render: createCommonRender('se-tooltip', ['didOpen', 'didClose']),
 });
 
 

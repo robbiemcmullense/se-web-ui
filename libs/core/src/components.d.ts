@@ -345,7 +345,7 @@ export namespace Components {
          */
         "labelSuffix": string;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.     It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option": Option;
         /**
@@ -1271,6 +1271,10 @@ export namespace Components {
           * Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent.
          */
         "position": 'top' | 'bottom' | 'left' | 'right';
+        /**
+          * Add a delay to display the tooltip in millisecond.
+         */
+        "showDelay": number;
     }
     interface SeTooltipContent {
         /**
@@ -2106,7 +2110,7 @@ declare namespace LocalJSX {
          */
         "onDidChange"?: (event: CustomEvent<{ value: string; selected: boolean }>) => void;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.     It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option"?: Option;
         /**
@@ -3063,10 +3067,6 @@ declare namespace LocalJSX {
          */
         "color"?: 'alternative' | 'information';
         /**
-          * Closes the tooltip when another tooltip is opened.
-         */
-        "onCloseTooltips"?: (event: CustomEvent<any>) => void;
-        /**
           * Event emitted when the tooltip has been closed.
          */
         "onDidClose"?: (event: CustomEvent<any>) => void;
@@ -3078,6 +3078,10 @@ declare namespace LocalJSX {
           * Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent.
          */
         "position"?: 'top' | 'bottom' | 'left' | 'right';
+        /**
+          * Add a delay to display the tooltip in millisecond.
+         */
+        "showDelay"?: number;
     }
     interface SeTooltipContent {
         /**

@@ -68,17 +68,19 @@ export class RadioGroupComponent {
   }
 
   updateItemMode() {
-    this.children.forEach((child: any) => {
-      if (child.localName === 'se-button') {
-        child.setGrouped();
-        if (child.icon) {
-          child.iconOnly = true;
+    if (this.children) {
+      this.children.forEach((child: any) => {
+        if (child.localName === 'se-button') {
+          child.setGrouped();
+          if (child.icon) {
+            child.iconOnly = true;
+          }
         }
-      }
-      child.disabled = this.disabled;
-      child.size = this.size;
-      child.color = this.color;
-    });
+        child.disabled = this.disabled;
+        child.size = this.size;
+        child.color = this.color;
+      });
+    }
   }
 
   handleChildClicked(event: CustomEvent) {

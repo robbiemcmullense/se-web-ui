@@ -3,6 +3,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import smoothscroll from 'smoothscroll-polyfill';
 import arrow from '@se/icons/svg/arrow5_step.svg';
 import { classNames } from '../../utils';
+import { isTouchDevice } from '../../utils';
 
 smoothscroll.polyfill();
 @Component({
@@ -51,6 +52,8 @@ export class Carousel {
    * Number of pagination bullets (set when `pagination` property is true)
    */
   @State() paginationSize = 0;
+
+  @State() isMobile: boolean;
 
   size: 'small' | 'nano' | 'medium' | 'large' = 'small';
   ro: ResizeObserver;
@@ -215,6 +218,10 @@ export class Carousel {
     this.contentEl.removeEventListener('scroll', this.onScroll);
   }
 
+  componentWillLoad() {
+    this.isMobile = isTouchDevice();
+  }
+
   render() {
     return (
       <Host
@@ -224,7 +231,7 @@ export class Carousel {
           'right-hidden': this.showRightArrow,
         })}
       >
-        {this.showLeftArrow && (
+        {this.showLeftArrow && !this.isMobile && (
           <se-icon
             class="arrow left"
             onClick={() => this.scroll(-1)}
@@ -239,7 +246,7 @@ export class Carousel {
           <slot></slot>
         </div>
 
-        {this.showRightArrow && (
+        {this.showRightArrow && !this.isMobile && (
           <se-icon
             class="arrow right"
             option="button"

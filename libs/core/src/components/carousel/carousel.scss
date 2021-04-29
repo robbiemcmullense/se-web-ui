@@ -65,25 +65,23 @@
   display: none;
 }
 
-@include for-desktop-only {
-  .arrow {
-    display: block;
-    position: absolute;
-    z-index: 2;
-    top: calc(50% - 28px / 2);
-    color: var(--se-alternative-contrast, rgba($se-anthracite-grey, 0.5));
-    padding: 2px;
-    font-weight: bold;
-    cursor: pointer;
-    line-height: 0px;
+.arrow {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 28px / 2);
+  color: var(--se-alternative-contrast, rgba($se-anthracite-grey, 0.5));
+  padding: 2px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 0px;
 
-    &.left {
-      left: -$spacing-mlarge;
-    }
+  &.left {
+    left: -$spacing-mlarge;
+  }
 
-    &.right {
-      right: -$spacing-mlarge;
-    }
+  &.right {
+    right: -$spacing-mlarge;
   }
 }
 

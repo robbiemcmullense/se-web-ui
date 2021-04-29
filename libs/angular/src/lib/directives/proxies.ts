@@ -285,9 +285,6 @@ export class SeCarouselItem {
   }
 }
 
-<<<<<<< HEAD
-import { CheckboxComponent as ICheckboxComponent } from 'dist/libs/core/types/components/checkbox/checkbox';
-=======
 
 export declare interface SeCarouselPagination extends Components.SeCarouselPagination {}
 @ProxyCmp({
@@ -307,8 +304,7 @@ export class SeCarouselPagination {
   }
 }
 
-import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
->>>>>>> 7d300d36f1c529e480e7d3016ef492d8e338c1f0
+import { CheckboxComponent as ICheckboxComponent } from 'dist/libs/core/types/components/checkbox/checkbox';
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @ProxyCmp({
   inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
@@ -1160,28 +1156,26 @@ export class SeTableItemHeader {
 import { TooltipComponent as ITooltipComponent } from 'dist/libs/core/types/components/tooltip/tooltip';
 export declare interface SeTooltip extends Components.SeTooltip {}
 @ProxyCmp({
-  inputs: ['action', 'color', 'position'],
+  inputs: ['action', 'color', 'position', 'showDelay'],
   methods: ['open', 'close']
 })
 @Component({
   selector: 'se-tooltip',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['action', 'color', 'position'],
-  outputs: ['didOpen', 'didClose', 'closeTooltips']
+  inputs: ['action', 'color', 'position', 'showDelay'],
+  outputs: ['didOpen', 'didClose']
 })
 export class SeTooltip {
   /** Event emitted when the tooltip has been opened. */
   didOpen!: ITooltipComponent['didOpen'];
   /** Event emitted when the tooltip has been closed. */
   didClose!: ITooltipComponent['didClose'];
-  /** Closes the tooltip when another tooltip is opened. */
-  closeTooltips!: ITooltipComponent['closeTooltips'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['didOpen', 'didClose', 'closeTooltips']);
+    proxyOutputs(this, this.el, ['didOpen', 'didClose']);
   }
 }
 

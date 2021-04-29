@@ -132,7 +132,9 @@ export class FormFieldComponent {
 
   initLabel() {
     Array.from(
-      this.el.querySelectorAll('input, select, textarea, se-checkbox, se-radio')
+      this.el.querySelectorAll(
+        'input, select, textarea, se-checkbox, se-radio-group'
+      )
     ).forEach((item: any) => {
       item.disabled = this.disabled;
     });

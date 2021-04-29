@@ -21,6 +21,7 @@ $checkbox-colors: "primary", "secondary", "success";
 :host {
   display: inline-flex;
   align-items: center;
+  @include ellipsis();
 }
 
 input {
@@ -40,6 +41,9 @@ input {
 
 .label-wrap {
   // font-weight: 400;
+  @include ellipsis();
+  white-space: break-spaces;
+  word-break: break-word;
 
   .label-left & {
     margin-right: $spacing + $spacing-small;
@@ -94,6 +98,10 @@ input {
   &.disabled {
     cursor: default;
   }
+}
+
+.opt-checkbox {
+  @include ellipsis();
 }
 
 .opt-checkbox,

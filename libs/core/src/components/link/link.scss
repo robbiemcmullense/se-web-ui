@@ -15,7 +15,8 @@ a {
   }
 
   &:hover {
-    text-decoration-line: underline;
+    // compatibility with IE11
+    text-decoration: underline;
     text-decoration-thickness: from-font;
     @include color("information", 0.3);
   }
