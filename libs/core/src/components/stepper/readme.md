@@ -15,6 +15,13 @@
 | `linear`      | `linear`      | Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.                                                              | `boolean`                    | `true`      |
 
 
+## Events
+
+| Event       | Description                                                                                                                                                | Type               |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `didChange` | Event to send to the parent component when a stepper item is clicked and next and previous will be clicked. The Stepper Item data is passed to the parent. | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `next(validate: boolean) => Promise<void>`

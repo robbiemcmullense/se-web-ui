@@ -22,6 +22,9 @@ export class StepperItemComponent {
    * Indicates the content for the currently selected step in the stepper.
    */
   @Prop() active: boolean;
+  @Watch('active') activatedDidChange() {
+    this.didActivate.emit(this.active);
+  }
   /**
    * Indicates if the stepper item is interactive or not.
    * The default setting is `true`, the stepper item can be interacted with.
@@ -41,6 +44,12 @@ export class StepperItemComponent {
    * The boolean validated property is passed to the parent.
    */
   @Event() didValidate: EventEmitter;
+
+  /**
+   * Event to send to the parent component when a stepper item's data is active true or false.
+   * The boolean validated property is passed to the parent.
+   */
+  @Event() didActivate: EventEmitter;
 
   render() {
     return (

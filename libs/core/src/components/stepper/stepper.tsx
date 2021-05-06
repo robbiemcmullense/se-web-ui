@@ -6,6 +6,8 @@ import {
   State,
   Prop,
   Method,
+  EventEmitter,
+  Event,
 } from '@stencil/core';
 
 @Component({
@@ -19,6 +21,7 @@ export class StepperComponent {
   @State() stepperItems: HTMLSeStepperItemElement[] = [];
   @State() selectedItem: HTMLSeStepperItemElement;
   @State() validatedChanged: boolean;
+  @State() activeChanged: boolean;
   /**
    * Sets the background color of your stepper.
    * The default setting is `primary`, implementing a green background for the stepper visual items.
@@ -43,6 +46,11 @@ export class StepperComponent {
    * `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
    */
   @Prop() interactive = true;
+  /**
+   * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked.
+   * The Stepper Item data is passed to the parent.
+   */
+  @Event() didChange: EventEmitter;
   /**
    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
    * It no step parameter is provided, it will reset to the first stepper item.
@@ -100,10 +108,15 @@ export class StepperComponent {
     if (item) {
       this.selectedItem.active = true;
     }
+    this.didChange.emit(item);
   }
 
   @Listen('didValidate') itemValidated(value) {
     this.validatedChanged = value;
+  }
+
+  @Listen('didActivate') itemActivated(value) {
+    this.activeChanged = value;
   }
 
   getItemStep(item: any) {
