@@ -18,7 +18,7 @@
   font: inherit;
 
   padding-left: calc(
-    var(--se-list-item-root-padding) + var(--se-list-group-indentation) *
+    var(--se-list-item-padding-root) + var(--se-list-group-indentation) *
       var(--se-list-item-indentation-padding)
   );
   min-height: var(--se-list-item-height);

@@ -147,6 +147,15 @@
   border: 0 !important;
 }
 
+@mixin button-reset() {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  text-align: inherit;
+}
+
 @mixin interactive-element-outline($width: 2px, $offset: 2px) {
   outline-width: $width;
   outline-offset: $offset;

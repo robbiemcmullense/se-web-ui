@@ -4,16 +4,24 @@ import { ListGroupTriggerProps } from './types';
 export const ListGroupTriggerFilter = (
   props: ListGroupTriggerProps,
   children: HTMLElement
-): HTMLSeListItemElement => (
-  <se-list-item {...props}>
-    <div
-      slot="start"
-      class={{
-        'list-group-trigger-icon': true,
-        'list-group-trigger-icon--collapsed': props.collapsed,
-      }}
-    />
+): HTMLSeListItemElement => {
+  const { item, ...restProps } = props;
 
-    {children}
-  </se-list-item>
-);
+  return (
+    <se-list-item {...restProps}>
+      <div
+        slot="start"
+        class={{
+          'list-group-trigger-icon': true,
+          'list-group-trigger-icon--collapsed': props.collapsed,
+        }}
+      />
+
+      <div class="list-group-trigger-body" slot="item">
+        {item}
+      </div>
+
+      {children}
+    </se-list-item>
+  );
+};

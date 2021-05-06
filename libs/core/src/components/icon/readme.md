@@ -34,6 +34,11 @@
  - [se-fab](../fab)
  - [se-fab-item](../fab-item)
  - [se-filtration](../filtration)
+ - [se-filtration-smart-facet](../filtration-smart/facet)
+ - [se-filtration-smart-mobile-view-trigger](../filtration-smart/mobile-view-trigger)
+ - [se-filtration-smart-reset-button](../filtration-smart/reset-button)
+ - [se-filtration-smart-view-more-facets-button](../filtration-smart/view-more-facets-button)
+ - [se-filtration-smart-view-more-refinements-button](../filtration-smart/view-more-refinements-button)
  - [se-header](../header)
  - [se-icon-file](../icon-file)
  - [se-list-group](../list-group)
@@ -59,6 +64,11 @@ graph TD;
   se-fab --> se-icon
   se-fab-item --> se-icon
   se-filtration --> se-icon
+  se-filtration-smart-facet --> se-icon
+  se-filtration-smart-mobile-view-trigger --> se-icon
+  se-filtration-smart-reset-button --> se-icon
+  se-filtration-smart-view-more-facets-button --> se-icon
+  se-filtration-smart-view-more-refinements-button --> se-icon
   se-header --> se-icon
   se-icon-file --> se-icon
   se-list-group --> se-icon

@@ -27,6 +27,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [se-filtration-smart-mobile-view](../filtration-smart/mobile-view)
+
 ### Depends on
 
 - [se-icon](../icon)
@@ -35,6 +39,7 @@
 ```mermaid
 graph TD;
   se-dialog-header --> se-icon
+  se-filtration-smart-mobile-view --> se-dialog-header
   style se-dialog-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

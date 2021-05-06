@@ -1,3 +1,5 @@
+@import "../../theme/mixin";
+
 :host {
   @include flex-direction(column);
   @include display-flex();
@@ -35,20 +37,18 @@ se-list-item {
   margin: -$spacing;
   margin-right: -$spacing-large;
 }
-
 .list-group-trigger {
   font-weight: var(--se-list-item-group-trigger-font-weight);
 }
-
 .list-group-trigger-icon {
   position: relative;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 
   &::before,
   &::after {
     display: block;
-    width: 14px;
+    width: 16px;
     height: 2px;
     position: absolute;
     top: 6px;
@@ -69,4 +69,14 @@ se-list-item {
       content: "";
     }
   }
+}
+
+.list-group-trigger-body {
+  @include for-mobile-only {
+    padding: 8px 0;
+  }
+}
+
+.list-group-trigger {
+  font-weight: var(--se-list-item-group-trigger-font-weight);
 }

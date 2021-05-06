@@ -1,0 +1,91 @@
+@import "../../../theme/mixin";
+
+:host {
+  display: block;
+}
+
+.facet__header-button-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+  @include for-tablet-and-down {
+    padding: 8px 0 8px 16px;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: normal;
+    min-height: 65px;
+  }
+
+  @include for-desktop-only {
+    padding: 13px 10px 12px 24px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+  }
+}
+
+.facet__name {
+  @include for-tablet-and-down {
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
+
+.facet__labels {
+  max-height: 40px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.facet__label {
+  color: $se-life-green;
+
+  &--disabled {
+    color: $se-medium-grey;
+  }
+}
+
+.facet__list {
+  @include for-tablet-and-down {
+    background-color: $se-ultra-light-grey-3;
+    padding: 10px 0;
+  }
+
+  @include for-desktop-only {
+    background-color: $se-white;
+    padding: 16px 0;
+  }
+
+  &--facet-has-footer {
+    @include for-desktop-only {
+      padding-bottom: 4px;
+    }
+  }
+}
+
+.facet__header-icon {
+  @include for-desktop-only {
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+}
+
+button.facet__header-button {
+  @include button-reset();
+  cursor: pointer;
+  display: block;
+  width: 100%;
+
+  &:focus {
+    @include for-tablet-and-down {
+      outline: none;
+    }
+
+    @include for-desktop-only {
+      @include interactive-element-outline(2px, -2px);
+    }
+  }
+}

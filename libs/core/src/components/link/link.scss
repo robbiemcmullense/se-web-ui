@@ -29,9 +29,7 @@ a {
   transition-duration: 0.2s;
 
   &:focus {
-    outline-width: 2px;
-    @include outline("button-focus");
-    outline-style: solid;
+    @include interactive-element-outline(2px, 0);
   }
 
   &[data-disabled] {

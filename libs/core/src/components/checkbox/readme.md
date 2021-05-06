@@ -46,6 +46,19 @@ Type: `Promise<void>`
 
 
 
+## Dependencies
+
+### Used by
+
+ - [se-filtration-smart-checkbox](../filtration-smart/checkbox)
+
+### Graph
+```mermaid
+graph TD;
+  se-filtration-smart-checkbox --> se-checkbox
+  style se-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

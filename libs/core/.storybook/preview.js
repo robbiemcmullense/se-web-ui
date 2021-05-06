@@ -59,13 +59,29 @@ addParameters({
   },
 });
 
-addDecorator(
-  story => `
-  <se-app
-    theme=${select('application theme', ['dark', 'light', 'auto'], 'auto')}
-    option=${select('application type', ['technical', 'website'], 'technical')}>
-    <se-container position="absolute" color="standard" display="block">
-      ${story()}
-    </se-container>
-  </se-app>`
-);
+addDecorator(storyFn => {
+  const app = document.createElement('se-app');
+  app.theme = select('application theme', ['dark', 'light', 'auto'], 'auto');
+  app.option = select(
+    'application type',
+    ['technical', 'website'],
+    'technical'
+  );
+
+  const container = document.createElement('se-container');
+  container.position = 'absolute';
+  container.color = 'standard';
+  container.display = 'block';
+
+  const story = storyFn();
+
+  if (typeof story === 'string') {
+    container.innerHTML = story;
+  } else {
+    container.append(story);
+  }
+
+  app.append(container);
+
+  return app;
+});

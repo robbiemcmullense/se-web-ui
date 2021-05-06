@@ -35,9 +35,7 @@ a {
   text-decoration: inherit;
   cursor: inherit;
   // &:focus {
-  //   outline-width: 2px;
-  //   @include outline('button-focus');
-  //   outline-style: solid;
+  //   @include interactive-element-outline(2px, 0);
   // }
 }
 

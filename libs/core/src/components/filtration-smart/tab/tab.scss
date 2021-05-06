@@ -1,0 +1,42 @@
+@import "../../../theme/mixin";
+
+:host {
+  display: block;
+}
+
+.tab {
+  font-weight: normal;
+  flex: 1 1 100%; // I had to add it to fix issue with `.content` taking all width of `se-list-item`
+
+  @include for-tablet-and-down {
+    margin-left: -16px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px 0;
+  }
+
+  @include for-desktop-only {
+    margin-left: -18px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &--checked {
+    font-weight: bold;
+  }
+
+  // TODO: remove if IE11 support will be dropped
+  &--ie {
+    @include for-tablet-and-down {
+      margin-left: -20px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+    }
+
+    @include for-desktop-only {
+      margin-left: -8px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+    }
+  }
+}
+
+.tab__count {
+  color: $se-medium-grey;
+}

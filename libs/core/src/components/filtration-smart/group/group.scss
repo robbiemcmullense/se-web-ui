@@ -1,0 +1,13 @@
+@import "../../../theme/mixin";
+
+:host {
+  display: block;
+}
+
+.group__item {
+  & + & {
+    @include for-desktop-only {
+      margin-top: 4px;
+    }
+  }
+}

@@ -101,9 +101,7 @@ se-form-field {
     padding: $spacing-small $spacing-small $spacing-small $spacing;
     font-size: inherit;
     &:focus {
-      outline-width: 2px;
-      @include outline("button-focus");
-      outline-style: solid;
+      @include interactive-element-outline(2px, 0);
     }
   }
 

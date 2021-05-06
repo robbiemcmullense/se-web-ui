@@ -35,10 +35,32 @@ export class BlockContent {
       0;
   };
 
+  private addScrollBehavior = (): void => {
+    setTimeout(this.setOverlays, 50); // haven't found a way to trigger recalculations in the right time - just after scrollBody height changed
+    this.scrollBody.addEventListener('scroll', this.setOverlays);
+  };
+
+  private removeScrollBehavior = (): void => {
+    this.hasOverlayTop = false;
+    this.hasOverlayBottom = false;
+    this.scrollBody.removeEventListener('scroll', this.setOverlays);
+  };
+
   componentDidLoad(): void {
     if (this.maxHeight) {
-      this.setOverlays();
-      this.scrollBody.addEventListener('scroll', this.setOverlays);
+      this.addScrollBehavior();
+    }
+  }
+
+  disconnectedCallback(): void {
+    this.removeScrollBehavior();
+  }
+
+  componentDidUpdate(): void {
+    if (this.maxHeight) {
+      this.addScrollBehavior();
+    } else {
+      this.removeScrollBehavior();
     }
   }
 

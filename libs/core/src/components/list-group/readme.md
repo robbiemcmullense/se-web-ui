@@ -73,6 +73,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [se-filtration-smart-group](../filtration-smart/group)
+
 ### Depends on
 
 - [se-list-item](../list-item)
@@ -84,6 +88,7 @@ graph TD;
   se-list-group --> se-list-item
   se-list-group --> se-icon
   se-list-item --> se-icon
+  se-filtration-smart-group --> se-list-group
   style se-list-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

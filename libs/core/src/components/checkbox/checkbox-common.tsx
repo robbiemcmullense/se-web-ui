@@ -49,6 +49,7 @@ export const CheckboxCommon: FunctionalComponent<Props> = props => {
           {required && <i class="required">*</i>}
         </span>
       )}
+      <slot name="label" />
       <span class="container" onClick={onToggle}>
         <input
           type="checkbox"

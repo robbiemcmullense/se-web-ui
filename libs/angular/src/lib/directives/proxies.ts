@@ -570,6 +570,260 @@ export class SeFiltration {
   }
 }
 
+import { FiltrationSmart as IFiltrationSmart } from '@se/web-ui/types/components/filtration-smart/filtration-smart';
+export declare interface SeFiltrationSmart extends Components.SeFiltrationSmart {}
+@ProxyCmp({
+  inputs: ['filters', 'headerLabelDesktop', 'headerLabelMobile', 'isMobileViewVisible', 'maxFacetContentHeight', 'resetButtonLabel', 'showProductsLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel', 'visibleFacetsCount', 'visibleRefinementsPerFacetCount'],
+  methods: ['reset', 'setIsFilterChecked']
+})
+@Component({
+  selector: 'se-filtration-smart',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['filters', 'headerLabelDesktop', 'headerLabelMobile', 'isMobileViewVisible', 'maxFacetContentHeight', 'resetButtonLabel', 'showProductsLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel', 'visibleFacetsCount', 'visibleRefinementsPerFacetCount'],
+  outputs: ['filterStateChanged']
+})
+export class SeFiltrationSmart {
+  /** Event that emits list of checked filters. */
+  filterStateChanged!: IFiltrationSmart['filterStateChanged'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['filterStateChanged']);
+  }
+}
+
+import { FiltrationSmartCheckbox as IFiltrationSmartCheckbox } from '@se/web-ui/types/components/filtration-smart/checkbox/checkbox';
+export declare interface SeFiltrationSmartCheckbox extends Components.SeFiltrationSmartCheckbox {}
+@ProxyCmp({
+  inputs: ['isMobile', 'refinementId']
+})
+@Component({
+  selector: 'se-filtration-smart-checkbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['isMobile', 'refinementId'],
+  outputs: ['refinementStateChanged']
+})
+export class SeFiltrationSmartCheckbox {
+  /** Event that has info about refinement whose state should be changed. Root component listens to it. */
+  refinementStateChanged!: IFiltrationSmartCheckbox['refinementStateChanged'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['refinementStateChanged']);
+  }
+}
+
+
+export declare interface SeFiltrationSmartDesktopView extends Components.SeFiltrationSmartDesktopView {}
+@ProxyCmp({
+  inputs: ['headerLabel', 'maxFacetContentHeight', 'resetButtonLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel']
+})
+@Component({
+  selector: 'se-filtration-smart-desktop-view',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['headerLabel', 'maxFacetContentHeight', 'resetButtonLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel']
+})
+export class SeFiltrationSmartDesktopView {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+import { FiltrationSmartFacet as IFiltrationSmartFacet } from '@se/web-ui/types/components/filtration-smart/facet/facet';
+export declare interface SeFiltrationSmartFacet extends Components.SeFiltrationSmartFacet {}
+@ProxyCmp({
+  inputs: ['facetId', 'isMobile', 'maxContentHeight', 'viewLessLabel', 'viewMoreLabel']
+})
+@Component({
+  selector: 'se-filtration-smart-facet',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['facetId', 'isMobile', 'maxContentHeight', 'viewLessLabel', 'viewMoreLabel'],
+  outputs: ['toggleIsSectionExpanded']
+})
+export class SeFiltrationSmartFacet {
+  /** Event that has info about facet whose collapsed/expanded state should be changed.
+ Root Filter component listens to it. */
+  toggleIsSectionExpanded!: IFiltrationSmartFacet['toggleIsSectionExpanded'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggleIsSectionExpanded']);
+  }
+}
+
+import { FiltrationSmartGroup as IFiltrationSmartGroup } from '@se/web-ui/types/components/filtration-smart/group/group';
+export declare interface SeFiltrationSmartGroup extends Components.SeFiltrationSmartGroup {}
+@ProxyCmp({
+  inputs: ['isMobile', 'level', 'sectionId']
+})
+@Component({
+  selector: 'se-filtration-smart-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['isMobile', 'level', 'sectionId'],
+  outputs: ['toggleIsSectionExpanded']
+})
+export class SeFiltrationSmartGroup {
+  /** Event that has info about the section whose collapsed/expanded state should be changed.
+ Root Filter component listens to it. */
+  toggleIsSectionExpanded!: IFiltrationSmartGroup['toggleIsSectionExpanded'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggleIsSectionExpanded']);
+  }
+}
+
+import { FiltrationSmartMobileView as IFiltrationSmartMobileView } from '@se/web-ui/types/components/filtration-smart/mobile-view/mobile-view';
+export declare interface SeFiltrationSmartMobileView extends Components.SeFiltrationSmartMobileView {}
+@ProxyCmp({
+  inputs: ['headerLabel', 'isVisible', 'resetButtonLabel', 'showProductsLabel']
+})
+@Component({
+  selector: 'se-filtration-smart-mobile-view',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['headerLabel', 'isVisible', 'resetButtonLabel', 'showProductsLabel'],
+  outputs: ['toggleMobileView']
+})
+export class SeFiltrationSmartMobileView {
+  /** Event that closes mobile view with two options:
+ { restore: true } -- closes mobile view and undoes changes made in mobile view
+ { restore: false } -- closes mobile view and applies changes made in mobile view */
+  toggleMobileView!: IFiltrationSmartMobileView['toggleMobileView'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggleMobileView']);
+  }
+}
+
+import { FiltrationSmartMobileViewTrigger as IFiltrationSmartMobileViewTrigger } from '@se/web-ui/types/components/filtration-smart/mobile-view-trigger/mobile-view-trigger';
+export declare interface SeFiltrationSmartMobileViewTrigger extends Components.SeFiltrationSmartMobileViewTrigger {}
+@ProxyCmp({
+  inputs: ['count', 'label']
+})
+@Component({
+  selector: 'se-filtration-smart-mobile-view-trigger',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['count', 'label'],
+  outputs: ['toggleMobileView']
+})
+export class SeFiltrationSmartMobileViewTrigger {
+  /** Event that toggle visibility of the mobile view. */
+  toggleMobileView!: IFiltrationSmartMobileViewTrigger['toggleMobileView'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggleMobileView']);
+  }
+}
+
+import { FiltrationSmartResetButton as IFiltrationSmartResetButton } from '@se/web-ui/types/components/filtration-smart/reset-button/reset-button';
+export declare interface SeFiltrationSmartResetButton extends Components.SeFiltrationSmartResetButton {}
+@ProxyCmp({
+  inputs: ['disabled', 'label']
+})
+@Component({
+  selector: 'se-filtration-smart-reset-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['disabled', 'label'],
+  outputs: ['resetAllClicked']
+})
+export class SeFiltrationSmartResetButton {
+  /** Event that reset Smart Filter to initial state. */
+  resetAllClicked!: IFiltrationSmartResetButton['resetAllClicked'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['resetAllClicked']);
+  }
+}
+
+import { FiltrationSmartTab as IFiltrationSmartTab } from '@se/web-ui/types/components/filtration-smart/tab/tab';
+export declare interface SeFiltrationSmartTab extends Components.SeFiltrationSmartTab {}
+@ProxyCmp({
+  inputs: ['refinementId']
+})
+@Component({
+  selector: 'se-filtration-smart-tab',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['refinementId'],
+  outputs: ['refinementStateChanged']
+})
+export class SeFiltrationSmartTab {
+  /** Event that has info about tab whose state should be changed. Root Filter component listens to it. */
+  refinementStateChanged!: IFiltrationSmartTab['refinementStateChanged'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['refinementStateChanged']);
+  }
+}
+
+import { FiltrationSmartViewMoreSectionsButton as IFiltrationSmartViewMoreSectionsButton } from '@se/web-ui/types/components/filtration-smart/view-more-facets-button/view-more-facets-button';
+export declare interface SeFiltrationSmartViewMoreFacetsButton extends Components.SeFiltrationSmartViewMoreFacetsButton {}
+@ProxyCmp({
+  inputs: ['count', 'isAllFacetsVisible', 'viewLessLabel', 'viewMoreLabel']
+})
+@Component({
+  selector: 'se-filtration-smart-view-more-facets-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['count', 'isAllFacetsVisible', 'viewLessLabel', 'viewMoreLabel'],
+  outputs: ['toggleViewMoreFacets']
+})
+export class SeFiltrationSmartViewMoreFacetsButton {
+  /** Event that signals Smart Filter to toggle visibility of all its facets. */
+  toggleViewMoreFacets!: IFiltrationSmartViewMoreSectionsButton['toggleViewMoreFacets'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggleViewMoreFacets']);
+  }
+}
+
+import { FiltrationSmartViewMoreRefinementsButton as IFiltrationSmartViewMoreRefinementsButton } from '@se/web-ui/types/components/filtration-smart/view-more-refinements-button/view-more-refinements-button';
+export declare interface SeFiltrationSmartViewMoreRefinementsButton extends Components.SeFiltrationSmartViewMoreRefinementsButton {}
+@ProxyCmp({
+  inputs: ['count', 'facetId', 'isAllRefinementsVisible', 'viewLessLabel', 'viewMoreLabel']
+})
+@Component({
+  selector: 'se-filtration-smart-view-more-refinements-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['count', 'facetId', 'isAllRefinementsVisible', 'viewLessLabel', 'viewMoreLabel'],
+  outputs: ['toggleViewMoreRefinements']
+})
+export class SeFiltrationSmartViewMoreRefinementsButton {
+  /** Event that signals Smart Filter to toggle visibility of all its refinements. */
+  toggleViewMoreRefinements!: IFiltrationSmartViewMoreRefinementsButton['toggleViewMoreRefinements'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['toggleViewMoreRefinements']);
+  }
+}
+
 import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({

@@ -1,0 +1,57 @@
+@import "../../../theme/mixin";
+
+.reset-button {
+  @include button-reset();
+  display: flex;
+  align-items: center;
+  color: $se-sky-blue;
+  font-weight: normal;
+  cursor: pointer;
+
+  @include for-tablet-and-down {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  @include for-desktop-only {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &:focus {
+    @include for-tablet-and-down {
+      outline: none;
+    }
+
+    @include for-desktop-only {
+      @include interactive-element-outline();
+    }
+  }
+
+  &--disabled {
+    color: rgba($se-sky-blue, 0.5);
+    cursor: default;
+  }
+}
+
+.reset-button__icon {
+  @include for-tablet-and-down {
+    font-size: 30px;
+  }
+
+  @include for-desktop-only {
+    font-size: 24px;
+  }
+}
+
+.reset-button__label {
+  @include for-tablet-and-down {
+    margin-left: 5px;
+  }
+
+  .reset-button:hover & {
+    @include for-desktop-only {
+      text-decoration: underline;
+    }
+  }
+}

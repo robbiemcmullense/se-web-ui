@@ -21,6 +21,7 @@
 ### Used by
 
  - [se-filtration](../filtration)
+ - [se-filtration-smart-facet](../filtration-smart/facet)
 
 ### Depends on
 
@@ -31,6 +32,7 @@
 graph TD;
   se-block-footer --> se-divider
   se-filtration --> se-block-footer
+  se-filtration-smart-facet --> se-block-footer
   style se-block-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

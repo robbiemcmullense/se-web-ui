@@ -38,6 +38,17 @@ const customElementTags: string[] = [
  'se-fab',
  'se-fab-item',
  'se-filtration',
+ 'se-filtration-smart',
+ 'se-filtration-smart-checkbox',
+ 'se-filtration-smart-desktop-view',
+ 'se-filtration-smart-facet',
+ 'se-filtration-smart-group',
+ 'se-filtration-smart-mobile-view',
+ 'se-filtration-smart-mobile-view-trigger',
+ 'se-filtration-smart-reset-button',
+ 'se-filtration-smart-tab',
+ 'se-filtration-smart-view-more-facets-button',
+ 'se-filtration-smart-view-more-refinements-button',
  'se-form-field',
  'se-header',
  'se-icon',
@@ -490,6 +501,168 @@ export const SeFiltration = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('se-filtration', ['didSearch', 'didSelectAll']),
+});
+
+
+export const SeFiltrationSmart = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    filters: {} as PropOptions<Components.SeFiltrationSmart['filters']>,
+    resetButtonLabel: {} as PropOptions<Components.SeFiltrationSmart['resetButtonLabel']>,
+    showProductsLabel: {} as PropOptions<Components.SeFiltrationSmart['showProductsLabel']>,
+    viewMoreRefinementsLabel: {} as PropOptions<Components.SeFiltrationSmart['viewMoreRefinementsLabel']>,
+    viewLessRefinementsLabel: {} as PropOptions<Components.SeFiltrationSmart['viewLessRefinementsLabel']>,
+    viewMoreFacetsLabel: {} as PropOptions<Components.SeFiltrationSmart['viewMoreFacetsLabel']>,
+    viewLessFacetsLabel: {} as PropOptions<Components.SeFiltrationSmart['viewLessFacetsLabel']>,
+    visibleFacetsCount: {} as PropOptions<Components.SeFiltrationSmart['visibleFacetsCount']>,
+    visibleRefinementsPerFacetCount: {} as PropOptions<Components.SeFiltrationSmart['visibleRefinementsPerFacetCount']>,
+    headerLabelDesktop: {} as PropOptions<Components.SeFiltrationSmart['headerLabelDesktop']>,
+    headerLabelMobile: {} as PropOptions<Components.SeFiltrationSmart['headerLabelMobile']>,
+    isMobileViewVisible: {} as PropOptions<Components.SeFiltrationSmart['isMobileViewVisible']>,
+    maxFacetContentHeight: {} as PropOptions<Components.SeFiltrationSmart['maxFacetContentHeight']>,
+  },
+
+
+  methods: {
+    reset: createCommonMethod('reset') as Components.SeFiltrationSmart['reset'],
+    setIsFilterChecked: createCommonMethod('setIsFilterChecked') as Components.SeFiltrationSmart['setIsFilterChecked'],
+  },
+  render: createCommonRender('se-filtration-smart', ['filterStateChanged']),
+});
+
+
+export const SeFiltrationSmartCheckbox = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    refinementId: {} as PropOptions<Components.SeFiltrationSmartCheckbox['refinementId']>,
+    isMobile: {} as PropOptions<Components.SeFiltrationSmartCheckbox['isMobile']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-checkbox', ['refinementStateChanged']),
+});
+
+
+export const SeFiltrationSmartDesktopView = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    resetButtonLabel: {} as PropOptions<Components.SeFiltrationSmartDesktopView['resetButtonLabel']>,
+    viewMoreRefinementsLabel: {} as PropOptions<Components.SeFiltrationSmartDesktopView['viewMoreRefinementsLabel']>,
+    viewLessRefinementsLabel: {} as PropOptions<Components.SeFiltrationSmartDesktopView['viewLessRefinementsLabel']>,
+    viewMoreFacetsLabel: {} as PropOptions<Components.SeFiltrationSmartDesktopView['viewMoreFacetsLabel']>,
+    viewLessFacetsLabel: {} as PropOptions<Components.SeFiltrationSmartDesktopView['viewLessFacetsLabel']>,
+    headerLabel: {} as PropOptions<Components.SeFiltrationSmartDesktopView['headerLabel']>,
+    maxFacetContentHeight: {} as PropOptions<Components.SeFiltrationSmartDesktopView['maxFacetContentHeight']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-desktop-view', []),
+});
+
+
+export const SeFiltrationSmartFacet = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    facetId: {} as PropOptions<Components.SeFiltrationSmartFacet['facetId']>,
+    isMobile: {} as PropOptions<Components.SeFiltrationSmartFacet['isMobile']>,
+    maxContentHeight: {} as PropOptions<Components.SeFiltrationSmartFacet['maxContentHeight']>,
+    viewMoreLabel: {} as PropOptions<Components.SeFiltrationSmartFacet['viewMoreLabel']>,
+    viewLessLabel: {} as PropOptions<Components.SeFiltrationSmartFacet['viewLessLabel']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-facet', ['toggleIsSectionExpanded']),
+});
+
+
+export const SeFiltrationSmartGroup = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    sectionId: {} as PropOptions<Components.SeFiltrationSmartGroup['sectionId']>,
+    level: {} as PropOptions<Components.SeFiltrationSmartGroup['level']>,
+    isMobile: {} as PropOptions<Components.SeFiltrationSmartGroup['isMobile']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-group', ['toggleIsSectionExpanded']),
+});
+
+
+export const SeFiltrationSmartMobileView = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    resetButtonLabel: {} as PropOptions<Components.SeFiltrationSmartMobileView['resetButtonLabel']>,
+    isVisible: {} as PropOptions<Components.SeFiltrationSmartMobileView['isVisible']>,
+    headerLabel: {} as PropOptions<Components.SeFiltrationSmartMobileView['headerLabel']>,
+    showProductsLabel: {} as PropOptions<Components.SeFiltrationSmartMobileView['showProductsLabel']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-mobile-view', ['toggleMobileView']),
+});
+
+
+export const SeFiltrationSmartMobileViewTrigger = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    label: {} as PropOptions<Components.SeFiltrationSmartMobileViewTrigger['label']>,
+    count: {} as PropOptions<Components.SeFiltrationSmartMobileViewTrigger['count']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-mobile-view-trigger', ['toggleMobileView']),
+});
+
+
+export const SeFiltrationSmartResetButton = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    label: {} as PropOptions<Components.SeFiltrationSmartResetButton['label']>,
+    disabled: {} as PropOptions<Components.SeFiltrationSmartResetButton['disabled']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-reset-button', ['resetAllClicked']),
+});
+
+
+export const SeFiltrationSmartTab = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    refinementId: {} as PropOptions<Components.SeFiltrationSmartTab['refinementId']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-tab', ['refinementStateChanged']),
+});
+
+
+export const SeFiltrationSmartViewMoreFacetsButton = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    isAllFacetsVisible: {} as PropOptions<Components.SeFiltrationSmartViewMoreFacetsButton['isAllFacetsVisible']>,
+    count: {} as PropOptions<Components.SeFiltrationSmartViewMoreFacetsButton['count']>,
+    viewMoreLabel: {} as PropOptions<Components.SeFiltrationSmartViewMoreFacetsButton['viewMoreLabel']>,
+    viewLessLabel: {} as PropOptions<Components.SeFiltrationSmartViewMoreFacetsButton['viewLessLabel']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-view-more-facets-button', ['toggleViewMoreFacets']),
+});
+
+
+export const SeFiltrationSmartViewMoreRefinementsButton = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    facetId: {} as PropOptions<Components.SeFiltrationSmartViewMoreRefinementsButton['facetId']>,
+    isAllRefinementsVisible: {} as PropOptions<Components.SeFiltrationSmartViewMoreRefinementsButton['isAllRefinementsVisible']>,
+    count: {} as PropOptions<Components.SeFiltrationSmartViewMoreRefinementsButton['count']>,
+    viewMoreLabel: {} as PropOptions<Components.SeFiltrationSmartViewMoreRefinementsButton['viewMoreLabel']>,
+    viewLessLabel: {} as PropOptions<Components.SeFiltrationSmartViewMoreRefinementsButton['viewLessLabel']>,
+  },
+
+
+  render: createCommonRender('se-filtration-smart-view-more-refinements-button', ['toggleViewMoreRefinements']),
 });
 
 
