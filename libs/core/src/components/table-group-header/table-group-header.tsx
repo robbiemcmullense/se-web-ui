@@ -11,7 +11,13 @@ export class TableGroupHeaderComponent {
   render() {
     return (
       <Host role="row" slot="start">
+        <div class="sticky start">
+          <slot name="start"></slot>
+        </div>
         <slot />
+        <div class="sticky end">
+          <slot name="end"></slot>
+        </div>
       </Host>
     );
   }

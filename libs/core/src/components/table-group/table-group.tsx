@@ -24,7 +24,13 @@ export class TableGroupComponent {
         class={{ selectable: this.selectable, selected: this.selected }}
       >
         <div class="table-group-row" id={id ? `wc-${id}` : ''}>
+          <div class="sticky start">
+            <slot name="start"></slot>
+          </div>
           <slot />
+          <div class="sticky end">
+            <slot name="end"></slot>
+          </div>
         </div>
         <slot name="detail" />
       </Host>
