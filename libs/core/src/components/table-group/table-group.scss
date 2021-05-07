@@ -19,7 +19,7 @@
 .sticky {
   position: sticky;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0.95);
+  @include background-color("background-alternative", 0.95);
   display: flex;
 }
 .end {
@@ -27,6 +27,7 @@
 }
 .start {
   left: 0;
+  margin-right: 1px; // compensate to show the divider
 }
 
 ::slotted(*[slot="detail"]) {

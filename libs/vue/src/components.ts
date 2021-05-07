@@ -1018,7 +1018,7 @@ export const SeStepper = /*@__PURE__*/ Vue.extend({
     previous: createCommonMethod('previous') as Components.SeStepper['previous'],
     next: createCommonMethod('next') as Components.SeStepper['next'],
   },
-  render: createCommonRender('se-stepper', []),
+  render: createCommonRender('se-stepper', ['didChange']),
 });
 
 
@@ -1032,7 +1032,7 @@ export const SeStepperItem = /*@__PURE__*/ Vue.extend({
   },
 
 
-  render: createCommonRender('se-stepper-item', ['didValidate']),
+  render: createCommonRender('se-stepper-item', ['didValidate', 'didActivate']),
 });
 
 

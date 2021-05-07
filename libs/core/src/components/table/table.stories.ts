@@ -8,18 +8,19 @@ import { select, boolean, number } from '@storybook/addon-knobs';
 
 const sortOption = ['asc', 'desc', 'none'];
 
-storiesOf('Table', module).add(
-  'Table',
-  () => {
-    const sort = select('Sort Order Example', sortOption, 'asc');
-    const minItems = 20;
+storiesOf('Table', module)
+  .add(
+    'Table',
+    () => {
+      const sort = select('Sort Order Example', sortOption, 'asc');
+      const minItems = 20;
 
-    // const selected = boolean('Selected Row Example', true);
-    const compact = boolean('Compact', false);
-    // const showWithDetail = boolean('Show with expended detail section', false);
-    const hideCheckboxColumn = boolean('hide checkbox column', false);
+      // const selected = boolean('Selected Row Example', true);
+      const compact = boolean('Compact', false);
+      // const showWithDetail = boolean('Show with expended detail section', false);
+      const hideCheckboxColumn = boolean('hide checkbox column', false);
 
-    return `
+      return `
     <se-block height="400px">
         <se-table compact=${compact} id="myTable">
             <se-table-group-header>
@@ -69,16 +70,86 @@ storiesOf('Table', module).add(
         </se-table>
         </se-block>
     `;
-  },
-  {
-    notes: {
-      markdown: {
-        'se-table': readme,
-        'se-table-group-header': readmegroupheader,
-        'se-table-item-header': readmeitemheader,
-        'se-table-group': readmegroup,
-        'se-table-item': readmeitem,
-      },
     },
-  }
-);
+    {
+      notes: {
+        markdown: {
+          'se-table': readme,
+          'se-table-group-header': readmegroupheader,
+          'se-table-item-header': readmeitemheader,
+          'se-table-group': readmegroup,
+          'se-table-item': readmeitem,
+        },
+      },
+    }
+  )
+  .add(
+    'Table Sticky',
+    () => {
+      const sort = select('Sort Order Example', sortOption, 'asc');
+      const minItems = 20;
+
+      // const selected = boolean('Selected Row Example', true);
+      const compact = boolean('Compact', false);
+      const stickyFirstColumn = boolean('Sticky first column', false);
+
+      return `
+        <se-table compact=${compact} id="myTable">
+            <se-table-group-header>
+                <se-table-item-header slot="start" width="32px"><se-checkbox></se-checkbox></se-table-item-header>
+                <se-table-item-header slot="${
+                  stickyFirstColumn ? 'start' : ''
+                }" min-width="200px">column 1</se-table-item-header>
+                <se-table-item-header min-width="200px">column 2</se-table-item-header>
+                <se-table-item-header min-width="200px">column 3</se-table-item-header>
+                <se-table-item-header min-width="200px">column 4</se-table-item-header>
+                <se-table-item-header min-width="200px">column 5</se-table-item-header>
+                <se-table-item-header min-width="200px">column 6</se-table-item-header>
+                <se-table-item-header min-width="200px">column 7</se-table-item-header>
+                <se-table-item-header min-width="200px">column 8</se-table-item-header>
+                <se-table-item-header min-width="200px">column 9</se-table-item-header>
+                <se-table-item-header min-width="200px">column 10</se-table-item-header>
+                <se-table-item-header min-width="200px">column 11</se-table-item-header>
+                <se-table-item-header min-width="200px">column 12</se-table-item-header>
+            </se-table-group-header>
+
+            ${[...Array(minItems || 0)]
+              .map(
+                (_, key) =>
+                  `
+                <se-table-group>
+                  <se-table-item slot="start" width="32px"><se-checkbox></se-checkbox></se-table-item>
+                  <se-table-item slot="${
+                    stickyFirstColumn ? 'start' : ''
+                  }"min-width="200px">col 1 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 2 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 3 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 4 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 5 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 6 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 7 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 8 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 9 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 10 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 11 - info ${key}</se-table-item>
+                  <se-table-item min-width="200px">col 12 - info ${key}</se-table-item>
+                </se-table-group>
+              `
+              )
+              .join('')}
+
+        </se-table>
+    `;
+    },
+    {
+      notes: {
+        markdown: {
+          'se-table': readme,
+          'se-table-group-header': readmegroupheader,
+          'se-table-item-header': readmeitemheader,
+          'se-table-group': readmegroup,
+          'se-table-item': readmeitem,
+        },
+      },
+    }
+  );

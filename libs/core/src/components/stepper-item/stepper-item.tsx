@@ -41,7 +41,6 @@ export class StepperItemComponent {
   }
   /**
    * Event to send to the parent component when a stepper item's data is validated.
-   * The boolean validated property is passed to the parent.
    */
   @Event() didValidate: EventEmitter;
 

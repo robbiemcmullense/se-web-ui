@@ -2,6 +2,8 @@
 
 | Slot     | Description                                                                                   |
 | -------- | --------------------------------------------------------------------------------------------- |
+| `start` | sticky column placed at the start (left) of the table |
+| `end` | sticky column placed at the end (right) of the table |
 | `detail` | The detail / extended section under the row. Can be used to display another sub list under it |
 | none     | All the `se-table-item` element                                                               |
 

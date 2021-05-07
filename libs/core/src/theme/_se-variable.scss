@@ -80,6 +80,29 @@ $seTheme: (
   "shadow": rgba($se-black, 20%),
 ) !default;
 
+// overwrite only color different from light mode
+$seThemeDark: (
+  "background-standard": $se-super-dark-grey,
+  "background-standard-contrast": $se-white,
+  "background-alternative": #293133,
+  "background-alternative-contrast": $se-white,
+  "alternative": #293133,
+  "alternative-contrast": $se-white,
+  "alternative-hover": #434b4d,
+  "alternative-selected": #5c6466,
+  "standard": $se-light-grey,
+  "standard-contrast": $se-anthracite-grey,
+  "standard-hover": #b2b2b2,
+  "standard-selected": #989898,
+  "information": $se-sky-blue,
+  "shadow": #10181a,
+  "divider": #494b50,
+  "border": $se-dark-grey,
+  "border-focus": $se-dark-grey,
+  "overlay": rgba(255, 255, 255, 0.4),
+  "overlay-loading": rgba(0, 0, 0, 0.2),
+);
+
 // mapping definition of the SE variables
 
 $seColors: (

@@ -94,7 +94,6 @@ export function isTouchDevice() {
         document instanceof window['DocumentTouch']))
   );
 }
-
 export function classNames(obj) {
   return Object.entries(obj)
     .filter(([_, isTruthy]) => isTruthy)

@@ -3509,6 +3509,10 @@ declare namespace LocalJSX {
           * Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.
          */
         "linear"?: boolean;
+        /**
+          * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked. The Stepper Item data is passed to the parent.
+         */
+        "onDidChange"?: (event: CustomEvent<any>) => void;
     }
     interface SeStepperItem {
         /**
@@ -3524,7 +3528,11 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Event to send to the parent component when a stepper item's data is validated. The boolean validated property is passed to the parent.
+          * Event to send to the parent component when a stepper item's data is active true or false. The boolean validated property is passed to the parent.
+         */
+        "onDidActivate"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event to send to the parent component when a stepper item's data is validated.
          */
         "onDidValidate"?: (event: CustomEvent<any>) => void;
         /**

@@ -8,6 +8,12 @@
   }
 }
 
+.se-theme-dark {
+  @each $element, $value in $seThemeDark {
+    @include define-custom-property($element, $value);
+  }
+}
+
 .se-app-body {
   overflow: hidden;
   margin: 0 !important;
@@ -291,6 +297,7 @@ small {
   text-transform: uppercase;
 }
 
+:root,
 body,
 html {
   ::-webkit-scrollbar {

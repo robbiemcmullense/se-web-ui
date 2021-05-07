@@ -20,7 +20,7 @@
 | Event         | Description                                                                                                                                       | Type               |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
 | `didActivate` | Event to send to the parent component when a stepper item's data is active true or false. The boolean validated property is passed to the parent. | `CustomEvent<any>` |
-| `didValidate` | Event to send to the parent component when a stepper item's data is validated. The boolean validated property is passed to the parent.            | `CustomEvent<any>` |
+| `didValidate` | Event to send to the parent component when a stepper item's data is validated.                                                                    | `CustomEvent<any>` |
 
 
 ----------------------------------------------
