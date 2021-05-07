@@ -21,7 +21,7 @@
   overflow: auto;
   border-radius: $border-radius;
   z-index: -1;
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
 }
 .show {
   visibility: visible; /* shows sub-menu */

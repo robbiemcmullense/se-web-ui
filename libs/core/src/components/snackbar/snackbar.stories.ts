@@ -17,6 +17,7 @@ storiesOf('Snackbar', module)
       const button = text('actionText', '');
 
       return `
+      <div style="padding-left: 200px">
       <se-snackbar
         open="${open}"
         type="${type}"
@@ -25,7 +26,20 @@ storiesOf('Snackbar', module)
         icon="${icon}"
         action-text="${button}"
         duration="${duration}"></se-snackbar>
+      </div>
       <div style="left:20px; bottom: 20px;position:absolute;">
+        <se-dropdown id="icon-dropdown" alignment="left" >
+          <se-icon slot="trigger" option="button">other_vertical</se-icon>
+          <se-list option="dropdown">
+            <se-list-item item="My Site 1"></se-list-item>
+            <se-list-item item="My Site 2"></se-list-item>
+            <se-divider></se-divider>
+            <se-list-item item="My Site 3"></se-list-item>
+            <se-list-item item="My Site 4 is longer to demonstrate the dropdown's max width property."></se-list-item>
+          </se-list>
+        </se-dropdown>
+      </div>
+      <div style="right:20px; bottom: 20px;position:absolute;">
         <se-dropdown id="icon-dropdown" alignment="left" >
           <se-icon slot="trigger" option="button">other_vertical</se-icon>
           <se-list option="dropdown">

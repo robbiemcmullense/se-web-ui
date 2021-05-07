@@ -2,12 +2,11 @@
   position: fixed;
   bottom: 4px;
   visibility: hidden;
-  align-self: center;
   opacity: 0;
   z-index: -1;
-  transition: 0.2s;
-  transform: translate3d(50vw, 50px, 0);
+  transform: translate3d(50vw, 0px, 0px);
   height: 0;
+  left: 0;
 }
 
 :host(.show-snackbar) {
@@ -16,14 +15,7 @@
   z-index: $zindex-snackbar;
   opacity: 1;
   @include slideUp();
-  transform: translate3d(50vw, 0, 0px);
-}
-
-// display the snackbar when open on IE 11
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  :host(.show-snackbar) {
-    left: 0;
-  }
+  transform: translate3d(50vw, 0, 0);
 }
 
 .information {
