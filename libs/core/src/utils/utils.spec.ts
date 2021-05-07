@@ -1,4 +1,4 @@
-import { getFullTitle, getFullCopyright } from './utils';
+import { getFullTitle, getFullCopyright, isNumber } from './utils';
 
 describe('format', () => {
   it('returns empty object', () => {
@@ -35,5 +35,20 @@ describe('format', () => {
     const copyright = getFullCopyright('my copyright');
     expect(copyright.first).toEqual('my copyright');
     expect(copyright.last).toEqual('');
+  });
+});
+
+describe('isNumber', () => {
+  it('1234 is a number', () => {
+    expect(isNumber(1234)).toBeTruthy();
+  });
+  it('"1234" is a number', () => {
+    expect(isNumber('1234')).toBeTruthy();
+  });
+  it('"1234px" is not a number', () => {
+    expect(isNumber('1234px')).toBeFalsy();
+  });
+  it('"1234%" is not a number', () => {
+    expect(isNumber('1234%')).toBeFalsy();
   });
 });

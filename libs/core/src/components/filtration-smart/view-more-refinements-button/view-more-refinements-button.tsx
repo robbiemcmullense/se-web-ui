@@ -14,22 +14,22 @@ export class FiltrationSmartViewMoreRefinementsButton {
    *  true => "show less"
    *  false => "show more"
    */
-  @Prop() isAllRefinementsVisible!: boolean;
+  @Prop() isAllRefinementsVisible: boolean;
 
   /**
    * Defines what number should be rendered in the circle inside the button.
    */
-  @Prop() count!: number;
+  @Prop() count: number;
 
   /**
    * Defines text of the "View more" button.
    */
-  @Prop() viewMoreLabel!: string;
+  @Prop() viewMoreLabel: string;
 
   /**
    * Defines text of the "View less" button.
    */
-  @Prop() viewLessLabel!: string;
+  @Prop() viewLessLabel: string;
 
   /**
    * Event that signals Smart Filter to toggle visibility of all its refinements.

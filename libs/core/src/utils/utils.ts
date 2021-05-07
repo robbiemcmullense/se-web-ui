@@ -100,3 +100,9 @@ export function classNames(obj) {
     .map(([className]) => className)
     .join(' ');
 }
+
+export function isNumber(number: number | string) {
+  return (
+    Number.isInteger(number) || new RegExp('^[0-9]*$').test(number as string)
+  );
+}

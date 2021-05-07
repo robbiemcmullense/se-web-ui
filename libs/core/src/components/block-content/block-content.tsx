@@ -1,4 +1,5 @@
 import { Component, Element, h, Prop, State } from '@stencil/core';
+import { isNumber } from '../../utils';
 
 @Component({
   tag: 'se-block-content',
@@ -19,7 +20,7 @@ export class BlockContent {
    * If set, scroll will be applied to the block if its height exceeds `maxHeight`.
    * Also, its top and bottom parts will be covered by semi-transparent overlays.
    */
-  @Prop() maxHeight: number;
+  @Prop() maxHeight: number | string;
 
   @State() hasOverlayTop = false;
   @State() hasOverlayBottom = false;
@@ -77,7 +78,13 @@ export class BlockContent {
       >
         <div
           class="se-block-content-body"
-          style={this.maxHeight && { maxHeight: `${this.maxHeight}px` }}
+          style={
+            this.maxHeight && {
+              maxHeight: isNumber(this.maxHeight)
+                ? `${this.maxHeight}px`
+                : (this.maxHeight as string),
+            }
+          }
           ref={el => (this.scrollBody = el)}
         >
           <slot />

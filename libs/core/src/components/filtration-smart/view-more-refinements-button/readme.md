@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property                               | Attribute                    | Description                                                                                     | Type      | Default     |
-| -------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `count` _(required)_                   | `count`                      | Defines what number should be rendered in the circle inside the button.                         | `number`  | `undefined` |
-| `facetId` _(required)_                 | `facet-id`                   |                                                                                                 | `string`  | `undefined` |
-| `isAllRefinementsVisible` _(required)_ | `is-all-refinements-visible` | Defines what label should be used inside the button:  true => "show less"  false => "show more" | `boolean` | `undefined` |
-| `viewLessLabel` _(required)_           | `view-less-label`            | Defines text of the "View less" button.                                                         | `string`  | `undefined` |
-| `viewMoreLabel` _(required)_           | `view-more-label`            | Defines text of the "View more" button.                                                         | `string`  | `undefined` |
+| Property                  | Attribute                    | Description                                                                                     | Type      | Default     |
+| ------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `count`                   | `count`                      | Defines what number should be rendered in the circle inside the button.                         | `number`  | `undefined` |
+| `facetId` _(required)_    | `facet-id`                   |                                                                                                 | `string`  | `undefined` |
+| `isAllRefinementsVisible` | `is-all-refinements-visible` | Defines what label should be used inside the button:  true => "show less"  false => "show more" | `boolean` | `undefined` |
+| `viewLessLabel`           | `view-less-label`            | Defines text of the "View less" button.                                                         | `string`  | `undefined` |
+| `viewMoreLabel`           | `view-more-label`            | Defines text of the "View more" button.                                                         | `string`  | `undefined` |
 
 
 ## Events

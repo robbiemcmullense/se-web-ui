@@ -49,9 +49,9 @@ describe('FiltrationSmartViewMoreFiltersLink', () => {
 
       expect(
         page.root.shadowRoot.querySelector(
-          '.view-more-refinements-button__arrow'
+          '.view-more-refinements-button__arrow--up'
         )
-      ).toHaveClass('view-more-refinements-button__arrow--up');
+      ).toBeDefined();
     });
 
     it('should be rendered as downward arrow if not all refinements are visible', async () => {
@@ -67,9 +67,9 @@ describe('FiltrationSmartViewMoreFiltersLink', () => {
 
       expect(
         page.root.shadowRoot.querySelector(
-          '.view-more-refinements-button__arrow'
+          '.view-more-refinements-button__arrow--down'
         )
-      ).toHaveClass('view-more-refinements-button__arrow--down');
+      ).toBeDefined();
     });
   });
 });
