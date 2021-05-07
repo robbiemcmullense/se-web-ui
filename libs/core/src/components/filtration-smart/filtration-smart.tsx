@@ -109,16 +109,21 @@ export class FiltrationSmart {
   @Listen('refinementStateChanged')
   onRefinementStateChanged(e: CustomEvent<string>) {
     const { detail: refinementId } = e;
-    const { isChecked, value } = getRefinementData(refinementId);
 
     toggleIsRefinementChecked(refinementId);
+
+    const { isChecked, value } = getRefinementData(refinementId);
 
     this.filterStateChanged.emit({
       filtersState: getFiltersState(),
       lastChangedFilterId: value,
     });
 
-    analytics.send(refinementStateChangeEvent, { refinementId, isChecked }, this.el);
+    analytics.send(
+      refinementStateChangeEvent,
+      { refinementId, isChecked },
+      this.el
+    );
   }
 
   @Watch('filters')
