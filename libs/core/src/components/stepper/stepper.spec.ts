@@ -93,10 +93,13 @@ describe('Stepper Component methods', () => {
   });
 
   it('should set the second stepper item as active when the reset method is called with parameter equal to 2', () => {
+    const changeEventSpy = spyOn(stepper.didChange, 'emit');
     stepper.componentDidLoad();
     stepper.next(true);
     stepper.next(true);
     stepper.reset(2);
+    expect(changeEventSpy).toHaveBeenCalledTimes(4);
+    expect(stepper.stepperItems[1].active).toEqual(true);
     expect(stepper.stepperItems[1].active).toBeTruthy();
   });
 });

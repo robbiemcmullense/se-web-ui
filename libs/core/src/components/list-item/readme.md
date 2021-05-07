@@ -70,6 +70,8 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [se-filtration-smart-checkbox](../filtration-smart/checkbox)
+ - [se-filtration-smart-tab](../filtration-smart/tab)
  - [se-list-group](../list-group)
  - [se-sidemenu](../sidemenu)
 
@@ -81,6 +83,8 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   se-list-item --> se-icon
+  se-filtration-smart-checkbox --> se-list-item
+  se-filtration-smart-tab --> se-list-item
   se-list-group --> se-list-item
   se-sidemenu --> se-list-item
   style se-list-item fill:#f9f,stroke:#333,stroke-width:4px

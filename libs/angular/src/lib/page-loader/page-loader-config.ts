@@ -1,3 +1,5 @@
+import { TemplateRef } from '@angular/core';
+
 /**
  * @description Configuration for showing the loader with PageLoaderService.
  */
@@ -23,5 +25,5 @@ export class PageLoaderConfig {
   /**
    * @description Defines the displayed message beneath the loader if set
    */
-  message?: string;
+  message?: string | TemplateRef<any>;
 }

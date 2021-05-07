@@ -28,7 +28,7 @@ export class PageLoaderService {
     private injector: Injector
   ) {}
 
-  public show(config: PageLoaderConfig = {}) {
+  public show(config: PageLoaderConfig = {}): void {
     const userConf: PageLoaderConfig = { ...this.defaultConfig, ...config };
     const map = new WeakMap<any, any>([[PageLoaderConfig, userConf]]);
 
@@ -45,7 +45,7 @@ export class PageLoaderService {
     this.pageLoaderComponentRef = componentRef;
   }
 
-  public hide() {
+  public hide(): void {
     this.applicationRef.detachView(this.pageLoaderComponentRef.hostView);
     this.pageLoaderComponentRef.destroy();
   }

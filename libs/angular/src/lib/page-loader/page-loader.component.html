@@ -4,5 +4,19 @@
   [overlay]="config.overlay"
   [color]="config.color"
   [option]="config.option"
-  >{{ config.message }}</se-loading
 >
+  <ng-container [ngSwitch]="isMessageTemplate">
+    <ng-container
+      *ngSwitchCase="true"
+      [ngTemplateOutlet]="config.message"
+    ></ng-container>
+    <ng-container
+      *ngSwitchDefault
+      [ngTemplateOutlet]="stringMessage"
+    ></ng-container>
+  </ng-container>
+</se-loading>
+
+<ng-template #stringMessage>
+  {{ config.message }}
+</ng-template>

@@ -1,0 +1,44 @@
+@import "../../../theme/mixin";
+
+:host {
+  display: block;
+}
+
+.checkbox {
+  font-weight: normal;
+  flex: 1 1 100%; // I had to add it to fix issue with `.content` taking all the width of `se-list-item`
+  margin-left: -16px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+
+  @include for-tablet-and-down {
+    padding: 8px 0 9px;
+  }
+
+  // TODO: remove if IE11 support will be dropped
+  &--ie {
+    margin-left: -8px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+  }
+
+  &--disabled {
+    color: $se-medium-grey;
+  }
+}
+
+.checkbox__label {
+  margin-left: 12px;
+  margin-top: -1px;
+  white-space: break-spaces;
+
+  @include for-tablet-and-down {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @include for-desktop-only {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.checkbox__label-count {
+  color: $se-medium-grey;
+}

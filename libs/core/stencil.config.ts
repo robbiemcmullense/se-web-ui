@@ -221,6 +221,7 @@ export const config: Config = {
     { components: ['se-fab', 'se-fab-item'] },
     { components: ['se-visual-linear', 'se-visual-radial'] },
     { components: ['se-filtration'] },
+    { components: ['se-filtration-smart'] },
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],

@@ -23,6 +23,19 @@
 | `didClose` | Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM. | `CustomEvent<any>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [se-filtration-smart-mobile-view](../filtration-smart/mobile-view)
+
+### Graph
+```mermaid
+graph TD;
+  se-filtration-smart-mobile-view --> se-dialog
+  style se-dialog fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

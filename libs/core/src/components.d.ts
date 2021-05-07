@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Option, Size } from "./components/checkbox/types";
+import { FilterEmittedState, FiltrationSmartData, ToggleMobileViewVisibility } from "./components/filtration-smart/types";
 import { ListOption } from "./components/list/types";
 import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
@@ -633,6 +634,225 @@ export namespace Components {
           * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
          */
         "showSelectAll": boolean;
+    }
+    interface SeFiltrationSmart {
+        /**
+          * Normalized data for the filter.
+         */
+        "filters": FiltrationSmartData;
+        /**
+          * The header label of filters used in desktop version.
+         */
+        "headerLabelDesktop": string;
+        /**
+          * The header label of filters used in mobile version.
+         */
+        "headerLabelMobile": string;
+        /**
+          * Defines if the mobile view is visible.
+         */
+        "isMobileViewVisible": boolean;
+        /**
+          * Defines maximum height of a facet content in desktop view.
+         */
+        "maxFacetContentHeight": number;
+        /**
+          * Use it if you want to reset the filter to its initial state. All controls (single- and multi-selects) will be set to its initial states (if on an initial render a checkbox was checked but later was unchecked by a user, it will be returned to checked state). All sections (root and nested) will retain their states (expanded/collapsed).
+         */
+        "reset": () => Promise<void>;
+        /**
+          * Defines text that will be used in the "Reset" button.
+         */
+        "resetButtonLabel": string;
+        /**
+          * Use it if you want to set the state (checked/unchecked) of a particular filter.
+         */
+        "setIsFilterChecked": (filterId: string, isChecked: boolean) => Promise<void>;
+        /**
+          * Defines text of the show products button (in mobile view).
+         */
+        "showProductsLabel": string;
+        /**
+          * Defines text of the "View less facets" button at the bottom of the filter.
+         */
+        "viewLessFacetsLabel": string;
+        /**
+          * Defines text of the "View less refinements" button in a facet.
+         */
+        "viewLessRefinementsLabel": string;
+        /**
+          * Defines text of the "View more facets" button at the bottom of the filter.
+         */
+        "viewMoreFacetsLabel": string;
+        /**
+          * Defines text of the "View more refinements" button in a facet.
+         */
+        "viewMoreRefinementsLabel": string;
+        /**
+          * Number of facets to show on initial render.
+         */
+        "visibleFacetsCount": number;
+        /**
+          * Number of refinements per facet to show on initial render.
+         */
+        "visibleRefinementsPerFacetCount": number;
+    }
+    interface SeFiltrationSmartCheckbox {
+        /**
+          * Defines if the checkbox is used in mobile view.
+         */
+        "isMobile": boolean;
+        /**
+          * Id of the refinement that will be used to find the data in the Root Filter store.
+         */
+        "refinementId": string;
+    }
+    interface SeFiltrationSmartDesktopView {
+        /**
+          * Defines text that will be used as the header of the Filter.
+         */
+        "headerLabel": string;
+        /**
+          * Defines maximum height of a section content.
+         */
+        "maxFacetContentHeight": number;
+        /**
+          * Defines text that will be used in the "Reset" button.
+         */
+        "resetButtonLabel": string;
+        /**
+          * Defines text of the "View less facets" button at the bottom of the filter.
+         */
+        "viewLessFacetsLabel": string;
+        /**
+          * Defines text of the "View less refinements" button in a facet.
+         */
+        "viewLessRefinementsLabel": string;
+        /**
+          * Defines text of the "View more facets" button at the bottom of the filter.
+         */
+        "viewMoreFacetsLabel": string;
+        /**
+          * Defines text of the "View more refinements" button in a facet.
+         */
+        "viewMoreRefinementsLabel": string;
+    }
+    interface SeFiltrationSmartFacet {
+        /**
+          * Facet ID that will be used to retrieve data from store.
+         */
+        "facetId": string;
+        /**
+          * Defines if the facet is used in mobile view.
+         */
+        "isMobile": boolean;
+        /**
+          * Defines maximum height of the content.
+         */
+        "maxContentHeight"?: number;
+        /**
+          * Defines text of the "View less refinements" button.
+         */
+        "viewLessLabel"?: string;
+        /**
+          * Defines text of the "View more refinements" button.
+         */
+        "viewMoreLabel"?: string;
+    }
+    interface SeFiltrationSmartGroup {
+        /**
+          * Set mobile view or not
+         */
+        "isMobile": boolean;
+        /**
+          * Nesting level of the group. Used to determine if the section should be wrapped in another section.
+         */
+        "level": number;
+        /**
+          * Id of the section that will be used to find the data in the Root Filter store.
+         */
+        "sectionId": string;
+    }
+    interface SeFiltrationSmartMobileView {
+        /**
+          * The header label of filters.
+         */
+        "headerLabel": string;
+        /**
+          * Defines if the mobile view is visible.
+         */
+        "isVisible": boolean;
+        /**
+          * Defines text that will be used in the "Reset" button.
+         */
+        "resetButtonLabel": string;
+        /**
+          * The text label of the show products button.
+         */
+        "showProductsLabel": string;
+    }
+    interface SeFiltrationSmartMobileViewTrigger {
+        /**
+          * The number of facets in which there are selected refinements.
+         */
+        "count"?: number;
+        /**
+          * The text label of the "Show filter" button.
+         */
+        "label": string;
+    }
+    interface SeFiltrationSmartResetButton {
+        /**
+          * Defines if the button should be disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Text label of the button.
+         */
+        "label": string;
+    }
+    interface SeFiltrationSmartTab {
+        /**
+          * Id of the filter that will be used to find the data in the Root Filter store.
+         */
+        "refinementId": string;
+    }
+    interface SeFiltrationSmartViewMoreFacetsButton {
+        /**
+          * Defines what number should be rendered in the circle inside the button.
+         */
+        "count": number;
+        /**
+          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+         */
+        "isAllFacetsVisible": boolean;
+        /**
+          * Defines text of the "View less" button.
+         */
+        "viewLessLabel": string;
+        /**
+          * Defines text of the "View more" button.
+         */
+        "viewMoreLabel": string;
+    }
+    interface SeFiltrationSmartViewMoreRefinementsButton {
+        /**
+          * Defines what number should be rendered in the circle inside the button.
+         */
+        "count": number;
+        "facetId": string;
+        /**
+          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+         */
+        "isAllRefinementsVisible": boolean;
+        /**
+          * Defines text of the "View less" button.
+         */
+        "viewLessLabel": string;
+        /**
+          * Defines text of the "View more" button.
+         */
+        "viewMoreLabel": string;
     }
     interface SeFormField {
         /**
@@ -1498,6 +1718,72 @@ declare global {
         prototype: HTMLSeFiltrationElement;
         new (): HTMLSeFiltrationElement;
     };
+    interface HTMLSeFiltrationSmartElement extends Components.SeFiltrationSmart, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartElement: {
+        prototype: HTMLSeFiltrationSmartElement;
+        new (): HTMLSeFiltrationSmartElement;
+    };
+    interface HTMLSeFiltrationSmartCheckboxElement extends Components.SeFiltrationSmartCheckbox, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartCheckboxElement: {
+        prototype: HTMLSeFiltrationSmartCheckboxElement;
+        new (): HTMLSeFiltrationSmartCheckboxElement;
+    };
+    interface HTMLSeFiltrationSmartDesktopViewElement extends Components.SeFiltrationSmartDesktopView, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartDesktopViewElement: {
+        prototype: HTMLSeFiltrationSmartDesktopViewElement;
+        new (): HTMLSeFiltrationSmartDesktopViewElement;
+    };
+    interface HTMLSeFiltrationSmartFacetElement extends Components.SeFiltrationSmartFacet, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartFacetElement: {
+        prototype: HTMLSeFiltrationSmartFacetElement;
+        new (): HTMLSeFiltrationSmartFacetElement;
+    };
+    interface HTMLSeFiltrationSmartGroupElement extends Components.SeFiltrationSmartGroup, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartGroupElement: {
+        prototype: HTMLSeFiltrationSmartGroupElement;
+        new (): HTMLSeFiltrationSmartGroupElement;
+    };
+    interface HTMLSeFiltrationSmartMobileViewElement extends Components.SeFiltrationSmartMobileView, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartMobileViewElement: {
+        prototype: HTMLSeFiltrationSmartMobileViewElement;
+        new (): HTMLSeFiltrationSmartMobileViewElement;
+    };
+    interface HTMLSeFiltrationSmartMobileViewTriggerElement extends Components.SeFiltrationSmartMobileViewTrigger, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartMobileViewTriggerElement: {
+        prototype: HTMLSeFiltrationSmartMobileViewTriggerElement;
+        new (): HTMLSeFiltrationSmartMobileViewTriggerElement;
+    };
+    interface HTMLSeFiltrationSmartResetButtonElement extends Components.SeFiltrationSmartResetButton, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartResetButtonElement: {
+        prototype: HTMLSeFiltrationSmartResetButtonElement;
+        new (): HTMLSeFiltrationSmartResetButtonElement;
+    };
+    interface HTMLSeFiltrationSmartTabElement extends Components.SeFiltrationSmartTab, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartTabElement: {
+        prototype: HTMLSeFiltrationSmartTabElement;
+        new (): HTMLSeFiltrationSmartTabElement;
+    };
+    interface HTMLSeFiltrationSmartViewMoreFacetsButtonElement extends Components.SeFiltrationSmartViewMoreFacetsButton, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartViewMoreFacetsButtonElement: {
+        prototype: HTMLSeFiltrationSmartViewMoreFacetsButtonElement;
+        new (): HTMLSeFiltrationSmartViewMoreFacetsButtonElement;
+    };
+    interface HTMLSeFiltrationSmartViewMoreRefinementsButtonElement extends Components.SeFiltrationSmartViewMoreRefinementsButton, HTMLStencilElement {
+    }
+    var HTMLSeFiltrationSmartViewMoreRefinementsButtonElement: {
+        prototype: HTMLSeFiltrationSmartViewMoreRefinementsButtonElement;
+        new (): HTMLSeFiltrationSmartViewMoreRefinementsButtonElement;
+    };
     interface HTMLSeFormFieldElement extends Components.SeFormField, HTMLStencilElement {
     }
     var HTMLSeFormFieldElement: {
@@ -1730,6 +2016,17 @@ declare global {
         "se-fab": HTMLSeFabElement;
         "se-fab-item": HTMLSeFabItemElement;
         "se-filtration": HTMLSeFiltrationElement;
+        "se-filtration-smart": HTMLSeFiltrationSmartElement;
+        "se-filtration-smart-checkbox": HTMLSeFiltrationSmartCheckboxElement;
+        "se-filtration-smart-desktop-view": HTMLSeFiltrationSmartDesktopViewElement;
+        "se-filtration-smart-facet": HTMLSeFiltrationSmartFacetElement;
+        "se-filtration-smart-group": HTMLSeFiltrationSmartGroupElement;
+        "se-filtration-smart-mobile-view": HTMLSeFiltrationSmartMobileViewElement;
+        "se-filtration-smart-mobile-view-trigger": HTMLSeFiltrationSmartMobileViewTriggerElement;
+        "se-filtration-smart-reset-button": HTMLSeFiltrationSmartResetButtonElement;
+        "se-filtration-smart-tab": HTMLSeFiltrationSmartTabElement;
+        "se-filtration-smart-view-more-facets-button": HTMLSeFiltrationSmartViewMoreFacetsButtonElement;
+        "se-filtration-smart-view-more-refinements-button": HTMLSeFiltrationSmartViewMoreRefinementsButtonElement;
         "se-form-field": HTMLSeFormFieldElement;
         "se-header": HTMLSeHeaderElement;
         "se-icon": HTMLSeIconElement;
@@ -2419,6 +2716,257 @@ declare namespace LocalJSX {
           * Optional property to indicate if multiple selections will be made `true` = multiple selection | `false` = single selection
          */
         "showSelectAll"?: boolean;
+    }
+    interface SeFiltrationSmart {
+        /**
+          * Normalized data for the filter.
+         */
+        "filters": FiltrationSmartData;
+        /**
+          * The header label of filters used in desktop version.
+         */
+        "headerLabelDesktop"?: string;
+        /**
+          * The header label of filters used in mobile version.
+         */
+        "headerLabelMobile"?: string;
+        /**
+          * Defines if the mobile view is visible.
+         */
+        "isMobileViewVisible"?: boolean;
+        /**
+          * Defines maximum height of a facet content in desktop view.
+         */
+        "maxFacetContentHeight"?: number;
+        /**
+          * Event that emits list of checked filters.
+         */
+        "onFilterStateChanged"?: (event: CustomEvent<FilterEmittedState>) => void;
+        /**
+          * Defines text that will be used in the "Reset" button.
+         */
+        "resetButtonLabel": string;
+        /**
+          * Defines text of the show products button (in mobile view).
+         */
+        "showProductsLabel": string;
+        /**
+          * Defines text of the "View less facets" button at the bottom of the filter.
+         */
+        "viewLessFacetsLabel": string;
+        /**
+          * Defines text of the "View less refinements" button in a facet.
+         */
+        "viewLessRefinementsLabel": string;
+        /**
+          * Defines text of the "View more facets" button at the bottom of the filter.
+         */
+        "viewMoreFacetsLabel": string;
+        /**
+          * Defines text of the "View more refinements" button in a facet.
+         */
+        "viewMoreRefinementsLabel": string;
+        /**
+          * Number of facets to show on initial render.
+         */
+        "visibleFacetsCount"?: number;
+        /**
+          * Number of refinements per facet to show on initial render.
+         */
+        "visibleRefinementsPerFacetCount"?: number;
+    }
+    interface SeFiltrationSmartCheckbox {
+        /**
+          * Defines if the checkbox is used in mobile view.
+         */
+        "isMobile"?: boolean;
+        /**
+          * Event that has info about refinement whose state should be changed. Root component listens to it.
+         */
+        "onRefinementStateChanged"?: (event: CustomEvent<string>) => void;
+        /**
+          * Id of the refinement that will be used to find the data in the Root Filter store.
+         */
+        "refinementId": string;
+    }
+    interface SeFiltrationSmartDesktopView {
+        /**
+          * Defines text that will be used as the header of the Filter.
+         */
+        "headerLabel"?: string;
+        /**
+          * Defines maximum height of a section content.
+         */
+        "maxFacetContentHeight"?: number;
+        /**
+          * Defines text that will be used in the "Reset" button.
+         */
+        "resetButtonLabel": string;
+        /**
+          * Defines text of the "View less facets" button at the bottom of the filter.
+         */
+        "viewLessFacetsLabel": string;
+        /**
+          * Defines text of the "View less refinements" button in a facet.
+         */
+        "viewLessRefinementsLabel": string;
+        /**
+          * Defines text of the "View more facets" button at the bottom of the filter.
+         */
+        "viewMoreFacetsLabel": string;
+        /**
+          * Defines text of the "View more refinements" button in a facet.
+         */
+        "viewMoreRefinementsLabel": string;
+    }
+    interface SeFiltrationSmartFacet {
+        /**
+          * Facet ID that will be used to retrieve data from store.
+         */
+        "facetId": string;
+        /**
+          * Defines if the facet is used in mobile view.
+         */
+        "isMobile"?: boolean;
+        /**
+          * Defines maximum height of the content.
+         */
+        "maxContentHeight"?: number;
+        /**
+          * Event that has info about facet whose collapsed/expanded state should be changed.  Root Filter component listens to it.
+         */
+        "onToggleIsSectionExpanded"?: (event: CustomEvent<string>) => void;
+        /**
+          * Defines text of the "View less refinements" button.
+         */
+        "viewLessLabel"?: string;
+        /**
+          * Defines text of the "View more refinements" button.
+         */
+        "viewMoreLabel"?: string;
+    }
+    interface SeFiltrationSmartGroup {
+        /**
+          * Set mobile view or not
+         */
+        "isMobile"?: boolean;
+        /**
+          * Nesting level of the group. Used to determine if the section should be wrapped in another section.
+         */
+        "level"?: number;
+        /**
+          * Event that has info about the section whose collapsed/expanded state should be changed.  Root Filter component listens to it.
+         */
+        "onToggleIsSectionExpanded"?: (event: CustomEvent<string>) => void;
+        /**
+          * Id of the section that will be used to find the data in the Root Filter store.
+         */
+        "sectionId": string;
+    }
+    interface SeFiltrationSmartMobileView {
+        /**
+          * The header label of filters.
+         */
+        "headerLabel"?: string;
+        /**
+          * Defines if the mobile view is visible.
+         */
+        "isVisible": boolean;
+        /**
+          * Event that closes mobile view with two options:  { restore: true } -- closes mobile view and undoes changes made in mobile view  { restore: false } -- closes mobile view and applies changes made in mobile view
+         */
+        "onToggleMobileView"?: (event: CustomEvent<ToggleMobileViewVisibility>) => void;
+        /**
+          * Defines text that will be used in the "Reset" button.
+         */
+        "resetButtonLabel": string;
+        /**
+          * The text label of the show products button.
+         */
+        "showProductsLabel": string;
+    }
+    interface SeFiltrationSmartMobileViewTrigger {
+        /**
+          * The number of facets in which there are selected refinements.
+         */
+        "count"?: number;
+        /**
+          * The text label of the "Show filter" button.
+         */
+        "label": string;
+        /**
+          * Event that toggle visibility of the mobile view.
+         */
+        "onToggleMobileView"?: (event: CustomEvent<void>) => void;
+    }
+    interface SeFiltrationSmartResetButton {
+        /**
+          * Defines if the button should be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Text label of the button.
+         */
+        "label": string;
+        /**
+          * Event that reset Smart Filter to initial state.
+         */
+        "onResetAllClicked"?: (event: CustomEvent<void>) => void;
+    }
+    interface SeFiltrationSmartTab {
+        /**
+          * Event that has info about tab whose state should be changed. Root Filter component listens to it.
+         */
+        "onRefinementStateChanged"?: (event: CustomEvent<string>) => void;
+        /**
+          * Id of the filter that will be used to find the data in the Root Filter store.
+         */
+        "refinementId": string;
+    }
+    interface SeFiltrationSmartViewMoreFacetsButton {
+        /**
+          * Defines what number should be rendered in the circle inside the button.
+         */
+        "count": number;
+        /**
+          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+         */
+        "isAllFacetsVisible": boolean;
+        /**
+          * Event that signals Smart Filter to toggle visibility of all its facets.
+         */
+        "onToggleViewMoreFacets"?: (event: CustomEvent<void>) => void;
+        /**
+          * Defines text of the "View less" button.
+         */
+        "viewLessLabel": string;
+        /**
+          * Defines text of the "View more" button.
+         */
+        "viewMoreLabel": string;
+    }
+    interface SeFiltrationSmartViewMoreRefinementsButton {
+        /**
+          * Defines what number should be rendered in the circle inside the button.
+         */
+        "count": number;
+        "facetId": string;
+        /**
+          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+         */
+        "isAllRefinementsVisible": boolean;
+        /**
+          * Event that signals Smart Filter to toggle visibility of all its refinements.
+         */
+        "onToggleViewMoreRefinements"?: (event: CustomEvent<string>) => void;
+        /**
+          * Defines text of the "View less" button.
+         */
+        "viewLessLabel": string;
+        /**
+          * Defines text of the "View more" button.
+         */
+        "viewMoreLabel": string;
     }
     interface SeFormField {
         /**
@@ -3169,6 +3717,17 @@ declare namespace LocalJSX {
         "se-fab": SeFab;
         "se-fab-item": SeFabItem;
         "se-filtration": SeFiltration;
+        "se-filtration-smart": SeFiltrationSmart;
+        "se-filtration-smart-checkbox": SeFiltrationSmartCheckbox;
+        "se-filtration-smart-desktop-view": SeFiltrationSmartDesktopView;
+        "se-filtration-smart-facet": SeFiltrationSmartFacet;
+        "se-filtration-smart-group": SeFiltrationSmartGroup;
+        "se-filtration-smart-mobile-view": SeFiltrationSmartMobileView;
+        "se-filtration-smart-mobile-view-trigger": SeFiltrationSmartMobileViewTrigger;
+        "se-filtration-smart-reset-button": SeFiltrationSmartResetButton;
+        "se-filtration-smart-tab": SeFiltrationSmartTab;
+        "se-filtration-smart-view-more-facets-button": SeFiltrationSmartViewMoreFacetsButton;
+        "se-filtration-smart-view-more-refinements-button": SeFiltrationSmartViewMoreRefinementsButton;
         "se-form-field": SeFormField;
         "se-header": SeHeader;
         "se-icon": SeIcon;
@@ -3236,6 +3795,17 @@ declare module "@stencil/core" {
             "se-fab": LocalJSX.SeFab & JSXBase.HTMLAttributes<HTMLSeFabElement>;
             "se-fab-item": LocalJSX.SeFabItem & JSXBase.HTMLAttributes<HTMLSeFabItemElement>;
             "se-filtration": LocalJSX.SeFiltration & JSXBase.HTMLAttributes<HTMLSeFiltrationElement>;
+            "se-filtration-smart": LocalJSX.SeFiltrationSmart & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartElement>;
+            "se-filtration-smart-checkbox": LocalJSX.SeFiltrationSmartCheckbox & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartCheckboxElement>;
+            "se-filtration-smart-desktop-view": LocalJSX.SeFiltrationSmartDesktopView & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartDesktopViewElement>;
+            "se-filtration-smart-facet": LocalJSX.SeFiltrationSmartFacet & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartFacetElement>;
+            "se-filtration-smart-group": LocalJSX.SeFiltrationSmartGroup & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartGroupElement>;
+            "se-filtration-smart-mobile-view": LocalJSX.SeFiltrationSmartMobileView & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartMobileViewElement>;
+            "se-filtration-smart-mobile-view-trigger": LocalJSX.SeFiltrationSmartMobileViewTrigger & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartMobileViewTriggerElement>;
+            "se-filtration-smart-reset-button": LocalJSX.SeFiltrationSmartResetButton & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartResetButtonElement>;
+            "se-filtration-smart-tab": LocalJSX.SeFiltrationSmartTab & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartTabElement>;
+            "se-filtration-smart-view-more-facets-button": LocalJSX.SeFiltrationSmartViewMoreFacetsButton & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartViewMoreFacetsButtonElement>;
+            "se-filtration-smart-view-more-refinements-button": LocalJSX.SeFiltrationSmartViewMoreRefinementsButton & JSXBase.HTMLAttributes<HTMLSeFiltrationSmartViewMoreRefinementsButtonElement>;
             "se-form-field": LocalJSX.SeFormField & JSXBase.HTMLAttributes<HTMLSeFormFieldElement>;
             "se-header": LocalJSX.SeHeader & JSXBase.HTMLAttributes<HTMLSeHeaderElement>;
             "se-icon": LocalJSX.SeIcon & JSXBase.HTMLAttributes<HTMLSeIconElement>;

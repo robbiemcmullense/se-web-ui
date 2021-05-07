@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { PageLoaderConfig } from './page-loader-config';
 
 @Component({
@@ -6,8 +6,10 @@ import { PageLoaderConfig } from './page-loader-config';
   templateUrl: './page-loader.component.html',
   styleUrls: ['./page-loader.component.scss'],
 })
-export class PageLoaderComponent implements OnInit {
+export class PageLoaderComponent {
   constructor(public config: PageLoaderConfig) {}
 
-  ngOnInit() {}
+  get isMessageTemplate(): boolean {
+    return this.config && this.config.message instanceof TemplateRef;
+  }
 }

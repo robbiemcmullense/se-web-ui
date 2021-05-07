@@ -41,4 +41,10 @@ describe('StepperItemComponent', () => {
     stepperItem.validatedDidChange(); // validated property changes
     expect(eventSpy).toHaveBeenCalled();
   });
+
+  it('should emit the didActivate event when the active property changes', () => {
+    const eventSpy = jest.spyOn(stepperItem.didActivate, 'emit');
+    stepperItem.activatedDidChange(); // Active property changes
+    expect(eventSpy).toHaveBeenCalled();
+  });
 });

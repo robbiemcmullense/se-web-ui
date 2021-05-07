@@ -1,3 +1,5 @@
+@import "../../theme/mixin";
+
 :host {
   width: 100%;
   height: 100%;
@@ -26,8 +28,8 @@
   --se-list-item-selected-bar: var(--se-standard);
   --se-list-item-selected-background: var(--se-alternative-selected);
   --se-list-item-selected-color: inherit;
-  --se-list-item-indentation-padding: 24px;
-  --se-list-item-root-padding: #{$spacing};
+  --se-list-item-indentation-padding: 28px;
+  --se-list-item-padding-root: #{$spacing};
   --se-list-item-selected-font-weight: inherit;
   --se-list-item-group-trigger-font-weight: inherit;
 }
@@ -48,9 +50,15 @@
 }
 
 :host(.filter) {
-  --se-list-item-root-padding: 20px;
+  --se-list-item-padding-root: 24px;
   --se-list-item-selected-font-weight: bold;
   --se-list-item-group-trigger-font-weight: bold;
+
+  @include for-tablet-and-down {
+    --se-list-item-padding-root: 16px;
+    --se-list-item-height: 42px;
+    --se-list-group-height: 42px;
+  }
 }
 
 :host(.treeview) {

@@ -1,0 +1,29 @@
+@import "../../../theme/mixin";
+
+:host {
+  display: block;
+}
+
+.view-more-refinements-button {
+  @include button-reset();
+  width: 100%;
+  font-size: 14px;
+  @include color("secondary");
+  cursor: pointer;
+
+  &:focus {
+    @include for-tablet-and-down {
+      outline: none;
+    }
+
+    @include for-desktop-only {
+      @include interactive-element-outline(2px, -1px);
+    }
+  }
+}
+
+.view-more-refinements-button__body {
+  display: flex;
+  align-items: center;
+  padding: 2px 12px 8px 20px;
+}

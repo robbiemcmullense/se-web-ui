@@ -49,6 +49,7 @@ export const CheckboxOnOff: FunctionalComponent<Props> = props => {
           {required && <i class="required">*</i>}
         </span>
       )}
+      <slot name="label" />
       <div class="on-off-wrapper">
         <button
           disabled={disabled}

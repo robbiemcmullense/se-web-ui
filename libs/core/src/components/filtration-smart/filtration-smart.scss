@@ -1,0 +1,83 @@
+@import "../../theme/mixin";
+
+:host {
+  display: block;
+}
+
+.filter__title {
+  margin: 0;
+  color: $se-dark-grey;
+
+  @include for-tablet-and-down {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: bold;
+  }
+
+  @include for-desktop-only {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+  }
+}
+
+.filter__header {
+  @include for-tablet-and-down {
+    min-height: 52px;
+    box-shadow: 0 3px 5px 0 rgba($se-anthracite-grey, 0.1);
+    z-index: $zindex-header;
+  }
+
+  @include for-desktop-only {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    min-height: 32px;
+  }
+}
+
+.filter__content {
+  background-color: $se-ultra-light-grey-4;
+}
+
+.filter__footer {
+  @include for-tablet-and-down {
+    box-shadow: 0 -3px 5px 0 rgba($se-anthracite-grey, 0.1);
+  }
+}
+
+.filter__reset-button {
+  @include for-desktop-only {
+    margin-left: 10px;
+  }
+}
+
+.filter__reset-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+.filter__facet {
+  & + & {
+    @include for-tablet-and-down {
+      border-top: 1px solid;
+      @include border-color("background-footer");
+    }
+
+    @include for-desktop-only {
+      margin-top: 10px;
+    }
+  }
+}
+
+.filter__view-more-facets-button {
+  margin-top: 10px;
+}
+
+.filter__submit-button {
+  @include for-tablet-and-down {
+    flex: 1 1 100%;
+  }
+}
