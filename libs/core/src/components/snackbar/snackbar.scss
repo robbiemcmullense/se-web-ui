@@ -4,7 +4,8 @@
   visibility: hidden;
   opacity: 0;
   z-index: -1;
-  transform: translate3d(50vw, 0px, 0px);
+  transform: translate3d(50vw, 50px, 0);
+  transition: opacity 0.2s;
   height: 0;
   left: 0;
 }
