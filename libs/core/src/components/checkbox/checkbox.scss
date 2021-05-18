@@ -21,7 +21,6 @@ $checkbox-colors: "primary", "secondary", "success";
 :host {
   display: inline-flex;
   align-items: center;
-  @include ellipsis();
 }
 
 input {
