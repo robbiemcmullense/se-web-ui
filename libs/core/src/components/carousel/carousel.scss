@@ -95,3 +95,9 @@
     }
   }
 }
+
+:host(.has-pagination) {
+  .arrow {
+    top: calc(50% - 28px / 2 - 12.5px);
+  }
+}

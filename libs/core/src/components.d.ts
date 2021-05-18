@@ -346,7 +346,7 @@ export namespace Components {
          */
         "labelSuffix": string;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.     It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option": Option;
         /**
@@ -823,7 +823,7 @@ export namespace Components {
          */
         "count": number;
         /**
-          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+          * Defines what label should be used inside the button:   true => "show less"   false => "show more"
          */
         "isAllFacetsVisible": boolean;
         /**
@@ -842,7 +842,7 @@ export namespace Components {
         "count": number;
         "facetId": string;
         /**
-          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+          * Defines what label should be used inside the button:   true => "show less"   false => "show more"
          */
         "isAllRefinementsVisible": boolean;
         /**
@@ -2407,7 +2407,7 @@ declare namespace LocalJSX {
          */
         "onDidChange"?: (event: CustomEvent<{ value: string; selected: boolean }>) => void;
         /**
-          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.     It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option"?: Option;
         /**
@@ -2833,7 +2833,7 @@ declare namespace LocalJSX {
          */
         "maxContentHeight"?: number;
         /**
-          * Event that has info about facet whose collapsed/expanded state should be changed.  Root Filter component listens to it.
+          * Event that has info about facet whose collapsed/expanded state should be changed.   Root Filter component listens to it.
          */
         "onToggleIsSectionExpanded"?: (event: CustomEvent<string>) => void;
         /**
@@ -2855,7 +2855,7 @@ declare namespace LocalJSX {
          */
         "level"?: number;
         /**
-          * Event that has info about the section whose collapsed/expanded state should be changed.  Root Filter component listens to it.
+          * Event that has info about the section whose collapsed/expanded state should be changed.   Root Filter component listens to it.
          */
         "onToggleIsSectionExpanded"?: (event: CustomEvent<string>) => void;
         /**
@@ -2873,7 +2873,7 @@ declare namespace LocalJSX {
          */
         "isVisible": boolean;
         /**
-          * Event that closes mobile view with two options:  { restore: true } -- closes mobile view and undoes changes made in mobile view  { restore: false } -- closes mobile view and applies changes made in mobile view
+          * Event that closes mobile view with two options:   { restore: true } -- closes mobile view and undoes changes made in mobile view   { restore: false } -- closes mobile view and applies changes made in mobile view
          */
         "onToggleMobileView"?: (event: CustomEvent<ToggleMobileViewVisibility>) => void;
         /**
@@ -2929,7 +2929,7 @@ declare namespace LocalJSX {
          */
         "count": number;
         /**
-          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+          * Defines what label should be used inside the button:   true => "show less"   false => "show more"
          */
         "isAllFacetsVisible": boolean;
         /**
@@ -2952,7 +2952,7 @@ declare namespace LocalJSX {
         "count"?: number;
         "facetId": string;
         /**
-          * Defines what label should be used inside the button:  true => "show less"  false => "show more"
+          * Defines what label should be used inside the button:   true => "show less"   false => "show more"
          */
         "isAllRefinementsVisible"?: boolean;
         /**

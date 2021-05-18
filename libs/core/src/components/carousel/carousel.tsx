@@ -229,11 +229,13 @@ export class Carousel {
           'arrows-overlay': this.arrowsOverlay,
           'left-hidden': this.showLeftArrow,
           'right-hidden': this.showRightArrow,
+          'has-pagination': this.pagination,
         })}
       >
         {this.showLeftArrow && !this.isMobile && (
           <se-icon
             class="arrow left"
+            option="button"
             onClick={() => this.scroll(-1)}
             size={this.size}
             mirror="horizontal"
