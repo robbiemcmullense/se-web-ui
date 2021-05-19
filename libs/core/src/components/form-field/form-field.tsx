@@ -6,7 +6,6 @@ import {
   h,
   Prop,
   Listen,
-  Host,
   Watch,
   State,
 } from '@stencil/core';
@@ -176,7 +175,7 @@ export class FormFieldComponent {
       this.stacked ||
       (this.isSmall && !this.noStacking);
     return (
-      <Host
+      <div
         class={{
           [`ff-${this.status}`]: true,
           'ff-stacked': shouldStack,
@@ -215,7 +214,7 @@ export class FormFieldComponent {
             </div>
           </div>
         </label>
-      </Host>
+      </div>
     );
   }
 }
