@@ -531,6 +531,10 @@ export namespace Components {
         "option": 'horizontal' | 'vertical' | 'inset';
     }
     interface SeDropdown {
+        /**
+          * Define the type of even needed to open the modal. By default it's on click. If `hover` is selected, then the dropdown will close when the mouse goes away as well.
+         */
+        "action": 'click' | 'hover';
         "alignment": 'end' | 'start' | 'right' | 'left';
         /**
           * Method to close the dropdown from outside its parent element.
@@ -1291,7 +1295,7 @@ export namespace Components {
     }
     interface SeSkeleton {
         "circle": boolean;
-        "count": 1;
+        "count": number;
         "height": any;
         "width": any;
     }
@@ -2604,6 +2608,10 @@ declare namespace LocalJSX {
         "option"?: 'horizontal' | 'vertical' | 'inset';
     }
     interface SeDropdown {
+        /**
+          * Define the type of even needed to open the modal. By default it's on click. If `hover` is selected, then the dropdown will close when the mouse goes away as well.
+         */
+        "action"?: 'click' | 'hover';
         "alignment"?: 'end' | 'start' | 'right' | 'left';
         /**
           * Sets the maximum height of the dropdown.  Default setting is "400px".
@@ -2639,6 +2647,10 @@ declare namespace LocalJSX {
           * Property that determines if an icon is included in the main action button.
          */
         "icon"?: string;
+        /**
+          * Event emitted to close the tooltip (if there is one) when interacting with the fab button.
+         */
+        "onCloseTooltips"?: (event: CustomEvent<any>) => void;
         /**
           * Property that determines the functionality of the FAB. The default setting is `speeddial`, which will show/hide a dropdown menu when clicking on the FAB. The `backtotop` setting returns you to the top of the page you are viewing when clicking on the FAB.
          */
@@ -3427,7 +3439,7 @@ declare namespace LocalJSX {
     }
     interface SeSkeleton {
         "circle"?: boolean;
-        "count"?: 1;
+        "count"?: number;
         "height"?: any;
         "width"?: any;
     }

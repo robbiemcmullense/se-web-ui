@@ -7,12 +7,10 @@
   position: relative;
   width: -webkit-fill-available;
 
-  gap: $spacing;
+  gap: $spacing-medium;
 
-  // transition: 0.2s;
   max-width: 100%;
   min-width: 100%;
-  /* inherit font & color from ancestor */
   background-color: inherit;
   color: var(--se-background-alternative-contrast);
   font: inherit;
@@ -21,16 +19,16 @@
     var(--se-list-item-padding-root) + var(--se-list-group-indentation) *
       var(--se-list-item-indentation-padding)
   );
+  padding-top: $spacing-small;
+  padding-bottom: $spacing-small;
+
   min-height: var(--se-list-item-height);
-  // height: var(
-  //   --se-list-item-height
-  // ); // IE fix so flexbox vertical alignment works
+
   border-bottom: var(--se-list-item-border-bottom);
   box-sizing: border-box;
   @include display-flex();
   @include align-items(center);
 
-  text-align: left; // MS Edge does not support "start"
   text-align: start;
   border-bottom-color: $divider-color;
   border-bottom-color: var(--se-divider);
@@ -79,17 +77,17 @@
 
 .content {
   min-width: 0;
-  padding: 0 $spacing-small;
+  // padding: 0 $spacing-small;
   margin: 0;
   overflow: hidden;
   @include flex();
   @include display-flex();
   @include flex-direction(column);
   @include align-items(start center);
-  @include ellipsis();
+  // @include ellipsis();
 
-  div,
-  small {
+  & > div,
+  & > small {
     @include ellipsis();
   }
 

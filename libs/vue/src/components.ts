@@ -442,6 +442,7 @@ export const SeDropdown = /*@__PURE__*/ Vue.extend({
     verticalAlignment: {} as PropOptions<Components.SeDropdown['verticalAlignment']>,
     maxWidth: {} as PropOptions<Components.SeDropdown['maxWidth']>,
     maxHeight: {} as PropOptions<Components.SeDropdown['maxHeight']>,
+    action: {} as PropOptions<Components.SeDropdown['action']>,
   },
 
 
@@ -467,7 +468,7 @@ export const SeFab = /*@__PURE__*/ Vue.extend({
   methods: {
     toggleAction: createCommonMethod('toggleAction') as Components.SeFab['toggleAction'],
   },
-  render: createCommonRender('se-fab', []),
+  render: createCommonRender('se-fab', ['closeTooltips']),
 });
 
 

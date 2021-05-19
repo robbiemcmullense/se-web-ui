@@ -4,6 +4,7 @@ import { select, number } from '@storybook/addon-knobs';
 
 const alignmentOption = ['left', 'right'];
 const verticalAlignmentOption = ['top', 'bottom'];
+const actionOption = ['click', 'hover'];
 
 storiesOf('Dropdown', module)
   .add(
@@ -17,10 +18,11 @@ storiesOf('Dropdown', module)
       );
       const maxWidth = number('max width', 200);
       const maxHeight = number('max height', 400);
+      const action = select('action', actionOption, 'click');
 
       return `
       <div style="padding:150px;">
-        <se-dropdown id="button-dropdown" alignment="${alignment}" vertical-alignment="${verticalAlignment}" max-width="${maxWidth}px" max-height="${maxHeight}px">
+        <se-dropdown id="button-dropdown" action="${action}" alignment="${alignment}" vertical-alignment="${verticalAlignment}" max-width="${maxWidth}px" max-height="${maxHeight}px">
           <se-button slot="trigger">My Site 1</se-button>
           <se-list option="dropdown">
             <se-list-item item="My Site 1"></se-list-item>

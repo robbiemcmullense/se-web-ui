@@ -2,6 +2,7 @@
   @include align-items(center);
   display: block;
   padding: $spacing-small;
+  cursor: pointer;
 }
 
 :host(.p-medium) {

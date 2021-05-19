@@ -151,8 +151,10 @@ export class ListItemComponent {
             {this.item}
             <slot name="item"></slot>
           </div>
-          <small>{myDescription}</small>
-          <slot name="description"></slot>
+          <small>
+            {myDescription}
+            <slot name="description"></slot>
+          </small>
         </div>
         <slot></slot>
         <slot name="end"></slot>

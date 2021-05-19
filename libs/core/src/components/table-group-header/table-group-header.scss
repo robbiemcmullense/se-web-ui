@@ -1,11 +1,10 @@
 :host {
   margin: 0;
   padding: 0;
-  @include display-flex();
+  display: flex;
   position: sticky;
   top: 0;
   left: 0;
-  display: inline-flex;
   min-width: 100%;
   z-index: 2;
   border-top: 1px solid;

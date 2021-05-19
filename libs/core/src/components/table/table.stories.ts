@@ -35,7 +35,33 @@ storiesOf('Table', module)
                 <se-table-item-header clickable="true"><se-icon color="primary">airconditioner_hot_heating</se-icon> - with a lot of extra text to make it as long as possible</se-table-item-header>
                 <se-table-item-header width="54px"></se-table-item-header>
             </se-table-group-header>
-
+            <se-table-group selectable="true">
+            <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
+                ${
+                  !hideCheckboxColumn
+                    ? '<se-table-item width="32px"><se-checkbox></se-checkbox></se-table-item>'
+                    : ''
+                }
+                <se-table-item>Last group with some more info</se-table-item>
+                <se-table-item flex="50%">Test item 2</se-table-item>
+                <se-table-item>Very last test item</se-table-item>
+                <se-table-item width="54px">
+                  <se-dropdown alignment="right" idContainer="myTable">
+                    <se-icon slot="trigger" option="button">
+                      other_vertical
+                    </se-icon>
+                    <se-list option="dropdown">
+                      <se-list-item item="My Site 1"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                      <se-list-item item="My Site 2"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                      <se-list-item item="My Site 3"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                    </se-list>
+                  </se-dropdown>
+                </se-table-item>
+                <div slot="detail">
+                    <h4 style="padding:12px 24px">You may put any type of content here</h4>
+                    <p style="padding:0 24px 12px;">You can format whatever details you want e.g. if each/some rows have a + icon to click to expand to expose more info</p>
+                </div>
+            </se-table-group>
             ${[...Array(minItems || 0)]
               .map(
                 (_, key) =>

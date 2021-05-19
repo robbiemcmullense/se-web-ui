@@ -86,9 +86,7 @@ export class SidemenuComponent {
         }
       }
       // Dispatch the 'opened' event
-      if (this.toggled) {
-        this.toggled.emit({ state: 'open' });
-      }
+      this.toggled.emit({ state: 'open' });
     } else {
       // Remove css classes and unselect the active element
       this.removeAnimation(() => {

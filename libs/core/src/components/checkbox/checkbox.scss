@@ -19,9 +19,9 @@ $checkbox-font-sizes: (
 $checkbox-colors: "primary", "secondary", "success";
 
 :host {
-  display: inline-flex;
+  // display: inline-flex;
   align-items: center;
-  @include ellipsis();
+  display: block;
 }
 
 input {
@@ -72,6 +72,7 @@ input {
 
 .label-right {
   flex-flow: row-reverse;
+  justify-content: flex-end;
 }
 
 .wrapper {

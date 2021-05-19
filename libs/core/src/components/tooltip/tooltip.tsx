@@ -25,16 +25,11 @@ export class TooltipComponent {
   popperInstance;
   containsFab;
   delayTimer;
-  popperDefault = [
-    {
-      name: 'offset',
-      options: {
-        offset: [0, 8],
-      },
-    },
-  ];
 
   @Element() el: HTMLElement;
+
+  @State() opened: boolean;
+
   /**
    * Indicates the position of your tooltip.
    * The default setting is `bottom`, rendering the tooltip below its parent.
@@ -78,7 +73,6 @@ export class TooltipComponent {
                 name: 'eventListeners',
                 enabled: true,
               },
-              ...this.popperDefault,
             ],
           });
           // Update its position
@@ -97,22 +91,22 @@ export class TooltipComponent {
   @Method()
   async close() {
     clearTimeout(this.delayTimer);
-    if (!this.containsFab) {
-      // Disable the event listeners
-      this.popperInstance.setOptions({
-        modifiers: [
-          {
-            name: 'eventListeners',
-            enabled: false,
-          },
-        ],
-      });
+    if (this.opened && this.popperInstance) {
+      if (!this.containsFab) {
+        // Disable the event listeners
+        this.popperInstance.setOptions({
+          modifiers: [
+            {
+              name: 'eventListeners',
+              enabled: false,
+            },
+          ],
+        });
+      }
+      this.opened = false;
+      this.didClose.emit();
     }
-    this.opened = false;
-    this.didClose.emit();
   }
-
-  @State() opened = false;
 
   @Listen('touchstart', { target: 'window' }) handleTouchstart(ev) {
     if (!ev?.path?.includes(this.el) && this.opened) {
@@ -134,6 +128,12 @@ export class TooltipComponent {
     }
   }
 
+  @Listen('closeTooltips') handleCloseEvent() {
+    setTimeout(() => {
+      this.close();
+    }, 50);
+  }
+
   _toggleClick() {
     if (isTouchDevice()) {
       if (this.opened) {
@@ -153,7 +153,21 @@ export class TooltipComponent {
     this.popperInstance = createPopper(elmButton, this.elmTooltip, {
       strategy: 'fixed',
       placement: this.position,
-      modifiers: (this.containsFab && this.popperDefault) || [],
+      modifiers: this.containsFab
+        ? [
+            {
+              name: 'offset',
+              options: {
+                offset: [0, 8],
+              },
+            },
+          ]
+        : [
+            {
+              name: 'eventListeners',
+              enabled: false,
+            },
+          ],
     });
   }
 

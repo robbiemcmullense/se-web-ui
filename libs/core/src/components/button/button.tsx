@@ -164,8 +164,11 @@ export class ButtonComponent {
     }
 
     if (this.grouped) {
-      this.selected = !this.selected;
-      this.didClick.emit({ selected: this.selected, value: this.value });
+      if (!this.selected) {
+        // only toggle when another one is selected.
+        this.selected = true;
+        this.didClick.emit({ selected: this.selected, value: this.value });
+      }
     }
 
     if (this.option === 'minifab') {

@@ -188,12 +188,15 @@ storiesOf('List', module)
         <se-block width="250px" option="fill">
           <se-list option="treeview">
             <se-list-item >
-              <se-checkbox size="medium" selected="true" slot="start" label="I'm the first treeview"></se-checkbox>
+              <se-checkbox size="medium" slot="item" selected="true" label="I'm the first treeview"></se-checkbox>
+            </se-list-item>
+            <se-list-item>
+              <se-checkbox size="medium" slot="item" selected="true" label="I'm the second treeview grandchild I'm the second treeview grandchild!"></se-checkbox>
             </se-list-item>
             <se-list-item>
               <se-checkbox size="medium" selected="true" slot="start"></se-checkbox>
               <div slot="item" >
-                I'm the second treeview grandchild I'm the second treeview grandchild!
+                another slotted item
               </div>
             </se-list-item>
             <se-list-item item="First treeview item"><se-checkbox size="medium" slot="start"></se-checkbox></se-list-item>

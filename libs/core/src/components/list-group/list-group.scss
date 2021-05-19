@@ -36,6 +36,7 @@ se-list-item {
 .treeview-icon {
   margin: -$spacing;
   margin-right: -$spacing-large;
+  margin-left: -$spacing-medium;
 }
 .list-group-trigger {
   font-weight: var(--se-list-item-group-trigger-font-weight);

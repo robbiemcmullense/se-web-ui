@@ -1,4 +1,13 @@
-import { Component, h, Prop, State, Method, Host } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  State,
+  Method,
+  Host,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 import notificationError from '@se/icons/svg/notification_error.svg';
 import arrow4Top from '@se/icons/svg/arrow4_top.svg';
 const SHOW_FAB = 'show';
@@ -40,6 +49,12 @@ export class FabComponent {
   @Prop() overlay: boolean;
 
   @State() showDial = false;
+
+  /**
+   * Event emitted to close the tooltip (if there is one) when interacting with the fab button.
+   */
+  @Event() closeTooltips: EventEmitter;
+
   /**
    * Use this method to toggle (show/hide) the mini action buttons.
    */
@@ -47,6 +62,7 @@ export class FabComponent {
   async toggleAction() {
     if (this.option === 'speeddial') {
       this.showDial = !this.showDial;
+      this.closeTooltips.emit();
     }
   }
 

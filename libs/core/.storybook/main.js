@@ -11,7 +11,7 @@ module.exports = {
       name: '@storybook/addon-storysource',
       options: {
         rule: {
-          test: [/\.stories\.ts?$/],
+          test: [/\.stories\.(ts|tsx)?$/],
           include: [path.resolve(__dirname, '../src')],
         },
         loaderOptions: {

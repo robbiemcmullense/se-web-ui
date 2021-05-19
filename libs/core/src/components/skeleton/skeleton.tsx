@@ -6,7 +6,7 @@ import { Component, h, Prop, Host } from '@stencil/core';
   shadow: true,
 })
 export class Skeleton {
-  @Prop() count: 1;
+  @Prop() count = 1;
   @Prop() width;
   @Prop() height;
   @Prop() circle: boolean;

@@ -34,22 +34,22 @@ storiesOf('Filtration', module)
           </se-filtration>
           <se-filtration shadow=${shadow} item="Multi Select" show-select-all search="" searchable=${searchable}>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Software" selected="true" id="Software"></se-checkbox>
+              <se-checkbox slot="item" size="medium" label="Software" selected="true" id="Software"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="mylongemailaddress.whynot@se.com" selected="true" id="Hardware"></se-checkbox>
+              <se-checkbox slot="item" size="medium" label="mylongemailaddress.whynot@se.com" selected="true" id="Hardware"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Infrastructure with some more into it" label-suffix="100" id="Infrastructure"></se-checkbox>
+              <se-checkbox slot="item" size="medium" label="Infrastructure with some more into it" label-suffix="100" id="Infrastructure"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Mechanical" label-suffix="10" id="Mechanical"></se-checkbox>
+              <se-checkbox slot="item" size="medium" label="Mechanical" label-suffix="10" id="Mechanical"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Electrical" id="Electrical"></se-checkbox>
+              <se-checkbox slot="item" size="medium" label="Electrical" id="Electrical"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox slot="start" size="medium" label="Information" id="Information"></se-checkbox>
+              <se-checkbox slot="item" size="medium" label="Information" id="Information"></se-checkbox>
             </se-list-item>
           </se-filtration>
           <se-filtration shadow=${shadow} item="Date Range">

@@ -16,6 +16,13 @@
 | `position` | `position` | Property that determines the position of the component. The default setting is `bottom`, rendering a FAB at the bottom right corner. The `top` setting renders the FAB at the top right corner.                                                                | `"bottom" \| "top"`          | `'bottom'`    |
 
 
+## Events
+
+| Event           | Description                                                                                | Type               |
+| --------------- | ------------------------------------------------------------------------------------------ | ------------------ |
+| `closeTooltips` | Event emitted to close the tooltip (if there is one) when interacting with the fab button. | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `toggleAction() => Promise<void>`

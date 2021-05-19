@@ -12,6 +12,7 @@ import {
   Watch,
 } from '@stencil/core';
 import { createPopper, Placement } from '@popperjs/core';
+import { isTouchDevice } from '../../utils';
 
 @Component({
   tag: 'se-dropdown',
@@ -54,6 +55,12 @@ export class DropdownComponent {
    * Sets the maximum height of the dropdown.  Default setting is "400px".
    */
   @Prop() maxHeight = '400px';
+
+  /**
+   * Define the type of even needed to open the modal. By default it's on click. If `hover` is selected, then the dropdown will close when the mouse goes away as well.
+   */
+  @Prop() action: 'click' | 'hover' = 'click';
+
   /**
    * Method to open the dropdown from outside its parent element.
    */
@@ -153,6 +160,19 @@ export class DropdownComponent {
     }
   }
 
+  @Listen('mouseenter') handleMouseEnter() {
+    // On touch device, we remove hover or the dropdown keep open and closing
+    if (this.action === 'hover' && !isTouchDevice()) {
+      this.open();
+    }
+  }
+
+  @Listen('mouseleave') handleMouseLeave() {
+    if (this.action === 'hover' && !isTouchDevice() && this.opened) {
+      this.close();
+    }
+  }
+
   _toggle(ev: Event) {
     ev.stopPropagation();
     this.isActive = true;
@@ -175,6 +195,10 @@ export class DropdownComponent {
       strategy: 'fixed',
       placement: `${this.verticalAlignment}-${this._alignment}` as Placement,
       modifiers: [
+        {
+          name: 'eventListeners',
+          enabled: false,
+        },
         {
           name: 'offset',
           options: {
