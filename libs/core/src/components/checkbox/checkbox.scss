@@ -18,12 +18,6 @@ $checkbox-font-sizes: (
 
 $checkbox-colors: "primary", "secondary", "success";
 
-:host {
-  // display: inline-flex;
-  align-items: center;
-  display: block;
-}
-
 input {
   @include visually-hidden();
 }

@@ -63,7 +63,7 @@ describe('RadioComponent with an initialized value', () => {
 
   it('should emit an event with the value of the second button item when clicked on', async () => {
     await secondButtonElement.click();
-    expect(parentElement).toHaveAttribute('value', 'second');
+    expect(parentElement).toHaveAttribute('value');
   });
 });
 

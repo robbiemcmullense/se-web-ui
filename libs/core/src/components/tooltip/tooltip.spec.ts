@@ -2,11 +2,10 @@ import { TooltipComponent } from './tooltip';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('TooltipComponent', () => {
-  let tooltip, mockEvent, eventSpy;
+  let tooltip;
 
   beforeEach(() => {
     tooltip = new TooltipComponent();
-    mockEvent = { stopPropagation: jest.fn() };
   });
 
   it('should build', () => {

@@ -61,6 +61,33 @@ export class DropdownComponent {
    */
   @Prop() action: 'click' | 'hover' = 'click';
 
+  getDefaultModifiers(listener = true) {
+    return [
+      {
+        name: 'eventListeners',
+        enabled: listener,
+      },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: [
+            `${this.verticalAlignment === 'bottom' ? 'top' : 'bottom'}-${
+              this._alignment
+            }`,
+          ],
+        },
+      },
+    ];
+  }
+
+  createPopper(listener: boolean): void {
+    this.popperInstance = createPopper(this.elmButton, this.elmDropdown, {
+      strategy: 'fixed',
+      placement: `${this.verticalAlignment}-${this._alignment}` as Placement,
+      modifiers: this.getDefaultModifiers(listener),
+    });
+  }
+
   /**
    * Method to open the dropdown from outside its parent element.
    */
@@ -71,32 +98,11 @@ export class DropdownComponent {
 
     // Enable the event listeners
     this.popperInstance.setOptions({
-      modifiers: [
-        {
-          name: 'eventListeners',
-          enabled: true,
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 8],
-          },
-        },
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: [
-              `${this.verticalAlignment === 'bottom' ? 'top' : 'bottom'}-${
-                this._alignment
-              }`,
-            ],
-          },
-        },
-      ],
+      modifiers: this.getDefaultModifiers(),
     });
-
     // Update its position
     this.popperInstance.update();
+    // create popper
   }
   /**
    * Method to close the dropdown from outside its parent element.
@@ -112,12 +118,6 @@ export class DropdownComponent {
         {
           name: 'eventListeners',
           enabled: false,
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
         },
       ],
     });
@@ -191,22 +191,7 @@ export class DropdownComponent {
   }
 
   componentDidLoad(): void {
-    this.popperInstance = createPopper(this.elmButton, this.elmDropdown, {
-      strategy: 'fixed',
-      placement: `${this.verticalAlignment}-${this._alignment}` as Placement,
-      modifiers: [
-        {
-          name: 'eventListeners',
-          enabled: false,
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
-        },
-      ],
-    });
+    this.createPopper(false);
   }
 
   render() {
@@ -215,6 +200,7 @@ export class DropdownComponent {
         <span
           ref={el => (this.elmButton = el)}
           aria-haspopup="true"
+          class="block"
           aria-expanded={this.opened}
           onClick={ev => this._toggle(ev)}
         >

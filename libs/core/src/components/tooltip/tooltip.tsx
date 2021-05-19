@@ -57,6 +57,38 @@ export class TooltipComponent {
    */
   @Event() didClose: EventEmitter;
 
+  createPopper(listener: boolean = true): void {
+    const elmButton =
+      this.containsFab?.shadowRoot?.querySelector('.fab-button') ||
+      this.elmButton;
+
+    this.popperInstance = createPopper(elmButton, this.elmTooltip, {
+      strategy: 'fixed',
+      placement: this.position,
+      modifiers: this.containsFab
+        ? [
+            {
+              name: 'offset',
+              options: {
+                offset: [0, 8],
+              },
+            },
+          ]
+        : [
+            {
+              name: 'eventListeners',
+              enabled: listener,
+            },
+            {
+              name: 'offset',
+              options: {
+                offset: [4, 4],
+              },
+            },
+          ],
+    });
+  }
+
   /**
    * Method to open the tooltip separate from hovering or clicking the parent element.
    */
@@ -64,6 +96,9 @@ export class TooltipComponent {
   async open() {
     this.delayTimer = setTimeout(
       () => {
+        this.opened = true;
+        this.didOpen.emit();
+
         if (!this.containsFab) {
           // only maintain update when not on fab (glitch issue)
           // Enable the event listeners
@@ -73,13 +108,17 @@ export class TooltipComponent {
                 name: 'eventListeners',
                 enabled: true,
               },
+              {
+                name: 'offset',
+                options: {
+                  offset: [4, 4],
+                },
+              },
             ],
           });
           // Update its position
-          this.popperInstance?.update();
+          this.popperInstance.update();
         }
-        this.opened = true;
-        this.didOpen.emit();
       },
       !isTouchDevice() ? this.showDelay : 0
     );
@@ -146,29 +185,7 @@ export class TooltipComponent {
 
   componentDidLoad(): void {
     this.containsFab = (this.el as HTMLElement).querySelector('se-fab');
-    const elmButton =
-      this.containsFab?.shadowRoot?.querySelector('.fab-button') ||
-      this.elmButton;
-
-    this.popperInstance = createPopper(elmButton, this.elmTooltip, {
-      strategy: 'fixed',
-      placement: this.position,
-      modifiers: this.containsFab
-        ? [
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 8],
-              },
-            },
-          ]
-        : [
-            {
-              name: 'eventListeners',
-              enabled: false,
-            },
-          ],
-    });
+    this.createPopper(false);
   }
 
   disconnectedCallback() {

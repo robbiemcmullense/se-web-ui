@@ -1,5 +1,10 @@
 $max-width-input: 320px;
 
+:host([hidden]),
+[hidden] {
+  display: none;
+}
+
 se-form-field {
   display: block;
   .form-field-wrapper {

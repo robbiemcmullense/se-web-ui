@@ -1,12 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('CheckboxComponent', () => {
-  let page,
-    hostElement,
-    checkboxElement,
-    inputElement,
-    wrapperElement,
-    labelElement;
+  let page, hostElement, checkboxElement, inputElement, wrapperElement;
 
   beforeEach(async () => {
     page = await newE2EPage();
@@ -17,7 +12,6 @@ describe('CheckboxComponent', () => {
     wrapperElement = await page.find('se-checkbox >>> .wrapper');
     checkboxElement = await page.find('se-checkbox >>> button');
     inputElement = await page.find('se-checkbox >>> input');
-    labelElement = await page.find('se-checkbox >>> label');
   });
 
   it('renders', async () => {
@@ -82,7 +76,7 @@ describe('CheckboxComponent in Switch Mode', () => {
 });
 
 describe('CheckboxComponent in OnOff Mode', () => {
-  let page, hostElement, onOffElement;
+  let page, hostElement;
 
   beforeEach(async () => {
     page = await newE2EPage();
@@ -90,7 +84,6 @@ describe('CheckboxComponent in OnOff Mode', () => {
       '<se-checkbox id="on-off-switch" option="onoff" header="true"></se-checkbox>'
     );
     hostElement = await page.find('se-checkbox');
-    onOffElement = await page.find('se-checkbox >>> div');
   });
 
   it('renders', async () => {

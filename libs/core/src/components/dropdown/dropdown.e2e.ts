@@ -1,13 +1,12 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('DropdownComponent', () => {
-  let page, hostElement, dropdownElement;
+  let page, hostElement;
 
   beforeEach(async () => {
     page = await newE2EPage();
     await page.setContent('<se-dropdown></se-dropdown>');
     hostElement = await page.find('se-dropdown');
-    dropdownElement = await page.find('se-dropdown >>> .content');
   });
 
   it('renders', async () => {

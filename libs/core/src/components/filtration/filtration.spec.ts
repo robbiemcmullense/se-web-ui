@@ -1,4 +1,3 @@
-import { newSpecPage } from '@stencil/core/testing';
 import { FormFieldComponent } from '../form-field/form-field';
 import { FiltrationComponent } from './filtration';
 

@@ -1,13 +1,14 @@
-:host {
-  position: relative;
-  display: inline-block;
-}
+:host([hidden]),
 [hidden] {
   display: none;
 }
 
 .dropdown-toggle ::slotted(*) {
   cursor: pointer;
+}
+
+.block {
+  display: inline-block;
 }
 
 .content {
@@ -27,6 +28,7 @@
   visibility: visible; /* shows sub-menu */
   opacity: 1;
   z-index: $zindex-dropdown;
+  height: auto;
 }
 
 [data-popper-reference-hidden] {

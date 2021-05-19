@@ -102,7 +102,7 @@ describe('BreadcrumbComponent', () => {
       page.root.shadowRoot.querySelector('ol').getAttribute('itemtype')
     ).toEqual('https://schema.org/BreadcrumbList');
 
-    const children = [...page.root.querySelectorAll('se-breadcrumb-item')];
+    const children = page.root.querySelectorAll('se-breadcrumb-item');
     children.forEach((node, index) => {
       expect(node.getAttribute('position')).toEqual(index + 1 + '');
     });

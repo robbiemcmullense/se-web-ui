@@ -235,7 +235,9 @@ export class StepperComponent {
   disconnectedCallback() {
     this.stepperItems.length = 0;
     this.selectedItem = undefined;
-    this.observer.disconnect();
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   render() {
