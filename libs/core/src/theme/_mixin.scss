@@ -156,9 +156,9 @@
   text-align: inherit;
 }
 
-@mixin interactive-element-outline($width: 2px, $offset: 2px) {
+@mixin interactive-element-outline($width: 2px, $offset: -2px) {
+  @include outline("button-focus");
   outline-width: $width;
   outline-offset: $offset;
   outline-style: solid;
-  @include outline("button-focus");
 }

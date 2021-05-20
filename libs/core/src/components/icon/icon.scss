@@ -52,8 +52,8 @@ button {
   color: inherit;
   transition-property: outline-width;
   transition-duration: 0.2s;
-  &:focus-visible {
-    @include interactive-element-outline(2px, 1px);
+  &:focus {
+    @include interactive-element-outline();
   }
 }
 

@@ -17,10 +17,14 @@ import ResizeObserver from 'resize-observer-polyfill';
   shadow: false,
 })
 export class FormFieldComponent {
+  @Element() el: HTMLElement;
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
   private inputWrapper?: HTMLElement;
   // private sizeMedium = 501;
 
-  @Element() el: HTMLElement;
   /**
    * Defines the layout of your form field.
    * `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label.

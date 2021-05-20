@@ -60,12 +60,12 @@ $rgb-suffix: "-rgb";
   $color: map-get($seTheme, $colorTheme);
   @if $transparencies == "none" {
     border-color: $color;
-    border-color: var(#{custom-property-name($colorTheme)}, $color);
+    border-color: var(#{custom-property-name($colorTheme)}, $color) !important;
   } @else {
     border-color: rgba($color, $transparencies);
     border-color: rgba(
       var(#{custom-property-name($colorTheme + $rgb-suffix)}, $color),
       $transparencies
-    );
+    ) !important;
   }
 }

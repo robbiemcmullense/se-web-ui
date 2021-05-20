@@ -27,7 +27,7 @@ $chip-height: 30px; // with border it's 32px.
   cursor: pointer;
 
   &:focus {
-    @include interactive-element-outline(2px, 1px);
+    @include interactive-element-outline();
   }
 }
 

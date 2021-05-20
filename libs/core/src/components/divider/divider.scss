@@ -1,26 +1,23 @@
-
-
 $divider-width: 1px;
 $divider-inset-margin: 80px;
 
-.se-divider {
+:host {
   display: block;
   margin: 0;
+}
 
-  &.horizontal {
-    width: 100%;
-    border-top: $divider-width solid;
-  }
-  &.vertical,
-  &.inset {
-    height: 100%;
-    border-right: $divider-width solid;
-  }
-  &.standard {
-    border-color: $se-super-light-grey;
-    @include border-color('divider')
-  }
-  &.alternative {
-    @include border-color('background-alternative');
-  }
+.horizontal {
+  width: 100%;
+  border-top: $divider-width solid;
+}
+.vertical,
+.inset {
+  height: 100%;
+  border-right: $divider-width solid;
+}
+.standard {
+  @include border-color("divider");
+}
+.alternative {
+  @include border-color("background-alternative");
 }

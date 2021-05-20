@@ -18,8 +18,6 @@ export class DividerComponent {
   @Prop() color: 'standard' | 'alternative' = 'standard';
 
   render() {
-    return (
-      <div class={['se-divider', this.option, this.color].join(' ')}></div>
-    );
+    return <div class={{ [this.option]: true, [this.color]: true }}></div>;
   }
 }

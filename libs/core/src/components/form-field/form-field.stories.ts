@@ -2,14 +2,13 @@ import { storiesOf } from '@storybook/html';
 import readme from './readme.md';
 import { select, text, boolean, number } from '@storybook/addon-knobs';
 
-const layoutOption = ['inline', 'stacked'];
 const inputTypeOption = ['text', 'date'];
 
 storiesOf('Form Field', module)
   .add(
     'Form Field Multiple',
     () => {
-      const option = select('option', layoutOption, 'inline');
+      const stacked = boolean('stacked', false);
       const padding = select('padding', ['none', 'small', 'medium'], 'small');
       const disabled = boolean('disabled', false);
       const block = boolean('block', false);
@@ -23,7 +22,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='checkbox'
-        option='${option}'
+        stacked='${stacked}'
         label='chekbox'
         required='true'
         disabled='${disabled}'
@@ -36,7 +35,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='another checkbox'
-        option='${option}'
+        stacked='${stacked}'
         label='chekbox'
         required='true'
         disabled='${disabled}'
@@ -48,7 +47,7 @@ storiesOf('Form Field', module)
         label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
-        option='${option}'
+        stacked='${stacked}'
         label='Save automatically'
         required='true'
         disabled='${disabled}'
@@ -61,7 +60,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='radio'
-        option='${option}'
+        stacked='${stacked}'
         label='radio!!!'
         required='true'
         disabled='${disabled}'
@@ -78,7 +77,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         text-only
-        option='${option}'
+        stacked='${stacked}'
         label='Some unstyled text'
         disabled='${disabled}'
         label-width='${labelWidth}'
@@ -90,7 +89,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         text-only
-        option='${option}'
+        stacked='${stacked}'
         label-width='${labelWidth}'
         label='Some bold text'
         >
@@ -101,7 +100,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='input'
-        option='${option}'
+        stacked='${stacked}'
         label='Input'
         required='true'
         disabled='${disabled}'
@@ -114,7 +113,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='input'
-        option='${option}'
+        stacked='${stacked}'
         label='Input with button and icon'
         required='true'
         disabled='${disabled}'
@@ -132,7 +131,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='select'
-        option='${option}'
+        stacked='${stacked}'
         label='Select'
         required='true'
         disabled='${disabled}'
@@ -149,7 +148,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='input'
-        option='${option}'
+        stacked='${stacked}'
         label='Textarea'
         required='true'
         disabled='${disabled}'
@@ -162,7 +161,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='input'
-        option='${option}'
+        stacked='${stacked}'
         label='Date'
         required='true'
         disabled='${disabled}'
@@ -175,7 +174,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='input'
-        option='${option}'
+        stacked='${stacked}'
         label='Search with-icon small'
         required='true'
         disabled='${disabled}'
@@ -191,7 +190,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='input'
-        option='${option}'
+        stacked='${stacked}'
         label='Search no search-wrapper'
         required='true'
         disabled='${disabled}'
@@ -204,7 +203,7 @@ storiesOf('Form Field', module)
         padding='${padding}'
         block='${block}'
         type='input'
-        option='${option}'
+        stacked='${stacked}'
         label='input with-icon medium'
         required='true'
         disabled='${disabled}'
