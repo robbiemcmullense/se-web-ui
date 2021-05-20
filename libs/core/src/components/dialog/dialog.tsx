@@ -74,6 +74,10 @@ export class DialogComponent {
    */
   @Prop() pageScroll: boolean;
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   /**
    * Emit the `backdrop` event from the dialog's parent component if `canBackdrop=true`. When the event is emitted, the dialog is automatically closed.
    */

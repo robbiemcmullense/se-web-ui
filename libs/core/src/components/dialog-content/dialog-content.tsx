@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-dialog-content',
@@ -6,6 +6,8 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class DialogContentComponent {
+  @Element() el: HTMLElement;
+
   /**
    * Defaulted to a small padding.
    * When set to `fill`, the content will fill the whole space of the dialog.
@@ -24,6 +26,10 @@ export class DialogContentComponent {
    * Indicates if se-dialog-content is the last child of the dialog component.
    */
   @Prop() isLastChild = true;
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
 
   render() {
     return (

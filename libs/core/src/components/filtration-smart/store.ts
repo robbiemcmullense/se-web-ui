@@ -447,19 +447,9 @@ export const restoreFilterStateOnMobileViewClose = (): void => {
 };
 
 const initExpandedSections = (rootSectionsIds: string[]): void => {
-  let rootSectionsIdsToShowCollapsed = [];
-
-  if (rootSectionsIds.length > visibleFacetsCount) {
-    rootSectionsIdsToShowCollapsed = rootSectionsIds.slice(visibleFacetsCount);
-  }
-
   const traverser = (sectionsIds: string[]): void => {
     sectionsIds.forEach(sectionId => {
-      if (rootSectionsIdsToShowCollapsed.includes(sectionId)) {
-        sectionsExpandedStore.set(sectionId, false);
-      } else {
-        sectionsExpandedStore.set(sectionId, true);
-      }
+      sectionsExpandedStore.set(sectionId, true);
 
       const subSectionsIds = getSectionSectionsIds(sectionId);
       traverser(subSectionsIds);

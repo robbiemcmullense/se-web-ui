@@ -2,6 +2,7 @@ import {
   Component,
   Event,
   EventEmitter,
+  Element,
   h,
   Prop,
   Fragment,
@@ -17,6 +18,8 @@ import { isIE11 } from '../../../utils';
   shadow: true,
 })
 export class FiltrationSmartCheckbox {
+  @Element() el: HTMLSeFiltrationSmartCheckboxElement;
+
   /**
    * Id of the refinement that will be used to find the data in the Root Filter store.
    */
@@ -32,6 +35,10 @@ export class FiltrationSmartCheckbox {
    */
   @Event()
   refinementStateChanged: EventEmitter<string>;
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
 
   get data(): FiltrationSmartRefinementData {
     return getRefinementData(this.refinementId);

@@ -8,6 +8,8 @@ import {
 } from '@stencil/vue-output-target';
 import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
+import postcssRTLCSS from 'postcss-rtlcss';
+import postcssHostPolyfill from '@se/postcss-host-polyfill';
 
 import {
   angularOutputTarget,
@@ -20,6 +22,11 @@ const EVENTS = {
 const ATTRS = {
   Value: 'value',
   Selected: 'selected',
+};
+
+const RTL_PREFIXES = {
+  ltrPrefix: ':host(:not([dir="rtl"]))',
+  rtlPrefix: ':host([dir="rtl"])',
 };
 
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
@@ -91,7 +98,11 @@ export const config: Config = {
     }),
     inlineSvg(),
     postcss({
-      plugins: [autoprefixer({ grid: 'no-autoplace' })],
+      plugins: [
+        autoprefixer({ grid: 'no-autoplace' }),
+        postcssRTLCSS(RTL_PREFIXES),
+        postcssHostPolyfill(RTL_PREFIXES),
+      ],
     }),
   ],
   outputTargets: [

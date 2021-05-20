@@ -3,6 +3,7 @@ import {
   Event,
   EventEmitter,
   Prop,
+  Element,
   h,
   Fragment,
 } from '@stencil/core';
@@ -16,6 +17,8 @@ import { isIE11 } from '../../../utils';
   shadow: true,
 })
 export class FiltrationSmartTab {
+  @Element() el: HTMLSeFiltrationSmartTabElement;
+
   /**
    * Id of the filter that will be used to find the data in the Root Filter store.
    */
@@ -34,6 +37,10 @@ export class FiltrationSmartTab {
   private onClick = (): void => {
     this.refinementStateChanged.emit(this.refinementId);
   };
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
 
   render(): HTMLElement {
     return (

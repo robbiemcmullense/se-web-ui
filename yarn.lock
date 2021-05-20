@@ -2401,6 +2401,11 @@
   resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-4.2.0.tgz#108e4af2319e4c98515097b69a59653fe83de842"
   integrity sha512-BJbLHIdflHGmP9cQnW+uzh0bSNrMbUKz/8Y8A30iC2vu6hrB7JHt5DIe7tRIRB1PKNyXnm6vAhysLZehAD4xug==
 
+"@se/postcss-host-polyfill@^1.0.0":
+  version "1.0.0"
+  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/postcss-host-polyfill/-/postcss-host-polyfill-1.0.0.tgz#28912dfb753adf86545de95ad0f5193d15a2003c"
+  integrity sha512-Y/rkYGYVaZNL3gHU16ovI9GFPu+wgqIEoe6e94gOKLWA8R0oLBadgNI3l+gfaZnMrmfGIIDHwM5oTrUXFExw3w==
+
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.3.tgz#5405ee8e444ed212db44e79351f0c70a582aae25"
@@ -2440,7 +2445,7 @@
   resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.5.tgz#63e6981211291f80804361283386074bb9412749"
   integrity sha512-00iVf0pMH5NrVc/dUDy6AOEYEwTZ816bXggzNf4gxbhLpX1RAsC+MjC0gs/sJS2gal4gpE4cTVlPCGNy+mtFXg==
 
-"@stencil/core@^2.0.0":
+"@stencil/core@^2.5.2":
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.5.2.tgz#ad00d495ee37bbed4044524d59c7f22de15ab4a7"
   integrity sha512-bgjPXkSzzg1WnTgVUm6m5ZzpKt602WmA/QljODAW1xVN40OHJdbGblzF/F6MFzqv2c5Cy30CB41arc8qADIdcQ==
@@ -2457,7 +2462,7 @@
   resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.9.tgz#b225611c5743f0285c37d92bb47d9369ba462c54"
   integrity sha512-t2sSkm/VGftBqewK47eZonaHIXW7CYWlsDy6Ln4jqNVpr93CuPWkg7rsnPiZrJrU1NBuTgA0hC2xoRcAJVm7Sw==
 
-"@stencil/sass@^1.1.1":
+"@stencil/sass@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-1.4.1.tgz#ef5a1dd1b56c024ed08e80475e8a6f8d1c25bb10"
   integrity sha512-aFKoqtxZ/8BRbvNFiWRycGiqvMI22Ifn5qsKfq0U23j43XD81jT6d7K0WQd55ejNpoSpdxJcbOuFgQy3mXizfA==
@@ -13607,6 +13612,11 @@ nanoid@^3.1.20:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
   integrity sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==
 
+nanoid@^3.1.23:
+  version "3.1.23"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
+  integrity sha512-FiB0kzdP0FFVGDKlRLEQ1BgDzU87dy5NnzjeW9YZNt+/c3+q82EQDUwniSAUxp/F0gFNI1ZhKU1FqYsMuqZVnw==
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -15348,6 +15358,13 @@ postcss-reduce-transforms@^4.0.2:
     postcss "^7.0.0"
     postcss-value-parser "^3.0.0"
 
+postcss-rtlcss@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/postcss-rtlcss/-/postcss-rtlcss-3.3.2.tgz#380d9e6086f3c90fa3da8f83b3b4867c76776777"
+  integrity sha512-EyPmF5RjRTNCF/Ig3Uyepzge16Q60wzneyvrZ6IOzfOiGMz+fyAUFoxa2AU8ZMFzo2Ej/UQTPYSR8uilAfxKAw==
+  dependencies:
+    rtlcss "^3.1.2"
+
 postcss-selector-parser@^3.0.0:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-3.1.2.tgz#b310f5c4c0fdaf76f94902bbaa30db6aa84f5270"
@@ -15461,12 +15478,21 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.2, postcss@^7.0.23
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@~8.2.1:
-  version "8.2.8"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.8.tgz#0b90f9382efda424c4f0f69a2ead6f6830d08ece"
-  integrity sha512-1F0Xb2T21xET7oQV9eKuctbM9S7BC0fetoHCc4H13z0PT6haiRLP4T0ZY4XWh7iLP0usgqykT6p9B2RtOf4FPw==
+postcss@^8.2.15:
+  version "8.2.15"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.15.tgz#9e66ccf07292817d226fc315cbbf9bc148fbca65"
+  integrity sha512-2zO3b26eJD/8rb106Qu2o7Qgg52ND5HPjcyQiK2B98O388h43A448LCslC0dI2P97wCAQRJsFvwTRcXxTKds+Q==
   dependencies:
     colorette "^1.2.2"
+    nanoid "^3.1.23"
+    source-map "^0.6.1"
+
+postcss@^8.2.4, postcss@~8.2.1:
+  version "8.2.4"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.4.tgz#20a98a39cf303d15129c2865a9ec37eda0031d04"
+  integrity sha512-kRFftRoExRVXZlwUuay9iC824qmXPcQQVzAjbCCgjpXnkdMCJYBu2gTwAaFBzv8ewND6O8xFb3aELmEkh9zTzg==
+  dependencies:
+    colorette "^1.2.1"
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
@@ -17000,6 +17026,17 @@ rsvp@^4.8.4:
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
   integrity sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==
 
+rtlcss@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/rtlcss/-/rtlcss-3.1.2.tgz#4800d3d03525791a720f676a8ad2c6acf8efdfb2"
+  integrity sha512-b04YSX37siupPOWUEguEBReWX2w4QT89C0PI9g2JzZycbq7zrgPmTr1DA1pizSWpKRFdCjjnrx/SSvU4fOHmGg==
+  dependencies:
+    chalk "^4.1.0"
+    find-up "^5.0.0"
+    mkdirp "^1.0.4"
+    postcss "^8.2.4"
+    strip-json-comments "^3.1.1"
+
 run-async@^2.2.0, run-async@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
@@ -18165,7 +18202,7 @@ strip-json-comments@2.0.1, strip-json-comments@^2.0.0, strip-json-comments@~2.0.
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
-strip-json-comments@^3.0.1:
+strip-json-comments@^3.0.1, strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
