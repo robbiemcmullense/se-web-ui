@@ -114,14 +114,11 @@ export class ListGroupComponent {
       this.selectedChild = false;
     } else {
       // TODO: make sure it work if we have a list inside a list...
-      Array.from(
+      const selectedList = Array.from(
         this.el.querySelectorAll('se-list-item, se-list-group')
-      ).forEach((item: any) => {
-        if (item.selected || item.selectedChild) {
-          this.selectedChild = true;
-          return;
-        }
-      });
+      ).filter((item: any) => item.selected || item.selectedChild);
+
+      this.selectedChild = !!selectedList.length;
     }
   }
 

@@ -32,7 +32,9 @@ export class ListItemComponent {
    * Defines if the list element should be selected or not.
    */
   @Prop() selected: boolean;
-
+  @Watch('selected') SelectedDidChange() {
+    this.didSelectedChange.emit();
+  }
   /**
    * Disable the item for any interaction.
    */
@@ -68,9 +70,6 @@ export class ListItemComponent {
    * Event emitted to notify the list-group component that the selected state has changed.
    */
   @Event() didSelectedChange: EventEmitter<void>;
-  @Watch('selected') SelectedDidChange() {
-    this.didSelectedChange.emit();
-  }
 
   @Method()
   async focusElement() {
