@@ -1,4 +1,11 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import {
+  Component,
+  h,
+  Element,
+  Prop,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 import actionDeleteCross from '@se/icons/svg/action_delete_cross.svg';
 
 @Component({
@@ -7,6 +14,8 @@ import actionDeleteCross from '@se/icons/svg/action_delete_cross.svg';
   shadow: true,
 })
 export class DialogHeaderComponent {
+  @Element() el: HTMLElement;
+
   /**
    * Defaulted to a small padding.
    * When set to `indent`, the header will have an alternative margins and paddings.
@@ -35,6 +44,10 @@ export class DialogHeaderComponent {
 
   closeDialogClicked() {
     this.didCloseDialog.emit();
+  }
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
   }
 
   render() {

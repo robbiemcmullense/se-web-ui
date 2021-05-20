@@ -88,6 +88,10 @@ export class ListItemComponent {
 
   @State() showNavIcon: boolean;
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   getClosestParent() {
     // get the closest between se-list or se-list-group
     return this.el.parentElement && this.el.parentElement.closest('se-list');

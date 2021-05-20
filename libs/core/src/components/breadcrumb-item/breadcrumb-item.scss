@@ -47,9 +47,9 @@ se-icon {
     background-color: inherit;
   }
 
-  :host-context([dir="rtl"]) & {
-    transform: rotate(180deg);
-  }
+  /*rtl:raw:
+    transform: scaleX(-1);
+  */
 }
 
 .disabled {

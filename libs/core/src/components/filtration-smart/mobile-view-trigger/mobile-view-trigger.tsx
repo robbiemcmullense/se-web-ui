@@ -1,4 +1,11 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Element,
+  h,
+  Prop,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-filtration-smart-mobile-view-trigger',
@@ -6,6 +13,8 @@ import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class FiltrationSmartMobileViewTrigger {
+  @Element() el: HTMLSeFiltrationSmartMobileViewTriggerElement;
+
   /**
    * The text label of the "Show filter" button.
    */
@@ -25,6 +34,10 @@ export class FiltrationSmartMobileViewTrigger {
   private onClick = (): void => {
     this.toggleMobileView.emit();
   };
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
 
   render(): HTMLElement {
     return (

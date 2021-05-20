@@ -145,6 +145,10 @@ export class CheckboxComponent {
     }
   }
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   toggleSelect = (): void => {
     this.handleClick(!this.selected);
   };

@@ -27,6 +27,10 @@ export class BlockContent {
 
   scrollBody: HTMLDivElement;
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   private setOverlays = (): void => {
     this.hasOverlayTop = this.scrollBody.scrollTop > 0;
     this.hasOverlayBottom =

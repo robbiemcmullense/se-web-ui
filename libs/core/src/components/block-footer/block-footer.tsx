@@ -24,6 +24,10 @@ export class BlockFooter {
    */
   @Prop() direction: 'row' | 'column' = 'row';
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   render() {
     return (
       <Host>

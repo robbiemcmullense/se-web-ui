@@ -19,6 +19,10 @@ export class BlockHeader {
    */
   @Prop() option: 'card' | 'widget' | 'basic' | 'fill';
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   render() {
     return (
       <Host>

@@ -200,6 +200,10 @@ export class FiltrationSmart {
     // TODO: to be implemented
   }
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   componentWillLoad(): void {
     initStore({
       filters: this.filters,

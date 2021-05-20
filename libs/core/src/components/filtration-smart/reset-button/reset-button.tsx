@@ -1,4 +1,11 @@
-import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Element,
+  Prop,
+  h,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-filtration-smart-reset-button',
@@ -6,6 +13,8 @@ import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class FiltrationSmartResetButton {
+  @Element() el: HTMLSeFiltrationSmartResetButtonElement;
+
   /**
    * Text label of the button.
    */
@@ -25,6 +34,10 @@ export class FiltrationSmartResetButton {
   private handleClick = (): void => {
     this.resetAllClicked.emit();
   };
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
 
   render(): HTMLElement {
     return (

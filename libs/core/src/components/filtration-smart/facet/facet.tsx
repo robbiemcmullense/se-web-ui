@@ -2,6 +2,7 @@ import {
   Component,
   Prop,
   h,
+  Element,
   Event,
   EventEmitter,
   Fragment,
@@ -26,6 +27,8 @@ import { listOption } from '../../list/constants';
   shadow: true,
 })
 export class FiltrationSmartFacet {
+  @Element() el: HTMLSeFiltrationSmartFacetElement;
+
   /**
    * Facet ID that will be used to retrieve data from store.
    */
@@ -57,6 +60,10 @@ export class FiltrationSmartFacet {
    */
   @Event()
   toggleIsSectionExpanded: EventEmitter<string>;
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
 
   private onBlockHeaderClick = (): void => {
     if (this.isMobile || this.data.isCollapsible) {

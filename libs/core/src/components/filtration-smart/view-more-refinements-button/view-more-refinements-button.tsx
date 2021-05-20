@@ -1,4 +1,11 @@
-import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
+import {
+  Component,
+  Prop,
+  h,
+  Element,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
 import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 
@@ -8,6 +15,8 @@ import arrow2Down from '@se/icons/svg/arrow2_down.svg';
   shadow: true,
 })
 export class FiltrationSmartViewMoreRefinementsButton {
+  @Element() el: HTMLSeFiltrationSmartViewMoreRefinementsButtonElement;
+
   @Prop() facetId!: string;
   /**
    * Defines what label should be used inside the button:
@@ -40,6 +49,10 @@ export class FiltrationSmartViewMoreRefinementsButton {
   private onClick = (): void => {
     this.toggleViewMoreRefinements.emit(this.facetId);
   };
+
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
 
   render(): HTMLElement {
     return (

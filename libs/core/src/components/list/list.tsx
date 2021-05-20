@@ -85,6 +85,10 @@ export class ListComponent {
     visibles[nextStep].focusElement();
   }
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   componentWillLoad() {
     this.optionDidChange();
     this.canCollapseDidChange();
