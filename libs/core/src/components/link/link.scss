@@ -37,6 +37,13 @@ a {
     // @include color('standard-hover');
     opacity: 0.5;
   }
+
+  &.unicolor {
+    &:visited,
+    :hover {
+      @include color("secondary");
+    }
+  }
 }
 
 :host(.sidemenu-link) {

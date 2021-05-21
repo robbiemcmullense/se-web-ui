@@ -1,4 +1,12 @@
-import { Component, h, Prop, Host, Element } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Host,
+  Element,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 
 @Component({
   tag: 'se-link',
@@ -29,13 +37,23 @@ export class LinkComponent {
    */
   @Prop() option: 'internal' | 'external' = 'internal';
 
+  /**
+   *  Sets :hover and :visited states the same color as main
+   */
+  @Prop() unicolor = false;
+
   render() {
+    const classNames = [
+      this.option === 'external' ? 'external' : '',
+      this.unicolor ? 'unicolor' : '',
+    ].join('');
+
     return (
       <Host onClick={() => this.el.blur()}>
         <a
           href={this.url}
           data-disabled={this.disabled}
-          class={this.option === 'external' ? 'external' : ''}
+          class={classNames}
           target={this.option === 'external' ? '_blank' : ''}
           download={this.download}
         >
