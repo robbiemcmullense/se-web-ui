@@ -80,7 +80,6 @@ se-form-field {
     @include align-items(left);
     display: flex;
     flex: 1;
-    margin-right: $spacing-small;
   }
 
   input,
@@ -110,10 +109,13 @@ se-form-field {
 
   select {
     border-radius: 0;
+    /*rtl:begin:ignore*/
     background-image: linear-gradient(45deg, transparent 50%, gray 50%),
       linear-gradient(135deg, gray 50%, transparent 50%);
-    background-position: calc(100% - 20px) calc(1em + 2px),
-      calc(100% - 15px) calc(1em + 2px);
+    background-position: calc(100% - 12px) calc(1em + 2px),
+      calc(100% - 7px) calc(1em + 2px);
+    padding-right: 26px;
+    /*rtl:end:ignore*/
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
     appearance: none;
@@ -199,8 +201,7 @@ se-form-field {
 
     .ff-wrapper {
       max-width: 100%;
-      margin-left: 0;
-      padding-left: 0;
+      margin-inline-start: 0px;
     }
     .with-label > span {
       min-height: auto;
