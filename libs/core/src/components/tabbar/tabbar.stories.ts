@@ -18,8 +18,8 @@ storiesOf('Tab Bar', module)
       return `
     <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
       <nav>
-        <a class="active">Overview</a>
-        <a>Analysis</a>
+        <a >Overview</a>
+        <a class="active">Analysis</a>
         <a>Report</a>
         <a disabled>Glossary & Index</a>
         <a>Notification</a>

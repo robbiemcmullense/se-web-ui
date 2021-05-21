@@ -21,7 +21,8 @@
 }
 
 .table-rows-wrapper {
-  width: 100%;
+  min-width: 100%;
+  width: fit-content;
   position: relative;
 }
 
@@ -33,7 +34,3 @@
   @include background-color("alternative-selected");
   @include color("alternative-contrast");
 }
-
-// .compact{
-
-// }

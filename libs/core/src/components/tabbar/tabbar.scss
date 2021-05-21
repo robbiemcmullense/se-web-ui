@@ -120,6 +120,9 @@ se-tabbar {
               display: inline-block;
               @include background-color("primary");
               height: 2px;
+              /*rtl:begin:ignore*/
+              left: 0;
+              /*rtl:end:ignore*/
             }
             &:hover {
               color: inherit;
