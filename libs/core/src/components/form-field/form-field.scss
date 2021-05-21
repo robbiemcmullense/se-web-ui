@@ -1,17 +1,13 @@
+/*rtl:begin:ignore*/
 $max-width-input: 320px;
-
-$input-height: 40px;
 
 :host([hidden]),
 [hidden] {
   display: none;
 }
 
-/*rtl:begin:ignore*/
-
 se-form-field {
   display: block;
-
   .form-field-wrapper {
     @include display-flex();
     @include align-items(center);
@@ -30,7 +26,6 @@ se-form-field {
     width: 35%;
     display: flex;
     margin-left: $spacing;
-    // margin-inline-start: $spacing;
     @include align-items(flex-start);
     @include typology("small");
     font-weight: bold;
@@ -43,10 +38,14 @@ se-form-field {
 
   label {
     width: 100%;
+    text-align: center;
     @include display-flex;
     @include justify-content(center);
 
+    // @include align-items(flex-start);
     > span {
+      // @include flex(40%);
+      // max-width: 140px;
       @include align-items(center);
       min-width: 140px;
     }
@@ -65,9 +64,12 @@ se-form-field {
   }
 
   .ff-wrapper {
+    padding-left: 16px;
+    // flex-basis: 60%;
+    // max-width: 320px;
+    font-size: 16px;
     width: 100%;
-    margin-left: $spacing-large;
-    // margin-inline-start: $spacing-large;
+    min-height: 38px;
     display: flex;
     @include align-items(center);
   }
@@ -81,36 +83,31 @@ se-form-field {
   .ff-wrapper-input {
     max-width: $max-width-input;
     flex-direction: column;
+    width: 100%;
     @include align-items(left);
+    text-align: left;
     display: flex;
     flex: 1;
-
-    & > div {
-      display: flex;
-      width: 100%;
-      select {
-        width: inherit;
-      }
-    }
+    margin-right: $spacing-small;
   }
 
   input,
   select,
   textarea {
-    width: inherit;
     font-family: inherit;
-    font-size: $base-fontsize;
+    width: calc(100% - 10px);
+    font-size: 16px;
+    height: 30px;
+    line-height: 20px;
     border: 1px solid;
     @include border-color("border");
     @include background-color("background-alternative");
     @include color("background-alternative-contrast");
-    flex: auto;
-    padding: $spacing;
-    min-height: 20px;
-    // min-height: $input-height - $spacing * 2 ;
-
+    transition: 0.2s;
+    padding: $spacing-small $spacing-small $spacing-small $spacing;
+    font-size: inherit;
     &:focus {
-      @include interactive-element-outline();
+      @include interactive-element-outline(2px, 0);
     }
   }
 
@@ -121,43 +118,44 @@ se-form-field {
   }
 
   select {
-    width: 100%;
+    border-radius: 0;
+    padding: 10px $spacing-xlarge 10px $spacing;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    @include border-color("border");
     border-radius: 0;
     background-image: linear-gradient(45deg, transparent 50%, gray 50%),
       linear-gradient(135deg, gray 50%, transparent 50%);
-    background-position: calc(100% - 12px) calc(1em + 2px),
-      calc(100% - 7px) calc(1em + 2px);
-    padding-right: 26px;
+    background-position: calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px);
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
-    appearance: none;
-    height: 40px;
   }
 
-  input[type="search"] {
-    appearance: none;
-    // padding: 0; // Needed for safarie...
-    min-height: 40px;
+  input[type="search"],
+  select {
+    height: 40px;
+    width: calc(100% + 4px);
   }
-  input[type="date"] {
-    height: 22px;
-  }
+
   .with-icon {
-    display: flex;
+    display: block;
     position: relative;
-    justify-content: flex-end;
 
     input {
-      padding-inline-end: 40px;
+      padding-right: 36px;
+    }
+    input:not([type="search"]) {
+      width: calc(100% - 42px);
     }
     se-icon {
       position: absolute;
       top: 50%;
-      width: 40px;
+      right: 0px;
+      -ms-transform: translateY(-50%);
       transform: translateY(-50%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
   .textOnly {
@@ -180,8 +178,30 @@ se-form-field {
         }
       }
     }
+    .ff-wrapper {
+      // @include flex(1, 1, auto);
+      max-width: 100%;
+    }
     .ff-wrapper-input {
-      max-width: initial;
+      max-width: 100%;
+    }
+
+    select,
+    input[type="search"] {
+      width: calc(100% + 4px);
+    }
+
+    input:not([type="search"]),
+    textarea {
+      width: calc(100% - 10px);
+    }
+    .with-icon {
+      input:not([type="search"]) {
+        width: calc(100% - 32px - 10px);
+      }
+      se-icon {
+        margin-right: 4px;
+      }
     }
   }
 
@@ -198,24 +218,23 @@ se-form-field {
       }
     }
     label {
+      // padding: 0 8px 4px ;
+      text-align: left;
       width: 100%;
       display: block;
       .with-label {
         display: block;
         max-width: none;
+        text-align: left;
         line-height: 1.5;
-        margin-left: 0px;
-        // margin-inline-start: 0px;
+        margin: $spacing-small 0;
       }
-    }
-    .textOnly {
-      padding-top: 0;
     }
 
     .ff-wrapper {
       max-width: 100%;
-      margin-left: 0px;
-      // margin-inline-start: 0px;
+      margin-left: 0;
+      padding-left: 0;
     }
     .with-label > span {
       min-height: auto;
@@ -254,4 +273,5 @@ se-form-field {
     }
   }
 }
+
 /*rtl:end:ignore*/

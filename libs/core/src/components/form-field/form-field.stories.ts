@@ -346,7 +346,7 @@ storiesOf('Form Field', module)
               label="Quote Name"
               required="true"
             >
-              <div style="align-items: center">
+              <div style="align-items: center; display: flex;">
                 <input
                   type="text"
                   value="Quote Name"
