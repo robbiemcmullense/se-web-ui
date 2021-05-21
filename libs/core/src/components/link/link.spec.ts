@@ -34,4 +34,12 @@ describe('LinkComponent', () => {
       page.root.shadowRoot.querySelector('a').getAttribute('href')
     ).toEqual('google.com');
   });
+
+  it('should render with unicolor class when unicolor prop is true', async () => {
+    const page = await newSpecPage({
+      components: [LinkComponent],
+      html: `<se-link unicolor="true" url="google.com"></se-link>`,
+    });
+    expect(page.root.shadowRoot.querySelector('.unicolor')).toBeTruthy();
+  });
 });
