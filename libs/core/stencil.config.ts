@@ -86,8 +86,8 @@ export const config: Config = {
     dynamicImportShim: true,
     initializeNextTick: true,
     safari10: true,
-    scriptDataOpts: true,
     shadowDomShim: true,
+    slotChildNodesFix: true,
   },
   plugins: [
     sass({

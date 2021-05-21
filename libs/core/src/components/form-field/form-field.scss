@@ -1,12 +1,17 @@
 $max-width-input: 320px;
 
+$input-height: 40px;
+
 :host([hidden]),
 [hidden] {
   display: none;
 }
+
 /*rtl:begin:ignore*/
+
 se-form-field {
   display: block;
+
   .form-field-wrapper {
     @include display-flex();
     @include align-items(center);
@@ -25,6 +30,7 @@ se-form-field {
     width: 35%;
     display: flex;
     margin-left: $spacing;
+    // margin-inline-start: $spacing;
     @include align-items(flex-start);
     @include typology("small");
     font-weight: bold;
@@ -37,14 +43,10 @@ se-form-field {
 
   label {
     width: 100%;
-    text-align: center;
     @include display-flex;
     @include justify-content(center);
 
-    // @include align-items(flex-start);
     > span {
-      // @include flex(40%);
-      // max-width: 140px;
       @include align-items(center);
       min-width: 140px;
     }
@@ -63,14 +65,12 @@ se-form-field {
   }
 
   .ff-wrapper {
-    padding-left: 16px;
-    // flex-basis: 60%;
-    // max-width: 320px;
-    font-size: 16px;
     width: 100%;
-    min-height: 38px;
+    margin-left: $spacing-large;
+    // margin-inline-start: $spacing-large;
     display: flex;
     @include align-items(center);
+    @include ellipsis();
   }
 
   [data-disabled] {
@@ -84,29 +84,30 @@ se-form-field {
     flex-direction: column;
     width: 100%;
     @include align-items(left);
-    text-align: left;
     display: flex;
     flex: 1;
-    margin-right: $spacing-small;
+
+    & > div {
+      display: flex;
+    }
   }
 
   input,
   select,
   textarea {
     font-family: inherit;
-    width: 100%;
-    font-size: 16px;
-    height: 30px;
-    line-height: 20px;
+    font-size: $base-fontsize;
     border: 1px solid;
     @include border-color("border");
     @include background-color("background-alternative");
     @include color("background-alternative-contrast");
-    transition: 0.2s;
-    padding: $spacing-small $spacing-small $spacing-small $spacing;
-    font-size: inherit;
+    flex: auto;
+    padding: $spacing;
+    min-height: 20px;
+    // min-height: $input-height - $spacing * 2 ;
+
     &:focus {
-      @include interactive-element-outline(2px, 0);
+      @include interactive-element-outline();
     }
   }
 
@@ -118,69 +119,41 @@ se-form-field {
 
   select {
     border-radius: 0;
-    padding: 10px $spacing-xlarge 10px $spacing;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    @include border-color("border");
-    border-radius: 0;
     background-image: linear-gradient(45deg, transparent 50%, gray 50%),
       linear-gradient(135deg, gray 50%, transparent 50%);
-    background-position: calc(100% - 20px) calc(1em + 2px),
-      calc(100% - 15px) calc(1em + 2px);
+    background-position: calc(100% - 12px) calc(1em + 2px),
+      calc(100% - 7px) calc(1em + 2px);
+    padding-right: 26px;
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
-  }
-
-  input[type="search"],
-  select {
+    appearance: none;
     height: 40px;
-    width: calc(100% + 14px);
   }
 
-  // .ff-size-small {
-  //   input,
-  //   select,
-  //   textarea {
-  //     font-size: 14px;
-  //     height: 20px;
-  //   }
-  //   input[type='search'], select{
-  //     height: 32px;
-  //   }
-  // }
-
-  // input[disabled],
-  // textarea[disabled],
-  // select[disabled] {
-  //   opacity: 0.5;
-  // }
-
-  //@-moz-document url-prefix()is deprecated
-  // @media screen and (min--moz-device-pixel-ratio: 0) {
-  //   input[type="date"] {
-  //     padding-top: 6px;
-  //     padding-bottom: 4px;
-  //   }
-  // }
+  input[type="search"] {
+    appearance: none;
+    // padding: 0; // Needed for safarie...
+    min-height: 40px;
+  }
+  input[type="date"] {
+    height: 22px;
+  }
   .with-icon {
-    display: block;
+    display: flex;
     position: relative;
+    justify-content: flex-end;
 
     input {
-      padding-right: 36px;
-    }
-    input:not([type="search"]) {
-      width: calc(100% - 32px);
+      padding-inline-end: 40px;
     }
     se-icon {
       position: absolute;
       top: 50%;
-      right: 0px;
-      margin-right: -4px;
-      -ms-transform: translateY(-50%);
+      width: 40px;
       transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   .textOnly {
@@ -203,30 +176,8 @@ se-form-field {
         }
       }
     }
-    .ff-wrapper {
-      // @include flex(1, 1, auto);
-      max-width: 100%;
-    }
     .ff-wrapper-input {
-      max-width: 100%;
-    }
-
-    select,
-    input[type="search"] {
-      width: calc(100% + 4px);
-    }
-
-    input:not([type="search"]),
-    textarea {
-      width: calc(100% - 10px);
-    }
-    .with-icon {
-      input:not([type="search"]) {
-        width: calc(100% - 32px - 10px);
-      }
-      se-icon {
-        margin-right: 4px;
-      }
+      max-width: initial;
     }
   }
 
@@ -243,23 +194,24 @@ se-form-field {
       }
     }
     label {
-      // padding: 0 8px 4px ;
-      text-align: left;
       width: 100%;
       display: block;
       .with-label {
         display: block;
         max-width: none;
-        text-align: left;
         line-height: 1.5;
-        margin: $spacing-small 0;
+        margin-left: 0px;
+        // margin-inline-start: 0px;
       }
+    }
+    .textOnly {
+      padding-top: 0;
     }
 
     .ff-wrapper {
       max-width: 100%;
-      margin-left: 0;
-      padding-left: 0;
+      margin-left: 0px;
+      // margin-inline-start: 0px;
     }
     .with-label > span {
       min-height: auto;
@@ -299,27 +251,3 @@ se-form-field {
   }
 }
 /*rtl:end:ignore*/
-
-// .search-wrapper{
-//   display: block;
-//   position: relative;
-//   input{
-//     padding-right: 36px;
-//   }
-//   &:after {
-//     /* background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M831 801c8 8 8 22 0 30-4 4-10 6-15 6-6 0-11-2-15-6L645 675c-49 42-112 67-181 67-153 0-277-125-277-278s124-277 277-277 278 124 278 277c0 69-25 132-67 181zM230 464c0 130 105 235 234 235 64 0 121-25 164-66 0-1 1-2 2-3s2-2 3-2c41-43 66-100 66-164 0-129-105-234-235-234-129 0-234 105-234 234zm234-192c12 0 22 10 22 22 0 11-10 21-22 21-82 0-149 67-149 149 0 12-10 22-21 22-12 0-22-10-22-22 0-106 86-192 192-192z"/></svg>'); */
-//     /* content:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik04MzEgODAxYzggOCA4IDIyIDAgMzAtNCA0LTEwIDYtMTUgNi02IDAtMTEtMi0xNS02TDY0NSA2NzVjLTQ5IDQyLTExMiA2Ny0xODEgNjctMTUzIDAtMjc3LTEyNS0yNzctMjc4czEyNC0yNzcgMjc3LTI3NyAyNzggMTI0IDI3OCAyNzdjMCA2OS0yNSAxMzItNjcgMTgxek0yMzAgNDY0YzAgMTMwIDEwNSAyMzUgMjM0IDIzNSA2NCAwIDEyMS0yNSAxNjQtNjYgMC0xIDEtMiAyLTNzMi0yIDMtMmM0MS00MyA2Ni0xMDAgNjYtMTY0IDAtMTI5LTEwNS0yMzQtMjM1LTIzNC0xMjkgMC0yMzQgMTA1LTIzNCAyMzR6bTIzNC0xOTJjMTIgMCAyMiAxMCAyMiAyMiAwIDExLTEwIDIxLTIyIDIxLTgyIDAtMTQ5IDY3LTE0OSAxNDkgMCAxMi0xMCAyMi0yMSAyMi0xMiAwLTIyLTEwLTIyLTIyIDAtMTA2IDg2LTE5MiAxOTItMTkyeiIvPjwvc3ZnPg=='); */
-//     content: "";
-//     -webkit-mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik04MzEgODAxYzggOCA4IDIyIDAgMzAtNCA0LTEwIDYtMTUgNi02IDAtMTEtMi0xNS02TDY0NSA2NzVjLTQ5IDQyLTExMiA2Ny0xODEgNjctMTUzIDAtMjc3LTEyNS0yNzctMjc4czEyNC0yNzcgMjc3LTI3NyAyNzggMTI0IDI3OCAyNzdjMCA2OS0yNSAxMzItNjcgMTgxek0yMzAgNDY0YzAgMTMwIDEwNSAyMzUgMjM0IDIzNSA2NCAwIDEyMS0yNSAxNjQtNjYgMC0xIDEtMiAyLTNzMi0yIDMtMmM0MS00MyA2Ni0xMDAgNjYtMTY0IDAtMTI5LTEwNS0yMzQtMjM1LTIzNC0xMjkgMC0yMzQgMTA1LTIzNCAyMzR6bTIzNC0xOTJjMTIgMCAyMiAxMCAyMiAyMiAwIDExLTEwIDIxLTIyIDIxLTgyIDAtMTQ5IDY3LTE0OSAxNDkgMCAxMi0xMCAyMi0yMSAyMi0xMiAwLTIyLTEwLTIyLTIyIDAtMTA2IDg2LTE5MiAxOTItMTkyeiIvPjwvc3ZnPg) no-repeat 50% 50%;
-//     -webkit-mask-size: cover;
-//     mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik04MzEgODAxYzggOCA4IDIyIDAgMzAtNCA0LTEwIDYtMTUgNi02IDAtMTEtMi0xNS02TDY0NSA2NzVjLTQ5IDQyLTExMiA2Ny0xODEgNjctMTUzIDAtMjc3LTEyNS0yNzctMjc4czEyNC0yNzcgMjc3LTI3NyAyNzggMTI0IDI3OCAyNzdjMCA2OS0yNSAxMzItNjcgMTgxek0yMzAgNDY0YzAgMTMwIDEwNSAyMzUgMjM0IDIzNSA2NCAwIDEyMS0yNSAxNjQtNjYgMC0xIDEtMiAyLTNzMi0yIDMtMmM0MS00MyA2Ni0xMDAgNjYtMTY0IDAtMTI5LTEwNS0yMzQtMjM1LTIzNC0xMjkgMC0yMzQgMTA1LTIzNCAyMzR6bTIzNC0xOTJjMTIgMCAyMiAxMCAyMiAyMiAwIDExLTEwIDIxLTIyIDIxLTgyIDAtMTQ5IDY3LTE0OSAxNDkgMCAxMi0xMCAyMi0yMSAyMi0xMiAwLTIyLTEwLTIyLTIyIDAtMTA2IDg2LTE5MiAxOTItMTkyeiIvPjwvc3ZnPg) no-repeat 50% 50%;
-//     mask-size: cover;
-//     width: 22px;
-//     margin-left: -26px;
-//     @include background-color('alternative-contrast');
-//     position: absolute;
-//     top: 4px;
-//     right: 0px;
-//     height: 32px;
-//   }
-// }

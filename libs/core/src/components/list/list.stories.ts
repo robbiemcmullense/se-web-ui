@@ -100,7 +100,16 @@ storiesOf('List', module)
           <h5>headline</h5>
         </se-block-header>
         <se-list option="headline" can-collapse="true">
-          <se-list-group item="Headline Example">
+          <se-list-group>
+            <div slot="item">
+              Headline Example
+              <se-tooltip position="left">
+                <se-icon color="secondary" slot="tooltip">
+                  information_stroke
+                </se-icon>
+                A tooltip in a list...
+              </se-tooltip>
+            </div>
             <se-list-item item="Standard color icon" icon="action_doc_new" icon-color="standard"></se-list-item>
             <se-list-item item="Primary color icon" icon="action_doc_add" ></se-list-item>
             <se-list-item item="Disable color icon" icon="action_editor" icon-color="disable"></se-list-item>
