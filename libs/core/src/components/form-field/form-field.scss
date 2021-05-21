@@ -70,7 +70,6 @@ se-form-field {
     // margin-inline-start: $spacing-large;
     display: flex;
     @include align-items(center);
-    @include ellipsis();
   }
 
   [data-disabled] {
@@ -82,19 +81,23 @@ se-form-field {
   .ff-wrapper-input {
     max-width: $max-width-input;
     flex-direction: column;
-    width: 100%;
     @include align-items(left);
     display: flex;
     flex: 1;
 
     & > div {
       display: flex;
+      width: 100%;
+      select {
+        width: inherit;
+      }
     }
   }
 
   input,
   select,
   textarea {
+    width: inherit;
     font-family: inherit;
     font-size: $base-fontsize;
     border: 1px solid;
@@ -118,6 +121,7 @@ se-form-field {
   }
 
   select {
+    width: 100%;
     border-radius: 0;
     background-image: linear-gradient(45deg, transparent 50%, gray 50%),
       linear-gradient(135deg, gray 50%, transparent 50%);

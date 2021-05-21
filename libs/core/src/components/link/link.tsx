@@ -1,12 +1,4 @@
-import {
-  Component,
-  h,
-  Prop,
-  Host,
-  Element,
-  Event,
-  EventEmitter,
-} from '@stencil/core';
+import { Component, h, Prop, Host, Element } from '@stencil/core';
 
 @Component({
   tag: 'se-link',

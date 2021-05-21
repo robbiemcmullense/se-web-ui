@@ -147,6 +147,23 @@ storiesOf('Form Field', module)
         label-align='${labelAlign}'
         padding='${padding}'
         block='${block}'
+        type='select'
+        stacked='${stacked}'
+        label='Select'
+        required='true'
+        disabled='${disabled}'
+        label-width='${labelWidth}'
+        >
+        <select>
+          <option>very long option very long option very long option very long option</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </se-form-field>
+      <se-form-field
+        label-align='${labelAlign}'
+        padding='${padding}'
+        block='${block}'
         type='input'
         stacked='${stacked}'
         label='Textarea'
@@ -254,34 +271,47 @@ storiesOf('Form Field', module)
         <se-block>
           <se-container>
           <se-container display="grid" column-size='350px' row-size='auto' padding=${padding}>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="PO Number:" text-only padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="PO Number:" text-only padding=${padding}>
               00123456
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="Release Date:" text-only padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="Release Date:" text-only padding=${padding}>
               02/16/2019
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="No text:" padding=${padding}></se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="No text text only:" text-only padding=${padding}></se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="PO Number:" padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="No text:" padding=${padding}></se-form-field>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="No text text only:" text-only padding=${padding}></se-form-field>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="PO Number:" padding=${padding}>
               <input/>
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="PO date:" padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="PO date:" padding=${padding}>
               <input type="date"/>
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="Release Date:" padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="Release Date:" padding=${padding}>
               <select>
-                <option>Option 1 Option 1 Option 1 Option 1</option>
+                <option>Option 1 Option 1 Option 1 Option 1 Option Option</option>
                 <option>Option 2</option>
                 <option>Option 3</option>
               </select>
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="Customer ID:" padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="Customer ID:" padding=${padding}>
               <div class="with-icon">
                 <input />
                 <se-icon size="medium" option="button" onclick="alert('clicked')">folder</se-icon>
               </div>
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="tooltips? :" padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="tooltips? :" padding=${padding}>
+              <div style="display:flex; align-items: center;">
+                <select>
+                  <option>Option 1</option>
+                  <option>Option 1 Option 1 Option 1 Option 1 Option Option</option>
+                  <option>Option 3</option>
+                </select>
+                <se-tooltip>
+                  <se-icon slot="tooltip" color="secondary">information_stroke</se-icon>
+                  <se-tooltip-content>This is my tooltip.</se-tooltip-content>
+                </se-tooltip>
+              </div>
+            </se-form-field>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="tooltips? :" padding=${padding}>
               <div style="display:flex; align-items: center;">
                 <select>
                   <option>Option 1</option>
@@ -294,12 +324,12 @@ storiesOf('Form Field', module)
                 </se-tooltip>
               </div>
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="Delivery Address:" text-only padding=${padding}>
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="Delivery Address:" text-only padding=${padding}>
               <div>Graybar Elect Co 5818836</div>
               <div>9222 Orly Road, Address 2</div>
               <div>Indianapolis, IN 46241-9607</div>
             </se-form-field>
-            <se-form-field stacked="${stacked}" block="${block}" label-align="left" label="Delivery Service:" padding="none">
+            <se-form-field stacked="${stacked}" block=${block} label-align="left" label="Delivery Service:" padding="none">
               <div style="display:flex; align-items: center;">
                 <input />
                 <se-tooltip>
@@ -310,9 +340,8 @@ storiesOf('Form Field', module)
             </se-form-field>  
             <se-form-field
               padding="none"
-              labelWidth="36%"
-              block
-              type="input"
+              stacked="${stacked}"
+              block=${block}
               label-align="left"
               label="Quote Name"
               required="true"
