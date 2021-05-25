@@ -39,8 +39,9 @@ a {
   }
 
   &.unicolor {
+    padding-bottom: 1px;
     &:visited,
-    :hover {
+    &:hover {
       @include color("secondary");
     }
   }
