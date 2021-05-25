@@ -94,6 +94,11 @@ export class Carousel {
     this.size = window.matchMedia('(hover: none) and (pointer: coarse)').matches
       ? 'medium'
       : 'small';
+
+    this.contentEl.scrollBy({
+      left: 0,
+      behavior: 'auto',
+    });
   }
 
   calculateWidth() {
