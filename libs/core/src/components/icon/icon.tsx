@@ -55,12 +55,18 @@ export class IconComponent {
    */
   @Prop() mirror: 'horizontal' | 'vertical' | 'both';
 
+  /**
+   * Optional property that disables the hover background (only if option property is set to button)
+   */
+  @Prop() noHover = false;
+
   render() {
     const size = this.size || 'small';
     const TagType = this.option === 'button' ? 'button' : ('div' as any);
     // if contain svg, we don't use se-icon font-family in case there svg <text> is used
     const isSVG = !!this.el.querySelector('svg');
     let transform = '';
+    const noHover = this.noHover && this.option === 'button';
 
     switch (this.mirror) {
       case 'both':
@@ -94,6 +100,7 @@ export class IconComponent {
             'icon-family': !isSVG,
             [this.color]: !!this.color,
             [`icon-${this.option}`]: !!this.option,
+            'no-hover': noHover,
           }}
         >
           <slot />

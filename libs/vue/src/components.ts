@@ -716,6 +716,7 @@ export const SeIcon = /*@__PURE__*/ Vue.extend({
     animation: {} as PropOptions<Components.SeIcon['animation']>,
     rotate: {} as PropOptions<Components.SeIcon['rotate']>,
     mirror: {} as PropOptions<Components.SeIcon['mirror']>,
+    noHover: {} as PropOptions<Components.SeIcon['noHover']>,
   },
 
 

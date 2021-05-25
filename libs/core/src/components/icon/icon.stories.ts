@@ -5,7 +5,7 @@ import readmeecostruxure from '../icon-ecostruxure/readme.md';
 import readmelifeison from '../icon-lifeison/readme.md';
 import readmeschneider from '../icon-schneider/readme.md';
 
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, boolean } from '@storybook/addon-knobs';
 
 storiesOf('Icons', module)
   .add(
@@ -60,10 +60,11 @@ storiesOf('Icons', module)
       const size = select('size', sizeOption, 'small');
       const color = select('color', colorOption, 'primary');
       const icon = text('icon', 'action_settings1');
+      const noHover = boolean('noHover', false);
 
       return `
       <div style="padding: 20px">
-        <se-icon size="${size}" option="button" color="${color}">${icon}</se-icon>
+        <se-icon size="${size}" option="button" color="${color}" no-hover="${noHover}">${icon}</se-icon>
       </div>
     `;
     },

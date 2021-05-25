@@ -203,6 +203,7 @@ export class PaginationComponent {
                 slot="icon"
                 class="left edge"
                 option="button"
+                no-hover
                 disabled={isFirst}
                 onClick={() => !isFirst && this.__goToFirstPage()}
                 title={this.labelFirst}
@@ -214,6 +215,7 @@ export class PaginationComponent {
               slot="icon"
               class="left"
               option="button"
+              no-hover
               disabled={isFirst}
               onClick={() => !isFirst && this.__goToPrevPage()}
               title={this.labelPrev}
@@ -241,6 +243,7 @@ export class PaginationComponent {
             <se-icon
               slot="icon"
               option="button"
+              no-hover
               disabled={isLast}
               onClick={() => !isLast && this.__goToNextPage()}
               title={this.labelNext}
@@ -252,6 +255,7 @@ export class PaginationComponent {
                 slot="icon"
                 class="edge"
                 option="button"
+                no-hover
                 disabled={isLast}
                 onClick={() => !isLast && this.__goToLastPage()}
                 title={this.labelLast}

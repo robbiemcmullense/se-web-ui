@@ -236,6 +236,7 @@ export class Carousel {
           <se-icon
             class="arrow left"
             option="button"
+            no-hover
             onClick={() => this.scroll(-1)}
             size={this.size}
             mirror="horizontal"
@@ -252,6 +253,7 @@ export class Carousel {
           <se-icon
             class="arrow right"
             option="button"
+            no-hover
             onClick={() => this.scroll(1)}
             size={this.size}
           >

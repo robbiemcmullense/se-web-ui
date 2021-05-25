@@ -91,6 +91,7 @@ export class ChipComponent {
           <se-icon
             class="close"
             option="button"
+            no-hover
             disabled={this.disabled}
             onClick={() => this.closeChip()}
           >

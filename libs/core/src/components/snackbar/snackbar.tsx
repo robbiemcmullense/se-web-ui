@@ -129,6 +129,7 @@ export class SnackbarComponent {
           {this.canClose ? (
             <se-icon
               option="button"
+              no-hover
               class="close"
               onClick={() => this.closeSnackbar()}
             >

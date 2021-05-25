@@ -965,6 +965,10 @@ export namespace Components {
          */
         "mirror": 'horizontal' | 'vertical' | 'both';
         /**
+          * Optional property that disables the hover background (only if option property is set to button)
+         */
+        "noHover": boolean;
+        /**
           * Optional property to define if the icon should act as a button (clickable).
          */
         "option": 'button';
@@ -3094,6 +3098,10 @@ declare namespace LocalJSX {
           * Optional property that defines if the icon should be mirrored.
          */
         "mirror"?: 'horizontal' | 'vertical' | 'both';
+        /**
+          * Optional property that disables the hover background (only if option property is set to button)
+         */
+        "noHover"?: boolean;
         /**
           * Optional property to define if the icon should act as a button (clickable).
          */

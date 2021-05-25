@@ -151,7 +151,7 @@ button {
   border-radius: $border-radius;
   line-height: inherit;
   border-radius: 2px;
-  &:not(.disabled):hover {
+  &:not(.disabled):not(.no-hover):hover {
     @include background-color("alternative-selected");
   }
 }
