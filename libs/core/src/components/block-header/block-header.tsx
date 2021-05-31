@@ -17,7 +17,8 @@ export class BlockHeader {
    * Updated automatically by the `se-block` component when the option is set to `card`, which will update the design of the header with respect to the card design.
    * `fill` removes all spacing, for example with use of the `se-tabbar` option `content`.
    */
-  @Prop() option: 'card' | 'widget' | 'basic' | 'fill';
+  @Prop({ mutable: true }) option: 'card' | 'widget' | 'basic' | 'fill' =
+    'basic';
 
   constructor() {
     this.el.dir = document.documentElement.dir || 'auto';
@@ -26,14 +27,19 @@ export class BlockHeader {
   render() {
     return (
       <Host>
-        <div class={['se-block-header', this.option].join(' ')}>
+        <div
+          class={{
+            'se-block-header': true,
+            [`option-${this.option}`]: true,
+          }}
+        >
           <slot name="start"></slot>
-          <div class="flex middle">
+          <div class="middle">
             <slot></slot>
           </div>
           <slot name="end"></slot>
         </div>
-        {this.divider ? <se-divider></se-divider> : null}
+        {this.divider && <se-divider></se-divider>}
       </Host>
     );
   }

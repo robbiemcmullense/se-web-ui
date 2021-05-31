@@ -200,7 +200,7 @@ export class FiltrationSmartFacet {
         )}
 
         {this.hasFooter && (
-          <se-block-footer>
+          <se-block-footer option="fill">
             <se-filtration-smart-view-more-refinements-button
               facetId={this.facetId}
               slot="start"

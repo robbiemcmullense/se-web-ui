@@ -51,7 +51,7 @@
 .facet__list {
   @include for-tablet-and-down {
     background-color: $se-ultra-light-grey-3;
-    padding: 10px 0;
+    padding: 12px 0;
   }
 
   @include for-desktop-only {

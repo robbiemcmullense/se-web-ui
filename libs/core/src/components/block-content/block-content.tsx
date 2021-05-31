@@ -13,7 +13,8 @@ export class BlockContent {
    * The block-content component will add 8px padding on the top and bottom, and 16px padding on the left and right by default.
    * When the option is set to `fill`, the content will fill the whole space of the block-content with no padding.
    */
-  @Prop() option: 'card' | 'widget' | 'basic' | 'fill';
+  @Prop({ mutable: true }) option: 'card' | 'widget' | 'basic' | 'fill' =
+    'basic';
 
   /**
    * Defines maximum height of the component.
@@ -74,7 +75,7 @@ export class BlockContent {
       <div
         class={{
           'se-block-content': true,
-          [`${this.option}-content`]: !!this.option,
+          [`option-${this.option}`]: true,
           scrollable: !!this.maxHeight,
           'has-overlay-top': this.hasOverlayTop,
           'has-overlay-bottom': this.hasOverlayBottom,

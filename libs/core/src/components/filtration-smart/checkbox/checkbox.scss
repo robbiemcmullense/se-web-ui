@@ -7,15 +7,15 @@
 .checkbox {
   font-weight: normal;
   flex: 1 1 100%; // I had to add it to fix issue with `.content` taking all the width of `se-list-item`
-  margin-left: -16px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+  margin-left: -13px; // I had to add it to compensate for styles of `.content` of `se-list-item`
 
   @include for-tablet-and-down {
-    padding: 8px 0 9px;
+    padding: 5px 0;
   }
 
   // TODO: remove if IE11 support will be dropped
   &--ie {
-    margin-left: -8px; // I had to add it to compensate for styles of `.content` of `se-list-item`
+    margin-left: -5px; // I had to add it to compensate for styles of `.content` of `se-list-item`
   }
 
   &--disabled {

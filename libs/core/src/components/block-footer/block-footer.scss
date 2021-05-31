@@ -1,26 +1,20 @@
-
-
 .se-block-footer {
   position: relative;
-  padding: $spacing-small;
   min-height: 40px;
-  // border-top: 1px solid $divider-color;
   @include align-items(center);
   @include display-flex();
-}
-.fill{
-  padding: 0;
+
+  &.option-card,
+  &.option-widget,
+  &.option-basic {
+    padding: $spacing-small;
+  }
+
+  &.direction-column {
+    @include flex-direction(column);
+  }
 }
 
-.flex {
+.middle {
   @include flex();
 }
-
-.card {
-  border-top: none;
-}
-
-.column {
-  @include flex-direction(column);
-}
-
