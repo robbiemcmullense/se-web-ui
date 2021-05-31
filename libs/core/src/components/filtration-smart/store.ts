@@ -462,12 +462,6 @@ const initExpandedSections = (rootSectionsIds: string[]): void => {
 const updateExpandedSections = (rootSectionsIds: string[]): void => {
   sectionsExpandedStore.reset();
 
-  let rootSectionsIdsToShowCollapsed = [];
-
-  if (rootSectionsIds.length > visibleFacetsCount) {
-    rootSectionsIdsToShowCollapsed = rootSectionsIds.slice(visibleFacetsCount);
-  }
-
   const traverser = (sectionsIds: string[]): void => {
     sectionsIds.forEach(sectionId => {
       if (sectionId in sectionsExpandedStoreAsObject) {
@@ -476,11 +470,7 @@ const updateExpandedSections = (rootSectionsIds: string[]): void => {
           sectionsExpandedStoreAsObject[sectionId]
         );
       } else {
-        if (rootSectionsIdsToShowCollapsed.includes(sectionId)) {
-          sectionsExpandedStore.set(sectionId, false);
-        } else {
-          sectionsExpandedStore.set(sectionId, true);
-        }
+        sectionsExpandedStore.set(sectionId, true);
       }
 
       const subSections = getSectionSectionsIds(sectionId);
