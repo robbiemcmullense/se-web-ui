@@ -1413,7 +1413,7 @@ export namespace Components {
         /**
           * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
          */
-        "color": 'primary' | 'alternative';
+        "color": TColor;
         /**
           * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
          */
@@ -3572,7 +3572,7 @@ declare namespace LocalJSX {
         /**
           * Indicates the color of your tab bar. Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content. The `alternative` setting renders a white background.
          */
-        "color"?: 'primary' | 'alternative';
+        "color"?: TColor;
         /**
           * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
          */

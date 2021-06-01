@@ -32,14 +32,20 @@ se-tabbar {
   }
 
   .arrowLeft {
+    /*rtl:begin:ignore*/
     margin-right: -32px;
+    /*rtl:end:ignore*/
     se-icon {
+      /*rtl:begin:ignore*/
       transform: rotate(180deg);
+      /*rtl:end:ignore*/
     }
   }
 
   .arrowRight {
+    /*rtl:begin:ignore*/
     margin-left: -32px;
+    /*rtl:end:ignore*/
   }
 
   .fill-space {
@@ -310,6 +316,7 @@ se-tabbar {
       }
     }
   }
+
   .wrapper-content {
     @include background-color("background-alternative");
   }
@@ -367,6 +374,83 @@ se-tabbar {
       }
     }
   }
+
+  .tab-alternative .opt-nav nav > a {
+    display: inline-block;
+    padding: 0 15px;
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 50px;
+    @include color("background-alternative-contrast");
+
+    &.active {
+      font-weight: 700;
+      @include background-color("background-standard");
+    }
+    &:not([disabled]):hover,
+    &:not(.disabled):hover &.active {
+      color: initial;
+      font-weight: 700;
+      @include color("background-alternative-contrast");
+      @include background-color("background-standard");
+    }
+
+    &:hover:not([disabled]):after,
+    &:hover:not(.disabled):after {
+      height: 3px;
+    }
+
+    &::before {
+      display: block;
+      content: attr(title);
+      font-weight: 700;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    &::after {
+      display: block;
+      /*rtl:begin:ignore*/
+      left: 0;
+      /*rtl:end:ignore*/
+      height: 3px;
+    }
+  }
+
+  .tab-alternative {
+    .opt-nav nav {
+      height: 48px;
+    }
+
+    .arrow {
+      background-color: transparent;
+      /*rtl:begin:ignore*/
+      background-image: linear-gradient(
+        270deg,
+        var(--se-alternative) 0%,
+        rgba(var(--se-alternative-rgb), 0.5) 100%
+      );
+      /*rtl:end:ignore*/
+    }
+    .arrowLeft {
+      /*rtl:begin:ignore*/
+      background-image: linear-gradient(
+        90deg,
+        var(--se-alternative) 0%,
+        rgba(var(--se-alternative-rgb), 0.5) 100%
+      );
+      /*rtl:end:ignore*/
+    }
+  }
+
+  .tab-alternative .arrow {
+    text-align: center;
+    width: 40px;
+    padding-top: 17px;
+  }
+
   .wrapper-content.tab-alternative {
     @include background-color("background-standard");
   }

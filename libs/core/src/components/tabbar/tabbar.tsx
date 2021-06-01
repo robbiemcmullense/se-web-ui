@@ -3,6 +3,8 @@ import ResizeObserver from 'resize-observer-polyfill';
 
 import arrow5Step from '@se/icons/svg/arrow5_step.svg';
 
+type TColor = 'primary' | 'alternative';
+
 @Component({
   tag: 'se-tabbar',
   styleUrl: 'tabbar.scss',
@@ -30,7 +32,7 @@ export class TabbarComponent {
    * Default setting is `primary`, rendering a green background for nav-bars and ultra-light-grey-1 for content.
    * The `alternative` setting renders a white background.
    */
-  @Prop() color: 'primary' | 'alternative' = 'primary';
+  @Prop() color: TColor = 'primary';
 
   @State() showLeftArrow: boolean;
   @State() showRightArrow: boolean;
@@ -74,7 +76,13 @@ export class TabbarComponent {
     });
   }
 
+  getIconSize = (color: TColor) => {
+    return color === 'alternative' ? 'nano' : 'medium';
+  };
+
   render() {
+    const iconSize = this.getIconSize(this.color);
+
     return (
       <div
         class={{
@@ -91,7 +99,7 @@ export class TabbarComponent {
             class={{ arrow: true, arrowLeft: true }}
             onClick={() => this.scroll(-1)}
           >
-            <se-icon size="medium" mirror="vertical">
+            <se-icon size={iconSize} mirror="vertical">
               <span innerHTML={arrow5Step}></span>
             </se-icon>
           </span>
@@ -112,7 +120,7 @@ export class TabbarComponent {
             class={{ arrow: true, arrowRight: true }}
             onClick={() => this.scroll(1)}
           >
-            <se-icon size="medium">
+            <se-icon size={iconSize}>
               <span innerHTML={arrow5Step}></span>
             </se-icon>
           </span>
