@@ -73,10 +73,16 @@
   }
 }
 
-@mixin ellipsis() {
-  white-space: nowrap;
+@mixin ellipsis($value: null) {
+  @if $value {
+    display: -webkit-box;
+    -webkit-line-clamp: $value;
+    -webkit-box-orient: vertical;
+  } @else {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 @mixin border-radius($value: 4) {
