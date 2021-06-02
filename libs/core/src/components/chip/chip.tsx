@@ -21,10 +21,12 @@ export class ChipComponent {
   @Prop() value: string;
   /**
    * Defines the size of the chip.
-   * `nano` sets the font to 14px and the height to 24px.
-   * `small` is the default option, with a 16px font and a 32px height.
+   * `nano` sets the font to 14px and the height to 20px.
+   * `small` is the default option, with a 16px font and a 24px height.
+   * `medium` is the default option, with a 16px font and a 32px height.
+   * `large` is the default option, with a 16px font and a 40px height.
    */
-  @Prop() size: 'nano' | 'small' = 'small';
+  @Prop() size: 'nano' | 'small' | 'medium' | 'large' = 'medium';
   /**
    * Defines the background color of the chip.  The default setting is `standard`, which is a light gray color.
    */
@@ -69,6 +71,20 @@ export class ChipComponent {
     }
   }
 
+  iconSize() {
+    switch (this.size) {
+      case 'large':
+        return 'small';
+      case 'medium':
+      case 'small':
+        return 'micro';
+      case 'nano':
+        return 'nano';
+      default:
+        return 'small';
+    }
+  }
+
   render() {
     return (
       <button
@@ -86,11 +102,14 @@ export class ChipComponent {
         }}
       >
         <slot name="start"></slot>
-        <div class="value">{this.value}</div>
+        <div class="value" title={this.value}>
+          {this.value}
+        </div>
         {this.canClose ? (
           <se-icon
             class="close"
             option="button"
+            size={this.iconSize()}
             no-hover
             disabled={this.disabled}
             onClick={() => this.closeChip()}

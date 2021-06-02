@@ -1,18 +1,19 @@
-$chip-nano-height: 22px; // with border it's 24px.
-$chip-height: 30px; // with border it's 32px.
+$chip-min-height: 20px; // with border and padding it's 24px.
 
 .se-chip {
   display: inline-flex;
+  max-width: 270px;
   margin: $spacing-small;
-  min-height: $chip-height;
-  padding-left: $spacing;
-  padding-right: $spacing;
-  font-size: 16px;
-  line-height: 25px;
+  min-height: $chip-min-height;
+  padding-left: $spacing-medium;
+  padding-right: $spacing-medium;
+  font-size: $base-fontsize;
+  font-family: inherit;
+  line-height: 36px;
   text-align: left;
   background: transparent;
   outline: none;
-  border-radius: 16px;
+  border-radius: 20px;
   @include align-items(center);
   transition: 0.2s;
 }
@@ -31,18 +32,41 @@ $chip-height: 30px; // with border it's 32px.
   }
 }
 
-.nano {
-  min-height: $chip-nano-height;
-  font-size: 14px;
-  line-height: 17px;
+.medium {
+  font-size: $small-fontsize;
+  line-height: 28px;
+  padding-left: $spacing;
+  padding-right: $spacing;
   se-icon {
-    font-size: 22px;
-    margin-right: -6px;
+    margin-right: -2px;
+  }
+}
+
+.small {
+  font-size: $nano-fontsize;
+  line-height: 20px;
+  padding-left: $spacing-small;
+  padding-right: $spacing-small;
+  se-icon {
+    margin-right: 0;
+  }
+}
+
+.nano {
+  font-size: 10px;
+  line-height: 16px;
+  padding-left: 2px;
+  padding-right: 2px;
+  se-icon {
+    margin-right: 0;
   }
 }
 
 .value {
   padding: 0 $spacing-small 0 $spacing-small;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 se-icon {
@@ -77,8 +101,8 @@ se-icon {
   &:active,
   &.selected {
     @include color("standard-contrast");
-    @include background-color("standard-selected");
-    @include border-color("border-focus");
+    @include background-color("standard");
+    @include border-color("standard");
   }
 }
 
