@@ -27,12 +27,15 @@ export class HeaderComponent {
    * to remove the "Schneider electric" logo at the end of the header.
    */
   @Prop() hideSeLogo: boolean;
+  @Prop() disabled: boolean = false;
 
   @State() hasMenu: boolean;
   elLeftNav;
 
   onClickMenu() {
-    this.elLeftNav.toggle();
+    if (!this.disabled) {
+      this.elLeftNav.toggle();
+    }
   }
 
   async componentWillLoad() {

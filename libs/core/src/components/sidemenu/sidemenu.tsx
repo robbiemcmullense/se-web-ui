@@ -28,11 +28,13 @@ export class SidemenuComponent {
   @State() open = false;
   @State() items: HTMLElement[] = [];
   @State() selectedItem?: HTMLElement;
+  @Prop() disabled: boolean = false;
   /**
    * When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`.
    * When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`.
    */
   @Event() toggled: EventEmitter<any>;
+  @Event() didNavigationClick: EventEmitter<any>;
   /**
    * Defines the text displayed in the header of the Sidemenu.
    * The default value is `Menu`.
@@ -52,49 +54,51 @@ export class SidemenuComponent {
    */
   @Method()
   async toggle(itemName?: string) {
-    // Only perform toggle if no item name is passed or menu is closed
-    if (!this.open || !itemName || (itemName && !this.open)) {
-      // Only perform open animation if menu is closed
-      if (!this.open) {
-        this.el.classList.add(SHOW_MENU);
-        this.addAnimation(null);
+    if (!this.disabled) {
+      // Only perform toggle if no item name is passed or menu is closed
+      if (!this.open || !itemName || (itemName && !this.open)) {
+        // Only perform open animation if menu is closed
+        if (!this.open) {
+          this.el.classList.add(SHOW_MENU);
+          this.addAnimation(null);
+        }
+        this.open = !this.open;
+      } else if (
+        this.selectedItem &&
+        this.isItemElement(this.selectedItem, itemName)
+      ) {
+        // Deselect the active item if a new item name is passed
+        this.unselectAll();
       }
-      this.open = !this.open;
-    } else if (
-      this.selectedItem &&
-      this.isItemElement(this.selectedItem, itemName)
-    ) {
-      // Deselect the active item if a new item name is passed
-      this.unselectAll();
-    }
 
-    if (this.open) {
-      if (itemName) {
-        // If an item name was provided, open that item in the menu (#228)
-        const itemElement = this.getItemElement(itemName);
-        if (itemElement) {
-          // Select the new active element
-          this.setActive(itemElement);
-        }
-      } else {
-        try {
-          if (this.items.find(x => x.classList.contains('active'))) {
-            this.el.classList.add(OPEN_ITEM);
+      if (this.open) {
+        if (itemName) {
+          // If an item name was provided, open that item in the menu (#228)
+          const itemElement = this.getItemElement(itemName);
+          if (itemElement) {
+            // Select the new active element
+            this.setActive(itemElement);
           }
-        } catch (error) {
-          console.error(error);
+        } else {
+          try {
+            if (this.items.find(x => x.classList.contains('active'))) {
+              this.el.classList.add(OPEN_ITEM);
+            }
+          } catch (error) {
+            console.error(error);
+          }
         }
+        // Dispatch the 'opened' event
+        this.toggled.emit({ state: 'open' });
+      } else {
+        // Remove css classes and unselect the active element
+        this.removeAnimation(() => {
+          this.el.classList.remove(SHOW_MENU);
+        });
+        this.unselectAll();
+        // Dispatch the 'closed' event
+        this.toggled.emit({ state: 'closed' });
       }
-      // Dispatch the 'opened' event
-      this.toggled.emit({ state: 'open' });
-    } else {
-      // Remove css classes and unselect the active element
-      this.removeAnimation(() => {
-        this.el.classList.remove(SHOW_MENU);
-      });
-      this.unselectAll();
-      // Dispatch the 'closed' event
-      this.toggled.emit({ state: 'closed' });
     }
   }
 
@@ -121,7 +125,7 @@ export class SidemenuComponent {
   }
 
   setActive(itemActive: any): void {
-    if (this.items.length) {
+    if (!this.disabled && this.items.length) {
       this.items.forEach((item: any) => {
         item.active = false;
       });
@@ -201,7 +205,10 @@ export class SidemenuComponent {
             !item.childElementCount ? 'hide-nav-icon' : '',
             'sidemenu-list-item',
           ].join(' ')}
-          onClick={() => this.setActive(item)}
+          onClick={() => {
+            this.setActive(item);
+            this.didNavigationClick.emit();
+          }}
           selected={item.active}
           item={item.item}
           id={item.id ? `list-${item.id}` : ''}
@@ -225,7 +232,10 @@ export class SidemenuComponent {
     return [
       <div
         class="menu-background animated d-flex-row flex"
-        onClick={() => this.toggle()}
+        onClick={() => {
+          this.toggle();
+          this.didNavigationClick.emit();
+        }}
         ref={el => (this.backdropEl = el)}
       />,
       <div
