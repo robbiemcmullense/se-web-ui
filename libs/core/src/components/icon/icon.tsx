@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Host } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'se-icon',
@@ -33,8 +33,7 @@ export class IconComponent {
     | 'success'
     | 'warning'
     | 'error'
-    | 'information'
-    | 'none';
+    | 'information';
   /**
    * Optional property that defines if the button is disabled.  Set to `false` by default.
    */
@@ -56,7 +55,14 @@ export class IconComponent {
   @Prop() mirror: 'horizontal' | 'vertical' | 'both';
 
   /**
-   * Optional property that disables the hover background (only if option property is set to button)
+   * Optional property that defines the hover background color of the button.
+   * This property is ignored if noHover is set, or if the icon option is not set to "button".
+   */
+  @Prop() hoverColor: 'standard' | 'alternative' | 'primary' | 'secondary';
+
+  /**
+   * Optional property that disables the hover background (only if option property is set to button).
+   * If set, this will override the hoverColor property and ignore it.
    */
   @Prop() noHover = false;
 
@@ -66,7 +72,7 @@ export class IconComponent {
     // if contain svg, we don't use se-icon font-family in case there svg <text> is used
     const isSVG = !!this.el.querySelector('svg');
     let transform = '';
-    const noHover = this.noHover && this.option === 'button';
+    const noHover = !!this.noHover || this.option !== 'button';
 
     switch (this.mirror) {
       case 'both':
@@ -100,6 +106,7 @@ export class IconComponent {
             'icon-family': !isSVG,
             [this.color]: !!this.color,
             [`icon-${this.option}`]: !!this.option,
+            [`hover-${this.hoverColor}`]: !!this.hoverColor && !noHover,
             'no-hover': noHover,
           }}
         >

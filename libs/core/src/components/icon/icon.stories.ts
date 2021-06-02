@@ -55,16 +55,25 @@ storiesOf('Icons', module)
         'success',
         'warning',
         'error',
-        'none',
+      ];
+      const hoverOption = [
+        'standard',
+        'alternative',
+        'primary',
+        'secondary',
+        '',
       ];
       const size = select('size', sizeOption, 'small');
       const color = select('color', colorOption, 'primary');
       const icon = text('icon', 'action_settings1');
+      const hoverColor = select('hoverColor', hoverOption, 'none');
       const noHover = boolean('noHover', false);
 
       return `
       <div style="padding: 20px">
-        <se-icon size="${size}" option="button" color="${color}" no-hover="${noHover}">${icon}</se-icon>
+        <se-icon size="${size}" option="button" color="${color}" ${
+        hoverColor && `hover-color="${hoverColor}"`
+      } ${noHover && `no-hover`}>${icon}</se-icon>
       </div>
     `;
     },

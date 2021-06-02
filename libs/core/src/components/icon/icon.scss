@@ -150,8 +150,24 @@ button {
   cursor: pointer;
   border-radius: $border-radius;
   line-height: inherit;
-  border-radius: 2px;
-  &:not(.disabled):not(.no-hover):hover {
-    @include background-color("alternative-selected");
+  &:not(.disabled):not(.no-hover) {
+    &:hover {
+      @include background-color("alternative-selected");
+    }
+
+    &.hover {
+      &-standard:hover {
+        @include background-color("standard-hover");
+      }
+      &-alternative:hover {
+        @include background-color("alternative-hover");
+      }
+      &-primary:hover {
+        @include background-color("primary-hover");
+      }
+      &-secondary:hover {
+        @include background-color("secondary-hover");
+      }
+    }
   }
 }

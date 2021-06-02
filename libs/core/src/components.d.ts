@@ -954,18 +954,21 @@ export namespace Components {
     | 'success'
     | 'warning'
     | 'error'
-    | 'information'
-    | 'none';
+    | 'information';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
         "disabled": boolean;
         /**
+          * Optional property that defines the hover background color of the button. This property is ignored if noHover is set, or if the icon option is not set to "button".
+         */
+        "hoverColor": 'standard' | 'alternative' | 'primary' | 'secondary';
+        /**
           * Optional property that defines if the icon should be mirrored.
          */
         "mirror": 'horizontal' | 'vertical' | 'both';
         /**
-          * Optional property that disables the hover background (only if option property is set to button)
+          * Optional property that disables the hover background (only if option property is set to button). If set, this will override the hoverColor property and ignore it.
          */
         "noHover": boolean;
         /**
@@ -3088,18 +3091,21 @@ declare namespace LocalJSX {
     | 'success'
     | 'warning'
     | 'error'
-    | 'information'
-    | 'none';
+    | 'information';
         /**
           * Optional property that defines if the button is disabled.  Set to `false` by default.
          */
         "disabled"?: boolean;
         /**
+          * Optional property that defines the hover background color of the button. This property is ignored if noHover is set, or if the icon option is not set to "button".
+         */
+        "hoverColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
+        /**
           * Optional property that defines if the icon should be mirrored.
          */
         "mirror"?: 'horizontal' | 'vertical' | 'both';
         /**
-          * Optional property that disables the hover background (only if option property is set to button)
+          * Optional property that disables the hover background (only if option property is set to button). If set, this will override the hoverColor property and ignore it.
          */
         "noHover"?: boolean;
         /**
