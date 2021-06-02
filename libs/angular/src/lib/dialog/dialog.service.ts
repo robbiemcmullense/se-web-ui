@@ -25,13 +25,15 @@ export const MODAL_DATA = new InjectionToken<any>('ModalData');
 export class DialogService {
   closeEvent: any;
   defaultConfig: DialogConfig = {
+    flipConfirmActions: false,
     canBackdrop: true,
     noBackdrop: false,
     color: 'primary',
     size: 'medium',
     data: {},
   };
-  public componentRef: ComponentRef<any>;
+  componentRef: ComponentRef<any>;
+
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
@@ -44,7 +46,7 @@ export class DialogService {
   public createDialogComponent(
     componentType: Type<any>,
     config: DialogConfig = {}
-  ) {
+  ): ComponentRef<any> {
     const userConf: DialogConfig = { ...this.defaultConfig, ...config };
 
     // MODAL_DATA added as DI based on config.data
@@ -64,8 +66,7 @@ export class DialogService {
   /**
    * @description method to open alert dialog
    */
-
-  public alert(config: DialogConfig) {
+  public alert(config: DialogConfig): ComponentRef<any> {
     const dialogRef = this.createDialogComponent(DialogComponent, config);
     dialogRef.instance.type = 'alert';
     this.closeEvent = dialogRef.instance.closeEvent.subscribe(
@@ -78,10 +79,11 @@ export class DialogService {
     );
     return dialogRef;
   }
+
   /**
    * @description method to open confirm dialog
    */
-  public confirm(config: DialogConfig) {
+  public confirm(config: DialogConfig): ComponentRef<any> {
     const dialogRef = this.createDialogComponent(DialogComponent, config);
     dialogRef.instance.type = 'confirm';
     this.closeEvent = dialogRef.instance.closeEvent.subscribe(
@@ -94,11 +96,14 @@ export class DialogService {
     );
     return dialogRef;
   }
+
   /**
    * @description method to open modal dialog
    */
-
-  public modal(componentType: Type<any>, config?: DialogConfig) {
+  public modal(
+    componentType: Type<any>,
+    config?: DialogConfig
+  ): ComponentRef<any> {
     const dialogRef = this.createDialogComponent(DialogModalComponent, config);
     this.closeEvent = dialogRef.instance.closeEvent.subscribe(
       data => {
@@ -115,7 +120,7 @@ export class DialogService {
   /**
    * @description method to close the dialog by setting close property to true
    */
-  public close(data: any) {
+  public close(data: any): void {
     this.componentRef.instance.afterClosed.emit(data);
     this.appRef.detachView(this.componentRef.hostView);
     this.componentRef.destroy();
@@ -123,10 +128,11 @@ export class DialogService {
       this.closeEvent.unsubscribe();
     }
   }
+
   /**
    * @description method to close the dialog by setting close property to true
    */
-  public cancel(data: any) {
+  public cancel(data: any): void {
     this.componentRef.instance.afterClosed.error(data);
     this.appRef.detachView(this.componentRef.hostView);
     this.componentRef.destroy();

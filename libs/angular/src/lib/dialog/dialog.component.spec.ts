@@ -13,7 +13,7 @@ describe('DialogComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [DialogModule, ProxiesModule],
-      providers: [DialogConfig]
+      providers: [DialogConfig],
     }).compileComponents();
   }));
 
@@ -61,8 +61,8 @@ describe('DialogComponent', () => {
   });
 
   it('should load child component', () => {
-    modalComponent.loadChildComponent(DialogModalComponent);
-    expect(modalComponent.loadChildComponent).toBeTruthy();
+    (modalComponent as any).loadChildComponent(DialogModalComponent);
+    expect((modalComponent as any).loadChildComponent).toBeTruthy();
   });
 
   it('should call the closeEvent error method when the backdrop is clicked', () => {

@@ -19,9 +19,11 @@
     <se-button (click)="closeDialog()">{{ dialog.textOK || 'Ok' }}</se-button>
   </se-dialog-footer>
   <se-dialog-footer *ngIf="type === 'confirm'">
-    <se-button (click)="closeDialog()">{{ dialog.textOK || 'Ok' }}</se-button>
-    <se-button (click)="cancelDialog()" option="outline">{{
-      dialog.textCancel || 'Cancel'
-    }}</se-button>
+    <se-button
+      *ngFor="let action of confirmActions"
+      (click)="action.action()"
+      [option]="action.option"
+      >{{ action.label }}</se-button
+    >
   </se-dialog-footer>
 </se-dialog>

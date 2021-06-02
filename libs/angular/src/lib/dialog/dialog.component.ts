@@ -1,24 +1,30 @@
 import {
-  Component,
-  ViewChild,
-  ComponentRef,
-  OnDestroy,
-  Output,
-  EventEmitter,
-  Type,
-  ComponentFactoryResolver,
   AfterViewInit,
   ChangeDetectorRef,
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  EventEmitter,
   Input,
-  Optional
+  OnDestroy,
+  Optional,
+  Output,
+  Type,
+  ViewChild,
 } from '@angular/core';
 import { DialogConfig } from './dialog-config';
 import { DialogDirective } from './dialog.directive';
 
+interface DialogAction {
+  label: string;
+  option: string;
+  action: () => void;
+}
+
 @Component({
   selector: 'se-ng-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss']
+  styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent {
   @Output() afterClosed = new EventEmitter();
@@ -26,23 +32,48 @@ export class DialogComponent {
   // Web-component Event accessible from dialog service to call close/cancel function
   @Output() closeEvent = new EventEmitter();
 
-  constructor(public dialog: DialogConfig) {
-  }
   @Input() type: string;
-  closeDialog() {
+
+  readonly confirmActions: DialogAction[] = [];
+
+  constructor(public dialog: DialogConfig) {
+    this.confirmActions = [
+      {
+        label: this.dialog.textCancel || 'Cancel',
+        option: 'outline',
+        action: () => {
+          this.cancelDialog();
+        },
+      },
+      {
+        label: this.dialog.textOK || 'Ok',
+        option: '',
+        action: () => {
+          this.closeDialog();
+        },
+      },
+    ];
+    if (this.dialog.flipConfirmActions) {
+      this.confirmActions.reverse();
+    }
+  }
+
+  closeDialog(): void {
     this.closeEvent.emit(this.dialog);
   }
-  backdropClick() {
-    this.closeEvent.error({type: 'backdrop'});
+
+  backdropClick(): void {
+    this.closeEvent.error({ type: 'backdrop' });
   }
-  cancelDialog() {
-    this.closeEvent.error({type: 'cancel'});
+
+  cancelDialog(): void {
+    this.closeEvent.error({ type: 'cancel' });
   }
 }
 
 @Component({
   selector: 'se-dialog-modal',
-  templateUrl: './dialog-modal.component.html'
+  templateUrl: './dialog-modal.component.html',
 })
 export class DialogModalComponent implements AfterViewInit, OnDestroy {
   @Output() afterClosed = new EventEmitter();
@@ -50,37 +81,41 @@ export class DialogModalComponent implements AfterViewInit, OnDestroy {
   // Web-component Event accessible from dialog service to call close/cancel function
   @Output() closeEvent = new EventEmitter();
 
-  @ViewChild(DialogDirective, {static: false}) insertionPoint: DialogDirective;
+  @ViewChild(DialogDirective, { static: false })
+  insertionPoint: DialogDirective;
+
   childComponentType: Type<any>;
   componentRef: ComponentRef<any>;
+
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private cd: ChangeDetectorRef,
     @Optional() public modal: DialogConfig
   ) {}
-  backdropClick() {
-    this.closeEvent.error({type: 'backdrop'});
-  }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     if (this.childComponentType) {
       this.loadChildComponent(this.childComponentType);
       this.cd.detectChanges();
     }
   }
 
-  loadChildComponent(componentType: Type<any>) {
+  ngOnDestroy(): void {
+    if (this.componentRef) {
+      this.componentRef.destroy();
+    }
+  }
+
+  backdropClick(): void {
+    this.closeEvent.error({ type: 'backdrop' });
+  }
+
+  private loadChildComponent(componentType: Type<any>): void {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       componentType
     );
     const viewContainerRef = this.insertionPoint.viewContainerRef;
     viewContainerRef.clear();
     this.componentRef = viewContainerRef.createComponent(componentFactory);
-  }
-
-  ngOnDestroy() {
-    if (this.componentRef) {
-      this.componentRef.destroy();
-    }
   }
 }

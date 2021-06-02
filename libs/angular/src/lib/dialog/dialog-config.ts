@@ -23,6 +23,10 @@ export class DialogConfig {
    */
   textCancel?: string;
   /**
+   * @description Flip the confirm action buttons order in the footer. default: false
+   */
+  flipConfirmActions?: boolean;
+  /**
    * @description size of the dialog: 'small'|'large'|'medium'|'fill'
    */
   size?: string;
