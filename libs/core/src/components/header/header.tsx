@@ -48,6 +48,8 @@ export class HeaderComponent {
     } else if (this.domain.toLowerCase() !== 'none') {
       domain = <span class="header-title-type">{this.domain}</span>;
     }
+    const hasCustomTitle = !!this.el.querySelector('[slot="title"]');
+
     return [
       <div class="d-flex">
         {this.hasMenu ? (
@@ -59,13 +61,19 @@ export class HeaderComponent {
         ) : (
           ''
         )}
-        <div class="d-flex-column header-title-wrapper">
-          {domain}
-          <h1 class="header-title no-margin">
-            <span>{title.first}</span>
-            <span class="light">&nbsp;{title.last}</span>
-          </h1>
-        </div>
+        {hasCustomTitle ? (
+          <div class="d-flex-column header-title-wrapper">
+            <slot name="title" />
+          </div>
+        ) : (
+          <div class="d-flex-column header-title-wrapper">
+            {domain}
+            <h1 class="header-title no-margin">
+              <span>{title.first}</span>
+              <span class="light">&nbsp;{title.last}</span>
+            </h1>
+          </div>
+        )}
         {this.project ? (
           <span class="project-section">{this.project}</span>
         ) : (

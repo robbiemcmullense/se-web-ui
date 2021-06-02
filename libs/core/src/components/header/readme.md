@@ -2,6 +2,7 @@
 
 | Slot    | Description                                                                                                                                              |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title` | Uses an alternative title section, with custom elements instead of the domain / title display.                                                           |
 | `start` | Positions to the `left` of the content (immediately to the right of the domain and project title). Can be used to place a project dropdown if necessary. |
 | none    | Positions the content in the middle of the header (centered)                                                                                             |
 | `end`   | Positions to the `right` of the content. Can be used for the user dropdown, external links...                                                            |

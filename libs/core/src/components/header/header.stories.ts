@@ -25,6 +25,23 @@ storiesOf('Header', module)
     }
   )
   .add(
+    'Header with custom title',
+    () => {
+      const project = text('project', 'Project awesome');
+
+      return `
+      <se-header project="${project}">
+        <se-icon-schneider slot="title">Custom title</se-icon-schneider>
+      </se-header>
+    `;
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
     'Header with side menu',
     () => {
       const title = text('app-title', 'My cool advisor');
