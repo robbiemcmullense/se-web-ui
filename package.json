@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.20.5",
+  "version": "3.21.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -29,7 +29,7 @@
     "update": "nx migrate latest",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "storybook:build": "nx build-storybook --prod",
+    "storybook:build": "nx build-storybook",
     "storybook:deploy": "storybook-to-ghpages --existing-output-dir=dist/storybook/core",
     "libs:build": "run-s libs:build:*",
     "libs:build:core": "npm run build core",
