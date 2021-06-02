@@ -13,6 +13,8 @@ $opacity: 0.25 !default;
 }
 
 se-tabbar {
+  user-select: none;
+
   .edge {
     background-color: rgba(black, $opacity);
     white-space: nowrap;
@@ -34,12 +36,6 @@ se-tabbar {
   .arrowLeft {
     /*rtl:begin:ignore*/
     margin-right: -32px;
-    /*rtl:end:ignore*/
-    se-icon {
-      /*rtl:begin:ignore*/
-      transform: rotate(180deg);
-      /*rtl:end:ignore*/
-    }
   }
 
   .arrowRight {

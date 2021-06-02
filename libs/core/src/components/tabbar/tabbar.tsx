@@ -99,7 +99,7 @@ export class TabbarComponent {
             class={{ arrow: true, arrowLeft: true }}
             onClick={() => this.scroll(-1)}
           >
-            <se-icon size={iconSize} mirror="vertical">
+            <se-icon size={iconSize} mirror="horizontal">
               <span innerHTML={arrow5Step}></span>
             </se-icon>
           </span>
