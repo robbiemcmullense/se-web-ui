@@ -12,14 +12,6 @@ describe('SidemenuItemComponent', () => {
     expect(sidemenuItem).toBeTruthy();
   });
 
-  it('should be inactive by default', () => {
-    expect(sidemenuItem.active).toBeFalsy();
-  });
-
-  it('should not have a defined item by default', () => {
-    expect(sidemenuItem.item).toBeUndefined();
-  });
-
   it('should render, with a slot element', async () => {
     const page = await newSpecPage({
       components: [SidemenuItemComponent],

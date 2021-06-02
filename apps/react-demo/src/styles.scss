@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+$se-icon-folder: "~@se/icons/fonts";
+$se-generate-font-class: "false";
+@import "~@se/icons/scss/styles";
+$se-fonts-path: "~@se/fonts/fonts";
+@import "~@se/fonts/scss/styles";

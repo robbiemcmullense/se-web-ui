@@ -3,6 +3,11 @@ import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import {
+  svelteOutputTarget,
+  ComponentBindingConfig,
+} from '@stencil/svelte-output-target';
+
+import {
   vueOutputTarget,
   ComponentModelConfig,
 } from '@stencil/vue-output-target';
@@ -68,6 +73,18 @@ const vueComponentModels: ComponentModelConfig[] = [
     targetAttr: ATTRS.Value,
   },
 ];
+const svelteComponentBindings: ComponentBindingConfig[] = [
+  {
+    elements: ['se-checkbox', 'se-radio'],
+    event: EVENTS.Change,
+    targetProp: ATTRS.Selected,
+  },
+  {
+    elements: ['se-radio-group', 'se-slider'],
+    event: EVENTS.Change,
+    targetProp: ATTRS.Value,
+  },
+];
 
 const distFolder = '../../dist/libs/core';
 
@@ -89,6 +106,7 @@ export const config: Config = {
     shadowDomShim: true,
     slotChildNodesFix: true,
   },
+  globalStyle: 'src/global/app.scss',
   plugins: [
     sass({
       injectGlobalPaths: [
@@ -161,6 +179,15 @@ export const config: Config = {
       includePolyfills: true,
       includeDefineCustomElements: true,
       componentModels: vueComponentModels,
+    }),
+    svelteOutputTarget({
+      componentCorePackage: '@se/web-ui',
+      proxiesFile: '../svelte/src/proxies.ts',
+      accessors: true,
+      componentBindings: svelteComponentBindings,
+      loaderDir: 'loader',
+      includePolyfills: true,
+      includeDefineCustomElements: true,
     }),
   ],
   bundles: [

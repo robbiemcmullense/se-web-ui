@@ -41,6 +41,23 @@ describe('HeaderComponent', () => {
     expect(spanElement).toBeTruthy();
     expect(spanElement.innerText).toEqual('myDomain');
   });
+
+});
+
+describe('HeaderComponent with sideMenu', () => {
+  let page;
+  let element;
+
+  beforeEach(async () => {
+    page = await newE2EPage();
+    await page.setContent(
+      '<se-header app-title="Test Application"><se-sidemenu></se-sidemenu></se-header>'
+    );
+  });
+  it('should set the component hasMenu property to true when a sidemenu element is present', async () => {
+    element = await page.find('se-header');
+    expect(element.getProperty('hasMenu')).toBeTruthy();
+  });
 });
 
 describe('Header Component with Sidenav Child', () => {

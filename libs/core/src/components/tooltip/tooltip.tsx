@@ -57,7 +57,7 @@ export class TooltipComponent {
    */
   @Event() didClose: EventEmitter;
 
-  createPopper(listener: boolean = true): void {
+  createPopper(listener = true): void {
     const elmButton =
       this.containsFab?.shadowRoot?.querySelector('.fab-button') ||
       this.elmButton;

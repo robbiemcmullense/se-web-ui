@@ -2,19 +2,7 @@ import { VisualLinearComponent } from './visual-linear';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('VisualLinearComponent', () => {
-  let linearProgBar;
 
-  beforeEach(() => {
-    linearProgBar = new VisualLinearComponent();
-  });
-
-  it('should build', () => {
-    expect(linearProgBar).toBeTruthy();
-  });
-
-  it('should have an inline option by default', () => {
-    expect(linearProgBar.option).toEqual('inline');
-  });
 
   it('should render with an svg element', async () => {
     const page = await newSpecPage({

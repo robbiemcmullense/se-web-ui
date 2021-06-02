@@ -27,7 +27,7 @@ export class ButtonComponent {
    * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
    */
   @Prop() option:
-    | 'flat'
+    'flat'
     | 'raised'
     | 'outline'
     | 'login'

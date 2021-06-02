@@ -12,6 +12,10 @@ describe('TooltipComponent', () => {
     expect(tooltip).toBeTruthy();
   });
 
+  it('should set opened to true when calling the open method', () => {
+    tooltip.open();
+    expect(tooltip.opened).toBeTruthy();
+  });
   it('should be bottom aligned by default', () => {
     expect(tooltip.position).toEqual('bottom');
   });

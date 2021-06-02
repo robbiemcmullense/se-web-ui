@@ -7,17 +7,19 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                            | Type     | Default        |
-| -------- | --------- | -------------------------------------------------------------------------------------- | -------- | -------------- |
-| `label`  | `label`   | Defines the text displayed in the header of the Sidemenu. The default value is `Menu`. | `string` | `'Menu'`       |
-| `link`   | `link`    |                                                                                        | `string` | `'www.se.com'` |
+| Property   | Attribute  | Description                                                                            | Type      | Default        |
+| ---------- | ---------- | -------------------------------------------------------------------------------------- | --------- | -------------- |
+| `disabled` | `disabled` |                                                                                        | `boolean` | `false`        |
+| `label`    | `label`    | Defines the text displayed in the header of the Sidemenu. The default value is `Menu`. | `string`  | `'Menu'`       |
+| `link`     | `link`     |                                                                                        | `string`  | `'www.se.com'` |
 
 
 ## Events
 
-| Event     | Description                                                                                                                                                                                               | Type               |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `toggled` | When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`. When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`. | `CustomEvent<any>` |
+| Event                | Description                                                                                                                                                                                               | Type               |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `didNavigationClick` |                                                                                                                                                                                                           | `CustomEvent<any>` |
+| `toggled`            | When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`. When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`. | `CustomEvent<any>` |
 
 
 ## Methods

@@ -2,20 +2,7 @@ import { PaginationComponent } from './pagination';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('PaginationComponent', () => {
-  let pagination;
-
-  beforeEach(() => {
-    pagination = new PaginationComponent();
-  });
-
-  it('should create a pagination component', () => {
-    expect(pagination).toBeTruthy();
-  });
-
-  it('should not be disabled by default', () => {
-    expect(pagination.disabled).toBeFalsy();
-  });
-
+  
   it('should not render when there are not enough items', async () => {
     const page = await newSpecPage({
       components: [PaginationComponent],

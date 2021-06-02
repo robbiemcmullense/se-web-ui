@@ -16,17 +16,6 @@ import { AppComponent } from './app';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('AppComponent', () => {
-  let app;
-
-  it('should build', () => {
-    app = new AppComponent();
-    expect(app).toBeTruthy();
-  });
-
-  it('should have a technical option by default', () => {
-    app = new AppComponent();
-    expect(app.option).toEqual('technical');
-  });
 
   it('should render and update the body with the se-font-technical class by default', async () => {
     const page = await newSpecPage({

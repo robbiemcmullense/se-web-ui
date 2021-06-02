@@ -6,7 +6,7 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@se/web-ui';
 
 
-export declare interface SeAbout extends Components.SeAbout {}
+export type SeAbout = Components.SeAbout
 @ProxyCmp({
   inputs: ['appTitle', 'copyright', 'domain', 'imageUrl', 'version']
 })
@@ -25,7 +25,7 @@ export class SeAbout {
 }
 
 import { AppComponent as IAppComponent } from '@se/web-ui/types/components/app/app';
-export declare interface SeApp extends Components.SeApp {}
+export type SeApp = Components.SeApp
 @ProxyCmp({
   inputs: ['option', 'pageScroll', 'theme']
 })
@@ -48,7 +48,7 @@ export class SeApp {
 }
 
 
-export declare interface SeAuthentication extends Components.SeAuthentication {}
+export type SeAuthentication = Components.SeAuthentication
 @ProxyCmp({
   inputs: ['appTitle', 'copyright', 'domain', 'hide', 'imageUrl', 'version']
 })
@@ -67,7 +67,7 @@ export class SeAuthentication {
 }
 
 
-export declare interface SeBanner extends Components.SeBanner {}
+export type SeBanner = Components.SeBanner
 @ProxyCmp({
   inputs: ['duration']
 })
@@ -86,7 +86,7 @@ export class SeBanner {
 }
 
 import { BannerItemComponent as IBannerItemComponent } from '@se/web-ui/types/components/banner-item/banner-item';
-export declare interface SeBannerItem extends Components.SeBannerItem {}
+export type SeBannerItem = Components.SeBannerItem
 @ProxyCmp({
   inputs: ['active', 'imageUrl']
 })
@@ -109,7 +109,7 @@ export class SeBannerItem {
 }
 
 
-export declare interface SeBlock extends Components.SeBlock {}
+export type SeBlock = Components.SeBlock
 @ProxyCmp({
   inputs: ['clickable', 'clickableBar', 'color', 'corner', 'display', 'divider', 'enlarged', 'height', 'loading', 'margin', 'option', 'outline', 'outlineColor', 'width']
 })
@@ -128,7 +128,7 @@ export class SeBlock {
 }
 
 
-export declare interface SeBlockContent extends Components.SeBlockContent {}
+export type SeBlockContent = Components.SeBlockContent
 @ProxyCmp({
   inputs: ['maxHeight', 'option']
 })
@@ -147,7 +147,7 @@ export class SeBlockContent {
 }
 
 
-export declare interface SeBlockFooter extends Components.SeBlockFooter {}
+export type SeBlockFooter = Components.SeBlockFooter
 @ProxyCmp({
   inputs: ['direction', 'divider', 'option']
 })
@@ -166,7 +166,7 @@ export class SeBlockFooter {
 }
 
 
-export declare interface SeBlockHeader extends Components.SeBlockHeader {}
+export type SeBlockHeader = Components.SeBlockHeader
 @ProxyCmp({
   inputs: ['divider', 'option']
 })
@@ -185,7 +185,7 @@ export class SeBlockHeader {
 }
 
 
-export declare interface SeBreadcrumb extends Components.SeBreadcrumb {}
+export type SeBreadcrumb = Components.SeBreadcrumb
 @ProxyCmp({
   inputs: ['ariaLabel', 'breakpoint', 'canSelectLast']
 })
@@ -204,7 +204,7 @@ export class SeBreadcrumb {
 }
 
 import { BreadcrumbItemComponent as IBreadcrumbItemComponent } from '@se/web-ui/types/components/breadcrumb-item/breadcrumb-item';
-export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
+export type SeBreadcrumbItem = Components.SeBreadcrumbItem
 @ProxyCmp({
   inputs: ['canSelect', 'href', 'isLast', 'position']
 })
@@ -227,7 +227,7 @@ export class SeBreadcrumbItem {
 }
 
 import { ButtonComponent as IButtonComponent } from '@se/web-ui/types/components/button/button';
-export declare interface SeButton extends Components.SeButton {}
+export type SeButton = Components.SeButton
 @ProxyCmp({
   inputs: ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'iconOnly', 'option', 'padding', 'selected', 'size', 'type', 'value'],
   methods: ['setDisabled', 'setGrouped']
@@ -251,7 +251,7 @@ export class SeButton {
 }
 
 
-export declare interface SeCarousel extends Components.SeCarousel {}
+export type SeCarousel = Components.SeCarousel
 @ProxyCmp({
   inputs: ['arrowsOverlay', 'hintWidth', 'itemMinWidth', 'pagination']
 })
@@ -270,7 +270,7 @@ export class SeCarousel {
 }
 
 
-export declare interface SeCarouselItem extends Components.SeCarouselItem {}
+export type SeCarouselItem = Components.SeCarouselItem
 
 @Component({
   selector: 'se-carousel-item',
@@ -286,7 +286,7 @@ export class SeCarouselItem {
 }
 
 
-export declare interface SeCarouselPagination extends Components.SeCarouselPagination {}
+export type SeCarouselPagination = Components.SeCarouselPagination
 @ProxyCmp({
   inputs: ['activeIndex', 'size']
 })
@@ -305,7 +305,7 @@ export class SeCarouselPagination {
 }
 
 import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
-export declare interface SeCheckbox extends Components.SeCheckbox {}
+export type SeCheckbox = Components.SeCheckbox
 @ProxyCmp({
   inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
   methods: ['setRequired']
@@ -329,7 +329,7 @@ export class SeCheckbox {
 }
 
 import { ChipComponent as IChipComponent } from '@se/web-ui/types/components/chip/chip';
-export declare interface SeChip extends Components.SeChip {}
+export type SeChip = Components.SeChip
 @ProxyCmp({
   inputs: ['block', 'canClose', 'color', 'dashed', 'disabled', 'readonly', 'selected', 'size', 'value']
 })
@@ -352,7 +352,7 @@ export class SeChip {
 }
 
 
-export declare interface SeContainer extends Components.SeContainer {}
+export type SeContainer = Components.SeContainer
 @ProxyCmp({
   inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'padding', 'position', 'rowSize']
 })
@@ -371,7 +371,7 @@ export class SeContainer {
 }
 
 import { DialogComponent as IDialogComponent } from '@se/web-ui/types/components/dialog/dialog';
-export declare interface SeDialog extends Components.SeDialog {}
+export type SeDialog = Components.SeDialog
 @ProxyCmp({
   inputs: ['canBackdrop', 'color', 'noBackdrop', 'open', 'pageScroll', 'size']
 })
@@ -397,7 +397,7 @@ The modal can then be safely removed from the DOM. */
 }
 
 
-export declare interface SeDialogContent extends Components.SeDialogContent {}
+export type SeDialogContent = Components.SeDialogContent
 @ProxyCmp({
   inputs: ['icon', 'iconColor', 'isLastChild', 'option']
 })
@@ -416,7 +416,7 @@ export class SeDialogContent {
 }
 
 
-export declare interface SeDialogFooter extends Components.SeDialogFooter {}
+export type SeDialogFooter = Components.SeDialogFooter
 
 @Component({
   selector: 'se-dialog-footer',
@@ -432,7 +432,7 @@ export class SeDialogFooter {
 }
 
 import { DialogHeaderComponent as IDialogHeaderComponent } from '@se/web-ui/types/components/dialog-header/dialog-header';
-export declare interface SeDialogHeader extends Components.SeDialogHeader {}
+export type SeDialogHeader = Components.SeDialogHeader
 @ProxyCmp({
   inputs: ['closeIcon', 'color', 'option']
 })
@@ -456,7 +456,7 @@ The modal can then be safely removed from the DOM. */
 }
 
 
-export declare interface SeDivider extends Components.SeDivider {}
+export type SeDivider = Components.SeDivider
 @ProxyCmp({
   inputs: ['color', 'option']
 })
@@ -475,7 +475,7 @@ export class SeDivider {
 }
 
 import { DropdownComponent as IDropdownComponent } from '@se/web-ui/types/components/dropdown/dropdown';
-export declare interface SeDropdown extends Components.SeDropdown {}
+export type SeDropdown = Components.SeDropdown
 @ProxyCmp({
   inputs: ['action', 'alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'],
   methods: ['open', 'close']
@@ -503,7 +503,7 @@ export class SeDropdown {
 }
 
 import { FabComponent as IFabComponent } from '@se/web-ui/types/components/fab/fab';
-export declare interface SeFab extends Components.SeFab {}
+export type SeFab = Components.SeFab
 @ProxyCmp({
   inputs: ['color', 'icon', 'option', 'overlay', 'position'],
   methods: ['toggleAction']
@@ -527,7 +527,7 @@ export class SeFab {
 }
 
 import { FabItemComponent as IFabItemComponent } from '@se/web-ui/types/components/fab-item/fab-item';
-export declare interface SeFabItem extends Components.SeFabItem {}
+export type SeFabItem = Components.SeFabItem
 @ProxyCmp({
   inputs: ['icon']
 })
@@ -550,7 +550,7 @@ export class SeFabItem {
 }
 
 import { FiltrationComponent as IFiltrationComponent } from '@se/web-ui/types/components/filtration/filtration';
-export declare interface SeFiltration extends Components.SeFiltration {}
+export type SeFiltration = Components.SeFiltration
 @ProxyCmp({
   inputs: ['collapsed', 'item', 'labelHint', 'labelSelectAll', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'search', 'searchable', 'shadow', 'showSelectAll']
 })
@@ -575,7 +575,7 @@ export class SeFiltration {
 }
 
 import { FiltrationSmart as IFiltrationSmart } from '@se/web-ui/types/components/filtration-smart/filtration-smart';
-export declare interface SeFiltrationSmart extends Components.SeFiltrationSmart {}
+export type SeFiltrationSmart = Components.SeFiltrationSmart
 @ProxyCmp({
   inputs: ['filters', 'headerLabelDesktop', 'headerLabelMobile', 'isMobileViewVisible', 'maxFacetContentHeight', 'resetButtonLabel', 'showProductsLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel', 'visibleFacetsCount', 'visibleRefinementsPerFacetCount'],
   methods: ['reset', 'setIsFilterChecked']
@@ -599,7 +599,7 @@ export class SeFiltrationSmart {
 }
 
 import { FiltrationSmartCheckbox as IFiltrationSmartCheckbox } from '@se/web-ui/types/components/filtration-smart/checkbox/checkbox';
-export declare interface SeFiltrationSmartCheckbox extends Components.SeFiltrationSmartCheckbox {}
+export type SeFiltrationSmartCheckbox = Components.SeFiltrationSmartCheckbox
 @ProxyCmp({
   inputs: ['isMobile', 'refinementId']
 })
@@ -622,7 +622,7 @@ export class SeFiltrationSmartCheckbox {
 }
 
 
-export declare interface SeFiltrationSmartDesktopView extends Components.SeFiltrationSmartDesktopView {}
+export type SeFiltrationSmartDesktopView = Components.SeFiltrationSmartDesktopView
 @ProxyCmp({
   inputs: ['headerLabel', 'maxFacetContentHeight', 'resetButtonLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel']
 })
@@ -641,7 +641,7 @@ export class SeFiltrationSmartDesktopView {
 }
 
 import { FiltrationSmartFacet as IFiltrationSmartFacet } from '@se/web-ui/types/components/filtration-smart/facet/facet';
-export declare interface SeFiltrationSmartFacet extends Components.SeFiltrationSmartFacet {}
+export type SeFiltrationSmartFacet = Components.SeFiltrationSmartFacet
 @ProxyCmp({
   inputs: ['facetId', 'isMobile', 'maxContentHeight', 'viewLessLabel', 'viewMoreLabel']
 })
@@ -665,7 +665,7 @@ export class SeFiltrationSmartFacet {
 }
 
 import { FiltrationSmartGroup as IFiltrationSmartGroup } from '@se/web-ui/types/components/filtration-smart/group/group';
-export declare interface SeFiltrationSmartGroup extends Components.SeFiltrationSmartGroup {}
+export type SeFiltrationSmartGroup = Components.SeFiltrationSmartGroup
 @ProxyCmp({
   inputs: ['isMobile', 'level', 'sectionId']
 })
@@ -689,7 +689,7 @@ export class SeFiltrationSmartGroup {
 }
 
 import { FiltrationSmartMobileView as IFiltrationSmartMobileView } from '@se/web-ui/types/components/filtration-smart/mobile-view/mobile-view';
-export declare interface SeFiltrationSmartMobileView extends Components.SeFiltrationSmartMobileView {}
+export type SeFiltrationSmartMobileView = Components.SeFiltrationSmartMobileView
 @ProxyCmp({
   inputs: ['headerLabel', 'isVisible', 'resetButtonLabel', 'showProductsLabel']
 })
@@ -714,7 +714,7 @@ export class SeFiltrationSmartMobileView {
 }
 
 import { FiltrationSmartMobileViewTrigger as IFiltrationSmartMobileViewTrigger } from '@se/web-ui/types/components/filtration-smart/mobile-view-trigger/mobile-view-trigger';
-export declare interface SeFiltrationSmartMobileViewTrigger extends Components.SeFiltrationSmartMobileViewTrigger {}
+export type SeFiltrationSmartMobileViewTrigger = Components.SeFiltrationSmartMobileViewTrigger
 @ProxyCmp({
   inputs: ['count', 'label']
 })
@@ -737,7 +737,7 @@ export class SeFiltrationSmartMobileViewTrigger {
 }
 
 import { FiltrationSmartResetButton as IFiltrationSmartResetButton } from '@se/web-ui/types/components/filtration-smart/reset-button/reset-button';
-export declare interface SeFiltrationSmartResetButton extends Components.SeFiltrationSmartResetButton {}
+export type SeFiltrationSmartResetButton = Components.SeFiltrationSmartResetButton
 @ProxyCmp({
   inputs: ['disabled', 'label']
 })
@@ -760,7 +760,7 @@ export class SeFiltrationSmartResetButton {
 }
 
 import { FiltrationSmartTab as IFiltrationSmartTab } from '@se/web-ui/types/components/filtration-smart/tab/tab';
-export declare interface SeFiltrationSmartTab extends Components.SeFiltrationSmartTab {}
+export type SeFiltrationSmartTab = Components.SeFiltrationSmartTab
 @ProxyCmp({
   inputs: ['refinementId']
 })
@@ -783,7 +783,7 @@ export class SeFiltrationSmartTab {
 }
 
 import { FiltrationSmartViewMoreSectionsButton as IFiltrationSmartViewMoreSectionsButton } from '@se/web-ui/types/components/filtration-smart/view-more-facets-button/view-more-facets-button';
-export declare interface SeFiltrationSmartViewMoreFacetsButton extends Components.SeFiltrationSmartViewMoreFacetsButton {}
+export type SeFiltrationSmartViewMoreFacetsButton = Components.SeFiltrationSmartViewMoreFacetsButton
 @ProxyCmp({
   inputs: ['count', 'isAllFacetsVisible', 'viewLessLabel', 'viewMoreLabel']
 })
@@ -806,7 +806,7 @@ export class SeFiltrationSmartViewMoreFacetsButton {
 }
 
 import { FiltrationSmartViewMoreRefinementsButton as IFiltrationSmartViewMoreRefinementsButton } from '@se/web-ui/types/components/filtration-smart/view-more-refinements-button/view-more-refinements-button';
-export declare interface SeFiltrationSmartViewMoreRefinementsButton extends Components.SeFiltrationSmartViewMoreRefinementsButton {}
+export type SeFiltrationSmartViewMoreRefinementsButton = Components.SeFiltrationSmartViewMoreRefinementsButton
 @ProxyCmp({
   inputs: ['count', 'facetId', 'isAllRefinementsVisible', 'viewLessLabel', 'viewMoreLabel']
 })
@@ -829,7 +829,7 @@ export class SeFiltrationSmartViewMoreRefinementsButton {
 }
 
 import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
-export declare interface SeFormField extends Components.SeFormField {}
+export type SeFormField = Components.SeFormField
 @ProxyCmp({
   inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'minWidth', 'noStacking', 'option', 'padding', 'required', 'stacked', 'status', 'textOnly', 'type', 'value']
 })
@@ -852,15 +852,15 @@ export class SeFormField {
 }
 
 
-export declare interface SeHeader extends Components.SeHeader {}
+export type SeHeader = Components.SeHeader
 @ProxyCmp({
-  inputs: ['appTitle', 'domain', 'hideSeLogo', 'project']
+  inputs: ['appTitle', 'disabled', 'domain', 'hideSeLogo', 'project']
 })
 @Component({
   selector: 'se-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['appTitle', 'domain', 'hideSeLogo', 'project']
+  inputs: ['appTitle', 'disabled', 'domain', 'hideSeLogo', 'project']
 })
 export class SeHeader {
   protected el: HTMLElement;
@@ -871,7 +871,7 @@ export class SeHeader {
 }
 
 
-export declare interface SeIcon extends Components.SeIcon {}
+export type SeIcon = Components.SeIcon
 @ProxyCmp({
   inputs: ['animation', 'color', 'disabled', 'hoverColor', 'mirror', 'noHover', 'option', 'rotate', 'size']
 })
@@ -890,7 +890,7 @@ export class SeIcon {
 }
 
 
-export declare interface SeIconEcostruxure extends Components.SeIconEcostruxure {}
+export type SeIconEcostruxure = Components.SeIconEcostruxure
 @ProxyCmp({
   inputs: ['color', 'size']
 })
@@ -909,7 +909,7 @@ export class SeIconEcostruxure {
 }
 
 
-export declare interface SeIconFile extends Components.SeIconFile {}
+export type SeIconFile = Components.SeIconFile
 @ProxyCmp({
   inputs: ['color', 'disabled', 'option', 'size', 'value']
 })
@@ -928,7 +928,7 @@ export class SeIconFile {
 }
 
 
-export declare interface SeIconLifeison extends Components.SeIconLifeison {}
+export type SeIconLifeison = Components.SeIconLifeison
 @ProxyCmp({
   inputs: ['color']
 })
@@ -947,7 +947,7 @@ export class SeIconLifeison {
 }
 
 
-export declare interface SeIconSchneider extends Components.SeIconSchneider {}
+export type SeIconSchneider = Components.SeIconSchneider
 
 @Component({
   selector: 'se-icon-schneider',
@@ -963,7 +963,7 @@ export class SeIconSchneider {
 }
 
 
-export declare interface SeLink extends Components.SeLink {}
+export type SeLink = Components.SeLink
 @ProxyCmp({
   inputs: ['disabled', 'download', 'option', 'unicolor', 'url']
 })
@@ -982,7 +982,7 @@ export class SeLink {
 }
 
 
-export declare interface SeList extends Components.SeList {}
+export type SeList = Components.SeList
 @ProxyCmp({
   inputs: ['canCollapse', 'option', 'selectedColor']
 })
@@ -1001,7 +1001,7 @@ export class SeList {
 }
 
 import { ListGroupComponent as IListGroupComponent } from '@se/web-ui/types/components/list-group/list-group';
-export declare interface SeListGroup extends Components.SeListGroup {}
+export type SeListGroup = Components.SeListGroup
 @ProxyCmp({
   inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'flex', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
   methods: ['toggleCollapseTreeview', 'focusElement', 'setOption']
@@ -1027,7 +1027,7 @@ export class SeListGroup {
 }
 
 import { ListItemComponent as IListItemComponent } from '@se/web-ui/types/components/list-item/list-item';
-export declare interface SeListItem extends Components.SeListItem {}
+export type SeListItem = Components.SeListItem
 @ProxyCmp({
   inputs: ['description', 'disabled', 'href', 'icon', 'iconColor', 'item', 'selected'],
   methods: ['focusElement', 'blurElement', 'setOption']
@@ -1051,7 +1051,7 @@ export class SeListItem {
 }
 
 
-export declare interface SeLoading extends Components.SeLoading {}
+export type SeLoading = Components.SeLoading
 @ProxyCmp({
   inputs: ['color', 'fullPage', 'loading', 'option', 'overlay']
 })
@@ -1070,7 +1070,7 @@ export class SeLoading {
 }
 
 import { PaginationComponent as IPaginationComponent } from '@se/web-ui/types/components/pagination/pagination';
-export declare interface SePagination extends Components.SePagination {}
+export type SePagination = Components.SePagination
 @ProxyCmp({
   inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value']
 })
@@ -1094,7 +1094,7 @@ Return `{value: number; perPage: number;}`. */
 }
 
 import { RadioComponent as IRadioComponent } from '@se/web-ui/types/components/radio/radio';
-export declare interface SeRadio extends Components.SeRadio {}
+export type SeRadio = Components.SeRadio
 @ProxyCmp({
   inputs: ['color', 'disabled', 'label', 'labelPos', 'name', 'padding', 'required', 'selected', 'value'],
   methods: ['setRequired']
@@ -1118,7 +1118,7 @@ export class SeRadio {
 }
 
 import { RadioGroupComponent as IRadioGroupComponent } from '@se/web-ui/types/components/radio-group/radio-group';
-export declare interface SeRadioGroup extends Components.SeRadioGroup {}
+export type SeRadioGroup = Components.SeRadioGroup
 @ProxyCmp({
   inputs: ['color', 'direction', 'disabled', 'size', 'value']
 })
@@ -1141,32 +1141,34 @@ export class SeRadioGroup {
 }
 
 import { SidemenuComponent as ISidemenuComponent } from '@se/web-ui/types/components/sidemenu/sidemenu';
-export declare interface SeSidemenu extends Components.SeSidemenu {}
+export type SeSidemenu = Components.SeSidemenu
 @ProxyCmp({
-  inputs: ['label', 'link'],
+  inputs: ['disabled', 'label', 'link'],
   methods: ['toggle']
 })
 @Component({
   selector: 'se-sidemenu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['label', 'link'],
-  outputs: ['toggled']
+  inputs: ['disabled', 'label', 'link'],
+  outputs: ['toggled', 'didNavigationClick']
 })
 export class SeSidemenu {
   /** When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`.
 When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`. */
   toggled!: ISidemenuComponent['toggled'];
+  /**  */
+  didNavigationClick!: ISidemenuComponent['didNavigationClick'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['toggled']);
+    proxyOutputs(this, this.el, ['toggled', 'didNavigationClick']);
   }
 }
 
 import { SidemenuItemComponent as ISidemenuItemComponent } from '@se/web-ui/types/components/sidemenu-item/sidemenu-item';
-export declare interface SeSidemenuItem extends Components.SeSidemenuItem {}
+export type SeSidemenuItem = Components.SeSidemenuItem
 @ProxyCmp({
   inputs: ['active', 'item']
 })
@@ -1189,7 +1191,7 @@ export class SeSidemenuItem {
 }
 
 
-export declare interface SeSkeleton extends Components.SeSkeleton {}
+export type SeSkeleton = Components.SeSkeleton
 @ProxyCmp({
   inputs: ['circle', 'count', 'height', 'width']
 })
@@ -1208,7 +1210,7 @@ export class SeSkeleton {
 }
 
 import { SliderComponent as ISliderComponent } from '@se/web-ui/types/components/slider/slider';
-export declare interface SeSlider extends Components.SeSlider {}
+export type SeSlider = Components.SeSlider
 @ProxyCmp({
   inputs: ['disabled', 'label', 'max', 'min', 'value'],
   methods: ['setDisabled']
@@ -1232,7 +1234,7 @@ export class SeSlider {
 }
 
 import { SnackbarComponent as ISnackbarComponent } from '@se/web-ui/types/components/snackbar/snackbar';
-export declare interface SeSnackbar extends Components.SeSnackbar {}
+export type SeSnackbar = Components.SeSnackbar
 @ProxyCmp({
   inputs: ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type']
 })
@@ -1257,7 +1259,7 @@ export class SeSnackbar {
 }
 
 import { StepperComponent as IStepperComponent } from '@se/web-ui/types/components/stepper/stepper';
-export declare interface SeStepper extends Components.SeStepper {}
+export type SeStepper = Components.SeStepper
 @ProxyCmp({
   inputs: ['block', 'color', 'interactive', 'linear'],
   methods: ['reset', 'previous', 'next']
@@ -1282,7 +1284,7 @@ The Stepper Item data is passed to the parent. */
 }
 
 import { StepperItemComponent as IStepperItemComponent } from '@se/web-ui/types/components/stepper-item/stepper-item';
-export declare interface SeStepperItem extends Components.SeStepperItem {}
+export type SeStepperItem = Components.SeStepperItem
 @ProxyCmp({
   inputs: ['active', 'interactive', 'label', 'validated']
 })
@@ -1308,7 +1310,7 @@ The boolean validated property is passed to the parent. */
 }
 
 
-export declare interface SeTabbar extends Components.SeTabbar {}
+export type SeTabbar = Components.SeTabbar
 @ProxyCmp({
   inputs: ['color', 'option', 'overflow']
 })
@@ -1327,7 +1329,7 @@ export class SeTabbar {
 }
 
 
-export declare interface SeTable extends Components.SeTable {}
+export type SeTable = Components.SeTable
 @ProxyCmp({
   inputs: ['compact']
 })
@@ -1346,7 +1348,7 @@ export class SeTable {
 }
 
 
-export declare interface SeTableGroup extends Components.SeTableGroup {}
+export type SeTableGroup = Components.SeTableGroup
 @ProxyCmp({
   inputs: ['selectable', 'selected']
 })
@@ -1365,7 +1367,7 @@ export class SeTableGroup {
 }
 
 
-export declare interface SeTableGroupHeader extends Components.SeTableGroupHeader {}
+export type SeTableGroupHeader = Components.SeTableGroupHeader
 
 @Component({
   selector: 'se-table-group-header',
@@ -1381,7 +1383,7 @@ export class SeTableGroupHeader {
 }
 
 
-export declare interface SeTableItem extends Components.SeTableItem {}
+export type SeTableItem = Components.SeTableItem
 @ProxyCmp({
   inputs: ['clickable', 'flex', 'minWidth', 'option', 'width']
 })
@@ -1400,7 +1402,7 @@ export class SeTableItem {
 }
 
 
-export declare interface SeTableItemHeader extends Components.SeTableItemHeader {}
+export type SeTableItemHeader = Components.SeTableItemHeader
 @ProxyCmp({
   inputs: ['clickable', 'flex', 'minWidth', 'sort', 'width']
 })
@@ -1419,7 +1421,7 @@ export class SeTableItemHeader {
 }
 
 import { TooltipComponent as ITooltipComponent } from '@se/web-ui/types/components/tooltip/tooltip';
-export declare interface SeTooltip extends Components.SeTooltip {}
+export type SeTooltip = Components.SeTooltip
 @ProxyCmp({
   inputs: ['action', 'color', 'position', 'showDelay'],
   methods: ['open', 'close']
@@ -1445,7 +1447,7 @@ export class SeTooltip {
 }
 
 
-export declare interface SeTooltipContent extends Components.SeTooltipContent {}
+export type SeTooltipContent = Components.SeTooltipContent
 @ProxyCmp({
   inputs: ['icon']
 })
@@ -1464,7 +1466,7 @@ export class SeTooltipContent {
 }
 
 
-export declare interface SeTooltipFooter extends Components.SeTooltipFooter {}
+export type SeTooltipFooter = Components.SeTooltipFooter
 
 @Component({
   selector: 'se-tooltip-footer',
@@ -1480,7 +1482,7 @@ export class SeTooltipFooter {
 }
 
 
-export declare interface SeTooltipHeader extends Components.SeTooltipHeader {}
+export type SeTooltipHeader = Components.SeTooltipHeader
 @ProxyCmp({
   inputs: ['icon']
 })
@@ -1499,7 +1501,7 @@ export class SeTooltipHeader {
 }
 
 
-export declare interface SeVisualLinear extends Components.SeVisualLinear {}
+export type SeVisualLinear = Components.SeVisualLinear
 @ProxyCmp({
   inputs: ['label', 'option', 'percentage', 'secolor', 'value']
 })
@@ -1518,7 +1520,7 @@ export class SeVisualLinear {
 }
 
 
-export declare interface SeVisualRadial extends Components.SeVisualRadial {}
+export type SeVisualRadial = Components.SeVisualRadial
 @ProxyCmp({
   inputs: ['label', 'percentage', 'secolor', 'size', 'value']
 })

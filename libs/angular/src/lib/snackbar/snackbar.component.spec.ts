@@ -1,21 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {SnackbarComponent} from './snackbar.component';
-import {SnackbarConfig} from './snackbar-config';
-import {SnackbarModule} from './snackbar.module';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { SnackbarComponent } from './snackbar.component';
+import { SnackbarConfig } from './snackbar-config';
+import { SnackbarModule } from './snackbar.module';
 import { ProxiesModule } from '../directives/proxies.module';
-
 
 describe('SnackbarComponent', () => {
   let component: SnackbarComponent;
   let fixture: ComponentFixture<SnackbarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [SnackbarModule, ProxiesModule],
-      providers: [SnackbarConfig]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SnackbarModule, ProxiesModule],
+        providers: [SnackbarConfig],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SnackbarComponent);
@@ -27,13 +27,13 @@ describe('SnackbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should emit the didClose Event when closeEvent is called',()=>{
+  it('should emit the didClose Event when closeEvent is called', () => {
     spyOn(component.didClose, 'emit');
     component.closeEvent();
     expect(component.didClose.emit).toHaveBeenCalled();
   });
 
-  it('should emit the actionClicked event when actionClickedEvent is called',()=>{
+  it('should emit the actionClicked event when actionClickedEvent is called', () => {
     spyOn(component.actionClicked, 'emit');
     component.actionClickedEvent();
     expect(component.actionClicked.emit).toHaveBeenCalled();

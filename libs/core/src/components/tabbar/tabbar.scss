@@ -357,7 +357,6 @@ se-tabbar {
         // height: 47px;
         @include color("primary");
         &:after {
-          display: inline-block;
           @include background-color("primary");
           height: 2px;
         }
@@ -372,22 +371,23 @@ se-tabbar {
   }
 
   .tab-alternative .opt-nav nav > a {
-    display: inline-block;
     padding: 0 15px;
     margin: 0;
     text-align: center;
     font-size: 14px;
-    line-height: 50px;
+    letter-spacing: .4px;
     @include color("background-alternative-contrast");
-
     &.active {
-      font-weight: 700;
+      /*rtl:begin:ignore*/
+      text-shadow:  -0.05ex 0 var(--se-background-alternative-contrast), 0.05ex 0 var(--se-background-alternative-contrast) ;
+      /*rtl:end:ignore*/
       @include background-color("background-standard");
     }
     &:not([disabled]):hover,
     &:not(.disabled):hover &.active {
-      color: initial;
-      font-weight: 700;
+      /*rtl:begin:ignore*/
+      text-shadow:  -0.05ex 0 var(--se-background-alternative-contrast), 0.05ex 0 var(--se-background-alternative-contrast) ;
+      /*rtl:end:ignore*/
       @include color("background-alternative-contrast");
       @include background-color("background-standard");
     }
@@ -396,16 +396,6 @@ se-tabbar {
     &:hover:not(.disabled):after {
       height: 3px;
     }
-
-    &::before {
-      display: block;
-      content: attr(title);
-      font-weight: 700;
-      height: 0;
-      overflow: hidden;
-      visibility: hidden;
-    }
-
     &::after {
       display: block;
       /*rtl:begin:ignore*/

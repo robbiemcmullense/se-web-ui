@@ -9,29 +9,28 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: './login/login.module#LoginModule'
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
   },
   Route.withShell([
     {
       path: 'home',
-      loadChildren: './home/home.module#HomeModule'
+      loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     },
     {
       path: 'docs',
-      loadChildren: './docs/docs.module#DocsModule'
+      loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule),
     },
     {
       path: 'banner',
-      loadChildren: './banner/banner.module#BannerModule'
-    }
+      loadChildren: () => import('./banner/banner.module').then(m => m.BannerModule),
+    },
   ]),
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
-  providers: []
+  providers: [],
 })
 export class AppRoutingModule {}

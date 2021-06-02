@@ -2,15 +2,7 @@ import { DialogFooterComponent } from './dialog-footer';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('DialogFooter', () => {
-  let dialogFooter;
-
-  beforeEach(() => {
-    dialogFooter = new DialogFooterComponent();
-  });
-
-  it('should build', () => {
-    expect(dialogFooter).toBeTruthy();
-  });
+  
 
   it('should render with a flex class', async () => {
     const page = await newSpecPage({

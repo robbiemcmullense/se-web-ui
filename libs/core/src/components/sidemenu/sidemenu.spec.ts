@@ -8,25 +8,6 @@ describe('SidemenuComponent', () => {
     sidemenu = new SidemenuComponent();
   });
 
-  it('should build', () => {
-    expect(sidemenu).toBeTruthy();
-  });
-
-  it('should have a label property equal to "Menu" by default', () => {
-    expect(sidemenu.label).toEqual('Menu');
-  });
-
-  it('should be closed by default', () => {
-    expect(sidemenu.open).toBeFalsy();
-  });
-
-  it('should not have any items by default', () => {
-    expect(sidemenu.items.length).toEqual(0);
-  });
-
-  it('should return a true value for noSelectedItem by default', () => {
-    expect(sidemenu.noSelectedItem()).toBeTruthy();
-  });
 
   it('should add to the items array when a sidemenu item is added, and not be active by default', () => {
     const node = document.createElement('se-sidemenu-item');

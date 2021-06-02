@@ -8,17 +8,14 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "lib": ["dom", "es2015"],
-    "module": "es2015",
-    "moduleResolution": "node",
+    "lib": ["dom", "es2017", "esnext.array"],
+    "module": "esnext",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": false,
     "sourceMap": true,
-    "jsx": "react",
-    "target": "es2015"
+    "target": "es2017"
   },
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",

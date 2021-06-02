@@ -80,7 +80,7 @@ export class RadioComponent {
 
   handleClick() {
     // console.log('radio handleClick');
-    //. radio should not toggle. Only turn off when other are selected.
+    // . radio should not toggle. Only turn off when other are selected.
     if (!this.selected) {
       this.selected = true;
       const checkboxObject = { value: this.value, selected: this.selected };

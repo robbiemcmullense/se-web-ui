@@ -49,10 +49,11 @@
   @include align-items(center);
   flex-wrap: nowrap;
 
-  position: relative;
   overflow-y: hidden;
-  scrollbar-width: none;
   overflow-x: auto;
+
+  position: relative;
+  scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     height: 0 !important;

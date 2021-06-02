@@ -1,5 +1,5 @@
 // import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,28 +13,30 @@ describe('SigninComponent', () => {
   let component: SigninComponent;
   let fixture: ComponentFixture<SigninComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        SeWebModule,
-        TranslateModule.forRoot(),
-      ],
-      declarations: [SigninComponent],
-      providers: [
-        AuthenticationService,
-        {
-          provide: Router,
-          useClass: class {
-            navigate = jasmine.createSpy('navigate');
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          ReactiveFormsModule,
+          FormsModule,
+          BrowserAnimationsModule,
+          SeWebModule,
+          TranslateModule.forRoot(),
+        ],
+        declarations: [SigninComponent],
+        providers: [
+          AuthenticationService,
+          {
+            provide: Router,
+            useClass: class {
+              navigate = jasmine.createSpy('navigate');
+            },
           },
-        },
-        HttpTestingController,
-      ],
-    }).compileComponents();
-  }));
+          HttpTestingController,
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SigninComponent);

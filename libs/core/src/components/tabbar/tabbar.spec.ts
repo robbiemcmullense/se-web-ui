@@ -3,19 +3,6 @@ import { TabbarComponent } from './tabbar';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('TabbarComponent', () => {
-  let tabBar;
-
-  beforeEach(() => {
-    tabBar = new TabbarComponent();
-  });
-
-  it('should build', () => {
-    expect(tabBar).toBeTruthy();
-  });
-
-  it('should have a primary color by default', () => {
-    expect(tabBar.color).toEqual('primary');
-  });
 
   it('should render with primary and fill classes by default', async () => {
     const page = await newSpecPage({

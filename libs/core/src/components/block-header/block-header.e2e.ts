@@ -18,7 +18,7 @@ describe('BlockHeaderComponent', () => {
     element.setProperty('option', 'card');
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('.se-block-header')).toHaveClass(
-      'card'
+      'option-card'
     );
   });
 
@@ -29,6 +29,5 @@ describe('BlockHeaderComponent', () => {
     expect(startElm).toBeTruthy();
     expect(endElm).toBeTruthy();
     expect(divElm).toBeTruthy();
-    expect(divElm).toHaveClasses(['flex', 'middle']);
   });
 });

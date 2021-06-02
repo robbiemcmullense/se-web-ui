@@ -1,10 +1,15 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest'
-  },
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html','lcov'],
-  passWithNoTests: true
+  projects: [
+    '<rootDir>/apps/react-demo',
+    '<rootDir>/apps/angular-demo',
+    '<rootDir>/libs/angular',
+    '<rootDir>/libs/react',
+    '<rootDir>/libs/vue',
+    '<rootDir>/libs/dash',
+    '<rootDir>/libs/utils',
+    '<rootDir>/apps/web-demo',
+    '<rootDir>/apps/vue-demo',
+    '<rootDir>/libs/svelte',
+    '<rootDir>/libs/sveltetest',
+  ],
 };

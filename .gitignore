@@ -9,7 +9,7 @@ coverage
 .env
 .npmrc
 build
-/dist
+dist
 
 # dependencies
 node_modules

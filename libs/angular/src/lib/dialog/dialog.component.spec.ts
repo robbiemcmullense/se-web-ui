@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DialogComponent, DialogModalComponent } from './dialog.component';
 import { DialogConfig } from './dialog-config';
 import { DialogModule } from './dialog.module';
@@ -10,12 +10,14 @@ describe('DialogComponent', () => {
   let modalComponent: DialogModalComponent;
   let modalFixture: ComponentFixture<DialogModalComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [DialogModule, ProxiesModule],
-      providers: [DialogConfig],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [DialogModule, ProxiesModule],
+        providers: [DialogConfig],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DialogComponent);

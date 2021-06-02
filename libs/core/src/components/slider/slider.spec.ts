@@ -12,21 +12,6 @@ describe('SliderComponent', () => {
     expect(slider).toBeTruthy();
   });
 
-  it('should have a default value of 0', () => {
-    expect(slider.value).toEqual(0);
-  });
-
-  it('should have a default minimum value of 0', () => {
-    expect(slider.min).toEqual(0);
-  });
-
-  it('should have a default maximum value of 100', () => {
-    expect(slider.max).toEqual(100);
-  });
-
-  it('disbaled value should be false by default', () => {
-    expect(slider.disabled).toBeFalsy();
-  });
 
   it('disbaled value should be true when the setDisabled method is called', () => {
     slider.setDisabled(true);

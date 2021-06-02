@@ -2,15 +2,7 @@ import { TooltipContentComponent } from './tooltip-content';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('TooltipContentComponent', () => {
-  let tooltipContent;
 
-  beforeEach(() => {
-    tooltipContent = new TooltipContentComponent();
-  });
-
-  it('should build', () => {
-    expect(tooltipContent).toBeTruthy();
-  });
 
   it('should render with a slots class', async () => {
     const page = await newSpecPage({

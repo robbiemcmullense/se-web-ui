@@ -18,7 +18,7 @@ describe('BlockContentComponent', () => {
     element.setProperty('option', 'fill');
     await page.waitForChanges();
     expect(element.shadowRoot.querySelector('.se-block-content')).toHaveClass(
-      'fill-content'
+      'option-fill'
     );
   });
 });
@@ -35,7 +35,7 @@ describe('BlockContentComponent with Block parents set to card option', () => {
   });
 
   it('should have the card-content class, inherited from its block parent', async () => {
-    expect(element).toHaveClass('card-content');
+    expect(element).toHaveClass('option-card');
   });
 });
 

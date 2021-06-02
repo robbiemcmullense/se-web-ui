@@ -1,0 +1,93 @@
+// Theme
+:root {
+  @each $element, $value in $seTheme {
+    @include define-custom-property($element, $value);
+  }
+}
+
+.se-theme-dark {
+  @each $element, $value in $seThemeDark {
+    @include define-custom-property($element, $value);
+  }
+}
+
+// Create all classes to use colors as classes
+@each $element
+  in (
+    "standard",
+    "alternative",
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "information",
+    "error",
+    "standard-contrast",
+    "alternative-contrast",
+    "primary-contrast",
+    "secondary-contrast",
+    "success-contrast",
+    "warning-contrast",
+    "information-contrast",
+    "error-contrast"
+  )
+{
+  .color-#{$element} {
+    @include color("" + $element);
+  }
+  .bg-#{$element} {
+    @include background-color("" + $element);
+  }
+}
+@each $element
+  in ("background-standard", "background-alternative", "background-footer")
+{
+  .#{$element} {
+    @include background-color("" + $element);
+  }
+  .#{$element}-contrast {
+    @include color("" + $element + "-contrast");
+  }
+}
+.overlay {
+  @include background-color("overlay");
+}
+
+// scrollbar design
+:root,
+body,
+html {
+  ::-webkit-scrollbar {
+    height: ((2 * $scrollbar-side-padding) + $scrollbar-side-padding);
+    width: ((2 * $scrollbar-side-padding) + $scrollbar-side-padding);
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    border: $scrollbar-side-padding solid transparent;
+    background-clip: padding-box;
+    border-radius: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    // background-color: $se-ultra-light-grey-2;
+    @include background-color("divider");
+  }
+
+  ::-webkit-scrollbar-thumb {
+    // background-color: $se-light-grey;
+    @include background-color("border");
+    &:hover {
+      @include background-color("border-focus");
+
+      border: $scrollbar-side-padding / 2 solid transparent;
+    }
+  }
+}
+
+
+@media print {
+  a[href]:after { 
+    content: " (" attr(href) ") "; 
+  }
+}

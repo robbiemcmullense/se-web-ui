@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "module": "ESNext",
+    "module": "es2015",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "jsx": "preserve",
@@ -22,7 +22,9 @@
       "@se/web-ui-angular": ["libs/angular/src/index.ts"],
       "@se/web-ui-react": ["libs/react/src/index.ts"],
       "@se/web-ui-vue": ["libs/vue/src/index.ts"],
-      "@se/utils": ["libs/utils/src/index.ts"]
+      "@se/web-ui-svelte": ["libs/svelte/src/index.ts"],
+      "@se/utils": ["libs/utils/src/index.ts"],
+      "@se/sveltetest": ["libs/sveltetest/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -3,10 +3,10 @@
   "license": "MIT",
   "version": "0.0.0",
   "sideEffects": false,
-  "description": "React specific wrapper for component-library",
+  "description": "React specific wrapper for @se/web-ui library",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/ionic.git"
+    "url": "https://github.schneider-electric.com/IoT/web-ui/"
   },
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"
@@ -16,8 +16,8 @@
     "build": "cd ../.. && yarn build react"
   },
   "peerDependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "@se/web-ui": "^3.0.0"
   }
 }

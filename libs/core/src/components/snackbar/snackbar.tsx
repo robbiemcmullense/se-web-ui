@@ -39,7 +39,7 @@ export class SnackbarComponent {
    * The default setting is `false`.
    * This will be visible if set to `true`.
    */
-  @Prop() canClose = false;
+  @Prop() canClose: boolean;
   /**
    * Defines the text you want your custom action button to read.
    */

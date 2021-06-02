@@ -248,7 +248,7 @@ export namespace Components {
         /**
           * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
          */
-        "option": | 'flat'
+        "option": 'flat'
     | 'raised'
     | 'outline'
     | 'login'
@@ -926,6 +926,7 @@ export namespace Components {
           * Sets the title of your application.
          */
         "appTitle": string;
+        "disabled": boolean;
         /**
           * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
          */
@@ -1284,6 +1285,7 @@ export namespace Components {
         "value": string;
     }
     interface SeSidemenu {
+        "disabled": boolean;
         /**
           * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
          */
@@ -2329,7 +2331,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
          */
-        "option"?: | 'flat'
+        "option"?: 'flat'
     | 'raised'
     | 'outline'
     | 'login'
@@ -3063,6 +3065,7 @@ declare namespace LocalJSX {
           * Sets the title of your application.
          */
         "appTitle"?: string;
+        "disabled"?: boolean;
         /**
           * Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.
          */
@@ -3435,11 +3438,13 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface SeSidemenu {
+        "disabled"?: boolean;
         /**
           * Defines the text displayed in the header of the Sidemenu. The default value is `Menu`.
          */
         "label"?: string;
         "link"?: string;
+        "onDidNavigationClick"?: (event: CustomEvent<any>) => void;
         /**
           * When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`. When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`.
          */

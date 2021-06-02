@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SeWebModule } from '@se/web-ui-angular';
 import { FormsModule } from '@angular/forms';
@@ -9,18 +9,20 @@ describe('DocsComponent', () => {
   let component: DocsComponent;
   let fixture: ComponentFixture<DocsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        SeWebModule,
-        FormsModule,
-        SharedModule,
-        BrowserAnimationsModule,
-      ],
-      declarations: [DocsComponent],
-      providers: [],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          SeWebModule,
+          FormsModule,
+          SharedModule,
+          BrowserAnimationsModule,
+        ],
+        declarations: [DocsComponent],
+        providers: [],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DocsComponent);

@@ -337,7 +337,7 @@ storiesOf('Form Field', module)
                   <se-tooltip-content>This is my tooltip.</se-tooltip-content>
                 </se-tooltip>
               </div>
-            </se-form-field>  
+            </se-form-field>
             <se-form-field
               padding="none"
               stacked="${stacked}"

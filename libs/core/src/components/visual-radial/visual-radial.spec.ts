@@ -1,21 +1,7 @@
 import { VisualRadialComponent } from './visual-radial';
 import { newSpecPage } from '@stencil/core/testing';
 
-describe('VisualRadialComponent', () => {
-  let radialProgBar;
 
-  beforeEach(() => {
-    radialProgBar = new VisualRadialComponent();
-  });
-
-  it('should build', () => {
-    expect(radialProgBar).toBeTruthy();
-  });
-
-  it('should have a large size by default', () => {
-    expect(radialProgBar.size).toEqual('large');
-  });
-});
 
 describe('VisualRadialComponent Spec', () => {
   it('should render with 2 svg elements', async () => {

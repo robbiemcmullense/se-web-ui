@@ -699,6 +699,7 @@ export const SeHeader = /*@__PURE__*/ Vue.extend({
     domain: {} as PropOptions<Components.SeHeader['domain']>,
     project: {} as PropOptions<Components.SeHeader['project']>,
     hideSeLogo: {} as PropOptions<Components.SeHeader['hideSeLogo']>,
+    disabled: {} as PropOptions<Components.SeHeader['disabled']>,
   },
 
 
@@ -930,6 +931,7 @@ export const SeRadioGroup = /*@__PURE__*/ Vue.extend({
 export const SeSidemenu = /*@__PURE__*/ Vue.extend({
 
   props: {
+    disabled: {} as PropOptions<Components.SeSidemenu['disabled']>,
     label: {} as PropOptions<Components.SeSidemenu['label']>,
     link: {} as PropOptions<Components.SeSidemenu['link']>,
   },
@@ -938,7 +940,7 @@ export const SeSidemenu = /*@__PURE__*/ Vue.extend({
   methods: {
     toggle: createCommonMethod('toggle') as Components.SeSidemenu['toggle'],
   },
-  render: createCommonRender('se-sidemenu', ['toggled']),
+  render: createCommonRender('se-sidemenu', ['toggled', 'didNavigationClick']),
 });
 
 

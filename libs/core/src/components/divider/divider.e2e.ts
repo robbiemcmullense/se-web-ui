@@ -7,7 +7,7 @@ describe('DividerComponent', () => {
     page = await newE2EPage();
     await page.setContent('<se-divider></se-divider>');
     hostElement = await page.find('se-divider');
-    dividerElement = await page.find('se-divider >>> .se-divider');
+    dividerElement = await page.find('se-divider >>> div');
   });
 
   it('renders', async () => {

@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -17,35 +17,36 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        RouterTestingModule,
-        SeWebModule
-      ],
-      declarations: [ LoginComponent ],
-      providers: [
-        I18nService,
-        {
-          provide: TranslateService,
-          useClass: class {
-            public setTranslation = jasmine.createSpy('setTranslation');
-          }
-        },
-        HttpTestingController,
-        {
-        provide: AuthenticationService,
-        useClass: class {
-          public logout = jasmine.createSpy('logout');
-          public isLoggedIn = jasmine.createSpy('isLoggedIn');
-          }
-        }
-      ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          FormsModule,
+          ReactiveFormsModule,
+          RouterTestingModule,
+          SeWebModule,
+        ],
+        declarations: [LoginComponent],
+        providers: [
+          I18nService,
+          {
+            provide: TranslateService,
+            useClass: class {
+              public setTranslation = jasmine.createSpy('setTranslation');
+            },
+          },
+          HttpTestingController,
+          {
+            provide: AuthenticationService,
+            useClass: class {
+              public logout = jasmine.createSpy('logout');
+              public isLoggedIn = jasmine.createSpy('isLoggedIn');
+            },
+          },
+        ],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);

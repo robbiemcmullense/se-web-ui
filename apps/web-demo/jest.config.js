@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'web-demo',
-  preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/web-demo'
+  preset: '../../jest.preset.js',
+  coverageDirectory: '../../coverage/apps/web-demo',
+  displayName: 'web-demo',
 };

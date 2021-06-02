@@ -21,7 +21,8 @@ const fixUtilsEvent = () => {
   // - https://github.com/ionic-team/stencil-ds-output-targets/pull/82
   content = content.replace(
     "import { fromEvent } from 'rxjs'",
-    "import { EventEmitter } from '@angular/core';"
+    `/* eslint-disable */
+    import { EventEmitter } from '@angular/core'`
   );
   content = content.replace('fromEvent(el, eventName)', 'new EventEmitter()');
 

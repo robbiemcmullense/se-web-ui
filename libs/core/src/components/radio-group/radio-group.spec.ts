@@ -8,21 +8,7 @@ describe('RadioGroupComponent', () => {
     radioGroup = new RadioGroupComponent();
   });
 
-  it('should create a Radio Group component', () => {
-    expect(radioGroup).toBeTruthy();
-  });
 
-  it('should not be disabled by default', () => {
-    expect(radioGroup.disabled).toBeFalsy();
-  });
-
-  it('should be the standard color by default', () => {
-    expect(radioGroup.color).toEqual('standard');
-  });
-
-  it('should have a small size by default', () => {
-    expect(radioGroup.size).toEqual('small');
-  });
 
   it('should render, with a slot element', async () => {
     const page = await newSpecPage({

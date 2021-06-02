@@ -20,7 +20,7 @@ export class BreadcrumbItemComponent {
   /**
    * Indicates whether or not the breadcrumb item should be show a arrow at the end.  The default setting is `false`.
    */
-  @Prop() isLast = false;
+  @Prop() isLast: boolean;
   /**
    * Indicates the URL you wish to navigate to when clicking on your breadcrumb item.
    */

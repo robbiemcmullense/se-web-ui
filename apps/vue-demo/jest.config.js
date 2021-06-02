@@ -1,6 +1,5 @@
 module.exports = {
-  name: 'vueapp',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   transform: {
     '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
@@ -9,9 +8,11 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'vue', 'js', 'json'],
   coverageDirectory: '../../coverage/apps/vue-demo',
-  snapshotSerializers: ['jest-serializer-vue'],
+
   globals: {
-    'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' },
+    'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' },
     'vue-jest': { tsConfig: 'apps/vue-demo/tsconfig.spec.json' },
   },
+  displayName: 'vue-demo',
+  snapshotSerializers: ['jest-serializer-vue'],
 };

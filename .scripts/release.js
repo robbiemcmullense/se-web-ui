@@ -10,6 +10,7 @@ const libs = [
   '../dist/libs/angular',
   '../dist/libs/react',
   '../dist/libs/vue',
+  '../dist/libs/svelte',
 ];
 
 function projectPath(project) {
@@ -99,6 +100,8 @@ function alreadyDeployedVersion(name, version) {
 
 async function main() {
   try {
+    const beta = process.argv.indexOf('--beta') > -1;
+
     const tasks = [];
     const { name, version } = readPkg('..');
 
@@ -112,7 +115,7 @@ async function main() {
     updatePackageVersions(tasks, libs, version);
 
     // publish each package in NPM
-    publishLibs(tasks, libs);
+    publishLibs(tasks, libs, beta ? 'beta' : 'latest');
 
     const listr = new Listr(tasks);
     await listr.run();

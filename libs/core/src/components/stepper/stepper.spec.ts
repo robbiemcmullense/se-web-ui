@@ -3,27 +3,7 @@ import '../../../mock/mutation-observer-mock';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('StepperComponent', () => {
-  let stepper;
 
-  beforeEach(() => {
-    stepper = new StepperComponent();
-  });
-
-  it('should build', () => {
-    expect(stepper).toBeTruthy();
-  });
-
-  it('should have a primary color by default', () => {
-    expect(stepper.color).toBe('primary');
-  });
-
-  it('should be linear by default', () => {
-    expect(stepper.linear).toBeTruthy();
-  });
-
-  it('should be interactive by default', () => {
-    expect(stepper.interactive).toBeTruthy();
-  });
 
   it('should render with a nav element, and a div element with the class stepper-item-wrapper', async () => {
     const page = await newSpecPage({

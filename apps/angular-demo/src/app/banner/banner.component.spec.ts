@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SeWebModule } from '@se/web-ui-angular';
 import { SharedModule } from '../shared/shared.module';
@@ -9,20 +9,15 @@ describe('BannerComponent', () => {
   let component: BannerComponent;
   let fixture: ComponentFixture<BannerComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-        imports: [
-          SharedModule,
-          BrowserAnimationsModule,
-          SeWebModule
-        ],
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SharedModule, BrowserAnimationsModule, SeWebModule],
         declarations: [BannerComponent],
-        providers: [
-          HttpTestingController
-        ]
-      })
-      .compileComponents();
-  }));
+        providers: [HttpTestingController],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BannerComponent);

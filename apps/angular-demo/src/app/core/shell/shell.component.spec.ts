@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { SeWebModule } from '@se/web-ui-angular';
@@ -11,12 +11,24 @@ describe('ShellComponent', () => {
   let component: ShellComponent;
   let fixture: ComponentFixture<ShellComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule, TranslateModule.forRoot(), SeWebModule, CoreModule],
-      providers: [{ provide: AuthenticationService, useClass: MockAuthenticationService }]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          RouterTestingModule,
+          TranslateModule.forRoot(),
+          SeWebModule,
+          CoreModule,
+        ],
+        providers: [
+          {
+            provide: AuthenticationService,
+            useClass: MockAuthenticationService,
+          },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ShellComponent);

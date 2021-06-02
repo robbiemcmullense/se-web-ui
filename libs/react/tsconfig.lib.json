@@ -2,7 +2,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node"]
+    "types": ["node"],
+    "lib": ["dom", "es2017", "esnext.array"],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017"
   },
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",

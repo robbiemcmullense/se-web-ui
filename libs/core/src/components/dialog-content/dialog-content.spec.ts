@@ -2,16 +2,7 @@ import { DialogContentComponent } from './dialog-content';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('DialogContentComponent', () => {
-  let dialogContentComponent;
-
-  beforeEach(() => {
-    dialogContentComponent = new DialogContentComponent();
-  });
-
-  it('should build', () => {
-    expect(dialogContentComponent).toBeTruthy();
-  });
-
+  
   it('should render with a se-dialog-content class', async () => {
     const page = await newSpecPage({
       components: [DialogContentComponent],

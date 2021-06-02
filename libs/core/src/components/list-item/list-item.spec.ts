@@ -2,19 +2,7 @@ import { ListItemComponent } from './list-item';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('list-item', () => {
-  let listItem;
 
-  beforeEach(() => {
-    listItem = new ListItemComponent();
-  });
-
-  it('should build', () => {
-    expect(listItem).toBeTruthy();
-  });
-
-  it('should have a collapsible property set to false by default', () => {
-    expect(listItem.collapsible).toBeFalsy();
-  });
 
   it('should render, with an element with the se-list-item class', async () => {
     const page = await newSpecPage({
@@ -56,9 +44,4 @@ describe('list-item', () => {
     expect(page.root.shadowRoot.querySelector('.selectedBar')).toBeTruthy();
   });
 
-  it('should emit the didSelectedChange event when the selected property changes', () => {
-    const eventSpy = jest.spyOn(listItem.didSelectedChange, 'emit');
-    listItem.SelectedDidChange(); // list item element is selected/deselected
-    expect(eventSpy).toHaveBeenCalled();
-  });
 });

@@ -2,15 +2,7 @@ import { BlockHeader } from './block-header';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('blockHeader', () => {
-  let blockHeader;
-
-  beforeEach(() => {
-    blockHeader = new BlockHeader();
-  });
-
-  it('should build', () => {
-    expect(blockHeader).toBeTruthy();
-  });
+  
 
   it('should render with a se-block-header class', async () => {
     const page = await newSpecPage({

@@ -8,25 +8,6 @@ describe('SnackbarComponent', () => {
     snackbar = new SnackbarComponent();
   });
 
-  it('should build', () => {
-    expect(snackbar).toBeTruthy();
-  });
-
-  it('should have a type of information by default', () => {
-    expect(snackbar.type).toEqual('information');
-  });
-
-  it('should not be open by default', () => {
-    expect(snackbar.open).toBe(false);
-  });
-
-  it('should not be closeable by default', () => {
-    expect(snackbar.canClose).toBe(false);
-  });
-
-  it('should have a default duration of 5000 ms', () => {
-    expect(snackbar.duration).toEqual(5000);
-  });
 
   it('should render with the information class and an information circle as that is the default option and icon', async () => {
     const page = await newSpecPage({

@@ -18,12 +18,12 @@ storiesOf('Tab Bar', module)
       return `
     <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
       <nav>
-        <a >Overview</a>
-        <a class="active">Analysis</a>
-        <a>Report</a>
-        <a disabled>Glossary & Index</a>
-        <a>Notification</a>
-        <a>Notification and other stuff</a>
+        <a  title="Overview">Overview</a>
+        <a class="active" title="Analysis">Analysis</a>
+        <a title="Report">Report</a>
+        <a disabled title="Glossary & Index">Glossary & Index</a>
+        <a title="Notification">Notification</a>
+        <a title="Notification and other stuff">Notification and other stuff</a>
       </nav>
       ${
         showWithButton
@@ -51,17 +51,17 @@ storiesOf('Tab Bar', module)
       <se-tabbar color="${color}" overflow="${overflow}">
         <nav>
           <a>Overview</a>
-          <a class="active">
+          <a class="active" title="Analysis">
             Analysis
             <se-icon size="medium">arrow2_right</se-icon>
           </a>
           <div class="sub-nav">
-            <a class="active">Domain</a>
-            <a>technique</a>
+            <a class="active" title="Domain">Domain</a>
+            <a title="technique">technique</a>
           </div>
-          <a>Report</a>
-          <a disabled>Glossary & Index</a>
-          <a>Notification</a>
+          <a title="Report">Report</a>
+          <a disabled title="Glossary & Index">Glossary & Index</a>
+          <a title="Notification">Notification</a>
         </nav>
         <div slot="edge">
           <div style="display:flex; align-items: center;">

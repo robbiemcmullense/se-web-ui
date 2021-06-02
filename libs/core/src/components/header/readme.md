@@ -15,6 +15,7 @@
 | Property     | Attribute      | Description                                                                                                                                     | Type      | Default          |
 | ------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------------- |
 | `appTitle`   | `app-title`    | Sets the title of your application.                                                                                                             | `string`  | `''`             |
+| `disabled`   | `disabled`     |                                                                                                                                                 | `boolean` | `false`          |
 | `domain`     | `domain`       | Defines the domain of the application. By default, the domain is `ecostruxure`. If `none`, then no domain will be displayed.                    | `string`  | `AppInfo.domain` |
 | `hideSeLogo` | `hide-se-logo` | to remove the "Schneider electric" logo at the end of the header.                                                                               | `boolean` | `undefined`      |
 | `project`    | `project`      | Defines the project name (useful for small projects) that can be used for versioning as well. It will be placed at the right side of the title. | `string`  | `undefined`      |

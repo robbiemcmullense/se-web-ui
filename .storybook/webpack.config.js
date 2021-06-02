@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = async ({ config, mode }) => {
   config.resolve.extensions.push('.tsx');
   config.resolve.extensions.push('.ts');
-
+  
   const tsPaths = new TsconfigPathsPlugin({
     configFile: path.resolve(__dirname, '../.storybook/tsconfig.json'),
   });

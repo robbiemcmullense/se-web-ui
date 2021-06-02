@@ -15,20 +15,16 @@ describe('BlockFooterComponent', () => {
     expect(hostElement).toHaveClass('hydrated');
   });
 
-  it('should have the "row" class to reflect its default direction', () => {
-    expect(footerElement).toHaveClass('row');
-  });
 
   it('should render with the card class when option is set to card', async () => {
     hostElement.setProperty('option', 'card');
     await page.waitForChanges();
-    expect(footerElement).toHaveClass('card');
+    expect(footerElement).toHaveClass('option-card');
   });
 
   it('renders with an h3 element with a flex class and a slot element with the "start" attribute', async () => {
     const divElm = await page.find('se-block-footer >>> div > div');
     expect(divElm).toBeTruthy();
-    expect(divElm).toHaveClass('flex');
 
     const slotElm = await page.find('se-block-footer >>> slot[name="start"]');
     expect(slotElm).toBeTruthy();
