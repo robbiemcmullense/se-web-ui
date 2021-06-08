@@ -10,6 +10,7 @@ import { FilterEmittedState, FiltrationSmartData, ToggleMobileViewVisibility } f
 import { ListOption } from "./components/list/types";
 import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
+import { TColor } from "./components/tabbar/tabbar";
 export namespace Components {
     interface SeAbout {
         /**

@@ -61,11 +61,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [se-icon](../icon)
 - [se-divider](../divider)
 
 ### Graph
 ```mermaid
 graph TD;
+  se-stepper --> se-icon
   se-stepper --> se-divider
   style se-stepper fill:#f9f,stroke:#333,stroke-width:4px
 ```

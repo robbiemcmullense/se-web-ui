@@ -38,7 +38,7 @@ describe('Tooltip Screenshots', () => {
   it('renders a tooltip below the button', async () => {
     await page.setContent(`
       <se-tooltip action="click">
-        <se-button option="raised" color="primary" slot="tooltip">My Example Tooltip</se-button>
+        <se-button option="raised" color="primary" slot="trigger">My Example Tooltip</se-button>
         My Example Tooltip
       </se-tooltip>
     `);
@@ -53,7 +53,7 @@ describe('Tooltip Screenshots', () => {
     await page.setContent(`
       <div style="position: relative; top: 50px;">
         <se-tooltip action="click" position="right">
-          <se-button option="raised" color="primary" slot="tooltip">My Example Tooltip</se-button>
+          <se-button option="raised" color="primary" slot="trigger">My Example Tooltip</se-button>
           <se-tooltip-header>Tooltip Header</se-tooltip-header>
           <se-tooltip-content>This is my tooltip body.  It can have a detailed description.</se-tooltip-content>
           <se-tooltip-footer>

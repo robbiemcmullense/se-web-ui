@@ -1,5 +1,10 @@
 # se-tooltip
 
+| Slot   | Description                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------------- |
+| `trigger` | Define the slot element that will be used to trigger the tooltip (ex:`<se-icon slot="trigger">folder</se-icon>`)|
+| `tooltip` | [DEPRECATED]. Replaced by `trigger` slot to align with `se-dropdown` slot mechanism |
+
 <!-- Auto Generated Below -->
 
 

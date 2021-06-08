@@ -67,7 +67,9 @@ export class DialogComponent {
    * Send data to the parent component when clicking an element within the dialog to close it.
    * The modal can then be safely removed from the DOM.
    */
-  @Event() didClose: EventEmitter<any>;
+  @Event({
+    bubbles: false,
+  }) didClose: EventEmitter<any>;
 
   /**
    * Option to scroll page in browser window if set to `true`.

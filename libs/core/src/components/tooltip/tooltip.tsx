@@ -55,7 +55,9 @@ export class TooltipComponent {
   /**
    * Event emitted when the tooltip has been closed.
    */
-  @Event() didClose: EventEmitter;
+  @Event({
+    bubbles: false,
+  }) didClose: EventEmitter;
 
   createPopper(listener = true): void {
     const elmButton =
@@ -201,6 +203,7 @@ export class TooltipComponent {
             this._toggleClick();
           }}
         >
+          <slot name="trigger" />
           <slot name="tooltip" />
         </div>
         <div

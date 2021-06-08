@@ -13,9 +13,9 @@ storiesOf('Stepper', module).add(
     const block = boolean('block', false);
     const interactive = boolean('interactive', true);
     const addStepper = boolean('Add last step', false);
-    const step1Validated = boolean('Step 1 Validated', false);
-    const step2Validated = boolean('Step 2 Validated', false);
-    const step3Validated = boolean('Step 3 Validated', false);
+    const step1Validated = boolean('Step 1 Validated', true);
+    const step2Validated = boolean('Step 2 Validated', true);
+    const step3Validated = boolean('Step 3 Validated', true);
     const step4Validated = boolean('Step 4 Validated', false);
     const step5Validated = boolean('Step 5 Validated', false);
 

@@ -43,7 +43,9 @@ export class SliderComponent {
   /**
    * Event emitted when the slider has been changed.
    */
-  @Event() didChange: EventEmitter<any>;
+  @Event({
+    bubbles: false,
+  }) didChange: EventEmitter<any>;
   /**
    * Sets the disabled property for slider component.
    * @param val: boolean, `true` or `false`.

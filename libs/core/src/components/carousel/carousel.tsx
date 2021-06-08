@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, Host, State } from '@stencil/core';
-import ResizeObserver from 'resize-observer-polyfill';
+// import ResizeObserver from 'resize-observer-polyfill';
 import smoothscroll from 'smoothscroll-polyfill';
 import arrow from '@se/icons/svg/arrow5_step.svg';
 import { classNames } from '../../utils';

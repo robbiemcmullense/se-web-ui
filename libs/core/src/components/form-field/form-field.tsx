@@ -9,7 +9,7 @@ import {
   Watch,
   State,
 } from '@stencil/core';
-import ResizeObserver from 'resize-observer-polyfill';
+// import ResizeObserver from 'resize-observer-polyfill';
 
 @Component({
   tag: 'se-form-field',

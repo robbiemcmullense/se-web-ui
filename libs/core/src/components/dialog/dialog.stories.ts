@@ -100,6 +100,10 @@ storiesOf('Dialog', module).add(
         }" iconColor="${color}">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</p>
+          <se-tooltip>
+            <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+            This is my tooltip in a dialog
+          </se-tooltip>
           ${
             showMoreContent
               ? `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

@@ -63,7 +63,9 @@ export class ChipComponent {
   /**
    * Send the chip value to the parent component when clicking the close button of a chip.
    */
-  @Event() didClose: EventEmitter;
+  @Event({
+    bubbles: false,
+  }) didClose: EventEmitter;
 
   closeChip() {
     if (!this.disabled) {

@@ -129,7 +129,9 @@ export class DropdownComponent {
   /**
    * Event emitted when the dropdown has been closed.
    */
-  @Event() didClose: EventEmitter;
+  @Event({
+    bubbles: false,
+  }) didClose: EventEmitter;
 
   /**
    * Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time.

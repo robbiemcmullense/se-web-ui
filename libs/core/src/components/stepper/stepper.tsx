@@ -9,6 +9,7 @@ import {
   EventEmitter,
   Event,
 } from '@stencil/core';
+import notification_ok from '@se/icons/svg/notification_ok.svg';
 
 @Component({
   tag: 'se-stepper',
@@ -50,7 +51,9 @@ export class StepperComponent {
    * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked.
    * The Stepper Item data is passed to the parent.
    */
-  @Event() didChange: EventEmitter;
+  @Event({
+    bubbles: false,
+  }) didChange: EventEmitter;
   /**
    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
    * It no step parameter is provided, it will reset to the first stepper item.
@@ -143,6 +146,9 @@ export class StepperComponent {
     return this.stepperItems.map((item: any) => {
       const itemStep = this.getItemStep(item);
       const isReadOnly = !(this.interactive && item.interactive);
+      const disabled = !this.checkIfPreviousItemValidated(item);
+      const TagType = isReadOnly || disabled ? ('div' as any) : 'button';
+
       return [
         <li
           class={{
@@ -153,7 +159,7 @@ export class StepperComponent {
               item.validated,
           }}
         >
-          <div
+          <TagType
             class={{
               'stepper-item': true,
               disabled: !this.checkIfPreviousItemValidated(item),
@@ -167,16 +173,16 @@ export class StepperComponent {
               this.selectStep(item);
             }}
           >
-            <span
-              class={{
-                indicator: true,
-                'se-icon': item.validated && !item.active,
-              }}
-            >
-              {itemStep}
+            <span class='indicator'>
+              {item.validated && !item.active ? 
+                <se-icon>
+                  <span innerHTML={notification_ok}></span>
+                </se-icon>
+               : itemStep
+              }
             </span>
             <span class="stepper-item-label">{item.label}</span>
-          </div>
+          </TagType>
           {itemStep !== this.stepperItems.length ? (
             <se-divider class={{ block: this.block }}></se-divider>
           ) : (

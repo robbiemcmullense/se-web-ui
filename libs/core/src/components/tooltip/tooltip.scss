@@ -17,7 +17,7 @@
   @include border-radius($border-radius);
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.3);
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.3s;
 }
 
 .show {
@@ -60,18 +60,6 @@
 [data-popper-placement^="right"] > .arrow {
   left: -4px;
 }
-
-// .tooltip::after {
-//   content: "";
-//   position: absolute;
-//   border: 5px solid;
-//   top: 100%;
-//   left: 50%;
-//   margin-left: -5px;
-//   $color: map-get($seTheme, "information");
-//   border-color: $color transparent transparent transparent;
-//   border-color: var(#{custom-property-name("information")}, $color) transparent transparent transparent;
-// }
 
 .alternative {
   @include color("alternative-contrast");

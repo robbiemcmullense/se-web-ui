@@ -1,9 +1,9 @@
 import { Component, h, Prop, State } from '@stencil/core';
-import ResizeObserver from 'resize-observer-polyfill';
+// import ResizeObserver from 'resize-observer-polyfill';
 
 import arrow5Step from '@se/icons/svg/arrow5_step.svg';
 
-type TColor = 'primary' | 'alternative';
+export type TColor = 'primary' | 'alternative';
 
 @Component({
   tag: 'se-tabbar',

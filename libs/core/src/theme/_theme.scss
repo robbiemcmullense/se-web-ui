@@ -3,6 +3,7 @@
  */
 @import "./mixin";
 @import "./se-variable";
+// @use 'sass:math';
 
 // Spacing element
 // ==========================================================================
@@ -78,7 +79,7 @@ $h-margin: 16px !default;
 
 $range: $large-screen - $small-screen !default;
 $intervals: 20 !default;
-$interval-size: $range / $intervals !default;
+$interval-size: 30 !default;
 
 $border-radius: 2px !default;
 $border-radius-card: 4px !default;

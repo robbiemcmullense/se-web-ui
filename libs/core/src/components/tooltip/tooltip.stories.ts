@@ -20,17 +20,17 @@ storiesOf('Tooltip', module)
       return `
       <div style=" margin-top: 200px; margin-left: 200px;">
         <se-tooltip position="${position}" color="${color}" show-delay="${delay}">
-          <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
         <br><br><br><br>
         <se-tooltip position="${position}" color="${color}" show-delay="${delay}">
-          <se-icon color="primary" slot="tooltip">folder</se-icon>
+          <se-icon color="primary" slot="trigger">folder</se-icon>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
         <br><br><br><br>
         <se-tooltip position="${position}" color="${color}" show-delay="${delay}">
-          <se-icon slot="tooltip">folder</se-icon>
+          <se-icon slot="trigger">folder</se-icon>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
       </div>
@@ -56,7 +56,7 @@ storiesOf('Tooltip', module)
       return `
       <div style=" margin-top: 100px; margin-left: 200px;">
         <se-tooltip position="${position}" color="${color}">
-          <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
           <se-tooltip-header>my tooltips</se-tooltip-header>
           <se-tooltip-content>This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip.</se-tooltip-content>
           <se-tooltip-footer>
@@ -88,7 +88,7 @@ storiesOf('Tooltip', module)
       <se-block-header>
         Left Column
         <se-tooltip slot="end">
-          <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
       </se-block-header>
@@ -97,7 +97,7 @@ storiesOf('Tooltip', module)
         <br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <se-tooltip ac>
-          <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
           <se-tooltip-content> This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip.</se-tooltip-content>
         </se-tooltip>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -113,7 +113,7 @@ storiesOf('Tooltip', module)
       </se-block-content>
       <se-block-footer>
       <se-tooltip>
-          <se-button option="raised" color="primary" slot="tooltip">Tooltip</se-button>
+          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
       </se-block-footer>
