@@ -52,8 +52,11 @@
 
 .menu-sidenav {
   cursor: pointer;
-  margin-right: -17px;
+  margin-left: -$spacing-large;
+  margin-right: -1px;
   padding: $spacing $spacing-large;
+  user-select: none;
+
   se-icon {
     vertical-align: -webkit-baseline-middle;
     vertical-align: -moz-middle-with-baseline;
@@ -61,40 +64,32 @@
 }
 
 .header {
-  &-menu-button {
-    margin-left: 6px;
+  &-left {
+    margin-left: $spacing-large;
   }
 
   &-title {
     @include color("primary");
-    padding-left: 18px;
     font-size: 20px;
     line-height: 20px;
     margin: 0;
+
     .light {
       font-weight: 300;
     }
 
     &-wrapper {
+      margin-left: 2px;
       margin-right: $spacing-large;
     }
 
     &-type {
       @include color("primary");
       line-height: 24px;
-      padding-left: 18px;
       font-size: 12px;
       margin: 1px 0 -4px 0;
     }
   }
-}
-
-.mat-toolbar-single-row {
-  padding: 0;
-}
-
-.font-lighter {
-  font-weight: 100;
 }
 
 se-icon-schneider {
@@ -107,17 +102,8 @@ se-icon-ecostruxure {
   margin-bottom: -5px;
 }
 
-.padding-container {
-  &.link-container {
-    font-size: 13px;
-  }
-}
-
 @media (max-width: 599px) {
   se-icon-schneider {
     display: none;
-  }
-  .mat-toolbar-single-row {
-    height: 64px;
   }
 }
