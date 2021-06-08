@@ -191,6 +191,8 @@ storiesOf('Filtration', module)
           </se-list-item>
         </se-filtration>
           <se-filtration item="Date Range">
+          <se-block color="none" margin="medium">
+
             <div slot="selectedItem">${dateRange}</div>
             <se-form-field
               option="stacked"
@@ -209,6 +211,7 @@ storiesOf('Filtration', module)
               <input type="date" id="enddate" />
             </se-form-field>
             <se-button color="secondary" disabled=${!validInfo} option="outline">Ok</se-button>
+            </se-block>
           </se-filtration>
           <se-filtration item="Search order results">
             <se-block color="none" margin="medium">

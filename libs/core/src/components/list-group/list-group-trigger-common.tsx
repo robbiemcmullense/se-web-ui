@@ -12,7 +12,6 @@ export const ListGroupTriggerCommon = (
     {props.canCollapse && (
       <se-icon
         slot="end"
-        size="medium"
         color="standard"
         rotate={props.collapsed ? 180 : 0}
       >

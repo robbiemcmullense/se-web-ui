@@ -2,7 +2,6 @@ import { Component, h, Prop, State, Event, Element, Host } from '@stencil/core';
 import { EventEmitter } from 'events';
 
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
-import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 import actionSearchStroke from '@se/icons/svg/action_search_stroke.svg';
 
 @Component({
@@ -181,26 +180,26 @@ export class FiltrationComponent {
           margin={this.isMobile ? 'none' : this.shadow ? 'medium' : 'small'}
           option={this.shadow && !this.isMobile ? 'card-old' : 'card'}
         >
-          <se-block-header option="fill" divider>
+          <se-block-header 
+            divider               
+            onClick={() => this.setExpanded()}
+          >
             <h5>
               <bold>{this.item}</bold>
               <div class="selected-values">
                 <slot name="selectedItem"></slot>
               </div>
             </h5>
-            <div slot="end">
-              <se-icon
-                color="standard"
-                icon-only
-                size="medium"
-                onClick={() => this.setExpanded()}
-              >
-                <span
-                  class="link"
-                  innerHTML={this.collapsed ? arrow2Up : arrow2Down}
-                ></span>
-              </se-icon>
-            </div>
+            <se-icon
+              slot="end"
+              color="standard"
+              icon-only
+              option="button"
+              noHover
+              rotate={!this.collapsed && '180'}
+              innerHTML={arrow2Up}
+            >
+            </se-icon>
           </se-block-header>
           <div
             class={{
@@ -243,10 +242,10 @@ export class FiltrationComponent {
                     {this.isViewMore
                       ? this.labelViewLess
                       : `${this.labelViewMore} (${nbItems - this.minItems})`}
-                    <se-icon>
-                      <span
-                        innerHTML={this.isViewMore ? arrow2Up : arrow2Down}
-                      ></span>
+                    <se-icon 
+                      rotate={!this.isViewMore && "180"}
+                      innerHTML={arrow2Up}
+                      >
                     </se-icon>
                   </div>
                 ) : (

@@ -24,6 +24,7 @@
 
 .view-more-refinements-button__body {
   display: flex;
+  gap: $spacing-medium;
   align-items: center;
   padding: 6px 16px 12px 24px;
 }

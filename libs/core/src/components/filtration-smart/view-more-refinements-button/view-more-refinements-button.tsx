@@ -7,7 +7,6 @@ import {
   EventEmitter,
 } from '@stencil/core';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
-import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 
 @Component({
   tag: 'se-filtration-smart-view-more-refinements-button',
@@ -74,8 +73,8 @@ export class FiltrationSmartViewMoreRefinementsButton {
               'view-more-refinements-button__arrow--down': this
                 .isAllRefinementsVisible,
             }}
-            size="medium"
-            innerHTML={this.isAllRefinementsVisible ? arrow2Up : arrow2Down}
+            rotate={!this.isAllRefinementsVisible && "180"}
+            innerHTML={arrow2Up}
           />
         </div>
       </button>

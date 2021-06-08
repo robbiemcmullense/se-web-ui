@@ -8,7 +8,6 @@ import {
   Fragment,
 } from '@stencil/core';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
-import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 import { FiltrationSmartSectionData } from '../types';
 import {
   getSectionData,
@@ -168,9 +167,9 @@ export class FiltrationSmartFacet {
                 <se-icon
                   color="standard"
                   icon-only
-                  size="medium"
                   slot="end"
-                  innerHTML={this.isExpanded ? arrow2Up : arrow2Down}
+                  rotate={!this.isExpanded && "180"}
+                  innerHTML={arrow2Up}
                   class="facet__header-icon"
                 />
               )}

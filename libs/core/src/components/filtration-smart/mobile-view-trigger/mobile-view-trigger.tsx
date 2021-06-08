@@ -6,6 +6,7 @@ import {
   h,
   Prop,
 } from '@stencil/core';
+import arrow2Right from '@se/icons/svg/arrow2_right.svg';
 
 @Component({
   tag: 'se-filtration-smart-mobile-view-trigger',
@@ -52,9 +53,9 @@ export class FiltrationSmartMobileViewTrigger {
         <se-icon
           class="mobile-view-trigger__arrow"
           color="standard"
-          size="medium"
+          innerHTML={arrow2Right}
         >
-          arrow2_right
+          
         </se-icon>
       </button>
     );

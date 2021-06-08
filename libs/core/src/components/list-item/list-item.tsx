@@ -162,7 +162,7 @@ export class ListItemComponent {
         <slot></slot>
         <slot name="end"></slot>
         {this.showNavIcon ? (
-          <se-icon size="medium" color="standard">
+          <se-icon color="standard">
             <span innerHTML={arrow2Right}></span>
           </se-icon>
         ) : (

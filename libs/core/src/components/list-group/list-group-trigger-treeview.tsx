@@ -10,7 +10,6 @@ export const ListGroupTriggerTreeview = (
     <se-icon
       slot="start"
       class="treeview-icon"
-      size="medium"
       color="standard"
       onClick={e => {
         e.preventDefault();

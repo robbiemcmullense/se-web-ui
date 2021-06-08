@@ -46,8 +46,7 @@
 }
 
 h5 {
-  padding: $spacing-small $spacing-small $spacing-small
-    ($spacing-large - $spacing-small);
+  padding: $spacing-small;
   @include typology("h5");
 }
 

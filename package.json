@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.21.1",
+  "version": "3.21.2",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -96,7 +96,7 @@
     "@nxext/svelte": "^12.0.3",
     "@popperjs/core": "^2.9.2",
     "@se/fonts": "^1.1.0",
-    "@se/icons": "^4.2.0",
+    "@se/icons": "^4.5.1",
     "@se/postcss-host-polyfill": "^1.0.0",
     "@stencil/angular-output-target": "0.0.5",
     "@stencil/core": "^2.5.2",

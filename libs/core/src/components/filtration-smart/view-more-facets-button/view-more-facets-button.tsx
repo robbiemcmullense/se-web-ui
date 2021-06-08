@@ -7,7 +7,6 @@ import {
   EventEmitter,
 } from '@stencil/core';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
-import arrow2Down from '@se/icons/svg/arrow2_down.svg';
 
 @Component({
   tag: 'se-filtration-smart-view-more-facets-button',
@@ -68,8 +67,8 @@ export class FiltrationSmartViewMoreSectionsButton {
               'view-more-facets-button__arrow--up': this.isAllFacetsVisible,
               'view-more-facets-button__arrow--down': !this.isAllFacetsVisible,
             }}
-            size="medium"
-            innerHTML={this.isAllFacetsVisible ? arrow2Up : arrow2Down}
+            rotate={!this.isAllFacetsVisible && "180"}
+            innerHTML={arrow2Up}
           />
 
           {this.count > 0 && (
