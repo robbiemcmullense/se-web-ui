@@ -31,7 +31,7 @@ storiesOf('Header', module)
 
       return `
       <se-header project="${project}">
-        <se-icon-schneider slot="title">Custom title</se-icon-schneider>
+        <span slot="title" class="color-primary bold">Custom title</span>
       </se-header>
     `;
     },
