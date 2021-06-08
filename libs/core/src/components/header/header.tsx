@@ -51,45 +51,34 @@ export class HeaderComponent {
     } else if (this.domain.toLowerCase() !== 'none') {
       domain = <span class="header-title-type">{this.domain}</span>;
     }
-    const hasCustomTitle = !!this.el.querySelector('[slot="title"]');
 
     return [
-      <div class="d-flex">
-        {this.hasMenu ? (
+      <div class="d-flex header-left">
+        {this.hasMenu && (
           <span class="menu-sidenav" onClick={() => this.onClickMenu()}>
             <se-icon size="medium" color="primary">
               <span innerHTML={burgerMenu}></span>
             </se-icon>
           </span>
-        ) : (
-          ''
         )}
-        {hasCustomTitle ? (
-          <div class="d-flex-column header-title-wrapper">
-            <slot name="title" />
-          </div>
-        ) : (
-          <div class="d-flex-column header-title-wrapper">
+        <div class="d-flex-column header-title-wrapper">
+          <slot name="title">
             {domain}
             <h1 class="header-title no-margin">
               <span>{title.first}</span>
               <span class="light">&nbsp;{title.last}</span>
             </h1>
-          </div>
-        )}
-        {this.project ? (
-          <span class="project-section">{this.project}</span>
-        ) : (
-          ''
-        )}
+          </slot>
+        </div>
+        {this.project && <span class="project-section">{this.project}</span>}
       </div>,
-      <div class="padding-container d-flex">
+      <div class="d-flex">
         <slot name="start" />
       </div>,
       <div class="fill-space center-header-container">
         <slot />
       </div>,
-      <div class="padding-container d-flex">
+      <div class="d-flex">
         <slot name="end" />
         {!this.hideSeLogo && <se-icon-schneider class="header-title-type" />}
       </div>,

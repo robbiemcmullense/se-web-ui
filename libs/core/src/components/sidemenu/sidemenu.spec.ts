@@ -30,6 +30,33 @@ describe('SidemenuComponent', () => {
     }, 200);
   });
 
+  it('Should not allow any sidemenu to be set to active if disabled', () => {
+    const node = document.createElement('se-sidemenu-item');
+    node.setAttribute('item', 'Close');
+    sidemenu.el.appendChild(node);
+    sidemenu.disabled = true;
+    sidemenu.componentWillLoad();
+    sidemenu.setActive(sidemenu.items[0]);
+    setTimeout(() => {
+      // It takes 100 ms to get the item to be changed to active=true
+      expect(sidemenu.items[0].active).toBeFalsy();
+    }, 200);
+  });
+
+  it('Should emit event on every click', () => {
+    const navClick = jest.spyOn(sidemenu.didNavigationClick, 'emit');
+    const node = document.createElement('se-sidemenu-item');
+    node.setAttribute('item', 'Close');
+    sidemenu.el.appendChild(node);
+    sidemenu.disabled = true;
+    sidemenu.componentWillLoad();
+    sidemenu.setActive(sidemenu.items[0]);
+    node.click();
+    setTimeout(() => {
+      expect(navClick).toHaveBeenCalled();
+    }, 200);
+  });
+
   it('should call the watchItemList and setItemsArray functions when the component is about to load', () => {
     const listSpy = jest.spyOn(sidemenu, 'watchItemList');
     const arraySpy = jest.spyOn(sidemenu, 'setItemsArray');
