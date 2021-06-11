@@ -424,7 +424,7 @@ storiesOf('Form Field', module)
   .add(
     'Form Field Input',
     () => {
-      const option = select('option', layoutOption, 'inline');
+      const stacked = boolean('stacked', false);
       const inputType = select('inputType', inputTypeOption, 'text');
       const label = text('label', 'My label');
       const required = boolean('required', false);
@@ -434,10 +434,10 @@ storiesOf('Form Field', module)
       return `
       <se-form-field
         type='input'
-        option='${option}'
         label='${label}'
         required='${required}'
         disabled='${disabled}'
+        stacked='${stacked}'
         block='${block}'
         >
         <input type='${inputType}' />
@@ -453,7 +453,7 @@ storiesOf('Form Field', module)
   .add(
     'Form Field Select',
     () => {
-      const option = select('option', layoutOption, 'inline');
+      const stacked = boolean('stacked', false);
       const label = text('label', 'Select');
       const required = boolean('required', false);
       const disabled = boolean('disabled', false);
@@ -462,10 +462,10 @@ storiesOf('Form Field', module)
       return `
       <se-form-field
         type='select'
-        option='${option}'
         label='${label}'
         required='${required}'
         disabled='${disabled}'
+        stacked='${stacked}'
         block='${block}'
         >
         <select>
@@ -485,7 +485,7 @@ storiesOf('Form Field', module)
   .add(
     'Form Field Textarea',
     () => {
-      const option = select('option', layoutOption, 'inline');
+      const stacked = boolean('stacked', false);
       const rows = number('rows', 3);
       const label = text('label', 'Input');
       const required = boolean('required', false);
@@ -495,10 +495,10 @@ storiesOf('Form Field', module)
       return `
       <se-form-field
         type='input'
-        option='${option}'
         label='${label}'
         required='${required}'
         disabled='${disabled}'
+        stacked='${stacked}'
         block='${block}'
         >
         <textarea rows='${rows}'></textarea>
@@ -514,7 +514,7 @@ storiesOf('Form Field', module)
   .add(
     'Form Field with icon',
     () => {
-      const option = select('option', layoutOption, 'inline');
+      const stacked = boolean('stacked', false);
       const label = text('label', 'Input');
       const required = boolean('required', false);
       const disabled = boolean('disabled', false);
@@ -523,10 +523,10 @@ storiesOf('Form Field', module)
       return `
       <se-form-field
         type='input'
-        option='${option}'
         label='${label}'
         required=${required}
         disabled='${disabled}'
+        stacked='${stacked}'
         block=${block}
         >
         <div style="display:flex; align-items: center;">

@@ -2598,10 +2598,10 @@
   resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/fonts/-/fonts-1.2.2.tgz#06e92f47a6749019642d0d5dc3693c817572a897"
   integrity sha512-t4tPSQmEF0QPDZK5u610QSyqa+stoGgn4PbUJ4G6bXSSwBAz0ahiqftUfLK/TOVMkVYSblextGPEAzahKyqlWA==
 
-"@se/icons@4.5.0":
-  version "4.5.0"
-  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-4.5.0.tgz#0c4a64ab6ce76d323814f4708271ea452a51626a"
-  integrity sha512-JcHSOB/ifLK2fI1bWYPsGjlaxqtup8uRfGlUGeZ1m/tZkX6EtCtoTnOwHgsqtMb0mWIo4HchE0KTSaEYOm5gHw==
+"@se/icons@^4.5.1":
+  version "4.5.1"
+  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-4.5.1.tgz#a667cd927d934cea6434f206801051b07ec2611c"
+  integrity sha512-GD5aOVPdO5iR3/k3yFdwAIGTgtakoPuQUSUvl7/0FsTGCANpn0THZwbji9nDWyUzVnyG7gwCXKIKEWFuPBrcGA==
 
 "@se/postcss-host-polyfill@^1.0.0":
   version "1.0.0"
