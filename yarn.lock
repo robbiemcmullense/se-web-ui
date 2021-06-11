@@ -2598,10 +2598,10 @@
   resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/fonts/-/fonts-1.2.2.tgz#06e92f47a6749019642d0d5dc3693c817572a897"
   integrity sha512-t4tPSQmEF0QPDZK5u610QSyqa+stoGgn4PbUJ4G6bXSSwBAz0ahiqftUfLK/TOVMkVYSblextGPEAzahKyqlWA==
 
-"@se/icons@4.5.0":
-  version "4.5.0"
-  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-4.5.0.tgz#0c4a64ab6ce76d323814f4708271ea452a51626a"
-  integrity sha512-JcHSOB/ifLK2fI1bWYPsGjlaxqtup8uRfGlUGeZ1m/tZkX6EtCtoTnOwHgsqtMb0mWIo4HchE0KTSaEYOm5gHw==
+"@se/icons@^4.5.1":
+  version "4.5.1"
+  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-4.5.1.tgz#a667cd927d934cea6434f206801051b07ec2611c"
+  integrity sha512-GD5aOVPdO5iR3/k3yFdwAIGTgtakoPuQUSUvl7/0FsTGCANpn0THZwbji9nDWyUzVnyG7gwCXKIKEWFuPBrcGA==
 
 "@se/postcss-host-polyfill@^1.0.0":
   version "1.0.0"
@@ -4032,6 +4032,11 @@
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
+
+"@types/resize-observer-browser@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@types/resize-observer-browser/-/resize-observer-browser-0.1.5.tgz#36d897708172ac2380cd486da7a3daf1161c1e23"
+  integrity sha512-8k/67Z95Goa6Lznuykxkfhq9YU3l1Qe6LNZmwde1u7802a3x8v44oq0j91DICclxatTr0rNnhXx7+VTIetSrSQ==
 
 "@types/resolve@0.0.8":
   version "0.0.8"

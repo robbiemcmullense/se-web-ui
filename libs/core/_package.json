@@ -18,6 +18,7 @@
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "smoothscroll-polyfill": "^0.4.4",
-    "@stencil/core": "latest"
+    "@stencil/core": "latest",
+    "@types/resize-observer-browser": "0.1.5"
   }
 }

@@ -70,8 +70,11 @@
 
 .middle {
   @include typology("h4");
+  @include ellipsis();
   margin: 8px 0;
-
+  display: flex;
+  align-items: center;
+  
   .alternative-indents & {
     margin: 8px 0;
     @include modal-heading("primary");

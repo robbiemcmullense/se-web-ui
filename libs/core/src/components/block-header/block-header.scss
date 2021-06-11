@@ -3,7 +3,7 @@
   min-height: 40px;
   @include align-items(center);
   @include display-flex();
-
+  
   &.option-widget,
   &.option-basic {
     padding: $spacing-small $spacing-small 2px $spacing; // 2px to compensate with border bottom
@@ -16,7 +16,10 @@
 
 .middle {
   @include flex();
-
+  @include ellipsis();
+  display: flex;
+  align-items: center;
+  
   .se-block-header.option-default & {
     @include typology("h4");
     margin: $spacing-small;

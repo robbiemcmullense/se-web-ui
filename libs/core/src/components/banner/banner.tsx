@@ -141,11 +141,11 @@ export class BannerComponent {
     const icons = Array.from(this.el.shadowRoot.querySelectorAll('se-icon'));
     icons.forEach((icon: any) => {
       if (window.innerWidth > 1280) {
-        icon.size = 'xlarge';
-      } else if (window.innerWidth > 767) {
         icon.size = 'large';
-      } else {
+      } else if (window.innerWidth > 767) {
         icon.size = 'medium';
+      } else {
+        icon.size = 'small';
       }
     });
   }
