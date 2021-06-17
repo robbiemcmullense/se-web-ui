@@ -84,7 +84,7 @@ export class TooltipComponent {
             {
               name: 'offset',
               options: {
-                offset: [4, 4],
+                offset: [0, 4],
               },
             },
           ],
@@ -113,7 +113,7 @@ export class TooltipComponent {
               {
                 name: 'offset',
                 options: {
-                  offset: [4, 4],
+                  offset: [0, 4],
                 },
               },
             ],
