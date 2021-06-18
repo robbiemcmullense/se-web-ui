@@ -1,17 +1,23 @@
 <se-dialog
   open
-  [color]="dialog.color"
   [size]="dialog.size"
   (didClose)="closeDialog()"
   (backdrop)="backdropClick()"
   [canBackdrop]="dialog.canBackdrop"
   [noBackdrop]="dialog.noBackdrop"
 >
-  <se-dialog-header *ngIf="dialog.title">{{ dialog.title }}</se-dialog-header>
+  <se-dialog-header
+    *ngIf="dialog.title"
+    [color]="dialog.color"
+    [padding]="dialog.headerPadding"
+  >
+    {{ dialog.title }}
+  </se-dialog-header>
   <se-dialog-content
     [icon]="dialog.icon"
     [iconColor]="dialog.iconColor"
-    [option]="dialog.option"
+    [option]="dialog.contentOption"
+    [padding]="dialog.contentPadding"
   >
     <div [innerHTML]="dialog.message"></div>
   </se-dialog-content>

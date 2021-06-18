@@ -33,6 +33,7 @@ export class DialogComponent {
    * Defines the color of the dialog header.
    * `alternative`: Alternative background with primary color for the text
    * `primary`: Primary color schema and default setting.
+   * @deprecated use the configuration directly on se-dialog-header
    */
   @Prop() color: 'alternative' | 'primary' = 'primary';
   /**

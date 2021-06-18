@@ -399,13 +399,13 @@ The modal can then be safely removed from the DOM. */
 
 export type SeDialogContent = Components.SeDialogContent
 @ProxyCmp({
-  inputs: ['icon', 'iconColor', 'isLastChild', 'option']
+  inputs: ['icon', 'iconColor', 'isLastChild', 'option', 'padding']
 })
 @Component({
   selector: 'se-dialog-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['icon', 'iconColor', 'isLastChild', 'option']
+  inputs: ['icon', 'iconColor', 'isLastChild', 'option', 'padding']
 })
 export class SeDialogContent {
   protected el: HTMLElement;
@@ -434,13 +434,13 @@ export class SeDialogFooter {
 import { DialogHeaderComponent as IDialogHeaderComponent } from '@se/web-ui/types/components/dialog-header/dialog-header';
 export type SeDialogHeader = Components.SeDialogHeader
 @ProxyCmp({
-  inputs: ['closeIcon', 'color', 'option']
+  inputs: ['closeIcon', 'color', 'option', 'padding']
 })
 @Component({
   selector: 'se-dialog-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['closeIcon', 'color', 'option'],
+  inputs: ['closeIcon', 'color', 'option', 'padding'],
   outputs: ['didCloseDialog']
 })
 export class SeDialogHeader {

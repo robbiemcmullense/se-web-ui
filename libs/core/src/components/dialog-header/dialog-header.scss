@@ -2,14 +2,29 @@
   position: relative;
   padding: $spacing-small $spacing-small $spacing-small $spacing-large; // 2px to compensate with border bottom
   font-size: 20px;
-  @include align-items(center);
   @include display-flex();
+  @include align-items(center);
 
   min-height: 44px;
-  @include background-color("primary");
-  @include color("primary-contrast");
+  @include background-color("standard");
+  @include color("standard-contrast");
 
-  &.alternative-indents {
+  &.primary {
+    @include background-color("primary");
+    @include color("primary-contrast");
+  }
+
+  &.secondary {
+    @include background-color("secondary");
+    @include color("secondary-contrast");
+  }
+
+  &.information {
+    @include background-color("information");
+    @include color("information-contrast");
+  }
+
+  &.p-large {
     padding: $spacing-small $spacing-large $spacing-small $spacing-large;
     min-height: 40px;
 
@@ -21,9 +36,9 @@
 
   &.alternative {
     @include background-color("background-alternative");
-    @include color("primary");
+    @include color("standard");
 
-    &.alternative-indents {
+    &.p-large {
       min-height: 35px;
       padding: $spacing-mlarge $spacing-mlarge 0;
       margin-bottom: 0;
@@ -53,11 +68,11 @@
     opacity: 0.5;
   }
 
-  .alternative-indents & {
+  .p-large & {
     margin: 0;
   }
 
-  .alternative.alternative-indents & {
+  .alternative.p-large & {
     @include for-tablet-and-up {
       margin-left: $spacing-large;
     }
@@ -71,21 +86,21 @@
 .middle {
   @include typology("h4");
   @include ellipsis();
-  margin: 8px 0;
+  margin: $spacing 0;
   display: flex;
   align-items: center;
-  
-  .alternative-indents & {
-    margin: 8px 0;
-    @include modal-heading("primary");
+
+  .p-large & {
+    margin: $spacing 0;
+    @include modal-heading("standard");
 
     @include for-tablet-and-up {
       margin: 6px 0;
-      @include modal-heading("primary", "large");
+      @include modal-heading("standard", "large");
     }
   }
 
-  .alternative.alternative-indents & {
+  .alternative.p-large & {
     @include modal-heading("alternative");
 
     @include for-tablet-and-up {

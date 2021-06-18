@@ -392,6 +392,7 @@ export const SeDialogContent = /*@__PURE__*/ Vue.extend({
 
   props: {
     option: {} as PropOptions<Components.SeDialogContent['option']>,
+    padding: {} as PropOptions<Components.SeDialogContent['padding']>,
     icon: {} as PropOptions<Components.SeDialogContent['icon']>,
     iconColor: {} as PropOptions<Components.SeDialogContent['iconColor']>,
     isLastChild: {} as PropOptions<Components.SeDialogContent['isLastChild']>,
@@ -415,6 +416,7 @@ export const SeDialogHeader = /*@__PURE__*/ Vue.extend({
   props: {
     option: {} as PropOptions<Components.SeDialogHeader['option']>,
     color: {} as PropOptions<Components.SeDialogHeader['color']>,
+    padding: {} as PropOptions<Components.SeDialogHeader['padding']>,
     closeIcon: {} as PropOptions<Components.SeDialogHeader['closeIcon']>,
   },
 

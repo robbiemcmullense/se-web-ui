@@ -11,6 +11,12 @@ When set to `fill`, the content will fill the whole space of the dialog.
 When set to `indent`, the content will alternative margins and paddings. */
   option?: Components.SeDialogContent["option"]
   
+  /** optional property. define the padding around the button
+`none` no padding.
+`small` small padding: default
+`large` large padding. */
+  padding?: Components.SeDialogContent["padding"]
+  
   /** Indicates an icon you want to display in your dialog. */
   icon?: Components.SeDialogContent["icon"]
   
@@ -51,17 +57,18 @@ import { createEventDispatcher, onMount } from "svelte";
 function create_fragment(ctx) {
 	let se_dialog_content;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[7].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[6], null);
+	const default_slot_template = /*#slots*/ ctx[8].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[7], null);
 
 	return {
 		c() {
 			se_dialog_content = element("se-dialog-content");
 			if (default_slot) default_slot.c();
 			set_custom_element_data(se_dialog_content, "option", /*option*/ ctx[0]);
-			set_custom_element_data(se_dialog_content, "icon", /*icon*/ ctx[1]);
-			set_custom_element_data(se_dialog_content, "icon-color", /*iconColor*/ ctx[2]);
-			set_custom_element_data(se_dialog_content, "is-last-child", /*isLastChild*/ ctx[3]);
+			set_custom_element_data(se_dialog_content, "padding", /*padding*/ ctx[1]);
+			set_custom_element_data(se_dialog_content, "icon", /*icon*/ ctx[2]);
+			set_custom_element_data(se_dialog_content, "icon-color", /*iconColor*/ ctx[3]);
+			set_custom_element_data(se_dialog_content, "is-last-child", /*isLastChild*/ ctx[4]);
 		},
 		m(target, anchor) {
 			insert(target, se_dialog_content, anchor);
@@ -70,13 +77,13 @@ function create_fragment(ctx) {
 				default_slot.m(se_dialog_content, null);
 			}
 
-			/*se_dialog_content_binding*/ ctx[8](se_dialog_content);
+			/*se_dialog_content_binding*/ ctx[9](se_dialog_content);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 64)) {
-					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[6], dirty, null, null);
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 128)) {
+					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[7], dirty, null, null);
 				}
 			}
 
@@ -84,16 +91,20 @@ function create_fragment(ctx) {
 				set_custom_element_data(se_dialog_content, "option", /*option*/ ctx[0]);
 			}
 
-			if (!current || dirty & /*icon*/ 2) {
-				set_custom_element_data(se_dialog_content, "icon", /*icon*/ ctx[1]);
+			if (!current || dirty & /*padding*/ 2) {
+				set_custom_element_data(se_dialog_content, "padding", /*padding*/ ctx[1]);
 			}
 
-			if (!current || dirty & /*iconColor*/ 4) {
-				set_custom_element_data(se_dialog_content, "icon-color", /*iconColor*/ ctx[2]);
+			if (!current || dirty & /*icon*/ 4) {
+				set_custom_element_data(se_dialog_content, "icon", /*icon*/ ctx[2]);
 			}
 
-			if (!current || dirty & /*isLastChild*/ 8) {
-				set_custom_element_data(se_dialog_content, "is-last-child", /*isLastChild*/ ctx[3]);
+			if (!current || dirty & /*iconColor*/ 8) {
+				set_custom_element_data(se_dialog_content, "icon-color", /*iconColor*/ ctx[3]);
+			}
+
+			if (!current || dirty & /*isLastChild*/ 16) {
+				set_custom_element_data(se_dialog_content, "is-last-child", /*isLastChild*/ ctx[4]);
 			}
 		},
 		i(local) {
@@ -108,7 +119,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_dialog_content);
 			if (default_slot) default_slot.d(detaching);
-			/*se_dialog_content_binding*/ ctx[8](null);
+			/*se_dialog_content_binding*/ ctx[9](null);
 		}
 	};
 }
@@ -119,6 +130,7 @@ function instance($$self, $$props, $$invalidate) {
 	let __mounted = false;
 	const dispatch = createEventDispatcher();
 	let { option = undefined } = $$props;
+	let { padding = undefined } = $$props;
 	let { icon = undefined } = $$props;
 	let { iconColor = undefined } = $$props;
 	let { isLastChild = undefined } = $$props;
@@ -129,7 +141,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(4, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(5, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -140,20 +152,22 @@ function instance($$self, $$props, $$invalidate) {
 	function se_dialog_content_binding($$value) {
 		binding_callbacks[$$value ? "unshift" : "push"](() => {
 			__ref = $$value;
-			$$invalidate(4, __ref);
+			$$invalidate(5, __ref);
 		});
 	}
 
 	$$self.$$set = $$props => {
 		if ("option" in $$props) $$invalidate(0, option = $$props.option);
-		if ("icon" in $$props) $$invalidate(1, icon = $$props.icon);
-		if ("iconColor" in $$props) $$invalidate(2, iconColor = $$props.iconColor);
-		if ("isLastChild" in $$props) $$invalidate(3, isLastChild = $$props.isLastChild);
-		if ("$$scope" in $$props) $$invalidate(6, $$scope = $$props.$$scope);
+		if ("padding" in $$props) $$invalidate(1, padding = $$props.padding);
+		if ("icon" in $$props) $$invalidate(2, icon = $$props.icon);
+		if ("iconColor" in $$props) $$invalidate(3, iconColor = $$props.iconColor);
+		if ("isLastChild" in $$props) $$invalidate(4, isLastChild = $$props.isLastChild);
+		if ("$$scope" in $$props) $$invalidate(7, $$scope = $$props.$$scope);
 	};
 
 	return [
 		option,
+		padding,
 		icon,
 		iconColor,
 		isLastChild,
@@ -183,10 +197,11 @@ class SeDialogContent extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			option: 0,
-			icon: 1,
-			iconColor: 2,
-			isLastChild: 3,
-			getWebComponent: 5
+			padding: 1,
+			icon: 2,
+			iconColor: 3,
+			isLastChild: 4,
+			getWebComponent: 6
 		});
 	}
 
@@ -199,8 +214,17 @@ class SeDialogContent extends SvelteComponent {
 		flush();
 	}
 
-	get icon() {
+	get padding() {
 		return this.$$.ctx[1];
+	}
+
+	set padding(padding) {
+		this.$set({ padding });
+		flush();
+	}
+
+	get icon() {
+		return this.$$.ctx[2];
 	}
 
 	set icon(icon) {
@@ -209,7 +233,7 @@ class SeDialogContent extends SvelteComponent {
 	}
 
 	get iconColor() {
-		return this.$$.ctx[2];
+		return this.$$.ctx[3];
 	}
 
 	set iconColor(iconColor) {
@@ -218,7 +242,7 @@ class SeDialogContent extends SvelteComponent {
 	}
 
 	get isLastChild() {
-		return this.$$.ctx[3];
+		return this.$$.ctx[4];
 	}
 
 	set isLastChild(isLastChild) {
@@ -227,7 +251,7 @@ class SeDialogContent extends SvelteComponent {
 	}
 
 	get getWebComponent(): HTMLSeDialogContentElement | undefined {
-		return this.$$.ctx[5];
+		return this.$$.ctx[6];
 	}
 }
 

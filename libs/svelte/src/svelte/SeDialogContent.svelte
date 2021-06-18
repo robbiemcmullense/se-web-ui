@@ -8,6 +8,7 @@ let __mounted = false;
 const dispatch = createEventDispatcher();
 
 export let option = undefined;
+export let padding = undefined;
 export let icon = undefined;
 export let iconColor = undefined;
 export let isLastChild = undefined;
@@ -30,6 +31,7 @@ const onEvent = (e) => {
 
 <se-dialog-content 
   option={option}
+  padding={padding}
   icon={icon}
   icon-color={iconColor}
   is-last-child={isLastChild}

@@ -31,17 +31,25 @@ export class DialogConfig {
    */
   size?: string;
   /**
-   * @description color of the dialog header: 'alternative'|'primary'
+   * @description color of the dialog header: 'standard'|'alternative'|'primary'|'secondary'|'information'
    */
   color?: string;
   /**
-   * @description icon color for the dialog if the icon is present:'alternative'|'primary'|'standard'|'secondary'
+   * @description icon color for the dialog if the icon is present: 'standard'|'alternative'|'primary'|'secondary'|'information'
    */
   iconColor?: string;
   /**
-   * @description option for the dialog by removing the padding&margin before and after the content
+   * @description padding for the dialog header:'none' | 'small'
    */
-  option?: string;
+  headerPadding?: string;
+  /**
+   * @description option for the dialog content:'fill'
+   */
+  contentOption?: string;
+  /**
+   * @description padding for the dialog content:'none' | 'small'
+   */
+  contentPadding?: string;
   /**
    * @description option to enable click on backdrop (`true`) or (`false`).  Default setting is `true`.
    * @deprecated use noBackdrop instead

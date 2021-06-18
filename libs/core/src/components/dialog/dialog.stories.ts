@@ -7,12 +7,15 @@ import readmeFooter from '../dialog-footer/readme.md';
 import readmeHeader from '../dialog-header/readme.md';
 
 const configurationGroup = 'Configuration';
+const headerConfigurationGroup = 'Header configuration';
+const contentConfigurationGroup = 'Content configuration';
 const mainTitleGroup = 'Main slot title';
 const endTitleGroup = 'End slot title';
 
 const sizeOptions = ['medium', 'small', 'large', 'fill'];
-const indentOptions = ['primary', 'alternative'];
-const colorOptions = ['primary', 'alternative'];
+const colorOptions = ['standard', 'alternative', 'primary', 'secondary', 'information'];
+const headerPaddingOptions = ['small', 'large'];
+const contentPaddingOptions = ['none', 'small', 'large'];
 const defaultAttributes = { class: 'example-class' };
 
 const createElement = (
@@ -41,16 +44,25 @@ storiesOf('Dialog', module).add(
   'Dialog',
   () => {
     const size = select('size', sizeOptions, 'medium', configurationGroup);
-    const color = select('color', colorOptions, 'primary', configurationGroup);
-    const open = boolean('open', true, configurationGroup);
+    const canBackdrop = boolean('can backdrop', true, configurationGroup);
     const pageScroll = boolean('pageScroll', false, configurationGroup);
+    const open = boolean('open', true, configurationGroup);
+
     const showMoreContent = boolean(
       'Show more content to scroll',
       false,
       configurationGroup
     );
-    const canBackdrop = boolean('can backdrop', true, configurationGroup);
-    const closeIcon = boolean('close icon', false, configurationGroup);
+
+    const showFooter = boolean('Enable footer', false, configurationGroup);
+
+    const headerColor = select('color', colorOptions, 'primary', headerConfigurationGroup);
+    const headerPadding = select('padding', headerPaddingOptions, 'small', headerConfigurationGroup);
+    const closeIcon = boolean('close icon', false, headerConfigurationGroup);
+
+    const icon = text('icon', '', contentConfigurationGroup);
+    const contentPadding = select('padding', contentPaddingOptions, 'small', contentConfigurationGroup);
+    const iconColor = select('icon color', colorOptions, 'primary', contentConfigurationGroup);
 
     const mainTitle = text('title', 'My awesome title', mainTitleGroup);
     const mainTitleTagName = text('tag name', '', mainTitleGroup);
@@ -68,22 +80,20 @@ storiesOf('Dialog', module).add(
       endTitleGroup
     );
 
-    const showFooter = boolean('Enable footer', false, configurationGroup);
-    const enableAlernativeIndents = boolean(
-      'Indent',
-      false,
-      configurationGroup
-    );
+
+
 
     document.addEventListener('didClose', e =>
       action('didClose')((e as CustomEvent).detail)
     );
 
     return `
-      <se-dialog open=${open} can-backdrop="${canBackdrop}" page-scroll="${pageScroll}" size="${size}" color="${color}" >
-        <se-dialog-header option="${
-          enableAlernativeIndents ? 'indent' : null
-        }" close-icon="${closeIcon}">
+      <se-dialog open=${open} can-backdrop="${canBackdrop}" page-scroll="${pageScroll}" size="${size}">
+        <se-dialog-header
+          color="${headerColor}"
+          padding="${headerPadding}"
+          close-icon="${closeIcon}"
+        >
           ${createElement(mainTitleTagName, mainTitle, mainTitleAttributes)}
           ${
             endTitleTagName &&
@@ -95,9 +105,11 @@ storiesOf('Dialog', module).add(
             )
           }
         </se-dialog-header>
-        <se-dialog-content option="${
-          enableAlernativeIndents ? 'indent' : null
-        }" iconColor="${color}">
+        <se-dialog-content
+        icon="${icon}"
+        icon-color="${iconColor}"
+        padding="${contentPadding}"
+        >
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</p>
           <se-tooltip>

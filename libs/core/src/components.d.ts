@@ -468,6 +468,7 @@ export namespace Components {
         "canBackdrop": boolean;
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
+          * @deprecated use the configuration directly on se-dialog-header
          */
         "color": 'alternative' | 'primary';
         /**
@@ -495,15 +496,20 @@ export namespace Components {
         /**
           * Indicates what icon color schema you want to render in your dialog.
          */
-        "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary';
+        "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
         /**
           * Indicates if se-dialog-content is the last child of the dialog component.
          */
         "isLastChild": boolean;
         /**
           * Defaulted to a small padding. When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
+          * @deprecated use padding instead
          */
         "option": 'fill' | 'indent';
+        /**
+          * optional property. define the padding around the button `none` no padding. `small` small padding: default `large` large padding.
+         */
+        "padding": 'none' | 'small' | 'large';
     }
     interface SeDialogFooter {
     }
@@ -513,13 +519,18 @@ export namespace Components {
          */
         "closeIcon": boolean;
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
+          * Defines the color of the dialog header. `standard`: Standard color schema. `alternative`: Alternative background with standard color for the text. `primary`: Primary color schema. `secondary`: Secondary color schema. `information`: Information color schema. By default, the primary color will be used.
          */
-        "color": 'primary' | 'alternative';
+        "color": 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
         /**
           * Defaulted to a small padding. When set to `indent`, the header will have an alternative margins and paddings.
+          * @deprecated use padding instead
          */
         "option": 'indent';
+        /**
+          * optional property. define the padding around the button `small` small padding: default `large` large padding.
+         */
+        "padding": 'small' | 'large';
     }
     interface SeDivider {
         /**
@@ -2546,6 +2557,7 @@ declare namespace LocalJSX {
         "canBackdrop"?: boolean;
         /**
           * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text `primary`: Primary color schema and default setting.
+          * @deprecated use the configuration directly on se-dialog-header
          */
         "color"?: 'alternative' | 'primary';
         /**
@@ -2581,15 +2593,20 @@ declare namespace LocalJSX {
         /**
           * Indicates what icon color schema you want to render in your dialog.
          */
-        "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary';
+        "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
         /**
           * Indicates if se-dialog-content is the last child of the dialog component.
          */
         "isLastChild"?: boolean;
         /**
           * Defaulted to a small padding. When set to `fill`, the content will fill the whole space of the dialog. When set to `indent`, the content will alternative margins and paddings.
+          * @deprecated use padding instead
          */
         "option"?: 'fill' | 'indent';
+        /**
+          * optional property. define the padding around the button `none` no padding. `small` small padding: default `large` large padding.
+         */
+        "padding"?: 'none' | 'small' | 'large';
     }
     interface SeDialogFooter {
     }
@@ -2599,17 +2616,22 @@ declare namespace LocalJSX {
          */
         "closeIcon"?: boolean;
         /**
-          * Defines the color of the dialog header. `alternative`: Alternative background with primary color for the text. `primary`: Primary color schema. By default is the parent's dialog color.
+          * Defines the color of the dialog header. `standard`: Standard color schema. `alternative`: Alternative background with standard color for the text. `primary`: Primary color schema. `secondary`: Secondary color schema. `information`: Information color schema. By default, the primary color will be used.
          */
-        "color"?: 'primary' | 'alternative';
+        "color"?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
         /**
           * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
          */
         "onDidCloseDialog"?: (event: CustomEvent<any>) => void;
         /**
           * Defaulted to a small padding. When set to `indent`, the header will have an alternative margins and paddings.
+          * @deprecated use padding instead
          */
         "option"?: 'indent';
+        /**
+          * optional property. define the padding around the button `small` small padding: default `large` large padding.
+         */
+        "padding"?: 'small' | 'large';
     }
     interface SeDivider {
         /**

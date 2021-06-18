@@ -11,7 +11,7 @@
   @include flex();
   margin: 0 $spacing;
 
-  .alternative-indents & {
+  .p-large & {
     @include for-tablet-and-up {
       margin: $spacing $spacing-small $spacing-large;
     }
@@ -19,22 +19,22 @@
 }
 
 .se-dialog-content {
+  @include display-flex();
+  @include align-items(center);
+  @include flex(1);
   padding: $spacing-large $spacing;
   padding-bottom: 0;
-  @include flex(1);
-  @include align-items(center);
-  @include display-flex();
 
-  &.full-content {
+  &.p-none {
     padding: 0;
+
     .inner-content {
       margin: 0;
     }
   }
 
-  &.alternative-indents {
-    padding-right: $spacing-xlarge;
-    padding-left: $spacing-xlarge;
+  &.p-large {
+    padding: $spacing-large $spacing-xlarge;
 
     &.last-child {
       padding-bottom: $spacing-mlarge;

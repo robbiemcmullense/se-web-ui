@@ -9,6 +9,7 @@ const dispatch = createEventDispatcher();
 
 export let option = undefined;
 export let color = undefined;
+export let padding = undefined;
 export let closeIcon = undefined;
 
 
@@ -30,6 +31,7 @@ const onEvent = (e) => {
 <se-dialog-header 
   option={option}
   color={color}
+  padding={padding}
   close-icon={closeIcon}
   on:didCloseDialog={onEvent}
   bind:this={__ref}

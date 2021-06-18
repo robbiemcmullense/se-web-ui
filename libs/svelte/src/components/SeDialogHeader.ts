@@ -11,10 +11,18 @@ When set to `indent`, the header will have an alternative margins and paddings. 
   option?: Components.SeDialogHeader["option"]
   
   /** Defines the color of the dialog header.
-`alternative`: Alternative background with primary color for the text.
+`standard`: Standard color schema.
+`alternative`: Alternative background with standard color for the text.
 `primary`: Primary color schema.
-By default is the parent's dialog color. */
+`secondary`: Secondary color schema.
+`information`: Information color schema.
+By default, the primary color will be used. */
   color?: Components.SeDialogHeader["color"]
+  
+  /** optional property. define the padding around the button
+`small` small padding: default
+`large` large padding. */
+  padding?: Components.SeDialogHeader["padding"]
   
   /** Display the close icon to close the dialog.
 Default setting is `false`. */
@@ -57,8 +65,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[7].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[6], null);
+	const default_slot_template = /*#slots*/ ctx[8].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[7], null);
 
 	return {
 		c() {
@@ -66,7 +74,8 @@ function create_fragment(ctx) {
 			if (default_slot) default_slot.c();
 			set_custom_element_data(se_dialog_header, "option", /*option*/ ctx[0]);
 			set_custom_element_data(se_dialog_header, "color", /*color*/ ctx[1]);
-			set_custom_element_data(se_dialog_header, "close-icon", /*closeIcon*/ ctx[2]);
+			set_custom_element_data(se_dialog_header, "padding", /*padding*/ ctx[2]);
+			set_custom_element_data(se_dialog_header, "close-icon", /*closeIcon*/ ctx[3]);
 		},
 		m(target, anchor) {
 			insert(target, se_dialog_header, anchor);
@@ -75,18 +84,18 @@ function create_fragment(ctx) {
 				default_slot.m(se_dialog_header, null);
 			}
 
-			/*se_dialog_header_binding*/ ctx[8](se_dialog_header);
+			/*se_dialog_header_binding*/ ctx[9](se_dialog_header);
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(se_dialog_header, "didCloseDialog", /*onEvent*/ ctx[4]);
+				dispose = listen(se_dialog_header, "didCloseDialog", /*onEvent*/ ctx[5]);
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 64)) {
-					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[6], dirty, null, null);
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 128)) {
+					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[7], dirty, null, null);
 				}
 			}
 
@@ -98,8 +107,12 @@ function create_fragment(ctx) {
 				set_custom_element_data(se_dialog_header, "color", /*color*/ ctx[1]);
 			}
 
-			if (!current || dirty & /*closeIcon*/ 4) {
-				set_custom_element_data(se_dialog_header, "close-icon", /*closeIcon*/ ctx[2]);
+			if (!current || dirty & /*padding*/ 4) {
+				set_custom_element_data(se_dialog_header, "padding", /*padding*/ ctx[2]);
+			}
+
+			if (!current || dirty & /*closeIcon*/ 8) {
+				set_custom_element_data(se_dialog_header, "close-icon", /*closeIcon*/ ctx[3]);
 			}
 		},
 		i(local) {
@@ -114,7 +127,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_dialog_header);
 			if (default_slot) default_slot.d(detaching);
-			/*se_dialog_header_binding*/ ctx[8](null);
+			/*se_dialog_header_binding*/ ctx[9](null);
 			mounted = false;
 			dispose();
 		}
@@ -128,6 +141,7 @@ function instance($$self, $$props, $$invalidate) {
 	const dispatch = createEventDispatcher();
 	let { option = undefined } = $$props;
 	let { color = undefined } = $$props;
+	let { padding = undefined } = $$props;
 	let { closeIcon = undefined } = $$props;
 	const getWebComponent = () => __ref;
 
@@ -136,7 +150,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(3, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(4, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -147,20 +161,22 @@ function instance($$self, $$props, $$invalidate) {
 	function se_dialog_header_binding($$value) {
 		binding_callbacks[$$value ? "unshift" : "push"](() => {
 			__ref = $$value;
-			$$invalidate(3, __ref);
+			$$invalidate(4, __ref);
 		});
 	}
 
 	$$self.$$set = $$props => {
 		if ("option" in $$props) $$invalidate(0, option = $$props.option);
 		if ("color" in $$props) $$invalidate(1, color = $$props.color);
-		if ("closeIcon" in $$props) $$invalidate(2, closeIcon = $$props.closeIcon);
-		if ("$$scope" in $$props) $$invalidate(6, $$scope = $$props.$$scope);
+		if ("padding" in $$props) $$invalidate(2, padding = $$props.padding);
+		if ("closeIcon" in $$props) $$invalidate(3, closeIcon = $$props.closeIcon);
+		if ("$$scope" in $$props) $$invalidate(7, $$scope = $$props.$$scope);
 	};
 
 	return [
 		option,
 		color,
+		padding,
 		closeIcon,
 		__ref,
 		onEvent,
@@ -190,8 +206,9 @@ class SeDialogHeader extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			option: 0,
 			color: 1,
-			closeIcon: 2,
-			getWebComponent: 5
+			padding: 2,
+			closeIcon: 3,
+			getWebComponent: 6
 		});
 	}
 
@@ -213,8 +230,17 @@ class SeDialogHeader extends SvelteComponent {
 		flush();
 	}
 
-	get closeIcon() {
+	get padding() {
 		return this.$$.ctx[2];
+	}
+
+	set padding(padding) {
+		this.$set({ padding });
+		flush();
+	}
+
+	get closeIcon() {
+		return this.$$.ctx[3];
 	}
 
 	set closeIcon(closeIcon) {
@@ -223,7 +249,7 @@ class SeDialogHeader extends SvelteComponent {
 	}
 
 	get getWebComponent(): HTMLSeDialogHeaderElement | undefined {
-		return this.$$.ctx[5];
+		return this.$$.ctx[6];
 	}
 }
 
