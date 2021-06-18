@@ -35,12 +35,13 @@
   height: 100%;
 
   &::after {
-    width: 8px;
-    height: 8px;
     content: "";
-    transform: rotate(45deg);
-    transform-origin: center center;
-    @include background-color("information");
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 5px;
+    transform: rotate(360deg);
   }
 }
 
@@ -49,29 +50,47 @@
   opacity: 0;
   pointer-events: none;
 }
-[data-popper-placement^="top"] > .arrow {
-  height: 8px;
-  bottom: -4px;
-}
+
+[data-popper-placement^="top"] > .arrow,
 [data-popper-placement^="bottom"] > .arrow {
-  height: 8px;
-  top: -4px;
+  height: 5px;
 }
-[data-popper-placement^="left"] > .arrow {
-  width: 8px;
-  right: -4px;
-}
+
+[data-popper-placement^="left"] > .arrow,
 [data-popper-placement^="right"] > .arrow {
-  width: 8px;
-  left: -4px;
+  width: 5px;
+}
+
+@each $pos, $invertedPos in (
+  "top": "bottom",
+  "left": "right"
+) {
+  [data-popper-placement^="#{$pos}"] > .arrow {
+    #{$invertedPos}: -4px;
+
+    &::after {
+      border-#{$invertedPos}-width: 0;
+      border-#{$pos}-color: var(--se-information);
+    }
+  }
+  [data-popper-placement^="#{$invertedPos}"] > .arrow {
+    #{$pos}: -4px;
+
+    &::after {
+      border-#{$pos}-width: 0;
+      border-#{$invertedPos}-color: var(--se-information);
+    }
+  }
 }
 
 .alternative {
   @include color("alternative-contrast");
   @include background-color("alternative");
 
-  .arrow::after {
-    @include background-color("alternative");
+  @each $pos in ("top", "bottom", "left", "right") {
+    &[data-popper-placement^="#{$pos}"] > .arrow::after {
+        border-#{$pos}-color: var(--se-alternative);
+    }
   }
 }
 
