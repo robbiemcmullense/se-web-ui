@@ -43,7 +43,7 @@ export class FiltrationSmartMobileViewTrigger {
   render(): HTMLElement {
     return (
       <button class="mobile-view-trigger" onClick={this.onClick}>
-        <se-icon color="standard" size="small">
+        <se-icon color="standard">
           action_filter
         </se-icon>
         <div class="mobile-view-trigger__label">{this.label}</div>
@@ -53,6 +53,7 @@ export class FiltrationSmartMobileViewTrigger {
         <se-icon
           class="mobile-view-trigger__arrow"
           color="standard"
+          size="micro"
           innerHTML={arrow2Right}
         >
 

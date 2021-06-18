@@ -66,6 +66,7 @@ export class FiltrationSmartViewMoreRefinementsButton {
             : `${this.viewMoreLabel} (${this.count})`}
 
           <se-icon
+            size="micro"
             class={{
               'view-more-refinements-button__arrow': true,
               'view-more-refinements-button__arrow--up': !this

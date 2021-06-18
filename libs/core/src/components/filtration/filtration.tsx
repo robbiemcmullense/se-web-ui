@@ -193,6 +193,7 @@ export class FiltrationComponent {
             <se-icon
               slot="end"
               color="standard"
+              size="micro"
               icon-only
               option="button"
               noHover
@@ -245,6 +246,7 @@ export class FiltrationComponent {
                     <se-icon
                       rotate={!this.isViewMore && '180'}
                       innerHTML={arrow2Up}
+                      size="micro"
                       >
                     </se-icon>
                   </div>

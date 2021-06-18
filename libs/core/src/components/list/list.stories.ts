@@ -200,7 +200,7 @@ storiesOf('List', module)
               <se-checkbox size="medium" slot="item" selected="true" label="I'm the first treeview"></se-checkbox>
             </se-list-item>
             <se-list-item>
-              <se-checkbox size="medium" slot="item" selected="true" label="I'm the second treeview grandchild I'm the second treeview grandchild!"></se-checkbox>
+              <se-checkbox size="medium" slot="item" selected="true" label="se-checkbox in a list should be used with the label property of the checkbox."></se-checkbox>
             </se-list-item>
             <se-list-item>
               <se-checkbox size="medium" selected="true" slot="start"></se-checkbox>

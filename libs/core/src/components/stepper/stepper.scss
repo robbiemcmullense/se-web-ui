@@ -89,9 +89,9 @@ se-divider {
     .indicator {
       @include background-color('primary');
      }
-     .stepper-item-label {
-       @include color('focus');
-     }
+    //  .stepper-item-label:not(.toValidate) {
+    //    @include color('focus');
+    //  }
   }
 }
 
@@ -101,8 +101,8 @@ se-divider {
       @include background-color('alternative');
       @include color('primary');
     }
-    .stepper-item-label {
-      @include color('alternative');
-    }
+    // .stepper-item-label:not(.toValidate) {
+    //   @include color('alternative');
+    // }
   }
 }

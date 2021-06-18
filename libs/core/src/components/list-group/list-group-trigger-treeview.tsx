@@ -11,6 +11,7 @@ export const ListGroupTriggerTreeview = (
       slot="start"
       class="treeview-icon"
       color="standard"
+      size="micro"
       onClick={e => {
         e.preventDefault();
         e.stopPropagation();

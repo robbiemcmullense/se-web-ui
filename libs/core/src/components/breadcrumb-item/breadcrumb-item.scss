@@ -41,6 +41,7 @@ a {
 
 se-icon {
   cursor: default;
+  margin: 0 $spacing-small;
   &:active,
   &:focus {
     color: inherit;

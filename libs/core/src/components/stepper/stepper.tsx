@@ -181,7 +181,10 @@ export class StepperComponent {
                : itemStep
               }
             </span>
-            <span class="stepper-item-label">{item.label}</span>
+            <span class={{
+                "stepper-item-label" : true,
+                "toValidate": !item.validated && item.active
+              }}>{item.label}</span>
           </TagType>
           {itemStep !== this.stepperItems.length ? (
             <se-divider class={{ block: this.block }}></se-divider>

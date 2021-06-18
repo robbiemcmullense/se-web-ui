@@ -167,6 +167,7 @@ export class FiltrationSmartFacet {
                 <se-icon
                   color="standard"
                   icon-only
+                  size="micro"
                   slot="end"
                   rotate={!this.isExpanded && '180'}
                   innerHTML={arrow2Up}

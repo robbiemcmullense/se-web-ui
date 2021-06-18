@@ -62,6 +62,7 @@ export class FiltrationSmartViewMoreSectionsButton {
         <div class="view-more-facets-button__body">
           {this.isAllFacetsVisible ? this.viewLessLabel : this.viewMoreLabel}
           <se-icon
+            size="micro"
             class={{
               'view-more-facets-button__arrow': true,
               'view-more-facets-button__arrow--up': this.isAllFacetsVisible,

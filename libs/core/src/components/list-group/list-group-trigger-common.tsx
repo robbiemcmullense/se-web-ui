@@ -13,6 +13,7 @@ export const ListGroupTriggerCommon = (
       <se-icon
         slot="end"
         color="standard"
+        size="micro"
         rotate={props.collapsed ? 180 : 0}
       >
         <span innerHTML={arrow2Up} />
