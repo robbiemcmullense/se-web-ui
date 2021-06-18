@@ -55,7 +55,7 @@ export class FiltrationSmartMobileViewTrigger {
           color="standard"
           innerHTML={arrow2Right}
         >
-          
+
         </se-icon>
       </button>
     );

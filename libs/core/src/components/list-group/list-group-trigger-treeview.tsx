@@ -17,8 +17,8 @@ export const ListGroupTriggerTreeview = (
         props.toggleCollapseTreeview();
       }}
       rotate={props.collapsed ? 90 : 180}
+      innerHTML={arrow2Up}
     >
-      <span innerHTML={arrow2Up} />
     </se-icon>
 
     {children}

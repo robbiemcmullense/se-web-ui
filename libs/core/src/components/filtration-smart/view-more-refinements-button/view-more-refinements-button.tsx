@@ -73,7 +73,7 @@ export class FiltrationSmartViewMoreRefinementsButton {
               'view-more-refinements-button__arrow--down': this
                 .isAllRefinementsVisible,
             }}
-            rotate={!this.isAllRefinementsVisible && "180"}
+            rotate={!this.isAllRefinementsVisible && '180'}
             innerHTML={arrow2Up}
           />
         </div>

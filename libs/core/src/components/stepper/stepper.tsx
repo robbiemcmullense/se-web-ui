@@ -173,8 +173,8 @@ export class StepperComponent {
               this.selectStep(item);
             }}
           >
-            <span class='indicator'>
-              {item.validated && !item.active ? 
+            <span class="indicator">
+              {item.validated && !item.active ?
                 <se-icon>
                   <span innerHTML={notification_ok}></span>
                 </se-icon>

@@ -67,7 +67,7 @@ export class FiltrationSmartViewMoreSectionsButton {
               'view-more-facets-button__arrow--up': this.isAllFacetsVisible,
               'view-more-facets-button__arrow--down': !this.isAllFacetsVisible,
             }}
-            rotate={!this.isAllFacetsVisible && "180"}
+            rotate={!this.isAllFacetsVisible && '180'}
             innerHTML={arrow2Up}
           />
 

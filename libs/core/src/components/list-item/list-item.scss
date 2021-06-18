@@ -6,8 +6,11 @@
   overflow: none;
   position: relative;
   width: -webkit-fill-available;
+  display: flex;
 
-  gap: $spacing-medium;
+  // Safari don't support gap. As of now, we cannot find out if gap is supported of not by browsers
+  // https://ishadeed.com/article/flexbox-gap/
+  // gap: $spacing-medium;
 
   max-width: 100%;
   min-width: 100%;
@@ -26,7 +29,6 @@
 
   border-bottom: var(--se-list-item-border-bottom);
   box-sizing: border-box;
-  @include display-flex();
   @include align-items(center);
 
   text-align: start;
@@ -64,6 +66,19 @@
     }
   }
 }
+
+slot[name=start]::slotted(*), 
+.content{
+  margin-right: $spacing-medium;
+}
+
+slot[name=icon]::slotted(*),
+se-icon:not(.last){ /* slot1 itself - YES */
+  margin-right: $spacing;
+} 
+
+
+
 
 .selectedBar {
   position: absolute;

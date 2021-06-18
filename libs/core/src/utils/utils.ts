@@ -96,6 +96,7 @@ export function isTouchDevice() {
 }
 export function classNames(obj) {
   return Object.entries(obj)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .filter(([_, isTruthy]) => isTruthy)
     .map(([className]) => className)
     .join(' ');

@@ -95,9 +95,8 @@ export class Carousel {
       ? 'medium'
       : 'small';
 
-
     // initialize carousel to the left
-    this.contentEl.scrollLeft = 0
+    this.contentEl.scrollLeft = 0;
   }
 
   calculateWidth() {

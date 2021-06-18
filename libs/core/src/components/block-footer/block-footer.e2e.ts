@@ -15,7 +15,6 @@ describe('BlockFooterComponent', () => {
     expect(hostElement).toHaveClass('hydrated');
   });
 
-
   it('should render with the card class when option is set to card', async () => {
     hostElement.setProperty('option', 'card');
     await page.waitForChanges();

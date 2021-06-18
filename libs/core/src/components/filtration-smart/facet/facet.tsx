@@ -168,7 +168,7 @@ export class FiltrationSmartFacet {
                   color="standard"
                   icon-only
                   slot="end"
-                  rotate={!this.isExpanded && "180"}
+                  rotate={!this.isExpanded && '180'}
                   innerHTML={arrow2Up}
                   class="facet__header-icon"
                 />

@@ -28,7 +28,7 @@ export class SidemenuComponent {
   @State() open = false;
   @State() items: HTMLElement[] = [];
   @State() selectedItem?: HTMLElement;
-  @Prop() disabled: boolean = false;
+  @Prop() disabled = false;
   /**
    * When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`.
    * When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`.

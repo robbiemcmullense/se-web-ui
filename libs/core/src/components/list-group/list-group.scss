@@ -1,9 +1,4 @@
 
-:host {
-  @include flex-direction(column);
-  @include display-flex();
-}
-
 se-list-item {
   background-color: var(--se-list-group-background);
   font-weight: var(--se-list-group-font-weight);
@@ -33,8 +28,18 @@ se-list-item {
 }
 
 .treeview-icon {
-  margin: -$spacing-small;
+  margin-right: $spacing-small;
 }
+
+// Safari don't support gap. As of now, we cannot find out if gap is supported of not by browsers
+// https://ishadeed.com/article/flexbox-gap/
+// @supports (not(gap: 1em)) with (display: flex) {
+//   .treeview-icon {
+//     margin-right: $spacing;
+//     margin-left: $spacing;
+//   }
+// }
+
 .list-group-trigger {
   font-weight: var(--se-list-item-group-trigger-font-weight);
 }

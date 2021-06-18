@@ -67,7 +67,7 @@ export class PaginationComponent {
    * Event emitted when the selected page or the number of item per page changed.
    * Return `{value: number; perPage: number;}`.
    */
-  @Event({bubbles:false, eventName: 'didChange' }) eventEmitter: EventEmitter<PageEvent>;
+  @Event({ bubbles: false, eventName: 'didChange' }) eventEmitter: EventEmitter<PageEvent>;
 
   componentDidLoad() {
     if (this.total === null) {

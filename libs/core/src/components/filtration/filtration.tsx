@@ -180,8 +180,8 @@ export class FiltrationComponent {
           margin={this.isMobile ? 'none' : this.shadow ? 'medium' : 'small'}
           option={this.shadow && !this.isMobile ? 'card-old' : 'card'}
         >
-          <se-block-header 
-            divider               
+          <se-block-header
+            divider
             onClick={() => this.setExpanded()}
           >
             <h5>
@@ -242,8 +242,8 @@ export class FiltrationComponent {
                     {this.isViewMore
                       ? this.labelViewLess
                       : `${this.labelViewMore} (${nbItems - this.minItems})`}
-                    <se-icon 
-                      rotate={!this.isViewMore && "180"}
+                    <se-icon
+                      rotate={!this.isViewMore && '180'}
                       innerHTML={arrow2Up}
                       >
                     </se-icon>

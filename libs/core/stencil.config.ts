@@ -15,6 +15,7 @@ import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import postcssRTLCSS from 'postcss-rtlcss';
 import postcssHostPolyfill from '@se/postcss-host-polyfill';
+import flexGapPolyfill from 'flex-gap-polyfill';
 
 import {
   angularOutputTarget,
@@ -119,7 +120,7 @@ export const config: Config = {
       plugins: [
         autoprefixer({ grid: 'no-autoplace' }),
         postcssRTLCSS(RTL_PREFIXES),
-        postcssHostPolyfill(RTL_PREFIXES),
+        postcssHostPolyfill(RTL_PREFIXES)
       ],
     }),
   ],
