@@ -29,9 +29,8 @@ export class DialogService {
     canBackdrop: true,
     noBackdrop: false,
     color: 'primary',
-    headerPadding: 'none',
-    contentOption: '',
-    contentPadding: 'none',
+    headerPadding: 'small',
+    contentPadding: 'small',
     size: 'medium',
     data: {},
   };

@@ -24,7 +24,6 @@ interface DialogAction {
 @Component({
   selector: 'se-ng-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent {
   @Output() afterClosed = new EventEmitter();

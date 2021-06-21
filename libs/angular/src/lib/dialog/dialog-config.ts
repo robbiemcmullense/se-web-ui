@@ -39,15 +39,11 @@ export class DialogConfig {
    */
   iconColor?: string;
   /**
-   * @description padding for the dialog header:'none' | 'small'
+   * @description padding for the dialog header:'small' | 'large'
    */
   headerPadding?: string;
   /**
-   * @description option for the dialog content:'fill'
-   */
-  contentOption?: string;
-  /**
-   * @description padding for the dialog content:'none' | 'small'
+   * @description padding for the dialog content:'none' | 'small' | 'large'
    */
   contentPadding?: string;
   /**
