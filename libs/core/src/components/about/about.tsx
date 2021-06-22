@@ -57,7 +57,9 @@ export class AboutComponent {
             <span>{title.first}</span>
             <span class="light">&nbsp;{title.last}</span>
           </h1>
-          <p class="version">Version {this.version}</p>
+          <p class="version">
+            <slot name="version">Version {this.version}</slot>
+          </p>
           <slot name="custom-info"></slot>
           <div class="copyright-info-first">{fullCopyright.first}</div>
           <div class="copyright-info-last">{fullCopyright.last}</div>

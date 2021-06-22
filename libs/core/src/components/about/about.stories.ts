@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/html';
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, boolean } from '@storybook/addon-knobs';
 import readme from './readme.md';
 
 const domainOption = ['ecostruxure', 'MySchneider'];
@@ -11,6 +11,7 @@ storiesOf('About', module).add(
   () => {
     const title = text('app-title', 'My app Advisor');
     const version = text('version', '1.2.3');
+    const useCustomVersion = boolean('custom version', false);
     const domain = select('domain', domainOption, 'ecostruxure');
     const copyright = text('copyright', copyrightText);
     const textHtml = text('custom text', '');
@@ -22,6 +23,7 @@ storiesOf('About', module).add(
         domain="${domain}"
         copyright="${copyright}"
         image-url="url('https://schneider-electric.box.com/shared/static/7hp8f04wj8lclpxn8jonti616lvim3zl.jpg')">
+        ${useCustomVersion ? `<div slot="version">Version number #${version}</div>` : ''}
         <div slot="custom-info">${textHtml}</div>
       </se-about>
   `;

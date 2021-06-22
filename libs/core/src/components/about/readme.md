@@ -1,8 +1,9 @@
 # se-about
 
-| Slot          | Description                                                                                  |
-| ------------- | -------------------------------------------------------------------------------------------- |
-| `custom-info` | A space below the version number for extra information such as user, product reference, etc. |
+| Slot          | Description                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------- |
+| `version`     | Use this slot to dsplay your custom Version label and version number (useful for localization) |
+| `custom-info` | A space below the version number for extra information such as user, product reference, etc.   |
 
 
 <!-- Auto Generated Below -->
