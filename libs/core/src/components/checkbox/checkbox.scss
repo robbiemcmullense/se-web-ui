@@ -86,6 +86,7 @@ input {
 
 .button {
   cursor: pointer;
+  padding-right: 0;
   &:focus {
     @include interactive-element-outline();
   }

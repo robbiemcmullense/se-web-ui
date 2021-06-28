@@ -80,10 +80,6 @@ export class TabbarComponent {
     return color === 'alternative' ? 'nano' : 'medium';
   };
 
-  componentDidRender() {
-    this.displayArrow();
-  }
-
   render() {
     const iconSize = this.getIconSize(this.color);
 
