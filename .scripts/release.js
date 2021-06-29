@@ -32,9 +32,9 @@ function writePkg(project, pkg) {
   return fs.writeFileSync(packageJsonPath, `${text}\n`);
 }
 
-function updatePeerDependency(pkg, dependency, version) {
-  if (pkg.peerDependencies && pkg.peerDependencies[dependency]) {
-    pkg.peerDependencies[dependency] = version;
+function updateDependency(pkg, dependency, version) {
+  if (pkg.dependencies && pkg.dependencies[dependency]) {
+    pkg.dependencies[dependency] = version;
   }
 }
 
@@ -63,7 +63,7 @@ function updatePackageVersions(tasks, libs, version) {
       }: update @se/web-ui@${version} peerDependencies in package.json`,
       task: async () => {
         const pkg = readPkg(lib);
-        updatePeerDependency(pkg, '@se/web-ui', version);
+        updateDependency(pkg, '@se/web-ui', version);
         writePkg(lib, pkg);
       },
     });

@@ -347,6 +347,10 @@ export namespace Components {
          */
         "labelSuffix": string;
         /**
+          * Defines the name of the checkbox.
+         */
+        "name": string;
+        /**
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option": Option;
@@ -2431,6 +2435,10 @@ declare namespace LocalJSX {
           * Sets suffix of the label shown with semi-transparent text just after the label.
          */
         "labelSuffix"?: string;
+        /**
+          * Defines the name of the checkbox.
+         */
+        "name"?: string;
         /**
           * Send the checkbox value to the parent component when clicking on the checkbox.
          */

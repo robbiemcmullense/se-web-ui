@@ -307,14 +307,14 @@ export class SeCarouselPagination {
 import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
 export type SeCheckbox = Components.SeCheckbox
 @ProxyCmp({
-  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
+  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'name', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
   methods: ['setRequired']
 })
 @Component({
   selector: 'se-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
+  inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'name', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
   outputs: ['didChange']
 })
 export class SeCheckbox {

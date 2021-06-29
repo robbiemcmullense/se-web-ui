@@ -9,6 +9,11 @@ import { RadioValueAccessor } from './radio-value-accessor';
 import { SelectValueAccessor } from './select-value-accessor';
 // import { TextValueAccessor } from './text-value-accessor';
 
+export { BooleanValueAccessor } from './boolean-value-accessor';
+export { NumericValueAccessor } from './number-value-accessor';
+export { RadioValueAccessor } from './radio-value-accessor';
+export { SelectValueAccessor } from './select-value-accessor';
+
 const DECLARATION = [
   ...DIRECTIVES,
   BooleanValueAccessor,

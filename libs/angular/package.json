@@ -17,10 +17,10 @@
   "peerDependencies": {
     "@angular/core": ">8.0.0",
     "@angular/common": ">8.0.0",
-    "@angular/forms": ">8.0.0",
-    "@se/web-ui": "^3.0.0"
+    "@angular/forms": ">8.0.0"
   }, 
   "dependencies": {
+    "@se/web-ui": "^3.0.0",
     "tslib": "^2.0.0"
   }
 }

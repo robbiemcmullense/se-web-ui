@@ -307,6 +307,7 @@ export const SeCheckbox = /*@__PURE__*/ Vue.extend({
 
   props: {
     option: {} as PropOptions<Components.SeCheckbox['option']>,
+    name: {} as PropOptions<Components.SeCheckbox['name']>,
     value: {} as PropOptions<Components.SeCheckbox['value']>,
     label: {} as PropOptions<Components.SeCheckbox['label']>,
     labelSuffix: {} as PropOptions<Components.SeCheckbox['labelSuffix']>,

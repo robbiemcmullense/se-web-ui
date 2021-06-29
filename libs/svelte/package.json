@@ -17,7 +17,9 @@
     "ts-jest": "^26.2.0"
   },
   "peerDependencies": {
-    "svelte": "^3.24.1",
+    "svelte": "^3.24.1"
+  },
+  "dependencies": {
     "@se/web-ui": "^3.0.0"
   }
 }

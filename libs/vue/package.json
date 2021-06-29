@@ -13,8 +13,10 @@
     "test": "cd ../.. && yarn test vue"
   },
   "peerDependencies": {
-    "@se/web-ui": "^3.0.0",
     "vue": "^2.6.11"
+  },
+  "dependencies": {
+    "@se/web-ui": "^3.0.0"
   },
   "publishConfig": {
     "registry": "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/"

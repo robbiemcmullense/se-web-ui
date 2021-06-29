@@ -8,6 +8,7 @@ let __mounted = false;
 const dispatch = createEventDispatcher();
 
 export let option = undefined;
+export let name = undefined;
 export let value = undefined;
 export let label = undefined;
 export let labelSuffix = undefined;
@@ -42,6 +43,7 @@ const onEvent = (e) => {
 
 <se-checkbox 
   option={option}
+  name={name}
   value={value}
   label={label}
   label-suffix={labelSuffix}
