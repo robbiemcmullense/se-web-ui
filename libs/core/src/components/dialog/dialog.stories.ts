@@ -44,7 +44,7 @@ storiesOf('Dialog', module).add(
   'Dialog',
   () => {
     const size = select('size', sizeOptions, 'medium', configurationGroup);
-    const canBackdrop = boolean('can backdrop', true, configurationGroup);
+    const noBackdrop = boolean('no backdrop', false, configurationGroup);
     const pageScroll = boolean('pageScroll', false, configurationGroup);
     const open = boolean('open', true, configurationGroup);
 
@@ -88,7 +88,7 @@ storiesOf('Dialog', module).add(
     );
 
     return `
-      <se-dialog open=${open} can-backdrop="${canBackdrop}" page-scroll="${pageScroll}" size="${size}">
+      <se-dialog open=${open} no-backdrop="${noBackdrop}" page-scroll="${pageScroll}" size="${size}">
         <se-dialog-header
           color="${headerColor}"
           padding="${headerPadding}"

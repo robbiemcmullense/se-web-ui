@@ -23,7 +23,8 @@
   @include display-flex();
   @include justify-content(center);
   position: relative;
-  margin: 0 auto;
+  margin: auto;
+  max-width: 100%;
 
   &.scroll-content {
     height: 100%;
@@ -49,7 +50,7 @@
     }
 
     .xlarge & {
-      max-width: 1100px;
+      width: 1100px;
     }
   }
 
@@ -59,6 +60,7 @@
 }
 
 .dialog-wrapper {
+  @include display-flex();
   position: fixed !important;
   z-index: $zindex-modal;
   @include absolute();
@@ -73,9 +75,9 @@
     animation-name: fadeOut;
   }
 }
+
 .dialog-body {
   width: 100%;
-  min-height: 100vh;
   @include display-flex();
   @include justify-content(center);
   @include flex-direction(column);
