@@ -46,17 +46,18 @@ export class TabbarComponent {
       this.ro.observe(this.navbar);
     }
 
-    this.navbar.addEventListener('scroll', () => this.displayArrow());
+    this.navbar.addEventListener('scroll', this.displayArrow);
   }
 
   disconnectedCallback() {
     if (this.ro) {
       this.ro.disconnect();
     }
-    this.navbar.removeEventListener('scroll', () => this.displayArrow());
+
+    this.navbar.removeEventListener('scroll', this.displayArrow);
   }
 
-  displayArrow() {
+  displayArrow = (): void => {
     if (this.navbar) {
       const { offsetWidth, scrollWidth, scrollLeft } = this.navbar;
       const showArrow = offsetWidth < scrollWidth;
@@ -94,16 +95,14 @@ export class TabbarComponent {
         <div class="nav-left-wrapper centered">
           <slot name="start" />
         </div>
-        {this.showLeftArrow && (
-          <span
-            class={{ arrow: true, arrowLeft: true }}
-            onClick={() => this.scroll(-1)}
-          >
+        <span
+          class={{ arrow: true, arrowLeft: true, hidden: !this.showLeftArrow }}
+          onClick={() => this.scroll(-1)}
+        >
             <se-icon size={iconSize} mirror="horizontal">
               <span innerHTML={arrow5Step}></span>
             </se-icon>
           </span>
-        )}
         <div
           ref={el => (this.navbar = el)}
           class={{
@@ -115,16 +114,14 @@ export class TabbarComponent {
         >
           <slot />
         </div>
-        {this.showRightArrow && (
-          <span
-            class={{ arrow: true, arrowRight: true }}
-            onClick={() => this.scroll(1)}
-          >
+        <span
+          class={{ arrow: true, arrowRight: true, hidden: !this.showRightArrow }}
+          onClick={() => this.scroll(1)}
+        >
             <se-icon size={iconSize}>
               <span innerHTML={arrow5Step}></span>
             </se-icon>
           </span>
-        )}
         <div
           class={{
             [`tab-end-${this.color}`]: !!this.color,

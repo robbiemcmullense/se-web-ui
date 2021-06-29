@@ -24,6 +24,7 @@ se-tabbar {
     display: flex;
     @include flex-direction(row);
     width: 100%;
+    position: relative;
   }
 
   .arrow {
@@ -31,17 +32,25 @@ se-tabbar {
     background-color: rgb(190 190 190 / 40%);
     z-index: 1;
     padding-top: 6px;
-  }
+    position: absolute;
+    top: 0;
+    bottom: 0;
 
-  .arrowLeft {
-    /*rtl:begin:ignore*/
-    margin-right: -32px;
-  }
+    &.hidden {
+      display: none;
+    }
 
-  .arrowRight {
-    /*rtl:begin:ignore*/
-    margin-left: -32px;
-    /*rtl:end:ignore*/
+    &.arrowLeft {
+      /*rtl:begin:ignore*/
+      left: 0;
+      /*rtl:end:ignore*/
+    }
+
+    &.arrowRight {
+      /*rtl:begin:ignore*/
+      right: 0;
+      /*rtl:end:ignore*/
+    }
   }
 
   .fill-space {
