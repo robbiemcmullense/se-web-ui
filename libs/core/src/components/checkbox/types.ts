@@ -7,6 +7,7 @@ export type Option = typeof option[keyof typeof option];
 export interface CommonProps {
   option: Option;
   label: string;
+  name: string;
   labelPos: string;
   labelSuffix: string;
   required: boolean;

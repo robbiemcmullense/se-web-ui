@@ -18,6 +18,7 @@ export const CheckboxCommon: FunctionalComponent<Props> = props => {
     labelSuffix,
     required,
     color,
+    name,
     disabled,
     indeterminate,
     selected,
@@ -54,6 +55,7 @@ export const CheckboxCommon: FunctionalComponent<Props> = props => {
         <input
           type="checkbox"
           tabIndex={-1}
+          name={name}
           checked={selected}
           disabled={disabled}
           indeterminate={indeterminate}

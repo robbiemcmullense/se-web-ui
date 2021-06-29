@@ -32,6 +32,11 @@ export class CheckboxComponent {
   @Prop({ mutable: true }) option: Option = option.CHECKBOX;
 
   /**
+   * Defines the name of the checkbox.
+   */
+  @Prop() name: string;
+  
+  /**
    * The value you want to pass to the parent component when the checkbox is checked.
    */
   @Prop() value: string;
@@ -175,6 +180,7 @@ export class CheckboxComponent {
       required: this.required,
       disabled: this.disabled,
       selected: this.selected,
+      name: this.name,
       header: this.header,
       padding: this.padding,
       size: this.size,
