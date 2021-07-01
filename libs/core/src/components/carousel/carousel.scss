@@ -18,7 +18,7 @@
   z-index: 1;
 }
 
-:host(.arrows-overlay.left-hidden) {
+:host(.arrows-overlay.left-overlay) {
   &::before {
     @include carousel-overlay;
     left: 0;
@@ -30,7 +30,7 @@
   }
 }
 
-:host(.arrows-overlay.right-hidden) {
+:host(.arrows-overlay.right-overlay) {
   &::after {
     @include carousel-overlay;
     right: 0;

@@ -1,15 +1,74 @@
+$root-paddings: (
+  small: $spacing-small,
+  medium: $spacing,
+  large: $spacing-large,
+);
+
 :host {
   @include align-items(center);
-  display: block;
-  padding: $spacing-small;
-  cursor: pointer;
+  display: flex;
 }
 
-:host(.p-medium) {
-  padding: $spacing;
+@each $p-name, $p-value in $root-paddings {
+  :host(.p-#{$p-name}) {
+    padding: $p-value;
+  }
 }
-:host(.p-large) {
-  padding: $spacing-large;
+
+input {
+  @include visually-hidden();
+}
+
+.radio-label {
+  @include display-flex();
+  @include align-items(flex-start);
+  @include typology("small");
+  position: relative;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+
+  input {
+    @include visually-hidden();
+  }
+
+  &.label-left .checkdot {
+    left: auto;
+  }
+
+  &[data-disabled] {
+    .checkdot {
+      opacity: 0.5;
+    }
+  }
+}
+
+.label-wrap {
+  // font-weight: 400;
+  @include ellipsis();
+  white-space: break-spaces;
+  word-break: break-word;
+  line-height: 20px;
+
+  .label-left & {
+    margin-right: $spacing;
+  }
+
+  .label-right & {
+    margin-left: $spacing;
+  }
+}
+
+.label-right {
+  flex-flow: row-reverse;
+  justify-content: flex-end;
+}
+
+.container {
+  position: relative;
 }
 
 button {
@@ -22,10 +81,6 @@ button {
   // background: transparent;
   // text-decoration: none;
   /* inherit font & color from ancestor */
-
-  position: absolute;
-  top: 0;
-  left: -8px;
   height: 16px;
   width: 16px;
   @include background-color("background-alternative");
@@ -55,33 +110,4 @@ button {
 .required {
   @include color("error");
   padding-left: 3px;
-}
-.radio-label {
-  @include typology("small");
-  padding-left: 6px;
-  line-height: 20px;
-  position: relative;
-  padding-left: $spacing-large;
-  margin: 0;
-  margin-left: $spacing;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  input {
-    @include visually-hidden();
-  }
-
-  &.label-left {
-    padding-left: 0;
-    margin: 0;
-    .checkdot {
-      left: auto;
-    }
-  }
-  &[data-disabled] {
-    .checkdot {
-      opacity: 0.5;
-    }
-  }
 }
