@@ -93,35 +93,41 @@ export class RadioComponent {
 
     return (
       <Host class={{ [`p-${this.padding}`]: !!this.padding }}>
-        <div
+        <label
           role="radio"
           aria-disabled={this.disabled ? 'true' : null}
           aria-checked={`${this.selected}`}
           aria-label={this.label}
           aria-required={this.required}
           class={{
-            [`disabled`]: this.disabled,
             [`label-${this.labelPos}`]: !!this.labelPos,
+            [`disabled`]: this.disabled,
             'radio-label': true,
           }}
           data-disabled={this.disabled ? true : null}
           onClick={() => this.handleClick()}
         >
-          {this.label}
-          {this.required ? <span class="required">*</span> : ''}
-          <input
-            type="radio"
-            tabindex="-1"
-            name={this.name}
-            checked={this.selected}
-            disabled={this.disabled ? true : null}
-            id={id ? `wc-${id}` : ''}
-          />
-          <button
-            class={{ [this.color]: !!this.color, checked: this.selected }}
-            disabled={this.disabled ? true : null}
-          ></button>
-        </div>
+          {this.label && (
+            <span class="label-wrap">
+              {this.label}
+              {this.required ? <span class="required">*</span> : ''}
+            </span>
+          )}
+          <span class="container">
+            <input
+              type="radio"
+              tabindex="-1"
+              name={this.name}
+              checked={this.selected}
+              disabled={this.disabled ? true : null}
+              id={id ? `wc-${id}` : ''}
+            />
+            <button
+              class={{ [this.color]: !!this.color, checked: this.selected }}
+              disabled={this.disabled ? true : null}
+            ></button>
+          </span>
+        </label>
       </Host>
     );
   }
