@@ -91,8 +91,12 @@ export class FiltrationSmartMobileView {
   render(): HTMLElement {
     return (
       <section class="filter">
-        <se-dialog open={this.isVisible} size="fill" color="alternative">
-          <se-dialog-header closeIcon class="filter__header">
+        <se-dialog open={this.isVisible} size="fill">
+          <se-dialog-header
+            closeIcon
+            class="filter__header"
+            color="alternative"
+          >
             <h2 class="filter__title">{this.headerLabel}</h2>
           </se-dialog-header>
 

@@ -230,8 +230,8 @@ export class Carousel {
       <Host
         class={classNames({
           'arrows-overlay': this.arrowsOverlay,
-          'left-hidden': this.showLeftArrow,
-          'right-hidden': this.showRightArrow,
+          'left-overlay': !this.showRightArrow,
+          'right-overlay': !this.showLeftArrow,
           'has-pagination': this.pagination,
         })}
       >
