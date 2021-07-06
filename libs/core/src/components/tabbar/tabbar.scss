@@ -307,7 +307,9 @@ se-tabbar {
         line-height: 40px;
         &:not([disabled]):hover,
         &:not(.disabled):hover &.active {
-          @include color("primary");
+          @media (hover: hover) {
+            @include color("primary");
+          }
         }
         &:after {
           bottom: 0;
@@ -315,8 +317,10 @@ se-tabbar {
         }
         &:hover:not([disabled]):after,
         &:hover:not(.disabled):after {
-          @include background-color("primary");
-          height: 4px;
+          @media (hover: hover) {
+            @include background-color("primary");
+            height: 4px;
+          }
         }
       }
     }
@@ -347,8 +351,10 @@ se-tabbar {
       }
       &:not([disabled]):hover,
       &:not(.disabled):hover {
-        @include color("background-standard-contrast");
-        @include background-color("background-standard");
+        @media (hover: hover) {
+          @include color("background-standard-contrast");
+          @include background-color("background-standard");
+        }
       }
       &:after {
         display: none;
@@ -370,7 +376,9 @@ se-tabbar {
           height: 2px;
         }
         &:hover {
-          color: inherit;
+          @media (hover: hover) {
+            color: inherit;
+          }
           &:after {
             @include background-color("primary");
           }
@@ -394,11 +402,13 @@ se-tabbar {
     }
     &:not([disabled]):hover,
     &:not(.disabled):hover &.active {
-      /*rtl:begin:ignore*/
-      text-shadow:  -0.05ex 0 var(--se-background-alternative-contrast), 0.05ex 0 var(--se-background-alternative-contrast) ;
-      /*rtl:end:ignore*/
-      @include color("background-alternative-contrast");
-      @include background-color("background-standard");
+      @media (hover: hover) {
+        /*rtl:begin:ignore*/
+        text-shadow:  -0.05ex 0 var(--se-background-alternative-contrast), 0.05ex 0 var(--se-background-alternative-contrast) ;
+        /*rtl:end:ignore*/
+        @include color("background-alternative-contrast");
+        @include background-color("background-standard");
+      }
     }
 
     &:hover:not([disabled]):after,
@@ -459,7 +469,9 @@ se-tabbar {
       }
       &:not([disabled]):hover,
       &:not(.disabled):hover {
-        @include background-color("background-alternative");
+        @media (hover: hover) {
+          @include background-color("background-alternative");
+        }
       }
     }
   }
