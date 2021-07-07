@@ -16,16 +16,7 @@
   overflow: hidden;
   padding: 0;
   box-shadow: 0 1px 1px 1px #c2c2c2;
-}
-/* Anything but mobile */
-@media only screen and (min-width: 600px) {
-  .content-wrapper {
-    margin: 18px auto;
-    max-width: 960px;
-    // Fixes #332
-    min-height: 575px;
-    height: auto;
-  }
+  
 }
 
 .header-title {
@@ -156,5 +147,28 @@ footer {
 @media only screen and (min-width: 600px) {
   .footer-logo {
     margin-right: 25px;
+  }
+  .content-wrapper {
+    margin: 18px auto;
+    max-width: 960px;
+    // Fixes #332
+    min-height: 575px;
+    height: auto;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .information{
+    padding: 32px;
+  }
+  .login-container{
+    flex-direction: column;
+  }
+  footer{
+    flex-direction: column;
+  }
+  .form{
+    padding: 0px 32px 32px;
+    margin: auto;
   }
 }

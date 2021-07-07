@@ -59,7 +59,7 @@ export class AuthenticationComponent {
           <div class="information">
             {domain}
             <h1 class="header-title">
-              <span>{title.first}</span>
+              {title.first}
               <span class="light">&nbsp;{title.last}</span>
             </h1>
             <p class="version">version {this.version}</p>
