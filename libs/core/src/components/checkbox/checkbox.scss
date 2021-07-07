@@ -73,7 +73,7 @@ input {
   align-items: center;
   cursor: pointer;
   &.disabled {
-    cursor: default;
+    cursor: inherit;
   }
 
   &:not(.opt-checkbox),
@@ -91,7 +91,7 @@ input {
     @include interactive-element-outline();
   }
   &.disabled {
-    cursor: default;
+    cursor: inherit;
   }
 }
 

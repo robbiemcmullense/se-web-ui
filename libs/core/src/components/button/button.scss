@@ -145,7 +145,7 @@ button {
   }
 
   &[disabled] {
-    cursor: default;
+    cursor: inherit;
     opacity: 0.5;
   }
 

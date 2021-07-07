@@ -34,10 +34,10 @@ button {
   width: 24px;
   height: 24px;
   border-radius: 100%;
-  border: 2px solid transparent;
-
-  @include color('alternative');
-  @include background-color('standard-hover');
+  border: 1px solid;
+  background-color: transparent;
+  @include color('standard');
+  @include border-color('standard');
 }
 
 // Align checkmark on MS Edge browser.
@@ -61,7 +61,7 @@ button {
   white-space: nowrap;
   cursor: pointer;
   &.readonly {
-    cursor: default;
+    cursor: inherit;
   }
   &.disabled {
     pointer-events: none;
@@ -70,9 +70,9 @@ button {
 
 .stepper-item-label {
   display: inline;
-  @include color('standard-hover');
+  @include color('standard');
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 19px;
   margin: 0 $spacing;
 }
@@ -90,10 +90,18 @@ se-divider {
   .selected {
     .indicator {
       @include background-color('primary');
+      @include border-color('primary');
+      @include color('background-alternative');
+
       &.active {
-        @include background-color('standard-hover');
-        @include border-color('primary');
+        @include color('background-alternative-contrast');
+        background-color: transparent;
+        @include border-color('primary');        
+        border-width: 2px;
       }
+    }
+    .stepper-item-label {    
+      @include color('background-alternative-contrast');
     }
   }
 }
@@ -103,12 +111,17 @@ se-divider {
     .indicator {
       @include background-color('alternative');
       @include color('primary');
+      @include border-color('alternative');
+
       &.active {
-        @include color('alternative');
-        @include background-color('standard-hover');
+        @include color('background-alternative-contrast');
+        background-color: transparent;
         @include border-color('alternative');
-        border: 2px solid;
+        border-width: 2px;
       }
+    }
+    .stepper-item-label {    
+      @include color('background-alternative-contrast');
     }
   }
 }

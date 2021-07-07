@@ -99,10 +99,10 @@ export class TabbarComponent {
           class={{ arrow: true, arrowLeft: true, hidden: !this.showLeftArrow }}
           onClick={() => this.scroll(-1)}
         >
-            <se-icon size={iconSize} mirror="horizontal">
-              <span innerHTML={arrow5Step}></span>
-            </se-icon>
-          </span>
+          <se-icon size={iconSize} mirror="horizontal">
+            <span innerHTML={arrow5Step}></span>
+          </se-icon>
+        </span>
         <div
           ref={el => (this.navbar = el)}
           class={{
@@ -118,10 +118,10 @@ export class TabbarComponent {
           class={{ arrow: true, arrowRight: true, hidden: !this.showRightArrow }}
           onClick={() => this.scroll(1)}
         >
-            <se-icon size={iconSize}>
-              <span innerHTML={arrow5Step}></span>
-            </se-icon>
-          </span>
+          <se-icon size={iconSize}>
+            <span innerHTML={arrow5Step}></span>
+          </se-icon>
+        </span>
         <div
           class={{
             [`tab-end-${this.color}`]: !!this.color,

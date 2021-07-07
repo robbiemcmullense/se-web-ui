@@ -13,7 +13,7 @@ storiesOf('Tab Bar', module)
       const color = select('color', colorOptions, 'primary');
       const option = select('option', tabBarOptions, 'content');
       const overflow = select('stack', overflowOptions, 'scroll');
-      const showWithButton = boolean('Show button at the end', false);
+      const showWithButton = boolean('Show button at the end', true);
 
       return `
     <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
@@ -22,6 +22,10 @@ storiesOf('Tab Bar', module)
         <a class="active" title="Analysis">Analysis</a>
         <a title="Report">Report</a>
         <a disabled title="Glossary & Index">Glossary & Index</a>
+        <a title="Notification">Notification</a>
+        <a title="Notification">Notification</a>
+        <a title="Notification">Notification</a>
+        <a title="Notification">Notification</a>
         <a title="Notification">Notification</a>
         <a title="Notification and other stuff">Notification and other stuff</a>
       </nav>
