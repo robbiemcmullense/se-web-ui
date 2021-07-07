@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.21.7",
+  "version": "3.21.8",
   "license": "MIT",
   "private": true,
   "scripts": {
