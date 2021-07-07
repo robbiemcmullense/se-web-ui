@@ -45,12 +45,12 @@
   color: $se-white;
   font-weight: bold;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 20px;
 }
 
 .mobile-view-trigger__arrow {
   margin-left: auto;
-  font-size: 46px;
   opacity: 0.5;
   /*rtl:raw: 
   transform: scaleX(-1);   
