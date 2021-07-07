@@ -24,7 +24,6 @@ se-tabbar {
     display: flex;
     @include flex-direction(row);
     width: 100%;
-    position: relative;
   }
 
   .arrow {
