@@ -155,8 +155,8 @@ export class FiltrationSmartFacet {
                             }}
                           >
                             {label}
+                            {index !== input.length - 1 && ', '}
                           </span>
-                          {index !== input.length - 1 && ', '}
                         </Fragment>
                       )
                     )}

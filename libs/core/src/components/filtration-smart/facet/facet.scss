@@ -1,4 +1,4 @@
-@import "../../../theme/mixin";
+@import '../../../theme/mixin';
 
 :host {
   display: block;
@@ -34,18 +34,16 @@
 }
 
 .facet__labels {
+  @include ellipsis(2);
   max-height: 40px;
   overflow: hidden;
   font-size: 14px;
   line-height: 20px;
+  color: $se-life-green;
 }
 
-.facet__label {
-  color: $se-life-green;
-
-  &--disabled {
-    color: $se-medium-grey;
-  }
+.facet__label--disabled {
+  color: $se-medium-grey;
 }
 
 .facet__list {
