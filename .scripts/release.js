@@ -60,7 +60,7 @@ function updatePackageVersions(tasks, libs, version) {
     tasks.push({
       title: `${
         lib.split('/').reverse()[0]
-      }: update @se/web-ui@${version} peerDependencies in package.json`,
+      }: update @se/web-ui@${version} dependencies in package.json`,
       task: async () => {
         const pkg = readPkg(lib);
         updateDependency(pkg, '@se/web-ui', version);
@@ -78,7 +78,7 @@ function publishLibs(tasks, libs, tag = 'latest') {
     tasks.push({
       title: `${lib.split('/').reverse()[0]}: publish to ${tag} tag`,
       task: async () => {
-        await execa('npm', ['publish', '--tag', tag], { cwd: projectRoot });
+        await execa('yarn', ['publish', '--tag', tag], { cwd: projectRoot });
       },
     });
   });

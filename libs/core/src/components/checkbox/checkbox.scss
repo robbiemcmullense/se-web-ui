@@ -306,6 +306,7 @@ input {
 }
 
 .opt-onoff {
+
   .on-off-wrapper {
     display: inline-flex;
     border: 1px solid;
@@ -315,7 +316,7 @@ input {
   .button {
     @include color("background-alternative-contrast");
     @include background-color("background-alternative");
-    padding: 6px 8px;
+    padding: 6px 8px !important;
     border: none;
     height: 32px;
     font-size: 14px;

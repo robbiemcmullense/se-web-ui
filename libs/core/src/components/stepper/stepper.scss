@@ -34,6 +34,8 @@ button {
   width: 24px;
   height: 24px;
   border-radius: 100%;
+  border: 2px solid transparent;
+
   @include color('alternative');
   @include background-color('standard-hover');
 }
@@ -88,10 +90,11 @@ se-divider {
   .selected {
     .indicator {
       @include background-color('primary');
-     }
-    //  .stepper-item-label:not(.toValidate) {
-    //    @include color('focus');
-    //  }
+      &.active {
+        @include background-color('standard-hover');
+        @include border-color('primary');
+      }
+    }
   }
 }
 
@@ -100,9 +103,12 @@ se-divider {
     .indicator {
       @include background-color('alternative');
       @include color('primary');
+      &.active {
+        @include color('alternative');
+        @include background-color('standard-hover');
+        @include border-color('alternative');
+        border: 2px solid;
+      }
     }
-    // .stepper-item-label:not(.toValidate) {
-    //   @include color('alternative');
-    // }
   }
 }
