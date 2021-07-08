@@ -26,6 +26,18 @@ se-tabbar {
     width: 100%;
   }
 
+  .nav-center-arrows-wrapper {
+    flex: 1;
+    position: relative;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      height: 0 !important;
+    }
+  }
+
   .arrow {
     cursor: pointer;
     background-color: rgb(190 190 190 / 40%);

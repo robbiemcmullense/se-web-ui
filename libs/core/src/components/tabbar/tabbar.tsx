@@ -95,7 +95,7 @@ export class TabbarComponent {
         <div class="nav-left-wrapper centered">
           <slot name="start" />
         </div>
-        <div class="nav-center-wrapper">
+        <div class="nav-center-arrows-wrapper">
           <span
             class={{ arrow: true, arrowLeft: true, hidden: !this.showLeftArrow }}
             onClick={() => this.scroll(-1)}
