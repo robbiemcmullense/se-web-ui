@@ -176,6 +176,10 @@ export class ButtonComponent {
     }
   }
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   componentWillLoad() {
     this.optionDidChange();
   }

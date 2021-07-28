@@ -66,7 +66,7 @@ export class FiltrationSmartCheckbox {
           }}
         >
           <span slot="label" class="checkbox__label">
-            {this.data.label}
+            <span>{this.data.label}</span>
             {this.data.count !== null && this.data.count !== undefined && (
               <Fragment>
                 &nbsp;

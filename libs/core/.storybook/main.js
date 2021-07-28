@@ -20,5 +20,6 @@ module.exports = {
       },
     },
     '@storybook/addon-actions',
+    '@pxblue/storybook-rtl-addon/register',
   ],
 };

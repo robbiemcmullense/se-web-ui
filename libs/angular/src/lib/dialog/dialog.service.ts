@@ -1,20 +1,18 @@
 import {
-  Injectable,
-  Injector,
-  InjectionToken,
-  ComponentFactoryResolver,
-  EmbeddedViewRef,
-  ComponentRef,
   ApplicationRef,
+  ComponentFactoryResolver,
+  ComponentRef,
+  EmbeddedViewRef, Inject,
+  Injectable,
+  InjectionToken,
+  Injector,
   Type,
 } from '@angular/core';
 
-import {
-  DialogComponent,
-  DialogModalComponent,
-} from '../dialog/dialog.component';
+import { DialogComponent, DialogModalComponent, } from '../dialog/dialog.component';
 import { DialogConfig } from '../dialog/dialog-config';
 import { ComponentInjector } from '../shared/component-injector';
+import { WEB_MODULE_CONFIG, WebModuleConfig } from '../shared/module-config';
 
 /** Injection token that can be used to access the data that was passed in to a dialog. */
 export const MODAL_DATA = new InjectionToken<any>('ModalData');
@@ -24,7 +22,9 @@ export const MODAL_DATA = new InjectionToken<any>('ModalData');
 })
 export class DialogService {
   closeEvent: any;
-  defaultConfig: DialogConfig = {
+  componentRef: ComponentRef<any>;
+
+  private readonly defaultConfig: DialogConfig = {
     flipConfirmActions: false,
     canBackdrop: true,
     noBackdrop: false,
@@ -34,13 +34,16 @@ export class DialogService {
     size: 'medium',
     data: {},
   };
-  componentRef: ComponentRef<any>;
+  private readonly invertConfirmActions: boolean = false;
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
-    private injector: Injector
-  ) {}
+    private readonly componentFactoryResolver: ComponentFactoryResolver,
+    private readonly appRef: ApplicationRef,
+    private readonly injector: Injector,
+    @Inject(WEB_MODULE_CONFIG) { invertConfirmActions }: WebModuleConfig
+  ) {
+    this.invertConfirmActions = invertConfirmActions;
+  }
 
   /**
    * @description method to create dialog component dynamically
@@ -49,7 +52,7 @@ export class DialogService {
     componentType: Type<any>,
     config: DialogConfig = {}
   ): ComponentRef<any> {
-    const userConf: DialogConfig = { ...this.defaultConfig, ...config };
+    const userConf = this.getDialogconfig(config);
 
     // MODAL_DATA added as DI based on config.data
     const map = new WeakMap<any, any>([[MODAL_DATA, userConf.data]]);
@@ -141,5 +144,13 @@ export class DialogService {
     if (this.closeEvent) {
       this.closeEvent.unsubscribe();
     }
+  }
+
+  private getDialogconfig(config: DialogConfig): DialogConfig {
+    const userConf: DialogConfig = { ...this.defaultConfig, ...config };
+    userConf.flipConfirmActions = this.invertConfirmActions
+      ? !userConf.flipConfirmActions
+      : userConf.flipConfirmActions;
+    return userConf;
   }
 }
