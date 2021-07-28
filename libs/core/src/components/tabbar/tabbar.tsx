@@ -1,7 +1,7 @@
 import { Component, h, Prop, State } from '@stencil/core';
 // import ResizeObserver from 'resize-observer-polyfill';
 
-import arrow5Step from '@se/icons/svg/arrow5_step.svg';
+import arrow3Up from '@se/icons/svg/arrow3_up.svg';
 
 export type TColor = 'primary' | 'alternative';
 
@@ -100,8 +100,8 @@ export class TabbarComponent {
             class={{ arrow: true, arrowLeft: true, hidden: !this.showLeftArrow }}
             onClick={() => this.scroll(-1)}
           >
-            <se-icon size={iconSize} mirror="horizontal">
-              <span innerHTML={arrow5Step}></span>
+            <se-icon size={iconSize} rotate={90} mirror="horizontal">
+              <span innerHTML={arrow3Up}></span>
             </se-icon>
           </span>
           <div
@@ -119,8 +119,8 @@ export class TabbarComponent {
             class={{ arrow: true, arrowRight: true, hidden: !this.showRightArrow }}
             onClick={() => this.scroll(1)}
           >
-            <se-icon size={iconSize}>
-              <span innerHTML={arrow5Step}></span>
+            <se-icon size={iconSize} rotate={90}>
+              <span innerHTML={arrow3Up}></span>
             </se-icon>
           </span>
         </div>
