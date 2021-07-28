@@ -60,6 +60,8 @@ export class AboutComponent {
           <p class="version">
             <slot name="version">Version {this.version}</slot>
           </p>
+        </div>
+        <div class="detail">
           <slot name="custom-info"></slot>
           <div class="copyright-info-first">{fullCopyright.first}</div>
           <div class="copyright-info-last">{fullCopyright.last}</div>

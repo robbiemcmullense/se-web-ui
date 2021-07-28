@@ -192,7 +192,7 @@ input {
 
 .opt-checkbox {
   @each $size-name, $size in $checkbox-sizes {
-    &.size-#{$size-name}:hover .checkmark:not(.checked):not(.indeterminate),
+    &.size-#{$size-name}:hover .checkmark:not(.checked):not(.indeterminate):not(.disabled),
     &.size-#{$size-name} .checkmark:not(.checked):not(.indeterminate):focus {
       &::after {
         width: ($size / 2) - 2;
