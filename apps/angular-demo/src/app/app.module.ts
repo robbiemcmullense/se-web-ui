@@ -17,7 +17,7 @@ import { SharedModule } from './shared';
     FormsModule,
     HttpClientModule,
     TranslateModule.forRoot(),
-    SeWebModule.forRoot(),
+    SeWebModule.forRoot({ invertConfirmActions: false }),
     // ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     CoreModule,
     SharedModule,

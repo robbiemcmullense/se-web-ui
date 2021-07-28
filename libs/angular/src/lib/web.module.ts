@@ -5,6 +5,7 @@ import { SnackbarModule } from './snackbar/snackbar.module';
 import { DialogModule } from './dialog/dialog.module';
 import { PageLoaderModule } from './page-loader/page-loader.module';
 import { ProxiesModule } from './directives/proxies.module';
+import { defaultConfig, WEB_MODULE_CONFIG, WebModuleConfig } from './shared/module-config';
 
 export * from './snackbar/snackbar.service';
 export * from './dialog/dialog.service';
@@ -29,7 +30,8 @@ export * from './page-loader/page-loader.module';
   exports: [ProxiesModule, SnackbarModule, DialogModule, PageLoaderModule],
 })
 export class SeWebModule {
-  static forRoot() {
+  static forRoot(config?: WebModuleConfig) {
+    const webModuleConfig: WebModuleConfig = { ...defaultConfig, ...(config || {}) };
     return {
       ngModule: SeWebModule,
       providers: [
@@ -38,6 +40,7 @@ export class SeWebModule {
           useFactory: appInitialize,
           multi: true,
         },
+        { provide: WEB_MODULE_CONFIG, useValue: webModuleConfig },
       ],
     };
   }
