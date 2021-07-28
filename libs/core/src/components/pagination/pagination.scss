@@ -29,10 +29,29 @@ label {
   font-size: 14px;
 }
 
+/*rtl:begin:ignore*/
+se-form-field[dir="rtl"] {
+  order: 2;
+}
+
+.slash {
+  margin-right: 3px;
+}
+
+:host([dir="rtl"]) .slash {
+  order: 1;
+}
+
+:host([dir="rtl"]) .max-page {
+  margin-right: 8px;
+}
+/*rtl:end:ignore*/
+
 .flexed {
   display: inline-flex;
 }
 
+/*rtl:begin:ignore*/
 .pagination {
   padding: 0 $spacing-small;
   display: flex;
@@ -44,3 +63,4 @@ label {
     margin-left: 12px;
   }
 }
+/*rtl:end:ignore*/

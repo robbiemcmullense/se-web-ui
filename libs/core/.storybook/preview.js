@@ -1,5 +1,7 @@
 import { configure, addDecorator, addParameters } from '@storybook/html';
-// import { addons } from '@storybook/addons';
+import { addons } from '@storybook/addons';
+import { DIR_CHANGE_EVENT } from '@pxblue/storybook-rtl-addon';
+import { FORCE_RE_RENDER } from '@storybook/core-events';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { themes } from '@storybook/theming';
 import { select } from '@storybook/addon-knobs';
@@ -84,4 +86,9 @@ addDecorator(storyFn => {
   app.append(container);
 
   return app;
+});
+
+addons.getChannel().addListener(DIR_CHANGE_EVENT, (dir) => {
+  document.documentElement.setAttribute('dir', dir);
+  addons.getChannel().emit(FORCE_RE_RENDER);
 });
