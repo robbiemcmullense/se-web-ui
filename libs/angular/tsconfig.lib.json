@@ -9,6 +9,7 @@
     "lib": ["dom", "es2018"]
   },
   "angularCompilerOptions": {
+    "strictTemplates": true,
     "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

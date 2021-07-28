@@ -22,7 +22,6 @@ import { SigninComponent } from './signin/signin.component';
   declarations: [
     LoginComponent,
     SigninComponent
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  ]
 })
 export class LoginModule { }

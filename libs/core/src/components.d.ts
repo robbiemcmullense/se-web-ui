@@ -3551,11 +3551,11 @@ declare namespace LocalJSX {
         /**
           * Sends information to the parent component when clicking a custom action button.
          */
-        "onActionClicked"?: (event: CustomEvent<any>) => void;
+        "onActionClicked"?: (event: CustomEvent<void>) => void;
         /**
           * Sends information to the parent component when closing the snackbar.
          */
-        "onDidClose"?: (event: CustomEvent<any>) => void;
+        "onDidClose"?: (event: CustomEvent<void>) => void;
         "open"?: boolean;
         /**
           * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting

@@ -23,10 +23,10 @@
 
 ## Events
 
-| Event           | Description                                                                     | Type               |
-| --------------- | ------------------------------------------------------------------------------- | ------------------ |
-| `actionClicked` | Sends information to the parent component when clicking a custom action button. | `CustomEvent<any>` |
-| `didClose`      | Sends information to the parent component when closing the snackbar.            | `CustomEvent<any>` |
+| Event           | Description                                                                     | Type                |
+| --------------- | ------------------------------------------------------------------------------- | ------------------- |
+| `actionClicked` | Sends information to the parent component when clicking a custom action button. | `CustomEvent<void>` |
+| `didClose`      | Sends information to the parent component when closing the snackbar.            | `CustomEvent<void>` |
 
 
 ## Dependencies

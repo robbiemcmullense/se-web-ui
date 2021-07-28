@@ -7,7 +7,10 @@ import { PageLoaderConfig } from './page-loader-config';
   styleUrls: ['./page-loader.component.scss'],
 })
 export class PageLoaderComponent {
-  constructor(public config: PageLoaderConfig) {}
+  messageTemplate: TemplateRef<any>;
+  constructor(public config: PageLoaderConfig) {
+    this.messageTemplate = config.message as TemplateRef<any>;
+  }
 
   get isMessageTemplate(): boolean {
     return this.config && this.config.message instanceof TemplateRef;

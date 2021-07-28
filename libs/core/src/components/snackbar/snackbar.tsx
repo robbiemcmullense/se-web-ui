@@ -69,11 +69,11 @@ export class SnackbarComponent {
    */
   @Event({
     bubbles: false,
-  }) didClose: EventEmitter;
+  }) didClose!: EventEmitter<void>;
   /**
    * Sends information to the parent component when clicking a custom action button.
    */
-  @Event() actionClicked: EventEmitter;
+  @Event() actionClicked!: EventEmitter<void>;
 
   closeSnackbar() {
     this.open = false;

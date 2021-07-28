@@ -8,7 +8,7 @@
   <ng-container [ngSwitch]="isMessageTemplate">
     <ng-container
       *ngSwitchCase="true"
-      [ngTemplateOutlet]="config.message"
+      [ngTemplateOutlet]="messageTemplate"
     ></ng-container>
     <ng-container
       *ngSwitchDefault
