@@ -57,7 +57,7 @@ storiesOf('Tab Bar', module)
           <a>Overview</a>
           <a class="active" title="Analysis">
             Analysis
-            <se-icon size="medium">arrow2_right</se-icon>
+            <se-icon size="small">arrow2_right</se-icon>
           </a>
           <div class="sub-nav">
             <a class="active" title="Domain">Domain</a>

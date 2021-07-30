@@ -2,6 +2,7 @@ import { Component, h, Prop, State } from '@stencil/core';
 // import ResizeObserver from 'resize-observer-polyfill';
 
 import arrow3Up from '@se/icons/svg/arrow3_up.svg';
+import arrow5Step from '@se/icons/svg/arrow5_step.svg';
 
 export type TColor = 'primary' | 'alternative';
 
@@ -77,12 +78,28 @@ export class TabbarComponent {
     });
   }
 
-  getIconSize = (color: TColor) => {
-    return color === 'alternative' ? 'nano' : 'medium';
+
+  getIconStart = (color: TColor) => {
+    return color === 'alternative' 
+      ? <se-icon size='nano' rotate={90} mirror="horizontal">
+          <span innerHTML={arrow3Up}></span>
+        </se-icon>
+      : <se-icon size='medium' mirror="horizontal">
+        <span innerHTML={arrow5Step}></span>
+      </se-icon>
+  };
+
+  getIconEnd = (color: TColor) => {
+    return color === 'alternative' 
+      ? <se-icon size='nano' rotate={90}>
+          <span innerHTML={arrow3Up}></span>
+        </se-icon>
+      : <se-icon size='medium'>
+        <span innerHTML={arrow5Step}></span>
+      </se-icon>
   };
 
   render() {
-    const iconSize = this.getIconSize(this.color);
 
     return (
       <div
@@ -100,9 +117,7 @@ export class TabbarComponent {
             class={{ arrow: true, arrowLeft: true, hidden: !this.showLeftArrow }}
             onClick={() => this.scroll(-1)}
           >
-            <se-icon size={iconSize} rotate={90} mirror="horizontal">
-              <span innerHTML={arrow3Up}></span>
-            </se-icon>
+            {this.getIconStart(this.color)}
           </span>
           <div
             ref={el => (this.navbar = el)}
@@ -119,9 +134,7 @@ export class TabbarComponent {
             class={{ arrow: true, arrowRight: true, hidden: !this.showRightArrow }}
             onClick={() => this.scroll(1)}
           >
-            <se-icon size={iconSize} rotate={90}>
-              <span innerHTML={arrow3Up}></span>
-            </se-icon>
+            {this.getIconEnd(this.color)}
           </span>
         </div>
         <div
