@@ -78,7 +78,7 @@ export class PaginationComponent {
   @Event({ bubbles: false, eventName: 'didChange' })
   eventEmitter: EventEmitter<PageEvent>;
 
-  @Element() el: HTMLSePaginationElement;
+  @Element() el: HTMLElement;
 
   constructor() {
     this.el.dir = document.documentElement.dir || 'auto';

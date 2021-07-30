@@ -34,7 +34,7 @@ import { refinementStateChangeEvent } from '../../analytics/events';
   shadow: true,
 })
 export class FiltrationSmart {
-  @Element() el: HTMLSeFiltrationSmartElement;
+  @Element() el: HTMLElement;
 
   /**
    * Normalized data for the filter.
