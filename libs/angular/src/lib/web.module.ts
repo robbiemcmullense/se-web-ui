@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { appInitialize } from './initialize';
 import { SnackbarModule } from './snackbar/snackbar.module';
@@ -25,13 +25,10 @@ export * from './page-loader/page-loader.module';
     PageLoaderModule,
     ProxiesModule,
   ],
-  declarations: [],
-  providers: [],
   exports: [ProxiesModule, SnackbarModule, DialogModule, PageLoaderModule],
 })
 export class SeWebModule {
-  static forRoot(config?: WebModuleConfig) {
-    const webModuleConfig: WebModuleConfig = { ...defaultConfig, ...(config || {}) };
+  static forRoot(config?: WebModuleConfig): ModuleWithProviders<SeWebModule> {
     return {
       ngModule: SeWebModule,
       providers: [
@@ -40,7 +37,7 @@ export class SeWebModule {
           useFactory: appInitialize,
           multi: true,
         },
-        { provide: WEB_MODULE_CONFIG, useValue: webModuleConfig },
+        { provide: WEB_MODULE_CONFIG, useValue: { ...defaultConfig, ...(config || {}) } },
       ],
     };
   }
