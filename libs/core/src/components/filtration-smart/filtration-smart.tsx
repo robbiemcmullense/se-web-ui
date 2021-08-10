@@ -106,6 +106,11 @@ export class FiltrationSmart {
    */
   @Event() filterStateChanged: EventEmitter<FilterEmittedState>;
 
+  /**
+   * Event that emits after every filters render.
+   */
+  @Event() seFiltrationSmartDidRender: EventEmitter;
+
   @Listen('refinementStateChanged')
   onRefinementStateChanged(e: CustomEvent<string>) {
     const { detail: refinementId } = e;
@@ -210,6 +215,10 @@ export class FiltrationSmart {
       visibleRefinementsPerFacetCount: this.visibleRefinementsPerFacetCount,
       visibleFacetsCount: this.visibleFacetsCount,
     });
+  }
+
+  componentDidRender(): void {
+    this.seFiltrationSmartDidRender.emit();
   }
 
   render(): HTMLElement {

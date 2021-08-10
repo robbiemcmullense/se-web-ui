@@ -139,6 +139,7 @@ export class FiltrationSmartFacet {
               (isCollapsible || this.isMobile) && this.onBlockHeaderClick
             }
             class="facet__header-button"
+            slot="start"
           >
             <div class="facet__header-button-body">
               <div class="facet__header-labels-wrapper">

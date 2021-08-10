@@ -27,6 +27,8 @@
 }
 
 .facet__name {
+  color: $se-anthracite-grey;
+
   @include for-tablet-and-down {
     font-size: 16px;
     line-height: 25px;

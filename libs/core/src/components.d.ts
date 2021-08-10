@@ -2799,6 +2799,10 @@ declare namespace LocalJSX {
          */
         "onFilterStateChanged"?: (event: CustomEvent<FilterEmittedState>) => void;
         /**
+          * Event that emits after every filters render.
+         */
+        "onSeFiltrationSmartDidRender"?: (event: CustomEvent<any>) => void;
+        /**
           * Defines text that will be used in the "Reset" button.
          */
         "resetButtonLabel": string;

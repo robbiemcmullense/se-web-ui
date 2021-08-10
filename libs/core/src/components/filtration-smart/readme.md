@@ -26,9 +26,10 @@
 
 ## Events
 
-| Event                | Description                               | Type                              |
-| -------------------- | ----------------------------------------- | --------------------------------- |
-| `filterStateChanged` | Event that emits list of checked filters. | `CustomEvent<FilterEmittedState>` |
+| Event                        | Description                                  | Type                              |
+| ---------------------------- | -------------------------------------------- | --------------------------------- |
+| `filterStateChanged`         | Event that emits list of checked filters.    | `CustomEvent<FilterEmittedState>` |
+| `seFiltrationSmartDidRender` | Event that emits after every filters render. | `CustomEvent<any>`                |
 
 
 ## Methods

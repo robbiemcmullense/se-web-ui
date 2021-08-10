@@ -26,19 +26,7 @@
 
   &--checked {
     font-weight: bold;
-  }
-
-  // TODO: remove if IE11 support will be dropped
-  &--ie {
-    @include for-tablet-and-down {
-      // I had to add it to compensate for styles of `.content` of `se-list-item`
-      margin-left: -17px;
-    }
-
-    @include for-desktop-only {
-      // I had to add it to compensate for styles of `.content` of `se-list-item`
-      margin-left: -5px;
-    }
+    color: $se-anthracite-grey;
   }
 }
 

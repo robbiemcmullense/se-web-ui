@@ -9,7 +9,6 @@ import {
 } from '@stencil/core';
 import { FiltrationSmartRefinementData } from '../types';
 import { getRefinementData } from '../store';
-import { isIE11 } from '../../../utils';
 
 @Component({
   tag: 'se-filtration-smart-tab',
@@ -53,7 +52,6 @@ export class FiltrationSmartTab {
           class={{
             tab: true,
             'tab--checked': this.data.isChecked,
-            'tab--ie': isIE11(),
           }}
         >
           {this.data.label}

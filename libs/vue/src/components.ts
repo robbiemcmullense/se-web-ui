@@ -531,7 +531,7 @@ export const SeFiltrationSmart = /*@__PURE__*/ Vue.extend({
     reset: createCommonMethod('reset') as Components.SeFiltrationSmart['reset'],
     setIsFilterChecked: createCommonMethod('setIsFilterChecked') as Components.SeFiltrationSmart['setIsFilterChecked'],
   },
-  render: createCommonRender('se-filtration-smart', ['filterStateChanged']),
+  render: createCommonRender('se-filtration-smart', ['filterStateChanged', 'seFiltrationSmartDidRender']),
 });
 
 
