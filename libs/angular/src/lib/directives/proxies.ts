@@ -585,16 +585,18 @@ export declare interface SeFiltrationSmart extends Components.SeFiltrationSmart 
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['filters', 'headerLabelDesktop', 'headerLabelMobile', 'isMobileViewVisible', 'maxFacetContentHeight', 'resetButtonLabel', 'showProductsLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel', 'visibleFacetsCount', 'visibleRefinementsPerFacetCount'],
-  outputs: ['filterStateChanged']
+  outputs: ['filterStateChanged', 'seFiltrationSmartDidRender']
 })
 export class SeFiltrationSmart {
   /** Event that emits list of checked filters. */
   filterStateChanged!: IFiltrationSmart['filterStateChanged'];
+  /** Event that emits after every filters render. */
+  seFiltrationSmartDidRender!: IFiltrationSmart['seFiltrationSmartDidRender'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['filterStateChanged']);
+    proxyOutputs(this, this.el, ['filterStateChanged', 'seFiltrationSmartDidRender']);
   }
 }
 

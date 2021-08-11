@@ -2,7 +2,21 @@
   box-sizing: border-box;
   overflow: auto;
   position: relative;
+
+  // background color of the container
+  --se-container-color-background: transparent;
+
+  background-color: var(--se-container-color-background);
+  color: var(--se-background-alternative-contrast);
 }
+
+:host(.ct-bg-standard) {
+  --se-container-color-background: var(--se-background-standard);
+}
+:host(.ct-bg-alternative) {
+  --se-container-color-background: var(--se-background-alternative);
+}
+
 :host(.absolute),
 :host([position="absolute"]) {
   @include absolute();
@@ -88,13 +102,4 @@
       max-width: $centered;
     }
   }
-}
-
-:host(.ct-bg-standard) {
-  @include background-color("background-standard");
-  @include color("background-standard-contrast");
-}
-:host(.ct-bg-alternative) {
-  @include color("background-alternative-contrast");
-  @include background-color("background-alternative");
 }

@@ -52,6 +52,7 @@ const onEvent = (e) => {
   is-mobile-view-visible={isMobileViewVisible}
   max-facet-content-height={maxFacetContentHeight}
   on:filterStateChanged={onEvent}
+  on:seFiltrationSmartDidRender={onEvent}
   bind:this={__ref}
 >
   <slot></slot>

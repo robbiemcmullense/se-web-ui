@@ -3,13 +3,22 @@
   @each $element, $value in $seTheme {
     @include define-custom-property($element, $value);
   }
+  --quartz-color-background-shade-0: #EEEEEE;
+  --quartz-color-background-shade-1: #F1F1F1;
+  --quartz-color-background-shade-2: #F7F7F7;
+  --quartz-color-background-shade-3: #FFFFFF;
 }
 
 .se-theme-dark {
   @each $element, $value in $seThemeDark {
     @include define-custom-property($element, $value);
   }
+  --quartz-color-background-shade-0: #111111;
+  --quartz-color-background-shade-1: #1C1E20;
+  --quartz-color-background-shade-2: #293133;
+  --quartz-color-background-shade-3: #434B4D;
 }
+
 
 // Create all classes to use colors as classes
 @each $element

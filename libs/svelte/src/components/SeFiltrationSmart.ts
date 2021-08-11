@@ -50,6 +50,9 @@ interface SeFiltrationSmartEvents {
   
   /** Event that emits list of checked filters. */
   filterStateChanged: Parameters<JSX.SeFiltrationSmart["onFilterStateChanged"]>[0]
+  
+  /** Event that emits after every filters render. */
+  seFiltrationSmartDidRender: Parameters<JSX.SeFiltrationSmart["onSeFiltrationSmartDidRender"]>[0]
 }
 
 interface SeFiltrationSmartSlots {
@@ -67,6 +70,7 @@ import {
 	init,
 	insert,
 	listen,
+	run_all,
 	safe_not_equal,
 	set_custom_element_data,
 	transition_in,
@@ -112,7 +116,11 @@ function create_fragment(ctx) {
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(se_filtration_smart, "filterStateChanged", /*onEvent*/ ctx[13]);
+				dispose = [
+					listen(se_filtration_smart, "filterStateChanged", /*onEvent*/ ctx[13]),
+					listen(se_filtration_smart, "seFiltrationSmartDidRender", /*onEvent*/ ctx[13])
+				];
+
 				mounted = true;
 			}
 		},
@@ -185,7 +193,7 @@ function create_fragment(ctx) {
 			if (default_slot) default_slot.d(detaching);
 			/*se_filtration_smart_binding*/ ctx[21](null);
 			mounted = false;
-			dispose();
+			run_all(dispose);
 		}
 	};
 }

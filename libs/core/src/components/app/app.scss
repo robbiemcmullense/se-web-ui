@@ -28,8 +28,9 @@ se-app {
   }
   @include typology("p");
   // color: $off-black;
-  @include background-color("background-alternative");
-  @include color("background-alternative-contrast");
+  
+  background-color: var(--se-app-color-background, var(--se-background-alternative));
+  color: var(--se-app-color-font, var(--se-background-alternative-contrast));
   // Header Styles
   h1 a,
   h2 a,
@@ -91,7 +92,7 @@ small {
   border: 1px solid;
   @include border-radius(2);
   @include border-color("background-footer");
-  color: $se-anthracite-grey;
+  color: var(--se-background-alternative-contrast);
 }
 
 .flow-text {
