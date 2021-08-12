@@ -8,5 +8,6 @@ export const option = {
   CHECKBOX: 'checkbox',
   ONOFF: 'onoff',
   SWITCH: 'switch',
+  TOGGLE: 'toggle',
   CHECKBOX_FAKE: 'checkbox-fake',
 } as const;

@@ -10,7 +10,6 @@ import {
 import { option, size } from './constants';
 import { CommonProps, Option, Size } from './types';
 import { CheckboxOnOff } from './checkbox-onoff';
-import { CheckboxFake } from './checkbox-fake';
 import { CheckboxCommon } from './checkbox-common';
 
 @Component({
@@ -126,6 +125,11 @@ export class CheckboxComponent {
   @Prop({ mutable: true }) size: Size = size.SMALL;
 
   /**
+   * Defines whether the toggle/switch is interactive or not. Set to `false` by default.
+   */
+  @Prop({ mutable: true }) noInteractive: boolean = false;
+
+  /**
    * Sets the required property on the checkbox element.  Used when the checkbox is within a form field.
    */
   @Method()
@@ -200,20 +204,14 @@ export class CheckboxComponent {
         );
       }
       case option.CHECKBOX_FAKE: {
-        return (
-          <CheckboxFake
-            {...commonProps}
-            value={this.value}
-            color={this.color}
-            indeterminate={this.indeterminate}
-          />
-        );
+        this.noInteractive = true;
       }
       default: {
         return (
           <CheckboxCommon
             {...commonProps}
             id={this.el.getAttribute('id')}
+            noInteractive={this.noInteractive}
             onToggle={this.toggleSelect}
             value={this.value}
             color={this.color}

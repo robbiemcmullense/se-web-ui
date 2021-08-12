@@ -59,11 +59,12 @@ storiesOf('Checkbox', module)
     }
   )
   .add(
-    'Checkbox toggle switch',
+    'Checkbox switch',
     () => {
       const label = text('label', 'This is a standard checkbox.');
       const selected = boolean('selected', true);
       const disabled = boolean('disabled', false);
+      const noInteractive = boolean('noInteractive', false);
       const labelPos = select('label position', labelOption, 'left');
 
       return `
@@ -71,9 +72,36 @@ storiesOf('Checkbox', module)
       option=${option.SWITCH}
       label='${label}'
       selected='${selected}'
+      no-interactive='${noInteractive}'
       disabled='${disabled}'
       label-pos='${labelPos}'></se-checkbox>
     <div id="did-change-message"></div>
+    `;
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Checkbox toggle',
+    () => {
+      const label = text('label', 'This is a standard checkbox.');
+      const selected = boolean('selected', true);
+      const disabled = boolean('disabled', false);
+      const noInteractive = boolean('noInteractive', false);
+      const labelPos = select('label position', labelOption, 'left');
+
+      return `
+    <se-checkbox
+      option=${option.TOGGLE}
+      label='${label}'
+      no-interactive='${noInteractive}'
+      selected='${selected}'
+      disabled='${disabled}'
+      label-pos='${labelPos}'>
+    </se-checkbox>
     `;
     },
     {
