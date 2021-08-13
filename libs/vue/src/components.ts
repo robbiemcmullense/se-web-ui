@@ -322,6 +322,7 @@ export const SeCheckbox = /*@__PURE__*/ Vue.extend({
     padding: {} as PropOptions<Components.SeCheckbox['padding']>,
     labelPos: {} as PropOptions<Components.SeCheckbox['labelPos']>,
     size: {} as PropOptions<Components.SeCheckbox['size']>,
+    noInteractive: {} as PropOptions<Components.SeCheckbox['noInteractive']>,
   },
 
   model: {

@@ -23,6 +23,7 @@ export let header = undefined;
 export let padding = undefined;
 export let labelPos = undefined;
 export let size = undefined;
+export let noInteractive = undefined;
 
 export const setRequired = (...args) => __ref.setRequired(...args);
 
@@ -58,6 +59,7 @@ const onEvent = (e) => {
   padding={padding}
   label-pos={labelPos}
   size={size}
+  no-interactive={noInteractive}
   on:didChange={onEvent}
   bind:this={__ref}
 >

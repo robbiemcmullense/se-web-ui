@@ -75,6 +75,9 @@ Also affects the font size of the checkbox text label:
 `s`: 14px
 `m`: 16px (default) */
   size?: Components.SeCheckbox["size"]
+  
+  /** Defines whether the toggle/switch is interactive or not. Set to `false` by default. */
+  noInteractive?: Components.SeCheckbox["noInteractive"]
 }
 
 interface SeCheckboxEvents {
@@ -112,8 +115,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[21].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[20], null);
+	const default_slot_template = /*#slots*/ ctx[22].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[21], null);
 
 	return {
 		c() {
@@ -135,6 +138,7 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_checkbox, "padding", /*padding*/ ctx[13]);
 			set_custom_element_data(se_checkbox, "label-pos", /*labelPos*/ ctx[14]);
 			set_custom_element_data(se_checkbox, "size", /*size*/ ctx[15]);
+			set_custom_element_data(se_checkbox, "no-interactive", /*noInteractive*/ ctx[16]);
 		},
 		m(target, anchor) {
 			insert(target, se_checkbox, anchor);
@@ -143,18 +147,18 @@ function create_fragment(ctx) {
 				default_slot.m(se_checkbox, null);
 			}
 
-			/*se_checkbox_binding*/ ctx[22](se_checkbox);
+			/*se_checkbox_binding*/ ctx[23](se_checkbox);
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(se_checkbox, "didChange", /*onEvent*/ ctx[17]);
+				dispose = listen(se_checkbox, "didChange", /*onEvent*/ ctx[18]);
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 1048576)) {
-					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[20], !current ? -1 : dirty, null, null);
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 2097152)) {
+					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[21], !current ? -1 : dirty, null, null);
 				}
 			}
 
@@ -221,6 +225,10 @@ function create_fragment(ctx) {
 			if (!current || dirty & /*size*/ 32768) {
 				set_custom_element_data(se_checkbox, "size", /*size*/ ctx[15]);
 			}
+
+			if (!current || dirty & /*noInteractive*/ 65536) {
+				set_custom_element_data(se_checkbox, "no-interactive", /*noInteractive*/ ctx[16]);
+			}
 		},
 		i(local) {
 			if (current) return;
@@ -234,7 +242,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_checkbox);
 			if (default_slot) default_slot.d(detaching);
-			/*se_checkbox_binding*/ ctx[22](null);
+			/*se_checkbox_binding*/ ctx[23](null);
 			mounted = false;
 			dispose();
 		}
@@ -262,6 +270,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { padding = undefined } = $$props;
 	let { labelPos = undefined } = $$props;
 	let { size = undefined } = $$props;
+	let { noInteractive = undefined } = $$props;
 	const setRequired = (...args) => __ref.setRequired(...args);
 	const getWebComponent = () => __ref;
 
@@ -270,7 +279,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(16, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(17, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -285,7 +294,7 @@ function instance($$self, $$props, $$invalidate) {
 	function se_checkbox_binding($$value) {
 		binding_callbacks[$$value ? "unshift" : "push"](() => {
 			__ref = $$value;
-			$$invalidate(16, __ref);
+			$$invalidate(17, __ref);
 		});
 	}
 
@@ -306,7 +315,8 @@ function instance($$self, $$props, $$invalidate) {
 		if ("padding" in $$props) $$invalidate(13, padding = $$props.padding);
 		if ("labelPos" in $$props) $$invalidate(14, labelPos = $$props.labelPos);
 		if ("size" in $$props) $$invalidate(15, size = $$props.size);
-		if ("$$scope" in $$props) $$invalidate(20, $$scope = $$props.$$scope);
+		if ("noInteractive" in $$props) $$invalidate(16, noInteractive = $$props.noInteractive);
+		if ("$$scope" in $$props) $$invalidate(21, $$scope = $$props.$$scope);
 	};
 
 	return [
@@ -326,6 +336,7 @@ function instance($$self, $$props, $$invalidate) {
 		padding,
 		labelPos,
 		size,
+		noInteractive,
 		__ref,
 		onEvent,
 		setRequired,
@@ -369,8 +380,9 @@ class SeCheckbox extends SvelteComponent {
 			padding: 13,
 			labelPos: 14,
 			size: 15,
-			setRequired: 18,
-			getWebComponent: 19
+			noInteractive: 16,
+			setRequired: 19,
+			getWebComponent: 20
 		});
 	}
 
@@ -518,14 +530,23 @@ class SeCheckbox extends SvelteComponent {
 		flush();
 	}
 
+	get noInteractive() {
+		return this.$$.ctx[16];
+	}
+
+	set noInteractive(noInteractive) {
+		this.$set({ noInteractive });
+		flush();
+	}
+
 	
   /** Sets the required property on the checkbox element.  Used when the checkbox is within a form field. */
  get setRequired(): Components.SeCheckbox["setRequired"] {
-		return this.$$.ctx[18];
+		return this.$$.ctx[19];
 	}
 
 	get getWebComponent(): HTMLSeCheckboxElement | undefined {
-		return this.$$.ctx[19];
+		return this.$$.ctx[20];
 	}
 }
 
