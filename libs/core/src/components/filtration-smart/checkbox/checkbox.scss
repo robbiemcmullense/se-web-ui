@@ -40,6 +40,12 @@
   }
 }
 
+.checkbox__label-body {
+  unicode-bidi: plaintext;
+  text-align: left;
+}
+
 .checkbox__label-count {
   color: $se-medium-grey;
+  unicode-bidi: plaintext;
 }

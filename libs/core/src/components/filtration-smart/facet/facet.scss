@@ -28,6 +28,8 @@
 
 .facet__name {
   color: $se-anthracite-grey;
+  unicode-bidi: plaintext;
+  text-align: left;
 
   @include for-tablet-and-down {
     font-size: 16px;

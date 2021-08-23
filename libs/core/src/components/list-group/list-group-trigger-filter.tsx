@@ -17,9 +17,9 @@ export const ListGroupTriggerFilter = (
         }}
       />
 
-      <div class="list-group-trigger-body" slot="item">
+      <bdi class="list-group-trigger-body" slot="item">
         {item}
-      </div>
+      </bdi>
 
       {children}
     </se-list-item>

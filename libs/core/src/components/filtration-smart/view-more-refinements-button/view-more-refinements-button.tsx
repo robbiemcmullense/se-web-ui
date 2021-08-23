@@ -5,6 +5,7 @@ import {
   Element,
   Event,
   EventEmitter,
+  Fragment,
 } from '@stencil/core';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
 
@@ -53,6 +54,18 @@ export class FiltrationSmartViewMoreRefinementsButton {
     this.el.dir = document.documentElement.dir || 'auto';
   }
 
+  get label(): HTMLElement | string {
+    if (this.isAllRefinementsVisible) {
+      return this.viewLessLabel;
+    }
+
+    return (
+      <Fragment>
+        {this.viewMoreLabel} <span class="view-more-refinements-button__count">({this.count})</span>
+      </Fragment>
+    );
+  }
+
   render(): HTMLElement {
     return (
       <button
@@ -61,9 +74,7 @@ export class FiltrationSmartViewMoreRefinementsButton {
         class="view-more-refinements-button"
       >
         <div class="view-more-refinements-button__body">
-          {this.isAllRefinementsVisible
-            ? this.viewLessLabel
-            : `${this.viewMoreLabel} (${this.count})`}
+          {this.label}
 
           <se-icon
             size="nano"

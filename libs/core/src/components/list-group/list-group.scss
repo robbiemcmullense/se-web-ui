@@ -43,10 +43,12 @@ se-list-item {
 .list-group-trigger {
   font-weight: var(--se-list-item-group-trigger-font-weight);
 }
+
 .list-group-trigger-icon {
   position: relative;
   width: 16px;
   height: 16px;
+  flex: 0 0 auto;
 
   &::before,
   &::after {
@@ -75,6 +77,8 @@ se-list-item {
 }
 
 .list-group-trigger-body {
+  white-space: normal;
+
   @include for-mobile-only {
     padding: 8px 0;
   }
