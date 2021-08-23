@@ -173,25 +173,20 @@ export const getSectionVisibleSectionsLimitedIds = (
   const prevSectionsFiltersCount = getFiltersBeforeSection(sectionId).length;
   const currentSectionFiltersCount = getSectionRefinementsIds(sectionId).length;
 
-  if (
-    prevSectionsFiltersCount + currentSectionFiltersCount >=
-    visibleRefinementsPerFacetCount
-  ) {
+  let limitReached = false;
+  let sectionFacetRefinementsCount = prevSectionsFiltersCount + currentSectionFiltersCount;
+
+  if (sectionFacetRefinementsCount >= visibleRefinementsPerFacetCount) {
     return [];
   }
 
-  let limitReached = false;
-
   return getSectionSectionsIds(sectionId).reduce((res, sectionIdNested) => {
     if (!limitReached) {
-      const filtersCount = getSectionRefinementsIds(sectionIdNested).length;
+      const refinementsCount = getSectionRefinementsIds(sectionIdNested).length;
 
-      if (filtersCount > 0) {
-        limitReached =
-          prevSectionsFiltersCount +
-            currentSectionFiltersCount +
-            filtersCount >=
-          visibleRefinementsPerFacetCount;
+      if (refinementsCount > 0) {
+        sectionFacetRefinementsCount += refinementsCount;
+        limitReached = sectionFacetRefinementsCount >= visibleRefinementsPerFacetCount;
         res.push(sectionIdNested);
       }
     }
