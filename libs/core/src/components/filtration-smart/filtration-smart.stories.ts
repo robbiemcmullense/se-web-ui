@@ -104,5 +104,8 @@ storiesOf('Filtration Smart', module).add(
     notes: {
       markdown: readme,
     },
+    knobs: {
+      escapeHTML: false,
+    },
   }
 );

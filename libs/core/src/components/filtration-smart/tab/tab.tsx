@@ -54,7 +54,7 @@ export class FiltrationSmartTab {
             'tab--checked': this.data.isChecked,
           }}
         >
-          {this.data.label}
+          <span innerHTML={this.data.label}/>
           {this.data.count !== null && this.data.count !== undefined && (
             <Fragment>
               &nbsp;
