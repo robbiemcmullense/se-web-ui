@@ -52,7 +52,7 @@ export const filters: FiltrationSmartData = {
         rootSectionId: 'fonction produit',
       },
       '4281465360+2872021587': {
-        label: 'K1',
+        label: 'K<sub>1</sub>',
         value: '4281465360+2872021587',
         count: 132,
         isChecked: false,
@@ -60,7 +60,7 @@ export const filters: FiltrationSmartData = {
         rootSectionId: 'nom de composant',
       },
       '4281465360+2320067512': {
-        label: 'K10',
+        label: 'K<sup>10</sup>',
         value: '4281465360+2320067512',
         count: 24,
         isChecked: false,
@@ -68,7 +68,7 @@ export const filters: FiltrationSmartData = {
         rootSectionId: 'nom de composant',
       },
       '4281465360+1053938573': {
-        label: 'K115',
+        label: 'K115&#47;120',
         value: '4281465360+1053938573',
         count: 12,
         isChecked: false,
@@ -76,7 +76,7 @@ export const filters: FiltrationSmartData = {
         rootSectionId: 'nom de composant',
       },
       '4281465360+1435197923': {
-        label: 'K150',
+        label: '30 x 30 mm',
         value: '4281465360+1435197923',
         count: 9,
         isChecked: false,
