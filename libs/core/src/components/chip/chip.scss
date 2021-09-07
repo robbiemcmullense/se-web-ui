@@ -102,7 +102,7 @@ se-icon {
   &.selected {
     @include color("standard-contrast");
     @include background-color("standard");
-    @include border-color("alternative");
+    @include border-color("standard");
   }
 }
 
