@@ -16,6 +16,7 @@ storiesOf('Checkbox', module)
       const selected = boolean('selected', true);
       const color = select('color', colorOption, 'primary');
       const disabled = boolean('disabled', false);
+      const noInteractive = boolean('noInteractive', false);
       const indeterminate = boolean('indeterminate', false);
       const labelPos = select('label position', labelOption, 'right');
       const checkboxSize = select(
@@ -31,6 +32,7 @@ storiesOf('Checkbox', module)
           label='${label}'
           selected='${selected}'
           indeterminate='${indeterminate}'
+          no-interactive='${noInteractive}'
           color='${color}'
           disabled='${disabled}'
           label-pos='${labelPos}'
@@ -43,6 +45,7 @@ storiesOf('Checkbox', module)
           label='This is a standard checkbox with a very long text that goes to the next line!!!'
           selected='${selected}'
           indeterminate='${indeterminate}'
+          no-interactive='${noInteractive}'
           color='${color}'
           disabled='${disabled}'
           label-pos='${labelPos}'

@@ -81,6 +81,7 @@ export const CheckboxCommon: FunctionalComponent<Props> = props => {
         [`p-${padding}`]: !!padding,
         header: !!header,
         [`size-${size}`]: true,
+        ['no-interactive']: noInteractive,
       }}
     >
       {label && (

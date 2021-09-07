@@ -6,11 +6,11 @@ import { Components, JSX } from '@se/web-ui';
 
 interface SeCheckboxProps {
   
-  /** Determines the visual appearance of the component.
-`checkbox` is the default option, which will render the component like a standard HTML checkbox.
-`checkbox-fake` will render the component exactly like `checkbox` but it will not have any interactive elements.
-   It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component.
-`switch` renders the component like a toggle switch.
+  /** Determines the visual appearance of the component.  
+`checkbox` is the default option, which will render the component like a standard HTML checkbox.  
+`checkbox-fake` **deprecated (use noInteractive property)** will render the component exactly like `checkbox` but it will not have any interactive elements.
+   It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component.  
+`switch` renders the component like a toggle switch.  
 `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button. */
   option?: Components.SeCheckbox["option"]
   

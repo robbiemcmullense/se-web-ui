@@ -227,11 +227,11 @@ input {
       }
     }
 
-    &:hover .checkmark.color-#{$color}:not(.checked):not(.indeterminate)::after,
+    &:hover .checkmark.color-#{$color}:not(.checked):not(.indeterminate):not(.disabled)::after,
     &:active
-      .checkmark.color-#{$color}:not(.checked):not(.indeterminate)::after,
+      .checkmark.color-#{$color}:not(.checked):not(.indeterminate):not(.disabled)::after,
     &
-      .checkmark.color-#{$color}:not(.checked):not(.indeterminate):focus::after {
+      .checkmark.color-#{$color}:not(.checked):not(.indeterminate):not(.disabled):focus::after {
       background-color: rgba(map-get($seTheme, $color), 0.5);
     }
   }
@@ -411,4 +411,8 @@ input {
       font-size: 12px;
     }
   }
+}
+
+.no-interactive {
+  pointer-events: none;
 }
