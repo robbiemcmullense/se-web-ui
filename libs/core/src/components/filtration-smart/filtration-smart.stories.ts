@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/html';
 import { number, text, object, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { filters as filtersNormalizedDataMock } from './__mock__/filters';
+import { dataAttrsData as dataAttrsDataMock } from './__mock__/dataAttrsData';
 import * as readme from './readme.md';
 import { FilterEmittedState } from './types';
 
@@ -37,6 +38,7 @@ storiesOf('Filtration Smart', module).add(
       'Main'
     );
     const filters = object('filters data', filtersNormalizedDataMock, 'Other');
+    const dataAttrsData = object('Data attributes data', dataAttrsDataMock, 'Other');
     const maxSectionContentHeight = number(
       'max section height (in pixels)',
       300,
@@ -72,6 +74,7 @@ storiesOf('Filtration Smart', module).add(
 
     const filter = document.createElement('se-filtration-smart') as any;
     filter.filters = filters;
+    filter.dataAttrsData = dataAttrsData;
     filter.headerLabelDesktop = headerDesktop;
     filter.headerLabelMobile = headerMobile;
     filter.showProductsLabel = showProductsButton;

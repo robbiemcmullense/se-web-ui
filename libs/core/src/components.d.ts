@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Option, Size } from "./components/checkbox/types";
-import { FilterEmittedState, FiltrationSmartData, ToggleMobileViewVisibility } from "./components/filtration-smart/types";
+import { FilterEmittedState, FiltrationSmartData, FiltrationSmartDataAttrsData, ToggleMobileViewVisibility } from "./components/filtration-smart/types";
 import { ListOption } from "./components/list/types";
 import { GroupCollapseEvent } from "./components/list-group/list-group";
 import { PageEvent } from "./components/pagination/pagination";
@@ -660,6 +660,10 @@ export namespace Components {
         "showSelectAll": boolean;
     }
     interface SeFiltrationSmart {
+        /**
+          * Object that describes set of data attributes of sections and filters.
+         */
+        "dataAttrsData"?: FiltrationSmartDataAttrsData;
         /**
           * Normalized data for the filter.
          */
@@ -2782,6 +2786,10 @@ declare namespace LocalJSX {
         "showSelectAll"?: boolean;
     }
     interface SeFiltrationSmart {
+        /**
+          * Object that describes set of data attributes of sections and filters.
+         */
+        "dataAttrsData"?: FiltrationSmartDataAttrsData;
         /**
           * Normalized data for the filter.
          */

@@ -8,6 +8,7 @@ let __mounted = false;
 const dispatch = createEventDispatcher();
 
 export let filters;
+export let dataAttrsData = undefined;
 export let resetButtonLabel;
 export let showProductsLabel;
 export let viewMoreRefinementsLabel;
@@ -31,6 +32,7 @@ onMount(() => { __mounted = true; });
 const setProp = (prop, value) => { if (__ref) __ref[prop] = value; };
 
 $: if (__mounted) setProp('filters', filters);
+$: if (__mounted) setProp('dataAttrsData', dataAttrsData);
 
 const onEvent = (e) => {
   e.stopPropagation();

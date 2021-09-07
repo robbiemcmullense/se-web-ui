@@ -107,3 +107,9 @@ export function isNumber(number: number | string) {
     Number.isInteger(number) || new RegExp('^[0-9]*$').test(number as string)
   );
 }
+
+export function setElementDataAttrs(el: HTMLElement, dataAttrsData: Record<string, string>): void {
+  for (const dataAttrKey of Object.keys(dataAttrsData)) {
+    el.dataset[dataAttrKey] = dataAttrsData[dataAttrKey];
+  }
+}

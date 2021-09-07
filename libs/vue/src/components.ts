@@ -513,6 +513,7 @@ export const SeFiltrationSmart = /*@__PURE__*/ Vue.extend({
 
   props: {
     filters: {} as PropOptions<Components.SeFiltrationSmart['filters']>,
+    dataAttrsData: {} as PropOptions<Components.SeFiltrationSmart['dataAttrsData']>,
     resetButtonLabel: {} as PropOptions<Components.SeFiltrationSmart['resetButtonLabel']>,
     showProductsLabel: {} as PropOptions<Components.SeFiltrationSmart['showProductsLabel']>,
     viewMoreRefinementsLabel: {} as PropOptions<Components.SeFiltrationSmart['viewMoreRefinementsLabel']>,

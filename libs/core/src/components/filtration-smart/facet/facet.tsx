@@ -17,8 +17,10 @@ import {
   getFacetRefinementsLimitOverflow,
   getFacetRefinementsCheckedWithCountDeep,
   getIsFacetSingleSelect,
+  getSectionDataAttrsData,
 } from '../store';
 import { listOption } from '../../list/constants';
+import { setElementDataAttrs } from '../../../utils';
 
 @Component({
   tag: 'se-filtration-smart-facet',
@@ -62,6 +64,16 @@ export class FiltrationSmartFacet {
 
   constructor() {
     this.el.dir = document.documentElement.dir || 'auto';
+  }
+
+  componentWillLoad(): void {
+    const dataAttrsData = getSectionDataAttrsData(this.facetId);
+
+    if (!dataAttrsData) {
+      return;
+    }
+
+    setElementDataAttrs(this.el, dataAttrsData);
   }
 
   private onBlockHeaderClick = (): void => {

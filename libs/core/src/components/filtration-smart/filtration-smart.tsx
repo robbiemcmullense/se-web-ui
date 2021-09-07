@@ -11,6 +11,7 @@ import {
 } from '@stencil/core';
 import {
   FilterEmittedState,
+  FiltrationSmartDataAttrsData,
   FiltrationSmartData,
   ToggleMobileViewVisibility,
 } from './types';
@@ -40,6 +41,11 @@ export class FiltrationSmart {
    * Normalized data for the filter.
    */
   @Prop() filters!: FiltrationSmartData;
+
+  /**
+   * Object that describes set of data attributes of sections and filters.
+   */
+  @Prop() dataAttrsData?: FiltrationSmartDataAttrsData;
 
   /**
    * Defines text that will be used in the "Reset" button.
@@ -214,6 +220,7 @@ export class FiltrationSmart {
       filters: this.filters,
       visibleRefinementsPerFacetCount: this.visibleRefinementsPerFacetCount,
       visibleFacetsCount: this.visibleFacetsCount,
+      dataAttrsData: this.dataAttrsData,
     });
   }
 

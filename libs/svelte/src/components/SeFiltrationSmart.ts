@@ -9,6 +9,9 @@ interface SeFiltrationSmartProps {
   /** Normalized data for the filter. */
   filters?: Components.SeFiltrationSmart["filters"]
   
+  /** Object that describes set of data attributes of sections and filters. */
+  dataAttrsData?: Components.SeFiltrationSmart["dataAttrsData"]
+  
   /** Defines text that will be used in the "Reset" button. */
   resetButtonLabel?: Components.SeFiltrationSmart["resetButtonLabel"]
   
@@ -85,8 +88,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[20].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[19], null);
+	const default_slot_template = /*#slots*/ ctx[21].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[20], null);
 
 	return {
 		c() {
@@ -112,7 +115,7 @@ function create_fragment(ctx) {
 				default_slot.m(se_filtration_smart, null);
 			}
 
-			/*se_filtration_smart_binding*/ ctx[21](se_filtration_smart);
+			/*se_filtration_smart_binding*/ ctx[22](se_filtration_smart);
 			current = true;
 
 			if (!mounted) {
@@ -126,8 +129,8 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 524288)) {
-					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[19], !current ? -1 : dirty, null, null);
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 1048576)) {
+					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[20], !current ? -1 : dirty, null, null);
 				}
 			}
 
@@ -191,7 +194,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_filtration_smart);
 			if (default_slot) default_slot.d(detaching);
-			/*se_filtration_smart_binding*/ ctx[21](null);
+			/*se_filtration_smart_binding*/ ctx[22](null);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -204,6 +207,7 @@ function instance($$self, $$props, $$invalidate) {
 	let __mounted = false;
 	const dispatch = createEventDispatcher();
 	let { filters } = $$props;
+	let { dataAttrsData = undefined } = $$props;
 	let { resetButtonLabel } = $$props;
 	let { showProductsLabel } = $$props;
 	let { viewMoreRefinementsLabel } = $$props;
@@ -221,7 +225,7 @@ function instance($$self, $$props, $$invalidate) {
 	const getWebComponent = () => __ref;
 
 	onMount(() => {
-		$$invalidate(18, __mounted = true);
+		$$invalidate(19, __mounted = true);
 	});
 
 	const setProp = (prop, value) => {
@@ -242,6 +246,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("filters" in $$props) $$invalidate(14, filters = $$props.filters);
+		if ("dataAttrsData" in $$props) $$invalidate(15, dataAttrsData = $$props.dataAttrsData);
 		if ("resetButtonLabel" in $$props) $$invalidate(0, resetButtonLabel = $$props.resetButtonLabel);
 		if ("showProductsLabel" in $$props) $$invalidate(1, showProductsLabel = $$props.showProductsLabel);
 		if ("viewMoreRefinementsLabel" in $$props) $$invalidate(2, viewMoreRefinementsLabel = $$props.viewMoreRefinementsLabel);
@@ -254,12 +259,16 @@ function instance($$self, $$props, $$invalidate) {
 		if ("headerLabelMobile" in $$props) $$invalidate(9, headerLabelMobile = $$props.headerLabelMobile);
 		if ("isMobileViewVisible" in $$props) $$invalidate(10, isMobileViewVisible = $$props.isMobileViewVisible);
 		if ("maxFacetContentHeight" in $$props) $$invalidate(11, maxFacetContentHeight = $$props.maxFacetContentHeight);
-		if ("$$scope" in $$props) $$invalidate(19, $$scope = $$props.$$scope);
+		if ("$$scope" in $$props) $$invalidate(20, $$scope = $$props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*__mounted, filters*/ 278528) {
+		if ($$self.$$.dirty & /*__mounted, filters*/ 540672) {
 			$: if (__mounted) setProp("filters", filters);
+		}
+
+		if ($$self.$$.dirty & /*__mounted, dataAttrsData*/ 557056) {
+			$: if (__mounted) setProp("dataAttrsData", dataAttrsData);
 		}
 	};
 
@@ -279,6 +288,7 @@ function instance($$self, $$props, $$invalidate) {
 		__ref,
 		onEvent,
 		filters,
+		dataAttrsData,
 		reset,
 		setIsFilterChecked,
 		getWebComponent,
@@ -307,6 +317,7 @@ class SeFiltrationSmart extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			filters: 14,
+			dataAttrsData: 15,
 			resetButtonLabel: 0,
 			showProductsLabel: 1,
 			viewMoreRefinementsLabel: 2,
@@ -319,9 +330,9 @@ class SeFiltrationSmart extends SvelteComponent {
 			headerLabelMobile: 9,
 			isMobileViewVisible: 10,
 			maxFacetContentHeight: 11,
-			reset: 15,
-			setIsFilterChecked: 16,
-			getWebComponent: 17
+			reset: 16,
+			setIsFilterChecked: 17,
+			getWebComponent: 18
 		});
 	}
 
@@ -331,6 +342,15 @@ class SeFiltrationSmart extends SvelteComponent {
 
 	set filters(filters) {
 		this.$set({ filters });
+		flush();
+	}
+
+	get dataAttrsData() {
+		return this.$$.ctx[15];
+	}
+
+	set dataAttrsData(dataAttrsData) {
+		this.$set({ dataAttrsData });
 		flush();
 	}
 
@@ -448,17 +468,17 @@ All controls (single- and multi-selects) will be set to its initial states
 (if on an initial render a checkbox was checked but later was unchecked by a user, it will be returned to checked state).
 All sections (root and nested) will retain their states (expanded/collapsed). */
  get reset(): Components.SeFiltrationSmart["reset"] {
-		return this.$$.ctx[15];
+		return this.$$.ctx[16];
 	}
 
 	
   /** Use it if you want to set the state (checked/unchecked) of a particular filter. */
  get setIsFilterChecked(): Components.SeFiltrationSmart["setIsFilterChecked"] {
-		return this.$$.ctx[16];
+		return this.$$.ctx[17];
 	}
 
 	get getWebComponent(): HTMLSeFiltrationSmartElement | undefined {
-		return this.$$.ctx[17];
+		return this.$$.ctx[18];
 	}
 }
 

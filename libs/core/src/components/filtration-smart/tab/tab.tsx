@@ -8,7 +8,8 @@ import {
   Fragment,
 } from '@stencil/core';
 import { FiltrationSmartRefinementData } from '../types';
-import { getRefinementData } from '../store';
+import { getRefinementDataAttrsData, getRefinementData } from '../store';
+import { setElementDataAttrs } from '../../../utils';
 
 @Component({
   tag: 'se-filtration-smart-tab',
@@ -29,6 +30,20 @@ export class FiltrationSmartTab {
   @Event()
   refinementStateChanged: EventEmitter<string>;
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
+  componentWillLoad(): void {
+    const dataAttrsData = getRefinementDataAttrsData(this.refinementId);
+
+    if (!dataAttrsData) {
+      return;
+    }
+
+    setElementDataAttrs(this.el, dataAttrsData);
+  }
+
   get data(): FiltrationSmartRefinementData {
     return getRefinementData(this.refinementId);
   }
@@ -36,10 +51,6 @@ export class FiltrationSmartTab {
   private onClick = (): void => {
     this.refinementStateChanged.emit(this.refinementId);
   };
-
-  constructor() {
-    this.el.dir = document.documentElement.dir || 'auto';
-  }
 
   render(): HTMLElement {
     return (

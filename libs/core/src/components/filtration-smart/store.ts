@@ -11,6 +11,7 @@ import {
   FiltrationSmartSections,
   FiltrationSmartEntities,
   FiltrationSmartRefinements,
+  FiltrationSmartDataAttrsData,
 } from './types';
 import { filtrationSmartFacetType } from './constants';
 
@@ -26,6 +27,7 @@ let initialFilterState: FiltrationSmartData;
 //  If not for IE11 we could iterate over `sectionsStore.state`.
 let refinementsStoreAsObject: FiltrationSmartRefinements = {};
 let sectionsStoreAsObject: FiltrationSmartSections = {};
+let dataAttrsData: FiltrationSmartDataAttrsData = { section: {}, filter: {} };
 const sectionsExpandedStoreAsObject = {};
 const sectionsExpandedStoreMobileAsObject = {};
 const refinementsCheckedStateSequence: string[] = [];
@@ -88,6 +90,14 @@ export const getSectionData = (
 
 const getSectionFacetId = (sectionId: string): string => {
   return getSectionData(sectionId).rootSectionId;
+};
+
+export const getRefinementDataAttrsData = (refinementId: string): Record<string, string> => {
+  return dataAttrsData.filter[refinementId];
+};
+
+export const getSectionDataAttrsData = (sectionId: string): Record<string, string> => {
+  return dataAttrsData.section[sectionId];
 };
 
 export const getIsSectionRoot = (sectionId: string): boolean => {
@@ -529,7 +539,12 @@ export const setStore = (config: FiltrationSmartStoreInitialConfig): void => {
     filters,
     visibleFacetsCount: initialVisibleSectionsCount,
     visibleRefinementsPerFacetCount: initialVisibleFiltersPerSectionCount,
+    dataAttrsData: filterDataAttrsData,
   } = config;
+
+  if (filterDataAttrsData) {
+    dataAttrsData = filterDataAttrsData;
+  }
 
   refinementsStoreAsObject = {};
   sectionsStoreAsObject = {};

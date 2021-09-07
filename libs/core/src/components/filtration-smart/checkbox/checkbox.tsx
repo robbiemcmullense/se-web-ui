@@ -8,9 +8,9 @@ import {
   Fragment,
 } from '@stencil/core';
 import { FiltrationSmartRefinementData } from '../types';
-import { getRefinementData } from '../store';
+import { getRefinementDataAttrsData, getRefinementData } from '../store';
 import { option, size } from '../../checkbox/constants';
-import { isIE11 } from '../../../utils';
+import { isIE11, setElementDataAttrs } from '../../../utils';
 
 @Component({
   tag: 'se-filtration-smart-checkbox',
@@ -38,6 +38,16 @@ export class FiltrationSmartCheckbox {
 
   constructor() {
     this.el.dir = document.documentElement.dir || 'auto';
+  }
+
+  componentWillLoad(): void {
+    const dataAttrsData = getRefinementDataAttrsData(this.refinementId);
+
+    if (!dataAttrsData) {
+      return;
+    }
+
+    setElementDataAttrs(this.el, dataAttrsData);
   }
 
   get data(): FiltrationSmartRefinementData {

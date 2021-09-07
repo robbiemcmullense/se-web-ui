@@ -46,6 +46,7 @@ export interface FiltrationSmartStoreInitialConfig {
   filters: FiltrationSmartData;
   visibleFacetsCount?: number;
   visibleRefinementsPerFacetCount?: number;
+  dataAttrsData?: FiltrationSmartDataAttrsData;
 }
 
 export interface FilterEmittedState {
@@ -73,4 +74,9 @@ export interface FiltrationSmartCheckboxState {
 
 export interface ToggleMobileViewVisibility {
   restore: boolean;
+}
+
+export interface FiltrationSmartDataAttrsData {
+  section: Record<string, Record<string, string>>;
+  filter: Record<string, Record<string, string>>;
 }

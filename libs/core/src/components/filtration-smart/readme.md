@@ -7,21 +7,22 @@
 
 ## Properties
 
-| Property                                | Attribute                             | Description                                                                | Type                  | Default     |
-| --------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------- | --------------------- | ----------- |
-| `filters` _(required)_                  | --                                    | Normalized data for the filter.                                            | `FiltrationSmartData` | `undefined` |
-| `headerLabelDesktop`                    | `header-label-desktop`                | The header label of filters used in desktop version.                       | `string`              | `undefined` |
-| `headerLabelMobile`                     | `header-label-mobile`                 | The header label of filters used in mobile version.                        | `string`              | `undefined` |
-| `isMobileViewVisible`                   | `is-mobile-view-visible`              | Defines if the mobile view is visible.                                     | `boolean`             | `false`     |
-| `maxFacetContentHeight`                 | `max-facet-content-height`            | Defines maximum height of a facet content in desktop view.                 | `number`              | `undefined` |
-| `resetButtonLabel` _(required)_         | `reset-button-label`                  | Defines text that will be used in the "Reset" button.                      | `string`              | `undefined` |
-| `showProductsLabel` _(required)_        | `show-products-label`                 | Defines text of the show products button (in mobile view).                 | `string`              | `undefined` |
-| `viewLessFacetsLabel` _(required)_      | `view-less-facets-label`              | Defines text of the "View less facets" button at the bottom of the filter. | `string`              | `undefined` |
-| `viewLessRefinementsLabel` _(required)_ | `view-less-refinements-label`         | Defines text of the "View less refinements" button in a facet.             | `string`              | `undefined` |
-| `viewMoreFacetsLabel` _(required)_      | `view-more-facets-label`              | Defines text of the "View more facets" button at the bottom of the filter. | `string`              | `undefined` |
-| `viewMoreRefinementsLabel` _(required)_ | `view-more-refinements-label`         | Defines text of the "View more refinements" button in a facet.             | `string`              | `undefined` |
-| `visibleFacetsCount`                    | `visible-facets-count`                | Number of facets to show on initial render.                                | `number`              | `undefined` |
-| `visibleRefinementsPerFacetCount`       | `visible-refinements-per-facet-count` | Number of refinements per facet to show on initial render.                 | `number`              | `undefined` |
+| Property                                | Attribute                             | Description                                                                | Type                           | Default     |
+| --------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------- | ------------------------------ | ----------- |
+| `dataAttrsData`                         | --                                    | Object that describes set of data attributes of sections and filters.      | `FiltrationSmartDataAttrsData` | `undefined` |
+| `filters` _(required)_                  | --                                    | Normalized data for the filter.                                            | `FiltrationSmartData`          | `undefined` |
+| `headerLabelDesktop`                    | `header-label-desktop`                | The header label of filters used in desktop version.                       | `string`                       | `undefined` |
+| `headerLabelMobile`                     | `header-label-mobile`                 | The header label of filters used in mobile version.                        | `string`                       | `undefined` |
+| `isMobileViewVisible`                   | `is-mobile-view-visible`              | Defines if the mobile view is visible.                                     | `boolean`                      | `false`     |
+| `maxFacetContentHeight`                 | `max-facet-content-height`            | Defines maximum height of a facet content in desktop view.                 | `number`                       | `undefined` |
+| `resetButtonLabel` _(required)_         | `reset-button-label`                  | Defines text that will be used in the "Reset" button.                      | `string`                       | `undefined` |
+| `showProductsLabel` _(required)_        | `show-products-label`                 | Defines text of the show products button (in mobile view).                 | `string`                       | `undefined` |
+| `viewLessFacetsLabel` _(required)_      | `view-less-facets-label`              | Defines text of the "View less facets" button at the bottom of the filter. | `string`                       | `undefined` |
+| `viewLessRefinementsLabel` _(required)_ | `view-less-refinements-label`         | Defines text of the "View less refinements" button in a facet.             | `string`                       | `undefined` |
+| `viewMoreFacetsLabel` _(required)_      | `view-more-facets-label`              | Defines text of the "View more facets" button at the bottom of the filter. | `string`                       | `undefined` |
+| `viewMoreRefinementsLabel` _(required)_ | `view-more-refinements-label`         | Defines text of the "View more refinements" button in a facet.             | `string`                       | `undefined` |
+| `visibleFacetsCount`                    | `visible-facets-count`                | Number of facets to show on initial render.                                | `number`                       | `undefined` |
+| `visibleRefinementsPerFacetCount`       | `visible-refinements-per-facet-count` | Number of refinements per facet to show on initial render.                 | `number`                       | `undefined` |
 
 
 ## Events
