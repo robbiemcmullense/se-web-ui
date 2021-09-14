@@ -1,11 +1,9 @@
 import { Component, h, Element, Prop, Host, State } from '@stencil/core';
-// import ResizeObserver from 'resize-observer-polyfill';
-import smoothscroll from 'smoothscroll-polyfill';
+// import { ResizeObserver } from '@juggle/resize-observer';
 import arrow from '@se/icons/svg/arrow5_step.svg';
 import { classNames } from '../../utils';
 import { isTouchDevice } from '../../utils';
 
-smoothscroll.polyfill();
 @Component({
   tag: 'se-carousel',
   styleUrl: 'carousel.scss',

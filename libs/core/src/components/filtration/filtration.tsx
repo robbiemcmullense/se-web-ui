@@ -1,6 +1,4 @@
-import { Component, h, Prop, State, Event, Element, Host } from '@stencil/core';
-import { EventEmitter } from 'events';
-
+import { Component, h, Prop, State, Event, Element, Host, EventEmitter } from '@stencil/core';
 import arrow2Up from '@se/icons/svg/arrow2_up.svg';
 import actionSearchStroke from '@se/icons/svg/action_search_stroke.svg';
 

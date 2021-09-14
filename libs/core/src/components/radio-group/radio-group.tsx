@@ -44,7 +44,7 @@ export class RadioGroupComponent {
     this.updateItemMode();
   }
   /**
-   * Defines the selected values of the array.
+   * Specify the currently selected child Radio value..
    */
   @Prop({ mutable: true }) value: string;
   @Watch('value') valueDidChange() {

@@ -1,6 +1,4 @@
 import { createStore } from '@stencil/store';
-import cloneDeep from 'lodash/cloneDeep';
-import pull from 'lodash/pull';
 import {
   FiltrationSmartCheckboxState,
   FiltrationSmartRefinementData,
@@ -66,6 +64,16 @@ const mainStore = createStore<FiltrationSmartMainStore>({
   facetsWithAllRefinementsShownIds: [],
   isAllFacetsVisible: false,
 });
+
+// Lighter version of lodash cloneDeep to reduce bundle size (https://github.com/lodash/lodash/issues/1984)
+export const cloneDeep = (obj) => {
+  return JSON.parse(JSON.stringify(obj))
+}
+
+// pull a single item from a list. 
+export const pull = (list, toRemove) => {
+  return list.filter(item => item !== toRemove)
+}
 
 // entities getters
 export const getFacetsIds = (): string[] => {

@@ -64,7 +64,7 @@ $disabled-color: #cbcbcb;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   &:hover {
-    @include background-color("standard-hover");
+    // @include background-color("standard-hover");
     border: $spacing-small solid transparent;
   }
   &:active {
@@ -90,8 +90,7 @@ $disabled-color: #cbcbcb;
   }
 }
 
-input[type="range"] {
-  &,
+input {
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
   }
@@ -169,28 +168,28 @@ input[type="range"] {
   }
 }
 
-@mixin ms-thumb-hover() {
-  input[type="range"] {
-    height: $ie_thumb-dimesion;
-    &::-ms-thumb:hover {
-      width: $thumb-dimension;
-      height: $thumb-dimension;
-      position: static;
-    }
-    &::-ms-thumb:active {
-      width: $thumb-dimension;
-      height: $thumb-dimension;
-      position: static;
-    }
-  }
-}
+// @mixin ms-thumb-hover() {
+//   input[type="range"] {
+//     height: $ie_thumb-dimesion;
+//     &::-ms-thumb:hover {
+//       width: $thumb-dimension;
+//       height: $thumb-dimension;
+//       position: static;
+//     }
+//     &::-ms-thumb:active {
+//       width: $thumb-dimension;
+//       height: $thumb-dimension;
+//       position: static;
+//     }
+//   }
+// }
 
-// MS Edge specific properties
-@supports (-ms-ime-align: auto) {
-  @include ms-thumb-hover;
-}
+// // MS Edge specific properties
+// @supports (-ms-ime-align: auto) {
+//   @include ms-thumb-hover;
+// }
 
-// IE 11 specific properties
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  @include ms-thumb-hover;
-}
+// // IE 11 specific properties
+// @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+//   @include ms-thumb-hover;
+// }

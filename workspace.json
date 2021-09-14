@@ -497,6 +497,16 @@
             ]
           }
         },
+        "stats": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/core && yarn stats"
+              }
+            ]
+          }
+        },
         "storybook": {
           "builder": "@nrwl/storybook:storybook",
           "options": {

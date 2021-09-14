@@ -10,9 +10,8 @@ import {
   Prop,
   Listen,
 } from '@stencil/core';
-import { createPopper } from '@popperjs/core';
 
-import { isTouchDevice } from '../../utils';
+import { isTouchDevice, createPopper } from '../../utils';
 
 @Component({
   tag: 'se-tooltip',

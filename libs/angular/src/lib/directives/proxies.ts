@@ -477,14 +477,14 @@ export class SeDivider {
 import { DropdownComponent as IDropdownComponent } from '@se/web-ui/types/components/dropdown/dropdown';
 export declare interface SeDropdown extends Components.SeDropdown {}
 @ProxyCmp({
-  inputs: ['action', 'alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'],
+  inputs: ['action', 'alignment', 'autoHide', 'maxHeight', 'maxWidth', 'verticalAlignment'],
   methods: ['open', 'close']
 })
 @Component({
   selector: 'se-dropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['action', 'alignment', 'maxHeight', 'maxWidth', 'verticalAlignment'],
+  inputs: ['action', 'alignment', 'autoHide', 'maxHeight', 'maxWidth', 'verticalAlignment'],
   outputs: ['didOpen', 'didClose', 'cancelAllDropdown']
 })
 export class SeDropdown {
@@ -1308,6 +1308,44 @@ The boolean validated property is passed to the parent. */
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['didValidate', 'didActivate']);
+  }
+}
+
+
+export declare interface SeTab extends Components.SeTab {}
+@ProxyCmp({
+  inputs: ['option', 'overflow']
+})
+@Component({
+  selector: 'se-tab',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['option', 'overflow']
+})
+export class SeTab {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SeTabItem extends Components.SeTabItem {}
+@ProxyCmp({
+  inputs: ['disabled', 'href', 'selected']
+})
+@Component({
+  selector: 'se-tab-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['disabled', 'href', 'selected']
+})
+export class SeTabItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 

@@ -20,14 +20,14 @@
   display: flex;
   align-items: center;
   
-  .se-block-header.option-default & {
-    @include typology("h4");
-    margin: $spacing-small;
-  }
+  // .se-block-header.option-default & {
+  //   @include typology("h4");
+  //   margin: $spacing-small;
+  // }
 
-  .se-block-header.option-fill & {
-    max-width: 100%;
-  }
+  // .se-block-header.option-fill & {
+  //   max-width: 100%;
+  // }
 }
 
 ::slotted(h1),

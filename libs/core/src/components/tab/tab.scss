@@ -1,0 +1,141 @@
+$opacity: 0.25 !default;
+
+:host {
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 16px;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  // Per Material specs a toolbar cannot have multiple lines inside of a single row.
+  // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
+  // white-space: nowrap;
+  @include display-flex();
+  @include flex-direction("row");
+  @include align-items(center);
+  
+  // default for "navigation" option. 
+  --se-tab-color-background: transparent;
+  --se-tab-height: 34px;
+  --se-tab-item-color-background: transparent;
+  --se-tab-item-selected-color-background: transparent;
+  --se-tab-item-selected-color-font: inherit;
+  --se-tab-item-selected-bottom-indicator: 1;
+  --se-tab-item-border: none;
+
+  --se-tab-item-margin-h: #{$spacing-large};
+  --se-tab-item-padding-h: 0;
+  
+  background-color: var(--se-tab-color-background);
+  min-height: var(--se-tab-height);
+}
+
+:host([option="anchor"]){
+  --se-tab-color-background: var(--se-background-alternative);
+  --se-tab-height: 48px;
+  --se-tab-item-selected-color-background: var(--se-background-standard);
+
+  --se-tab-item-margin-h: 0;
+  --se-tab-item-padding-h: #{$spacing-large};
+}
+
+:host([option="content"]){
+  --se-tab-height: 48px;
+  --se-tab-item-color-background: var(--se-background-alternative);
+  --se-tab-item-selected-color-background: var(--se-background-standard);
+  --se-tab-item-selected-color-font: var(--se-primary);
+  --se-tab-item-selected-bottom-indicator: 0;
+  --se-tab-item-border: solid 1px var(--se-divider);
+
+  --se-tab-item-margin-h: 0;
+  --se-tab-item-padding-h: #{$spacing-large};
+}
+
+.nav-center-arrows-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  align-self: stretch;
+
+  &::-webkit-scrollbar {
+    height: 0 !important;
+  }
+}
+
+.arrow {
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  min-width: 20px;
+
+  background-color: transparent;
+  /*rtl:begin:ignore*/
+  background-image: linear-gradient(90deg, rgba(var(--se-background-alternative-rgb), 0.3) 0%, rgba(var(--se-background-alternative-rgb), 0.8) 100%);
+  /*rtl:end:ignore*/
+  &.hidden {
+    display: none;
+  }
+
+  &.arrowLeft {
+    /*rtl:begin:ignore*/
+    left: 0;
+    /*rtl:end:ignore*/
+    /*rtl:begin:ignore*/
+    background-image: linear-gradient(270deg, rgba(var(--se-background-alternative-rgb), 0.3) 0%, rgba(var(--se-background-alternative-rgb), 0.8) 100%);
+    /*rtl:end:ignore*/
+  }
+
+  &.arrowRight {
+    /*rtl:begin:ignore*/
+    right: 0;
+    /*rtl:end:ignore*/
+  }
+}
+
+.fill-space {
+  @include flex(1);
+}
+
+.centered {
+  @include display-flex();
+  @include align-items(center);
+}
+
+.nav-center-wrapper {
+  @include display-flex();
+  @include flex-direction("row");
+  position: relative;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overflow-x: auto;
+  align-items: center;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    height: 0 !important;
+  }
+}
+
+.scroll {
+  white-space: nowrap;
+}
+.stack {
+  flex-wrap: wrap;
+  height: auto;
+}
+.compact {
+  white-space: wrap;
+}
+
+se-divider{
+  position: absolute;
+  width: 100%;
+  top: calc(100% - 1px);
+}

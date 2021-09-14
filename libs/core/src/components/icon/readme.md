@@ -49,6 +49,7 @@
  - [se-sidemenu](../sidemenu)
  - [se-snackbar](../snackbar)
  - [se-stepper](../stepper)
+ - [se-tab](../tab)
  - [se-tabbar](../tabbar)
  - [se-table-item-header](../table-item-header)
  - [se-tooltip-content](../tooltip-content)
@@ -80,6 +81,7 @@ graph TD;
   se-sidemenu --> se-icon
   se-snackbar --> se-icon
   se-stepper --> se-icon
+  se-tab --> se-icon
   se-tabbar --> se-icon
   se-table-item-header --> se-icon
   se-tooltip-content --> se-icon

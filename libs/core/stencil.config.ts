@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { inlineSvg } from 'stencil-inline-svg';
 import { reactOutputTarget } from '@stencil/react-output-target';
+
 import {
   svelteOutputTarget,
   ComponentBindingConfig,
@@ -14,8 +15,7 @@ import {
 import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import postcssRTLCSS from 'postcss-rtlcss';
-import postcssHostPolyfill from '@se/postcss-host-polyfill';
-import flexGapPolyfill from 'flex-gap-polyfill';
+import postcssHostPolyfill from '@se/postcss-host-polyfill'; // if removed, issue with dropdown arrow to investigate; when removed, save 30Kb of rendered style...
 
 import {
   angularOutputTarget,
@@ -98,14 +98,9 @@ const copy = [
 
 export const config: Config = {
   namespace: 'se-components',
-  buildEs5: true,
   extras: {
-    cssVarsShim: true,
     dynamicImportShim: true,
     initializeNextTick: true,
-    safari10: true,
-    shadowDomShim: true,
-    slotChildNodesFix: true,
   },
   globalStyle: 'src/global/app.scss',
   plugins: [
@@ -205,6 +200,22 @@ export const config: Config = {
         'se-icon',
         'se-loading',
         'se-skeleton',
+        'se-list',
+        'se-list-group',
+        'se-list-item',
+        'se-tab',
+        'se-tab-item',
+        'se-breadcrumb',
+        'se-breadcrumb-item',
+        'se-form-field',
+        'se-radio',
+        'se-radio-group',
+        'se-checkbox',
+        'se-chip',
+        'se-slider',
+        'se-link',
+        'se-icon-file',
+        'se-tabbar'
       ],
     },
     {
@@ -215,9 +226,9 @@ export const config: Config = {
         'se-dialog-footer',
       ],
     },
-    { components: ['se-list', 'se-list-group', 'se-list-item'] },
     {
       components: [
+        'se-dropdown',
         'se-tooltip',
         'se-tooltip-header',
         'se-tooltip-content',
@@ -235,7 +246,6 @@ export const config: Config = {
       ],
     },
     { components: ['se-stepper', 'se-stepper-item'] },
-    { components: ['se-breadcrumb', 'se-breadcrumb-item'] },
     { components: ['se-banner', 'se-banner-item'] },
     {
       components: [
@@ -244,23 +254,26 @@ export const config: Config = {
         'se-table-group-header',
         'se-table-item',
         'se-table-item-header',
-      ],
-    },
-    {
-      components: [
-        'se-form-field',
-        'se-radio',
-        'se-radio-group',
-        'se-checkbox',
-        'se-chip',
-        'se-dropdown',
-        'se-slider',
+        'se-pagination'
       ],
     },
     { components: ['se-fab', 'se-fab-item'] },
     { components: ['se-visual-linear', 'se-visual-radial'] },
     { components: ['se-filtration'] },
-    { components: ['se-filtration-smart'] },
+    { components: ['se-filtration-smart',
+        'se-filtration-smart-group',
+        'se-filtration-smart-reset-button',
+        'se-filtration-smart-tab',
+        'se-filtration-smart-view-more-refinements-button', 
+        'se-filtration-smart-checkbox', 
+        'se-filtration-smart-desktop-view', 
+        'se-filtration-smart-facet', 
+        'se-filtration-smart-mobile-view-trigger', 
+        'se-filtration-smart-mobile-view', 
+        'se-filtration-smart-view-more-facets-button'
+      ] 
+    },
+    { components: ['se-carousel-item', 'se-carousel-pagination', 'se-carousel'] },
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],

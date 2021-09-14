@@ -557,6 +557,10 @@ export namespace Components {
         "action": 'click' | 'hover';
         "alignment": 'end' | 'start' | 'right' | 'left';
         /**
+          * By default, when opened, the dropdown will visible to the user even if inside an se-block that scrolls. Use `auto-hide` to automatically hide the dropdown if not visible by the user. For conveniences, this option is automatically set to `true` if the dropdown is inside an `se-table`.
+         */
+        "autoHide": boolean;
+        /**
           * Method to close the dropdown from outside its parent element.
          */
         "close": () => Promise<void>;
@@ -1304,7 +1308,7 @@ export namespace Components {
          */
         "size": 'small' | 'nano';
         /**
-          * Defines the selected values of the array.
+          * Specify the currently selected child Radio value..
          */
         "value": string;
     }
@@ -1437,6 +1441,30 @@ export namespace Components {
           * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
          */
         "validated": boolean;
+    }
+    interface SeTab {
+        /**
+          * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
+         */
+        "option": 'anchor' | 'content' | 'navigation';
+        /**
+          * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines. The `compact` setting allows your tabbar content to scroll, but all stack the text together as much as possible.
+         */
+        "overflow": 'compact' | 'stack' | 'scroll';
+    }
+    interface SeTabItem {
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled": boolean;
+        /**
+          * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
+         */
+        "href": string;
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selected": boolean;
     }
     interface SeTabbar {
         /**
@@ -1957,6 +1985,18 @@ declare global {
         prototype: HTMLSeStepperItemElement;
         new (): HTMLSeStepperItemElement;
     };
+    interface HTMLSeTabElement extends Components.SeTab, HTMLStencilElement {
+    }
+    var HTMLSeTabElement: {
+        prototype: HTMLSeTabElement;
+        new (): HTMLSeTabElement;
+    };
+    interface HTMLSeTabItemElement extends Components.SeTabItem, HTMLStencilElement {
+    }
+    var HTMLSeTabItemElement: {
+        prototype: HTMLSeTabItemElement;
+        new (): HTMLSeTabItemElement;
+    };
     interface HTMLSeTabbarElement extends Components.SeTabbar, HTMLStencilElement {
     }
     var HTMLSeTabbarElement: {
@@ -2090,6 +2130,8 @@ declare global {
         "se-snackbar": HTMLSeSnackbarElement;
         "se-stepper": HTMLSeStepperElement;
         "se-stepper-item": HTMLSeStepperItemElement;
+        "se-tab": HTMLSeTabElement;
+        "se-tab-item": HTMLSeTabItemElement;
         "se-tabbar": HTMLSeTabbarElement;
         "se-table": HTMLSeTableElement;
         "se-table-group": HTMLSeTableGroupElement;
@@ -2669,6 +2711,10 @@ declare namespace LocalJSX {
          */
         "action"?: 'click' | 'hover';
         "alignment"?: 'end' | 'start' | 'right' | 'left';
+        /**
+          * By default, when opened, the dropdown will visible to the user even if inside an se-block that scrolls. Use `auto-hide` to automatically hide the dropdown if not visible by the user. For conveniences, this option is automatically set to `true` if the dropdown is inside an `se-table`.
+         */
+        "autoHide"?: boolean;
         /**
           * Sets the maximum height of the dropdown.  Default setting is "400px".
          */
@@ -3484,7 +3530,7 @@ declare namespace LocalJSX {
          */
         "size"?: 'small' | 'nano';
         /**
-          * Defines the selected values of the array.
+          * Specify the currently selected child Radio value..
          */
         "value"?: string;
     }
@@ -3629,6 +3675,30 @@ declare namespace LocalJSX {
           * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
          */
         "validated"?: boolean;
+    }
+    interface SeTab {
+        /**
+          * Defines the function of the tabbar. Default `nav` creates a tab bar that functions as a nav-bar. `content` creates a ta bbar that functions as a content section tab bar.
+         */
+        "option"?: 'anchor' | 'content' | 'navigation';
+        /**
+          * Indicates the overflow behavior of your tab bar. Default setting is `scroll`, keeping all tabs in one horizontal row. The `stack` setting allows your tabbar content wrap to new lines. The `compact` setting allows your tabbar content to scroll, but all stack the text together as much as possible.
+         */
+        "overflow"?: 'compact' | 'stack' | 'scroll';
+    }
+    interface SeTabItem {
+        /**
+          * Disable the item for any interaction.
+         */
+        "disabled"?: boolean;
+        /**
+          * Determines if se-item configures an `a` tag with an `href` attibute. Default when href is blank configures as a `button` tag.
+         */
+        "href"?: string;
+        /**
+          * Defines if the list element should be selected or not.
+         */
+        "selected"?: boolean;
     }
     interface SeTabbar {
         /**
@@ -3848,6 +3918,8 @@ declare namespace LocalJSX {
         "se-snackbar": SeSnackbar;
         "se-stepper": SeStepper;
         "se-stepper-item": SeStepperItem;
+        "se-tab": SeTab;
+        "se-tab-item": SeTabItem;
         "se-tabbar": SeTabbar;
         "se-table": SeTable;
         "se-table-group": SeTableGroup;
@@ -3926,6 +3998,8 @@ declare module "@stencil/core" {
             "se-snackbar": LocalJSX.SeSnackbar & JSXBase.HTMLAttributes<HTMLSeSnackbarElement>;
             "se-stepper": LocalJSX.SeStepper & JSXBase.HTMLAttributes<HTMLSeStepperElement>;
             "se-stepper-item": LocalJSX.SeStepperItem & JSXBase.HTMLAttributes<HTMLSeStepperItemElement>;
+            "se-tab": LocalJSX.SeTab & JSXBase.HTMLAttributes<HTMLSeTabElement>;
+            "se-tab-item": LocalJSX.SeTabItem & JSXBase.HTMLAttributes<HTMLSeTabItemElement>;
             "se-tabbar": LocalJSX.SeTabbar & JSXBase.HTMLAttributes<HTMLSeTabbarElement>;
             "se-table": LocalJSX.SeTable & JSXBase.HTMLAttributes<HTMLSeTableElement>;
             "se-table-group": LocalJSX.SeTableGroup & JSXBase.HTMLAttributes<HTMLSeTableGroupElement>;

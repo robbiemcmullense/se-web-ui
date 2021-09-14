@@ -31,20 +31,20 @@ describe('HeaderComponent', () => {
     expect(page.root.shadowRoot.querySelector('se-icon')).toBeTruthy();
   });
 
-  it('should set the component hasMenu property to true when a sidemenu element is present', () => {
-    const sidemenu = document.createElement('se-sidemenu');
-    header.el.appendChild(sidemenu);
-    header.componentWillLoad();
-    expect(header.hasMenu).toBeTruthy();
-  });
+  // it('should set the component hasMenu property to true when a sidemenu element is present', () => {
+  //   const sidemenu = document.createElement('se-sidemenu');
+  //   header.el.appendChild(sidemenu);
+  //   header.componentWillLoad();
+  //   expect(header.hasMenu).toBeTruthy();
+  // });
 
-  it('should not open menu when disabled', () => {
-    const sidemenu = document.createElement('se-sidemenu');
-    header.el.appendChild(sidemenu);
-    header.componentWillLoad();
-    header.disabled = true;
-    header.onClickMenu();
-    expect(header.elLeftNav.open).toBeFalsy();
-  });
+  // it('should not open menu when disabled', () => {
+  //   const sidemenu = document.createElement('se-sidemenu');
+  //   header.el.appendChild(sidemenu);
+  //   header.componentWillLoad();
+  //   header.disabled = true;
+  //   header.onClickMenu();
+  //   expect(header.elLeftNav.open).toBeFalsy();
+  // });
 
 });

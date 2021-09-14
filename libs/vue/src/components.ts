@@ -71,6 +71,8 @@ const customElementTags: string[] = [
  'se-snackbar',
  'se-stepper',
  'se-stepper-item',
+ 'se-tab',
+ 'se-tab-item',
  'se-tabbar',
  'se-table',
  'se-table-group',
@@ -1044,6 +1046,31 @@ export const SeStepperItem = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('se-stepper-item', ['didValidate', 'didActivate']),
+});
+
+
+export const SeTab = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    option: {} as PropOptions<Components.SeTab['option']>,
+    overflow: {} as PropOptions<Components.SeTab['overflow']>,
+  },
+
+
+  render: createCommonRender('se-tab', []),
+});
+
+
+export const SeTabItem = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    selected: {} as PropOptions<Components.SeTabItem['selected']>,
+    disabled: {} as PropOptions<Components.SeTabItem['disabled']>,
+    href: {} as PropOptions<Components.SeTabItem['href']>,
+  },
+
+
+  render: createCommonRender('se-tab-item', []),
 });
 
 

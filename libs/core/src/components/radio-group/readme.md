@@ -13,7 +13,7 @@
 | `direction` | `direction` | Defines the direction of the flex element. `row` is the default if used with `se-button`. `column` is the default if used with `se-radio`.                                              | `"column" \| "row"`                                       | `undefined`  |
 | `disabled`  | `disabled`  | Optional property that defines if the button is disabled.  Set to `false` by default.                                                                                                   | `boolean`                                                 | `false`      |
 | `size`      | `size`      | Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px. | `"nano" \| "small"`                                       | `'small'`    |
-| `value`     | `value`     | Defines the selected values of the array.                                                                                                                                               | `string`                                                  | `undefined`  |
+| `value`     | `value`     | Specify the currently selected child Radio value..                                                                                                                                      | `string`                                                  | `undefined`  |
 
 
 ## Events

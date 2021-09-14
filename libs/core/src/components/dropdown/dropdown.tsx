@@ -11,8 +11,8 @@ import {
   Host,
   Watch,
 } from '@stencil/core';
-import { createPopper, Placement } from '@popperjs/core';
-import { isTouchDevice } from '../../utils';
+
+import { isTouchDevice, createPopper } from '../../utils';
 
 @Component({
   tag: 'se-dropdown',
@@ -61,6 +61,11 @@ export class DropdownComponent {
    */
   @Prop() action: 'click' | 'hover' = 'click';
 
+  /**
+   * By default, when opened, the dropdown will visible to the user even if inside an se-block that scrolls. Use `auto-hide` to automatically hide the dropdown if not visible by the user. For conveniences, this option is automatically set to `true` if the dropdown is inside an `se-table`.
+   */
+  @Prop() autoHide: boolean;
+
   getDefaultModifiers(listener = true) {
     return [
       {
@@ -83,7 +88,7 @@ export class DropdownComponent {
   createPopper(listener: boolean): void {
     this.popperInstance = createPopper(this.elmButton, this.elmDropdown, {
       strategy: 'fixed',
-      placement: `${this.verticalAlignment}-${this._alignment}` as Placement,
+      placement: `${this.verticalAlignment}-${this._alignment}` as any,
       modifiers: this.getDefaultModifiers(listener),
     });
   }
@@ -147,6 +152,7 @@ export class DropdownComponent {
   @State() isActive: boolean;
 
   @State() opened = false;
+  @State() inTable = false;
 
   @Listen('click', { target: 'window' })
   handleClick() {
@@ -175,6 +181,10 @@ export class DropdownComponent {
     }
   }
 
+  getClosestParent(selector) {
+    return this.el.parentElement && this.el.parentElement.closest(selector);
+  }
+
   _toggle(ev: Event) {
     ev.stopPropagation();
     this.isActive = true;
@@ -190,6 +200,7 @@ export class DropdownComponent {
 
   componentWillLoad(): void {
     this.alignmentChange();
+    this.inTable = !!this.getClosestParent('se-table-item')
   }
 
   componentDidLoad(): void {
@@ -213,6 +224,7 @@ export class DropdownComponent {
           class={{
             show: this.opened,
             content: true,
+            'auto-hide': this.inTable || this.autoHide
           }}
           style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight }}
         >

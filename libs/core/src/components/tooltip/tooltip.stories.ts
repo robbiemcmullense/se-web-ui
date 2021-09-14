@@ -80,27 +80,43 @@ storiesOf('Tooltip', module)
   .add(
     'In layout',
     () => {
-      const position = select('position', positionOptions, 'bottom');
 
       return `
-    <se-container position="absolute" direction="row">
+    <se-container position="absolute" direction="row" style="height: 600px">
     <se-block width="300px">
       <se-block-header>
         Left Column
         <se-tooltip slot="end">
-          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
+          <se-icon color="secondary" slot="trigger">information_circle</se-icon>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
+        <se-dropdown slot="end">
+          <se-button slot="trigger">My Site 1</se-button>
+          <se-list option="dropdown">
+            <se-list-item item="My Site 1"></se-list-item>
+            <se-list-item item="My Site 2"></se-list-item>
+            <se-list-item item="My Site 3"></se-list-item>
+            <se-list-item item="My Site 4 is longer to demonstrate the dropdown's max width property."></se-list-item>
+          </se-list>
+        </se-dropdown>
       </se-block-header>
       <se-block-content>
         This is my block content. My width is 300px.
-        <br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <se-tooltip ac>
-          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
+        
+        <se-tooltip style="padding-top: 600px">
+          <se-icon color="secondary" slot="trigger" >information_circle</se-icon>
           <se-tooltip-content> This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip.</se-tooltip-content>
         </se-tooltip>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </br>
+        <se-dropdown auto-hide style="padding-bottom: 600px">
+          <se-button slot="trigger">My Site 1</se-button>
+          <se-list option="dropdown">
+            <se-list-item item="My Site 1"></se-list-item>
+            <se-list-item item="My Site 2"></se-list-item>
+            <se-list-item item="My Site 3"></se-list-item>
+            <se-list-item item="My Site 4 is longer to demonstrate the dropdown's max width property."></se-list-item>
+          </se-list>
+        </se-dropdown>
       </se-block-content>
     </se-block>
     <se-divider option="vertical"></se-divider>
@@ -113,7 +129,7 @@ storiesOf('Tooltip', module)
       </se-block-content>
       <se-block-footer>
       <se-tooltip>
-          <se-button option="raised" color="primary" slot="trigger">Tooltip</se-button>
+          <se-icon color="secondary" slot="trigger">information_circle</se-icon>
           <se-tooltip-content>This is my tooltip.</se-tooltip-content>
         </se-tooltip>
       </se-block-footer>

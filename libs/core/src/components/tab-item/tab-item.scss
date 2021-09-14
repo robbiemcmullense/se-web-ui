@@ -1,0 +1,89 @@
+
+$indicator: 2px;
+
+:host {
+  align-self: stretch;
+}
+
+.item{
+  background: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  padding: 0 var(--se-tab-item-padding-h);
+  margin: 0 var(--se-tab-item-margin-h);
+
+  // @include background-color('alternative');
+  border: none;
+  border-right: var(--se-tab-item-border);
+  border-bottom: var(--se-tab-item-border);
+  
+  @include color("alternative-contrast");
+
+  background-color: var(--se-tab-item-color-background);
+  
+  &:not([disabled]):hover,
+  &:not(.disabled):hover {
+    background-color: var(--se-tab-item-selected-color-background);
+  }
+  &:after {
+    display: none;
+    bottom: auto;
+    top: 0;
+    height: 0;
+  }
+
+  &[disabled],
+  &.disabled {
+    // @include color("standard-hover");
+    opacity: 0.5;
+    cursor: default;
+    &::after {
+      display: none;
+    }
+  }
+}
+
+// .text {
+//   // letter-spacing: .4px;
+// }
+
+.active {
+  background-color: var(--se-tab-item-selected-color-background);
+  color: var(--se-tab-item-selected-color-font);
+  border-bottom: none;
+  &:hover {
+    color: inherit;
+    &:after {
+      @include background-color("primary");
+    }
+  }
+  // .text{
+  //   // text-shadow:  -0.05ex 0 var(--se-background-alternative-contrast), 0.05ex 0 var(--se-background-alternative-contrast) ;
+  // }
+}
+
+.indicator {
+  display: none;  
+  
+  width: 100%;
+  left: 0;
+  height: $indicator;
+  background: var(--se-primary);
+  position: absolute;
+  border-radius: $indicator;
+  top: calc( var(--se-tab-item-selected-bottom-indicator) * 100% - var(--se-tab-item-selected-bottom-indicator) * #{$indicator});
+  margin-top: var(--se-tab-item-selected-bottom-indicator) ;
+
+  transition: margin 0.5s ease;
+}
+.display{
+  display: block;
+}

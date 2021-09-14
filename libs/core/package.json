@@ -24,6 +24,7 @@
     "test": "stencil test --e2e --testTimeout=30000",
     "posttest": "stencil test --spec --coverage",
     "spec": "stencil test --spec",
+    "stats": "stencil build --config stencil.stats.config.ts",
     "e2e": "stencil test --e2e",
     "e2e.screenshot": "stencil test --e2e --screenshot",
     "e2e.watch": "stencil test --e2e --watchAll",

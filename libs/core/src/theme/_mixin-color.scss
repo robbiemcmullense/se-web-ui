@@ -21,10 +21,8 @@ $rgb-suffix: "-rgb";
 @mixin color($colorTheme, $transparencies: "none") {
   $color: map-get($seTheme, $colorTheme);
   @if $transparencies == "none" {
-    color: $color;
     color: var(#{custom-property-name($colorTheme)}, $color);
   } @else {
-    color: rgba($color, $transparencies);
     color: rgba(
       var(#{custom-property-name($colorTheme + $rgb-suffix)}, $color),
       $transparencies
@@ -33,22 +31,18 @@ $rgb-suffix: "-rgb";
 }
 @mixin fill($colorTheme) {
   $color: map-get($seTheme, $colorTheme);
-  fill: $color;
   fill: var(#{custom-property-name($colorTheme)}, $color);
 }
 @mixin outline($colorTheme) {
   $color: map-get($seTheme, $colorTheme);
-  outline-color: $color;
   outline-color: var(#{custom-property-name($colorTheme)}, $color);
 }
 
 @mixin background-color($colorTheme, $transparencies: "none") {
   $color: map-get($seTheme, $colorTheme);
   @if $transparencies == "none" {
-    background-color: $color;
     background-color: var(#{custom-property-name($colorTheme)}, $color);
   } @else {
-    background-color: rgba($color, $transparencies);
     background-color: rgba(
       var(#{custom-property-name($colorTheme + $rgb-suffix)}, $color),
       $transparencies
@@ -59,10 +53,8 @@ $rgb-suffix: "-rgb";
 @mixin border-color($colorTheme, $transparencies: "none") {
   $color: map-get($seTheme, $colorTheme);
   @if $transparencies == "none" {
-    border-color: $color;
     border-color: var(#{custom-property-name($colorTheme)}, $color) !important;
   } @else {
-    border-color: rgba($color, $transparencies);
     border-color: rgba(
       var(#{custom-property-name($colorTheme + $rgb-suffix)}, $color),
       $transparencies

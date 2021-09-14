@@ -35,7 +35,7 @@ export class AppComponent {
    * - `dark`: dark mode of the application.
    * - `auto`: Will match the OS configuration
    */
-  @Prop() theme: 'light' | 'dark' | 'auto' = 'light';
+  @Prop({reflect: true}) theme: 'light' | 'dark' | 'auto' = 'light';
   @Watch('theme') themeDidChange() {
     switch (this.theme) {
       case 'auto':
@@ -87,6 +87,7 @@ export class AppComponent {
 
     // toggle theme the first time
     this.themeDidChange();
+    document.body.classList.add('se-app');
   }
 
   componentWillUnload() {
@@ -108,7 +109,8 @@ export class AppComponent {
     return (
       <Host
         class={{
-          'se-app-body': !this.pageScroll,
+          'se-app': true,
+          'se-app-shell': !this.pageScroll,
           [bodyClass]: true,
           [this.classTheme]: true,
         }}
