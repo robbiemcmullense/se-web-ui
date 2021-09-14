@@ -3,6 +3,7 @@ import * as d from './proxies';
 
 export const DIRECTIVES = [
 d.SeAbout,
+  d.SeAccessibilityToggle,
   d.SeApp,
   d.SeAuthentication,
   d.SeBanner,

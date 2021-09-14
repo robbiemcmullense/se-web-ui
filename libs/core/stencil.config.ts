@@ -274,6 +274,7 @@ export const config: Config = {
       ] 
     },
     { components: ['se-carousel-item', 'se-carousel-pagination', 'se-carousel'] },
+    { components: ['se-accessibility-toggle'] },
   ],
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],

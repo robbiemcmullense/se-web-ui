@@ -52,11 +52,13 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [se-accessibility-toggle](../accessibility-toggle)
  - [se-filtration-smart-checkbox](../filtration-smart/checkbox)
 
 ### Graph
 ```mermaid
 graph TD;
+  se-accessibility-toggle --> se-checkbox
   se-filtration-smart-checkbox --> se-checkbox
   style se-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```

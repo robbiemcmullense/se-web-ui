@@ -5,6 +5,7 @@ import { applyPolyfills, defineCustomElements } from '@se/web-ui/loader';
 
 applyPolyfills().then(() => defineCustomElements());
 import SeAbout from './components/SeAbout';
+import SeAccessibilityToggle from './components/SeAccessibilityToggle';
 import SeApp from './components/SeApp';
 import SeAuthentication from './components/SeAuthentication';
 import SeBanner from './components/SeBanner';
@@ -79,6 +80,7 @@ import SeTooltipHeader from './components/SeTooltipHeader';
 import SeVisualLinear from './components/SeVisualLinear';
 import SeVisualRadial from './components/SeVisualRadial';
 export { SeAbout };
+export { SeAccessibilityToggle };
 export { SeApp };
 export { SeAuthentication };
 export { SeBanner };

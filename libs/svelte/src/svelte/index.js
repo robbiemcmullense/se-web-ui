@@ -2,6 +2,7 @@
 /* tslint:disable */
 // @ts-nocheck
 import SeAbout from './SeAbout.svelte';
+import SeAccessibilityToggle from './SeAccessibilityToggle.svelte';
 import SeApp from './SeApp.svelte';
 import SeAuthentication from './SeAuthentication.svelte';
 import SeBanner from './SeBanner.svelte';
@@ -76,6 +77,7 @@ import SeTooltipHeader from './SeTooltipHeader.svelte';
 import SeVisualLinear from './SeVisualLinear.svelte';
 import SeVisualRadial from './SeVisualRadial.svelte';
 export { SeAbout };
+export { SeAccessibilityToggle };
 export { SeApp };
 export { SeAuthentication };
 export { SeBanner };

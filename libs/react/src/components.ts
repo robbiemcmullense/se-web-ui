@@ -9,6 +9,7 @@ import { applyPolyfills, defineCustomElements } from '@se/web-ui/loader';
 
 applyPolyfills().then(() => defineCustomElements());
 export const SeAbout = /*@__PURE__*/createReactComponent<JSX.SeAbout, HTMLSeAboutElement>('se-about');
+export const SeAccessibilityToggle = /*@__PURE__*/createReactComponent<JSX.SeAccessibilityToggle, HTMLSeAccessibilityToggleElement>('se-accessibility-toggle');
 export const SeApp = /*@__PURE__*/createReactComponent<JSX.SeApp, HTMLSeAppElement>('se-app');
 export const SeAuthentication = /*@__PURE__*/createReactComponent<JSX.SeAuthentication, HTMLSeAuthenticationElement>('se-authentication');
 export const SeBanner = /*@__PURE__*/createReactComponent<JSX.SeBanner, HTMLSeBannerElement>('se-banner');

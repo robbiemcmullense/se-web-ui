@@ -12,6 +12,7 @@ applyPolyfills().then(() => defineCustomElements());
 
 const customElementTags: string[] = [
  'se-about',
+ 'se-accessibility-toggle',
  'se-app',
  'se-authentication',
  'se-banner',
@@ -101,6 +102,19 @@ export const SeAbout = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('se-about', []),
+});
+
+
+export const SeAccessibilityToggle = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    selected: {} as PropOptions<Components.SeAccessibilityToggle['selected']>,
+    labelModeOn: {} as PropOptions<Components.SeAccessibilityToggle['labelModeOn']>,
+    labelModeOff: {} as PropOptions<Components.SeAccessibilityToggle['labelModeOff']>,
+  },
+
+
+  render: createCommonRender('se-accessibility-toggle', ['didChange']),
 });
 
 

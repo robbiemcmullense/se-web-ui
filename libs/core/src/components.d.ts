@@ -34,6 +34,20 @@ export namespace Components {
          */
         "version": string;
     }
+    interface SeAccessibilityToggle {
+        /**
+          * Defines the text when the Accessibility mode is OFF
+         */
+        "labelModeOff": string;
+        /**
+          * Defines the text when the Accessibility mode is ON
+         */
+        "labelModeOn": string;
+        /**
+          * Defines the state of the toggle. `false` by default.
+         */
+        "selected": boolean;
+    }
     interface SeApp {
         /**
           * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
@@ -1631,6 +1645,12 @@ declare global {
         prototype: HTMLSeAboutElement;
         new (): HTMLSeAboutElement;
     };
+    interface HTMLSeAccessibilityToggleElement extends Components.SeAccessibilityToggle, HTMLStencilElement {
+    }
+    var HTMLSeAccessibilityToggleElement: {
+        prototype: HTMLSeAccessibilityToggleElement;
+        new (): HTMLSeAccessibilityToggleElement;
+    };
     interface HTMLSeAppElement extends Components.SeApp, HTMLStencilElement {
     }
     var HTMLSeAppElement: {
@@ -2071,6 +2091,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "se-about": HTMLSeAboutElement;
+        "se-accessibility-toggle": HTMLSeAccessibilityToggleElement;
         "se-app": HTMLSeAppElement;
         "se-authentication": HTMLSeAuthenticationElement;
         "se-banner": HTMLSeBannerElement;
@@ -2168,6 +2189,24 @@ declare namespace LocalJSX {
           * The version number you want to display.
          */
         "version"?: string;
+    }
+    interface SeAccessibilityToggle {
+        /**
+          * Defines the text when the Accessibility mode is OFF
+         */
+        "labelModeOff"?: string;
+        /**
+          * Defines the text when the Accessibility mode is ON
+         */
+        "labelModeOn"?: string;
+        /**
+          * Passes accessibility toggle state to the parent component on a change of the toggle state
+         */
+        "onDidChange"?: (event: CustomEvent<{ selected: boolean }>) => void;
+        /**
+          * Defines the state of the toggle. `false` by default.
+         */
+        "selected"?: boolean;
     }
     interface SeApp {
         "onThemeChanged"?: (event: CustomEvent<any>) => void;
@@ -3859,6 +3898,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "se-about": SeAbout;
+        "se-accessibility-toggle": SeAccessibilityToggle;
         "se-app": SeApp;
         "se-authentication": SeAuthentication;
         "se-banner": SeBanner;
@@ -3939,6 +3979,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "se-about": LocalJSX.SeAbout & JSXBase.HTMLAttributes<HTMLSeAboutElement>;
+            "se-accessibility-toggle": LocalJSX.SeAccessibilityToggle & JSXBase.HTMLAttributes<HTMLSeAccessibilityToggleElement>;
             "se-app": LocalJSX.SeApp & JSXBase.HTMLAttributes<HTMLSeAppElement>;
             "se-authentication": LocalJSX.SeAuthentication & JSXBase.HTMLAttributes<HTMLSeAuthenticationElement>;
             "se-banner": LocalJSX.SeBanner & JSXBase.HTMLAttributes<HTMLSeBannerElement>;

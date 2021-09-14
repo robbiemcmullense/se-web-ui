@@ -26,6 +26,7 @@
 
 ### Used by
 
+ - [se-accessibility-toggle](../accessibility-toggle)
  - [se-banner](../banner)
  - [se-breadcrumb-item](../breadcrumb-item)
  - [se-button](../button)
@@ -58,6 +59,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  se-accessibility-toggle --> se-icon
   se-banner --> se-icon
   se-breadcrumb-item --> se-icon
   se-button --> se-icon

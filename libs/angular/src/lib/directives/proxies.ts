@@ -24,6 +24,29 @@ export class SeAbout {
   }
 }
 
+import { AccessibilityToggleComponent as IAccessibilityToggleComponent } from '@se/web-ui/types/components/accessibility-toggle/accessibility-toggle';
+export declare interface SeAccessibilityToggle extends Components.SeAccessibilityToggle {}
+@ProxyCmp({
+  inputs: ['labelModeOff', 'labelModeOn', 'selected']
+})
+@Component({
+  selector: 'se-accessibility-toggle',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['labelModeOff', 'labelModeOn', 'selected'],
+  outputs: ['didChange']
+})
+export class SeAccessibilityToggle {
+  /** Passes accessibility toggle state to the parent component on a change of the toggle state */
+  didChange!: IAccessibilityToggleComponent['didChange'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['didChange']);
+  }
+}
+
 import { AppComponent as IAppComponent } from '@se/web-ui/types/components/app/app';
 export declare interface SeApp extends Components.SeApp {}
 @ProxyCmp({
