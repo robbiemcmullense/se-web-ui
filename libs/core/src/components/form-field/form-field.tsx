@@ -200,17 +200,12 @@ export class FormFieldComponent {
             class={{
               'with-label': !!this.label,
               [`align-${this.labelAlign}`]: true,
+              'required': this.required
             }}
+            {...(this.required ? { title: 'required' } : '')}
           >
             {' '}
-            <span>
-              {this.label}
-              {this.required && (
-                <span class="required" title="required">
-                  *
-                </span>
-              )}
-            </span>
+            {this.label}
           </span>
           <div class={{ 'ff-wrapper': true, textOnly: this.textOnly }}>
             <div class="ff-wrapper-input">
