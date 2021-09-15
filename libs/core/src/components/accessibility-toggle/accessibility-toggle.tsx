@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, Event, EventEmitter, Watch } from '@stencil/core';
-import accessibility from './assets/accessibility.svg';
+import accessibility from '@se/icons/svg/accessibility.svg';
 
 @Component({
   tag: 'se-accessibility-toggle',
@@ -51,13 +51,11 @@ export class AccessibilityToggleComponent {
         onClick={() => this.onClickHandler()}
       >
         <se-icon
-          slot="start"
           size="medium"
           color="alternative"
           innerHTML={accessibility} //TODO update icon
         />
         <se-checkbox
-          slot="start"
           noInteractive
           option="toggle"
           selected={this.selected}
