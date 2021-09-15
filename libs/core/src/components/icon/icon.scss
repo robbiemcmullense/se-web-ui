@@ -45,8 +45,6 @@ button {
   background: transparent;
   width: 100%;
   font: inherit;
-  text-align: left; // MS Edge does not support "start"
-  text-align: start;
   text-decoration: none;
   /* inherit font & color from ancestor */
   color: inherit;
