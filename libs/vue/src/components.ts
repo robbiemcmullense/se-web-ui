@@ -463,6 +463,7 @@ export const SeDropdown = /*@__PURE__*/ Vue.extend({
     maxWidth: {} as PropOptions<Components.SeDropdown['maxWidth']>,
     maxHeight: {} as PropOptions<Components.SeDropdown['maxHeight']>,
     action: {} as PropOptions<Components.SeDropdown['action']>,
+    autoHide: {} as PropOptions<Components.SeDropdown['autoHide']>,
   },
 
 
