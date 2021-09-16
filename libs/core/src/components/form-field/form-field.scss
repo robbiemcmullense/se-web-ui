@@ -21,13 +21,6 @@ se-form-field {
   .ff-padding-none {
     padding: 1px; // to account for selected field
   }
-  label {
-    width: 100%;
-    text-align: center;
-    @include display-flex;
-    @include justify-content(center);
-  }
-
   .with-label {
     font-weight: 550;
     width: 35%;
@@ -36,27 +29,39 @@ se-form-field {
     @include align-items(flex-start);
     @include typology("small");
     font-weight: bold;
-
-    box-sizing: border-box;
-    // @include align-items(center);
-    min-width: 140px;
-    padding-right: 10px;
-  }
-  .required {
-    position: relative;
-
-    &:after {
-      content: '*';
-      @include color("error");
-      position: absolute;
-      right: 0;
-      top: 12px;
+    > span {
+      display: flex;
+      min-height: 40px;
+      @include align-items(center);
     }
   }
-  .label-wrapper{
-    display: flex;
-    min-height: 40px;
-    @include align-items(center);
+
+  label {
+    width: 100%;
+    text-align: center;
+    @include display-flex;
+    @include justify-content(center);
+
+    // @include align-items(flex-start);
+    > span {
+      // @include flex(40%);
+      // max-width: 140px;
+      box-sizing: border-box;
+      @include align-items(center);
+      min-width: 140px;
+      padding-right: 10px;
+
+      &.required {
+        position: relative;
+
+        &:after {
+          content: '*';
+          @include color("error");
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
   }
   .align-left {
     text-align: left !important;

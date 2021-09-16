@@ -78,10 +78,6 @@ export class FormFieldComponent {
    * Defines the text value of the label in your form field.
    */
   @Prop() label: string;
-  /**
-   * Defines the text value of the text that will be seen if the user mouse hover a required field. Used for translation purpose.
-   */
-  @Prop() labelRequired = 'required';
 
   /**
    * Defines if the field is a text, to add a padding and better align with other fields.
@@ -206,13 +202,10 @@ export class FormFieldComponent {
               [`align-${this.labelAlign}`]: true,
               'required': this.required
             }}
-            {...(this.required ? { title: `${this.labelRequired}` } : '')}
+            {...(this.required ? { title: 'required' } : '')}
           >
-            { this.label && 
-              <span class="label-wrapper">
-                {this.label}
-              </span>
-            }
+            {' '}
+            {this.label}
           </span>
           <div class={{ 'ff-wrapper': true, textOnly: this.textOnly }}>
             <div class="ff-wrapper-input">

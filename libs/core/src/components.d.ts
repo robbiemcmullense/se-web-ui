@@ -918,10 +918,6 @@ export namespace Components {
          */
         "labelAlign": 'left' | 'right';
         /**
-          * Defines the text value of the text that will be seen if the user mouse hover a required field. Used for translation purpose.
-         */
-        "labelRequired": string;
-        /**
           * Optional property to define the proportion of the label width. The content (input) will take the rest of if. Defaulted to 40%
          */
         "labelWidth": string;
@@ -3150,10 +3146,6 @@ declare namespace LocalJSX {
           * Optional property to define how to align the label
          */
         "labelAlign"?: 'left' | 'right';
-        /**
-          * Defines the text value of the text that will be seen if the user mouse hover a required field. Used for translation purpose.
-         */
-        "labelRequired"?: string;
         /**
           * Optional property to define the proportion of the label width. The content (input) will take the rest of if. Defaulted to 40%
          */
