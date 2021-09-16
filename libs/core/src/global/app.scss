@@ -48,19 +48,6 @@
   }
 }
 
-
-// @media (prefers-color-scheme: dark) {
-//   @each $element, $value in $seThemeDark {
-//     @include define-custom-property($element, $value);
-//   };
-//   --quartz-color-background-shade-0: #111111;
-//   --quartz-color-background-shade-1: #1C1E20;
-//   --quartz-color-background-shade-2: #293133;
-//   --quartz-color-background-shade-3: #434B4D;
-// }
-
-
-
 // Create all classes to use colors as classes
 @each $element
   in (
@@ -183,24 +170,6 @@
   // Text Styles
   em {
     font-style: italic;
-  }
-
-  strong,
-  .bold {
-    font-weight: 500;
-  }
-  .normal {
-    font-weight: normal;
-  }
-  .light {
-    font-weight: 300;
-  }
-  .thin {
-    font-weight: 200;
-  }
-
-  small {
-    font-size: 75%;
   }
 
 }

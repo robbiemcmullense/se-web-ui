@@ -12,6 +12,7 @@ export let verticalAlignment = undefined;
 export let maxWidth = undefined;
 export let maxHeight = undefined;
 export let action = undefined;
+export let autoHide = undefined;
 
 export const open = (...args) => __ref.open(...args);
 export const close = (...args) => __ref.close(...args);
@@ -36,6 +37,7 @@ const onEvent = (e) => {
   max-width={maxWidth}
   max-height={maxHeight}
   action={action}
+  auto-hide={autoHide}
   on:didOpen={onEvent}
   on:didClose={onEvent}
   on:cancelAllDropdown={onEvent}

@@ -64,11 +64,11 @@ $disabled-color: #cbcbcb;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   &:hover {
-    // @include background-color("standard-hover");
+    @include background-color("standard-hover");
     border: $spacing-small solid transparent;
   }
   &:active {
-    @include background-color("selected");
+    @include background-color("standard-hover");
   }
 
   &:hover,
@@ -91,6 +91,7 @@ $disabled-color: #cbcbcb;
 }
 
 input {
+  &,
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
   }

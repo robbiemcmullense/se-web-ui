@@ -3089,9 +3089,9 @@
   integrity sha512-GM+Sx0KL1cuQ4ysf20iojKBw/Yvuyx3mFWBaqSb3lDxfg4Kg5OHADoaN6L4rMZu3P3G3e2HT5Ut35BuFKIyT+Q==
 
 "@stencil/core@^2.5.2":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.8.0.tgz#87d950fbbf050dce1566f32ca48c98007239472b"
-  integrity sha512-WazFGUMnbumg8ePNvej8cIOEcxvuZ0ugKQkkE1xFbDYcl7DgJd62MiG+bIqCcQlIdLEfhjAdoixxlFdJgrgjyA==
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.8.1.tgz#21b15c115d9a5e2f56379774fcbd9bc947bf336f"
+  integrity sha512-iv9J6oLO/lv7/aO45M05yw3pp1J7olY400vlOZgdMVs3s5zHfalY1ZPYM0KyqU4+7DZuadKYbd0aQZ/g2PInZw==
 
 "@stencil/postcss@^2.0.0":
   version "2.0.0"
@@ -4367,9 +4367,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "16.9.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.0.tgz#d9512fe037472dcb58931ce19f837348db828a62"
-  integrity sha512-nmP+VR4oT0pJUPFbKE4SXj3Yb4Q/kz3M9dSAO1GGMebRKWHQxLfDNmU/yh3xxCJha3N60nQ/JwXWwOE/ZSEVag==
+  version "16.9.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.1.tgz#0611b37db4246c937feef529ddcc018cf8e35708"
+  integrity sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==
 
 "@types/node@12.12.50":
   version "12.12.50"
@@ -18707,9 +18707,9 @@ sass@^1.26.3, sass@^1.26.5, sass@^1.32.8:
     chokidar ">=3.0.0 <4.0.0"
 
 sass@^1.34.1:
-  version "1.39.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.39.0.tgz#6c64695d1c437767c8f1a4e471288e831f81d035"
-  integrity sha512-F4o+RhJkNOIG0b6QudYU8c78ZADKZjKDk5cyrf8XTKWfrgbtyVVXImFstJrc+1pkQDCggyidIOytq6gS4gCCZg==
+  version "1.41.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.41.0.tgz#f7b41dc00336a4c03429c37b9680b86758af61d4"
+  integrity sha512-wb8nT60cjo9ZZMcHzG7TzdbFtCAmHEKWrH+zAdScPb4ZxL64WQBnGdbp5nwlenW5wJPcHva1JWmVa0h6iqA5eg==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
@@ -19926,9 +19926,9 @@ svelte-preprocess@^4.0.0:
     strip-indent "^3.0.0"
 
 svelte-preprocess@^4.6.9:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.9.3.tgz#d6ff1f0d0cb6cfdce403493b4b7ac08b8834e987"
-  integrity sha512-dLwYFDCqTXoNr4sh2qGNPo9UxdJgIEK4qZHRz++Rh+9JQ/IAGMQwyS9qQCLBm6GYNPSMbWZaV6Hf+gknqkXWXw==
+  version "4.9.4"
+  resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.9.4.tgz#1a81c47994b94a8ee8a8cadf10763053dd486e24"
+  integrity sha512-Z0mUQBGtE+ZZSv/HerRSHe7ukJokxjiPeHe7iPOIXseEoRw51H3K/Vh6OMIMstetzZ11vWO9rCsXSD/uUUArmA==
   dependencies:
     "@types/pug" "^2.0.4"
     "@types/sass" "^1.16.0"
@@ -19938,9 +19938,9 @@ svelte-preprocess@^4.6.9:
     strip-indent "^3.0.0"
 
 svelte@^3.35.0:
-  version "3.42.4"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.42.4.tgz#838ed98fa7b26fc5fffe4df0d7ba345f1c54cf4f"
-  integrity sha512-DqC0AmDdBrrbIA+Kzl3yhBb6qCn4vZOAfxye2pTnIpinLegyagC5sLI8Pe9GPlXu9VpHBXIwpDDedpMfu++epA==
+  version "3.42.6"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.42.6.tgz#45a534d76fcdb551a2f23abf2cfee648fa248d03"
+  integrity sha512-lAcryr9Do2PeGtbodspX5I4kWj4yWYAa2WGpDCwzNkP3y8WZTxigMd4/TMO1rBZEOkMYGn4ZXrbAlSEGhK6q3w==
 
 svg-parser@^2.0.2:
   version "2.0.4"

@@ -1,4 +1,5 @@
 $opacity: 0.25 !default;
+/*rtl:begin:ignore*/
 
 :host {
   box-sizing: border-box;
@@ -52,15 +53,11 @@ se-tabbar {
     }
 
     &.arrowLeft {
-      /*rtl:begin:ignore*/
       left: 0;
-      /*rtl:end:ignore*/
     }
 
     &.arrowRight {
-      /*rtl:begin:ignore*/
       right: 0;
-      /*rtl:end:ignore*/
     }
   }
 
@@ -142,9 +139,7 @@ se-tabbar {
               display: inline-block;
               @include background-color("primary");
               height: 2px;
-              /*rtl:begin:ignore*/
               left: 0;
-              /*rtl:end:ignore*/
             }
             &:hover {
               color: inherit;
@@ -167,6 +162,7 @@ se-tabbar {
   }
   .sub-nav {
     margin-left: calc(#{$spacing-large} * -1.5);
+
     background-color: rgba(black, $opacity);
   }
   nav,
@@ -406,17 +402,13 @@ se-tabbar {
     letter-spacing: .4px;
     @include color("background-alternative-contrast");
     &.active {
-      /*rtl:begin:ignore*/
       text-shadow:  -0.05ex 0 var(--se-background-alternative-contrast), 0.05ex 0 var(--se-background-alternative-contrast) ;
-      /*rtl:end:ignore*/
       @include background-color("background-standard");
     }
     &:not([disabled]):hover,
     &:not(.disabled):hover &.active {
       @media (hover: hover) {
-        /*rtl:begin:ignore*/
         text-shadow:  -0.05ex 0 var(--se-background-alternative-contrast), 0.05ex 0 var(--se-background-alternative-contrast) ;
-        /*rtl:end:ignore*/
         @include color("background-alternative-contrast");
         @include background-color("background-standard");
       }
@@ -428,9 +420,7 @@ se-tabbar {
     }
     &::after {
       display: block;
-      /*rtl:begin:ignore*/
       left: 0;
-      /*rtl:end:ignore*/
       height: 3px;
     }
   }
@@ -442,22 +432,18 @@ se-tabbar {
 
     .arrow {
       background-color: transparent;
-      /*rtl:begin:ignore*/
       background-image: linear-gradient(
         270deg,
         var(--se-alternative) 0%,
         rgba(var(--se-alternative-rgb), 0.5) 100%
       );
-      /*rtl:end:ignore*/
     }
     .arrowLeft {
-      /*rtl:begin:ignore*/
       background-image: linear-gradient(
         90deg,
         var(--se-alternative) 0%,
         rgba(var(--se-alternative-rgb), 0.5) 100%
       );
-      /*rtl:end:ignore*/
     }
   }
 
@@ -474,7 +460,6 @@ se-tabbar {
     @include background-color("background-standard");
     > a,
     > span {
-      // @include background-color('background-standard');
       &.active {
         @include background-color("background-alternative");
       }
@@ -528,3 +513,5 @@ se-tabbar {
     }
   }
 }
+
+/*rtl:begin:ignore*/

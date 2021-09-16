@@ -104,6 +104,7 @@ export class TabbarComponent {
 
     return (
       <div
+        dir="ltr" // This component does not support RTL for now.
         class={{
           'd-flex-main': true,
           [`tab-${this.color}`]: !!this.color,
