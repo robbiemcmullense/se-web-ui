@@ -1,6 +1,6 @@
 {
   "name": "web-ui",
-  "version": "3.21.15",
+  "version": "3.22.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -98,7 +98,7 @@
     "@popperjs/core": "^2.9.2",
     "@pxblue/storybook-rtl-addon": "^1.0.1",
     "@se/fonts": "^1.1.0",
-    "@se/icons": "^4.5.1",
+    "@se/icons": "^4.6.0",
     "@se/postcss-host-polyfill": "^1.0.0",
     "@stencil/angular-output-target": "0.0.7",
     "@stencil/core": "^2.5.2",
