@@ -1,7 +1,6 @@
 import { Component, h, Element, Prop, Host, State } from '@stencil/core';
 // import { ResizeObserver } from '@juggle/resize-observer';
 import arrow from '@se/icons/svg/arrow5_step.svg';
-import { classNames } from '../../utils';
 import { isTouchDevice } from '../../utils';
 
 @Component({
@@ -35,11 +34,11 @@ export class Carousel {
   /**
    * boolean value to show left arrow
    */
-  @State() showLeftArrow: boolean;
+  @State() showStartArrow: boolean;
   /**
    * boolean value to show right arrow
    */
-  @State() showRightArrow: boolean;
+  @State() showEndArrow: boolean;
 
   /**
    * Index of leftmost visible carousel item (set when `pagination` property is true)
@@ -61,6 +60,7 @@ export class Carousel {
   contentWidth;
 
   constructor() {
+    this.el.dir = document.documentElement.dir;
     this.onScroll = this.onScroll.bind(this);
   }
 
@@ -151,9 +151,15 @@ export class Carousel {
     const { offsetWidth, scrollWidth, scrollLeft } = this.contentEl;
     const showArrow = offsetWidth < scrollWidth;
     const errorMargin = 20; // Add 10px in case we only few px off and we don't want to show the arrow
-    this.showLeftArrow = scrollLeft > errorMargin;
-    this.showRightArrow =
-      showArrow && offsetWidth + scrollLeft < scrollWidth - errorMargin;
+    if(this.el.dir === 'rtl'){
+      this.showEndArrow = - scrollLeft > errorMargin;
+      this.showStartArrow =
+        showArrow && offsetWidth - scrollLeft < scrollWidth - errorMargin;
+    } else {
+      this.showStartArrow = scrollLeft > errorMargin;
+      this.showEndArrow =
+        showArrow && offsetWidth + scrollLeft < scrollWidth - errorMargin;
+    }
   }
 
   scroll(delta: number) {
@@ -203,7 +209,7 @@ export class Carousel {
       if (scrollLeft >= slideStart && scrollLeft < slideEnd) {
         this.activeIndex = i;
 
-        if (!this.showRightArrow) {
+        if (!this.showEndArrow) {
           this.activeIndex = this.paginationSize - 1;
         }
 
@@ -226,16 +232,16 @@ export class Carousel {
   render() {
     return (
       <Host
-        class={classNames({
+        class={{
           'arrows-overlay': this.arrowsOverlay,
-          'left-overlay': !this.showRightArrow,
-          'right-overlay': !this.showLeftArrow,
+          'start-overlay': this.showStartArrow,
+          'end-overlay': this.showEndArrow,
           'has-pagination': this.pagination,
-        })}
+        }}
       >
-        {this.showLeftArrow && !this.isMobile && (
+        {this.showStartArrow && !this.isMobile && (
           <se-icon
-            class="arrow left"
+            class="arrow start"
             option="button"
             no-hover
             onClick={() => this.scroll(-1)}
@@ -250,9 +256,9 @@ export class Carousel {
           <slot></slot>
         </div>
 
-        {this.showRightArrow && !this.isMobile && (
+        {this.showEndArrow && !this.isMobile && (
           <se-icon
-            class="arrow right"
+            class="arrow end"
             option="button"
             no-hover
             onClick={() => this.scroll(1)}

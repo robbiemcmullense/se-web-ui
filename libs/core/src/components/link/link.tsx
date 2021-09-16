@@ -35,17 +35,16 @@ export class LinkComponent {
   @Prop() unicolor = false;
 
   render() {
-    const classNames = [
-      this.option === 'external' ? 'external' : '',
-      this.unicolor ? 'unicolor' : '',
-    ].join('');
 
     return (
       <Host onClick={() => this.el.blur()}>
         <a
           href={this.url}
           data-disabled={this.disabled}
-          class={classNames}
+          class={{
+            'external': !!this.option,
+            'unicolor': !!this.unicolor
+          }}
           target={this.option === 'external' ? '_blank' : ''}
           download={this.download}
           rel={this.option === 'external' ? 'noreferrer' : ''}

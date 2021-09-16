@@ -273,14 +273,14 @@ input {
       @include border-color("border");
       @include background-color("background-alternative");
       border-radius: 13px;
-      transition: all 0.2s ease-out 0.1s;
+      transition: transform 0.2s linear;
       transform: scale(1);
     }
     &:after {
       top: 50%;
       left: 1px;
       z-index: 3;
-      transition: transform 0.1s linear;
+      transition: transform 0.2s linear;
       width: 24px;
       height: 24px;
       transform: translate3d(0, -50%, 0);
@@ -334,14 +334,13 @@ input {
       @include border-color("border");
       @include background-color("border");
       border-radius: 13px;
-      transition: all 0.2s ease-out 0.1s;
-      transform: scale(1);
+      transition: transform 0.2s linear;
     }
     &:after {
       top: 50%;
       left: 1px;
       z-index: 3;
-      transition: transform 0.1s linear;
+      transition: transform 0.2s linear;
       width: 17px;
       height: 17px;
       transform: translate3d(25%, -50%, 0);

@@ -11,6 +11,7 @@ describe('filtration', () => {
   });
 
   it('renders', async () => {
+    expect(toggleElement).toBeTruthy();
     expect(hostElement).toBeTruthy();
     expect(hostElement).toHaveClass('hydrated');
   });

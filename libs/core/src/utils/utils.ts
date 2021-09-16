@@ -74,16 +74,16 @@ export function isVisible(el, screenReader, recursed) {
   return false;
 }
 
-export function debounce(func, timeout?: number) {
-  let timer: any;
-  return (...args: any[]) => {
-    const next = () => func(...args);
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(next, timeout > 0 ? timeout : 300);
-  };
-}
+// export function debounce(func, timeout?: number) {
+//   let timer: any;
+//   return (...args: any[]) => {
+//     const next = () => func(...args);
+//     if (timer) {
+//       clearTimeout(timer);
+//     }
+//     timer = setTimeout(next, timeout > 0 ? timeout : 300);
+//   };
+// }
 
 export function isTouchDevice() {
   return !!(
@@ -93,13 +93,6 @@ export function isTouchDevice() {
         typeof document !== 'undefined' &&
         document instanceof window['DocumentTouch']))
   );
-}
-export function classNames(obj) {
-  return Object.entries(obj)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .filter(([_, isTruthy]) => isTruthy)
-    .map(([className]) => className)
-    .join(' ');
 }
 
 export function isNumber(number: number | string) {

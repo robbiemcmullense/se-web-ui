@@ -17,18 +17,18 @@ button {
 	&:hover,
 	&:focus {
 		padding: $spacing-small $spacing-medium;
-		--se-accessibility-toggle-switch-display: inline-block;
-		--se-accessibility-toggle-label-display: inline-block;
+		--se-a11y-switch: inline-block;
+		--se-a11y-label: inline-block;
 	}
 }
 
 .toggle {
-	display: var(--se-accessibility-toggle-switch-display, none);
+	display: var(--se-a11y-switch, none);
   padding: 0 $spacing-medium;
 }
 
 label {
 	@include color("alternative");
-	display: var(--se-accessibility-toggle-label-display, none);
+	display: var(--se-a11y-label, none);
 	font-weight: 600;
 }

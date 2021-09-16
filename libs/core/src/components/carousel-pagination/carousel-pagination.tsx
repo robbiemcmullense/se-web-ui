@@ -1,5 +1,4 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
-import { classNames } from '../../utils';
 
 const MAX_BULLETS_SIZE = 5;
 const TRANSLATE_COEFFICIENT = 11;
@@ -49,7 +48,7 @@ export class CarouselPagination {
   }
 
   classNames(i) {
-    return classNames({
+    return {
       'pagination-bullet': true,
       'pagination-bullet--active': this.activeIndex === i,
       'pagination-bullet--prev-hidden':
@@ -59,7 +58,7 @@ export class CarouselPagination {
       'pagination-bullet--hidden':
         this.getVisualPosition(i) < 0 ||
         this.getVisualPosition(i) >= MAX_BULLETS_SIZE,
-    });
+    };
   }
 
   render() {
