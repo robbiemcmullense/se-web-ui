@@ -29,6 +29,7 @@ se-list-item {
 
 .treeview-icon {
   margin-right: $spacing-small;
+  margin-left: -$spacing-small/2;
 }
 
 // Safari don't support gap. As of now, we cannot find out if gap is supported of not by browsers

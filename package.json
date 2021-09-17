@@ -195,7 +195,6 @@
     "rollup-plugin-visualizer": "^5.5.2",
     "rxjs": "6.5.5",
     "sass": "^1.34.1",
-    "smoothscroll-polyfill": "^0.4.4",
     "stencil-inline-svg": "^1.0.1",
     "storybook-readme": "^5.0.8",
     "svelte": "^3.35.0",

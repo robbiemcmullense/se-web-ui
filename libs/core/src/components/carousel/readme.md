@@ -15,6 +15,13 @@
 | `pagination`    | `pagination`     | Configures if pagination dots are shown (https://zeroheight.com/6dbc9efe1/p/045938-pagination/b/934eef)          | `boolean` | `false` |
 
 
+## CSS Custom Properties
+
+| Name                       | Description                               |
+| -------------------------- | ----------------------------------------- |
+| `--se-carousel-item-width` | Default width of se-carousel-item (275px) |
+
+
 ## Dependencies
 
 ### Depends on

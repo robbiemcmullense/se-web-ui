@@ -3040,9 +3040,9 @@
   integrity sha512-3i3T+nKRliaUY4Z/M1lELvrL+yJrTc1s+tC7E18zPlvCxia8SN10/Md/LLSsVIrGEHW1wwcbVgrR79ZZKO0Q4g==
 
 "@se/icons@^4.5.1":
-  version "4.5.2"
-  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/icons/-/icons-4.5.2.tgz#62fcb78ebc16bb05944d35e3a0d7541ecd010e9a"
-  integrity sha512-rg0fagQ5pr9Fn3jatNSqntGFnpcKIGVdDzKe8bOgqextKGMWUywDF8hwsxr+Q1WF5+UazoX+ADvKmgStPjbP2A==
+  version "4.6.0"
+  resolved "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/@se/icons/-/icons-4.6.0.tgz#ca0092909db6a5412ff7467307923859476c1403"
+  integrity sha512-XS9NU05JybvzdByBtDUxz3BHX0csju8gBuDcfvLG252TptGba8PrA5EUE1jJsaCupOba52c/6BKMkTN9AbWxQw==
 
 "@se/postcss-host-polyfill@^1.0.0":
   version "1.0.0"
@@ -19122,11 +19122,6 @@ smart-buffer@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.1.0.tgz#91605c25d91652f4661ea69ccf45f1b331ca21ba"
   integrity sha512-iVICrxOzCynf/SNaBQCw34eM9jROU/s5rzIhpOvzhzuYHfJR/DhZfDkXiZSgKXfgv26HT3Yni3AV/DGw0cGnnw==
-
-smoothscroll-polyfill@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/smoothscroll-polyfill/-/smoothscroll-polyfill-0.4.4.tgz#3a259131dc6930e6ca80003e1cb03b603b69abf8"
-  integrity sha512-TK5ZA9U5RqCwMpfoMq/l1mrH0JAR7y7KRvOBx0n2869aLxch+gT9GhN3yUfjiw+d/DiF1mKo14+hd62JyMmoBg==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
