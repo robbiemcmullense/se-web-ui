@@ -1,6 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('filtration', () => {
+describe('accessibility toggle', () => {
   let page, hostElement, toggleElement;
 
   beforeEach(async () => {

@@ -1,10 +1,5 @@
-# se-filtration
+# se-accessibility-toggle
 
-
-| Slot   | Description                                                                                       |
-| ------ | ------------------------------------------------------------------------------------------------- |
-| `selectedItem` | Place the list of item in the header section |
-| none | The main content  |
 
 
 <!-- Auto Generated Below -->
