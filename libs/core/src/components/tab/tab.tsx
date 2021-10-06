@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Host, Prop, State, Build } from '@stencil/core';
 // import ResizeObserver from 'resize-observer-polyfill';
 
 import arrow3Up from '@se/icons/svg/arrow3_up.svg';
@@ -34,9 +34,11 @@ export class TabComponent {
 
   ro: ResizeObserver;
   componentDidLoad() {
-    this.ro = new ResizeObserver(_ => {
-      this.displayArrow();
-    });
+    if(Build.isBrowser){// For SSR rendering
+      this.ro = new ResizeObserver(_ => {
+        this.displayArrow();
+      });
+    }
     if (this.ro) {
       this.ro.observe(this.navbar);
     }

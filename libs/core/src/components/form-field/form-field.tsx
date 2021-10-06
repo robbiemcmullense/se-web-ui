@@ -8,6 +8,7 @@ import {
   Listen,
   Watch,
   State,
+  Build,
 } from '@stencil/core';
 // import ResizeObserver from 'resize-observer-polyfill';
 
@@ -148,10 +149,12 @@ export class FormFieldComponent {
 
   ro: ResizeObserver;
   componentDidLoad() {
-    this.ro = new ResizeObserver(_ => {
-      this.isSmall = this.inputWrapper.clientWidth < this.minWidth;
-      // this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;
-    });
+    if(Build.isBrowser){ // For SSR rendering
+      this.ro = new ResizeObserver(_ => {
+        this.isSmall = this.inputWrapper.clientWidth < this.minWidth;
+        // this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;
+      });
+    }
     if (this.ro) {
       this.ro.observe(this.inputWrapper);
     }

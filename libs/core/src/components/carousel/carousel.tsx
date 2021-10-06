@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Host, State } from '@stencil/core';
+import { Component, h, Element, Prop, Host, State, Build } from '@stencil/core';
 // import { ResizeObserver } from '@juggle/resize-observer';
 import arrow from '@se/icons/svg/arrow5_step.svg';
 import { isTouchDevice } from '../../utils';
@@ -77,12 +77,14 @@ export class Carousel {
     this.displayArrow();
     this.calculatePaginationSize();
 
-    this.ro = new ResizeObserver(_ => {
-      // Observe any changes in the width container
-      this.calculateWidth();
-      this.displayArrow();
-      this.calculatePaginationSize();
-    });
+    if(Build.isBrowser){ // For SSR rendering
+      this.ro = new ResizeObserver(_ => {
+        // Observe any changes in the width container
+        this.calculateWidth();
+        this.displayArrow();
+        this.calculatePaginationSize();
+      });
+    }
     if (this.ro) {
       this.ro.observe(this.el);
     }
