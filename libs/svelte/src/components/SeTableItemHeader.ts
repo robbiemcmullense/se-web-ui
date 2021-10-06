@@ -25,10 +25,17 @@ Default value `false` defines the tag type as `div`.
 `desc` defines the icon as a downwards arrow in black.
 `none` defines the icon as an upwards arrow in grey. */
   sort?: Components.SeTableItemHeader["sort"]
+  
+  /** Optional property defines whether the column is resizable or not.
+Default value `false` defines column as not resizable
+`true` defines column is resizable */
+  resizable?: Components.SeTableItemHeader["resizable"]
 }
 
 interface SeTableItemHeaderEvents {
   
+  /** Event emitted to notify the table-group-header component that the width has changed. */
+  didWidthChange: Parameters<JSX.SeTableItemHeader["onDidWidthChange"]>[0]
 }
 
 interface SeTableItemHeaderSlots {
@@ -47,6 +54,7 @@ import {
 	get_slot_changes,
 	init,
 	insert,
+	listen,
 	safe_not_equal,
 	set_custom_element_data,
 	transition_in,
@@ -59,8 +67,10 @@ import { createEventDispatcher, onMount } from 'svelte';
 function create_fragment(ctx) {
 	let se_table_item_header;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[8].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[7], null);
+	let mounted;
+	let dispose;
+	const default_slot_template = /*#slots*/ ctx[10].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[9], null);
 
 	return {
 		c() {
@@ -71,6 +81,7 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_table_item_header, "min-width", /*minWidth*/ ctx[2]);
 			set_custom_element_data(se_table_item_header, "clickable", /*clickable*/ ctx[3]);
 			set_custom_element_data(se_table_item_header, "sort", /*sort*/ ctx[4]);
+			set_custom_element_data(se_table_item_header, "resizable", /*resizable*/ ctx[5]);
 		},
 		m(target, anchor) {
 			insert(target, se_table_item_header, anchor);
@@ -79,20 +90,25 @@ function create_fragment(ctx) {
 				default_slot.m(se_table_item_header, null);
 			}
 
-			/*se_table_item_header_binding*/ ctx[9](se_table_item_header);
+			/*se_table_item_header_binding*/ ctx[11](se_table_item_header);
 			current = true;
+
+			if (!mounted) {
+				dispose = listen(se_table_item_header, "didWidthChange", /*onEvent*/ ctx[7]);
+				mounted = true;
+			}
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 128)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 512)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[7],
+						/*$$scope*/ ctx[9],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[7])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[7], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[9])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[9], dirty, null),
 						null
 					);
 				}
@@ -117,6 +133,10 @@ function create_fragment(ctx) {
 			if (!current || dirty & /*sort*/ 16) {
 				set_custom_element_data(se_table_item_header, "sort", /*sort*/ ctx[4]);
 			}
+
+			if (!current || dirty & /*resizable*/ 32) {
+				set_custom_element_data(se_table_item_header, "resizable", /*resizable*/ ctx[5]);
+			}
 		},
 		i(local) {
 			if (current) return;
@@ -130,7 +150,9 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_table_item_header);
 			if (default_slot) default_slot.d(detaching);
-			/*se_table_item_header_binding*/ ctx[9](null);
+			/*se_table_item_header_binding*/ ctx[11](null);
+			mounted = false;
+			dispose();
 		}
 	};
 }
@@ -145,6 +167,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { minWidth = undefined } = $$props;
 	let { clickable = undefined } = $$props;
 	let { sort = undefined } = $$props;
+	let { resizable = undefined } = $$props;
 	const getWebComponent = () => __ref;
 
 	onMount(() => {
@@ -152,7 +175,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(5, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(6, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -163,7 +186,7 @@ function instance($$self, $$props, $$invalidate) {
 	function se_table_item_header_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			__ref = $$value;
-			$$invalidate(5, __ref);
+			$$invalidate(6, __ref);
 		});
 	}
 
@@ -173,7 +196,8 @@ function instance($$self, $$props, $$invalidate) {
 		if ('minWidth' in $$props) $$invalidate(2, minWidth = $$props.minWidth);
 		if ('clickable' in $$props) $$invalidate(3, clickable = $$props.clickable);
 		if ('sort' in $$props) $$invalidate(4, sort = $$props.sort);
-		if ('$$scope' in $$props) $$invalidate(7, $$scope = $$props.$$scope);
+		if ('resizable' in $$props) $$invalidate(5, resizable = $$props.resizable);
+		if ('$$scope' in $$props) $$invalidate(9, $$scope = $$props.$$scope);
 	};
 
 	return [
@@ -182,7 +206,9 @@ function instance($$self, $$props, $$invalidate) {
 		minWidth,
 		clickable,
 		sort,
+		resizable,
 		__ref,
+		onEvent,
 		getWebComponent,
 		$$scope,
 		slots,
@@ -212,7 +238,8 @@ class SeTableItemHeader extends SvelteComponent {
 			minWidth: 2,
 			clickable: 3,
 			sort: 4,
-			getWebComponent: 6
+			resizable: 5,
+			getWebComponent: 8
 		});
 	}
 
@@ -261,8 +288,17 @@ class SeTableItemHeader extends SvelteComponent {
 		flush();
 	}
 
+	get resizable() {
+		return this.$$.ctx[5];
+	}
+
+	set resizable(resizable) {
+		this.$$set({ resizable });
+		flush();
+	}
+
 	get getWebComponent(): HTMLSeTableItemHeaderElement | undefined {
-		return this.$$.ctx[6];
+		return this.$$.ctx[8];
 	}
 }
 

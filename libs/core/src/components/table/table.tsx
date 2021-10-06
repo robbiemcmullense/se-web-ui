@@ -10,6 +10,7 @@ export class TableComponent {
    * Define if we should show a compact view of the table, vs a version with larger spacing and font
    */
   @Prop() compact: boolean;
+
   render() {
     return (
       <Host role="table" class={{ compact: this.compact }}>

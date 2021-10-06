@@ -1,4 +1,5 @@
 import { Component, h, Prop, Element, Host } from '@stencil/core';
+import columnProperties from '../table/store';
 
 @Component({
   tag: 'se-table-group',
@@ -16,8 +17,30 @@ export class TableGroupComponent {
    */
   @Prop() selected = false;
 
+  setColumnProperties() {
+    const columnWidths = columnProperties.get('widths');
+    const columnMinWidths = columnProperties.get('minWidths');
+    const columnFlex = columnProperties.get('flex');
+    this.el
+      .querySelectorAll<HTMLSeTableItemElement>('se-table-item')
+      .forEach((item, index) => {
+        item.width = columnWidths[index];
+        item.minWidth = columnMinWidths[index];
+        item.flex = columnFlex[index];
+      });
+  }
+
+  componentWillLoad() {
+    this.setColumnProperties();
+  }
+
   render() {
     const id = this.el.getAttribute('id');
+
+    columnProperties.onChange('widths', () => {
+      this.setColumnProperties();
+    });
+
     return (
       <Host
         role="row"

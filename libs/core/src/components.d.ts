@@ -1545,6 +1545,10 @@ export namespace Components {
          */
         "minWidth": string;
         /**
+          * Optional property defines whether the column is resizable or not. Default value `false` defines column as not resizable `true` defines column is resizable
+         */
+        "resizable": boolean;
+        /**
           * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
          */
         "sort": 'asc' | 'desc' | 'none';
@@ -3803,6 +3807,14 @@ declare namespace LocalJSX {
           * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
         "minWidth"?: string;
+        /**
+          * Event emitted to notify the table-group-header component that the width has changed.
+         */
+        "onDidWidthChange"?: (event: CustomEvent<void>) => void;
+        /**
+          * Optional property defines whether the column is resizable or not. Default value `false` defines column as not resizable `true` defines column is resizable
+         */
+        "resizable"?: boolean;
         /**
           * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`. `asc` defines the icon as an upwards arrow in black. `desc` defines the icon as a downwards arrow in black. `none` defines the icon as an upwards arrow in grey.
          */

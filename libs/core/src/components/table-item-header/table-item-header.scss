@@ -7,6 +7,9 @@
   @include border-color('divider');
   // border-right: none;
   align-self: center;
+  display: flex;
+  position: relative;
+  user-select: none;
 }
 
 :host(:first-child) {
@@ -30,13 +33,22 @@
 button:hover {
   cursor: pointer;
 }
+
 se-icon {
   transition: .3s;
   &.sort-desc {
     transform: rotate(180deg);
   }
 }
+
 se-icon.sortable {
   margin-left: calc(#{$spacing} * 1.375);
 }
 
+.resize-border {
+  cursor: col-resize;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  width: 4px;
+}

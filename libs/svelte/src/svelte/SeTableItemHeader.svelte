@@ -12,6 +12,7 @@ export let width = undefined;
 export let minWidth = undefined;
 export let clickable = undefined;
 export let sort = undefined;
+export let resizable = undefined;
 
 
 
@@ -35,7 +36,8 @@ const onEvent = (e) => {
   min-width={minWidth}
   clickable={clickable}
   sort={sort}
-  
+  resizable={resizable}
+  on:didWidthChange={onEvent}
   bind:this={__ref}
 >
   <slot></slot>

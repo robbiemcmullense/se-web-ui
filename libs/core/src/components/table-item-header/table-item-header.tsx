@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter, Watch } from '@stencil/core';
 import arrow4Top from '@se/icons/svg/arrow4_top.svg';
 import arrowDefault from '@se/icons/svg/arrow2_default.svg';
 
@@ -17,7 +17,10 @@ export class TableItemHeaderComponent {
   /**
    * Defines the specific width of a block, for items that should not be flexible.
    */
-  @Prop() width: string;
+  @Prop({ mutable: true }) width: string;
+  @Watch('width') widthDidChange() {
+    this.didWidthChange.emit();
+  }
 
   /**
    * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
@@ -30,6 +33,7 @@ export class TableItemHeaderComponent {
    * `true` defines the tag type as a `button`.
    */
   @Prop({ mutable: true }) clickable: boolean;
+
   /**
    * Optional property that provides the arrow icon based on which string is provided, and also causes the `clickable` property to `true`.
    * `asc` defines the icon as an upwards arrow in black.
@@ -38,10 +42,46 @@ export class TableItemHeaderComponent {
    */
   @Prop() sort: 'asc' | 'desc' | 'none';
 
+  /**
+   * Optional property defines whether the column is resizable or not.
+   * Default value `false` defines column as not resizable
+   * `true` defines column is resizable
+   */
+  @Prop() resizable: boolean;
+
+  /**
+   * Event emitted to notify the table-group-header component that the width has changed.
+   */
+  @Event() didWidthChange: EventEmitter<void>;
+
   render() {
     let ariaLabelSort;
     let disabled = false;
     const isSortable = !!this.sort as boolean;
+    let mouseStartPosition;
+    let headerWidth;
+
+    const resizeMouseDownHandler = (ev) => {
+      mouseStartPosition = ev.clientX;
+      headerWidth = this.el.shadowRoot
+        .querySelector('.table-item-content')
+        .getBoundingClientRect().width;
+      document.addEventListener('mousemove', resizeMouseMoveHandler);
+      document.addEventListener('mouseup', resizeMouseUpHandler);
+    };
+
+    const resizeMouseMoveHandler = (ev) => {
+      this.width = headerWidth + (ev.clientX - mouseStartPosition) + 'px';
+    };
+
+    const resizeMouseUpHandler = () => {
+      document.removeEventListener('mousemove', resizeMouseMoveHandler);
+      document.removeEventListener('mouseup', resizeMouseUpHandler);
+    };
+
+    const dragStartHandler = (ev) => {
+      ev.preventDefault();
+    };
 
     const id = this.el.getAttribute('id');
     const displayStyle = {
@@ -64,6 +104,7 @@ export class TableItemHeaderComponent {
       ariaLabelSort = null;
     }
     const TagType = this.clickable || isSortable ? 'button' : ('div' as any);
+
     return (
       <Host
         role="cell"
@@ -73,7 +114,10 @@ export class TableItemHeaderComponent {
         id={id ? `wc-${id}` : ''}
         style={displayStyle}
       >
-        <TagType class={'table-item-content'} aria-label={ariaLabelSort}>
+        <TagType
+          class={'table-item-content'}
+          aria-label={ariaLabelSort}
+        >
           <div class="table-item-label">
             <slot></slot>
           </div>
@@ -82,6 +126,7 @@ export class TableItemHeaderComponent {
               class={['sortable', isSortable ? `sort-${this.sort}` : ''].join(
                 ' '
               )}
+              onDragStart={dragStartHandler}
               aria-hidden="true"
               size="nano"
             >
@@ -95,6 +140,13 @@ export class TableItemHeaderComponent {
             ''
           )}
         </TagType>
+        {this.resizable && (
+          <div
+            class="resize-border"
+            onMouseDown={resizeMouseDownHandler}
+            onDragStart={dragStartHandler}
+          ></div>
+        )}
       </Host>
     );
   }

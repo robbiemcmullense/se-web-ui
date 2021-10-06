@@ -1156,10 +1156,11 @@ export const SeTableItemHeader = /*@__PURE__*/ Vue.extend({
     minWidth: {} as PropOptions<Components.SeTableItemHeader['minWidth']>,
     clickable: {} as PropOptions<Components.SeTableItemHeader['clickable']>,
     sort: {} as PropOptions<Components.SeTableItemHeader['sort']>,
+    resizable: {} as PropOptions<Components.SeTableItemHeader['resizable']>,
   },
 
 
-  render: createCommonRender('se-table-item-header', []),
+  render: createCommonRender('se-table-item-header', ['didWidthChange']),
 });
 
 
