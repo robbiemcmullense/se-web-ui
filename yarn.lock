@@ -3083,10 +3083,10 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@stencil/angular-output-target@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.7.tgz#48a115cc5e0764a8481d9feb6e3e73f0e2ee77ff"
-  integrity sha512-GM+Sx0KL1cuQ4ysf20iojKBw/Yvuyx3mFWBaqSb3lDxfg4Kg5OHADoaN6L4rMZu3P3G3e2HT5Ut35BuFKIyT+Q==
+"@stencil/angular-output-target@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.1.0.tgz#56aea7010ddf220028adc6ae649ac20b0269090a"
+  integrity sha512-SQrcFk5ViMs4hirfxDgZnq5Tn9iMbBslIwVasfRHbO6QzK/nE5zdaNkhROmOU4qvmfqDfYLU6QVr0sIPpTsnfg==
 
 "@stencil/core@^2.5.2":
   version "2.8.1"

@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
 import { Components } from '@se/web-ui';
@@ -24,7 +24,7 @@ export class SeAbout {
   }
 }
 
-import { AccessibilityToggleComponent as IAccessibilityToggleComponent } from '@se/web-ui/types/components/accessibility-toggle/accessibility-toggle';
+
 export declare interface SeAccessibilityToggle extends Components.SeAccessibilityToggle {}
 @ProxyCmp({
   inputs: ['labelModeOff', 'labelModeOn', 'selected']
@@ -38,7 +38,7 @@ export declare interface SeAccessibilityToggle extends Components.SeAccessibilit
 })
 export class SeAccessibilityToggle {
   /** Passes accessibility toggle state to the parent component on a change of the toggle state */
-  didChange!: IAccessibilityToggleComponent['didChange'];
+  didChange!: EventEmitter<CustomEvent<{ selected: boolean }>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -47,7 +47,7 @@ export class SeAccessibilityToggle {
   }
 }
 
-import { AppComponent as IAppComponent } from '@se/web-ui/types/components/app/app';
+
 export declare interface SeApp extends Components.SeApp {}
 @ProxyCmp({
   inputs: ['option', 'pageScroll', 'theme']
@@ -61,7 +61,7 @@ export declare interface SeApp extends Components.SeApp {}
 })
 export class SeApp {
   /**  */
-  themeChanged!: IAppComponent['themeChanged'];
+  themeChanged!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -108,7 +108,7 @@ export class SeBanner {
   }
 }
 
-import { BannerItemComponent as IBannerItemComponent } from '@se/web-ui/types/components/banner-item/banner-item';
+
 export declare interface SeBannerItem extends Components.SeBannerItem {}
 @ProxyCmp({
   inputs: ['active', 'imageUrl']
@@ -122,7 +122,7 @@ export declare interface SeBannerItem extends Components.SeBannerItem {}
 })
 export class SeBannerItem {
   /** Send an event when the banner item changes */
-  didChange!: IBannerItemComponent['didChange'];
+  didChange!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -226,7 +226,7 @@ export class SeBreadcrumb {
   }
 }
 
-import { BreadcrumbItemComponent as IBreadcrumbItemComponent } from '@se/web-ui/types/components/breadcrumb-item/breadcrumb-item';
+
 export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
 @ProxyCmp({
   inputs: ['canSelect', 'href', 'isLast', 'position']
@@ -240,7 +240,7 @@ export declare interface SeBreadcrumbItem extends Components.SeBreadcrumbItem {}
 })
 export class SeBreadcrumbItem {
   /** Event firing when breadcrumbs link is clicked. */
-  didNavigate!: IBreadcrumbItemComponent['didNavigate'];
+  didNavigate!: EventEmitter<CustomEvent<HTMLAnchorElement>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -249,7 +249,7 @@ export class SeBreadcrumbItem {
   }
 }
 
-import { ButtonComponent as IButtonComponent } from '@se/web-ui/types/components/button/button';
+
 export declare interface SeButton extends Components.SeButton {}
 @ProxyCmp({
   inputs: ['block', 'caption', 'color', 'disabled', 'icon', 'iconColor', 'iconOnly', 'option', 'padding', 'selected', 'size', 'type', 'value'],
@@ -264,7 +264,7 @@ export declare interface SeButton extends Components.SeButton {}
 })
 export class SeButton {
   /** Passes button data to the parent component on a click. */
-  didClick!: IButtonComponent['didClick'];
+  didClick!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -327,7 +327,7 @@ export class SeCarouselPagination {
   }
 }
 
-import { CheckboxComponent as ICheckboxComponent } from '@se/web-ui/types/components/checkbox/checkbox';
+
 export declare interface SeCheckbox extends Components.SeCheckbox {}
 @ProxyCmp({
   inputs: ['color', 'disabled', 'header', 'indeterminate', 'label', 'labelPos', 'labelSuffix', 'name', 'noInteractive', 'option', 'padding', 'required', 'selected', 'size', 'textOff', 'textOn', 'value'],
@@ -342,7 +342,7 @@ export declare interface SeCheckbox extends Components.SeCheckbox {}
 })
 export class SeCheckbox {
   /** Send the checkbox value to the parent component when clicking on the checkbox. */
-  didChange!: ICheckboxComponent['didChange'];
+  didChange!: EventEmitter<CustomEvent<{ value: string; selected: boolean }>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -351,7 +351,7 @@ export class SeCheckbox {
   }
 }
 
-import { ChipComponent as IChipComponent } from '@se/web-ui/types/components/chip/chip';
+
 export declare interface SeChip extends Components.SeChip {}
 @ProxyCmp({
   inputs: ['block', 'canClose', 'color', 'dashed', 'disabled', 'readonly', 'selected', 'size', 'value']
@@ -365,7 +365,7 @@ export declare interface SeChip extends Components.SeChip {}
 })
 export class SeChip {
   /** Send the chip value to the parent component when clicking the close button of a chip. */
-  didClose!: IChipComponent['didClose'];
+  didClose!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -393,7 +393,7 @@ export class SeContainer {
   }
 }
 
-import { DialogComponent as IDialogComponent } from '@se/web-ui/types/components/dialog/dialog';
+
 export declare interface SeDialog extends Components.SeDialog {}
 @ProxyCmp({
   inputs: ['canBackdrop', 'color', 'noBackdrop', 'open', 'pageScroll', 'size']
@@ -407,10 +407,10 @@ export declare interface SeDialog extends Components.SeDialog {}
 })
 export class SeDialog {
   /** Send data to the parent component when the backdrop is clicked. */
-  backdrop!: IDialogComponent['backdrop'];
+  backdrop!: EventEmitter<CustomEvent<any>>;
   /** Send data to the parent component when clicking an element within the dialog to close it.
 The modal can then be safely removed from the DOM. */
-  didClose!: IDialogComponent['didClose'];
+  didClose!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -454,7 +454,7 @@ export class SeDialogFooter {
   }
 }
 
-import { DialogHeaderComponent as IDialogHeaderComponent } from '@se/web-ui/types/components/dialog-header/dialog-header';
+
 export declare interface SeDialogHeader extends Components.SeDialogHeader {}
 @ProxyCmp({
   inputs: ['closeIcon', 'color', 'option', 'padding']
@@ -469,7 +469,7 @@ export declare interface SeDialogHeader extends Components.SeDialogHeader {}
 export class SeDialogHeader {
   /** Send data to the parent component when clicking an element within the dialog to close it.
 The modal can then be safely removed from the DOM. */
-  didCloseDialog!: IDialogHeaderComponent['didCloseDialog'];
+  didCloseDialog!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -497,7 +497,7 @@ export class SeDivider {
   }
 }
 
-import { DropdownComponent as IDropdownComponent } from '@se/web-ui/types/components/dropdown/dropdown';
+
 export declare interface SeDropdown extends Components.SeDropdown {}
 @ProxyCmp({
   inputs: ['action', 'alignment', 'autoHide', 'maxHeight', 'maxWidth', 'verticalAlignment'],
@@ -512,11 +512,11 @@ export declare interface SeDropdown extends Components.SeDropdown {}
 })
 export class SeDropdown {
   /** Event emitted when the dropdown has been opened. */
-  didOpen!: IDropdownComponent['didOpen'];
+  didOpen!: EventEmitter<CustomEvent<any>>;
   /** Event emitted when the dropdown has been closed. */
-  didClose!: IDropdownComponent['didClose'];
+  didClose!: EventEmitter<CustomEvent<any>>;
   /** Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time. */
-  cancelAllDropdown!: IDropdownComponent['cancelAllDropdown'];
+  cancelAllDropdown!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -525,7 +525,7 @@ export class SeDropdown {
   }
 }
 
-import { FabComponent as IFabComponent } from '@se/web-ui/types/components/fab/fab';
+
 export declare interface SeFab extends Components.SeFab {}
 @ProxyCmp({
   inputs: ['color', 'icon', 'option', 'overlay', 'position'],
@@ -540,7 +540,7 @@ export declare interface SeFab extends Components.SeFab {}
 })
 export class SeFab {
   /** Event emitted to close the tooltip (if there is one) when interacting with the fab button. */
-  closeTooltips!: IFabComponent['closeTooltips'];
+  closeTooltips!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -549,7 +549,7 @@ export class SeFab {
   }
 }
 
-import { FabItemComponent as IFabItemComponent } from '@se/web-ui/types/components/fab-item/fab-item';
+
 export declare interface SeFabItem extends Components.SeFabItem {}
 @ProxyCmp({
   inputs: ['icon']
@@ -563,7 +563,7 @@ export declare interface SeFabItem extends Components.SeFabItem {}
 })
 export class SeFabItem {
   /** Send the value of the caption to the parent when clicking on the item. */
-  didClick!: IFabItemComponent['didClick'];
+  didClick!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -572,7 +572,7 @@ export class SeFabItem {
   }
 }
 
-import { FiltrationComponent as IFiltrationComponent } from '@se/web-ui/types/components/filtration/filtration';
+
 export declare interface SeFiltration extends Components.SeFiltration {}
 @ProxyCmp({
   inputs: ['collapsed', 'item', 'labelHint', 'labelSelectAll', 'labelViewLess', 'labelViewMore', 'maxItems', 'minItems', 'search', 'searchable', 'shadow', 'showSelectAll']
@@ -586,9 +586,9 @@ export declare interface SeFiltration extends Components.SeFiltration {}
 })
 export class SeFiltration {
   /**  */
-  didSearch!: IFiltrationComponent['didSearch'];
+  didSearch!: EventEmitter<CustomEvent<any>>;
   /** Event emitter for callback to select all items */
-  didSelectAll!: IFiltrationComponent['didSelectAll'];
+  didSelectAll!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -597,7 +597,7 @@ export class SeFiltration {
   }
 }
 
-import { FiltrationSmart as IFiltrationSmart } from '@se/web-ui/types/components/filtration-smart/filtration-smart';
+import { FilterEmittedState as IFiltrationSmartFilterEmittedState } from '@se/web-ui/types/components/filtration-smart/types';
 export declare interface SeFiltrationSmart extends Components.SeFiltrationSmart {}
 @ProxyCmp({
   inputs: ['dataAttrsData', 'filters', 'headerLabelDesktop', 'headerLabelMobile', 'isMobileViewVisible', 'maxFacetContentHeight', 'resetButtonLabel', 'showProductsLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel', 'visibleFacetsCount', 'visibleRefinementsPerFacetCount'],
@@ -612,9 +612,9 @@ export declare interface SeFiltrationSmart extends Components.SeFiltrationSmart 
 })
 export class SeFiltrationSmart {
   /** Event that emits list of checked filters. */
-  filterStateChanged!: IFiltrationSmart['filterStateChanged'];
+  filterStateChanged!: EventEmitter<CustomEvent<IFiltrationSmartFilterEmittedState>>;
   /** Event that emits after every filters render. */
-  seFiltrationSmartDidRender!: IFiltrationSmart['seFiltrationSmartDidRender'];
+  seFiltrationSmartDidRender!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -623,7 +623,7 @@ export class SeFiltrationSmart {
   }
 }
 
-import { FiltrationSmartCheckbox as IFiltrationSmartCheckbox } from '@se/web-ui/types/components/filtration-smart/checkbox/checkbox';
+
 export declare interface SeFiltrationSmartCheckbox extends Components.SeFiltrationSmartCheckbox {}
 @ProxyCmp({
   inputs: ['isMobile', 'refinementId']
@@ -637,7 +637,7 @@ export declare interface SeFiltrationSmartCheckbox extends Components.SeFiltrati
 })
 export class SeFiltrationSmartCheckbox {
   /** Event that has info about refinement whose state should be changed. Root component listens to it. */
-  refinementStateChanged!: IFiltrationSmartCheckbox['refinementStateChanged'];
+  refinementStateChanged!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -665,7 +665,7 @@ export class SeFiltrationSmartDesktopView {
   }
 }
 
-import { FiltrationSmartFacet as IFiltrationSmartFacet } from '@se/web-ui/types/components/filtration-smart/facet/facet';
+
 export declare interface SeFiltrationSmartFacet extends Components.SeFiltrationSmartFacet {}
 @ProxyCmp({
   inputs: ['facetId', 'isMobile', 'maxContentHeight', 'viewLessLabel', 'viewMoreLabel']
@@ -680,7 +680,7 @@ export declare interface SeFiltrationSmartFacet extends Components.SeFiltrationS
 export class SeFiltrationSmartFacet {
   /** Event that has info about facet whose collapsed/expanded state should be changed.
  Root Filter component listens to it. */
-  toggleIsSectionExpanded!: IFiltrationSmartFacet['toggleIsSectionExpanded'];
+  toggleIsSectionExpanded!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -689,7 +689,7 @@ export class SeFiltrationSmartFacet {
   }
 }
 
-import { FiltrationSmartGroup as IFiltrationSmartGroup } from '@se/web-ui/types/components/filtration-smart/group/group';
+
 export declare interface SeFiltrationSmartGroup extends Components.SeFiltrationSmartGroup {}
 @ProxyCmp({
   inputs: ['isMobile', 'level', 'sectionId']
@@ -704,7 +704,7 @@ export declare interface SeFiltrationSmartGroup extends Components.SeFiltrationS
 export class SeFiltrationSmartGroup {
   /** Event that has info about the section whose collapsed/expanded state should be changed.
  Root Filter component listens to it. */
-  toggleIsSectionExpanded!: IFiltrationSmartGroup['toggleIsSectionExpanded'];
+  toggleIsSectionExpanded!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -713,7 +713,7 @@ export class SeFiltrationSmartGroup {
   }
 }
 
-import { FiltrationSmartMobileView as IFiltrationSmartMobileView } from '@se/web-ui/types/components/filtration-smart/mobile-view/mobile-view';
+import { ToggleMobileViewVisibility as IFiltrationSmartMobileViewToggleMobileViewVisibility } from '@se/web-ui/types/components/filtration-smart/types';
 export declare interface SeFiltrationSmartMobileView extends Components.SeFiltrationSmartMobileView {}
 @ProxyCmp({
   inputs: ['headerLabel', 'isVisible', 'resetButtonLabel', 'showProductsLabel']
@@ -729,7 +729,7 @@ export class SeFiltrationSmartMobileView {
   /** Event that closes mobile view with two options:
  { restore: true } -- closes mobile view and undoes changes made in mobile view
  { restore: false } -- closes mobile view and applies changes made in mobile view */
-  toggleMobileView!: IFiltrationSmartMobileView['toggleMobileView'];
+  toggleMobileView!: EventEmitter<CustomEvent<IFiltrationSmartMobileViewToggleMobileViewVisibility>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -738,7 +738,7 @@ export class SeFiltrationSmartMobileView {
   }
 }
 
-import { FiltrationSmartMobileViewTrigger as IFiltrationSmartMobileViewTrigger } from '@se/web-ui/types/components/filtration-smart/mobile-view-trigger/mobile-view-trigger';
+
 export declare interface SeFiltrationSmartMobileViewTrigger extends Components.SeFiltrationSmartMobileViewTrigger {}
 @ProxyCmp({
   inputs: ['count', 'label']
@@ -752,7 +752,7 @@ export declare interface SeFiltrationSmartMobileViewTrigger extends Components.S
 })
 export class SeFiltrationSmartMobileViewTrigger {
   /** Event that toggle visibility of the mobile view. */
-  toggleMobileView!: IFiltrationSmartMobileViewTrigger['toggleMobileView'];
+  toggleMobileView!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -761,7 +761,7 @@ export class SeFiltrationSmartMobileViewTrigger {
   }
 }
 
-import { FiltrationSmartResetButton as IFiltrationSmartResetButton } from '@se/web-ui/types/components/filtration-smart/reset-button/reset-button';
+
 export declare interface SeFiltrationSmartResetButton extends Components.SeFiltrationSmartResetButton {}
 @ProxyCmp({
   inputs: ['disabled', 'label']
@@ -775,7 +775,7 @@ export declare interface SeFiltrationSmartResetButton extends Components.SeFiltr
 })
 export class SeFiltrationSmartResetButton {
   /** Event that reset Smart Filter to initial state. */
-  resetAllClicked!: IFiltrationSmartResetButton['resetAllClicked'];
+  resetAllClicked!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -784,7 +784,7 @@ export class SeFiltrationSmartResetButton {
   }
 }
 
-import { FiltrationSmartTab as IFiltrationSmartTab } from '@se/web-ui/types/components/filtration-smart/tab/tab';
+
 export declare interface SeFiltrationSmartTab extends Components.SeFiltrationSmartTab {}
 @ProxyCmp({
   inputs: ['refinementId']
@@ -798,7 +798,7 @@ export declare interface SeFiltrationSmartTab extends Components.SeFiltrationSma
 })
 export class SeFiltrationSmartTab {
   /** Event that has info about tab whose state should be changed. Root Filter component listens to it. */
-  refinementStateChanged!: IFiltrationSmartTab['refinementStateChanged'];
+  refinementStateChanged!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -807,7 +807,7 @@ export class SeFiltrationSmartTab {
   }
 }
 
-import { FiltrationSmartViewMoreSectionsButton as IFiltrationSmartViewMoreSectionsButton } from '@se/web-ui/types/components/filtration-smart/view-more-facets-button/view-more-facets-button';
+
 export declare interface SeFiltrationSmartViewMoreFacetsButton extends Components.SeFiltrationSmartViewMoreFacetsButton {}
 @ProxyCmp({
   inputs: ['count', 'isAllFacetsVisible', 'viewLessLabel', 'viewMoreLabel']
@@ -821,7 +821,7 @@ export declare interface SeFiltrationSmartViewMoreFacetsButton extends Component
 })
 export class SeFiltrationSmartViewMoreFacetsButton {
   /** Event that signals Smart Filter to toggle visibility of all its facets. */
-  toggleViewMoreFacets!: IFiltrationSmartViewMoreSectionsButton['toggleViewMoreFacets'];
+  toggleViewMoreFacets!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -830,7 +830,7 @@ export class SeFiltrationSmartViewMoreFacetsButton {
   }
 }
 
-import { FiltrationSmartViewMoreRefinementsButton as IFiltrationSmartViewMoreRefinementsButton } from '@se/web-ui/types/components/filtration-smart/view-more-refinements-button/view-more-refinements-button';
+
 export declare interface SeFiltrationSmartViewMoreRefinementsButton extends Components.SeFiltrationSmartViewMoreRefinementsButton {}
 @ProxyCmp({
   inputs: ['count', 'facetId', 'isAllRefinementsVisible', 'viewLessLabel', 'viewMoreLabel']
@@ -844,7 +844,7 @@ export declare interface SeFiltrationSmartViewMoreRefinementsButton extends Comp
 })
 export class SeFiltrationSmartViewMoreRefinementsButton {
   /** Event that signals Smart Filter to toggle visibility of all its refinements. */
-  toggleViewMoreRefinements!: IFiltrationSmartViewMoreRefinementsButton['toggleViewMoreRefinements'];
+  toggleViewMoreRefinements!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -853,7 +853,7 @@ export class SeFiltrationSmartViewMoreRefinementsButton {
   }
 }
 
-import { FormFieldComponent as IFormFieldComponent } from '@se/web-ui/types/components/form-field/form-field';
+
 export declare interface SeFormField extends Components.SeFormField {}
 @ProxyCmp({
   inputs: ['block', 'disabled', 'label', 'labelAlign', 'labelWidth', 'minWidth', 'noStacking', 'option', 'padding', 'required', 'stacked', 'status', 'textOnly', 'type', 'value']
@@ -867,7 +867,7 @@ export declare interface SeFormField extends Components.SeFormField {}
 })
 export class SeFormField {
   /** Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus. */
-  didSubmit!: IFormFieldComponent['didSubmit'];
+  didSubmit!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1025,7 +1025,7 @@ export class SeList {
   }
 }
 
-import { ListGroupComponent as IListGroupComponent } from '@se/web-ui/types/components/list-group/list-group';
+import { GroupCollapseEvent as IListGroupComponentGroupCollapseEvent } from '@se/web-ui/types/components/list-group/list-group';
 export declare interface SeListGroup extends Components.SeListGroup {}
 @ProxyCmp({
   inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'flex', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
@@ -1040,9 +1040,9 @@ export declare interface SeListGroup extends Components.SeListGroup {}
 })
 export class SeListGroup {
   /** Emitted when the group item is clicked. */
-  didGroupClick!: IListGroupComponent['didGroupClick'];
+  didGroupClick!: EventEmitter<CustomEvent<boolean>>;
   /** Emitted when the group item is collapsed/uncollapsed. */
-  didGroupCollapse!: IListGroupComponent['didGroupCollapse'];
+  didGroupCollapse!: EventEmitter<CustomEvent<IListGroupComponentGroupCollapseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1051,7 +1051,7 @@ export class SeListGroup {
   }
 }
 
-import { ListItemComponent as IListItemComponent } from '@se/web-ui/types/components/list-item/list-item';
+
 export declare interface SeListItem extends Components.SeListItem {}
 @ProxyCmp({
   inputs: ['description', 'disabled', 'href', 'icon', 'iconColor', 'item', 'selected'],
@@ -1066,7 +1066,7 @@ export declare interface SeListItem extends Components.SeListItem {}
 })
 export class SeListItem {
   /** Event emitted to notify the list-group component that the selected state has changed. */
-  didSelectedChange!: IListItemComponent['didSelectedChange'];
+  didSelectedChange!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1094,7 +1094,7 @@ export class SeLoading {
   }
 }
 
-import { PaginationComponent as IPaginationComponent } from '@se/web-ui/types/components/pagination/pagination';
+import { PageEvent as IPaginationComponentPageEvent } from '@se/web-ui/types/components/pagination/pagination';
 export declare interface SePagination extends Components.SePagination {}
 @ProxyCmp({
   inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value']
@@ -1109,7 +1109,7 @@ export declare interface SePagination extends Components.SePagination {}
 export class SePagination {
   /** Event emitted when the selected page or the number of item per page changed.
 Return `{value: number; perPage: number;}`. */
-  didChange!: IPaginationComponent['eventEmitter'];
+  didChange!: EventEmitter<CustomEvent<IPaginationComponentPageEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1118,7 +1118,7 @@ Return `{value: number; perPage: number;}`. */
   }
 }
 
-import { RadioComponent as IRadioComponent } from '@se/web-ui/types/components/radio/radio';
+
 export declare interface SeRadio extends Components.SeRadio {}
 @ProxyCmp({
   inputs: ['color', 'disabled', 'label', 'labelPos', 'name', 'padding', 'required', 'selected', 'value'],
@@ -1133,7 +1133,7 @@ export declare interface SeRadio extends Components.SeRadio {}
 })
 export class SeRadio {
   /** Send the checkbox value to the parent component when clicking on the checkbox. */
-  didCheck!: IRadioComponent['didCheck'];
+  didCheck!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1142,7 +1142,7 @@ export class SeRadio {
   }
 }
 
-import { RadioGroupComponent as IRadioGroupComponent } from '@se/web-ui/types/components/radio-group/radio-group';
+
 export declare interface SeRadioGroup extends Components.SeRadioGroup {}
 @ProxyCmp({
   inputs: ['color', 'direction', 'disabled', 'size', 'value']
@@ -1156,7 +1156,7 @@ export declare interface SeRadioGroup extends Components.SeRadioGroup {}
 })
 export class SeRadioGroup {
   /** Passes the selected button value to the parent component when clicking on a button in the group. */
-  didChange!: IRadioGroupComponent['didChange'];
+  didChange!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1165,7 +1165,7 @@ export class SeRadioGroup {
   }
 }
 
-import { SidemenuComponent as ISidemenuComponent } from '@se/web-ui/types/components/sidemenu/sidemenu';
+
 export declare interface SeSidemenu extends Components.SeSidemenu {}
 @ProxyCmp({
   inputs: ['disabled', 'label', 'link'],
@@ -1181,9 +1181,9 @@ export declare interface SeSidemenu extends Components.SeSidemenu {}
 export class SeSidemenu {
   /** When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`.
 When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`. */
-  toggled!: ISidemenuComponent['toggled'];
+  toggled!: EventEmitter<CustomEvent<any>>;
   /**  */
-  didNavigationClick!: ISidemenuComponent['didNavigationClick'];
+  didNavigationClick!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1192,7 +1192,7 @@ When the menu is closed, it will trigger a `toggled` event with `event.detail.st
   }
 }
 
-import { SidemenuItemComponent as ISidemenuItemComponent } from '@se/web-ui/types/components/sidemenu-item/sidemenu-item';
+
 export declare interface SeSidemenuItem extends Components.SeSidemenuItem {}
 @ProxyCmp({
   inputs: ['active', 'item']
@@ -1206,7 +1206,7 @@ export declare interface SeSidemenuItem extends Components.SeSidemenuItem {}
 })
 export class SeSidemenuItem {
   /** Send an event when the sidemenu item changes */
-  didClick!: ISidemenuItemComponent['didClick'];
+  didClick!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1234,7 +1234,7 @@ export class SeSkeleton {
   }
 }
 
-import { SliderComponent as ISliderComponent } from '@se/web-ui/types/components/slider/slider';
+
 export declare interface SeSlider extends Components.SeSlider {}
 @ProxyCmp({
   inputs: ['disabled', 'label', 'max', 'min', 'value'],
@@ -1249,7 +1249,7 @@ export declare interface SeSlider extends Components.SeSlider {}
 })
 export class SeSlider {
   /** Event emitted when the slider has been changed. */
-  didChange!: ISliderComponent['didChange'];
+  didChange!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1258,7 +1258,7 @@ export class SeSlider {
   }
 }
 
-import { SnackbarComponent as ISnackbarComponent } from '@se/web-ui/types/components/snackbar/snackbar';
+
 export declare interface SeSnackbar extends Components.SeSnackbar {}
 @ProxyCmp({
   inputs: ['actionText', 'canClose', 'duration', 'icon', 'message', 'open', 'type']
@@ -1272,9 +1272,9 @@ export declare interface SeSnackbar extends Components.SeSnackbar {}
 })
 export class SeSnackbar {
   /** Sends information to the parent component when closing the snackbar. */
-  didClose!: ISnackbarComponent['didClose'];
+  didClose!: EventEmitter<CustomEvent<void>>;
   /** Sends information to the parent component when clicking a custom action button. */
-  actionClicked!: ISnackbarComponent['actionClicked'];
+  actionClicked!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1283,7 +1283,7 @@ export class SeSnackbar {
   }
 }
 
-import { StepperComponent as IStepperComponent } from '@se/web-ui/types/components/stepper/stepper';
+
 export declare interface SeStepper extends Components.SeStepper {}
 @ProxyCmp({
   inputs: ['block', 'color', 'interactive', 'linear'],
@@ -1299,7 +1299,7 @@ export declare interface SeStepper extends Components.SeStepper {}
 export class SeStepper {
   /** Event to send to the parent component when a stepper item is clicked and next and previous will be clicked.
 The Stepper Item data is passed to the parent. */
-  didChange!: IStepperComponent['didChange'];
+  didChange!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1308,7 +1308,7 @@ The Stepper Item data is passed to the parent. */
   }
 }
 
-import { StepperItemComponent as IStepperItemComponent } from '@se/web-ui/types/components/stepper-item/stepper-item';
+
 export declare interface SeStepperItem extends Components.SeStepperItem {}
 @ProxyCmp({
   inputs: ['active', 'interactive', 'label', 'validated']
@@ -1322,10 +1322,10 @@ export declare interface SeStepperItem extends Components.SeStepperItem {}
 })
 export class SeStepperItem {
   /** Event to send to the parent component when a stepper item's data is validated. */
-  didValidate!: IStepperItemComponent['didValidate'];
+  didValidate!: EventEmitter<CustomEvent<any>>;
   /** Event to send to the parent component when a stepper item's data is active true or false.
 The boolean validated property is passed to the parent. */
-  didActivate!: IStepperItemComponent['didActivate'];
+  didActivate!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1487,7 +1487,7 @@ export class SeTableItemHeader {
   }
 }
 
-import { TooltipComponent as ITooltipComponent } from '@se/web-ui/types/components/tooltip/tooltip';
+
 export declare interface SeTooltip extends Components.SeTooltip {}
 @ProxyCmp({
   inputs: ['action', 'color', 'position', 'showDelay'],
@@ -1502,9 +1502,9 @@ export declare interface SeTooltip extends Components.SeTooltip {}
 })
 export class SeTooltip {
   /** Event emitted when the tooltip has been opened. */
-  didOpen!: ITooltipComponent['didOpen'];
+  didOpen!: EventEmitter<CustomEvent<any>>;
   /** Event emitted when the tooltip has been closed. */
-  didClose!: ITooltipComponent['didClose'];
+  didClose!: EventEmitter<CustomEvent<any>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

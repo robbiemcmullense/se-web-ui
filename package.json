@@ -100,7 +100,7 @@
     "@se/fonts": "^1.1.0",
     "@se/icons": "^4.6.0",
     "@se/postcss-host-polyfill": "^1.0.0",
-    "@stencil/angular-output-target": "0.0.7",
+    "@stencil/angular-output-target": "0.1.0",
     "@stencil/core": "^2.5.2",
     "@stencil/postcss": "^2.0.0",
     "@stencil/react-output-target": "0.0.9",
