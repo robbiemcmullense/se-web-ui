@@ -26,6 +26,7 @@ import {
   restoreFilterStateOnMobileViewClose,
   getRefinementData,
   initStore,
+  setDataAttrsData,
 } from './store';
 import analytics from '../../analytics';
 import { refinementStateChangeEvent } from '../../analytics/events';
@@ -140,6 +141,13 @@ export class FiltrationSmart {
   @Watch('filters')
   onFiltersPropChanged(filters: FiltrationSmartData): void {
     setStore({ filters });
+  }
+
+  @Watch('dataAttrsData')
+  onDataAttrsDataChanged(dataAttrsData: FiltrationSmartDataAttrsData): void {
+    if (dataAttrsData) {
+      setDataAttrsData(dataAttrsData);
+    }
   }
 
   @Listen('toggleViewMoreFacets')

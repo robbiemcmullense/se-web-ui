@@ -65,6 +65,10 @@ const mainStore = createStore<FiltrationSmartMainStore>({
   isAllFacetsVisible: false,
 });
 
+export const setDataAttrsData = (attrsData: FiltrationSmartDataAttrsData): void => {
+  dataAttrsData = attrsData;
+};
+
 // Lighter version of lodash cloneDeep to reduce bundle size (https://github.com/lodash/lodash/issues/1984)
 export const cloneDeep = (obj) => {
   return JSON.parse(JSON.stringify(obj))

@@ -6,6 +6,7 @@ import {
   EventEmitter,
   Listen,
   Fragment,
+  Element,
 } from '@stencil/core';
 import { FiltrationSmartSectionData } from '../types';
 import { filtrationSmartFacetType } from '../constants';
@@ -16,7 +17,9 @@ import {
   getIsSectionExpanded,
   getSectionVisibleSectionsIds,
   getSectionSectionsIds,
+  getSectionDataAttrsData,
 } from '../store';
+import { setElementDataAttrs } from '../../../utils';
 
 @Component({
   tag: 'se-filtration-smart-group',
@@ -50,6 +53,20 @@ export class FiltrationSmartGroup {
   onDidGroupClick(e: CustomEvent<boolean>): void {
     e.stopPropagation();
     this.toggleIsSectionExpanded.emit(this.sectionId);
+  }
+
+  @Element() el: HTMLSeFiltrationSmartFacetElement;
+
+  componentWillLoad(): void {
+    if (this.level > 0) {
+      const dataAttrsData = getSectionDataAttrsData(this.sectionId);
+
+      if (!dataAttrsData) {
+        return;
+      }
+
+      setElementDataAttrs(this.el, dataAttrsData);
+    }
   }
 
   get data(): FiltrationSmartSectionData {
