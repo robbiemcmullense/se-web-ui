@@ -39,6 +39,7 @@
 
   &.selected {
     color: var(--se-list-item-selected-color);
+    background: var(--se-list-item-selected-background);
     font-weight: var(--se-list-item-selected-font-weight);
   }
 
