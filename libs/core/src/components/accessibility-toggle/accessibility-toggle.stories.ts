@@ -4,7 +4,7 @@ import readme from './readme.md';
 
 storiesOf('Accessibility Toggle', module)
   .add(
-    'Toggle',
+    'Accessibility Toggle',
     () => {
       const selected = boolean('Selected', false);
       const labelModeOn = text('Label Mode On', 'Accessibility mode on');

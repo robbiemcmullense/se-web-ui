@@ -42,7 +42,7 @@ export class LinkComponent {
           href={this.url}
           data-disabled={this.disabled}
           class={{
-            'external': !!this.option,
+            [this.option]: true,
             'unicolor': !!this.unicolor
           }}
           target={this.option === 'external' ? '_blank' : ''}

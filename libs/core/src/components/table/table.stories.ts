@@ -225,4 +225,44 @@ storiesOf('Table', module)
         },
       },
     }
+  )
+  .add(
+    'Table Without Header',
+    () => {
+      const sort = select('Sort Order Example', sortOption, 'asc');
+      const minItems = 20;
+      const compact = boolean('Compact', false);
+      const fixedWidth = select('Fixed Width Example', ['default', '200px', '500px', '700px'], 'default');
+
+      return `
+        <se-block height="400px" width="${fixedWidth}">
+          <se-table compact=${compact} id="myTable">
+            ${[...Array(minItems || 0)]
+              .map(
+                (_, key) =>
+                  `
+                  <se-table-group selectable="true">
+                    <se-table-item width="32px"><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
+                    <se-table-item min-width="200px" flex="2">Last group with some more info</se-table-item>
+                    <se-table-item flex="1">Test item 2</se-table-item>
+                    <se-table-item flex="2">Very last test item</se-table-item>
+                  </se-table-group>
+                  `
+              )
+              .join('')}
+          </se-table>
+        </se-block>
+      `;
+    },
+    {
+      notes: {
+        markdown: {
+          'se-table': readme,
+          'se-table-group-header': readmegroupheader,
+          'se-table-item-header': readmeitemheader,
+          'se-table-group': readmegroup,
+          'se-table-item': readmeitem,
+        },
+      },
+    }
   );

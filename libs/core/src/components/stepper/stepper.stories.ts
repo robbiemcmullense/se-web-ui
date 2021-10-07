@@ -6,7 +6,7 @@ import { text, select, boolean } from '@storybook/addon-knobs';
 const colorOptions = ['primary', 'alternative'];
 
 storiesOf('Stepper', module).add(
-  'Demo',
+  'Stepper',
   () => {
     const color = select('color', colorOptions, 'primary');
     const linear = boolean('linear', true);

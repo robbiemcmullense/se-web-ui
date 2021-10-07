@@ -49,6 +49,9 @@ export class AccessibilityToggleComponent {
     return (
       <button
         onClick={() => this.onClickHandler()}
+        role="switch"
+        aria-label={this.label}
+        aria-checked={`${this.selected}`}
       >
         <se-icon
           size="medium"

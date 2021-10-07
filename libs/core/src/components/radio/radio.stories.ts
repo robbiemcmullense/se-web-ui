@@ -7,7 +7,7 @@ const paddingOption = ['none', 'small', 'medium', 'large'];
 const labelOption = ['right', 'left'];
 
 storiesOf('Radio', module).add(
-  'Demo',
+  'Radio',
   () => {
     const label = text('label', 'Radio Label');
     const selected = boolean('selected', true);

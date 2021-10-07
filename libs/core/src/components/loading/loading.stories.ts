@@ -5,7 +5,7 @@ import { select, text, boolean } from '@storybook/addon-knobs';
 const loaderOptions = ['standard', 'dialog'];
 const loaderColors = ['primary', 'secondary'];
 storiesOf('Loading', module).add(
-  'demo',
+  'Loading',
   () => {
     const option = select('option', loaderOptions, 'standard');
     const color = select('color', loaderColors, 'primary');

@@ -8,7 +8,7 @@ const positionOption = ['top', 'bottom'];
 const colorOption = ['primary', 'alternative'];
 
 storiesOf('Fab', module).add(
-  'Demo',
+  'Fab',
   () => {
     const option = select('option', fabOption, 'speeddial');
     const position = select('position', positionOption, 'top');

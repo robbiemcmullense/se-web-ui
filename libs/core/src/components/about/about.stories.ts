@@ -7,7 +7,7 @@ const copyrightText =
   'This application is protected by copyright law and international treaties. © 2020 Schneider Electric Industries SAS. All Rights Reserved.';
 
 storiesOf('About', module).add(
-  'Demo',
+  'About',
   () => {
     const title = text('app-title', 'My app Advisor');
     const version = text('version', '1.2.3');

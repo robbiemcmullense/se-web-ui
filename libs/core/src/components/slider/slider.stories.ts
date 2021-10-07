@@ -10,7 +10,7 @@ const valueOptions = {
 };
 
 storiesOf('Slider', module).add(
-  'Demo',
+  'Slider',
   () => {
     const value = number('value', 0, valueOptions);
     const minValue = number('min value', 0);

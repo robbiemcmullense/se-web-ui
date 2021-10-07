@@ -1464,7 +1464,7 @@ export class SeTableItem {
   }
 }
 
-import { TableItemHeaderComponent as ITableItemHeaderComponent } from '@se/web-ui/types/components/table-item-header/table-item-header';
+
 export declare interface SeTableItemHeader extends Components.SeTableItemHeader {}
 @ProxyCmp({
   inputs: ['clickable', 'flex', 'minWidth', 'resizable', 'sort', 'width']
@@ -1478,7 +1478,7 @@ export declare interface SeTableItemHeader extends Components.SeTableItemHeader 
 })
 export class SeTableItemHeader {
   /** Event emitted to notify the table-group-header component that the width has changed. */
-  didWidthChange!: ITableItemHeaderComponent['didWidthChange'];
+  didWidthChange!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
