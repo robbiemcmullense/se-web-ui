@@ -196,6 +196,7 @@ storiesOf('Table', module)
               <se-table-item-header sort="${sort}" min-width="200px" flex="2" resizable=true>Title</se-table-item-header>
               <se-table-item-header flex="1" sort="none" resizable=true>Secondary Info </br> <small> what about a date? </small></se-table-item-header>
               <se-table-item-header clickable="true" flex="2">With a lot of extra text to make it as long as possible - <se-icon color="primary">airconditioner_hot_heating</se-icon></se-table-item-header>
+              <se-table-item-header width="40px"></se-table-item-header>
             </se-table-group-header>
             ${[...Array(minItems || 0)]
               .map(
@@ -206,6 +207,7 @@ storiesOf('Table', module)
                     <se-table-item>Last group with some more info</se-table-item>
                     <se-table-item>Test item 2</se-table-item>
                     <se-table-item>Very last test item</se-table-item>
+                    <se-table-item><se-icon>folder</se-icon></se-table-item>
                   </se-table-group>
                   `
               )
@@ -246,6 +248,7 @@ storiesOf('Table', module)
                     <se-table-item min-width="200px" flex="2">Last group with some more info</se-table-item>
                     <se-table-item flex="1">Test item 2</se-table-item>
                     <se-table-item flex="2">Very last test item</se-table-item>
+                    <se-table-item width="40px"><se-icon>folder</se-icon></se-table-item>
                   </se-table-group>
                   `
               )

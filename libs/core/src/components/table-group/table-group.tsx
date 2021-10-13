@@ -24,9 +24,15 @@ export class TableGroupComponent {
     this.el
       .querySelectorAll<HTMLSeTableItemElement>('se-table-item')
       .forEach((item, index) => {
-        item.width = columnWidths[index];
-        item.minWidth = columnMinWidths[index];
-        item.flex = columnFlex[index];
+        if(columnWidths.length !== 0) {
+          item.width = columnWidths[index];
+        }
+        if(columnMinWidths.length !== 0) {
+          item.minWidth = columnMinWidths[index];
+        }
+        if(columnFlex.length !== 0) {
+          item.flex = columnFlex[index];
+        }
       });
   }
 
