@@ -103,10 +103,9 @@ export class ChipComponent {
           dashed: this.dashed,
         }}
       >
-        <slot name="start"></slot>
-        <div class="value" title={this.value}>
-          {this.value}
-        </div>
+        <slot name="start">
+          {this.value && <div class="value" title={this.value}>{this.value}</div>}
+        </slot>
         {this.canClose ? (
           <se-icon
             class="close"
