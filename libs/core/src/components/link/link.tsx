@@ -45,7 +45,7 @@ export class LinkComponent {
             [this.option]: true,
             'unicolor': !!this.unicolor
           }}
-          target={this.option === 'external' ? '_blank' : ''}
+          target={(this.download || this.option === 'external') ? '_blank' : ''}
           download={this.download}
           rel={this.option === 'external' ? 'noreferrer' : ''}
         >
