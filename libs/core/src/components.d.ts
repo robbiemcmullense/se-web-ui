@@ -1422,6 +1422,10 @@ export namespace Components {
          */
         "interactive": boolean;
         /**
+          * Sets the max width for each stepper label The default setting is `none`.
+         */
+        "labelMaxWidth": string;
+        /**
           * Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.
          */
         "linear": boolean;
@@ -3684,6 +3688,10 @@ declare namespace LocalJSX {
           * Defines if the stepper items is interactive or not. The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation. `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
          */
         "interactive"?: boolean;
+        /**
+          * Sets the max width for each stepper label The default setting is `none`.
+         */
+        "labelMaxWidth"?: string;
         /**
           * Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.
          */

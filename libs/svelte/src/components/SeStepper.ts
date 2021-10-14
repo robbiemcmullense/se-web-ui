@@ -23,6 +23,10 @@ The default setting is `true`, each stepper item must be validated before advanc
 The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation.
 `false` disabled the interactivness. It overrides the individual stepper item `interactive` property. */
   interactive?: Components.SeStepper["interactive"]
+  
+  /** Sets the max width for each stepper label
+The default setting is `none`. */
+  labelMaxWidth?: Components.SeStepper["labelMaxWidth"]
 }
 
 interface SeStepperEvents {
@@ -63,8 +67,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[11].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[10], null);
+	const default_slot_template = /*#slots*/ ctx[12].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[11], null);
 
 	return {
 		c() {
@@ -74,6 +78,7 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_stepper, "linear", /*linear*/ ctx[1]);
 			set_custom_element_data(se_stepper, "block", /*block*/ ctx[2]);
 			set_custom_element_data(se_stepper, "interactive", /*interactive*/ ctx[3]);
+			set_custom_element_data(se_stepper, "label-max-width", /*labelMaxWidth*/ ctx[4]);
 		},
 		m(target, anchor) {
 			insert(target, se_stepper, anchor);
@@ -82,25 +87,25 @@ function create_fragment(ctx) {
 				default_slot.m(se_stepper, null);
 			}
 
-			/*se_stepper_binding*/ ctx[12](se_stepper);
+			/*se_stepper_binding*/ ctx[13](se_stepper);
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(se_stepper, "didChange", /*onEvent*/ ctx[5]);
+				dispose = listen(se_stepper, "didChange", /*onEvent*/ ctx[6]);
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 1024)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 2048)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[10],
+						/*$$scope*/ ctx[11],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[10])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[10], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[11])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[11], dirty, null),
 						null
 					);
 				}
@@ -121,6 +126,10 @@ function create_fragment(ctx) {
 			if (!current || dirty & /*interactive*/ 8) {
 				set_custom_element_data(se_stepper, "interactive", /*interactive*/ ctx[3]);
 			}
+
+			if (!current || dirty & /*labelMaxWidth*/ 16) {
+				set_custom_element_data(se_stepper, "label-max-width", /*labelMaxWidth*/ ctx[4]);
+			}
 		},
 		i(local) {
 			if (current) return;
@@ -134,7 +143,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_stepper);
 			if (default_slot) default_slot.d(detaching);
-			/*se_stepper_binding*/ ctx[12](null);
+			/*se_stepper_binding*/ ctx[13](null);
 			mounted = false;
 			dispose();
 		}
@@ -150,6 +159,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { linear = undefined } = $$props;
 	let { block = undefined } = $$props;
 	let { interactive = undefined } = $$props;
+	let { labelMaxWidth = undefined } = $$props;
 	const reset = (...args) => __ref.reset(...args);
 	const previous = (...args) => __ref.previous(...args);
 	const next = (...args) => __ref.next(...args);
@@ -160,7 +170,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(4, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(5, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -171,7 +181,7 @@ function instance($$self, $$props, $$invalidate) {
 	function se_stepper_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			__ref = $$value;
-			$$invalidate(4, __ref);
+			$$invalidate(5, __ref);
 		});
 	}
 
@@ -180,7 +190,8 @@ function instance($$self, $$props, $$invalidate) {
 		if ('linear' in $$props) $$invalidate(1, linear = $$props.linear);
 		if ('block' in $$props) $$invalidate(2, block = $$props.block);
 		if ('interactive' in $$props) $$invalidate(3, interactive = $$props.interactive);
-		if ('$$scope' in $$props) $$invalidate(10, $$scope = $$props.$$scope);
+		if ('labelMaxWidth' in $$props) $$invalidate(4, labelMaxWidth = $$props.labelMaxWidth);
+		if ('$$scope' in $$props) $$invalidate(11, $$scope = $$props.$$scope);
 	};
 
 	return [
@@ -188,6 +199,7 @@ function instance($$self, $$props, $$invalidate) {
 		linear,
 		block,
 		interactive,
+		labelMaxWidth,
 		__ref,
 		onEvent,
 		reset,
@@ -221,10 +233,11 @@ class SeStepper extends SvelteComponent {
 			linear: 1,
 			block: 2,
 			interactive: 3,
-			reset: 6,
-			previous: 7,
-			next: 8,
-			getWebComponent: 9
+			labelMaxWidth: 4,
+			reset: 7,
+			previous: 8,
+			next: 9,
+			getWebComponent: 10
 		});
 	}
 
@@ -264,28 +277,37 @@ class SeStepper extends SvelteComponent {
 		flush();
 	}
 
+	get labelMaxWidth() {
+		return this.$$.ctx[4];
+	}
+
+	set labelMaxWidth(labelMaxWidth) {
+		this.$$set({ labelMaxWidth });
+		flush();
+	}
+
 	
   /** Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
 It no step parameter is provided, it will reset to the first stepper item. */
  get reset(): Components.SeStepper["reset"] {
-		return this.$$.ctx[6];
+		return this.$$.ctx[7];
 	}
 
 	
   /** Call the `previous` method to navigate to the previous step from the step that is currently selected. */
  get previous(): Components.SeStepper["previous"] {
-		return this.$$.ctx[7];
+		return this.$$.ctx[8];
 	}
 
 	
   /** Call the `next` method to navigate to the next step from the step that is currently selected.
 This will not work in linear mode if the next step is not validated. */
  get next(): Components.SeStepper["next"] {
-		return this.$$.ctx[8];
+		return this.$$.ctx[9];
 	}
 
 	get getWebComponent(): HTMLSeStepperElement | undefined {
-		return this.$$.ctx[9];
+		return this.$$.ctx[10];
 	}
 }
 

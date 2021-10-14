@@ -11,6 +11,7 @@ export let color = undefined;
 export let linear = undefined;
 export let block = undefined;
 export let interactive = undefined;
+export let labelMaxWidth = undefined;
 
 export const reset = (...args) => __ref.reset(...args);
 export const previous = (...args) => __ref.previous(...args);
@@ -35,6 +36,7 @@ const onEvent = (e) => {
   linear={linear}
   block={block}
   interactive={interactive}
+  label-max-width={labelMaxWidth}
   on:didChange={onEvent}
   bind:this={__ref}
 >

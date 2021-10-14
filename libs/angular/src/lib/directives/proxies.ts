@@ -1286,14 +1286,14 @@ export class SeSnackbar {
 
 export declare interface SeStepper extends Components.SeStepper {}
 @ProxyCmp({
-  inputs: ['block', 'color', 'interactive', 'linear'],
+  inputs: ['block', 'color', 'interactive', 'labelMaxWidth', 'linear'],
   methods: ['reset', 'previous', 'next']
 })
 @Component({
   selector: 'se-stepper',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['block', 'color', 'interactive', 'linear'],
+  inputs: ['block', 'color', 'interactive', 'labelMaxWidth', 'linear'],
   outputs: ['didChange']
 })
 export class SeStepper {

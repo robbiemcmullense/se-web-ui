@@ -47,6 +47,13 @@ export class StepperComponent {
    * `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.
    */
   @Prop() interactive = true;
+
+  /**
+   * Sets the max width for each stepper label
+   * The default setting is `none`.
+   */
+   @Prop() labelMaxWidth: string;
+
   /**
    * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked.
    * The Stepper Item data is passed to the parent.
@@ -148,6 +155,9 @@ export class StepperComponent {
       const isReadOnly = !(this.interactive && item.interactive);
       const disabled = !this.checkIfPreviousItemValidated(item);
       const TagType = isReadOnly || disabled ? ('div' as any) : 'button';
+      const displayStyle = {
+        maxWidth: this.labelMaxWidth || ''
+      };
 
       return [
         <li
@@ -181,10 +191,15 @@ export class StepperComponent {
                : itemStep
               }
             </span>
-            <span class={{
+            <span
+              class={{
                 "stepper-item-label" : true,
-                "toValidate": !item.validated && item.active
-              }}>{item.label}</span>
+                "text-wrap" : !!this.labelMaxWidth
+              }}
+              style={displayStyle}
+            >
+                {item.label}
+            </span>
           </TagType>
           {itemStep !== this.stepperItems.length ? (
             <se-divider class={{ block: this.block }}></se-divider>
