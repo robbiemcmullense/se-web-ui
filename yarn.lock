@@ -3036,7 +3036,7 @@
 
 "@se/fonts@^1.1.0":
   version "1.2.3"
-  resolved "https://nexus.tools.struxurewarecloud.com/repository/npm-internal/@se/fonts/-/fonts-1.2.3.tgz#f1e65dadefd8d27791bbde145f4722196b938b3f"
+  resolved "https://nexus.tools.struxurewarecloud.com/repository/app-services-npm/@se/fonts/-/fonts-1.2.3.tgz#f1e65dadefd8d27791bbde145f4722196b938b3f"
   integrity sha512-3i3T+nKRliaUY4Z/M1lELvrL+yJrTc1s+tC7E18zPlvCxia8SN10/Md/LLSsVIrGEHW1wwcbVgrR79ZZKO0Q4g==
 
 "@se/icons@^4.6.0":
