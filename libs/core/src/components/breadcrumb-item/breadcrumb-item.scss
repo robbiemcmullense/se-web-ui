@@ -27,6 +27,7 @@
   padding-right: $spacing-small;
   vertical-align: super;
   &:hover {
+    cursor: pointer;
     text-decoration: underline;
   }
 }
