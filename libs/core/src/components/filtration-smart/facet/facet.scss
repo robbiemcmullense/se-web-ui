@@ -51,6 +51,8 @@
 }
 
 .facet__list {
+  --se-list-item-selected-background: none;
+
   @include for-tablet-and-down {
     // background-color: $se-ultra-light-grey-3;
     @include background-color('background-standard');
