@@ -94,6 +94,7 @@ se-form-field {
   input,
   select,
   textarea {
+    box-sizing: initial;
     font-family: inherit;
     width: calc(100% - 10px);
     font-size: 16px;
