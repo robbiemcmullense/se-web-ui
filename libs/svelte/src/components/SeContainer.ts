@@ -38,6 +38,14 @@ Pending deprecation - `card-old` follows a prior design pattern with a box-shado
 `xlarge` is 32px. */
   padding?: Components.SeContainer["padding"]
   
+  /** Defines the gap between items.
+`none` is 0px.
+`small` is 4px.
+`medium` is 8px.
+`large` is 16px.
+`xlarge` is 32px. */
+  gap?: Components.SeContainer["gap"]
+  
   /** When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there.
 Default is `350px`. */
   columnSize?: Components.SeContainer["columnSize"]
@@ -84,8 +92,8 @@ import { createEventDispatcher, onMount } from 'svelte';
 function create_fragment(ctx) {
 	let se_container;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[11].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[10], null);
+	const default_slot_template = /*#slots*/ ctx[12].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[11], null);
 
 	return {
 		c() {
@@ -96,9 +104,10 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_container, "direction", /*direction*/ ctx[2]);
 			set_custom_element_data(se_container, "display", /*display*/ ctx[3]);
 			set_custom_element_data(se_container, "padding", /*padding*/ ctx[4]);
-			set_custom_element_data(se_container, "column-size", /*columnSize*/ ctx[5]);
-			set_custom_element_data(se_container, "row-size", /*rowSize*/ ctx[6]);
-			set_custom_element_data(se_container, "color", /*color*/ ctx[7]);
+			set_custom_element_data(se_container, "gap", /*gap*/ ctx[5]);
+			set_custom_element_data(se_container, "column-size", /*columnSize*/ ctx[6]);
+			set_custom_element_data(se_container, "row-size", /*rowSize*/ ctx[7]);
+			set_custom_element_data(se_container, "color", /*color*/ ctx[8]);
 		},
 		m(target, anchor) {
 			insert(target, se_container, anchor);
@@ -107,20 +116,20 @@ function create_fragment(ctx) {
 				default_slot.m(se_container, null);
 			}
 
-			/*se_container_binding*/ ctx[12](se_container);
+			/*se_container_binding*/ ctx[13](se_container);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 1024)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 2048)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[10],
+						/*$$scope*/ ctx[11],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[10])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[10], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[11])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[11], dirty, null),
 						null
 					);
 				}
@@ -146,16 +155,20 @@ function create_fragment(ctx) {
 				set_custom_element_data(se_container, "padding", /*padding*/ ctx[4]);
 			}
 
-			if (!current || dirty & /*columnSize*/ 32) {
-				set_custom_element_data(se_container, "column-size", /*columnSize*/ ctx[5]);
+			if (!current || dirty & /*gap*/ 32) {
+				set_custom_element_data(se_container, "gap", /*gap*/ ctx[5]);
 			}
 
-			if (!current || dirty & /*rowSize*/ 64) {
-				set_custom_element_data(se_container, "row-size", /*rowSize*/ ctx[6]);
+			if (!current || dirty & /*columnSize*/ 64) {
+				set_custom_element_data(se_container, "column-size", /*columnSize*/ ctx[6]);
 			}
 
-			if (!current || dirty & /*color*/ 128) {
-				set_custom_element_data(se_container, "color", /*color*/ ctx[7]);
+			if (!current || dirty & /*rowSize*/ 128) {
+				set_custom_element_data(se_container, "row-size", /*rowSize*/ ctx[7]);
+			}
+
+			if (!current || dirty & /*color*/ 256) {
+				set_custom_element_data(se_container, "color", /*color*/ ctx[8]);
 			}
 		},
 		i(local) {
@@ -170,7 +183,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_container);
 			if (default_slot) default_slot.d(detaching);
-			/*se_container_binding*/ ctx[12](null);
+			/*se_container_binding*/ ctx[13](null);
 		}
 	};
 }
@@ -185,6 +198,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { direction = undefined } = $$props;
 	let { display = undefined } = $$props;
 	let { padding = undefined } = $$props;
+	let { gap = undefined } = $$props;
 	let { columnSize = undefined } = $$props;
 	let { rowSize = undefined } = $$props;
 	let { color = undefined } = $$props;
@@ -195,7 +209,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(8, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(9, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -206,7 +220,7 @@ function instance($$self, $$props, $$invalidate) {
 	function se_container_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			__ref = $$value;
-			$$invalidate(8, __ref);
+			$$invalidate(9, __ref);
 		});
 	}
 
@@ -216,10 +230,11 @@ function instance($$self, $$props, $$invalidate) {
 		if ('direction' in $$props) $$invalidate(2, direction = $$props.direction);
 		if ('display' in $$props) $$invalidate(3, display = $$props.display);
 		if ('padding' in $$props) $$invalidate(4, padding = $$props.padding);
-		if ('columnSize' in $$props) $$invalidate(5, columnSize = $$props.columnSize);
-		if ('rowSize' in $$props) $$invalidate(6, rowSize = $$props.rowSize);
-		if ('color' in $$props) $$invalidate(7, color = $$props.color);
-		if ('$$scope' in $$props) $$invalidate(10, $$scope = $$props.$$scope);
+		if ('gap' in $$props) $$invalidate(5, gap = $$props.gap);
+		if ('columnSize' in $$props) $$invalidate(6, columnSize = $$props.columnSize);
+		if ('rowSize' in $$props) $$invalidate(7, rowSize = $$props.rowSize);
+		if ('color' in $$props) $$invalidate(8, color = $$props.color);
+		if ('$$scope' in $$props) $$invalidate(11, $$scope = $$props.$$scope);
 	};
 
 	return [
@@ -228,6 +243,7 @@ function instance($$self, $$props, $$invalidate) {
 		direction,
 		display,
 		padding,
+		gap,
 		columnSize,
 		rowSize,
 		color,
@@ -261,10 +277,11 @@ class SeContainer extends SvelteComponent {
 			direction: 2,
 			display: 3,
 			padding: 4,
-			columnSize: 5,
-			rowSize: 6,
-			color: 7,
-			getWebComponent: 9
+			gap: 5,
+			columnSize: 6,
+			rowSize: 7,
+			color: 8,
+			getWebComponent: 10
 		});
 	}
 
@@ -313,8 +330,17 @@ class SeContainer extends SvelteComponent {
 		flush();
 	}
 
-	get columnSize() {
+	get gap() {
 		return this.$$.ctx[5];
+	}
+
+	set gap(gap) {
+		this.$$set({ gap });
+		flush();
+	}
+
+	get columnSize() {
+		return this.$$.ctx[6];
 	}
 
 	set columnSize(columnSize) {
@@ -323,7 +349,7 @@ class SeContainer extends SvelteComponent {
 	}
 
 	get rowSize() {
-		return this.$$.ctx[6];
+		return this.$$.ctx[7];
 	}
 
 	set rowSize(rowSize) {
@@ -332,7 +358,7 @@ class SeContainer extends SvelteComponent {
 	}
 
 	get color() {
-		return this.$$.ctx[7];
+		return this.$$.ctx[8];
 	}
 
 	set color(color) {
@@ -341,7 +367,7 @@ class SeContainer extends SvelteComponent {
 	}
 
 	get getWebComponent(): HTMLSeContainerElement | undefined {
-		return this.$$.ctx[9];
+		return this.$$.ctx[10];
 	}
 }
 

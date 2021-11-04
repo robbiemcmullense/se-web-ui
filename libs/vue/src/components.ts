@@ -380,6 +380,7 @@ export const SeContainer = /*@__PURE__*/ Vue.extend({
     direction: {} as PropOptions<Components.SeContainer['direction']>,
     display: {} as PropOptions<Components.SeContainer['display']>,
     padding: {} as PropOptions<Components.SeContainer['padding']>,
+    gap: {} as PropOptions<Components.SeContainer['gap']>,
     columnSize: {} as PropOptions<Components.SeContainer['columnSize']>,
     rowSize: {} as PropOptions<Components.SeContainer['rowSize']>,
     color: {} as PropOptions<Components.SeContainer['color']>,

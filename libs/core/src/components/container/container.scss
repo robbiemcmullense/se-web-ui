@@ -88,6 +88,27 @@
   padding: $spacing-xlarge;
 }
 
+:host(.ct-gap-none){
+  gap: 0;
+}
+
+:host(.ct-gap-small){
+  gap: $spacing-small;
+}
+
+:host(.ct-gap-medium){
+  gap: $spacing;
+}
+
+:host(.ct-gap-large){
+  gap: $spacing-large;
+}
+
+:host(.ct-gap-xlarge){
+  gap: $spacing-xlarge;
+}
+
+
 :host(.centered-content) {
   display: block;
   .wrapper-center {

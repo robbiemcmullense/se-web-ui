@@ -461,6 +461,10 @@ export namespace Components {
          */
         "display": 'flex' | 'block' | 'grid';
         /**
+          * Defines the gap between items. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+         */
+        "gap": 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+        /**
           * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated. `inherited` will insure that no specific style is applied to the container.
          */
         "option": | 'fill'
@@ -2636,6 +2640,10 @@ declare namespace LocalJSX {
           * Defines how to display the element. `flex` is the default display. `block` will set each container to be as large and high as it's content. Selecting this display will automatically configure each child element to have "display: block".
          */
         "display"?: 'flex' | 'block' | 'grid';
+        /**
+          * Defines the gap between items. `none` is 0px. `small` is 4px. `medium` is 8px. `large` is 16px. `xlarge` is 32px.
+         */
+        "gap"?: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
         /**
           * Defines the inner appearance of a container. `fill` is the default option, taking the full space of the container. This option automatically sets the color property to `standard` (gray) if color has not been set. `widget` adds a `small` padding around the container to equally space all child elements. This option automatically sets the color property to `standard` (gray) if color has not been set. `centered` centers the container so the content does not exceed a maximum width. `card` adds a `medium` padding around each child element.  This option automatically sets the color property to `alternative` (white) if color has not been set. Pending deprecation - `card-old` follows a prior design pattern with a box-shadow and will be deprecated. `inherited` will insure that no specific style is applied to the container.
          */

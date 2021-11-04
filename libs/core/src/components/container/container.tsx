@@ -73,6 +73,17 @@ export class ContainerComponent {
   @Prop() padding: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
 
   /**
+   * Defines the gap between items.
+   * `none` is 0px.
+   * `small` is 4px.
+   * `medium` is 8px.
+   * `large` is 16px.
+   * `xlarge` is 32px.
+   */
+   @Prop() gap: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
+  
+
+  /**
    * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there.
    * Default is `350px`.
    */
@@ -132,6 +143,7 @@ export class ContainerComponent {
           this.color ? `ct-bg-${this.color}` : '',
           `${this.direction}-dir`,
           `${this.display}-display`,
+          this.padding ? `ct-gap-${this.gap}` : '',
           this.padding ? `ct-padding-${this.padding}` : '',
         ].join(' ')}
       >

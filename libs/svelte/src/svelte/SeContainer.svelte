@@ -12,6 +12,7 @@ export let position = undefined;
 export let direction = undefined;
 export let display = undefined;
 export let padding = undefined;
+export let gap = undefined;
 export let columnSize = undefined;
 export let rowSize = undefined;
 export let color = undefined;
@@ -38,6 +39,7 @@ const onEvent = (e) => {
   direction={direction}
   display={display}
   padding={padding}
+  gap={gap}
   column-size={columnSize}
   row-size={rowSize}
   color={color}

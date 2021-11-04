@@ -377,13 +377,13 @@ export class SeChip {
 
 export declare interface SeContainer extends Components.SeContainer {}
 @ProxyCmp({
-  inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'padding', 'position', 'rowSize']
+  inputs: ['color', 'columnSize', 'direction', 'display', 'gap', 'option', 'padding', 'position', 'rowSize']
 })
 @Component({
   selector: 'se-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'columnSize', 'direction', 'display', 'option', 'padding', 'position', 'rowSize']
+  inputs: ['color', 'columnSize', 'direction', 'display', 'gap', 'option', 'padding', 'position', 'rowSize']
 })
 export class SeContainer {
   protected el: HTMLElement;
