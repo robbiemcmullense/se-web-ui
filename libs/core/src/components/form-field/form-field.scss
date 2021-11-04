@@ -47,7 +47,7 @@ se-form-field {
       // @include flex(40%);
       // max-width: 140px;
       @include align-items(center);
-      min-width: 140px;
+      min-width: 100px;
     }
     .required {
       @include color("error");
@@ -94,11 +94,11 @@ se-form-field {
   input,
   select,
   textarea {
-    box-sizing: initial;
+    box-sizing: border-box;
     font-family: inherit;
-    width: calc(100% - 10px);
+    width: 100%;
     font-size: 16px;
-    height: 30px;
+    height: 40px;
     line-height: 20px;
     border: 1px solid;
     @include border-color("border");
@@ -135,12 +135,6 @@ se-form-field {
     background-repeat: no-repeat;
   }
 
-  input[type="search"],
-  select {
-    height: 40px;
-    width: calc(100% + 4px);
-  }
-
   .with-icon {
     display: block;
     position: relative;
@@ -154,7 +148,7 @@ se-form-field {
     se-icon {
       position: absolute;
       top: 50%;
-      right: 0px;
+      right: 4px;
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
@@ -187,18 +181,9 @@ se-form-field {
       max-width: 100%;
     }
 
-    select,
-    input[type="search"] {
-      width: calc(100% + 4px);
-    }
-
-    input:not([type="search"]),
-    textarea {
-      width: calc(100% - 10px);
-    }
     .with-icon {
       input:not([type="search"]) {
-        width: calc(100% - 32px - 10px);
+        width: calc(100% - 32px);
       }
       se-icon {
         margin-right: 4px;
@@ -235,6 +220,7 @@ se-form-field {
     .ff-wrapper {
       max-width: 100%;
       margin-left: 0;
+      margin-right: 0;
       padding-left: 0;
     }
     .with-label > span {
