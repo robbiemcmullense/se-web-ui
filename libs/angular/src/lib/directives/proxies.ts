@@ -597,7 +597,7 @@ export class SeFiltration {
   }
 }
 
-import { FilterEmittedState as IFiltrationSmartFilterEmittedState } from 'dist/libs/core/types/components/filtration-smart/types';
+import { FilterEmittedState as IFiltrationSmartFilterEmittedState } from '@se/web-ui/types/components/filtration-smart/types';
 export declare interface SeFiltrationSmart extends Components.SeFiltrationSmart {}
 @ProxyCmp({
   inputs: ['dataAttrsData', 'filters', 'headerLabelDesktop', 'headerLabelMobile', 'isMobileViewVisible', 'maxFacetContentHeight', 'resetButtonLabel', 'showProductsLabel', 'viewLessFacetsLabel', 'viewLessRefinementsLabel', 'viewMoreFacetsLabel', 'viewMoreRefinementsLabel', 'visibleFacetsCount', 'visibleRefinementsPerFacetCount'],
@@ -713,7 +713,7 @@ export class SeFiltrationSmartGroup {
   }
 }
 
-import { ToggleMobileViewVisibility as IFiltrationSmartMobileViewToggleMobileViewVisibility } from 'dist/libs/core/types/components/filtration-smart/types';
+import { ToggleMobileViewVisibility as IFiltrationSmartMobileViewToggleMobileViewVisibility } from '@se/web-ui/types/components/filtration-smart/types';
 export declare interface SeFiltrationSmartMobileView extends Components.SeFiltrationSmartMobileView {}
 @ProxyCmp({
   inputs: ['headerLabel', 'isVisible', 'resetButtonLabel', 'showProductsLabel']
@@ -1025,7 +1025,7 @@ export class SeList {
   }
 }
 
-import { GroupCollapseEvent as IListGroupComponentGroupCollapseEvent } from 'dist/libs/core/types/components/list-group/list-group';
+import { GroupCollapseEvent as IListGroupComponentGroupCollapseEvent } from '@se/web-ui/types/components/list-group/list-group';
 export declare interface SeListGroup extends Components.SeListGroup {}
 @ProxyCmp({
   inputs: ['canCollapse', 'collapsed', 'description', 'disabled', 'flex', 'icon', 'iconColor', 'indentation', 'item', 'selected'],
@@ -1094,7 +1094,7 @@ export class SeLoading {
   }
 }
 
-import { PageEvent as IPaginationComponentPageEvent } from 'dist/libs/core/types/components/pagination/pagination';
+import { PageEvent as IPaginationComponentPageEvent } from '@se/web-ui/types/components/pagination/pagination';
 export declare interface SePagination extends Components.SePagination {}
 @ProxyCmp({
   inputs: ['hideEdge', 'labelFirst', 'labelLast', 'labelNext', 'labelPerPage', 'labelPrev', 'labelValue', 'perPage', 'perPageList', 'total', 'value']

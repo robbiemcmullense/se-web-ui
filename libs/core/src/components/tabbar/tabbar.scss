@@ -15,6 +15,7 @@ $opacity: 0.25 !default;
 
 se-tabbar {
   user-select: none;
+  display: inherit;
 
   .edge {
     background-color: rgba(black, $opacity);

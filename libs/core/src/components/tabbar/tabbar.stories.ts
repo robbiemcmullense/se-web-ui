@@ -36,7 +36,37 @@ storiesOf('Tab Bar', module)
       </nav>`
           : ''
       }
+      </se-tabbar>
+      `;
+    },
+    {
+      notes: {
+        markdown: readme,
+      },
+    }
+  )
+  .add(
+    'Tabbar within a block',
+    () => {
+      const color = select('color', colorOptions, 'primary');
+      const option = select('option', tabBarOptions, 'content');
+      const overflow = select('stack', overflowOptions, 'scroll');
+      const showWithButton = boolean('Show button at the end', true);
+
+      return `
+      <se-block outline="true" color="standard" divider="false">
+        <se-block-header option="fill">
+          <se-tabbar color="${color}" option="${option}" overflow="${overflow}">
+            <nav>
+              <a  title="Overview">Overview</a>
+              <a class="active" title="Analysis">Analysis</a>
+              <a title="Report">Report</a>
+              <a disabled title="Glossary & Index">Glossary & Index</a>
+              <a title="Notification and other stuff">Notification and other stuff</a>
+            </nav>
     </se-tabbar>
+        </se-block-header>
+      </se-block>
   `;
     },
     {
