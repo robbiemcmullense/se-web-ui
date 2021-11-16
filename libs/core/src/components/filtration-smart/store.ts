@@ -28,7 +28,7 @@ let sectionsStoreAsObject: FiltrationSmartSections = {};
 let dataAttrsData: FiltrationSmartDataAttrsData = { section: {}, filter: {} };
 const sectionsExpandedStoreAsObject = {};
 const sectionsExpandedStoreMobileAsObject = {};
-const refinementsCheckedStateSequence: string[] = [];
+let refinementsCheckedStateSequence: string[] = [];
 
 // stores
 const refinementsStore = createStore<FiltrationSmartRefinements>({});
@@ -383,10 +383,10 @@ export const toggleIsRefinementChecked = (refinementId: string): void => {
 };
 
 export const toggleIsAllRefinementsShown = (facetId: string): void => {
-  const current = [...mainStore.get('facetsWithAllRefinementsShownIds')];
+  let current = [...mainStore.get('facetsWithAllRefinementsShownIds')];
 
   if (current.includes(facetId)) {
-    pull(current, facetId);
+    current = pull(current, facetId);
   } else {
     current.push(facetId);
   }
@@ -622,7 +622,7 @@ const updateRefinementsCheckedStateSequence = (
   refinementLabel: string,
   isChecked: boolean
 ): void => {
-  pull(refinementsCheckedStateSequence, refinementLabel);
+  refinementsCheckedStateSequence = pull(refinementsCheckedStateSequence, refinementLabel);
 
   if (isChecked) {
     refinementsCheckedStateSequence.push(refinementLabel);
