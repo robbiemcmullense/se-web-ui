@@ -1,34 +1,34 @@
 button {
-	@include align-items(center);
+  @include align-items(center);
   @include border-color("alternative");
   @include background-color("alternative-contrast");
   border: 2px solid;
   border-radius: 22px;
-	bottom: 20px;
+  bottom: 20px;
   display: inline-flex;
-	left: 20px;
+  left: 20px;
   font-family: inherit;
   margin: $spacing-small;
   padding: $spacing-small;
-	position: absolute;
-	transition-property: outline-width;
+  position: absolute;
+  transition-property: outline-width;
   transition-duration: 0.2s;
 
-	&:hover,
-	&:focus {
-		padding: $spacing-small $spacing-medium;
-		--se-a11y-switch: inline-block;
-		--se-a11y-label: inline-block;
+  &:hover,
+  &:focus {
+    padding: $spacing-small $spacing-medium;
+    --se-a11y-switch: inline-block;
+    --se-a11y-label: inline-block;
 	}
 }
 
 .toggle {
-	display: var(--se-a11y-switch, none);
+  display: var(--se-a11y-switch, none);
   padding: 0 $spacing-medium;
 }
 
 label {
-	@include color("alternative");
-	display: var(--se-a11y-label, none);
-	font-weight: 600;
+  @include color("alternative");
+  display: var(--se-a11y-label, none);
+  font-weight: 600;
 }

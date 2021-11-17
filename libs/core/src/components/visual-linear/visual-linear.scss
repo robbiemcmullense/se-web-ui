@@ -1,35 +1,10 @@
-
-
 :host {
 	margin: $spacing-small;
 }
+
 svg {
   margin-top: $spacing-small;
   margin-bottom: $spacing-small;
-}
-
-// Set width to 100% on Chrome.
-// Will remove when Chromium-based Edge browser is released.
-@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
-  svg {
-    width: 100%;
-  }
-}
-
-// Set width to 100% on Firefox.
-// Will remove when Chromium-based Edge browser is released.
-@-moz-document url-prefix() {
-  svg {
-    width: 100%;
-  }
-}
-
-// Set width on Edge to fit within widget when option is set to inline.
-// Will remove when Chromium-based Edge browser is released.
-@supports (-ms-ime-align:auto) {
-  svg {
-    width: 80%;
-  }
 }
 
 .progress-bar-wrapper {
@@ -57,11 +32,13 @@ text {
   font-size: 14px;
 }
 
+
+// Options
 .inline {
+  @include align-items(center);
   display: flex;
   flex-direction: row;
   justify-content: center;
-  @include align-items(center);
 
   svg {
     flex: 1;

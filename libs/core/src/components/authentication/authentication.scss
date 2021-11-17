@@ -2,6 +2,7 @@
   @include absolute(0, 0, 0, 0);
   @include background-color("background-standard");
   z-index: $zindex-authentication;
+
   &.hide {
     display: none;
   }
@@ -11,21 +12,10 @@
   @include display-flex();
   @include flex-direction(column);
   position: relative;
-
   justify-content: space-between;
   overflow: hidden;
   padding: 0;
   box-shadow: 0 1px 1px 1px #c2c2c2;
-  
-}
-
-.header-title {
-  @include color("primary");
-  padding-left: 18px;
-  font-size: 20px;
-  line-height: 1;
-  margin: 0;
-  width: 400px;
 }
 
 .image-container {
@@ -36,6 +26,7 @@
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
+
 .image-background {
   position: absolute;
   width: 102%;
@@ -48,127 +39,134 @@
   background-size: cover;
 }
 
-.login-container {
-  height: 100%;
-  z-index: 1;
-  @include background-color("background-alternative");
-  @include display-flex();
-  @include flex-direction(row);
-}
-
 main {
-  height: 36.5%;
-  overflow: hidden;
   @include flex(1, 1, auto);
   @include display-flex();
   @include flex-direction(column);
   @include justify-content(flex-end);
+  height: 36.5%;
+  overflow: hidden;
+}
 
-  // IE11 behaves differently than the rest of the browsers
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    @include flex(0, 0, auto);
-    min-height: 210px; // 36.5% of 575px
-  }
+.green-bars {
+  @include flex-direction(column);
+  @include display-flex();
+  @include flex(0, 0, 36.5%);
+  z-index: 2;
+}
 
-  .green-bars {
-    z-index: 2;
-    @include flex-direction(column);
-    @include display-flex();
-    @include flex(0, 0, 36.5%);
-  }
+.dark-green-bar,
+.light-green-bar {
+  @include background-color("primary");
+  @include flex(1, 1, auto);
+  height: 40px;
+}
 
-  .dark-green-bar,
-  .light-green-bar {
-    @include background-color("primary");
-    height: 40px;
-    @include flex(1, 1, auto);
-  }
+.dark-green-bar {
+  opacity: 0.5;
+}
 
-  .dark-green-bar {
-    opacity: 0.5;
-  }
+.login-container {
+  @include background-color("background-alternative");
+  @include display-flex();
+  @include flex-direction(row);
+  height: 100%;
+  z-index: 1;
 }
 
 .information,
 .form {
-  overflow: hidden;
-  z-index: 2;
   @include flex(1, 1, auto);
   @include flex-direction(column);
   @include display-flex();
+  overflow: hidden;
+  z-index: 2;
 }
+
 .form {
-  padding: 0 60px;
   @include align-content(center);
   @include justify-content(center);
+  padding: 0 60px;
   max-width: 300px;
 }
+
 .information {
+  @include justify-content(flex-end);
+  @include color("primary");
   padding: 60px;
   padding-right: 0;
-  @include justify-content(flex-end);
+}
 
+.header-title {
   @include color("primary");
+  font-size: 40px;
+  padding-top: 14px;
+  padding-bottom: 24px;
+  padding-left: 0;
+  line-height: 1;
+  margin: 0;
+  width: 400px;
 
-  .header-title {
-    font-size: 40px;
-    padding-top: 14px;
-    padding-bottom: 24px;
-    padding-left: 0;
-    .light {
-      font-weight: 300;
-    }
+  .light {
+    font-weight: 300;
   }
 }
 
 footer {
+  @include display-flex();
+  @include flex(0, 0, auto);
+  @include align-items(center);
+  @include justify-content(space-between);
   height: 17%;
   overflow: hidden;
   color: $se-white;
   font-size: 14px;
   z-index: 2;
-  @include display-flex();
-  @include flex(0, 0, auto);
-  @include align-items(center);
-  @include justify-content(space-between);
-  .copyright-note {
-    margin-left: 25px;
-    max-width: 450px;
-  }
-
-  .footer-logo {
-    text-align: right;
-    @include flex(auto);
-    max-width: 300px;
-  }
 }
 
+.copyright-note {
+  margin-left: 25px;
+  max-width: 450px;
+}
+
+.footer-logo {
+  @include flex(auto);
+  text-align: right;
+  max-width: 300px;
+}
+
+
+// Responsive
 /* Anything but mobile */
 @media only screen and (min-width: 600px) {
-  .footer-logo {
-    margin-right: 25px;
-  }
   .content-wrapper {
     margin: 18px auto;
     max-width: 960px;
-    // Fixes #332
     min-height: 575px;
     height: auto;
   }
+
+  .footer-logo {
+    margin-right: 25px;
+  }
 }
-/* mobile */
+
+/* Mobile */
 @media only screen and (max-width: 600px) {
-  .information{
+  .login-container {
+    @include flex-direction(column);
+  }
+
+  .information {
     padding: 32px;
   }
-  .login-container{
-    flex-direction: column;
-  }
-  footer{
-    flex-direction: column;
-  }
-  .form{
+
+  .form {
     padding: 0px 32px 32px;
     margin: auto;
+  }
+
+  footer {
+    @include flex-direction(column);
   }
 }

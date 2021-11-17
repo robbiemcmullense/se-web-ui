@@ -39,7 +39,7 @@ export class AuthenticationComponent {
     if (this.domain.toLowerCase() === `ecostruxure`) {
       domain = <se-icon-ecostruxure size="medium"></se-icon-ecostruxure>;
     } else if (this.domain.toLowerCase() !== 'none') {
-      domain = <span class="header-title-type">{this.domain}</span>;
+      domain = <span>{this.domain}</span>;
     }
     return (
       <div class="content-wrapper">
@@ -62,7 +62,7 @@ export class AuthenticationComponent {
               {title.first}
               <span class="light">&nbsp;{title.last}</span>
             </h1>
-            <p class="version">version {this.version}</p>
+            <p>version {this.version}</p>
           </div>
           <div class="form">
             <slot></slot>
@@ -72,7 +72,7 @@ export class AuthenticationComponent {
           <div class="copyright-note">
             <span>{this.copyright}</span>
           </div>
-          <div class="footer-logo align-end">
+          <div class="footer-logo">
             <se-icon-lifeison></se-icon-lifeison>
           </div>
         </footer>

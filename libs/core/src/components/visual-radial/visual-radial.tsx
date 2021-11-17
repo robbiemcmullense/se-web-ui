@@ -64,7 +64,7 @@ export class VisualRadialComponent {
             ></circle>
             Sorry, your browser does not support inline SVG.
           </svg>
-          <svg height={svgSize} width={svgSize} class="text">
+          <svg height={svgSize} width={svgSize}>
             <text>
               {this.value ? (
                 <tspan
