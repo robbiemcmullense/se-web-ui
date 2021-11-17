@@ -183,7 +183,7 @@ export class DropdownComponent {
   }
 
   getClosestParent(selector) {
-    return this.el.parentElement && this.el.parentElement.closest(selector);
+    return this.el?.parentElement && this.el?.parentElement.closest(selector);
   }
 
   _toggle(ev: Event) {
@@ -209,6 +209,7 @@ export class DropdownComponent {
   }
 
   render() {
+    const autoHideNotDefined = this.autoHide === undefined || this.autoHide === null 
     return (
       <Host>
         <span
@@ -225,7 +226,7 @@ export class DropdownComponent {
           class={{
             show: this.opened,
             content: true,
-            'auto-hide': this.inTable || this.autoHide,
+            'auto-hide': autoHideNotDefined ? this.inTable : this.autoHide, // hide automatically if inside a table
           }}
           style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight }}
         >

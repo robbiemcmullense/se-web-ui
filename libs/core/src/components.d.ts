@@ -369,7 +369,7 @@ export namespace Components {
          */
         "noInteractive": boolean;
         /**
-          * Determines the visual appearance of the component.   `checkbox` is the default option, which will render the component like a standard HTML checkbox.   `checkbox-fake` **deprecated (use noInteractive property)** will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component.   `switch` renders the component like a toggle switch.   `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` **deprecated (use noInteractive property)** will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option": Option;
         /**
@@ -522,7 +522,11 @@ export namespace Components {
         /**
           * Indicates what icon color schema you want to render in your dialog.
          */
-        "iconColor": 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
+        "iconColor": | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'information';
         /**
           * Indicates if se-dialog-content is the last child of the dialog component.
          */
@@ -547,7 +551,11 @@ export namespace Components {
         /**
           * Defines the color of the dialog header. `standard`: Standard color schema. `alternative`: Alternative background with standard color for the text. `primary`: Primary color schema. `secondary`: Secondary color schema. `information`: Information color schema. By default, the primary color will be used.
          */
-        "color": 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
+        "color": | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'information';
         /**
           * Defaulted to a small padding. When set to `indent`, the header will have an alternative margins and paddings.
           * @deprecated use padding instead
@@ -2549,7 +2557,7 @@ declare namespace LocalJSX {
          */
         "onDidChange"?: (event: CustomEvent<{ value: string; selected: boolean }>) => void;
         /**
-          * Determines the visual appearance of the component.   `checkbox` is the default option, which will render the component like a standard HTML checkbox.   `checkbox-fake` **deprecated (use noInteractive property)** will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component.   `switch` renders the component like a toggle switch.   `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
+          * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` **deprecated (use noInteractive property)** will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
         "option"?: Option;
         /**
@@ -2710,7 +2718,11 @@ declare namespace LocalJSX {
         /**
           * Indicates what icon color schema you want to render in your dialog.
          */
-        "iconColor"?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
+        "iconColor"?: | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'information';
         /**
           * Indicates if se-dialog-content is the last child of the dialog component.
          */
@@ -2735,7 +2747,11 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the dialog header. `standard`: Standard color schema. `alternative`: Alternative background with standard color for the text. `primary`: Primary color schema. `secondary`: Secondary color schema. `information`: Information color schema. By default, the primary color will be used.
          */
-        "color"?: 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
+        "color"?: | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'information';
         /**
           * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
          */
