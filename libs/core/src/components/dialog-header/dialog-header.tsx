@@ -4,7 +4,8 @@ import {
   Element,
   Prop,
   Event,
-  EventEmitter, Watch,
+  EventEmitter,
+  Watch,
 } from '@stencil/core';
 import actionDeleteCross from '@se/icons/svg/action_delete_cross.svg';
 
@@ -35,7 +36,12 @@ export class DialogHeaderComponent {
    * `information`: Information color schema.
    * By default, the primary color will be used.
    */
-  @Prop() color: 'standard' | 'alternative' | 'primary' | 'secondary' | 'information' = 'primary';
+  @Prop() color:
+    | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'information' = 'primary';
 
   /**
    * optional property. define the padding around the button

@@ -543,10 +543,10 @@ storiesOf('Form Field', module)
         markdown: readme,
       },
     }
-  ).add(
+  )
+  .add(
     'date picker side by side',
     () => {
-
       return `
       <se-container>
           <se-form-field style="flex:1; min-width: 0;"  block label="Start date">
@@ -554,7 +554,7 @@ storiesOf('Form Field', module)
           </se-form-field>
           <se-form-field style="flex:1; min-width: 0;"  block label="End date">
             <input type="date"/>
-          </se-form-field>  
+          </se-form-field>
         </se-container>
     `;
     },

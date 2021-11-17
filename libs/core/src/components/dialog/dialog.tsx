@@ -70,7 +70,8 @@ export class DialogComponent {
    */
   @Event({
     bubbles: false,
-  }) didClose: EventEmitter<any>;
+  })
+  didClose: EventEmitter<any>;
 
   /**
    * Option to scroll page in browser window if set to `true`.

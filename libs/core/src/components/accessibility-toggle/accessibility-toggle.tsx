@@ -1,4 +1,12 @@
-import { Component, h, Element, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Element,
+  Prop,
+  Event,
+  EventEmitter,
+  Watch,
+} from '@stencil/core';
 import accessibility from '@se/icons/svg/accessibility.svg';
 
 @Component({
@@ -15,7 +23,7 @@ export class AccessibilityToggleComponent {
    */
   @Prop({ mutable: true }) selected = false;
   @Watch('selected') selectedDidChange() {
-    this.didChange.emit({selected: this.selected});
+    this.didChange.emit({ selected: this.selected });
   }
   /**
    * Defines the text when the Accessibility mode is ON
@@ -56,7 +64,7 @@ export class AccessibilityToggleComponent {
         <se-icon
           size="medium"
           color="alternative"
-          innerHTML={accessibility} //TODO update icon
+          innerHTML={accessibility} // TODO update icon
         />
         <se-checkbox
           noInteractive
@@ -64,9 +72,7 @@ export class AccessibilityToggleComponent {
           selected={this.selected}
           class="toggle"
         />
-        <label>
-          {this.label}
-        </label>
+        <label>{this.label}</label>
       </button>
     );
   }

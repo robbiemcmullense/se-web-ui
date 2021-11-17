@@ -113,7 +113,12 @@ export class BreadcrumbItemComponent {
             </span>
           )}
           {!this.isLast && (
-            <se-icon size="nano" aria-hidden="true" style={{width: "10px", height: "12px"}} innerHTML={arrow2Right}></se-icon>
+            <se-icon
+              size="nano"
+              aria-hidden="true"
+              style={{ width: '10px', height: '12px' }}
+              innerHTML={arrow2Right}
+            ></se-icon>
           )}
         </div>
       </Host>

@@ -41,7 +41,8 @@ export class TabbarComponent {
 
   ro: ResizeObserver;
   componentDidLoad() {
-    if (Build.isBrowser){ // For SSR rendering
+    if (Build.isBrowser) {
+      // For SSR rendering
       this.ro = new ResizeObserver(_ => {
         this.displayArrow();
       });
@@ -72,7 +73,7 @@ export class TabbarComponent {
 
     // this.navbar.scrollLeft > 0
     //  // extrem left -> don't display left arrow
-  }
+  };
 
   scroll(direction: number) {
     this.navbar.scrollBy({
@@ -81,29 +82,31 @@ export class TabbarComponent {
     });
   }
 
-
   getIconStart = (color: TColor) => {
-    return color === 'alternative' 
-      ? <se-icon size='nano' rotate={90} mirror="horizontal">
-          <span innerHTML={arrow3Up}></span>
-        </se-icon>
-      : <se-icon size='medium' mirror="horizontal">
+    return color === 'alternative' ? (
+      <se-icon size="nano" rotate={90} mirror="horizontal">
+        <span innerHTML={arrow3Up}></span>
+      </se-icon>
+    ) : (
+      <se-icon size="medium" mirror="horizontal">
         <span innerHTML={arrow5Step}></span>
       </se-icon>
+    );
   };
 
   getIconEnd = (color: TColor) => {
-    return color === 'alternative' 
-      ? <se-icon size='nano' rotate={90}>
-          <span innerHTML={arrow3Up}></span>
-        </se-icon>
-      : <se-icon size='medium'>
+    return color === 'alternative' ? (
+      <se-icon size="nano" rotate={90}>
+        <span innerHTML={arrow3Up}></span>
+      </se-icon>
+    ) : (
+      <se-icon size="medium">
         <span innerHTML={arrow5Step}></span>
       </se-icon>
+    );
   };
 
   render() {
-
     return (
       <div
         dir="ltr" // This component does not support RTL for now.
@@ -118,7 +121,11 @@ export class TabbarComponent {
         </div>
         <div class="nav-center-arrows-wrapper">
           <span
-            class={{ arrow: true, arrowLeft: true, hidden: !this.showLeftArrow }}
+            class={{
+              arrow: true,
+              arrowLeft: true,
+              hidden: !this.showLeftArrow,
+            }}
             onClick={() => this.scroll(-1)}
           >
             {this.getIconStart(this.color)}
@@ -135,7 +142,11 @@ export class TabbarComponent {
             <slot />
           </div>
           <span
-            class={{ arrow: true, arrowRight: true, hidden: !this.showRightArrow }}
+            class={{
+              arrow: true,
+              arrowRight: true,
+              hidden: !this.showRightArrow,
+            }}
             onClick={() => this.scroll(1)}
           >
             {this.getIconEnd(this.color)}

@@ -1,4 +1,13 @@
-import { Component, Host, h, Prop, Element, Event, EventEmitter, Watch } from '@stencil/core';
+import {
+  Component,
+  Host,
+  h,
+  Prop,
+  Element,
+  Event,
+  EventEmitter,
+  Watch,
+} from '@stencil/core';
 import arrow4Top from '@se/icons/svg/arrow4_top.svg';
 import arrowDefault from '@se/icons/svg/arrow2_default.svg';
 
@@ -61,7 +70,7 @@ export class TableItemHeaderComponent {
     let mouseStartPosition;
     let headerWidth;
 
-    const resizeMouseDownHandler = (ev) => {
+    const resizeMouseDownHandler = ev => {
       mouseStartPosition = ev.clientX;
       headerWidth = this.el.shadowRoot
         .querySelector('.table-item-content')
@@ -70,7 +79,7 @@ export class TableItemHeaderComponent {
       document.addEventListener('mouseup', resizeMouseUpHandler);
     };
 
-    const resizeMouseMoveHandler = (ev) => {
+    const resizeMouseMoveHandler = ev => {
       this.width = headerWidth + (ev.clientX - mouseStartPosition) + 'px';
     };
 
@@ -79,7 +88,7 @@ export class TableItemHeaderComponent {
       document.removeEventListener('mouseup', resizeMouseUpHandler);
     };
 
-    const dragStartHandler = (ev) => {
+    const dragStartHandler = ev => {
       ev.preventDefault();
     };
 
@@ -114,10 +123,7 @@ export class TableItemHeaderComponent {
         id={id ? `wc-${id}` : ''}
         style={displayStyle}
       >
-        <TagType
-          class={'table-item-content'}
-          aria-label={ariaLabelSort}
-        >
+        <TagType class={'table-item-content'} aria-label={ariaLabelSort}>
           <div class="table-item-label">
             <slot></slot>
           </div>

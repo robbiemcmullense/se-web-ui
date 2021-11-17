@@ -20,7 +20,8 @@ export class TabComponent {
    * Default `nav` creates a tab bar that functions as a nav-bar.
    * `content` creates a ta bbar that functions as a content section tab bar.
    */
-  @Prop({reflect:true}) option: 'anchor' | 'content' | 'navigation' = 'navigation';
+  @Prop({ reflect: true }) option: 'anchor' | 'content' | 'navigation' =
+    'navigation';
   /**
    * Indicates the overflow behavior of your tab bar.
    * Default setting is `scroll`, keeping all tabs in one horizontal row.
@@ -34,7 +35,8 @@ export class TabComponent {
 
   ro: ResizeObserver;
   componentDidLoad() {
-    if(Build.isBrowser){// For SSR rendering
+    if (Build.isBrowser) {
+      // For SSR rendering
       this.ro = new ResizeObserver(_ => {
         this.displayArrow();
       });
@@ -65,7 +67,7 @@ export class TabComponent {
 
     // this.navbar.scrollLeft > 0
     //  // extrem left -> don't display left arrow
-  }
+  };
 
   scroll(direction: number) {
     this.navbar.scrollBy({
@@ -74,29 +76,42 @@ export class TabComponent {
     });
   }
 
-
-  getIcon= (position) => {
-    return this.option === 'anchor' 
-      ? <se-icon size='nano' rotate={90} mirror={position === 'start' ? 'horizontal': null}>
-          <span innerHTML={arrow3Up}></span>
-        </se-icon>
-      : <se-icon size='medium' mirror={position === 'start' ? 'horizontal': null}>
+  getIcon = position => {
+    return this.option === 'anchor' ? (
+      <se-icon
+        size="nano"
+        rotate={90}
+        mirror={position === 'start' ? 'horizontal' : null}
+      >
+        <span innerHTML={arrow3Up}></span>
+      </se-icon>
+    ) : (
+      <se-icon
+        size="medium"
+        mirror={position === 'start' ? 'horizontal' : null}
+      >
         <span innerHTML={arrow5Step}></span>
       </se-icon>
+    );
   };
 
   render() {
-
     return (
       <Host>
         <div class="nav-left-wrapper centered">
           <slot name="start" />
         </div>
-        <nav class={{'nav-center-arrows-wrapper':true, [this.overflow]: true}}>
-          {this.option==="content" && <se-divider></se-divider>}
+        <nav
+          class={{ 'nav-center-arrows-wrapper': true, [this.overflow]: true }}
+        >
+          {this.option === 'content' && <se-divider></se-divider>}
 
           <span
-            class={{ arrow: true, arrowLeft: true, hidden: !this.showLeftArrow }}
+            class={{
+              arrow: true,
+              arrowLeft: true,
+              hidden: !this.showLeftArrow,
+            }}
             onClick={() => this.scroll(-1)}
           >
             {this.getIcon('start')}
@@ -112,7 +127,11 @@ export class TabComponent {
             <slot />
           </div>
           <span
-            class={{ arrow: true, arrowRight: true, hidden: !this.showRightArrow }}
+            class={{
+              arrow: true,
+              arrowRight: true,
+              hidden: !this.showRightArrow,
+            }}
             onClick={() => this.scroll(1)}
           >
             {this.getIcon('end')}

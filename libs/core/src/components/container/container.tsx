@@ -80,8 +80,7 @@ export class ContainerComponent {
    * `large` is 16px.
    * `xlarge` is 32px.
    */
-   @Prop() gap: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
-  
+  @Prop() gap: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
 
   /**
    * When in `display="grid"`, defines the mininimum width of a column. It automatically figures out the appropriate number of columns from there.

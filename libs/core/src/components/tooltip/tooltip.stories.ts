@@ -80,7 +80,6 @@ storiesOf('Tooltip', module)
   .add(
     'In layout',
     () => {
-
       return `
     <se-container position="absolute" direction="row" style="height: 600px">
     <se-block width="300px">
@@ -102,7 +101,6 @@ storiesOf('Tooltip', module)
       </se-block-header>
       <se-block-content>
         This is my block content. My width is 300px.
-        
         <se-tooltip style="padding-top: 600px">
           <se-icon color="secondary" slot="trigger" >information_circle</se-icon>
           <se-tooltip-content> This is my tooltip. This is my tooltip. This is my tooltip. This is my tooltip.</se-tooltip-content>

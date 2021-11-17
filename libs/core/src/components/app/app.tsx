@@ -35,7 +35,7 @@ export class AppComponent {
    * - `dark`: dark mode of the application.
    * - `auto`: Will match the OS configuration
    */
-  @Prop({reflect: true}) theme: 'light' | 'dark' | 'auto' = 'light';
+  @Prop({ reflect: true }) theme: 'light' | 'dark' | 'auto' = 'light';
   @Watch('theme') themeDidChange() {
     switch (this.theme) {
       case 'auto':

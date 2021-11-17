@@ -38,7 +38,12 @@ export class DialogContentComponent {
   /**
    * Indicates what icon color schema you want to render in your dialog.
    */
-  @Prop() iconColor: 'standard' | 'alternative' | 'primary' | 'secondary' | 'information';
+  @Prop() iconColor:
+    | 'standard'
+    | 'alternative'
+    | 'primary'
+    | 'secondary'
+    | 'information';
 
   /**
    * Indicates if se-dialog-content is the last child of the dialog component.
