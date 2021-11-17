@@ -115,7 +115,7 @@ export const config: Config = {
       plugins: [
         autoprefixer({ grid: 'no-autoplace' }),
         postcssRTLCSS(RTL_PREFIXES),
-        postcssHostPolyfill(RTL_PREFIXES)
+        postcssHostPolyfill(RTL_PREFIXES),
       ],
     }),
   ],
@@ -215,7 +215,7 @@ export const config: Config = {
         'se-slider',
         'se-link',
         'se-icon-file',
-        'se-tabbar'
+        'se-tabbar',
       ],
     },
     {
@@ -254,26 +254,30 @@ export const config: Config = {
         'se-table-group-header',
         'se-table-item',
         'se-table-item-header',
-        'se-pagination'
+        'se-pagination',
       ],
     },
     { components: ['se-fab', 'se-fab-item'] },
     { components: ['se-visual-linear', 'se-visual-radial'] },
     { components: ['se-filtration'] },
-    { components: ['se-filtration-smart',
+    {
+      components: [
+        'se-filtration-smart',
         'se-filtration-smart-group',
         'se-filtration-smart-reset-button',
         'se-filtration-smart-tab',
-        'se-filtration-smart-view-more-refinements-button', 
-        'se-filtration-smart-checkbox', 
-        'se-filtration-smart-desktop-view', 
-        'se-filtration-smart-facet', 
-        'se-filtration-smart-mobile-view-trigger', 
-        'se-filtration-smart-mobile-view', 
-        'se-filtration-smart-view-more-facets-button'
-      ] 
+        'se-filtration-smart-view-more-refinements-button',
+        'se-filtration-smart-checkbox',
+        'se-filtration-smart-desktop-view',
+        'se-filtration-smart-facet',
+        'se-filtration-smart-mobile-view-trigger',
+        'se-filtration-smart-mobile-view',
+        'se-filtration-smart-view-more-facets-button',
+      ],
     },
-    { components: ['se-carousel-item', 'se-carousel-pagination', 'se-carousel'] },
+    {
+      components: ['se-carousel-item', 'se-carousel-pagination', 'se-carousel'],
+    },
     { components: ['se-accessibility-toggle'] },
   ],
   testing: {

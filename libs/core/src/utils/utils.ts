@@ -101,7 +101,10 @@ export function isNumber(number: number | string) {
   );
 }
 
-export function setElementDataAttrs(el: HTMLElement, dataAttrsData: Record<string, string>): void {
+export function setElementDataAttrs(
+  el: HTMLElement,
+  dataAttrsData: Record<string, string>
+): void {
   for (const dataAttrKey of Object.keys(dataAttrsData)) {
     el.dataset[dataAttrKey] = dataAttrsData[dataAttrKey];
   }

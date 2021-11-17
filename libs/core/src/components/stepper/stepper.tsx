@@ -52,7 +52,7 @@ export class StepperComponent {
    * Sets the max width for each stepper label
    * The default setting is `none`.
    */
-   @Prop() labelMaxWidth: string;
+  @Prop() labelMaxWidth: string;
 
   /**
    * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked.
@@ -60,7 +60,8 @@ export class StepperComponent {
    */
   @Event({
     bubbles: false,
-  }) didChange: EventEmitter;
+  })
+  didChange: EventEmitter;
   /**
    * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps.
    * It no step parameter is provided, it will reset to the first stepper item.
@@ -156,7 +157,7 @@ export class StepperComponent {
       const disabled = !this.checkIfPreviousItemValidated(item);
       const TagType = isReadOnly || disabled ? ('div' as any) : 'button';
       const displayStyle = {
-        maxWidth: this.labelMaxWidth || ''
+        maxWidth: this.labelMaxWidth || '',
       };
 
       return [
@@ -183,22 +184,23 @@ export class StepperComponent {
               this.selectStep(item);
             }}
           >
-            <span class={{indicator: true, active: item.active}}>
-              {item.validated && !item.active ?
+            <span class={{ indicator: true, active: item.active }}>
+              {item.validated && !item.active ? (
                 <se-icon>
                   <span innerHTML={notification_ok}></span>
                 </se-icon>
-               : itemStep
-              }
+              ) : (
+                itemStep
+              )}
             </span>
             <span
               class={{
-                "stepper-item-label" : true,
-                "text-wrap" : !!this.labelMaxWidth
+                'stepper-item-label': true,
+                'text-wrap': !!this.labelMaxWidth,
               }}
               style={displayStyle}
             >
-                {item.label}
+              {item.label}
             </span>
           </TagType>
           {itemStep !== this.stepperItems.length ? (

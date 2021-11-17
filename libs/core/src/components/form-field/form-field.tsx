@@ -149,7 +149,8 @@ export class FormFieldComponent {
 
   ro: ResizeObserver;
   componentDidLoad() {
-    if(Build.isBrowser){ // For SSR rendering
+    if (Build.isBrowser) {
+      // For SSR rendering
       this.ro = new ResizeObserver(_ => {
         this.isSmall = this.inputWrapper.clientWidth < this.minWidth;
         // this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;

@@ -31,45 +31,44 @@ export const CheckboxCommon: FunctionalComponent<Props> = props => {
     onToggle,
   } = props;
 
-  let content =
-    (noInteractive) ? (
-      <span class="container">
-        <div
-          class={{
-            button: true,
-            checkmark: true,
-            [`color-${color}`]: !!color,
-            checked: selected && !indeterminate,
-            indeterminate,
-            disabled,
-          }}
-        />
-      </span>
-    ) : (
-      <span class="container" onClick={onToggle}>
-        <input
-          type="checkbox"
-          tabIndex={-1}
-          name={name}
-          checked={selected}
-          disabled={disabled}
-          indeterminate={indeterminate}
-          value={value}
-          id={id ? `wc-${id}` : ''}
-        />
-        <button
-          class={{
-            button: true,
-            checkmark: true,
-            [`color-${color}`]: !!color,
-            checked: selected && !indeterminate,
-            indeterminate,
-            disabled,
-          }}
-          disabled={disabled}
-        />
-      </span>
-    );
+  const content = noInteractive ? (
+    <span class="container">
+      <div
+        class={{
+          button: true,
+          checkmark: true,
+          [`color-${color}`]: !!color,
+          checked: selected && !indeterminate,
+          indeterminate,
+          disabled,
+        }}
+      />
+    </span>
+  ) : (
+    <span class="container" onClick={onToggle}>
+      <input
+        type="checkbox"
+        tabIndex={-1}
+        name={name}
+        checked={selected}
+        disabled={disabled}
+        indeterminate={indeterminate}
+        value={value}
+        id={id ? `wc-${id}` : ''}
+      />
+      <button
+        class={{
+          button: true,
+          checkmark: true,
+          [`color-${color}`]: !!color,
+          checked: selected && !indeterminate,
+          indeterminate,
+          disabled,
+        }}
+        disabled={disabled}
+      />
+    </span>
+  );
 
   return (
     <label

@@ -77,7 +77,8 @@ export class Carousel {
     this.displayArrow();
     this.calculatePaginationSize();
 
-    if(Build.isBrowser){ // For SSR rendering
+    if (Build.isBrowser) {
+      // For SSR rendering
       this.ro = new ResizeObserver(_ => {
         // Observe any changes in the width container
         this.calculateWidth();
@@ -153,8 +154,8 @@ export class Carousel {
     const { offsetWidth, scrollWidth, scrollLeft } = this.contentEl;
     const showArrow = offsetWidth < scrollWidth;
     const errorMargin = 20; // Add 10px in case we only few px off and we don't want to show the arrow
-    if(this.el.dir === 'rtl'){
-      this.showEndArrow = - scrollLeft > errorMargin;
+    if (this.el.dir === 'rtl') {
+      this.showEndArrow = -scrollLeft > errorMargin;
       this.showStartArrow =
         showArrow && offsetWidth - scrollLeft < scrollWidth - errorMargin;
     } else {

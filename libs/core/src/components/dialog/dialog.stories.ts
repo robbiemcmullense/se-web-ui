@@ -13,7 +13,13 @@ const mainTitleGroup = 'Main slot title';
 const endTitleGroup = 'End slot title';
 
 const sizeOptions = ['medium', 'small', 'large', 'fill'];
-const colorOptions = ['standard', 'alternative', 'primary', 'secondary', 'information'];
+const colorOptions = [
+  'standard',
+  'alternative',
+  'primary',
+  'secondary',
+  'information',
+];
 const headerPaddingOptions = ['small', 'large'];
 const contentPaddingOptions = ['none', 'small', 'large'];
 const defaultAttributes = { class: 'example-class' };
@@ -56,13 +62,33 @@ storiesOf('Dialog', module).add(
 
     const showFooter = boolean('Enable footer', false, configurationGroup);
 
-    const headerColor = select('color', colorOptions, 'primary', headerConfigurationGroup);
-    const headerPadding = select('padding', headerPaddingOptions, 'small', headerConfigurationGroup);
+    const headerColor = select(
+      'color',
+      colorOptions,
+      'primary',
+      headerConfigurationGroup
+    );
+    const headerPadding = select(
+      'padding',
+      headerPaddingOptions,
+      'small',
+      headerConfigurationGroup
+    );
     const closeIcon = boolean('close icon', false, headerConfigurationGroup);
 
     const icon = text('icon', '', contentConfigurationGroup);
-    const contentPadding = select('padding', contentPaddingOptions, 'small', contentConfigurationGroup);
-    const iconColor = select('icon color', colorOptions, 'primary', contentConfigurationGroup);
+    const contentPadding = select(
+      'padding',
+      contentPaddingOptions,
+      'small',
+      contentConfigurationGroup
+    );
+    const iconColor = select(
+      'icon color',
+      colorOptions,
+      'primary',
+      contentConfigurationGroup
+    );
 
     const mainTitle = text('title', 'My awesome title', mainTitleGroup);
     const mainTitleTagName = text('tag name', '', mainTitleGroup);
@@ -79,9 +105,6 @@ storiesOf('Dialog', module).add(
       defaultAttributes,
       endTitleGroup
     );
-
-
-
 
     document.addEventListener('didClose', e =>
       action('didClose')((e as CustomEvent).detail)

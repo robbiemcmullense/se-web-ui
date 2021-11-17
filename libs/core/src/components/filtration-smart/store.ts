@@ -65,19 +65,21 @@ const mainStore = createStore<FiltrationSmartMainStore>({
   isAllFacetsVisible: false,
 });
 
-export const setDataAttrsData = (attrsData: FiltrationSmartDataAttrsData): void => {
+export const setDataAttrsData = (
+  attrsData: FiltrationSmartDataAttrsData
+): void => {
   dataAttrsData = attrsData;
 };
 
 // Lighter version of lodash cloneDeep to reduce bundle size (https://github.com/lodash/lodash/issues/1984)
-export const cloneDeep = (obj) => {
-  return JSON.parse(JSON.stringify(obj))
-}
+export const cloneDeep = obj => {
+  return JSON.parse(JSON.stringify(obj));
+};
 
-// pull a single item from a list. 
+// pull a single item from a list.
 export const pull = (list, toRemove) => {
-  return list.filter(item => item !== toRemove)
-}
+  return list.filter(item => item !== toRemove);
+};
 
 // entities getters
 export const getFacetsIds = (): string[] => {
@@ -104,11 +106,15 @@ const getSectionFacetId = (sectionId: string): string => {
   return getSectionData(sectionId).rootSectionId;
 };
 
-export const getRefinementDataAttrsData = (refinementId: string): Record<string, string> => {
+export const getRefinementDataAttrsData = (
+  refinementId: string
+): Record<string, string> => {
   return dataAttrsData.filter[refinementId];
 };
 
-export const getSectionDataAttrsData = (sectionId: string): Record<string, string> => {
+export const getSectionDataAttrsData = (
+  sectionId: string
+): Record<string, string> => {
   return dataAttrsData.section[sectionId];
 };
 
@@ -196,7 +202,8 @@ export const getSectionVisibleSectionsLimitedIds = (
   const currentSectionFiltersCount = getSectionRefinementsIds(sectionId).length;
 
   let limitReached = false;
-  let sectionFacetRefinementsCount = prevSectionsFiltersCount + currentSectionFiltersCount;
+  let sectionFacetRefinementsCount =
+    prevSectionsFiltersCount + currentSectionFiltersCount;
 
   if (sectionFacetRefinementsCount >= visibleRefinementsPerFacetCount) {
     return [];
@@ -208,7 +215,8 @@ export const getSectionVisibleSectionsLimitedIds = (
 
       if (refinementsCount > 0) {
         sectionFacetRefinementsCount += refinementsCount;
-        limitReached = sectionFacetRefinementsCount >= visibleRefinementsPerFacetCount;
+        limitReached =
+          sectionFacetRefinementsCount >= visibleRefinementsPerFacetCount;
         res.push(sectionIdNested);
       }
     }
@@ -622,7 +630,10 @@ const updateRefinementsCheckedStateSequence = (
   refinementLabel: string,
   isChecked: boolean
 ): void => {
-  refinementsCheckedStateSequence = pull(refinementsCheckedStateSequence, refinementLabel);
+  refinementsCheckedStateSequence = pull(
+    refinementsCheckedStateSequence,
+    refinementLabel
+  );
 
   if (isChecked) {
     refinementsCheckedStateSequence.push(refinementLabel);

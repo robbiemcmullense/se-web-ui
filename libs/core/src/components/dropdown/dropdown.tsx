@@ -136,7 +136,8 @@ export class DropdownComponent {
    */
   @Event({
     bubbles: false,
-  }) didClose: EventEmitter;
+  })
+  didClose: EventEmitter;
 
   /**
    * Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time.
@@ -200,7 +201,7 @@ export class DropdownComponent {
 
   componentWillLoad(): void {
     this.alignmentChange();
-    this.inTable = !!this.getClosestParent('se-table-item')
+    this.inTable = !!this.getClosestParent('se-table-item');
   }
 
   componentDidLoad(): void {
@@ -224,7 +225,7 @@ export class DropdownComponent {
           class={{
             show: this.opened,
             content: true,
-            'auto-hide': this.inTable || this.autoHide
+            'auto-hide': this.inTable || this.autoHide,
           }}
           style={{ maxWidth: this.maxWidth, maxHeight: this.maxHeight }}
         >
