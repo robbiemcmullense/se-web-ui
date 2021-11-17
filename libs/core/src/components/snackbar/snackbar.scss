@@ -19,6 +19,13 @@
   transform: translate3d(50vw, 0, 0);
 }
 
+.action-text {
+  transform: none;
+  margin-right: $spacing-large;
+  border: 1px solid;
+  border-radius: $border-radius;
+}
+
 .information {
   @include background-color("information");
   @include color("information-contrast");

@@ -84,6 +84,7 @@ export class SnackbarComponent {
 
   submitData() {
     this.actionClicked.emit();
+    this.closeSnackbar();
   }
 
   componentDidLoad() {
@@ -119,8 +120,8 @@ export class SnackbarComponent {
           </span>
           {this.actionText ? (
             <se-button
-              color="alternative"
-              option="outline"
+              class="action-text"
+              option="inherit"
               onClick={() => this.submitData()}
             >
               {this.actionText}
