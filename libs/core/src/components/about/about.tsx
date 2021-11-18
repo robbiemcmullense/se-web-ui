@@ -41,7 +41,7 @@ export class AboutComponent {
         ></se-icon-ecostruxure>
       );
     } else if (this.domain.toLowerCase() !== 'none') {
-      domain = <span class="header-title-type">{this.domain}</span>;
+      domain = <span>{this.domain}</span>;
     }
     return [
       <div class="image-container">

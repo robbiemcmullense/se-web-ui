@@ -1,21 +1,27 @@
-
-
 .radial-wrapper {
   position: relative;
-}
-
-.back-circle{
-  @include color('divider');
+  width: var(--se-visual-radial-width);
+  height: var(--se-visual-radial-height);;
 }
 
 .radial {
   @include absolute();
   transform: rotate(-90deg);
   border-radius: 100%;
+  stroke-dasharray: var(--se-visual-radial-stroke-dasharray);
+}
+
+.back-circle{
+  @include color('divider');
+}
+
+text {
+  @include color('background-alternative-contrast');
 }
 
 .value {
   align-self: center;
+  font-size: var(--se-visual-radial-size-font);
 }
 
 .label {
@@ -23,37 +29,18 @@
   align-self: center;
 }
 
+
+// Sizes
 .small {
-  &.radial-wrapper {
-    width: 82px;
-    height: 82px;
-  }
-
-  .radial {
-    stroke-dasharray: 208 208;
-  }
-
-  .value {
-    font-size: 26px;
-  }
+    --se-visual-radial-width: 82px;
+    --se-visual-radial-height: 82px;
+    --se-visual-radial-stroke-dasharray: 208 208;
+    --se-visual-radial-size-font: 26px;
 }
 
 .large {
-  &.radial-wrapper {
-    width: 164px;
-    height: 164px;
-  }
-
-  .radial {
-    stroke-dasharray: 415 415;
-  }
-
-  .value {
-    font-size: 52px;
-  }
-}
-
-
-text {
-  @include color('background-alternative-contrast');
+    --se-visual-radial-width: 164px;
+    --se-visual-radial-height: 164px;
+    --se-visual-radial-stroke-dasharray: 415 415;
+    --se-visual-radial-size-font: 52px;
 }
