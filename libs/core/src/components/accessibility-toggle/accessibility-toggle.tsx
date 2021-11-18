@@ -7,7 +7,7 @@ import {
   EventEmitter,
   Watch,
 } from '@stencil/core';
-import accessibility from '@se/icons/svg/accessibility.svg';
+import accessibility from './assets/accessibility.svg';
 
 @Component({
   tag: 'se-accessibility-toggle',
@@ -64,7 +64,7 @@ export class AccessibilityToggleComponent {
         <se-icon
           size="medium"
           color="alternative"
-          innerHTML={accessibility} // TODO update icon
+          innerHTML={accessibility}
         />
         <se-checkbox
           noInteractive

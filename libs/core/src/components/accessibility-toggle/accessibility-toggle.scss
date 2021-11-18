@@ -16,7 +16,7 @@ button {
 
 	&:hover,
 	&:focus {
-		padding: $spacing-small $spacing-medium;
+		padding: $spacing-small $spacing-medium $spacing-small $spacing-small;
 		--se-a11y-switch: inline-block;
 		--se-a11y-label: inline-block;
 	}
