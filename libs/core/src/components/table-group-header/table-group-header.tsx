@@ -13,6 +13,11 @@ export class TableGroupHeaderComponent {
     const columnWidths = [];
     const columnFlex = [];
     ev.stopPropagation();
+    this.el.parentElement
+      .querySelectorAll<HTMLSeTableGroupElement>('se-table-group')
+      .forEach((group) => {
+        group.setAttribute('data-resized', 'true');
+      });
     this.el
       .querySelectorAll<HTMLSeTableItemHeaderElement>('se-table-item-header')
       .forEach((headerItem, index) => {

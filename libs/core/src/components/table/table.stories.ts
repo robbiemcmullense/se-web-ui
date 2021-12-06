@@ -268,4 +268,166 @@ storiesOf('Table', module)
         },
       },
     }
+  )
+  .add(
+    'Multiple Tables',
+    () => {
+      const sort = select('Sort Order Example', sortOption, 'asc');
+      const minItems = 3;
+      const compact = boolean('Compact', false);
+      const hideCheckboxColumn = boolean('hide checkbox column', false);
+      const fixedWidth = select('Fixed Width Example', ['default', '200px', '500px', '700px'], 'default');
+
+      return `
+      <se-block height="800px" width="${fixedWidth}">
+        <se-table compact=${compact} id="myTableOne">
+          <se-table-group-header>
+            <se-table-item-header width="32px"></se-table-item-header>
+              ${
+                !hideCheckboxColumn
+                  ? '<se-table-item-header width="32px"></se-table-item-header>'
+                  : ''
+              }
+            <se-table-item-header sort="${sort}" resizable=true>Title</se-table-item-header>
+            <se-table-item-header flex="50%" sort="none" resizable=true>Secondary Info </br> <small> what about a date? </small></se-table-item-header>
+            <se-table-item-header clickable="true" resizable=true>With a lot of extra text to make it as long as possible - <se-icon color="primary">airconditioner_hot_heating</se-icon></se-table-item-header>
+            <se-table-item-header width="54px"></se-table-item-header>
+          </se-table-group-header>
+          <se-table-group selectable="true">
+            <se-table-item><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
+              ${
+                !hideCheckboxColumn
+                  ? '<se-table-item><se-checkbox></se-checkbox></se-table-item>'
+                  : ''
+              }
+            <se-table-item>Last group with some more info</se-table-item>
+            <se-table-item>Test item 2</se-table-item>
+            <se-table-item>Very last test item</se-table-item>
+            <se-table-item>
+              <se-dropdown alignment="right" idContainer="myTable">
+                <se-icon slot="trigger" option="button">
+                  other_vertical
+                </se-icon>
+                <se-list option="dropdown">
+                  <se-list-item item="My Site 1"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                  <se-list-item item="My Site 2"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                  <se-list-item item="My Site 3"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                </se-list>
+              </se-dropdown>
+            </se-table-item>
+          </se-table-group>
+          ${[...Array(minItems || 0)]
+            .map(
+              (_, key) =>
+                `
+                <se-table-group selectable="true">
+                <se-table-item><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
+                ${
+                  !hideCheckboxColumn
+                    ? '<se-table-item><se-checkbox></se-checkbox></se-table-item>'
+                    : ''
+                }
+                <se-table-item>Last group with some more info</se-table-item>
+                <se-table-item>Test item 2</se-table-item>
+                <se-table-item>Very last test item</se-table-item>
+                <se-table-item>
+                  <se-dropdown alignment="right" idContainer="myTable">
+                    <se-icon slot="trigger" option="button">
+                      other_vertical
+                    </se-icon>
+                    <se-list option="dropdown">
+                      <se-list-item item="My Site 1"></se-list-item>
+                      <se-list-item item="My Site 2"></se-list-item>
+                      <se-list-item item="My Site 3"></se-list-item>
+                    </se-list>
+                  </se-dropdown>
+                </se-table-item>
+            </se-table-group>
+            `
+            )
+            .join('')
+          }
+        </se-table>
+        <se-table compact=${compact} id="myTableTwo">
+          <se-table-group-header>
+            <se-table-item-header width="32px"></se-table-item-header>
+              ${
+                !hideCheckboxColumn
+                  ? '<se-table-item-header width="32px"></se-table-item-header>'
+                  : ''
+              }
+            <se-table-item-header sort="${sort}" resizable=true>Title</se-table-item-header>
+            <se-table-item-header flex="50%" sort="none" resizable=true>Secondary Info </br> <small> what about a date? </small></se-table-item-header>
+            <se-table-item-header clickable="true" resizable=true>With a lot of extra text to make it as long as possible - <se-icon color="primary">airconditioner_hot_heating</se-icon></se-table-item-header>
+            <se-table-item-header width="54px"></se-table-item-header>
+          </se-table-group-header>
+          <se-table-group selectable="true">
+            <se-table-item><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
+              ${
+                !hideCheckboxColumn
+                  ? '<se-table-item><se-checkbox></se-checkbox></se-table-item>'
+                  : ''
+              }
+            <se-table-item>Last group with some more info</se-table-item>
+            <se-table-item>Test item 2</se-table-item>
+            <se-table-item>Very last test item</se-table-item>
+            <se-table-item>
+              <se-dropdown alignment="right" idContainer="myTable">
+                <se-icon slot="trigger" option="button">
+                  other_vertical
+                </se-icon>
+                <se-list option="dropdown">
+                  <se-list-item item="My Site 1"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                  <se-list-item item="My Site 2"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                  <se-list-item item="My Site 3"><se-checkbox slot="start"></se-checkbox></se-list-item>
+                </se-list>
+              </se-dropdown>
+            </se-table-item>
+          </se-table-group>
+          ${[...Array(minItems || 0)]
+            .map(
+              (_, key) =>
+                `
+                <se-table-group selectable="true">
+                <se-table-item><se-icon option="button" disabled="true" rotate="180">arrow2_up</se-icon></se-table-item>
+                ${
+                  !hideCheckboxColumn
+                    ? '<se-table-item><se-checkbox></se-checkbox></se-table-item>'
+                    : ''
+                }
+                <se-table-item>Last group with some more info</se-table-item>
+                <se-table-item>Test item 2</se-table-item>
+                <se-table-item>Very last test item</se-table-item>
+                <se-table-item>
+                  <se-dropdown alignment="right" idContainer="myTable">
+                    <se-icon slot="trigger" option="button">
+                      other_vertical
+                    </se-icon>
+                    <se-list option="dropdown">
+                      <se-list-item item="My Site 1"></se-list-item>
+                      <se-list-item item="My Site 2"></se-list-item>
+                      <se-list-item item="My Site 3"></se-list-item>
+                    </se-list>
+                  </se-dropdown>
+                </se-table-item>
+            </se-table-group>
+            `
+            )
+            .join('')
+          }
+        </se-table>
+      </se-block>
+    `;
+    },
+    {
+      notes: {
+        markdown: {
+          'se-table': readme,
+          'se-table-group-header': readmegroupheader,
+          'se-table-item-header': readmeitemheader,
+          'se-table-group': readmegroup,
+          'se-table-item': readmeitem,
+        },
+      },
+    }
   );

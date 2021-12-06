@@ -44,7 +44,10 @@ export class TableGroupComponent {
     const id = this.el.getAttribute('id');
 
     columnProperties.onChange('widths', () => {
-      this.setColumnProperties();
+      if(this.el.getAttribute('data-resized')) {
+          this.el.removeAttribute('data-resized');
+          this.setColumnProperties();
+        }
     });
 
     return (
