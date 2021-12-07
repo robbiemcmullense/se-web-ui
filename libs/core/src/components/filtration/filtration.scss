@@ -15,6 +15,7 @@
 }
 .view-more {
   display: flex;
+  align-items: center;
   margin-left: 10px;
   @include color("secondary");
   cursor: pointer;
