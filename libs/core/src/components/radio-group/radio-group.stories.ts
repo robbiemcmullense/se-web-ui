@@ -39,13 +39,14 @@ storiesOf('Radio Group', module)
       const size = select('size', sizeOptions, 'small');
       const disabled = boolean('disabled', false);
       const value = select('value', valueOptions, 'none');
+      const option = select('option', ['flat', 'outline'], 'flat');
 
       return `
       <div style="padding: 20px;">
         <se-radio-group color="${color}" size="${size}" disabled="${disabled}" value="${value}">
-          <se-button value="first">Check1</se-button>
-          <se-button value="second">Check2</se-button>
-          <se-button value="third">Check3</se-button>
+          <se-button value="first" option="${option}">Check1</se-button>
+          <se-button value="second" option="${option}">Check2</se-button>
+          <se-button value="third" option="${option}">Check3</se-button>
         </se-radio-group>
       </div>
     `;

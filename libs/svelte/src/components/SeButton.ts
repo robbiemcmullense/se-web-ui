@@ -8,9 +8,10 @@ interface SeButtonProps {
   
   /** Defines the visual appearance of the button.
 `flat` is the default option, which includes a gray background.
-`raised` adds a box shadow to the button.
+**deprecated** `raised` adds a box shadow to the button.
 `outline` adds a border to the button.
-`login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application. */
+**deprecated** `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
+`text` removes background in default state */
   option?: Components.SeButton["option"]
   
   /** Defines the size of the button.

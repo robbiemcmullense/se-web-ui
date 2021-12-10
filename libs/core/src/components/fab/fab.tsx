@@ -10,7 +10,6 @@ import {
 } from '@stencil/core';
 import notificationError from '@se/icons/svg/notification_error.svg';
 import arrow4Top from '@se/icons/svg/arrow4_top.svg';
-const SHOW_FAB = 'show';
 
 @Component({
   tag: 'se-fab',
@@ -93,13 +92,13 @@ export class FabComponent {
           ></div>
         )}
         <div
-          class={{ [`pos-${this.position}`]: !!this.position, 'se-fab': true }}
+          class={{
+            [`pos-${this.position}`]: !!this.position,
+          }}
         >
-          <se-button
-            color={this.color}
-            icon-only="true"
-            option="fab"
+          <button
             class={{
+              [this.color]: true,
               backtotop: this.option === 'backtotop',
               'fab-button': true,
             }}
@@ -107,11 +106,11 @@ export class FabComponent {
             <se-icon slot="icon" size="medium">
               <span innerHTML={this.getIcon()}></span>
             </se-icon>
-          </se-button>
+          </button>
           <div
             class={{
               'mini-action-button': true,
-              [SHOW_FAB]: this.option === 'speeddial' && this.showDial,
+              'show': this.option === 'speeddial' && this.showDial,
             }}
           >
             <slot></slot>

@@ -22,19 +22,17 @@ export class ButtonComponent {
   /**
    * Defines the visual appearance of the button.
    * `flat` is the default option, which includes a gray background.
-   * `raised` adds a box shadow to the button.
+   * **deprecated** `raised` adds a box shadow to the button.
    * `outline` adds a border to the button.
-   * `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
+   * **deprecated** `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
+   * `text` removes background in default state
    */
   @Prop() option:
     'flat'
     | 'raised'
     | 'outline'
-    | 'login'
-    | 'signup'
-    | 'inherit'
-    | 'fab'
-    | 'minifab' = 'flat';
+    | 'text'
+    | string = 'flat';
   @Watch('option') optionDidChange() {
     if (this.option === 'login') {
       this.color = 'primary';
@@ -170,10 +168,6 @@ export class ButtonComponent {
         this.didClick.emit({ selected: this.selected, value: this.value });
       }
     }
-
-    if (this.option === 'minifab') {
-      this.didClick.emit({ value: this.caption });
-    }
   }
 
   constructor() {
@@ -185,24 +179,19 @@ export class ButtonComponent {
   }
 
   render() {
-    const { color, size, option, icon, iconColor, iconOnly, selected } = this;
-
-    const isIconOnly = iconOnly || (option && option.includes('fab'));
+    const { block, color, disabled, size, option, icon, iconColor, iconOnly, padding, selected } = this;
     const id = this.el.getAttribute('id');
 
     return (
       <Host
         class={{
-          disabled: this.disabled,
           grouped: this.grouped,
-          'display-block': this.block,
-          minifab: this.option === 'minifab',
-          [`p-${this.padding}`]: !!this.padding,
+          'display-block': block,
         }}
         onClick={() => this.el.blur()}
       >
         <button
-          disabled={this.disabled}
+          disabled={disabled}
           data-tooltip={this.caption}
           type={this.type}
           id={id ? `wc-${id}` : ''}
@@ -212,7 +201,8 @@ export class ButtonComponent {
             [size]: true,
             [option]: true,
             selected,
-            iconOnly: isIconOnly,
+            iconOnly: iconOnly,
+            [`p-${padding}`]: !!padding,
           }}
         >
           {icon && (
@@ -225,7 +215,7 @@ export class ButtonComponent {
           )}
           <slot name="icon"></slot>
 
-          {!isIconOnly && (
+          {!iconOnly && (
             <span class="text">
               <slot></slot>
             </span>

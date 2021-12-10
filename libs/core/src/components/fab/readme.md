@@ -40,15 +40,12 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [se-button](../button)
 - [se-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  se-fab --> se-button
   se-fab --> se-icon
-  se-button --> se-icon
   style se-fab fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

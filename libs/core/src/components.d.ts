@@ -261,16 +261,13 @@ export namespace Components {
          */
         "iconOnly": boolean;
         /**
-          * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
+          * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. **deprecated** `raised` adds a box shadow to the button. `outline` adds a border to the button. **deprecated** `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application. `text` removes background in default state
          */
         "option": 'flat'
     | 'raised'
     | 'outline'
-    | 'login'
-    | 'signup'
-    | 'inherit'
-    | 'fab'
-    | 'minifab';
+    | 'text'
+    | string;
         /**
           * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
          */
@@ -2454,16 +2451,13 @@ declare namespace LocalJSX {
          */
         "onDidClick"?: (event: CustomEvent<any>) => void;
         /**
-          * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. `raised` adds a box shadow to the button. `outline` adds a border to the button. `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application.
+          * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. **deprecated** `raised` adds a box shadow to the button. `outline` adds a border to the button. **deprecated** `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application. `text` removes background in default state
          */
         "option"?: 'flat'
     | 'raised'
     | 'outline'
-    | 'login'
-    | 'signup'
-    | 'inherit'
-    | 'fab'
-    | 'minifab';
+    | 'text'
+    | string;
         /**
           * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
          */

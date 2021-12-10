@@ -1,32 +1,24 @@
 a {
+  @include color("secondary");
   font-size: inherit;
   margin: $spacing-small;
   line-height: inherit;
   display: inline-block;
   outline: none;
   cursor: pointer;
-  @include color("secondary");
   text-decoration: none;
-
-  &.external {
-    &:after {
-      content: "\00a0>\00a0";
-    }
-  }
-
+  transition-property: outline-width;
+  transition-duration: 0.2s;
+  
   &:hover {
-    // compatibility with IE11
+    @include color("information", 0.3);
     text-decoration: underline;
     text-decoration-thickness: from-font;
-    @include color("information", 0.3);
   }
 
   &:visited {
     @include color("link-visited");
   }
-
-  transition-property: outline-width;
-  transition-duration: 0.2s;
 
   &:focus {
     @include interactive-element-outline(2px, 0);
@@ -34,21 +26,21 @@ a {
 
   &[data-disabled] {
     pointer-events: none;
-    // @include color('standard-hover');
     opacity: 0.5;
-  }
-
-  &.unicolor {
-    padding-bottom: 1px;
-    &:visited,
-    &:hover {
-      @include color("secondary");
-    }
   }
 }
 
-:host(.sidemenu-link) {
-  a {
-    font-size: 16px;
+.external {
+  &:after {
+    content: "\00a0>\00a0";
+  }
+}
+
+.unicolor {
+  padding-bottom: 1px;
+
+  &:visited,
+  &:hover {
+    @include color("secondary");
   }
 }

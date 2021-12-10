@@ -1,9 +1,25 @@
+.dialog-background {
+  position: fixed !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $zindex-fab - 1;
+}
+
+.overlay {
+  @include background-color("overlay");
+}
+
+
+// Position
 .pos-top {
   z-index: $zindex-fab;
   position: fixed;
   top: 76px;
   right: 17px;
-  & .mini-action-button {
+
+  .mini-action-button {
     top: 70px;
     left: 12px;
     text-align: center;
@@ -15,24 +31,14 @@
   position: fixed;
   bottom: 17px;
   right: 17px;
-  & .mini-action-button {
+
+  .mini-action-button {
     bottom: 55px;
     left: 12px;
     text-align: center;
   }
 }
-.dialog-background {
-  position: fixed !important;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: $zindex-fab - 1;
-}
-.overlay {
-  @include background-color("overlay");
-}
+
 
 .mini-action-button {
   cursor: pointer;
@@ -46,4 +52,73 @@ se-icon {
 
 .show {
   display: block;
+}
+
+button {
+  @include display-flex();
+  @include align-items(center);
+  @include ellipsis();
+  @include justify-content(center);
+  @include circleShadow(4px);
+  background: var(--se-fab-background);
+  border: none;
+  border-radius: 50%;
+  color: var(--se-fab-color-font);
+  cursor: pointer;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: 300;
+  height: 56px;
+  margin: #{$spacing-small};
+  outline: none;
+  padding: 0 #{$spacing-small};
+  transition-property: outline-width;
+  transition-duration: 0.2s;
+  width: 56px;
+
+  &:hover {
+    @media (hover: hover) {
+      @include circleShadow(8px);
+      background: var(--se-fab-background-hover);
+      color: var(--se-fab-color-font-hover, var(--se-fab-color-font));
+    }
+  }
+
+  &:active {
+    background: var(--se-fab-background-active);
+    color: var(--se-fab-color-font-active, var(--se-fab-color-font));
+  }
+
+  &:focus {
+    @media screen and (min-width: 980px) {
+      @include interactive-element-outline(2px, 1px);
+    }
+  }
+}
+
+
+// Color
+.alternative {
+  --se-fab-color-font: var(--se-primary);
+  --se-fab-background: var(--se-alternative);
+  --se-fab-background-hover: var(--se-alternative);
+  --se-fab-background-active: var(--se-alternative);
+}
+
+.primary {
+  --se-fab-color-font: var(--se-primary-contrast);
+  --se-fab-background: var(--se-primary);
+  --se-fab-background-hover: var(--se-primary-hover);
+  --se-fab-background-active: var(--se-primary-selected);
+}
+
+
+// Option
+.backtotop {
+  --se-fab-color-font: var(--alternative-contrast);
+  --se-fab-background: var(--se-border);
+  --se-fab-background-hover: var(--se-standard-contrast);
+  --se-fab-color-font-hover: var(--se-standard);
+  --se-fab-background-active: var(--se-standard-contrast);
+  --se-fab-color-font-active: var(--se-standard);
 }

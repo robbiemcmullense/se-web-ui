@@ -9,3 +9,21 @@
 :host(.flex-row){
   flex-direction: row;
 }
+
+::slotted( se-button ) {
+  --se-button-border-radius: 0px;
+}
+
+::slotted( se-button:not([option="outline"]):not(:first-child) ) {
+  --se-button-border-left: 1px solid #{$se-anthracite-grey};
+}
+
+::slotted( se-button:first-child ) {
+  --se-button-border-radius: #{$border-radius} 0px 0px #{$border-radius};
+  --se-button-margin-left: #{$spacing-small};
+}
+
+::slotted( se-button:last-child ) {
+  --se-button-border-radius: 0px #{$border-radius} #{$border-radius} 0px;
+  --se-button-margin-right: #{$spacing-small};
+}

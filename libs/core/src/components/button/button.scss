@@ -1,30 +1,16 @@
 :host {
-  min-width: 0;
   display: inline-flex;
-}
-:host(.p-small) {
-  margin: $spacing-small;
-}
-:host(.p-medium) {
-  margin: $spacing;
-}
-:host(.p-large) {
-  margin: $spacing-large;
-}
-
-:host(.disabled) {
-  pointer-events: none;
+  min-width: 0;
 }
 
 :host(.display-block) {
   display: flex;
   button {
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
   }
 }
 
+// TODO remove and move to banner-item
 :host(.banner-child) {
   button {
     height: 40px;
@@ -32,6 +18,7 @@
   }
 }
 
+// TODO remove and move to banner-item
 @media screen and (max-width: 767px) {
   :host(.banner-child) {
     display: flex;
@@ -41,6 +28,7 @@
   }
 }
 
+// TODO remove and move to banner-item
 @media screen and (min-width: 900px) {
   :host(.banner-child) {
     button {
@@ -52,41 +40,7 @@
   }
 }
 
-:host(.grouped) {
-  button {
-    border-radius: 0;
-    border-left: 1px solid $se-anthracite-grey;
-  }
-}
-
-:host(.grouped:first-child) {
-  button {
-    margin-left: $spacing-small;
-    border-left: none;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
-  }
-}
-
-:host(.grouped:last-child) {
-  button {
-    margin-right: $spacing-small;
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-  }
-}
-
-:host(.backtotop) {
-  button.fab {
-    @include color("alternative-contrast");
-    @include background-color("border");
-    &:hover {
-      @include color("standard");
-      @include background-color("standard-contrast");
-    }
-  }
-}
-
+// TODO check dropdown
 :host([slot="trigger"]) {
   button {
     padding-right: 22px;
@@ -110,250 +64,214 @@ se-icon {
   margin-right: $spacing;
 }
 
-:host[icon-only] {
-  ::slotted(se-icon[slot="icon"]) {
-    margin-right: 0;
-  }
-}
-
 button {
-  padding: 0 $spacing-large;
-  border: none;
-  border-radius: $border-radius;
-  outline: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 300;
   @include display-flex();
   @include align-items(center);
   @include ellipsis();
   @include justify-content(center);
-
+  background: var(--se-button-background);
+  border: var(--se-button-border, none);
+  border-left: var(--se-button-border-left, var(--se-button-border));
+  border-radius: var(--se-button-border-radius, $border-radius);
+  color: var(--se-button-color-font);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 300;
+  height: var(--se-button-height);
+  margin: var(--se-button-margin);
+  margin-left: var(--se-button-margin-left, var(--se-button-margin));
+  margin-right: var(--se-button-margin-right, var(--se-button-margin));
+  outline: none;
+  padding: var(--se-button-padding, 0 $spacing-large);
   transition-property: outline-width;
   transition-duration: 0.2s;
 
-  &:focus {
-    @include interactive-element-outline(2px, 1px);
+  &:hover {
+    @media (hover: hover) {
+      background: var(--se-button-background-hover);
+      box-shadow: var(--se-button-box-shadow-hover);
+    }
   }
 
-  &.iconOnly {
-    padding: 0 $spacing-small;
-    ::slotted(se-icon[slot="icon"]),
-    se-icon {
-      margin-right: 0;
+  &:active,
+  &.selected {
+    background: var(--se-button-background-selected);
+    color: var(--se-button-color-font-selected, var(--se-button-color-font));
+    box-shadow: var(--se-button-box-shadow-selected);
+  }
+
+  &:focus {
+    @media screen and (min-width: 980px) {
+      @include interactive-element-outline(2px, 1px);
     }
   }
 
   &[disabled] {
     cursor: inherit;
     opacity: 0.5;
+    pointer-events: none;
   }
 
+  .text {
+    font-size: var(--se-button-size-font);
+  }
+
+  &.iconOnly {
+    --se-button-padding: 0 #{$spacing-small};
+    
+    ::slotted(se-icon[slot="icon"]),
+      se-icon {
+        margin-right: 0;
+      }
+  }
+
+  &.outline {
+    border-color: var(--se-button-color-border);
+    --se-button-border: 1px solid;
+    --se-button-background: transparent;
+  }
+
+  &.text {
+    --se-button-background: transparent;
+    --se-button-background-hover: transparent;
+    --se-button-background-selected: transparent;
+  }
+
+  // TODO deprecate
   &.raised {
     box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.3);
   }
 
+  // TODO deprecate inherit option
   &.inherit {
-    background-color: transparent !important;
-    color: inherit !important;
+    --se-button-background: transparent !important;
+    --se-button-color-font: inherit !important;
   }
 
-  &.nano {
-    height: 24px;
-    .text {
-      font-size: $nano-fontsize;
-    }
-  }
-
-  &.small {
-    height: 32px;
-    .text {
-      font-size: $base-fontsize;
-    }
-  }
-
-  &.medium {
-    height: 40px;
-    .text {
-      font-size: $base-fontsize;
-    }
-  }
-
-  &.large {
-    height: 48px;
-    .text {
-      font-size: $large-fontsize;
-    }
-  }
-
-  &.standard {
-    @include color("standard-contrast");
-    @include background-color("standard");
-    &:hover {
-      @include background-color("standard-hover");
-    }
-    &:active,
-    &.selected {
-      @include background-color("standard-selected");
-    }
-    &.outline {
-      border: 1px solid;
-      background-color: transparent;
-      // @include color("standard");
-      @include border-color("standard");
-      @include color("background-standard-contrast");
-
-      &:hover {
-        @include background-color("standard-hover", 0.2);
-      }
-      &:active,
-      &.selected {
-        @include background-color("standard-selected", 0.2);
-      }
-    }
-  }
-
-  &.alternative {
-    @include color("background-alternative-contrast");
-    @include background-color("background-alternative");
-    &:hover {
-      // @include color("alternative-hover-contrast");
-      @include background-color("alternative-hover");
-    }
-    &:active,
-    &.selected {
-      @include background-color("alternative-selected");
-    }
-    &.outline {
-      border: 1px solid;
-      background-color: transparent;
-      @include color("background-alternative");
-      @include border-color("background-alternative");
-      &:hover {
-        @include background-color("alternative-hover", 0.6);
-      }
-      &:active,
-      &.selected {
-        @include color("background-alternative-contrast");
-        @include background-color("alternative-selected", 0.6);
-      }
-    }
-  }
-
-  &.primary {
-    @include color("primary-contrast");
-    @include background-color("primary");
-    &:hover {
-      @include background-color("primary-hover");
-    }
-    &:active,
-    &.selected {
-      @include background-color("primary-selected");
-    }
-    &.outline {
-      border: 1px solid;
-      background-color: transparent;
-      @include color("primary");
-      @include border-color("primary");
-      &:hover {
-        @include background-color("primary", 0.3);
-      }
-      &:active,
-      &.selected {
-        @include background-color("primary-selected", 0.3);
-      }
-      &[disabled] {
-        background-color: transparent;
-      }
-    }
-  }
-
-  &.secondary {
-    @include color("secondary-contrast");
-    @include background-color("secondary");
-    &:hover {
-      @include background-color("secondary-hover");
-    }
-    &:active,
-    &.selected {
-      @include background-color("secondary-selected");
-    }
-    &.outline {
-      border: 1px solid;
-      background-color: transparent;
-      @include color("secondary");
-      @include border-color("secondary");
-      &:hover {
-        @include background-color("secondary", 0.3);
-      }
-      &:active,
-      &.selected {
-        @include background-color("secondary-selected", 0.3);
-      }
-      &[disabled] {
-        background-color: transparent;
-      }
-    }
-  }
-
+  // TODO deprecate
   &.login,
   &.signup {
-    height: 32px;
+    --se-button-height: 32px;
     font-size: 18px;
     line-height: 22px;
   }
+}
 
-  &.fab {
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 24px;
-    width: 56px;
-    height: 56px;
-    @include circleShadow(4px);
-    &:hover {
-      @include circleShadow(8px);
-    }
-    &.alternative {
-      @include background-color("alternative");
-      @include color("primary");
-    }
+
+// Colors
+.standard {
+  --se-button-color-font: var(--se-standard-contrast);
+  --se-button-background: var(--se-standard);
+  --se-button-background-hover: var(--se-standard-hover);
+  --se-button-background-selected: var(--se-standard-selected);
+
+  &.outline {
+    --se-button-color-border: var(--se-standard);
+    --se-button-color-font: var(--se-background-standard-contrast);
+    --se-button-background-hover: rgba(var(--se-standard-hover-rgb), 0.2);
+    --se-button-background-selected: rgba(var(--se-standard-selected-rgb), 0.2);
   }
 
-  &.minifab {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: 0 20px 20px 0px;
-    padding: 0;
-    margin: 0 0 15px 0;
-    @include circleShadow(4px);
-    @include background-color("alternative");
-    @include color("alternative-contrast");
-    &:hover {
-      @include circleShadow(4px);
-      @include background-color("standard-hover");
-    }
-    &[data-tooltip] {
-      overflow: visible;
-      &:before {
-        font-weight: 300;
-        border-radius: 23.27px;
-        content: attr(data-tooltip);
-        font-size: 12px;
-        padding: 5px 7px;
-        margin-right: 12px;
-        position: absolute;
-        right: 100%;
-        white-space: nowrap;
-        @include color("standard-contrast");
-        @include background-color("standard");
-      }
-    }
+  &.text {
+    --se-button-color-font: #9fa0a4;
+    --se-button-box-shadow-hover: inset 0px 0px 0px 1px#9fa0a4;
+    --se-button-box-shadow-selected: inset 0px 0px 0px 2px#9fa0a4;
+  }
+}
+
+.alternative {
+  --se-button-color-font: var(--se-background-alternative-contrast);
+  --se-button-background: var(--se-background-alternative);
+  --se-button-background-hover: var(--se-alternative-hover);
+  --se-button-background-selected: var(--se-alternative-selected);
+
+  &.outline {
+    --se-button-color-font: var(--se-background-alternative);
+    --se-button-color-border: var(--se-background-alternative);
+    --se-button-background-hover: rgba(var(--se-alternative-hover-rgb), 0.6);
+    --se-button-background-selected: rgba(var(--se-alternative-selected-rgb), 0.6);
+    --se-button-color-font-selected: var(--se-background-alternative-contrast);
   }
 
-  // &.outline {
-  //   &:active, &.selected {
-  //     @include border-color("selected");
-  //   }
-  // }
+  &.text {
+    --se-button-color-font: #ffffff;
+    --se-button-box-shadow-hover: inset 0px 0px 0px 1px#ffffff;
+    --se-button-box-shadow-selected: inset 0px 0px 0px 2px#ffffff;
+  }
+}
+
+.primary {
+  --se-button-color-font: var(--se-primary-contrast);
+  --se-button-background: var(--se-primary);
+  --se-button-background-hover: var(--se-primary-hover);
+  --se-button-background-selected: var(--se-primary-selected);
+
+  &.outline {
+    --se-button-color-font: var(--se-primary);
+    --se-button-color-border: var(--se-primary);
+    --se-button-background-hover: rgba(var(--se-primary-rgb), 0.3);
+    --se-button-background-selected: rgba(var(--se-primary-selected-rgb), 0.3);
+  }
+
+  &.text {
+    --se-button-color-font: #008a16;
+    --se-button-box-shadow-hover: inset 0px 0px 0px 1px#008a16;
+    --se-button-box-shadow-selected: inset 0px 0px 0px 2px#008a16;
+  }
+}
+
+.secondary {
+  --se-button-color-font: var(--se-secondary-contrast);
+  --se-button-background: var(--se-secondary);
+  --se-button-background-hover: var(--se-secondary-hover);
+  --se-button-background-selected: var(--se-secondary-selected);
+
+  &.outline {
+    --se-button-color-font: var(--se-secondary);
+    --se-button-color-border: var(--se-secondary);
+    --se-button-background-hover: rgba(var(--se-secondary-rgb), 0.3);
+    --se-button-background-selected: rgba(var(--se-secondary-selected-rgb), 0.3);
+  }
+
+  &.text {
+    --se-button-color-font: #0079a7;
+    --se-button-box-shadow-hover: inset 0px 0px 0px 1px#0079a7;
+    --se-button-box-shadow-selected: inset 0px 0px 0px 2px#0079a7;
+  }
+}
+
+
+// Sizes
+.nano {
+  --se-button-height: 24px;
+  --se-button-size-font: #{$nano-fontsize};
+}
+
+.small {
+  --se-button-height: 32px;
+  --se-button-size-font: #{$base-fontsize};
+}
+
+.medium {
+  --se-button-height: 40px;
+  --se-button-size-font: #{$base-fontsize};
+}
+
+.large {
+  --se-button-height: 48px;
+  --se-button-size-font: #{$large-fontsize};
+}
+
+
+// Margin
+.p-small {
+  --se-button-margin: #{$spacing-small};
+}
+
+.p-medium {
+  --se-button-margin: #{$spacing};
+}
+
+.p-large {
+  --se-button-margin: #{$spacing-large};
 }
