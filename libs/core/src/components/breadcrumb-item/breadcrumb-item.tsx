@@ -72,6 +72,10 @@ export class BreadcrumbItemComponent {
     }
   }
 
+  constructor() {
+    this.el.dir = document.documentElement.dir || 'auto';
+  }
+
   private breadcrumbEl: HTMLElement | null;
 
   componentWillLoad() {
