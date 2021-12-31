@@ -147,9 +147,8 @@ export class BlockComponent {
   }
 
   render() {
-    const outlineColor = this.outlineColor ? `-${this.outlineColor}` : '';
     const outline =
-      this.outline === true ? `outline${outlineColor}` : 'outline-false';
+      this.outline === true ? `outline-${this.outlineColor}` : '';
     let enlargedClass = '';
 
     if (this.display === 'grid') {
@@ -173,7 +172,6 @@ export class BlockComponent {
         class={{
           [`block-${this.display}`]: !!this.display,
           [enlargedClass]: true,
-          [`block-bg-${this.color}`]: !!this.color,
         }}
       >
         <div

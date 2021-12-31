@@ -1,47 +1,8 @@
 :host {
-  position: relative;
   @include display-flex();
+  position: relative;
   width: 100%;
   height: 100%;
-  --se-block-color-background: transparent
-}
-:host(.block-flex) {
-  @include flex-direction(column);
-}
-
-:host(.block-block),
-:host([display="block"]) {
-  width: auto;
-  height: auto;
-  .block-body {
-    overflow: unset;
-  }
-}
-:host(.block-grid),
-:host([display="grid"]) {
-  .block-body {
-    overflow: unset;
-  }
-}
-:host(.grid-large) {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-:host(.grid-vertical) {
-  grid-row: span 2;
-}
-:host(.grid-horizontal) {
-  grid-column: span 2;
-}
-
-:host(.block-bg-alternative) {
-  --se-block-color-background: var(--se-background-alternative);
-}
-:host(.block-bg-standard) {
-  --se-block-color-background: var(--se-background-standard);
-}
-:host(.block-bg-none) {
-  --se-block-color-background: transparent
 }
 
 :host(a *:not(a)) {
@@ -49,21 +10,68 @@
   text-decoration: none;
 }
 
+
+// Display
+:host(.block-flex) {
+  @include flex-direction(column);
+}
+
+:host(.block-block) {
+  width: auto;
+  height: auto;
+  --se-block-overflow: unset;
+}
+
+:host(.block-grid) {
+  --se-block-overflow: unset;
+}
+
+
+// Grid
+:host(.grid-large) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+:host(.grid-vertical) {
+  grid-row: span 2;
+}
+
+:host(.grid-horizontal) {
+  grid-column: span 2;
+}
+
+
+.block-body {
+  @include flex();
+  @include display-flex();
+  @include flex-direction(column);
+  transition: 0.2s;
+  overflow: var(--se-block-overflow, auto);
+  background-color: var(--se-block-color-background);
+  margin: var(--se-block-margin);
+  border: var(--se-block-border);
+  border-radius: var(--se-block-border-radius);
+}
+
 .clickable {
   &,
   &-nobar {
     position: relative;
   }
+
   &:hover,
   &-nobar:hover {
     cursor: pointer;
     box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.15);
   }
-  &:not(-nobar):hover:before {
+
+  &:hover:before {
     @include background-color("primary");
     height: 3px;
   }
-  &:not(-nobar):before {
+
+  &:before {
     content: "";
     background: rgba(255, 255, 255, 0);
     position: absolute;
@@ -74,85 +82,114 @@
     text-align: center;
     transition: 0.2s;
   }
+
   &.corner {
     &-none:before {
       border-radius: 0 0 0 0;
     }
+
     &-nano:before {
       border-radius: 2px 2px 0 0;
     }
+
     &-small:before {
       border-radius: 4px 4px 0 0;
     }
   }
 }
 
-.block-body {
-  transition: 0.2s;
-  overflow: auto;
-  @include flex();
-  @include display-flex();
-  @include flex-direction(column);
-  background-color: var(--se-block-color-background);
 
-  &.basic {
-    margin: 0;
-  }
-  &.widget {
-    margin: $spacing;
-  }
-  &.card {
-    border-radius: 4px;
-    margin: $spacing-large;
-    border: 1px solid;
+// Options
+.basic {
+  --se-block-margin: 0;
+}
+
+.widget {
+  --se-block-margin: #{$spacing};
+}
+
+.card {
+  @include border-color("divider");
+  --se-block-border-radius: 4px;
+  --se-block-margin: #{$spacing-large};
+}
+
+.card-old {
+  --se-block-border-radius: 4px;
+  --se-block-margin: #{$spacing-large};
+  box-shadow: 0 0 1px 0 rgba(51, 51, 51, 0.14),
+    0 2px 7px 0 rgba(51, 51, 51, 0.2);
+}
+
+
+// Outline Color
+.outline {
+  &-standard {
     @include border-color("divider");
-    &-old {
-      border-radius: 4px;
-      margin: $spacing-large;
-      box-shadow: 0 0 1px 0 rgba(51, 51, 51, 0.14),
-        0 2px 7px 0 rgba(51, 51, 51, 0.2);
-    }
+    --se-block-border: 1px solid;
   }
-  &.corner {
-    &-none {
-      border-radius: 0;
-    }
-    &-nano {
-      border-radius: 2px;
-    }
-    &-small {
-      border-radius: 4px;
-    }
+
+  &-primary {
+    @include border-color("primary");
+    --se-block-border: 1px solid;
   }
-  &.margin {
-    &-none {
-      margin: 0;
-    }
-    &-small {
-      margin: $spacing-small;
-    }
-    &-medium {
-      margin: $spacing;
-    }
-    &-large {
-      margin: $spacing-large;
-    }
-    &-xlarge {
-      margin: $spacing-xlarge;
-    }
+
+  &-secondary {
+    @include border-color("secondary");
+    --se-block-border: 1px solid;
   }
-  &.outline {
-    &-standard {
-      border: 1px solid;
-      @include border-color("divider");
-    }
-    &-primary {
-      border: 1px solid;
-      @include border-color("primary");
-    }
-    &-secondary {
-      border: 1px solid;
-      @include border-color("secondary");
-    }
+}
+
+
+// Corner Radius
+.corner {
+  &-none {
+    --se-block-border-radius: 0;
   }
+
+  &-nano {
+    --se-block-border-radius: 2px;
+  }
+
+  &-small {
+    --se-block-border-radius: 4px;
+  }
+}
+
+
+// Margin
+.margin {
+  &-none {
+    --se-block-margin: 0;
+  }
+
+  &-small {
+    --se-block-margin: #{$spacing-small};
+  }
+
+  &-medium {
+    --se-block-margin: #{$spacing};
+  }
+
+  &-large {
+    --se-block-margin: #{$spacing-large};
+  }
+
+  &-xlarge {
+    --se-block-margin: #{$spacing-xlarge};
+  }
+}
+
+
+// Background color
+.block-bg-alternative {
+  --se-block-color-background: var(--se-background-alternative);
+}
+
+.block-bg-standard {
+  --se-block-color-background: var(--se-background-standard);
+}
+
+.block-bg-none {
+  --se-block-color-background: transparent;
 }

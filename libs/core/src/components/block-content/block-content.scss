@@ -1,66 +1,65 @@
 :host {
+  @include flex(1);
   overflow-x: hidden;
   position: relative;
-  @include flex(1);
 }
 
-.se-block-content {
-  &.option-card,
-  &.option-widget,
-  &.option-basic {
-    padding: $spacing $spacing-large;
+.scrollable {
+  overflow-y: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    height: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
   }
 
-  &.scrollable {
-    overflow-y: hidden;
-
-    &::before,
-    &::after {
-      content: "";
-      height: 30px;
-      position: absolute;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      opacity: 0;
-      transition: opacity 0.2s;
-      pointer-events: none;
-    }
-
-    &::before {
-      background-image: linear-gradient(
-        $se-white,
-        rgba($se-white, 0.7) 70%,
-        rgba($se-white, 0)
-      );
-      top: 0;
-    }
-
-    &::after {
-      background-image: linear-gradient(
-        rgba($se-white, 0),
-        rgba($se-white, 0.7) 30%,
-        $se-white
-      );
-      bottom: 0;
-    }
-
-    &.has-overlay-top {
-      &::before {
-        opacity: 1;
-      }
-    }
-
-    &.has-overlay-bottom {
-      &::after {
-        opacity: 1;
-      }
-    }
+  &::before {
+    background-image: linear-gradient(
+      $se-white,
+      rgba($se-white, 0.7) 70%,
+      rgba($se-white, 0)
+    );
+    top: 0;
   }
-}
 
-.se-block-content-body {
-  .se-block-content.scrollable & {
+  &::after {
+    background-image: linear-gradient(
+      rgba($se-white, 0),
+      rgba($se-white, 0.7) 30%,
+      $se-white
+    );
+    bottom: 0;
+  }
+
+  // Overflow only on scroll
+  .se-block-content-body {
     overflow-y: auto;
   }
+}
+
+.has-overlay-top {
+  &::before {
+    opacity: 1;
+  }
+}
+
+.has-overlay-bottom {
+  &::after {
+    opacity: 1;
+  }
+}
+
+
+// Options
+.option-card,
+.option-widget,
+.option-basic {
+  padding: $spacing $spacing-large;
 }

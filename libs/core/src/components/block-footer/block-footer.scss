@@ -1,20 +1,24 @@
 .se-block-footer {
-  position: relative;
-  min-height: 40px;
   @include align-items(center);
   @include display-flex();
-
-  &.option-card,
-  &.option-widget,
-  &.option-basic {
-    padding: $spacing-small;
-  }
-
-  &.direction-column {
-    @include flex-direction(column);
-  }
+  position: relative;
+  min-height: 40px;
 }
 
 .middle {
   @include flex();
+}
+
+
+// Options
+.option-card,
+.option-widget,
+.option-basic {
+  padding: $spacing-small;
+}
+
+
+// Direction
+.direction-column {
+  @include flex-direction(column);
 }
