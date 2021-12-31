@@ -17,6 +17,10 @@ import action_delete_cross from '@se/icons/svg/action_delete_cross.svg';
   shadow: true,
 })
 export class SnackbarComponent {
+  constructor() {
+    this.el.dir = document.documentElement.dir;
+  }
+
   @Element() el: HTMLElement;
   /**
    * Indicates the background color of your snackbar.
@@ -122,6 +126,7 @@ export class SnackbarComponent {
             <se-button
               class="action-text"
               option="inherit"
+              padding="none"
               onClick={() => this.submitData()}
             >
               {this.actionText}
