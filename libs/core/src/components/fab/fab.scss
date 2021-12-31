@@ -8,7 +8,7 @@
 }
 
 .overlay {
-  @include background-color("overlay");
+  background-color: var(--se-overlay);
 }
 
 
@@ -39,20 +39,6 @@
   }
 }
 
-
-.mini-action-button {
-  cursor: pointer;
-  position: absolute;
-  display: none;
-}
-
-se-icon {
-  margin-right: 0;
-}
-
-.show {
-  display: block;
-}
 
 button {
   @include display-flex();
@@ -121,4 +107,19 @@ button {
   --se-fab-color-font-hover: var(--se-standard);
   --se-fab-background-active: var(--se-standard-contrast);
   --se-fab-color-font-active: var(--se-standard);
+}
+
+
+se-icon {
+  margin-right: 0;
+}
+
+.mini-action-button {
+  cursor: pointer;
+  position: absolute;
+  display: none;
+}
+
+.show {
+  display: block;
 }

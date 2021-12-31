@@ -2,6 +2,11 @@
   display: none;
   overflow: hidden;
 }
+
+:host(.show) {
+  display: block;
+}
+
 .loading-wrapper {
   @include absolute();
   @include display-flex();
@@ -22,6 +27,25 @@
   z-index: $zindex-loading;
 }
 
+.se-loading {
+  @include animated();
+  @include display-flex();
+  @include flex-direction(column);
+  padding: $spacing $spacing 0;
+  position: relative;
+  z-index: $zindex-loading;
+  align-items: center;
+}
+
+
+// Option
+.dialog {
+  @include background-color("background-alternative");
+  box-shadow: 1px 1px 8px 1px var(--se-shadow);
+}
+
+
+// Color
 .color-primary {
   @include color("primary");
 }
@@ -30,42 +54,24 @@
   @include color("secondary");
 }
 
-.se-loading {
-  padding: $spacing $spacing 0;
+
+.loading-icon {
+  @include loader();
+  line-height: 128px;
   position: relative;
-  z-index: $zindex-loading;
-  @include animated();
-  @include display-flex();
-  @include flex-direction(column);
-  align-items: center;
-  &.dialog {
-    @include background-color("background-alternative");
-    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 1px 1px 8px 1px var(--se-shadow);
-  }
+  font-size: 100px;
+  height: 100px;
+  width: 100px;
+  fill: currentColor;
 }
 
 .message {
-  padding: 0 $spacing-large $spacing-large;
   @include color("background-alternative-contrast");
+  padding: 0 $spacing-large $spacing-large;
 }
 
 .loading-background {
   @include absolute();
   @include animated();
   z-index: $zindex-loading-backdrop;
-}
-
-.loading-icon {
-  line-height: 128px;
-  position: relative;
-  font-size: 100px;
-  height: 100px;
-  width: 100px;
-  @include loader();
-  fill: currentColor;
-}
-
-:host(.show) {
-  display: block;
 }

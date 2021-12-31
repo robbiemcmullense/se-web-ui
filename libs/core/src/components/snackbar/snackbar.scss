@@ -11,44 +11,18 @@
 }
 
 :host(.show-snackbar) {
+  @include slideUp();
   visibility: visible;
   height: auto;
   z-index: $zindex-snackbar;
   opacity: 1;
-  @include slideUp();
   transform: translate3d(50vw, 0, 0);
-}
-
-.action-text {
-  transform: none;
-  margin-right: $spacing-large;
-  border: 1px solid;
-  border-radius: $border-radius;
-}
-
-.information {
-  @include background-color("information");
-  @include color("information-contrast");
-}
-
-.success {
-  @include background-color("success");
-  @include color("success-contrast");
-}
-
-.warning {
-  @include background-color("warning");
-  @include color("warning-contrast");
-}
-
-.error {
-  @include background-color("error");
-  @include color("error-contrast");
 }
 
 .snackbar {
   @include display-flex();
-  @include color("primary-contrast");
+  background-color: var(--se-snackbar-color-background);
+  color: var(--se-snackbar-color-font);
   padding: $spacing-small;
   min-height: 32px;
   width: fit-content;
@@ -61,11 +35,35 @@
   top: -16px;
 }
 
+
+// Types
+.information {
+  --se-snackbar-color-background: var(--se-information);
+  --se-snackbar-color-font: var(--se-information-contrast);
+}
+
+.success {
+  --se-snackbar-color-background: var(--se-success);
+  --se-snackbar-color-font: var(--se-success-contrast);
+}
+
+.warning {
+  --se-snackbar-color-background: var(--se-warning);
+  --se-snackbar-color-font: var(--se-warning-contrast);
+}
+
+.error {
+  --se-snackbar-color-background: var(--se-error);
+  --se-snackbar-color-font: var(--se-error-contrast);
+}
+
+
 .snackbar-icon {
-  padding-left: 10px;
-  margin-right: -6px;
   @include display-flex();
   @include align-items(center);
+  padding-left: 10px;
+  margin-right: -6px;
+
   se-icon {
     top: 1px;
   }
@@ -74,6 +72,13 @@
 .message {
   padding-right: $spacing-large;
   margin-left: $spacing-large;
+}
+
+.action-text {
+  transform: none;
+  margin-right: $spacing-large;
+  border: 1px solid;
+  border-radius: $border-radius;
 }
 
 .close {

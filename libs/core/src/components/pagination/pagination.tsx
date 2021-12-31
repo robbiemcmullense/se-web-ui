@@ -192,7 +192,7 @@ export class PaginationComponent {
         <div class="flexed">
           {this.__parPageSizeList().length > 1 ? (
             <div class="pageSize">
-              <span>{this.labelPerPage}</span>
+              <span class="labelPerPage">{this.labelPerPage}</span>
               <se-form-field type="select" option="stacked" padding="none">
                 <select onChange={e => this.__pageSizeChanged(e)}>
                   {this.__parPageSizeList().map(i => (
@@ -239,7 +239,7 @@ export class PaginationComponent {
               innerHTML={arrowStep}
               {...(this.el.dir === 'rtl' ? { mirror: 'horizontal' } : '')}
             ></se-icon>
-            <label style={{ padding: '0 12px' }}>
+            <label class="label-wrapper">
               <span class="label">{this.labelValue}</span>
               <se-form-field
                 type="select"

@@ -2,28 +2,54 @@
   display: inline-block;
 }
 
-.edge {
-  padding: 0 4px;
-}
-
-.left {
-  transform: rotate(180deg);
+.flexed {
+  display: inline-flex;
 }
 
 .pageSize {
   display: flex;
   padding-right: $spacing-large;
   align-items: center;
-  > span {
-    padding-right: $spacing;
-    @include typology("small");
-    font-weight: 550;
+}
+
+.labelPerPage {
+  @include typology("small");
+  padding-right: $spacing;
+  font-weight: 550;
+}
+
+/*rtl:begin:ignore*/
+.pagination {
+  padding: 0 $spacing-small;
+  display: flex;
+  align-items: center;
+
+  .form-field-wrapper {
+    display: inline-block;
+    width: 70px;
+    margin-right: 8px;
+    margin-left: 12px;
   }
 }
+/*rtl:end:ignore*/
+
+.left {
+  transform: rotate(180deg);
+}
+
+.edge {
+  padding: 0 4px;
+}
+
 label {
   display: flex;
   align-items: center;
 }
+
+.label-wrapper {
+  padding: 0 $spacing-medium;
+}
+
 .label {
   font-weight: 550;
   font-size: 14px;
@@ -44,23 +70,5 @@ se-form-field[dir="rtl"] {
 
 :host([dir="rtl"]) .max-page {
   margin-right: 8px;
-}
-/*rtl:end:ignore*/
-
-.flexed {
-  display: inline-flex;
-}
-
-/*rtl:begin:ignore*/
-.pagination {
-  padding: 0 $spacing-small;
-  display: flex;
-  align-items: center;
-  .form-field-wrapper {
-    display: inline-block;
-    width: 70px;
-    margin-right: 8px;
-    margin-left: 12px;
-  }
 }
 /*rtl:end:ignore*/

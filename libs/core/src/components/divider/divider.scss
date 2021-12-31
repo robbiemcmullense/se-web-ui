@@ -1,23 +1,27 @@
-$divider-width: 1px;
-$divider-inset-margin: 80px;
-
 :host {
   display: block;
   margin: 0;
 }
 
+
+// Options
 .horizontal {
   width: 100%;
-  border-top: $divider-width solid;
+  border-top: 1px solid;
 }
+
 .vertical,
 .inset {
   height: 100%;
-  border-right: $divider-width solid;
+  border-right: 1px solid;
 }
+
+
+// Colors
 .standard {
   @include border-color("divider");
 }
+
 .alternative {
   @include border-color("background-alternative");
 }
