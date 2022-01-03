@@ -24,7 +24,7 @@
 .show {
   --se-dropdown-visibility: visible; /* shows sub-menu */
   --se-dropdown-opacity: 1;
-  --se-dropdown-zindex: $zindex-dropdown;
+  --se-dropdown-zindex: #{$zindex-dropdown};
   height: auto;
 }
 
