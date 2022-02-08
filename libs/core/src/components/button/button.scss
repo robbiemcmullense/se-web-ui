@@ -146,6 +146,9 @@ button {
   &.inherit {
     --se-button-background: transparent !important;
     --se-button-color-font: inherit !important;
+    --se-button-background-hover: transparent !important;
+    --se-button-background-selected: transparent !important;
+    --se-button-color-font-selected: inherit !important;
   }
 
   // TODO deprecate
