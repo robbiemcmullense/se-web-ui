@@ -98,9 +98,11 @@ const copy = [
 
 export const config: Config = {
   namespace: 'se-components',
+  buildEs5: 'prod',
   extras: {
     dynamicImportShim: true,
     initializeNextTick: true,
+    scriptDataOpts: true
   },
   globalStyle: 'src/global/app.scss',
   plugins: [

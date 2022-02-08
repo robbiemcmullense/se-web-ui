@@ -49,7 +49,7 @@ export class BlockContent {
   private removeScrollBehavior = (): void => {
     this.hasOverlayTop = false;
     this.hasOverlayBottom = false;
-    this.scrollBody.removeEventListener('scroll', this.setOverlays);
+    this.scrollBody?.removeEventListener('scroll', this.setOverlays);
   };
 
   componentDidLoad(): void {

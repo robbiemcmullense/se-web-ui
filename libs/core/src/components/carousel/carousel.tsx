@@ -225,7 +225,7 @@ export class Carousel {
     if (this.ro) {
       this.ro.disconnect();
     }
-    this.contentEl.removeEventListener('scroll', this.onScroll);
+    this.contentEl?.removeEventListener('scroll', this.onScroll);
   }
 
   componentWillLoad() {

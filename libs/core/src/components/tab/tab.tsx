@@ -53,7 +53,7 @@ export class TabComponent {
       this.ro.disconnect();
     }
 
-    this.navbar.removeEventListener('scroll', this.displayArrow);
+    this.navbar?.removeEventListener('scroll', this.displayArrow);
   }
 
   displayArrow = (): void => {
