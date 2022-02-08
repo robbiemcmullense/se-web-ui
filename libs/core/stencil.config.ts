@@ -124,7 +124,7 @@ export const config: Config = {
       type: 'docs-readme',
     },
     {
-      type: 'dist-custom-elements-bundle',
+      type: 'dist-custom-elements',
       dir: `${distFolder}/custom-elements`,
     },
     {
@@ -153,6 +153,10 @@ export const config: Config = {
       type: 'www',
       copy,
       serviceWorker: null, // disable service workers
+    },
+    {
+      type: 'docs-vscode',
+      file: `${distFolder}/custom-elements.json`,
     },
     angularOutputTarget({
       componentCorePackage: '@se/web-ui',
