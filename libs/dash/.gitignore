@@ -1,6 +1,13 @@
 web_ui_dash
 src
+R
 assets
+.build_cache
+deps
+man
+NAMESPACE
+Manifest.toml
+*.pyc
 
 # .venv/bin
 

@@ -1,60 +1,67 @@
 import web_ui_dash as se
 import dash
 from dash.dependencies import Input, Output
-import dash_html_components as html
+from dash import html, dcc
+import os
 
-app = dash.Dash(__name__)
+SE_DASH_APP_INDEX_STRING = """
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        <script type="module" src="assets/se-components/se-components.esm.js"></script>
+        <link type="text/css" rel="stylesheet" href="assets/icons/css/styles.css" />
+        <link type="text/css" rel="stylesheet" href="assets/fonts/css/styles-technical.css" />
+        {%css%}
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>
+"""
 
-app.scripts.config.serve_locally = True
-app.css.config.serve_locally = True
+IGNORED_ASSETS = "|".join(os.listdir("assets/se-components"))
 
-app.layout = se.App(children=[
-
-	se.Header(appTitle="HyperPod Airflow Balancing Tool"),
-  se.Tabbar(),
-	se.Container(children=[
-		se.Block(width="250px", children=[
-			se.BlockHeader(children=[html.H5(children="List classic with expander")]),
-			se.BlockContent(option="fill", children=[
-				se.List(children=[
-					se.ListItem(item="my item 1", icon="user_standard", iconColor="primary", description="I have a description"),
-					se.ListItem(item="my item 2 no description with a long text", icon="user_standard", iconColor="primary"),
-					se.ListItem(item="Basic Item"),
-					se.ListGroup(item="I have a selected child", icon="action_settings2", iconColor="primary", description="I'm selected when collapsed", children=[
-						se.ListItem(item="my item 1", icon="action_settings2", iconColor="primary", description="I have a description"),
-						se.ListItem(item="my item 2 no description", selected=True, icon="action_settings2", iconColor="primary"),
-						se.ListItem(item="my item 3 no icon", description="I'm here too")
-					]),
-					se.ListGroup(item="simple collapse", children=[
-						se.ListItem(item="No icon, not selected")
-					])
-				])
-			]),
-      se.BlockFooter(children=[
-        se.Button(children=['My button'])
-      ])
-		]),
-    se.Divider(option="vertical")
-	]),
+app = dash.Dash(
+    __name__, assets_ignore=IGNORED_ASSETS, index_string=SE_DASH_APP_INDEX_STRING
+)
 
 
+app.layout = se.App(
+    [
+        se.Header(appTitle="HyperPod Airflow Balancing Tool"),
+        se.Tabbar(
+            children=[
+                html.Nav(
+                    children=[
+                        html.A(children=["Home"], href="/home"),
+                        html.A(children=["Another"], href="/another"),
+                    ]
+                )
+            ]
+        ),
+        html.H1(children="Hello Dash"),
+        se.FormField(
+            label="My Input",
+            id="se-input",
+            children=[dcc.Input(id="input", placeholder="Write something")],
+        ),
+        html.Div(id="output"),
+    ]
+)
 
 
-
-
-
-                #<ListGroup item="simple collapse" onDidGroupClick={this.openModal}>
-                  #<ListItem item="No icon, not selected"> </ListItem>
-                #</ListGroup>
-
-
-	html.Div(id="output")
-])
-
-@app.callback(Output("output", "children"))#, [Input("input", "value")])
+@app.callback(Output("output", "children"), [Input("input", "value")])
 def display_output(value):
-	return "You have entered {}".format(value)
+    return "You have entered {}".format(value)
 
 
 if __name__ == "__main__":
-	app.run_server(debug=True)
+    app.run_server(debug=True)

@@ -1,25 +1,23 @@
 from __future__ import print_function as _
 
 import os as _os
-import glob
 import sys as _sys
 import json
 
 import dash as _dash
 
-
 # noinspection PyUnresolvedReferences
 from ._imports_ import *
 from ._imports_ import __all__
 
-if not hasattr(_dash, 'development'):
+if not hasattr(_dash, '__plotly_dash') and not hasattr(_dash, 'development'):
     print('Dash was not successfully imported. '
           'Make sure you don\'t have a file '
           'named \n"dash.py" in your current directory.', file=_sys.stderr)
     _sys.exit(1)
 
 _basepath = _os.path.dirname(__file__)
-_filepath = _os.path.abspath(_os.path.join(_basepath, 'package.json'))
+_filepath = _os.path.abspath(_os.path.join(_basepath, 'package-info.json'))
 with open(_filepath) as f:
     package = json.load(f)
 
@@ -30,13 +28,56 @@ _current_path = _os.path.dirname(_os.path.abspath(__file__))
 
 _this_module = _sys.modules[__name__]
 
+async_resources = []
+
 _js_dist = []
 
-# List all .js files to be added and sent to the client
-_js_files = glob.glob(_os.path.join(_basepath, '*.js'))
+_js_dist.extend(
+    [
+        {
+            "relative_package_path": "async-{}.js".format(async_resource),
+            "external_url": (
+                "https://unpkg.com/{0}@{2}"
+                "/{1}/async-{3}.js"
+            ).format(package_name, __name__, __version__, async_resource),
+            "namespace": package_name,
+            "async": True,
+        }
+        for async_resource in async_resources
+    ]
+)
 
-for x in _js_files:
-    _js_dist.append({'relative_package_path': x.replace(_basepath + _os.sep, ''),'namespace': package_name, 'type': "module", 'nomodule': ""})
+# TODO: Figure out if unpkg link works
+_js_dist.extend(
+    [
+        {
+            "relative_package_path": "async-{}.js.map".format(async_resource),
+            "external_url": (
+                "https://unpkg.com/{0}@{2}"
+                "/{1}/async-{3}.js.map"
+            ).format(package_name, __name__, __version__, async_resource),
+            "namespace": package_name,
+            "dynamic": True,
+        }
+        for async_resource in async_resources
+    ]
+)
+
+_js_dist.extend(
+    [
+        {
+            'relative_package_path': 'web_ui_dash.min.js',
+    
+            'namespace': package_name
+        },
+        {
+            'relative_package_path': 'web_ui_dash.min.js.map',
+    
+            'namespace': package_name,
+            'dynamic': True
+        }
+    ]
+)
 
 _css_dist = []
 
