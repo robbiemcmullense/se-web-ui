@@ -1,0 +1,9 @@
+
+name = "WebUiDash"
+uuid = "1b08a953-4be3-4667-9a23-4a2651ae5514"
+authors = ["Francois Delpech <francois.delpech@se.com>"]
+version = "0.0.1-PLACEHOLDER"
+
+[deps]
+Dash = "1b08a953-4be3-4667-9a23-3db579824955"
+

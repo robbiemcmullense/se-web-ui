@@ -43,6 +43,10 @@ export default class {{name}} extends Component {
 
 {{name}}.propTypes = {
   /**
+   * The Dash id of this component
+   */
+   id: PropTypes.string,
+  /**
    * The children of this component
    */
   children: PropTypes.node,

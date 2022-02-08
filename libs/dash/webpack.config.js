@@ -1,4 +1,7 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+const WebpackDashDynamicImport = require('@plotly/webpack-dash-dynamic-import');
 const packagejson = require('./package.json');
 
 const dashLibraryName = packagejson.name.replace(/-/g, '_');
@@ -24,23 +27,21 @@ module.exports = (env, argv) => {
         mode = 'production';
     }
 
-    // let filename = (overrides.output || {}).filename;
-    // if(!filename) {
-    //     const modeSuffix = mode === 'development' ? 'dev' : 'min';
-    //     filename = `${dashLibraryName}.${modeSuffix}.js`;
-    // }
-    const modeSuffix = mode === 'development' ? 'dev' : 'min';
+    let filename = (overrides.output || {}).filename;
+    if(!filename) {
+        const modeSuffix = mode === 'development' ? 'dev' : 'min';
+        filename = `${dashLibraryName}.${modeSuffix}.js`;
+    }
 
-    const entry = overrides.entry || {main: './src/index.js'};
+    const entry = overrides.entry || {main: './src/lib/index.js'};
 
-    const devtool = overrides.devtool || (
-        mode === 'development' ? "eval-source-map" : 'none'
-    );
+    const devtool = overrides.devtool || 'source-map';
 
     const externals = ('externals' in overrides) ? overrides.externals : ({
         react: 'React',
         'react-dom': 'ReactDOM',
         'plotly.js': 'Plotly',
+        'prop-types': 'PropTypes',
     });
 
     return {
@@ -48,18 +49,17 @@ module.exports = (env, argv) => {
         entry,
         output: {
             path: path.resolve(__dirname, dashLibraryName),
-            // filename,
-            filename: (chunkData) => {
-              return chunkData.chunk.name === 'main' ? `${dashLibraryName}.${modeSuffix}.js` : '[name].js';
-            },
+            chunkFilename: '[name].js',
+            filename,
             library: dashLibraryName,
             libraryTarget: 'window',
         },
+        devtool,
         externals,
         module: {
             rules: [
                 {
-                    test: /\.js$/,
+                    test: /\.jsx?$/,
                     exclude: /node_modules/,
                     use: {
                         loader: 'babel-loader',
@@ -70,6 +70,9 @@ module.exports = (env, argv) => {
                     use: [
                         {
                             loader: 'style-loader',
+                            options: {
+                                insertAt: 'top'
+                            }
                         },
                         {
                             loader: 'css-loader',
@@ -78,9 +81,43 @@ module.exports = (env, argv) => {
                 },
             ],
         },
-        resolve: {
-          extensions: ['*', '.js', '.jsx']
+        optimization: {
+            minimizer: [
+                new TerserPlugin({
+                    sourceMap: true,
+                    parallel: true,
+                    cache: './.build_cache/terser',
+                    terserOptions: {
+                        warnings: false,
+                        ie8: false
+                    }
+                })
+            ],
+            splitChunks: {
+                name: true,
+                cacheGroups: {
+                    async: {
+                        chunks: 'async',
+                        minSize: 0,
+                        name(module, chunks, cacheGroupKey) {
+                            return `${cacheGroupKey}-${chunks[0].name}`;
+                        }
+                    },
+                    shared: {
+                        chunks: 'all',
+                        minSize: 0,
+                        minChunks: 2,
+                        name: 'web_ui_dash-shared'
+                    }
+                }
+            }
         },
-        devtool
+        plugins: [
+            new WebpackDashDynamicImport(),
+            new webpack.SourceMapDevToolPlugin({
+                filename: '[file].map',
+                exclude: ['async-plotlyjs']
+            })
+        ]
     }
 };

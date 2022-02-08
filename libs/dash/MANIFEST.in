@@ -1,4 +1,11 @@
-include web_ui_dash/*.js
+include web_ui_dash/web_ui_dash.min.js
+include web_ui_dash/web_ui_dash.min.js.map
+include web_ui_dash/async-*.js
+include web_ui_dash/async-*.js.map
+include web_ui_dash/*-shared.js
+include web_ui_dash/*-shared.js.map
 include web_ui_dash/metadata.json
-include web_ui_dash/package.json
+include web_ui_dash/package-info.json
 include README.md
+include LICENSE
+include package.json

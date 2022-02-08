@@ -169,9 +169,11 @@ export class PaginationComponent {
   }
 
   private __goToPage(e) {
-    // console.log(e, e.target);
     const target = e.target as any;
     // console.log("Goto page", e, e.target, target.value)
+    if ((Math.floor(target.value) < 1) || (Math.floor(target.value) > this.total)) {
+      return;
+    }
     this.value = Math.floor(target.value);
     this.eventEmitter.emit({
       value: this.value,
@@ -186,6 +188,30 @@ export class PaginationComponent {
   render() {
     const isFirst = this.value === 1;
     const isLast = this.value === this.maxPage();
+
+    let pageSelector;
+    if (this.total < 100) {
+      pageSelector = (
+        <select onChange={e => this.__goToPage(e)}>
+          {this.__perPageList().map(i => (
+            <option value={i} selected={i === this.value}>
+              {i}
+            </option>
+          ))}
+        </select>
+      )
+    } else {
+      pageSelector = (
+        <input
+          onChange = {e => this.__goToPage(e)}
+          onKeyDown = {e => e.stopPropagation()}
+          type = "number"
+          value = {this.value}
+          min = "1"
+          max = {this.total}
+        />
+      )
+    }
 
     return (
       <Host>
@@ -242,18 +268,12 @@ export class PaginationComponent {
             <label class="label-wrapper">
               <span class="label">{this.labelValue}</span>
               <se-form-field
-                type="select"
+                type={(this.total < 100) ? "select" : "input"}
                 padding="none"
                 block
                 option="stacked"
               >
-                <select onChange={e => this.__goToPage(e)}>
-                  {this.__perPageList().map(i => (
-                    <option value={i} selected={i === this.value}>
-                      {i}
-                    </option>
-                  ))}
-                </select>
+                {pageSelector}
               </se-form-field>
               <span class="label slash">/</span>
               <span class="label max-page">{this.maxPage()}</span>
