@@ -12,6 +12,7 @@ export let linear = undefined;
 export let block = undefined;
 export let interactive = undefined;
 export let labelMaxWidth = undefined;
+export let stacked = undefined;
 
 export const reset = (...args) => __ref.reset(...args);
 export const previous = (...args) => __ref.previous(...args);
@@ -37,6 +38,7 @@ const onEvent = (e) => {
   block={block}
   interactive={interactive}
   label-max-width={labelMaxWidth}
+  stacked={stacked}
   on:didChange={onEvent}
   bind:this={__ref}
 >

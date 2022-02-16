@@ -55,6 +55,12 @@ export class StepperComponent {
   @Prop() labelMaxWidth: string;
 
   /**
+   * Sets the labels of the stepper items to be stacked below the steps
+   * The default setting is `false`.
+   */
+   @Prop() stacked = false;
+
+  /**
    * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked.
    * The Stepper Item data is passed to the parent.
    */
@@ -165,6 +171,7 @@ export class StepperComponent {
           class={{
             'stepper-item-wrapper': true,
             block: this.block,
+            stacked: this.stacked,
             selected:
               this.getItemStep(this.selectedItem) === itemStep ||
               item.validated,

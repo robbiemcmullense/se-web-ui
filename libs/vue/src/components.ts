@@ -1040,6 +1040,7 @@ export const SeStepper = /*@__PURE__*/ Vue.extend({
     block: {} as PropOptions<Components.SeStepper['block']>,
     interactive: {} as PropOptions<Components.SeStepper['interactive']>,
     labelMaxWidth: {} as PropOptions<Components.SeStepper['labelMaxWidth']>,
+    stacked: {} as PropOptions<Components.SeStepper['stacked']>,
   },
 
 

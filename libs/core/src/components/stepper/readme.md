@@ -14,6 +14,7 @@
 | `interactive`   | `interactive`     | Defines if the stepper items is interactive or not. The default setting is `true`, each stepper item can be interacted with. `linear` keeps its same interaction limitation. `false` disabled the interactivness. It overrides the individual stepper item `interactive` property.    | `boolean`                    | `true`      |
 | `labelMaxWidth` | `label-max-width` | Sets the max width for each stepper label The default setting is `none`.                                                                                                                                                                                                              | `string`                     | `undefined` |
 | `linear`        | `linear`          | Defines if the stepper items must be completed sequentially. The default setting is `true`, each stepper item must be validated before advancing to the next step. `false` allows each step to be selected in any order.                                                              | `boolean`                    | `true`      |
+| `stacked`       | `stacked`         | Sets the labels of the stepper items to be stacked below the steps The default setting is `false`.                                                                                                                                                                                    | `boolean`                    | `false`     |
 
 
 ## Events

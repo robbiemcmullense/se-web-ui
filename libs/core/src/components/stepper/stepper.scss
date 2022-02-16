@@ -20,6 +20,17 @@ ol {
   }
 }
 
+.stacked {
+  .stepper-item {
+    flex-direction: column;
+  }
+
+  se-divider {
+    align-self: baseline;
+    margin-right: 0;
+  }
+}
+
 .stepper-item {
   display: flex;
   align-items: center;

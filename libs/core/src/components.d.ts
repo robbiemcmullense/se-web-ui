@@ -1450,6 +1450,10 @@ export namespace Components {
           * Call the `reset` method to reset the stepper to the indicated step.  This also invalidates any validated steps. It no step parameter is provided, it will reset to the first stepper item.
          */
         "reset": (step?: number) => Promise<void>;
+        /**
+          * Sets the labels of the stepper items to be stacked below the steps The default setting is `false`.
+         */
+        "stacked": boolean;
     }
     interface SeStepperItem {
         /**
@@ -3718,6 +3722,10 @@ declare namespace LocalJSX {
           * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked. The Stepper Item data is passed to the parent.
          */
         "onDidChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Sets the labels of the stepper items to be stacked below the steps The default setting is `false`.
+         */
+        "stacked"?: boolean;
     }
     interface SeStepperItem {
         /**
