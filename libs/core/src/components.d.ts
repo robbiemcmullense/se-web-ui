@@ -1451,6 +1451,10 @@ export namespace Components {
          */
         "reset": (step?: number) => Promise<void>;
         /**
+          * Defines the spacing/margin around the stepper. `none` is 0px `small` is 4px `medium` is 8px `large` is 16px
+         */
+        "spacing": 'none' | 'small' | 'medium' | 'large';
+        /**
           * Sets the labels of the stepper items to be stacked below the steps The default setting is `false`.
          */
         "stacked": boolean;
@@ -3722,6 +3726,10 @@ declare namespace LocalJSX {
           * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked. The Stepper Item data is passed to the parent.
          */
         "onDidChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Defines the spacing/margin around the stepper. `none` is 0px `small` is 4px `medium` is 8px `large` is 16px
+         */
+        "spacing"?: 'none' | 'small' | 'medium' | 'large';
         /**
           * Sets the labels of the stepper items to be stacked below the steps The default setting is `false`.
          */

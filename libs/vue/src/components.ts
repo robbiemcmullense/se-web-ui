@@ -1041,6 +1041,7 @@ export const SeStepper = /*@__PURE__*/ Vue.extend({
     interactive: {} as PropOptions<Components.SeStepper['interactive']>,
     labelMaxWidth: {} as PropOptions<Components.SeStepper['labelMaxWidth']>,
     stacked: {} as PropOptions<Components.SeStepper['stacked']>,
+    spacing: {} as PropOptions<Components.SeStepper['spacing']>,
   },
 
 
