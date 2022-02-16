@@ -4,10 +4,9 @@ nav {
 
 ol {
   display: flex;
-  padding: $spacing-large;
+  padding: var(--se-stepper-padding);
   margin-top: 0;
   margin-bottom: 0;
-  height: 24px;
   font-weight: 300;
 }
 
@@ -23,6 +22,7 @@ ol {
 .stacked {
   .stepper-item {
     flex-direction: column;
+    gap: $spacing-small;
   }
 
   se-divider {
@@ -127,4 +127,22 @@ se-divider {
 
     --se-stepper-item-label-color: var(--se-background-alternative-contrast);
   }
+}
+
+
+// Spacing
+.spacing-none {
+  --se-stepper-padding: 0;
+}
+
+.spacing-small {
+  --se-stepper-padding: #{$spacing-small};
+}
+
+.spacing-medium {
+  --se-stepper-padding: #{$spacing};
+}
+
+.spacing-large {
+  --se-stepper-padding: #{$spacing-large};
 }

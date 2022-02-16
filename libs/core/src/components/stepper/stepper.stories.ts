@@ -4,6 +4,7 @@ import readmeitem from '../stepper-item/readme.md';
 import { text, select, boolean } from '@storybook/addon-knobs';
 
 const colorOptions = ['primary', 'alternative'];
+const spacingOptions = ['none', 'small', 'medium', 'large'];
 
 storiesOf('Stepper', module)
   .add(
@@ -12,6 +13,8 @@ storiesOf('Stepper', module)
       const color = select('color', colorOptions, 'primary');
       const linear = boolean('linear', true);
       const block = boolean('block', false);
+      const stacked = boolean('stacked', false);
+      const spacing = select('spacing', spacingOptions, 'large');
       const interactive = boolean('interactive', true);
       const addStepper = boolean('Add last step', false);
       const step1Validated = boolean('Step 1 Validated', true);
@@ -22,7 +25,7 @@ storiesOf('Stepper', module)
 
       return `
         <div style="width: 100%; height: 100%;">
-          <se-stepper color="${color}" linear="${linear}" block="${block}" interactive="${interactive}">
+          <se-stepper color="${color}" linear="${linear}" block="${block}" interactive="${interactive}" stacked="${stacked}" spacing="${spacing}">
             <se-stepper-item label="Step 1" validated="${step1Validated}"></se-stepper-item>
             <se-stepper-item label="Step 2" validated="${step2Validated}"></se-stepper-item>
             <se-stepper-item label="Step 3" validated="${step3Validated}"></se-stepper-item>

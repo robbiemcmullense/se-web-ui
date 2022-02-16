@@ -58,7 +58,16 @@ export class StepperComponent {
    * Sets the labels of the stepper items to be stacked below the steps
    * The default setting is `false`.
    */
-   @Prop() stacked = false;
+  @Prop() stacked = false;
+
+  /**
+   * Defines the spacing/margin around the stepper.
+   * `none` is 0px
+   * `small` is 4px
+   * `medium` is 8px
+   * `large` is 16px
+   */
+  @Prop() spacing: 'none' | 'small' | 'medium' | 'large' = 'large';
 
   /**
    * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked.
@@ -276,7 +285,9 @@ export class StepperComponent {
   render() {
     return [
       <nav class={this.color}>
-        <ol>{this.renderList()}</ol>
+        <ol class={`spacing-${this.spacing}`}>
+          {this.renderList()}
+        </ol>
       </nav>,
       <slot></slot>,
     ];

@@ -142,7 +142,7 @@ export class ContainerComponent {
           this.color ? `ct-bg-${this.color}` : '',
           `${this.direction}-dir`,
           `${this.display}-display`,
-          this.padding ? `ct-gap-${this.gap}` : '',
+          this.gap ? `ct-gap-${this.gap}` : '',
           this.padding ? `ct-padding-${this.padding}` : '',
         ].join(' ')}
       >
