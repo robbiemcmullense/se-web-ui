@@ -3,6 +3,13 @@
   position: relative;
   width: 100%;
   height: 100%;
+
+  // Default value declaration
+  --se-block-overflow: auto;
+  --se-block-color-background: var(--se-background-alternative);
+  --se-block-margin: 0;
+  --se-block-border: none;
+  --se-block-border-radius: 0px;
 }
 
 :host(a *:not(a)) {
