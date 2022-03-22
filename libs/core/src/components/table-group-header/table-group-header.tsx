@@ -33,6 +33,7 @@ export class TableGroupHeaderComponent {
   setColumnProperties() {
     const columnWidths = [];
     const columnMinWidths = [];
+    const columnMaxWidths = [];
     const columnFlex = [];
 
     this.el
@@ -40,9 +41,11 @@ export class TableGroupHeaderComponent {
       .forEach((headerItem, index) => {
         columnWidths[index] = headerItem.width;
         columnMinWidths[index] = headerItem.minWidth;
+        columnMaxWidths[index] = headerItem.maxWidth;
         columnFlex[index] = headerItem.flex;
       });
     columnProperties.set('minWidths', columnMinWidths);
+    columnProperties.set('maxWidths', columnMaxWidths);
     columnProperties.set('flex', columnFlex);
     columnProperties.set('widths', columnWidths);
   }

@@ -1543,6 +1543,10 @@ export namespace Components {
          */
         "flex": string;
         /**
+          * Defines the  max-width of a column.
+         */
+        "maxWidth": string;
+        /**
           * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
         "minWidth": string;
@@ -1561,6 +1565,10 @@ export namespace Components {
           * Defines the specific flex-basis of a block.
          */
         "flex": string;
+        /**
+          * Defines the  max-width of a column.
+         */
+        "maxWidth": string;
         /**
           * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
@@ -3827,6 +3835,10 @@ declare namespace LocalJSX {
          */
         "flex"?: string;
         /**
+          * Defines the  max-width of a column.
+         */
+        "maxWidth"?: string;
+        /**
           * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
         "minWidth"?: string;
@@ -3845,6 +3857,10 @@ declare namespace LocalJSX {
           * Defines the specific flex-basis of a block.
          */
         "flex"?: string;
+        /**
+          * Defines the  max-width of a column.
+         */
+        "maxWidth"?: string;
         /**
           * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */

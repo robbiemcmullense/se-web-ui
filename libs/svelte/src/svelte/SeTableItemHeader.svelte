@@ -10,6 +10,7 @@ const dispatch = createEventDispatcher();
 export let flex = undefined;
 export let width = undefined;
 export let minWidth = undefined;
+export let maxWidth = undefined;
 export let clickable = undefined;
 export let sort = undefined;
 export let resizable = undefined;
@@ -34,6 +35,7 @@ const onEvent = (e) => {
   flex={flex}
   width={width}
   min-width={minWidth}
+  max-width={maxWidth}
   clickable={clickable}
   sort={sort}
   resizable={resizable}

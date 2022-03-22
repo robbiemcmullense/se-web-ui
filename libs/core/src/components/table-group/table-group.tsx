@@ -20,6 +20,7 @@ export class TableGroupComponent {
   setColumnProperties() {
     const columnWidths = columnProperties.get('widths');
     const columnMinWidths = columnProperties.get('minWidths');
+    const columnMaxWidths = columnProperties.get('maxWidths');
     const columnFlex = columnProperties.get('flex');
     this.el
       .querySelectorAll<HTMLSeTableItemElement>('se-table-item')
@@ -29,6 +30,9 @@ export class TableGroupComponent {
         }
         if (columnMinWidths.length) {
           item.minWidth = columnMinWidths[index];
+        }
+        if (columnMaxWidths.length) {
+          item.maxWidth = columnMaxWidths[index];
         }
         if (columnFlex.length) {
           item.flex = columnFlex[index];

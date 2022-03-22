@@ -15,6 +15,9 @@ interface SeTableItemHeaderProps {
   /** Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex. */
   minWidth?: Components.SeTableItemHeader["minWidth"]
   
+  /** Defines the  max-width of a column. */
+  maxWidth?: Components.SeTableItemHeader["maxWidth"]
+  
   /** Optional property defines the tag type within the `se-table-item`.
 Default value `false` defines the tag type as `div`.
 `true` defines the tag type as a `button`. */
@@ -69,8 +72,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[10].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[9], null);
+	const default_slot_template = /*#slots*/ ctx[11].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[10], null);
 
 	return {
 		c() {
@@ -79,9 +82,10 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_table_item_header, "flex", /*flex*/ ctx[0]);
 			set_custom_element_data(se_table_item_header, "width", /*width*/ ctx[1]);
 			set_custom_element_data(se_table_item_header, "min-width", /*minWidth*/ ctx[2]);
-			set_custom_element_data(se_table_item_header, "clickable", /*clickable*/ ctx[3]);
-			set_custom_element_data(se_table_item_header, "sort", /*sort*/ ctx[4]);
-			set_custom_element_data(se_table_item_header, "resizable", /*resizable*/ ctx[5]);
+			set_custom_element_data(se_table_item_header, "max-width", /*maxWidth*/ ctx[3]);
+			set_custom_element_data(se_table_item_header, "clickable", /*clickable*/ ctx[4]);
+			set_custom_element_data(se_table_item_header, "sort", /*sort*/ ctx[5]);
+			set_custom_element_data(se_table_item_header, "resizable", /*resizable*/ ctx[6]);
 		},
 		m(target, anchor) {
 			insert(target, se_table_item_header, anchor);
@@ -90,25 +94,25 @@ function create_fragment(ctx) {
 				default_slot.m(se_table_item_header, null);
 			}
 
-			/*se_table_item_header_binding*/ ctx[11](se_table_item_header);
+			/*se_table_item_header_binding*/ ctx[12](se_table_item_header);
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(se_table_item_header, "didWidthChange", /*onEvent*/ ctx[7]);
+				dispose = listen(se_table_item_header, "didWidthChange", /*onEvent*/ ctx[8]);
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 512)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 1024)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[9],
+						/*$$scope*/ ctx[10],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[9])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[9], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[10])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[10], dirty, null),
 						null
 					);
 				}
@@ -126,16 +130,20 @@ function create_fragment(ctx) {
 				set_custom_element_data(se_table_item_header, "min-width", /*minWidth*/ ctx[2]);
 			}
 
-			if (!current || dirty & /*clickable*/ 8) {
-				set_custom_element_data(se_table_item_header, "clickable", /*clickable*/ ctx[3]);
+			if (!current || dirty & /*maxWidth*/ 8) {
+				set_custom_element_data(se_table_item_header, "max-width", /*maxWidth*/ ctx[3]);
 			}
 
-			if (!current || dirty & /*sort*/ 16) {
-				set_custom_element_data(se_table_item_header, "sort", /*sort*/ ctx[4]);
+			if (!current || dirty & /*clickable*/ 16) {
+				set_custom_element_data(se_table_item_header, "clickable", /*clickable*/ ctx[4]);
 			}
 
-			if (!current || dirty & /*resizable*/ 32) {
-				set_custom_element_data(se_table_item_header, "resizable", /*resizable*/ ctx[5]);
+			if (!current || dirty & /*sort*/ 32) {
+				set_custom_element_data(se_table_item_header, "sort", /*sort*/ ctx[5]);
+			}
+
+			if (!current || dirty & /*resizable*/ 64) {
+				set_custom_element_data(se_table_item_header, "resizable", /*resizable*/ ctx[6]);
 			}
 		},
 		i(local) {
@@ -150,7 +158,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_table_item_header);
 			if (default_slot) default_slot.d(detaching);
-			/*se_table_item_header_binding*/ ctx[11](null);
+			/*se_table_item_header_binding*/ ctx[12](null);
 			mounted = false;
 			dispose();
 		}
@@ -165,6 +173,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { flex = undefined } = $$props;
 	let { width = undefined } = $$props;
 	let { minWidth = undefined } = $$props;
+	let { maxWidth = undefined } = $$props;
 	let { clickable = undefined } = $$props;
 	let { sort = undefined } = $$props;
 	let { resizable = undefined } = $$props;
@@ -175,7 +184,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(6, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(7, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -186,7 +195,7 @@ function instance($$self, $$props, $$invalidate) {
 	function se_table_item_header_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			__ref = $$value;
-			$$invalidate(6, __ref);
+			$$invalidate(7, __ref);
 		});
 	}
 
@@ -194,16 +203,18 @@ function instance($$self, $$props, $$invalidate) {
 		if ('flex' in $$props) $$invalidate(0, flex = $$props.flex);
 		if ('width' in $$props) $$invalidate(1, width = $$props.width);
 		if ('minWidth' in $$props) $$invalidate(2, minWidth = $$props.minWidth);
-		if ('clickable' in $$props) $$invalidate(3, clickable = $$props.clickable);
-		if ('sort' in $$props) $$invalidate(4, sort = $$props.sort);
-		if ('resizable' in $$props) $$invalidate(5, resizable = $$props.resizable);
-		if ('$$scope' in $$props) $$invalidate(9, $$scope = $$props.$$scope);
+		if ('maxWidth' in $$props) $$invalidate(3, maxWidth = $$props.maxWidth);
+		if ('clickable' in $$props) $$invalidate(4, clickable = $$props.clickable);
+		if ('sort' in $$props) $$invalidate(5, sort = $$props.sort);
+		if ('resizable' in $$props) $$invalidate(6, resizable = $$props.resizable);
+		if ('$$scope' in $$props) $$invalidate(10, $$scope = $$props.$$scope);
 	};
 
 	return [
 		flex,
 		width,
 		minWidth,
+		maxWidth,
 		clickable,
 		sort,
 		resizable,
@@ -236,10 +247,11 @@ class SeTableItemHeader extends SvelteComponent {
 			flex: 0,
 			width: 1,
 			minWidth: 2,
-			clickable: 3,
-			sort: 4,
-			resizable: 5,
-			getWebComponent: 8
+			maxWidth: 3,
+			clickable: 4,
+			sort: 5,
+			resizable: 6,
+			getWebComponent: 9
 		});
 	}
 
@@ -270,8 +282,17 @@ class SeTableItemHeader extends SvelteComponent {
 		flush();
 	}
 
-	get clickable() {
+	get maxWidth() {
 		return this.$$.ctx[3];
+	}
+
+	set maxWidth(maxWidth) {
+		this.$$set({ maxWidth });
+		flush();
+	}
+
+	get clickable() {
+		return this.$$.ctx[4];
 	}
 
 	set clickable(clickable) {
@@ -280,7 +301,7 @@ class SeTableItemHeader extends SvelteComponent {
 	}
 
 	get sort() {
-		return this.$$.ctx[4];
+		return this.$$.ctx[5];
 	}
 
 	set sort(sort) {
@@ -289,7 +310,7 @@ class SeTableItemHeader extends SvelteComponent {
 	}
 
 	get resizable() {
-		return this.$$.ctx[5];
+		return this.$$.ctx[6];
 	}
 
 	set resizable(resizable) {
@@ -298,7 +319,7 @@ class SeTableItemHeader extends SvelteComponent {
 	}
 
 	get getWebComponent(): HTMLSeTableItemHeaderElement | undefined {
-		return this.$$.ctx[8];
+		return this.$$.ctx[9];
 	}
 }
 

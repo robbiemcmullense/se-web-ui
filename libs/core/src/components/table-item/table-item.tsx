@@ -25,6 +25,11 @@ export class TableItemComponent {
   @Prop() minWidth: string;
 
   /**
+   * Defines the  max-width of a column.
+   */
+  @Prop() maxWidth: string;
+
+  /**
    * Optional property defines the tag type within the `se-table-item`.
    * Default value `false` defines the tag type as `div`.
    * `true` defines the tag type as a `button`.
@@ -34,7 +39,7 @@ export class TableItemComponent {
   render() {
     const displayStyle = {
       flex: this.flex || '',
-      maxWidth: this.width || '',
+      maxWidth: this.maxWidth || this.width || '',
       width: this.width || '',
       minWidth: this.minWidth || '',
     };

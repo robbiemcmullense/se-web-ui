@@ -1448,13 +1448,13 @@ export class SeTableGroupHeader {
 
 export declare interface SeTableItem extends Components.SeTableItem {}
 @ProxyCmp({
-  inputs: ['clickable', 'flex', 'minWidth', 'option', 'width']
+  inputs: ['clickable', 'flex', 'maxWidth', 'minWidth', 'option', 'width']
 })
 @Component({
   selector: 'se-table-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clickable', 'flex', 'minWidth', 'option', 'width']
+  inputs: ['clickable', 'flex', 'maxWidth', 'minWidth', 'option', 'width']
 })
 export class SeTableItem {
   protected el: HTMLElement;
@@ -1467,13 +1467,13 @@ export class SeTableItem {
 
 export declare interface SeTableItemHeader extends Components.SeTableItemHeader {}
 @ProxyCmp({
-  inputs: ['clickable', 'flex', 'minWidth', 'resizable', 'sort', 'width']
+  inputs: ['clickable', 'flex', 'maxWidth', 'minWidth', 'resizable', 'sort', 'width']
 })
 @Component({
   selector: 'se-table-item-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clickable', 'flex', 'minWidth', 'resizable', 'sort', 'width'],
+  inputs: ['clickable', 'flex', 'maxWidth', 'minWidth', 'resizable', 'sort', 'width'],
   outputs: ['didWidthChange']
 })
 export class SeTableItemHeader {

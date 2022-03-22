@@ -1144,6 +1144,7 @@ export const SeTableItem = /*@__PURE__*/ Vue.extend({
     flex: {} as PropOptions<Components.SeTableItem['flex']>,
     width: {} as PropOptions<Components.SeTableItem['width']>,
     minWidth: {} as PropOptions<Components.SeTableItem['minWidth']>,
+    maxWidth: {} as PropOptions<Components.SeTableItem['maxWidth']>,
     clickable: {} as PropOptions<Components.SeTableItem['clickable']>,
   },
 
@@ -1158,6 +1159,7 @@ export const SeTableItemHeader = /*@__PURE__*/ Vue.extend({
     flex: {} as PropOptions<Components.SeTableItemHeader['flex']>,
     width: {} as PropOptions<Components.SeTableItemHeader['width']>,
     minWidth: {} as PropOptions<Components.SeTableItemHeader['minWidth']>,
+    maxWidth: {} as PropOptions<Components.SeTableItemHeader['maxWidth']>,
     clickable: {} as PropOptions<Components.SeTableItemHeader['clickable']>,
     sort: {} as PropOptions<Components.SeTableItemHeader['sort']>,
     resizable: {} as PropOptions<Components.SeTableItemHeader['resizable']>,
