@@ -44,6 +44,10 @@ export class TableGroupComponent {
     this.setColumnProperties();
   }
 
+  componentWillUpdate() {
+    this.setColumnProperties();
+  }
+
   render() {
     const id = this.el.getAttribute('id');
 

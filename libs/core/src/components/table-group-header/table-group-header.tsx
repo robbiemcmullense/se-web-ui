@@ -54,6 +54,11 @@ export class TableGroupHeaderComponent {
     this.setColumnProperties();
   }
 
+  componentWillUpdate() {
+    columnProperties.reset();
+    this.setColumnProperties();
+  }  
+
   render() {
     return (
       <Host role="row" slot="start">
