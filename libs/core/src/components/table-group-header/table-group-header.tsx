@@ -60,14 +60,19 @@ export class TableGroupHeaderComponent {
   }  
 
   render() {
+    const slotChangeHandler = () => {
+      columnProperties.reset();
+      this.setColumnProperties();
+    };
+
     return (
       <Host role="row" slot="start">
         <div class="sticky start">
-          <slot name="start"></slot>
+          <slot onSlotchange={slotChangeHandler} name="start"></slot>
         </div>
-        <slot />
+        <slot onSlotchange={slotChangeHandler}/>
         <div class="sticky end">
-          <slot name="end"></slot>
+          <slot onSlotchange={slotChangeHandler} name="end"></slot>
         </div>
       </Host>
     );

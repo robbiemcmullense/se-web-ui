@@ -58,6 +58,11 @@ export class TableGroupComponent {
         }
     });
 
+    const slotChangeHandler = () => {
+      columnProperties.reset();
+      this.setColumnProperties();
+    };
+
     return (
       <Host
         role="row"
@@ -65,11 +70,11 @@ export class TableGroupComponent {
       >
         <div class="table-group-row" id={id ? `wc-${id}` : ''}>
           <div class="sticky start">
-            <slot name="start"></slot>
+            <slot onSlotchange={slotChangeHandler} name="start"></slot>
           </div>
-          <slot />
+          <slot onSlotchange={slotChangeHandler}/>
           <div class="sticky end">
-            <slot name="end"></slot>
+            <slot onSlotchange={slotChangeHandler} name="end"></slot>
           </div>
         </div>
         <slot name="detail" />
