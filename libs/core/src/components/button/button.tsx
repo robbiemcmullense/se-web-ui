@@ -187,6 +187,7 @@ export class ButtonComponent {
         class={{
           grouped: this.grouped,
           'display-block': block,
+          disabled: this.disabled,
         }}
         onClick={() => this.el.blur()}
       >

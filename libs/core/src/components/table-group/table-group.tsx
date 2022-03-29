@@ -59,7 +59,6 @@ export class TableGroupComponent {
     });
 
     const slotChangeHandler = () => {
-      columnProperties.reset();
       this.setColumnProperties();
     };
 

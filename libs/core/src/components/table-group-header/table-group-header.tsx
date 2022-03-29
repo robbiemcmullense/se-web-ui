@@ -55,7 +55,6 @@ export class TableGroupHeaderComponent {
   }
 
   componentWillUpdate() {
-    columnProperties.reset();
     this.setColumnProperties();
   }  
 

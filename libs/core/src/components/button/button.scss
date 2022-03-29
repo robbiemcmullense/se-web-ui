@@ -10,6 +10,11 @@
   }
 }
 
+:host(.disabled) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 // TODO remove and move to banner-item
 :host(.banner-child) {
   button {
@@ -108,8 +113,6 @@ button {
 
   &[disabled] {
     cursor: inherit;
-    opacity: 0.5;
-    pointer-events: none;
   }
 
   .text {
