@@ -1,5 +1,6 @@
 import { Component, h, Prop, Element, Host } from '@stencil/core';
 import columnProperties from '../table/store';
+import { debounce } from '../../utils';
 
 @Component({
   tag: 'se-table-group',
@@ -16,6 +17,26 @@ export class TableGroupComponent {
    * Indicates whether or not the `se-table-group` is selected.  Set to `false` by default.
    */
   @Prop() selected = false;
+
+  getColumnProperties() {
+    const columnWidths = [];
+    const columnMinWidths = [];
+    const columnMaxWidths = [];
+    const columnFlex = [];
+
+    this.el.parentElement
+      .querySelectorAll<HTMLSeTableItemHeaderElement>('se-table-item-header')
+      .forEach((headerItem, index) => {
+        columnWidths[index] = headerItem.width;
+        columnMinWidths[index] = headerItem.minWidth;
+        columnMaxWidths[index] = headerItem.maxWidth;
+        columnFlex[index] = headerItem.flex;
+      });
+    columnProperties.set('minWidths', columnMinWidths);
+    columnProperties.set('maxWidths', columnMaxWidths);
+    columnProperties.set('flex', columnFlex);
+    columnProperties.set('widths', columnWidths);
+  }
 
   setColumnProperties() {
     const columnWidths = columnProperties.get('widths');
@@ -40,13 +61,18 @@ export class TableGroupComponent {
       });
   }
 
-  componentWillLoad() {
+  assignColumnProperties() {
+    this.getColumnProperties();
     this.setColumnProperties();
   }
 
-  componentWillUpdate() {
-    this.setColumnProperties();
+  componentWillLoad() {
+    debounce(this.assignColumnProperties());
   }
+
+  slotChangeHandler = () => {
+    debounce(this.assignColumnProperties());
+  };
 
   render() {
     const id = this.el.getAttribute('id');
@@ -58,10 +84,6 @@ export class TableGroupComponent {
         }
     });
 
-    const slotChangeHandler = () => {
-      this.setColumnProperties();
-    };
-
     return (
       <Host
         role="row"
@@ -69,11 +91,11 @@ export class TableGroupComponent {
       >
         <div class="table-group-row" id={id ? `wc-${id}` : ''}>
           <div class="sticky start">
-            <slot onSlotchange={slotChangeHandler} name="start"></slot>
+            <slot onSlotchange={this.slotChangeHandler} name="start"></slot>
           </div>
-          <slot onSlotchange={slotChangeHandler}/>
+          <slot onSlotchange={this.slotChangeHandler}/>
           <div class="sticky end">
-            <slot onSlotchange={slotChangeHandler} name="end"></slot>
+            <slot onSlotchange={this.slotChangeHandler} name="end"></slot>
           </div>
         </div>
         <slot name="detail" />

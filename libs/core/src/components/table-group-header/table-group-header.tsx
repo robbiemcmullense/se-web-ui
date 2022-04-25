@@ -1,4 +1,5 @@
 import { Component, h, Element, Host, Listen } from '@stencil/core';
+import { debounce } from '../../utils';
 import columnProperties from '../table/store';
 
 @Component({
@@ -50,28 +51,28 @@ export class TableGroupHeaderComponent {
     columnProperties.set('widths', columnWidths);
   }
 
-  componentWillLoad() {
+  storeColumnProperties() {
+    columnProperties.reset();
     this.setColumnProperties();
   }
 
-  componentWillUpdate() {
-    this.setColumnProperties();
-  }  
+  componentWillRender() {
+    debounce(this.storeColumnProperties());
+  }
+
+  slotChangeHandler = () => {
+    debounce(this.storeColumnProperties());
+  };
 
   render() {
-    const slotChangeHandler = () => {
-      columnProperties.reset();
-      this.setColumnProperties();
-    };
-
     return (
       <Host role="row" slot="start">
         <div class="sticky start">
-          <slot onSlotchange={slotChangeHandler} name="start"></slot>
+          <slot onSlotchange={this.slotChangeHandler} name="start"></slot>
         </div>
-        <slot onSlotchange={slotChangeHandler}/>
+        <slot onSlotchange={this.slotChangeHandler}/>
         <div class="sticky end">
-          <slot onSlotchange={slotChangeHandler} name="end"></slot>
+          <slot onSlotchange={this.slotChangeHandler} name="end"></slot>
         </div>
       </Host>
     );

@@ -74,16 +74,16 @@ export function isVisible(el, screenReader, recursed) {
   return false;
 }
 
-// export function debounce(func, timeout?: number) {
-//   let timer: any;
-//   return (...args: any[]) => {
-//     const next = () => func(...args);
-//     if (timer) {
-//       clearTimeout(timer);
-//     }
-//     timer = setTimeout(next, timeout > 0 ? timeout : 300);
-//   };
-// }
+export function debounce(func, timeout?: number) {
+  let timer: any;
+  return (...args: any[]) => {
+    const next = () => func(...args);
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(next, timeout > 0 ? timeout : 300);
+  };
+}
 
 export function isTouchDevice() {
   return !!(
