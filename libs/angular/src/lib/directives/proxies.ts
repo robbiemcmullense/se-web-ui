@@ -990,13 +990,13 @@ export class SeIconSchneider {
 
 export declare interface SeLink extends Components.SeLink {}
 @ProxyCmp({
-  inputs: ['disabled', 'download', 'option', 'unicolor', 'url']
+  inputs: ['disabled', 'download', 'noSpacing', 'option', 'unicolor', 'url']
 })
 @Component({
   selector: 'se-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'download', 'option', 'unicolor', 'url']
+  inputs: ['disabled', 'download', 'noSpacing', 'option', 'unicolor', 'url']
 })
 export class SeLink {
   protected el: HTMLElement;
@@ -1394,13 +1394,13 @@ export class SeTabbar {
 
 export declare interface SeTable extends Components.SeTable {}
 @ProxyCmp({
-  inputs: ['compact']
+  inputs: ['alignItems', 'compact']
 })
 @Component({
   selector: 'se-table',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['compact']
+  inputs: ['alignItems', 'compact']
 })
 export class SeTable {
   protected el: HTMLElement;
@@ -1448,13 +1448,13 @@ export class SeTableGroupHeader {
 
 export declare interface SeTableItem extends Components.SeTableItem {}
 @ProxyCmp({
-  inputs: ['clickable', 'flex', 'maxWidth', 'minWidth', 'option', 'width']
+  inputs: ['alignItems', 'clickable', 'flex', 'maxWidth', 'minWidth', 'option', 'width']
 })
 @Component({
   selector: 'se-table-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clickable', 'flex', 'maxWidth', 'minWidth', 'option', 'width']
+  inputs: ['alignItems', 'clickable', 'flex', 'maxWidth', 'minWidth', 'option', 'width']
 })
 export class SeTableItem {
   protected el: HTMLElement;

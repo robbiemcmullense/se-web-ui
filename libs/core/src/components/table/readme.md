@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                     | Type      | Default     |
-| --------- | --------- | ----------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `compact` | `compact` | Define if we should show a compact view of the table, vs a version with larger spacing and font | `boolean` | `undefined` |
+| Property     | Attribute     | Description                                                                                     | Type      | Default     |
+| ------------ | ------------- | ----------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `alignItems` | `align-items` | Defines the vertical alignment of table items.                                                  | `string`  | `'center'`  |
+| `compact`    | `compact`     | Define if we should show a compact view of the table, vs a version with larger spacing and font | `boolean` | `undefined` |
 
 
 ## CSS Custom Properties

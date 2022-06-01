@@ -8,6 +8,7 @@ let __mounted = false;
 const dispatch = createEventDispatcher();
 
 export let compact = undefined;
+export let alignItems = undefined;
 
 
 
@@ -27,6 +28,7 @@ const onEvent = (e) => {
 
 <se-table 
   compact={compact}
+  align-items={alignItems}
   
   bind:this={__ref}
 >

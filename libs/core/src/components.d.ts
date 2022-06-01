@@ -1093,6 +1093,10 @@ export namespace Components {
          */
         "download": boolean;
         /**
+          * Removes spacing around the link
+         */
+        "noSpacing": boolean;
+        /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
         "option": 'internal' | 'external';
@@ -1517,6 +1521,10 @@ export namespace Components {
     }
     interface SeTable {
         /**
+          * Defines the vertical alignment of table items.
+         */
+        "alignItems": string;
+        /**
           * Define if we should show a compact view of the table, vs a version with larger spacing and font
          */
         "compact": boolean;
@@ -1535,6 +1543,10 @@ export namespace Components {
     }
     interface SeTableItem {
         /**
+          * Defines the vertical alignment of a table item.
+         */
+        "alignItems": string;
+        /**
           * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
          */
         "clickable": boolean;
@@ -1543,11 +1555,11 @@ export namespace Components {
          */
         "flex": string;
         /**
-          * Defines the  max-width of a column.
+          * Defines the max-width of a column.
          */
         "maxWidth": string;
         /**
-          * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+          * Defines the min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
         "minWidth": string;
         "option": 'dropdown' | 'text' | 'custom';
@@ -3359,6 +3371,10 @@ declare namespace LocalJSX {
          */
         "download"?: boolean;
         /**
+          * Removes spacing around the link
+         */
+        "noSpacing"?: boolean;
+        /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
         "option"?: 'internal' | 'external';
@@ -3809,6 +3825,10 @@ declare namespace LocalJSX {
     }
     interface SeTable {
         /**
+          * Defines the vertical alignment of table items.
+         */
+        "alignItems"?: string;
+        /**
           * Define if we should show a compact view of the table, vs a version with larger spacing and font
          */
         "compact"?: boolean;
@@ -3827,6 +3847,10 @@ declare namespace LocalJSX {
     }
     interface SeTableItem {
         /**
+          * Defines the vertical alignment of a table item.
+         */
+        "alignItems"?: string;
+        /**
           * Optional property defines the tag type within the `se-table-item`. Default value `false` defines the tag type as `div`. `true` defines the tag type as a `button`.
          */
         "clickable"?: boolean;
@@ -3835,11 +3859,11 @@ declare namespace LocalJSX {
          */
         "flex"?: string;
         /**
-          * Defines the  max-width of a column.
+          * Defines the max-width of a column.
          */
         "maxWidth"?: string;
         /**
-          * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+          * Defines the min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
          */
         "minWidth"?: string;
         "option"?: 'dropdown' | 'text' | 'custom';

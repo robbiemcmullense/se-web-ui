@@ -11,6 +11,7 @@ export let url = undefined;
 export let disabled = undefined;
 export let download = undefined;
 export let option = undefined;
+export let noSpacing = undefined;
 export let unicolor = undefined;
 
 
@@ -34,6 +35,7 @@ const onEvent = (e) => {
   disabled={disabled}
   download={download}
   option={option}
+  no-spacing={noSpacing}
   unicolor={unicolor}
   
   bind:this={__ref}

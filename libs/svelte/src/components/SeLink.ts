@@ -20,6 +20,9 @@ The default setting is `internal`, which redirects you to the specified URL in t
 The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab. */
   option?: Components.SeLink["option"]
   
+  /** Removes spacing around the link */
+  noSpacing?: Components.SeLink["noSpacing"]
+  
   /** Sets :hover and :visited states the same color as main */
   unicolor?: Components.SeLink["unicolor"]
 }
@@ -56,8 +59,8 @@ import { createEventDispatcher, onMount } from 'svelte';
 function create_fragment(ctx) {
 	let se_link;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[8].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[7], null);
+	const default_slot_template = /*#slots*/ ctx[9].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[8], null);
 
 	return {
 		c() {
@@ -67,7 +70,8 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_link, "disabled", /*disabled*/ ctx[1]);
 			set_custom_element_data(se_link, "download", /*download*/ ctx[2]);
 			set_custom_element_data(se_link, "option", /*option*/ ctx[3]);
-			set_custom_element_data(se_link, "unicolor", /*unicolor*/ ctx[4]);
+			set_custom_element_data(se_link, "no-spacing", /*noSpacing*/ ctx[4]);
+			set_custom_element_data(se_link, "unicolor", /*unicolor*/ ctx[5]);
 		},
 		m(target, anchor) {
 			insert(target, se_link, anchor);
@@ -76,20 +80,20 @@ function create_fragment(ctx) {
 				default_slot.m(se_link, null);
 			}
 
-			/*se_link_binding*/ ctx[9](se_link);
+			/*se_link_binding*/ ctx[10](se_link);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 128)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 256)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[7],
+						/*$$scope*/ ctx[8],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[7])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[7], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[8])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[8], dirty, null),
 						null
 					);
 				}
@@ -111,8 +115,12 @@ function create_fragment(ctx) {
 				set_custom_element_data(se_link, "option", /*option*/ ctx[3]);
 			}
 
-			if (!current || dirty & /*unicolor*/ 16) {
-				set_custom_element_data(se_link, "unicolor", /*unicolor*/ ctx[4]);
+			if (!current || dirty & /*noSpacing*/ 16) {
+				set_custom_element_data(se_link, "no-spacing", /*noSpacing*/ ctx[4]);
+			}
+
+			if (!current || dirty & /*unicolor*/ 32) {
+				set_custom_element_data(se_link, "unicolor", /*unicolor*/ ctx[5]);
 			}
 		},
 		i(local) {
@@ -127,7 +135,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_link);
 			if (default_slot) default_slot.d(detaching);
-			/*se_link_binding*/ ctx[9](null);
+			/*se_link_binding*/ ctx[10](null);
 		}
 	};
 }
@@ -141,6 +149,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { disabled = undefined } = $$props;
 	let { download = undefined } = $$props;
 	let { option = undefined } = $$props;
+	let { noSpacing = undefined } = $$props;
 	let { unicolor = undefined } = $$props;
 	const getWebComponent = () => __ref;
 
@@ -149,7 +158,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(5, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(6, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -160,7 +169,7 @@ function instance($$self, $$props, $$invalidate) {
 	function se_link_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			__ref = $$value;
-			$$invalidate(5, __ref);
+			$$invalidate(6, __ref);
 		});
 	}
 
@@ -169,8 +178,9 @@ function instance($$self, $$props, $$invalidate) {
 		if ('disabled' in $$props) $$invalidate(1, disabled = $$props.disabled);
 		if ('download' in $$props) $$invalidate(2, download = $$props.download);
 		if ('option' in $$props) $$invalidate(3, option = $$props.option);
-		if ('unicolor' in $$props) $$invalidate(4, unicolor = $$props.unicolor);
-		if ('$$scope' in $$props) $$invalidate(7, $$scope = $$props.$$scope);
+		if ('noSpacing' in $$props) $$invalidate(4, noSpacing = $$props.noSpacing);
+		if ('unicolor' in $$props) $$invalidate(5, unicolor = $$props.unicolor);
+		if ('$$scope' in $$props) $$invalidate(8, $$scope = $$props.$$scope);
 	};
 
 	return [
@@ -178,6 +188,7 @@ function instance($$self, $$props, $$invalidate) {
 		disabled,
 		download,
 		option,
+		noSpacing,
 		unicolor,
 		__ref,
 		getWebComponent,
@@ -208,8 +219,9 @@ class SeLink extends SvelteComponent {
 			disabled: 1,
 			download: 2,
 			option: 3,
-			unicolor: 4,
-			getWebComponent: 6
+			noSpacing: 4,
+			unicolor: 5,
+			getWebComponent: 7
 		});
 	}
 
@@ -249,8 +261,17 @@ class SeLink extends SvelteComponent {
 		flush();
 	}
 
-	get unicolor() {
+	get noSpacing() {
 		return this.$$.ctx[4];
+	}
+
+	set noSpacing(noSpacing) {
+		this.$$set({ noSpacing });
+		flush();
+	}
+
+	get unicolor() {
+		return this.$$.ctx[5];
 	}
 
 	set unicolor(unicolor) {
@@ -259,7 +280,7 @@ class SeLink extends SvelteComponent {
 	}
 
 	get getWebComponent(): HTMLSeLinkElement | undefined {
-		return this.$$.ctx[6];
+		return this.$$.ctx[7];
 	}
 }
 

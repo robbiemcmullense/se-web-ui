@@ -802,6 +802,7 @@ export const SeLink = /*@__PURE__*/ Vue.extend({
     disabled: {} as PropOptions<Components.SeLink['disabled']>,
     download: {} as PropOptions<Components.SeLink['download']>,
     option: {} as PropOptions<Components.SeLink['option']>,
+    noSpacing: {} as PropOptions<Components.SeLink['noSpacing']>,
     unicolor: {} as PropOptions<Components.SeLink['unicolor']>,
   },
 
@@ -1110,6 +1111,7 @@ export const SeTable = /*@__PURE__*/ Vue.extend({
 
   props: {
     compact: {} as PropOptions<Components.SeTable['compact']>,
+    alignItems: {} as PropOptions<Components.SeTable['alignItems']>,
   },
 
 
@@ -1145,6 +1147,7 @@ export const SeTableItem = /*@__PURE__*/ Vue.extend({
     width: {} as PropOptions<Components.SeTableItem['width']>,
     minWidth: {} as PropOptions<Components.SeTableItem['minWidth']>,
     maxWidth: {} as PropOptions<Components.SeTableItem['maxWidth']>,
+    alignItems: {} as PropOptions<Components.SeTableItem['alignItems']>,
     clickable: {} as PropOptions<Components.SeTableItem['clickable']>,
   },
 

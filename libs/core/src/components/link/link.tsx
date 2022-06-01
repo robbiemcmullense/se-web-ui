@@ -30,6 +30,11 @@ export class LinkComponent {
   @Prop() option: 'internal' | 'external' = 'internal';
 
   /**
+   *  Removes spacing around the link
+   */
+  @Prop() noSpacing = false;
+
+  /**
    *  Sets :hover and :visited states the same color as main
    */
   @Prop() unicolor = false;
@@ -43,7 +48,8 @@ export class LinkComponent {
           data-disabled={this.disabled}
           class={{
             [this.option]: true,
-            'unicolor': !!this.unicolor
+            'unicolor': !!this.unicolor,
+            'no-spacing': this.noSpacing
           }}
           target={(this.download || this.option === 'external') ? '_blank' : ''}
           download={this.download}

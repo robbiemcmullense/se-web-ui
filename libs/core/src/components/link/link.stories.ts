@@ -11,11 +11,12 @@ storiesOf('Link', module).add(
     const option = select('option', linkOption, 'internal');
     const disabled = boolean('disabled', false);
     const url = text('url', 'http://google.com');
+    const noSpacing = boolean('noSpacing', false);
 
     return `
-      <se-link option='${option}' disabled='${disabled}' url='${url}'>${textHtml}</se-link>
+      <se-link option='${option}' disabled='${disabled}' no-spacing=${noSpacing} url='${url}'>${textHtml}</se-link>
       <br>
-      <se-link option='${option}' disabled='${disabled}' url='${url}'><se-icon>folder</se-icon>${textHtml}</se-link>
+      <se-link option='${option}' disabled='${disabled}' no-spacing=${noSpacing} url='${url}'><se-icon>folder</se-icon>${textHtml}</se-link>
     `;
   },
   {

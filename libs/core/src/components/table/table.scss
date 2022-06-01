@@ -10,7 +10,7 @@
     * @prop --se-table-item-min-width: Min width of a column. Small enough to just see a single icon or checkbox. Default: `58px`; Compact mode: `32px`.
     */
   --se-table-item-min-height: 47px;
-  --se-table-item-padding: #{$spacing-small} #{$spacing-large};
+  --se-table-item-padding: #{$spacing-base} #{$spacing-large};
   --se-table-item-min-width: 58px;
 }
 

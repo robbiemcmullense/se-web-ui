@@ -4,7 +4,7 @@ import readmegroup from '../table-group/readme.md';
 import readmegroupheader from '../table-group-header/readme.md';
 import readmeitem from '../table-item/readme.md';
 import readmeitemheader from '../table-item-header/readme.md';
-import { select, boolean, number } from '@storybook/addon-knobs';
+import { select, boolean, number, text } from '@storybook/addon-knobs';
 
 const sortOption = ['asc', 'desc', 'none'];
 
@@ -20,10 +20,11 @@ storiesOf('Table', module)
       // const showWithDetail = boolean('Show with expended detail section', false);
       const hideCheckboxColumn = boolean('hide checkbox column', false);
       const fixedWidth = select('Fixed Width Example', ['default', '200px', '500px', '700px'], 'default');
+      const alignItems = text('Align Items', 'center');
 
       return `
       <se-block height="400px" width="${fixedWidth}">
-        <se-table compact=${compact} id="myTable">
+        <se-table compact=${compact} align-items=${alignItems} id="myTable">
           <se-table-group-header>
             <se-table-item-header width="32px"></se-table-item-header>
               ${

@@ -20,6 +20,7 @@
 }
 
 .table-item-content {
+  @include align-items(center);
   @include justify-content(space-between);
 }
 

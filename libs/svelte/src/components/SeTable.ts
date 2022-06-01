@@ -8,6 +8,9 @@ interface SeTableProps {
   
   /** Define if we should show a compact view of the table, vs a version with larger spacing and font */
   compact?: Components.SeTable["compact"]
+  
+  /** Defines the vertical alignment of table items. */
+  alignItems?: Components.SeTable["alignItems"]
 }
 
 interface SeTableEvents {
@@ -42,14 +45,15 @@ import { createEventDispatcher, onMount } from 'svelte';
 function create_fragment(ctx) {
 	let se_table;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[4].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
+	const default_slot_template = /*#slots*/ ctx[5].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[4], null);
 
 	return {
 		c() {
 			se_table = element("se-table");
 			if (default_slot) default_slot.c();
 			set_custom_element_data(se_table, "compact", /*compact*/ ctx[0]);
+			set_custom_element_data(se_table, "align-items", /*alignItems*/ ctx[1]);
 		},
 		m(target, anchor) {
 			insert(target, se_table, anchor);
@@ -58,20 +62,20 @@ function create_fragment(ctx) {
 				default_slot.m(se_table, null);
 			}
 
-			/*se_table_binding*/ ctx[5](se_table);
+			/*se_table_binding*/ ctx[6](se_table);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 16)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[3],
+						/*$$scope*/ ctx[4],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[3])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[4])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[4], dirty, null),
 						null
 					);
 				}
@@ -79,6 +83,10 @@ function create_fragment(ctx) {
 
 			if (!current || dirty & /*compact*/ 1) {
 				set_custom_element_data(se_table, "compact", /*compact*/ ctx[0]);
+			}
+
+			if (!current || dirty & /*alignItems*/ 2) {
+				set_custom_element_data(se_table, "align-items", /*alignItems*/ ctx[1]);
 			}
 		},
 		i(local) {
@@ -93,7 +101,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_table);
 			if (default_slot) default_slot.d(detaching);
-			/*se_table_binding*/ ctx[5](null);
+			/*se_table_binding*/ ctx[6](null);
 		}
 	};
 }
@@ -104,6 +112,7 @@ function instance($$self, $$props, $$invalidate) {
 	let __mounted = false;
 	const dispatch = createEventDispatcher();
 	let { compact = undefined } = $$props;
+	let { alignItems = undefined } = $$props;
 	const getWebComponent = () => __ref;
 
 	onMount(() => {
@@ -111,7 +120,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(1, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(2, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -122,16 +131,17 @@ function instance($$self, $$props, $$invalidate) {
 	function se_table_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			__ref = $$value;
-			$$invalidate(1, __ref);
+			$$invalidate(2, __ref);
 		});
 	}
 
 	$$self.$$set = $$props => {
 		if ('compact' in $$props) $$invalidate(0, compact = $$props.compact);
-		if ('$$scope' in $$props) $$invalidate(3, $$scope = $$props.$$scope);
+		if ('alignItems' in $$props) $$invalidate(1, alignItems = $$props.alignItems);
+		if ('$$scope' in $$props) $$invalidate(4, $$scope = $$props.$$scope);
 	};
 
-	return [compact, __ref, getWebComponent, $$scope, slots, se_table_binding];
+	return [compact, alignItems, __ref, getWebComponent, $$scope, slots, se_table_binding];
 }
 
 class SeTable extends SvelteComponent {
@@ -149,7 +159,12 @@ class SeTable extends SvelteComponent {
 
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { compact: 0, getWebComponent: 2 });
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			compact: 0,
+			alignItems: 1,
+			getWebComponent: 3
+		});
 	}
 
 	get compact() {
@@ -161,8 +176,17 @@ class SeTable extends SvelteComponent {
 		flush();
 	}
 
+	get alignItems() {
+		return this.$$.ctx[1];
+	}
+
+	set alignItems(alignItems) {
+		this.$$set({ alignItems });
+		flush();
+	}
+
 	get getWebComponent(): HTMLSeTableElement | undefined {
-		return this.$$.ctx[2];
+		return this.$$.ctx[3];
 	}
 }
 

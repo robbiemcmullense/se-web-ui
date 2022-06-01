@@ -15,11 +15,14 @@ interface SeTableItemProps {
   /** Defines the specific width of a block, for items that should not be flexible. */
   width?: Components.SeTableItem["width"]
   
-  /** Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex. */
+  /** Defines the min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex. */
   minWidth?: Components.SeTableItem["minWidth"]
   
-  /** Defines the  max-width of a column. */
+  /** Defines the max-width of a column. */
   maxWidth?: Components.SeTableItem["maxWidth"]
+  
+  /** Defines the vertical alignment of a table item. */
+  alignItems?: Components.SeTableItem["alignItems"]
   
   /** Optional property defines the tag type within the `se-table-item`.
 Default value `false` defines the tag type as `div`.
@@ -59,8 +62,8 @@ import { createEventDispatcher, onMount } from 'svelte';
 function create_fragment(ctx) {
 	let se_table_item;
 	let current;
-	const default_slot_template = /*#slots*/ ctx[9].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[8], null);
+	const default_slot_template = /*#slots*/ ctx[10].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[9], null);
 
 	return {
 		c() {
@@ -71,7 +74,8 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_table_item, "width", /*width*/ ctx[2]);
 			set_custom_element_data(se_table_item, "min-width", /*minWidth*/ ctx[3]);
 			set_custom_element_data(se_table_item, "max-width", /*maxWidth*/ ctx[4]);
-			set_custom_element_data(se_table_item, "clickable", /*clickable*/ ctx[5]);
+			set_custom_element_data(se_table_item, "align-items", /*alignItems*/ ctx[5]);
+			set_custom_element_data(se_table_item, "clickable", /*clickable*/ ctx[6]);
 		},
 		m(target, anchor) {
 			insert(target, se_table_item, anchor);
@@ -80,20 +84,20 @@ function create_fragment(ctx) {
 				default_slot.m(se_table_item, null);
 			}
 
-			/*se_table_item_binding*/ ctx[10](se_table_item);
+			/*se_table_item_binding*/ ctx[11](se_table_item);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty & /*$$scope*/ 256)) {
+				if (default_slot.p && (!current || dirty & /*$$scope*/ 512)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[8],
+						/*$$scope*/ ctx[9],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[8])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[8], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[9])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[9], dirty, null),
 						null
 					);
 				}
@@ -119,8 +123,12 @@ function create_fragment(ctx) {
 				set_custom_element_data(se_table_item, "max-width", /*maxWidth*/ ctx[4]);
 			}
 
-			if (!current || dirty & /*clickable*/ 32) {
-				set_custom_element_data(se_table_item, "clickable", /*clickable*/ ctx[5]);
+			if (!current || dirty & /*alignItems*/ 32) {
+				set_custom_element_data(se_table_item, "align-items", /*alignItems*/ ctx[5]);
+			}
+
+			if (!current || dirty & /*clickable*/ 64) {
+				set_custom_element_data(se_table_item, "clickable", /*clickable*/ ctx[6]);
 			}
 		},
 		i(local) {
@@ -135,7 +143,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(se_table_item);
 			if (default_slot) default_slot.d(detaching);
-			/*se_table_item_binding*/ ctx[10](null);
+			/*se_table_item_binding*/ ctx[11](null);
 		}
 	};
 }
@@ -150,6 +158,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { width = undefined } = $$props;
 	let { minWidth = undefined } = $$props;
 	let { maxWidth = undefined } = $$props;
+	let { alignItems = undefined } = $$props;
 	let { clickable = undefined } = $$props;
 	const getWebComponent = () => __ref;
 
@@ -158,7 +167,7 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(6, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(7, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -169,7 +178,7 @@ function instance($$self, $$props, $$invalidate) {
 	function se_table_item_binding($$value) {
 		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			__ref = $$value;
-			$$invalidate(6, __ref);
+			$$invalidate(7, __ref);
 		});
 	}
 
@@ -179,8 +188,9 @@ function instance($$self, $$props, $$invalidate) {
 		if ('width' in $$props) $$invalidate(2, width = $$props.width);
 		if ('minWidth' in $$props) $$invalidate(3, minWidth = $$props.minWidth);
 		if ('maxWidth' in $$props) $$invalidate(4, maxWidth = $$props.maxWidth);
-		if ('clickable' in $$props) $$invalidate(5, clickable = $$props.clickable);
-		if ('$$scope' in $$props) $$invalidate(8, $$scope = $$props.$$scope);
+		if ('alignItems' in $$props) $$invalidate(5, alignItems = $$props.alignItems);
+		if ('clickable' in $$props) $$invalidate(6, clickable = $$props.clickable);
+		if ('$$scope' in $$props) $$invalidate(9, $$scope = $$props.$$scope);
 	};
 
 	return [
@@ -189,6 +199,7 @@ function instance($$self, $$props, $$invalidate) {
 		width,
 		minWidth,
 		maxWidth,
+		alignItems,
 		clickable,
 		__ref,
 		getWebComponent,
@@ -220,8 +231,9 @@ class SeTableItem extends SvelteComponent {
 			width: 2,
 			minWidth: 3,
 			maxWidth: 4,
-			clickable: 5,
-			getWebComponent: 7
+			alignItems: 5,
+			clickable: 6,
+			getWebComponent: 8
 		});
 	}
 
@@ -270,8 +282,17 @@ class SeTableItem extends SvelteComponent {
 		flush();
 	}
 
-	get clickable() {
+	get alignItems() {
 		return this.$$.ctx[5];
+	}
+
+	set alignItems(alignItems) {
+		this.$$set({ alignItems });
+		flush();
+	}
+
+	get clickable() {
+		return this.$$.ctx[6];
 	}
 
 	set clickable(clickable) {
@@ -280,7 +301,7 @@ class SeTableItem extends SvelteComponent {
 	}
 
 	get getWebComponent(): HTMLSeTableItemElement | undefined {
-		return this.$$.ctx[7];
+		return this.$$.ctx[8];
 	}
 }
 

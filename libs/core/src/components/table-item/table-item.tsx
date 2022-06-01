@@ -20,14 +20,19 @@ export class TableItemComponent {
   @Prop() width: string;
 
   /**
-   * Defines the  min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
+   * Defines the min-width of a block to insure that a scroll appear if too many column are in the table. Only necessary if using flex.
    */
   @Prop() minWidth: string;
 
   /**
-   * Defines the  max-width of a column.
+   * Defines the max-width of a column.
    */
   @Prop() maxWidth: string;
+
+  /**
+   * Defines the vertical alignment of a table item.
+   */
+  @Prop() alignItems: string;
 
   /**
    * Optional property defines the tag type within the `se-table-item`.
@@ -43,6 +48,10 @@ export class TableItemComponent {
       width: this.width || '',
       minWidth: this.minWidth || '',
     };
+    
+    const contentStyle = {
+      alignItems: this.alignItems || '',
+    };
 
     return (
       <Host
@@ -50,7 +59,10 @@ export class TableItemComponent {
         class={['se-table-item', `opt-${this.option}`].join(' ')}
         style={displayStyle}
       >
-        <div class="table-item-content">
+        <div
+          class="table-item-content"
+          style={contentStyle}
+        >
           <div class="table-item-label">
             <slot></slot>
           </div>

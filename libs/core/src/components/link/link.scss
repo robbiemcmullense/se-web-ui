@@ -44,3 +44,7 @@ a {
     @include color("secondary");
   }
 }
+
+.no-spacing {
+  margin: 0;
+}

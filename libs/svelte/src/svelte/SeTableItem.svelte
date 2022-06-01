@@ -12,6 +12,7 @@ export let flex = undefined;
 export let width = undefined;
 export let minWidth = undefined;
 export let maxWidth = undefined;
+export let alignItems = undefined;
 export let clickable = undefined;
 
 
@@ -36,6 +37,7 @@ const onEvent = (e) => {
   width={width}
   min-width={minWidth}
   max-width={maxWidth}
+  align-items={alignItems}
   clickable={clickable}
   
   bind:this={__ref}
