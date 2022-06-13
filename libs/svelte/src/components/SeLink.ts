@@ -20,8 +20,10 @@ The default setting is `internal`, which redirects you to the specified URL in t
 The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab. */
   option?: Components.SeLink["option"]
   
-  /** Removes spacing around the link */
-  noSpacing?: Components.SeLink["noSpacing"]
+  /** Defines the spacing around the link.
+`none` is 0px
+`small` is 4px */
+  spacing?: Components.SeLink["spacing"]
   
   /** Sets :hover and :visited states the same color as main */
   unicolor?: Components.SeLink["unicolor"]
@@ -70,7 +72,7 @@ function create_fragment(ctx) {
 			set_custom_element_data(se_link, "disabled", /*disabled*/ ctx[1]);
 			set_custom_element_data(se_link, "download", /*download*/ ctx[2]);
 			set_custom_element_data(se_link, "option", /*option*/ ctx[3]);
-			set_custom_element_data(se_link, "no-spacing", /*noSpacing*/ ctx[4]);
+			set_custom_element_data(se_link, "spacing", /*spacing*/ ctx[4]);
 			set_custom_element_data(se_link, "unicolor", /*unicolor*/ ctx[5]);
 		},
 		m(target, anchor) {
@@ -115,8 +117,8 @@ function create_fragment(ctx) {
 				set_custom_element_data(se_link, "option", /*option*/ ctx[3]);
 			}
 
-			if (!current || dirty & /*noSpacing*/ 16) {
-				set_custom_element_data(se_link, "no-spacing", /*noSpacing*/ ctx[4]);
+			if (!current || dirty & /*spacing*/ 16) {
+				set_custom_element_data(se_link, "spacing", /*spacing*/ ctx[4]);
 			}
 
 			if (!current || dirty & /*unicolor*/ 32) {
@@ -149,7 +151,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { disabled = undefined } = $$props;
 	let { download = undefined } = $$props;
 	let { option = undefined } = $$props;
-	let { noSpacing = undefined } = $$props;
+	let { spacing = undefined } = $$props;
 	let { unicolor = undefined } = $$props;
 	const getWebComponent = () => __ref;
 
@@ -178,7 +180,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ('disabled' in $$props) $$invalidate(1, disabled = $$props.disabled);
 		if ('download' in $$props) $$invalidate(2, download = $$props.download);
 		if ('option' in $$props) $$invalidate(3, option = $$props.option);
-		if ('noSpacing' in $$props) $$invalidate(4, noSpacing = $$props.noSpacing);
+		if ('spacing' in $$props) $$invalidate(4, spacing = $$props.spacing);
 		if ('unicolor' in $$props) $$invalidate(5, unicolor = $$props.unicolor);
 		if ('$$scope' in $$props) $$invalidate(8, $$scope = $$props.$$scope);
 	};
@@ -188,7 +190,7 @@ function instance($$self, $$props, $$invalidate) {
 		disabled,
 		download,
 		option,
-		noSpacing,
+		spacing,
 		unicolor,
 		__ref,
 		getWebComponent,
@@ -219,7 +221,7 @@ class SeLink extends SvelteComponent {
 			disabled: 1,
 			download: 2,
 			option: 3,
-			noSpacing: 4,
+			spacing: 4,
 			unicolor: 5,
 			getWebComponent: 7
 		});
@@ -261,12 +263,12 @@ class SeLink extends SvelteComponent {
 		flush();
 	}
 
-	get noSpacing() {
+	get spacing() {
 		return this.$$.ctx[4];
 	}
 
-	set noSpacing(noSpacing) {
-		this.$$set({ noSpacing });
+	set spacing(spacing) {
+		this.$$set({ spacing });
 		flush();
 	}
 

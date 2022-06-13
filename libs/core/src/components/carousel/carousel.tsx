@@ -2,6 +2,7 @@ import { Component, h, Element, Prop, Host, State, Build } from '@stencil/core';
 // import { ResizeObserver } from '@juggle/resize-observer';
 import arrow from '@se/icons/svg/arrow5_step.svg';
 import { isTouchDevice } from '../../utils';
+import { resizeObserver } from '../../utils';
 
 @Component({
   tag: 'se-carousel',
@@ -79,7 +80,7 @@ export class Carousel {
 
     if (Build.isBrowser) {
       // For SSR rendering
-      this.ro = new ResizeObserver(_ => {
+      this.ro = resizeObserver(_ => {
         // Observe any changes in the width container
         this.calculateWidth();
         this.displayArrow();

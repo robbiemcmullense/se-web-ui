@@ -3,6 +3,7 @@ import { Component, h, Host, Prop, State, Build } from '@stencil/core';
 
 import arrow3Up from '@se/icons/svg/arrow3_up.svg';
 import arrow5Step from '@se/icons/svg/arrow5_step.svg';
+import { resizeObserver } from '../../utils';
 
 export type TColor = 'primary' | 'alternative';
 
@@ -37,7 +38,7 @@ export class TabComponent {
   componentDidLoad() {
     if (Build.isBrowser) {
       // For SSR rendering
-      this.ro = new ResizeObserver(_ => {
+      this.ro = resizeObserver(_ => {
         this.displayArrow();
       });
     }

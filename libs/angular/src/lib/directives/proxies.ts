@@ -990,13 +990,13 @@ export class SeIconSchneider {
 
 export declare interface SeLink extends Components.SeLink {}
 @ProxyCmp({
-  inputs: ['disabled', 'download', 'noSpacing', 'option', 'unicolor', 'url']
+  inputs: ['disabled', 'download', 'option', 'spacing', 'unicolor', 'url']
 })
 @Component({
   selector: 'se-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'download', 'noSpacing', 'option', 'unicolor', 'url']
+  inputs: ['disabled', 'download', 'option', 'spacing', 'unicolor', 'url']
 })
 export class SeLink {
   protected el: HTMLElement;

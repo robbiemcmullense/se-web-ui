@@ -109,3 +109,15 @@ export function setElementDataAttrs(
     el.dataset[dataAttrKey] = dataAttrsData[dataAttrKey];
   }
 }
+
+export const resizeObserver = (callback) => {
+  return new ResizeObserver(entries => {
+    // We wrap it in requestAnimationFrame to avoid this error - ResizeObserver loop limit exceeded.
+    window.requestAnimationFrame(() => {
+      if (!Array.isArray(entries) || !entries.length) {
+        return;
+      }
+      callback();
+    });
+ });
+};

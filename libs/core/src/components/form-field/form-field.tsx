@@ -11,6 +11,7 @@ import {
   Build,
 } from '@stencil/core';
 // import ResizeObserver from 'resize-observer-polyfill';
+import { resizeObserver } from '../../utils';
 
 @Component({
   tag: 'se-form-field',
@@ -151,7 +152,7 @@ export class FormFieldComponent {
   componentDidLoad() {
     if (Build.isBrowser) {
       // For SSR rendering
-      this.ro = new ResizeObserver(_ => {
+      this.ro = resizeObserver(_ => {
         this.isSmall = this.inputWrapper.clientWidth < this.minWidth;
         // this.isMedium = this.inputWrapper.clientWidth < this.sizeMedium;
       });

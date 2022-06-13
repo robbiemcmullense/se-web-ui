@@ -1,7 +1,6 @@
 a {
   @include color("secondary");
   font-size: inherit;
-  margin: $spacing-small;
   line-height: inherit;
   display: inline-block;
   outline: none;
@@ -45,6 +44,12 @@ a {
   }
 }
 
-.no-spacing {
+
+// Spacing
+.spacing-none {
   margin: 0;
+}
+
+.spacing-small {
+  margin: $spacing-small;
 }

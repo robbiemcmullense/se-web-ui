@@ -1093,13 +1093,13 @@ export namespace Components {
          */
         "download": boolean;
         /**
-          * Removes spacing around the link
-         */
-        "noSpacing": boolean;
-        /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
         "option": 'internal' | 'external';
+        /**
+          * Defines the spacing around the link. `none` is 0px `small` is 4px
+         */
+        "spacing": 'none' | 'small';
         /**
           * Sets :hover and :visited states the same color as main
          */
@@ -3371,13 +3371,13 @@ declare namespace LocalJSX {
          */
         "download"?: boolean;
         /**
-          * Removes spacing around the link
-         */
-        "noSpacing"?: boolean;
-        /**
           * Adds visual and function properties to your link component. The default setting is `internal`, which redirects you to the specified URL in the same page. The `external` setting adds an underline and ">" icon to the link, and opens the link in a new web browser tab.
          */
         "option"?: 'internal' | 'external';
+        /**
+          * Defines the spacing around the link. `none` is 0px `small` is 4px
+         */
+        "spacing"?: 'none' | 'small';
         /**
           * Sets :hover and :visited states the same color as main
          */

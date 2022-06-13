@@ -802,7 +802,7 @@ export const SeLink = /*@__PURE__*/ Vue.extend({
     disabled: {} as PropOptions<Components.SeLink['disabled']>,
     download: {} as PropOptions<Components.SeLink['download']>,
     option: {} as PropOptions<Components.SeLink['option']>,
-    noSpacing: {} as PropOptions<Components.SeLink['noSpacing']>,
+    spacing: {} as PropOptions<Components.SeLink['spacing']>,
     unicolor: {} as PropOptions<Components.SeLink['unicolor']>,
   },
 
