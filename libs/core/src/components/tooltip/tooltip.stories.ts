@@ -7,7 +7,7 @@ import { select, number } from '@storybook/addon-knobs';
 
 const positionOptions = ['bottom', 'top', 'left', 'right'];
 const actionOptions = ['hover', 'click'];
-const colorOptions = ['alternative', 'information'];
+const colorOptions = ['alternative', 'information', 'success', 'warning', 'error'];
 
 storiesOf('Tooltip', module)
   .add(

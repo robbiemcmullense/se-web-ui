@@ -94,6 +94,41 @@
   }
 }
 
+.success {
+  @include color("success-contrast");
+  @include background-color("success");
+
+  @each $pos in ("top", "bottom", "left", "right") {
+    &[data-popper-placement^="#{$pos}"] > .arrow::after {
+        border-#{$pos}-color: var(--se-success);
+    }
+  }
+}
+
+.warning {
+  @include color("warning-contrast");
+  @include background-color("warning");
+
+  @each $pos in ("top", "bottom", "left", "right") {
+    &[data-popper-placement^="#{$pos}"] > .arrow::after {
+        border-#{$pos}-color: var(--se-warning);
+    }
+  }
+}
+
+.error {
+  @include color("error-contrast");
+  @include background-color("error");
+
+  @each $pos in ("top", "bottom", "left", "right") {
+    &[data-popper-placement^="#{$pos}"] > .arrow::after {
+        border-#{$pos}-color: var(--se-error);
+    }
+  }
+}
+
+
+
 :host([hidden]) {
   display: none;
 }

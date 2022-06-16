@@ -41,7 +41,7 @@ export class TooltipComponent {
   /**
    * Indicates the color of the tooltip
    */
-  @Prop() color: 'alternative' | 'information' = 'information';
+  @Prop() color: 'alternative' | 'information' | 'success' | 'warning' | 'error' = 'information';
 
   /**
    * Add a delay to display the tooltip in millisecond.
