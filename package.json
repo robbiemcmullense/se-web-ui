@@ -185,7 +185,6 @@
     "*.ts": "eslint --fix"
   },
   "dependencies": {
-    "@se/web-ui-angular": "^3.26.8",
     "@se/web-ui-react": "^3.26.8",
     "lodash-es": "^4.17.21"
   }
