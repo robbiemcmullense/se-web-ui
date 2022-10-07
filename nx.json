@@ -19,46 +19,10 @@
       "tags": [],
       "implicitDependencies": ["react-demo"]
     },
-    "angular-demo": {
-      "tags": []
-    },
-    "angular-demo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["angular-demo"]
-    },
-    "angular": {
-      "tags": [],
-      "implicitDependencies": ["core"]
-    },
     "react": {
-      "tags": [],
-      "implicitDependencies": ["core"]
-    },
-    "vue": {
-      "tags": [],
-      "implicitDependencies": ["core"]
-    },
-    "core": {
       "tags": []
     },
     "utils": {
-      "tags": []
-    },
-    "web-demo": {
-      "tags": []
-    },
-    "web-demo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web-demo"]
-    },
-    "vue-demo": {
-      "tags": []
-    },
-    "vue-demo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["vue-demo"]
-    },
-    "svelte": {
       "tags": []
     }
   },

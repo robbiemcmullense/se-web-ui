@@ -10,12 +10,12 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                                                                                                      | Type                                     | Default         |
-| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------- |
-| `action`    | `action`     | <span style="color:red">**[DEPRECATED]**</span> only `hover` action should be used for tooltips<br/><br/>        | `"click" \| "hover"`                     | `'hover'`       |
-| `color`     | `color`      | Indicates the color of the tooltip                                                                               | `"alternative" \| "information"  \| "success" \| "warning" \| "error" ` | `'information'` |
-| `position`  | `position`   | Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent. | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'`      |
-| `showDelay` | `show-delay` | Add a delay to display the tooltip in millisecond.                                                               | `number`                                 | `0`             |
+| Property    | Attribute    | Description                                                                                                      | Type                                                                  | Default         |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------- |
+| `action`    | `action`     | <span style="color:red">**[DEPRECATED]**</span> only `hover` action should be used for tooltips<br/><br/>        | `"click" \| "hover"`                                                  | `'hover'`       |
+| `color`     | `color`      | Indicates the color of the tooltip                                                                               | `"alternative" \| "error" \| "information" \| "success" \| "warning"` | `'information'` |
+| `position`  | `position`   | Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent. | `"bottom" \| "left" \| "right" \| "top"`                              | `'bottom'`      |
+| `showDelay` | `show-delay` | Add a delay to display the tooltip in millisecond.                                                               | `number`                                                              | `0`             |
 
 
 ## Events

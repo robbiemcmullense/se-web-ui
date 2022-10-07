@@ -9,7 +9,7 @@ This project uses the [Nx](https://nx.dev) monorepo.
 This whole monorepo relies on the [stencilJs](https://stenciljs.com/) web-component compiler to create a core library (`@se/web-ui` located in `libs/core` folder), and use some automatic bundler to create web-component wrapper for angular (`@se/web-ui-angular` located in `libs/angular` folder) and react (`@se/web-ui-react` located in `libs/react` folder).
 The angular and react wrapper are updated every time the core library is being built.
 
-Each application in the `apps` folder relies on the the local build of the different library (core, angular or rect library) and are simple demo application to insure each build works as expected before any deployment.
+Each application in the `apps` folder relies on the the local build of the different library (core, angular or react library) and are simple demo application to insure each build works as expected before any deployment.
 
 To help out on the testing, we also used [https://storybook.js.org/](https://storybook.js.org/). Each main component in the `libs/core` folder will have a `.stories.ts` file that will show possible options of those component to help testing and developers to use each components.
 

@@ -22,7 +22,7 @@ import {
 
 // import Widget from '../components/widget';
 
-import './dashboard.scss';
+
 
 interface DashboardProps {
   location: any;

@@ -31,14 +31,26 @@ class App extends Component {
       <SeApp>
         <BrowserRouter>
           <Switch>
-            <AppRoute exact path="/" layout={ShellLayout} component={Home} />
+            <AppRoute 
+              exact path="/" 
+              layout={ShellLayout} 
+              component={Home} 
+            />
             <AppRoute
               path="/dashboard"
               layout={ShellLayout}
               component={Dashboard}
             />
-            <AppRoute path="/docs" layout={ShellLayout} component={Docs} />
-            <AppRoute path="/table" layout={ShellLayout} component={Table} />
+            <AppRoute 
+              path="/docs" 
+              layout={ShellLayout} 
+              component={Docs} 
+            />
+            <AppRoute 
+              path="/table" 
+              layout={ShellLayout} 
+              component={Table} 
+            />
             <AppRoute
               path="/tableother"
               layout={ShellLayout}
@@ -54,8 +66,11 @@ class App extends Component {
               layout={ShellLayout}
               component={Carousel}
             />
-
-            <AppRoute path="/*" layout={DefaultLayout} component={NoPage} />
+            <AppRoute 
+              path="/*" 
+              layout={DefaultLayout} 
+              component={NoPage} 
+            />
           </Switch>
         </BrowserRouter>
       </SeApp>

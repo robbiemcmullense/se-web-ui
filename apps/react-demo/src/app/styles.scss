@@ -4,3 +4,9 @@ $se-generate-font-class: "false";
 $se-fonts-path: "~@se/fonts/fonts";
 @import "~@se/fonts/scss/styles.scss";
 
+// App styles go here
+@import 'styles/text';
+
+@import 'styles/dashboard/dashboard';
+@import 'styles/forms/filtration';
+@import 'styles/forms/widget';

@@ -3,7 +3,7 @@ import { SeApp } from '@se/web-ui-react';
 
 class DefaultLayout extends Component {
   render() {
-    return <SeApp>{this.props.children}</SeApp>;
+    return <SeApp></SeApp>;
   }
 }
 

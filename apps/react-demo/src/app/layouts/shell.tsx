@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Children, Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   SeContainer,
@@ -18,7 +18,10 @@ import {
   SeListItem,
 } from '@se/web-ui-react';
 
+
 class ShellLayout extends Component {
+
+ 
   render() {
     return (
       <SeContainer position="absolute" direction="column">
@@ -134,7 +137,7 @@ class ShellLayout extends Component {
             </NavLink>
             <NavLink to="/docs" activeClassName="none" className="group-label">
               Extra
-              <SeIcon size="medium">arrow2_right</SeIcon>
+              <SeIcon size="micro">arrow2_right</SeIcon>
             </NavLink>
             <ul className="sub-nav">
               <NavLink to="/docs">Docs</NavLink>

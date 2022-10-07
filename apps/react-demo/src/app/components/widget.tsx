@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './widget.scss';
+
 import {
   SeBlock,
   SeBlockHeader,

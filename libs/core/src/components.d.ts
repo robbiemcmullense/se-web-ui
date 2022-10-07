@@ -1610,7 +1610,7 @@ export namespace Components {
         /**
           * Indicates the color of the tooltip
          */
-        "color": 'alternative' | 'information';
+        "color": 'alternative' | 'information' | 'success' | 'warning' | 'error';
         /**
           * Method to open the tooltip separate from hovering or clicking the parent element.
          */
@@ -1682,6 +1682,154 @@ export namespace Components {
          */
         "value": string;
     }
+}
+export interface SeAccessibilityToggleCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeAccessibilityToggleElement;
+}
+export interface SeAppCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeAppElement;
+}
+export interface SeBannerItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeBannerItemElement;
+}
+export interface SeBreadcrumbItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeBreadcrumbItemElement;
+}
+export interface SeButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeButtonElement;
+}
+export interface SeCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeCheckboxElement;
+}
+export interface SeChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeChipElement;
+}
+export interface SeDialogCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeDialogElement;
+}
+export interface SeDialogHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeDialogHeaderElement;
+}
+export interface SeDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeDropdownElement;
+}
+export interface SeFabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFabElement;
+}
+export interface SeFabItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFabItemElement;
+}
+export interface SeFiltrationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationElement;
+}
+export interface SeFiltrationSmartCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartElement;
+}
+export interface SeFiltrationSmartCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartCheckboxElement;
+}
+export interface SeFiltrationSmartFacetCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartFacetElement;
+}
+export interface SeFiltrationSmartGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartGroupElement;
+}
+export interface SeFiltrationSmartMobileViewCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartMobileViewElement;
+}
+export interface SeFiltrationSmartMobileViewTriggerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartMobileViewTriggerElement;
+}
+export interface SeFiltrationSmartResetButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartResetButtonElement;
+}
+export interface SeFiltrationSmartTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartTabElement;
+}
+export interface SeFiltrationSmartViewMoreFacetsButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartViewMoreFacetsButtonElement;
+}
+export interface SeFiltrationSmartViewMoreRefinementsButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFiltrationSmartViewMoreRefinementsButtonElement;
+}
+export interface SeFormFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeFormFieldElement;
+}
+export interface SeListGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeListGroupElement;
+}
+export interface SeListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeListItemElement;
+}
+export interface SePaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSePaginationElement;
+}
+export interface SeRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeRadioElement;
+}
+export interface SeRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeRadioGroupElement;
+}
+export interface SeSidemenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeSidemenuElement;
+}
+export interface SeSidemenuItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeSidemenuItemElement;
+}
+export interface SeSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeSliderElement;
+}
+export interface SeSnackbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeSnackbarElement;
+}
+export interface SeStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeStepperElement;
+}
+export interface SeStepperItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeStepperItemElement;
+}
+export interface SeTableItemHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeTableItemHeaderElement;
+}
+export interface SeTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSeTooltipElement;
 }
 declare global {
     interface HTMLSeAboutElement extends Components.SeAbout, HTMLStencilElement {
@@ -2247,14 +2395,14 @@ declare namespace LocalJSX {
         /**
           * Passes accessibility toggle state to the parent component on a change of the toggle state
          */
-        "onDidChange"?: (event: CustomEvent<{ selected: boolean }>) => void;
+        "onDidChange"?: (event: SeAccessibilityToggleCustomEvent<{ selected: boolean }>) => void;
         /**
           * Defines the state of the toggle. `false` by default.
          */
         "selected"?: boolean;
     }
     interface SeApp {
-        "onThemeChanged"?: (event: CustomEvent<any>) => void;
+        "onThemeChanged"?: (event: SeAppCustomEvent<any>) => void;
         /**
           * Define the type of application. updating the option will impact the font used. - `technical`: For technical application (i.e. EcoStuxure), the font used will be `Nunito`. - `website` or `dcx`: For `se.com` application, the font used will be `Arial Rounded`.
          */
@@ -2312,7 +2460,7 @@ declare namespace LocalJSX {
         /**
           * Send an event when the banner item changes
          */
-        "onDidChange"?: (event: CustomEvent<any>) => void;
+        "onDidChange"?: (event: SeBannerItemCustomEvent<any>) => void;
     }
     interface SeBlock {
         /**
@@ -2436,7 +2584,7 @@ declare namespace LocalJSX {
         /**
           * Event firing when breadcrumbs link is clicked.
          */
-        "onDidNavigate"?: (event: CustomEvent<HTMLAnchorElement>) => void;
+        "onDidNavigate"?: (event: SeBreadcrumbItemCustomEvent<HTMLAnchorElement>) => void;
         /**
           * Indicates the position of an item in a series or sequence of items.
          */
@@ -2477,7 +2625,7 @@ declare namespace LocalJSX {
         /**
           * Passes button data to the parent component on a click.
          */
-        "onDidClick"?: (event: CustomEvent<any>) => void;
+        "onDidClick"?: (event: SeButtonCustomEvent<any>) => void;
         /**
           * Defines the visual appearance of the button. `flat` is the default option, which includes a gray background. **deprecated** `raised` adds a box shadow to the button. `outline` adds a border to the button. **deprecated** `login` and `signup` are specific options for "Login" and "Sign Up" buttons in your application. `text` removes background in default state
          */
@@ -2577,7 +2725,7 @@ declare namespace LocalJSX {
         /**
           * Send the checkbox value to the parent component when clicking on the checkbox.
          */
-        "onDidChange"?: (event: CustomEvent<{ value: string; selected: boolean }>) => void;
+        "onDidChange"?: (event: SeCheckboxCustomEvent<{ value: string; selected: boolean }>) => void;
         /**
           * Determines the visual appearance of the component. `checkbox` is the default option, which will render the component like a standard HTML checkbox. `checkbox-fake` **deprecated (use noInteractive property)** will render the component exactly like `checkbox` but it will not have any interactive elements.    It means it will not be accessible with keyboard, it will not trigger any unwanted events -- totally "dumb" component. `switch` renders the component like a toggle switch. `onoff` renders the component like an "on/off" switch, with a red "off" button and a green "on" button.
          */
@@ -2635,7 +2783,7 @@ declare namespace LocalJSX {
         /**
           * Send the chip value to the parent component when clicking the close button of a chip.
          */
-        "onDidClose"?: (event: CustomEvent<any>) => void;
+        "onDidClose"?: (event: SeChipCustomEvent<any>) => void;
         /**
           * Indicates whether or not the chip can changed state when hover or clicked on.  Set to `false` by default.
          */
@@ -2714,11 +2862,11 @@ declare namespace LocalJSX {
         /**
           * Send data to the parent component when the backdrop is clicked.
          */
-        "onBackdrop"?: (event: CustomEvent<any>) => void;
+        "onBackdrop"?: (event: SeDialogCustomEvent<any>) => void;
         /**
           * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
          */
-        "onDidClose"?: (event: CustomEvent<any>) => void;
+        "onDidClose"?: (event: SeDialogCustomEvent<any>) => void;
         /**
           * Indicates whether or not the dialog is open or closed.  Default setting is `false`.
          */
@@ -2777,7 +2925,7 @@ declare namespace LocalJSX {
         /**
           * Send data to the parent component when clicking an element within the dialog to close it. The modal can then be safely removed from the DOM.
          */
-        "onDidCloseDialog"?: (event: CustomEvent<any>) => void;
+        "onDidCloseDialog"?: (event: SeDialogHeaderCustomEvent<any>) => void;
         /**
           * Defaulted to a small padding. When set to `indent`, the header will have an alternative margins and paddings.
           * @deprecated use padding instead
@@ -2819,15 +2967,15 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the dropdown has been touched. Every dropdown listen to this event to avoid avoid multiple dropdown open at the same time.
          */
-        "onCancelAllDropdown"?: (event: CustomEvent<any>) => void;
+        "onCancelAllDropdown"?: (event: SeDropdownCustomEvent<any>) => void;
         /**
           * Event emitted when the dropdown has been closed.
          */
-        "onDidClose"?: (event: CustomEvent<any>) => void;
+        "onDidClose"?: (event: SeDropdownCustomEvent<any>) => void;
         /**
           * Event emitted when the dropdown has been opened.
          */
-        "onDidOpen"?: (event: CustomEvent<any>) => void;
+        "onDidOpen"?: (event: SeDropdownCustomEvent<any>) => void;
         /**
           * Defines the preferred vertically align of the dropdown. It will automatically re-position if the there is not enough space. `top`: Position the container with respect to the top side of the trigger element. `bottom`: Position the container with respect to the bottom side of the trigger element.
          */
@@ -2845,7 +2993,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted to close the tooltip (if there is one) when interacting with the fab button.
          */
-        "onCloseTooltips"?: (event: CustomEvent<any>) => void;
+        "onCloseTooltips"?: (event: SeFabCustomEvent<any>) => void;
         /**
           * Property that determines the functionality of the FAB. The default setting is `speeddial`, which will show/hide a dropdown menu when clicking on the FAB. The `backtotop` setting returns you to the top of the page you are viewing when clicking on the FAB.
          */
@@ -2867,7 +3015,7 @@ declare namespace LocalJSX {
         /**
           * Send the value of the caption to the parent when clicking on the item.
          */
-        "onDidClick"?: (event: CustomEvent<any>) => void;
+        "onDidClick"?: (event: SeFabItemCustomEvent<any>) => void;
     }
     interface SeFiltration {
         /**
@@ -2902,11 +3050,11 @@ declare namespace LocalJSX {
           * Minimum number of items to be displayed when collapsed. Default is `5`
          */
         "minItems"?: number;
-        "onDidSearch"?: (event: CustomEvent<any>) => void;
+        "onDidSearch"?: (event: SeFiltrationCustomEvent<any>) => void;
         /**
           * Event emitter for callback to select all items
          */
-        "onDidSelectAll"?: (event: CustomEvent<any>) => void;
+        "onDidSelectAll"?: (event: SeFiltrationCustomEvent<any>) => void;
         /**
           * The search value in the search field. Mostly used to clear the search box when needed.
          */
@@ -2952,11 +3100,11 @@ declare namespace LocalJSX {
         /**
           * Event that emits list of checked filters.
          */
-        "onFilterStateChanged"?: (event: CustomEvent<FilterEmittedState>) => void;
+        "onFilterStateChanged"?: (event: SeFiltrationSmartCustomEvent<FilterEmittedState>) => void;
         /**
           * Event that emits after every filters render.
          */
-        "onSeFiltrationSmartDidRender"?: (event: CustomEvent<any>) => void;
+        "onSeFiltrationSmartDidRender"?: (event: SeFiltrationSmartCustomEvent<any>) => void;
         /**
           * Defines text that will be used in the "Reset" button.
          */
@@ -2998,7 +3146,7 @@ declare namespace LocalJSX {
         /**
           * Event that has info about refinement whose state should be changed. Root component listens to it.
          */
-        "onRefinementStateChanged"?: (event: CustomEvent<string>) => void;
+        "onRefinementStateChanged"?: (event: SeFiltrationSmartCheckboxCustomEvent<string>) => void;
         /**
           * Id of the refinement that will be used to find the data in the Root Filter store.
          */
@@ -3050,7 +3198,7 @@ declare namespace LocalJSX {
         /**
           * Event that has info about facet whose collapsed/expanded state should be changed.  Root Filter component listens to it.
          */
-        "onToggleIsSectionExpanded"?: (event: CustomEvent<string>) => void;
+        "onToggleIsSectionExpanded"?: (event: SeFiltrationSmartFacetCustomEvent<string>) => void;
         /**
           * Defines text of the "View less refinements" button.
          */
@@ -3072,7 +3220,7 @@ declare namespace LocalJSX {
         /**
           * Event that has info about the section whose collapsed/expanded state should be changed.  Root Filter component listens to it.
          */
-        "onToggleIsSectionExpanded"?: (event: CustomEvent<string>) => void;
+        "onToggleIsSectionExpanded"?: (event: SeFiltrationSmartGroupCustomEvent<string>) => void;
         /**
           * Id of the section that will be used to find the data in the Root Filter store.
          */
@@ -3090,7 +3238,7 @@ declare namespace LocalJSX {
         /**
           * Event that closes mobile view with two options:  { restore: true } -- closes mobile view and undoes changes made in mobile view  { restore: false } -- closes mobile view and applies changes made in mobile view
          */
-        "onToggleMobileView"?: (event: CustomEvent<ToggleMobileViewVisibility>) => void;
+        "onToggleMobileView"?: (event: SeFiltrationSmartMobileViewCustomEvent<ToggleMobileViewVisibility>) => void;
         /**
           * Defines text that will be used in the "Reset" button.
          */
@@ -3112,7 +3260,7 @@ declare namespace LocalJSX {
         /**
           * Event that toggle visibility of the mobile view.
          */
-        "onToggleMobileView"?: (event: CustomEvent<void>) => void;
+        "onToggleMobileView"?: (event: SeFiltrationSmartMobileViewTriggerCustomEvent<void>) => void;
     }
     interface SeFiltrationSmartResetButton {
         /**
@@ -3126,13 +3274,13 @@ declare namespace LocalJSX {
         /**
           * Event that reset Smart Filter to initial state.
          */
-        "onResetAllClicked"?: (event: CustomEvent<void>) => void;
+        "onResetAllClicked"?: (event: SeFiltrationSmartResetButtonCustomEvent<void>) => void;
     }
     interface SeFiltrationSmartTab {
         /**
           * Event that has info about tab whose state should be changed. Root Filter component listens to it.
          */
-        "onRefinementStateChanged"?: (event: CustomEvent<string>) => void;
+        "onRefinementStateChanged"?: (event: SeFiltrationSmartTabCustomEvent<string>) => void;
         /**
           * Id of the filter that will be used to find the data in the Root Filter store.
          */
@@ -3150,7 +3298,7 @@ declare namespace LocalJSX {
         /**
           * Event that signals Smart Filter to toggle visibility of all its facets.
          */
-        "onToggleViewMoreFacets"?: (event: CustomEvent<void>) => void;
+        "onToggleViewMoreFacets"?: (event: SeFiltrationSmartViewMoreFacetsButtonCustomEvent<void>) => void;
         /**
           * Defines text of the "View less" button.
          */
@@ -3173,7 +3321,7 @@ declare namespace LocalJSX {
         /**
           * Event that signals Smart Filter to toggle visibility of all its refinements.
          */
-        "onToggleViewMoreRefinements"?: (event: CustomEvent<string>) => void;
+        "onToggleViewMoreRefinements"?: (event: SeFiltrationSmartViewMoreRefinementsButtonCustomEvent<string>) => void;
         /**
           * Defines text of the "View less" button.
          */
@@ -3215,7 +3363,7 @@ declare namespace LocalJSX {
         /**
           * Passes form data to the parent component on a click (`checkbox` or `radio`), menu change (`select`), or when the input field loses focus.
          */
-        "onDidSubmit"?: (event: CustomEvent<any>) => void;
+        "onDidSubmit"?: (event: SeFormFieldCustomEvent<any>) => void;
         /**
           * Defines the layout of your form field. `inline` is the default option, and is always applied if the type is set to `checkbox`.  This sets the input or select field adjacent to the label. `stacked` option will render the input or select field below the label.
           * @deprecated use `stacked` property instead
@@ -3441,11 +3589,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the group item is clicked.
          */
-        "onDidGroupClick"?: (event: CustomEvent<boolean>) => void;
+        "onDidGroupClick"?: (event: SeListGroupCustomEvent<boolean>) => void;
         /**
           * Emitted when the group item is collapsed/uncollapsed.
          */
-        "onDidGroupCollapse"?: (event: CustomEvent<GroupCollapseEvent>) => void;
+        "onDidGroupCollapse"?: (event: SeListGroupCustomEvent<GroupCollapseEvent>) => void;
         /**
           * Defines if the list group should be displayed as selected (if one of its child elements is selected when collapsed).
          */
@@ -3485,7 +3633,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted to notify the list-group component that the selected state has changed.
          */
-        "onDidSelectedChange"?: (event: CustomEvent<void>) => void;
+        "onDidSelectedChange"?: (event: SeListItemCustomEvent<void>) => void;
         /**
           * Defines if the list element should be selected or not.
          */
@@ -3545,7 +3693,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the selected page or the number of item per page changed. Return `{value: number; perPage: number;}`.
          */
-        "onDidChange"?: (event: CustomEvent<PageEvent>) => void;
+        "onDidChange"?: (event: SePaginationCustomEvent<PageEvent>) => void;
         /**
           * Number of item per page
          */
@@ -3587,7 +3735,7 @@ declare namespace LocalJSX {
         /**
           * Send the checkbox value to the parent component when clicking on the checkbox.
          */
-        "onDidCheck"?: (event: CustomEvent<any>) => void;
+        "onDidCheck"?: (event: SeRadioCustomEvent<any>) => void;
         /**
           * optional property. define the padding around the button `none` no padding. `small` 4px padding: default `medium` 8px padding. `large` 16px padding.
          */
@@ -3621,7 +3769,7 @@ declare namespace LocalJSX {
         /**
           * Passes the selected button value to the parent component when clicking on a button in the group.
          */
-        "onDidChange"?: (event: CustomEvent<any>) => void;
+        "onDidChange"?: (event: SeRadioGroupCustomEvent<any>) => void;
         /**
           * Defines the height of each button in the group. `small` is the default setting, rendering a 32px height and a 14px font size. `nano` sets the height to 24px and the font size to 12px.
          */
@@ -3638,11 +3786,11 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         "link"?: string;
-        "onDidNavigationClick"?: (event: CustomEvent<any>) => void;
+        "onDidNavigationClick"?: (event: SeSidemenuCustomEvent<any>) => void;
         /**
           * When the menu is opened, it will trigger a `toggled` event with `event.detail.state` set to `open`. When the menu is closed, it will trigger a `toggled` event with `event.detail.state` set to `closed`.
          */
-        "onToggled"?: (event: CustomEvent<any>) => void;
+        "onToggled"?: (event: SeSidemenuCustomEvent<any>) => void;
     }
     interface SeSidemenuItem {
         /**
@@ -3656,7 +3804,7 @@ declare namespace LocalJSX {
         /**
           * Send an event when the sidemenu item changes
          */
-        "onDidClick"?: (event: CustomEvent<any>) => void;
+        "onDidClick"?: (event: SeSidemenuItemCustomEvent<any>) => void;
     }
     interface SeSkeleton {
         "circle"?: boolean;
@@ -3684,7 +3832,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the slider has been changed.
          */
-        "onDidChange"?: (event: CustomEvent<any>) => void;
+        "onDidChange"?: (event: SeSliderCustomEvent<any>) => void;
         /**
           * Indicates the initial value of your slider component when it loads. The default value is `0`.
          */
@@ -3714,11 +3862,11 @@ declare namespace LocalJSX {
         /**
           * Sends information to the parent component when clicking a custom action button.
          */
-        "onActionClicked"?: (event: CustomEvent<void>) => void;
+        "onActionClicked"?: (event: SeSnackbarCustomEvent<void>) => void;
         /**
           * Sends information to the parent component when closing the snackbar.
          */
-        "onDidClose"?: (event: CustomEvent<void>) => void;
+        "onDidClose"?: (event: SeSnackbarCustomEvent<void>) => void;
         "open"?: boolean;
         /**
           * Indicates the background color of your snackbar. `success`: green `warning`: orange `error`: red `information`: dark grey, default setting
@@ -3749,7 +3897,7 @@ declare namespace LocalJSX {
         /**
           * Event to send to the parent component when a stepper item is clicked and next and previous will be clicked. The Stepper Item data is passed to the parent.
          */
-        "onDidChange"?: (event: CustomEvent<any>) => void;
+        "onDidChange"?: (event: SeStepperCustomEvent<any>) => void;
         /**
           * Defines the spacing/margin around the stepper. `none` is 0px `small` is 4px `medium` is 8px `large` is 16px
          */
@@ -3775,11 +3923,11 @@ declare namespace LocalJSX {
         /**
           * Event to send to the parent component when a stepper item's data is active true or false. The boolean validated property is passed to the parent.
          */
-        "onDidActivate"?: (event: CustomEvent<any>) => void;
+        "onDidActivate"?: (event: SeStepperItemCustomEvent<any>) => void;
         /**
           * Event to send to the parent component when a stepper item's data is validated.
          */
-        "onDidValidate"?: (event: CustomEvent<any>) => void;
+        "onDidValidate"?: (event: SeStepperItemCustomEvent<any>) => void;
         /**
           * Indicates whether a required item's data has been validated.  Useful if using a form field. When the stepper component is set to linear mode, all stepper items will need to be validated before advancing the stpper.
          */
@@ -3892,7 +4040,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted to notify the table-group-header component that the width has changed.
          */
-        "onDidWidthChange"?: (event: CustomEvent<void>) => void;
+        "onDidWidthChange"?: (event: SeTableItemHeaderCustomEvent<void>) => void;
         /**
           * Optional property defines whether the column is resizable or not. Default value `false` defines column as not resizable `true` defines column is resizable
          */
@@ -3914,15 +4062,15 @@ declare namespace LocalJSX {
         /**
           * Indicates the color of the tooltip
          */
-        "color"?: 'alternative' | 'information';
+        "color"?: 'alternative' | 'information' | 'success' | 'warning' | 'error';
         /**
           * Event emitted when the tooltip has been closed.
          */
-        "onDidClose"?: (event: CustomEvent<any>) => void;
+        "onDidClose"?: (event: SeTooltipCustomEvent<any>) => void;
         /**
           * Event emitted when the tooltip has been opened.
          */
-        "onDidOpen"?: (event: CustomEvent<any>) => void;
+        "onDidOpen"?: (event: SeTooltipCustomEvent<any>) => void;
         /**
           * Indicates the position of your tooltip. The default setting is `bottom`, rendering the tooltip below its parent.
          */

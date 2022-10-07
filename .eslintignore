@@ -3,10 +3,5 @@
 /dist
 /coverage
 *.md
-/libs/angular/src/lib/directives
-/libs/core/src/components.d.ts
-/libs/core/.scripts/
 /libs/react/src/react-component-lib
 /libs/react/src/components.ts
-/libs/vue/src/components.ts
-/libs/vue/src/vue-component-lib/utils.ts

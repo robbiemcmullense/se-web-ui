@@ -16,7 +16,7 @@ import {
   SeChip,
 } from '@se/web-ui-react';
 
-import './filtration.scss';
+
 
 const demoItems = [
   'Apple',
